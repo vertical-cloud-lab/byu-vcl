@@ -1,0 +1,9 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+anomalyco,Anomaly,U1,sells OpenCode Go/Console model subscriptions and enterprise to opencode users,,yes,US,2017,private,yes,2,Later rounds for Anomaly not found in fetched pages.,,2026-11-26T06:07:11Z
+hashicorp,HashiCorp,U1,"sells HCP cloud and enterprise editions of Terraform, Vault",,yes,US,2012,acquired,yes,2,Earlier rounds (A-C) not fetched; IBM acquired 2025 for $6.4B (IPO 2021). memory: Mitchell Hashimoto bootstrapped early.,https://newsroom.ibm.com/2024-04-24-IBM-to-Acquire-HashiCorp-Inc-Creating-a-Comprehensive-End-to-End-Hybrid-Cloud-Platform,2026-11-26T06:07:11Z
+redis,Redis Ltd.,U1,sells Redis Cloud and Redis Enterprise,,yes,US,2011,private,yes,4,Rounds before 2017 not fetched.,,2026-11-26T06:07:11Z
+vitejs,VoidZero,U1,maintainers' company VoidZero builds Void deploy platform for Vite apps,,yes,US,2024,private,yes,2,"Page banner says VoidZero is joining Cloudflare (acquisition, not verified).",,2026-11-26T06:07:11Z
+unionlabs,Union Labs,U1,company developing the Union interoperability protocol,,yes,US,,private,none_found,0,"No funding page found via find_pages or union.build home; memory: may have raised from crypto VCs, unverified.",,2026-11-26T06:11:50Z
+commaai,comma.ai,U1,sells comma devices running openpilot,,yes,US,2015,private,yes,2,"Funder names not found on fetched pages. memory: Andreessen Horowitz early round, unverified.",,2026-11-26T06:11:50Z
+typst,Typst GmbH,U1,sells Typst web app subscriptions,,yes,DE,,private,none_found,0,No funding page found on typst.app about/blog or via find_pages.,,2026-11-26T06:11:50Z
+ClickHouse,ClickHouse,U1,sells ClickHouse Cloud,,yes,US,2021,private,yes,4,,,2026-11-26T06:11:50Z

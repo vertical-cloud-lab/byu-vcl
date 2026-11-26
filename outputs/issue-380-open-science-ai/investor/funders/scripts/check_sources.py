@@ -38,7 +38,8 @@ def text_of(url):
         return _cache[url]
     out = None
     try:
-        r = requests.get(url, headers=UA, timeout=25)
+        hdr = {"User-Agent": "research script admin@example.com"} if "sec.gov" in url else UA  # SEC asks for a declared agent
+        r = requests.get(url, headers=hdr, timeout=25)
         if r.status_code == 200 and len(r.content) > 500:
             soup = BeautifulSoup(r.content[:5_000_000], "lxml")
             for t in soup(["script", "style", "noscript"]):

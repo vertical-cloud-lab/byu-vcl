@@ -79,8 +79,10 @@ def heuristic(name):
 
 
 def last_versions():
-    """Last version of each venture across passes, and its rounds (the last n_rounds deal rows for that key)."""
-    vers = {}
+    """Last version of each venture across the first-wave passes, and its rounds (the last n_rounds deal rows for
+    that key). Deepening passes (ids starting with x) add rounds to that version instead of replacing it; a round
+    they repeat (same type, date and amount) is kept once."""
+    vers, extra = {}, collections.defaultdict(list)
     for vp in sorted(glob.glob(os.path.join(D, "deal_passes", "ventures_*.csv"))):
         pid = re.search(r"ventures_(\w+)\.csv", vp).group(1)
         vrows = list(csv.DictReader(open(vp)))
@@ -90,13 +92,37 @@ def last_versions():
         for r in drows:
             by_key[r["key"]].append(r)
         for v in vrows:
-            prev = vers.get(v["key"])
-            if prev and prev[0]["written_utc"] > v["written_utc"]:
-                continue
             n = int(v["n_rounds"] or 0)
             rounds = by_key[v["key"]][-n:] if n else []
             v["pass"] = pid
+            if pid.startswith("x"):
+                extra[v["key"]].append((v, rounds))
+                continue
+            prev = vers.get(v["key"])
+            if prev and prev[0]["written_utc"] > v["written_utc"]:
+                continue
             vers[v["key"]] = (v, rounds)
+    for k, adds in extra.items():
+        for v, rounds in sorted(adds, key=lambda x: x[0]["written_utc"]):
+            if k not in vers:
+                vers[k] = (v, rounds)
+                continue
+            base, brounds = vers[k]
+            seen = {(r["type"], r["date"][:7], r["amount_usd"]) for r in brounds}
+            add = [r for r in rounds if "adds to existing round" in r["note"].lower() or
+                   (r["type"], r["date"][:7], r["amount_usd"]) not in seen or not r["amount_usd"] and
+                   (r["lead"] or r["investors"]) and (r["type"], r["date"][:7], r["lead"], r["investors"]) not in
+                   {(b["type"], b["date"][:7], b["lead"], b["investors"]) for b in brounds}]
+            base = dict(base)
+            base["pass"] = base["pass"] + "+" + v["pass"]
+            if v["notes"]:
+                base["notes"] = (base["notes"] + " | " if base["notes"] else "") + v["notes"]
+            if base["funding_found"] != "yes" and add:
+                base["funding_found"] = "yes"
+            for f in ("status", "country", "founded", "open_basis", "open_url"):
+                if not base.get(f) or base.get(f) == "unknown":
+                    base[f] = v.get(f, "")
+            vers[k] = (base, brounds + add)
     return vers
 
 
@@ -210,7 +236,8 @@ def main():
                                 "none_found": sum(1 for v in ventures if v["universe"] == u and v["funding_found"] == "none_found"),
                                 "bootstrapped_stated": sum(1 for v in ventures if v["universe"] == u and v["funding_found"] == "bootstrapped_stated")}
                             for u in ("U1", "U2", "U3")},
-            "rounds": len(deals), "investor_venture_links": len(link_rows), "investors": len(inv_rows),
+            "rounds": sum(1 for d in deals if "adds to existing round" not in d["note"].lower()),
+            "investor_venture_links": len(link_rows), "investors": len(inv_rows),
             "investors_by_type": dict(collections.Counter(r["type"] for r in inv_rows)),
             "investors_2plus": sum(1 for r in inv_rows if r["ventures"] >= 2),
             "investors_5plus": sum(1 for r in inv_rows if r["ventures"] >= 5),

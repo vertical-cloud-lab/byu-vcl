@@ -1,0 +1,7 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+u4-optic,Optic,U4,accelerator,YC S18,2018,,,Y Combinator,https://www.ycombinator.com/companies/optic,other,YC page lists status Acquired; acquirer not stated there
+u4-orchestra,Orchestra,U4,accelerator,YC S26,2026,,,Y Combinator,https://www.ycombinator.com/companies/orchestra,other,
+u4-orikata-bio-pbc,Orikata Bio PBC,U4,accelerator,YC S26,2026,,,Y Combinator,https://www.ycombinator.com/companies/orikata-bio-pbc,other,
+u4-oumi,Oumi,U4,seed,Seed,2025-01,10000000,Venrock | Obvious Ventures,Plug and Play | Ascend Venture Capital,https://siliconangle.com/2025/01/29/startup-backed-top-universities-aims-deliver-fully-open-ai-development-platform/,news,Article names legal entities Venrock Management and Obvious Management Services; names normalised
+u4-our-world-in-data,Our World in Data,U4,accelerator,YC W19,2019,,,Y Combinator,https://www.ycombinator.com/companies/our-world-in-data,other,Nonprofit batch
+u4-our-world-in-data,Our World in Data,U4,grant_philanthropic,Funders listed on funding page,,,,Gates Foundation | Quadrature Climate Foundation | Wellcome Trust | Y Combinator | GiveWell,https://ourworldindata.org/funding,company,Page also lists others; only names seen in page text recorded

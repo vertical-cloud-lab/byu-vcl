@@ -1,0 +1,6 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+ollama,Ollama,U1,sells Ollama cloud hosted-model plans to its users,,yes,US,,private,yes,3,,,2026-11-26T06:10:24Z
+AppFlowy-IO,AppFlowy,U1,sells AppFlowy Cloud paid plans,,yes,US,,private,yes,1,,,2026-11-26T06:10:24Z
+PostHog,PostHog Inc.,U1,sells PostHog Cloud,,yes,US,2020,private,yes,5,,,2026-11-26T06:10:24Z
+TileDB-Inc,"TileDB, Inc.",U1,sells TileDB Cloud and enterprise,,yes,US,,private,yes,3,TileDB is now Tile.ai (Sept 2026),,2026-11-26T06:10:24Z
+ray-project,Anyscale,U1,Ray contributed to PyTorch Foundation; Anyscale sells hosted Ray,,yes,US,2019,acquired,yes,3,Acquired by Nscale 2026-07 per TechCrunch,https://techcrunch.com/2026/07/30/nscale-buys-anyscale-as-it-seeks-to-own-more-of-the-ai-compute-stack/,2026-11-26T06:10:24Z

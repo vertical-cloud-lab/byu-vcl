@@ -3,3 +3,12 @@ n8n-io,n8n,U1,sells n8n Cloud and Enterprise licences (fair-code),,yes,DE,2019,p
 oven-sh,Oven (Bun),U1,company formed to commercialise the Bun runtime; acquired by Anthropic 2025,,yes,US,2021,acquired,yes,2,Acquired by Anthropic Dec 2025,,2026-11-26T06:04:16Z
 calcom,"Cal.com, Inc.",U1,sells hosted Cal.com and enterprise plans,,yes,US,2021,private,yes,1,,,2026-11-26T06:04:16Z
 getsentry,Sentry (Functional Software),U1,sells hosted Sentry,,yes,US,2012,private,yes,2,"Seed 2015 (Accel, $1.5M) per TechCrunch Series A text; Series B-D investors not read",,2026-11-26T06:04:16Z
+appsmithorg,Appsmith,U1,sells Appsmith Business and Enterprise,,yes,US,2019,private,yes,2,,,2026-11-26T06:05:48Z
+mattermost,Mattermost,U1,sells Mattermost Enterprise and Cloud,,yes,US,2016,private,yes,2,Earlier $3.5M seed investors not named in fetched pages,,2026-11-26T06:05:48Z
+hasura,Hasura,U1,sells Hasura Cloud/DDN and Enterprise,,yes,US,2017,private,yes,4,,,2026-11-26T06:05:48Z
+better-auth,Better Auth,U1,sells Better Auth Infrastructure dashboard and services,,yes,US,2024,private,yes,1,,,2026-11-26T06:05:48Z
+cline,Cline Bot Inc.,U1,sells Cline Teams and Enterprise plans,,yes,US,2024,private,yes,1,,,2026-11-26T06:11:01Z
+vectorize-io,"Vectorize, Inc.",U1,sells Hindsight Cloud and Enterprise,,yes,US,2024,private,yes,1,,,2026-11-26T06:11:01Z
+Pythagora-io,Pythagora,U1,sells Pythagora AI dev platform built on GPT Pilot,,yes,US,2023,private,yes,2,,,2026-11-26T06:11:01Z
+tursodatabase,Turso,U1,sells Turso Cloud,,yes,US,2022,acquired,yes,1,Supabase announced acquiring Turso 2026-10 (blog),https://supabase.com/blog/supabase-is-acquiring-turso,2026-11-26T06:11:01Z
+zulip,Kandra Labs,U1,sells Zulip Cloud and support,,yes,US,2017,private,none_found,0,Original Zulip Inc (acquired by Dropbox 2014) is a different entity; no Kandra Labs funding page found,,2026-11-26T06:11:01Z

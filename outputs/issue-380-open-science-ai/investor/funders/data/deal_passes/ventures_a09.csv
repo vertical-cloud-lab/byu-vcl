@@ -1,0 +1,19 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+langchain-ai,LangChain,U1,sells LangSmith platform built around LangChain,,yes,US,2022,private,yes,4,,,2026-11-26T06:06:13Z
+grafana,Grafana Labs,U1,sells Grafana Cloud and Enterprise,,yes,US,2014,private,yes,4,,,2026-11-26T06:06:13Z
+Stirling-Tools,Stirling PDF,U1,sells Stirling-PDF Pro/Enterprise and hosted version,,yes,GB,2023,private,yes,1,,,2026-11-26T06:06:13Z
+BerriAI,BerriAI,U1,sells LiteLLM Enterprise and hosted proxy,,yes,US,2023,private,yes,1,,,2026-11-26T06:06:13Z
+payloadcms,Payload,U1,sells Payload Cloud and enterprise; bought by Figma,,yes,US,2022,acquired,yes,1,Acquired by Figma 2025,https://github.com/payloadcms/payload/discussions/12843,2026-11-26T06:06:13Z
+gatsbyjs,Gatsby,U1,sold Gatsby Cloud hosting; now owned by Netlify,,yes,US,2015,acquired,yes,2,Acquired by Netlify Feb 2023. Leads also contain a different fintech 'Gatsby' (eToro); excluded.,https://www.netlify.com/press/netlify-acquires-gatsby-inc-to-accelerate-adoption-of-composable-web-architectures/,2026-11-26T06:06:29Z
+metabase,Metabase,U1,sells Metabase Cloud and Pro/Enterprise,,yes,US,2015,private,yes,2,Crunchbase News Feb 2019 reports an SEC filing for ~$13M with undisclosed investors; not recorded.,https://news.crunchbase.com/news/metabase-an-uber-co-founders-new-big-data-startup-raises-13m/30/,2026-11-26T06:06:29Z
+medusajs,Medusa,U1,sells Medusa Cloud,,yes,US,2021,private,yes,1,,,2026-11-26T06:06:29Z
+fishaudio,Fish Audio,U1,open-weight TTS models; sells API and platform access,,yes,US,,private,yes,1,,,2026-11-26T06:06:29Z
+conductor-oss,Orkes,U1,maintainers' company Orkes sells hosted Conductor,,yes,US,2021,private,yes,2,,,2026-11-26T06:06:29Z
+medusajs,Medusa,U1,sells Medusa Cloud,,yes,US,2021,private,yes,2,,,2026-11-26T06:09:18Z
+e2b-dev,E2B,U1,sells hosted E2B sandboxes from open-source infra; top repo is a list,,yes,US,,private,yes,2,,,2026-11-26T06:09:18Z
+mindsdb,MindsDB,U1,sells MindsDB cloud and enterprise,,yes,US,2017,private,yes,2,Forbes Feb 2023 Series A $16.5M lead not fetched.,https://www.forbes.com/sites/kenrickcai/2023/02/07/mindsdb-series-a-funding-ai-in-workplace/,2026-11-26T06:09:18Z
+nextflow-io,Seqera,U1,maintainers' company Seqera sells hosted Seqera Platform,,yes,ES,2018,private,yes,3,,,2026-11-26T06:09:18Z
+trufflesecurity,Truffle Security,U1,sells TruffleHog Enterprise,,yes,US,2019,private,yes,3,,,2026-11-26T06:14:40Z
+comet-ml,Comet ML,U1,sells Opik cloud and Comet platform,,yes,US,2017,private,yes,4,,,2026-11-26T06:14:40Z
+letta-ai,Letta,U1,sells Letta Cloud,,yes,US,2024,private,yes,2,,,2026-11-26T06:14:40Z
+Budibase,Budibase,U1,sells Budibase Cloud and Enterprise,,yes,GB,2019,private,yes,2,,,2026-11-26T06:14:40Z

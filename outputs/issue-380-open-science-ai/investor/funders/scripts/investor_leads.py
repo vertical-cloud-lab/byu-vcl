@@ -106,27 +106,37 @@ def keep(t, nm, about):
 
 
 def wp_leads(nm):
+    """Two steps per site: list matching posts with titles and excerpts only (light), then fetch the full text of at
+    most six posts whose title or excerpt names the venture together with a funding word."""
     found = []
     for site, base in WP:
         for q in nm[:2]:
-            r = get(S, f"{base}/wp-json/wp/v2/posts", params={"search": q, "per_page": 30,
-                                                              "_fields": "link,title,date,content"})
+            r = get(S, f"{base}/wp-json/wp/v2/posts", params={"search": q, "per_page": 50,
+                                                              "_fields": "id,link,title,date,excerpt"})
             if not r or r.status_code != 200:
                 continue
             try:
                 posts = r.json()
             except ValueError:
                 continue
+            pick = []
             for p in posts:
                 title = html.unescape(re.sub(r"<[^>]+>", "", (p.get("title") or {}).get("rendered", "")))
-                body = text_of((p.get("content") or {}).get("rendered", ""))
-                if not mentions(title + " " + body, nm):
-                    continue
-                about = mentions(title, nm)
-                if not (FUND.search(title) or (about and FUND.search(body[:3000]))) and not mentions(body, nm):
-                    continue
-                ss = keep(body, nm, about and bool(FUND.search(title)))
-                if ss:
+                exc = text_of((p.get("excerpt") or {}).get("rendered", ""))
+                if mentions(title + " " + exc, nm) and FUND.search(title + " " + exc):
+                    pick.append((p, title))
+            pick = pick[:6]
+            if pick:
+                r2 = get(S, f"{base}/wp-json/wp/v2/posts", params={"include": ",".join(str(p["id"]) for p, _ in pick),
+                                                                   "per_page": len(pick), "_fields": "id,content"})
+                body = {}
+                try:
+                    body = {x["id"]: text_of((x.get("content") or {}).get("rendered", "")) for x in (r2.json() if r2 is not None and r2.status_code == 200 else [])}
+                except (ValueError, TypeError):
+                    body = {}
+                for p, title in pick:
+                    about = mentions(title, nm)
+                    ss = keep(body.get(p["id"], ""), nm, about and bool(FUND.search(title)))
                     found.append({"src": site, "date": (p.get("date") or "")[:10], "title": title, "url": p.get("link"),
                                   "about": about, "sentences": ss[:6]})
             if posts:
@@ -260,7 +270,7 @@ def main():
             except ValueError:
                 pass
     t0 = time.time()
-    order = sorted(glob.glob("data/deal_passes/input_*.csv"), key=lambda p: ("scad".index(os.path.basename(p)[6]), p))
+    order = sorted(glob.glob("data/deal_passes/input_*.csv"), key=lambda p: ("scadex".find(os.path.basename(p)[6]) % 9, p))
     if sys.argv[1:]:
         order = [p for p in order if re.search(r"input_(\w+)\.csv", p).group(1) in sys.argv[1:]]
     for inp in order:

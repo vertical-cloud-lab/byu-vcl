@@ -1,0 +1,6 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+u4-optic,Optic,U4,YC lists as open source; repo and licence not checked,,partial,US,2018,acquired,yes,1,No other round found; lead for Orchestra Bio does not apply,,2026-11-26T06:07:37Z
+u4-orchestra,Orchestra,U4,YC lists as open source; repo not checked,,partial,US,2026,private,yes,1,"TechCrunch lead is about Orchestra Bio (OpenAI acquisition), a different company; not used",,2026-11-26T06:07:37Z
+u4-orikata-bio-pbc,Orikata Bio PBC,U4,Hikoboshi and Orihime libraries open source per YC page; licence not seen,https://github.com/orikata-bio/hikoboshi,yes,US,2026,private,yes,1,No other funding found,,2026-11-26T06:07:37Z
+u4-oumi,Oumi,U4,"Oumi platform, open-source repository under Apache 2.0",https://github.com/oumi-ai/oumi,yes,US,2024,private,yes,1,,,2026-11-26T06:07:37Z
+u4-our-world-in-data,Our World in Data,U4,"YC page: free, open-source, public good; nonprofit publisher",https://ourworldindata.org/funding,yes,UK,2013,nonprofit,yes,2,,,2026-11-26T06:07:37Z

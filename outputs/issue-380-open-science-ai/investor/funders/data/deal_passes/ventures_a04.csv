@@ -1,0 +1,12 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+tailwindlabs,Tailwind Labs,U1,"Tailwind CSS, MIT; sells Tailwind Plus components and templates",,yes,US,,acquired,none_found,0,"Joined Shopify Sept 2026 (acquisition, not a funding round); no outside round found in leads or Tailwind blog.",https://tailwindcss.com/blog/tailwind-is-joining-shopify,2026-11-26T06:05:21Z
+openbq-org,OpenBB Inc.,U1,OpenBB platform on GitHub; sells OpenBB Workspace enterprise edition,,yes,US,2021,private,yes,1,,https://techcrunch.com/2024/10/07/fintech-openbb-aims-to-be-more-than-an-open-source-bloomberg-terminal/,2026-11-26T06:05:21Z
+nocodb,NocoDB,U1,NocoDB open-source Airtable alternative; sells NocoDB Cloud and Enterprise,,yes,US,2021,private,yes,1,,,2026-11-26T06:05:21Z
+dbeaver,DBeaver Corp,U1,"DBeaver Community, Apache-2.0; sells DBeaver PRO editions",,yes,US,,private,yes,1,,,2026-11-26T06:05:21Z
+milvus-io,Zilliz,U1,"Milvus, Apache-2.0, LF AI & Data graduated; Zilliz sells hosted Milvus",,yes,US,2017,private,yes,2,Earlier rounds (~$10M before Series B) not found.,,2026-11-26T06:05:21Z
+lightpanda-io,Lightpanda,U1,"Lightpanda browser, AGPL on GitHub; sells hosted cloud browser",,yes,FR,,private,yes,1,,,2026-11-26T06:05:21Z
+pola-rs,Polars B.V.,U1,"Polars dataframe library, MIT; sells Polars Cloud",,yes,NL,2022,private,yes,2,Seed lead written as Bain Capital Ventures but source only says Bain Capital.,,2026-11-26T06:05:21Z
+directus,Monospace Inc. (Directus),U1,"Directus, BSL 1.1 source-available; sells Directus Cloud and enterprise licences",,yes,US,,private,yes,1,Round details not found.,,2026-11-26T06:05:21Z
+rethinkdb,RethinkDB,U1,"RethinkDB, now Apache-2.0 under Linux Foundation; company shut down 2016",,yes,US,2009,shut_down,yes,3,TechCrunch 2017 says about $12.2M raised in total.,https://techcrunch.com/2017/02/06/the-cloud-native-compute-foundation-acquires-rethingdbs-source-code/,2026-11-26T06:05:21Z
+symfony,Symfony SAS,U1,"Symfony PHP framework, MIT; sells training, certification, support and SymfonyInsight",,yes,FR,,private,yes,1,,,2026-11-26T06:05:21Z
+temporalio,Temporal Technologies,U1,"Temporal, MIT; sells Temporal Cloud",,yes,US,2019,private,yes,7,"Series E co-leads: Wellington, Goldman Sachs, Tiger Global also listed as participants.",,2026-11-26T06:05:21Z

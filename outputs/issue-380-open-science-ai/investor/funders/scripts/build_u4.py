@@ -20,6 +20,42 @@ def norm(s):
     return re.sub(r"[^a-z0-9]+", "", s)
 
 
+def extra():
+    """Second U4 batch: ROSS startups from periods the first scrape missed (2020-2023), not already in U1-U4.
+    Appended to data/ventures_input.csv as U4 and split into passes eNN, so the running dNN passes are untouched."""
+    vin = list(csv.DictReader(open("data/ventures_input.csv")))
+    have = {norm(v["venture"]) for v in vin}
+    for v in vin:
+        for a in re.findall(r"\(([^)]*)\)", v["venture"]):
+            have.add(norm(a))
+    owners = {o.lower() for v in vin for o in (v["owners"] or "").split(";") if o}
+    owners |= {m.group(1).lower() for v in vin for m in re.finditer(r"github\.com/([A-Za-z0-9_.-]+)/", v["hint"] or "")}
+    cand = {}
+    for r in csv.DictReader(open("data/u4/ross_index.csv")):
+        k = norm(r["startup"]); own = r["repo"].split("/")[0].lower()
+        if not k or k in have or own in owners or k in cand:
+            continue
+        cand[k] = {"venture": r["startup"], "hint": (f"ROSS Index {r['period']}: repo github.com/{r['repo']}; {r['country']} "
+                                                     f"{r['city']}; founded {r['founded']}; Runa's funding figure "
+                                                     f"{r['funding_musd'] or 'none'} (USD M)")}
+    rows = []
+    for k, c in sorted(cand.items(), key=lambda x: x[1]["venture"].lower()):
+        key = "u4-" + re.sub(r"[^a-z0-9]+", "-", c["venture"].lower()).strip("-")
+        if any(v["key"] == key for v in vin):
+            key += "-ross"
+        rows.append({"key": key, "venture": c["venture"], "universe": "U4", "category": "open-source startup",
+                     "source_list": "ross", "hint": c["hint"][:600], "owners": "", "stars": ""})
+    cols = list(vin[0].keys())
+    with open("data/ventures_input.csv", "w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=cols); w.writeheader(); w.writerows(vin + rows)
+    n = 25
+    for i in range(0, len(rows), n):
+        pid = f"e{i // n + 1:02d}"
+        with open(f"data/deal_passes/input_{pid}.csv", "w", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=cols); w.writeheader(); w.writerows(rows[i:i + n])
+    print(len(rows), "more U4 ventures from the ROSS Index in", (len(rows) + n - 1) // n, "passes")
+
+
 def main():
     vin = list(csv.DictReader(open("data/ventures_input.csv")))
     vin = [v for v in vin if v["universe"] != "U4"]
@@ -66,4 +102,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    extra() if "--extra" in sys.argv else main()

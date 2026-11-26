@@ -49,6 +49,14 @@ def rows_of(h):
             funding = seq[0]
         out.append({"repo": repo, "startup": name, "country": country, "city": city, "founded": founded,
                     "funding_musd": funding, "language": lang})
+    # older layout (2020-2023): "<owner>/<repo> | <Startup> | <Country> | <City> | <Founded> | <Funding> | Repo |"
+    seen = {r["repo"] for r in out}
+    for m in re.finditer(r"\| ([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+) \| ([^|]{1,80}) \| ([^|]{1,40}) \| ([^|]{1,40}) \| "
+                         r"((?:19|20)\d\d) \| (?:([\d.]+) \| )?(?:<[^|]*)?Repo", t):
+        if m.group(1) in seen:
+            continue
+        out.append({"repo": m.group(1), "startup": m.group(2).strip(), "country": m.group(3).strip(),
+                    "city": m.group(4).strip(), "founded": m.group(5), "funding_musd": m.group(6) or "", "language": ""})
     return out
 
 
