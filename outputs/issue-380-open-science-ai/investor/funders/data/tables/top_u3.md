@@ -1,42 +1,42 @@
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
-| Accel | venture firm | 15 | 7 | Airbyte, CARTO, Cloudera, ForgeRock, Heptio, RadixArk, Weaveworks, Alfresco Software … |
+| Accel | venture firm | 18 | 9 | Airbyte, CARTO, Cloudera, ForgeRock, Heptio, RadixArk, Rasa, Sysdig … |
+| Andreessen Horowitz | venture firm | 17 | 10 | Alluxio, Databricks, GitHub, Imply, Inferact, Rasa, Replicate, Sourcegraph … |
+| Lightspeed Venture Partners | venture firm | 15 | 8 | Chainguard, Inferact, Marqo, Materialize, Mistral AI, Redpanda Data, Reflection AI, Yugabyte … |
+| New Enterprise Associates | venture firm | 15 | 10 | Acquia, Aerospike, Databricks, MuleSoft, Pentaho, Sakana AI, Snowplow, SugarCRM … |
+| Insight Partners | growth, crossover or PE | 14 | 9 | Astronomer, Automattic, CARTO, Camunda, Databricks, Dremio, Mirantis, RudderStack … |
 | Intel Capital | corporate / strategic | 14 | 3 | Lightbend, MariaDB, Mirantis, AI21 Labs, Cloudera, CollabNet, JBoss, Kaltura … |
-| New Enterprise Associates | venture firm | 13 | 8 | Acquia, Databricks, MuleSoft, Pentaho, Sakana AI, SugarCRM, Union.ai, Weaviate … |
+| Sequoia Capital | venture firm | 13 | 6 | Chainguard, GitHub, Pydantic Services, Reflection AI, Sourcegraph, dbt Labs, Confluent, Cumulus Networks … |
 | Benchmark | venture firm | 12 | 6 | Airbyte, Buoyant, Hortonworks, Hyperic, MySQL AB, Pentaho, CollabNet, Confluent … |
-| Andreessen Horowitz | venture firm | 11 | 6 | Databricks, GitHub, Inferact, Replicate, Sourcegraph, dbt Labs, Cumulus Networks, Mesosphere … |
+| Salesforce Ventures | corporate / strategic | 12 | 3 | Automattic, MuleSoft, Together AI, Airbyte, Astronomer, CARTO, Chainguard, Cohere … |
+| Index Ventures | venture firm | 11 | 5 | Confluent, Dagster Labs, Gluster, Starburst, Weaviate, Cohere, Hortonworks, Mistral AI … |
 | NVIDIA (incl. NVentures) | corporate / strategic | 11 | 1 | AI21 Labs, Cohere, Cumulus Networks, Databricks, Mistral AI, Prime Intellect, RadixArk, Reflection AI … |
-| Index Ventures | venture firm | 10 | 3 | Confluent, Dagster Labs, Weaviate, Cohere, Gluster, Hortonworks, Mistral AI, MySQL AB … |
-| Insight Partners | growth, crossover or PE | 10 | 6 | Astronomer, Automattic, CARTO, Databricks, Mirantis, Tigera, Instructure, JFrog … |
-| Salesforce Ventures | corporate / strategic | 10 | 3 | Automattic, MuleSoft, Together AI, Airbyte, Astronomer, CARTO, Cohere, Databricks … |
-| Sequoia Capital | venture firm | 10 | 5 | GitHub, Pydantic Services, Reflection AI, Sourcegraph, dbt Labs, Confluent, Dagster Labs, Replicate … |
-| Samsung | corporate / strategic | 8 | 2 | AI21 Labs, Mistral AI, Arcee AI, ClearML, H Company, Liquid AI, MosaicML, Tetrate |
-| Coatue | growth, crossover or PE | 7 | 4 | Confluent, Databricks, Kubecost, Nomic AI, Airbyte, Dagster Labs, Together AI |
-| Lightspeed Venture Partners | venture firm | 7 | 4 | Inferact, Marqo, Mistral AI, Reflection AI, Heptio, MuleSoft, Nicira |
-| Dell Technologies Capital | corporate / strategic | 6 | 1 | Tetrate, JFrog, Prime Intellect, Red Hat, SpringSource / Pivotal Software, Treeverse |
-| GV | corporate / strategic | 6 | 3 | Buoyant, CoreOS, Weaveworks, Determined AI, Neo4j, Puppet |
+| GV | corporate / strategic | 10 | 5 | Ahana, Buoyant, CoreOS, Redpanda Data, Weaveworks, Determined AI, Meltano, Neo4j … |
+| Kleiner Perkins | venture firm | 10 | 7 | Chainguard, Materialize, Nebula, Inc., Puppet, RudderStack, Teleport, Together AI, CoreOS … |
+| Samsung | corporate / strategic | 10 | 3 | AI21 Labs, Mistral AI, ScyllaDB, Arcee AI, ClearML, H Company, Liquid AI, MosaicML … |
+| Coatue | growth, crossover or PE | 9 | 5 | Confluent, Databricks, Kubecost, Nomic AI, Starburst, Airbyte, Dagster Labs, Together AI … |
+| Redpoint Ventures | venture firm | 9 | 6 | Chainguard, Couchbase, Materialize, Preset, Solo.io, Sourcegraph, Dremio, Mistral AI … |
+| Dell Technologies Capital | corporate / strategic | 7 | 2 | Tetrate, Yugabyte, JFrog, Prime Intellect, Red Hat, SpringSource / Pivotal Software, Treeverse |
+| Goldman Sachs | growth, crossover or PE | 7 | 3 | DataStax, Sonatype, SugarCRM, Acquia, Databricks, Mirantis, Sysdig |
+| Meritech Capital Partners | venture firm | 7 | 3 | Cloudera, DataStax, ForgeRock, Astronomer, MuleSoft, Sourcefire, Yugabyte |
+| SV Angel | venture firm | 7 | 0 | Airbyte, Buoyant, FoundationDB, Mesosphere, Mistral AI, Nomic AI, Together AI |
+| Sapphire Ventures | venture firm | 7 | 3 | Dremio, Tetrate, Yugabyte, JFrog, Kaltura, Mirantis, MuleSoft |
+| Amplify Partners | venture firm | 6 | 1 | OctoML, Chainguard, Chef Software, Dagster Labs, Outerbounds, dbt Labs |
+| Battery Ventures | venture firm | 6 | 1 | Chef Software, Bitwarden, Cumulus Networks, Databricks, Voltron Data, Weaviate |
+| Bessemer Venture Partners | venture firm | 6 | 4 | Imply, Teleport, Voxel51, npm, Inc., Instructure, ScyllaDB |
 | Red Hat | corporate / strategic | 6 | 1 | Jaspersoft, Ansible, CoreOS, Gluster, Mirantis, MySQL AB |
-| SV Angel | venture firm | 6 | 0 | Airbyte, Buoyant, FoundationDB, Mistral AI, Nomic AI, Together AI |
+| True Ventures | venture firm | 6 | 3 | Puppet, Solo.io, npm, Inc., Automattic, Iterative, Synadia |
 | Y Combinator | accelerator / studio | 6 | 0 | Airbyte, CoreOS, LanceDB, Pachyderm, Replicate, Teleport |
 | Alibaba | corporate / strategic | 5 | 5 | 01.AI, Baichuan Intelligence, MariaDB, MiniMax, Moonshot AI |
-| Amplify Partners | venture firm | 5 | 1 | OctoML, Chef Software, Dagster Labs, Outerbounds, dbt Labs |
-| Battery Ventures | venture firm | 5 | 1 | Chef Software, Bitwarden, Cumulus Networks, Databricks, Weaviate |
-| Kleiner Perkins | venture firm | 5 | 3 | Puppet, Teleport, Together AI, CoreOS, XenSource |
-| Meritech Capital Partners | venture firm | 5 | 2 | Cloudera, ForgeRock, Astronomer, MuleSoft, Sourcefire |
-| Redpoint Ventures | venture firm | 5 | 3 | Couchbase, Solo.io, Sourcegraph, Mistral AI, Zimbra |
+| Altimeter Capital | growth, crossover or PE | 5 | 3 | Airbyte, Solo.io, dbt Labs, Confluent, Tabular |
+| Bain Capital Ventures | venture firm | 5 | 4 | Astronomer, Cube Dev, Sysdig, Unstructured, Lightbend |
+| CRV | venture firm | 5 | 2 | LanceDB, Reflection AI, Determined AI, EnterpriseDB, Proton AG |
+| Cisco Investments | corporate / strategic | 5 | 1 | Puppet, Cohere, Dremio, Mistral AI, MuleSoft |
+| Geodesic Capital | venture firm | 5 | 0 | Databricks, Imply, Sakana AI, Sourcegraph, Together AI |
+| Greylock Partners | venture firm | 5 | 2 | Lightbend, Zend Technologies, Cloudera, Onehouse, Red Hat |
 | SAP Ventures | corporate / strategic | 5 | 1 | Jaspersoft, Alfresco Software, Mirantis, MySQL AB, Zend Technologies |
-| Sapphire Ventures | venture firm | 5 | 1 | Tetrate, JFrog, Kaltura, Mirantis, MuleSoft |
+| Scale Venture Partners | venture firm | 5 | 1 | Chef Software, DataStax, JFrog, Jaspersoft, Tetrate |
+| Tiger Global | growth, crossover or PE | 5 | 2 | Cohere, OctoML, Automattic, Databricks, Imply |
+| 8VC | venture firm | 4 | 1 | Yugabyte, Airbyte, Dagster Labs, Tetrate |
 | A Capital | venture firm | 4 | 0 | Buoyant, Databricks, Mesosphere, Together AI |
-| Altimeter Capital | growth, crossover or PE | 4 | 3 | Airbyte, Solo.io, dbt Labs, Confluent |
 | Amazon | corporate / strategic | 4 | 0 | Acquia, Databricks, H Company, Weaveworks |
-| Cisco Investments | corporate / strategic | 4 | 1 | Puppet, Cohere, Mistral AI, MuleSoft |
-| Geodesic Capital | venture firm | 4 | 0 | Databricks, Sakana AI, Sourcegraph, Together AI |
-| Goldman Sachs | growth, crossover or PE | 4 | 1 | SugarCRM, Acquia, Databricks, Mirantis |
-| Greylock Partners | venture firm | 4 | 2 | Lightbend, Zend Technologies, Cloudera, Red Hat |
-| Madrona Venture Group | venture firm | 4 | 4 | Heptio, OctoML, Tigera, Unstructured |
-| Scale Venture Partners | venture firm | 4 | 1 | Chef Software, JFrog, Jaspersoft, Tetrate |
-| Tencent | corporate / strategic | 4 | 2 | Baichuan Intelligence, Moonshot AI, MiniMax, StepFun |
-| Thrive Capital | venture firm | 4 | 0 | Airbyte, Databricks, GitHub, Mapbox |
-| Tiger Global | growth, crossover or PE | 4 | 2 | Cohere, OctoML, Automattic, Databricks |
-| True Ventures | venture firm | 4 | 2 | Puppet, Solo.io, Automattic, Iterative |
-| 8VC | venture firm | 3 | 0 | Airbyte, Dagster Labs, Tetrate |

@@ -1,14 +1,15 @@
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
-| Guillermo Rauch | person (angel) | 19 | 0 | Chroma, Comfy Org, ComfyUI, Dub Technologies, LastMile AI, LiveKit, Mastra, Meilisearch … |
+| Guillermo Rauch | person (angel) | 20 | 0 | Astral, Chroma, Comfy Org, ComfyUI, Dub Technologies, LastMile AI, LiveKit, Mastra … |
+| David Cramer | person (angel) | 10 | 0 | Astral, Earendil Inc., FastAPI Labs, Mastra, Million, Pydantic Services, Strapi, Supermemory … |
 | Tom Preston-Werner | person (angel) | 10 | 1 | Gitpod, AppFlowy, Liquid AI, Nhost, Nrwl, OpenPipe, SigNoz, Spacedrive Technology … |
 | Clem Delangue | person (angel) | 9 | 0 | Adap, FastAPI Labs, Flower, Kestra Technologies, Letta, NanoCo, Prime Intellect, Together AI … |
-| David Cramer | person (angel) | 9 | 0 | Earendil Inc., FastAPI Labs, Mastra, Million, Pydantic Services, Strapi, Supermemory, Vercel … |
 | Nat Friedman | person (angel) | 9 | 2 | EvolutionaryScale, Logseq Inc., Chroma, Dagger, Daily, Deno Land Inc., Strapi, Vercel … |
 | Paul Copplestone | person (angel) | 9 | 0 | Embedchain, Infracost, Mem0, Pynecone, Reflex, Resend, SigNoz, Trigger.dev … |
 | Paul Graham | person (angel) | 9 | 0 | Browser Use, Mastra, Mentra, Paradev, Rescale, Reworkd, Sim, Tinfoil … |
 | Amjad Masad | person (angel) | 6 | 0 | Chroma, LiveKit, Mastra, Million, ResearchHub, Roboflow |
 | Balaji Srinivasan | person (angel) | 6 | 0 | Dub Technologies, LabDAO, Mastra, Molecule, Nous Research, VitaDAO |
+| Elad Gil | person (angel) | 6 | 1 | Infisical, LiveKit, Neon, Resend, Streamlit, Warp |
 | Naval Ravikant | person (angel) | 6 | 0 | Cal.com, Inc., Chroma, OpenBB Inc., Spacedrive Technology, TrueFoundry, Vercel |
 | Nicolas Dessaigne | person (angel) | 6 | 0 | Kestra Technologies, Medusa, Paradev, Prisma Data, Inc., Strapi, ToolJet |
 | Olivier Pomel | person (angel) | 6 | 0 | Daytona Platforms, Embedchain, Fig, Hugging Face, Kestra Technologies, Mem0 |
@@ -26,6 +27,7 @@
 | Jack Altman | person (angel) | 4 | 0 | Chroma, PostgresML, Pynecone, Reflex |
 | Jason Warner | person (angel) | 4 | 0 | Fig, PostHog Inc., Raycast, Svix |
 | Paul Buchheit | person (angel) | 4 | 0 | Pachyderm, PipelineDB, RethinkDB, Sim |
+| Solomon Hykes | person (angel) | 4 | 0 | Astral, PostHog Inc., Strapi, Streamlit |
 | Thomas Dohmke | person (angel) | 4 | 0 | Embedchain, Mem0, Raycast, Shuttle |
 | Anthony Casalena | person (angel) | 3 | 0 | Medusa, Tailscale, Vercel |
 | Anthony Goldbloom | person (angel) | 3 | 1 | marimo, Coiled, TrueFoundry |
@@ -38,5 +40,3 @@
 | Jordan Tigani | person (angel) | 3 | 0 | Chroma, Letta, marimo |
 | Lachy Groom | person (angel) | 3 | 1 | Roboflow, Daily, Resend |
 | Lukas Biewald | person (angel) | 3 | 0 | Embedchain, Mem0, marimo |
-| Michael Grinich | person (angel) | 3 | 0 | Resend, Tinfoil, Trigger.dev |
-| Sam Altman | person (angel) | 3 | 0 | Arcadia Science, Rescale, Roboflow |

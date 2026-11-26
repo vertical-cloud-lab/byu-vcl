@@ -8,13 +8,17 @@ import json, re
 num = json.load(open("data/funders_numbers.json"))
 
 
+MISSING = []
+
+
 def lookup(path):
     cur = num
     for p in path.split("."):
-        if isinstance(cur, list):
-            cur = cur[int(p)]
-        else:
-            cur = cur[p]
+        try:
+            cur = cur[int(p)] if isinstance(cur, list) else cur[p]
+        except (KeyError, IndexError, ValueError):
+            MISSING.append(path)
+            return "?"
     if isinstance(cur, float):
         return f"{100 * cur:.0f}%" if cur <= 1 else f"{cur:,.0f}"
     if isinstance(cur, int):
@@ -34,4 +38,4 @@ t = open("FUNDERS.template.md").read()
 t = re.sub(r"<!-- TABLE:([\w.]+?\.md)(?::(\d+))? -->", table, t)
 t = re.sub(r"\{\{([\w.\-]+)\}\}", lambda m: lookup(m.group(1)), t)
 open("FUNDERS.md", "w").write(t)
-print("FUNDERS.md written,", len(t), "characters")
+print("FUNDERS.md written,", len(t), "characters", "; MISSING numbers: " + ", ".join(sorted(set(MISSING))) if MISSING else "")

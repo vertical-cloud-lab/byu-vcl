@@ -4,8 +4,9 @@
 | SV Angel | venture firm | 10 | 1 | Imgix, Citus Data, Composio, Evidence, KERNEL, OpenCode, PipelineDB, Resend … |
 | Andreessen Horowitz | venture firm | 9 | 5 | Apollo, Civit, GitButler, Resend, Upstash, Flotype, Rivet, Sesame … |
 | Pioneer Fund | venture firm | 9 | 0 | Adap, Airweave, Flower, LiteLLM, Netmaker, Paradev, Sourcebot, Trigger.dev … |
+| Gradient Ventures | corporate / strategic | 8 | 3 | LastMile AI, Mage, Orchest, CTGT, Nango, Respan, Vocode, Windmill |
+| Kima Ventures | venture firm | 7 | 0 | Kaelio, Lago, Liveblocks, Nango, QuestDB, Windmill, nao Labs |
 | Accel | venture firm | 6 | 3 | KERNEL, Lightdash, Raycast, DrDroid, Framer, s2.dev |
-| Gradient Ventures | corporate / strategic | 6 | 3 | LastMile AI, Mage, Orchest, CTGT, Respan, Windmill |
 | Guillermo Rauch | person (angel) | 6 | 0 | ComfyUI, LastMile AI, LiveKit, Raycast, Resend, Roboflow |
 | Paul Graham | person (angel) | 6 | 0 | Mentra, Paradev, Rescale, Reworkd, Tinfoil, VotingWorks |
 | Samsung | corporate / strategic | 6 | 0 | Activeloop, Enso, Ivy, Traceloop, Unify, Webiny |
@@ -20,13 +21,12 @@
 | CRV | venture firm | 4 | 2 | Lepton AI, Tipe, Eventual, Pipedream |
 | Calvin French-Owen | person (angel) | 4 | 0 | Raycast, Resend, Roboflow, Shuttle |
 | Craft Ventures | venture firm | 4 | 3 | ComfyUI, ParadeDB, Roboflow, Resemble AI |
+| Initialized Capital | venture firm | 4 | 1 | Rescale, Apollo, Buttercoin, Robocurve |
 | Mango Capital | venture firm | 4 | 0 | CloudQuery, Infracost, Odigos Technologies Inc., Upstash |
 | Orange Collective | venture firm | 4 | 0 | Airweave, Paradev, Trigger.dev, s2.dev |
 | Rebel Fund | venture firm | 4 | 0 | Atla, Superagent, Trigger.dev, sync. |
+| Seedcamp | venture firm | 4 | 0 | Caveman, Liveblocks, Orchest, QuestDB |
 | Amjad Masad | person (angel) | 3 | 0 | LiveKit, Million, Roboflow |
 | Bessemer Venture Partners | venture firm | 3 | 2 | Fern, Herdr, Windmill |
 | Boldstart Ventures | venture firm | 3 | 2 | CloudQuery, Liveblocks, Common Paper |
 | Dharmesh Shah | person (angel) | 3 | 0 | Composio, Embedchain, Twenty |
-| General Catalyst | venture firm | 3 | 1 | authzed, CTGT, Reworkd |
-| Greylock Partners | venture firm | 3 | 0 | Builder.io, OpenCode, Serverless Stack |
-| Haystack | venture firm | 3 | 0 | CloudQuery, Okteto, OpenMeter |

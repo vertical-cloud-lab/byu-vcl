@@ -18,6 +18,7 @@
 | Sequoia Capital | venture firm | 3 | 1 | Observable, Inc., Chai Discovery, Hugging Face |
 | Spark Capital | venture firm | 3 | 3 | Framework Computer, Particle, SiFive |
 | Y Combinator | accelerator / studio | 3 | 0 | Curvenote, K-Scale Labs, Opentrons Labworks |
+| AMD | corporate / strategic | 2 | 0 | Hugging Face, Oxide Computer Company |
 | Addition | venture firm | 2 | 2 | Hugging Face, Seqera |
 | AlleyCorp | venture firm | 2 | 1 | TileDB, Inc., Radical AI |
 | Amazon | corporate / strategic | 2 | 0 | EvolutionaryScale, Hugging Face |
@@ -38,6 +39,7 @@
 | IDTheory | venture firm | 2 | 0 | LabDAO, Molecule |
 | L1 Digital | crypto fund or DAO | 2 | 0 | Molecule, VitaDAO |
 | Menlo Ventures | venture firm | 2 | 1 | Chai Discovery, JuliaHub |
+| Mozilla Ventures | corporate / strategic | 2 | 0 | Hugging Face, Probabl |
 | National Science Foundation (SBIR) | government grant | 2 | 0 | Kitware, re:3D |
 | OSS Capital | venture firm | 2 | 2 | ResearchHub, Tracel Inc. |
 | Pillar VC | venture firm | 2 | 0 | Molecule, Rowan |

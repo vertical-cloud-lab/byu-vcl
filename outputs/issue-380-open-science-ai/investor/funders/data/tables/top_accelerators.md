@@ -11,8 +11,10 @@
 | Expa | accelerator / studio | 2 | 0 | Metabase, OpenReplay |
 | Plug and Play | accelerator / studio | 2 | 0 | Mindverse, Oumi |
 | South Park Commons | accelerator / studio | 2 | 0 | Deep Cogito, Expo |
+| 5G Open Innovation Lab | accelerator / studio | 1 | 0 | Synadia |
 | Alchemist Accelerator | accelerator / studio | 1 | 0 | Mat3ra |
 | Bethnal Green Ventures | accelerator / studio | 1 | 0 | Overleaf |
 | Entrepreneurs Roundtable Accelerator | accelerator / studio | 1 | 0 | Fingerprint |
 | HF0 | accelerator / studio | 1 | 0 | Fish Audio |
 | MiraclePlus | accelerator / studio | 1 | 1 | Sealos |
+| Zypsy | accelerator / studio | 1 | 0 | Zylon |

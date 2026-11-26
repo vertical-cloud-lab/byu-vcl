@@ -70,7 +70,7 @@ Examples list led ventures first. Full list: [`FUNDER_LIST.md`](FUNDER_LIST.md).
 ### Young open-source startups (U4)
 
 {{U4.researched}} of the 402 startups from the ROSS Index and Y Combinator's directory were researched; {{U4.with_funding}}
-have disclosed funding, most of it only Y Combinator's. Beyond YC, these funders appear most often:
+have disclosed funding, most of it only Y Combinator's. The funders that appear most often:
 
 <!-- TABLE:top_u4.md:20 -->
 
@@ -144,8 +144,7 @@ What stands out, reading the venture table rather than the counts:
   - Sloan funded Julia Computing (now JuliaHub).
   - The Shuttleworth Foundation seeded FarmBot.
   - EU, French, German and Spanish public money funded BCN3D, Probabl, mzio, HARFANG 3D and Pollen Robotics.
-- **Large open-hardware rounds come from deep-tech venture firms and strategic corporates.** They had each made
-  open-source deals before:
+- **Large open-hardware rounds come from deep-tech venture firms and strategic corporates.** For example:
   - SiFive: Sutter Hill, Spark, Osage, Qualcomm, Intel, SK hynix, Aramco, Coatue.
   - Tenstorrent: Eclipse, Fidelity, Samsung, Hyundai, LG, Bezos Expeditions.
   - Oxide: Eclipse, USIT, Intel Capital.
@@ -188,7 +187,7 @@ the program tables below.
 
 Most of this money goes to projects, universities and nonprofits, not to companies. Sizes are as each source
 states them, committed unless marked; "→ firms" says whether for-profit companies can receive it. Full rows:
-[`data/programs.csv`](data/programs.csv) (passes p1–p3, with notes on how firm each figure is).
+[`data/programs.csv`](data/programs.csv) (passes p1–p6, with notes on how firm each figure is).
 
 | Funder (people behind it) | Program | Years | Size reported | → firms | Recipients, for example |
 | --- | --- | --- | --- | --- | --- |
@@ -338,9 +337,10 @@ audited ventures are now covered better than the rest.
    They added rounds from company newsrooms, Wikipedia's cited articles, SEC prospectuses and archived press
    releases. Late passes found little that was new, a sign that these sources were exhausted.
    - A separate check confirmed 24 investor–venture links from investors' own portfolio pages; it rejected 2.
-6. **Program passes.** Four passes listed the programs that fund open source and open science outside equity
-   rounds: foundations, governments and public investors, corporate funds, crypto, accelerators and crowdfunding.
-   They also recorded investors that state an open-source thesis, in their own words.
+6. **Program passes.** Six passes listed the programs that fund open source and open science outside equity
+   rounds: foundations (twice, the second through the Moore and Sloan grants databases), governments and public
+   investors, corporate funds, crypto, accelerators, fellowships and crowdfunding. They also recorded investors
+   that state an open-source thesis, in their own words.
 7. **Merge.** `scripts/build_funders.py` normalises names with a hand-made alias table
    ([`data/investor_aliases.csv`](data/investor_aliases.csv)) and types each funder from a hand-made table
    ([`data/investor_types.csv`](data/investor_types.csv), by the firm's own description; people count as angels).
@@ -355,7 +355,8 @@ audited ventures are now covered better than the rest.
   therefore favour large, visible firms.
 - **Coverage is uneven.** The search budget ran out early, so many ventures were researched only from news APIs,
   Wikipedia and company pages.
-  - The first passes for U1, U2 and part of U3 had web search; the rest did not.
+  - Web search was available only for the program passes, all five U2 passes, three U3 passes and about four
+    U1 passes; the rest relied on the open APIs and direct fetches.
   - Chinese-language sources were read for a handful of companies only.
   - U4 (young startups) was researched lightly by design: for most of it, YC's own page and a quick look at the
     company site.

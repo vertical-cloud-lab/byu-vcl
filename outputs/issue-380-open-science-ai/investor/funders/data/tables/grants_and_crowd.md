@@ -9,8 +9,9 @@
 | CoinFund | crypto fund or DAO | 2 | 2 | Fuel Labs, Prime Intellect |
 | Hack VC | crypto fund or DAO | 2 | 0 | Fingerprint, Zama |
 | L1 Digital | crypto fund or DAO | 2 | 0 | Molecule, VitaDAO |
+| Maven 11 Capital | crypto fund or DAO | 2 | 0 | Anoma, Fuel Labs |
 | NIST | government grant | 2 | 0 | M-Labs Ltd, Voxel51 |
-| NLnet Foundation | philanthropy | 2 | 0 | Graphite, SixtyFPS GmbH |
+| NLnet Foundation | government grant | 2 | 0 | Graphite, SixtyFPS GmbH |
 | National Science Foundation | government grant | 2 | 0 | VotingWorks, re:3D |
 | National Science Foundation (SBIR) | government grant | 2 | 0 | Kitware, re:3D |
 | North Island Ventures | crypto fund or DAO | 2 | 0 | LabDAO, Nous Research |
@@ -20,8 +21,10 @@
 | 1kx | crypto fund or DAO | 1 | 0 | Molecule |
 | Alameda Research | crypto fund or DAO | 1 | 0 | Fuel Labs |
 | Alfred P. Sloan Foundation | philanthropy | 1 | 0 | JuliaHub |
+| Army Research Lab | government grant | 1 | 0 | M-Labs Ltd |
 | BAT token buyers | crypto fund or DAO | 1 | 0 | Brave Software |
 | BeakerDAO | crypto fund or DAO | 1 | 0 | Molecule |
+| Binance Labs | crypto fund or DAO | 1 | 0 | Tea |
 | Block1 | crypto fund or DAO | 1 | 0 | Linera |
 | Blockwall | crypto fund or DAO | 1 | 0 | Fuel Labs |
 | Breakout Labs | philanthropy | 1 | 0 | Mat3ra |
@@ -37,6 +40,3 @@
 | Digital Currency Group | crypto fund or DAO | 1 | 0 | Brave Software |
 | Distributed Global | crypto fund or DAO | 1 | 1 | Prime Intellect |
 | Dragonfly Capital | crypto fund or DAO | 1 | 1 | MyShell |
-| Electric Capital | crypto fund or DAO | 1 | 0 | Anoma |
-| European Commission | government grant | 1 | 0 | Graphite |
-| European Space Agency | government grant | 1 | 0 | Lime Microsystems |
