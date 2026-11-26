@@ -8,7 +8,7 @@ the lab's own atomizer footage and photos, the search spaces (the proposals) and
 
 **The animated cut** (PR 393, 2026-11-26): the same video with the replay's day-by-day, week-by-week and month-by-month
 parts showing PR 318's 3-D lab moved by the event log, instead of station clips and lit stills. Unlisted:
-LAB3D_FULL_LINK. Its 60 s preview, one simulated week from above: [FR3Fl1onJU0](https://www.youtube.com/watch?v=FR3Fl1onJU0) (unlisted, uploaded 2026-11-26 from commit b16bd36). See
+[tX8Ik8oKnhk](https://www.youtube.com/watch?v=tX8Ik8oKnhk) (11:41, uploaded 2026-11-26 from commit dee5887; the public cut is untouched). Its 60 s preview, one simulated week from above: [FR3Fl1onJU0](https://www.youtube.com/watch?v=FR3Fl1onJU0) (unlisted, uploaded 2026-11-26 from commit b16bd36). See
 [The animated lab](#the-animated-lab) below.
 
 ## What is on screen
@@ -154,7 +154,7 @@ What it cost on the runner (2026-11-26):
 Each worker builds the scene once (about 115 s), renders its batch of chunks (`lab3d_cut.run_jobs`), and holds 3.0 GB.
 With llvmpipe at two threads a worker, three workers keep the four cores busy, at about 1.1 s a 1080p render. Few
 renders are reused, because once the replay is past a day's pace something is nearly always moving. The overlays and
-the encode come after (`compose final3d`, LAB3D_ENCODE).
+the encode come after (`compose final3d`: 6.2 min for the whole 11:41 on three workers).
 
 In the re-cut's replay (from day 2 to the end of the year), the event log makes 2,625 tray requests and 1,576
 machine requests, one at each booking's start and end. The Shuttles drew 119 presentations, serving 1,049 of the
