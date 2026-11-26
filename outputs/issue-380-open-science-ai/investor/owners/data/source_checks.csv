@@ -1,0 +1,261 @@
+owner,entity,field,value_usd,result,url
+1Panel-dev,FIT2CLOUD,total_funding_usd,15700000.0,confirmed,https://equalocean.com/news/2022041217311-china-saas-startup-fit2cloud-nets-usd-16-mn-series-d-funding-round
+AppFlowy-IO,AppFlowy,total_funding_usd,6400000.0,confirmed,https://techcrunch.com/2023/11/20/appflowy-open-source-notion-alternative/
+Budibase,Budibase,total_funding_usd,9250000.0,confirmed,https://budibase.com/blog/updates/budibase-raises-7m-to-help-every-company-on-the-planet-build-their-own-tools/
+ClickHouse,ClickHouse,last_valuation_usd,15000000000.0,confirmed,https://techcrunch.com/2026/01/16/snowflake-databricks-challenger-clickhouse-hits-15b-valuation/
+ClickHouse,ClickHouse,peak_value_usd,15000000000.0,confirmed,https://techcrunch.com/2026/01/16/snowflake-databricks-challenger-clickhouse-hits-15b-valuation/
+ClickHouse,ClickHouse,total_funding_usd,1000000000.0,not on page,https://siliconangle.com/2026/01/16/database-maker-clickhouse-raises-400m-acquires-ai-observability-startup-langfuse/
+Comfy-Org,Comfy Org,last_valuation_usd,500000000.0,confirmed,https://techcrunch.com/2026/04/24/comfyui-hits-500m-valuation-as-creators-seek-more-control-over-ai-generated-media/
+Comfy-Org,Comfy Org,peak_value_usd,500000000.0,confirmed,https://techcrunch.com/2026/04/24/comfyui-hits-500m-valuation-as-creators-seek-more-control-over-ai-generated-media/
+Comfy-Org,Comfy Org,total_funding_usd,47000000.0,confirmed,https://blog.comfy.org/p/comfyui-raises-30m-to-scale-open
+CopilotKit,CopilotKit,total_funding_usd,27000000.0,confirmed,https://www.copilotkit.ai/blog/series-a
+FoundationAgents,DeepWisdom,total_funding_usd,31000000.0,confirmed,https://www.thestar.com.my/tech/tech-news/2026/01/20/ant-backed-chinese-ai-agent-developer-deepwisdom-aims-to-help-solo-entrepreneurs
+FuelLabs,Fuel Labs,total_funding_usd,81500000.0,confirmed,https://www.cbinsights.com/company/fuel-labs/financials
+Graphify-Labs,Graphify Labs,total_funding_usd,125000.0,fetch failed,https://app.dealroom.co/companies/graphify_labs_yc_s26
+HeyPuter,Puter Technologies Inc.,total_funding_usd,3000000.0,fetch failed,https://pitchbook.com/profiles/company/533013-31
+HumanSignal,HumanSignal,total_funding_usd,30000000.0,confirmed,https://humansignal.com/press/heartex-raises-usd25-million-series-a-to-help-every-company-become-a-data-centric-ai-company
+Infisical,Infisical,last_valuation_usd,600000000.0,confirmed,https://infisical.com/blog/series-b
+Infisical,Infisical,peak_value_usd,600000000.0,confirmed,https://infisical.com/blog/series-b
+Infisical,Infisical,total_funding_usd,58800000.0,not on page,https://techcrunch.com/2023/07/03/googles-gradient-backs-yc-alum-infisical-to-solve-secret-sprawl/
+K-Dense-AI,K-Dense,total_funding_usd,2000000.0,fetch failed,https://www.everydev.ai/developers/k-dense
+Kilo-Org,Kilo Code,total_funding_usd,8000000.0,confirmed,https://www.cnbc.com/2025/12/10/former-gitlab-ceo-raises-8-million-for-kilo-to-compete-in-vibe-coding.html
+Kong,Kong Inc.,last_valuation_usd,2000000000.0,confirmed,https://konghq.com/company/press-room/press-release/kong-secures-175-million-new-financing
+Kong,Kong Inc.,peak_value_usd,2000000000.0,confirmed,https://konghq.com/company/press-room/press-release/kong-secures-175-million-new-financing
+Kong,Kong Inc.,total_funding_usd,345000000.0,confirmed,https://konghq.com/company/press-room/press-release/kong-secures-175-million-new-financing
+Lightning-AI,Lightning AI,last_valuation_usd,2500000000.0,confirmed,https://www.kucoin.com/news/flash/lightning-ai-and-voltage-park-merge-to-form-2-5b-ai-cloud-company
+Lightning-AI,Lightning AI,peak_value_usd,2500000000.0,confirmed,https://www.kucoin.com/news/flash/lightning-ai-and-voltage-park-merge-to-form-2-5b-ai-cloud-company
+Lightning-AI,Lightning AI,total_funding_usd,103000000.0,confirmed,https://siliconangle.com/?p=678882
+Mintplex-Labs,Mintplex Labs,total_funding_usd,500000.0,fetch failed,https://www.vcbacked.co/company/mintplex-labs
+NousResearch,Nous Research,last_valuation_usd,1500000000.0,confirmed,https://techcrunch.com/2026/10/07/nous-research-confirms-it-hit-1-5b-valuation-launches-ai-agents-for-business-users/
+NousResearch,Nous Research,peak_value_usd,1500000000.0,confirmed,https://techcrunch.com/2026/10/07/nous-research-confirms-it-hit-1-5b-valuation-launches-ai-agents-for-business-users/
+NousResearch,Nous Research,total_funding_usd,158000000.0,confirmed,https://techcrunch.com/2026/10/07/nous-research-confirms-it-hit-1-5b-valuation-launches-ai-agents-for-business-users/
+OpenBMB,ModelBest,last_valuation_usd,2800000000.0,not on page,https://news.pedaily.cn/202607/566303.shtml
+OpenBMB,ModelBest,peak_value_usd,2800000000.0,not on page,https://news.pedaily.cn/202607/566303.shtml
+OpenHands,All Hands AI,total_funding_usd,23800000.0,not on page,https://openhands.dev/blog/weve-just-raised-18-8m-to-build-the-open-standard-for-autonomous-software-development
+Opentrons,Opentrons Labworks,peak_value_usd,1800000000.0,not on page,https://doi.org/10.35774/jee2024.03.455
+PostHog,PostHog Inc.,last_valuation_usd,1400000000.0,confirmed,https://posthog.com/blog/series-e
+PostHog,PostHog Inc.,peak_value_usd,1400000000.0,confirmed,https://posthog.com/blog/series-e
+PostHog,PostHog Inc.,total_funding_usd,194000000.0,confirmed,https://posthog.com/hogpedia/history-of-posthog
+PrefectHQ,Prefect Technologies,total_funding_usd,46700000.0,confirmed,https://www.datanami.com/this-just-in/prefect-announces-32m-series-b-funding-for-its-dataflow-automation-platform/
+RocketChat,Rocket.Chat,total_funding_usd,29000000.0,not on page,https://rocket.chat/press-releases/rocket-chat-raises-19-million-in-series-a-funding-confirming-privacy-first-communication-as-a-major-trend-in-2021
+SigNoz,SigNoz,total_funding_usd,6500000.0,confirmed,https://signoz.io/newsroom/signoz-funding/
+Significant-Gravitas,Significant Gravitas Ltd,total_funding_usd,12000000.0,confirmed,https://autogpt.net/autogpt-raised-12m-to-take-the-project-to-the-next-level
+Stability-AI,Stability AI,peak_value_usd,1000000000.0,confirmed,https://techcrunch.com/2022/10/17/stability-ai-the-startup-behind-stable-diffusion-raises-101m/
+Stability-AI,Stability AI,total_funding_usd,232000000.0,confirmed,https://techcrunch.com/2026/08/25/stability-ai-maker-of-image-generator-stable-diffusion-raises-76-million-in-fresh-funding/
+Stirling-Tools,Stirling PDF,total_funding_usd,2000000.0,not on page,https://www.opencoreventures.com/blog/open-source-creator-anthony-stirling-launches-stirling-pdf-to-build-the-first-open-core-pdf-editing-suite
+TabbyML,TabbyML,total_funding_usd,3200000.0,confirmed,https://techcrunch.com/2023/10/10/tabbyml-github-copilot-alternative-raises-3-2-million/
+TileDB-Inc,"TileDB, Inc.",total_funding_usd,19000000.0,not on page,https://medium.com/tiledb/tiledb-raises-4-million-in-seed-funding-led-by-nexus-venture-partners-to-reshape-data-management-127cfa4ef9ac
+ToolJet,ToolJet,total_funding_usd,6150000.0,not on page,https://blog.tooljet.com/raising-vc-funding-for-open-source-project/
+VectifyAI,Vectify AI,total_funding_usd,1420000.0,fetch failed,https://www.everydev.ai/developers/vectify-ai
+anoma,Anoma (Heliax),last_valuation_usd,260000000.0,fetch failed,https://www.coindesk.com/business/2021/11/17/anoma-foundation-raises-26m-to-simplify-exchanging-cryptocurrencies/
+anoma,Anoma (Heliax),peak_value_usd,260000000.0,fetch failed,https://www.coindesk.com/business/2021/11/17/anoma-foundation-raises-26m-to-simplify-exchanging-cryptocurrencies/
+anoma,Anoma (Heliax),total_funding_usd,51000000.0,fetch failed,https://www.coindesk.com/business/2023/05/31/crypto-infrastructure-firm-anoma-foundation-raises-25m
+appsmithorg,Appsmith,total_funding_usd,51500000.0,confirmed,https://www.insightpartners.com/ideas/appsmith-raises-41-million-to-scale-open-source-platform-that-speeds-critical-internal-app-development/
+appwrite,Appwrite,total_funding_usd,37000000.0,fetch failed,https://venturebeat.com/2022/04/05/appwrite-an-open-source-backend-as-a-service-provider-raises-27m/
+astral-sh,Astral,total_funding_usd,4000000.0,not on page,https://www.accel.com/news/our-seed-investment-in-astral-accelerating-python-development
+better-auth,Better Auth,total_funding_usd,5000000.0,confirmed,https://www.better-auth.com/blog/seed-round
+black-forest-labs,Black Forest Labs,last_valuation_usd,3250000000.0,confirmed,https://techcrunch.com/2025/12/01/black-forest-labs-raises-300m-at-3-25b-valuation/
+black-forest-labs,Black Forest Labs,peak_value_usd,3250000000.0,confirmed,https://techcrunch.com/2025/12/01/black-forest-labs-raises-300m-at-3-25b-valuation/
+black-forest-labs,Black Forest Labs,total_funding_usd,331000000.0,not on page,https://techcrunch.com/2024/09/20/grok-image-generator-black-forest-labs-raising-100m-at-1b-valuation/
+brave,Brave Software,total_funding_usd,7000000.0,confirmed,https://en.wikipedia.org/wiki/Brave_Software
+browser-use,Browser Use,total_funding_usd,17000000.0,confirmed,https://techcrunch.com/2025/03/23/browser-use-the-tool-making-it-easier-for-ai-agents-to-navigate-websites-raises-17m
+calcom,"Cal.com, Inc.",last_valuation_usd,150000000.0,confirmed,https://sacra.com/c/cal/
+calcom,"Cal.com, Inc.",peak_value_usd,150000000.0,confirmed,https://sacra.com/c/cal/
+calcom,"Cal.com, Inc.",total_funding_usd,32400000.0,confirmed,https://sacra.com/c/cal/
+charmbracelet,Charm (Charmbracelet),total_funding_usd,9500000.0,fetch failed,https://www.employbl.com/companies/Charm/funding-rounds
+chatwoot,Chatwoot,total_funding_usd,1600000.0,fetch failed,https://venturebeat.com/business/chatwoot-challenges-zendesk-with-open-source-customer-engagement-platform
+chroma-core,Chroma,last_valuation_usd,75000000.0,confirmed,https://www.businessinsider.com/vector-database-startup-chroma-raises-seed-funding-generative-artificial-intelligence-2023-4
+chroma-core,Chroma,peak_value_usd,75000000.0,confirmed,https://www.businessinsider.com/vector-database-startup-chroma-raises-seed-funding-generative-artificial-intelligence-2023-4
+chroma-core,Chroma,total_funding_usd,20300000.0,not on page,https://www.trychroma.com/blog/seed
+cilium,Isovalent,total_funding_usd,69000000.0,not on page,https://techcrunch.com/2020/11/10/with-29m-in-funding-isovalent-launches-its-cloud-native-networking-and-security-platform-based-on-ebpf-and-cilium/
+cline,Cline Bot Inc.,last_valuation_usd,110000000.0,confirmed,https://sacra.com/c/cline/
+cline,Cline Bot Inc.,peak_value_usd,110000000.0,confirmed,https://sacra.com/c/cline/
+cline,Cline Bot Inc.,total_funding_usd,32000000.0,confirmed,https://cline.bot/blog/cline-raises-32m-series-a-and-seed-funding-building-the-open-source-ai-coding-agent-that-enterprises-trust
+cockroachdb,Cockroach Labs,last_valuation_usd,5000000000.0,confirmed,https://techcrunch.com/2021/12/16/cockroach-rolls-on-with-278m-series-f-on-5b-valuation/
+cockroachdb,Cockroach Labs,peak_value_usd,5000000000.0,confirmed,https://techcrunch.com/2021/12/16/cockroach-rolls-on-with-278m-series-f-on-5b-valuation/
+cockroachdb,Cockroach Labs,total_funding_usd,633000000.0,confirmed,https://techcrunch.com/2021/12/16/cockroach-rolls-on-with-278m-series-f-on-5b-valuation/
+coder,Coder Technologies,total_funding_usd,85000000.0,confirmed,https://siliconangle.com/?p=661978
+comet-ml,Comet ML,total_funding_usd,70000000.0,confirmed,https://techcrunch.com/2021/11/18/mlops-startup-comet-nabs-50m-series-b-just-six-months-after-raising-its-a/
+conductor-oss,Orkes,total_funding_usd,29300000.0,not on page,https://techcrunch.com/2024/02/21/orkes-raises-20m-series-a/
+continuedev,"Continue Dev, Inc.",total_funding_usd,5100000.0,not on page,https://blog.continue.dev/initial-fundraise/
+coqui-ai,Coqui,total_funding_usd,3300000.0,not on page,https://www.cbinsights.com/company/coqui/financials
+crewAIInc,CrewAI,total_funding_usd,18000000.0,fetch failed,https://www.globenewswire.com/news-release/2024/10/22/2966872/0/en/CrewAI-Launches-Multi-Agentic-Platform-to-Deliver-on-the-Promise-of-Generative-AI-for-Enterprise.html
+cypress-io,Cypress.io,last_valuation_usd,255000000.0,confirmed,https://siliconvalleyinvestclub.com/companies/cypress/
+cypress-io,Cypress.io,peak_value_usd,255000000.0,confirmed,https://siliconvalleyinvestclub.com/companies/cypress/
+cypress-io,Cypress.io,total_funding_usd,54810000.0,confirmed,https://www.cbinsights.com/company/cypressio/financials
+dataease,FIT2CLOUD,total_funding_usd,15700000.0,confirmed,https://equalocean.com/news/2022041217311-china-saas-startup-fit2cloud-nets-usd-16-mn-series-d-funding-round
+datalab-to,Datalab,total_funding_usd,3500000.0,fetch failed,https://www.everydev.ai/developers/datalab
+daytonaio,Daytona Platforms,last_valuation_usd,1000000000.0,confirmed,https://valueaddvc.com/pulse/daytona-60m-series-b-1b-valuation-2026
+daytonaio,Daytona Platforms,peak_value_usd,1000000000.0,confirmed,https://valueaddvc.com/pulse/daytona-60m-series-b-1b-valuation-2026
+daytonaio,Daytona Platforms,total_funding_usd,91000000.0,confirmed,https://valueaddvc.com/pulse/daytona-60m-series-b-1b-valuation-2026
+dbeaver,DBeaver Corp,total_funding_usd,6000000.0,confirmed,https://techcrunch.com/2023/04/11/dbeaver-takes-6m-seed-investment-to-build-on-growing-popularity/
+deepseek-ai,DeepSeek,last_valuation_usd,52000000000.0,confirmed,https://www.dealstreetasia.com/?p=489350
+deepseek-ai,DeepSeek,peak_value_usd,52000000000.0,confirmed,https://www.dealstreetasia.com/?p=489350
+deepseek-ai,DeepSeek,total_funding_usd,7400000000.0,confirmed,https://siliconangle.com/2026/06/16/chinas-deepseek-reportedly-raises-7-4b-funding-50b-valuation/
+deepset-ai,deepset,total_funding_usd,45600000.0,not on page,https://en.wikipedia.org/wiki/Deepset
+denoland,Deno Land Inc.,total_funding_usd,26000000.0,confirmed,https://techcrunch.com/2026/10/10/cloudflare-acquires-deno-to-improve-its-workers-programming-model/
+directus,Monospace Inc. (Directus),total_funding_usd,7000000.0,confirmed,https://www.prnewswire.com/news-releases/open-source-software-company-directus-lands-7-million-in-series-a-funding-301673718.html
+discourse,Civilized Discourse Construction Kit (Discourse),total_funding_usd,20000000.0,confirmed,https://blog.discourse.org/2021/08/discourse-series-a
+docker,Docker Inc.,last_valuation_usd,2100000000.0,confirmed,https://techcrunch.com/2022/03/31/as-docker-gains-momentum-it-hauls-in-105m-series-c-on-2b-valuation/
+docker,Docker Inc.,peak_value_usd,2100000000.0,confirmed,https://techcrunch.com/2022/03/31/as-docker-gains-momentum-it-hauls-in-105m-series-c-on-2b-valuation/
+docker,Docker Inc.,total_funding_usd,163000000.0,confirmed,https://www.theregister.com/2022/03/31/docker_funding_unicorn/
+dragonflydb,DragonflyDB,total_funding_usd,21000000.0,confirmed,https://dragonflydb.io/blog/dragonfly-production-ready
+dubinc,Dub Technologies,total_funding_usd,2000000.0,confirmed,https://techcrunch.com/2025/01/16/dub-co-is-an-open-source-url-shortener-and-link-attribution-engine-packed-into-one/
+elastic,Elastic N.V.,peak_value_usd,4900000000.0,fetch failed,https://www.bloomberg.com/news/articles/2018-10-06/elastic-s-soaring-ipo-stretches-valuation-to-4-9-billion
+explosion,Explosion,total_funding_usd,6000000.0,confirmed,https://explosion.ai/blog/weve-sold-5-percent-of-explosion
+firecrawl,Firecrawl (Sideguide Technologies),total_funding_usd,89500000.0,not on page,https://www.firecrawl.dev/blog/introducing-alexandria-series-b
+fishaudio,Fish Audio,total_funding_usd,52000000.0,confirmed,https://techcrunch.com/2026/07/28/fish-audio-raises-50m-seed-to-build-ai-voice-models-for-creators-and-enterprises/
+frappe,Frappe Technologies,total_funding_usd,1300000.0,confirmed,https://en.wikipedia.org/wiki/ERPNext
+gatsbyjs,Gatsby,total_funding_usd,46800000.0,confirmed,https://techcrunch.com/?p=2478632
+getsentry,Sentry (Functional Software),last_valuation_usd,3000000000.0,fetch failed,https://news.crunchbase.com/enterprise/sentry-unicorn-funding-bond-accel
+getsentry,Sentry (Functional Software),peak_value_usd,3000000000.0,fetch failed,https://news.crunchbase.com/enterprise/sentry-unicorn-funding-bond-accel
+getsentry,Sentry (Functional Software),total_funding_usd,217000000.0,fetch failed,https://www.businesswire.com/news/home/20220504005222/en
+gitlabhq,GitLab Inc.,peak_value_usd,6000000000.0,confirmed,https://techcrunch.com/2021/01/15/gitlab-raises-195m-in-secondary-funding-on-6b-valuation/
+gitlabhq,GitLab Inc.,total_funding_usd,413500000.0,not on page,https://en.wikipedia.org/wiki/GitLab_Inc.
+grafana,Grafana Labs,last_valuation_usd,6000000000.0,confirmed,https://techcrunch.com/2024/08/21/grafana-labs-is-now-valued-at-6b/
+grafana,Grafana Labs,peak_value_usd,6000000000.0,confirmed,https://techcrunch.com/2024/08/21/grafana-labs-is-now-valued-at-6b/
+grafana,Grafana Labs,total_funding_usd,1090000000.0,confirmed,https://www.cbinsights.com/company/grafana-labs/financials
+halo-dev,FIT2CLOUD,total_funding_usd,15700000.0,confirmed,https://equalocean.com/news/2022041217311-china-saas-startup-fit2cloud-nets-usd-16-mn-series-d-funding-round
+harness,Harness,last_valuation_usd,5500000000.0,confirmed,https://multiples.vc/private-comps/harness
+harness,Harness,peak_value_usd,5500000000.0,confirmed,https://multiples.vc/private-comps/harness
+harness,Harness,total_funding_usd,570000000.0,confirmed,https://multiples.vc/private-comps/harness
+hashicorp,HashiCorp,exit_value_usd,6400000000.0,confirmed,https://newsroom.ibm.com/2024-04-24-IBM-to-Acquire-HashiCorp-Inc-Creating-a-Comprehensive-End-to-End-Hybrid-Cloud-Platform
+hashicorp,HashiCorp,peak_value_usd,14000000000.0,confirmed,https://www.nbcconnecticut.com/news/business/money-report/hashicorp-shares-rise-slightly-after-ipo-values-cloud-infrastructure-company-at-over-14-billion/2668819/?amp=1
+hashicorp,HashiCorp,total_funding_usd,349000000.0,not on page,https://www.cnbc.com/2018/11/01/hashicorp-raises-100-million-at-1point9-billion-valuation.html
+hasura,Hasura,last_valuation_usd,1000000000.0,confirmed,https://techcrunch.com/2022/02/22/graphql-developer-platform-hasura-raises-100m-series-c/
+hasura,Hasura,peak_value_usd,1000000000.0,confirmed,https://techcrunch.com/2022/02/22/graphql-developer-platform-hasura-raises-100m-series-c/
+hasura,Hasura,total_funding_usd,136500000.0,confirmed,https://techcrunch.com/2022/02/22/graphql-developer-platform-hasura-raises-100m-series-c/
+hoppscotch,Hoppscotch,total_funding_usd,3000000.0,confirmed,https://www.indiehackers.com/post/hoppscotch-raises-3m-in-seed-funding-to-build-open-source-api-development-ecosystem-3ab1ef9278
+hpcaitech,HPC-AI Tech,total_funding_usd,78000000.0,fetch failed,https://businesswire.com/news/home/20240930418520/en
+httpie,HTTPie,total_funding_usd,6500000.0,fetch failed,https://www.vcbacked.co/company/httpie
+huggingface,Hugging Face,last_valuation_usd,4500000000.0,fetch failed,https://axios.com/2023/08/24/hugging-face-ai-salesforce-billion
+huggingface,Hugging Face,peak_value_usd,4500000000.0,fetch failed,https://axios.com/2023/08/24/hugging-face-ai-salesforce-billion
+huggingface,Hugging Face,total_funding_usd,395200000.0,confirmed,https://techcrunch.com/2023/08/24/hugging-face-raises-235m-from-investors-including-salesforce-and-nvidia
+influxdata,InfluxData,total_funding_usd,171000000.0,confirmed,https://techcrunch.com/2023/02/13/influxdata-lands-51m-to-grow-its-time-series-database-offerings/amp/
+ionic-team,Ionic (Drifty Co.),total_funding_usd,25000000.0,confirmed,https://siliconangle.com/2022/11/07/outsystems-acquires-mobile-app-development-startup-ionic
+jumpserver,FIT2CLOUD,total_funding_usd,15700000.0,confirmed,https://equalocean.com/news/2022041217311-china-saas-startup-fit2cloud-nets-usd-16-mn-series-d-funding-round
+kestra-io,Kestra Technologies,total_funding_usd,36000000.0,confirmed,https://thenextweb.com/news/orchestration-platform-kestra-raises-25m
+langchain-ai,LangChain,last_valuation_usd,3000000000.0,confirmed,https://www.langchain.com/blog/series-c
+langchain-ai,LangChain,peak_value_usd,3000000000.0,confirmed,https://techcrunch.com/2026/11/13/ai-agent-startup-langchain-hits-3b-valuation/
+langchain-ai,LangChain,total_funding_usd,460000000.0,not on page,https://blog.langchain.dev/announcing-our-10m-seed-round-led-by-benchmark/
+langfuse,Langfuse,total_funding_usd,4000000.0,confirmed,https://langfuse.com/blog/announcing-our-seed-round
+langgenius,LangGenius,last_valuation_usd,180000000.0,fetch failed,https://www.businesswire.com/news/home/20260309511426/en/Dify-Raises-$30-million-Series-Pre-A-to-Power-Enterprise-Grade-Agentic-Workflows
+langgenius,LangGenius,peak_value_usd,180000000.0,fetch failed,https://www.businesswire.com/news/home/20260309511426/en/Dify-Raises-$30-million-Series-Pre-A-to-Power-Enterprise-Grade-Agentic-Workflows
+langgenius,LangGenius,total_funding_usd,30000000.0,fetch failed,https://www.businesswire.com/news/home/20260309511426/en/Dify-Raises-$30-million-Series-Pre-A-to-Power-Enterprise-Grade-Agentic-Workflows
+laravel,Laravel,total_funding_usd,57000000.0,confirmed,https://blog.laravel.com/accel-invests-57m-into-laravel
+letta-ai,Letta,last_valuation_usd,70000000.0,confirmed,https://techcrunch.com/2024/09/23/letta-one-of-uc-berkeleys-most-anticipated-ai-startups-has-just-come-out-of-stealth/
+letta-ai,Letta,peak_value_usd,70000000.0,confirmed,https://techcrunch.com/2024/09/23/letta-one-of-uc-berkeleys-most-anticipated-ai-startups-has-just-come-out-of-stealth/
+letta-ai,Letta,total_funding_usd,10000000.0,confirmed,https://techcrunch.com/2024/09/23/letta-one-of-uc-berkeleys-most-anticipated-ai-startups-has-just-come-out-of-stealth/
+localstack,LocalStack,total_funding_usd,28200000.0,not on page,https://techcrunch.com/2024/11/12/localstack-raises-25m-to-help-developers-emulate-and-test-cloud-apps-locally/
+logseq,Logseq Inc.,total_funding_usd,4100000.0,confirmed,https://blog.logseq.com/logseq-raises-4-1m-to-accelerate-growth-of-the-new-world-knowledge-graph/
+makeplane,Plane,total_funding_usd,4000000.0,confirmed,https://plane.so/blog/plane-raises-4m-seed
+marimo-team,marimo,total_funding_usd,5000000.0,confirmed,https://marimo.io/blog/seed-announcement
+mastra-ai,Mastra,total_funding_usd,13000000.0,confirmed,https://mastra.ai/blog/seed-round
+mattermost,Mattermost,total_funding_usd,70000000.0,confirmed,https://itsfoss.com/mattermost-funding/
+meilisearch,Meilisearch,total_funding_usd,22000000.0,not on page,https://www.meilisearch.com/blog/meilisearch-series-a
+mem0ai,Mem0,total_funding_usd,24000000.0,confirmed,https://techcrunch.com/2025/10/28/mem0-raises-24m-from-yc-peak-xv-and-basis-set-to-build-the-memory-layer-for-ai-apps
+mermaid-js,Mermaid Chart,total_funding_usd,7500000.0,confirmed,https://techcrunch.com/2024/03/20/mermaid-chart-a-markdown-like-tool-for-creating-diagrams-raises-5-5m/
+metabase,Metabase,total_funding_usd,42500000.0,fetch failed,https://www.finsmes.com/?p=205165
+meteor,Meteor Software,total_funding_usd,31200000.0,not on page,http://techcrunch.com/2012/07/25/andreessen-horowitz-keeps-eating-the-software-world-with-11-2-million-investment-in-javascript-framework-company-meteor/
+milvus-io,Zilliz,total_funding_usd,113000000.0,confirmed,https://zilliz.com/news/vector-database-company-zilliz-series-b-extension
+minio,MinIO Inc.,last_valuation_usd,1000000000.0,confirmed,https://siliconangle.com/2022/01/26/minio-raises-103m-expand-multicloud-data-object-store/
+minio,MinIO Inc.,peak_value_usd,1000000000.0,confirmed,https://siliconangle.com/2022/01/26/minio-raises-103m-expand-multicloud-data-object-store/
+minio,MinIO Inc.,total_funding_usd,126000000.0,confirmed,https://siliconangle.com/2022/01/26/minio-raises-103m-expand-multicloud-data-object-store/
+moby,Docker Inc.,last_valuation_usd,2100000000.0,confirmed,https://techcrunch.com/2022/03/31/as-docker-gains-momentum-it-hauls-in-105m-series-c-on-2b-valuation
+moby,Docker Inc.,peak_value_usd,2100000000.0,confirmed,https://techcrunch.com/2022/03/31/as-docker-gains-momentum-it-hauls-in-105m-series-c-on-2b-valuation
+moby,Docker Inc.,total_funding_usd,163000000.0,confirmed,https://www.theregister.com/2022/03/31/docker_funding_unicorn/
+modular,Modular Inc.,exit_value_usd,4000000000.0,confirmed,https://www.modular.com/blog/qualcomm-completes-acquisition-of-modular
+modular,Modular Inc.,last_valuation_usd,1600000000.0,confirmed,https://www.modular.com/blog/modular-raises-250m-to-scale-ais-unified-compute-layer
+modular,Modular Inc.,peak_value_usd,4000000000.0,fetch failed,https://www.reuters.com/business/qualcomm-buy-ai-startup-modular-2026-06-24/
+modular,Modular Inc.,total_funding_usd,380000000.0,confirmed,https://www.modular.com/blog/modular-raises-250m-to-scale-ais-unified-compute-layer
+mongodb,MongoDB Inc.,peak_value_usd,1600000000.0,confirmed,https://www.businessinsider.com/people-told-the-mongodb-founders-they-were-completely-crazy-2017-10
+mongodb,MongoDB Inc.,total_funding_usd,311000000.0,confirmed,https://www.businessinsider.com/people-told-the-mongodb-founders-they-were-completely-crazy-2017-10
+n8n-io,n8n,last_valuation_usd,2500000000.0,confirmed,https://blog.n8n.io/series-c/
+n8n-io,n8n,peak_value_usd,2500000000.0,confirmed,https://blog.n8n.io/series-c/
+n8n-io,n8n,total_funding_usd,240000000.0,confirmed,https://blog.n8n.io/series-c/
+neondatabase,Neon,exit_value_usd,1000000000.0,fetch failed,https://www.wsj.com/articles/databricks-to-buy-startup-neon-for-1-billion-fdded971
+neondatabase,Neon,peak_value_usd,1000000000.0,fetch failed,https://www.wsj.com/articles/databricks-to-buy-startup-neon-for-1-billion-fdded971
+neondatabase,Neon,total_funding_usd,130000000.0,confirmed,https://siliconangle.com/2025/05/05/databricks-reportedly-acquire-serverless-database-startup-neon-1b/
+netdata,Netdata Inc.,total_funding_usd,31000000.0,confirmed,https://www.tmcnet.com/usubmit/-netdata-extends-series-funding-31m-democratize-it-infrastructure-/2020/09/22/9224712.htm
+nginx,NGINX,exit_value_usd,670000000.0,confirmed,https://techcrunch.com/2019/03/11/f5-acquires-nginx-for-670m-to-move-into-open-source-multi-cloud-services/
+nginx,NGINX,peak_value_usd,670000000.0,confirmed,https://techcrunch.com/2019/03/11/f5-acquires-nginx-for-670m-to-move-into-open-source-multi-cloud-services/
+nginx,NGINX,total_funding_usd,84000000.0,not on page,http://www.businessinsider.com/nginx-raises-8-million-telstra-2016-4
+nocodb,NocoDB,total_funding_usd,10500000.0,fetch failed,https://www.businesswire.com/news/home/20221007005570/en/NocoDB-Raises-10.5M-to-Make-Building-Apps-On-Top-of-Live-Production-Data-as-Easy-as-Using-a-Spreadsheet
+nrwl,Nrwl (Nx),total_funding_usd,24600000.0,not on page,https://techcrunch.com/2022/11/17/with-8-6m-in-seed-funding-nx-wants-to-take-monorepos-mainstream/
+odoo,Odoo SA,last_valuation_usd,5260000000.0,confirmed,https://techcrunch.com/2024/11/20/riding-high-on-open-source-erp-odoo-raises-527m-via-secondaries-lifting-its-valuation-to-5-26b/
+odoo,Odoo SA,peak_value_usd,5260000000.0,confirmed,https://techcrunch.com/2024/11/20/riding-high-on-open-source-erp-odoo-raises-527m-via-secondaries-lifting-its-valuation-to-5-26b/
+ollama,Ollama,total_funding_usd,88000000.0,confirmed,https://techcrunch.com/2026/07/09/popular-open-source-ai-developer-tool-ollama-raises-65m-grows-to-nearly-9m-users/
+onyx-dot-app,Onyx,total_funding_usd,10000000.0,confirmed,https://techcrunch.com/2025/03/12/why-onyx-thinks-its-open-source-solution-will-win-enterprise-search/
+openbq-org,OpenBB Inc.,total_funding_usd,8500000.0,confirmed,https://www.newswire.com/news/openbb-raises-8-5m-in-seed-round-funding-following-open-source-project-21665187
+openobserve,OpenObserve,total_funding_usd,10000000.0,confirmed,https://openobserve.ai/blog/series-a-announcement/
+oven-sh,Oven (Bun),total_funding_usd,7000000.0,fetch failed,https://seedtable.com/companies/bun/funding-rounds/seed-2022-08
+oxc-project,VoidZero,total_funding_usd,17100000.0,not on page,https://voidzero.dev/posts/announcing-series-a
+pathwaycom,Pathway,last_valuation_usd,500000000.0,confirmed,https://pulse2.com/pathway-reaches-500-million-valuation-as-total-seed-funding-hits-30-million/
+pathwaycom,Pathway,peak_value_usd,500000000.0,confirmed,https://pulse2.com/pathway-reaches-500-million-valuation-as-total-seed-funding-hits-30-million/
+pathwaycom,Pathway,total_funding_usd,30000000.0,confirmed,https://pulse2.com/pathway-reaches-500-million-valuation-as-total-seed-funding-hits-30-million/
+penpot,Kaleidos (Penpot),total_funding_usd,20000000.0,confirmed,https://techcrunch.com/2023/02/02/penpot-the-open-source-platform-for-designers-and-their-coders-draws-up-12m-as-users-jump-to-250k
+pingcap,PingCAP,total_funding_usd,341600000.0,confirmed,https://techcrunch.com/2020/11/16/pingcap-the-open-source-developer-behind-tidb-closes-270-million-series-d
+plotly,Plotly,total_funding_usd,5500000.0,confirmed,https://en.wikipedia.org/wiki/Plotly
+pola-rs,Polars B.V.,total_funding_usd,25000000.0,not on page,https://techcrunch.com/2025/09/29/the-startup-behind-open-source-tool-polars-raises-21m-from-accel/
+portainer,Portainer.io,total_funding_usd,13400000.0,not on page,https://m.scoop.co.nz/stories/BU2206/S00357/portainerio-closes-us62-million-funding-round.htm
+prisma,"Prisma Data, Inc.",total_funding_usd,56500000.0,fetch failed,https://www.owler.com/company/prisma2/funding
+projectdiscovery,ProjectDiscovery,total_funding_usd,26700000.0,not on page,https://app.welcometothejungle.com/companies/ProjectDiscovery-io
+promptfoo,Promptfoo,peak_value_usd,86000000.0,confirmed,https://techcrunch.com/2026/03/09/openai-acquires-promptfoo-to-secure-its-ai-agents/
+promptfoo,Promptfoo,total_funding_usd,23000000.0,confirmed,https://techcrunch.com/2026/03/09/openai-acquires-promptfoo-to-secure-its-ai-agents/
+pulumi,Pulumi,total_funding_usd,99000000.0,confirmed,https://www.geekwire.com/2023/cloud-startup-pulumi-raises-41m-from-madrona-nea-to-grow-infrastructure-as-code-platform/
+qdrant,Qdrant,total_funding_usd,87800000.0,confirmed,https://siliconangle.com/?p=733993
+rancher,Rancher,total_funding_usd,95000000.0,confirmed,https://techcrunch.com/2020/07/08/suse-acquires-kubernetes-management-platform-rancher-labs/
+ray-project,Anyscale,last_valuation_usd,1000000000.0,fetch failed,https://www.businesswire.com/news/home/20211208005269/en/Anyscale-Secures-%24100M-Series-C-at-%241B-Valuation-to-Radically-Simplify-Scaling-and-Productionizing-AI-Applications
+ray-project,Anyscale,peak_value_usd,1000000000.0,fetch failed,https://www.businesswire.com/news/home/20211208005269/en/Anyscale-Secures-%24100M-Series-C-at-%241B-Valuation-to-Radically-Simplify-Scaling-and-Productionizing-AI-Applications
+ray-project,Anyscale,total_funding_usd,259000000.0,not on page,https://www.techtarget.com/ai/news/252524190/New-funding-for-Anyscale-boosts-popular-Ray-AI-platform
+redis,Redis Ltd.,last_valuation_usd,2000000000.0,confirmed,https://uk.finance.yahoo.com/news/redis-labs-valued-over-2-131922257.html
+redis,Redis Ltd.,peak_value_usd,2000000000.0,confirmed,https://uk.finance.yahoo.com/news/redis-labs-valued-over-2-131922257.html
+redis,Redis Ltd.,total_funding_usd,347000000.0,confirmed,https://www.storagenewsletter.com/2021/04/12/redis-labs-raises-110-million-in-series-g-total-at-347-million/
+refinedev,Refine,total_funding_usd,3800000.0,fetch failed,https://seedtable.com/companies/refine/funding-rounds/seed-2024-05
+reflex-dev,Reflex,total_funding_usd,19000000.0,confirmed,https://valueaddvc.com/pulse/reflex-14m-series-a-ai-business-apps-2026
+remotion-dev,Remotion AG,total_funding_usd,272000.0,not on page,https://www.remotion.dev/investors
+rethinkdb,RethinkDB,total_funding_usd,9200000.0,not on page,http://www.rethinkdb.com/blog/2010/04/weve-raised-1-2m-to-help-build-rethinkdb/
+run-llama,LlamaIndex,total_funding_usd,27500000.0,confirmed,https://www.llamaindex.ai/blog/announcing-our-series-a-and-llamacloud-general-availability
+saleor,Saleor Commerce,total_funding_usd,10500000.0,not on page,https://techcrunch.com/2021/03/18/saleor/
+serverless,"Serverless, Inc.",total_funding_usd,13000000.0,confirmed,https://techcrunch.com/2018/07/30/serverless-inc-lands-10-m-series-a-to-build-serverless-developers-platform/
+simstudioai,Sim,total_funding_usd,7000000.0,confirmed,https://pulse2.com/sim-ai-7-million-series-a-closed-to-advance-development-of-its-agentic-ai-platform
+spacedriveapp,Spacedrive Technology,total_funding_usd,2000000.0,confirmed,https://spacedrive.com/blog/spacedrive-funding-announcement
+strapi,Strapi,total_funding_usd,45000000.0,confirmed,https://techcrunch.com/2022/06/22/strapi-lands-31m-for-its-headless-cms-platform/
+streamlit,Streamlit,exit_value_usd,800000000.0,confirmed,https://techcrunch.com/2022/03/02/snowflake-acquires-streamlit-for-800m-to-help-customers-build-data-based-apps/
+streamlit,Streamlit,peak_value_usd,800000000.0,confirmed,https://techcrunch.com/2022/03/02/snowflake-acquires-streamlit-for-800m-to-help-customers-build-data-based-apps/
+streamlit,Streamlit,total_funding_usd,62000000.0,confirmed,https://techcrunch.com/2021/04/07/streamlit-nabs-35m-series-b-to-continue-building-machine-learning-platform/
+supabase,Supabase,last_valuation_usd,10500000000.0,confirmed,https://www.orrick.com/en/News/2026/06/Supabase-Raises-500-Million-at-10-5-Billion-Valuation-to-Accelerate-Lead-in-Agentic-Infrastructure
+supabase,Supabase,peak_value_usd,10500000000.0,confirmed,https://www.orrick.com/en/News/2026/06/Supabase-Raises-500-Million-at-10-5-Billion-Valuation-to-Accelerate-Lead-in-Agentic-Infrastructure
+supermemoryai,Supermemory,total_funding_usd,3000000.0,confirmed,https://supermemory.ai/blog/supermemory-raises-3-million-and-building-the-best-memory-engine-for-llms
+surrealdb,SurrealDB Ltd,total_funding_usd,44000000.0,confirmed,https://surrealdb.com/blog/surrealdb-raises-23m-series-a-extension-to-power-the-ai-native-database-era
+symfony,Symfony SAS,total_funding_usd,6900000.0,confirmed,https://techcrunch.com/2013/12/18/sensiolabs-raises-6-9-million-to-implement-its-php-framework-symfony-everywhere/
+tailscale,Tailscale,total_funding_usd,275000000.0,not on page,https://techcrunch.com/2022/05/04/tailscale-lands-100-million-to-transform-enterprise-vpns-with-mesh-technology/
+temporalio,Temporal Technologies,last_valuation_usd,12550000000.0,confirmed,https://temporal.io/blog/temporal-raises-usd550m-series-e-at-usd12-55b-valuation-ai
+temporalio,Temporal Technologies,peak_value_usd,12550000000.0,confirmed,https://temporal.io/blog/temporal-raises-usd550m-series-e-at-usd12-55b-valuation-ai
+timescale,Tiger Data,last_valuation_usd,1000000000.0,confirmed,https://www.timescale.com/blog/year-of-the-tiger-110-million-to-build-the-future-of-data-for-developers-worldwide/
+timescale,Tiger Data,peak_value_usd,1000000000.0,confirmed,https://www.timescale.com/blog/year-of-the-tiger-110-million-to-build-the-future-of-data-for-developers-worldwide/
+timescale,Tiger Data,total_funding_usd,180000000.0,confirmed,https://www.timescale.com/blog/year-of-the-tiger-110-million-to-build-the-future-of-data-for-developers-worldwide/
+tinygrad,Tiny Corp,total_funding_usd,5100000.0,confirmed,https://geohot.github.io//blog/jekyll/update/2023/05/24/the-tiny-corp-raised-5M.html
+tldraw,tldraw Inc.,total_funding_usd,14700000.0,not on page,https://tldraw.dev/blog/announcing-tldraw-series-a
+toeverything,Toeverything (AFFiNE),total_funding_usd,8000000.0,fetch failed,https://finsmes.com/2023/10/affine-raises-8m-in-pre-series-a-funding.html
+topoteretes,Topoteretes (cognee),total_funding_usd,7500000.0,confirmed,https://www.cognee.ai/blog/cognee-news/cognee-raises-seven-million-five-hundred-thousand-dollars-seed
+traefik,Traefik Labs,total_funding_usd,11050000.0,fetch failed,https://traefik.io/blog/containous-the-creator-of-traefik-raises-10-million-in-series-a-funding-to-make-networking-boring
+twentyhq,Twenty.com PBC,total_funding_usd,5000000.0,fetch failed,https://tech.eu/2024/11/19/twenty-secures-5m-to-challenge-crm-giants-with-open-source/
+ultralytics,Ultralytics,total_funding_usd,30000000.0,confirmed,https://www.ultralytics.com/news/ultralytics-raises-30mseries-a
+umami-software,Umami Software,total_funding_usd,1500000.0,fetch failed,https://www.globenewswire.com/news-release/2022/07/19/2481786/0/en/Umami-Raises-1-5-Million-Pre-Seed-Funding-Round-Led-by-Race-Capital-to-Continue-Growing-its-Popular-Open-Source-Privacy-Focused-Web-Analytics-Platform.html
+unslothai,Unsloth AI,total_funding_usd,540000.0,fetch failed,https://pitchbook.com/profiles/company/590107-78
+usebruno,Bruno Software Inc,total_funding_usd,3000000.0,confirmed,https://blog.usebruno.com/the-funding-announcement-we-never-made
+usestrix,Strix,total_funding_usd,6700000.0,fetch failed,https://www.vcbacked.co/company/strix
+vectorize-io,"Vectorize, Inc.",total_funding_usd,3600000.0,fetch failed,https://finsmes.com/2024/10/vectorize-raises-3-6m-in-seed-funding.html
+vercel,Vercel,last_valuation_usd,9300000000.0,confirmed,https://vercel.com/blog/series-f
+vercel,Vercel,peak_value_usd,9300000000.0,confirmed,https://vercel.com/blog/series-f
+vercel,Vercel,total_funding_usd,863000000.0,confirmed,https://sacra.com/research/vercel
+vitejs,VoidZero,total_funding_usd,17100000.0,not on page,https://voidzero.dev/posts/announcing-series-a
+warpdotdev,Warp,total_funding_usd,73000000.0,not on page,https://techcrunch.com/2022/04/05/warp-raises-23m-to-build-a-better-terminal/
+withfig,Fig,total_funding_usd,2000000.0,confirmed,https://techcrunch.com/2023/08/29/amazon-fig-command-line-terminal-generative-ai/
+zai-org,Z.ai (Zhipu AI),peak_value_usd,7430000000.0,fetch failed,https://www.scmp.com/business/banking-finance/article/3339109/three-chinese-tech-stocks-gain-hong-kong-debuts-investors-jump-ai-robotics
+zama-ai,Zama,last_valuation_usd,400000000.0,confirmed,https://techcrunch.com/2024/03/07/zamas-homomorphic-encryption-tech-lands-it-73m-on-a-valuation-of-nearly-400m/
+zama-ai,Zama,peak_value_usd,400000000.0,confirmed,https://techcrunch.com/2024/03/07/zamas-homomorphic-encryption-tech-lands-it-73m-on-a-valuation-of-nearly-400m/
+zama-ai,Zama,total_funding_usd,81000000.0,confirmed,https://techcrunch.com/2024/03/07/zamas-homomorphic-encryption-tech-lands-it-73m-on-a-valuation-of-nearly-400m/
+zed-industries,Zed Industries,total_funding_usd,42000000.0,fetch failed,https://www.businesswire.com/news/home/20250820782241/en
+zylon-ai,Zylon,total_funding_usd,3200000.0,fetch failed,https://tech.eu/2024/02/14/from-the-creators-of-privategpt-zylon-emerges-from-stealth-announcing-a-3-2m-pre-seed-funding-round

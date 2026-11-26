@@ -87,8 +87,7 @@ def parse(f):
     return f
 
 
-def main():
-    tg = pd.read_csv("data/form_d_targets.csv")
+def collect(tg):
     rows, matches = [], []
     for _, t in tg.iterrows():
         ciks = {}
@@ -101,11 +100,11 @@ def main():
                 f["owner"] = t.owner
                 rows.append(parse(f))
         print(t.owner, ciks, flush=True)
-    fd = pd.DataFrame(rows)
-    fd.to_csv("data/form_d_filings.csv", index=False)
-    pd.DataFrame(matches).to_csv("data/form_d_matches.csv", index=False)
-    if fd.empty:
-        return
+    return pd.DataFrame(rows), pd.DataFrame(matches)
+
+
+def summarize(fd):
+    fd = fd.copy()
     fd["total_sold"] = pd.to_numeric(fd["total_sold"], errors="coerce")
     # an amendment supersedes the filing it amends; keep the end of each chain
     superseded = set(fd["previous_accession"].dropna()) - {""}
@@ -115,6 +114,25 @@ def main():
                                   form_d_entities=("entity", lambda s: "|".join(sorted(set(s)))))
     g.to_csv("data/form_d_by_owner.csv")
     print(g.sort_values("form_d_total_sold", ascending=False).to_string())
+
+
+def main():
+    """Without arguments: every target. With --delta <csv>: only those targets, appended to the existing outputs
+    (used for legal names the second research pass added)."""
+    import sys
+    if "--delta" in sys.argv:
+        tg = pd.read_csv(sys.argv[sys.argv.index("--delta") + 1])
+        fd_new, m_new = collect(tg)
+        fd = pd.concat([pd.read_csv("data/form_d_filings.csv"), fd_new], ignore_index=True)
+        m = pd.concat([pd.read_csv("data/form_d_matches.csv"), m_new], ignore_index=True)
+        pd.concat([pd.read_csv("data/form_d_targets.csv"), tg], ignore_index=True).drop_duplicates(
+            "owner", keep="last").to_csv("data/form_d_targets.csv", index=False)
+    else:
+        fd, m = collect(pd.read_csv("data/form_d_targets.csv"))
+    fd.to_csv("data/form_d_filings.csv", index=False)
+    m.drop_duplicates("owner", keep="last").to_csv("data/form_d_matches.csv", index=False)
+    if not fd.empty:
+        summarize(fd)
 
 
 if __name__ == "__main__":

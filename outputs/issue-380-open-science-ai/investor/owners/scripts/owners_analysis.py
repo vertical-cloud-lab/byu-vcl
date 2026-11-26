@@ -180,6 +180,7 @@ def h8_h9():
     except FileNotFoundError:
         return {}
     res, rows = {}, []
+    Co = Co[Co.org_stars > 0]  # a company whose only frame repos are content (e.g. archived, no language) has no stars
     zero = Co.assign(latest_value_usd=np.where(Co.status.eq("shut_down") & Co.latest_value_usd.isna(), 0,
                                                Co.latest_value_usd))
     for label, sub, xcol in [
@@ -204,6 +205,7 @@ def h8_h9():
                      else None})
     pd.DataFrame(rows).to_csv("data/h8_correlations.csv", index=False)
     res["H8"] = rows
+    Co = company_table()
     fa = Co[Co.in_frame_a == 1].copy()
     st = fa.status.value_counts().to_dict()
     ever = fa.ever_1b.value_counts().to_dict()
@@ -223,7 +225,30 @@ def h8_h9():
                  "with_form_d": int(fa.get("form_d_total_sold", pd.Series(dtype=float)).notna().sum()),
                  "capital_raised_sum_usd": float(fa.raised_usd.sum()),
                  "median_raised_usd_where_disclosed": float(fa.raised_usd.median())}
-    # by when the company's main project appeared: younger companies have had less time to reach $1B or fail
+    # Exploratory (not pre-registered): by the year the company's first repo in the frames was created, since
+    # younger companies have had less time to reach $1B or to fail; and the subset with disclosed capital
+    allr = pd.concat([frame(A, "all"), frame(B, "all")]).drop_duplicates("full_name")
+    first = allr.groupby("owner").created_at.min().astype(str).str[:4].astype(int)
+    fa["first_repo_year"] = fa.owner.map(lambda s: min(first.get(o, 9999) for o in s.split("|")))
+    fa["cohort"] = pd.cut(fa.first_repo_year, [0, 2014, 2019, 2022, 2024, 2030],
+                          labels=["2014 or earlier", "2015-19", "2020-22", "2023-24", "2025-26"])
+    g = fa.groupby("cohort", observed=True).agg(
+        companies=("owner", "size"), ever_1b=("ever_1b", lambda x: int((x == "yes").sum())),
+        ever_1b_unknown=("ever_1b", lambda x: int((x == "unknown").sum())),
+        acquired=("status", lambda x: int((x == "acquired").sum())),
+        shut_down=("status", lambda x: int((x == "shut_down").sum())),
+        with_disclosed_capital=("raised_usd", lambda x: int(x.notna().sum())))
+    g["share_ever_1b"] = (g.ever_1b / g.companies).round(3)
+    sub = [("all", fa), ("disclosed capital raised", fa[fa.raised_usd.notna()]),
+           ("raised $10M or more", fa[fa.raised_usd >= 1e7])]
+    extra = pd.DataFrame([{"cohort": f"subset: {k}", "companies": len(d), "ever_1b": int((d.ever_1b == "yes").sum()),
+                           "ever_1b_unknown": int((d.ever_1b == "unknown").sum()),
+                           "acquired": int((d.status == "acquired").sum()),
+                           "shut_down": int((d.status == "shut_down").sum()),
+                           "with_disclosed_capital": int(d.raised_usd.notna().sum()),
+                           "share_ever_1b": round((d.ever_1b == "yes").mean(), 3)} for k, d in sub])
+    pd.concat([g.reset_index(), extra], ignore_index=True).to_csv("data/h9_by_cohort.csv", index=False)
+    res["H9_exploratory"] = pd.concat([g.reset_index(), extra], ignore_index=True).astype(str).to_dict("records")
     fa.to_csv("data/h9_outcomes.csv", index=False)
     # H10: company owners in the science frame
     fb = Co[Co.frames.fillna("").str.contains("B")]
@@ -275,7 +300,9 @@ def h11():
         oc = pd.read_csv("data/opencollective.csv")
         oc = oc.merge(C[["owner", "cls"]], on="owner", how="left")
         oc["cls"] = oc.cls.fillna("individual")
-        good = oc[(oc.name_match == 1) & (oc.oc_total_received > 0)].copy()
+        # matches whose names differ but which were checked by hand and are the project's own collective
+        manual = {"twbs": "Bootstrap's collective", "yjs": "Y-Collective funds Yjs", "mne-tools": "MNE-Python"}
+        good = oc[((oc.name_match == 1) | oc.owner.isin(manual)) & (oc.oc_total_received > 0)].copy()
         good["org_stars"] = good.owner.map(stars_by_owner)
         good.to_csv("data/h11_opencollective.csv", index=False)
         com = good[good.cls == "community"]
@@ -287,7 +314,9 @@ def h11():
                                   else None,
                                   "community_n_budget_over_100k": int((com.oc_yearly_budget >= 1e5).sum()),
                                   "community_total_yearly_budget": float(com.oc_yearly_budget.sum()),
-                                  "community_owners_in_frames": int(C[C.cls == "community"].shape[0])}
+                                  "community_owners_in_frames": int(C[C.cls == "community"].shape[0]),
+                                  "currencies": good.oc_currency.value_counts().to_dict(),
+                                  "note": "budgets are in each collective's own currency (mostly USD), not converted"}
     except FileNotFoundError:
         pass
     return out

@@ -1,0 +1,134 @@
+owner,oc_slug,oc_name,oc_type,oc_is_host,oc_total_received,oc_yearly_budget,oc_balance,oc_currency,name_match,url,cls,org_stars
+BioJulia,biojulia,BioJulia,COLLECTIVE,False,3151.0,0.0,2670.04,USD,1,https://opencollective.com/biojulia,community,373.0
+BurntSushi,burntsushi,BurntSushi,INDIVIDUAL,False,500.0,0.0,-945.71,USD,1,https://opencollective.com/burntsushi,individual,70336.0
+DIYgod,diydgod,DIYgod,INDIVIDUAL,False,5575.65,0.0,5566.93,USD,1,https://opencollective.com/diydgod,individual,47340.0
+Eugeny,eugeny,Eugene,INDIVIDUAL,False,880.27,0.0,876.08,EUR,1,https://opencollective.com/eugeny,individual,75582.0
+FreeCAD,freecad,FreeCAD,COLLECTIVE,False,36065.9,15839.94,16626.64,USD,1,https://opencollective.com/freecad,nonprofit,35787.0
+Homebrew,homebrew,Homebrew,COLLECTIVE,False,525518.8,102322.69,130232.59,USD,1,https://opencollective.com/homebrew,community,50436.0
+MDAnalysis,mdanalysis,MDAnalysis,COLLECTIVE,False,25604.41,0.0,10376.38,USD,1,https://opencollective.com/mdanalysis,community,1685.0
+ManimCommunity,manim,Manim,COLLECTIVE,False,10.0,0.0,8.01,USD,1,https://opencollective.com/manim,community,42902.0
+MonitorControl,monitorcontrol,MonitorControl,COLLECTIVE,False,15161.36,1262.81,224.03,USD,1,https://opencollective.com/monitorcontrol,community,34834.0
+NativeScript,nativescriptorg,NativeScript,ORGANIZATION,False,11166.98,0.0,11166.59,USD,1,https://opencollective.com/nativescriptorg,nonprofit,25707.0
+NixOS,nixos,NixOS,COLLECTIVE,False,416552.55,47470.91,144262.64,EUR,1,https://opencollective.com/nixos,nonprofit,26951.0
+OpenChemistry,open-chemistry,Open Chemistry,COLLECTIVE,False,23667.68,70.0,18182.73,USD,1,https://opencollective.com/open-chemistry,community,1354.0
+Redocly,redocly,Redocly,ORGANIZATION,False,12251.44,0.0,12250.0,USD,1,https://opencollective.com/redocly,core,26029.0
+SagerNet,sagernet,SagerNet,COLLECTIVE,False,822.97,0.0,179.62,USD,1,https://opencollective.com/sagernet,community,40305.0
+SciML,sciml,SciML,COLLECTIVE,False,21809.16,2360.36,10961.64,USD,1,https://opencollective.com/sciml,community,138.0
+ScoopInstaller,scoopinstaller,Scoop,COLLECTIVE,False,1980.46,520.47,1509.04,USD,1,https://opencollective.com/scoopinstaller,community,24842.0
+SigNoz,signoz,SigNoz,ORGANIZATION,False,2940.51,0.0,2940.0,USD,1,https://opencollective.com/signoz,core,32736.0
+actix,actix,Actix,COLLECTIVE,False,250.0,60.0,189.88,USD,1,https://opencollective.com/actix,community,24996.0
+actualbudget,actual,Actual,COLLECTIVE,False,79734.0,47479.98,42178.41,USD,1,https://opencollective.com/actual,community,30456.0
+airbnb,airbnb,Airbnb,FUND,False,1248651.0,229200.0,135100.51,USD,1,https://opencollective.com/airbnb,complement,243337.0
+apolloconfig,apollo,apollo,COLLECTIVE,False,7.0,0.0,6.3,USD,1,https://opencollective.com/apollo,community,29818.0
+astral-sh,astral-sh,Astral,COLLECTIVE,False,10015.0,15.0,0.0,USD,1,https://opencollective.com/astral-sh,core,144192.0
+astropy,astropy,Astropy,COLLECTIVE,False,61859.65,0.0,37353.66,USD,1,https://opencollective.com/astropy,community,6556.0
+axios,axios,axios,COLLECTIVE,False,265200.64,143168.44,208538.07,USD,1,https://opencollective.com/axios,community,109439.0
+babel,babel,Babel,COLLECTIVE,False,1862733.32,220797.35,187761.33,USD,1,https://opencollective.com/babel,community,44076.0
+bayandin,bayandin,Alexander Bayandin,INDIVIDUAL,False,2012.59,0.0,2003.68,GBP,1,https://opencollective.com/bayandin,individual,
+biomejs,biome,Biome,COLLECTIVE,False,107947.03,33131.59,33069.19,USD,1,https://opencollective.com/biome,community,26212.0
+brainflow-dev,brainflow,BrainFlow,COLLECTIVE,False,26629.69,0.0,22548.92,USD,1,https://opencollective.com/brainflow,community,1800.0
+carbon-app,carbon-app,Carbon,COLLECTIVE,False,375.0,0.0,0.0,USD,1,https://opencollective.com/carbon-app,community,
+celery,celery,Celery,COLLECTIVE,False,107313.15,15759.85,1214.16,USD,1,https://opencollective.com/celery,community,29267.0
+cheeriojs,cheerio,cheerio,COLLECTIVE,False,84049.7,6647.0,3099.09,USD,1,https://opencollective.com/cheerio,community,30553.0
+coollabsio,coollabsio,Coolify,ORGANIZATION,True,43275.75,14861.14,41777.01,EUR,1,https://opencollective.com/coollabsio,core,66460.0
+curl,curl,curl,COLLECTIVE,False,499555.2,91015.31,118059.88,USD,1,https://opencollective.com/curl,community,43681.0
+discordjs,discordjs,discord.js,COLLECTIVE,False,71073.73,14253.78,21803.51,USD,1,https://opencollective.com/discordjs,community,26831.0
+docsifyjs,docsify,docsify,COLLECTIVE,False,5692.66,248.29,3840.64,USD,1,https://opencollective.com/docsify,community,31609.0
+dokku,dokku,Dokku,COLLECTIVE,False,101882.27,9315.4,797.66,USD,1,https://opencollective.com/dokku,community,32238.0
+doocs,doocs,doocs,COLLECTIVE,False,24.0,0.0,19.73,USD,1,https://opencollective.com/doocs,community,139110.0
+electron,electron,electron,COLLECTIVE,False,120321.81,34327.0,76307.71,USD,1,https://opencollective.com/electron,nonprofit,124092.0
+electron-react-boilerplate,electron-react-boilerplate-594,electron-react-boilerplate,COLLECTIVE,False,5050.98,60.51,2181.39,USD,1,https://opencollective.com/electron-react-boilerplate-594,community,24245.0
+element-plus,element-plus,Element Plus,COLLECTIVE,False,11210.38,12.0,10160.87,USD,1,https://opencollective.com/element-plus,community,27876.0
+eslint,eslint,ESLint,COLLECTIVE,False,1229806.06,139735.35,98166.22,USD,1,https://opencollective.com/eslint,nonprofit,27652.0
+fastlane,fastlane,fastlane,COLLECTIVE,False,260.0,375.0,214.07,USD,1,https://opencollective.com/fastlane,nonprofit,42519.0
+firefly-iii,firefly-iii,Firefly III,COLLECTIVE,False,40.0,0.0,0.0,USD,1,https://opencollective.com/firefly-iii,community,25341.0
+gem,gem-foundation,GEM Foundation (Global Earthquake Model),ORGANIZATION,False,5006.82,0.0,4981.82,EUR,1,https://opencollective.com/gem-foundation,nonprofit,472.0
+go-gitea,gitea,Gitea,COLLECTIVE,False,61837.6,4492.01,13702.49,USD,1,https://opencollective.com/gitea,core,59254.0
+grafana,grafana-labs2,Grafana Labs,ORGANIZATION,False,10000.51,0.0,10000.0,USD,1,https://opencollective.com/grafana-labs2,core,139841.0
+gulpjs,gulpjs,gulp,COLLECTIVE,False,100162.18,1457.92,29563.16,USD,1,https://opencollective.com/gulpjs,community,32912.0
+iamkun,hi-iamkun,iamkun,INDIVIDUAL,False,5726.39,0.0,5722.72,USD,1,https://opencollective.com/hi-iamkun,individual,48640.0
+iptv-org,iptv-org,iptv-org,COLLECTIVE,False,778.76,162.0,585.07,USD,1,https://opencollective.com/iptv-org,community,144713.0
+jamiepine,jamie-pine,Jamie Pine,INDIVIDUAL,False,347.05,0.0,-127.95,USD,1,https://opencollective.com/jamie-pine,individual,61315.0
+jekyll,jekyll,Jekyll,COLLECTIVE,False,93009.22,1635.0,73127.79,USD,1,https://opencollective.com/jekyll,community,51799.0
+jellyfin,jellyfin,Jellyfin,COLLECTIVE,False,102455.85,31818.68,41857.24,USD,1,https://opencollective.com/jellyfin,community,59762.0
+jquery,jqueryorg,jQuery,COLLECTIVE,False,53740.5,36497.79,26791.97,USD,1,https://opencollective.com/jqueryorg,nonprofit,60159.0
+kitspace,kitspace,Kitspace,COLLECTIVE,False,10469.0,1525.0,1336.89,USD,1,https://opencollective.com/kitspace,community,269.0
+koajs,koajs,KoaJS,COLLECTIVE,False,3854.3,127.0,3164.34,USD,1,https://opencollective.com/koajs,community,35678.0
+kriasoft,kriasoft,Kriasoft,COLLECTIVE,False,962.0,107.0,91.29,USD,1,https://opencollective.com/kriasoft,community,23728.0
+kroitor,kroitor,Igor Kroitor,INDIVIDUAL,False,12887.33,0.0,12357.01,USD,1,https://opencollective.com/kroitor,individual,899.0
+librepods-org,librepods,LibrePods,COLLECTIVE,False,1174.0,1194.0,995.7,USD,1,https://opencollective.com/librepods,community,30970.0
+lobehub,lobehub,LobeHub,COLLECTIVE,False,1968.0,56.0,36.43,USD,1,https://opencollective.com/lobehub,core,86142.0
+logseq,logseq,Logseq,COLLECTIVE,False,973907.07,232011.24,36101.44,USD,1,https://opencollective.com/logseq,core,45705.0
+louislam,louis-lam,Louis Lam,INDIVIDUAL,False,1438.88,0.0,1433.12,USD,1,https://opencollective.com/louis-lam,individual,119781.0
+lovell,lovell,Lovell Fuller,INDIVIDUAL,False,17434.84,0.0,17388.2,USD,1,https://opencollective.com/lovell,individual,32869.0
+lucide-icons,lucide-icons,Lucide Icons,ORGANIZATION,True,2540.98,2535.0,2268.12,EUR,1,https://opencollective.com/lucide-icons,community,26002.0
+lvgl,lvgl-host,LVGL Kft.,ORGANIZATION,False,502.07,0.0,500.0,USD,1,https://opencollective.com/lvgl-host,core,25247.0
+lydiahallie,lydiahallie,Lydia Hallie,INDIVIDUAL,True,22917.99,0.0,22494.99,EUR,1,https://opencollective.com/lydiahallie,individual,
+matplotlib,matplotlib,Matplotlib,COLLECTIVE,False,120961.71,9257.91,35032.93,USD,1,https://opencollective.com/matplotlib,community,23502.0
+mihonapp,mihon,Mihon,COLLECTIVE,False,9595.52,7311.94,6773.34,USD,1,https://opencollective.com/mihon,community,25652.0
+mlpack,mlpack,mlpack,COLLECTIVE,False,36576.85,0.0,0.0,USD,1,https://opencollective.com/mlpack,community,5731.0
+mne-tools,mne-python,MNE-Python,COLLECTIVE,False,2175.01,2125.01,1547.43,USD,0,https://opencollective.com/mne-python,community,4155.0
+mozilla,mozilla,Mozilla Corporation,COLLECTIVE,False,590.77,0.0,0.0,USD,1,https://opencollective.com/mozilla,nonprofit,80963.0
+mui,mui-org,MUI org,COLLECTIVE,False,543867.14,84124.0,48181.52,USD,1,https://opencollective.com/mui-org,core,99396.0
+neovim,neovim,Neovim,COLLECTIVE,False,619787.56,144815.95,81634.92,USD,1,https://opencollective.com/neovim,community,103928.0
+nestjs,nest,nest,COLLECTIVE,False,779887.69,121394.0,5390.42,USD,1,https://opencollective.com/nest,core,77179.0
+obsproject,obsproject,Open Broadcaster Software,COLLECTIVE,False,719525.72,95153.87,372909.28,USD,1,https://opencollective.com/obsproject,community,80126.0
+openfaas,openfaas,OpenFaaS,COLLECTIVE,False,67.0,0.0,0.0,GBP,1,https://opencollective.com/openfaas,core,26268.0
+pandas-dev,pandas,pandas,COLLECTIVE,False,311204.23,11583.36,106797.23,USD,1,https://opencollective.com/pandas,community,50637.0
+pedronauck,pedronauck,Pedro Nauck,INDIVIDUAL,False,298.86,0.0,293.0,USD,1,https://opencollective.com/pedronauck,individual,23553.0
+php,phpfoundation,PHP Foundation,COLLECTIVE,False,3672737.73,1104708.29,386547.62,USD,1,https://opencollective.com/phpfoundation,community,41872.0
+pixijs,pixijs,PixiJS - The HTML5 Creation Engine.,COLLECTIVE,False,140914.54,44805.03,86423.51,USD,1,https://opencollective.com/pixijs,community,48904.0
+pmndrs,pmndrs,pmndrs,COLLECTIVE,False,50577.38,7635.09,1066.93,USD,1,https://opencollective.com/pmndrs,community,125253.0
+pnpm,pnpm,pnpm,COLLECTIVE,False,320817.46,105507.75,1935.69,USD,1,https://opencollective.com/pnpm,community,37161.0
+pocketbase,pocketbase,PocketBase,COLLECTIVE,False,44112.8,0.0,0.0,BGN,1,https://opencollective.com/pocketbase,community,61570.0
+poliastro,poliastro,poliastro,COLLECTIVE,False,1581.57,0.0,464.41,USD,1,https://opencollective.com/poliastro,community,1018.0
+postcss,postcss,PostCSS and Autoprefixer,COLLECTIVE,False,60155.29,9991.87,0.0,USD,1,https://opencollective.com/postcss,community,28972.0
+preactjs,preact,Preact,COLLECTIVE,False,337078.08,46978.1,186818.4,USD,1,https://opencollective.com/preact,community,39016.0
+prettier,prettier,Prettier,COLLECTIVE,False,314191.01,61190.74,77981.38,USD,1,https://opencollective.com/prettier,community,52447.0
+processing,processing-foundation,Processing Foundation,ORGANIZATION,False,14001.44,0.0,14000.0,USD,1,https://opencollective.com/processing-foundation,nonprofit,
+pyenv,pyenv,Pyenv project team,COLLECTIVE,False,6941.26,711.25,4499.45,USD,1,https://opencollective.com/pyenv,community,45184.0
+qishibo,qishibo,qishibo,INDIVIDUAL,False,203.24,0.0,202.0,USD,1,https://opencollective.com/qishibo,individual,34860.0
+radareorg,radareorg,radareorg,COLLECTIVE,False,6548.2,1320.0,5596.73,USD,1,https://opencollective.com/radareorg,community,25504.0
+ramda,ramda,Ramda,COLLECTIVE,False,3519.23,349.0,2969.0,USD,1,https://opencollective.com/ramda,community,24055.0
+react-hook-form,react-hook-form,React Hook Form,COLLECTIVE,False,49739.16,11152.82,23173.53,USD,1,https://opencollective.com/react-hook-form,community,44926.0
+react-navigation,react-navigation,React Navigation,COLLECTIVE,False,90124.32,14501.37,57361.83,USD,1,https://opencollective.com/react-navigation,community,24527.0
+remy,remysharp,Remy Sharp,INDIVIDUAL,False,230793.87,0.0,229857.95,USD,1,https://opencollective.com/remysharp,individual,26664.0
+responsively-org,responsively,Responsively,COLLECTIVE,False,5924.88,3120.0,922.98,USD,1,https://opencollective.com/responsively,community,25590.0
+rome,rometoolsbackup,Rome,COLLECTIVE,False,2360.8,0.0,0.0,USD,1,https://opencollective.com/rometoolsbackup,core,23335.0
+rwf2,rwf2,Rocket Web Framework Foundation,COLLECTIVE,False,5559.04,0.0,0.0,USD,1,https://opencollective.com/rwf2,nonprofit,25813.0
+saadeghi,saadeghi,Pouya Saadeghi,INDIVIDUAL,False,8998.54,0.0,8926.79,USD,1,https://opencollective.com/saadeghi,individual,42995.0
+sampotts,sam-potts,Sam Potts,INDIVIDUAL,False,1402.35,0.0,1400.11,AUD,1,https://opencollective.com/sam-potts,individual,29977.0
+scalableminds,scalableminds,scalable minds,ORGANIZATION,False,73167.46,0.0,73167.46,EUR,1,https://opencollective.com/scalableminds,core,188.0
+scikit-learn,scikit-learn,scikit-learn,COLLECTIVE,False,146006.73,7325.94,10058.35,USD,1,https://opencollective.com/scikit-learn,community,68330.0
+scipy,scipy,SciPy,COLLECTIVE,False,185775.64,6970.98,133179.57,USD,1,https://opencollective.com/scipy,community,15254.0
+semantic-release,semantic-release,semantic-release,COLLECTIVE,False,78.0,0.0,67.99,USD,1,https://opencollective.com/semantic-release,community,24201.0
+simple-icons,simple-icons,Simple Icons,COLLECTIVE,False,1787.17,169.73,1348.24,USD,1,https://opencollective.com/simple-icons,community,26268.0
+sindresorhus,sindresorhus-unicorn,Sindre Sorhus,INDIVIDUAL,False,107449.97,0.0,106940.0,USD,1,https://opencollective.com/sindresorhus-unicorn,individual,
+solidjs,solid,SolidJS,COLLECTIVE,False,177018.12,22199.0,16860.16,USD,1,https://opencollective.com/solid,community,36963.0
+spacedriveapp,spacedrive,Spacedrive,COLLECTIVE,False,1600.0,40.0,963.62,USD,1,https://opencollective.com/spacedrive,core,39604.0
+spicetify,spicetify,Spicetify,COLLECTIVE,False,1789.1,485.75,173.55,USD,1,https://opencollective.com/spicetify,community,25627.0
+starship,starship,Starship,COLLECTIVE,False,9898.2,1380.28,8616.13,USD,1,https://opencollective.com/starship,community,60911.0
+storybookjs,storybook,Storybook,COLLECTIVE,False,222365.11,19085.0,8347.27,USD,1,https://opencollective.com/storybook,core,
+sunpy,sunpy,SunPy,COLLECTIVE,False,20394.92,6365.71,11861.97,USD,1,https://opencollective.com/sunpy,community,1053.0
+supabase,supabase,Supabase,ORGANIZATION,True,1547800.0,650000.0,52151.32,USD,1,https://opencollective.com/supabase,core,115488.0
+sveltejs,svelte,Svelte,COLLECTIVE,False,355302.94,18125.63,80544.76,USD,1,https://opencollective.com/svelte,community,89920.0
+svg,svgo,SVGO,COLLECTIVE,False,3862.25,414.87,2659.42,USD,1,https://opencollective.com/svgo,community,22838.0
+swc-project,swc,swc,COLLECTIVE,False,97419.31,16631.17,23768.46,USD,1,https://opencollective.com/swc,community,34219.0
+tabler,tabler,Tabler,COLLECTIVE,False,4627.0,1200.0,2166.72,USD,1,https://opencollective.com/tabler,core,64955.0
+tauri-apps,tauri,Tauri Apps,COLLECTIVE,False,146850.0,27954.02,112480.53,USD,1,https://opencollective.com/tauri,community,113160.0
+termux,termux,Termux,COLLECTIVE,False,50945.65,8372.67,187.48,USD,1,https://opencollective.com/termux,community,65699.0
+thedaviddias,thedaviddias,David Dias,INDIVIDUAL,False,850.1,0.0,843.52,CAD,1,https://opencollective.com/thedaviddias,individual,
+tmux,tmux,tmux,ORGANIZATION,True,1503.23,431.0,1454.09,GBP,1,https://opencollective.com/tmux,community,50584.0
+tokio-rs,tokio,Tokio,COLLECTIVE,False,324383.37,35122.16,179421.09,USD,1,https://opencollective.com/tokio,community,61765.0
+twbs,bootstrap,Bootstrap,COLLECTIVE,False,72877.73,4976.7,54645.73,USD,0,https://opencollective.com/bootstrap,community,175134.0
+typicode,typicode,typicode,INDIVIDUAL,False,28155.53,0.0,28032.98,USD,1,https://opencollective.com/typicode,individual,111149.0
+vadimdemedes,vadim-demedes1,Vadim Demedes,INDIVIDUAL,False,9629.56,0.0,9628.0,USD,1,https://opencollective.com/vadim-demedes1,individual,40326.0
+vuejs,vuejs,vue,COLLECTIVE,False,1027746.96,188119.0,45336.05,USD,1,https://opencollective.com/vuejs,community,350095.0
+waydabber,waydabber,Istvan T.,INDIVIDUAL,False,6561.7,0.0,6519.24,EUR,1,https://opencollective.com/waydabber,individual,
+webpack,webpack,webpack,COLLECTIVE,False,2019094.31,169390.9,93056.46,USD,1,https://opencollective.com/webpack,nonprofit,66016.0
+westpa,westpa,WESTPA,COLLECTIVE,False,22000.0,0.0,199.47,USD,1,https://opencollective.com/westpa,academic,221.0
+yangshun,yangshun,Yangshun Tay,INDIVIDUAL,False,2000.25,0.0,1880.0,USD,1,https://opencollective.com/yangshun,individual,
+yarnpkg,yarnpkg,Yarn,COLLECTIVE,False,68901.67,1809.29,37215.45,USD,1,https://opencollective.com/yarnpkg,community,41457.0
+yjs,y-collective,Y-Collective,COLLECTIVE,False,157036.98,60.0,646.45,USD,0,https://opencollective.com/y-collective,community,23113.0
+yt-project,yt-project,yt Project,COLLECTIVE,False,1091.05,0.0,1091.05,USD,1,https://opencollective.com/yt-project,community,563.0
+zloirock,zloirock,Denis Pushkarev,INDIVIDUAL,False,178624.23,0.0,178602.61,USD,1,https://opencollective.com/zloirock,individual,25510.0

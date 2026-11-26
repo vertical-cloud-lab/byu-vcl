@@ -14,7 +14,8 @@ import glob, os
 import numpy as np, pandas as pd
 
 # first-pass rows, then second-pass rows, which replace them owner by owner (the last row for an owner wins)
-parts = sorted(glob.glob("data/finance_passes/output_*.csv")) + sorted(glob.glob("data/finance_passes/second_[0-9].csv"))
+parts = (sorted(glob.glob("data/finance_passes/output_*.csv")) + sorted(glob.glob("data/finance_passes/second_[0-9].csv"))
+         + sorted(glob.glob("data/finance_passes/third_[0-9].csv")))  # third: corrections made by hand
 F = pd.concat([pd.read_csv(p, dtype=str).assign(pass_file=os.path.basename(p)) for p in parts], ignore_index=True)
 F["owner"] = F.owner.str.strip()
 inp = pd.read_csv("data/finance_passes/input_all.csv", dtype=str)

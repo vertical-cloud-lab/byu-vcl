@@ -73,49 +73,53 @@ def money(v, _=None):
 
 def fig_value():
     try:
-        F = pd.read_csv("data/core_financials.csv")
+        Co = company_table()
     except FileNotFoundError:
         return
-    stars = pd.concat([A, B]).drop_duplicates("full_name").groupby("owner").stars.sum()
-    F["org_stars"] = F.owner.map(stars)
-    fig, (ax, bx) = plt.subplots(1, 2, figsize=(12, 4.8), gridspec_kw={"width_ratios": [1.45, 1]})
-    v = F.dropna(subset=["latest_value_usd"])
-    v = v[v.latest_value_usd > 0]
-    groups = [("Listed", "listed", SLOTS[0]), ("Acquired (price)", "acquired", SLOTS[1]),
+    fig, (ax, bx) = plt.subplots(1, 2, figsize=(12.5, 4.9), gridspec_kw={"width_ratios": [1.45, 1]})
+    v = Co[(Co.org_stars > 0) & (Co.latest_value_usd > 0)]
+    groups = [("Listed (market cap)", "listed", SLOTS[0]), ("Acquired (disclosed price)", "acquired", SLOTS[1]),
               ("Private (last valuation)", "private", SLOTS[2])]
     for lab, st, col in groups:
         s = v[v.status == st]
-        ax.scatter(s.org_stars, s.latest_value_usd, s=34, color=col, edgecolor=SURFACE, linewidth=1.2, label=lab,
-                   zorder=3)
+        ax.scatter(s.org_stars, s.latest_value_usd, s=40, color=col, edgecolor=SURFACE, linewidth=1.5,
+                   label=f"{lab}, {len(s)}", zorder=3)
     ax.set_xscale("log"); ax.set_yscale("log")
     ax.yaxis.set_major_formatter(FuncFormatter(money))
+    ax.xaxis.set_major_locator(mpl.ticker.FixedLocator([25e3, 50e3, 100e3, 200e3, 400e3]))
+    ax.xaxis.set_minor_formatter(mpl.ticker.NullFormatter())
     ax.xaxis.set_major_formatter(FuncFormatter(lambda x, _: f"{x / 1000:.0f}k" if x >= 1000 else f"{x:.0f}"))
-    ax.set_xlabel("Stars on the company's repos in the two frames"); ax.set_ylabel("Latest disclosed value")
+    ax.set_xlabel("Stars on the company's software repos in the two frames"); ax.set_ylabel("Latest disclosed value")
     res = json.load(open("data/results_summary.json")).get("H8", [])
     r = next((x for x in res if x["measure"] == "latest value (disclosed)"), None)
-    sub = f"Spearman ρ = {r['spearman_rho']:.2f} (95% CI {r['ci_low']:.2f} to {r['ci_high']:.2f}), n = {r['n']}" if r else ""
-    ax.set_title("Popularity and value, companies that sell the project", pad=8)
-    ax.text(0, 1.0, sub, transform=ax.transAxes, fontsize=9, color=INK2, va="bottom")
-    for name in v.sort_values("latest_value_usd", ascending=False).head(6).itertuples():
-        ax.annotate(name.entity.split(" (")[0], (name.org_stars, name.latest_value_usd), fontsize=8, color=INK2,
-                    xytext=(4, 3), textcoords="offset points")
+    sub = (f"Spearman ρ = {r['spearman_rho']:.2f} (95% CI {r['ci_low']:.2f} to {r['ci_high']:.2f}), "
+           f"{r['n']} companies with a disclosed value" if r else "")
+    ax.set_title("Popularity and value: companies that sell the project", pad=20)
+    ax.text(0, 1.01, sub, transform=ax.transAxes, fontsize=9, color=INK2, va="bottom")
+    lab = pd.concat([v.nlargest(5, "latest_value_usd"), v.nlargest(3, "org_stars")]).drop_duplicates("entity")
+    short = {"Temporal Technologies": "Temporal", "Z.ai (Zhipu AI)": "Z.ai (Zhipu)"}
+    nudge = {"ClickHouse": (6, 2)}
+    for name in lab.itertuples():
+        t = short.get(name.entity, name.entity.split(" (")[0].replace(" Inc.", "").replace(" N.V.", ""))
+        ax.annotate(t, (name.org_stars, name.latest_value_usd), fontsize=8, color=INK2,
+                    xytext=nudge.get(t, (5, 3)), textcoords="offset points")
     ax.legend(loc="lower right", fontsize=8.5)
-    fa = F[F.in_frame_a == 1]
-    order = [("Private", "private"), ("Acquired", "acquired"), ("Listed", "listed"), ("Shut down", "shut_down"),
-             ("Unknown", "unknown")]
+    fa = Co[Co.in_frame_a == 1]
+    order = [("Private, operating", "private"), ("Acquired", "acquired"), ("Listed", "listed"),
+             ("Shut down", "shut_down"), ("Status unclear", "unknown")]
     cnt = [int((fa.status == k).sum()) for _, k in order]
     yy = np.arange(len(order))[::-1]
     bx.barh(yy, cnt, color=SLOTS[0], height=0.6)
     for y0, c in zip(yy, cnt):
         bx.text(c + max(cnt) * 0.01, y0, str(c), va="center", fontsize=9.5)
     bx.set_yticks(yy, [o[0] for o in order]); bx.grid(axis="y", visible=False); bx.tick_params(axis="y", length=0)
-    e1 = int((fa.ever_1b == "yes").sum())
-    bx.set_title(f"What became of them ({len(fa)} in the top 2,000)", pad=8)
-    bx.text(0, 1.0, f"{e1} ever reached a disclosed value of $1B or more", transform=bx.transAxes, fontsize=9,
-            color=INK2, va="bottom")
+    e1, unk = int((fa.ever_1b == "yes").sum()), int((fa.ever_1b == "unknown").sum())
+    bx.set_title(f"What became of the {len(fa)} in the top 2,000", pad=20)
+    bx.text(0, 1.01, f"{e1} ({e1 / len(fa):.0%}) ever had a disclosed value of $1B or more; {unk} can't be told",
+            transform=bx.transAxes, fontsize=9, color=INK2, va="bottom")
     bx.set_xlabel("Companies")
-    fig.text(0, -0.03, "Values are market caps (Yahoo, 2026-11-25), disclosed acquisition prices or last disclosed "
-             "private valuations, each with a source in data/core_financials.csv. Undisclosed values are omitted.",
+    fig.text(0, -0.03, "Values: market cap (Yahoo, 2026-11-26), disclosed acquisition price or last disclosed private "
+             "valuation, each with its source in data/core_financials.csv. Undisclosed values are left out.",
              fontsize=8.5, color=INK2)
     fig.tight_layout()
     fig.savefig("figures/popularity_vs_value.png")
