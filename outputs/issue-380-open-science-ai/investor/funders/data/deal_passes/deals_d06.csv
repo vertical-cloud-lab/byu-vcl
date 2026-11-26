@@ -1,0 +1,35 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+u4-kaelio,Kaelio,U4,accelerator,YC Spring 2025,2025,,,Y Combinator,https://www.ycombinator.com/companies/kaelio,other,Company site also lists only Y Combinator as backer
+u4-kailash-labs,Kailash Labs,U4,accelerator,YC Fall 2026,2026,,,Y Combinator,https://www.kailashlabs.com/,company,Site says Backed by Y Combinator
+u4-karate-labs,Karate Labs,U4,accelerator,YC Winter 2022,2022,,,Y Combinator,https://karatelabs.io/company,company,
+u4-karate-labs,Karate Labs,U4,venture_unspecified,Backers,2022,,,Uncorrelated Ventures,https://karatelabs.io/company,company,Company page: YC and Uncorrelated Ventures backed it shortly after founding
+u4-keep,Keep,U4,accelerator,YC Winter 2023,2023,,,Y Combinator,https://www.ycombinator.com/companies/keep,other,
+u4-kernel,KERNEL,U4,accelerator,YC Summer 2025,2025,,,Y Combinator,https://www.ycombinator.com/companies/kernel,other,
+u4-kernel,KERNEL,U4,series_a,Seed and Series A,2025-10,22000000,Accel,Y Combinator | Cintrifuse Capital | Vercel Ventures | Refinery Ventures | SV Angel,https://blog.onkernel.com/series-a-announcement/,company,Combined seed and Series A; unnamed angels also participated
+u4-keydb,KeyDB,U4,accelerator,YC Summer 2020,2020,,,Y Combinator,https://techcrunch.com/2022/05/12/snap-snaps-up-database-developer-keydb-to-make-its-infrastructure-more-snappy/,news,TechCrunch calls it a Y Combinator-backed startup; acquired by Snap May 2022
+u4-lago,Lago,U4,accelerator,YC Summer 2021,2021,,,Y Combinator,https://techcrunch.com/2024/03/14/lago-a-paris-based-open-source-billing-platform-banks-22m/,news,
+u4-lago,Lago,U4,seed,Seed,2022,7000000,SignalFire,,https://techcrunch.com/2024/03/14/lago-a-paris-based-open-source-billing-platform-banks-22m/,news,Date approximate; article only says previous seed
+u4-lago,Lago,U4,series_a,Series A,2024-03,15000000,FirstMark Capital,Y Combinator | New Wave | Script,https://techcrunch.com/2024/03/14/lago-a-paris-based-open-source-billing-platform-banks-22m/,news,"Backers named in article, individuals unnamed; Mistral AI on company site"
+u4-lamin,Lamin,U4,accelerator,YC Summer 2022,2022,,,Y Combinator,https://www.ycombinator.com/companies/lamin,other,
+u4-lamin,Lamin,U4,venture_unspecified,Backers,,,,Dimension Capital,https://lamin.ai/about,company,Investor logo on about page only; round not announced
+u4-laminar,Laminar,U4,accelerator,YC Summer 2024,2024,,,Y Combinator,https://www.ycombinator.com/companies/laminar,other,
+u4-lantern,Lantern,U4,accelerator,YC Winter 2024,2024,,,Y Combinator,https://lantern.dev/about,company,
+u4-lantern,Lantern,U4,venture_unspecified,Backers,,,,The House Fund | Wayfinder,https://lantern.dev/about,company,Investor logos on about page only; YC lists company Inactive
+u4-lastmile-ai,LastMile AI,U4,seed,Seed,2023-09,10000000,Gradient,AME Cloud Ventures | Guillermo Rauch (person) | 10x Founders | Exceptional Capital,https://techcrunch.com/2023/09/14/lastmile-ai-closes-10m-seed-round-to-operationalize-ai-models/,news,Gradient is Google's AI-focused fund
+u4-laudspeaker,Laudspeaker,U4,accelerator,YC Winter 2021,2021,,,Y Combinator,https://www.ycombinator.com/companies/laudspeaker,other,YC page says acquired by PostHog in May 2025
+u4-lepton-ai,Lepton AI,U4,seed,Seed,2023-05,11000000,CRV | Fusion Fund,,https://techcrunch.com/2025/03/26/nvidia-is-reportedly-in-talks-to-acquire-lepton-ai/,news,SiliconANGLE says the two firms led the seed; Nvidia acquisition reported as talks
+u4-lightdash,Lightdash,U4,accelerator,YC Summer 2020,2020,,,Y Combinator,https://techcrunch.com/2022/10/06/lightdash-takes-on-looker-with-an-open-source-bi-platform-built-for-dbt/,news,Then known as Hubble
+u4-lightdash,Lightdash,U4,pre_seed,Pre-seed,2022-10,2400000,Moonfire,,https://techcrunch.com/2022/10/06/lightdash-takes-on-looker-with-an-open-source-bi-platform-built-for-dbt/,news,Previously unannounced
+u4-lightdash,Lightdash,U4,seed,Seed,2022-10,8400000,Accel,Moonfire | Y Combinator | Guy Podjarny (person) | Ashley Kramer (person),https://techcrunch.com/2022/10/06/lightdash-takes-on-looker-with-an-open-source-bi-platform-built-for-dbt/,news,Total funding $8.4M
+u4-lightdash,Lightdash,U4,series_a,Series A,,11000000,,,https://www.lightdash.com/about,company,"About page says October, we raised $11M in series A; year and investors not read"
+u4-limnion,Limnion,U4,accelerator,YC Fall 2026,2026,,,Y Combinator,https://www.ycombinator.com/companies/limnion,other,
+u4-limnion,Limnion,U4,venture_unspecified,Backers,2026,,,Array Ventures | Foundation Capital,https://limnion.ai/,company,From homepage Backed by logos in lead scrape; not re-read
+u4-litellm,LiteLLM,U4,accelerator,YC Winter 2023,2023,,,Y Combinator,https://www.litellm.ai/about,company,
+u4-litellm,LiteLLM,U4,seed,Seed,2023,1600000,,Y Combinator | Gravity Fund | Pioneer Fund,https://www.litellm.ai/about,company,Company states seed round of $1.6M
+u4-lotus,Lotus,U4,accelerator,YC Summer 2022,2022,,,Y Combinator,https://www.ycombinator.com/companies/lotus,other,YC lists Inactive
+u4-lucebox,Lucebox,U4,accelerator,YC Winter 2027,2026,,,Y Combinator,https://www.lucebox.com/about,company,
+u4-lucebox,Lucebox,U4,venture_unspecified,Backers,2026,,,Vento Ventures | AngelInvest Ventures,https://www.lucebox.com/about,company,"Also unnamed angels from Hugging Face, GitHub and others"
+u4-lunasec,LunaSec,U4,accelerator,YC Summer 2019,2019,,,Y Combinator,https://www.ycombinator.com/companies/lunasec,other,YC lists Inactive
+u4-lunatic,Lunatic,U4,accelerator,YC Winter 2021,2021,,,Y Combinator,https://www.ycombinator.com/companies/lunatic,other,YC lists Inactive
+u4-magnitude,Magnitude,U4,accelerator,YC Summer 2025,2025,,,Y Combinator,https://www.ycombinator.com/companies/magnitude,other,
+u4-manufact,Manufact,U4,accelerator,YC Summer 2025,2025,,,Y Combinator,https://manufact.com/company,company,"Company page says investors from Supabase, PostHog, Better Auth; no names"

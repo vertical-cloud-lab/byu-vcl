@@ -1,2 +1,4 @@
 key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
 elastic,Elastic N.V.,U1,,,yes,,,listed,yes,2,"Elastic IPO prospectus (NYSE, 2018-10) lists Benchmark, Hexavest (Index-linked), NEA, Future Fund Investment Company No.5 and AU Special Investments as 5% holders; their round not stated, so not recorded.",https://www.sec.gov/Archives/edgar/data/1707753/000119312518294675/d588632d424b4.htm,2026-11-26T06:26:04Z
+comet-ml,Comet ML,U1,,,yes,,,unknown,yes,1,,,2026-11-26T06:27:55Z
+cilium,Isovalent,U1,,,yes,,,unknown,yes,1,,,2026-11-26T06:29:30Z

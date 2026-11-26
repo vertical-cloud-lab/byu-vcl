@@ -1,0 +1,10 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+u4-markov,Markov,U4,Listed as open source in YC directory; repository and licence not checked,,partial,US,2026,private,yes,1,find_pages and company site gave nothing beyond YC,,2026-11-26T06:28:26Z
+u4-matano,Matano,U4,Open-source cloud-native SIEM (YC directory); licence not checked,,partial,US,2022,private,yes,1,No seed announcement found; matano.dev returned nearly empty page,,2026-11-26T06:28:26Z
+u4-maxun,Maxun,U4,"Open-source web data extraction, repo getmaxun/maxun; licence not checked",https://github.com/getmaxun/maxun,yes,IN,2023,private,none_found,0,Runa lists no funding; nothing found elsewhere,,2026-11-26T06:28:26Z
+u4-medplum,Medplum,U4,Open-source API-first EHR (YC directory); licence not checked,,yes,US,2022,private,yes,1,"No priced round found on company blog pages checked; memory: later rounds likely exist, not verified",,2026-11-26T06:28:26Z
+u4-melty,Melty,U4,"Open-source AI code editor, repo meltylabs/melty; licence not checked",https://github.com/meltylabs/melty,yes,US,2024,private,none_found,0,Runa figure 0.5 USD M but no investor names found; no page naming funders,,2026-11-26T06:28:26Z
+u4-memori-labs,Memori Labs,U4,"Open-source agent memory, repo MemoriLabs/Memori; licence not checked",https://github.com/MemoriLabs/Memori,yes,US,2024,private,none_found,0,Runa figure 3.7 USD M but no investor names found,,2026-11-26T06:28:26Z
+u4-mentra,Mentra,U4,MentraOS open-source smart glasses OS (YC directory); licence not checked,,yes,US,2024,private,yes,2,"The 2023 TechCrunch Mentra (neurodivergent jobseekers) is a different company, excluded",https://mentraglass.com/about,2026-11-26T06:28:26Z
+u4-metorial,Metorial,U4,Open-source MCP gateway (YC directory); licence not checked,,yes,US,2025,private,yes,1,Nothing beyond YC found,,2026-11-26T06:28:26Z
+u4-metriport,Metriport,U4,Open-source healthcare data infrastructure platform; licence not stated on page,https://www.metriport.com/blog/metriport-series-a,yes,US,2022,private,yes,3,,,2026-11-26T06:28:26Z

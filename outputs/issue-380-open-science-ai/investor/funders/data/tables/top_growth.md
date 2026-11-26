@@ -1,9 +1,9 @@
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
 | Insight Partners | growth, crossover or PE | 17 | 14 | Anaconda, Inc., Apollo, Appsmith, Astronomer, Automattic, Bitrise, CrewAI, Databricks … |
-| Coatue | growth, crossover or PE | 15 | 6 | ClickHouse, Databricks, Nomic AI, SiFive, Stability AI, Supabase, Airbyte, Cockroach Labs … |
+| Coatue | growth, crossover or PE | 16 | 7 | ClickHouse, Databricks, Nomic AI, Raycast, SiFive, Stability AI, Supabase, Airbyte … |
 | Tiger Global | growth, crossover or PE | 12 | 6 | Appwrite, Cohere, OctoML, Redis Ltd., Temporal Technologies, Tiger Data, Automattic, Beam … |
-| GIC | state or sovereign investor | 10 | 2 | Supabase, Vercel, Anaconda, Inc., ClickHouse, Databricks, Grafana Labs, LangChain, PingCAP … |
+| GIC | state or sovereign investor | 10 | 3 | Grafana Labs, Supabase, Vercel, Anaconda, Inc., ClickHouse, Databricks, LangChain, PingCAP … |
 | Goldman Sachs | growth, crossover or PE | 9 | 4 | GitLab Inc., Harness, NGINX, Redis Ltd., Databricks, Kong Inc., Mirantis, SugarCRM … |
 | Bpifrance | state or sovereign investor | 8 | 0 | Genymobile, H Company, HARFANG 3D, Mistral AI, Pollen Robotics, Probabl, Strapi, Talend |
 | Altimeter Capital | growth, crossover or PE | 6 | 6 | Airbyte, ClickHouse, Cockroach Labs, LiveKit, Prisma Data, Inc., dbt Labs |

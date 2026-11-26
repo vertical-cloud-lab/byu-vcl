@@ -7,21 +7,21 @@
 | Guillermo Rauch | person (angel) | 11 | 0 | Chroma, Comfy Org, Dub Technologies, Mastra, Meilisearch, Prisma Data, Inc., ProjectDiscovery, Saleor Commerce … |
 | Nexus Venture Partners | venture firm | 11 | 8 | Firecrawl, Hasura, MinIO Inc., Nrwl, OpenObserve, Orkes, TileDB, Inc., ToolJet … |
 | CRV | venture firm | 10 | 6 | Gatsby, Meilisearch, ProjectDiscovery, Strapi, Tailscale, Vercel, Browserbase, Kong Inc. … |
+| Index Ventures | venture firm | 10 | 6 | ClickHouse, Gatsby, Kong Inc., Lightning AI, Strapi, Temporal Technologies, Cockroach Labs, Elastic N.V. … |
 | Redpoint Ventures | venture firm | 10 | 3 | Mattermost, Tiger Data, Zed Industries, ClickHouse, Cockroach Labs, Coder Technologies, DragonflyDB, HashiCorp … |
 | SV Angel | venture firm | 10 | 0 | Anomaly, Civilized Discourse Construction Kit, Expo, Hugging Face, Lightning AI, Mastra, Modular Inc., Payload … |
 | Coatue | growth, crossover or PE | 9 | 3 | ClickHouse, Stability AI, Supabase, Cockroach Labs, Grafana Labs, HTTPie, Hugging Face, Lightning AI … |
 | GGV Capital (US arm now Notable Capital) | venture firm | 9 | 4 | Browserbase, LocalStack, PingCAP, Vercel, Coder Technologies, HashiCorp, Kong Inc., Neon … |
-| Index Ventures | venture firm | 9 | 6 | ClickHouse, Gatsby, Kong Inc., Lightning AI, Strapi, Temporal Technologies, Cockroach Labs, MinIO Inc. … |
 | Lightspeed Venture Partners | venture firm | 9 | 5 | Grafana Labs, Hasura, Serverless, Inc., Stability AI, Temporal Technologies, ClickHouse, Langfuse, ProjectDiscovery … |
+| New Enterprise Associates | venture firm | 9 | 7 | Anyscale, Elastic N.V., Metabase, NGINX, Pulumi, Sentry, Tiger Data, MongoDB Inc. … |
 | OSS Capital | venture firm | 9 | 4 | AppFlowy, OpenBB Inc., Plane, Tracel Inc., Appsmith, Cal.com, Inc., NocoDB, Nous Research … |
+| Benchmark | venture firm | 8 | 6 | ClickHouse, Cockroach Labs, Docker Inc., LangChain, Ollama, Tiger Data, Elastic N.V., MindsDB |
 | GV | corporate / strategic | 8 | 3 | Vercel, Warp, deepset, Cockroach Labs, GitLab Inc., Harness, Modular Inc., PostHog Inc. |
 | General Catalyst | venture firm | 8 | 3 | Ionic, MinIO Inc., Modular Inc., Black Forest Labs, Fig, Kilo Code, Langfuse, Neon |
 | Insight Partners | growth, crossover or PE | 8 | 7 | Appsmith, CrewAI, Docker Inc., E2B, Metabase, Promptfoo, Tailscale, Deno Land Inc. |
-| New Enterprise Associates | venture firm | 8 | 6 | Anyscale, Metabase, NGINX, Pulumi, Sentry, Tiger Data, MongoDB Inc., Rocket.Chat |
-| Benchmark | venture firm | 7 | 6 | ClickHouse, Cockroach Labs, Docker Inc., LangChain, Ollama, Tiger Data, MindsDB |
 | Bessemer Venture Partners | venture firm | 7 | 3 | Appwrite, Cypress.io, Netdata Inc., Appsmith, ClickHouse, HashiCorp, Portainer.io |
 | David Cramer | person (angel) | 7 | 0 | Earendil Inc., FastAPI Labs, Mastra, Strapi, Supermemory, Vercel, VoidZero |
-| GIC | state or sovereign investor | 7 | 2 | Supabase, Vercel, ClickHouse, Grafana Labs, LangChain, PingCAP, Temporal Technologies |
+| GIC | state or sovereign investor | 7 | 3 | Grafana Labs, Supabase, Vercel, ClickHouse, LangChain, PingCAP, Temporal Technologies |
 | Tiger Global | growth, crossover or PE | 7 | 4 | Appwrite, Redis Ltd., Temporal Technologies, Tiger Data, Cockroach Labs, Kong Inc., Vercel |
 | Amplify Partners | venture firm | 6 | 2 | Prisma Data, Inc., Temporal Technologies, Anyscale, LangChain, VoidZero, tldraw Inc. |
 | Battery Ventures | venture firm | 6 | 2 | InfluxData, Orkes, ClickHouse, Cypress.io, Harness, Mattermost |

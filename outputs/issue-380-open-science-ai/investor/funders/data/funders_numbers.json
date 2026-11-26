@@ -5,15 +5,15 @@
   "with_funding": 219,
   "none_found": 159,
   "bootstrapped_stated": 9,
-  "rounds": 471,
-  "links": 1386,
-  "funders": 848,
-  "funders_1": 658,
+  "rounds": 475,
+  "links": 1383,
+  "funders": 842,
+  "funders_1": 652,
   "funders_3plus": 96,
   "funders_5plus": 45,
-  "funders_10plus": 9,
-  "top10_share_of_links": 0.11,
-  "top50_share_of_links": 0.284,
+  "funders_10plus": 10,
+  "top10_share_of_links": 0.111,
+  "top50_share_of_links": 0.287,
   "top15": [
    [
     "Y Combinator",
@@ -44,6 +44,10 @@
     10
    ],
    [
+    "Index Ventures",
+    10
+   ],
+   [
     "Redpoint Ventures",
     10
    ],
@@ -60,20 +64,16 @@
     9
    ],
    [
-    "Index Ventures",
+    "Lightspeed Venture Partners",
     9
    ],
    [
-    "Lightspeed Venture Partners",
+    "New Enterprise Associates",
     9
    ],
    [
     "OSS Capital",
     9
-   ],
-   [
-    "GV",
-    8
    ]
   ]
  },
@@ -84,14 +84,14 @@
   "none_found": 24,
   "bootstrapped_stated": 3,
   "rounds": 146,
-  "links": 337,
-  "funders": 281,
-  "funders_1": 248,
-  "funders_3plus": 11,
+  "links": 339,
+  "funders": 283,
+  "funders_1": 249,
+  "funders_3plus": 10,
   "funders_5plus": 1,
   "funders_10plus": 1,
-  "top10_share_of_links": 0.125,
-  "top50_share_of_links": 0.315,
+  "top10_share_of_links": 0.124,
+  "top50_share_of_links": 0.313,
   "top15": [
    [
     "Kickstarter backers",
@@ -126,10 +126,6 @@
     3
    ],
    [
-    "General Catalyst",
-    3
-   ],
-   [
     "Qualcomm Ventures",
     3
    ],
@@ -152,6 +148,10 @@
    [
     "Battery Ventures",
     2
+   ],
+   [
+    "Bezos Expeditions",
+    2
    ]
   ]
  },
@@ -161,15 +161,15 @@
   "with_funding": 92,
   "none_found": 8,
   "bootstrapped_stated": 0,
-  "rounds": 265,
-  "links": 723,
-  "funders": 499,
-  "funders_1": 404,
+  "rounds": 266,
+  "links": 735,
+  "funders": 509,
+  "funders_1": 413,
   "funders_3plus": 39,
-  "funders_5plus": 14,
+  "funders_5plus": 15,
   "funders_10plus": 5,
-  "top10_share_of_links": 0.137,
-  "top50_share_of_links": 0.317,
+  "top10_share_of_links": 0.135,
+  "top50_share_of_links": 0.313,
   "top15": [
    [
     "Intel Capital",
@@ -228,30 +228,30 @@
     5
    ],
    [
-    "Amplify Partners",
-    4
+    "Samsung",
+    5
    ]
   ]
  },
  "U4": {
   "ventures": 402,
-  "researched": 241,
-  "with_funding": 188,
-  "none_found": 52,
+  "researched": 260,
+  "with_funding": 204,
+  "none_found": 55,
   "bootstrapped_stated": 1,
-  "rounds": 294,
-  "links": 620,
-  "funders": 354,
-  "funders_1": 291,
-  "funders_3plus": 20,
+  "rounds": 315,
+  "links": 669,
+  "funders": 372,
+  "funders_1": 297,
+  "funders_3plus": 24,
   "funders_5plus": 6,
   "funders_10plus": 1,
-  "top10_share_of_links": 0.34,
-  "top50_share_of_links": 0.489,
+  "top10_share_of_links": 0.336,
+  "top50_share_of_links": 0.481,
   "top15": [
    [
     "Y Combinator",
-    165
+    179
    ],
    [
     "Andreessen Horowitz",
@@ -278,6 +278,10 @@
     4
    ],
    [
+    "Accel",
+    4
+   ],
+   [
     "Felicis",
     4
    ],
@@ -298,15 +302,11 @@
     4
    ],
    [
-    "Accel",
-    3
-   ],
-   [
     "Alumni Ventures",
     3
    ],
    [
-    "CRV",
+    "Amplify Partners",
     3
    ]
   ]
@@ -317,15 +317,15 @@
   "with_funding": 381,
   "none_found": 191,
   "bootstrapped_stated": 12,
-  "rounds": 882,
-  "links": 2446,
+  "rounds": 887,
+  "links": 2457,
   "funders": 1387,
-  "funders_1": 1057,
+  "funders_1": 1053,
   "funders_3plus": 165,
-  "funders_5plus": 76,
+  "funders_5plus": 78,
   "funders_10plus": 30,
-  "top10_share_of_links": 0.1,
-  "top50_share_of_links": 0.258,
+  "top10_share_of_links": 0.101,
+  "top50_share_of_links": 0.259,
   "top15": [
    [
     "Y Combinator",
@@ -353,15 +353,15 @@
    ],
    [
     "New Enterprise Associates",
-    20
+    21
    ],
    [
     "Index Ventures",
-    19
+    20
    ],
    [
     "Benchmark",
-    18
+    19
    ],
    [
     "Coatue",
@@ -391,18 +391,18 @@
  },
  "types_all": {
   "accelerator": 14,
-  "venture_firm": 773,
-  "corporate_venture": 153,
+  "venture_firm": 774,
+  "corporate_venture": 152,
   "growth_pe_hedge": 85,
+  "angel": 388,
   "crowdfunding": 9,
-  "angel": 387,
   "public_investor": 25,
   "bank_or_debt": 7,
   "crypto_fund_or_dao": 35,
   "other": 3,
   "government_grant": 29,
   "philanthropy": 11,
-  "unclassified": 74
+  "unclassified": 77
  },
  "led_top": [
   [
@@ -411,27 +411,27 @@
   ],
   [
    "Accel",
-   14
+   15
   ],
   [
    "Insight Partners",
    14
   ],
   [
+   "New Enterprise Associates",
+   13
+  ],
+  [
    "Sequoia Capital",
    12
   ],
   [
-   "New Enterprise Associates",
-   12
+   "Index Ventures",
+   11
   ],
   [
    "Benchmark",
    11
-  ],
-  [
-   "Index Ventures",
-   10
   ],
   [
    "CRV",
@@ -450,19 +450,19 @@
    8
   ],
   [
+   "Lux Capital",
+   8
+  ],
+  [
+   "Coatue",
+   7
+  ],
+  [
    "General Catalyst",
    7
   ],
   [
-   "Lux Capital",
-   7
-  ],
-  [
    "Intel Capital",
-   6
-  ],
-  [
-   "Coatue",
    6
   ]
  ],
@@ -474,7 +474,7 @@
    ],
    [
     "New Enterprise Associates",
-    11
+    12
    ],
    [
     "Andreessen Horowitz",
@@ -489,6 +489,14 @@
     7
    ],
    [
+    "Benchmark",
+    6
+   ],
+   [
+    "Mayfield",
+    6
+   ],
+   [
     "True Ventures",
     6
    ],
@@ -497,24 +505,16 @@
     5
    ],
    [
-    "Benchmark",
-    5
-   ],
-   [
     "Goldman Sachs",
     5
    ],
    [
-    "Mayfield",
+    "Index Ventures",
     5
    ],
    [
-    "Battery Ventures",
-    4
-   ],
-   [
-    "CRV",
-    4
+    "Nexus Venture Partners",
+    5
    ]
   ],
   "2020 on": [
@@ -619,18 +619,18 @@
   ]
  },
  "era_links": {
-  "2010-2019": 462,
-  "2020 on": 1705,
+  "2010-2019": 468,
+  "2020 on": 1710,
   "before 2010": 63
  },
  "rounds_by_source_kind": {
-  "news": 562,
-  "company": 294,
-  "wikipedia": 87,
-  "other": 186,
+  "news": 577,
+  "company": 299,
+  "wikipedia": 88,
+  "other": 198,
   "investor": 5,
-  "database": 34,
-  "filing": 15
+  "filing": 16,
+  "database": 34
  },
  "source_check": {
   "mentions": 2697,
@@ -649,7 +649,7 @@
   ],
   [
    "Accel",
-   "28"
+   "29"
   ],
   [
    "Sequoia Capital",
@@ -657,11 +657,11 @@
   ],
   [
    "New Enterprise Associates",
-   "21"
+   "22"
   ],
   [
    "Index Ventures",
-   "20"
+   "22"
   ],
   [
    "Insight Partners",
@@ -684,12 +684,12 @@
    "13"
   ],
   [
-   "OSS Capital",
+   "Lux Capital",
    "11"
   ],
   [
-   "Lux Capital",
-   "10"
+   "OSS Capital",
+   "11"
   ],
   [
    "SignalFire",
@@ -712,15 +712,15 @@
    "7"
   ],
   [
+   "Databricks Ventures",
+   "6"
+  ],
+  [
    "Madrona Venture Group",
    "5"
   ],
   [
    "Runa Capital",
-   "5"
-  ],
-  [
-   "Databricks Ventures",
    "5"
   ],
   [
@@ -736,15 +736,15 @@
    "2"
   ],
   [
+   "Zetta Venture Partners",
+   "2"
+  ],
+  [
    "Serena",
    "1"
   ],
   [
    "Zerodha",
-   "1"
-  ],
-  [
-   "Zetta Venture Partners",
    "1"
   ]
  ]

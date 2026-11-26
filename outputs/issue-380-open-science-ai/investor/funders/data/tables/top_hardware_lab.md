@@ -1,7 +1,7 @@
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
 | Kickstarter backers | crowdfunding | 11 | 0 | Augmented Instruments, Great Scott Gadgets, Luxonis, OpenBCI, OpenMV, Opentrons Labworks, Pine64, Printrbot … |
-| Y Combinator | accelerator / studio | 9 | 0 | AnythingLLM, Cerulion, GitLab Inc., K-Scale Labs, Opentrons Labworks, PeerDB, Robocurve, Rowboat Labs … |
+| Y Combinator | accelerator / studio | 10 | 0 | AnythingLLM, Cerulion, GitLab Inc., K-Scale Labs, Opentrons Labworks, PeerDB, Robocurve, Rowboat Labs … |
 | True Ventures | venture firm | 6 | 1 | Pipedream, 3D Robotics, Inventables, MakerBot Industries, Monospace Inc., Sofar Ocean Technologies |
 | Crowd Supply backers | crowdfunding | 3 | 0 | Lime Microsystems, MNT Research, Yunnan BinaryStars Technologies |
 | Foundry Group | venture firm | 3 | 2 | MakerBot Industries, Sofar Ocean Technologies, 3D Robotics |
@@ -27,6 +27,7 @@
 | Agostinelli Group | person (angel) | 1 | 0 | Tenstorrent |
 | AlleyCorp | venture firm | 1 | 0 | Radical AI |
 | Alumni Ventures | venture firm | 1 | 0 | Trilobio |
+| Amplify Partners | venture firm | 1 | 0 | ReadySet |
 | Andreessen Horowitz | venture firm | 1 | 0 | Sesame |
 | Angel Squad | venture firm | 1 | 0 | Trilobio |
 | Anthony Goldbloom | person (angel) | 1 | 1 | marimo |
@@ -39,4 +40,3 @@
 | August Capital | venture firm | 1 | 1 | GitLab Inc. |
 | Avego | unclassified | 1 | 1 | Opentrons Labworks |
 | Baillie Gifford | growth, crossover or PE | 1 | 0 | Tenstorrent |
-| Beijing AI Industry Investment Fund | state or sovereign investor | 1 | 0 | ModelBest |

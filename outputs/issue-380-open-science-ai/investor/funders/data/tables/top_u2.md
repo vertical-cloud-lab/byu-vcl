@@ -8,7 +8,6 @@
 | Costanoa Ventures | venture firm | 3 | 1 | Coiled, Auterion, prefix.dev |
 | Digital Science | corporate / strategic | 3 | 0 | Authorea, Figshare, Overleaf |
 | Foundry Group | venture firm | 3 | 2 | MakerBot Industries, Sofar Ocean Technologies, 3D Robotics |
-| General Catalyst | venture firm | 3 | 1 | Chai Discovery, JuliaHub, Posit PBC |
 | Qualcomm Ventures | corporate / strategic | 3 | 2 | 3D Robotics, Particle, SiFive |
 | Spark Capital | venture firm | 3 | 3 | Framework Computer, Particle, SiFive |
 | Anzu Partners | venture firm | 2 | 1 | Arduino, Framework Computer |
@@ -21,11 +20,13 @@
 | Crowd Supply backers | crowdfunding | 2 | 0 | Lime Microsystems, MNT Research |
 | Eclipse Ventures | venture firm | 2 | 1 | Oxide Computer Company, Tenstorrent |
 | Gaingels | venture firm | 2 | 0 | Molecule, Trilobio |
+| General Catalyst | venture firm | 2 | 1 | Chai Discovery, JuliaHub |
 | Greycroft | venture firm | 2 | 0 | Boltz PBC, Inventables |
 | IDTheory | venture firm | 2 | 0 | LabDAO, Molecule |
 | Intel Capital | corporate / strategic | 2 | 0 | Oxide Computer Company, SiFive |
 | L1 Digital | crypto fund or DAO | 2 | 0 | Molecule, VitaDAO |
 | Lux Capital | venture firm | 2 | 2 | Authorea, EvolutionaryScale |
+| Menlo Ventures | venture firm | 2 | 1 | Chai Discovery, JuliaHub |
 | National Science Foundation (SBIR) | government grant | 2 | 0 | Kitware, re:3D |
 | Pillar VC | venture firm | 2 | 0 | Molecule, Rowan |
 | SOSV | accelerator / studio | 2 | 0 | Crowd Supply, Particle |

@@ -14,6 +14,7 @@
 | Alibaba | corporate / strategic | 5 | 5 | 01.AI, Baichuan Intelligence, MariaDB, MiniMax, Moonshot AI |
 | Coatue | growth, crossover or PE | 5 | 2 | Databricks, Nomic AI, Airbyte, Dagster Labs, Together AI |
 | SAP Ventures | corporate / strategic | 5 | 1 | Jaspersoft, Alfresco Software, Mirantis, MySQL AB, Zend Technologies |
+| Samsung | corporate / strategic | 5 | 2 | AI21 Labs, Mistral AI, ClearML, Liquid AI, MosaicML |
 | Amplify Partners | venture firm | 4 | 1 | OctoML, Dagster Labs, Outerbounds, dbt Labs |
 | Cisco Investments | corporate / strategic | 4 | 1 | Puppet, Cohere, Mistral AI, MuleSoft |
 | Dell Technologies Capital | corporate / strategic | 4 | 0 | JFrog, Prime Intellect, SpringSource / Pivotal Software, Treeverse |
@@ -21,7 +22,6 @@
 | Meritech Capital Partners | venture firm | 4 | 1 | ForgeRock, Astronomer, MuleSoft, Sourcefire |
 | Red Hat | corporate / strategic | 4 | 1 | Jaspersoft, Gluster, Mirantis, MySQL AB |
 | SV Angel | venture firm | 4 | 0 | Airbyte, Mistral AI, Nomic AI, Together AI |
-| Samsung | corporate / strategic | 4 | 2 | AI21 Labs, Mistral AI, ClearML, MosaicML |
 | Sapphire Ventures | venture firm | 4 | 0 | JFrog, Kaltura, Mirantis, MuleSoft |
 | Tencent | corporate / strategic | 4 | 2 | Baichuan Intelligence, Moonshot AI, MiniMax, StepFun |
 | Tiger Global | growth, crossover or PE | 4 | 2 | Cohere, OctoML, Automattic, Databricks |
@@ -39,4 +39,4 @@
 | Nexus Venture Partners | venture firm | 3 | 0 | Deep Cogito, Gluster, Kaltura |
 | Redpoint Ventures | venture firm | 3 | 1 | Couchbase, Mistral AI, Zimbra |
 | True Ventures | venture firm | 3 | 1 | Puppet, Automattic, Iterative |
-| 8VC | venture firm | 2 | 0 | Airbyte, Dagster Labs |
+| 5Y Capital | venture firm | 2 | 0 | Moonshot AI, StepFun |

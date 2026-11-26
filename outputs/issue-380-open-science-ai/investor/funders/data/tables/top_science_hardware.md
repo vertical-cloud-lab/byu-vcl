@@ -12,7 +12,6 @@
 | Crowd Supply backers | crowdfunding | 3 | 0 | Lime Microsystems, MNT Research, Yunnan BinaryStars Technologies |
 | Digital Science | corporate / strategic | 3 | 0 | Authorea, Figshare, Overleaf |
 | Foundry Group | venture firm | 3 | 2 | MakerBot Industries, Sofar Ocean Technologies, 3D Robotics |
-| General Catalyst | venture firm | 3 | 1 | Chai Discovery, JuliaHub, Posit PBC |
 | Lux Capital | venture firm | 3 | 3 | Authorea, EvolutionaryScale, Hugging Face |
 | SOSV | accelerator / studio | 3 | 0 | Crowd Supply, Opentrons Labworks, Particle |
 | Sequoia Capital | venture firm | 3 | 1 | Observable, Inc., Chai Discovery, Hugging Face |
@@ -29,9 +28,11 @@
 | Counterpart Ventures | venture firm | 2 | 0 | Oxide Computer Company, Particle |
 | Eclipse Ventures | venture firm | 2 | 1 | Oxide Computer Company, Tenstorrent |
 | Gaingels | venture firm | 2 | 0 | Molecule, Trilobio |
+| General Catalyst | venture firm | 2 | 1 | Chai Discovery, JuliaHub |
 | Greycroft | venture firm | 2 | 0 | Boltz PBC, Inventables |
 | IDTheory | venture firm | 2 | 0 | LabDAO, Molecule |
 | L1 Digital | crypto fund or DAO | 2 | 0 | Molecule, VitaDAO |
+| Menlo Ventures | venture firm | 2 | 1 | Chai Discovery, JuliaHub |
 | National Science Foundation (SBIR) | government grant | 2 | 0 | Kitware, re:3D |
 | Pillar VC | venture firm | 2 | 0 | Molecule, Rowan |
 | Seed Club Ventures | crypto fund or DAO | 2 | 0 | LabDAO, Molecule |

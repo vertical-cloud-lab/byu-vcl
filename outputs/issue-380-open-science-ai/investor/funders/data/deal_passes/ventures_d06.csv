@@ -1,0 +1,26 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+u4-kaelio,Kaelio,U4,YC page calls it the open-source context layer for data agents; repo and licence not verified,,partial,US,2025,private,yes,1,No priced round found,https://www.kaelio.com/about,2026-11-26T06:27:31Z
+u4-kailash-labs,Kailash Labs,U4,YC directory tags open source; repo/licence not verified,,partial,,2026,private,yes,1,Nothing beyond YC found,,2026-11-26T06:27:31Z
+u4-karate-labs,Karate Labs,U4,"Karate framework on GitHub, MIT license; paid tiers add IDE plugins and enterprise features",https://github.com/karatelabs/karate,yes,US,2021,private,yes,2,,,2026-11-26T06:27:31Z
+u4-keep,Keep,U4,keephq/keep open-source AIOps and alert management platform on GitHub; licence not read,https://github.com/keephq/keep,yes,Israel,2023,acquired,yes,1,Company site says Keep joined forces with Elastic; no priced round found,https://www.keephq.dev,2026-11-26T06:27:31Z
+u4-kernel,KERNEL,U4,"kernel-images browser infrastructure repo, Apache-2.0",https://github.com/onkernel/kernel-images,yes,US,2025,private,yes,2,,,2026-11-26T06:27:31Z
+u4-keydb,KeyDB,U4,"Multithreaded Redis fork, BSD-3-Clause (Snapchat/KeyDB repo)",https://github.com/Snapchat/KeyDB,yes,US,2019,acquired,yes,1,No priced round found,,2026-11-26T06:27:31Z
+u4-kortix,Kortix,U4,"kortix-ai/suna (CompanyOS) open-source agent OS on GitHub; licence not read, site mentions a white-label licence",https://github.com/kortix-ai/suna,yes,US,2024,private,none_found,0,"No funding page found on site, YC or find_pages",,2026-11-26T06:28:58Z
+u4-kroma,Kroma,U4,"kroma-network/tachyon, modular ZK backend, MIT among other licences",https://github.com/kroma-network/tachyon,yes,Korea,2021,unknown,none_found,0,No funding page found; site did not load,,2026-11-26T06:28:58Z
+u4-lago,Lago,U4,getlago/lago open-source metering and usage-based billing API,https://github.com/getlago/lago,yes,France,2021,private,yes,3,Company site logos also show Mistral AI,https://getlago.com/about-us,2026-11-26T06:28:58Z
+u4-lamin,Lamin,U4,"lamindb open-source data management, Apache-2.0",https://github.com/laminlabs/lamindb,yes,Germany,2022,private,yes,2,,,2026-11-26T06:28:58Z
+u4-laminar,Laminar,U4,lmnr-ai/lmnr open-source observability platform for AI agents,https://github.com/lmnr-ai/lmnr,yes,US,2024,private,yes,1,Not the Israeli cloud-security Laminar (Rubrik). No seed round found,,2026-11-26T06:28:58Z
+u4-lantern,Lantern,U4,"lanterndata/lantern Postgres vector extension, AGPL-3.0",https://github.com/lanterndata/lantern,yes,US,2023,unknown,yes,2,,,2026-11-26T06:28:58Z
+u4-lastmile-ai,LastMile AI,U4,"lastmile-ai/mcp-agent, Apache-2.0",https://github.com/lastmile-ai/mcp-agent,yes,US,2023,private,yes,1,,,2026-11-26T06:28:58Z
+u4-laudspeaker,Laudspeaker,U4,"AGPL-3.0 customer engagement platform, ee directory under separate licence",https://github.com/laudspeaker/laudspeaker,yes,US,2021,acquired,yes,1,No priced round found,,2026-11-26T06:28:58Z
+u4-lepton-ai,Lepton AI,U4,"search_with_lepton demo repo open source; platform itself commercial, repo licence not read",https://github.com/leptonai/search_with_lepton,partial,US,2023,acquired,yes,1,,,2026-11-26T06:28:58Z
+u4-librechat,LibreChat,U4,"danny-avila/LibreChat open-source chat platform, MIT licence (per ClickHouse post)",https://github.com/danny-avila/LibreChat,yes,US,2023,acquired,none_found,0,Acquired by ClickHouse Nov 2025 per lead; no outside funding found,https://clickhouse.com/blog/librechat-open-source-agentic-data-stack,2026-11-26T06:30:09Z
+u4-lightdash,Lightdash,U4,Open-source BI platform (Looker alternative); licence not read,https://github.com/lightdash/lightdash,yes,UK,2020,private,yes,4,Seed amount may include pre-seed; ambiguous,,2026-11-26T06:30:09Z
+u4-limnion,Limnion,U4,"Siglake open-source telemetry platform, Apache-2.0 (per company site)",https://limnion.ai/,yes,US,2026,private,yes,2,,,2026-11-26T06:30:09Z
+u4-litellm,LiteLLM,U4,BerriAI/litellm open-source AI gateway on GitHub; licence not read,https://github.com/BerriAI/litellm,yes,US,2023,private,yes,2,,,2026-11-26T06:30:09Z
+u4-lotus,Lotus,U4,"uselotus/lotus open-core pricing and billing, MIT licence",https://github.com/uselotus/lotus,yes,US,2022,shut_down,yes,1,No other round found,,2026-11-26T06:30:09Z
+u4-lucebox,Lucebox,U4,"Luce-Org/lucebox-hub inference engine, Apache-2.0",https://github.com/Luce-Org/lucebox-hub,yes,,2026,private,yes,2,,,2026-11-26T06:30:09Z
+u4-lunasec,LunaSec,U4,lunasec-io/lunasec open-source dependency security scanner; licence not read,https://github.com/lunasec-io/lunasec,yes,US,2019,unknown,yes,1,Nothing beyond YC found,,2026-11-26T06:30:09Z
+u4-lunatic,Lunatic,U4,"lunatic-solutions/lunatic Erlang-inspired WebAssembly runtime, Apache-2.0 and MIT",https://github.com/lunatic-solutions/lunatic,yes,,2020,unknown,yes,1,Nothing beyond YC found,,2026-11-26T06:30:09Z
+u4-magnitude,Magnitude,U4,"magnitudedev/magnitude open-source inference engine, Apache-2.0",https://github.com/magnitudedev/magnitude,yes,,2025,private,yes,1,Site logo shows only YC; nothing else found,,2026-11-26T06:30:09Z
+u4-manufact,Manufact,U4,mcp-use/mcp-use open-source MCP framework on GitHub; licence not read,https://github.com/mcp-use/mcp-use,yes,,2025,private,yes,1,,,2026-11-26T06:30:09Z
