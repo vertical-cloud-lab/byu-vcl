@@ -120,13 +120,15 @@ CHAPTERS = [
                  None)]),
     # round 15: the safety PR's units come in with the utilities (#379), the waste station with the fume hood (#371),
     # floor-cleaning unit 3 parks on a third charger (#369), and each MiR250 brings its three cameras (#374) and its
-    # Class D unit. The cups' machining cell (#373) and the ICP-MS station (round 14) have no clean spot on this floor
-    # yet (notes/lab_r15.md), so their clips show them on their own
+    # Class D unit. Round 16 (PR #371's check): the cups' machining cell (#373) gets a spot south of the south row
+    # (notes/lab_r16.md) and the powder-waste point stands beside the rePowder (powder_point.py); the ICP-MS station
+    # still has no clean spot (notes/lab_r15.md), so its clip shows it on its own
     dict(key="setup", title="The lab set up from scratch",
          card=["An empty warehouse bay: the layout taped out, utilities overhead, two 30 ft (9.15 m) Kardex Shuttle XP "
-               "500s going up with a 996 mm opening, the floor machines, the safety equipment and a waste station under "
-               "the fume hood, the arms assembled onto their MiR250s (a third, floor-cleaning unit on its own "
-               "charger), then every tray "
+               "500s going up with a 996 mm opening, the floor machines, the safety equipment, a waste station under "
+               "the fume hood, the powder-waste point beside the atomizer and the cups' machining cell behind the south "
+               "row, the arms assembled onto their MiR250s (a third, floor-cleaning unit on its own charger), then "
+               "every tray "
                "loaded by people: a UPS and stream cameras on each powered one, none on the sample and powder-jar "
                "stores, whose short trays the cameras under each bay's roof inventory."],
          parts=[("mp4", "setup_lab.mp4", None),
@@ -170,14 +172,11 @@ CHAPTERS = [
                  "any Class D unit and signed differently; a shower and eyewash at each hood; O2 monitors "
                  "(notes/safety.md)", "Ordinary extinguishers, showers and O2 monitors")]),
     dict(key="corrosion", title="Tray A: the corrosion station, OT-2 and CubXL, and an ICP-MS station",
-         card=["The OT-2 makes up the CubXL's sulfide stock in seawater (digital-wetlab PR #83). The CubXL runs DAL's "
-               "copper corrosion screen spot by spot (DAL PR #180) with its P20 and, proposed, a P300 on a lift of its "
-               "own (PR #372); its magnet holds one cap at a time, so a second cap waits on an empty vial. The "
-               "multi-doser doses atomized powder for it by weight, and the P300 puts the test's 200 µL of seawater "
-               "on it in one transfer (round 16; ten with the P20).",
-               "No acid on the OT-2's deck (round 15): the CubXL acidifies its own tubes, and the capped tubes go to an "
-               "ICP-MS station beside the lab, whose dilutor makes the tenfold dilution in its own fume hood. Its place "
-               "on the floor plan is still open (round 14's spot is the Meltio cell's clearance)."],
+         card=["The OT-2 makes up the CubXL's sulfide stock. The CubXL runs DAL's copper corrosion screen spot by "
+               "spot (DAL PR #180) with its P20 and, proposed, a P300 on a lift of its own (PR #372), which also "
+               "puts the powder test's 200 µL of seawater in at once. Its magnet holds one cap at a time.",
+               "No acid on the OT-2's deck: the CubXL acidifies its own tubes, and an ICP-MS station, its floor spot "
+               "still open, dilutes them in its own fume hood."],
          # round 15: the OT-2's clip no longer dilutes the ICP-MS tubes (ot2_corrosion.py: no acid on its deck)
          parts=[("mp4", "instruments/ot2_corrosion_prep.mp4", "The OT-2: the CubXL's sulfide stock"),
                 ("mp4", "instruments/cubxl_corrosion.mp4", "The CubXL's corrosion screen"),
@@ -189,7 +188,7 @@ CHAPTERS = [
                 ("mp4", "icpms.mp4", "An ICP-MS station, its acids in a fume hood"),
                 ("mp4", "vlm_workflow.mp4", "Atomized powder dosed for the CubXL")]),
     dict(key="alloy1", title="Alloy route 1/7: the charge cups, machined, dosed, weighed and pressed under vacuum",
-         card=["The atomizer melts the lab's own charge cups (#222). A lathe cell (its spot on the floor still to find) turns each cup and its "
+         card=["The atomizer melts the lab's own charge cups (#222). A lathe cell behind the south row turns each cup and its "
                "plug from 5N Al or oxygen-free Cu bar, washes them in IPA and dries them under vacuum (PR #373). Each "
                "cup is dosed by weight on the A&D HR-202i under the multi-doser, and its vented plug pressed fully home "
                "under vacuum in a Specac Atlas Autotouch. The die is cleaned between presses, and every cup weighed "
@@ -350,12 +349,10 @@ CHAPTERS = [
     # (2026-11-20: "Where does each waste go, how do we get pickups ..."). After the upkeep, the lab's other housekeeping
     dict(key="floor", title="Keeping the floor clean, and the waste",
          card=["Metal powder on the floor is a fire hazard, and no cleaning robot on the market is rated for it. One "
-               "option, explored and not decided: a third MiR250 + UR12e, unit 3, bonds itself to a floor stud, "
-               "squeegees with the wand of an explosion-proof Nilfisk on wall power and checks the floor's colour. A "
-               "visible spill stays a person's job (PR #369).",
-               "Then the waste (PR #371): how much a year at one alloy a day and at ten (a model); a capped bottle's "
-               "trip to the fume hood's intake tray, its solvent and acid cabinets, and the powder-waste point at the "
-               "atomizer, with its vacuums and a pail for each alloy family."],
+               "option, explored, not decided: unit 3, a third MiR250 + UR12e, squeegees with an explosion-proof "
+               "Nilfisk's wand and checks the floor's colour; a visible spill stays a person's job (PR #369).",
+               "Then the waste (PR #371): a bottle's trip to the fume hood, its cabinets, and the powder-waste point "
+               "by the atomizer."],
          parts=[("mp4", "floor_clean_people.mp4", "Unit 3, and a person for a visible spill"),
                 ("mp4", "floor_pass.mp4", "A night's pass across the whole floor, from above"),
                 ("still", "waste_streams.png", 14.0, "Every waste stream, a year, at one fully tested alloy a day and at "
