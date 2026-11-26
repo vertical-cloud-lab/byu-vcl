@@ -36,24 +36,26 @@ ALIAS = {"fast": "heuristic+tiered", "best": "bofn3+tiered", "pk": "pkgfn3+tiere
 PLANS = ("wait", "parallel", "external")
 
 
-def _cfg(plan, policy, seed, days=DAYS, events=False, **opts):
+def _cfg(plan, policy, seed, days=DAYS, events=False, money=1.0, **opts):
     return dict(plan=plan, policy=policy, seed=seed, days=days, years_budget=days / 365.0, stock="stocked",
-                events=events, opts=opts)
+                events=events, money=money, opts=opts)
 
 
 EXPERIMENTS = {
     # the three plans, round 3's cheap policies (the heuristic on aluminium, the funnel on copper), 12 seeds
-    "plans": [_cfg(p, "fast", s, events=(s == 0)) for p in PLANS for s in range(12)],
-    # the same with each campaign's best policy of round 3 (time-aware BOFN on aluminium)
-    "plans_best": [_cfg(p, "best", s, events=(s == 0)) for p in PLANS for s in range(6)],
+    "plans": [_cfg(p, "fast", s) for p in PLANS for s in range(12)],
+    # the same with three times the money (every route can run at its capacity; round 3's copper test)
+    "plans_3x": [_cfg(p, "fast", s, money=3.0) for p in PLANS for s in range(12)],
+    # each campaign's best policy of round 3 (time-aware BOFN on aluminium, the funnel on copper)
+    "plans_best": [_cfg(p, "best", s) for p in PLANS for s in range(6)],
     # the parallel plan without one partner route at a time (where adding a route doesn't help)
     "routes": [_cfg("parallel", "fast", s, drop_routes=[r]) for r in
-               ("lpbf_3dpt", "utah_midi", "tensile_ext", "utah_mxlab", "mines_x2", "edm", "pip") for s in range(12)],
+               ("lpbf_3dpt", "utah_midi", "tensile_ext", "utah_mxlab", "mines_x2", "edm", "pip") for s in range(8)],
     # provenance: someone on site at each partner's first job, at the stand-in offsets and at twice them
     "provenance": [_cfg("parallel", "fast", s, provenance=pv, offset_mult=m) for m in (1.0, 2.0, 3.0)
                    for pv in ((), "all") for s in range(12)],
     # no learning curve (every station at full rate the day it is commissioned), to size the ramp-up's cost
-    "nolearn": [_cfg(p, "fast", s, learn=False) for p in ("wait", "parallel") for s in range(12)],
+    "nolearn": [_cfg(p, "fast", s, learn=False) for p in ("wait", "parallel") for s in range(8)],
 }
 
 
@@ -67,6 +69,8 @@ def run_id(cfg):
         parts.append(f"{k}-{'.'.join(v) if isinstance(v, (list, tuple)) else v}")
     if cfg.get("days", DAYS) != DAYS:
         parts.append(f"d{cfg['days']}")
+    if cfg.get("money", 1.0) != 1.0:
+        parts.append(f"money{cfg['money']:g}")
     return "_".join(str(p) for p in parts)
 
 
@@ -89,7 +93,7 @@ def run_one(cfg: dict) -> dict:
     from twin.opt.gp import STATS
     t0 = time.time()
     yb = cfg.get("years_budget", YEARS)
-    bud = {k: B2.BUDGET[k] * yb for k in ("flaime_al", "onr_cu")}
+    bud = {k: B2.BUDGET[k] * yb * cfg.get("money", 1.0) for k in ("flaime_al", "onr_cu")}
     specs = {k: C.Spec(k, bud[k], B2.WIP[k], cfg["seed"], 1.0, stock=cfg.get("stock", "stocked")) for k in bud}
     pols = make_policies(cfg["policy"], cfg["seed"])
     tw = R4.Twin4(specs, pols, plan=cfg["plan"], seed=cfg["seed"], horizon_days=cfg.get("days", DAYS),

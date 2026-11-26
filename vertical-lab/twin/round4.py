@@ -253,6 +253,30 @@ PROVENANCE = dict(usd={"utah_midi": 1500.0, "utah_mxlab": 1500.0, "lpbf_3dpt": 4
 
 PLANS = ("wait", "parallel", "external")
 
+# Stages a promising alloy moves through after discovery (round 4; the same rule in every plan, for every policy). An
+# alloy enters when its measured utility reaches the second target's level (T2), one at a time per campaign:
+#   A. production-representative powder: a gas-atomized lot (Valimet for aluminium, >= 50 kg; Ames for copper, 25 kg,
+#      as rounds 1-3), because the next two stages need kilograms the ultrasonic atomizer makes a few hundred grams
+#      at a time, and not as a production atomizer would;
+#   B. a distributed validation network: the gas lot made into parts and tested at every fabrication site of the plan
+#      at once (aluminium: the in-house MIDI, Utah's MIDI, 3D Powder Tech; copper: the in-house MX-Lab, Utah's MX-Lab,
+#      Mines' X2), each with its own process offset; it passes if the sites' mean true utility is at or above the
+#      state of the art (T1);
+#   C. a full part in an application-specific performance test at an outside laboratory (aluminium: a printed
+#      heat-exchanger or bracket in thermal-mechanical cycling, 6 weeks; copper: a DED repair on a seawater pump or
+#      valve part, 60 days in flowing seawater).
+# Money for the stages is a scale-up line of its own (FLAIME's DAG budgets six gas-atomization runs), so discovery's
+# money is the same in every plan. Durations and fees of stage C are assumed.
+STAGES = dict(
+    gas={"flaime_al": ("valimet", 50.0), "onr_cu": ("ames", 25.0)},
+    sites={"flaime_al": ("utah_midi@vcl", "utah_midi", "lpbf_3dpt"),
+           "onr_cu": ("utah_mxlab@vcl", "utah_mxlab", "mines_x2")},
+    site_h={"utah_midi@vcl": 8.0, "utah_midi": 8.0, "lpbf_3dpt": 8.0, "utah_mxlab@vcl": 8.0, "utah_mxlab": 4.0,
+            "mines_x2": 5.0},
+    app={"flaime_al": (42.0, 15_000.0, "a printed heat-exchanger or bracket, thermal-mechanical cycling"),
+         "onr_cu": (60.0, 20_000.0, "a DED repair on a seawater pump or valve part, 60 days in flowing seawater")},
+)
+
 
 class Resource4(fac.Resource):
     """A station of round 4: available from ``online_h``, and with a learning state (jobs done, curve)."""
@@ -585,7 +609,10 @@ class Campaign4(C.Campaign):
         self._last_route = []
         F = self.fac
         for role, hours in steps:
-            st = F.pick(role, t, hours, self.key, what)
+            if role.startswith("="):                  # a named station, not routed (the validation network's sites)
+                role = st = role[1:]
+            else:
+                st = F.pick(role, t, hours, self.key, what)
             hours = F.adjust(st, hours, what, self.key)
             if hours <= 0 and role not in ("nsl",):
                 continue
@@ -947,6 +974,16 @@ class Campaign4(C.Campaign):
         return v
 
 
+_T = {}
+
+
+def _targets():
+    if not _T:
+        from twin import bench2 as B2
+        _T.update(B2.targets())
+    return _T
+
+
 class Twin4(C.Twin):
     """Both campaigns on round 4's facility, from the day the funding arrives."""
 
@@ -969,6 +1006,7 @@ class Twin4(C.Twin):
         self.seq = itertools.count()
         self.trace = None
         self._iters = {k: 0 for k in self.campaigns}
+        self.stages = bool((opts or {}).get("stages", True))
 
     def run_async(self, verbose=False):
         """Round 3's event loop; a campaign is not asked before the plan's start (the cell's completion for
@@ -1008,6 +1046,8 @@ class Twin4(C.Twin):
                 g += self.DT_H
                 step += 1
                 continue
+            if step % 24 == 0 and self.stages:
+                self._stage_tick(g)
             order = keys if step % 2 == 0 else keys[::-1]
             if len(keys) == 2:
                 order = sorted(order, key=lambda k: self._atom_share(k, g) - self._money_share[k])
@@ -1037,6 +1077,123 @@ class Twin4(C.Twin):
             step += 1
         return self.summary()
 
+    # ------------------------------------------------------------------------------------------ stages
+    def _stage_tick(self, g):
+        """Once a day: start, advance or finish each campaign's alloy in the stages (``STAGES``)."""
+        from twin.opt.policies2 import Base2
+        T = _targets()
+        for k, c in self.campaigns.items():
+            if not hasattr(c, "stage"):
+                c.stage, c.stage_done, c.stage_tried, c.scale_usd = None, [], set(), 0.0
+            stg = c.stage
+            if stg is None:
+                try:
+                    rows = Base2.observed(c.policy, c.view(g))
+                except Exception:
+                    rows = []
+                cand = [(u, d) for d, u in rows if u >= T["T2"][k] and d not in c.stage_tried]
+                if not cand:
+                    continue
+                u, did = max(cand)
+                c.stage_tried.add(did)
+                gst, kg = STAGES["gas"][k]
+                t_r, usd = c._route([(gst, 8.0)], g, "stage gas", tag=dict(design=did, node="stage_gas"))
+                feed = c._gas_feed(dict(design=c.designs[did]["design"]))
+                c.scale_usd += usd + feed
+                c.stage = dict(design=did, u_meas=u, t0=g, step="gas", t_next=t_r, t_gas=None, sites={})
+                continue
+            if g < stg["t_next"]:
+                continue
+            if stg["step"] == "gas":
+                stg["t_gas"] = g
+                ends, us = [], []
+                lot = self._gas_lot(c, stg["design"])
+                for site in STAGES["sites"][k]:
+                    if site not in c.fac.res or site not in c.fac.cands(site.split("@")[0]) or \
+                            c.fac.res[site].online_h > g + 30 * H:
+                        continue
+                    t_s, u_s, usd = self._stage_site(c, site, stg["design"], lot, g)
+                    c.scale_usd += usd
+                    ends.append(t_s)
+                    us.append(u_s)
+                    stg["sites"][site] = dict(t=round(t_s / H, 2), u=round(u_s, 4))
+                stg["u_network"] = float(np.mean(us)) if us else 0.0
+                stg["step"], stg["t_next"] = "network", max(ends) if ends else g
+                continue
+            if stg["step"] == "network":
+                if stg["u_network"] < T["T1"][k]:
+                    c.stage_done.append(dict(stg, result="failed network", t_end=g))
+                    c.stage = None
+                    continue
+                dd, fee, what = STAGES["app"][k]
+                role = "utah_midi" if k == "flaime_al" else "utah_mxlab"
+                t_f, usd = c._route([(role, 8.0)], g, "stage full part", tag=dict(design=stg["design"],
+                                                                                   node="stage_part"))
+                c.scale_usd += usd + fee
+                stg["t_part"] = t_f
+                stg["step"], stg["t_next"] = "app", t_f + dd * H * math.exp(self.fac4.rng.normal(0, 0.2))
+                continue
+            if stg["step"] == "app":
+                u_true = max((d["u"] for d in c.demonstrated if d["design"] == stg["design"]), default=0.0)
+                c.stage_done.append(dict(stg, result="validated", t_end=g, u_true=u_true))
+                c.stage = None
+
+    def _gas_lot(self, c, did):
+        """A gas-atomized lot's truth (as Campaign._do_gas_atomize): volatile losses, finer and rounder powder."""
+        comp = dict(c.designs[did]["composition"])
+        al = c.key == "flaime_al"
+        for el, f in (("Mg", 0.03), ("Zn", 0.05), ("Li", 0.08), ("Mn", 0.02)):
+            if comp.get(el, 0) > 0:
+                comp[el] *= 1 - f
+        bal = c.space.balance
+        comp[bal] = 100.0 - sum(v for kk, v in comp.items() if kk != bal)
+        return dict(composition=comp, oxygen_ppm=900.0 if al else 300.0, satellite_frac=0.03, carbon_ppm=20.0,
+                    runs=[], reuse=0.0)
+
+    def _stage_site(self, c, site, did, lot, g):
+        """One site of the validation network: the gas lot made into a part at the site's settings (the alloy's best
+        so far) with the site's process offset, then tested on the plan's routes. Returns (result time, true
+        utility, money)."""
+        al = c.key == "flaime_al"
+        F = c.fac
+        if al:
+            prm = None
+            for t in sorted(c.tests, key=lambda t: t["t"]):
+                if t["design"] == did and t.get("params"):
+                    prm = t["params"]
+            prm = dict(prm or {"P_W": 250.0, "v_mm_s": 900.0, "h_um": 100.0, "t_um": 30.0, "T0_C": 100.0})
+            steps = [("=" + site, STAGES["site_h"][site]), ("edm", 1.0), ("furnace", 3.0), ("shop", 1.5),
+                     ("tensile", 0.6)]
+        else:
+            prm = None
+            for D in c.deposits.values():
+                if D["design"] == did and D["mode"] == "blown_large":
+                    prm = D["measured"][0].get("params")
+            prm = dict(prm or {"P_W": 600.0, "v_mm_min": 600.0, "feed_g_min": 6.0})
+            steps = [("=" + site, STAGES["site_h"][site]), ("byu_sem", 1.0), ("shop", 1.0), ("tensile", 0.6),
+                     ("immersion", 720.0)]
+        t_r, usd = c._route(steps, g, "stage network", tag=dict(design=did, node="stage_network", site=site))
+        off = F.offset.get(site, 0.0)
+        p_eff = dict(prm, P_W=prm["P_W"] * (1 + off))
+        if al:
+            part = c.truth.build(lot, p_eff, c.rng)
+            u, _ = c._al_score(part, c.truth.strength(part))
+        else:
+            part = c.truth.deposit(lot, p_eff, "blown_large", c.rng,
+                                   substrate={"Al": 9.2, "Ni": 4.5, "Fe": 4.0, "Mn": 1.2})
+            u = self._cu_u_true(c, part)
+        return t_r, float(u), usd
+
+    @staticmethod
+    def _cu_u_true(c, part):
+        s, cr = c.truth.strength(part), c.truth.corrosion(part)
+        ref = c._cu_ref_rate()
+        ni = part["composition"].get("Ni", 0.0)
+        feas = part["rel_density"] >= 0.99 and part["crack_free"]
+        d = [C._desir(s["ys_MPa"], 100, 400), C._desir(s["el_pct"], 5, 35),
+             C._desir(3.0 * ref - cr["rate_um_yr"], 0, 2.5 * ref), C._desir(30 - ni, 0, 30)]
+        return float(np.prod(d) ** 0.25) * (1.0 if feas else 0.0)
+
     def report(self) -> dict:
         """What round 4 adds to a run's record: the build-out, capital payments, monthly use of every station,
         route choices and provenance visits."""
@@ -1054,4 +1211,12 @@ class Twin4(C.Twin):
                     monthly=F.monthly(self.h), routes=routes,
                     offsets={k: round(v, 4) for k, v in F.offset.items()},
                     offset_est={k: round(v, 4) for k, v in F.offset_est.items()},
-                    provenance=F.prov_log, helper_misses=F.helper_misses)
+                    provenance=F.prov_log, helper_misses=F.helper_misses,
+                    stages={k: dict(done=[{kk: (round(vv / H, 2) if kk in ("t0", "t_next", "t_gas", "t_part", "t_end")
+                                                and isinstance(vv, float) else vv) for kk, vv in d.items()}
+                                          for d in getattr(c, "stage_done", [])],
+                                    open=(None if getattr(c, "stage", None) is None else
+                                          {kk: (round(vv / H, 2) if isinstance(vv, float) and kk.startswith("t")
+                                                else vv) for kk, vv in c.stage.items()}),
+                                    usd=round(getattr(c, "scale_usd", 0.0), 2))
+                            for k, c in self.campaigns.items()})
