@@ -410,14 +410,17 @@ class Plan:
         return tuple(out)
 
     def window_counts(self, v0: float, v1: float) -> dict:
-        """Requests released over video [v0, v1): asked for and drawn, trays and floor jobs."""
-        out = dict(tray_asked=0, tray_drawn=0, floor_asked=0, floor_drawn=0)
-        for r in self.reqs:
-            if v0 <= r.v < v1:
-                k = "tray" if r.kind == "tray" else "floor"
-                out[f"{k}_asked"] += 1
-                out[f"{k}_drawn"] += int(bool(r.drawn))
-        return out
+        """Requests released over video [v0, v1): asked for and drawn, trays and floor jobs (cumulative sums)."""
+        if not hasattr(self, "_cum"):
+            vs = np.array([r.v for r in self.reqs], float)
+            cols = {"tray_asked": [r.kind == "tray" for r in self.reqs],
+                    "tray_drawn": [r.kind == "tray" and bool(r.drawn) for r in self.reqs],
+                    "floor_asked": [r.kind != "tray" for r in self.reqs],
+                    "floor_drawn": [r.kind != "tray" and bool(r.drawn) for r in self.reqs]}
+            self._cum = (vs, {k: np.concatenate([[0], np.cumsum(np.array(v, int))]) for k, v in cols.items()})
+        vs, cum = self._cum
+        i0, i1 = np.searchsorted(vs, v0, "left"), np.searchsorted(vs, v1, "left")
+        return {k: int(c[i1] - c[i0]) for k, c in cum.items()}
 
     def lab_counts(self, h0: float, h1: float) -> dict:
         """The same over lab hours [h0, h1)."""

@@ -8,7 +8,7 @@ the lab's own atomizer footage and photos, the search spaces (the proposals) and
 
 **The animated cut** (PR 393, 2026-11-26): the same video with the replay's day-by-day, week-by-week and month-by-month
 parts showing PR 318's 3-D lab moved by the event log, instead of station clips and lit stills. Unlisted:
-LAB3D_FULL_LINK. Its 60 s preview, one simulated week from above: [FR3Fl1onJU0](https://www.youtube.com/watch?v=FR3Fl1onJU0) (unlisted, uploaded 2026-11-26 from commit b16bd36). See
+[tX8Ik8oKnhk](https://www.youtube.com/watch?v=tX8Ik8oKnhk) (11:41, uploaded 2026-11-26 from commit dee5887; the public cut is untouched). Its 60 s preview, one simulated week from above: [FR3Fl1onJU0](https://www.youtube.com/watch?v=FR3Fl1onJU0) (unlisted, uploaded 2026-11-26 from commit b16bd36). See
 [The animated lab](#the-animated-lab) below.
 
 ## What is on screen
@@ -145,7 +145,25 @@ and from above the two look the same. Of the three options:
   is reused whenever the plan's state hasn't changed (`Plan.key`), so an idle lab costs nothing. The overlays are
   drawn at 30 fps on top.
 
-LAB3D_BUDGET_RESULTS
+What it cost on the runner (2026-11-26):
+
+| | 3-D frames | renders (the rest reused) | render workers | wall time |
+|---|---|---|---|---|
+| The preview's week: the main view, 15 fps | 900 | 850 | 3 at 1920 × 1080 | 7.5 min |
+| The preview's inset, 15 fps | 720 | 709 | 1 at 960 × 540 | 7.5 min |
+| The re-cut's replay: main views (15 fps day by day, then 10) | 3,231 | 3,083 | 2 at 1920 × 1080 | 30 min |
+| The re-cut's replay: insets | 1,554 | 1,458 | 1 at 960 × 540 | (the same 30 min) |
+
+Each worker builds the scene once (about 115 s), renders its batch of chunks (`lab3d_cut.run_jobs`), and holds 3.0 GB.
+With llvmpipe at two threads a worker, three workers keep the four cores busy, at about 1.1 s a 1080p render. Few
+renders are reused, because once the replay is past a day's pace something is nearly always moving. The overlays and
+the encode come after (`compose final3d`: 6.2 min for the whole 11:41 on three workers).
+
+In the re-cut's replay (from day 2 to the end of the year), the event log makes 2,625 tray requests and 1,576
+machine requests, one at each booking's start and end. The Shuttles drew 119 presentations, serving 1,049 of the
+tray requests: a request for a tray already out, or one asked for again while the Shuttle was busy, is served by the
+presentation that brings it out. The units made 226 machine visits, serving 1,107 machine requests.
+
 
 **Cameras** (`lab3d.VIEWS`): `towers_c` (both openings close, from the west along the aisle, under the cable tray)
 and `plan` (straight down on the aisle and docks) day by day; `high` (the still's view 1.5 m to the east and a little

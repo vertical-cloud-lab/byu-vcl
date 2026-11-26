@@ -87,7 +87,8 @@ def _caveats(policy: str) -> list:
     return out
 
 
-LAB3D_TITLE = "A year of alloy discovery in an automated lab, the lab animated: a simulated benchmark (digital twin)"
+LAB3D_TITLE = "A year of alloy discovery in an automated lab, animated: a simulated benchmark (digital twin)"
+LAB3D_PR = f"https://github.com/{REPO}/pull/393"
 LAB3D_NOTE = ("This cut's replay animates PR 318's 3-D lab from the twin's event log: every tray presented at a Kardex "
               "Shuttle's opening and every MiR250 + UR12e visit to a dock comes from a booking (a station on a tray has "
               "its tray brought to the opening at the booking's start and end; a floor machine has a unit dock at its "
@@ -130,7 +131,7 @@ def description(rec: dict, commit: str, lab3d: bool = False) -> str:
              "script, with timestamps, is in notes/twin_video.md; subtitles in "
              "out/twin2/video/narration/narration.srt.\n\n" if rec.get("narration") else "") +
             f"Code: https://github.com/{REPO}/tree/{commit}/vertical-lab/twin (video: twin/video, write-up "
-            f"notes/twin_video.md)\nPR: {PR}\n\n")
+            f"notes/twin_video.md)\nPR: {LAB3D_PR + ' (the twin), ' + PR + ' (the lab design)' if lab3d else PR}\n\n")
     chap = "Chapters\n" + "".join(f"{stamp(t)} {title}\n" for t, title in chapters(rec))
     s = head + chap
     while len(s.encode()) > DESC_BYTES and lines:     # keep every timestamp; trim the prose
