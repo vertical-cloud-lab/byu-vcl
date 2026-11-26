@@ -15,31 +15,39 @@ numerical pin (`twin/repro.py`), the runs (`twin/bench3b.py`), the comparison (`
 
 **In short:**
 
-<!-- IN-SHORT-FINAL -->
+(Simulated. 12 seeds unless noted. Medians are Kaplan-Meier medians over seeds, with 95 % paired-bootstrap
+intervals.)
+
 - **Round 3 reproduces bit for bit on an AVX-512 machine, under a pin.**
-  - Its BOFN and pKGFN reruns departed because the BLAS libraries pick their kernels by CPU. Forcing AVX2 kernels
-    here reproduces the video run's departure exactly (1,010 identical bookings, then a different one at day 24.9).
-  - A rarer, last-bit effect came from Python's per-process string hashing.
-  - `twin/repro.py` pins the kernels, threads, hashing and global generators. `python -m twin.repro check` reruns
-    BOFN seed 0 for 30 days against the committed log.
-- **Like with like, aluminium's same-policy factor was mostly stock.**
-  - With the heuristic in both labs, round 3's 6.6× to the best existing alloy is the stock's 2.8× times the lab's
-    2.4×.
-  - With both labs stocked it is 1.9×. The vertical lab still gets there first in 11 of 12 seeds (both lean) and 8 of
-    12 (both stocked).
-- **Copper's factor is mostly the lab.** The funnel in both labs is 2.5× to the best existing alloy and 3.0-3.2× to
-  halfway like with like, against round 3's 2.9× and 3.8×.
+  - Its BOFN and pKGFN reruns departed because numpy and torch pick their BLAS kernels by CPU. Forcing AVX2 kernels on
+    this AVX-512 runner reproduces the video run's departure exactly: 1,010 identical bookings, then a different one
+    at day 24.9.
+  - Python's per-process string hashing moved the last bit of a true utility now and then.
+  - `twin/repro.py` pins both, with the threads and the global generators. `python -m twin.repro check` reruns BOFN
+    seed 0 for 30 days against the committed log.
+  - Of round 3's committed rows, 328 were rerun under the pin: 318 are identical, 10 differ only in the last bit of aluminium utilities, and 0 differ otherwise.
 - **Like with like, the vertical lab's best policy against the rule of thumb is 1.8× on aluminium's halfway target,
   not 4.0×.**
-  - BOFN and pKGFN against the conventional lab's heuristic, both ordering metal as they go: day 183 against 337,
-    first in 9-10 of 12 seeds.
-  - The stock alone speeds BOFN and pKGFN 1.9-2.2× in the vertical lab, where each charge otherwise waits weeks for
-    its metal.
-- **BOFN and pKGFN in both labs** (3 seeds of three-year conventional runs, new here). With both ordering as
-  they go, the conventional lab is as fast or faster to aluminium's halfway target. With both stocked, the vertical
-  lab leads (2.7-3.4×, wide intervals).
-- **Round 3's numbers stand.** Every committed row rerun matches: exactly, or to the last bit of a true utility. Every
-  seed now has an event log (xz, `out/twin3b/events/`), and the notes list each arm's median seed for a replay.
+  - BOFN and pKGFN against the conventional lab's heuristic, both labs ordering metal as they go: day 183 against 337,
+    with the vertical lab first in 9-10 of 12 seeds.
+  - Round 3's 4.0× is this 1.8× times the stock's 2.2×. Ordering as it goes, the vertical lab waits weeks for each
+    charge's metal: its first new aluminium alloy comes at a median of day 84-88, against day 11 stocked.
+- **The same policy in both labs, like with like:**
+  - The heuristic reaches aluminium's best existing alloy 2.4× sooner with both labs ordering as they go, and 1.9×
+    with both stocked. Round 3 said 6.6-6.8×: the stock's 2.8× times the lab's 2.4×.
+  - The funnel reaches copper's best existing alloy 2.5× sooner and its halfway target 3.0-3.2× sooner. Round 3 said
+    2.9× and 3.8×, so copper's lead is mostly the lab's.
+  - **BOFN and pKGFN in the conventional lab** (4 seeds of three-year runs, new here): with both labs ordering
+    as they go, the conventional lab gets to aluminium's halfway target about as soon (0.9-1.0×). With both stocked,
+    the vertical lab is 1.3-1.4× sooner, with wide intervals.
+- **Cost, on one basis (campaign spend to the target):**
+  - The vertical lab spends 2-3× less with the heuristic, the funnel, and BOFN and pKGFN against the rule of thumb.
+  - Against BOFN and pKGFN in the conventional lab it spends about the same, or more on copper's first target.
+  - This basis leaves out the vertical lab's fixed costs, where round 3 found it dearer per alloy.
+- **A design point of round 3 that favours the conventional lab early.** Its three years' money comes with a day-0
+  tranche three times the vertical lab's ($54k against $18k for aluminium).
+- **Every seed now has an event log** (xz, `out/twin3b/events/`), and section 3 names each arm's median seed for a
+  replay.
 
 ## 1. Why round 3's BOFN and pKGFN reruns did not reproduce
 
@@ -129,35 +137,34 @@ Every row is compared field by field, leaving out only the run time and the GP b
 
 | Round 3's experiment | Committed rows | Rerun | Identical | To the last bit | Different |
 |---|---|---|---|---|---|
-| `main` | 96 | 63 | 60 | 3 | 0 |
+| `main` | 96 | 76 | 73 | 3 | 0 |
 | `main_more` | 60 | 60 | 57 | 3 | 0 |
 | `conventional` | 60 | 60 | 58 | 2 | 0 |
 | the copper tests (`cu_hidden`, `cu_proxy`, `cu_ablation`, `cu_money`) | 140 | 132 | 130 | 2 | 0 |
-| all | 356 | 315 | 305 | 10 | 0 |
+| all | 356 | 328 | 318 | 10 | 0 |
 
-Runs rerun by policy: bofn3 3, gpbo 60, heuristic 60, random 48, sobol 36, tiered 60, tiered_mis 24, tiered_proxy 12, tiered_screen 12.
+Runs rerun by policy: bofn3 12, gpbo 60, heuristic 60, pkgfn3 4, random 48, sobol 36, tiered 60, tiered_mis 24, tiered_proxy 12, tiered_screen 12.
 
 To the last bit: `r3_proposed_gpbo_s6_stock-lean`, `r3_proposed_sobol_s3_stock-lean`, `r3_vertical_lab_bofn3_s0`, `r3_vertical_lab_gpbo_s15`, `r3_vertical_lab_gpbo_s5_cu_budget-180000.0`, `r3_vertical_lab_heuristic_s0_cu_budget-180000.0`, `r3_vertical_lab_heuristic_s23`, `r3_vertical_lab_heuristic_s3`, `r3_vertical_lab_heuristic_s7`, `r3_vertical_lab_tiered_s17`. In each, aluminium's true utilities differ by one to three units in the last place. A best-so-far curve carries a value forward, so that is 4 to 128 entries of the row. Everything else in the row (every count, day and dollar) is identical (`bench3b.match_kind`). The cause is the hash key of the process that made the committed row. It was random and wasn't recorded, so no single key recovers every row's last bits.
 
-No run of round 3b's 399 drew from torch's global generator.
+No run of round 3b's 416 drew from torch's global generator.
 
 The seed-0 event logs that round 3 committed (`out/twin3/events/`) are identical, booking for booking, to the reruns'
 logs (`test_rerun_logs_equal_round_3s_committed_logs`). Not rerun: BOFN and pKGFN in the copper tests (`cu_money`,
-`cu_hidden_net`), 16 runs of 10-18 minutes each.<!-- NOT-RERUN-EXTRA -->
-
+`cu_hidden_net`), 16 runs of 10-18 minutes each.
 ## 2. The lab comparison, like with like
 
 ### 2.1 The arms
 
 | Arm | Vertical lab, 1 year at 1 year's money | Conventional lab, 3 years at 3 years' money |
 |---|---|---|
-| Stocked | round 3's `main` (12 seeds of each policy) | **new:** `c_stocked`: the heuristic and the funnel (12 seeds), BOFN and pKGFN (3) |
-| Ordering metal as it goes | **new:** `v_lean`: all four policies, 12 seeds | round 3's `conventional` (the heuristic and the funnel, 12 seeds); **new:** `c_lean_net`: BOFN and pKGFN (3), round 3's `conventional_net`, which never ran |
+| Stocked | round 3's `main` (12 seeds of each policy) | **new:** `c_stocked`: the heuristic and the funnel (12 seeds), BOFN and pKGFN (4) |
+| Ordering metal as it goes | **new:** `v_lean`: all four policies, 12 seeds | round 3's `conventional` (the heuristic and the funnel, 12 seeds); **new:** `c_lean_net`: BOFN and pKGFN (4), round 3's `conventional_net`, which never ran |
 
 "Stocked" is round 2's standing inventory, about a month's use at the vertical lab's pace (copper's costs $13.4k). It
 is bought on day 0 and charged to the campaign, and shortfalls are reordered four times over (1.5 times when
-ordering as it goes). The conventional lab's BOFN and pKGFN run on seeds 0-2: each run simulates three years and
-takes about three times as long as a vertical-lab year. Seeds are paired: seed *s* has the same synthetic truth,
+ordering as it goes). The conventional lab's BOFN and pKGFN run on seeds 0-3: each run simulates three
+years and took 19-40 minutes here, against 4-22 for a vertical-lab year. Seeds are paired: seed *s* has the same synthetic truth,
 market and breakdowns in every arm.
 
 | Lab | Stock | Policy | Seeds | Al best | Al T1 | Al T2 | Cu best | Cu T1 | Cu T2 |
@@ -172,12 +179,12 @@ market and breakdowns in every arm.
 | conventional | lean | funnel | 0-11 | 0.44 ± 0.06 | 9/12; 215 | 0/12; >1095 | 0.69 ± 0.01 | 12/12; 405 | 9/12; 561 |
 | vertical | stocked | BOFN | 0-11 | 0.73 ± 0.02 | 12/12; 83 | 11/12; 96 | 0.58 ± 0.04 | 8/12; 221 | 5/12; >365 |
 | vertical | lean | BOFN | 0-11 | 0.73 ± 0.01 | 12/12; 127 | 11/12; 183 | 0.58 ± 0.03 | 7/12; 288 | 4/12; >365 |
-| conventional | stocked | BOFN | 0-2 | 0.69 ± 0.03 | 3/3; 129 | 2/3; 323 | 0.69 ± 0.02 | 3/3; 274 | 2/3; 497 |
-| conventional | lean | BOFN | 0-2 | 0.75 ± 0.00 | 3/3; 175 | 3/3; 184 | 0.67 ± 0.03 | 3/3; 471 | 2/3; 471 |
+| conventional | stocked | BOFN | 0-3 | 0.69 ± 0.02 | 4/4; 129 | 3/4; 130 | 0.69 ± 0.02 | 4/4; 274 | 3/4; 497 |
+| conventional | lean | BOFN | 0-3 | 0.75 ± 0.01 | 4/4; 175 | 4/4; 184 | 0.67 ± 0.02 | 4/4; 384 | 3/4; 384 |
 | vertical | stocked | pKGFN | 0-11 | 0.71 ± 0.03 | 12/12; 67 | 10/12; 83 | 0.61 ± 0.03 | 9/12; 295 | 4/12; >365 |
 | vertical | lean | pKGFN | 0-11 | 0.72 ± 0.01 | 12/12; 162 | 11/12; 183 | 0.56 ± 0.04 | 8/12; 277 | 4/12; >365 |
-| conventional | stocked | pKGFN | 0-2 | 0.74 ± 0.02 | 3/3; 137 | 3/3; 260 | 0.67 ± 0.05 | 3/3; 407 | 2/3; 557 |
-| conventional | lean | pKGFN | 0-2 | 0.74 ± 0.01 | 3/3; 165 | 3/3; 192 | 0.62 ± 0.07 | 2/3; 479 | 2/3; 479 |
+| conventional | stocked | pKGFN | 0-3 | 0.72 ± 0.02 | 4/4; 130 | 4/4; 130 | 0.68 ± 0.04 | 4/4; 407 | 3/4; 417 |
+| conventional | lean | pKGFN | 0-3 | 0.74 ± 0.00 | 4/4; 165 | 4/4; 192 | 0.64 ± 0.05 | 3/4; 352 | 3/4; 352 |
 
 ### 2.2 How the comparison is made
 
@@ -213,8 +220,8 @@ lean) and the paired difference in the final best alloy.
 | vertical | pKGFN | 2.4x (1.5-7.5); 12/12 vs 12/12 | 2.2x (1.0-5.1); 10/12 vs 11/12 | 0.9x (0.7-∞); 9/12 vs 8/12 | neither; 4/12 vs 4/12 | -0.01 ± 0.03; +0.05 ± 0.04 (n=12) |
 | conventional | heuristic | 3.5x (0.8-4.6); 12/12 vs 12/12 | <= 0.3x; 2/12 vs 6/12 | 1.0x (0.7-∞); 10/12 vs 8/12 | neither; 1/12 vs 1/12 | -0.08 ± 0.03; +0.03 ± 0.02 (n=12) |
 | conventional | funnel | 1.1x (0.8-10.9); 10/12 vs 9/12 | neither; 1/12 vs 0/12 | 1.2x (0.8-1.6); 12/12 vs 12/12 | 1.3x (0.9-2.1); 10/12 vs 9/12 | +0.05 ± 0.04; +0.00 ± 0.01 (n=12) |
-| conventional | BOFN | 1.4x (0.6-3.8); 3/3 vs 3/3 | 0.6x (0-4.8); 2/3 vs 3/3 | 1.7x (1.3-1.9); 3/3 vs 3/3 | 0.9x (0.9-1.4); 2/3 vs 2/3 | -0.06 ± 0.03; +0.01 ± 0.02 (n=3) |
-| conventional | pKGFN | 1.2x (1.2-3.8); 3/3 vs 3/3 | 0.7x (0.5-4.8); 3/3 vs 3/3 | 1.2x (0.9-∞); 3/3 vs 2/3 | 0.9x (0.9-0.9); 2/3 vs 2/3 | -0.00 ± 0.01; +0.04 ± 0.03 (n=3) |
+| conventional | BOFN | 1.4x (0.6-3.8); 4/4 vs 4/4 | 1.4x (0-4.8); 3/4 vs 4/4 | 1.4x (0.6-1.9); 4/4 vs 4/4 | 0.8x (0.6-1.4); 3/4 vs 3/4 | -0.07 ± 0.02; +0.02 ± 0.01 (n=4) |
+| conventional | pKGFN | 1.3x (1.2-3.8); 4/4 vs 4/4 | 1.5x (0.5-4.8); 4/4 vs 4/4 | 0.9x (0.7-∞); 4/4 vs 3/4 | 0.8x (0.7-0.9); 3/4 vs 3/4 | -0.01 ± 0.01; +0.05 ± 0.02 (n=4) |
 
 - **The stock is most of round 3's aluminium factor.**
   - With the heuristic, the stock brings aluminium's first result forward 2.8× in the vertical lab (day 24 against
@@ -234,9 +241,8 @@ lean) and the paired difference in the final best alloy.
   - Ordering as it goes, the lab waits weeks for each charge's metal. Its first new aluminium alloy comes at a median
     of day 84 (BOFN; 88 for pKGFN), against day 11 stocked.
   - It also places a median of 480 orders a year against 300-310.
-  - The stock doesn't make the conventional lab's BOFN or pKGFN faster to that target (seeds 0-2; the
-    table). One reading is that the stock is sized to the vertical lab's pace, and at the conventional lab's slower
-    pace deliveries hold it up less.
+  - In the conventional lab the stock speeds them less: 1.4-1.5× to the same target, on 4 seeds with intervals
+    that reach below 1 (the table).
 
 ### 2.4 The speed-up four ways
 
@@ -252,13 +258,13 @@ differences in days, are in [`tables.md`](../out/twin3b/tables.md).
 | Al T1 | pKGFN | heuristic | 2.3x | 2.4x (0.8-8.9); 12/12 vs 12/12; first in 9/12 | 1.0x (0.4-1.4); 12/12 vs 12/12; first in 5/12 | 0.7x (0.4-4.7); 12/12 vs 12/12; first in 6/12 | 0.3x (0.2-1.4); 12/12 vs 12/12; first in 3/12 |
 | Al T2 | pKGFN | heuristic | 4.0x, the aluminium headline | 4.0x (2.1-∞); 10/12 vs 6/12; first in 9/12 | 1.8x (1.2-∞); 11/12 vs 6/12; first in 9/12 | >= 13.1x; 10/12 vs 2/12; first in 9/12 | >= 6.0x; 11/12 vs 2/12; first in 10/12 |
 | Al T2 | BOFN | heuristic | - | 3.5x (1.3-∞); 11/12 vs 6/12; first in 10/12 | 1.8x (1.3-∞); 11/12 vs 6/12; first in 10/12 | >= 11.4x; 11/12 vs 2/12; first in 10/12 | >= 6.0x; 11/12 vs 2/12; first in 10/12 |
-| Al T2 | pKGFN | pKGFN | not run | 2.0x (1.6-3.8); 3/3 vs 3/3; first in 3/3 | 0.7x (0-1.7); 2/3 vs 3/3; first in 1/3 | 2.7x (0.3-7.6); 3/3 vs 3/3; first in 2/3 | 1.0x (0-2.3); 2/3 vs 3/3; first in 2/3 |
-| Al T2 | BOFN | BOFN | not run | 1.9x (1.7-4.1); 3/3 vs 3/3; first in 3/3 | 0.7x (0-0.9); 2/3 vs 3/3; first in 0/3 | 3.4x (0.4-∞); 3/3 vs 2/3; first in 2/3 | 1.3x (0-∞); 2/3 vs 2/3; first in 2/3 |
+| Al T2 | pKGFN | pKGFN | not run | 2.0x (0-3.8); 3/4 vs 4/4; first in 3/4 | 1.0x (0-1.7); 3/4 vs 4/4; first in 2/4 | 1.3x (0-7.6); 3/4 vs 4/4; first in 2/4 | 0.7x (0-2.3); 3/4 vs 4/4; first in 2/4 |
+| Al T2 | BOFN | BOFN | not run | 1.9x (0.9-4.1); 4/4 vs 4/4; first in 3/4 | 0.9x (0-2.5); 3/4 vs 4/4; first in 1/4 | 1.4x (0.4-∞); 4/4 vs 3/4; first in 2/4 | 0.7x (0-∞); 3/4 vs 3/4; first in 3/4 |
 | Cu T1 | funnel | funnel | 2.9x | 2.9x (2.3-3.9); 11/12 vs 12/12; first in 11/12 | 2.5x (1.5-3.3); 11/12 vs 12/12; first in 10/12 | 2.5x (1.8-4.0); 11/12 vs 12/12; first in 9/12 | 2.1x (1.9-2.6); 11/12 vs 12/12; first in 11/12 |
 | Cu T2 | funnel | funnel | 3.8x, the copper headline | 3.8x (1.9-5.8); 10/12 vs 9/12; first in 10/12 | 3.2x (1.9-4.8); 10/12 vs 9/12; first in 10/12 | 3.0x (1.8-5.1); 10/12 vs 10/12; first in 9/12 | 2.5x (1.5-4.1); 10/12 vs 10/12; first in 10/12 |
 | Cu T1 | pKGFN | heuristic | 1.8x | 1.8x (1.4-∞); 9/12 vs 8/12; first in 8/12 | 2.0x (0-∞); 8/12 vs 8/12; first in 8/12 | 1.8x (1.3-3.0); 9/12 vs 10/12; first in 9/12 | 2.0x (0-2.9); 8/12 vs 10/12; first in 8/12 |
-| Cu T1 | pKGFN | pKGFN | not run | 1.6x (1.4-1.6); 2/3 vs 2/3; first in 2/3 | <= 1.3x; 1/3 vs 2/3; first in 1/3 | 1.3x (0-1.7); 2/3 vs 3/3; first in 1/3 | <= 1.1x; 1/3 vs 3/3; first in 0/3 |
-| Cu T1 | BOFN | BOFN | not run | <= 1.3x; 1/3 vs 3/3; first in 1/3 | <= 1.3x; 1/3 vs 3/3; first in 1/3 | <= 0.7x; 1/3 vs 3/3; first in 0/3 | <= 0.7x; 1/3 vs 3/3; first in 0/3 |
+| Cu T1 | pKGFN | pKGFN | not run | 1.2x (1.0-1.6); 3/4 vs 3/4; first in 3/4 | 1.3x (0-1.8); 2/4 vs 3/4; first in 2/4 | 1.4x (0-1.7); 3/4 vs 4/4; first in 2/4 | 1.5x (0-2.5); 2/4 vs 4/4; first in 1/4 |
+| Cu T1 | BOFN | BOFN | not run | 1.5x (0-1.8); 2/4 vs 4/4; first in 2/4 | 1.3x (0-1.9); 2/4 vs 4/4; first in 2/4 | 1.0x (0-2.0); 2/4 vs 4/4; first in 1/4 | 0.9x (0-2.9); 2/4 vs 4/4; first in 1/4 |
 
 - **Aluminium, the same policy in both labs (the heuristic, T1).** Round 3's 6.6× becomes 2.4× (0.9-3.1) with both
   labs ordering as they go, and 1.9× (0.5-8.5) with both stocked.
@@ -275,14 +281,15 @@ differences in days, are in [`tables.md`](../out/twin3b/tables.md).
   - Round 3's 4.0× is the stock's 2.2× (pKGFN in the vertical lab, stocked against lean) times this 1.8×.
   - With both labs stocked, the factor is at least 13×, but only because the stocked conventional heuristic gets
     there in 2 of 12 seeds (section 2.3).
-- **BOFN and pKGFN in both labs** (3 seeds; the conventional lab's three-year runs). This is the comparison
+- **BOFN and pKGFN in both labs** (4 seeds; the conventional lab's three-year runs). This is the comparison
   round 3 couldn't make.
-  - **With both labs ordering as they go, the conventional lab is as fast or faster to aluminium's halfway target**
-    (BOFN 0.7×, pKGFN 0.7×; the table has the seeds). It also gets to copper's best existing alloy in more of the
-    same seeds.
-  - With both stocked, the vertical lab is ahead on aluminium (BOFN 3.4×, pKGFN 2.7×), with intervals that reach
-    below 1.
-  - These rest on 3 pairs of seeds and say less than the 12-seed rows.
+  - **With both labs ordering as they go, the conventional lab gets to aluminium's halfway target about as soon**:
+    BOFN 0.9× and pKGFN 1.0×, the vertical lab first in 1 and 2 of 4 seeds.
+  - It also gets to copper's best existing alloy in more of the same seeds (BOFN 4 of 4, against 2 of
+    4 in the vertical lab's year).
+  - With both stocked, the vertical lab is ahead on aluminium by 1.4× (BOFN) and 1.3× (pKGFN), with intervals that
+    reach below 1.
+  - These rest on 4 pairs of seeds and say less than the 12-seed rows.
 - **What is like with like, then:**
   - the same policy in both labs, both ordering as they go: the heuristic 2.4× on aluminium's first target; the
     funnel 2.5× and 3.2× on copper's; BOFN and pKGFN no faster on aluminium's halfway target;
@@ -308,13 +315,13 @@ doesn't redo that model.
 | Al T1 | pKGFN | heuristic | - | 2.6x (1.6-5.1); 12/12 vs 12/12 | 1.5x (1.0-2.6); 12/12 vs 12/12 | 1.6x (0.4-4.8); 12/12 vs 12/12 | 0.9x (0.3-2.3); 12/12 vs 12/12 |
 | Al T2 | pKGFN | heuristic | - | 3.8x (2.4-∞); 10/12 vs 6/12 | 2.3x (1.5-∞); 11/12 vs 6/12 | >= 7.6x; 10/12 vs 2/12 | >= 4.7x; 11/12 vs 2/12 |
 | Al T2 | BOFN | heuristic | - | 3.1x (1.7-∞); 11/12 vs 6/12 | 2.2x (1.7-∞); 11/12 vs 6/12 | >= 6.3x; 11/12 vs 2/12 | >= 4.4x; 11/12 vs 2/12 |
-| Al T2 | pKGFN | pKGFN | - | 1.9x (1.9-2.7); 3/3 vs 3/3 | 1.0x (0-2.6); 2/3 vs 3/3 | 2.6x (1.2-4.6); 3/3 vs 3/3 | 1.4x (0-3.7); 2/3 vs 3/3 |
-| Al T2 | BOFN | BOFN | - | 1.9x (1.8-2.8); 3/3 vs 3/3 | 1.0x (0-1.3); 2/3 vs 3/3 | 3.1x (1.3-∞); 3/3 vs 2/3 | 1.7x (0-∞); 2/3 vs 2/3 |
+| Al T2 | pKGFN | pKGFN | - | 1.9x (0-2.7); 3/4 vs 4/4 | 1.5x (0-2.6); 3/4 vs 4/4 | 1.7x (0-4.6); 3/4 vs 4/4 | 1.3x (0-3.7); 3/4 vs 4/4 |
+| Al T2 | BOFN | BOFN | - | 1.9x (1.6-2.8); 4/4 vs 4/4 | 1.3x (0-3.4); 3/4 vs 4/4 | 1.7x (1.0-∞); 4/4 vs 3/4 | 1.2x (0-∞); 3/4 vs 3/4 |
 | Cu T1 | funnel | funnel | - | 2.6x (2.0-3.2); 11/12 vs 12/12 | 2.5x (1.8-3.5); 11/12 vs 12/12 | 2.5x (2.1-3.3); 11/12 vs 12/12 | 2.5x (2.1-3.3); 11/12 vs 12/12 |
 | Cu T2 | funnel | funnel | - | 3.2x (2.3-4.1); 10/12 vs 9/12 | 3.2x (2.2-4.5); 10/12 vs 9/12 | 2.9x (2.1-4.1); 10/12 vs 10/12 | 2.9x (1.9-4.0); 10/12 vs 10/12 |
 | Cu T1 | pKGFN | heuristic | - | 2.1x (1.8-∞); 9/12 vs 8/12 | 2.1x (0-∞); 8/12 vs 8/12 | 2.2x (1.7-3.1); 9/12 vs 10/12 | 2.2x (0-3.0); 8/12 vs 10/12 |
-| Cu T1 | pKGFN | pKGFN | - | 1.0x (0.7-1.0); 2/3 vs 2/3 | <= 1.0x; 1/3 vs 2/3 | 0.8x (0-0.8); 2/3 vs 3/3 | <= 0.8x; 1/3 vs 3/3 |
-| Cu T1 | BOFN | BOFN | - | <= 1.1x; 1/3 vs 3/3 | <= 1.2x; 1/3 vs 3/3 | <= 0.6x; 1/3 vs 3/3 | <= 0.6x; 1/3 vs 3/3 |
+| Cu T1 | pKGFN | pKGFN | - | 0.7x (0.6-1.0); 3/4 vs 3/4 | 0.7x (0-1.0); 2/4 vs 3/4 | 0.8x (0-0.8); 3/4 vs 4/4 | 0.8x (0-1.3); 2/4 vs 4/4 |
+| Cu T1 | BOFN | BOFN | - | 1.0x (0-1.3); 2/4 vs 4/4 | 0.9x (0-1.2); 2/4 vs 4/4 | 0.6x (0-1.1); 2/4 vs 4/4 | 0.6x (0-1.6); 2/4 vs 4/4 |
 
 - **On campaign spend, the vertical lab reaches every target for which there is a factor more cheaply.** Most of
   that is time, since a campaign spends as it goes, and the conventional lab runs three years.
@@ -324,16 +331,18 @@ doesn't redo that model.
   stocked). Stocking costs the vertical lab money on day 0, but it gets there in days.
 - **BOFN and pKGFN against the rule of thumb, aluminium's halfway target:** round 3's pairing gives 3.8× less campaign
   money for pKGFN. With both labs ordering as they go it is 2.3× (BOFN 2.2×).
-- **The same policy in both labs, both ordering as they go,** spends about the same campaign money to aluminium's
-  halfway target (1.0×), in the 3 seeds there are.
+- **BOFN and pKGFN in both labs, both ordering as they go:**
+  - The vertical lab spends 1.3× (BOFN) and 1.5× (pKGFN) less campaign money to aluminium's halfway target.
+  - To copper's best existing alloy it spends about the same or more (0.9× and 0.7×).
+  - The intervals are wide (4 seeds).
 
 ### 2.6 Where the vertical lab doesn't win, like with like
 
 Everything here is simulated.
 
-- **BOFN and pKGFN against the same policy in the conventional lab, both ordering metal as they go.** The conventional
-  lab gets to aluminium's halfway target as soon or sooner, and to copper's best existing alloy in more seeds, with
-  three years' money (3 seeds).
+- **BOFN and pKGFN against the same policy in the conventional lab, both ordering metal as they go.** With three
+  years' money, the conventional lab gets to aluminium's halfway target about as soon (0.9-1.0×), and to copper's
+  best existing alloy in more seeds (4 seeds).
 - **Aluminium's first target, against the stocked conventional lab.**
   - The stocked conventional lab's heuristic gets to the best existing alloy on day 46. That is sooner than the lean
     vertical lab with any policy (day 67 for the heuristic, 127-162 for BOFN and pKGFN).
@@ -341,7 +350,7 @@ Everything here is simulated.
 - **The heuristic's aluminium factor like with like has an interval reaching below 1** (2.4×, 0.9-3.1), though the
   vertical lab gets there first in 11 of 12 seeds.
 - **Copper's halfway target with BOFN and pKGFN:** the vertical lab gets there in 4-5 of 12 seeds in its year
-  (stocked or lean). The conventional lab gets there in about two thirds of its 3 seeds in three (the table).
+  (stocked or lean). The conventional lab gets there in 3 of its 4 seeds in three years, either way.
 - **A design point that favours the conventional lab early.** Round 3's spending plan releases 15 % of the budget on
   day 0, then the rest at the same rate in both labs. Three years' money is a larger budget, so the conventional
   lab's day-0 tranche is three times the vertical lab's: $54k against $18k for aluminium, $27k against $9k for
@@ -351,27 +360,27 @@ Everything here is simulated.
 
 ## 3. Event logs for every seed
 
-`out/twin3b/events/` holds 399 event logs, 24.9 MB in all (62 KB each on average), xz-compressed JSON in round 3's schema (`Twin.event_log`: every booking, design, result and best-so-far curve). `twin.bench3b.read_events(path)` reads one, and so does `xz -dc`. There is one for every run round 3b made: the new arms, and round 3's reruns. The reruns match their committed rows, so their logs are the committed runs' logs (a log rounds utilities to 4 decimals, so the last-bit cases don't show). Round 3's own seed-0 logs (`out/twin3/events/*.json`) are unchanged.
+`out/twin3b/events/` holds 416 event logs, 25.8 MB in all (62 KB each on average), xz-compressed JSON in round 3's schema (`Twin.event_log`: every booking, design, result and best-so-far curve). `twin.bench3b.read_events(path)` reads one, and so does `xz -dc`. There is one for every run round 3b made: the new arms, and round 3's reruns. The reruns match their committed rows, so their logs are the committed runs' logs (a log rounds utilities to 4 decimals, so the last-bit cases don't show). Round 3's own seed-0 logs (`out/twin3/events/*.json`) are unchanged.
 
 **The median seed of each arm**, for a replay: the seed whose day to the target is the arm's Kaplan-Meier median (ties go to the seed whose final best is nearest the arm's median). Where fewer than half the seeds got there, it is a seed that didn't. All from `like3b.json` (`median_seeds`):
 
 | Arm | Al T1 | Al T2 | Cu T1 | Cu T2 |
 |---|---|---|---|---|
-| conventional, lean, BOFN | seed 2 (day 175; 3/3) | seed 0 (day 184; 3/3) | seed 2 (day 471; 3/3) | seed 2 (day 471; 2/3) |
+| conventional, lean, BOFN | seed 2 (day 175; 4/4) | seed 0 (day 184; 4/4) | seed 1 (day 384; 4/4) | seed 1 (day 384; 3/4) |
 | conventional, lean, heuristic | seed 8 (day 159; 12/12) | seed 3 (day 337; 6/12) | seed 10 (day 540; 8/12) | seed 3 (not reached by most; 1/12) |
-| conventional, lean, pKGFN | seed 2 (day 165; 3/3) | seed 0 (day 192; 3/3) | seed 2 (day 479; 2/3) | seed 2 (day 479; 2/3) |
+| conventional, lean, pKGFN | seed 2 (day 165; 4/4) | seed 0 (day 192; 4/4) | seed 1 (day 352; 3/4) | seed 1 (day 352; 3/4) |
 | conventional, lean, funnel | seed 10 (day 215; 9/12) | seed 1 (not reached by most; 0/12) | seed 5 (day 405; 12/12) | seed 11 (day 561; 9/12) |
-| conventional, stocked, BOFN | seed 0 (day 129; 3/3) | seed 2 (day 323; 2/3) | seed 1 (day 274; 3/3) | seed 2 (day 497; 2/3) |
+| conventional, stocked, BOFN | seed 0 (day 129; 4/4) | seed 3 (day 130; 3/4) | seed 1 (day 274; 4/4) | seed 2 (day 497; 3/4) |
 | conventional, stocked, heuristic | seed 0 (day 46; 12/12) | seed 8 (not reached by most; 2/12) | seed 0 (day 540; 10/12) | seed 3 (not reached by most; 1/12) |
-| conventional, stocked, pKGFN | seed 2 (day 137; 3/3) | seed 0 (day 260; 3/3) | seed 1 (day 407; 3/3) | seed 2 (day 557; 2/3) |
+| conventional, stocked, pKGFN | seed 3 (day 130; 4/4) | seed 3 (day 130; 4/4) | seed 1 (day 407; 4/4) | seed 3 (day 417; 3/4) |
 | conventional, stocked, funnel | seed 10 (day 190; 10/12) | seed 1 (not reached by most; 1/12) | seed 6 (day 348; 12/12) | seed 6 (day 437; 10/12) |
 | vertical, lean, BOFN | seed 1 (day 127; 12/12) | seed 11 (day 183; 11/12) | seed 7 (day 288; 7/12) | seed 2 (not reached by most; 4/12) |
 | vertical, lean, heuristic | seed 1 (day 67; 12/12) | seed 6 (not reached by most; 4/12) | seed 5 (day 199; 9/12) | seed 0 (not reached by most; 1/12) |
 | vertical, lean, pKGFN | seed 1 (day 162; 12/12) | seed 3 (day 183; 11/12) | seed 2 (day 277; 8/12) | seed 5 (not reached by most; 4/12) |
 | vertical, lean, funnel | seed 10 (day 123; 6/12) | seed 3 (not reached by most; 0/12) | seed 4 (day 164; 11/12) | seed 7 (day 178; 10/12) |
-| vertical, stocked, BOFN | seed 7 (day 83; 12/12), no log | seed 0 (day 96; 11/12) | seed 5 (day 221; 8/12), no log | seed 4 (not reached by most; 5/12), no log |
+| vertical, stocked, BOFN | seed 7 (day 83; 12/12) | seed 0 (day 96; 11/12) | seed 5 (day 221; 8/12) | seed 4 (not reached by most; 5/12) |
 | vertical, stocked, heuristic | seed 7 (day 24; 11/12) | seed 2 (not reached by most; 1/12) | seed 3 (day 234; 7/12) | seed 5 (not reached by most; 1/12) |
-| vertical, stocked, pKGFN | seed 5 (day 67; 12/12), no log | seed 7 (day 83; 10/12), no log | seed 3 (day 295; 9/12), no log | seed 4 (not reached by most; 4/12), no log |
+| vertical, stocked, pKGFN | seed 5 (day 67; 12/12), no log | seed 7 (day 83; 10/12), no log | seed 3 (day 295; 9/12) | seed 4 (not reached by most; 4/12), no log |
 | vertical, stocked, funnel | seed 10 (day 146; 6/12) | seed 10 (not reached by most; 1/12) | seed 3 (day 142; 11/12) | seed 10 (day 148; 10/12) |
 
 ## 4. What changes in round 3's notes
@@ -399,9 +408,9 @@ All simulated: synthetic truths, simulated instruments, assumed capacities, pric
   a kernel or a default and move a row the same way; every row now records its versions (`env`).
 - **The last bit.** The few committed rows that differ in the last bit of a true utility can't be recovered exactly,
   because the hash key of the process that made them wasn't recorded.
-- **The conventional lab's BOFN and pKGFN have 3 seeds** (three simulated years each). Their factors rest on 3
-  pairs; the counts are given with every one. `TWIN3B_CONV_NET=6 python -m twin.bench3b run c_stocked c_lean_net`
-  adds seeds 3-5.
+- **The conventional lab's BOFN and pKGFN have 4 seeds** (three simulated years each). Their factors rest on
+  4 pairs; the counts are given with every one. `TWIN3B_CONV_NET=8 python -m twin.bench3b run c_stocked
+  c_lean_net` adds seeds 4-7.
 - **Campaign spend is the one cost basis here.** It leaves out the vertical lab's fixed costs, where round 3 found it
   costs more per alloy.
 - **Round 3's choices stand:** the spending plan, the 2 h admission window, the atomizer split, the stock's size and

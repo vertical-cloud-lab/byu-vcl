@@ -400,6 +400,9 @@ as real.
   for the first 25 simulated days (1,010 events) and then diverge. Seed 0's re-run reached aluminium's halfway target
   on day 104 against the committed 96, with 74 builds against 129. So the re-run's log is not the committed run's and
   is not used or committed. Round 3's BOFN and pKGFN rows therefore depend on the numerical environment.
+  Round 3b found the cause: the BLAS kernels the CPU selects. Forced to AVX2 kernels, an AVX-512 runner departs at the
+  same booking, 1,010, so this run's runner most likely had no AVX-512. Round 3b pinned the kernels, and every seed now
+  has an event log ([`twin_round3b.md`](twin_round3b.md)).
 - **Two numbers corrected against the tables.**
   - `notes/twin_round3.md` and PR 394's description gave BOFN's gain from three times the copper money as
     +0.17 ± 0.04, from its first 3 seeds. `cu_money.jsonl` has 4, and `tables.md` gives +0.14 ± 0.04 (final alloy

@@ -27,6 +27,12 @@ schedules interact in the model, not what the real lab will find.
 - **Against a conventional lab with the same freedom**, each lab with its best policy: aluminium's halfway target
   4.0× sooner (day 83 against 337), copper's 3.8× sooner (the funnel in both, day 148 against 561). Carrying its fixed
   costs alone, the vertical lab still costs more per alloy (2.8× without capex).
+  These factors set a stocked vertical lab against a conventional lab ordering metal as it goes. Round 3b
+  ([`twin_round3b.md`](twin_round3b.md)) runs both labs both ways. Like with like (both ordering as they go):
+  - aluminium's halfway target comes 1.8× sooner (pKGFN against the conventional heuristic, day 183 against 337);
+  - copper's comes 3.2× sooner (the funnel in both).
+  Round 3's 4.0× for aluminium was mostly the stock. Round 3's numbers themselves stand: its rows reproduce bit for bit
+  on an AVX-512 machine under round 3b's pin.
 - **A round-2 bug:** 126 of 271 copper alloys in round 2's seed-0 logs were scored before their immersion finished
   (section "What changed").
 
@@ -308,6 +314,26 @@ hours) and the same atomizer split, for three years at three years' money. BOFN 
   funnel) against 561 (conventional, the funnel): 3.8×. The optimizer's share is aluminium's, and the funnel's copper
   lead holds in both labs.
 
+**Round 3b: like with like.** Every factor above sets the vertical lab, stocked, against the conventional lab ordering
+metal as it goes, so the stock's share is folded into them. Round 3b runs both labs both ways and gives each factor four
+ways (`notes/twin_round3b.md`, section 2; Kaplan-Meier medians throughout, paired-bootstrap intervals, counts and
+bounds):
+
+| Target | Vertical lab | Conventional lab | Round 3 said | vertical stocked, conventional lean (round 3) | both lean | both stocked | vertical lean, conventional stocked |
+|---|---|---|---|---|---|---|---|
+| Al T1 | heuristic | heuristic | 6.8× (plain medians; Kaplan-Meier 6.6×) | 6.6× (1.4-9.3); 11/12 vs 12/12; first in 10/12 | 2.4× (0.9-3.1); 12/12 vs 12/12; first in 11/12 | 1.9× (0.5-8.5); 11/12 vs 12/12; first in 8/12 | 0.7× (0.5-3.2); 12/12 vs 12/12; first in 7/12 |
+| Al T1 | pKGFN | heuristic | 2.3× | 2.4× (0.8-8.9); 12/12 vs 12/12; first in 9/12 | 1.0× (0.4-1.4); 12/12 vs 12/12; first in 5/12 | 0.7× (0.4-4.7); 12/12 vs 12/12; first in 6/12 | 0.3× (0.2-1.4); 12/12 vs 12/12; first in 3/12 |
+| Al T2 | pKGFN | heuristic | 4.0×, the aluminium headline | 4.0× (2.1-∞); 10/12 vs 6/12; first in 9/12 | 1.8× (1.2-∞); 11/12 vs 6/12; first in 9/12 | >= 13.1×; 10/12 vs 2/12; first in 9/12 | >= 6.0×; 11/12 vs 2/12; first in 10/12 |
+| Al T2 | BOFN | heuristic | - | 3.5× (1.3-∞); 11/12 vs 6/12; first in 10/12 | 1.8× (1.3-∞); 11/12 vs 6/12; first in 10/12 | >= 11.4×; 11/12 vs 2/12; first in 10/12 | >= 6.0×; 11/12 vs 2/12; first in 10/12 |
+| Al T2 | pKGFN | pKGFN | not run | 2.0× (0-3.8); 3/4 vs 4/4; first in 3/4 | 1.0× (0-1.7); 3/4 vs 4/4; first in 2/4 | 1.3× (0-7.6); 3/4 vs 4/4; first in 2/4 | 0.7× (0-2.3); 3/4 vs 4/4; first in 2/4 |
+| Al T2 | BOFN | BOFN | not run | 1.9× (0.9-4.1); 4/4 vs 4/4; first in 3/4 | 0.9× (0-2.5); 3/4 vs 4/4; first in 1/4 | 1.4× (0.4-∞); 4/4 vs 3/4; first in 2/4 | 0.7× (0-∞); 3/4 vs 3/4; first in 3/4 |
+| Cu T1 | funnel | funnel | 2.9× | 2.9× (2.3-3.9); 11/12 vs 12/12; first in 11/12 | 2.5× (1.5-3.3); 11/12 vs 12/12; first in 10/12 | 2.5× (1.8-4.0); 11/12 vs 12/12; first in 9/12 | 2.1× (1.9-2.6); 11/12 vs 12/12; first in 11/12 |
+| Cu T2 | funnel | funnel | 3.8×, the copper headline | 3.8× (1.9-5.8); 10/12 vs 9/12; first in 10/12 | 3.2× (1.9-4.8); 10/12 vs 9/12; first in 10/12 | 3.0× (1.8-5.1); 10/12 vs 10/12; first in 9/12 | 2.5× (1.5-4.1); 10/12 vs 10/12; first in 10/12 |
+| Cu T1 | pKGFN | heuristic | 1.8× | 1.8× (1.4-∞); 9/12 vs 8/12; first in 8/12 | 2.0× (0-∞); 8/12 vs 8/12; first in 8/12 | 1.8× (1.3-3.0); 9/12 vs 10/12; first in 9/12 | 2.0× (0-2.9); 8/12 vs 10/12; first in 8/12 |
+| Cu T1 | pKGFN | pKGFN | not run | 1.2× (1.0-1.6); 3/4 vs 3/4; first in 3/4 | 1.3× (0-1.8); 2/4 vs 3/4; first in 2/4 | 1.4× (0-1.7); 3/4 vs 4/4; first in 2/4 | 1.5× (0-2.5); 2/4 vs 4/4; first in 1/4 |
+| Cu T1 | BOFN | BOFN | not run | 1.5× (0-1.8); 2/4 vs 4/4; first in 2/4 | 1.3× (0-1.9); 2/4 vs 4/4; first in 2/4 | 1.0× (0-2.0); 2/4 vs 4/4; first in 1/4 | 0.9× (0-2.9); 2/4 vs 4/4; first in 1/4 |
+
+
 ### 3.5 What it costs (`twin/econ3.py`: round 2's cost model on round 3's runs)
 
 Prices, capex and fixed costs are round 2's ([`twin_econ.md`](twin_econ.md)): the vertical lab $5.40M of equipment and
@@ -372,6 +398,13 @@ All simulated: synthetic truths, simulated instruments, assumed capacities, pric
 - **Not run in this session:** BOFN on 12 more seeds (`main_more_net`; the baselines have 24 seeds, BOFN and pKGFN
   12) and BOFN and pKGFN in the conventional lab (`conventional_net`). They are defined in `twin/bench3.py`;
   `python -m twin.bench3 run main_more_net conventional_net` resumes them. BOFN and pKGFN with γ₂ ran on 4 seeds each.
+  Round 3b ran BOFN and pKGFN in the conventional lab on 4 seeds each, ordering as it goes and stocked
+  (`twin_round3b.md`).
+- **Reproducing these rows** needs an x86-64 CPU with AVX-512 and round 3b's pin (`twin/repro.py`: one BLAS thread,
+  the AVX-512 kernels, `PYTHONHASHSEED=0`). Round 3b reran round 3's committed rows under it (`twin_round3b.md`,
+  1.4). Each rerun matched exactly, or with only true utilities one to three units apart in the last place. On a CPU
+  without AVX-512, BOFN and pKGFN depart from these rows within weeks (BOFN seed 0 at day 24.9; `twin_round3b.md`,
+  section 1).
 - **Round 2's copper scoring bug** means round 2's copper day counts were early for the funnel and the baselines;
   round 3's are not, so part of the funnel's slower copper days in round 3 (142 against 88) is the fix.
 

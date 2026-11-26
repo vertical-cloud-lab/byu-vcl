@@ -13,7 +13,7 @@ Every run here writes its event log, compressed with xz (``out/twin3b/events/<ru
   goes. ``c_stocked``: the conventional lab stocked. ``c_lean_net``: BOFN and pKGFN in the conventional lab ordering
   as it goes (round 3's ``conventional_net``, defined but never run). Each for the policies the comparisons use:
   the heuristic and the funnel on 12 seeds, time-aware BOFN and pKGFN on 12 in the vertical lab and on
-  ``TWIN3B_CONV_NET`` seeds (3) in the conventional lab, where a run simulates three years.
+  ``TWIN3B_CONV_NET`` seeds (4) in the conventional lab, where a run simulates three years.
 * The reruns. ``re_main``, ``re_main_more`` and ``re_conventional`` run round 3's committed configurations again with
   the event log on, so that every seed has one (round 3 kept seed 0's). Each row records whether it matches its
   committed row (``committed_match``: True, or the first difference); a run that matches has the committed run's
@@ -40,7 +40,7 @@ R3_RUNS = HERE.parent / "out" / "twin3" / "runs"
 
 CHEAP = ("heuristic", "tiered")
 NET = ("bofn3", "pkgfn3")
-N_CONV_NET = int(os.environ.get("TWIN3B_CONV_NET", "3"))
+N_CONV_NET = int(os.environ.get("TWIN3B_CONV_NET", "4"))
 
 
 def _c(policy, seed, facility, stock):
