@@ -1,0 +1,85 @@
+{
+ "n": 40,
+ "edison_file": "../edison/inv_finance_audit_files/finance_audit.csv",
+ "status_agreement": 0.875,
+ "status_disagreements": [
+  {
+   "entity": "OpenBB Inc.",
+   "status_mine": "private",
+   "status_edison": "shut_down"
+  },
+  {
+   "entity": "Anki Software, LLC (Ankitects)",
+   "status_mine": "private",
+   "status_edison": "acquired"
+  },
+  {
+   "entity": "Bruce Devices",
+   "status_mine": "unknown",
+   "status_edison": "private"
+  },
+  {
+   "entity": "MeshPro",
+   "status_mine": "unknown",
+   "status_edison": "private"
+  },
+  {
+   "entity": "Yunnan BinaryStars Technologies",
+   "status_mine": "unknown",
+   "status_edison": "private"
+  }
+ ],
+ "ever_1b_agreement": 0.85,
+ "ever_1b_both_decisive": 33,
+ "ever_1b_agreement_when_both_decisive": 1.0,
+ "ever_1b_crosstab": {
+  "no": {
+   "no": 31,
+   "unknown": 1,
+   "yes": 0
+  },
+  "unknown": {
+   "no": 5,
+   "unknown": 1,
+   "yes": 0
+  },
+  "yes": {
+   "no": 0,
+   "unknown": 0,
+   "yes": 2
+  }
+ },
+ "funding": {
+  "both blank": 18,
+  "agree (within 25%)": 14,
+  "differ": 4,
+  "only Edison": 3,
+  "only mine": 1
+ },
+ "peak_value": {
+  "both blank": 37,
+  "only Edison": 1,
+  "differ": 1,
+  "only mine": 1
+ },
+ "by_stratum": {
+  "has sourced figure": {
+   "n": 20,
+   "status_agreement": 0.95,
+   "funding": {
+    "agree (within 25%)": 14,
+    "differ": 4,
+    "only mine": 1,
+    "both blank": 1
+   }
+  },
+  "no sourced figure": {
+   "n": 20,
+   "status_agreement": 0.8,
+   "funding": {
+    "both blank": 17,
+    "only Edison": 3
+   }
+  }
+ }
+}
