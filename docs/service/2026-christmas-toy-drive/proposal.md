@@ -40,7 +40,9 @@ and the student writes that number on their tag.
 
 A person has to be at the printer for every plate. The A1 mini doesn't clear its own bed, and
 the printing rules in `CLAUDE.md` want someone nearby while a print runs. That person matters
-more than the software.
+more than the software. The robot-arms trial with
+[Rexagons](README.md#multi-color-rexagons-on-the-a1-mini) may take the plate-clearing off them
+for the A1 mini, though not the check of each toy.
 
 **Recommended:** one lab member or TA owns the queue for the three weeks:
 
@@ -79,7 +81,9 @@ training and lab access for each student, which is a lot to set up before Decemb
 ## 5. How much the printers can do
 
 The shortlist's toys take 31 minutes to just under 5 hours on the A1 mini, about 2 hours on
-average. The limit is how often someone clears the plate, more than print time. With the plate
+average. The limit is how often someone clears the plate, more than print time. If the arm in robot-arms
+learns to clear the A1 mini's plate (the [Rexagon trial](README.md#multi-color-rexagons-on-the-a1-mini)),
+print time becomes the limit again, within working hours. With the plate
 cleared three or four times a day, the A1 mini manages three or four plates a day. Over the 13
 weekdays from December 1 to December 17 that is roughly 40 to 50 plates, and more toys than that
 when small toys share a plate. The H2D could roughly double that once someone reads its nozzle
@@ -95,3 +99,9 @@ been read. For the December 10 delivery, the toys need to be off the printer by 
 - [ ] Filament: ours as it is, ask the department about its free filament, or buy colours
 - [ ] Where requests come in (Learning Suite or a form), and what counts as proof for the extra
       credit (the sticker on the office poster, or a photo of the tagged toy on the shelf)
+- [ ] Rexagons: ask PinkyWings for permission to give prints away, or keep them in the lab.
+      MakerWorld's Standard Digital File License forbids handing printed copies on
+- [ ] A third PLA colour for the A1 mini's empty AMS Lite slot, for three-colour Rexagons
+- [ ] robot-arms: add `allowed_bots: vcl-bot` and byu-vcl's sender-filter lines to its
+      `claude.yml` so `@claude-super` can hand it work, or post the plate-clearing request there
+      by hand

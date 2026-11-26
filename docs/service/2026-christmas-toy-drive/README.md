@@ -6,8 +6,9 @@ Christmas. Students, faculty and staff print a toy, tag it and leave it at the *
 
 Sterling plans to offer the project as extra credit in his machine design class, and maybe to
 open some of the lab's printers to it. This page brings together the organizers' rules, a
-shortlist of toys the lab can print, and a [proposal](proposal.md) for how students could use
-the printers.
+shortlist of toys the lab can print, [multi-color Rexagons](#multi-color-rexagons-on-the-a1-mini)
+for the A1 mini and the robot arm beside it, and a [proposal](proposal.md) for how students could
+use the printers.
 
 | | |
 | --- | --- |
@@ -141,6 +142,93 @@ Notes:
 - **Worry Stone:** Smooth thumb dip, gridded back, bumpy edge. The quickest toy here.
 - **Phone Stand, thicker:** Printed on its side, as the designer advises. For older children.
 
+## Multi-color Rexagons on the A1 mini
+
+Sterling asked on 2026-11-26 for multi-color **Rexagons**, printed on the lab's A1 mini, with the
+arm in [robot-arms](https://github.com/vertical-cloud-lab/robot-arms) trying to take each one off
+the plate. The Rexagon is [PinkyWings](https://makerworld.com/en/@pinkywings)'s
+[Articulated Rexagon (Trex + Dragon) Flexi](https://makerworld.com/en/models/1366309-articulated-rexagon-trex-dragon-flexi),
+a print-in-place flexi that is half dragon, half T-Rex, with no supports. It is well proven: on
+2026-11-26 MakerWorld counted 4,967 prints and 3,826 likes.
+
+**Its license doesn't allow giving prints away without the designer's permission.** Every toy on
+the shortlist is under a Creative Commons license. The Rexagon is under MakerWorld's *Standard
+Digital File License*, which says:
+
+> You shall not share, sub-license, sell, rent, host, transfer, or distribute in any way the
+> digital or 3D printed versions of this object, nor any other derivative work of this object in
+> its digital or physical format [...]
+
+A Rexagon left at the ME office is a printed copy handed on, so Rexagons can go to the drive only
+with PinkyWings's permission. Nobody has asked. Until someone does, Rexagons printed for the
+robot-arms trial stay in the lab. The license is also why this repo has no Rexagon model or
+sliced plate: it forbids hosting the files. MakerWorld also gives them only to a signed-in
+account ("Please log in to download models"), which a plain `@claude` run doesn't have.
+
+**The designer's profiles.** All three use 0.2 mm layers, 2 walls and 5 % infill on a 0.4 mm
+nozzle, and MakerWorld lists the A1 mini as compatible with both A1 profiles. The numbers are
+PinkyWings's own slices, for the printer each profile was made for, read from MakerWorld's API
+with [`toys/makerworld_profiles.py`](toys/makerworld_profiles.py) into
+[`toys/rexagon.json`](toys/rexagon.json). All are well inside the drive's limits.
+
+| | Profile | Made for | Colours | Filament | Cost | Print time | Prints on MakerWorld |
+| --- | --- | --- | --- | ---: | ---: | ---: | ---: |
+| <img src="https://makerworld.bblmw.com/makerworld/model/US79c9281449a4a9/288259063/instance/plate_1.png" width="80" alt="Rexagon, three-colour profile"> | Rexagon 3 color | A1 | black 22 g, orange 24 g, white 10 g | 56 g | $1.06 | 5 h 52 min | 3,177 |
+| <img src="https://makerworld.bblmw.com/makerworld/model/US79c9281449a4a9/288261837/instance/plate_1.png" width="80" alt="Rexagon, two-colour profile"> | Rexagon 2 color | A1 | black 18 g, orange 24 g | 42 g | $0.80 | 4 h 08 min | 955 |
+| | (H2D) rexagon 2 color | H2D | black 11 g, orange 9 g | 20 g | $0.38 | 1 h 36 min | 198 |
+
+The A1 profiles take about twice the filament and well over twice the time of the H2D one. A
+printer with one nozzle, like the A1 and the A1 mini, cuts the filament and flushes the old
+colour out at every colour change; the H2D gives each colour its own nozzle.
+
+**On the A1 mini.** Read at 19:09 UTC on 2026-11-26 over LAN, through the CubXL Pi: idle, no
+HMS alerts, **0.4 mm** stainless steel nozzle, bed at room temperature. AMS Lite: slot 1 dark
+blue PLA Basic, slot 2 empty, slot 3 black PLA Basic, slot 4 white PETG Basic.
+
+- **Two colours print as loaded:** black and dark blue, in place of the designer's black and
+  orange.
+- **Three colours need a third PLA** in slot 2.
+- **Keep the white PETG out of it.** The drive allows PLA or PLA+ only, and PETG bonds poorly to
+  PLA (which is why it's used as a support interface for PLA), so PETG claws and fangs could
+  come off as small parts.
+
+To slice for the A1 mini, open the model from MakerWorld in Bambu Studio, signed in to the lab's
+account. Pick a profile, switch the printer to *Bambu Lab A1 mini 0.4 nozzle*, map the colours to
+AMS Lite slots and slice. Studio then gives the A1 mini's own grams and time, which nobody has
+read yet. That needs the lab's Bambu login, so here it happens in an `@claude-print` run or at a
+computer with Studio. Keep the slice out of this repo, for the license's sake. If the A1 mini
+comes close to the A1's times, it makes one or two Rexagons a working day.
+
+**Against the avoid list.** The Rexagon is one piece and prints in place, with no magnets. Its
+horns, back spikes, fangs and claws look blunt in PinkyWings's photos. But the shortlist left out
+a dragon its designer calls spiky, so run a finger over every point on the first print and set
+aside any that feels sharp. Flex every joint before a Rexagon leaves the lab, as for the other
+articulated toys.
+
+**Taking them off with the robot arm.** The A1 mini sits on the robot table with robot-arms'
+AgileX PiPER. The [proposal](proposal.md#5-how-much-the-printers-can-do) found that clearing the
+plate limits the printers more than print time does, so an arm that clears it would help every
+toy, not only the Rexagons. A request to robot-arms should cover:
+
+- **The printing rules still hold for every send** (`CLAUDE.md`): a fresh camera frame, judged
+  clear, before each print, and working hours. With the arm clearing the plate, that frame
+  becomes the check that the arm did its job.
+- **Wait for the bed to cool.** PLA lets go of the plate as it cools, and pulling a
+  print-in-place toy off a warm plate risks breaking a joint. The LAN status reports the bed
+  temperature.
+- **Flex the plate or lift gently, don't pull hard.** The gear-shift fidget's note says the same.
+- **Check the printer's state between prints.** On 2026-11-25,
+  [robot-arms#86](https://github.com/vertical-cloud-lab/robot-arms/issues/86) found the A1 mini
+  holding its bed at 65 °C for days, with a cloud job stuck before its first line of G-code. A
+  loop that runs on its own should read `gcode_state` and HMS before and after each print.
+- **A person still checks each toy** before it leaves the lab: every joint flexed, any broken
+  toy set aside.
+
+A `@claude-super` hand-off can't reach robot-arms yet. Its `claude.yml` skips events sent by bots
+and has no `allowed_bots: vcl-bot`, so the ping would be dropped. Until someone adds those lines
+there (a human commit, since the Claude app can't edit workflows), post the request on robot-arms
+by hand.
+
 ## Considered and left out
 
 Nothing on the shortlist came near a limit, so nothing was dropped for grams, cost or time.
@@ -212,6 +300,10 @@ own license, listed in the table above and in `toys/toys.json`. The changes are 
 itself, plus the turns noted above. Credit for each design goes to its designer, linked in the
 table. If there is room, the designer's name on the back of the gift tag is a nice touch.
 
+The Rexagon is PinkyWings's, under MakerWorld's Standard Digital File License. No file of it is
+in this repo: only MakerWorld's public numbers for it, in `toys/rexagon.json`, and two of
+MakerWorld's own plate pictures, linked rather than copied.
+
 ## Files
 
 | File | What it is |
@@ -224,3 +316,5 @@ table. If there is room, the designer's name on the back of the gift tag is a ni
 | [`toys/report.json`](toys/report.json) | The slicer's grams, time, layers and size for each toy |
 | `toys/3mf/` | The sliced A1 mini plates |
 | `toys/thumbs/` | Each plate's thumbnail, as Bambu Studio rendered it |
+| [`toys/makerworld_profiles.py`](toys/makerworld_profiles.py) | Reads a MakerWorld model's license and print profiles from MakerWorld's public API |
+| [`toys/rexagon.json`](toys/rexagon.json) | The Rexagon's license and PinkyWings's three profiles, as read on 2026-11-26 |
