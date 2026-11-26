@@ -242,45 +242,45 @@
   {
    "measure": "latest value (disclosed)",
    "n": 44,
-   "spearman_rho": 0.147,
-   "ci_low": -0.168,
-   "ci_high": 0.445,
-   "median_usd_per_star": 28582.0,
+   "spearman_rho": 0.132,
+   "ci_low": -0.181,
+   "ci_high": 0.435,
+   "median_usd_per_star": 30818.0,
    "p75_over_p25_usd_per_star": 7.4
   },
   {
    "measure": "latest value, shutdowns at zero",
    "n": 51,
-   "spearman_rho": 0.264,
-   "ci_low": -0.023,
-   "ci_high": 0.527,
-   "median_usd_per_star": 28582.0,
+   "spearman_rho": 0.253,
+   "ci_low": -0.036,
+   "ci_high": 0.517,
+   "median_usd_per_star": 30818.0,
    "p75_over_p25_usd_per_star": 7.4
   },
   {
    "measure": "peak disclosed value",
    "n": 47,
-   "spearman_rho": 0.247,
-   "ci_low": -0.054,
-   "ci_high": 0.514,
-   "median_usd_per_star": 30508.0,
+   "spearman_rho": 0.233,
+   "ci_low": -0.065,
+   "ci_high": 0.501,
+   "median_usd_per_star": 31128.0,
    "p75_over_p25_usd_per_star": 7.1
   },
   {
    "measure": "disclosed equity funding",
    "n": 157,
-   "spearman_rho": 0.058,
-   "ci_low": -0.105,
-   "ci_high": 0.226,
+   "spearman_rho": 0.056,
+   "ci_low": -0.109,
+   "ci_high": 0.224,
    "median_usd_per_star": 436.0,
    "p75_over_p25_usd_per_star": 10.9
   },
   {
    "measure": "capital raised, larger of disclosed and Form D",
    "n": 168,
-   "spearman_rho": 0.075,
-   "ci_low": -0.085,
-   "ci_high": 0.235,
+   "spearman_rho": 0.072,
+   "ci_low": -0.088,
+   "ci_high": 0.233,
    "median_usd_per_star": 445.0,
    "p75_over_p25_usd_per_star": 11.5
   },
@@ -305,11 +305,11 @@
   },
   "ever_1b": {
    "no": 251,
-   "unknown": 54,
-   "yes": 34
+   "unknown": 53,
+   "yes": 35
   },
-  "share_ever_1b_of_all": 0.1,
-  "share_ever_1b_of_known": 0.119,
+  "share_ever_1b_of_all": 0.103,
+  "share_ever_1b_of_known": 0.122,
   "share_shut_down": 0.018,
   "handed_to_foundation": 5,
   "acquisitions": 32,
@@ -318,7 +318,7 @@
   "acquired_above_capital_raised": 5,
   "with_disclosed_funding": 160,
   "with_form_d": 43,
-  "capital_raised_sum_usd": 23106218854.0,
+  "capital_raised_sum_usd": 23163218854.0,
   "median_raised_usd_where_disclosed": 25000000.0
  },
  "H9_exploratory": [
@@ -365,42 +365,42 @@
   {
    "cohort": "2025-26",
    "companies": "38",
-   "ever_1b": "1",
-   "ever_1b_unknown": "5",
+   "ever_1b": "2",
+   "ever_1b_unknown": "4",
    "acquired": "1",
    "shut_down": "0",
    "with_disclosed_capital": "9",
-   "share_ever_1b": "0.026"
+   "share_ever_1b": "0.053"
   },
   {
    "cohort": "subset: all",
    "companies": "339",
-   "ever_1b": "34",
-   "ever_1b_unknown": "54",
+   "ever_1b": "35",
+   "ever_1b_unknown": "53",
    "acquired": "32",
    "shut_down": "6",
    "with_disclosed_capital": "169",
-   "share_ever_1b": "0.1"
+   "share_ever_1b": "0.103"
   },
   {
    "cohort": "subset: disclosed capital raised",
    "companies": "169",
-   "ever_1b": "29",
-   "ever_1b_unknown": "25",
+   "ever_1b": "30",
+   "ever_1b_unknown": "24",
    "acquired": "19",
    "shut_down": "3",
    "with_disclosed_capital": "169",
-   "share_ever_1b": "0.172"
+   "share_ever_1b": "0.178"
   },
   {
    "cohort": "subset: raised $10M or more",
    "companies": "112",
-   "ever_1b": "29",
-   "ever_1b_unknown": "20",
+   "ever_1b": "30",
+   "ever_1b_unknown": "19",
    "acquired": "12",
    "shut_down": "0",
    "with_disclosed_capital": "112",
-   "share_ever_1b": "0.259"
+   "share_ever_1b": "0.268"
   }
  ],
  "H10_companies": {

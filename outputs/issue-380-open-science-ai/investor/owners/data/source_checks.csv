@@ -107,8 +107,8 @@ firecrawl,Firecrawl (Sideguide Technologies),total_funding_usd,89500000.0,not on
 fishaudio,Fish Audio,total_funding_usd,52000000.0,confirmed,https://techcrunch.com/2026/07/28/fish-audio-raises-50m-seed-to-build-ai-voice-models-for-creators-and-enterprises/
 frappe,Frappe Technologies,total_funding_usd,1300000.0,confirmed,https://en.wikipedia.org/wiki/ERPNext
 gatsbyjs,Gatsby,total_funding_usd,46800000.0,confirmed,https://techcrunch.com/?p=2478632
-getsentry,Sentry (Functional Software),last_valuation_usd,3000000000.0,fetch failed,https://news.crunchbase.com/enterprise/sentry-unicorn-funding-bond-accel
-getsentry,Sentry (Functional Software),peak_value_usd,3000000000.0,fetch failed,https://news.crunchbase.com/enterprise/sentry-unicorn-funding-bond-accel
+getsentry,Sentry (Functional Software),last_valuation_usd,3000000000.0,confirmed,https://news.crunchbase.com/enterprise/sentry-unicorn-funding-bond-accel
+getsentry,Sentry (Functional Software),peak_value_usd,3000000000.0,confirmed,https://news.crunchbase.com/enterprise/sentry-unicorn-funding-bond-accel
 getsentry,Sentry (Functional Software),total_funding_usd,217000000.0,fetch failed,https://www.businesswire.com/news/home/20220504005222/en
 gitlabhq,GitLab Inc.,peak_value_usd,6000000000.0,confirmed,https://techcrunch.com/2021/01/15/gitlab-raises-195m-in-secondary-funding-on-6b-valuation/
 gitlabhq,GitLab Inc.,total_funding_usd,413500000.0,not on page,https://en.wikipedia.org/wiki/GitLab_Inc.
@@ -254,8 +254,8 @@ vitejs,VoidZero,total_funding_usd,17100000.0,not on page,https://voidzero.dev/po
 warpdotdev,Warp,total_funding_usd,73000000.0,not on page,https://techcrunch.com/2022/04/05/warp-raises-23m-to-build-a-better-terminal/
 withfig,Fig,total_funding_usd,2000000.0,confirmed,https://techcrunch.com/2023/08/29/amazon-fig-command-line-terminal-generative-ai/
 zai-org,Z.ai (Zhipu AI),peak_value_usd,7430000000.0,fetch failed,https://www.scmp.com/business/banking-finance/article/3339109/three-chinese-tech-stocks-gain-hong-kong-debuts-investors-jump-ai-robotics
-zama-ai,Zama,last_valuation_usd,400000000.0,confirmed,https://techcrunch.com/2024/03/07/zamas-homomorphic-encryption-tech-lands-it-73m-on-a-valuation-of-nearly-400m/
-zama-ai,Zama,peak_value_usd,400000000.0,confirmed,https://techcrunch.com/2024/03/07/zamas-homomorphic-encryption-tech-lands-it-73m-on-a-valuation-of-nearly-400m/
-zama-ai,Zama,total_funding_usd,81000000.0,confirmed,https://techcrunch.com/2024/03/07/zamas-homomorphic-encryption-tech-lands-it-73m-on-a-valuation-of-nearly-400m/
+zama-ai,Zama,last_valuation_usd,1000000000.0,confirmed,https://techcrunch.com/2025/09/08/more-than-10-european-startups-became-unicorns-this-year/
+zama-ai,Zama,peak_value_usd,1000000000.0,confirmed,https://techcrunch.com/2025/09/08/more-than-10-european-startups-became-unicorns-this-year/
+zama-ai,Zama,total_funding_usd,138000000.0,not on page,https://techcrunch.com/2024/03/07/zamas-homomorphic-encryption-tech-lands-it-73m-on-a-valuation-of-nearly-400m/
 zed-industries,Zed Industries,total_funding_usd,42000000.0,fetch failed,https://www.businesswire.com/news/home/20250820782241/en
 zylon-ai,Zylon,total_funding_usd,3200000.0,fetch failed,https://tech.eu/2024/02/14/from-the-creators-of-privategpt-zylon-emerges-from-stealth-announcing-a-3-2m-pre-seed-funding-round

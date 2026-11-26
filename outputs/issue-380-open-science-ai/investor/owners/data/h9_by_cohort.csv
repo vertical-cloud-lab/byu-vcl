@@ -3,7 +3,7 @@ cohort,companies,ever_1b,ever_1b_unknown,acquired,shut_down,with_disclosed_capit
 2015-19,97,11,15,10,1,49,0.113
 2020-22,73,3,13,6,3,45,0.041
 2023-24,81,7,15,8,1,40,0.086
-2025-26,38,1,5,1,0,9,0.026
-subset: all,339,34,54,32,6,169,0.1
-subset: disclosed capital raised,169,29,25,19,3,169,0.172
-subset: raised $10M or more,112,29,20,12,0,112,0.259
+2025-26,38,2,4,1,0,9,0.053
+subset: all,339,35,53,32,6,169,0.103
+subset: disclosed capital raised,169,30,24,19,3,169,0.178
+subset: raised $10M or more,112,30,19,12,0,112,0.268
