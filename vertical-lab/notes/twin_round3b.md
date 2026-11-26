@@ -25,7 +25,7 @@ intervals.)
   - Python's per-process string hashing moved the last bit of a true utility now and then.
   - `twin/repro.py` pins both, with the threads and the global generators. `python -m twin.repro check` reruns BOFN
     seed 0 for 30 days against the committed log.
-  - Of round 3's committed rows, 328 were rerun under the pin: 318 are identical, 10 differ only in the last bit of aluminium utilities, and 0 differ otherwise.
+  - Of round 3's committed rows, 348 were rerun under the pin: 338 are identical, 10 differ only in the last bit of aluminium utilities, and 0 differ otherwise.
 - **Like with like, the vertical lab's best policy against the rule of thumb is 1.8× on aluminium's halfway target,
   not 4.0×.**
   - BOFN and pKGFN against the conventional lab's heuristic, both labs ordering metal as they go: day 183 against 337,
@@ -77,10 +77,12 @@ blend of design 24 starts at hour 599.1, and with AVX2 kernels a powder charge o
 Changing either library's kernels is enough. The video run's runner most likely had no AVX-512. Its log doesn't
 record the CPU, so that is an inference, but it is the only difference that reproduces its result here.
 
-Full-year reruns on this runner, on its own kernels, give the committed rows exactly: BOFN seeds 0 and 5 (the two the
-video run tried), pKGFN seed 0, and seed 0 of the heuristic, the funnel, GP-BO, random and Sobol, in the vertical lab
-and the conventional lab. Every field of the row is compared: the curves, the money, the counts, the stops, the
-utilization. Only the run time and the GP bookkeeping are left out.
+Full-year reruns on this runner, on its own kernels, gave the committed rows exactly: BOFN seeds 0 and 5 (the two
+the video run tried), pKGFN seed 0, and seed 0 of the heuristic, the funnel, GP-BO, random and Sobol, in the vertical
+lab and the conventional lab. Every field of the row is compared: the curves, the money, the counts, the stops, the
+utilization. Only the run time and the GP bookkeeping are left out. Those reruns ran before the hash key was pinned.
+Under the full pin, BOFN seed 0 differs from its committed row in the last bit of some aluminium utilities, and
+nowhere else (1.2, 1.4).
 
 **Ruled out:**
 - *Threads*: 4 BLAS threads gave the same bookings as 1 here.
@@ -117,10 +119,11 @@ other one under the fourth (`test_string_hashing_moves_a_last_bit`).
   the pin).
 
 `TWIN_PIN=avx2` pins the AVX2 kernels instead. They run on any x86-64 CPU from 2013 on, but give rows of their own,
-not round 3's. `TWIN_PIN=off` leaves the choice to the libraries.
+not round 3's. `TWIN_PIN=off` sets nothing: kernels, threads and hashing are left to the libraries and the
+interpreter.
 
 **A machine without AVX-512 can't give round 3's rows.** On one, `apply()` leaves the kernels alone, and the check
-and the tests say why and skip. That includes the AMD EPYC 7763, a common GitHub runner. To make the rows portable,
+and the tests say why and skip. The AMD EPYC 7763 (Zen 3), for example, has no AVX-512. To make the rows portable,
 everything would have to be rerun under `TWIN_PIN=avx2`, every BOFN and pKGFN row included, and the results would
 move. That wasn't done here.
 
@@ -137,21 +140,22 @@ Every row is compared field by field, leaving out only the run time and the GP b
 
 | Round 3's experiment | Committed rows | Rerun | Identical | To the last bit | Different |
 |---|---|---|---|---|---|
-| `main` | 96 | 76 | 73 | 3 | 0 |
+| `main` | 96 | 96 | 93 | 3 | 0 |
 | `main_more` | 60 | 60 | 57 | 3 | 0 |
 | `conventional` | 60 | 60 | 58 | 2 | 0 |
 | the copper tests (`cu_hidden`, `cu_proxy`, `cu_ablation`, `cu_money`) | 140 | 132 | 130 | 2 | 0 |
-| all | 356 | 328 | 318 | 10 | 0 |
+| all | 356 | 348 | 338 | 10 | 0 |
 
-Runs rerun by policy: bofn3 12, gpbo 60, heuristic 60, pkgfn3 4, random 48, sobol 36, tiered 60, tiered_mis 24, tiered_proxy 12, tiered_screen 12.
+Runs rerun by policy: bofn3 12, bofn3_usd 12, gpbo 60, heuristic 60, pkgfn3 12, random 48, sobol 36, tiered 60, tiered_mis 24, tiered_proxy 12, tiered_screen 12.
 
 To the last bit: `r3_proposed_gpbo_s6_stock-lean`, `r3_proposed_sobol_s3_stock-lean`, `r3_vertical_lab_bofn3_s0`, `r3_vertical_lab_gpbo_s15`, `r3_vertical_lab_gpbo_s5_cu_budget-180000.0`, `r3_vertical_lab_heuristic_s0_cu_budget-180000.0`, `r3_vertical_lab_heuristic_s23`, `r3_vertical_lab_heuristic_s3`, `r3_vertical_lab_heuristic_s7`, `r3_vertical_lab_tiered_s17`. In each, aluminium's true utilities differ by one to three units in the last place. A best-so-far curve carries a value forward, so that is 4 to 128 entries of the row. Everything else in the row (every count, day and dollar) is identical (`bench3b.match_kind`). The cause is the hash key of the process that made the committed row. It was random and wasn't recorded, so no single key recovers every row's last bits.
 
-No run of round 3b's 416 drew from torch's global generator.
+No run of round 3b's 436 drew from torch's global generator.
 
 The seed-0 event logs that round 3 committed (`out/twin3/events/`) are identical, booking for booking, to the reruns'
 logs (`test_rerun_logs_equal_round_3s_committed_logs`). Not rerun: BOFN and pKGFN in the copper tests (`cu_money`,
 `cu_hidden_net`), 16 runs of 10-18 minutes each.
+
 ## 2. The lab comparison, like with like
 
 ### 2.1 The arms
@@ -228,7 +232,7 @@ lean) and the paired difference in the final best alloy.
     67) and 3.5× in the conventional lab (day 46 against 159).
   - Round 3 set the stocked vertical lab (day 24) against the lean conventional lab (day 159). Medians multiply, so
     its 6.6× is exactly the stock's 2.8× times the lab's 2.4×.
-- **It does little for copper's funnel:** 1.2× in both labs, to either target, and nothing to the final alloy.
+- **It does little for copper's funnel:** 1.2-1.3× in both labs, to either target, and nothing to the final alloy.
 - **The stock doesn't always help later.**
   - Stocked, the conventional lab's heuristic reaches aluminium's halfway target in 2 of 12 seeds (6 of 12 lean), and
     finishes 0.08 ± 0.03 lower.
@@ -249,8 +253,10 @@ lean) and the paired difference in the final best alloy.
 Round 3's comparisons (and BOFN's), four ways. Each cell gives the factor (the conventional lab's median day over the
 vertical lab's) and its 95 % interval. Then come the seeds that got there (vertical vs conventional) and the seeds in
 which the vertical lab got there first. The first column of factors is round 3's pairing, recomputed by the one
-median rule. The rows for every policy against both the same policy and the rule of thumb, and the paired
-differences in days, are in [`tables.md`](../out/twin3b/tables.md).
+median rule. Each factor is computed on the seeds both arms have: seeds 0-3 wherever the conventional
+lab runs BOFN or pKGFN. It can therefore differ from the ratio of two medians in 2.1, which are over each arm's own
+seeds. The rows for every policy against both the same policy and the rule of thumb, and the paired differences in
+days, are in [`tables.md`](../out/twin3b/tables.md).
 
 | Target | Vertical lab | Conventional lab | Round 3 said | vertical stocked, conventional lean (round 3) | both lean | both stocked | vertical lean, conventional stocked |
 |---|---|---|---|---|---|---|---|
@@ -273,8 +279,8 @@ differences in days, are in [`tables.md`](../out/twin3b/tables.md).
   - In the other mixed pair the stocked conventional lab is the faster one: 0.7× (day 46 against 67), and the
     vertical lab is first in 7 of 12.
 - **Copper, the funnel in both labs.** To the best existing alloy, 2.5× (1.5-3.3) both lean and 2.5× (1.8-4.0) both
-  stocked, against round 3's 2.9×. To the halfway target, 3.2× (1.9-4.8) and 3.0× (1.8-5.1), against 3.8×. About a
-  fifth of round 3's copper factors was the stock; the rest holds like with like.
+  stocked, against round 3's 2.9×. To the halfway target, 3.2× (1.9-4.8) and 3.0× (1.8-5.1), against 3.8×. Like with
+  like, round 3's copper factors shrink by 14-21 %; the rest holds.
 - **BOFN and pKGFN against the rule of thumb (aluminium's halfway target):** round 3's 4.0× for pKGFN becomes **1.8×
   (1.2 to unbounded) with both labs ordering as they go**: day 183 against 337. pKGFN gets there in 11 of 12 seeds (the
   heuristic in 6 of 12), and first in 9 of 12; BOFN is the same, 1.8×, first in 10 of 12.
@@ -323,8 +329,10 @@ doesn't redo that model.
 | Cu T1 | pKGFN | pKGFN | - | 0.7x (0.6-1.0); 3/4 vs 3/4 | 0.7x (0-1.0); 2/4 vs 3/4 | 0.8x (0-0.8); 3/4 vs 4/4 | 0.8x (0-1.3); 2/4 vs 4/4 |
 | Cu T1 | BOFN | BOFN | - | 1.0x (0-1.3); 2/4 vs 4/4 | 0.9x (0-1.2); 2/4 vs 4/4 | 0.6x (0-1.1); 2/4 vs 4/4 | 0.6x (0-1.6); 2/4 vs 4/4 |
 
-- **On campaign spend, the vertical lab reaches every target for which there is a factor more cheaply.** Most of
-  that is time, since a campaign spends as it goes, and the conventional lab runs three years.
+- **On campaign spend, the vertical lab reaches most targets more cheaply.** Most of that is time, since a campaign
+  spends as it goes and the conventional lab runs three years. There are two exceptions:
+  - BOFN and pKGFN against the same policy, on copper's first target (0.6-1.0×);
+  - pKGFN against the conventional heuristic on aluminium's first target, in the mixed pair (0.9×).
 - **Copper's funnel:** 2.5× less campaign money to the best existing alloy and 2.9-3.2× less to halfway, the same in
   all four pairings.
 - **Aluminium's heuristic:** round 3's pairing gives 10.1×. Like with like it is 3.1× (both lean) and 6.1× (both
@@ -360,7 +368,9 @@ Everything here is simulated.
 
 ## 3. Event logs for every seed
 
-`out/twin3b/events/` holds 416 event logs, 25.8 MB in all (62 KB each on average), xz-compressed JSON in round 3's schema (`Twin.event_log`: every booking, design, result and best-so-far curve). `twin.bench3b.read_events(path)` reads one, and so does `xz -dc`. There is one for every run round 3b made: the new arms, and round 3's reruns. The reruns match their committed rows, so their logs are the committed runs' logs (a log rounds utilities to 4 decimals, so the last-bit cases don't show). Round 3's own seed-0 logs (`out/twin3/events/*.json`) are unchanged.
+`out/twin3b/events/` holds 436 event logs, 26.9 MB in all (62 KB each on average), xz-compressed JSON in round 3's schema (`Twin.event_log`: every booking, design, result and best-so-far curve). `twin.bench3b.read_events(path)` reads one, and so does `xz -dc`. There is one for every run round 3b made: the new arms, and round 3's reruns. The reruns match their committed rows, so their logs are the committed runs' logs (a log rounds utilities to 4 decimals, so the last-bit cases don't show). Round 3's own seed-0 logs (`out/twin3/events/*.json`) are unchanged.
+
+Every row of round 3's main benchmark and lab comparison has a log.
 
 **The median seed of each arm**, for a replay: the seed whose day to the target is the arm's Kaplan-Meier median (ties go to the seed whose final best is nearest the arm's median). Where fewer than half the seeds got there, it is a seed that didn't. All from `like3b.json` (`median_seeds`):
 
@@ -380,18 +390,20 @@ Everything here is simulated.
 | vertical, lean, funnel | seed 10 (day 123; 6/12) | seed 3 (not reached by most; 0/12) | seed 4 (day 164; 11/12) | seed 7 (day 178; 10/12) |
 | vertical, stocked, BOFN | seed 7 (day 83; 12/12) | seed 0 (day 96; 11/12) | seed 5 (day 221; 8/12) | seed 4 (not reached by most; 5/12) |
 | vertical, stocked, heuristic | seed 7 (day 24; 11/12) | seed 2 (not reached by most; 1/12) | seed 3 (day 234; 7/12) | seed 5 (not reached by most; 1/12) |
-| vertical, stocked, pKGFN | seed 5 (day 67; 12/12), no log | seed 7 (day 83; 10/12), no log | seed 3 (day 295; 9/12) | seed 4 (not reached by most; 4/12), no log |
+| vertical, stocked, pKGFN | seed 5 (day 67; 12/12) | seed 7 (day 83; 10/12) | seed 3 (day 295; 9/12) | seed 4 (not reached by most; 4/12) |
 | vertical, stocked, funnel | seed 10 (day 146; 6/12) | seed 10 (not reached by most; 1/12) | seed 3 (day 142; 11/12) | seed 10 (day 148; 10/12) |
 
 ## 4. What changes in round 3's notes
 
 **Round 3's numbers don't change.** Every committed row that was rerun matches: exactly, or to the last bit of a true
-utility, with every decision the same (1.4). What changes is what the lab factors mean. `notes/twin_round3.md` now says
-so where they appear:
+utility, with everything else in the row the same (1.4). What changes is what the lab factors mean.
+`notes/twin_round3.md` now says so where they appear:
 - the summary at the top;
-- section 3.4, which gains a paragraph on the comparison like with like;
-- its limits, where BOFN and pKGFN in the conventional lab have now run (3 seeds each, both ways), and where the rows
-  reproduce under the pin.
+- section 3.4, which gains the four-way table;
+- its limits, where BOFN and pKGFN in the conventional lab have now run (4 seeds each, both ways), and where
+  the rows reproduce under the pin.
+
+`notes/twin_video.md` gets one line where the video run reported the departure.
 
 PR 394's description gave BOFN's gain from three times the copper money as +0.17 ± 0.04, from its first 3 seeds. It now
 gives the 4 committed seeds' +0.14 ± 0.04 (with "4 seeds each" and the difference from the funnel, +0.03 ± 0.04), as
@@ -424,7 +436,7 @@ pip install numpy scipy scikit-learn scikit-image matplotlib pillow pycalphad sc
 python -m twin.repro env            # the set-up; "problems" must be empty to get round 3's rows
 python -m twin.repro check          # BOFN seed 0, 30 simulated days, against the committed log
 python -m pytest -q twin/tests/test_round3b.py
-TWIN_WORKERS=4 python -m twin.bench3b run v_lean c_stocked c_lean_net re_main re_main_more re_conventional
+TWIN_WORKERS=4 python -m twin.bench3b run v_lean c_stocked c_lean_net re_main re_main_more re_conventional re_cu
 python -m twin.like3b && python -m twin.figures3b
 ```
 

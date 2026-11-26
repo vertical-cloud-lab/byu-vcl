@@ -25406,14 +25406,14 @@
      "day": 66.942,
      "hit": 12,
      "of": 12,
-     "events": null
+     "events": "out/twin3b/events/r3_vertical_lab_pkgfn3_s5.json.xz"
     },
     "T2": {
      "seed": 7,
      "day": 83.442,
      "hit": 10,
      "of": 12,
-     "events": null
+     "events": "out/twin3b/events/r3_vertical_lab_pkgfn3_s7.json.xz"
     }
    },
    "onr_cu": {
@@ -25429,7 +25429,7 @@
      "day": null,
      "hit": 4,
      "of": 12,
-     "events": null
+     "events": "out/twin3b/events/r3_vertical_lab_pkgfn3_s4.json.xz"
     }
    }
   },
