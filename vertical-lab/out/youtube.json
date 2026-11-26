@@ -781,6 +781,18 @@
     "notified_subscribers": false
    }
   ],
+  "twin2/video/lab3d_week.mp4": [
+   {
+    "id": "FR3Fl1onJU0",
+    "sha256": "48b9ae669412c0e8883603797ff00b3162c340708fed8df2459ad37b75b313cf",
+    "bytes": 13502217,
+    "commit": "b16bd36",
+    "uploaded": "2026-11-26T03:25:18Z",
+    "title": "Preview: one simulated week of the automated lab, moved by the event log (digital twin)",
+    "privacy": "unlisted",
+    "notified_subscribers": false
+   }
+  ],
   "vacuum_press.mp4": [
    {
     "id": "UGTGpEfyUeQ",
