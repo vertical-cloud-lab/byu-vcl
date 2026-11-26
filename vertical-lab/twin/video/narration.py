@@ -106,44 +106,43 @@ def _record() -> dict:
     return json.loads(p.read_text()) if p.exists() else {"voice": None, "lines": {}}
 
 
-def audio(ln: dict, k=None, rec: dict | None = None):
-    """(samples at 24 kHz, the Kokoro instance) for one line: its committed FLAC when that was spoken from the same
-    phonemes, voice and speed; else spoken now and written there."""
-    import soundfile as sf
-    rec = _record() if rec is None else rec
+def _reusable(ln: dict, rec: dict) -> bool:
+    """A line's committed FLAC still holds: same text, same respellings and phonemes for words (SAY, IPA), same voice
+    and speed. Then nothing is spoken again, and no speech stack is needed to rebuild the cut."""
     have = rec["lines"].get(ln["id"])
-    path = NDIR / f"{ln['id']}.flac"
-    if have and path.exists() and have.get("key") == ln.get("_key") and not os.environ.get("NARRATION_RESPEAK"):
-        y, sr = sf.read(str(path), dtype="float32")
-        return y, k
-    ph = ln.get("_ph") or phonemes(ln["text"])
-    if k is None:
-        from kokoro_onnx import Kokoro
-        k = Kokoro(*KOKORO)
-    y, sr = k.create(ph, voice=VOICE, speed=SPEED, lang="en-us", is_phonemes=True)
-    assert sr == SR, sr
-    y = np.asarray(y, np.float32)
-    NDIR.mkdir(parents=True, exist_ok=True)
-    sf.write(str(path), y, SR, format="FLAC", subtype="PCM_16")
-    return y, k
+    return bool(have and have.get("text") == ln["text"] and rec.get("say") == SAY and rec.get("ipa") == IPA
+                and rec.get("voice_id") == VOICE and rec.get("speed") == SPEED
+                and (NDIR / f"{ln['id']}.flac").exists() and not os.environ.get("NARRATION_RESPEAK"))
 
 
 def speak_all(only: set | None = None) -> dict:
-    """Every line's audio (committed FLAC, or spoken now), and lines.json brought up to date."""
+    """Every line's audio at 24 kHz: its committed FLAC where that still holds (_reusable), else spoken now by Kokoro
+    from its phonemes and written there; lines.json brought up to date. `only`: speak just these ids."""
     import soundfile as sf
     rec = _record()
-    k, out = None, {}
-    keep = {}
+    k, out, keep = None, {}, {}
     for ln in lines():
-        ln["_ph"] = phonemes(ln["text"])
-        ln["_key"] = _key(ln["_ph"])
         if only and ln["id"] not in only:
             continue
-        y, k = audio(ln, k, rec)
         path = NDIR / f"{ln['id']}.flac"
-        keep[ln["id"]] = dict(key=ln["_key"], text=ln["text"], spoken=spoken(ln["text"]), phonemes=ln["_ph"],
-                              seconds=round(len(y) / SR, 2),
-                              sha256=hashlib.sha256(path.read_bytes()).hexdigest())
+        if _reusable(ln, rec):
+            have = rec["lines"][ln["id"]]
+            ph, key = have["phonemes"], have["key"]
+            y, _ = sf.read(str(path), dtype="float32")
+        else:
+            ph = phonemes(ln["text"])
+            key = _key(ph)
+            if k is None:
+                from kokoro_onnx import Kokoro
+                k = Kokoro(*KOKORO)
+            y, sr = k.create(ph, voice=VOICE, speed=SPEED, lang="en-us", is_phonemes=True)
+            assert sr == SR, sr
+            y = np.asarray(y, np.float32)
+            NDIR.mkdir(parents=True, exist_ok=True)
+            sf.write(str(path), y, SR, format="FLAC", subtype="PCM_16")
+            y, _ = sf.read(str(path), dtype="float32")             # as a rebuild will read it
+        keep[ln["id"]] = dict(key=key, text=ln["text"], spoken=spoken(ln["text"]), phonemes=ph,
+                              seconds=round(len(y) / SR, 2), sha256=hashlib.sha256(path.read_bytes()).hexdigest())
         out[ln["id"]] = y
     if not only:                                        # drop the FLACs of lines no longer in the script
         for f in NDIR.glob("*.flac"):
@@ -152,9 +151,9 @@ def speak_all(only: set | None = None) -> dict:
         rec["lines"] = keep
     else:
         rec["lines"].update(keep)
-    rec.update(voice=f"Kokoro v1.0 {VOICE} (kokoro-onnx, open weights), speed {SPEED}", rate=SR,
-               model_sha256={"kokoro-v1.0.onnx": "7d5df8ecf7d4b1878015a32686053fd0eebe2bc377234608764cc0ef3636a6c5",
-                             "voices-v1.0.bin": "bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d"},
+    rec.update(voice=f"Kokoro v1.0 {VOICE} (kokoro-onnx, open weights), speed {SPEED}", voice_id=VOICE, speed=SPEED,
+               rate=SR, model_sha256={"kokoro-v1.0.onnx": "7d5df8ecf7d4b1878015a32686053fd0eebe2bc377234608764cc0ef3636a6c5",
+                                      "voices-v1.0.bin": "bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d"},
                say=SAY, ipa=IPA)
     (NDIR / "lines.json").write_text(json.dumps(rec, indent=1, ensure_ascii=False) + "\n")
     return out
@@ -224,8 +223,11 @@ def place(rec: dict, mk: dict) -> list:
 
 
 def _lufs(wav: Path) -> float | None:
-    r = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", str(wav), "-af", "ebur128", "-f", "null", "-"],
-                       capture_output=True, text=True)
+    try:
+        r = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", str(wav), "-af", "ebur128", "-f", "null", "-"],
+                           capture_output=True, text=True)
+    except OSError:                                     # no ffmpeg: the loudness is only reported
+        return None
     m = re.findall(r"I:\s+(-?[\d.]+) LUFS", r.stderr)
     return float(m[-1]) if m else None
 

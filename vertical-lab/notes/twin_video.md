@@ -192,11 +192,11 @@ Sterling asked for narration "at least at the strategic places", on top of the a
 ([PR 393](https://github.com/vertical-cloud-lab/byu-vcl/pull/393#issuecomment-7180846741)): what is simulated and what is
 real, the function networks as each is built, how to read the best-so-far plots and the acceleration factor, the first
 alloy, the switch to the whole lab, the results, the takeaway with what "Y of the cost" includes, and the closing
-notes. Elsewhere the captions and the pictures carry it: @@NLINES@@ lines, @@SPOKEN@@ of speech in @@LENGTH@@. It is
+notes. Elsewhere the captions and the pictures carry it: 25 lines, 5.5 min of speech in 12:50. It is
 built on the animated cut ([The animated lab](#the-animated-lab)), so the replay is PR 318's 3-D lab moved by the event
 log.
 
-**On YouTube:** @@VIDEO@@ (unlisted; uploaded @@DATE@@ from commit @@COMMIT@@), and its 60 s preview @@PREVIEW@@
+**On YouTube:** being built (unlisted when uploaded) (unlisted; uploaded 2026-11-26 from commit (pending)), and its 60 s preview (being uploaded)
 (unlisted): the opening, then the 3-D lab taking over on day 2 and the first view of the whole lab from above. The
 public cut (Pz7hxqfODmE) and the animated re-cut's upload are left as they are.
 
@@ -208,7 +208,7 @@ letter; "aluminium" as the American "aluminum", since the voice is American), an
 ("KAL-fad"), Kardex, Sobol and "doser" their phonemes.
 
 **Heard back.** Every line was transcribed by faster-whisper (base.en and small.en) and compared word by word with what
-it should say: @@WER@@ word error over @@WORDS@@ words. The differences are spellings ("grey"/"gray") and "CALPHAD", a
+it should say: 0.55 % (small.en) and 2.0 % (base.en, which twice repeats a phrase that was said once) word error over 910 words. The differences are spellings ("grey"/"gray") and "CALPHAD", a
 word the recognizers don't know (`out/twin2/video/narration/check.json`; `lines.ogg` has every line in a row, to listen
 to).
 
@@ -254,7 +254,33 @@ python -m twin.video.upload --yes --file out/twin2/video/campaign_lab3d_narrated
 
 ### The script, with its times in the cut
 
-@@TABLE@@
+| Time | Part | Line |
+|---|---|---|
+| 0:00-0:09 | Opening | This is a simulated benchmark: two alloy discovery campaigns, replayed for a whole year in a digital twin of our planned automated lab. |
+| 0:10-0:26 | Opening | Some of it comes from real sources: the lab's design and its 3-D model, footage from our own atomizer, the search spaces in the two proposals, and published prices. Everything else is simulated: every alloy, every measurement, and every result. |
+| 0:54-1:07 | The function networks | Each campaign is a function network: a chain of steps, where each step's results feed the next. BOFN, Bayesian optimization over function networks, models every step, not just the final score. |
+| 1:09-1:15 | The function networks | For aluminium, the lab makes each alloy's powder itself, then prints it and checks every build. |
+| 2:02-2:10 | The function networks | For copper, a one-hour corrosion screen ranks the DED deposits, and thirty days in seawater come before a utility is known. |
+| 2:25-2:31 | The function networks | Both campaigns share one lab. From here on, each step is an icon that lights up while it runs. |
+| 2:39-2:58 | Reading the figures | Best so far is the highest utility of any alloy tested yet. The dotted line is the target: the best reference alloy's score on the twin's synthetic alloy model. One random design in twelve beats it, so reaching it shows how fast a lab tests its first alloys, not a discovery. |
+| 2:58-3:10 | Reading the figures | Against money, the same curve shows what the progress cost. The grey dashed curve is the conventional lab: the same optimizer through partner and core facilities, ordering its metal as it goes. |
+| 3:15-3:28 | Reading the figures | Where each first reaches the target, the median over the runs, gives the acceleration factor: here 220 days over 116, or 1.9 times. Money gives the cost ratio the same way. |
+| 3:41-3:53 | The campaign year | Day one follows a single simulated aluminium alloy from start to finish. Its cup is machined, its metals are dosed and pressed under vacuum, then melted and atomized into powder. |
+| 3:55-3:59 | The campaign year | The melt and the pour are real footage, from the lab's own atomizer. |
+| 4:17-4:24 | The campaign year | After sieving and powder checks, it's printed by laser powder bed fusion, then inspected, sectioned and indented. |
+| 4:51-4:58 | The campaign year | Wire EDM cuts its bars, and a tensile test scores it, about a day and a half after its cup was machined. |
+| 5:01-5:14 | The campaign year | From day two, the event log moves the lab's 3-D model: each booking brings its tray to a Shuttle's opening and back, and a mobile arm drives over to serve it. Trays nobody has booked stay in their slots. |
+| 5:35-5:46 | The campaign year | Now the whole lab from above, with the two Shuttles up close from a second camera. The moves run on a clock of their own, so you can follow them; the panel at the bottom counts how many were drawn. |
+| 6:20-6:29 | The campaign year | This replay is one seed of twelve, and aluminium's luckiest: it reaches the target on day 20, where the median seed takes 116 days. |
+| 9:41-10:05 | Results | Each panel is one policy: twelve one-year runs in the automated lab, twelve three-year runs in the conventional one. BOFN finished highest on aluminium. On copper, tiered CALPHAD screening finished ahead of BOFN with blend screening, 0.68 against 0.58 over 24 seeds, and plain BOFN did no better than random. |
+| 10:07-10:29 | Results | Against a conventional lab that orders metal as it goes and runs plain BOFN, the stocked automated lab reached the target 1.9 times sooner on aluminium, and at least 3.7 times sooner on copper, where the conventional lab got there in 6 of its 12 runs. With both labs ordering as they go, aluminium's factor is 1.2. |
+| 10:31-10:43 | Results | Per demonstrated alloy, the automated lab costs more while the two campaigns carry its equipment alone. It costs less only if outside users fill it to sixty percent, which the model assumes. |
+| 10:47-11:04 | Results | The two campaigns use 5.8 percent of the lab's hours, weighted by capital cost. With an assumed ten hours a week of outside work per instrument, the spare hours would net about 1.2 million dollars a year, 2.1 times the lab's depreciation. |
+| 11:12-11:31 | The takeaway | So: in this simulated benchmark, a stocked automated lab reached an alloy better than the reference alloy sooner than a conventional lab that orders metal as it goes: aluminium in 116 days against 220, and copper in 225 days against at least 840. |
+| 11:32-11:43 | The takeaway | Most of aluminium's gain is the stock: with both labs ordering as they go, it's 1.2 times. And for copper, the automated lab also screens powder blends first. |
+| 11:44-12:08 | The takeaway | To get there, with the equipment included, the automated lab cost 2.0 times as much for aluminium, and 1.15 times for copper; counting only what the campaigns spent, 0.6 and 0.4 times. With the equipment, it costs less only for copper, and only if outside users rent its idle hours, which this model assumes and does not show. |
+| 12:09-12:22 | The takeaway | Against a conventional lab run by a metallurgist's rules of thumb, the automated lab is no faster on aluminium, at 2.6 times the operating cost, and 2.2 times faster on copper. |
+| 12:24-12:48 | Closing notes | Everything here is simulated: the alloys, the results, and every measurement, with modelled noise not yet calibrated on the lab's instruments. Station times, fees and schedules, the stock on the shelf, the atomizer's failure rate and yield, and who staffs the lab are assumptions. It shows how the lab's design and its optimizer interact in a model, not what the real lab will find. |
 
 ### DAL's audit, and what the narrated cut takes from it
 
