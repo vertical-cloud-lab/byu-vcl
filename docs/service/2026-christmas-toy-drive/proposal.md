@@ -81,9 +81,10 @@ training and lab access for each student, which is a lot to set up before Decemb
 ## 5. How much the printers can do
 
 The shortlist's toys take 31 minutes to just under 5 hours on the A1 mini, about 2 hours on
-average. The limit is how often someone clears the plate, more than print time. If the arm in robot-arms
-learns to clear the A1 mini's plate (the [Rexagon trial](README.md#multi-color-rexagons-on-the-a1-mini)),
-print time becomes the limit again, within working hours. With the plate
+average. The limit is how often someone clears the plate, more than print time. If the arm in
+robot-arms learns to clear the A1 mini's plate (the
+[Rexagon trial](README.md#multi-color-rexagons-on-the-a1-mini)), print time becomes the limit
+instead, within working hours. With the plate
 cleared three or four times a day, the A1 mini manages three or four plates a day. Over the 13
 weekdays from December 1 to December 17 that is roughly 40 to 50 plates, and more toys than that
 when small toys share a plate. The H2D could roughly double that once someone reads its nozzle
