@@ -1,7 +1,7 @@
 {
  "name": "waste_clip",
  "fps": 15,
- "n_frames": 1412,
+ "n_frames": 1759,
  "size": [
   1280,
   720
@@ -183,21 +183,93 @@
   },
   {
    "label": "3/4 The powder point",
-   "caption": "A person seals each liner in place and lifts it into its family's pail; the arms don't. Powder waste never rides a MiR: it leaves the cell only with BYU Environmental Management.",
+   "caption": "Loose powder and sweepings go in the Solid Material bucket, used filters straight into dry sand. When a pail is full, the pickup is requested from BYU Risk Management.",
    "start_frame": 1111,
-   "end_frame": 1209
+   "end_frame": 1215
   },
   {
-   "label": "3/4 The powder point",
-   "caption": "Loose powder and sweepings go in the Solid Material bucket, used filters straight into dry sand. When a pail is full, the pickup is requested from BYU Risk Management.",
-   "start_frame": 1210,
-   "end_frame": 1275
+   "label": "3/4 The vacuum liners",
+   "caption": "A person changes the liners; the arms don't. In from the aisle round the glovebox and along the corridor behind the machines, clear of the fire point, to the Al-family 118EXP.",
+   "start_frame": 1216,
+   "end_frame": 1308
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "Vacuum off and unplugged, after its run-on and 60 s settle (vacuum SOP 4). The two clamps open and the head comes off (set aside: not drawn).",
+   "start_frame": 1309,
+   "end_frame": 1322
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "Vacuum off and unplugged, after its run-on and 60 s settle (vacuum SOP 4). The two clamps open and the head comes off (set aside: not drawn).",
+   "start_frame": 1323,
+   "end_frame": 1348
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "The liner is sealed where it is: its mouth drawn up, twisted into a gooseneck, folded over and taped (vacuum SOP 4.4). Dry: no water, no oil, nothing poured.",
+   "start_frame": 1349,
+   "end_frame": 1363
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "The liner is sealed where it is: its mouth drawn up, twisted into a gooseneck, folded over and taped (vacuum SOP 4.4). Dry: no water, no oil, nothing poured.",
+   "start_frame": 1364,
+   "end_frame": 1401
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "The sealed liner comes out by its neck, over the vacuum's handle, to the Al-family pail beside it on the corridor side.",
+   "start_frame": 1402,
+   "end_frame": 1420
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "The sealed liner comes out by its neck, over the vacuum's handle, to the Al-family pail beside it on the corridor side.",
+   "start_frame": 1421,
+   "end_frame": 1451
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "The sealed liner comes out by its neck, over the vacuum's handle, to the Al-family pail beside it on the corridor side.",
+   "start_frame": 1452,
+   "end_frame": 1473
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "The sealed liner comes out by its neck, over the vacuum's handle, to the Al-family pail beside it on the corridor side.",
+   "start_frame": 1474,
+   "end_frame": 1493
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "The lid goes back on, set on, not crimped: a crimped lid would hold in the trace hydrogen (Waste Management). The pail stays bonded to the ground bar.",
+   "start_frame": 1494,
+   "end_frame": 1523
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "A fresh liner, seated on bare metal, the head back on and clamped, plugged in. Powder waste never rides a MiR: the full pail waits here for BYU Risk Management's pickup.",
+   "start_frame": 1524,
+   "end_frame": 1539
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "A fresh liner, seated on bare metal, the head back on and clamped, plugged in. Powder waste never rides a MiR: the full pail waits here for BYU Risk Management's pickup.",
+   "start_frame": 1540,
+   "end_frame": 1565
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "And out the way they came. The liners, the bottles and the labels are booked in upkeep as the waste work: an hour a week at one alloy a day.",
+   "start_frame": 1566,
+   "end_frame": 1622
   },
   {
    "label": "4/4 Where waste waits",
    "caption": "Two places on the floor: powder at the powder point by the atomizer, liquids under the fume hood across the aisle. Waste stays in the room it was made in, incompatible classes apart.",
-   "start_frame": 1276,
-   "end_frame": 1411
+   "start_frame": 1623,
+   "end_frame": 1758
   }
  ]
 }
