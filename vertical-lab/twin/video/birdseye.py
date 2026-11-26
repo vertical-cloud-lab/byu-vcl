@@ -135,6 +135,7 @@ class Birdseye:
         self.offsite_xy = (24, 158)                    # the OFF SITE column's top left (1920 x 1080 px)
         self.chip_dx = {1: 0.0, 2: 0.0}                # the tray chips' columns, moved sideways (px; lab3d_cut)
         self.show_chips = True                         # off where the trays themselves are close enough to read
+        self.chip_avoid = False                        # chip labels kept off the panels too (lab3d_cut: on)
         self.offsite.sort(key=lambda k: (k != "hpc", k))
         # the trays the run uses, by Shuttle, lowest slot first (from the stills' world anchors)
         v0 = next(iter(self.views.values()))
@@ -339,7 +340,8 @@ class Birdseye:
                 box = (x1 + S.px(10), cy - th / 2 + dy, x1 + S.px(10) + tw + 2 * pad, cy + th / 2 + dy)
             if box[0] < 0 or box[2] > S.W:
                 continue
-            if not any(_overlaps(box, p) for p in placed) and not any(_overlaps(box, a) for a in self.avoid):
+            if not any(_overlaps(box, p) for p in placed) and not (
+                    self.chip_avoid and any(_overlaps(box, a) for a in self.avoid)):
                 break
         else:
             return

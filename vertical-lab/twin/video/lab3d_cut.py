@@ -297,9 +297,22 @@ def moving_tags(fr: np.ndarray, plan, v: float, view: str, placed: list):
         _put(fr, tg, xy[0], xy[1] + px(6), placed, tg.height + px(4))
 
 
+_MP: dict = {}
+
+
 def moves_panel(plan, v: float, h0: float, h1: float, rate: float, when: str = "this week") -> Image.Image:
-    """How the moves are drawn, and how many of this stretch's requests fit."""
-    c = plan.lab_counts(h0, h1)
+    """How the moves are drawn, and how many of this stretch's requests fit (redrawn when its text changes)."""
+    c = plan.lab_counts(round(h0 * 2) / 2, round(h1 * 2) / 2)
+    key = (id(plan), tuple(sorted(c.items())), round(rate), when)
+    if key in _MP:
+        return _MP[key]
+    if len(_MP) > 64:
+        _MP.clear()
+    _MP[key] = im = _moves_panel(c, rate, when)
+    return im
+
+
+def _moves_panel(c: dict, rate: float, when: str) -> Image.Image:
     w, h = px(420), px(104)
     im, d = St.layer(w, h)
     d.rounded_rectangle((0, 0, w - 1, h - 1), radius=px(12), fill=St.SURF + (int(255 * St.PANEL_A),))
@@ -341,6 +354,7 @@ class WeekCut:
         self.anc = anchors("high", self.kin)
         be = C.S("be")
         be.chip_dx = {1: -150.0, 2: 150.0}
+        be.chip_avoid = True
         be.avoid = list(be.avoid) + [(px(866), px(900), px(1286), px(1004))]       # the moves panel
         self.be = be
         self.rate = LS.move_rate(WEEK["hours_per_s"])
@@ -468,9 +482,10 @@ def replay_picture(i: int, t: float, t_h: float, sp: float) -> np.ndarray:
         be.avoid.append((px(x), px(y), px(x + w), px(y + h)))
     be.show_chips = view in CHIPS
     be.chip_dx = CHIPS.get(view, {1: 0.0, 2: 0.0})
+    be.chip_avoid = True
     fr = be.frame_live(img, st["anc"][view], t_h, max(1.0, sp * 0.8), offsite=True)
     be.avoid = avoid0
-    be.show_chips = True
+    be.show_chips, be.chip_avoid, be.chip_dx = True, False, {1: 0.0, 2: 0.0}
     placed = []
     moving_tags(fr, plan, t, view, placed)
     if pip_on:
