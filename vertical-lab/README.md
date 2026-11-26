@@ -18,7 +18,7 @@ on screen, about 10½ minutes of the long-form were clips kept from before the m
 round 14's, the machining cell had no place on the floor, and this README's table overstated where the merged PRs
 appear.
 
-**The video:** {VIDEO}
+**The video:** [The vertical cloud lab, start to finish: a Kardex VLM and the alloy route (3-D, round 16)](https://www.youtube.com/watch?v=YWbplBXPC84), **unlisted** (no visibility was named, so as this PR's uploads are unless asked; round 15's stays public), 1:31:05, 69 chapters, 1280 x 720 at 30 fps, narrated (81 lines, 14.7 min, Kokoro; 7 of them new and heard back by faster-whisper). `out/longform.json` lists every part and its source.
 
 ### Round 15's clips, recovered from its YouTube copy
 
@@ -53,7 +53,34 @@ this 4-core runner more than a day. So the long-form takes round 15's own frames
 
 ### Renders
 
-{RENDERS}
+Each clip rendered this round at 1280 x 720 into `out/r16/` (`render_r16.py`, one or two whole-lab scenes at a time through `runner_guard.py`), each checking its own frames as it rendered (collide.py, round 11's strict rules):
+
+| Clip | Length | Drawn at | Frames checked | Arm in collision | Anything moving |
+| --- | --- | --- | --- | --- | --- |
+| set-up movie | 138 s | 15 fps | 1565 | 0 | 39 |
+| waste clip (new) | 117 s | 15 fps | 1399 | 0 | 0 |
+| 9:22, powder dosed for the CubXL | 109 s | 15 fps | 1425 | 0 | 0 |
+| storage to the bay: hookups, UPS | 40 s | 15 fps | 537 | 0 | 0 |
+| docks in every slot | 37 s | 15 fps | 369 | 0 | 0 |
+| cabling | 35 s | 15 fps | 327 | 0 | 0 |
+| the bay's cameras | 33 s | 15 fps | 358 | 0 | 0 |
+| three cameras on each MiR250 | 46 s | 15 fps | 529 | 0 | 0 |
+| safety | 55 s | 15 fps | 592 | 0 | 21 |
+| floor cleaning: unit 3 and a person | 33 s | 15 fps | 390 | 0 | 0 |
+| scaling up | 115 s | 15 fps | 1508 | 0 | 153 |
+| the finale | 88 s | 15 fps | - | - | - |
+| fabrication tour (nine clips) | 181 s | 30 fps | 3873 | 0 | 258 |
+| chapter 1, the charge (fresh frames) | 308 s | 15 fps | 3435 | 4 | 4 |
+| chapter 2, atomize (fresh frames, byte-identical) | 305 s | 15 fps | 3391 | 76 | 76 |
+| chapter 4, the powder checked (fresh frames) | 214 s | 15 fps | 2625 | 0 | 0 |
+| chapter 5, cut, heat treat, test (the cell now in view) | 386 s | 15 fps | 5249 | 2 | 3 |
+| chapter 7, characterize (fresh frames) | 247 s | 15 fps | 3198 | 0 | 0 |
+
+- **Arm frames left:** chapter 1's 4 (a fingertip on the left base camera's case) and chapter 5's 2 (the plate 3 mm into the depowdering box's rotor) are round 15's, unchanged; chapter 2's 76 are the checker artifact of the held cup against its own cutaway copy.
+- **Moving parts:** the set-up movie's 39 are rigging (machines set down over their drops, the MiR250 onto its charger, tray B's racks sliding in), down from round 15's 60 now that the control box no longer goes through the Class D unit; safety's 21 are each B570 sliding into its 811 bracket; the scale-up's 153 and the fabrication tour's 258 are the work itself (the saw, the deposition's glow, parts in the IPA and the UV, the laser in the bed).
+- **The first set-up render caught my first fix:** the control box lowered from 600 mm passed where the arm will stand (19 arm frames), so it settles the last 40 mm and the cabinet fades in round it; and the 9:22 clip was rendered twice, for a status label that read "P3000 µL".
+- **Chapters 1, 2, 4 and 7 were re-rendered with the time left,** so the long-form takes them fresh instead of from YouTube. Chapter 2 came out byte-identical to round 15's committed render (its floor, `alloy_atomize_floor`, never draws `setup_lab.Floor`'s stations); chapters 1, 4 and 7 stand on the full floor, so they differ from round 15's only where the powder point or the cell is in view. Chapter 5 is the one whose shots visibly changed (the cell behind the Instron). In all, 43 of the video's 91 minutes are this round's renders, 40 round 15's recovered frames, and the rest cards and stills.
+- `out/collisions/round16_table.png` is this video's table, clip by clip, and the checks chapter's last still.
 
 ### Not done, or still open
 
