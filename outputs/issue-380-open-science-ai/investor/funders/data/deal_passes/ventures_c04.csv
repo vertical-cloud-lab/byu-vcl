@@ -1,0 +1,4 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+gluster,Gluster,U3,"GlusterFS, GPLv3 open-source distributed file system",https://en.wikipedia.org/wiki/Gluster,yes,US,2005,acquired,yes,2,Round dates and per-round investors not found.,,2026-11-26T06:18:16Z
+cumulus,Cumulus Networks,U3,"Cumulus Linux, network OS built on open Linux for bare-metal switches; partly proprietary",https://en.wikipedia.org/wiki/Cumulus_Networks,partial,US,2010,acquired,yes,3,memory: later rounds had more investors; not verified.,,2026-11-26T06:18:16Z
+mirantis,Mirantis,U3,"OpenStack and Kubernetes distributions and services; Lens, k0s open source (partly proprietary products)",https://en.wikipedia.org/wiki/Mirantis,yes,US,1999,acquired,yes,5,,,2026-11-26T06:18:16Z

@@ -2,7 +2,7 @@
 | --- | --- | --- | --- | --- |
 | Kickstarter backers | crowdfunding | 11 | 0 | Augmented Instruments, Great Scott Gadgets, Luxonis, OpenBCI, OpenMV, Opentrons Labworks, Pine64, Printrbot … |
 | True Ventures | venture firm | 5 | 0 | 3D Robotics, Inventables, MakerBot Industries, Monospace Inc., Sofar Ocean Technologies |
-| Y Combinator | accelerator / studio | 4 | 0 | Cerulion, GitLab Inc., K-Scale Labs, Opentrons Labworks |
+| Y Combinator | accelerator / studio | 5 | 0 | Cerulion, GitLab Inc., K-Scale Labs, Opentrons Labworks, PeerDB |
 | Crowd Supply backers | crowdfunding | 3 | 0 | Lime Microsystems, MNT Research, Yunnan BinaryStars Technologies |
 | Foundry Group | venture firm | 3 | 2 | MakerBot Industries, Sofar Ocean Technologies, 3D Robotics |
 | Qualcomm Ventures | corporate / strategic | 3 | 2 | 3D Robotics, Particle, SiFive |
@@ -18,6 +18,7 @@
 | Sequoia Capital | venture firm | 2 | 0 | Sesame, VA Linux Systems |
 | Shenzhen Capital Group | state or sovereign investor | 2 | 1 | ModelBest, Seeed Studio |
 | 1517 Fund | venture firm | 1 | 0 | Trilobio |
+| 8VC | venture firm | 1 | 1 | PeerDB |
 | AFW Partners | venture firm | 1 | 1 | Tenstorrent |
 | AIX Ventures | venture firm | 1 | 1 | marimo |
 | ARK Invest | unclassified | 1 | 0 | Tenstorrent |
@@ -39,4 +40,3 @@
 | Beijing AI Industry Investment Fund | state or sovereign investor | 1 | 0 | ModelBest |
 | Ben Hamner | person (angel) | 1 | 0 | marimo |
 | Benchmark | venture firm | 1 | 0 | Zimbra |
-| Bessemer Venture Partners | venture firm | 1 | 1 | Auterion |

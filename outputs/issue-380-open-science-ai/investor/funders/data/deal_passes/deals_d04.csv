@@ -1,0 +1,32 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+u4-dench-com,Dench.com,U4,accelerator,YC S24,2024-06,,,Y Combinator,https://www.ycombinator.com/companies/dench-com,other,Batch date approximate
+u4-dittofeed,Dittofeed,U4,accelerator,YC S22,2022-06,,,Y Combinator,https://www.ycombinator.com/companies/dittofeed,other,Batch date approximate
+u4-drdroid,DrDroid,U4,accelerator,YC W23,2023-01,,,Y Combinator,https://www.ycombinator.com/companies/drdroid,other,Batch date approximate
+u4-drdroid,DrDroid,U4,venture_unspecified,backers on about page,,,,Accel,https://drdroid.io/about-us,company,Accel appears as logo near 'Backed by'; round and date not stated
+u4-elementary,Elementary,U4,accelerator,YC W22,2022-01,,,Y Combinator,https://www.ycombinator.com/companies/elementary,other,Batch date approximate
+u4-embrace,Embrace,U4,accelerator,YC S19,2019-06,,,Y Combinator,https://www.ycombinator.com/companies/embrace,other,Batch date approximate
+u4-embrace,Embrace,U4,venture_unspecified,NEA-backed,2026-11,,,NEA,https://techcrunch.com/2026/11/05/palo-alto-networks-in-talks-to-buy-ai-agent-security-startup-clutch-for-500m/,news,Described as NEA-backed; acquired by Palo Alto Networks for $325M
+u4-enso,Enso,U4,accelerator,YC S21,2021-06,,,Y Combinator,https://www.ycombinator.com/companies/enso,other,Batch date approximate
+u4-enso,Enso,U4,venture_unspecified,out of stealth,2022-04,16500000,,SignalFire | Khosla Ventures | Day One Ventures | Decacorn Capital | Y Combinator | Samsung Next | Harvard Management Company | West Coast Endeavors | Innovation Nest,https://techcrunch.com/2022/04/19/enso-emerges-from-stealth-to-help-enterprises-make-sense-of-their-data/,news,Harvard's Endowment named in source
+u4-epicenter,Epicenter,U4,accelerator,YC S25,2025-06,,,Y Combinator,https://www.ycombinator.com/companies/epicenter,other,Batch date approximate
+u4-eventual,Eventual,U4,accelerator,YC W22,2022-01,,,Y Combinator,https://www.ycombinator.com/companies/eventual,other,Batch date approximate
+u4-eventual,Eventual,U4,venture_unspecified,total raised $30M,,30000000,,Felicis | CRV | Y Combinator,https://www.eventual.ai/about,company,"Angels include Databricks and Perplexity co-founders, unnamed; cumulative total"
+u4-evidence,Evidence,U4,accelerator,YC S21,2021-06,,,Y Combinator,https://www.ycombinator.com/companies/evidence,other,Batch date approximate
+u4-evidence,Evidence,U4,venture_unspecified,backers per about page,,,,SV Angel | A Capital | Tristan Handy (person) | Andrew Miklas (person),https://evidence.dev/about,company,Rounds and dates not given
+u4-evidently-ai,Evidently AI,U4,accelerator,YC S21,2021-06,,,Y Combinator,https://www.ycombinator.com/companies/evidently-ai,other,Batch date approximate
+u4-executor,Executor,U4,accelerator,YC S26,2026-06,,,Y Combinator,https://www.ycombinator.com/companies/executor,other,Batch date approximate
+u4-expected-parrot,Expected Parrot,U4,accelerator,YC F25,2025-09,,,Y Combinator,https://www.ycombinator.com/companies/expected-parrot,other,Batch date approximate
+u4-experiential-labs,Experiential Labs,U4,accelerator,YC S26,2026-06,,,Y Combinator,https://www.ycombinator.com/companies/experiential-labs,other,Batch date approximate
+u4-fern,Fern,U4,accelerator,YC W23,2023-01,,,Y Combinator,https://www.ycombinator.com/companies/fern,other,Batch date approximate
+u4-fern,Fern,U4,series_a,Series A,2025-04,9000000,Bessemer Venture Partners,Y Combinator,https://siliconangle.com/2025/04/10/fern-gets-9m-funding-automate-creation-maintenance-software-development-kits/,news,SiliconANGLE says led by Bessemer and Y Combinator; total raised $13M
+u4-fileforge,Fileforge,U4,accelerator,YC W24,2024-01,,,Y Combinator,https://www.ycombinator.com/companies/fileforge,other,Batch date approximate
+u4-firezone,Firezone,U4,accelerator,YC W22,2022-01,,,Y Combinator,https://www.ycombinator.com/companies/firezone,other,Batch date approximate
+u4-firezone,Firezone,U4,seed,Seed,2022-04,,,1984 Ventures | Uncorrelated Ventures | Helium-3 Ventures | Amino Capital | Gaingels,https://www.firezone.dev/about,company,Investor names from logos on about page; seed April 2022
+u4-flotype,Flotype,U4,accelerator,YC W11,2011-01,,,Y Combinator,https://www.ycombinator.com/companies/flotype,other,Batch date approximate
+u4-flotype,Flotype,U4,seed,Seed,2012-01,1400000,,Andreessen Horowitz | Ignition Partners | Yuri Milner (person) | Salesforce | Y Combinator,https://techcrunch.com/2012/01/05/andreessen-horowitz-salesforce-put-1-4m-in-real-time-messaging-infrastructure-startup-flotype/,news,A later TechCrunch piece also lists InterWest Partners
+u4-flower,Flower,U4,accelerator,YC W23,2023-01,,,Y Combinator,https://www.ycombinator.com/companies/flower,other,Batch date approximate
+u4-flower,Flower,U4,venture_unspecified,total raised ~$23.6M,2025-03,23600000,,Felicis | Betaworks | Pioneer Fund | Clem Delangue (person),https://techcrunch.com/2025/03/11/flower-labs-launches-a-new-service-that-automatically-switches-from-local-to-cloud-ai/,news,Cumulative; YC page also names First Spark Ventures and Mozilla Ventures
+u4-flower,Flower,U4,venture_unspecified,YC page investor list,,,,First Spark Ventures | Mozilla Ventures,https://www.ycombinator.com/companies/flower,other,Description truncated in my read; more names may follow
+u4-formance,Formance,U4,accelerator,YC S21,2021-06,,,Y Combinator,https://www.ycombinator.com/companies/formance,other,Batch date approximate
+u4-formance,Formance,U4,series_a,Series A,2025-01,21000000,PayPal Ventures | Portage,Y Combinator | Hoxton Ventures | Axeleo,https://techcrunch.com/2025/01/29/formance-raises-21-million-to-build-the-aws-of-fintech-infrastructure/,news,"YC, Hoxton, Axeleo are existing investors"
+u4-freebuff,Freebuff,U4,accelerator,YC F24,2024-09,,,Y Combinator,https://www.ycombinator.com/companies/freebuff,other,Batch date approximate

@@ -83,6 +83,38 @@ def main():
                                                     (v["category"] + " " + v["open_basis"]).lower())}
     open(os.path.join(T, "top_hardware_lab.md"), "w").write(md_table(top(lambda l: l["key"] in hw_keys, 40, 1), cols, heads))
 
+    # open hardware, open science and science software: U2 plus the U1 companies found through GitHub's science topics
+    fin = {r["owner"]: r for r in rd("../owners/data/finance_passes/input_all.csv")}
+    sci = {k for k, v in ven.items() if v["universe"] == "U2" or (v["universe"] == "U1" and "B" in fin.get(k, {}).get("frames", ""))}
+    open(os.path.join(T, "top_science_hardware.md"), "w").write(md_table(top(lambda l: l["key"] in sci, 60, 2), cols, heads))
+    deals = rd(os.path.join(D, "deals.csv"))
+    by_v = collections.defaultdict(list)
+    for d in deals:
+        by_v[d["key"]].append(d)
+    vrows = []
+    for k in sorted(sci, key=lambda k: ven[k]["venture"].lower()):
+        v = ven[k]
+        if v["funding_found"] != "yes":
+            continue
+        leads_, others, kinds = [], [], set()
+        for d in sorted(by_v[k], key=lambda d: d["date"]):
+            kinds.add(d["type"])
+            for n in [x for x in d["lead"].split(" | ") if x]:
+                if n not in leads_:
+                    leads_.append(n)
+            for n in [x for x in d["investors"].split(" | ") if x]:
+                if n not in others and n not in leads_:
+                    others.append(n)
+        others = [n for n in others if n not in leads_]
+        first = sorted(by_v[k], key=lambda d: d["date"])
+        src = first[-1]["source"] if first else ""
+        vrows.append({"venture": f"[{re.sub(r'\s*\(.*?\)', '', v['venture'])}]({src})" if src else v["venture"],
+                      "group": v["universe"], "open": (v["open_basis"] or v["category"])[:70],
+                      "funders": ", ".join([f"**{n}**" for n in leads_] + others) or "(amount only, funders not named)",
+                      "kinds": ", ".join(sorted(kinds))})
+    open(os.path.join(T, "science_hardware_ventures.md"), "w").write(md_table(
+        vrows, ["venture", "group", "open", "funders", "kinds"],
+        ["Venture (link: latest round's source)", "Group", "What is open", "Funders (leads in bold)", "Kinds of funding"]))
     # corporate groups: distinct ventures across a parent's arms (e.g. Alphabet = GV, CapitalG, Gradient, Google)
     grp = collections.defaultdict(set)
     gmembers = collections.defaultdict(set)
