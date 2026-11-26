@@ -159,6 +159,13 @@ def main():
     early = {"pre_seed", "seed", "angel", "accelerator", "series_a"}
     yc = [d for d in Dl if d["counted"] == "yes" and d["type"] in early and "Y Combinator" in (d["lead"] + " | " + d["investors"]).split(" | ")]
     out["yc_early"] = {"records": len(yc), "ventures": len({d["key"] for d in yc})}
+    sp = rd("verify/spot_check_verdicts.csv")
+    if sp:
+        c = collections.Counter(r["verdict"].split(" (")[0] for r in sp)
+        out["spot_check"] = {"links": len(sp), "confirmed": c["confirmed"], "unreadable": c["page not readable"],
+                             "readable": len(sp) - c["page not readable"], "not_closed": c["round not closed"],
+                             "not_checkable": c["not checkable"], "unclear_role": c["unclear role"],
+                             "logo_or_loose": sum(1 for r in sp if r["verdict"].startswith("confirmed ("))}
     json.dump(out, open(os.path.join(D, "funders_numbers.json"), "w"), indent=1)
     print(json.dumps({k: out[k] for k in ("U1-U3", "U1", "U2", "U3", "U4")}, indent=0)[:3500])
 

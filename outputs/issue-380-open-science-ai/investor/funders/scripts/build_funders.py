@@ -228,7 +228,8 @@ def main():
             oc = [canon(x) for x in oth]
             # a round reported as talks, rumour or unconfirmed keeps its row but names no funders in the counts;
             # so do exits, IPOs and secondary sales, which put no money into the venture (PROTOCOL.md)
-            unconf = bool(UNCONFIRMED.search(r["note"] or "") or UNCONFIRMED.search(r["label"] or ""))
+            unconf = bool(UNCONFIRMED.search(r["note"] or "") or UNCONFIRMED.search(r["label"] or "") or
+                          re.search(r"nearing completion|if completed", r["label"] or "", re.I))
             is_exit = r["type"] == "secondary" or (r["type"] in ("other", "growth") and
                                                    bool(EXIT.search(r["label"] or "") or EXIT.search(r["note"] or "")))
             transfer = excluded(k, r)

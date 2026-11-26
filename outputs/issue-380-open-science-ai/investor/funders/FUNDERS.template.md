@@ -356,7 +356,7 @@ and patent-based ones about 33% less (Bort et al. 2024; [Edison answer](edison/f
 
 ## How good is the list?
 
-Five checks of different kinds, then an independent review (next section). The names the list has are mostly
+Six checks of different kinds, then an independent review (next section). The names the list has are mostly
 supported by their sources, and a fuller search finds more. None of the checks proves that every named funder put
 money into the round shown, and the review found definitional errors, now fixed. So the counts are neither complete
 nor guaranteed lower bounds.
@@ -365,6 +365,7 @@ nor guaranteed lower bounds.
 | --- | --- | --- |
 | Every investor name in a counted round against the page its round cites ([`data/source_checks_deals.csv`](data/source_checks_deals.csv)) | that the name is on the page the row cites (a name match, not proof of an investment) | Of {{source_check.fetched}} names whose page could be fetched: {{source_check.found}} ({{source_check.share_found}}) appear in the page text; {{source_check.markup_only}} more appear only in its markup, which is how company pages show investor logos; {{source_check.not_on_page}} don't appear at all. Those are mostly Chinese names recorded in English, pages that load by script, and some real errors. Two verification passes reopened {{verify.checked}} of them by hand: {{verify.confirmed}} confirmed on the cited page, {{verify.other_source}} on another page, {{verify.not_supported}} not supported (left out of the counts) and {{verify.unclear}} unclear |
 | A hand check of 12 links drawn at random | that the name is a funder of that venture, in context | 9 confirmed in the cited sentence; 3 on pages that couldn't be read (a bot wall, a product page, a press release that loads by script). None was wrong |
+| A second hand check, after the review: {{spot_check.links}} links drawn at random with a fixed seed, 30 from U1–U3 and 10 from U4 ([sample](data/verify/spot_check_sample.csv), [verdicts](data/verify/spot_check_verdicts.csv)) | the same, reading the passage that names the funder | Of the {{spot_check.readable}} whose page could be read, {{spot_check.confirmed}} confirmed (one only as a logo among the company's backers, one with its round unclear). One was in a round reported as not yet closed; such rounds are now left out of the counts. One name was a logo under "community supporters", with no stated role, and one could not be checked on its cited page, a 36Kr database entry (the row says the name came from a separate 36Kr article). {{spot_check.unreadable}} pages could not be read (HTTP 403 or 429) |
 | Investors' own portfolio pages ([`data/portfolio/`](data/portfolio/)) | recall, from the investors' side | Of 105 portfolio pages, 77 could be read. They link to 70 ventures in this list by website. 44 of those links were already in the deal data; 24 of the other 26 were confirmed on the page and added, and 2 were false matches |
 | Edison's blind audit of 40 randomly drawn ventures ([`edison/fund_deal_audit_answer.md`](edison/fund_deal_audit_answer.md), [comparison](data/edison_audit_comparison.csv)) | recall and precision, independently, with web search; measured before the audit's rounds were merged in | Edison named {{edison_audit.edison_names}} funders for the 40 ventures and this list {{edison_audit.our_names}}. **{{edison_audit.ours_confirmed_by_edison}} of this list's names are in Edison's**, but this list has only {{edison_audit.recall_vs_edison}} of Edison's. Most of Edison's extra names fall into three groups:<br>• more participants in rounds this list already has;<br>• funders of the {{edison_audit.ventures_we_missed_entirely}} audited ventures where this list found none (e.g. Coqui, Terrastruct, Bitcraze, Antmicro);<br>• angels, government grants, lenders and crowdfunding.<br>Edison also counted one project's corporate sponsors as funders. Edison found nothing for any venture where this list found funders |
 | Edison's literature answer ([`edison/fund_who_funds_open_source_answer.md`](edison/fund_who_funds_open_source_answer.md), [check](data/edison_literature_check.csv)) | whether well-known funders are missing | When checked, {{edison_literature.found}} of the {{edison_literature.named}} funders it names were in the deal data or the program tables. The two then missing are now in: Indiegogo backers in the deal data, and the Footprint Coalition in the program table, as a supporter (with Moore and Schmidt Futures) of Experiment's Low-Cost Tools for Science challenge |
@@ -466,7 +467,9 @@ shareholders is kept apart from the US firm of that name ([`data/contextual_alia
 [`PROTOCOL.md`](PROTOCOL.md) was committed before any data. These changes came later:
 
 - **U1 has 387 companies, not 392.** The protocol counted GitHub organisations. Five of the 392 belong to companies
-  already counted (Docker has two organisations, FIT2CLOUD four and VoidZero two), so there are 387 companies.
+  already counted, so there are 387 companies: Docker (`docker`, `moby`), VoidZero (`vitejs`, `oxc-project`) and
+  FIT2CLOUD (`1Panel-dev`, `halo-dev`, `jumpserver`, `dataease`). The `owners` column of `data/ventures_input.csv`
+  lists each company's organisations.
 - **U4 was added after the first passes had started**, because there was time. It is researched more lightly and
   reported separately.
 - **The web-search budget ran out early**, so most passes used open news APIs, Wikipedia and company pages instead

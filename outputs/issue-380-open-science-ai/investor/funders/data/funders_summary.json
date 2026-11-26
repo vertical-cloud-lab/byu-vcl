@@ -31,15 +31,15 @@
    "bootstrapped_stated": 2
   }
  },
- "round_records_counted": 1736,
- "rounds": 1715,
- "investor_venture_links": 4072,
- "investors": 1977,
+ "round_records_counted": 1735,
+ "rounds": 1714,
+ "investor_venture_links": 4067,
+ "investors": 1974,
  "investors_by_type": {
   "accelerator": 22,
-  "venture_firm": 958,
-  "growth_pe_hedge": 107,
-  "corporate_venture": 189,
+  "venture_firm": 957,
+  "growth_pe_hedge": 106,
+  "corporate_venture": 188,
   "angel": 504,
   "crowdfunding": 14,
   "public_investor": 30,
@@ -50,7 +50,7 @@
   "government_grant": 32,
   "company": 19
  },
- "investors_2plus": 510,
+ "investors_2plus": 509,
  "investors_5plus": 127,
  "rounds_by_source_kind": {
   "news": 816,
