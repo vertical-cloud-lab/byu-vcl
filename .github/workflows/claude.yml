@@ -387,10 +387,10 @@ jobs:
           allowed_bots: vcl-bot
 
           # Optional (riskier): Print the full turn-by-turn JSON execution log in the step output
-          # show_full_output: true  # off in this repo (full logs are riskier)
+          show_full_output: true
 
           # Optional (riskier): Render a human-readable "Claude Code Report" in the job's Step Summary
-          # display_report: true  # off in this repo (full logs are riskier)
+          display_report: true
 
           # This is an optional setting that allows Claude to read CI results on PRs
           additional_permissions: |
@@ -400,6 +400,7 @@ jobs:
           claude_args: |
             ${{ steps.select.outputs.primary_args }}
             --permission-mode bypassPermissions
+            --thinking-display summarized
 
       # Did the first attempt die because its allowance was spent, or for some
       # ordinary reason? A failed run still writes its execution JSON and still
@@ -680,8 +681,8 @@ jobs:
           # placements have now failed live once each; see
           # https://github.com/ME-EN-372/me-en-372-machine-design-private/blob/main/docs/claude-yml-model-fallback.md
           track_progress: true
-          # show_full_output: true  # off in this repo (full logs are riskier)
-          # display_report: true  # off in this repo (full logs are riskier)
+          show_full_output: true
+          display_report: true
           additional_permissions: |
             actions: read
           # The two attempts share one workspace, and the generated branch name
@@ -702,31 +703,23 @@ jobs:
             --model ${{ steps.select.outputs.fallback_model || steps.select.outputs.model }}
             --effort ${{ steps.select.outputs.effort }}
             --permission-mode bypassPermissions
+            --thinking-display summarized
 
-      # Execution logs of a failed attempt, uploaded as an artifact so the
-      # cause can be read. This repo is public: anyone signed in to GitHub can
-      # download its artifacts, and GitHub masks secrets only in the log
-      # display, not inside artifacts. So the logs are uploaded only when an
-      # attempt failed, and kept for 3 days. show_full_output stays off.
-      - name: Upload execution log (first attempt, failed)
-        if: ${{ !cancelled() && steps.claude.outcome == 'failure' && steps.claude.outputs.execution_file != '' }}
-        continue-on-error: true
+      # Optional, recommended if you set show_full_output=True. Artifact names
+      # have to differ, so the two attempts upload separately.
+      - name: Upload Claude execution log
+        if: always() && steps.claude.outputs.execution_file != ''
         uses: actions/upload-artifact@v4
         with:
           name: claude-execution-log
           path: ${{ steps.claude.outputs.execution_file }}
-          if-no-files-found: ignore
-          retention-days: 3
 
-      - name: Upload execution log (retry, failed)
-        if: ${{ !cancelled() && steps.fallback.outcome == 'failure' && steps.fallback.outputs.execution_file != '' }}
-        continue-on-error: true
+      - name: Upload fallback execution log
+        if: always() && steps.fallback.outputs.execution_file != ''
         uses: actions/upload-artifact@v4
         with:
-          name: claude-execution-log-retry
+          name: claude-execution-log-fallback
           path: ${{ steps.fallback.outputs.execution_file }}
-          if-no-files-found: ignore
-          retention-days: 3
 
       # continue-on-error above hides the first attempt's failure from the job
       # status, so put it back when nothing succeeded.
