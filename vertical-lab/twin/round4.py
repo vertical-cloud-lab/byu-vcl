@@ -719,10 +719,51 @@ class Campaign4(C.Campaign):
                     tot += free * (fee + (215.0 if kind == "print" else 140.0 if kind == "small_ded" else 210.0))
         return tot
 
+    KANBAN_WEEKS = 2.0
+
+    def first_step_capacity(self, now_h) -> float:
+        """Jobs a week the routes of a lot's first fabrication step can take now (aluminium: LPBF builds; copper:
+        small DED deposits and blend screens): a partner's standing slots, or an in-house station's hours over the
+        job's (ramp-up slowed) hours, round the clock once the robots run it, two starts a day before."""
+        F = self.fac
+        role, h = ("utah_midi", 5.0) if self.key == "flaime_al" else ("utah_mxlab", 4.0)
+        cap = 0.0
+        for k in F.cands(role, now_h, 0.0):
+            R = F.res[k]
+            if k in F.ship or R.st.per_period:
+                n, d = R.st.per_period or (1, 7)
+                cap += n * 7.0 / d
+            else:
+                cap += (168.0 / (h * R.factor())) if F.robots_on(now_h) else 12.0 / R.factor()
+        return cap
+
+    KANBAN_FRESH_D = 14.0
+
+    def waiting_lots(self, now_h) -> int:
+        """Lots in the making, and lots made in the last two weeks that have not had their first build (aluminium)
+        or deposit (copper). An older lot the policy has not built from is one it chose not to (poor powder, a better
+        design since), and does not hold up new designs."""
+        used = {B["lot"] for B in self.builds.values()} | {D.get("lot") for D in self.deposits.values()}
+        used |= {pt.get("lot") for pt in self._part_truth.values()}
+        n = sum(1 for i, L in self.lots.items() if i not in used and L["remaining_g"] >= 30.0 and
+                L.get("t", 0.0) >= now_h - self.KANBAN_FRESH_D * H)
+        # powders started in the last two weeks (one waiting months for an out-of-stock metal holds nothing up)
+        return n + sum(1 for p in self.pending.values() if p["kind"] == "powder" and
+                       p["t"] >= now_h - self.KANBAN_FRESH_D * H)
+
     def submit3(self, a: dict, now_h: float) -> str:
-        """Round 3's admission, with the standing slots' reserve: an action that does not fill a slot may use the
-        spending plan's room only beyond what the coming week's unfilled slots need."""
+        """Round 3's admission, with two round-4 rules for every policy: (1) the standing slots' reserve: an action
+        that does not fill a slot may use the spending plan's room only beyond what the coming week's unfilled slots
+        need; (2) a WIP limit before the bottleneck: a new design starts only while the lots waiting for their first
+        build or deposit are fewer than KANBAN_WEEKS of those routes' capacity (at least 3), so that a policy blind
+        to partner capacity cannot spend the money on powders nobody can print."""
         k = a.get("kind")
+        if k == "powder" and not a.get("into"):
+            lim = max(3.0, self.KANBAN_WEEKS * self.first_step_capacity(now_h))
+            if self.waiting_lots(now_h) >= lim:
+                self.status_log["kanban"] = self.status_log.get("kanban", 0) + 1
+                self.status_log["capacity"] = self.status_log.get("capacity", 0) + 1
+                return "capacity"
         g = self.gate(a) if k != "stop" else None
         slot = g is not None and g[1] in self.SLOT_ROLES.get(self.key, {})
         if k != "stop" and not slot:

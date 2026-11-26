@@ -164,6 +164,39 @@ def paired_table(name, T, N):
     return lines
 
 
+def warm_table(name, T, N):
+    """Where the parallel plan stands on the day the wait plan starts (the same seed): the data the ramp-up has
+    gathered by then, which warm-starts the in-house work."""
+    rec = _by_plan(_rows(name))
+    if "parallel" not in rec or "wait" not in rec:
+        return []
+    W = {r["cfg"]["seed"]: r for r in rec["wait"]}
+    lines = [f"**Warm start** (`{name}`: the parallel plan on the day the wait plan starts, same seed; means over seeds)",
+             "", "| Campaign | wait plan's start (day) | parallel: alloys demonstrated by then | parallel: best by then | "
+                 "parallel: seeds at or above T1 by then; T2 |", "|---|---|---|---|---|"]
+    out = {}
+    for camp in CAMPS:
+        st, nd, bb, t1, t2 = [], [], [], 0, 0
+        for r in rec["parallel"]:
+            w = W.get(r["cfg"]["seed"])
+            if w is None:
+                continue
+            S = w["r4"]["start_h"] / 24.0
+            cv = [c for c in r["campaigns"][camp]["curve_new"] if c[0] <= S]
+            st.append(S)
+            nd.append(sum(1 for d in r["campaigns"][camp]["demonstrated"] if not d.get("ref") and d["t_h"] / 24 <= S))
+            b = cv[-1][2] if cv else 0.0
+            bb.append(b)
+            t1 += b >= T["T1"][camp]
+            t2 += b >= T["T2"][camp]
+        lines.append(f"| {CNAME[camp]} | {np.mean(st):.0f} | {np.mean(nd):.1f} | {_mse(bb)} | {t1}/{len(bb)}; "
+                     f"{t2}/{len(bb)} |")
+        out[camp] = dict(start=st, n_demo=nd, best=bb, t1=t1, t2=t2, n=len(bb))
+    N.setdefault("warm", {})[name] = out
+    lines.append("")
+    return lines
+
+
 def build_table(N):
     rows = _rows("plans")
     rs = [r for r in rows if r["cfg"]["plan"] == "parallel"]
@@ -657,6 +690,7 @@ def main():
     for name in ("plans", "plans_3x", "plans_best"):
         L += plan_table(name, T, N)
         L += paired_table(name, T, N)
+        L += warm_table(name, T, N)
     L += ["## 2. Build-out and capital", ""]
     L += build_table(N)
     L += ["## 3. Utilization and routes", ""]
