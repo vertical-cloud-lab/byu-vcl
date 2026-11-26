@@ -1,0 +1,11 @@
+key,venture,universe,category,hint,why
+dbt-labs,dbt Labs (Fishtown Analytics),U3,COSS (dbt),,4 investors found for USD 372M; no early round found; 1 of 2 rounds name no investor
+github,GitHub,U3,open-source platform,Microsoft 2018,4 investors found for USD 350M; no early round found
+hashicorp,HashiCorp,U1,COSS (GitHub core),"GitHub org(s): hashicorp; basis: sells HCP cloud and enterprise editions of Terraform, Vault; country US; parent IBM; acquired by IBM 2025; site https://hashicorp.com",7 investors found for USD 349M; no early round found
+redis,Redis Ltd.,U1,COSS (GitHub core),GitHub org(s): redis; basis: sells Redis Cloud and Redis Enterprise; country US; parent -; ; site https://redis.io,no early round found
+Kong,Kong Inc.,U1,COSS (GitHub core),GitHub org(s): Kong; basis: sells Kong Konnect and Enterprise gateway; country US; parent -; ; site https://konghq.com,no early round found; 2 of 4 rounds name no investor
+oxide,Oxide Computer Company,U2,open-source firmware and software for its racks,,6 investors found for USD 344M
+docker,Docker Inc.,U1,COSS (GitHub core),GitHub org(s): docker;moby; basis: sells Docker subscriptions for its tools; country US; parent -; ; site https://www.docker.com,priority venture: check completeness
+pingcap,PingCAP,U1,COSS (GitHub core),GitHub org(s): pingcap; basis: sells TiDB Cloud and Enterprise; country US; parent -; ; site https://pingcap.com,0 investors found for USD 342M; no early round found
+mongodb,MongoDB Inc.,U1,COSS (GitHub core),GitHub org(s): mongodb; basis: sells MongoDB Atlas and Enterprise; country US; parent -; ; site http://www.mongodb.com/,0 investors found for USD 311M; no early round found
+astronomer,Astronomer,U3,COSS (Airflow),,no early round found; 1 of 2 rounds name no investor

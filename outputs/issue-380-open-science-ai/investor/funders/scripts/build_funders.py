@@ -235,7 +235,7 @@ def main():
                                 "with_funding": sum(1 for v in ventures if v["universe"] == u and v["funding_found"] == "yes"),
                                 "none_found": sum(1 for v in ventures if v["universe"] == u and v["funding_found"] == "none_found"),
                                 "bootstrapped_stated": sum(1 for v in ventures if v["universe"] == u and v["funding_found"] == "bootstrapped_stated")}
-                            for u in ("U1", "U2", "U3")},
+                            for u in ("U1", "U2", "U3", "U4")},
             "rounds": sum(1 for d in deals if "adds to existing round" not in d["note"].lower()),
             "investor_venture_links": len(link_rows), "investors": len(inv_rows),
             "investors_by_type": dict(collections.Counter(r["type"] for r in inv_rows)),

@@ -1,0 +1,11 @@
+key,venture,universe,category,hint,why
+databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",,priority venture: check completeness
+moonshot,Moonshot AI,U3,open-weight Kimi models,China,no early round found
+deepseek-ai,DeepSeek,U1,COSS (GitHub core),GitHub org(s): deepseek-ai; basis: releases open-weight models and sells API access to the same models; country CN; parent High-Flyer; ; site https://www.deepseek.com/,0 investors found for USD 7400M; no early round found
+cloudera,Cloudera,U3,COSS (Hadoop),,6 investors found for USD 6270M
+minimax,MiniMax,U3,open-weight models,China,no early round found
+suse,SUSE,U3,COSS (Linux),,2 investors found for USD 2745M; no early round found
+tenstorrent,Tenstorrent,U2,"open-source software stack, RISC-V (partial)",,no early round found
+grafana,Grafana Labs,U1,COSS (GitHub core),GitHub org(s): grafana; basis: sells Grafana Cloud and Enterprise; country US; parent -; ; site https://grafana.com,7 investors found for USD 1090M
+baichuan,Baichuan Intelligence,U3,open-weight models,China,6 investors found for USD 1041M
+odoo,Odoo SA,U1,COSS (GitHub core),GitHub org(s): odoo; basis: sells Odoo Enterprise and Odoo Online; country BE; parent -; ; site https://www.odoo.com,no early round found

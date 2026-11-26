@@ -8,8 +8,9 @@ any funding and fewer than 4 investors are always picked, as are the named prior
 data/deal_passes/input_xNN.csv and existing_xNN.md (the rounds already recorded). Run from funders/ after
 build_funders.py.
 """
-import collections, csv, os, sys
+import collections, csv, glob, os, sys
 
+# U4 (young startups from third-party lists) is not deepened: researched lightly by design.
 PRIORITY = {"Opentrons", "arduino", "raspberry-pi", "openbci", "sofar-openrov", "framework", "makerbot", "ultimaker",
             "oxide", "sifive", "anaconda", "posit", "kitware", "juliahub", "coiled", "huggingface", "databricks",
             "github", "gitlabhq", "docker", "red-hat", "mysql-ab", "mongodb", "elastic", "confluent", "hashicorp"}
@@ -24,9 +25,13 @@ def main():
     rounds = collections.defaultdict(list)
     for d in D:
         rounds[d["key"]].append(d)
+    done = set()  # ventures already given to a deepening pass (re-running adds only new ones, in new passes)
+    for f in glob.glob("data/deal_passes/input_x*.csv"):
+        done |= {r["key"] for r in csv.DictReader(open(f))}
+    start = len(glob.glob("data/deal_passes/input_x*.csv"))
     pick = []
     for v in V:
-        if not v["researched"]:
+        if not v["researched"] or v["key"] in done or v["universe"] == "U4":
             continue
         rs = rounds[v["key"]]
         tot = max(float(v["part2_total_funding_usd"] or 0), sum(float(r["amount_usd"] or 0) for r in rs))
@@ -48,7 +53,7 @@ def main():
             pick.append((tot, v, "; ".join(why)))
     pick.sort(key=lambda x: (-x[0]))
     cols = ["key", "venture", "universe", "category", "hint", "why"]
-    n = 0
+    n = start
     for i in range(0, len(pick), per):
         n += 1
         pid = f"x{n:02d}"
@@ -69,7 +74,7 @@ def main():
             if not rounds[v["key"]]:
                 lines.append("- (no rounds recorded)")
         open(f"data/deal_passes/existing_{pid}.md", "w").write("\n".join(lines) + "\n")
-    print(len(pick), "ventures picked into", n, "deepening passes")
+    print(len(pick), "ventures picked into", n - start, "new deepening passes (x%02d to x%02d)" % (start + 1, n))
 
 
 if __name__ == "__main__":

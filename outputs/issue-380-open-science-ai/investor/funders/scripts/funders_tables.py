@@ -83,6 +83,19 @@ def main():
                                                     (v["category"] + " " + v["open_basis"]).lower())}
     open(os.path.join(T, "top_hardware_lab.md"), "w").write(md_table(top(lambda l: l["key"] in hw_keys, 40, 1), cols, heads))
 
+    # corporate groups: distinct ventures across a parent's arms (e.g. Alphabet = GV, CapitalG, Gradient, Google)
+    grp = collections.defaultdict(set)
+    gmembers = collections.defaultdict(set)
+    tt = {r["investor"]: r for r in rd(os.path.join(D, "investor_types.csv"))}
+    for l in links:
+        g = tt.get(l["investor"], {}).get("group", "")
+        if g:
+            grp[g].add(l["venture"]); gmembers[g].add(l["investor"])
+    rows = [{"group": g, "arms": ", ".join(sorted(gmembers[g])), "ventures": len(v),
+             "examples": ", ".join(sorted(re.sub(r"\s*\(.*?\)", "", x) for x in v)[:10])}
+            for g, v in sorted(grp.items(), key=lambda x: -len(x[1]))]
+    open(os.path.join(T, "corporate_groups.md"), "w").write(md_table(rows, ["group", "arms", "ventures", "examples"],
+                                                                      ["Group", "Arms found", "Ventures", "Examples"]))
     # programs, merged
     prog = []
     for p in sorted(glob.glob(os.path.join(D, "program_passes", "programs_*.csv"))):

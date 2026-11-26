@@ -98,6 +98,14 @@ T = {
  "Silicon Valley Bank": B, "Hercules Capital": B, "Western Technology Investment": B, "TriplePoint Capital": B,
 }
 
+T.update({
+ "IDG Capital": V, "OpenOcean": V, "Lunar Ventures": V, "Sunflower Capital": V, "ISAI": V, "Standard Capital": V,
+ "Theory Ventures": V, "BOND": G, "Citi Ventures": C, "FirstMark": V, "Lytical Ventures": V, "Obvious Ventures": V,
+ "Thomvest Ventures": V, "Venrock": V, "firstminute capital": V, "First Minute Capital": V, "AME Cloud Ventures": V,
+ "Abstract Ventures": V, "Bezos Expeditions": "angel", "DFJ Growth": G, "Factory": V, "Metaplanet": V,
+ "Soma Capital": V, "Sorenson Capital": V, "System.One": V, "e.ventures": V, "Harpoon Ventures": V,
+})
+
 
 def main():
     with open("data/investor_types.csv", "w", newline="") as f:
@@ -107,7 +115,11 @@ def main():
                    "M12": "Microsoft", "GitHub": "Microsoft", "Microsoft": "Microsoft", "Alibaba Cloud": "Alibaba",
                    "Alibaba": "Alibaba", "Ant Group": "Alibaba", "SAP Ventures": "SAP", "Samsung Electronics": "Samsung",
                    "Kima Ventures": "Xavier Niel", "Prosperity7 Ventures": "Saudi Aramco",
-                   "Aramco Ventures (incl. Prosperity7)": "Saudi Aramco", "Aramco Ventures": "Saudi Aramco"}.get(k, "")
+                   "Aramco Ventures (incl. Prosperity7)": "Saudi Aramco", "Aramco Ventures": "Saudi Aramco",
+                   "Amazon": "Amazon", "NVIDIA (incl. NVentures)": "NVIDIA", "Intel Capital": "Intel",
+                   "Salesforce Ventures": "Salesforce", "Samsung": "Samsung", "Tencent": "Tencent",
+                   "Citi": "Citigroup", "Citi Ventures": "Citigroup", "Goldman Sachs": "Goldman Sachs",
+                   "Dell Technologies Capital": "Dell", "VMware": "Dell"}.get(k, "")
             w.writerow([k, t, grp, "", ""])
     print(len(T), "types written")
 
