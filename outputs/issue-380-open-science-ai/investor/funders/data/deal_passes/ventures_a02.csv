@@ -1,0 +1,26 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+huggingface,Hugging Face,U1,"sells Hub hosting, Inference Endpoints and Enterprise Hub",,yes,US,2016,private,yes,2,"Leads show NVIDIA agreed to acquire Hugging Face (2026-09, CNBC); not fetched, so status left private. Seed/Series A/B rounds not sourced.",https://www.cnbc.com/2026/09/03/nvidia-agrees-to-buy-hugging-face-for-almost-13-billion-ai-expansion.html,2026-11-26T06:00:34Z
+langflow-ai,Langflow (DataStax),U1,Langflow company bought by DataStax (now IBM); hosted Langflow sold,,yes,US,2022,acquired,none_found,0,TechCrunch: Logspace (Langflow) founders self-funded the company before DataStax acquired it in 2024.,https://techcrunch.com/2024/04/04/datastax-acquires-logspace-the-startup-behind-the-langflow-low-code-tool-for-building-rag-based-chatbots/,2026-11-26T06:00:34Z
+paperclipai,"Paperclip Labs, Inc.",U1,company behind Paperclip; hosted cloud version on waitlist,,yes,US,,unknown,none_found,0,No leads; not researched further (no funding found in leads or API search).,,2026-11-26T06:00:34Z
+ChatGPTNextWeb,NextChat,U1,sells hosted pay-as-you-go NextChat and enterprise edition,,yes,,,unknown,none_found,0,No leads; no funding found in quick checks.,,2026-11-26T06:00:34Z
+nestjs,NestJS (Kamil Myśliwiec),U1,"creator's team sells enterprise support, certification courses, Mau deploy",,yes,PL,2017,private,none_found,0,No funding page found in leads or API searches.,,2026-11-26T06:00:34Z
+traefik,Traefik Labs,U1,sells Traefik Enterprise and Traefik Hub,,yes,FR,2015,private,yes,1,Later rounds not looked for; Traefik about page says 'Backed by incredible investors' without names.,https://traefik.io/about-us,2026-11-26T06:00:34Z
+meilisearch,Meilisearch,U1,sells Meilisearch Cloud,,yes,FR,2018,private,yes,3,,,2026-11-26T06:00:34Z
+PrefectHQ,Prefect Technologies,U1,sells Prefect Cloud,,yes,US,2018,private,yes,1,Investors unresolved: Prefect's own Series B post (prefect.io/blog/escape-velocity) now 404s; WebSearch budget exhausted. memory: earlier rounds exist (not recorded). Prefect acquired Dagster 2026-07 per HN lead.,,2026-11-26T06:00:34Z
+ifixai-ai,iFixAi,U1,sells per-agent audit plans; open-source engine free,,yes,US,,unknown,none_found,0,No leads; not researched in depth.,,2026-11-26T06:00:34Z
+tinyhumansai,Tiny Human Intelligence Inc.,U1,sells credits for hosted orchestrator behind its open agents,,yes,US,,unknown,none_found,0,No leads; not researched in depth.,,2026-11-26T06:00:34Z
+chakra-ui,Chakra Systems,U1,maintainers' Chakra Systems sells Chakra UI Pro components,,yes,,,unknown,none_found,0,No leads; announcement page 404; not researched further.,,2026-11-26T06:01:15Z
+httpie,HTTPie,U1,company builds HTTPie apps around the CLI,,yes,US,,private,yes,1,Date not on page.,,2026-11-26T06:01:15Z
+qdrant,Qdrant,U1,sells Qdrant Cloud and enterprise,,yes,DE,2021,private,yes,4,Series B details unresolved.,,2026-11-26T06:01:15Z
+CloakHQ,CloakHQ,U1,sells CloakBrowser Pro and OEM licences,,yes,,,unknown,none_found,0,"No leads; HN shows v0.7.0 now requires a licence key for free use (2026-11-06), so openness may be changing.",https://pypi.org/project/cloakbrowser/,2026-11-26T06:01:15Z
+hypit-ai,Hypit,U1,hosted web app and API alongside open-source core,,yes,,,unknown,none_found,0,Site mentions no funding or backers.,https://hypit.ai,2026-11-26T06:01:15Z
+simstudioai,Sim,U1,sells hosted Sim cloud plans,,yes,US,2025,private,yes,2,,,2026-11-26T06:01:15Z
+getredash,Redash,U1,hosted Redash company bought by Databricks,,yes,IL,2013,acquired,none_found,0,TechCrunch citing Crunchbase: never raised outside funding. Hint says US; article says Tel Aviv.,https://techcrunch.com/2020/06/24/databricks-acquires-redash-a-visualizations-service-for-data-scientists/,2026-11-26T06:01:15Z
+typesense,Typesense,U1,sells Typesense Cloud,,yes,US,2015,private,bootstrapped_stated,0,About page: 'lean customer-funded team'.,https://typesense.org/about,2026-11-26T06:01:15Z
+d2lang,Terrastruct,U1,sells D2 Studio and TALA layout engine,,yes,US,2020,private,none_found,0,d2lang.com says D2 is fiscally sponsored by Hack Club (not an investment). No investors found.,https://d2lang.com/,2026-11-26T06:01:15Z
+slint-ui,SixtyFPS GmbH,U1,sells Slint commercial licences and support,,yes,DE,2020,private,yes,2,No VC investors named on its investors page.,,2026-11-26T06:01:15Z
+vanna-ai,Vanna.AI,U1,sells hosted Vanna Cloud,,yes,US,,unknown,none_found,0,No leads; announcement page 404; no funding found.,,2026-11-26T06:01:15Z
+chartdb,ChartDB,U1,sells hosted ChartDB plans,,yes,US,,private,bootstrapped_stated,0,"About page: 'Fully bootstrapped, no outside funding'.",https://chartdb.io/about,2026-11-26T06:01:15Z
+makerdiary,makerdiary,U1,sells the open hardware boards,,yes,CN,,unknown,none_found,0,Not found; about page 404.,,2026-11-26T06:01:15Z
+Rowow-LLC,Rowow LLC,U1,"sells membranes, cells and kits from the open design",,yes,US,,unknown,none_found,0,Tiny; not researched.,,2026-11-26T06:01:15Z
+Protocentral,ProtoCentral,U1,sells HealthyPi open hardware,,yes,IN,,unknown,none_found,0,Tiny; not researched.,,2026-11-26T06:01:15Z

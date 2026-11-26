@@ -1,0 +1,106 @@
+investor,url,status,bytes,external_links,domain_matches,name_matches
+Andreessen Horowitz,https://a16z.com/portfolio/,200,3721995,14,0,0
+Sequoia Capital,https://www.sequoiacap.com/our-companies/,200,395961,7,0,0
+Accel,https://www.accel.com/relationships,200,2507587,9,0,0
+Index Ventures,https://www.indexventures.com/companies/,200,297414,4,0,7
+Greylock Partners,https://greylock.com/portfolio/,200,1392659,6,0,0
+Lightspeed Venture Partners,https://lsvp.com/portfolio/,200,579276,13,0,15
+General Catalyst,https://www.generalcatalyst.com/portfolio,200,525478,13,0,1
+Redpoint Ventures,https://www.redpoint.com/companies/,200,462128,12,0,0
+Bessemer Venture Partners,https://www.bvp.com/portfolio,200,518540,10,0,0
+Battery Ventures,https://www.battery.com/our-companies/,200,203939,16,0,1
+Insight Partners,https://www.insightpartners.com/portfolio/,200,163742,7,0,0
+New Enterprise Associates,https://www.nea.com/portfolio,200,1555559,6,0,0
+Khosla Ventures,https://www.khoslaventures.com/portfolio,200,207800,125,5,4
+Felicis,https://www.felicis.com/portfolio,200,1883214,219,5,5
+GV,https://www.gv.com/portfolio/,200,871161,14,0,14
+Intel Capital,https://www.intelcapital.com/portfolio/,200,115855,4,0,6
+Salesforce Ventures,https://salesforceventures.com/portfolio/,200,298278,7,0,0
+M12,https://m12.vc/portfolio/,200,322275,47,1,2
+Dell Technologies Capital,https://www.delltechnologiescapital.com/portfolio,404,0,0,0,0
+Madrona Venture Group,https://www.madrona.com/portfolio/,200,474829,182,4,11
+CRV,https://www.crv.com/portfolio,404,0,0,0,0
+Lux Capital,https://www.luxcapital.com/companies,200,243549,13,0,4
+DCVC,https://www.dcvc.com/companies,200,719784,3,0,15
+Root Ventures,https://root.vc/portfolio,200,58945,1,0,2
+True Ventures,https://trueventures.com/portfolio,200,156399,44,0,2
+Foundry Group,https://foundry.vc/portfolio/,200,36029,1,0,1
+Spark Capital,https://www.sparkcapital.com/portfolio,404,0,0,0,0
+Union Square Ventures,https://www.usv.com/companies/,200,527853,5,0,1
+First Round Capital,https://firstround.com/companies/,200,409730,8,0,0
+Initialized Capital,https://initialized.com/portfolio/,200,531532,189,3,0
+OSS Capital,https://oss.capital/,200,282394,7,0,3
+Heavybit,https://www.heavybit.com/portfolio,200,345900,7,0,3
+Amplify Partners,https://www.amplifypartners.com/portfolio,404,0,0,0,0
+Boldstart Ventures,https://boldstart.vc/portfolio/,200,16326,32,1,0
+Crane Venture Partners,https://crane.vc/portfolio,200,508932,119,1,4
+Essence VC,https://www.essencevc.fund/portfolio,404,0,0,0,0
+Unusual Ventures,https://www.unusual.vc/portfolio,200,382799,81,4,3
+Work-Bench,https://www.work-bench.com/portfolio,200,46588,46,2,1
+Costanoa Ventures,https://www.costanoa.vc/portfolio,200,705834,6,0,0
+Basis Set Ventures,https://www.basisset.com/portfolio,200,273914,71,2,2
+Two Sigma Ventures,https://www.twosigmaventures.com/portfolio/,"SSLError(MaxRetryError(""HTTPSConnectionPool(host='www.twosigmaventures.com', por",0,0,0,0
+Point Nine,https://www.pointnine.com/portfolio,404,0,0,0,0
+Seedcamp,https://seedcamp.com/companies/,200,448943,331,5,3
+Balderton Capital,https://www.balderton.com/portfolio/,404,0,0,0,0
+Atomico,https://atomico.com/portfolio/,429,0,0,0,0
+Earlybird,https://earlybird.com/portfolio/,404,0,0,0,0
+Cherry Ventures,https://www.cherry.vc/portfolio,404,0,0,0,0
+Speedinvest,https://www.speedinvest.com/portfolio,200,754591,11,0,3
+Northzone,https://northzone.com/portfolio/,200,746134,6,0,1
+Creandum,https://creandum.com/portfolio/,404,0,0,0,0
+Partech,https://partechpartners.com/companies/,200,458618,4,0,1
+Elaia,https://www.elaia.com/portfolio,200,452383,26,0,0
+Serena,https://www.serena.vc/portfolio,404,0,0,0,0
+Runa Capital,https://runacap.com/portfolio/,404,0,0,0,0
+Uncork Capital,https://uncorkcapital.com/portfolio/,404,0,0,0,0
+Mayfield,https://www.mayfield.com/portfolio/,404,0,0,0,0
+IVP,https://www.ivp.com/portfolio/,200,1304643,5,0,0
+Thrive Capital,https://thrivecap.com/companies,404,0,0,0,0
+Founders Fund,https://foundersfund.com/portfolio/,200,512269,3,0,0
+Kleiner Perkins,https://www.kleinerperkins.com/partnerships/,200,4286801,338,4,10
+SV Angel,https://svangel.com/companies,404,0,0,0,0
+SOSV,https://sosv.com/portfolio/,200,380419,9,0,2
+CapitalG,https://www.capitalg.com/portfolio/,200,297117,63,0,3
+Gradient Ventures,https://www.gradient.com/portfolio,200,163005,147,7,2
+Samsung,https://www.samsungnext.com/portfolio,200,82476,106,2,3
+Mozilla Ventures,https://mozilla.vc/portfolio/,200,100616,50,3,1
+GGV Capital (US arm now Notable Capital),https://www.notablecap.com/portfolio,404,0,0,0,0
+Decibel,https://www.decibel.vc/portfolio,404,0,0,0,0
+Haystack,https://haystack.vc/portfolio,200,190725,22,0,0
+Kindred Ventures,https://kindredventures.com/portfolio/,200,302475,31,0,2
+Wing Venture Capital,https://www.wing.vc/portfolio,200,96356,25,0,0
+Pear VC,https://pear.vc/companies/,200,623359,215,1,3
+Lerer Hippeau,https://www.lererhippeau.com/portfolio,200,171936,87,1,0
+Bloomberg Beta,https://www.bloombergbeta.com/portfolio/,404,0,0,0,0
+Susa Ventures,https://www.susaventures.com/portfolio,404,0,0,0,0
+Afore Capital,https://www.afore.vc/portfolio,200,366205,106,0,6
+Fly Ventures,https://www.fly.vc/portfolio,200,34316,12,0,4
+Scale Venture Partners,https://www.scalevp.com/portfolio,200,256981,8,0,0
+Sapphire Ventures,https://sapphireventures.com/portfolio/,404,0,0,0,0
+Menlo Ventures,https://menlovc.com/portfolio/,200,307230,29,0,0
+8VC,https://www.8vc.com/companies,200,417102,179,1,10
+Contrary,https://contrary.com/portfolio,404,0,0,0,0
+South Park Commons,https://www.southparkcommons.com/companies,200,144184,8,0,1
+Open Core Ventures,https://opencoreventures.com/,200,23253,11,1,1
+Pioneer Fund,https://www.pioneerfund.vc/portfolio,200,152749,4,0,0
+Matrix Partners,https://www.matrix.vc/portfolio,200,330417,122,1,0
+Tribe Capital,https://tribecap.co/portfolio,200,95570,6,0,0
+Craft Ventures,https://www.craftventures.com/portfolio,200,30158,35,2,0
+Emergence Capital,https://www.emcap.com/portfolio,200,123117,13,0,0
+Greycroft,https://www.greycroft.com/portfolio/,200,1267243,235,4,5
+Radical Ventures,https://radical.vc/portfolio/,200,63402,4,0,0
+Conviction,https://www.conviction.com/portfolio,404,0,0,0,0
+Elad Gil,https://eladgil.com/,200,273964,22,0,0
+Hummingbird Ventures,https://www.hummingbird.vc/portfolio,200,354035,68,0,1
+Kima Ventures,https://www.kimaventures.com/portfolio,200,587763,1005,10,7
+468 Capital,https://www.468cap.com/portfolio,TooManyRedirects('Exceeded 30 redirects.'),0,0,0,0
+Notion Capital,https://www.notion.vc/portfolio,200,196538,9,0,2
+Frontline Ventures,https://www.frontline.vc/portfolio,404,0,0,0,0
+Hoxton Ventures,https://hoxtonventures.com/portfolio,200,239179,9,0,0
+Plural,https://www.plural.vc/portfolio,404,0,0,0,0
+Project A,https://www.project-a.com/portfolio,200,1580003,116,0,4
+HV Capital,https://www.hvcapital.com/portfolio/,200,190491,3,0,0
+Lakestar,https://www.lakestar.com/portfolio,200,355625,4,0,0
+Index Ventures (open source),https://www.indexventures.com/perspectives/,200,211271,5,0,1
+Y Combinator,https://www.ycombinator.com/companies,200,44817,5,0,0

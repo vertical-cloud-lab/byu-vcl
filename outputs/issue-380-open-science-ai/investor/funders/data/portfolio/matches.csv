@@ -1,0 +1,254 @@
+investor,key,venture,universe,match,evidence,url
+8VC,ai21,AI21 Labs,U3,name,ai21 labs,https://www.8vc.com/companies
+8VC,airbyte,Airbyte,U3,name,airbyte,https://www.8vc.com/companies
+8VC,materialize,Materialize,U3,name,materialize,https://www.8vc.com/companies
+8VC,replicate,Replicate,U3,name,replicate,https://www.8vc.com/companies
+8VC,u4-evidence,Evidence,U4,name,evidence,https://www.8vc.com/companies
+8VC,u4-million,Million,U4,name,million,https://www.8vc.com/companies
+8VC,u4-orchestra,Orchestra,U4,name,orchestra,https://www.8vc.com/companies
+8VC,u4-rainbow,Rainbow,U4,name,rainbow,https://www.8vc.com/companies
+8VC,u4-shuttle,Shuttle,U4,name,shuttle,https://www.8vc.com/companies
+8VC,vercel,Vercel,U1,domain,vercel.com,https://www.8vc.com/companies
+8VC,yugabyte,Yugabyte,U3,name,yugabyte,https://www.8vc.com/companies
+Afore Capital,dagster,Dagster Labs (Elementl),U3,name,dagster labs,https://www.afore.vc/portfolio
+Afore Capital,iterative,Iterative (DVC),U3,name,iterative,https://www.afore.vc/portfolio
+Afore Capital,kubecost,Kubecost,U3,name,kubecost,https://www.afore.vc/portfolio
+Afore Capital,modular,Modular Inc.,U1,name,modular,https://www.afore.vc/portfolio
+Afore Capital,u4-evidence,Evidence,U4,name,evidence,https://www.afore.vc/portfolio
+Afore Capital,u4-lantern,Lantern,U4,name,lantern,https://www.afore.vc/portfolio
+Basis Set Ventures,mem0ai,Mem0,U1,domain,mem0.ai,https://www.basisset.com/portfolio
+Basis Set Ventures,modular,Modular Inc.,U1,name,modular,https://www.basisset.com/portfolio
+Basis Set Ventures,sakana,Sakana AI,U3,domain,sakana.ai,https://www.basisset.com/portfolio
+Basis Set Ventures,serverless,"Serverless, Inc.",U1,name,serverless,https://www.basisset.com/portfolio
+Battery Ventures,u4-million,Million,U4,name,million,https://www.battery.com/our-companies/
+Boldstart Ventures,crewAIInc,CrewAI,U1,domain,crewai.com,https://boldstart.vc/portfolio/
+CapitalG,databricks,Databricks,U3,name,databricks,https://www.capitalg.com/portfolio/
+CapitalG,langchain-ai,LangChain,U1,name,langchain,https://www.capitalg.com/portfolio/
+CapitalG,u4-million,Million,U4,name,million,https://www.capitalg.com/portfolio/
+Craft Ventures,ClickHouse,ClickHouse,U1,domain,clickhouse.com,https://www.craftventures.com/portfolio
+Craft Ventures,supabase,Supabase,U1,domain,supabase.com,https://www.craftventures.com/portfolio
+Crane Venture Partners,anomalyco,Anomaly,U1,name,anomaly,https://crane.vc/portfolio
+Crane Venture Partners,novuhq,Novu,U1,domain,novu.co,https://crane.vc/portfolio
+Crane Venture Partners,u4-evidence,Evidence,U4,name,evidence,https://crane.vc/portfolio
+Crane Venture Partners,u4-laminar,Laminar,U4,name,laminar,https://crane.vc/portfolio
+Crane Venture Partners,unstructured,Unstructured,U3,name,unstructured,https://crane.vc/portfolio
+DCVC,buoyant,Buoyant,U3,name,buoyant,https://www.dcvc.com/companies
+DCVC,chai-discovery,Chai Discovery,U2,name,chai discovery,https://www.dcvc.com/companies
+DCVC,confluent,Confluent,U3,name,confluent,https://www.dcvc.com/companies
+DCVC,databricks,Databricks,U3,name,databricks,https://www.dcvc.com/companies
+DCVC,elastic,Elastic N.V.,U1,name,elastic,https://www.dcvc.com/companies
+DCVC,element,Element (New Vector),U3,name,element,https://www.dcvc.com/companies
+DCVC,molecule,Molecule (Molecule AG),U2,name,molecule,https://www.dcvc.com/companies
+DCVC,mongodb,MongoDB Inc.,U1,name,mongodb,https://www.dcvc.com/companies
+DCVC,mosaicml,MosaicML,U3,name,mosaicml,https://www.dcvc.com/companies
+DCVC,pachyderm,Pachyderm,U3,name,pachyderm,https://www.dcvc.com/companies
+DCVC,u4-citus-data,Citus Data,U4,name,citus data,https://www.dcvc.com/companies
+DCVC,u4-evidence,Evidence,U4,name,evidence,https://www.dcvc.com/companies
+DCVC,u4-pipelinedb,PipelineDB,U4,name,pipelinedb,https://www.dcvc.com/companies
+DCVC,u4-rescale,Rescale,U4,name,rescale,https://www.dcvc.com/companies
+DCVC,unstructured,Unstructured,U3,name,unstructured,https://www.dcvc.com/companies
+Felicis,browser-use,Browser Use,U1,domain,browser-use.com,https://www.felicis.com/portfolio
+Felicis,entalpic,Entalpic,U2,name,entalpic,https://www.felicis.com/portfolio
+Felicis,letta-ai,Letta,U1,domain,letta.com,https://www.felicis.com/portfolio
+Felicis,meilisearch,Meilisearch,U1,domain,meilisearch.com,https://www.felicis.com/portfolio
+Felicis,prime-intellect,Prime Intellect,U3,name,prime intellect,https://www.felicis.com/portfolio
+Felicis,sourcegraph,Sourcegraph,U3,name,sourcegraph,https://www.felicis.com/portfolio
+Felicis,u4-eventual,Eventual,U4,name,eventual,https://www.felicis.com/portfolio
+Felicis,u4-flower,Flower,U4,domain,flower.ai,https://www.felicis.com/portfolio
+Felicis,unstructured,Unstructured,U3,name,unstructured,https://www.felicis.com/portfolio
+Felicis,zylon-ai,Zylon,U1,domain,zylon.ai,https://www.felicis.com/portfolio
+Fly Ventures,modular,Modular Inc.,U1,name,modular,https://www.fly.vc/portfolio
+Fly Ventures,u4-gitbutler,GitButler,U4,name,gitbutler,https://www.fly.vc/portfolio
+Fly Ventures,u4-million,Million,U4,name,million,https://www.fly.vc/portfolio
+Fly Ventures,unstructured,Unstructured,U3,name,unstructured,https://www.fly.vc/portfolio
+Foundry Group,mongodb,MongoDB Inc.,U1,name,mongodb,https://foundry.vc/portfolio/
+GV,PostHog,PostHog Inc.,U1,name,posthog,https://www.gv.com/portfolio/
+GV,buoyant,Buoyant,U3,name,buoyant,https://www.gv.com/portfolio/
+GV,cloudera,Cloudera,U3,name,cloudera,https://www.gv.com/portfolio/
+GV,cockroachdb,Cockroach Labs,U1,name,cockroach labs,https://www.gv.com/portfolio/
+GV,dbt-labs,dbt Labs (Fishtown Analytics),U3,name,dbt labs,https://www.gv.com/portfolio/
+GV,deepset-ai,deepset,U1,name,deepset,https://www.gv.com/portfolio/
+GV,determined-ai,Determined AI,U3,name,determined ai,https://www.gv.com/portfolio/
+GV,element,Element (New Vector),U3,name,element,https://www.gv.com/portfolio/
+GV,iterative,Iterative (DVC),U3,name,iterative,https://www.gv.com/portfolio/
+GV,modular,Modular Inc.,U1,name,modular,https://www.gv.com/portfolio/
+GV,u4-roboflow,Roboflow,U4,name,roboflow,https://www.gv.com/portfolio/
+GV,u4-zencoder,Zencoder,U4,name,zencoder,https://www.gv.com/portfolio/
+GV,voltron-data,Voltron Data,U3,name,voltron data,https://www.gv.com/portfolio/
+GV,weaveworks,Weaveworks,U3,name,weaveworks,https://www.gv.com/portfolio/
+General Catalyst,u4-authzed,authzed,U4,name,authzed,https://www.generalcatalyst.com/portfolio
+Gradient Ventures,Infisical,Infisical,U1,domain,infisical.com,https://www.gradient.com/portfolio
+Gradient Ventures,mastra-ai,Mastra,U1,domain,mastra.ai,https://www.gradient.com/portfolio
+Gradient Ventures,payloadcms,Payload,U1,domain,payloadcms.com,https://www.gradient.com/portfolio
+Gradient Ventures,serverless,"Serverless, Inc.",U1,name,serverless,https://www.gradient.com/portfolio
+Gradient Ventures,streamlit,Streamlit,U1,domain,streamlit.io,https://www.gradient.com/portfolio
+Gradient Ventures,u4-ctgt,CTGT,U4,domain,ctgt.ai,https://www.gradient.com/portfolio
+Gradient Ventures,u4-lastmile-ai,LastMile AI,U4,name,lastmile ai,https://www.gradient.com/portfolio
+Gradient Ventures,u4-nango,Nango,U4,domain,nango.dev,https://www.gradient.com/portfolio
+Gradient Ventures,u4-vocode,Vocode,U4,domain,vocode.dev,https://www.gradient.com/portfolio
+Greycroft,RocketChat,Rocket.Chat,U1,domain,rocket.chat,https://www.greycroft.com/portfolio/
+Greycroft,Stability-AI,Stability AI,U1,domain,stability.ai,https://www.greycroft.com/portfolio/
+Greycroft,inventables,Inventables,U2,name,inventables,https://www.greycroft.com/portfolio/
+Greycroft,pathwaycom,Pathway,U1,name,pathway,https://www.greycroft.com/portfolio/
+Greycroft,together-ai,Together AI,U3,domain,together.ai,https://www.greycroft.com/portfolio/
+Greycroft,u4-embrace,Embrace,U4,domain,embrace.io,https://www.greycroft.com/portfolio/
+Greycroft,u4-laminar,Laminar,U4,name,laminar,https://www.greycroft.com/portfolio/
+Greycroft,u4-million,Million,U4,name,million,https://www.greycroft.com/portfolio/
+Greycroft,unstructured,Unstructured,U3,name,unstructured,https://www.greycroft.com/portfolio/
+Heavybit,modular,Modular Inc.,U1,name,modular,https://www.heavybit.com/portfolio
+Heavybit,mongodb,MongoDB Inc.,U1,name,mongodb,https://www.heavybit.com/portfolio
+Heavybit,serverless,"Serverless, Inc.",U1,name,serverless,https://www.heavybit.com/portfolio
+Hummingbird Ventures,u4-evidence,Evidence,U4,name,evidence,https://www.hummingbird.vc/portfolio
+Index Ventures,ClickHouse,ClickHouse,U1,name,clickhouse,https://www.indexventures.com/companies/
+Index Ventures,Lightning-AI,Lightning AI,U1,name,lightning ai,https://www.indexventures.com/companies/
+Index Ventures,chai-discovery,Chai Discovery,U2,name,chai discovery,https://www.indexventures.com/companies/
+Index Ventures,cockroachdb,Cockroach Labs,U1,name,cockroach labs,https://www.indexventures.com/companies/
+Index Ventures,confluent,Confluent,U3,name,confluent,https://www.indexventures.com/companies/
+Index Ventures,starburst,Starburst,U3,name,starburst,https://www.indexventures.com/companies/
+Index Ventures,weaviate,Weaviate,U3,name,weaviate,https://www.indexventures.com/companies/
+Index Ventures (open source),ClickHouse,ClickHouse,U1,name,clickhouse,https://www.indexventures.com/perspectives/
+Initialized Capital,u4-apollo,Apollo,U4,domain,apollographql.com,https://initialized.com/portfolio/
+Initialized Capital,u4-rescale,Rescale,U4,domain,rescale.com,https://initialized.com/portfolio/
+Initialized Capital,u4-robocurve,Robocurve,U4,domain,robocurve.org,https://initialized.com/portfolio/
+Intel Capital,huggingface,Hugging Face,U1,name,hugging face,https://www.intelcapital.com/portfolio/
+Intel Capital,prime-intellect,Prime Intellect,U3,name,prime intellect,https://www.intelcapital.com/portfolio/
+Intel Capital,ray-project,Anyscale,U1,name,anyscale,https://www.intelcapital.com/portfolio/
+Intel Capital,tetrate,Tetrate,U3,name,tetrate,https://www.intelcapital.com/portfolio/
+Intel Capital,trufflesecurity,Truffle Security,U1,name,truffle security,https://www.intelcapital.com/portfolio/
+Intel Capital,u4-truefoundry,TrueFoundry,U4,name,truefoundry,https://www.intelcapital.com/portfolio/
+Khosla Ventures,ClickHouse,ClickHouse,U1,domain,clickhouse.com,https://www.khoslaventures.com/portfolio
+Khosla Ventures,Opentrons,Opentrons Labworks,U1,domain,opentrons.com,https://www.khoslaventures.com/portfolio
+Khosla Ventures,databricks,Databricks,U3,name,databricks,https://www.khoslaventures.com/portfolio
+Khosla Ventures,gitlabhq,GitLab Inc.,U1,domain,about.gitlab.com,https://www.khoslaventures.com/portfolio
+Khosla Ventures,modular,Modular Inc.,U1,name,modular,https://www.khoslaventures.com/portfolio
+Khosla Ventures,sakana,Sakana AI,U3,domain,sakana.ai,https://www.khoslaventures.com/portfolio
+Khosla Ventures,serverless,"Serverless, Inc.",U1,name,serverless,https://www.khoslaventures.com/portfolio
+Khosla Ventures,u4-million,Million,U4,name,million,https://www.khoslaventures.com/portfolio
+Khosla Ventures,vercel,Vercel,U1,domain,vercel.com,https://www.khoslaventures.com/portfolio
+Kima Ventures,docker,Docker Inc.,U1,domain,docker.com,https://www.kimaventures.com/portfolio
+Kima Ventures,elastic,Elastic N.V.,U1,name,elastic,https://www.kimaventures.com/portfolio
+Kima Ventures,lightpanda-io,Lightpanda,U1,domain,lightpanda.io,https://www.kimaventures.com/portfolio
+Kima Ventures,meilisearch,Meilisearch,U1,domain,meilisearch.com,https://www.kimaventures.com/portfolio
+Kima Ventures,modular,Modular Inc.,U1,name,modular,https://www.kimaventures.com/portfolio
+Kima Ventures,serverless,"Serverless, Inc.",U1,name,serverless,https://www.kimaventures.com/portfolio
+Kima Ventures,strapi,Strapi,U1,domain,strapi.io,https://www.kimaventures.com/portfolio
+Kima Ventures,twentyhq,Twenty.com PBC,U1,domain,twenty.com,https://www.kimaventures.com/portfolio
+Kima Ventures,u4-evidence,Evidence,U4,name,evidence,https://www.kimaventures.com/portfolio
+Kima Ventures,u4-kaelio,Kaelio,U4,domain,kaelio.com,https://www.kimaventures.com/portfolio
+Kima Ventures,u4-lago,Lago,U4,domain,getlago.com,https://www.kimaventures.com/portfolio
+Kima Ventures,u4-million,Million,U4,name,million,https://www.kimaventures.com/portfolio
+Kima Ventures,u4-nango,Nango,U4,domain,nango.dev,https://www.kimaventures.com/portfolio
+Kima Ventures,u4-nao-labs,nao Labs,U4,domain,getnao.io,https://www.kimaventures.com/portfolio
+Kima Ventures,u4-questdb,QuestDB,U4,name,questdb,https://www.kimaventures.com/portfolio
+Kima Ventures,u4-superlog,Superlog,U4,name,superlog,https://www.kimaventures.com/portfolio
+Kima Ventures,u4-windmill,Windmill,U4,domain,windmill.dev,https://www.kimaventures.com/portfolio
+Kindred Ventures,modular,Modular Inc.,U1,name,modular,https://kindredventures.com/portfolio/
+Kindred Ventures,u4-million,Million,U4,name,million,https://kindredventures.com/portfolio/
+Kleiner Perkins,browserbase,Browserbase,U1,domain,browserbase.com,https://www.kleinerperkins.com/partnerships/
+Kleiner Perkins,chainguard,Chainguard,U3,name,chainguard,https://www.kleinerperkins.com/partnerships/
+Kleiner Perkins,databricks,Databricks,U3,domain,databricks.com,https://www.kleinerperkins.com/partnerships/
+Kleiner Perkins,datastax,DataStax,U3,name,datastax,https://www.kleinerperkins.com/partnerships/
+Kleiner Perkins,elastic,Elastic N.V.,U1,name,elastic,https://www.kleinerperkins.com/partnerships/
+Kleiner Perkins,materialize,Materialize,U3,name,materialize,https://www.kleinerperkins.com/partnerships/
+Kleiner Perkins,modular,Modular Inc.,U1,name,modular,https://www.kleinerperkins.com/partnerships/
+Kleiner Perkins,prisma,"Prisma Data, Inc.",U1,domain,prisma.io,https://www.kleinerperkins.com/partnerships/
+Kleiner Perkins,red-hat,Red Hat,U3,name,red hat,https://www.kleinerperkins.com/partnerships/
+Kleiner Perkins,rudderstack,RudderStack,U3,name,rudderstack,https://www.kleinerperkins.com/partnerships/
+Kleiner Perkins,teleport,Teleport (Gravitational),U3,name,teleport,https://www.kleinerperkins.com/partnerships/
+Kleiner Perkins,together-ai,Together AI,U3,domain,together.ai,https://www.kleinerperkins.com/partnerships/
+Kleiner Perkins,u4-evidence,Evidence,U4,name,evidence,https://www.kleinerperkins.com/partnerships/
+Kleiner Perkins,u4-million,Million,U4,name,million,https://www.kleinerperkins.com/partnerships/
+Lerer Hippeau,Opentrons,Opentrons Labworks,U1,domain,opentrons.com,https://www.lererhippeau.com/portfolio
+Lightspeed Venture Partners,ClickHouse,ClickHouse,U1,name,clickhouse,https://lsvp.com/portfolio/
+Lightspeed Venture Partners,Stability-AI,Stability AI,U1,name,stability ai,https://lsvp.com/portfolio/
+Lightspeed Venture Partners,chainguard,Chainguard,U3,name,chainguard,https://lsvp.com/portfolio/
+Lightspeed Venture Partners,databricks,Databricks,U3,name,databricks,https://lsvp.com/portfolio/
+Lightspeed Venture Partners,datastax,DataStax,U3,name,datastax,https://lsvp.com/portfolio/
+Lightspeed Venture Partners,inferact,Inferact (vLLM),U3,name,inferact,https://lsvp.com/portfolio/
+Lightspeed Venture Partners,langfuse,Langfuse,U1,name,langfuse,https://lsvp.com/portfolio/
+Lightspeed Venture Partners,materialize,Materialize,U3,name,materialize,https://lsvp.com/portfolio/
+Lightspeed Venture Partners,mistral,Mistral AI,U3,name,mistral ai,https://lsvp.com/portfolio/
+Lightspeed Venture Partners,mulesoft,MuleSoft,U3,name,mulesoft,https://lsvp.com/portfolio/
+Lightspeed Venture Partners,particle,Particle (Spark Labs),U2,name,particle,https://lsvp.com/portfolio/
+Lightspeed Venture Partners,serverless,"Serverless, Inc.",U1,name,serverless,https://lsvp.com/portfolio/
+Lightspeed Venture Partners,u4-composio,Composio,U4,name,composio,https://lsvp.com/portfolio/
+Lightspeed Venture Partners,voltron-data,Voltron Data,U3,name,voltron data,https://lsvp.com/portfolio/
+Lightspeed Venture Partners,yugabyte,Yugabyte,U3,name,yugabyte,https://lsvp.com/portfolio/
+Lux Capital,databricks,Databricks,U3,name,databricks,https://www.luxcapital.com/companies
+Lux Capital,huggingface,Hugging Face,U1,name,hugging face,https://www.luxcapital.com/companies
+Lux Capital,sakana,Sakana AI,U3,name,sakana ai,https://www.luxcapital.com/companies
+Lux Capital,serverless,"Serverless, Inc.",U1,name,serverless,https://www.luxcapital.com/companies
+M12,arcee,Arcee AI,U3,name,arcee ai,https://m12.vc/portfolio/
+M12,code-ocean,Code Ocean,U2,domain,codeocean.com,https://m12.vc/portfolio/
+M12,u4-builder-io,Builder.io,U4,name,builder.io,https://m12.vc/portfolio/
+Madrona Venture Group,OpenHands,All Hands AI,U1,domain,openhands.dev,https://www.madrona.com/portfolio/
+Madrona Venture Group,anomalyco,Anomaly,U1,name,anomaly,https://www.madrona.com/portfolio/
+Madrona Venture Group,cloudera,Cloudera,U3,name,cloudera,https://www.madrona.com/portfolio/
+Madrona Venture Group,confluent,Confluent,U3,name,confluent,https://www.madrona.com/portfolio/
+Madrona Venture Group,duckdb,DuckDB Labs,U1,domain,duckdb.org,https://www.madrona.com/portfolio/
+Madrona Venture Group,elastic,Elastic N.V.,U1,name,elastic,https://www.madrona.com/portfolio/
+Madrona Venture Group,element,Element (New Vector),U3,name,element,https://www.madrona.com/portfolio/
+Madrona Venture Group,huggingface,Hugging Face,U1,name,hugging face,https://www.madrona.com/portfolio/
+Madrona Venture Group,iterative,Iterative (DVC),U3,name,iterative,https://www.madrona.com/portfolio/
+Madrona Venture Group,pulumi,Pulumi,U1,domain,pulumi.com,https://www.madrona.com/portfolio/
+Madrona Venture Group,serverless,"Serverless, Inc.",U1,name,serverless,https://www.madrona.com/portfolio/
+Madrona Venture Group,temporalio,Temporal Technologies,U1,domain,temporal.io,https://www.madrona.com/portfolio/
+Madrona Venture Group,u4-evidence,Evidence,U4,name,evidence,https://www.madrona.com/portfolio/
+Madrona Venture Group,u4-million,Million,U4,name,million,https://www.madrona.com/portfolio/
+Madrona Venture Group,unstructured,Unstructured,U3,name,unstructured,https://www.madrona.com/portfolio/
+Matrix Partners,u4-apollo,Apollo,U4,domain,apollographql.com,https://www.matrix.vc/portfolio
+Mozilla Ventures,NousResearch,Nous Research,U1,domain,nousresearch.com,https://mozilla.vc/portfolio/
+Mozilla Ventures,huggingface,Hugging Face,U1,domain,huggingface.co,https://mozilla.vc/portfolio/
+Mozilla Ventures,probabl,Probabl,U2,name,probabl,https://mozilla.vc/portfolio/
+Mozilla Ventures,u4-flower,Flower,U4,domain,flower.ai,https://mozilla.vc/portfolio/
+Northzone,black-forest-labs,Black Forest Labs,U1,name,black forest labs,https://northzone.com/portfolio/
+Notion Capital,black-forest-labs,Black Forest Labs,U1,name,black forest labs,https://www.notion.vc/portfolio
+Notion Capital,element,Element (New Vector),U3,name,element,https://www.notion.vc/portfolio
+OSS Capital,elastic,Elastic N.V.,U1,name,elastic,https://oss.capital/
+OSS Capital,liquid-ai,Liquid AI,U3,name,liquid ai,https://oss.capital/
+OSS Capital,red-hat,Red Hat,U3,name,red hat,https://oss.capital/
+Open Core Ventures,Stirling-Tools,Stirling PDF,U1,domain,stirling.com,https://opencoreventures.com/
+Open Core Ventures,mermaid-js,Mermaid Chart,U1,name,mermaid chart,https://opencoreventures.com/
+Partech,u4-bitrise,Bitrise,U4,name,bitrise,https://partechpartners.com/companies/
+Pear VC,gradio-app,Gradio,U1,domain,gradio.app,https://pear.vc/companies/
+Pear VC,pathwaycom,Pathway,U1,name,pathway,https://pear.vc/companies/
+Pear VC,u4-lantern,Lantern,U4,name,lantern,https://pear.vc/companies/
+Pear VC,u4-omi-ai,Omi AI,U4,name,omi ai,https://pear.vc/companies/
+Project A,modular,Modular Inc.,U1,name,modular,https://www.project-a.com/portfolio
+Project A,tabular,Tabular,U3,name,tabular,https://www.project-a.com/portfolio
+Project A,u4-evidence,Evidence,U4,name,evidence,https://www.project-a.com/portfolio
+Project A,u4-million,Million,U4,name,million,https://www.project-a.com/portfolio
+Root Ventures,particle,Particle (Spark Labs),U2,name,particle,https://root.vc/portfolio
+Root Ventures,u4-supertokens,SuperTokens,U4,name,supertokens,https://root.vc/portfolio
+SOSV,elastic,Elastic N.V.,U1,name,elastic,https://sosv.com/portfolio/
+SOSV,element,Element (New Vector),U3,name,element,https://sosv.com/portfolio/
+Samsung,arcee,Arcee AI,U3,name,arcee ai,https://www.samsungnext.com/portfolio
+Samsung,bentoml,BentoML,U3,name,bentoml,https://www.samsungnext.com/portfolio
+Samsung,black-forest-labs,Black Forest Labs,U1,name,black forest labs,https://www.samsungnext.com/portfolio
+Samsung,gitlabhq,GitLab Inc.,U1,domain,about.gitlab.com,https://www.samsungnext.com/portfolio
+Samsung,u4-activeloop,Activeloop,U4,domain,activeloop.ai,https://www.samsungnext.com/portfolio
+Seedcamp,anomalyco,Anomaly,U1,name,anomaly,https://seedcamp.com/companies/
+Seedcamp,appwrite,Appwrite,U1,domain,appwrite.io,https://seedcamp.com/companies/
+Seedcamp,medusajs,Medusa,U1,domain,medusajs.com,https://seedcamp.com/companies/
+Seedcamp,meilisearch,Meilisearch,U1,domain,meilisearch.com,https://seedcamp.com/companies/
+Seedcamp,modular,Modular Inc.,U1,name,modular,https://seedcamp.com/companies/
+Seedcamp,u4-caveman,Caveman,U4,domain,caveman.so,https://seedcamp.com/companies/
+Seedcamp,u4-questdb,QuestDB,U4,domain,questdb.com,https://seedcamp.com/companies/
+Seedcamp,unstructured,Unstructured,U3,name,unstructured,https://seedcamp.com/companies/
+South Park Commons,deep-cogito,Deep Cogito,U3,name,deep cogito,https://www.southparkcommons.com/companies
+Speedinvest,modular,Modular Inc.,U1,name,modular,https://www.speedinvest.com/portfolio
+Speedinvest,u4-evidence,Evidence,U4,name,evidence,https://www.speedinvest.com/portfolio
+Speedinvest,u4-million,Million,U4,name,million,https://www.speedinvest.com/portfolio
+True Ventures,anomalyco,Anomaly,U1,name,anomaly,https://trueventures.com/portfolio
+True Ventures,solo-io,Solo.io,U3,name,solo.io,https://trueventures.com/portfolio
+Union Square Ventures,u4-paradev-formerly-superset,Paradev (formerly Superset),U4,name,paradev,https://www.usv.com/companies/
+Unusual Ventures,HumanSignal,HumanSignal,U1,domain,humansignal.com,https://www.unusual.vc/portfolio
+Unusual Ventures,PostHog,PostHog Inc.,U1,domain,posthog.com,https://www.unusual.vc/portfolio
+Unusual Ventures,databricks,Databricks,U3,name,databricks,https://www.unusual.vc/portfolio
+Unusual Ventures,harness,Harness,U1,domain,harness.io,https://www.unusual.vc/portfolio
+Unusual Ventures,hashicorp,HashiCorp,U1,name,hashicorp,https://www.unusual.vc/portfolio
+Unusual Ventures,qdrant,Qdrant,U1,domain,qdrant.tech,https://www.unusual.vc/portfolio
+Unusual Ventures,tabular,Tabular,U3,name,tabular,https://www.unusual.vc/portfolio
+Work-Bench,cockroachdb,Cockroach Labs,U1,domain,cockroachlabs.com,https://www.work-bench.com/portfolio
+Work-Bench,red-hat,Red Hat,U3,name,red hat,https://www.work-bench.com/portfolio
+Work-Bench,u4-authzed,authzed,U4,domain,authzed.com,https://www.work-bench.com/portfolio

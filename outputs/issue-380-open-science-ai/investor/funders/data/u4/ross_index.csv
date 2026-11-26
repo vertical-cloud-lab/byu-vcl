@@ -1,0 +1,160 @@
+period,repo,startup,country,city,founded,funding_musd,language
+q1-2024,builderio/gpt-crawler,Builder.io,United States,San Francisco,2019,17.3,TypeScript
+q1-2024,myshell-ai/openvoice,MyShell,United States,San Francisco,2023,16.6,Python
+q1-2024,janhq/jan,Jan,Singapore,Singapore,2023,,TypeScript
+q1-2024,joaomdmoura/crewai,CrewAI,Brazil,São Paulo,2023,,Python
+q1-2024,othersideai/self-operating-computer,Hyper Write,United States,New York,2020,5.4,Python
+q1-2024,run-llama/rags,LlamaIndex,USA,San Francisco,2023,8.5,Python
+q1-2024,avaiga/taipy,Taipy,France,Orsay,2020,,Python
+q1-2024,usebruno/bruno,Bruno,India,Bangalore,2021,,JavaScript
+q1-2024,superduperdb/superduperdb,SuperDuperDB,Germany,Berlin,2023,,Python
+q1-2024,danny-avila/librechat,LibreChat,United States,New York,2023,,TypeScript
+q1-2024,copilotkit/copilotkit,CopilotKit,United States,Seattle,2023,,TypeScript
+q1-2024,mintplex-labs/anything-llm,Mintplex Labs,United States,Irvine,2022,,JavaScript
+q2-2024,zed-industries/zed,Zed Industries,United States,San Francisco,2021,12.5,Rust
+q2-2024,opendevin/opendevin,All Hands AI,United States,Boston,2024,,Python
+q2-2024,heyputer/puter,Puter,Canada,Vancouver,2022,,JavaScript
+q2-2024,stitionai/devika,Stition AI,India,Kerala,2023,0.5,Python
+q2-2024,hpcaitech/open-sora,HPC-AI Tech,Singapore,Singapore,2021,28.0,Python
+q2-2024,myshell-ai/openvoice,MyShell,United States,San Francisco,2023,16.6,Python
+q2-2024,janhq/jan,Jan,Singapore,Singapore,2023,,TypeScript
+q2-2024,gitbutlerapp/gitbutler,GitButler,Germany,Berlin,2023,,TypeScript
+q2-2024,kroma-network/tachyon,Kroma,Korea,Seoul,2021,,C++
+q2-2024,conductor-oss/conductor,Orkes,United States,Cupertino,2021,29.3,Java
+q2-2024,leptonai/search_with_lepton,Lepton AI,United States,Cupertino,2023,,TypeScript
+q2-2024,phidatahq/phidata,Phidata,United States,New York,2023,,Python
+q2-2024,vikparuchuri/surya,Datalab,United States,Oakland,2023,,Python
+q3-2024,higherorderco/bend,Higher Order Company,Brazil,Juiz de Fora,2023,,Rust
+q3-2024,infiniflow/ragflow,InfiniFlow,China,Shanghai,2023,,Python
+q3-2024,composiohq/composio,Composio,United States,San Francisco,2023,,Python
+q3-2024,fishaudio/fish-speech,Fish Audio,United States,Santa Clara,2024,,Python
+q3-2024,jina-ai/reader,Jina AI,Germany,Berlin,2020,37.5,TypeScript
+q3-2024,upsonic/gpt-computer-assistant,Upsonic,Turkey,Istanbul,2023,,Python
+q3-2024,miurla/morphic,Morphic,Japan,Tokyo,2024,,TypeScript
+q3-2024,gaianet-ai/gaianet-node,Gaia,United States,New York,2024,10.0,Shell
+q3-2024,codium-ai/cover-agent,Qodo,Israel,Tel Aviv,2022,50.6,Python
+q3-2024,phidatahq/phidata,Phidata,United States,New York,2023,5.4,Python
+q3-2024,supermemoryai/supermemory,Supermemory,India,Mumbai,2024,,TypeScript
+q3-2024,basedhardware/openglass,Omi AI,United States,San Francisco,2024,0.7,C
+q3-2024,truefoundry/cognita,TrueFoundry,United States,San Francisco,2021,2.3,Python
+q4-2024,shardeum/shardeum,Shardeum,Switzerland,Zug,2022,23.6,TypeScript
+q4-2024,rssnext/follow,RSSNext,Singapore,Singapore,2024,,TypeScript
+q4-2024,chartdb/chartdb,ChartDB,Israel,Tel Aviv,2024,,TypeScript
+q4-2024,voideditor/void,Void,United States,San Francisco,2024,0.5,TypeScript
+q4-2024,exo-explore/exo,EXO Labs,United Kingdom,Oxford,2024,,Python
+q4-2024,composiohq/composio,Composio,United States,San Francisco,2023,4.0,Python
+q4-2024,huanshere/videolingo,VideoLingo,Canada,Ontario,2024,,Python
+q4-2024,dicedb/dice,DiceDB,India,Bengaluru,2022,,Go
+q4-2024,getomni-ai/zerox,OmniAI,United States,San Francisco,2024,3.7,Python
+q4-2024,meltylabs/melty,Melty,United States,San Francisco,2024,0.5,TypeScript
+q4-2024,nexaai/nexa-sdk,Nexa AI,United States,San Jose,2023,16.5,Python
+q4-2024,teaxyz/white-paper,Tea,Puerto Rico,San Juan,2021,16.9,Makefile
+q4-2024,fishaudio/fish-speech,Hanabi AI,United States,San Francisco,2023,,Python
+q4-2024,adithya-s-k/omniparse,CognitiveLab,India,Bengaluru,2023,,Python
+q1-2025,anoma/anoma,Anoma,Switzerland,Zug,2020,57.8,Elixir
+q1-2025,browser-use/browser-use,Browser Use,United States,San Francisco,2024,17.5,Python
+q1-2025,aidenybai/react-scan,Million,United States,San Francisco,2023,0.5,TypeScript
+q1-2025,elizaos/eliza,elizaOS,United States,San Francisco,2024,,TypeScript
+q1-2025,raga-ai-hub/ragaai-catalyst,RagaAI,India,India,2021,4.7,Python
+q1-2025,cherryhq/cherry-studio,Cherry Studio,China,Shanghai,2021,,TypeScript
+q1-2025,tursodatabase/limbo,Turso,United States,"Claymont, DE",2021,7.0,Rust
+q1-2025,getmaxun/maxun,Maxun,India,Mumbai,2023,,TypeScript
+q1-2025,cyclotruc/gitingest,Coderamp,France,Lyon,2024,,Python
+q1-2025,quivrhq/megaparse,Quivr,United States,New York,2022,3.6,Python
+q1-2025,raidendotai/cofounder,OpenInterface,United States,"Wilmington, DE",2024,,TypeScript
+q1-2025,better-auth/better-auth,Better Auth,Ethiopia,Addis Ababa,2024,,TypeScript
+q1-2025,toolbeam/openauth,SST,United States,San Francisco,2017,1.6,TypeScript
+q1-2025,getomni-ai/zerox,OmniAI,United States,San Francisco,2023,3.7,TypeScript
+q2-2025,unionlabs/union,Union Labs,United States,"Dover, DE",2023,16.0,Rust
+q2-2025,linera-io/linera-protocol,Linera,United States,San Francisco,2021,12.0,Rust
+q2-2025,sesameailabs/csm,Sesame,United States,San Francisco,2022,57.6,Python
+q2-2025,mindverse/second-me,Mindverse,Singapore,Singapore,2022,29.9,Python
+q2-2025,browser-use/web-ui,Browser Use,Switzerland,Zurich,2024,17.5,Python
+q2-2025,jlowin/fastmcp,Prefect,United States,"Washington, DC",2018,60.0,Python
+q2-2025,mastra-ai/mastra,Mastra,United States,San Francisco,2024,0.5,TypeScript
+q2-2025,duixcom/duix.heygem,DUIX,Singapore,Singapore,2017,,C
+q2-2025,oumi-ai/oumi,Oumi,United States,"Seattle, WA",2024,10.0,Python
+q2-2025,cherryhq/cherry-studio,Cherry Studio,China,Shanghai,2021,,TypeScript
+q2-2025,zyphra/zonos,Zyphra,United States,"Palo Alto, SF",2021,,Python
+q2-2025,crestalnetwork/intentkit,Crestal,United States,San Francisco,2024,2.0,Python
+q2-2025,raga-ai-hub/ragaai-catalyst,RagaAI,India,India,2021,4.7,Python
+q2-2025,mail-0/zero,Zero,United States,San Francisco,2025,0.5,TypeScript
+q2-2025,fosrl/pangolin,Pangolin,United States,,2024,,TypeScript
+q2-2025,lastmile-ai/mcp-agent,LastMile AI,United States,New York,2023,10.0,Python
+q3-2025,OpenCut-app/OpenCut,OpenCut,,,2025,,TypeScript
+q3-2025,upstash/context7,Upstash,United States,"San Jose, CA",2021,11.9,JavaScript
+q3-2025,eyaltoledano/claude-task-master,Hamster,United States,San Francisco,2025,,JavaScript
+q3-2025,dyad-sh/dyad,Dyad,United States,"San Jose, CA",2025,1.0,
+q3-2025,astral-sh/ty,Astral,United States,"Brooklyn, NY",2022,4.0,Python
+q3-2025,resemble-ai/chatterbox,Resemble AI,Canada,Toronto,2018,12.2,Python
+q3-2025,Kilo-Org/kilocode,Kilo Code,United States,"Wilmington, DE",2025,,TypeScript
+q3-2025,AsyncFuncAI/deepwiki-open,ASYNCFUNC.,United States,,2025,,TypeScript
+q3-2025,kortix-ai/suna,Kortix,United States,San Francisco,2024,,TypeScript
+q3-2025,stagewise-io/stagewise,Stagewise,Germany,Bielefeld,2024,0.5,TypeScript
+q3-2025,ag-ui-protocol/ag-ui,CopilotKit,United States,"Seattle, WA",2023,0.1,TypeScript
+q3-2025,MODSetter/SurfSense,SurfSense,United States,"San Jose, CA",2025,,Python
+q3-2025,funstory-ai/BabelDOC,Funstory.ai,China,Beijing,2017,,Python
+q4-2025,firecrawl/open-lovable,Firecrawl,United States,San Francisco,2020,17.6,TypeScript
+q4-2025,coze-dev/coze-studio,Coze,United States,"Mountain View, CA",2023,75.0,TypeScript
+q4-2025,usestrix/strix,Strix,United States,San Francisco,2024,,Python
+q4-2025,sapientinc/HRM,Sapient,Singapore,Singapore,2024,22.0,Python
+q4-2025,MemoriLabs/Memori,Memori Labs,United States,New York,2024,3.7,Python
+q4-2025,bytebot-ai/bytebot,Bytebot,United States,San Francisco,2024,,TypeScript
+q4-2025,dyad-sh/dyad,Dyad,United States,"San Jose, CA",2025,,TypeScript
+q4-2025,boson-ai/higgs-audio,BosonAI,United States,"Santa Clara, CA",2023,,Python
+q4-2025,pickle-com/glass,Pickle,United States,San Francisco,2024,6.0,JavaScript
+q4-2025,OpenCut-app/OpenCut,OpenCut,,,2025,,TypeScript
+q4-2025,BloopAI/vibe-kanban,Bloop,United Kingdom,London,2021,7.4,Rust
+q4-2025,automazeio/ccpm,Automaze,United Kingdom,London,2023,,Shell
+q4-2025,superdesigndev/superdesign,Superdesign,Australia,Sydney,2025,,TypeScript
+q1-2026,affaan-m/everything-claude-code,ECC Tools,United States,San Francisco,2026,,JavaScript
+q1-2026,ruvnet/RuView,Cognitum,Canada,Toronto,2026,,Rust
+q1-2026,ComposioHQ/awesome-claude-skills,Composio,United States,San Francisco,2023,29.0,Python
+q1-2026,zeroclaw-labs/zeroclaw,ZeroClaw Labs,United States,"Cambridge, MA",2026,,Rust
+q1-2026,Fission-AI/OpenSpec,OpenSpec,Australia,Sydney,2025,,TypeScript
+q1-2026,rtk-ai/rtk,rtk,France,Lyon,2026,,Rust
+q1-2026,AndyMik90/Aperant,Aperant,Norway,Skiptvet,2025,,TypeScript
+q1-2026,different-ai/openwork,OpenWork,United States,San Francisco,2025,,TypeScript
+q1-2026,saturndec/waoowaoo,waoo,China,Shanghai,2026,,TypeScript
+q1-2026,NoFxAiOS/nofx,NoFX,Singapore,Singapore,2025,,Go
+q1-2026,aden-hive/hive,Aden,United States,San Francisco,2018,3.4,Python
+q2-2026,NousResearch/hermes-agent,Nous Research,United States,"Austin, TX",2023,70.0,Python
+q2-2026,affaan-m/ECC,ECC Tools,United States,San Francisco,2026,,JavaScript
+q2-2026,nexu-io/open-design,Nexu,China,,2024,,TypeScript
+q2-2026,koala73/worldmonitor,World Monitor,United Arab Emirates,Abu Dhabi,2026,,TypeScript
+q2-2026,rtk-ai/rtk,rtk,France,Lyon,2026,,Rust
+q2-2026,tinyhumansai/openhuman,TinyHumans,United States,San Francisco,2025,,Rust
+q2-2026,zeroclaw-labs/zeroclaw,ZeroClaw Labs,United States,"Cambridge, MA",2026,,Rust
+q2-2026,Gitlawb/openclaude,Gitlawb,Australia,,2026,,TypeScript
+q2-2026,CloakHQ/CloakBrowser,CloakHQ,,,2026,,Python
+q2-2026,RightNow-AI/openfang,RightNow,Jordan,Amman,2025,0.5,Rust
+q2-2026,manaflow-ai/cmux,Manaflow,United States,San Francisco,2024,0.5,Swift
+q2-2026,pascalorg/editor,Pascal,United States,Tampa,2025,,TypeScript
+q3-2026,nexu-io/open-design,OpenDesign,United States,"San Jose, CA",2024,,TypeScript
+q3-2026,headroomlabs-ai/headroom,Headroom,United States,"Fremont, CA",2026,,Python
+q3-2026,tinyhumansai/openhuman,TinyHumans,United States,San Francisco,2025,,Rust
+q3-2026,herdrdev/herdr,Herdr,Turkey,Ankara,2026,6.0,Rust
+q3-2026,CloakHQ/CloakBrowser,CloakBrowser,,,2026,,Python
+q3-2026,PrimeIntellect-ai/prime-agent,Prime Intellect,United States,San Francisco,2024,150.5,Rust
+q3-2026,stablyai/orca,Stably AI,United States,San Francisco,2022,0.5,TypeScript
+q3-2026,hypit-ai/hypit,Hypit AI,Hong Kong,Hong Kong,2026,,TypeScript
+q3-2026,ifixai-ai/iFixAi,iFixAi,United States,San Francisco,2026,,Python
+q3-2026,palmier-io/palmier-pro,Palmier,United States,San Francisco,2024,0.5,Swift
+q3-2026,oblien/openship,Oblien,United States,San Francisco,2025,,TypeScript
+q3-2026,corsairdev/corsair,Corsair,United States,New York,2024,0.5,TypeScript
+q3-2026,trycompai/crm,Comp AI,United States,"Miami, FL",2025,36.6,TypeScript
+annual-2025,unionlabs/union,Union Labs,United States,"Dover, DE",2023,16.0,Rust
+annual-2025,OpenCut-app/OpenCut,OpenCut,,,2025,,TypeScript
+annual-2025,browser-use/browser-use,Browser Use,United States,San Francisco,2024,17.5,Python
+annual-2025,anomalyco/opencode,SST,United States,San Francisco,2017,1.6,TypeScript
+annual-2025,firecrawl/open-lovable,Firecrawl,United States,San Francisco,2022,17.6,TypeScript
+annual-2025,upstash/context7,Upstash,United States,"San Jose, CA",2021,11.9,TypeScript
+annual-2025,coze-dev/coze-studio,Coze,United States,"Mountain View, CA",2023,75.0,TypeScript
+annual-2025,eyaltoledano/claude-task-master,Hamster,United States,San Francisco,2025,,JavaScript
+annual-2025,winfunc/opcode,Winfunc,United States,San Francisco,2024,0.5,TypeScript
+annual-2025,aidenybai/react-scan,Million,United States,San Francisco,2023,14.1,TypeScript
+annual-2025,linera-io/linera-protocol,Linera,United States,San Francisco,2021,12.0,Rust
+annual-2025,elizaOS/eliza,elizaOS,United States,San Francisco,2024,,TypeScript
+annual-2025,dyad-sh/dyad,Dyad,United States,"San Jose, CA",2025,,TypeScript
+annual-2025,mindverse/Second-Me,Mindverse,Singapore,Singapore,2022,29.9,Python
+annual-2025,nari-labs/dia,Nari Labs,South Korea,Seoul,2025,,Python

@@ -1,0 +1,41 @@
+key,venture,universe,category,website,github_orgs
+BruceDevices,Bruce Devices,U1,COSS (GitHub core),bruce.computer,BruceDevices
+Cheshire-Labs,Cheshire Labs,U1,COSS (GitHub core),https://www.linkedin.com/company/cheshire-labs/,Cheshire-Labs
+coqui-ai,Coqui,U1,COSS (GitHub core),,coqui-ai
+dbeaver,DBeaver Corp,U1,COSS (GitHub core),https://dbeaver.com,dbeaver
+e2b-dev,E2B,U1,COSS (GitHub core),https://e2b.dev/,e2b-dev
+Fincept-Corporation,Fincept Corporation,U1,COSS (GitHub core),https://fincept.in,Fincept-Corporation
+fosrl,Fossorial (Pangolin),U1,COSS (GitHub core),https://pangolin.net,fosrl
+GrapesJS,GrapesJS,U1,COSS (GitHub core),https://grapesjs.com,GrapesJS
+Kilo-Org,Kilo Code,U1,COSS (GitHub core),,Kilo-Org
+letta-ai,Letta,U1,COSS (GitHub core),https://letta.com,letta-ai
+mindsdb,MindsDB,U1,COSS (GitHub core),mindsdb.com,mindsdb
+neuromore,neuromore,U1,COSS (GitHub core),https://www.neuromore.com,neuromore
+odoo,Odoo SA,U1,COSS (GitHub core),https://www.odoo.com,odoo
+openbq-org,OpenBB Inc.,U1,COSS (GitHub core),,openbq-org
+payloadcms,Payload,U1,COSS (GitHub core),https://payloadcms.com,payloadcms
+redisson,Redisson,U1,COSS (GitHub core),https://redisson.pro,redisson
+supermemoryai,Supermemory,U1,COSS (GitHub core),https://supermemory.com,supermemoryai
+TecharoHQ,Techaro,U1,COSS (GitHub core),https://techaro.lol,TecharoHQ
+d2lang,Terrastruct,U1,COSS (GitHub core),https://d2lang.com,d2lang
+getzep,Zep,U1,COSS (GitHub core),https://www.getzep.com,getzep
+anaconda,"Anaconda, Inc. (Continuum Analytics)",U2,"conda, Anaconda distribution",,
+antmicro,Antmicro,U2,open-source hardware and software services (Renode),,
+bela,Augmented Instruments (Bela),U2,open-source audio hardware,,
+bcn3d,BCN3D Technologies,U2,open-source 3D printers,,
+bitcraze,Bitcraze,U2,open-source drones (Crazyflie),,
+efabless,Efabless,U2,open-source silicon,,
+evolutionaryscale,EvolutionaryScale,U2,open-weight ESM models (partial),,
+farmbot,FarmBot,U2,open-source farming robot,,
+open-bionics,Open Bionics,U2,"prosthetics, open designs early",,
+researchhub,ResearchHub (ResearchHub Technologies),U2,"open science platform, DeSci",,
+airbyte,Airbyte,U3,COSS (data integration),,
+clearml,ClearML (Allegro AI),U3,COSS (MLOps),,
+imply,Imply,U3,COSS (Druid),,
+jfrog,JFrog,U3,COSS (Artifactory OSS),,
+meltano,Meltano,U3,COSS (ELT),,
+nicira,Nicira,U3,COSS (Open vSwitch),,
+pydantic,Pydantic Services,U3,"COSS (Pydantic, Logfire)",,
+radixark,RadixArk (SGLang),U3,COSS (SGLang),,
+sysdig,Sysdig,U3,COSS (Falco),,
+va-linux,VA Linux Systems,U3,"Linux systems, SourceForge",,

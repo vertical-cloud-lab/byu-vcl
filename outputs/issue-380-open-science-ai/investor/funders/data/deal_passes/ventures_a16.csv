@@ -1,0 +1,6 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+laravel,Laravel,U1,"Laravel framework, MIT; sells Laravel Cloud, Forge and Nova to Laravel users",,yes,US,2011,private,yes,1,,,2026-11-26T06:04:54Z
+mermaid-js,Mermaid Chart,U1,"Mermaid diagram library, MIT; maintainers' company sells hosted Mermaid Chart editor",,yes,CA,2021,private,yes,1,"Country not confirmed from a page; CA is memory-based guess, check.",,2026-11-26T06:04:54Z
+coollabsio,coolLabs,U1,"Coolify, Apache 2.0; sells Coolify Cloud, hosted version",,yes,HU,,private,bootstrapped_stated,0,"Site says free, open source, no investors.",https://coollabs.io/about,2026-11-26T06:04:54Z
+nuxt,NuxtLabs,U1,"Nuxt, MIT; maintainers' company sold Nuxt UI Pro and NuxtHub; acquired by Vercel 2025",,yes,FR,2017,acquired,yes,1,Acquired by Vercel; terms not read.,https://nuxtjs.org/blog/seed-round,2026-11-26T06:04:54Z
+prisma,"Prisma Data, Inc.",U1,"Prisma ORM, Apache 2.0; sells Prisma Postgres and Accelerate",,yes,US,2016,private,yes,4,,,2026-11-26T06:04:54Z

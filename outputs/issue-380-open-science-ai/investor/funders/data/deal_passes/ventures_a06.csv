@@ -1,0 +1,26 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+firecrawl,Firecrawl (Sideguide Technologies),U1,sells hosted Firecrawl API with paid plans,,yes,US,2022,private,yes,3,,,2026-11-26T05:56:47Z
+Comfy-Org,Comfy Org,U1,sells Comfy Cloud and paid API nodes for ComfyUI,,yes,US,2023,private,yes,2,Tim Chen invested early per TechCrunch 2025-09-23 (not recorded as round).,https://blog.comfy.org/p/comfyui-raises-30m-to-scale-open,2026-11-26T05:56:47Z
+Kong,Kong Inc.,U1,sells Kong Konnect and Enterprise gateway,,yes,US,2009,private,yes,4,Round years for D/E not on fetched page text; left approximate (verify). Series C source states amounts.,,2026-11-26T05:56:47Z
+tldraw,tldraw Inc.,U1,sells commercial tldraw SDK licences,,yes,GB,2021,private,yes,3,,,2026-11-26T05:56:47Z
+langfuse,Langfuse,U1,sells Langfuse Cloud and Enterprise,,yes,DE,2022,acquired,yes,2,Acquired by ClickHouse Jan 2026.,https://langfuse.com/blog/joining-clickhouse,2026-11-26T05:56:47Z
+Kong,Kong Inc.,U1,sells Kong Konnect and Enterprise gateway,,yes,US,,private,yes,4,Founded year left blank (not verified).,,2026-11-26T05:56:54Z
+OpenBMB,ModelBest,U1,ModelBest-run lab commercialising MiniCPM models; co-founded with Tsinghua NLP,,yes,CN,2022,private,yes,5,"Search-result summary used to find pages; rounds then read from cls.cn pages. Wikipedia mentions further 2025 rounds (Beijing State-owned Capital, CICC Porsche Fund) not recorded.",https://en.wikipedia.org/wiki/ModelBest,2026-11-26T05:57:35Z
+remotion-dev,Remotion AG,U1,sells company licences for Remotion,,yes,CH,2021,private,yes,1,"Profitable, founder-owned, not raising more. The TechCrunch lead (Greylock) is a different company (Remotion video workspace).",https://www.remotion.dev/about,2026-11-26T05:57:35Z
+streamlit,Streamlit,U1,Streamlit company bought by Snowflake,,yes,US,2018,acquired,yes,2,Acquired by Snowflake March 2022 for about $800M (TechCrunch).,https://techcrunch.com/2022/03/02/snowflake-acquires-streamlit-for-800m-to-help-customers-build-data-based-apps/,2026-11-26T05:58:34Z
+SigNoz,SigNoz,U1,sells SigNoz Cloud and Enterprise,,yes,US,2020,private,yes,2,,,2026-11-26T05:58:34Z
+plausible,Plausible Insights OU,U1,sells hosted Plausible Analytics,,yes,EE,2018,private,bootstrapped_stated,0,"Company says self-funded, profitable, no outside investors.",https://plausible.io/about,2026-11-26T05:58:34Z
+zylon-ai,Zylon,U1,sells Zylon private AI workspace built on PrivateGPT,,yes,,,private,yes,1,Investor names not found (no budget to search further).,,2026-11-26T05:58:34Z
+explosion,Explosion,U1,sells Prodigy and spaCy consulting to spaCy users,,yes,DE,,private,yes,1,"Company says bootstrapped and independent, no further venture funding sought since 2024.",https://explosion.ai/about,2026-11-26T05:58:34Z
+novuhq,Novu,U1,sells Novu Cloud and enterprise,,yes,IL,,private,yes,1,"Search summary mentions possible later Series A/B (unconfirmed, CB Insights lists M12); not recorded.",,2026-11-26T05:58:34Z
+netbirdio,NetBird,U1,sells NetBird Cloud and enterprise plans,,yes,DE,2021,private,yes,2,"2023 'raises EUR 1.1M' HN post found; investors not read, not recorded.",https://news.ycombinator.com/item?id=35818522,2026-11-26T05:58:34Z
+gitlabhq,GitLab Inc.,U1,sells GitLab SaaS and Premium/Ultimate,,yes,US,,listed,yes,4,"Seed, Series A, Series C (search summary only, unverified: Khosla seed/A, GV C) not recorded. Listed on Nasdaq 2021.",https://about.gitlab.com/blog/gitlab-series-e-funding/,2026-11-26T05:59:35Z
+activepieces,Activepieces,U1,sells Activepieces Cloud and Enterprise,,yes,US,2022,private,yes,1,Later seed/Series A not located.,,2026-11-26T05:59:35Z
+tabler,Tabler,U1,sells Tabler Pro and All packages,,yes,PL,,private,none_found,0,Nothing on tabler.io pages checked.,,2026-11-26T05:59:35Z
+gitroomhq,Gitroom,U1,sells hosted Postiz subscriptions,,yes,IL,,private,none_found,0,No funding on gitroom.com or postiz.com/about; search budget exhausted.,,2026-11-26T05:59:35Z
+yikart,AiToEarn Team,U1,hosted AiToEarn cloud with pricing page; company unnamed,,yes,CN,,unknown,none_found,0,Nothing on aitoearn.ai.,,2026-11-26T05:59:35Z
+readest,Bilingify LLC,U1,sells Readest paid storage plans,,yes,US,,private,none_found,0,Nothing on readest.com home.,,2026-11-26T05:59:35Z
+livewire,Livewire (Caleb Porzio),U1,creator sells Flux UI Pro components for Livewire,,yes,US,,private,none_found,0,Leads were about an unrelated motorcycle company; nothing found.,,2026-11-26T05:59:35Z
+BruceDevices,Bruce Devices,U1,community firmware project selling its own boards,,yes,,,unknown,none_found,0,Nothing on bruce.computer.,,2026-11-26T05:59:35Z
+wntrblm,Winterbloom,U1,sells open-hardware music modules,,yes,US,,unknown,none_found,0,Site text suggests the founders wound down; no funding found.,https://winterbloom.com,2026-11-26T05:59:35Z
+datalab-org,datalab industries ltd,U1,maintainers' company offers managed datalab deployments,,yes,GB,,private,none_found,0,Nothing on datalab-org.io.,,2026-11-26T05:59:35Z

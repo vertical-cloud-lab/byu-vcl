@@ -1,0 +1,25 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+VoltAgent,VoltAgent,U1,sells VoltOps platform around its open-source agent framework,,yes,US,,private,none_found,0,"about page lists only team members (Emre Baran, Umur Cubukcu logo alts), no investors found",https://voltagent.dev/about/,2026-11-26T06:01:07Z
+astral-sh,Astral,U1,sells pyx hosted registry for uv users; acquired by OpenAI 2026,,yes,US,2022,acquired,yes,4,Acquired by OpenAI announced 2026-03-19 (https://openai.com/index/openai-to-acquire-astral/),,2026-11-26T06:01:07Z
+mui,MUI,U1,sells MUI X Pro/Premium licences,,yes,FR,,private,none_found,0,Leads only matched unrelated 'Mui'; not checked further,,2026-11-26T06:01:07Z
+netdata,Netdata Inc.,U1,sells Netdata Cloud subscriptions,,yes,US,,private,yes,3,,,2026-11-26T06:01:07Z
+strapi,Strapi,U1,sells Strapi Cloud and Enterprise,,yes,FR,,private,yes,3,,,2026-11-26T06:01:07Z
+jgraph,JGraph Ltd,U1,sells draw.io apps for Confluence and Jira,,yes,GB,,private,bootstrapped_stated,0,drawio.com says 'Not VC-funded' (about JGraph's product),https://jgraph.com,2026-11-26T06:02:32Z
+odoo,Odoo SA,U1,sells Odoo Enterprise and Odoo Online,,yes,BE,,private,yes,4,,,2026-11-26T06:02:32Z
+cypress-io,Cypress.io,U1,sells Cypress Cloud,,yes,US,,private,yes,4,,,2026-11-26T06:02:32Z
+janhq,Menlo Research,U1,company's main product is Jan itself; no paid tier found,,yes,SG,,private,none_found,0,"No leads; jan.ai and menlo.ai pages gave nothing on funding; searched via HN API, nothing",,2026-11-26T06:02:32Z
+frappe,Frappe Technologies,U1,sells Frappe Cloud hosting and ERPNext support,,yes,IN,,private,yes,1,,,2026-11-26T06:02:32Z
+DioxusLabs,Dioxus Labs,U1,company built around Dioxus; no paid product listed yet,,yes,US,2023,acquired,yes,1,Team joined Cognition 2026-09-10 (https://dioxuslabs.com/blog/joining-cognition); other rounds not found,,2026-11-26T06:04:14Z
+nextcloud,Nextcloud GmbH,U1,sells Nextcloud Enterprise subscriptions,,yes,DE,,private,none_found,0,No leads on funding; about page and TechCrunch search gave none; not exhaustively checked,,2026-11-26T06:04:14Z
+TabbyML,TabbyML,U1,sells Tabby Enterprise and cloud,,yes,,2023,private,yes,1,,,2026-11-26T06:04:14Z
+atuinsh,"Atuin, Inc.",U1,company built around Atuin; team features in beta,,yes,,,private,none_found,0,No leads; atuin.sh showed nothing on funding; not exhaustively checked,,2026-11-26T06:04:14Z
+nanocoai,NanoCo,U1,NanoClaw creators sell enterprise AI assistant (early access),,yes,,2026,private,yes,1,,,2026-11-26T06:04:14Z
+chroma-core,Chroma,U1,sells Chroma Cloud,,yes,US,,private,yes,2,Not the unrelated Stockholm Chroma (Chroma Labs) in the lead articles,,2026-11-26T06:04:14Z
+voideditor,Void,U1,YC startup whose product is the Void editor,,yes,US,2024,private,yes,1,,,2026-11-26T06:04:14Z
+goauthentik,Authentik Security,U1,sells authentik Enterprise,,yes,US,,private,none_found,0,No leads; site pages fetched showed none; WebSearch budget exhausted so not searched. Likely raised money (unverified),,2026-11-26T06:04:14Z
+clockworklabs,Clockwork Labs,U1,sells SpacetimeDB Maincloud hosting; also makes BitCraft,,yes,US,,private,yes,1,Unrelated Clockwork.io articles in leads ignored,,2026-11-26T06:04:14Z
+lexmount,LexMount,U1,sells hosted cloud browsers using its Moli engine,,yes,,,private,none_found,0,No leads; site shows nothing,,2026-11-26T06:04:14Z
+Skyvern-AI,Skyvern,U1,sells Skyvern Cloud,,yes,US,2023,private,yes,2,,,2026-11-26T06:04:14Z
+arrayfire,ArrayFire LLC,U1,company sells support and services for ArrayFire library,,yes,US,,private,none_found,0,Home page shows no investors; not exhaustively checked,,2026-11-26T06:04:14Z
+auto-differentiation,Xcelerit,U1,sells commercial licences and support for XAD,,yes,IE,,private,none_found,0,No leads; XAD page shows no funding; not exhaustively checked,,2026-11-26T06:04:14Z
+LiteFold,LiteFold,U1,sells LiteFold platform licences and computation services,,yes,US,,private,none_found,0,No leads; site shows nothing,,2026-11-26T06:04:14Z

@@ -1,0 +1,10 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+n8n-io,n8n,U1,seed,Seed,2020-03,,firstminute Capital | Sequoia Capital,Runa Capital | Tiny VC | System.One | Kevin Hartz (person) | Ilkka Paananen (person) | Nan Li (person) | Daniel Liem (person),https://techcrunch.com/2020/03/13/n8n-a-fair-code-workflow-automation-platform-raises-seed-from-sequoia-as-vc-firm-steps-up-in-europe/,news,
+n8n-io,n8n,U1,series_a,Series A,2021-04,12000000,Felicis Ventures,Sequoia Capital | firstminute Capital | Harpoon Ventures,https://techcrunch.com/2021/04/26/n8n-raises-12m-for-its-fair-code-approach-to-low-code-workflow-automation/,news,
+n8n-io,n8n,U1,series_b,Series B,2025-03,60000000,Highland Europe,HV Capital | Sequoia Capital | Felicis Ventures | Harpoon Ventures,https://techcrunch.com/2025/03/24/fair-code-pioneer-n8n-raises-60m-for-ai-powered-workflow-automation/,news,"EUR 55M, USD per TechCrunch"
+n8n-io,n8n,U1,series_c,Series C,2025-10,180000000,Accel,Meritech Capital | Redpoint Ventures | Evantic | Visionaries Club | NVentures | T.Capital | Felicis Ventures | Sequoia Capital | Highland Europe | HV Capital,https://blog.n8n.io/series-c/,company,
+oven-sh,Oven (Bun),U1,seed,Seed,,7000000,Kleiner Perkins,,https://bun.com/blog/bun-joins-anthropic,company,Date not given in source
+oven-sh,Oven (Bun),U1,series_a,Series A,,19000000,Khosla Ventures,,https://bun.com/blog/bun-joins-anthropic,company,Date not given in source
+calcom,"Cal.com, Inc.",U1,venture_unspecified,venture_unspecified,,,,Seven Seven Six | OSS Capital,https://cal.com/about,company,Round not named on about page
+getsentry,Sentry (Functional Software),U1,series_a,Series A,2016-06,9000000,NEA,Accel,https://techcrunch.com/2016/06/23/real-time-crash-reporting-tool-sentry-grabs-9-million-from-nea-accel,news,Also mentions $1.5M seed from Accel in 2015
+getsentry,Sentry (Functional Software),U1,series_e,Series E,2022-05,90000000,BOND | Accel,NEA | K5 Global,https://sentry.io/about/press-releases/sentry-raises-90-million-in-series-e-funding-to-expand-and-drive-adoption-of-developer-first-application-monitoring/,company,

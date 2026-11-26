@@ -37,10 +37,26 @@ WP = [("TechCrunch", "https://techcrunch.com"), ("SiliconANGLE", "https://silico
       ("BetaKit", "https://betakit.com"), ("TechNode", "https://technode.com")]
 
 
+def _get_capped(sess, url, **kw):
+    """GET with a total deadline (25 s) and a 3 MB cap, so one slow page can't stall a pass."""
+    t0 = time.time()
+    r = sess.get(url, timeout=15, stream=True, **kw)
+    buf = b""
+    for chunk in r.iter_content(65536):
+        buf += chunk
+        if len(buf) > 3_000_000 or time.time() - t0 > 25:
+            break
+    r._content = buf
+    r._content_consumed = True
+    return r
+
+
 def get(sess, url, **kw):
     for attempt in range(3):
         try:
-            r = sess.get(url, timeout=20, **kw)
+            r = _get_capped(sess, url, **kw)
+            if r.status_code == 429 and sess is W:
+                return r  # Wikipedia throttles parallel clients; skip rather than wait
             if r.status_code in (429, 502, 503, 504):
                 time.sleep(4 * (attempt + 1)); continue
             return r
@@ -244,7 +260,7 @@ def main():
             except ValueError:
                 pass
     t0 = time.time()
-    order = sorted(glob.glob("data/deal_passes/input_*.csv"), key=lambda p: ("sca".index(os.path.basename(p)[6]), p))
+    order = sorted(glob.glob("data/deal_passes/input_*.csv"), key=lambda p: ("scad".index(os.path.basename(p)[6]), p))
     if sys.argv[1:]:
         order = [p for p in order if re.search(r"input_(\w+)\.csv", p).group(1) in sys.argv[1:]]
     for inp in order:
