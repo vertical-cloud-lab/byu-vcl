@@ -60,16 +60,18 @@ How the shortlist applies them:
 
 - **One piece.** Every toy prints in one piece or prints in place, so there's nothing to
   assemble and no part meant to come off. The marble maze's marble is printed inside the cube
-  and can't get out. The four tabs that hold it during the print are cut off and thrown away.
+  and can't get out. That was checked on the designer's meshes: the space the marble's centre
+  can reach inside the cube doesn't connect to the outside. The four tabs that hold the marble
+  during the print are cut off and thrown away.
 - **Nothing sharp.** The infinity cube is the rounded version. The shark is the designer's
   child version, with a friendly face and a fixed jaw: the designer says the teeth on the
   movable-jaw versions are quite sharp. Spiky dragons were left out.
 - **Nothing small when whole.** Every toy is bigger than the cylinder used to test toys for small
-  parts (31.7 mm wide, 57.1 mm deep). The most compact, the gear-shift fidget, is 33 mm across and
-  40 mm tall. Articulated toys are made of
-  small segments, though, and a segment that snaps off is a small part. So flex every joint
-  before the toy leaves the lab, and set aside any toy that breaks. A suggestion, not an
-  organizers' rule: write "ages 3 and up" on the back of the tag.
+  parts (31.7 mm wide, 57.1 mm deep). The most compact, the gear-shift fidget, is 33 mm across
+  and 40 mm tall. Articulated toys are made of small segments, though, and a segment that snaps
+  off is a small part. So flex every joint before the toy leaves the lab, and set aside any toy
+  that breaks. A suggestion, not an organizers' rule: write "ages 3 and up" on the back of the
+  tag.
 - **No magnets, weapons or political themes.** None of the toys has any.
 
 ## Dropping a toy off
