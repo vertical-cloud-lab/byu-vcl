@@ -1,0 +1,10 @@
+{
+ "fund_who_funds_open_source": {
+  "task_id": "1b743c45-202d-4feb-89c7-ec49714b7df7",
+  "job": "job-futurehouse-paperqa3-high",
+  "query": "Which investors and funders have backed commercial open-source software (COSS) companies, open-weight AI labs, open-hardware companies and open-science startups? Identify, with citations: (1) the venture capital firms, corporate venture arms, accelerators and angel investors with the most disclosed investments in such companies, and any rankings or counts of the most active COSS investors (for example from Crunchbase- or PitchBook-based academic studies, the OSS Capital COSS index, Runa Capital's ROSS index, or Linux Foundation / COSSA / Serena reports); (2) funds with an explicitly open-source investment thesis, with fund sizes and dates; (3) philanthropic foundations, government programs and other non-dilutive funders of open-source scientific software, open hardware and open science, with program sizes and years (for example CZI EOSS, Sloan, Moore, Schmidt Sciences, Sovereign Tech Agency, NSF POSE, NLnet); (4) crowdfunding and accelerator routes used by open-hardware and lab-automation companies. Note the selection bias and conflicts of interest of each source, and report any evidence on whether open-source investments performed better or worse than the same investors' other investments.",
+  "files": [],
+  "data_entries": [],
+  "submitted_utc": "2026-11-26T05:49:38.677947+00:00"
+ }
+}

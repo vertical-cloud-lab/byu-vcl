@@ -1,0 +1,291 @@
+name,batch,year,status,tagged_open_source,described_open,match,industry,website,one_liner,yc_url,nonprofit
+280 North,Winter 2008,2008,Acquired,0,1,open source,B2B,,,https://www.ycombinator.com/companies/280-north,0
+RethinkDB,Summer 2009,2009,Acquired,1,1,open source,B2B,http://rethinkdb.com,The open source database for the realtime web.,https://www.ycombinator.com/companies/rethinkdb,0
+Docker,Summer 2010,2010,Active,1,0,,B2B,http://docker.com,Software development platform.,https://www.ycombinator.com/companies/docker,0
+Zencoder,Winter 2010,2010,Acquired,0,1,Open source,B2B,http://zencoder.com,"Video Encoding API,
+Open source video player (video.js)",https://www.ycombinator.com/companies/zencoder,0
+Apollo,Summer 2011,2011,Active,1,1,open source,B2B,http://apollographql.com/,Apollo helps engineering teams accelerate delivery,https://www.ycombinator.com/companies/apollo,0
+Citus Data,Summer 2011,2011,Acquired,1,1,open source,B2B,http://citusdata.com,Real-time. Big data. PostgreSQL,https://www.ycombinator.com/companies/citus-data,0
+Flotype,Winter 2011,2011,Inactive,0,1,open-source,B2B,flotype.com,Third generation of web apps.,https://www.ycombinator.com/companies/flotype,0
+Imgix,Summer 2011,2011,Active,0,1,open source,B2B,https://www.imgix.com,The platform for your visual media.,https://www.ycombinator.com/companies/imgix,0
+Mattermost,Summer 2012,2012,Active,1,1,open source,B2B,http://mattermost.com,Secure Collaboration for Technical Teams,https://www.ycombinator.com/companies/mattermost,0
+Rescale,Winter 2012,2012,Active,0,1,open-source,B2B,https://rescale.com,High Performance Computing Built for the Cloud,https://www.ycombinator.com/companies/rescale,0
+Buttercoin,Summer 2013,2013,Inactive,0,1,open source,Fintech,http://buttercoin.com,Bitcoin Marketplace,https://www.ycombinator.com/companies/buttercoin,0
+CoreOS,Summer 2013,2013,Acquired,1,1,Open source,B2B,http://coreos.com,Open source tools of modern distributed systems.,https://www.ycombinator.com/companies/coreos,0
+InfluxData,Winter 2013,2013,Active,1,1,Open Source,B2B,https://influxdata.com,The platform for building and operating time series applications.,https://www.ycombinator.com/companies/influxdata,0
+PipelineDB,Winter 2014,2014,Acquired,1,1,Open-source,B2B,,Open-source time-series data analytics extension for PostgreSQL,https://www.ycombinator.com/companies/pipelinedb,0
+Protocol Labs,Summer 2014,2014,Active,1,1,open-source,B2B,https://protocol.ai/,"Protocol Labs makes internet protocols: IPFS, Filecoin, and more.",https://www.ycombinator.com/companies/protocol-labs,0
+Convox,Summer 2015,2015,Acquired,0,1,Open-source,B2B,http://convox.com,"Open-source tools for deploying, managing, and monitoring cloud…",https://www.ycombinator.com/companies/convox,0
+Democracy Earth,Winter 2015,2015,Active,0,1,open source,Unspecified,http://democracy.earth/,Censorship resistant democracies. ,https://www.ycombinator.com/companies/democracy-earth,1
+Font Awesome,Summer 2015,2015,Active,1,0,,B2B,http://fontawesome.com,Icons and social logos for your website.,https://www.ycombinator.com/companies/font-awesome,0
+GitLab,Winter 2015,2015,Public,1,1,Open Source,B2B,http://gitlab.com/,A complete DevOps platform delivered as a single application.,https://www.ycombinator.com/companies/gitlab,0
+Sails Co.,Winter 2015,2015,Active,1,1,open-source,B2B,https://sailsjs.com/about,"Full-service web, mobile, & cloud studio providing professional…",https://www.ycombinator.com/companies/sails-co,0
+Standard Cyborg,Winter 2015,2015,Inactive,1,0,,Healthcare,http://standardcyborg.com,"Buid, test and deploy perception applications",https://www.ycombinator.com/companies/standard-cyborg,0
+Daily,Winter 2016,2016,Active,1,1,Open Source,B2B,https://daily.co,Conversational Voice and Multimodal AI built with Open Source ,https://www.ycombinator.com/companies/daily,0
+Expo,Summer 2016,2016,Active,0,1,open-source,B2B,https://expo.dev,The fastest way to build and run apps,https://www.ycombinator.com/companies/expo,0
+Bitrise,Winter 2017,2017,Active,0,1,open source,B2B,https://bitrise.io,Hosted Continuous Integration and Delivery for mobile apps,https://www.ycombinator.com/companies/bitrise,0
+Activeloop,Summer 2018,2018,Active,1,1,open-core,B2B,https://activeloop.ai/,Database for AI,https://www.ycombinator.com/companies/activeloop,0
+CodeStream,Winter 2018,2018,Acquired,1,0,,B2B,http://codestream.com,CodeStream is a Developer Collaboration Platform designed to…,https://www.ycombinator.com/companies/codestream,0
+Optic,Summer 2018,2018,Acquired,1,1,open source,B2B,http://useoptic.com/,Making APIs Developer-friendly ,https://www.ycombinator.com/companies/optic,0
+Tipe,Winter 2018,2018,Inactive,1,1,Open-source,B2B,https://tipe.io,"Open-source, customizable, headless CMS",https://www.ycombinator.com/companies/tipe,0
+Alpaca,Winter 2019,2019,Active,0,1,open-source,Fintech,https://alpaca.markets/,API-first stock and crypto brokerage platform,https://www.ycombinator.com/companies/alpaca,0
+Bun,Summer 2019,2019,Acquired,1,0,,B2B,https://bun.sh,Bun is an incredibly fast all-in-one JavaScript toolkit,https://www.ycombinator.com/companies/bun,0
+Data Mechanics,Summer 2019,2019,Acquired,1,0,,B2B,,Spark-on-Kubernetes Data Engineering Platform,https://www.ycombinator.com/companies/data-mechanics,0
+Embrace,Summer 2019,2019,Acquired,1,0,,B2B,https://embrace.io,Modern user-focused observability built on OpenTelemetry,https://www.ycombinator.com/companies/embrace,0
+LunaSec,Summer 2019,2019,Inactive,1,1,Open Source,B2B,https://www.lunasec.io,An Open Source dependency security tool that is smarter than the rest,https://www.ycombinator.com/companies/lunasec,0
+Okteto,Winter 2019,2019,Active,1,0,,B2B,https://okteto.com,Ephemeral environments on Kubernetes,https://www.ycombinator.com/companies/okteto,0
+OpenReplay,Summer 2019,2019,Active,1,1,Open-source,B2B,https://www.openreplay.com/,"Open-source, self-hosted, session replay tool for developers.",https://www.ycombinator.com/companies/asayer,0
+Our World in Data,Winter 2019,2019,Active,0,1,open-source,Education,https://ourworldindata.org/,Research and data to make progress against the world’s largest…,https://www.ycombinator.com/companies/our-world-in-data,1
+Rainbow,Summer 2019,2019,Active,0,1,Open-source,Fintech,https://rainbow.me,"Open-source, design centric software for interacting with blockchains",https://www.ycombinator.com/companies/rainbow,0
+Recidiviz,Summer 2019,2019,Active,0,1,open-source,Government,https://www.recidiviz.org/,"Helping create a smaller, fairer, safer justice system",https://www.ycombinator.com/companies/recidiviz,1
+Tensil,Summer 2019,2019,Inactive,1,0,,Industrials,,We turn machine learning models into custom hardware.,https://www.ycombinator.com/companies/tensil,0
+VotingWorks,Winter 2019,2019,Active,0,1,open-source,Government,https://voting.works,Non-profit building open-source voting machines for US elections.,https://www.ycombinator.com/companies/votingworks,1
+Wasmer,Summer 2019,2019,Active,1,0,,B2B,https://wasmer.io,The Operating System for Edge Computing,https://www.ycombinator.com/companies/wasmer,0
+Aden,Winter 2020,2020,Active,0,1,Open source,B2B,https://adenhq.com/,Open source agent generation framework,https://www.ycombinator.com/companies/aden,0
+Airbyte,Winter 2020,2020,Active,1,1,open-source,B2B,https://airbyte.com/,The open standard in data connectivity for AI and analytics.,https://www.ycombinator.com/companies/airbyte,0
+BuildBuddy,Winter 2020,2020,Active,0,1,open source,B2B,https://buildbuddy.io,BuildBuddy provides enterprise features for Bazel — the open source…,https://www.ycombinator.com/companies/buildbuddy,0
+Chaos Genius,Winter 2020,2020,Acquired,1,0,,B2B,http://www.chaosgenius.io,DataOps Observability Platform for Snowflake,https://www.ycombinator.com/companies/chaos-genius,0
+Datree,Winter 2020,2020,Inactive,0,1,open-source,B2B,https://datree.io,Datree prevents Kubernetes misconfigurations from reaching production,https://www.ycombinator.com/companies/datree,0
+Fig,Summer 2020,2020,Acquired,1,0,,B2B,http://fig.io,"Fig adds visual apps, shortcuts, and autocomplete to your terminal.",https://www.ycombinator.com/companies/fig,0
+Infield,Winter 2020,2020,Active,0,1,open source,B2B,https://www.infield.ai,"Safer, faster dependency upgrades",https://www.ycombinator.com/companies/infield,0
+Jitsu,Summer 2020,2020,Acquired,1,1,Open-Source,B2B,https://jitsu.com,Open-Source CDP (acquired by Helium Ventures),https://www.ycombinator.com/companies/jitsu,0
+KeyDB,Summer 2020,2020,Acquired,1,0,,B2B,https://keydb.dev,The only database you'll ever need,https://www.ycombinator.com/companies/keydb,0
+Lightdash,Summer 2020,2020,Active,1,1,open source,B2B,http://lightdash.com/,The open source Looker alternative ,https://www.ycombinator.com/companies/hubble,0
+MindsDB,Winter 2020,2020,Active,1,1,Open-Source,B2B,https://www.mindsdb.com/,"Connect, Unify, Respond to any data, anywhere with human-level…",https://www.ycombinator.com/companies/mindsdb,0
+Mito,Summer 2020,2020,Active,1,1,Open source,B2B,http://trymito.io,Cursor for data analysis,https://www.ycombinator.com/companies/mito,0
+Monosi,Summer 2020,2020,Inactive,1,1,Open Source,B2B,https://monosi.dev,Open Source Data Observability,https://www.ycombinator.com/companies/monosi,0
+Openbase,Summer 2020,2020,Inactive,1,1,Open-source,B2B,,Open-source library discovery,https://www.ycombinator.com/companies/openbase,0
+PostHog,Winter 2020,2020,Active,1,0,,B2B,https://www.posthog.com,"The single platform to analyze, test, observe, and deploy new features",https://www.ycombinator.com/companies/posthog,0
+QuestDB,Summer 2020,2020,Active,1,0,,B2B,https://questdb.com/,Data platform for mission-critical real-time workloads,https://www.ycombinator.com/companies/questdb,0
+Replicate,Winter 2020,2020,Acquired,1,0,,B2B,https://replicate.com,Run machine learning models in the cloud,https://www.ycombinator.com/companies/replicate,0
+Roboflow,Summer 2020,2020,Active,0,1,open source,B2B,https://roboflow.com,🖼️ Give your software the sense of sight.,https://www.ycombinator.com/companies/roboflow,0
+Shuttle,Summer 2020,2020,Inactive,1,1,open source,B2B,https://www.shuttle.dev,Build Backends. Fast.,https://www.ycombinator.com/companies/shuttle,0
+Supabase,Summer 2020,2020,Active,1,0,,B2B,https://supabase.com,Build in a weekend. Scale to millions.,https://www.ycombinator.com/companies/supabase,0
+SuperTokens,Summer 2020,2020,Active,1,1,Open source,B2B,https://supertokens.com,Open source alternative to Auth0 / AWS Cognito / Firebase Auth,https://www.ycombinator.com/companies/supertokens,0
+Ukama,Summer 2020,2020,Active,1,0,,B2B,http://www.ukama.com,Empowering anyone to build  cellular network,https://www.ycombinator.com/companies/ukama,0
+Alokai,Winter 2021,2021,Active,1,0,,B2B,https://www.alokai.com,Frontend Platform for eCommerce,https://www.ycombinator.com/companies/alokai,0
+Artillery,Summer 2021,2021,Active,1,0,,B2B,https://www.artillery.io,"The complete production quality platform. AI-powered E2E testing,…",https://www.ycombinator.com/companies/artillery,0
+Bytebot,Summer 2021,2021,Acquired,0,1,open source,B2B,https://www.bytebot.ai/,Bytebot is the open source container for AI desktop agents.,https://www.ycombinator.com/companies/bytebot,0
+Chatwoot,Winter 2021,2021,Active,1,1,open source,B2B,https://www.chatwoot.com,"The modern, open source, self-hosted AI customer support platform",https://www.ycombinator.com/companies/chatwoot,0
+Dailybot,Summer 2021,2021,Active,0,1,open-source,B2B,https://www.dailybot.com/,Make all team work visible — people and AI agents,https://www.ycombinator.com/companies/dailybot,0
+Enso,Summer 2021,2021,Active,1,0,,B2B,https://ensoanalytics.com,Self-Service Data Prep and Blend Built for Data Teams.,https://www.ycombinator.com/companies/enso,0
+Evidence,Summer 2021,2021,Active,0,1,open source,B2B,https://www.evidence.dev,Business intelligence as code,https://www.ycombinator.com/companies/evidence,0
+Evidently AI,Summer 2021,2021,Inactive,1,1,Open-source,B2B,https://evidentlyai.com,Open-source monitoring for machine learning models,https://www.ycombinator.com/companies/evidently-ai,0
+Formance,Summer 2021,2021,Active,1,1,Open Source,B2B,https://formance.com,Open Source Infrastructure for the Financial Internet,https://www.ycombinator.com/companies/formance,0
+Infracost,Winter 2021,2021,Active,1,0,,B2B,https://infracost.io,Shift FinOps Left: Proactively Find & Fix Cloud Cost Issues,https://www.ycombinator.com/companies/infracost,0
+Lago,Summer 2021,2021,Active,1,1,open-source,B2B,https://www.getlago.com/,The AI Native Billing Platform,https://www.ycombinator.com/companies/lago,0
+Laudspeaker,Winter 2021,2021,Acquired,1,1,Open source,B2B,https://laudspeaker.com/?ref=bf,Open source mobile marketing platform. Alternative to appcues /…,https://www.ycombinator.com/companies/laudspeaker,0
+Lunatic,Winter 2021,2021,Inactive,1,0,,B2B,https://lunatic.solutions/,Operating System for server-side apps,https://www.ycombinator.com/companies/lunatic,0
+Mystic,Winter 2021,2021,Inactive,0,1,open-source,B2B,https://www.mystic.ai/,Low latency API to run and deploy ML models,https://www.ycombinator.com/companies/mystic,0
+Ollama,Winter 2021,2021,Active,1,0,,B2B,https://ollama.com,Get up and running with large language models.,https://www.ycombinator.com/companies/ollama,0
+OpenCode,Winter 2021,2021,Active,1,1,open source,B2B,https://opencode.ai,The open source AI coding agent,https://www.ycombinator.com/companies/opencode,0
+Pipekit,Summer 2021,2021,Active,1,1,open-source,B2B,https://pipekit.io,Pipekit scales data & CI pipelines for enterprises,https://www.ycombinator.com/companies/pipekit,0
+Pyroscope,Winter 2021,2021,Acquired,1,1,Open source,B2B,https://pyroscope.io/,Open source continuous profiling software to debug performance issues,https://www.ycombinator.com/companies/pyroscope,0
+SigNoz,Winter 2021,2021,Active,1,1,Open source,B2B,https://signoz.io,Open source alternative to DataDog ,https://www.ycombinator.com/companies/signoz,0
+Superwall,Summer 2021,2021,Active,0,1,open source,B2B,https://superwall.com,Subscription infrastructure & paywall experimentation for mobile apps,https://www.ycombinator.com/companies/staffbar,0
+Svix,Winter 2021,2021,Active,1,1,open-source,B2B,https://www.svix.com,"Enterprise ready webhooks service, open-source and in the cloud",https://www.ycombinator.com/companies/svix,0
+Vibe Kanban,Summer 2021,2021,Active,1,0,,B2B,https://vibekanban.com,Plan and review AI generated code,https://www.ycombinator.com/companies/vibe-kanban,0
+Warrant,Summer 2021,2021,Acquired,1,1,open source,B2B,https://warrant.dev/,Authorization and access control as a service.,https://www.ycombinator.com/companies/warrant,0
+Wasp,Winter 2021,2021,Active,1,0,,B2B,https://wasp-lang.dev/,Configuration language for building enterprise web apps 10x faster,https://www.ycombinator.com/companies/wasp,0
+Webiny,Winter 2021,2021,Active,1,1,Open-source,B2B,https://www.webiny.com,Open-source framework for building serverless applications,https://www.ycombinator.com/companies/webiny,0
+authzed,Winter 2021,2021,Active,1,0,,B2B,https://authzed.com,"Authorization Infrastructure securing AI at OpenAI, Zoom, & more",https://www.ycombinator.com/companies/authzed,0
+Activepieces,Summer 2022,2022,Active,1,1,Open-source,B2B,https://www.activepieces.com,"Open-source, AI-first and no-code business automation tool",https://www.ycombinator.com/companies/activepieces,0
+Airtrain AI,Summer 2022,2022,Inactive,0,1,open-source,B2B,,No-code data curation for LLM fine-tuning and evaluation.,https://www.ycombinator.com/companies/airtrain-ai,0
+AnythingLLM,Summer 2022,2022,Active,1,1,open-source,Consumer,https://anythingllm.com,The open-source AI platform enterprises run on their own hardware,https://www.ycombinator.com/companies/anythingllm,0
+Beam,Winter 2022,2022,Active,1,0,,B2B,https://beam.cloud,AI-Native Cloud Platform,https://www.ycombinator.com/companies/beam,0
+BotCity,Winter 2022,2022,Active,1,0,,B2B,https://botcity.dev,Observability and Governance for AI-Generated Python scripts.,https://www.ycombinator.com/companies/botcity,0
+BricksAI,Summer 2022,2022,Inactive,0,1,open-source,B2B,,Streamlining LLM application management for enterprises,https://www.ycombinator.com/companies/bricksai,0
+Convoy,Winter 2022,2022,Active,1,0,,B2B,https://getconvoy.io,Webhooks Gateway for outgoing and incoming webhooks.,https://www.ycombinator.com/companies/convoy-2,0
+Dittofeed,Summer 2022,2022,Inactive,1,1,Open-source,B2B,http://dittofeed.com,Open-source customer engagement & messaging automation,https://www.ycombinator.com/companies/dittofeed,0
+Elementary,Winter 2022,2022,Active,1,1,Open-source,B2B,http://elementary-data.com/,Open-source data observability for data teams,https://www.ycombinator.com/companies/elementary,0
+Eventual,Winter 2022,2022,Active,0,1,open-source,B2B,https://www.daft.ai/,Building the AI data engine for any modality and scale,https://www.ycombinator.com/companies/eventual,0
+Firecrawl,Summer 2022,2022,Active,1,0,,B2B,https://www.firecrawl.dev,Building the library for superintelligence.,https://www.ycombinator.com/companies/firecrawl,0
+Firezone,Winter 2022,2022,Active,1,0,,B2B,https://www.firezone.dev,"Reach any device, network, or SaaS app without opening firewall ports",https://www.ycombinator.com/companies/firezone,0
+Grai,Summer 2022,2022,Inactive,1,1,Open source,B2B,https://www.grai.io,Open source version control for metadata,https://www.ycombinator.com/companies/grai,0
+GrowthBook,Winter 2022,2022,Active,1,1,Open source,B2B,https://www.growthbook.io,Open source feature flagging and A/B testing,https://www.ycombinator.com/companies/growthbook,0
+Hydra,Winter 2022,2022,Acquired,1,0,,B2B,https://hydra.so,Serverless Analytics on Postgres,https://www.ycombinator.com/companies/hydra,0
+HyperDX,Summer 2022,2022,Acquired,1,1,Open-source,B2B,https://hyperdx.io/,"Open-source, dev-friendly observability.",https://www.ycombinator.com/companies/hyperdx,0
+Karate Labs,Winter 2022,2022,Active,0,1,Open-source,B2B,https://karatelabs.io,Open-source API & UI test automation ,https://www.ycombinator.com/companies/karate-labs,0
+Lamin,Summer 2022,2022,Active,1,1,open-source,B2B,https://lamin.ai,"Open data platform for traceable, multimodal AI",https://www.ycombinator.com/companies/lamin,0
+LanceDB,Winter 2022,2022,Active,1,1,Open-source,B2B,https://lancedb.com,"Open-source, serverless vectordb for production-scale generative AI",https://www.ycombinator.com/companies/lancedb,0
+Lotus,Summer 2022,2022,Inactive,1,1,Open-Core,B2B,http://uselotus.io,Open-Core Pricing and Billing Engine,https://www.ycombinator.com/companies/lotus,0
+Medplum,Summer 2022,2022,Active,1,1,open source,Healthcare,https://www.medplum.com,API first electronic health record (EHR) that is open source,https://www.ycombinator.com/companies/medplum,0
+Metriport,Summer 2022,2022,Active,0,1,open-source,Healthcare,https://metriport.com/,Healthcare data infrastructure for next generation care delivery.,https://www.ycombinator.com/companies/metriport,0
+Midplane,Summer 2022,2022,Active,0,1,open source,B2B,https://midplane.ai/,The safety layer between AI agents and your database,https://www.ycombinator.com/companies/midplane,0
+Mistle,Summer 2022,2022,Inactive,1,1,Open source,B2B,https://mistle.dev,Open source background agents,https://www.ycombinator.com/companies/mistle,0
+Neosync,Summer 2022,2022,Acquired,0,1,open-source,B2B,https://neosync.dev,Neosync is an open-source anonymization and synthetic data platform.,https://www.ycombinator.com/companies/neosync,0
+Netmaker,Winter 2022,2022,Active,1,1,open source,B2B,https://netmaker.io,Automated WireGuard networks for distributed systems and Kubernetes,https://www.ycombinator.com/companies/netmaker,0
+Payload,Summer 2022,2022,Acquired,1,0,,B2B,https://payloadcms.com,Developer-First Headless CMS and Application Framework,https://www.ycombinator.com/companies/payload,0
+Requestly,Winter 2022,2022,Acquired,1,1,Open-Source,B2B,https://requestly.com,Open-Source Postman alternative,https://www.ycombinator.com/companies/requestly,0
+Rownd,Winter 2022,2022,Active,1,0,,Industrials,https://rownd.ai,Fully autonomous defense solutions for the global edge.,https://www.ycombinator.com/companies/rownd,0
+Stably AI (Orca),Winter 2022,2022,Active,0,1,open source,B2B,http://onorca.dev/,"We make Orca, MIT open source terminal-based agent orchestrator",https://www.ycombinator.com/companies/stably-ai-orca,0
+Stackup,Summer 2022,2022,Inactive,1,0,,B2B,https://www.stackup.fi,Stackup helps businesses manage their crypto assets.,https://www.ycombinator.com/companies/stackup,0
+Tuva Health,Winter 2022,2022,Active,0,1,Open source,Healthcare,https://tuvahealth.com/,Open source software that cleans and transforms messy healthcare data.,https://www.ycombinator.com/companies/tuva-health,0
+Vessel,Winter 2022,2022,Inactive,0,1,open-source,B2B,https://vessel.dev,"Developer-first, native integration platform for GTM tools",https://www.ycombinator.com/companies/vessel,0
+Windmill,Summer 2022,2022,Active,1,1,Open-source,B2B,https://windmill.dev,Open-source platform to turn scripts into internal apps & workflows,https://www.ycombinator.com/companies/windmill,0
+Arroyo,Winter 2023,2023,Acquired,1,1,open-source,B2B,https://www.arroyo.dev,Cloud-native stream processing,https://www.ycombinator.com/companies/arroyo,0
+Atla,Summer 2023,2023,Inactive,0,1,open-source,B2B,https://www.atla-ai.com/,The improvement engine for AI agents,https://www.ycombinator.com/companies/atla,0
+CORE,Summer 2023,2023,Active,0,1,Open source,B2B,https://getcore.me,Your AI butler that understands you really well and proactively acts…,https://www.ycombinator.com/companies/heysol,0
+Cakework,Winter 2023,2023,Inactive,0,1,open source,B2B,,API that adds cloud hosting to any developer platform,https://www.ycombinator.com/companies/cakework,0
+CodeStory,Summer 2023,2023,Inactive,0,1,Open-Source,B2B,https://aide.dev,"Aide is an AI-native , privacy-first IDE built on top of VSCode",https://www.ycombinator.com/companies/codestory,0
+Common Paper,Winter 2023,2023,Active,1,1,open-source,B2B,https://commonpaper.com/,The SAFE for commercial contracts,https://www.ycombinator.com/companies/common-paper,0
+Continue,Summer 2023,2023,Acquired,0,1,open-source,B2B,https://continue.dev,Pioneering open-source coding agent,https://www.ycombinator.com/companies/continue,0
+DAGWorks Inc.,Winter 2023,2023,Acquired,1,1,Open source,B2B,https://www.dagworks.io/,Open source tools & services for reliable AI Agents & AI Applications,https://www.ycombinator.com/companies/dagworks-inc,0
+Defer,Winter 2023,2023,Inactive,0,1,open-source,B2B,https://www.defer.run,Zero infrastructure background processing platform.,https://www.ycombinator.com/companies/defer,0
+DrDroid,Winter 2023,2023,Active,0,1,open-source,B2B,https://drdroid.io/,Your best friend in production.,https://www.ycombinator.com/companies/drdroid,0
+Fern,Winter 2023,2023,Acquired,1,1,open source,B2B,https://www.buildwithfern.com,Instantly offer SDKs and API Docs,https://www.ycombinator.com/companies/fern,0
+Flower,Winter 2023,2023,Active,0,1,open-source,B2B,https://flower.ai,Train AI on distributed data,https://www.ycombinator.com/companies/flower,0
+FlowiseAI,Summer 2023,2023,Acquired,1,1,Open source,B2B,https://flowiseai.com,Open source GenAI development platform,https://www.ycombinator.com/companies/flowiseai,0
+HarnessRouter,Summer 2023,2023,Active,1,0,,B2B,https://harnessrouter.ai/,The world's first unified interface for agent harnesses.,https://www.ycombinator.com/companies/harnessrouter,0
+Hegel AI,Summer 2023,2023,Active,0,1,Open source,B2B,https://hegel-ai.com,Open source tools for developing generative AI applications,https://www.ycombinator.com/companies/hegel-ai,0
+Helicone,Winter 2023,2023,Acquired,1,0,,B2B,https://www.helicone.ai/,LLM Observability for Developers,https://www.ycombinator.com/companies/helicone,0
+Inconvo,Summer 2023,2023,Active,0,1,open-source,B2B,https://inconvo.com,Build chat-with-data agents for customer-facing applications,https://www.ycombinator.com/companies/inconvo,0
+Infisical,Winter 2023,2023,Active,1,0,,B2B,https://infisical.com,Security infrastructure for developers and agents,https://www.ycombinator.com/companies/infisical,0
+Keep,Winter 2023,2023,Acquired,1,1,open-source,B2B,https://www.keephq.dev,The open-source AIOps platform,https://www.ycombinator.com/companies/keep,0
+Khoj,Summer 2023,2023,Active,1,0,,Consumer,https://khoj.dev/,AI for humans,https://www.ycombinator.com/companies/khoj,0
+Langfuse,Winter 2023,2023,Acquired,1,1,Open source,B2B,https://langfuse.com,Open source LLM engineering platform,https://www.ycombinator.com/companies/langfuse,0
+LiteLLM,Winter 2023,2023,Active,1,1,open-source,B2B,https://www.litellm.ai/,Call every LLM API like it's OpenAI [100+ LLMs],https://www.ycombinator.com/companies/litellm,0
+Matano,Winter 2023,2023,Active,1,0,,B2B,https://www.matano.dev,Cloud Native SIEM (alternative to Splunk/Elastic),https://www.ycombinator.com/companies/matano,0
+Morph,Summer 2023,2023,Active,0,1,Open-Source,B2B,https://morphllm.com,Fast Models Optimized for Coding Agents,https://www.ycombinator.com/companies/morph,0
+Nango,Winter 2023,2023,Active,1,0,,B2B,https://nango.dev,A single API for all your integrations,https://www.ycombinator.com/companies/nango,0
+Odigos Technologies Inc.,Winter 2023,2023,Active,0,1,open-source,B2B,https://odigos.io,Enterprise-Grade OpenTelemetry,https://www.ycombinator.com/companies/odigos-technologies-inc,0
+OpenInt,Winter 2023,2023,Acquired,1,1,Open Source,B2B,https://openint.dev,Open Source Embedded Product Integrations,https://www.ycombinator.com/companies/openint,0
+OpenMeter,Winter 2023,2023,Acquired,0,1,open-source,B2B,https://openmeter.io,"Usage Metering, AI & API Monetization",https://www.ycombinator.com/companies/openmeter,0
+OpenPipe,Summer 2023,2023,Acquired,1,0,,B2B,https://openpipe.ai/,Turn expensive prompts into cheap fine-tuned models,https://www.ycombinator.com/companies/openpipe,0
+ParadeDB,Summer 2023,2023,Active,1,0,,B2B,https://paradedb.com,You should just use Postgres.,https://www.ycombinator.com/companies/paradedb,0
+PeerDB,Summer 2023,2023,Acquired,1,0,,B2B,https://peerdb.io/,"Fast, native ETL for Postgres 🐘 🚀",https://www.ycombinator.com/companies/peerdb,0
+RecipeUI,Summer 2023,2023,Active,1,1,open source,B2B,https://recipeui.com,The open source Postman alternative.,https://www.ycombinator.com/companies/recipeui,0
+Reflex,Winter 2023,2023,Active,1,1,open-source,B2B,https://reflex.dev,Build the software you wish existed.,https://www.ycombinator.com/companies/reflex,0
+Reworkd,Summer 2023,2023,Active,1,0,,B2B,https://reworkd.ai,The simplest way to extract web data at scale,https://www.ycombinator.com/companies/reworkd,0
+Rivet,Winter 2023,2023,Active,1,1,Open-source,B2B,https://rivet.dev,The orchestrator for agentic workloads.,https://www.ycombinator.com/companies/rivet,0
+Skyhook,Winter 2023,2023,Active,0,1,open-source,B2B,https://skyhook.io,Radar: the missing Kubernetes interface for humans and agents,https://www.ycombinator.com/companies/skyhook,0
+Skyvern,Summer 2023,2023,Active,1,1,Open Source,B2B,https://www.skyvern.com/,Open Source AI Agent to automate browser workflows via an API,https://www.ycombinator.com/companies/skyvern,0
+Teclada,Winter 2023,2023,Active,1,0,,B2B,https://www.teclada.com/,Remote Shell Access in the Browser,https://www.ycombinator.com/companies/teclada,0
+Tiptap,Summer 2023,2023,Active,1,1,open-source,B2B,https://tiptap.dev/,The open-source document editor for humans and AI agents.,https://www.ycombinator.com/companies/tiptap,0
+Traceloop,Winter 2023,2023,Acquired,1,0,,B2B,https://www.traceloop.com,Know what your LLM is doing — and why it’s failing,https://www.ycombinator.com/companies/traceloop,0
+Trigger.dev,Winter 2023,2023,Active,1,1,open source,B2B,https://trigger.dev,Build and deploy fully‑managed AI agents and workflows,https://www.ycombinator.com/companies/trigger-dev,0
+Twenty,Summer 2023,2023,Active,1,1,Open Source,B2B,https://twenty.com,Open Source CRM,https://www.ycombinator.com/companies/twenty,0
+Unify,Winter 2023,2023,Active,1,0,,B2B,https://unify.ai,Models that keep learning,https://www.ycombinator.com/companies/unify,0
+Vocode,Winter 2023,2023,Acquired,1,1,Open source,B2B,https://vocode.dev,Open source Voice AI,https://www.ycombinator.com/companies/vocode,0
+highlight.io,Winter 2023,2023,Acquired,1,1,open source,B2B,https://www.highlight.io/,"The open source, fullstack monitoring platform: stop guessing why…",https://www.ycombinator.com/companies/highlight-io,0
+moonrepo,Winter 2023,2023,Inactive,1,1,Open source,B2B,https://moonrepo.dev,Open source build tool for monorepos and large codebases,https://www.ycombinator.com/companies/moonrepo,0
+refine,Summer 2023,2023,Active,1,1,Open-source,B2B,https://refine.dev,Open-source Retool for enterprise,https://www.ycombinator.com/companies/refine,0
+sudocode,Summer 2023,2023,Active,0,1,open-source,B2B,https://sudocode.ai,orchestrate your coding agents with sudocode,https://www.ycombinator.com/companies/sudocode,0
+withHuman,Summer 2023,2023,Active,1,1,open source,B2B,https://withhuman.ai,The Approval Layer for AI Agents,https://www.ycombinator.com/companies/withhuman,0
+Aedilic,Winter 2024,2024,Inactive,0,1,Open-Source,B2B,https://www.nonescape.com,Open-Source AI-generated image/deepfake detection,https://www.ycombinator.com/companies/aedilic,0
+BrowserOS,Summer 2024,2024,Active,0,1,Open Source,Consumer,https://BrowserOS.com/,The Open Source Agentic Browser,https://www.ycombinator.com/companies/browseros,0
+CTGT,Fall 2024,2024,Active,0,1,open-source,B2B,https://www.ctgt.ai/,The deterministic layer for frontier intelligence,https://www.ycombinator.com/companies/ctgt,0
+Cerulion,Summer 2024,2024,Active,0,1,Open source,B2B,https://www.cerulion.com,Open source operating system for robots,https://www.ycombinator.com/companies/cerulion,0
+Comfy Deploy,Summer 2024,2024,Active,0,1,open-source,B2B,https://comfydeploy.com,ComfyUI for everyone on your team,https://www.ycombinator.com/companies/comfy-deploy,0
+Dayflow,Summer 2024,2024,Active,0,1,open-source,Consumer,https://www.dayflow.so,"Generate a detailed log of everything you've worked on, automatically.",https://www.ycombinator.com/companies/dayflow,0
+Dench.com,Summer 2024,2024,Active,1,0,,B2B,https://dench.com,"Workspace for your AI Agents, Build any Workflow.",https://www.ycombinator.com/companies/dench-com,0
+Fileforge,Winter 2024,2024,Inactive,0,1,open-source,B2B,,API For PDF Document Workflows,https://www.ycombinator.com/companies/fileforge,0
+Freebuff,Fall 2024,2024,Active,0,1,open source,B2B,https://freebuff.com,The free coding agent,https://www.ycombinator.com/companies/freebuff,0
+Hatchet,Winter 2024,2024,Active,1,0,,B2B,https://hatchet.run,The orchestration platform for teams who ship.,https://www.ycombinator.com/companies/hatchet-run,0
+K-Scale Labs,Winter 2024,2024,Inactive,0,1,Open-source,Consumer,https://kscale.dev/,Open-source humanoid robots,https://www.ycombinator.com/companies/k-scale-labs,0
+Laminar,Summer 2024,2024,Active,0,1,open-source,B2B,https://laminar.sh,Understand why your AI agent breaks. Iterate fast to fix it.,https://www.ycombinator.com/companies/laminar,0
+Lantern,Winter 2024,2024,Inactive,1,0,,B2B,http://lantern.dev,Postgres vector database extension to build AI applications,https://www.ycombinator.com/companies/lantern-2,0
+Mem0,Summer 2024,2024,Active,1,0,,B2B,https://mem0.ai,The Memory layer for AI Agents,https://www.ycombinator.com/companies/mem0,0
+MinusX,Summer 2024,2024,Active,0,1,Open source,B2B,https://minusx.ai,Open source agentic BI for founders,https://www.ycombinator.com/companies/minusx,0
+Onyx,Winter 2024,2024,Acquired,1,1,Open Source,B2B,https://www.onyx.app/,Open Source AI Chat,https://www.ycombinator.com/companies/onyx,0
+Opslane,Summer 2024,2024,Active,1,0,,B2B,https://opslane.com,AI Code Review tool that runs your app,https://www.ycombinator.com/companies/opslane,0
+Palmier,Summer 2024,2024,Active,0,1,open-source,Consumer,https://www.palmier.io,Video editor built for AI,https://www.ycombinator.com/companies/palmier,0
+PandasAI,Winter 2024,2024,Active,0,1,open-source,B2B,https://pandas-ai.com,PandasAI is an open-source conversational data analysis platform with…,https://www.ycombinator.com/companies/pandasai,0
+Pretzel AI,Winter 2024,2024,Active,1,0,,B2B,https://withpretzel.com,AI tooling,https://www.ycombinator.com/companies/pretzel-ai,0
+Random Labs,Summer 2024,2024,Active,1,0,,B2B,https://randomlabs.ai,Random labs is building long running autonomous coding agents.,https://www.ycombinator.com/companies/random-labs,0
+Respan,Winter 2024,2024,Active,0,1,Open-source,B2B,https://respan.ai,"Open-source, extensible AI gateway with observability and evals",https://www.ycombinator.com/companies/respan,0
+Rowboat Labs,Summer 2024,2024,Active,1,1,Open-source,Consumer,https://www.rowboatlabs.com,Open-source AI coworker with memory ,https://www.ycombinator.com/companies/rowboat-labs,0
+Storia AI,Summer 2024,2024,Inactive,0,1,Open source,B2B,https://storia.ai,Open source AI copilot that knows your company's code and its context,https://www.ycombinator.com/companies/storia-ai,0
+Superagent,Winter 2024,2024,Active,1,1,open source,B2B,https://superagent.sh/,Security for AI-native developers,https://www.ycombinator.com/companies/superagent,0
+Tesseral,Winter 2024,2024,Inactive,1,1,open source,B2B,https://tesseral.com,The open source platform for managing identity in business software,https://www.ycombinator.com/companies/tesseral,0
+Tracecat,Winter 2024,2024,Active,1,1,Open-source,B2B,https://tracecat.com,Open-source agentic security automation platform,https://www.ycombinator.com/companies/tracecat,0
+Trieve,Winter 2024,2024,Acquired,1,0,,B2B,https://trieve.ai,"All-in-one API for search, RAG, & recommendations",https://www.ycombinator.com/companies/trieve,0
+Tusk,Winter 2024,2024,Inactive,1,0,,B2B,https://usetusk.ai,AI agent that generates unit and integration tests,https://www.ycombinator.com/companies/tusk,0
+Ubicloud,Winter 2024,2024,Active,0,1,Open source,B2B,https://www.ubicloud.com,Open source alternative to AWS,https://www.ycombinator.com/companies/ubicloud,0
+Unsloth AI,Summer 2024,2024,Active,1,1,Open-Source,B2B,https://unsloth.ai/,Open-Source Reinforcement Learning (RL) & Fine-tuning for LLMs.,https://www.ycombinator.com/companies/unsloth-ai,0
+Vibrant Labs,Winter 2024,2024,Active,1,0,,B2B,https://vibrantlabs.com/,Autonomously scaling environments,https://www.ycombinator.com/companies/vibrant-labs,0
+Void,Summer 2024,2024,Active,0,1,open source,B2B,https://useglass.ai,The open source Cursor alternative,https://www.ycombinator.com/companies/void,0
+Zep AI,Winter 2024,2024,Active,0,1,open source,B2B,https://www.getzep.com/,The unified context layer for enterprise data,https://www.ycombinator.com/companies/zep-ai,0
+atopile,Winter 2024,2024,Active,0,1,open source,B2B,http://atopile.io,We make tools to design electronics circuit boards with code,https://www.ycombinator.com/companies/atopile,0
+cmux,Summer 2024,2024,Active,1,1,Open source,B2B,https://www.cmux.com,Open source applied AI lab building next-gen devtools,https://www.ycombinator.com/companies/cmux,0
+nCompass Technologies,Winter 2024,2024,Active,1,0,,B2B,https://www.ncompass.tech,Optimize performance on GPUs - 10x faster,https://www.ycombinator.com/companies/ncompass-technologies,0
+renderlet,Winter 2024,2024,Active,0,1,open-source,B2B,http://renderlet.com,Build interactive applications that run anywhere,https://www.ycombinator.com/companies/renderlet,0
+sync.,Winter 2024,2024,Active,0,1,open sourced,B2B,https://sync.so/,AI lipsync tool for video content creators,https://www.ycombinator.com/companies/sync-2,0
+Airweave,Spring 2025,2025,Active,0,1,open-source,B2B,https://airweave.ai,The open-source context retrieval layer for agents,https://www.ycombinator.com/companies/airweave,0
+Autumn,Summer 2025,2025,Active,0,1,open-source,B2B,https://useautumn.com,Billing infrastructure for AI,https://www.ycombinator.com/companies/autumn,0
+Better Auth,Spring 2025,2025,Active,1,0,,B2B,https://better-auth.com/,The authentication framework for TypeScript,https://www.ycombinator.com/companies/better-auth,0
+Browser Use,Winter 2025,2025,Active,1,1,open-source,B2B,https://browser-use.com,Agents that use the browser.,https://www.ycombinator.com/companies/browser-use,0
+Cactus Compute,Summer 2025,2025,Active,1,0,,B2B,https://www.cactuscompute.com/,Automation Foundation Models For Tiny Devices,https://www.ycombinator.com/companies/cactus-compute,0
+Cashew Labs,Spring 2025,2025,Active,0,1,open source,B2B,https://cashew-labs.com/,Recursive self improving harnesses and models,https://www.ycombinator.com/companies/cashew-labs,0
+Char,Summer 2025,2025,Active,1,0,,B2B,https://char.com,The AI notepad that knows and works for you,https://www.ycombinator.com/companies/char,0
+Clidey,Spring 2025,2025,Active,0,1,open-source,B2B,https://clidey.com,Turn scattered data into one platform for decision-making,https://www.ycombinator.com/companies/clidey,0
+Codevisor,Winter 2025,2025,Active,1,1,open-source,B2B,https://www.codevisor.dev,The fastest native app for agentic engineering.,https://www.ycombinator.com/companies/codevisor,0
+Confident AI,Winter 2025,2025,Active,1,0,,B2B,https://confident-ai.com,Production Monitoring & Evals for AI Agents,https://www.ycombinator.com/companies/confident-ai,0
+Corsair,Winter 2025,2025,Active,1,0,,B2B,https://www.corsair.dev,OpenRouter for Integrations,https://www.ycombinator.com/companies/corsair,0
+Cua,Spring 2025,2025,Active,1,0,,B2B,https://cua.ai,Give every agent a cloud desktop,https://www.ycombinator.com/companies/cua,0
+Epicenter,Summer 2025,2025,Active,1,1,open-source,Consumer,https://epicenter.so,"ChatGPT's memory feature in an open, portable format",https://www.ycombinator.com/companies/epicenter,0
+Expected Parrot,Fall 2025,2025,Active,1,1,open-source,B2B,https://www.expectedparrot.com,Simulate your customers with AI agents,https://www.ycombinator.com/companies/expected-parrot,0
+HelixDB,Spring 2025,2025,Active,1,0,,B2B,https://helix-db.com,The fastest & most scalable graph-vector database on the market,https://www.ycombinator.com/companies/helixdb,0
+KERNEL,Summer 2025,2025,Active,0,1,open source,B2B,https://www.kernel.sh,"Crazy fast, open source infra for AI agents to use the Internet",https://www.ycombinator.com/companies/kernel,0
+Kaelio,Spring 2025,2025,Active,1,1,open-source,B2B,https://kaelio.com/,The open-source context layer for data agents,https://www.ycombinator.com/companies/kaelio,0
+Magnitude,Summer 2025,2025,Active,1,1,open source,B2B,https://magnitude.dev,Run open models as fast as your hardware allows,https://www.ycombinator.com/companies/magnitude,0
+Manufact,Summer 2025,2025,Active,1,1,open-source,B2B,https://manufact.com,Cloud infrastructure for MCP servers and Claude / ChatGPT plugins.,https://www.ycombinator.com/companies/manufact,0
+Mastra,Winter 2025,2025,Active,1,1,open-source,B2B,https://mastra.ai,"The Javascript framework for building AI agents, from the Gatsby devs",https://www.ycombinator.com/companies/mastra,0
+Mentra,Winter 2025,2025,Active,1,1,open source,Consumer,https://mentra.glass,Building the open source smart glasses operating system.,https://www.ycombinator.com/companies/mentra,0
+Metorial,Fall 2025,2025,Active,0,1,Open-source,B2B,https://metorial.com,Open-source MCP gateway for AI enablement: MCP servers and Skills for…,https://www.ycombinator.com/companies/metorial,0
+Modelence,Summer 2025,2025,Active,1,0,,B2B,https://modelence.com,Production infrastructure on autopilot,https://www.ycombinator.com/companies/modelence,0
+Omnara,Summer 2025,2025,Active,0,1,Open-Source,B2B,https://omnara.com,The Open-Source Alternative to Claude Managed Agents,https://www.ycombinator.com/companies/omnara,0
+Onlook,Winter 2025,2025,Active,0,1,open-source,B2B,https://onlook.com/,The Developer tool for Designers,https://www.ycombinator.com/companies/onlook,0
+Pangolin,Summer 2025,2025,Active,1,1,open-source,B2B,https://pangolin.net,"Open networking and security for your workforce, AI agents, and infra",https://www.ycombinator.com/companies/pangolin,0
+Paper Instruments,Spring 2025,2025,Active,0,1,Open-source,B2B,https://www.paperinstruments.com/,Open-source frontier models for knowledge work,https://www.ycombinator.com/companies/paper-instruments,0
+Philon,Fall 2025,2025,Active,0,1,open-source,Industrials,https://philon.ai/,General Purpose Robots,https://www.ycombinator.com/companies/philon,0
+Plexe,Spring 2025,2025,Active,0,1,Open-source,B2B,https://plexe.ai,Open-source agents to build predictive ML models from a prompt,https://www.ycombinator.com/companies/plexe,0
+Proliferate,Summer 2025,2025,Active,0,1,open source,B2B,https://proliferate.com?utm_source=yc&utm_medium=referral&utm_campaign=profile,Do your life's work with agents,https://www.ycombinator.com/companies/proliferate,0
+Sourcebot,Fall 2025,2025,Active,1,1,open source,B2B,https://www.sourcebot.dev/,Helping humans and AI agents understand massive codebases,https://www.ycombinator.com/companies/sourcebot,0
+Stellon Labs,Summer 2025,2025,Active,0,1,open source,B2B,https://stellonlabs.com/,Building tiny frontier AI models that run on edge devices,https://www.ycombinator.com/companies/stellon-labs,0
+Subimage,Winter 2025,2025,Active,0,1,Open-Core,B2B,https://subimage.io,The Open-Core Security Graph,https://www.ycombinator.com/companies/subimage,0
+Sublingual,Winter 2025,2025,Inactive,1,0,,B2B,https://sublingual.ai/,Daily productivity tracker,https://www.ycombinator.com/companies/sublingual,0
+Tinfoil,Spring 2025,2025,Active,0,1,open-source,B2B,https://tinfoil.sh,Encrypted AI with verifiable privacy,https://www.ycombinator.com/companies/tinfoil,0
+Wafer,Summer 2025,2025,Active,0,1,open source,B2B,https://www.wafer.ai,AI that makes AI fast,https://www.ycombinator.com/companies/wafer,0
+assistant-ui,Winter 2025,2025,Active,0,1,Open Source,B2B,https://assistant-ui.com,Open Source React.js Library for AI Chat,https://www.ycombinator.com/companies/assistant-ui,0
+mlop,Spring 2025,2025,Active,0,1,open-source,B2B,https://mlop.ai,Experiment tracking for training ML models,https://www.ycombinator.com/companies/mlop,0
+nao Labs,Spring 2025,2025,Active,1,1,Open Source,B2B,https://getnao.io/,Open Source Analytics Agent,https://www.ycombinator.com/companies/nao-labs,0
+s2.dev,Fall 2025,2025,Active,1,0,,B2B,https://s2.dev,"API for unlimited, durable, real-time streams",https://www.ycombinator.com/companies/s2-dev,0
+stagewise,Summer 2025,2025,Active,1,0,,B2B,https://stagewise.io,"The makers of Klex Bots, your own team of digital coworkers.",https://www.ycombinator.com/companies/stagewise,0
+traceroot,Summer 2025,2025,Active,1,1,open-source,B2B,https://traceroot.ai,The open-source platform that continuously improves your ai agents,https://www.ycombinator.com/companies/traceroot,0
+/dev/fast,Winter 2026,2026,Active,0,1,open-source,B2B,https://dev.fast,/dev/fast is the AI-native code forge,https://www.ycombinator.com/companies/devfast,0
+0.security,Fall 2026,2026,Active,1,1,open-source,B2B,https://0.security,Sovereign AI security agents for enterprise,https://www.ycombinator.com/companies/0security,0
+ARC Prize Foundation,Winter 2026,2026,Active,0,1,open source,Industrials,https://arcprize.org/,AI benchmarks that measure general intelligence and inspire new ideas,https://www.ycombinator.com/companies/arc-prize-foundation,0
+Acyclic Labs,Fall 2026,2026,Active,1,0,,B2B,https://acyclic.dev,"Benchmarks, RL envs and infra for scaling agent swarms",https://www.ycombinator.com/companies/acyclic,0
+Agent Relay,Fall 2026,2026,Active,1,1,open-source,B2B,https://agentrelay.com,Let your teams' coding agents message each other,https://www.ycombinator.com/companies/agent-relay,0
+Archangel Health,Fall 2026,2026,Active,0,1,open-source,Healthcare,https://www.archangelhealth.ai/,Infra to make AI safe enough to practice medicine,https://www.ycombinator.com/companies/archangel-health,0
+ByteAsk,Fall 2026,2026,Active,1,0,,B2B,https://byteask.ai/,"Software factory for C, C++ and CUDA",https://www.ycombinator.com/companies/byteask,0
+Caveman,Fall 2026,2026,Active,1,0,,B2B,https://caveman.so,Infrastructure for efficient AI ,https://www.ycombinator.com/companies/caveman,0
+Decawork,Summer 2026,2026,Active,0,1,open-source,B2B,https://decawork.ai/,Training company-specific models that approve AI actions.,https://www.ycombinator.com/companies/decawork,0
+EveryApp,Fall 2026,2026,Active,1,1,open source,B2B,https://everyapp.com,Every app you need to run a business. 100% open source.,https://www.ycombinator.com/companies/everyapp,0
+Executor,Summer 2026,2026,Active,0,1,open source,B2B,https://executor.sh,The open source tool gateway,https://www.ycombinator.com/companies/executor,0
+Experiential Labs,Summer 2026,2026,Active,0,1,Open source,B2B,https://experientiallabs.ai,Open source AI gateway that turns your traffic into better models,https://www.ycombinator.com/companies/experiential-labs,0
+Graphify Labs,Summer 2026,2026,Active,1,1,open-source,B2B,https://graphify.com/,Shared Context of Codebase for Agents and Developers ,https://www.ycombinator.com/companies/graphify-labs,0
+Hebbian Robotics,Summer 2026,2026,Active,0,1,open source,Industrials,https://hebbianrobotics.com/,Foundational infrastructure for Physical AI,https://www.ycombinator.com/companies/hebbian-robotics,0
+Inth,Spring 2026,2026,Active,0,1,open-source,B2B,https://inth.com,Privacy and consent infrastructure that ships with your code,https://www.ycombinator.com/companies/inth,0
+Kailash Labs,Fall 2026,2026,Active,0,1,open-weights,B2B,https://www.kailashlabs.com/,A factory for small and specialized video reasoning models,https://www.ycombinator.com/companies/kailash-labs,0
+Limnion,Fall 2026,2026,Active,1,1,open-source,B2B,https://limnion.ai,Telemetry storage for the agentic era.,https://www.ycombinator.com/companies/limnion,0
+Markov,Summer 2026,2026,Active,0,1,open-source,B2B,https://www.markovstudios.com/,The data lab for engineering and computer-use AI.,https://www.ycombinator.com/companies/markov,0
+OneCLI,Summer 2026,2026,Active,1,1,open-source,B2B,https://onecli.sh,AI teammates for your business-critical work.,https://www.ycombinator.com/companies/onecli,0
+OneTriangle,Summer 2026,2026,Active,1,0,,B2B,https://onetriangle.ai/,Prefill optimizations for the fastest inference,https://www.ycombinator.com/companies/onetriangle,0
+OpenCrawl,Fall 2026,2026,Active,1,1,open source,B2B,https://getopencrawl.com,Multiplayer for your coding agents.,https://www.ycombinator.com/companies/opencrawl,0
+OpenSpec,Winter 2026,2026,Active,0,1,open-source,B2B,http://openspec.dev,Plan mode for complex features,https://www.ycombinator.com/companies/openspec,0
+OpenWork,Spring 2026,2026,Active,0,1,open source,B2B,https://openworklabs.com,The open source alternative to Claude Cowork,https://www.ycombinator.com/companies/openwork,0
+Orchestra,Summer 2026,2026,Active,1,1,open-weight,B2B,https://orchestra.ai/,Self-optimizing neocloud that cuts LLM costs by 100x,https://www.ycombinator.com/companies/orchestra,0
+Orikata Bio PBC,Summer 2026,2026,Active,0,1,open source,B2B,https://orikata.ai,A multiplayer discovery workspace for human and agentic scientists,https://www.ycombinator.com/companies/orikata-bio-pbc,0
+Paradev (formerly Superset),Spring 2026,2026,Active,0,1,open-source,B2B,https://paradev.com/,Building self-improving software,https://www.ycombinator.com/companies/paradev,0
+Phone Harness,Fall 2026,2026,Active,1,1,open-source,B2B,https://phone-harness.com/,Let your agent control your phone,https://www.ycombinator.com/companies/phone-harness,0
+Robocurve,Summer 2026,2026,Active,1,1,open-source,Industrials,https://robocurve.org,Evals for robots,https://www.ycombinator.com/companies/robocurve,0
+RunAnywhere,Winter 2026,2026,Active,1,1,open-source,B2B,https://www.runanywhere.ai/,"Inference research at the frontier. Faster, cheaper frontier models…",https://www.ycombinator.com/companies/runanywhere,0
+Standard Physics,Winter 2026,2026,Active,0,1,open source,Industrials,https://standardphysics.com/,Fast Physics Simulations for Rapid Design and Real Time Control,https://www.ycombinator.com/companies/standard-physics,0
+Superlog,Spring 2026,2026,Active,1,0,,B2B,https://superlog.sh/,Make software self-healing,https://www.ycombinator.com/companies/superlog,0
+Tilo,Fall 2026,2026,Active,1,0,,B2B,https://tilo.so,The Microsoft of the AI era: the operating system for AI agents.,https://www.ycombinator.com/companies/tilo,0
+Tracer,Summer 2026,2026,Active,1,1,open-source,B2B,https://tracerml.ai,Combining open-source AI models for better answers at lower cost,https://www.ycombinator.com/companies/tracer,0
+decuff,Spring 2026,2026,Active,0,1,open-source,Consumer,https://decuff.ai,"Uncensored AI models, served at scale with zero data retention.",https://www.ycombinator.com/companies/decuff,0
+herdr,Fall 2026,2026,Active,0,1,open-source,B2B,https://herdr.dev/,building the open agent runtime,https://www.ycombinator.com/companies/herdr,0
+Lucebox,Winter 2027,2027,Active,1,1,open source,Consumer,https://www.lucebox.com/,Self-improving inference workstation,https://www.ycombinator.com/companies/lucebox,0
