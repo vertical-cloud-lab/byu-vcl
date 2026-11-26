@@ -278,6 +278,8 @@ def summary():
 
 
 def main(argv):
+    from twin import repro as R             # round 3b: string hashing pinned too (twin/repro.py)
+    R.reexec_pinned("twin.bench3")
     if not argv or argv[0] == "summary":
         S = summary()
         for name, E in S["experiments"].items():

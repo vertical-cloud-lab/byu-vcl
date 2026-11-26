@@ -4,6 +4,7 @@
     python3 -m twin.repro check [DAYS]     # rerun BOFN seed 0 for DAYS simulated days (default 30) and compare its
                                            # bookings with the committed event log; exit 0 if identical, 1 if not,
                                            # 2 if this machine can't provide the pinned kernels
+    python3 -m twin.repro row EXP POLICY SEED   # rerun one committed row of out/twin3/runs/EXP.jsonl and compare
 
 **Why round 3's BOFN and pKGFN rows did not reproduce.** The libraries pick their floating-point kernels for the CPU
 they find. numpy's OpenBLAS (built with DYNAMIC_ARCH) uses its ``SkylakeX`` kernels on a CPU with AVX-512 and its
@@ -25,7 +26,16 @@ in the same worker and BoTorch's fit retries were ruled out (notes/twin_round3b.
 * ``seed_globals(seed)`` at the start of every run: Python's, numpy's and torch's global generators. torch 2.15 seeds
   its global generator at random in every process, so a draw from it (BoTorch's fit retries resample the
   hyperparameters from their priors with it) would not repeat. No committed round-3 run drew from it
-  (``torch_rng_used`` in round 3b's rows says so run by run), so seeding it changes none of them.
+  (``torch_rng_used`` in round 3b's rows says so run by run), so seeding it changes none of them;
+* ``PYTHONHASHSEED=0``: Python hashes strings with a random key in every process, and ``Campaign`` builds a lot's true
+  composition by iterating a set of element symbols (twin/campaign.py, the atomized lot and the top-up blend), so
+  the order of the composition's keys, and with it the order of a later floating-point sum over them, changes from
+  process to process. It moves the last bit of a value now and then: of round 3's first 60 reruns, one (the
+  heuristic, seed 11) differs from its committed row by one unit in the last place of one alloy's true utility,
+  and four hash seeds give two different values for it (twin/tests/test_round3b.py). No decision changed. The hash
+  key can only be set when an interpreter starts, so ``apply()`` puts it in the environment for every process
+  started from this one (the benchmark's workers), and the command-line tools re-execute themselves under it
+  (``reexec_pinned``).
 
 ``TWIN_PIN=avx2`` pins the AVX2 kernels instead (``Haswell``, ``avx2``, ``AVX2``), which run on any x86-64 CPU from
 2013 on, but give rows of their own, not round 3's; ``TWIN_PIN=off`` leaves the libraries to choose. A machine
@@ -89,11 +99,27 @@ def apply() -> dict:
         env = dict(PINS[want])
     for k in THREADS:
         env[k] = "1"
+    env["PYTHONHASHSEED"] = "0"
     STATE["late"] = any(m in sys.modules for m in ("numpy", "torch", "scipy"))
     for k, v in env.items():
         os.environ[k] = v
     STATE.update(pin=want, applied=env)
     return STATE
+
+
+def hash_pinned() -> bool:
+    """Whether this interpreter hashes strings with the fixed key (PYTHONHASHSEED=0 when it started)."""
+    return sys.flags.hash_randomization == 0
+
+
+def reexec_pinned(module: str) -> None:
+    """Re-execute ``python -m module args`` with PYTHONHASHSEED=0 unless this interpreter already runs with it (the
+    command-line tools call this first; nothing has been simulated yet, so nothing is lost)."""
+    if hash_pinned() or os.environ.get("TWIN_PIN", "avx512").lower() == "off":
+        return
+    os.environ["PYTHONHASHSEED"] = "0"
+    sys.stdout.flush()
+    os.execv(sys.executable, [sys.executable, "-m", module] + sys.argv[1:])
 
 
 def seed_globals(seed: int) -> None:
@@ -128,7 +154,7 @@ def torch_rng_used(before) -> bool | None:
 def fingerprint() -> dict:
     """Versions, the BLAS kernels and threads actually in use, the CPU, and the pin: recorded in every round-3b row."""
     out = dict(python=platform.python_version(), cpu=cpu_model(), avx512=has_avx512(), pin=STATE["pin"],
-               pin_late=STATE["late"])
+               pin_late=STATE["late"], hash_pinned=hash_pinned())
     import numpy
     out["numpy"] = numpy.__version__
     for mod in ("scipy", "torch", "botorch", "gpytorch", "linear_operator"):
@@ -160,6 +186,8 @@ def problems(fp: dict | None = None) -> list:
         out.append(f"the CPU ({fp['cpu']}) has no AVX-512; round 3's rows were made with AVX-512 kernels")
     if fp["pin"] != "avx512":
         out.append(f"the pin is {fp['pin']!r}, not 'avx512'")
+    if not fp.get("hash_pinned"):
+        out.append("this interpreter hashes strings with a random key (start it with PYTHONHASHSEED=0)")
     if fp["pin_late"]:
         out.append("numpy, scipy or torch was imported before the twin package, so the pins may not have applied")
     for d in fp.get("blas") or []:
@@ -214,8 +242,23 @@ def check(days: float = 30.0, policy: str = "bofn3", seed: int = 0) -> dict:
                 results_identical=ra == rb, identical=first is None and ra == rb)
 
 
+def row(experiment: str, policy: str, seed: int) -> dict:
+    """Rerun one committed row of round 3 (out/twin3/runs/<experiment>.jsonl) for its whole horizon and compare."""
+    from twin import bench3 as B3
+    from twin import bench3b as B3b
+    ref = next(r for r in B3b.committed_rows(experiment).values()
+               if r["cfg"]["policy"] == policy and r["cfg"]["seed"] == seed)
+    out, _ = B3.simulate(dict(ref["cfg"], events=False))
+    out = json.loads(json.dumps(B3.B2._jsonable(out)))
+    d = B3b.first_diff(out, ref)
+    return dict(experiment=experiment, policy=policy, seed=seed, identical=d is None,
+                first_diff=None if d is None else [d[0], str(d[1])[:120], str(d[2])[:120]],
+                torch_rng_used=out["torch_rng_used"])
+
+
 def main(argv):
     from twin import repro as R             # the package's module (python -m runs this file as __main__ as well)
+    R.reexec_pinned("twin.repro")
     R.apply()
     if not argv or argv[0] == "env":
         fp = R.fingerprint()
@@ -229,6 +272,14 @@ def main(argv):
             print("can't reproduce round 3's rows bit for bit on this machine:\n  " + "\n  ".join(why))
             return 2
         r = R.check(days)
+        print(json.dumps(r))
+        return 0 if r["identical"] else 1
+    if argv[0] == "row":
+        why = R.problems()
+        if why:
+            print("can't reproduce round 3's rows bit for bit on this machine:\n  " + "\n  ".join(why))
+            return 2
+        r = R.row(argv[1], argv[2], int(argv[3]))
         print(json.dumps(r))
         return 0 if r["identical"] else 1
     raise SystemExit(__doc__)

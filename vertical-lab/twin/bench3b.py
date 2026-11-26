@@ -229,6 +229,8 @@ def status():
 
 
 def main(argv):
+    from twin import repro as R
+    R.reexec_pinned("twin.bench3b")
     if not argv or argv[0] == "status":
         status()
         return
