@@ -9,7 +9,7 @@ floor. This round puts on it what fits cleanly. What doesn't fit is left off, an
 | Chemical waste station (PR #371, [waste.md](waste.md)) | **yes** | `VLAB_WASTE=0` leaves it out | In the ducted fume hood (`FLOOR_PLAN["fumehood"]`, x 1500, south row). Its two base cabinets' doors (solvent yellow, acid blue, each with its band) sit 2 mm in front of the hood's own. The intake tray, the delivered bottle, the empties and the etch sit on the work surface. Everything is in the hood's own frame, parented to its rig, so it comes in with the hood in the set-up movie. About 4,000 triangles. The cabinets' contents are left out, because behind opaque doors they would only cost triangles. |
 | Floor-cleaning unit 3 and its charger (PR #369, [floor_cleaning.md](floor_cleaning.md)) | **yes** | `VLAB_UNIT3=0` | `floor_cleaning.BAY`: a third MiR Charge 48V at x -3,411..-2,789 in the south row, 1.6 m west of unit 1's, outside every powder zone. Unit 3 (MiR250 + cabinet + UR10e + 2F-85, orange band) is parked on it at (-3,100, -5,818), heading -90, as units 1 and 2 park on theirs. It is `F.unit3`, not one of `units`, so no clip drives it by accident. Its 118EXP vacuums (option C keeps them on wall power at their station) are not on the floor yet. |
 | ICP-MS station ([icpms.md](icpms.md)) | no | - | See below. `safety_other.ICPMS_ON_FLOOR` stays `False`, so its shower and O2 monitor stay off too. |
-| Cup-and-plug machining cell (PR #373, [machining.md](machining.md)) | no | - | See below. |
+| Cup-and-plug machining cell (PR #373, [machining.md](machining.md)) | no (round 16: **yes**, [lab_r16.md](lab_r16.md)) | `VLAB_MCELL=0` (round 16) | See below. |
 | The rePowder's target post | moved | - | It now shares the sieving cell's post (`SHARED_POST`). |
 
 ## The rePowder's target post (round 14 (C)'s open fault)
@@ -56,6 +56,11 @@ the SPS 4 stop 920 mm east on the same line. The shower and the glovebox's O2 mo
 and its audit doesn't depend on the floor.
 
 ## The machining cell: why it isn't on the floor
+
+**Round 16 put it on the floor** ([lab_r16.md](lab_r16.md)): south of the south row, front to the north behind the
+68SC-2, unit 3's charger and charger 0, on its old x, with its own way in from the aisle down the row's west end and
+along a corridor behind the row. Nothing that stands on the floor moved. What follows is round 15's reasoning, kept as
+it was.
 
 Its spot (`machining.FLOOR`, fence x -4,035..-1,835 between the 68SC-2 and charger 0, dock at (-2,935, -5,868)) has
 three problems:

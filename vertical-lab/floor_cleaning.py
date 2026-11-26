@@ -14,7 +14,10 @@ manipulators when needed, and maybe a UR arm on it as well. Notes: notes/floor_c
 **The floor** is setup_lab.py fit's floor plan (out/tray_plan.json "floor": every machine's plan rectangle, the docks,
 the target posts, the chargers, the aisle) on a 25 mm grid, between the side racking (warehouse.RACKS) and from the
 north racking to 400 mm past the Meltio cell. Two things are ours and are added: the atomizer's vacuum station (PR
-#353's two 118EXPs and their post, which the lab's floor plan doesn't have yet) and the cleaner's own bay.
+#353's two 118EXPs and their post) and the cleaner's own bay. Since round 16 the lab's floor plan has the vacuums too:
+setup_lab.build stands them at powder_point.py's powder point, behind the rePowder's fire point (powder_point.RECT, in
+out/tray_plan.json as "powder_point"), because the safety PR's B570 and Super D pail took VAC_STATION's front half. The
+reach maps here were drawn with VAC_STATION and are not re-run.
 
 **The cleaners** are footprints with a clearance: a robot centre is reachable if its footprint (grown by the
 clearance) touches no obstacle at a heading of 0 or 90 deg and it is connected to the aisle, turning only where its
@@ -59,7 +62,9 @@ POST_FOOT = 150.0                              # half-size of a target post's fo
 # -5400). Here (floor_clean_still.py draws it) they stand west of the machine, behind the dock line: the two 508 x 610
 # mm vacuums side by side (Al family west, Cu family east), our post with the holster, rack and fixture behind them
 # with a pail each side, the Class D extinguisher and the sign at the front corner, clear of the rePowder dock's pivot
-# circle. 1.19 x 1.64 m in all (x, y ranges in mm)
+# circle. 1.19 x 1.64 m in all (x, y ranges in mm). Round 16: the lab's floor stands them at powder_point.RECT instead
+# (x -5868 to -4505, y -1222 to -60: the B570 at (-5150, -1400) and the Super D pail at (-5650, -1475) stand in this
+# rectangle's front half); this one is kept as the rectangle the reach maps were drawn with
 VAC_STATION = (-5900.0, -4710.0, -1980.0, -340.0)
 # ours: the cleaner's bay, for the options with a cleaner of its own: a third MiR Charge 48V in the south row, 1.6 m
 # west of units 1-2's (warehouse.CHARGERS x -1500 and -300), outside every powder zone (charging belongs outside any

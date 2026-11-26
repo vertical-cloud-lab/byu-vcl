@@ -1,9 +1,10 @@
 """Round 16 (PR #371's check: "out/setup_lab.gif is round 14's render, not round 15's"): a render in HD mode
 (VIZ3D_HD=1, render_r16.py) writes only its MP4 under out/r16/ and its sub-steps under out/clean/, never the GIF or the
 still that the README and notes link, so those go stale whenever a clip is re-rendered for the long-form. This makes
-both from the round-16 MP4: the GIF as scene.write_gif makes it (800 x 450, 10 fps, one palette, gifsicle, under
-4.9 MB), and the still from the frame scene.py would have kept (the clip's JSON "still" frame when it has one, else
-85 % of the way through).
+both from the round-16 MP4: the GIF with scene.write_gif (one palette, gifsicle), stepping down from 640 x 360 at 6 fps
+until it is under about 5 MB (a two-minute clip ends near 480 x 270 at 4 fps, as the committed GIFs mostly were), and
+the still from the frame scene.py would have kept (the clip's JSON "still" frame when it has one, else 85 % of the way
+through).
 
     python3 r16_gifs.py setup_lab vlm_workflow ...     # out/r16/<clip>.mp4 -> out/<clip>.gif, out/<clip>_still.png
 """
@@ -30,16 +31,21 @@ def frames(mp4: Path, fps: float, size=(800, 450)):
 
 
 def main(names):
+    import scene
     from scene import write_gif
     for name in names:
         mp4 = OUT / "r16" / f"{name}.mp4"
         if not mp4.exists():
             print(f"{name}: no out/r16/{name}.mp4", flush=True)
             continue
-        fr = frames(mp4, GIF_FPS)
         gif = OUT / f"{name}.gif"
         gif.parent.mkdir(parents=True, exist_ok=True)
-        write_gif(fr, gif)
+        for fps, size in ((6, (640, 360)), (5, (560, 315)), (4, (480, 270)), (3, (400, 225))):
+            fr = frames(mp4, fps, size)
+            scene.GIF_FPS = fps                  # write_gif's frame duration: plays at the clip's own speed
+            write_gif(fr, gif, limit_mb=5.0)
+            if gif.stat().st_size / 1e6 <= 5.5:
+                break
         dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
                                     str(mp4)], capture_output=True, text=True).stdout)
         meta = OUT / "clean" / f"{name}.json"

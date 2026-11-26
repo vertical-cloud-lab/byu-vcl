@@ -21,8 +21,9 @@ Files:
 
 - **Turn, don't mill.** Both parts are bodies of revolution, cut from Ø20 mm bar: face, turn the OD, drill and bore,
   part off. A cup and its plug come from the same bar, so they share a heat and lot.
-- **The recommended cell stands on the floor**, at the south row's front between the Instron 68SC-2 and MiR charger 0.
-  It has:
+- **The recommended cell stands on the floor**, south of the south row behind the Instron 68SC-2 and the MiR chargers,
+  front to the north, its MiR250 in from the aisle down the row's west end (round 16, [lab_r16.md](lab_r16.md); until
+  round 15 its front stood between the 68SC-2 and charger 0, which is now unit 3's charger bay). It has:
   - a bar-fed CNC turning centre, drawn at the **Haas ST-10**'s published size, with Haas's 4 ft Bar Feeder V2;
   - a **UR10e** (sold as the UR12e since May 2025) on a pedestal: the same arm as on the MiRs;
   - **two small ultrasonic baths, each holding one closed vessel of about 0.7 L of IPA**: wash, then rinse;
@@ -45,7 +46,7 @@ Files:
 - **The clip:** one cup is made, cleaned, dried, weighed, measured and racked, in **0 frames in collision**: 0 of
   1727 under `ARM_AUDIT=1` at 12 fps, and 0 of 2169 in the 15 fps render's own audit (arm and movers both).
 
-![The cell in the lab: over the aisle, its front between the 68SC-2 and charger 0](../out/machining_lab.png)
+![The cell in the lab (round 16): south of the south row, its front to the row's back, where its MiR250 docks](../out/machining_lab.png)
 
 ## Round 14 (PR #373's review, 2026-11-22): simulated, the lathe measured, the metal priced
 
@@ -640,9 +641,10 @@ default):
    - Al as drawn Ø20 rod by the 100 kg, 4N (or 99.7 % 1070A/1080A for runs that copy a commercial alloy), with chips
      taken back; C10100 Ø20 by the 100 kg ([`machining_material.md`](machining_material.md)).
 6. **The Al/Cu split of runs.** It is assumed half and half here; it moves the material bill most.
-7. **Floor and service access.** The cell's front fits the 2249 mm between the 68SC-2 and charger 0 with 24 mm a side,
-   and the ST-10 weighs 3.6 t. Moving charger 0 0.5 m east would give service room. Check the floor loading and the
-   forklift route.
+7. **Floor and service access.** Round 16 moved the cell south of the south row ([lab_r16.md](lab_r16.md)), where it
+   has open floor behind and beside it (until round 15 its front fitted the 2249 mm between the 68SC-2 and charger 0
+   with 24 mm a side). The ST-10 weighs 3.6 t: check the floor loading, and the forklift route in, which is its
+   MiR250's, past the row's west end.
 8. **A fire and safety review**:
    - IPA in the cell: two vessels of about 0.7 L, plus the day's fresh stock;
    - the slot hood and the dryer pump's exhaust, and grounding;

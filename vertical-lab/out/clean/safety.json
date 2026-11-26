@@ -3,8 +3,8 @@
  "fps": 15,
  "n_frames": 829,
  "size": [
-  1920,
-  1080
+  1280,
+  720
  ],
  "substeps": [
   {
@@ -32,8 +32,8 @@
    "end_frame": 314
   },
   {
-   "label": "On a post at each station",
-   "caption": "Hung from its own hook so its lever is at 826 mm and its hose at 1047 mm: NFPA 10's 42 in for a unit over 40 lb. CLASS D signs at 60 and 80 in, a keep-clear square.",
+   "label": "On a post at each powder station",
+   "caption": "Hung from its own hook so its lever is at 826 mm and its hose at 1044 mm: NFPA 10's 42 in for a unit over 40 lb. CLASS D signs at 60 and 80 in, a keep-clear square.",
    "start_frame": 315,
    "end_frame": 409
   },
@@ -51,7 +51,7 @@
   },
   {
    "label": "On every MiR250",
-   "caption": "Each MiR250 carries one in an 811 on its cabinet's aisle side, under the arm and over its scanners' plane, wherever the robot works. Its turning circle grows 5 mm, to 499 mm.",
+   "caption": "Each MiR250 carries one in an 811 on its cabinet's aisle side, under the arm and over its scanners' plane, wherever the robot works. Its turning radius grows 5 mm, to 499 mm.",
    "start_frame": 545,
    "end_frame": 633
   },

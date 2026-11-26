@@ -1,89 +1,89 @@
 {
  "name": "vlm_services",
- "fps": 12,
- "n_frames": 442,
+ "fps": 15,
+ "n_frames": 555,
  "size": [
-  1920,
-  1080
+  1280,
+  720
  ],
  "substeps": [
   {
    "label": "1/6",
-   "caption": "Every service a tray needs goes through one automatic coupling. The plate is on the tray's back right corner; each slot a tray uses, and the bay, has a matching dock in its right-hand side wall, fed by a riser in the side of the machine.",
+   "caption": "Every service a tray needs goes through one automatic coupling. The plate is on the tray's back right corner; each slot a powered tray uses, and the bay, has a matching dock in its right-hand side wall, fed by a riser in the side of the machine.",
    "start_frame": 0,
-   "end_frame": 73
+   "end_frame": 92
   },
   {
    "label": "2/6",
    "caption": "Tray A in its slot (R2). The dock holds the coupling home: mains, Ethernet, compressed air, nitrogen and chilled water are live through two Staubli CombiTac frames, whose align 4 pins take up 4 mm of misalignment.",
-   "start_frame": 74,
-   "end_frame": 143
+   "start_frame": 93,
+   "end_frame": 179
   },
   {
    "label": "3/6",
-   "caption": "To let it go: the air, N2 and water supplies close and vent (the couplings must not part under pressure), the tray's UPS takes the load, and the dock pulls back 75 mm, clear of the tray.",
-   "start_frame": 144,
-   "end_frame": 191
-  },
-  {
-   "label": "4/6",
-   "caption": "In transit: the extractor takes tray A from R2 to the opening, about 6 s at Kardex's 0.7 m/s in and out and 2 m/s up and down. The UPS carries the instruments, the cameras and the tray's switch.",
-   "start_frame": 192,
-   "end_frame": 199
-  },
-  {
-   "label": "4/6",
-   "caption": "In transit: the extractor takes tray A from R2 to the opening, about 6 s at Kardex's 0.7 m/s in and out and 2 m/s up and down. The UPS carries the instruments, the cameras and the tray's switch.",
-   "start_frame": 200,
-   "end_frame": 224
-  },
-  {
-   "label": "4/6",
-   "caption": "In transit: the extractor takes tray A from R2 to the opening, about 6 s at Kardex's 0.7 m/s in and out and 2 m/s up and down. The UPS carries the instruments, the cameras and the tray's switch.",
-   "start_frame": 225,
-   "end_frame": 232
-  },
-  {
-   "label": "4/6",
-   "caption": "In transit: the extractor takes tray A from R2 to the opening, about 6 s at Kardex's 0.7 m/s in and out and 2 m/s up and down. The UPS carries the instruments, the cameras and the tray's switch.",
-   "start_frame": 233,
+   "caption": "To let it go: the contactor opens and the tray's UPS takes the load, the air, N2 and water supplies close and vent (the couplings must not part under pressure), and the dock pulls back 75 mm, clear of the tray.",
+   "start_frame": 180,
    "end_frame": 239
   },
   {
    "label": "4/6",
    "caption": "In transit: the extractor takes tray A from R2 to the opening, about 6 s at Kardex's 0.7 m/s in and out and 2 m/s up and down. The UPS carries the instruments, the cameras and the tray's switch.",
    "start_frame": 240,
-   "end_frame": 263
+   "end_frame": 250
   },
   {
    "label": "4/6",
    "caption": "In transit: the extractor takes tray A from R2 to the opening, about 6 s at Kardex's 0.7 m/s in and out and 2 m/s up and down. The UPS carries the instruments, the cameras and the tray's switch.",
-   "start_frame": 264,
-   "end_frame": 272
+   "start_frame": 251,
+   "end_frame": 282
+  },
+  {
+   "label": "4/6",
+   "caption": "In transit: the extractor takes tray A from R2 to the opening, about 6 s at Kardex's 0.7 m/s in and out and 2 m/s up and down. The UPS carries the instruments, the cameras and the tray's switch.",
+   "start_frame": 283,
+   "end_frame": 293
+  },
+  {
+   "label": "4/6",
+   "caption": "In transit: the extractor takes tray A from R2 to the opening, about 6 s at Kardex's 0.7 m/s in and out and 2 m/s up and down. The UPS carries the instruments, the cameras and the tray's switch.",
+   "start_frame": 294,
+   "end_frame": 302
+  },
+  {
+   "label": "4/6",
+   "caption": "In transit: the extractor takes tray A from R2 to the opening, about 6 s at Kardex's 0.7 m/s in and out and 2 m/s up and down. The UPS carries the instruments, the cameras and the tray's switch.",
+   "start_frame": 303,
+   "end_frame": 332
+  },
+  {
+   "label": "4/6",
+   "caption": "In transit: the extractor takes tray A from R2 to the opening, about 6 s at Kardex's 0.7 m/s in and out and 2 m/s up and down. The UPS carries the instruments, the cameras and the tray's switch.",
+   "start_frame": 333,
+   "end_frame": 344
   },
   {
    "label": "5/6",
    "caption": "At the opening the bay's dock pushes in: the guide pins enter the plate's bushings first, then the contacts and couplings mate and the supplies open. The instruments are back on mains and the UPS recharges.",
-   "start_frame": 273,
-   "end_frame": 335
+   "start_frame": 345,
+   "end_frame": 422
   },
   {
    "label": "6/6",
-   "caption": "The cameras: two Pi 5 units on tray A, standing in front of or beside their instruments and looking back, so they keep the room out of the picture.",
-   "start_frame": 336,
-   "end_frame": 383
-  },
-  {
-   "label": "6/6",
-   "caption": "And two overhead ones, seen by an operator at the opening looking up (the cladding drawn solid): hung from the bay's roof over Kardex's product envelope, one at the back looking forward and down, one behind the header looking back at the instruments' fronts.",
-   "start_frame": 384,
-   "end_frame": 426
+   "caption": "The cameras: two Pi 5 units on tray A, standing in front of or beside their instruments and looking back, so they keep most of the room out of the picture.",
+   "start_frame": 423,
+   "end_frame": 482
   },
   {
    "label": "6/6",
    "caption": "And two overhead ones, seen by an operator at the opening looking up (the cladding drawn solid): hung from the bay's roof over Kardex's product envelope, one at the back looking forward and down, one behind the header looking back at the instruments' fronts.",
-   "start_frame": 427,
-   "end_frame": 441
+   "start_frame": 483,
+   "end_frame": 536
+  },
+  {
+   "label": "6/6",
+   "caption": "And two overhead ones, seen by an operator at the opening looking up (the cladding drawn solid): hung from the bay's roof over Kardex's product envelope, one at the back looking forward and down, one behind the header looking back at the instruments' fronts.",
+   "start_frame": 537,
+   "end_frame": 554
   }
  ]
 }
