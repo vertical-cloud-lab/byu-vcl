@@ -164,6 +164,42 @@ def paired_table(name, T, N):
     return lines
 
 
+def money_table(name, T, N):
+    """What a plan has spent by the day it reaches each target: the campaign's own discovery money (the twin's
+    ledger) and the capital paid by that day (medians over the seeds that got there)."""
+    P = _by_plan(_rows(name))
+    if not P:
+        return []
+    lines = [f"**Money by the target** (`{name}`; medians over the seeds that got there: the campaign's discovery money "
+             "by that day, and the capital paid by that day)", "",
+             "| Plan | Al T1: discovery; capital | Al T2: same | Cu T1: same | Cu T2: same |", "|---|---|---|---|---|"]
+    out = {}
+    for plan in B4.PLANS:
+        rs = P.get(plan)
+        if not rs:
+            continue
+        cells = [PNAME[plan]]
+        for camp in CAMPS:
+            for tn in ("T1", "T2"):
+                dd, uu, cc = [], [], []
+                for r in rs:
+                    h = B2.hit(r["campaigns"][camp]["curve_new"], T[tn][camp], 2)
+                    if not h:
+                        continue
+                    dd.append(h[0])
+                    uu.append(h[1])
+                    cc.append(sum(u for t, u, _ in r["r4"]["payments"] if t <= h[0] * 24.0))
+                if dd:
+                    cells.append(f"${np.median(uu) / 1e3:.0f}k; ${np.median(cc) / 1e6:.2f}M (n={len(dd)})")
+                else:
+                    cells.append("—")
+                out[f"{plan}/{camp}/{tn}"] = dict(days=dd, usd=uu, capex=cc)
+        lines.append("| " + " | ".join(cells) + " |")
+    N.setdefault("money_by_target", {})[name] = out
+    lines.append("")
+    return lines
+
+
 def warm_table(name, T, N):
     """Where the parallel plan stands on the day the wait plan starts (the same seed): the data the ramp-up has
     gathered by then, which warm-starts the in-house work."""
@@ -385,17 +421,20 @@ def variant_table(name, T, N, label):
     rows = _rows(name)
     if not rows:
         return []
-    base = {r["cfg"]["seed"]: r for r in _rows("plans") if r["cfg"]["plan"] == "parallel"}
+    bases = {}
+    for r in _rows("plans"):
+        bases.setdefault(r["cfg"]["plan"], {})[r["cfg"]["seed"]] = r
     groups = {}
     for r in rows:
         groups.setdefault(B4.group_key(r["cfg"]), []).append(r)
-    lines = [f"**{label}** (`{name}`; paired with the parallel plan on the same seeds; days from funding)", "",
+    lines = [f"**{label}** (`{name}`; paired with the same plan in `plans` on the same seeds; days from funding)", "",
              "| Variant | n | Al best (paired) | Al T1; T2: seeds, day | Cu best (paired) | Cu T1; T2: seeds, day | "
              "provenance visits | discovery spend |", "|---|---|---|---|---|---|---|---|"]
     rec = {}
     for key, rs in sorted(groups.items()):
         rs.sort(key=lambda r: r["cfg"]["seed"])
         n = len(rs)
+        base = bases.get(rs[0]["cfg"]["plan"], {})
         cells = [f"`{key.replace('r4_', '')}`", str(n)]
         rr = {}
         for camp in CAMPS:
@@ -417,6 +456,52 @@ def variant_table(name, T, N, label):
         lines.append("| " + " | ".join(cells) + " |")
         rec[key] = rr
     N.setdefault("variants", {})[name] = rec
+    lines.append("")
+    return lines
+
+
+def provenance_table(T, N):
+    """Provenance on and off at each offset level, paired by seed: days saved to each target, the change in the final
+    alloy, and the visits' cost; the visit pays when the days it saves are worth more than it costs."""
+    rows = _rows("provenance")
+    if not rows:
+        return []
+    by = {}
+    for r in rows:
+        o = r["cfg"]["opts"]
+        by.setdefault(float(o.get("offset_mult", 1.0)), {}).setdefault("on" if o.get("provenance") else "off", {})[
+            r["cfg"]["seed"]] = r
+    lines = ["**Provenance: when it pays** (`provenance`, the parallel plan with the cheap policies; someone on site "
+             "at each partner's first job; paired by seed at each offset level; 'days saved' are the seeds' paired "
+             "differences where both reached the target, and the count of seeds that got there first)", "",
+             "| Offset level (× the stand-in σ) | n | Al T2 days saved: median (first / later) | Cu T1 | Cu T2 | "
+             "Al best (on − off) | Cu best (on − off) | visits' cost |", "|---|---|---|---|---|---|---|---|"]
+    out = {}
+    for m in sorted(by):
+        on, off = by[m].get("on", {}), by[m].get("off", {})
+        seeds = sorted(set(on) & set(off))
+        if not seeds:
+            continue
+        cells = [f"{m:g}", str(len(seeds))]
+        rec = {}
+        for camp, tn in (("flaime_al", "T2"), ("onr_cu", "T1"), ("onr_cu", "T2")):
+            a = [_hit_day(on[s_]["campaigns"][camp]["curve_new"], T[tn][camp]) for s_ in seeds]
+            b = [_hit_day(off[s_]["campaigns"][camp]["curve_new"], T[tn][camp]) for s_ in seeds]
+            diffs = [y - x for x, y in zip(a, b) if x is not None and y is not None]
+            first = sum(1 for x, y in zip(a, b) if x is not None and (y is None or x < y))
+            later = sum(1 for x, y in zip(a, b) if y is not None and (x is None or y < x))
+            cells.append(f"{np.median(diffs):+.0f} ({first} / {later})" if diffs else f"— ({first} / {later})")
+            rec[f"{camp}_{tn}"] = dict(diffs=diffs, first=first, later=later)
+        for camp in CAMPS:
+            d = [on[s_]["campaigns"][camp]["best_new"] - off[s_]["campaigns"][camp]["best_new"] for s_ in seeds]
+            cells.append(_mse(d))
+            rec[f"{camp}_best"] = d
+        cost = np.mean([sum(on[s_]["campaigns"][c].get("prov_usd", 0.0) for c in CAMPS) for s_ in seeds])
+        cells.append(f"${cost / 1e3:.1f}k")
+        rec["cost"] = float(cost)
+        lines.append("| " + " | ".join(cells) + " |")
+        out[str(m)] = rec
+    N["provenance"] = out
     lines.append("")
     return lines
 
@@ -465,7 +550,7 @@ def fig_best(names, T):
             ax.set_ylabel("best new alloy (true utility)", color=INK2, fontsize=8)
             pol = B4.ALIAS.get(_rows(name)[0]["cfg"]["policy"], "").split("+")[0 if camp == "flaime_al" else 1]
             money = _rows(name)[0]["cfg"].get("money", 1.0)
-            ax.set_title(f"{CNAME[camp]}: {pol}, money ×{money:g} (`{name}`)", color=INK, fontsize=9, loc="left")
+            ax.set_title(f"{CNAME[camp]}: {pol}, money ×{money:g} ({name})", color=INK, fontsize=9, loc="left")
             if i == 0 and j == 0:
                 ax.legend(fontsize=7, frameon=False, loc="upper left")
     fig.suptitle("Round 4: best new alloy against days from the funding (median over seeds; band: 25th-75th "
@@ -477,15 +562,18 @@ def fig_best(names, T):
 
 def fig_targets(N):
     import matplotlib.pyplot as plt
-    names = [n for n in ("plans", "plans_3x", "plans_best") if n in N and N[n]]
+    names = [n for n in ("plans_best", "plans", "plans_3x") if n in N and N[n]]
     if not names:
         return
-    fig, axes = plt.subplots(1, 2, figsize=(11, 0.55 * 6 * len(names) + 1.2), squeeze=False)
+    nrow = sum(len([p for p in B4.PLANS if N[n].get(p)]) * 2 for n in names)
+    fig, axes = plt.subplots(1, 2, figsize=(12, 0.28 * nrow + 1.6), squeeze=False, sharey=True)
     for j, camp in enumerate(CAMPS):
         ax = axes[0, j]
         _style(ax)
-        labels, y = [], 0
+        ticks, labels, y = [], [], 0.0
         for name in names:
+            pol = B4.ALIAS.get(B4.load(name)[0]["cfg"]["policy"], "")
+            money = B4.load(name)[0]["cfg"].get("money", 1.0)
             for tn in ("T1", "T2"):
                 for plan in B4.PLANS:
                     rec = N[name].get(plan)
@@ -494,38 +582,32 @@ def fig_targets(N):
                     dl = rec[camp][tn]
                     hit = [d for d in dl if d is not None]
                     miss = sum(d is None for d in dl)
-                    rng = np.random.default_rng(y)
-                    ax.scatter(hit, y + rng.uniform(-0.18, 0.18, len(hit)), s=16, color=PCOL[plan], alpha=0.85,
+                    rng = np.random.default_rng(int(y * 10) + 7)
+                    ax.scatter(hit, y + rng.uniform(-0.2, 0.2, len(hit)), s=14, color=PCOL[plan], alpha=0.9,
                                edgecolor="white", lw=0.5, zorder=3)
                     if miss:
-                        ax.scatter([B4.DAYS + 15] * miss, y + rng.uniform(-0.18, 0.18, miss), s=16, facecolor="none",
+                        ax.scatter([B4.DAYS + 20] * miss, y + rng.uniform(-0.2, 0.2, miss), s=14, facecolor="none",
                                    edgecolor=PCOL[plan], lw=1, zorder=3)
                     km = B3.km_median(dl, B4.DAYS)
                     if km is not None:
-                        ax.plot([km, km], [y - 0.3, y + 0.3], color=INK, lw=1.5, zorder=4)
-                    labels.append(f"{name} {tn} {PNAME[plan].split()[0].lower()} ({len(hit)}/{len(dl)})")
+                        ax.plot([km, km], [y - 0.32, y + 0.32], color=INK, lw=1.6, zorder=4)
+                    ticks.append(y)
+                    labels.append(f"{name} (money ×{money:g}) · {tn} · {PNAME[plan]}")
+                    ax.text(B4.DAYS + 38, y, f"{len(hit)}/{len(dl)}", fontsize=6.5, color=INK2, va="center")
                     y += 1
-                y += 0.5
-        ax.set_yticks(np.arange(len(labels)) if False else [])
-        ax.set_xlim(0, B4.DAYS + 30)
-        ax.invert_yaxis()
-        ax.set_xlabel("days from the funding (open marks at the right: not reached in two years; bar: Kaplan-Meier "
-                      "median)", color=INK2, fontsize=7)
+                y += 0.4
+            y += 0.6
+        ax.set_yticks(ticks)
+        ax.set_yticklabels(labels, fontsize=6.5)
+        ax.set_xlim(0, B4.DAYS + 70)
+        ax.set_ylim(y, -0.8)
+        ax.set_xlabel("days from the funding", color=INK2, fontsize=7.5)
         ax.set_title(CNAME[camp], color=INK, fontsize=9, loc="left")
-        # labels drawn as text so they stay readable
-        yy = 0
-        for name in names:
-            for tn in ("T1", "T2"):
-                for plan in B4.PLANS:
-                    if not N[name].get(plan):
-                        continue
-                    ax.text(-8, yy, f"{tn} · {PNAME[plan]}", ha="right", va="center", fontsize=6.5, color=INK2)
-                    yy += 1
-                yy += 0.5
-            ax.text(B4.DAYS + 28, yy - 4.2, f"`{name}`", ha="right", fontsize=7, color=INK2)
-    fig.suptitle("Round 4: days from the funding to each target, each seed a mark", fontsize=10, color=INK, x=0.01,
-                 ha="left")
-    fig.tight_layout(rect=(0.08, 0, 1, 0.97))
+    fig.suptitle("Round 4: days from the funding to each target, each seed a mark (blue: wait for the cell; orange: "
+                 "ramp up in parallel; green: external routes only). Open marks at the right: not reached in two "
+                 "years; black bar: Kaplan-Meier median; at the right: seeds that got there", fontsize=8.5, color=INK,
+                 x=0.01, ha="left")
+    fig.tight_layout()
     fig.savefig(FIG / "twin4_time_to_target.png", dpi=130)
     plt.close(fig)
 
@@ -581,7 +663,7 @@ def fig_utilization(U, title, fn):
         return
     keys = [k for k, _ in SITE_ROWS if k in U]
     labs = [l for k, l in SITE_ROWS if k in U]
-    M = np.array([U[k] for k in keys], float)
+    M = np.array([U[k] for k in keys], float)[:, :int(B4.DAYS // 30.4)]          # whole months only
     cmap = LinearSegmentedColormap.from_list("blue", ["#cce3fd", "#84b9f3", "#338ced", "#1b64be", "#0e3d7e"])
     cmap.set_bad("#f2f2f2")
     fig, ax = plt.subplots(figsize=(11, 0.32 * len(keys) + 1.4))
@@ -590,7 +672,8 @@ def fig_utilization(U, title, fn):
     ax.set_yticklabels(labs, fontsize=7, color=INK2)
     ax.set_xticks(range(M.shape[1]))
     ax.set_xticklabels([str(i + 1) for i in range(M.shape[1])], fontsize=7, color=INK2)
-    ax.set_xlabel("month from the funding (grey: not online)", color=INK2, fontsize=8)
+    ax.set_xlabel("month from the funding (grey: not online; a slot route can pass 100 % in a month when a session "
+                  "falls in it that the yearly average spreads thinner)", color=INK2, fontsize=8)
     for s in ax.spines.values():
         s.set_visible(False)
     for i in range(M.shape[0]):
@@ -690,6 +773,7 @@ def main():
     for name in ("plans", "plans_3x", "plans_best"):
         L += plan_table(name, T, N)
         L += paired_table(name, T, N)
+        L += money_table(name, T, N)
         L += warm_table(name, T, N)
     L += ["## 2. Build-out and capital", ""]
     L += build_table(N)
@@ -708,7 +792,7 @@ def main():
         L += stages_table(name, N)
     L += ["## 5. Second priority", ""]
     L += variant_table("routes", T, N, "One partner route taken away at a time")
-    L += variant_table("provenance", T, N, "Provenance: someone on site at each partner's first job")
+    L += provenance_table(T, N)
     L += variant_table("nolearn", T, N, "No learning curve (every station at full rate once commissioned)")
     (FIG / "tables.md").write_text("\n".join(L) + "\n")
     (FIG / "numbers.json").write_text(json.dumps(B2._jsonable(N), indent=1))
@@ -716,9 +800,9 @@ def main():
         fig_best(["plans", "plans_3x", "plans_best"], T)
         fig_targets(N)
         fig_money(N)
-        fig_utilization(U, "Utilization by route and month: ramp up in parallel (`plans`, money ×1, mean over seeds)",
-                        "twin4_utilization.png")
-        fig_utilization(U3, "Utilization by route and month: ramp up in parallel (`plans_3x`, money ×3)",
+        fig_utilization(U, "Utilization by route and month: ramp up in parallel (plans, money ×1, mean over seeds; "
+                           "slot routes: jobs over slots)", "twin4_utilization.png")
+        fig_utilization(U3, "Utilization by route and month: ramp up in parallel (plans_3x, money ×3)",
                         "twin4_utilization_3x.png")
         fig_timeline(T)
     except Exception:
