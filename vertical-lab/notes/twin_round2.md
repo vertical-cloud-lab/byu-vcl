@@ -116,13 +116,17 @@ All are `propose(view, n_free)` on the twin (`twin/opt/policies2.py`, BoTorch 0.
 
 ## 4. Targets: the state of the art, from the truth itself
 
-`twin/oracle.py` scores the reference alloys and 3,000 random designs on the truth at tuned process settings, then
-hill-climbs on the truth for an upper reference:
+`twin/oracle.py` scores the reference alloys and 1,500 random designs on the truth, each at the best of 12 process
+settings (24 for the references and the best 40 designs), then hill-climbs on the truth for an upper reference. It
+also ranks the same 1,500 designs with the tiered funnel's screen and proxy (`out/twin2/oracle.json`):
 
-| | best reference (the state of the art) | random designs above it | best the oracle found | proxy vs utility (Spearman, feasible designs) |
-|---|---|---|---|---|
-| FLAIME | AlSi10Mg, 0.42 (Scalmalloy fails the mineral gate) | 7.2 % | 0.86 (Al-0.6Mn-0.5Zr-0.2Mg-0.4Fe-2Li) | 0.51 |
-| ONR | NAB, 0.56 (70-30 has 30 % Ni) | 0.5 % | 0.76 (Cu-8.4Ni-6.1Al-1.5Fe-1.9Mn-0.3Ti) | 0.007 |
+| | best reference (the state of the art) | random designs above it | best the oracle found | proxy vs utility (Spearman, feasible designs) | the funnel's top 24: mean utility; above the state of the art |
+|---|---|---|---|---|---|
+| FLAIME | AlSi10Mg, 0.42 (Scalmalloy fails the mineral gate) | 8.2 % | 0.86 (Al-0.6Mn-0.5Zr-0.2Mg-0.4Fe-2Li) | 0.46 | 0.28; 42 % |
+| ONR | NAB, 0.56 (70-30 has 30 % Ni) | 8.2 % | 0.76 (Cu-7.0Ni-8.0Al-1.6Fe-0.1Ti) | 0.40 | 0.46; 33 % |
+
+(An earlier version of this table, from a run before the oracle tuned each design's process, gave 7.2 % and 0.5 %
+above the state of the art and Spearman 0.51 and 0.007; `oracle.json` as committed is the version above.)
 
 **T1**: a new alloy (not a re-test of a reference) at or above the state of the art. **T2**: halfway from the state of
 the art to the oracle's best (0.64 for FLAIME, 0.66 for copper). Curves and targets count new alloys only.
@@ -228,7 +232,7 @@ from the CALPHAD screen, and the funnel's proxy reads the truth's own strengthen
 don't report it. In the truth (`truth_cu.CuTruth`, `gamma2`), with g₂ the wt% of Al above the line, elongation falls by
 a factor e^(−1.2 g₂), the 30-day corrosion rate rises by a factor 1 + 2.5 g₂ and the selective-attack depth by 25 µm per
 g₂, and the 1-hour screen's early rate by only 1 + 1.5 g₂. The targets don't move: NAB (Al 9.2, Ni 4.5) and the
-oracle's best (Al 6.1, Ni 8.4) are both below the line.
+oracle's best (Al 8.0, Ni 7.0) are both below the line.
 
 | Copper, best new alloy | as run | with γ₂ | paired difference |
 |---|---|---|---|
