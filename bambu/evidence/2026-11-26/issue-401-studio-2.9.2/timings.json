@@ -1,0 +1,29 @@
+{
+ "what": "bambu/studio/setup_runner.sh with the Studio pin moved from 2.8.2 to 2.9.2, run end to end for issue #401 (plain @claude run, no Bambu login, no secret read)",
+ "runner": "Ubuntu 26.04.1 LTS, x86-64, 4 vCPU, 15 GB (GitHub-hosted, run 45880369167)",
+ "studio": "02.09.02.62 (BambuStudio_ubu24-v02.09.02.62-20261124164959.AppImage, sha256 01a9d251... = GitHub's asset digest, checked by the script)",
+ "network_plugin": "linux_02.09.02.50.zip from public-cdn.bblmw.com (resource key slicer/plugins/cloud=02.09.02.00)",
+ "setup_runner_sh_end_to_end_s": {
+  "apt": 20.7,
+  "appimage": 2.5,
+  "plugin": 0.8,
+  "studio_window": 20.1,
+  "total": 57.3,
+  "note": "exit 0. No 'Configuration update' prompt appeared this time. Studio's main window took 20 s to appear, against about 7 s for 2.8.2 on issue #314."
+ },
+ "result": "Studio 2.9.2 reached its home page, logged out, on DISPLAY=:99 (studio_2.9.2_ready_logged_out.png, downscaled to 1280 px)",
+ "multi_diameter_strings_in_binary": [
+  "multi_nozzle_diameter_mode",
+  "filament_diameter_map",
+  "Let one plate print with several nozzle diameters. When disabled, the machine is treated as offering a single nozzle diameter and slicing keeps the single-diameter behavior.",
+  "Caution: Printing with mixed nozzle diameters is experimental. Please verify your print settings (extrusion widths, layer height, etc.) are compatible with all selected nozzle sizes.",
+  "tree support default to hybrid tree due to adaptive layer height or multi-diameter mode"
+ ],
+ "h2d_machine_presets_2_9_2": "Bambu Lab H2D 0.2/0.4/0.6/0.8 nozzle presets still list one diameter for both extruders (e.g. nozzle_diameter [\"0.4\", \"0.4\"]); mixing is a per-project mode, not a new preset",
+ "sources": [
+  "https://github.com/bambulab/BambuStudio/releases/tag/v02.09.02.62",
+  "https://wiki.bambulab.com/en/h3c/manual/mixed-nozzle-size-printing",
+  "https://blog.bambulab.com/h2d-h2c-and-x2d-will-support-hybrid-printing-with-multi-orifice-nozzles/",
+  "https://wiki.bambulab.com/en/h2d/manual/h2d-firmware-release-history"
+ ]
+}

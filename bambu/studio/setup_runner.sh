@@ -17,6 +17,9 @@
 #   Studio launch to its home page, no prompts       ~7 s
 #   End to end: ~100 s fresh, ~25 s with the .debs from actions/cache,
 #   ~13 s with the packages already installed.
+# Studio 2.9.2 on ubuntu-26.04 for issue #401 (2026-11-26): 57 s end to end,
+# of which the launch to the home page was 20 s, not 7 s. Same steps, no
+# prompts (bambu/evidence/2026-11-26/issue-401-studio-2.9.2/).
 #
 # Why no wizard: Studio runs it only when it has no config or no printers
 # (GUI_App::config_wizard_startup), and asks about the SSL store only when
@@ -37,9 +40,12 @@
 #          ~/bambu/squashfs-root is where the runbook's studio.sh looks.
 set -euo pipefail
 
-STUDIO_TAG="v02.08.02.61"
-STUDIO_ASSET="BambuStudio_ubuntu24.04-v02.08.02.61-20260820225108.AppImage"
-STUDIO_SHA256="d501b103fac5424513ec0e8d6bc145fb30719de2c7d94d7320d723740c81a7fd"
+# 2.9.2 is the first release that slices and prints mixed nozzle diameters on
+# the H2D (issue #401). Its Linux assets are named "ubu24", where 2.8.x had
+# "ubuntu24.04". The previous pin, v02.08.02.61, is in this file's git log.
+STUDIO_TAG="v02.09.02.62"
+STUDIO_ASSET="BambuStudio_ubu24-v02.09.02.62-20261124164959.AppImage"
+STUDIO_SHA256="01a9d25179df6495ecb3d402628232b31a10cff1f8991f052988383adf680eea"
 STUDIO_VERSION="${STUDIO_TAG#v}"
 BAMBU_DIR="$HOME/bambu"
 CONF_DIR="$HOME/.config/BambuStudio"

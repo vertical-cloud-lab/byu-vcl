@@ -523,12 +523,35 @@ gets that login:
     or to the right one if only the right is 0.2 or 0.4 mm. Check that the sliced file uses
     only that nozzle (no filament, prime tower or wipe assigned to the other) and that the
     part fits that nozzle's print area.
-  - **A print that needs both nozzles** needs both to be 0.2 or 0.4 mm.
+  - **A print that needs both nozzles** needs both to be 0.2 or 0.4 mm. They can be
+    different sizes (0.2 mm and 0.4 mm) only in Studio's multi-diameter mode; see the next
+    item.
   tensegrity-optimization prints with 0.6 mm nozzles, so a printer may well still have one of
   those in. That's fine as long as the print doesn't use it.
   If no nozzle the print could use is 0.2 or 0.4 mm, or you can't read a diameter, don't send
   (and don't re-slice for the wrong nozzle): say what is installed and wait for a person to
   swap it.
+- **Mixed nozzle diameters on the H2D need Bambu Studio 2.9.2 or later** (released 2026-11-24,
+  [#401](https://github.com/vertical-cloud-lab/byu-vcl/issues/401)). Older Studio slices the
+  H2D for one diameter on both nozzles. 2.9.2 adds *multi-diameter mode*, which is switched
+  per project on the Prepare page and saved in the 3MF as `multi_nozzle_diameter_mode`. In
+  that mode each filament is tied to a nozzle diameter, so one print can use 0.2 mm for text
+  and 0.4 mm for the body. `bambu/studio/setup_runner.sh` installs 2.9.2. Bambu names no H2D
+  firmware for it; the newest is 01.04.20.00. The H2C and X2D follow in early 2027. Studio
+  calls the feature experimental, so in multi-diameter mode:
+  - **The nozzle rule above still applies.** For this repo that means 0.2 and 0.4 mm. Don't
+    put supports or infill on a 0.6 mm nozzle just because one is installed.
+  - **You can't choose each nozzle's layer height.** Each nozzle prints at the preset's layer
+    height × its diameter ÷ 0.4, so 0.20 mm on the 0.4 mm nozzle means 0.10 mm on the
+    0.2 mm one. Set the first-layer height equal to the layer height. Otherwise the larger
+    nozzle's first layer comes out thinner than set.
+  - **Check the preview before sending.** 2.9.2 shows which nozzle prints each move. Make sure
+    every region is on the nozzle you meant. Look closely at supports, the prime tower and the
+    seams between regions. Bambu says support Z gaps and support and prime-tower sizes aren't
+    reliable yet in this mode, and gaps can open where layer heights meet.
+  - **Send matches filament to nozzle by diameter.** A filament sliced for 0.2 mm can only go
+    to a 0.2 mm nozzle. That is a backstop, not a substitute for reading the diameters off
+    the printer. Record the mode and both diameters in `print.json`.
 - **Nobody replies `plate clear` any more (sgbaird, 2026-10-23).** The print run reads the
   plate itself and gives people a window to stop it. This replaces the person's go in rule 1
   and §4.1 of byu-vcl's `bambu/README.md`, which an older branch may still show.
