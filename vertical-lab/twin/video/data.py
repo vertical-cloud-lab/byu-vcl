@@ -484,9 +484,20 @@ def km_median(times: list, horizon: float):
     return None
 
 
+_ARM: dict = {}
+
+
 def arm3(exp: str, facility: str, policy: str, campaign: str, **cfg) -> dict:
     """One arm of round 3 from its committed runs: per-seed days to both targets, the counts that got there, the
-    Kaplan-Meier medians, the final best new alloy (mean, SE) and the horizon. cfg filters the runs' own cfg."""
+    Kaplan-Meier medians, the final best new alloy (mean, SE) and the horizon. cfg filters the runs' own cfg.
+    Computed once per arm (the days card asks for 32 arms on every frame)."""
+    key = (exp, facility, policy, campaign, tuple(sorted(cfg.items())))
+    if key not in _ARM:
+        _ARM[key] = _arm3(exp, facility, policy, campaign, **cfg)
+    return _ARM[key]
+
+
+def _arm3(exp: str, facility: str, policy: str, campaign: str, **cfg) -> dict:
     rs = [r for r in rows3(exp) if r["cfg"]["policy"] == policy and r["cfg"]["facility"] == facility
           and all(r["cfg"].get(k) == v for k, v in cfg.items())]
     rs.sort(key=lambda r: r["cfg"]["seed"])
