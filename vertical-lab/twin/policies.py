@@ -211,6 +211,13 @@ class Tiered(Base):
         ni, al = comp.get("Ni", 0), comp.get("Al", 0)
         return 14 * al + 2.6 * ni + 6 * comp.get("Mn", 0) - 3 * ni - 200 * out.get("beta_900", 0)
 
+    def _shortlist(self, v):
+        """The designs to make, in order: the KEEP best by the proxy among those the screen passes."""
+        ok = [(self.proxy(v["designs"][s["design"]], s["out"]), s["design"]) for s in v["sims"]
+              if s["kind"] == self.sim_kind and self.passes(s["out"], v["designs"][s["design"]])]
+        ok.sort(reverse=True)
+        return [did for _, did in ok[:self.KEEP]] or [s["design"] for s in v["sims"][:self.KEEP]]
+
     def passes(self, out, comp=None):
         if self.al:
             # FLAIME's mineral gates are free to compute from the composition, so the screen applies them too
@@ -233,10 +240,7 @@ class Tiered(Base):
             if v["inflight"] < v["wip"]:
                 return [dict(kind=self.sim_kind, design=d) for d in pend]
         if not self.shortlist and len(v["sims"]) >= self.N_SCREEN - v["wip"]:
-            ok = [(self.proxy(v["designs"][s["design"]], s["out"]), s["design"]) for s in v["sims"]
-                  if s["kind"] == self.sim_kind and self.passes(s["out"], v["designs"][s["design"]])]
-            ok.sort(reverse=True)
-            self.shortlist = [did for _, did in ok[:self.KEEP]] or [s["design"] for s in v["sims"][:self.KEEP]]
+            self.shortlist = self._shortlist(v)
         self.advance(v, n)
         acts = self.take(n)
         while len(acts) < n and self.shortlist:
@@ -275,6 +279,34 @@ class TieredMis(Tiered):
         ni, al = comp.get("Ni", 0), comp.get("Al", 0)
         return (14 * f["Al"] * al + 2.6 * f["Ni"] * ni + 6 * f["Mn"] * comp.get("Mn", 0) - 3 * ni
                 - 200 * out.get("beta_900", 0))
+
+
+class TieredScreenOnly(Tiered):
+    """The funnel's ablation (round 2's copper investigation): the screen, then KEEP of the passing designs in a
+    random order instead of the proxy's (a separate random stream, so the screened designs are the plain funnel's)."""
+    name = "tiered_screen"
+
+    def __init__(self, key, seed=0):
+        super().__init__(key, seed)
+        self._order_rng = np.random.default_rng(92_000 + seed)
+
+    def _shortlist(self, v):
+        ok = [s["design"] for s in v["sims"]
+              if s["kind"] == self.sim_kind and self.passes(s["out"], v["designs"][s["design"]])]
+        r = self._order_rng
+        r.shuffle(ok)
+        return ok[:self.KEEP] or [s["design"] for s in v["sims"][:self.KEEP]]
+
+
+class TieredProxyOnly(Tiered):
+    """The funnel's other ablation: the KEEP best of all screened designs by the proxy, the screen's gates ignored."""
+    name = "tiered_proxy"
+
+    def _shortlist(self, v):
+        ok = [(self.proxy(v["designs"][s["design"]], s["out"]), s["design"]) for s in v["sims"]
+              if s["kind"] == self.sim_kind]
+        ok.sort(reverse=True)
+        return [did for _, did in ok[:self.KEEP]]
 
 
 class CostAware(Base):
@@ -483,5 +515,6 @@ class CostAwareScaleUp(CostAware):
         return acts + super().propose(v, n - len(acts))
 
 
-POLICIES = {"random": Random, "tiered": Tiered, "tiered_mis": TieredMis, "cost_aware": CostAware, "tiered_tc": TieredTC,
+POLICIES = {"random": Random, "tiered": Tiered, "tiered_mis": TieredMis, "tiered_screen": TieredScreenOnly,
+            "tiered_proxy": TieredProxyOnly, "cost_aware": CostAware, "tiered_tc": TieredTC,
             "cost_aware_tc": CostAwareTC, "cost_aware_scaleup": CostAwareScaleUp}

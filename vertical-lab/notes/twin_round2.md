@@ -221,7 +221,7 @@ left, copper right. Dotted line: the best existing alloy on this synthetic truth
 - **Fidelity check.** With slower, fuller instrument simulators, BOFN scored 0.665 against 0.690 on aluminum and 0.36
   against 0.36 on copper (the same 3 seeds) [4].
 
-### 5.3 The copper tie, tested twice: neither test favors BOFN
+### 5.3 The copper tie, tested three ways: none favors BOFN
 
 In the main benchmark, tiered screening edged BOFN with the blend screen on copper (0.69 against 0.67) and plain BOFN
 failed (0.33). Round 2's first reading was that the copper truth was too kind to the funnel: nothing in it was hidden
@@ -263,12 +263,19 @@ of 1.5 at one sigma), as a rule of thumb from the literature would be. Copper: 0
 the plain funnel (9 seeds better, 3 worse), and +0.03 ± 0.02 over BOFN with the blend screen. With γ₂ on, the results
 are identical again. Aluminium: 0.30 ± 0.09 (−0.04 ± 0.04 paired).
 
-**What this says.** The funnel's copper lead doesn't rest on its proxy, and the γ₂ effect doesn't reach it. It rests on
-its screen: on this truth the freezing range (hot cracking) and β at 900 °C (retained β′) are the main ways a copper
-alloy fails, and the open CALPHAD node sees both. Once the screen has removed those, almost any reasonable ranking of
-what is left does well. BOFN has to learn the same failure modes from slow and costly copper results (about 10-14
-alloys tested a year), so it doesn't catch up within a year. A copper truth with a failure mode the screen cannot see
-*and* that sits where the funnel looks would test the funnel properly. That is not done here.
+**The funnel taken apart (`cu_ablation`, 12 seeds each).** Its screen with the passing designs made in a random
+order scored 0.58 ± 0.04 on copper (−0.11 ± 0.03 paired against the funnel), and its proxy's top 24 with no screen
+0.60 ± 0.04 (−0.08 ± 0.05), against 0.69 for both. On aluminium the proxy without the screen failed outright (all 12
+years at zero: without the screen's cracking and mineral gates every pick fails), and the screen with a random order
+did as well as the funnel (0.35 against 0.34).
+
+**What this says.** The funnel's copper lead comes from its screen and a sensible ranking together, and the ranking
+doesn't need the truth's coefficients: off by a factor of 1.5 each, it did as well (0.71). On this truth the freezing
+range (hot cracking) and β at 900 °C (retained β′) are the main ways a copper alloy fails, and the open CALPHAD node
+sees both. Among what passes, a rule of thumb about which elements strengthen picks well. The γ₂ effect doesn't reach
+the funnel either. BOFN has to learn the same failure modes from slow and costly copper results (about 10-14 alloys
+tested a year), so it doesn't catch up within a year. A copper truth with a failure mode the screen cannot see *and*
+that sits where the funnel looks would test the funnel properly. That is not done here.
 
 ![Copper with and without the γ₂ effect](../out/twin2/fig/twin2_cu_hidden.png)
 

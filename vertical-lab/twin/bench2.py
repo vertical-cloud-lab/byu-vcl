@@ -65,6 +65,8 @@ EXPERIMENTS = {
     # sigma 0.4), on the plain truth and with the hidden gamma-2 effect: does tiered's copper lead rest on its proxy
     # reading the truth's own coefficients?
     "cu_proxy": [_cfg("tiered_mis", s, cu_hidden=h) for h in (0.0, 1.0) for s in range(12)],
+    # ...and the funnel taken apart: its screen with a random ranking, its proxy with no screen
+    "cu_ablation": [_cfg(p, s) for p in ("tiered_screen", "tiered_proxy") for s in range(12)],
     # the campaign trace (twin/trace.py, out/twin2/trace/README.md): BOFN, standard BO and random from one common seed
     # set (DAL #275), 12 seeds each; seed 0 of each writes a full trace with the optimizer's state
     "seeded": [_cfg(p, s, seeding="dal275", trace=(s == 0), events=(s == 0)) for p in ("bofn", "gpbo", "random")
