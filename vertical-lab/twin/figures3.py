@@ -279,6 +279,43 @@ def table_counts(r2rows, r3rows):
     return "\n".join(L)
 
 
+def _first(c, target, horizon):
+    d = hit_days(c, target)
+    return d if d is not None else math.inf
+
+
+def table_pairs(rows_a, rows_b, pairs, T, horizon=365, title=""):
+    """Paired comparisons on the seeds both arms have: best new alloy (a - b, mean ± SE, seeds ahead/behind), and per
+    target which arm got there first (a seed that never got there counts as later), with each arm's median days."""
+    A, Bb = by_policy(rows_a), by_policy(rows_b)
+    L = [title, "", "| Campaign | A | B | seeds | best: A − B (A ahead/behind) | T1: A first / B first / tie | "
+         "T1 median days A; B | T2: A first / B first / tie | T2 median days A; B | spent A − B ($k) |",
+         "|---|---|---|---|---|---|---|---|---|---|"]
+    for camp in CAMPS:
+        for a, b in pairs:
+            if a not in A or b not in Bb:
+                continue
+            seeds = sorted(set(A[a]) & set(Bb[b]))
+            if not seeds:
+                continue
+            ra, rb = {s: A[a][s] for s in seeds}, {s: Bb[b][s] for s in seeds}
+            dm, dse, up, dn, n = paired(ra, rb, lambda r: r["campaigns"][camp]["best_new"])
+            cells = []
+            for tn in ("T1", "T2"):
+                fa = [_first(ra[s]["campaigns"][camp]["curve_new"], T[tn][camp], horizon) for s in seeds]
+                fb = [_first(rb[s]["campaigns"][camp]["curve_new"], T[tn][camp], horizon) for s in seeds]
+                wa = sum(1 for x, y in zip(fa, fb) if x < y)
+                wb = sum(1 for x, y in zip(fa, fb) if y < x)
+                ma = B3.km_median([x if math.isfinite(x) else None for x in fa], horizon)
+                mb = B3.km_median([y if math.isfinite(y) else None for y in fb], horizon)
+                fm = lambda m: f"{m:.0f}" if m is not None else f">{horizon}"
+                cells += [f"{wa} / {wb} / {n - wa - wb}", f"{fm(ma)}; {fm(mb)}"]
+            ds = np.mean([ra[s]["campaigns"][camp]["spent"] - rb[s]["campaigns"][camp]["spent"] for s in seeds]) / 1e3
+            L.append(f"| {CNAME[camp].split(' (')[0]} | {LABEL.get(a, a)} | {LABEL.get(b, b)} | {n} | {dm:+.2f} ± {dse:.2f} "
+                     f"({up}/{dn}) | {cells[0]} | {cells[1]} | {cells[2]} | {cells[3]} | {ds:+.1f} |")
+    return "\n".join(L)
+
+
 def numbers(rows, T, horizon=365):
     """Per policy and campaign: best (mean, SE, per seed), T1/T2 days per seed and KM medians, spend, counts."""
     P = by_policy(rows)
@@ -331,11 +368,21 @@ def main():
         allr = main_rows + more
         md += ["", "## Main benchmark, all seeds (main + main_more)", table_main(allr, T, "tiered")]
         N["main_all"] = numbers(allr, T)
+    if main_rows:
+        md += ["", table_pairs(main_rows, main_rows,
+                               [("bofn3", "bofn3_usd"), ("pkgfn3", "bofn3_usd"), ("pkgfn3", "bofn3"),
+                                ("bofn3", "tiered"), ("pkgfn3", "tiered"), ("bofn3", "heuristic"),
+                                ("pkgfn3", "heuristic"), ("bofn3", "gpbo"), ("pkgfn3", "gpbo")], T,
+                               title="## Paired comparisons within the main benchmark (same seeds)")]
     for name, ref in (("cu_hidden", "tiered"), ("cu_money", "tiered"), ("cu_proxy", None), ("cu_ablation", None)):
         rows = B3.load(name)
         if rows:
             md += ["", f"## {name}", table_main(rows, T, ref or "tiered")]
             N[name] = numbers(rows, T)
+            if main_rows:
+                pp = [(p, p) for p in by_policy(rows)] + [(p, "tiered") for p in by_policy(rows) if p != "tiered"]
+                md += ["", table_pairs(rows, main_rows, pp, T, title=f"### {name} against the main benchmark "
+                                                                      f"(B = main, same seeds)")]
     conv = B3.load("conventional")
     if conv:
         md += ["", "## Conventional lab, three years at three years' money (async)", table_main(conv, T, "tiered", 1095)]

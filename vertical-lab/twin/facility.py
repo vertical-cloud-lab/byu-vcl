@@ -198,6 +198,13 @@ DAL256 = {
 ROBOT_H = (0.1, "one MiR250 + UR12e transfer per step: the tray out of the Kardex tower (lift 1,333 mm/s, 2.2 s "
                 "slides, 0.7 s shutter: PR 318 setup_lab.TwoLab), a drive of tens of metres at up to 2 m/s "
                 "(warehouse.Amr), pick and place with the UR12e; about 6 min, assumed")
+# the two campaigns share one atomizer. Round 3 splits its week as DAL #256 does (copper on Fridays "so the ~1 h
+# clean that follows each one doesn't eat into an Al week"), with Saturday's start to copper too: aluminium Mon-Thu
+# (12 starts a week), copper Fri-Sat (4). First come, first served (round 3's first runs) let aluminium's stream of new
+# designs book the next day's starts before copper had a charge ready: copper got no atomizer run for months.
+ATOMIZER_SPLIT = ({"flaime_al": (0, 1, 2, 3), "onr_cu": (4, 5)},
+                  "FLAIME App. 2 (3 starts a weekday, 1 on Saturday); the campaigns' days as DAL #256 "
+                  "(al-campaign-schedule/README.md L76-L101 @ 6ff7717: copper on Fridays), Saturday to copper")
 PHYSICAL = {
     "vertical_lab": {
         "robot": Station("robot", "Two MiR250 + UR12e mobile manipulators (PR 318)", 2, "24/7",
@@ -208,6 +215,7 @@ PHYSICAL = {
         "furnace": dict(units=8, hours="24/7", attended_h=None, starts=tuple(float(h) for h in range(0, 24, 3)),
                         source="two furnaces x 4 coupon positions (assumed), a 3 h cycle starting every 3 h; "
                                "the robots load it"),
+        "atomizer": dict(campaign_weekdays=ATOMIZER_SPLIT[0], source=ATOMIZER_SPLIT[1]),
         "immersion": dict(source="24 vial positions on the gantry deck (round 1's assumption, unchanged)"),
     },
     "proposed": {
@@ -218,6 +226,7 @@ PHYSICAL = {
         "furnace": dict(units=8, starts=(8.0, 11.0, 14.0), hours="day", attended_h=0.25,
                         source="two furnaces x 4 coupon positions (assumed); a person loads each 3 h cycle at "
                                "08:00, 11:00 or 14:00 on weekdays"),
+        "atomizer": dict(campaign_weekdays=ATOMIZER_SPLIT[0], source=ATOMIZER_SPLIT[1]),
         "immersion": dict(source="24 vial positions on the gantry deck (round 1's assumption, unchanged)"),
     },
 }
