@@ -72,7 +72,7 @@ class Net3(P2.BOFNBlend):
     acq = "ei"
     denom = "time"
     S = 24
-    F = 8
+    F = 6
     EPS_USD = 1e-3
     PI_FLOOR = 0.05
     RECOMPUTE_H = 6.0             # new designs' scores
@@ -80,7 +80,7 @@ class Net3(P2.BOFNBlend):
     GROWTH = 1.4
     SCREEN_SHARE, SCREEN_START = 0.25, 2500.0
     MIN_NEW_EI = 1e-4             # a new design must be worth at least this much expected improvement (utility units)
-    K_KG = 8                      # pKGFN: KG for the top K of each stage by EI per cost to completion (DAL: 16)
+    K_KG = 4                      # pKGFN: KG for the top K of each stage by EI per cost to completion (DAL: 16)
     D_TAKEN, D_BATCH = 0.03, 0.08 # composition-feature distance to designs started / to the list being made
     STOP_V = 1e-4
     N_NEW_KG = 12
@@ -726,12 +726,14 @@ class Net3(P2.BOFNBlend):
         running = imm == "pending"
         if running and itm and self._imm_checked.get(did_) != max(itm):
             self._imm_checked[did_] = max(itm)
-            b = max(best, 0.0)
-            val = self._kg_imm(comp, kw, u)(b) if self.acq == "kg" else self._ei(u, b)
+            # the stop decision is EI of finishing over the best alloy demonstrated, for both acquisitions, and only
+            # once one has been: before that, with an incumbent of 0 and a utility that is never negative, the KG of
+            # finishing a coupon is exactly 0 (its posterior mean is a martingale), which would stop every coupon
+            val = self._ei(u, best) if best > 0 else None
             if val is not None and val < self.STOP_V:
                 C.append(dict(kind="stop", what="stop a coupon whose interim readings say it can't pay",
                               acts=[_ann(dict(kind="stop", deposit=did_), f"stop after day {max(itm)}: "
-                                         f"{'KG' if self.acq == 'kg' else 'EI'} of finishing {val:.1e}", val)]))
+                                         f"EI of finishing {val:.1e}", val)]))
         todo = []
         if not has_t and "tensile" not in pk:
             todo.append("tensile")

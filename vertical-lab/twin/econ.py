@@ -1035,7 +1035,7 @@ def _style(ax):
 
 
 def report(runs_paths=None, events_paths=None, validate_path=None, out=OUT2, n_boot=2000, cap=0.6,
-           demand_h_week=None, comparisons=None, targets=None) -> dict:
+           demand_h_week=None, comparisons=None, targets=None, new_pol=None) -> dict:
     """Everything the PR and the video quote: figures in out/twin2/econ/*.png and econ_summary.json."""
     import glob
     import time as _t
@@ -1107,8 +1107,8 @@ def report(runs_paths=None, events_paths=None, validate_path=None, out=OUT2, n_b
     # the comparisons: the conventional lab with each policy against the vertical lab with BOFN (or the best stand-in
     # present), both on their defining settings (the vertical lab stocked; the conventional lab as bench2 runs it)
     pols_v = sorted({k[1] for k in G if k[0] == "vertical_lab" and k[3] == ""})
-    new_pol = next((p for p in ("bofn_blend", "bofn", "bofn_saas", "cost_aware") if p in pols_v),
-                   pols_v[0] if pols_v else None)
+    new_pol = new_pol or next((p for p in ("bofn_blend", "bofn", "bofn_saas", "cost_aware") if p in pols_v),
+                              pols_v[0] if pols_v else None)     # round 3 names its own (twin/econ3.py)
     vert_key = ("vertical_lab", new_pol, "historical", "") if new_pol else None
 
     def conv(pol):

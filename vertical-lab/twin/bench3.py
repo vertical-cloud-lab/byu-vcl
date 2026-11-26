@@ -42,22 +42,26 @@ def _cfg(policy, seed, facility="vertical_lab", stock="stocked", days=365, years
 
 EXPERIMENTS = {
     "dev": [_cfg(p, 0) for p in MAIN3],
-    # the vertical lab, stocked, one year, both campaigns; seed 0 of each policy writes its event log
-    "main": [_cfg(p, s, events=(s == 0)) for p in MAIN3 for s in range(12)],
-    # 12 more seeds (24 in all, for copper's comparisons)
-    "main_more": [_cfg(p, s) for p in MAIN3 for s in range(12, 24)],
+    # the vertical lab, stocked, one year, both campaigns; seed 0 of each policy writes its event log. pKGFN runs
+    # time-aware only (its comparison is with round 2's EI per dollar, BOFN per dollar here); a run of it costs
+    # about twice a BOFN run
+    "main": [_cfg(p, s, events=(s == 0)) for p in BASE + ("bofn3", "bofn3_usd", "pkgfn3") for s in range(12)],
+    # 12 more seeds (24 in all) for copper's comparisons: the time-aware BOFN and the baselines
+    "main_more": [_cfg(p, s) for p in BASE + ("bofn3",) for s in range(12, 24)],
     # copper's tests from round 2 (section 5.3): the hidden gamma-2 effect, a mis-specified proxy, the funnel taken
-    # apart, three times the copper money
+    # apart, three times the copper money; BOFN and pKGFN on 6 seeds (the cheap policies on 12)
     "cu_hidden": [_cfg(p, s, cu_hidden=1.0) for p in ("random", "heuristic", "tiered", "gpbo", "bofn3", "pkgfn3")
-                  for s in range(12)],
+                  for s in range(6 if p in NET else 12)],
     "cu_proxy": [_cfg("tiered_mis", s, cu_hidden=h) for h in (0.0, 1.0) for s in range(12)],
     "cu_ablation": [_cfg(p, s) for p in ("tiered_screen", "tiered_proxy") for s in range(12)],
-    "cu_money": [_cfg(p, s, cu_budget=180_000.0) for p in ("tiered", "bofn3", "pkgfn3", "heuristic", "gpbo")
-                 for s in range(12)],
+    "cu_money": [_cfg(p, s, cu_budget=180_000.0) for p in ("tiered", "heuristic", "gpbo", "bofn3", "pkgfn3")
+                 for s in range(6 if p in NET else 12)],
     # the conventional lab with the same asynchronous freedom inside its own facilities and booking rules: three years
-    # at three years' money, metal ordered as each charge needs it
+    # at three years' money, metal ordered as each charge needs it (BOFN and pKGFN on 4 seeds: three simulated years
+    # each cost about three times a vertical-lab year)
     "conventional": [_cfg(p, s, facility="proposed", stock="lean", days=1095, years_budget=3.0, events=(s == 0))
-                     for p in ("random", "sobol", "heuristic", "tiered", "gpbo", "bofn3", "pkgfn3") for s in range(12)],
+                     for p in ("random", "sobol", "heuristic", "tiered", "gpbo", "bofn3", "pkgfn3")
+                     for s in range(4 if p in NET else 12)],
 }
 
 

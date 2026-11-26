@@ -242,6 +242,43 @@ def table_main(rows, T, ref="tiered", horizon=365, r2rows=None):
     return "\n".join(L)
 
 
+def table_counts(r2rows, r3rows):
+    """Alloys and evaluations of each kind a year, round 2 (cap on work in flight) against round 3 (physical
+    capacity), seed means. Round 2's logs count results by type only (its 'cu_test' lumps tensile, screen and
+    immersion), so the copper columns there are lots, deposits and demonstrated alloys (tensile and immersion both
+    back)."""
+    R2 = by_policy(r2rows)
+    R3 = by_policy(r3rows)
+    pairs = [("random", "random"), ("sobol", "sobol"), ("heuristic", "heuristic"), ("tiered", "tiered"),
+             ("gpbo", "gpbo"), ("bofn", "bofn3"), ("bofn_blend", "bofn3"), ("bofn", "pkgfn3")]
+    L = ["| Policy (round 2 -> round 3) | Al lots | Al prints | Al PIP | Al bar tests | Al alloys demonstrated | "
+         "Cu lots | Cu blend screens | Cu 1 kg deposits | Cu 30-day immersions finished | Cu coupons stopped early | "
+         "Cu alloys demonstrated |", "|---|" + "---|" * 11]
+
+    def m(rs, f):
+        return float(np.mean([f(r) for r in rs.values()])) if rs else float("nan")
+    for a, b in pairs:
+        if a not in R2 or b not in R3:
+            continue
+        r2, r3 = R2[a], R3[b]
+        A2, C2 = (lambda r: r["campaigns"]["flaime_al"]), (lambda r: r["campaigns"]["onr_cu"])
+        nr = lambda c, k: (c.get("n_results") or {}).get(k, 0)
+        d3 = lambda c, k: (c.get("done") or {}).get(k, 0)
+        row2 = [m(r2, lambda r: A2(r)["n_lots"]), m(r2, lambda r: nr(A2(r), "build")), m(r2, lambda r: nr(A2(r), "pip")),
+                m(r2, lambda r: nr(A2(r), "test")), m(r2, lambda r: A2(r)["n_demonstrated"]),
+                m(r2, lambda r: C2(r)["n_lots"]), None, None, None, None, m(r2, lambda r: C2(r)["n_demonstrated"])]
+        row3 = [m(r3, lambda r: d3(A2(r), "powder")), m(r3, lambda r: d3(A2(r), "print")),
+                m(r3, lambda r: d3(A2(r), "pip")), m(r3, lambda r: d3(A2(r), "test")),
+                m(r3, lambda r: A2(r)["n_demonstrated"]), m(r3, lambda r: d3(C2(r), "powder")),
+                m(r3, lambda r: d3(C2(r), "blend")), m(r3, lambda r: d3(C2(r), "blown_large")),
+                m(r3, lambda r: d3(C2(r), "immersion")), m(r3, lambda r: d3(C2(r), "immersion_stopped")),
+                m(r3, lambda r: C2(r)["n_demonstrated"])]
+        fmt = lambda x: "-" if x is None or (isinstance(x, float) and math.isnan(x)) else f"{x:.0f}"
+        L.append(f"| {LABEL.get(a, a)} -> {LABEL.get(b, b)} | " +
+                 " | ".join(f"{fmt(x)} -> {fmt(y)}" for x, y in zip(row2, row3)) + " |")
+    return "\n".join(L)
+
+
 def numbers(rows, T, horizon=365):
     """Per policy and campaign: best (mean, SE, per seed), T1/T2 days per seed and KM medians, spend, counts."""
     P = by_policy(rows)
@@ -308,6 +345,11 @@ def main():
     if main_rows:
         r3 = by_policy(main_rows)
         fig_counts(None, r3, OUT / "twin3_counts.png")
+        r2 = B2.load("main")
+        if r2:
+            md += ["", "## Alloys and evaluations a year, round 2 -> round 3 (main benchmark, seed means)",
+                   table_counts(r2, main_rows)]
+            N["round2_main"] = numbers(r2, T)
     (OUT / "tables.md").write_text("\n".join(md) + "\n")
     (OUT / "numbers.json").write_text(json.dumps(B2._jsonable(N), indent=1))
     print("\n".join(md))
