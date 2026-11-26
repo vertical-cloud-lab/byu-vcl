@@ -5,8 +5,8 @@
   "U1": {
    "ventures": 387,
    "researched": 387,
-   "with_funding": 231,
-   "none_found": 147,
+   "with_funding": 235,
+   "none_found": 143,
    "bootstrapped_stated": 9
   },
   "U2": {
@@ -31,16 +31,16 @@
    "bootstrapped_stated": 2
   }
  },
- "round_records_counted": 1735,
- "rounds": 1714,
- "investor_venture_links": 4061,
- "investors": 1951,
+ "round_records_counted": 1740,
+ "rounds": 1719,
+ "investor_venture_links": 4065,
+ "investors": 1954,
  "investors_by_type": {
   "accelerator": 24,
   "venture_firm": 835,
   "growth_pe_hedge": 134,
   "corporate_venture": 228,
-  "angel": 504,
+  "angel": 507,
   "crowdfunding": 14,
   "public_investor": 43,
   "crypto_fund_or_dao": 59,
@@ -54,11 +54,11 @@
  "investors_5plus": 128,
  "rounds_by_source_kind": {
   "news": 816,
-  "company": 417,
+  "company": 419,
   "investor": 36,
   "wikipedia": 118,
   "other": 422,
-  "filing": 32,
+  "filing": 35,
   "database": 34
  }
 }

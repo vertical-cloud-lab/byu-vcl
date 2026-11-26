@@ -19,11 +19,11 @@ The scope and counting rules were committed before any funding data was gathered
 ## Bottom line
 
 - **The list is long and flat.** Across the 641 hand-researched ventures in groups U1–U3,
-  451 disclosed outside funding.
-  - Public sources name 1,651 distinct funders across 1,261 rounds, 1,175
+  455 disclosed outside funding.
+  - Public sources name 1,654 distinct funders across 1,266 rounds, 1,177
     of which name at least one funder. A round reported by two sources counts once. Acquisitions, buyouts, IPOs and
     secondary share sales are listed but not counted, because no money went to the venture.
-  - 1,238 of those funders appear in only one venture.
+  - 1,241 of those funders appear in only one venture.
   - Only 98 backed five or more, and the ten most frequent account for
     9% of all funder–venture links.
   - There is no small club that funds open source. There is a long tail with a recognisable head.
@@ -88,7 +88,7 @@ Examples list led ventures first. Full list: [`FUNDER_LIST.md`](FUNDER_LIST.md).
 
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
-| Y Combinator | accelerator / studio | 60 | 3 | Mattermost, PostHog Inc., SigNoz, Activepieces, Airbyte, Anomaly, Apify, BerriAI … |
+| Y Combinator | accelerator / studio | 61 | 3 | Mattermost, PostHog Inc., SigNoz, Activepieces, Airbyte, Anomaly, Apify, BerriAI … |
 | Accel | venture firm | 32 | 19 | Airbyte, Astral, CARTO, Cloudera, ForgeRock, Heptio, Laravel, Polars B.V. … |
 | Andreessen Horowitz | venture firm | 32 | 19 | Alluxio, Anyscale, Astral, Black Forest Labs, Databricks, GitHub, Imply, Inferact … |
 | Sequoia Capital | venture firm | 29 | 16 | Chainguard, Deno Land Inc., Docker Inc., FastAPI Labs, GitHub, LangChain, Observable, Inc., Pydantic Services … |
@@ -165,7 +165,7 @@ Combinator's. The funders that appear most often:
 
 | Group | Funder–venture links | Venture firm | Corporate or strategic | Accelerator or studio | Growth, crossover, PE or state | Person (angel) | Grant, crowd or crypto | Other or unclassified |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| U1 (most-starred projects) | 1557 | 48% | 11% | 5% | 8% | 25% | 3% | 1% |
+| U1 (most-starred projects) | 1561 | 48% | 11% | 5% | 8% | 25% | 3% | 1% |
 | U2 (open hardware, science, lab) | 392 | 44% | 15% | 3% | 10% | 9% | 18% | 1% |
 | U3 (notable COSS, open AI) | 1152 | 51% | 19% | 1% | 16% | 11% | 1% | 1% |
 | U4 (young startups) | 960 | 42% | 6% | 26% | 1% | 22% | 3% | 0% |
@@ -267,7 +267,7 @@ Individually:
 
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
-| Y Combinator | accelerator / studio | 301 | 4 | Imgix, Mattermost, PostHog Inc., SigNoz, /dev/fast, 0.security, 280 North, Activeloop … |
+| Y Combinator | accelerator / studio | 302 | 4 | Imgix, Mattermost, PostHog Inc., SigNoz, /dev/fast, 0.security, 280 North, Activeloop … |
 | Neo | accelerator / studio | 4 | 1 | Bluesky, Dagster Labs, Mage, Warp |
 | Open Core Ventures | accelerator / studio | 4 | 0 | GrapesJS, Mermaid Chart, Phaser Studio Inc., Stirling PDF |
 | Techstars | accelerator / studio | 4 | 0 | Comet ML, Ionic, Open Bionics, Qovery |
@@ -349,7 +349,7 @@ first cheques.
 
 | Funder | Type | Early rounds joined | Of which led | Ventures |
 | --- | --- | --- | --- | --- |
-| Y Combinator | accelerator / studio | 360 | 2 | /dev/fast, 0.security, 280 North, Activeloop, Activepieces, Acyclic Labs, Adap, Aden |
+| Y Combinator | accelerator / studio | 361 | 2 | /dev/fast, 0.security, 280 North, Activeloop, Activepieces, Acyclic Labs, Adap, Aden |
 | Accel | venture firm | 28 | 22 | Airbyte, Appsmith, Astral, Cloudera, Couchbase, ForgeRock, H Company, Heptio |
 | Andreessen Horowitz | venture firm | 23 | 15 | Alluxio, Anyscale, Black Forest Labs, Boltz PBC, Civit, Databricks, Flotype, GitButler |
 | SV Angel | venture firm | 19 | 1 | Airbyte, Anomaly, Buoyant, Composio, Imgix, KERNEL, Mastra, Modular Inc. |
@@ -648,7 +648,7 @@ nor guaranteed lower bounds.
 
 | Check | What it tests | Result |
 | --- | --- | --- |
-| Every investor name in a counted round against the page its round cites ([`data/source_checks_deals.csv`](data/source_checks_deals.csv)) | that the name is on the page the row cites (a name match, not proof of an investment) | Of 5,218 names whose page could be fetched: 4,855 (93%) appear in the page text; 188 more appear only in its markup, which is how company pages show investor logos; 175 don't appear at all. Those are mostly Chinese names recorded in English, pages that load by script, and some real errors. Two verification passes reopened 99 of them by hand: 68 confirmed on the cited page, 16 on another page, 10 not supported (left out of the counts) and 5 unclear |
+| Every investor name in a counted round against the page its round cites ([`data/source_checks_deals.csv`](data/source_checks_deals.csv)) | that the name is on the page the row cites (a name match, not proof of an investment) | Of 5,219 names whose page could be fetched: 4,856 (93%) appear in the page text; 188 more appear only in its markup, which is how company pages show investor logos; 175 don't appear at all. Those are mostly Chinese names recorded in English, pages that load by script, and some real errors. Two verification passes reopened 99 of them by hand: 68 confirmed on the cited page, 16 on another page, 10 not supported (left out of the counts) and 5 unclear |
 | A hand check of 12 links drawn at random | that the name is a funder of that venture, in context | 9 confirmed in the cited sentence; 3 on pages that couldn't be read (a bot wall, a product page, a press release that loads by script). None was wrong |
 | A second hand check, after the review: 40 links drawn at random with a fixed seed, 30 from U1–U3 and 10 from U4 ([sample](data/verify/spot_check_sample.csv), [verdicts](data/verify/spot_check_verdicts.csv)) | the same, reading the passage that names the funder | Of the 36 whose page could be read, 33 confirmed (one only as a logo among the company's backers, one with its round unclear). One was in a round reported as not yet closed; such rounds are now left out of the counts. One name was a logo under "community supporters", with no stated role, and one could not be checked on its cited page, a 36Kr database entry (the row says the name came from a separate 36Kr article). 4 pages could not be read (HTTP 403 or 429) |
 | Investors' own portfolio pages ([`data/portfolio/`](data/portfolio/)) | recall, from the investors' side | Of 105 portfolio pages, 77 could be read. They link to 70 ventures in this list by website. 44 of those links were already in the deal data; 24 of the other 26 were confirmed on the page and added, and 2 were false matches |
@@ -661,13 +661,13 @@ merge, not now.
 
 Two sensitivity checks, the first set by the protocol and the second asked for by Edison's review:
 
-- **Source quality.** 116 of the 3,101 U1–U3 funder–venture links
+- **Source quality.** 116 of the 3,105 U1–U3 funder–venture links
   rest only on databases or Wikipedia. Dropping them leaves 20 of the top 20 in place.
-  Across all four groups it takes the list from 1,951 funders to
-  1,900.
+  Across all four groups it takes the list from 1,954 funders to
+  1,903.
 - **Openness.** 82 of the U1–U3 ventures with named funders are
   only partly open (`open_ok` = partial: open core, some open-weight releases, chip firms with open instruction sets
-  or software). Keeping only the 358 that passed outright keeps
+  or software). Keeping only the 360 that passed outright keeps
   16 of the top 20. Out go NVIDIA (incl. NVentures), General Catalyst, Salesforce Ventures, Battery Ventures; in come
   Nexus Venture Partners, Guillermo Rauch, OSS Capital, Amplify Partners.
 
@@ -730,6 +730,11 @@ shareholders is kept apart from the US firm of that name ([`data/contextual_alia
    They added rounds from company newsrooms, Wikipedia's cited articles, SEC prospectuses and archived press
    releases. Late passes found little that was new, a sign that these sources were exhausted.
    - A separate check confirmed 24 investor–venture links from investors' own portfolio pages; it rejected 2.
+   - At the end, the U1–U3 ventures with no funding found were swept once more without search: their own home and
+     about pages and the READMEs of their top GitHub repositories
+     ([`data/verify/none_found_sweep.csv`](data/verify/none_found_sweep.csv)), plus part 2's matches to SEC Form D
+     filings. That found funding for four of them (pass `xs1`): VoltAgent's angels, EveryApp's Y Combinator backing,
+     and Form D equity sales by Agno and DoltHub, whose investors the filings do not name.
 6. **Program passes.** Six passes listed the programs that fund open source and open science outside equity
    rounds: foundations (twice, the second through the Moore and Sloan grants databases), governments and public
    investors, corporate funds, crypto, accelerators, fellowships and crowdfunding. They also recorded investors
@@ -777,7 +782,7 @@ shareholders is kept apart from the US firm of that name ([`data/contextual_alia
   - Chinese-language sources were read for a handful of companies only.
   - U4 (young startups) was researched lightly by design: for most of it, YC's own page and a quick look at the
     company site.
-- **"None found" means none found.** Of the companies behind the most-starred projects, 147 have no
+- **"None found" means none found.** Of the companies behind the most-starred projects, 143 have no
   disclosed outside funding in this data, and 22 in U2 and 9 in U3 have none either.
   Some will have raised money that was never announced or that these sources don't reach. Edison's audit found
   funders for several such ventures, so a re-check with web search, which this session could no longer do, would

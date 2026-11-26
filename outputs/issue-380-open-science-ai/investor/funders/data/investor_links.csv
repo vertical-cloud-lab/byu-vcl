@@ -557,6 +557,7 @@ Benchmark,0,red-hat,Red Hat,U3,COSS (Linux),3,0,1998,series_b | series_c | ventu
 Benchmark,0,timescale,Tiger Data,U1,COSS (GitHub core),4,1,2018,series_a | series_b | series_c,0,https://blog.timescale.com/blog/40-million-to-help-developers-measure-everything-that-matters/ | https://blog.timescale.com/raised-16m-from-benchmark-nea-to-understand-machines-time-series-data-iot-9eff8213c15c | https://blog.timescale.com/raises-another-15m-for-leading-time-series-sql-database-introduces-enterprise-offering/ | https://www.timescale.com/blog/year-of-the-tiger-110-million-to-build-the-future-of-data-for-developers-worldwide/
 Benchmark,0,zimbra,Zimbra,U3,COSS (email),2,0,2006,series_c | venture_unspecified,0,https://pehub.com/yahoo-buying-zimbra | https://www.linuxtoday.com/developer/red-herring-zimbra-gets-another-14-5m
 Benjamin De Cock,1,vercel,Vercel,U1,COSS (GitHub core),1,0,,venture_unspecified,0,https://vercel.com/about
+Berkay Mollamustafaoglu,1,VoltAgent,VoltAgent,U1,COSS (GitHub core),1,0,,angel,0,https://voltagent.dev/about
 Berkeley Frontier Fund,0,u4-resemble-ai,Resemble AI,U4,open-source startup,1,0,2025,venture_unspecified,0,https://siliconangle.com/2025/12/08/resemble-ai-hauls-13m-different-approach-deepfake-detection/
 Berkeley SkyDeck Fund,0,mindsdb,MindsDB,U1,COSS (GitHub core),3,0,2018,accelerator | pre_seed | seed,0,https://venturebeat.com/business/mindsdb-raises-3-million-for-open-source-automated-machine-learning | https://www.crunchbase.com/funding_round/mindsdb-pre-seed--c7f4d965 | https://www.unite.ai/jorge-torres-co-founder-ceo-of-mindsdb-interview-series/
 Bertelsmann Asia Investment Fund,0,pingcap,PingCAP,U1,COSS (GitHub core),1,0,2020,series_d,0,https://techcrunch.com/2020/11/16/pingcap-the-open-source-developer-behind-tidb-closes-270-million-series-d/
@@ -1145,6 +1146,7 @@ Emergence Capital,0,arcee,Arcee AI,U3,open-weight models,2,2,2024,series_a | ser
 Emergence Capital,0,cline,Cline Bot Inc.,U1,COSS (GitHub core),1,1,2025,seed,0,https://cline.bot/blog/cline-raises-32m-series-a-and-seed-funding-building-the-open-source-ai-coding-agent-that-enterprises-trust
 Emergence Capital,0,together-ai,Together AI,U3,"open-source AI, open models",4,0,2023,series_a | series_b | series_c,0,https://www.together.ai/blog/announcing-our-series-c | https://www.together.ai/blog/series-a | https://www.together.ai/blog/series-a2 | https://www.together.ai/blog/together-ai-announcing-305m-series-b
 Eminence Ventures,0,u4-aitable,AITable,U4,open-source startup,1,0,2023,venture_unspecified,0,https://techcrunch.com/2023/02/09/low-code-database-apitable-is-another-airtable-challenger/
+Emre Baran,1,VoltAgent,VoltAgent,U1,COSS (GitHub core),1,0,,angel,0,https://voltagent.dev/about
 Endurance,0,automattic,Automattic,U3,COSS (WordPress),1,0,2014,series_c,0,https://ma.tt/2014/05/new-funding-for-automattic/
 Energy Impact Partners,0,particle,Particle (Spark Labs),U2,open-source IoT hardware,1,1,2019,series_c,0,https://venturebeat.com/business/particle-raises-40-million-for-iot-device-management-and-development-tools
 Engineering Capital,0,u4-kubeshark,Kubeshark,U4,open-source startup,1,0,,venture_unspecified,0,https://kubeshark.com/about
@@ -3550,6 +3552,7 @@ Uberspace,0,TecharoHQ,Techaro,U1,COSS (GitHub core),1,0,2025,other,0,https://git
 Ubiquity Ventures,0,u4-resemble-ai,Resemble AI,U4,open-source startup,1,0,2025,venture_unspecified,0,https://siliconangle.com/2025/12/08/resemble-ai-hauls-13m-different-approach-deepfake-detection/
 Udi Manber,1,rethinkdb,RethinkDB,U1,COSS (GitHub core),1,0,2010,seed,0,https://techcrunch.com/2010/04/01/rethinkdb-raises-1-2-million-for-its-database-for-solid-state-drives/
 UiPath,0,h-company,H Company,U3,open-weight agent models (partial),1,0,2024,seed,0,https://techfundingnews.com/french-company-h-raises-220m-to-develop-action-oriented-ai/
+Umur Cubukcu,1,VoltAgent,VoltAgent,U1,COSS (GitHub core),1,0,,angel,0,https://voltagent.dev/about
 Uncork Capital,0,coder,Coder Technologies,U1,COSS (GitHub core),1,0,2024,series_b,0,https://siliconangle.com/2024/06/25/coder-secures-35m-expand-global-footprint-enhance-cloud-development-tools/
 Uncork Capital,0,u4-common-paper,Common Paper,U4,open-source startup,1,0,,venture_unspecified,0,https://commonpaper.com/about
 Uncork Capital,0,tailscale,Tailscale,U1,COSS (GitHub core),4,0,2020,seed | series_a | series_b | series_c,0,https://en.wikipedia.org/wiki/Tailscale | https://tailscale.com/blog/series-b/ | https://tailscale.com/blog/series-c | https://techcrunch.com/2020/11/10/tailscale-raises-12-million-for-its-wireguard-based-corporate-vpn/
@@ -3783,6 +3786,7 @@ Y Combinator,0,u4-embrace,Embrace,U4,open-source startup,1,0,2019,accelerator,0,
 Y Combinator,0,u4-enso,Enso,U4,open-source startup,2,0,2021,accelerator | venture_unspecified,0,https://techcrunch.com/2022/04/19/enso-emerges-from-stealth-to-help-enterprises-make-sense-of-their-data/ | https://www.ycombinator.com/companies/enso
 Y Combinator,0,u4-epicenter,Epicenter,U4,open-source startup,1,0,2025,accelerator,0,https://www.ycombinator.com/companies/epicenter
 Y Combinator,0,u4-eventual,Eventual,U4,open-source startup,2,0,2022,accelerator | venture_unspecified,0,https://www.eventual.ai/about | https://www.ycombinator.com/companies/eventual
+Y Combinator,0,every-app,EveryApp (OpenSEO),U1,COSS (GitHub core),1,0,,accelerator,0,https://everyapp.com
 Y Combinator,0,u4-evidence,Evidence,U4,open-source startup,1,0,2021,accelerator,0,https://www.ycombinator.com/companies/evidence
 Y Combinator,0,u4-evidently-ai,Evidently AI,U4,open-source startup,1,0,2021,accelerator,0,https://www.ycombinator.com/companies/evidently-ai
 Y Combinator,0,u4-executor,Executor,U4,open-source startup,1,0,2026,accelerator,0,https://www.ycombinator.com/companies/executor

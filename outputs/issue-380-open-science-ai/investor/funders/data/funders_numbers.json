@@ -2,18 +2,18 @@
  "U1": {
   "ventures": 387,
   "researched": 387,
-  "with_funding": 231,
-  "none_found": 147,
+  "with_funding": 235,
+  "none_found": 143,
   "bootstrapped_stated": 9,
   "out_of_scope": 0,
-  "rounds": 549,
-  "rounds_named": 517,
-  "round_records": 558,
-  "rows_all": 602,
+  "rounds": 554,
+  "rounds_named": 519,
+  "round_records": 563,
+  "rows_all": 607,
   "rows_not_counted": 18,
-  "links": 1557,
-  "funders": 944,
-  "funders_1": 731,
+  "links": 1561,
+  "funders": 947,
+  "funders_1": 734,
   "funders_3plus": 114,
   "funders_5plus": 50,
   "funders_10plus": 12,
@@ -22,7 +22,7 @@
   "top15": [
    [
     "Y Combinator",
-    52
+    53
    ],
    [
     "Accel",
@@ -334,18 +334,18 @@
  "U1-U3": {
   "ventures": 641,
   "researched": 641,
-  "with_funding": 451,
-  "none_found": 178,
+  "with_funding": 455,
+  "none_found": 174,
   "bootstrapped_stated": 12,
   "out_of_scope": 0,
-  "rounds": 1261,
-  "rounds_named": 1175,
-  "round_records": 1282,
-  "rows_all": 1404,
+  "rounds": 1266,
+  "rounds_named": 1177,
+  "round_records": 1287,
+  "rows_all": 1409,
   "rows_not_counted": 60,
-  "links": 3101,
-  "funders": 1651,
-  "funders_1": 1238,
+  "links": 3105,
+  "funders": 1654,
+  "funders_1": 1241,
   "funders_3plus": 220,
   "funders_5plus": 98,
   "funders_10plus": 38,
@@ -354,7 +354,7 @@
   "top15": [
    [
     "Y Combinator",
-    60
+    61
    ],
    [
     "Accel",
@@ -419,7 +419,7 @@
   "venture_firm": 835,
   "growth_pe_hedge": 134,
   "corporate_venture": 228,
-  "angel": 504,
+  "angel": 507,
   "crowdfunding": 14,
   "public_investor": 43,
   "crypto_fund_or_dao": 59,
@@ -650,17 +650,17 @@
  },
  "rounds_by_source_kind": {
   "news": 816,
-  "company": 417,
+  "company": 419,
   "investor": 36,
   "wikipedia": 118,
   "other": 422,
-  "filing": 32,
+  "filing": 35,
   "database": 34
  },
  "source_check": {
-  "mentions": 5514,
-  "fetched": 5218,
-  "found": 4855,
+  "mentions": 5518,
+  "fetched": 5219,
+  "found": 4856,
   "markup_only": 188,
   "not_on_page": 175,
   "share_found": 0.93,
@@ -810,7 +810,7 @@
   "amplify_partners": 17,
   "bessemer_venture_partners": 20,
   "gv": 20,
-  "y_combinator": 301,
+  "y_combinator": 302,
   "sosv": 3,
   "kickstarter_backers": 16,
   "khosla_ventures": 12,
@@ -834,7 +834,7 @@
  },
  "sensitivity_db": {
   "links_db_only": 116,
-  "links": 3101,
+  "links": 3105,
   "top20_overlap": 20,
   "dropped_from_top20": []
  },
@@ -878,8 +878,8 @@
  },
  "sensitivity_open_yes": {
   "ventures_partial_with_links": 82,
-  "ventures_yes_with_links": 358,
-  "links": 2319,
+  "ventures_yes_with_links": 360,
+  "links": 2323,
   "top20_overlap": 16,
   "dropped_from_top20": [
    "NVIDIA (incl. NVentures)",
@@ -895,10 +895,10 @@
   ]
  },
  "sensitivity_db_all": {
-  "links": 4061,
-  "funders": 1951,
-  "links_strict": 3930,
-  "funders_strict": 1900
+  "links": 4065,
+  "funders": 1954,
+  "links_strict": 3934,
+  "funders_strict": 1903
  },
  "thesis_kinds": {
   "named_focus_or_program": 4,
@@ -943,8 +943,8 @@
  },
  "u2_kickstarter": 13,
  "yc_early": {
-  "records": 361,
-  "ventures": 295
+  "records": 362,
+  "ventures": 296
  },
  "spot_check": {
   "links": 40,

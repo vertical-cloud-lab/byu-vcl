@@ -1,0 +1,6 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+VoltAgent,VoltAgent,U1,angel,Angel investors listed on the company's about page,,,,Emre Baran (person) | Umur Cubukcu (person) | Berkay Mollamustafaoglu (person),https://voltagent.dev/about,company,Heading 'Angel Investors' on the about page; date and amount not stated
+every-app,EveryApp (OpenSEO),U1,accelerator,Y Combinator (stated on the company's home page),,,,Y Combinator,https://everyapp.com,company,Home page footer: Backed by Y Combinator; batch not stated
+agno-agi,Agno,U1,venture_unspecified,Equity offering per SEC Form D (Phidata Inc.),2024-08,5404992,,,https://www.sec.gov/Archives/edgar/data/2035750/000203575024000001/primary_doc.xml,filing,"Form D filed 2024-08-29: $5,404,992 sold to 5 investors, not named"
+dolthub,DoltHub,U1,venture_unspecified,Equity offering per SEC Form D (Liquidata Inc.),2019-10,4999995,,,https://www.sec.gov/Archives/edgar/data/1793409/000156761919020547/primary_doc.xml,filing,"Form D filed 2019-11-07: $4,999,995 sold of $5,250,000 offered, to 1 investor, not named"
+dolthub,DoltHub,U1,venture_unspecified,Equity offering per SEC Form D (DoltHub Inc.),2021-08,15999960,,,https://www.sec.gov/Archives/edgar/data/1793409/000179340921000002/primary_doc.xml,filing,"Form D filed 2021-10-27: $15,999,960 sold to 8 investors, not named"

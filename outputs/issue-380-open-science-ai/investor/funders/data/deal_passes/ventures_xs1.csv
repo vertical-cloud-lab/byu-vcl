@@ -1,0 +1,5 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+VoltAgent,VoltAgent,U1,,,yes,,,unknown,yes,1,"Sweep of none-found ventures' own pages, 2026-11-26: the about page lists three angel investors under 'Angel Investors'; the first pass had read them as team members.",,2026-11-26T08:05:20Z
+every-app,EveryApp (OpenSEO),U1,,,yes,,,unknown,yes,1,"Sweep of none-found ventures' own pages, 2026-11-26: the home page says 'Backed by Y Combinator'.",,2026-11-26T08:05:20Z
+agno-agi,Agno,U1,,,yes,,,unknown,yes,1,"SEC Form D (found by part 2's Form D match, read 2026-11-26): Phidata Inc., Agno's former name, sold $5.4M of equity to five investors in August 2024; the investors are not named.",,2026-11-26T08:05:20Z
+dolthub,DoltHub,U1,,,yes,,,unknown,yes,2,"SEC Form D filings (found by part 2's Form D match, read 2026-11-26): Liquidata Inc. (DoltHub's former name) in 2019 and DoltHub Inc. in 2021; the investors are not named.",,2026-11-26T08:05:20Z

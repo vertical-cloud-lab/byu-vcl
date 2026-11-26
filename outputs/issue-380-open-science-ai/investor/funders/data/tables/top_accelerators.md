@@ -1,6 +1,6 @@
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
-| Y Combinator | accelerator / studio | 301 | 4 | Imgix, Mattermost, PostHog Inc., SigNoz, /dev/fast, 0.security, 280 North, Activeloop … |
+| Y Combinator | accelerator / studio | 302 | 4 | Imgix, Mattermost, PostHog Inc., SigNoz, /dev/fast, 0.security, 280 North, Activeloop … |
 | Neo | accelerator / studio | 4 | 1 | Bluesky, Dagster Labs, Mage, Warp |
 | Open Core Ventures | accelerator / studio | 4 | 0 | GrapesJS, Mermaid Chart, Phaser Studio Inc., Stirling PDF |
 | Techstars | accelerator / studio | 4 | 0 | Comet ML, Ionic, Open Bionics, Qovery |

@@ -455,6 +455,11 @@ shareholders is kept apart from the US firm of that name ([`data/contextual_alia
    They added rounds from company newsrooms, Wikipedia's cited articles, SEC prospectuses and archived press
    releases. Late passes found little that was new, a sign that these sources were exhausted.
    - A separate check confirmed 24 investor–venture links from investors' own portfolio pages; it rejected 2.
+   - At the end, the U1–U3 ventures with no funding found were swept once more without search: their own home and
+     about pages and the READMEs of their top GitHub repositories
+     ([`data/verify/none_found_sweep.csv`](data/verify/none_found_sweep.csv)), plus part 2's matches to SEC Form D
+     filings. That found funding for four of them (pass `xs1`): VoltAgent's angels, EveryApp's Y Combinator backing,
+     and Form D equity sales by Agno and DoltHub, whose investors the filings do not name.
 6. **Program passes.** Six passes listed the programs that fund open source and open science outside equity
    rounds: foundations (twice, the second through the Moore and Sloan grants databases), governments and public
    investors, corporate funds, crypto, accelerators, fellowships and crowdfunding. They also recorded investors

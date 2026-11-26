@@ -1,6 +1,6 @@
 | Funder | Type | Early rounds joined | Of which led | Ventures |
 | --- | --- | --- | --- | --- |
-| Y Combinator | accelerator / studio | 360 | 2 | /dev/fast, 0.security, 280 North, Activeloop, Activepieces, Acyclic Labs, Adap, Aden |
+| Y Combinator | accelerator / studio | 361 | 2 | /dev/fast, 0.security, 280 North, Activeloop, Activepieces, Acyclic Labs, Adap, Aden |
 | Accel | venture firm | 28 | 22 | Airbyte, Appsmith, Astral, Cloudera, Couchbase, ForgeRock, H Company, Heptio |
 | Andreessen Horowitz | venture firm | 23 | 15 | Alluxio, Anyscale, Black Forest Labs, Boltz PBC, Civit, Databricks, Flotype, GitButler |
 | SV Angel | venture firm | 19 | 1 | Airbyte, Anomaly, Buoyant, Composio, Imgix, KERNEL, Mastra, Modular Inc. |

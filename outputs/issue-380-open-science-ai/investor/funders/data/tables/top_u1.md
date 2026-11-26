@@ -1,6 +1,6 @@
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
-| Y Combinator | accelerator / studio | 52 | 3 | Mattermost, PostHog Inc., SigNoz, Activepieces, Anomaly, Apify, BerriAI, Better Auth … |
+| Y Combinator | accelerator / studio | 53 | 3 | Mattermost, PostHog Inc., SigNoz, Activepieces, Anomaly, Apify, BerriAI, Better Auth … |
 | Accel | venture firm | 14 | 10 | Astral, Laravel, Polars B.V., Sentry, Strapi, Supabase, Tailscale, Vercel … |
 | Andreessen Horowitz | venture firm | 14 | 9 | Anyscale, Astral, Black Forest Labs, Isovalent, Linera, Meteor Software, Nrwl, Temporal Technologies … |
 | Sequoia Capital | venture firm | 14 | 9 | Deno Land Inc., Docker Inc., FastAPI Labs, LangChain, Streamlit, Temporal Technologies, Warp, Zed Industries … |

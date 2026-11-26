@@ -149,6 +149,9 @@ anomalyco,Anomaly,2021-07,seed,investor,Greylock Partners,https://techcrunch.com
 anomalyco,Anomaly,2021-07,seed,investor,SV Angel,https://techcrunch.com/2021/07/23/serverless-stack-raises-1m-for-open-source-application-framework/,news,found,yes
 anomalyco,Anomaly,2021-07,seed,investor,Y Combinator,https://techcrunch.com/2021/07/23/serverless-stack-raises-1m-for-open-source-application-framework/,news,found,yes
 anomalyco,Anomaly,2021,accelerator,investor,Y Combinator,https://www.ycombinator.com/companies/opencode,other,found,yes
+VoltAgent,VoltAgent,,angel,investor,Emre Baran (person),https://voltagent.dev/about,company,found,yes
+VoltAgent,VoltAgent,,angel,investor,Umur Cubukcu (person),https://voltagent.dev/about,company,found,yes
+VoltAgent,VoltAgent,,angel,investor,Berkay Mollamustafaoglu (person),https://voltagent.dev/about,company,found,yes
 langchain-ai,LangChain,2023-04,seed,lead,Benchmark,https://blog.langchain.dev/announcing-our-10m-seed-round-led-by-benchmark/,company,found,yes
 langchain-ai,LangChain,2024-02,series_a,lead,Sequoia Capital,https://blog.langchain.dev/langsmith-ga/,company,found,yes
 langchain-ai,LangChain,2025-10,series_b,lead,IVP,https://blog.langchain.com/series-b/,company,found,yes
@@ -290,10 +293,10 @@ astral-sh,Astral,2023-04,seed,investor,Solomon Hykes (person),https://astral.sh/
 astral-sh,Astral,2023-04,seed,investor,David Cramer (person),https://astral.sh/blog/announcing-astral-the-company-behind-ruff,company,found,yes
 astral-sh,Astral,2023-04,seed,investor,Wes McKinney (person),https://astral.sh/blog/announcing-astral-the-company-behind-ruff,company,found,yes
 astral-sh,Astral,2023-04,seed,investor,Nick Schrock (person),https://astral.sh/blog/announcing-astral-the-company-behind-ruff,company,found,yes
-grafana,Grafana Labs,2019-10,series_a,investor,Lightspeed Venture Partners,https://news.crunchbase.com/news/grafana-labs-brings-in-50m-series-b-for-open-source-developer-platform/,news,found,yes
-grafana,Grafana Labs,2019-10,series_a,investor,Lead Edge Capital,https://news.crunchbase.com/news/grafana-labs-brings-in-50m-series-b-for-open-source-developer-platform/,news,found,yes
-grafana,Grafana Labs,2020-08,series_b,lead,Lightspeed Venture Partners,https://news.crunchbase.com/news/grafana-labs-brings-in-50m-series-b-for-open-source-developer-platform/,news,found,yes
-grafana,Grafana Labs,2020-08,series_b,investor,Lead Edge Capital,https://news.crunchbase.com/news/grafana-labs-brings-in-50m-series-b-for-open-source-developer-platform/,news,found,yes
+grafana,Grafana Labs,2019-10,series_a,investor,Lightspeed Venture Partners,https://news.crunchbase.com/news/grafana-labs-brings-in-50m-series-b-for-open-source-developer-platform/,news,unavailable,yes
+grafana,Grafana Labs,2019-10,series_a,investor,Lead Edge Capital,https://news.crunchbase.com/news/grafana-labs-brings-in-50m-series-b-for-open-source-developer-platform/,news,unavailable,yes
+grafana,Grafana Labs,2020-08,series_b,lead,Lightspeed Venture Partners,https://news.crunchbase.com/news/grafana-labs-brings-in-50m-series-b-for-open-source-developer-platform/,news,unavailable,yes
+grafana,Grafana Labs,2020-08,series_b,investor,Lead Edge Capital,https://news.crunchbase.com/news/grafana-labs-brings-in-50m-series-b-for-open-source-developer-platform/,news,unavailable,yes
 grafana,Grafana Labs,2024-08,series_d,lead,Lightspeed Venture Partners,https://siliconangle.com/2024/08/21/infrastructure-monitoring-startup-grafana-labs-raises-270m-6b-valuation/,news,found,yes
 grafana,Grafana Labs,2024-08,series_d,investor,GIC,https://siliconangle.com/2024/08/21/infrastructure-monitoring-startup-grafana-labs-raises-270m-6b-valuation/,news,found,yes
 grafana,Grafana Labs,2024-08,series_d,investor,Sequoia Capital,https://siliconangle.com/2024/08/21/infrastructure-monitoring-startup-grafana-labs-raises-270m-6b-valuation/,news,found,yes
@@ -1687,6 +1690,7 @@ reflex-dev,Reflex,2026-11,series_a,investor,Y Combinator,https://reflex.dev/blog
 reflex-dev,Reflex,2026-11,series_a,investor,Lux Capital,https://reflex.dev/blog/series-a-announcement/,company,found,yes
 reflex-dev,Reflex,2026-11,series_a,investor,Abstract Ventures,https://reflex.dev/blog/series-a-announcement/,company,found,yes
 manaflow-ai,Manaflow,2024,accelerator,investor,Y Combinator,https://www.ycombinator.com/companies/cmux,other,found,yes
+every-app,EveryApp (OpenSEO),,accelerator,investor,Y Combinator,https://everyapp.com,company,found,yes
 fingerprintjs,Fingerprint (FingerprintJS Inc.),,venture_unspecified,investor,Craft Ventures,https://fingerprint.com/about-us/,company,found,yes
 fingerprintjs,Fingerprint (FingerprintJS Inc.),,venture_unspecified,investor,Nexus VP,https://fingerprint.com/about-us/,company,found,yes
 fingerprintjs,Fingerprint (FingerprintJS Inc.),,venture_unspecified,investor,Uncorrelated Ventures,https://fingerprint.com/about-us/,company,found,yes
@@ -2674,7 +2678,7 @@ authorea,Authorea,2016-01,venture_unspecified,lead,Knight Foundation,https://web
 authorea,Authorea,2016-01,venture_unspecified,investor,ff Venture Capital,https://web.archive.org/web/2016/http://www.businesswire.com/news/home/20160126005194/en/Authorea-Raises-1.5M-Advance-Open-Reproducible-Data-Driven,news,found,yes
 authorea,Authorea,2016-01,venture_unspecified,investor,NY Angels,https://web.archive.org/web/2016/http://www.businesswire.com/news/home/20160126005194/en/Authorea-Raises-1.5M-Advance-Open-Reproducible-Data-Driven,news,found,yes
 frontiers,Frontiers Media,2013-02,corporate_strategic,investor,Nature Publishing Group,https://en.wikipedia.org/wiki/Frontiers_Media,wikipedia,found,no (ownership transfer: Nature Publishing Group bought a controlling interest from the owners)
-bela,Augmented Instruments (Bela),2016-03,crowdfunding_reward,investor,Kickstarter backers,https://www.kicktraq.com/projects/423153472/bela-an-embedded-platform-for-low-latency-interact/,other,unavailable,yes
+bela,Augmented Instruments (Bela),2016-03,crowdfunding_reward,investor,Kickstarter backers,https://www.kicktraq.com/projects/423153472/bela-an-embedded-platform-for-low-latency-interact/,other,found,yes
 bela,Augmented Instruments (Bela),2017,grant_government,investor,Innovate UK,https://www.makery.info/en/2018/02/06/bela-un-raspberry-pi-a-quelques-milliemes-de-seconde-pres/,news,found,yes
 bela,Augmented Instruments (Bela),2016-04,crowdfunding_reward,investor,Kickstarter backers,https://www.kickstarter.com/projects/423153472/bela-an-embedded-platform-for-low-latency-interact,other,unavailable,yes
 bela,Augmented Instruments (Bela),2019-10,crowdfunding_reward,investor,Kickstarter backers,https://www.kickstarter.com/projects/423153472/trill-touch-sensing-for-makers,other,unavailable,yes
