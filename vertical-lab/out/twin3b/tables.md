@@ -142,7 +142,9 @@ Kaplan-Meier median days to each target, the seeds that got there, and the final
 
 | Lab | Stock | Policy | Al best | Al T1 | Al T2 | Cu best | Cu T1 | Cu T2 | Mean campaign spend Al / Cu |
 |---|---|---|---|---|---|---|---|---|---|
+| conventional | lean | BOFN, time-aware | 0.75 ± 0.00 | 1/1; 184 | 1/1; 184 | 0.62 ± 0.00 | 1/1; 1025 | 0/1; >1095 | $323k / $132k |
 | conventional | lean | Heuristic | 0.64 ± 0.03 | 12/12; 159 | 6/12; 337 | 0.57 ± 0.02 | 8/12; 540 | 1/12; >1095 | $360k / $180k |
+| conventional | lean | pKGFN, time-aware | 0.75 ± 0.00 | 1/1; 192 | 1/1; 192 | 0.48 ± 0.00 | 0/1; >1095 | 0/1; >1095 | $293k / $99k |
 | conventional | lean | Tiered screening (the funnel) | 0.44 ± 0.06 | 9/12; 215 | 0/12; >1095 | 0.69 ± 0.01 | 12/12; 405 | 9/12; 561 | $360k / $180k |
 | conventional | stocked | Heuristic | 0.57 ± 0.02 | 12/12; 46 | 2/12; >1095 | 0.59 ± 0.02 | 10/12; 540 | 1/12; >1095 | $360k / $181k |
 | conventional | stocked | Tiered screening (the funnel) | 0.48 ± 0.05 | 10/12; 190 | 1/12; >1095 | 0.70 ± 0.01 | 12/12; 348 | 10/12; 437 | $360k / $180k |

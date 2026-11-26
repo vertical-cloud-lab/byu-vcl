@@ -38,7 +38,8 @@ in the same worker and BoTorch's fit retries were ruled out (notes/twin_round3b.
   (``reexec_pinned``).
 
 ``TWIN_PIN=avx2`` pins the AVX2 kernels instead (``Haswell``, ``avx2``, ``AVX2``), which run on any x86-64 CPU from
-2013 on, but give rows of their own, not round 3's; ``TWIN_PIN=off`` leaves the libraries to choose. A machine
+2013 on, but give rows of their own, not round 3's; ``TWIN_PIN=off`` sets nothing (kernels, threads and hashing as
+the libraries and the interpreter choose). A machine
 without AVX-512 can't run the default pin (OpenBLAS would fault on the first AVX-512 instruction), so ``apply()`` then
 leaves the kernels alone and ``check`` reports that this machine can't reproduce the committed rows.
 """
@@ -97,9 +98,10 @@ def apply() -> dict:
         env = {}
     else:
         env = dict(PINS[want])
-    for k in THREADS:
-        env[k] = "1"
-    env["PYTHONHASHSEED"] = "0"
+    if want != "off":
+        for k in THREADS:
+            env[k] = "1"
+        env["PYTHONHASHSEED"] = "0"
     STATE["late"] = any(m in sys.modules for m in ("numpy", "torch", "scipy"))
     for k, v in env.items():
         os.environ[k] = v

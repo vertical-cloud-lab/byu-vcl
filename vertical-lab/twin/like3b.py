@@ -402,3 +402,101 @@ def tables(S) -> str:
 if __name__ == "__main__":
     S = run()
     print((OUT / "tables.md").read_text()[:4000])
+
+
+# --------------------------------------------------------------------------------------- the notes' headline tables
+HEADLINE = [  # (campaign, target, vertical policy, conventional policy, what round 3 reported)
+    ("flaime_al", "T1", "heuristic", "heuristic", "6.8x (plain medians; Kaplan-Meier 6.6x)"),
+    ("flaime_al", "T1", "pkgfn3", "heuristic", "2.3x"),
+    ("flaime_al", "T2", "pkgfn3", "heuristic", "4.0x, the aluminium headline"),
+    ("flaime_al", "T2", "bofn3", "heuristic", "-"),
+    ("flaime_al", "T2", "pkgfn3", "pkgfn3", "not run"),
+    ("flaime_al", "T2", "bofn3", "bofn3", "not run"),
+    ("onr_cu", "T1", "tiered", "tiered", "2.9x"),
+    ("onr_cu", "T2", "tiered", "tiered", "3.8x, the copper headline"),
+    ("onr_cu", "T1", "pkgfn3", "heuristic", "1.8x"),
+    ("onr_cu", "T1", "pkgfn3", "pkgfn3", "not run"),
+    ("onr_cu", "T1", "bofn3", "bofn3", "not run"),
+]
+SHORT = {"heuristic": "heuristic", "tiered": "funnel", "bofn3": "BOFN", "pkgfn3": "pKGFN"}
+
+
+def headline_md(S, money=False) -> str:
+    comps = S["comparisons"]
+
+    def get(pol, ref, vs, cs, camp, tn):
+        return next((r for r in comps if (r["policy"], r["ref"], r["vert_stock"], r["conv_stock"], r["campaign"],
+                                          r["target"]) == (pol, ref, vs, cs, camp, tn)), None)
+    order = (("stocked", "lean"), ("lean", "lean"), ("stocked", "stocked"), ("lean", "stocked"))
+    L = ["| Target | Vertical lab | Conventional lab | Round 3 said | " + " | ".join(PAIR_NAMES[p] for p in order) + " |",
+         "|---|---|---|---|" + "---|" * len(order)]
+    for camp, tn, pol, ref, r3 in HEADLINE:
+        cells = []
+        for vs, cs in order:
+            r = get(pol, ref, vs, cs, camp, tn)
+            cells.append(_cell(r, money) if r else "not run")
+        if all(c == "not run" for c in cells):
+            continue
+        L.append(f"| {'Al' if camp == 'flaime_al' else 'Cu'} {tn} | {SHORT[pol]} | {SHORT[ref]} | "
+                 f"{r3 if not money else '-'} | " + " | ".join(cells) + " |")
+    return "\n".join(L)
+
+
+def stock_md(S) -> str:
+    L = ["| Lab | Policy | Al T1 | Al T2 | Cu T1 | Cu T2 | Final best, stocked − lean (Al; Cu) |",
+         "|---|---|---|---|---|---|---|"]
+    se = S["stock_effect"]
+    for fac in ("vertical_lab", "proposed"):
+        for pol in POLICIES:
+            rs = {(r["campaign"], r["target"]): r for r in se if (r["facility"], r["policy"]) == (fac, pol)}
+            if not rs:
+                continue
+
+            def c(camp, tn):
+                r = rs.get((camp, tn))
+                if not r:
+                    return "-"
+                x = r["days"]
+                return f"{fmt_factor(x)}; {x['hit_vert']}/{x['n']} vs {x['hit_conv']}/{x['n']}"
+            bd = [rs[(camp, "T1")]["best_diff"] for camp in CAMPS]
+            L.append(f"| {'vertical' if fac == 'vertical_lab' else 'conventional'} | {SHORT[pol]} | "
+                     f"{c('flaime_al', 'T1')} | {c('flaime_al', 'T2')} | {c('onr_cu', 'T1')} | {c('onr_cu', 'T2')} | "
+                     f"{bd[0]['mean']:+.2f} ± {bd[0]['se']:.2f}; {bd[1]['mean']:+.2f} ± {bd[1]['se']:.2f} (n={bd[0]['n']}) |")
+    return "\n".join(L)
+
+
+def arms_md(S) -> str:
+    L = ["| Lab | Stock | Policy | Seeds | Al best | Al T1 | Al T2 | Cu best | Cu T1 | Cu T2 |",
+         "|---|---|---|---|---|---|---|---|---|---|"]
+    order = [("vertical_lab", "stocked"), ("vertical_lab", "lean"), ("proposed", "stocked"), ("proposed", "lean")]
+    for pol in POLICIES:
+        for fac, stock in order:
+            a = S["arms"].get(f"{fac}|{stock}|{pol}")
+            if not a:
+                continue
+            c = a["campaigns"]
+
+            def tt(x):
+                m = x["median"]
+                ok = isinstance(m, (int, float)) and math.isfinite(m)
+                return f"{x['hit']}/{x['n']}; " + (f"{m:.0f}" if ok else f">{int(HORIZON[fac])}")
+            al, cu = c["flaime_al"], c["onr_cu"]
+            L.append(f"| {'vertical' if fac == 'vertical_lab' else 'conventional'} | {stock} | {SHORT[pol]} | "
+                     f"{a['seeds'][0]}-{a['seeds'][-1]} | {al['T1']['best_mean']:.2f} ± {al['T1']['best_se']:.2f} | "
+                     f"{tt(al['T1'])} | {tt(al['T2'])} | {cu['T1']['best_mean']:.2f} ± {cu['T1']['best_se']:.2f} | "
+                     f"{tt(cu['T1'])} | {tt(cu['T2'])} |")
+    return "\n".join(L)
+
+
+def median_seeds_md(S) -> str:
+    L = ["| Arm | Al T1 | Al T2 | Cu T1 | Cu T2 |", "|---|---|---|---|---|"]
+    for key, d in S["median_seeds"].items():
+        fac, stock, pol = key.split("|")
+
+        def c(camp, tn):
+            x = d[camp][tn]
+            day = f"day {x['day']:.0f}" if x["day"] is not None else "not reached by most"
+            return f"seed {x['seed']} ({day}; {x['hit']}/{x['of']})" + ("" if x["events"] else ", no log")
+        L.append(f"| {'vertical' if fac == 'vertical_lab' else 'conventional'}, {stock}, {SHORT[pol]} | "
+                 f"{c('flaime_al', 'T1')} | {c('flaime_al', 'T2')} | {c('onr_cu', 'T1')} | {c('onr_cu', 'T2')} |")
+    return "\n".join(L)

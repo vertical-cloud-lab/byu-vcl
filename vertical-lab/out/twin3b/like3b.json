@@ -10,6 +10,52 @@
   }
  },
  "arms": {
+  "proposed|lean|bofn3": {
+   "seeds": [
+    0
+   ],
+   "sources": [
+    "out/twin3b/runs/c_lean_net.jsonl"
+   ],
+   "campaigns": {
+    "flaime_al": {
+     "T1": {
+      "n": 1,
+      "hit": 1,
+      "median": 184.4,
+      "best_mean": 0.7468801070758253,
+      "best_se": 0.0,
+      "spent_mean": 322604.65
+     },
+     "T2": {
+      "n": 1,
+      "hit": 1,
+      "median": 184.4,
+      "best_mean": 0.7468801070758253,
+      "best_se": 0.0,
+      "spent_mean": 322604.65
+     }
+    },
+    "onr_cu": {
+     "T1": {
+      "n": 1,
+      "hit": 1,
+      "median": 1024.971,
+      "best_mean": 0.6191290815436471,
+      "best_se": 0.0,
+      "spent_mean": 132430.18
+     },
+     "T2": {
+      "n": 1,
+      "hit": 0,
+      "median": Infinity,
+      "best_mean": 0.6191290815436471,
+      "best_se": 0.0,
+      "spent_mean": 132430.18
+     }
+    }
+   }
+  },
   "proposed|lean|heuristic": {
    "seeds": [
     0,
@@ -63,6 +109,52 @@
       "best_mean": 0.5654793151185961,
       "best_se": 0.024161284938581752,
       "spent_mean": 180009.49249999996
+     }
+    }
+   }
+  },
+  "proposed|lean|pkgfn3": {
+   "seeds": [
+    0
+   ],
+   "sources": [
+    "out/twin3b/runs/c_lean_net.jsonl"
+   ],
+   "campaigns": {
+    "flaime_al": {
+     "T1": {
+      "n": 1,
+      "hit": 1,
+      "median": 191.65,
+      "best_mean": 0.7487584117997851,
+      "best_se": 0.0,
+      "spent_mean": 292980.66
+     },
+     "T2": {
+      "n": 1,
+      "hit": 1,
+      "median": 191.65,
+      "best_mean": 0.7487584117997851,
+      "best_se": 0.0,
+      "spent_mean": 292980.66
+     }
+    },
+    "onr_cu": {
+     "T1": {
+      "n": 1,
+      "hit": 0,
+      "median": Infinity,
+      "best_mean": 0.4797825707272323,
+      "best_se": 0.0,
+      "spent_mean": 99252.18
+     },
+     "T2": {
+      "n": 1,
+      "hit": 0,
+      "median": Infinity,
+      "best_mean": 0.4797825707272323,
+      "best_se": 0.0,
+      "spent_mean": 99252.18
      }
     }
    }
@@ -16066,6 +16158,40 @@
   }
  ],
  "median_seeds": {
+  "proposed|lean|bofn3": {
+   "flaime_al": {
+    "T1": {
+     "seed": 0,
+     "day": 184.4,
+     "hit": 1,
+     "of": 1,
+     "events": "out/twin3b/events/r3_proposed_bofn3_s0_stock-lean.json.xz"
+    },
+    "T2": {
+     "seed": 0,
+     "day": 184.4,
+     "hit": 1,
+     "of": 1,
+     "events": "out/twin3b/events/r3_proposed_bofn3_s0_stock-lean.json.xz"
+    }
+   },
+   "onr_cu": {
+    "T1": {
+     "seed": 0,
+     "day": 1024.971,
+     "hit": 1,
+     "of": 1,
+     "events": "out/twin3b/events/r3_proposed_bofn3_s0_stock-lean.json.xz"
+    },
+    "T2": {
+     "seed": 0,
+     "day": null,
+     "hit": 0,
+     "of": 1,
+     "events": "out/twin3b/events/r3_proposed_bofn3_s0_stock-lean.json.xz"
+    }
+   }
+  },
   "proposed|lean|heuristic": {
    "flaime_al": {
     "T1": {
@@ -16073,14 +16199,14 @@
      "day": 158.51,
      "hit": 12,
      "of": 12,
-     "events": null
+     "events": "out/twin3b/events/r3_proposed_heuristic_s8_stock-lean.json.xz"
     },
     "T2": {
      "seed": 3,
      "day": 336.675,
      "hit": 6,
      "of": 12,
-     "events": null
+     "events": "out/twin3b/events/r3_proposed_heuristic_s3_stock-lean.json.xz"
     }
    },
    "onr_cu": {
@@ -16089,14 +16215,48 @@
      "day": 540.147,
      "hit": 8,
      "of": 12,
-     "events": null
+     "events": "out/twin3b/events/r3_proposed_heuristic_s10_stock-lean.json.xz"
     },
     "T2": {
      "seed": 3,
      "day": null,
      "hit": 1,
      "of": 12,
-     "events": null
+     "events": "out/twin3b/events/r3_proposed_heuristic_s3_stock-lean.json.xz"
+    }
+   }
+  },
+  "proposed|lean|pkgfn3": {
+   "flaime_al": {
+    "T1": {
+     "seed": 0,
+     "day": 191.65,
+     "hit": 1,
+     "of": 1,
+     "events": "out/twin3b/events/r3_proposed_pkgfn3_s0_stock-lean.json.xz"
+    },
+    "T2": {
+     "seed": 0,
+     "day": 191.65,
+     "hit": 1,
+     "of": 1,
+     "events": "out/twin3b/events/r3_proposed_pkgfn3_s0_stock-lean.json.xz"
+    }
+   },
+   "onr_cu": {
+    "T1": {
+     "seed": 0,
+     "day": null,
+     "hit": 0,
+     "of": 1,
+     "events": "out/twin3b/events/r3_proposed_pkgfn3_s0_stock-lean.json.xz"
+    },
+    "T2": {
+     "seed": 0,
+     "day": null,
+     "hit": 0,
+     "of": 1,
+     "events": "out/twin3b/events/r3_proposed_pkgfn3_s0_stock-lean.json.xz"
     }
    }
   },
@@ -16107,14 +16267,14 @@
      "day": 214.51,
      "hit": 9,
      "of": 12,
-     "events": null
+     "events": "out/twin3b/events/r3_proposed_tiered_s10_stock-lean.json.xz"
     },
     "T2": {
      "seed": 1,
      "day": null,
      "hit": 0,
      "of": 12,
-     "events": null
+     "events": "out/twin3b/events/r3_proposed_tiered_s1_stock-lean.json.xz"
     }
    },
    "onr_cu": {
@@ -16123,14 +16283,14 @@
      "day": 404.67,
      "hit": 12,
      "of": 12,
-     "events": null
+     "events": "out/twin3b/events/r3_proposed_tiered_s5_stock-lean.json.xz"
     },
     "T2": {
      "seed": 11,
      "day": 561.458,
      "hit": 9,
      "of": 12,
-     "events": null
+     "events": "out/twin3b/events/r3_proposed_tiered_s11_stock-lean.json.xz"
     }
    }
   },
