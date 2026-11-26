@@ -267,9 +267,107 @@ alloys tested a year), so it doesn't catch up within a year. A copper truth with
 
 ![Copper with and without the γ₂ effect](../out/twin2/fig/twin2_cu_hidden.png)
 
-### 5.4-5.8 (in progress)
+### 5.4 The vertical lab against a conventional lab (`conventional`, 6 policies × 12 seeds)
 
-The conventional lab, SAAS priors, the crucible, reuse and stocking, the seeded runs and the economics are being run (`twin/bench2.py` experiments `conventional`, `saas`, `crucible`, `reuse`, `stock`, `seeded`, `seeded_dal256`).
+The conventional lab is the proposals' own (`facility = "proposed"`): the rePOWDER on FLAIME's three starts a
+weekday and one on Saturdays, BYU's core facilities at their rates, Utah's MIDI and MX-Lab and Mines' X2 with their
+booking lead times, turnaround and session caps, metal ordered as each charge needs it, day shifts. It runs three years
+at three years' money, so its slower clock has room to show where it gets to. Same seeds, same truths.
+
+**Best new alloy, mean ± SE over 12 seeds:**
+
+| Policy | FLAIME, conventional, year 1 | year 3 | FLAIME, vertical lab, year 1 | ONR, conventional, year 1 | year 3 | ONR, vertical lab, year 1 |
+|---|---|---|---|---|---|---|
+| BOFN | 0.64 ± 0.04 | 0.74 ± 0.01 | 0.65 ± 0.03 (0.69 ± 0.01 in set B) | 0.05 ± 0.05 | 0.55 ± 0.03 | 0.33 ± 0.09 (blend screen: 0.67 ± 0.01) |
+| Heuristic | 0.58 ± 0.02 | 0.68 ± 0.01 | 0.60 ± 0.02 | 0.36 ± 0.07 | 0.64 ± 0.01 | 0.58 ± 0.02 |
+| GP-BO | 0.33 ± 0.08 | 0.52 ± 0.08 | 0.46 ± 0.07 | 0.24 ± 0.08 | 0.64 ± 0.02 | 0.53 ± 0.06 |
+| Tiered screening | 0.30 ± 0.09 | 0.34 ± 0.09 | 0.34 ± 0.09 | 0.61 ± 0.04 | 0.71 ± 0.01 | 0.69 ± 0.02 |
+| Random | 0.20 ± 0.09 | 0.39 ± 0.09 | 0.10 ± 0.06 | 0.22 ± 0.07 | 0.62 ± 0.03 | 0.35 ± 0.08 |
+| Sobol | 0.10 ± 0.05 | 0.27 ± 0.07 | 0.10 ± 0.05 | 0.21 ± 0.08 | 0.57 ± 0.02 | 0.45 ± 0.05 |
+
+**Time to the state of the art** (a new alloy at or above the best reference alloy: 0.42 aluminium, 0.56 copper).
+Acceleration factor = the conventional lab's median days ÷ the vertical lab's, Kaplan-Meier medians where seeds don't
+get there, 95 % bootstrap intervals over seeds (`twin/accel.py`; `out/twin2/econ/econ_summary.json`):
+
+| Vertical lab running | against the conventional lab running | FLAIME | ONR |
+|---|---|---|---|
+| BOFN (blend screen for copper) | BOFN (plain: blend screening needs the in-house MX-Lab) | **1.9× faster** (1.1-3.4): 116 against 220 days | **3.7× faster** (2.0 to unbounded): 225 against 840 days; the conventional lab got there in 6 of 12 seeds |
+| BOFN (blend screen for copper) | a metallurgist's heuristic | **1.1×** (0.7-2.2): 116 against 123 days | **2.2×** (1.7-2.6): 225 against 490 days |
+| BOFN (blend screen for copper) | a Sobol design | at least 9.4× (the conventional lab got there in 3 of 12 seeds) | 3.5× (1.7 to unbounded) |
+| the heuristic | the same heuristic | 3.3× (1.1-11.9): 37 against 123 days | 3.4×, but the vertical lab's heuristic got there in only 7 of 12 seeds |
+
+- **The lab's own share is about 2-3× in time.** Running the same policy, the vertical lab reaches the state of the art
+  1.9× sooner with BOFN on aluminium and 3.3-3.4× sooner with the heuristic (copper's 3.7× also has the blend screen
+  in it, which only the vertical lab runs). It tests 1.5× as many aluminium alloys a year
+  (BOFN: 34.5 against 23.2) and twice as many copper alloys (12.8 against 6.2) on the same yearly money, and makes
+  1.5× as many measurements (763 against 507 a year).
+- **On aluminium, the vertical lab with BOFN is no faster to the state of the art than a conventional lab running the
+  heuristic** (1.1×, the interval includes 1). This doesn't favor BOFN: the heuristic starts from the reference alloys
+  and nudges them, which reaches 0.42 quickly anywhere. BOFN's lead is further up: halfway to the oracle's best (0.64),
+  the same comparison is 4.5× (1.5-8.8; 153 against 691 days median; 83 % of the vertical lab's seeds got there in the
+  year, 75 % of the conventional lab's in three).
+- **On copper, both effects add up.** The conventional lab's copper results take months (Mines sessions, outside
+  turnaround), so every policy there gets to the state of the art late; the vertical lab with blend screening gets
+  there 2.2-3.7× sooner than the conventional lab with any policy.
+- **Three years of the conventional lab beat one year of the vertical lab on the final score** (aluminium BOFN 0.74
+  against 0.69; copper tiered 0.71 against 0.69), as three years at three times the money should. The comparison that
+  matters is time to a target, above.
+
+![Vertical lab (one year) against the conventional lab (three years)](../out/twin2/fig/twin2_vertical_vs_conventional.png)
+![Days to the state of the art, each seed a dot](../out/twin2/fig/twin2_time_to_target.png)
+
+### 5.5-5.7 (running)
+
+SAAS priors, the crucible, powder reuse and stocking, and the seeded runs with the campaign trace are being run (`twin/bench2.py` experiments `saas`, `crucible`, `reuse`, `stock`, `seeded`, `seeded_dal256`).
+
+### 5.8 What it costs: cost per experiment, utilization, outside users (`twin/econ.py`, `notes/twin_econ.md`)
+
+Every price says where it comes from in `twin/econ.py` (procurement records and list prices, or marked assumed).
+
+- **Capital and fixed costs.** The vertical lab: $5.40M of equipment and fit-out, $1.18M a year fixed (depreciation,
+  service contracts, utilities and space, one person on the day shift and a quarter of an engineer). The conventional
+  lab owns $0.54M and rents the rest by the hour: $0.12M a year fixed.
+- **Cost per demonstrated alloy** (an alloy made, printed or deposited, and tested; both campaigns, BOFN in each lab):
+
+  | | no capex | with capex |
+  |---|---|---|
+  | Conventional lab | $9.4k | $11.6k |
+  | Vertical lab, the two campaigns alone | $15.7k | $28.6k |
+  | Vertical lab, 60 % utilized (outside users take the idle hours) | $4.5k | $5.9k |
+
+  By campaign, with capex: aluminium $10.3k conventional, $25.1k vertical alone, $5.2k vertical at 60 %; copper
+  $16.4k, $40.9k and $8.2k.
+- **The cost of getting to the state of the art**, the vertical lab (BOFN, blend screen for copper) as a fraction of
+  the conventional lab's (95 % intervals in `econ_summary.json`):
+
+  | Against the conventional lab running | | the campaigns' own spending | operating, alone | full, alone | operating, shared | full, shared |
+  |---|---|---|---|---|---|---|
+  | the same BOFN | FLAIME | 0.63 | 1.36 | 2.00 | **0.84** | 1.14 |
+  | | ONR | 0.41 | 0.84 | 1.15 | **0.42** | **0.48** |
+  | the heuristic | FLAIME | 1.23 | 2.65 | 3.81 | 1.63 | 2.16 |
+  | | ONR | 0.78 | 1.55 | 2.16 | **0.77** | **0.90** |
+
+  "Alone": the vertical lab's fixed costs carried by the two campaigns only. "Shared": outside users take each
+  in-house station's idle hours, up to 10 h a week of demand per instrument (assumed) and 60 % utilization, and pay
+  their share. Operating cost leaves capex out; full cost includes it. The conventional lab is charged alone in both
+  cases (its rented facilities' rates already include their sharing).
+- **This doesn't favor the vertical lab on its own.** Carrying its fixed costs alone, it costs more per alloy than
+  the conventional lab and more to reach the state of the art, by 1.4-3.8× on aluminium. Alone, it is cheaper only in
+  copper's operating cost against the same BOFN (0.84). Shared with outside users, it is cheaper on copper against
+  both references and in aluminium's operating cost against the same BOFN.
+- **Utilization.** With only the two campaigns, the capex-weighted utilization of the vertical lab's instruments is
+  5.8 %. The atomizer is the busiest station (46 % of the hours its start slots allow: three a weekday and one on
+  Saturday); the doser, the MIDI, the SEM, the shop and the MX-Lab are at 3-5 %, everything else under 2 %. The
+  atomizer's person, not a machine, sets the pace, as `bottleneck.py` found for ten alloys a day.
+- **Outside work (a cloud user facility).** At an assumed 10 h a week of outside demand per instrument, capped at
+  60 % utilization: about 13,500 outside jobs a year (ICP-MS samples, SEM and EBSD sessions, corrosion screens, EDM
+  cuts, atomizer runs of a user's feedstock), $1.55M of revenue and $1.23M net a year, 2.1× the lab's depreciation and
+  1.0× its fixed costs. Every capex dollar then returns $0.33 a year of value instead of $0.10. Without that demand
+  figure (which is assumed, `twin/cloud.py`), the capacity is there (about 106,000 jobs a year at 60 %) but not the
+  customers.
+
+![Cost per experiment](../out/twin2/econ/econ_cost_per_experiment.png)
+![Utilization, and what outside users could fill](../out/twin2/econ/econ_utilization.png)
 
 ## 6. Where round 2's truths differ from DAL's synthetic benchmarks
 
