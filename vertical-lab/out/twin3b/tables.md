@@ -15,8 +15,10 @@ Targets: the best existing alloy on this synthetic benchmark (T1): aluminium 0.4
 | Heuristic | the same policy | 2.4x (0.9-3.1); 12/12 vs 12/12; first in 11/12 | 1.9x (0.5-8.5); 11/12 vs 12/12; first in 8/12 | 6.6x (1.4-9.3); 11/12 vs 12/12; first in 10/12 | 0.7x (0.5-3.2); 12/12 vs 12/12; first in 7/12 |
 | Tiered screening (the funnel) | the same policy | 1.7x (0-2.2); 6/12 vs 9/12; first in 6/12 | 1.3x (0-1.9); 6/12 vs 10/12; first in 6/12 | 1.5x (0-16.7); 6/12 vs 9/12; first in 6/12 | 1.5x (0-2.2); 6/12 vs 10/12; first in 3/12 |
 | Tiered screening (the funnel) | the rule of thumb (heuristic) | 1.3x (0-2.2); 6/12 vs 12/12; first in 4/12 | 0.3x (0-5.0); 6/12 vs 12/12; first in 3/12 | 1.1x (0-15.6); 6/12 vs 12/12; first in 5/12 | 0.4x (0-2.3); 6/12 vs 12/12; first in 2/12 |
-| BOFN, time-aware | the rule of thumb (heuristic) | not run | 0.5x (0.3-4.7); 12/12 vs 12/12; first in 5/12 | 1.9x (0.6-7.2); 12/12 vs 12/12; first in 8/12 | not run |
-| pKGFN, time-aware | the rule of thumb (heuristic) | not run | 0.7x (0.4-4.7); 12/12 vs 12/12; first in 6/12 | 2.4x (0.8-8.9); 12/12 vs 12/12; first in 9/12 | not run |
+| BOFN, time-aware | the same policy | 1.4x (0.9-1.6); 3/3 vs 3/3; first in 2/3 | 1.3x (0.4-6.6); 3/3 vs 3/3; first in 2/3 | 1.8x (1.6-4.1); 3/3 vs 3/3; first in 3/3 | 1.0x (0.3-1.4); 3/3 vs 3/3; first in 2/3 |
+| BOFN, time-aware | the rule of thumb (heuristic) | 1.2x (0.4-1.7); 12/12 vs 12/12; first in 5/12 | 0.5x (0.3-4.7); 12/12 vs 12/12; first in 5/12 | 1.9x (0.6-7.2); 12/12 vs 12/12; first in 8/12 | 0.4x (0.2-1.8); 12/12 vs 12/12; first in 4/12 |
+| pKGFN, time-aware | the same policy | 1.0x (0.8-1.7); 3/3 vs 3/3; first in 2/3 | 2.3x (0.7-3.2); 3/3 vs 3/3; first in 2/3 | 2.8x (2.0-3.8); 3/3 vs 3/3; first in 3/3 | 0.8x (0.3-1.3); 3/3 vs 3/3; first in 1/3 |
+| pKGFN, time-aware | the rule of thumb (heuristic) | 1.0x (0.4-1.4); 12/12 vs 12/12; first in 5/12 | 0.7x (0.4-4.7); 12/12 vs 12/12; first in 6/12 | 2.4x (0.8-8.9); 12/12 vs 12/12; first in 9/12 | 0.3x (0.2-1.4); 12/12 vs 12/12; first in 3/12 |
 
 ### Aluminium (FLAIME): halfway to the best alloy (T2)
 
@@ -25,8 +27,10 @@ Targets: the best existing alloy on this synthetic benchmark (T1): aluminium 0.4
 | Heuristic | the same policy | <= 0.9x; 4/12 vs 6/12; first in 4/12 | neither; 1/12 vs 2/12; first in 1/12 | <= 0.9x; 1/12 vs 6/12; first in 1/12 | neither; 4/12 vs 2/12; first in 4/12 |
 | Tiered screening (the funnel) | the same policy | neither; 0/12 vs 0/12; first in 0/12 | neither; 1/12 vs 1/12; first in 1/12 | neither; 1/12 vs 0/12; first in 1/12 | neither; 0/12 vs 1/12; first in 0/12 |
 | Tiered screening (the funnel) | the rule of thumb (heuristic) | <= 0.9x; 0/12 vs 6/12; first in 0/12 | neither; 1/12 vs 2/12; first in 1/12 | <= 0.9x; 1/12 vs 6/12; first in 1/12 | neither; 0/12 vs 2/12; first in 0/12 |
-| BOFN, time-aware | the rule of thumb (heuristic) | not run | >= 11.4x; 11/12 vs 2/12; first in 10/12 | 3.5x (1.3-∞); 11/12 vs 6/12; first in 10/12 | not run |
-| pKGFN, time-aware | the rule of thumb (heuristic) | not run | >= 13.1x; 10/12 vs 2/12; first in 9/12 | 4.0x (2.1-∞); 10/12 vs 6/12; first in 9/12 | not run |
+| BOFN, time-aware | the same policy | 0.7x (0-0.9); 2/3 vs 3/3; first in 0/3 | 3.4x (0.4-∞); 3/3 vs 2/3; first in 2/3 | 1.9x (1.7-4.1); 3/3 vs 3/3; first in 3/3 | 1.3x (0-∞); 2/3 vs 2/3; first in 2/3 |
+| BOFN, time-aware | the rule of thumb (heuristic) | 1.8x (1.3-∞); 11/12 vs 6/12; first in 10/12 | >= 11.4x; 11/12 vs 2/12; first in 10/12 | 3.5x (1.3-∞); 11/12 vs 6/12; first in 10/12 | >= 6.0x; 11/12 vs 2/12; first in 10/12 |
+| pKGFN, time-aware | the same policy | 0.7x (0-1.7); 2/3 vs 3/3; first in 1/3 | 2.7x (0.3-7.6); 3/3 vs 3/3; first in 2/3 | 2.0x (1.6-3.8); 3/3 vs 3/3; first in 3/3 | 1.0x (0-2.3); 2/3 vs 3/3; first in 2/3 |
+| pKGFN, time-aware | the rule of thumb (heuristic) | 1.8x (1.2-∞); 11/12 vs 6/12; first in 9/12 | >= 13.1x; 10/12 vs 2/12; first in 9/12 | 4.0x (2.1-∞); 10/12 vs 6/12; first in 9/12 | >= 6.0x; 11/12 vs 2/12; first in 10/12 |
 
 ### Copper (ONR): the best existing alloy on this synthetic benchmark (T1)
 
@@ -35,8 +39,10 @@ Targets: the best existing alloy on this synthetic benchmark (T1): aluminium 0.4
 | Heuristic | the same policy | 2.7x (1.8-∞); 9/12 vs 8/12; first in 9/12 | 2.3x (0-3.5); 7/12 vs 10/12; first in 7/12 | 2.3x (0-∞); 7/12 vs 8/12; first in 7/12 | 2.7x (1.6-3.8); 9/12 vs 10/12; first in 9/12 |
 | Tiered screening (the funnel) | the same policy | 2.5x (1.5-3.3); 11/12 vs 12/12; first in 10/12 | 2.5x (1.8-4.0); 11/12 vs 12/12; first in 9/12 | 2.9x (2.3-3.9); 11/12 vs 12/12; first in 11/12 | 2.1x (1.9-2.6); 11/12 vs 12/12; first in 11/12 |
 | Tiered screening (the funnel) | the rule of thumb (heuristic) | 3.3x (1.9-∞); 11/12 vs 8/12; first in 10/12 | 3.8x (2.6-5.6); 11/12 vs 10/12; first in 11/12 | 3.8x (2.9-∞); 11/12 vs 8/12; first in 11/12 | 3.3x (1.6-4.9); 11/12 vs 10/12; first in 11/12 |
-| BOFN, time-aware | the rule of thumb (heuristic) | not run | 2.4x (0-3.9); 8/12 vs 10/12; first in 8/12 | 2.4x (0-∞); 8/12 vs 8/12; first in 8/12 | not run |
-| pKGFN, time-aware | the rule of thumb (heuristic) | not run | 1.8x (1.3-3.0); 9/12 vs 10/12; first in 9/12 | 1.8x (1.4-∞); 9/12 vs 8/12; first in 8/12 | not run |
+| BOFN, time-aware | the same policy | <= 1.3x; 1/3 vs 3/3; first in 1/3 | <= 0.7x; 1/3 vs 3/3; first in 0/3 | <= 1.3x; 1/3 vs 3/3; first in 1/3 | <= 0.7x; 1/3 vs 3/3; first in 0/3 |
+| BOFN, time-aware | the rule of thumb (heuristic) | 1.9x (0-∞); 7/12 vs 8/12; first in 7/12 | 2.4x (0-3.9); 8/12 vs 10/12; first in 8/12 | 2.4x (0-∞); 8/12 vs 8/12; first in 8/12 | 1.9x (0-3.0); 7/12 vs 10/12; first in 7/12 |
+| pKGFN, time-aware | the same policy | <= 1.3x; 1/3 vs 2/3; first in 1/3 | 1.3x (0-1.7); 2/3 vs 3/3; first in 1/3 | 1.6x (1.4-1.6); 2/3 vs 2/3; first in 2/3 | <= 1.1x; 1/3 vs 3/3; first in 0/3 |
+| pKGFN, time-aware | the rule of thumb (heuristic) | 2.0x (0-∞); 8/12 vs 8/12; first in 8/12 | 1.8x (1.3-3.0); 9/12 vs 10/12; first in 9/12 | 1.8x (1.4-∞); 9/12 vs 8/12; first in 8/12 | 2.0x (0-2.9); 8/12 vs 10/12; first in 8/12 |
 
 ### Copper (ONR): halfway to the best alloy (T2)
 
@@ -45,8 +51,10 @@ Targets: the best existing alloy on this synthetic benchmark (T1): aluminium 0.4
 | Heuristic | the same policy | neither; 1/12 vs 1/12; first in 1/12 | neither; 1/12 vs 1/12; first in 1/12 | neither; 1/12 vs 1/12; first in 1/12 | neither; 1/12 vs 1/12; first in 1/12 |
 | Tiered screening (the funnel) | the same policy | 3.2x (1.9-4.8); 10/12 vs 9/12; first in 10/12 | 3.0x (1.8-5.1); 10/12 vs 10/12; first in 9/12 | 3.8x (1.9-5.8); 10/12 vs 9/12; first in 10/12 | 2.5x (1.5-4.1); 10/12 vs 10/12; first in 10/12 |
 | Tiered screening (the funnel) | the rule of thumb (heuristic) | >= 6.2x; 10/12 vs 1/12; first in 10/12 | >= 7.4x; 10/12 vs 1/12; first in 10/12 | >= 7.4x; 10/12 vs 1/12; first in 10/12 | >= 6.2x; 10/12 vs 1/12; first in 10/12 |
-| BOFN, time-aware | the rule of thumb (heuristic) | not run | neither; 5/12 vs 1/12; first in 5/12 | neither; 5/12 vs 1/12; first in 5/12 | not run |
-| pKGFN, time-aware | the rule of thumb (heuristic) | not run | neither; 4/12 vs 1/12; first in 4/12 | neither; 4/12 vs 1/12; first in 4/12 | not run |
+| BOFN, time-aware | the same policy | <= 1.3x; 0/3 vs 2/3; first in 0/3 | <= 1.4x; 0/3 vs 2/3; first in 0/3 | <= 1.3x; 0/3 vs 2/3; first in 0/3 | <= 1.4x; 0/3 vs 2/3; first in 0/3 |
+| BOFN, time-aware | the rule of thumb (heuristic) | neither; 4/12 vs 1/12; first in 4/12 | neither; 5/12 vs 1/12; first in 5/12 | neither; 5/12 vs 1/12; first in 5/12 | neither; 4/12 vs 1/12; first in 4/12 |
+| pKGFN, time-aware | the same policy | <= 1.3x; 1/3 vs 2/3; first in 1/3 | <= 1.5x; 0/3 vs 2/3; first in 0/3 | <= 1.3x; 0/3 vs 2/3; first in 0/3 | <= 1.5x; 1/3 vs 2/3; first in 1/3 |
+| pKGFN, time-aware | the rule of thumb (heuristic) | neither; 4/12 vs 1/12; first in 4/12 | neither; 4/12 vs 1/12; first in 4/12 | neither; 4/12 vs 1/12; first in 4/12 | neither; 4/12 vs 1/12; first in 4/12 |
 
 ## Cost to the target: campaign spend (one basis for every table in this section)
 
@@ -59,8 +67,10 @@ Basis: the money the campaign had spent on the day it first reached the target (
 | Heuristic | the same policy | 3.1x (2.3-3.3); 12/12 vs 12/12 | 6.1x (1.0-11.4); 11/12 vs 12/12 | 10.1x (1.9-10.9); 11/12 vs 12/12 | 1.9x (0.6-3.5); 12/12 vs 12/12 |
 | Tiered screening (the funnel) | the same policy | 3.5x (0-3.5); 6/12 vs 9/12 | 2.1x (0-2.5); 6/12 vs 10/12 | 2.3x (0-12.3); 6/12 vs 9/12 | 3.3x (0-3.5); 6/12 vs 10/12 |
 | Tiered screening (the funnel) | the rule of thumb (heuristic) | 2.9x (0-3.4); 6/12 vs 12/12 | 1.1x (0-8.2); 6/12 vs 12/12 | 1.9x (0-11.8); 6/12 vs 12/12 | 1.7x (0-3.4); 6/12 vs 12/12 |
-| BOFN, time-aware | the rule of thumb (heuristic) | not run | 1.3x (0.3-4.6); 12/12 vs 12/12 | 2.2x (1.3-4.3); 12/12 vs 12/12 | not run |
-| pKGFN, time-aware | the rule of thumb (heuristic) | not run | 1.6x (0.4-4.8); 12/12 vs 12/12 | 2.6x (1.6-5.1); 12/12 vs 12/12 | not run |
+| BOFN, time-aware | the same policy | 1.7x (1.2-1.7); 3/3 vs 3/3 | 1.8x (1.3-4.2); 3/3 vs 3/3 | 2.0x (1.8-2.8); 3/3 vs 3/3 | 1.5x (1.1-1.8); 3/3 vs 3/3 |
+| BOFN, time-aware | the rule of thumb (heuristic) | 1.8x (1.0-2.6); 12/12 vs 12/12 | 1.3x (0.3-4.6); 12/12 vs 12/12 | 2.2x (1.3-4.3); 12/12 vs 12/12 | 1.1x (0.3-2.7); 12/12 vs 12/12 |
+| pKGFN, time-aware | the same policy | 1.4x (1.2-2.6); 3/3 vs 3/3 | 2.8x (1.9-2.8); 3/3 vs 3/3 | 2.8x (1.9-3.0); 3/3 vs 3/3 | 1.5x (1.0-2.7); 3/3 vs 3/3 |
+| pKGFN, time-aware | the rule of thumb (heuristic) | 1.5x (1.0-2.6); 12/12 vs 12/12 | 1.6x (0.4-4.8); 12/12 vs 12/12 | 2.6x (1.6-5.1); 12/12 vs 12/12 | 0.9x (0.3-2.3); 12/12 vs 12/12 |
 
 ### Aluminium (FLAIME): halfway to the best alloy (T2)
 
@@ -69,8 +79,10 @@ Basis: the money the campaign had spent on the day it first reached the target (
 | Heuristic | the same policy | <= 1.5x; 4/12 vs 6/12 | neither; 1/12 vs 2/12 | <= 1.5x; 1/12 vs 6/12 | neither; 4/12 vs 2/12 |
 | Tiered screening (the funnel) | the same policy | neither; 0/12 vs 0/12 | neither; 1/12 vs 1/12 | neither; 1/12 vs 0/12 | neither; 0/12 vs 1/12 |
 | Tiered screening (the funnel) | the rule of thumb (heuristic) | <= 1.5x; 0/12 vs 6/12 | neither; 1/12 vs 2/12 | <= 1.5x; 1/12 vs 6/12 | neither; 0/12 vs 2/12 |
-| BOFN, time-aware | the rule of thumb (heuristic) | not run | >= 6.3x; 11/12 vs 2/12 | 3.1x (1.7-∞); 11/12 vs 6/12 | not run |
-| pKGFN, time-aware | the rule of thumb (heuristic) | not run | >= 7.6x; 10/12 vs 2/12 | 3.8x (2.4-∞); 10/12 vs 6/12 | not run |
+| BOFN, time-aware | the same policy | 1.0x (0-1.3); 2/3 vs 3/3 | 3.1x (1.3-∞); 3/3 vs 2/3 | 1.9x (1.8-2.8); 3/3 vs 3/3 | 1.7x (0-∞); 2/3 vs 2/3 |
+| BOFN, time-aware | the rule of thumb (heuristic) | 2.2x (1.7-∞); 11/12 vs 6/12 | >= 6.3x; 11/12 vs 2/12 | 3.1x (1.7-∞); 11/12 vs 6/12 | >= 4.4x; 11/12 vs 2/12 |
+| pKGFN, time-aware | the same policy | 1.0x (0-2.6); 2/3 vs 3/3 | 2.6x (1.2-4.6); 3/3 vs 3/3 | 1.9x (1.9-2.7); 3/3 vs 3/3 | 1.4x (0-3.7); 2/3 vs 3/3 |
+| pKGFN, time-aware | the rule of thumb (heuristic) | 2.3x (1.5-∞); 11/12 vs 6/12 | >= 7.6x; 10/12 vs 2/12 | 3.8x (2.4-∞); 10/12 vs 6/12 | >= 4.7x; 11/12 vs 2/12 |
 
 ### Copper (ONR): the best existing alloy on this synthetic benchmark (T1)
 
@@ -79,8 +91,10 @@ Basis: the money the campaign had spent on the day it first reached the target (
 | Heuristic | the same policy | 2.9x (2.0-∞); 9/12 vs 8/12 | 2.3x (0-3.1); 7/12 vs 10/12 | 2.2x (0-∞); 7/12 vs 8/12 | 2.9x (1.9-4.0); 9/12 vs 10/12 |
 | Tiered screening (the funnel) | the same policy | 2.5x (1.8-3.5); 11/12 vs 12/12 | 2.5x (2.1-3.3); 11/12 vs 12/12 | 2.6x (2.0-3.2); 11/12 vs 12/12 | 2.5x (2.1-3.3); 11/12 vs 12/12 |
 | Tiered screening (the funnel) | the rule of thumb (heuristic) | 3.2x (2.1-∞); 11/12 vs 8/12 | 3.3x (2.5-4.4); 11/12 vs 10/12 | 3.2x (2.6-∞); 11/12 vs 8/12 | 3.3x (2.0-4.6); 11/12 vs 10/12 |
-| BOFN, time-aware | the rule of thumb (heuristic) | not run | 2.3x (0-3.3); 8/12 vs 10/12 | 2.3x (0-∞); 8/12 vs 8/12 | not run |
-| pKGFN, time-aware | the rule of thumb (heuristic) | not run | 2.2x (1.7-3.1); 9/12 vs 10/12 | 2.1x (1.8-∞); 9/12 vs 8/12 | not run |
+| BOFN, time-aware | the same policy | <= 1.2x; 1/3 vs 3/3 | <= 0.6x; 1/3 vs 3/3 | <= 1.1x; 1/3 vs 3/3 | <= 0.6x; 1/3 vs 3/3 |
+| BOFN, time-aware | the rule of thumb (heuristic) | 2.2x (0-∞); 7/12 vs 8/12 | 2.3x (0-3.3); 8/12 vs 10/12 | 2.3x (0-∞); 8/12 vs 8/12 | 2.2x (0-3.1); 7/12 vs 10/12 |
+| pKGFN, time-aware | the same policy | <= 1.0x; 1/3 vs 2/3 | 0.8x (0-0.8); 2/3 vs 3/3 | 1.0x (0.7-1.0); 2/3 vs 2/3 | <= 0.8x; 1/3 vs 3/3 |
+| pKGFN, time-aware | the rule of thumb (heuristic) | 2.1x (0-∞); 8/12 vs 8/12 | 2.2x (1.7-3.1); 9/12 vs 10/12 | 2.1x (1.8-∞); 9/12 vs 8/12 | 2.2x (0-3.0); 8/12 vs 10/12 |
 
 ### Copper (ONR): halfway to the best alloy (T2)
 
@@ -89,8 +103,10 @@ Basis: the money the campaign had spent on the day it first reached the target (
 | Heuristic | the same policy | neither; 1/12 vs 1/12 | neither; 1/12 vs 1/12 | neither; 1/12 vs 1/12 | neither; 1/12 vs 1/12 |
 | Tiered screening (the funnel) | the same policy | 3.2x (2.2-4.5); 10/12 vs 9/12 | 2.9x (2.1-4.1); 10/12 vs 10/12 | 3.2x (2.3-4.1); 10/12 vs 9/12 | 2.9x (1.9-4.0); 10/12 vs 10/12 |
 | Tiered screening (the funnel) | the rule of thumb (heuristic) | >= 4.5x; 10/12 vs 1/12 | >= 4.6x; 10/12 vs 1/12 | >= 4.5x; 10/12 vs 1/12 | >= 4.6x; 10/12 vs 1/12 |
-| BOFN, time-aware | the rule of thumb (heuristic) | not run | neither; 5/12 vs 1/12 | neither; 5/12 vs 1/12 | not run |
-| pKGFN, time-aware | the rule of thumb (heuristic) | not run | >= 2.9x; 4/12 vs 1/12 | >= 2.8x; 4/12 vs 1/12 | not run |
+| BOFN, time-aware | the same policy | <= 1.2x; 0/3 vs 2/3 | <= 1.5x; 0/3 vs 2/3 | <= 1.1x; 0/3 vs 2/3 | <= 1.6x; 0/3 vs 2/3 |
+| BOFN, time-aware | the rule of thumb (heuristic) | neither; 4/12 vs 1/12 | neither; 5/12 vs 1/12 | neither; 5/12 vs 1/12 | neither; 4/12 vs 1/12 |
+| pKGFN, time-aware | the same policy | <= 1.0x; 1/3 vs 2/3 | <= 1.4x; 0/3 vs 2/3 | <= 1.0x; 0/3 vs 2/3 | <= 1.4x; 1/3 vs 2/3 |
+| pKGFN, time-aware | the rule of thumb (heuristic) | neither; 4/12 vs 1/12 | >= 2.9x; 4/12 vs 1/12 | >= 2.8x; 4/12 vs 1/12 | neither; 4/12 vs 1/12 |
 
 ## Paired differences in days
 
@@ -103,8 +119,10 @@ Per seed, the days the vertical lab saved (the conventional lab's day minus the 
 | Heuristic | the same policy | +71 ± 14 d (n=12); first 11-1 | +51 ± 24 d (n=11); first 8-4 | +91 ± 18 d (n=11); first 10-2 | +37 ± 26 d (n=12); first 7-5 |
 | Tiered screening (the funnel) | the same policy | +79 ± 14 d (n=6); first 6-3 | +35 ± 15 d (n=6); first 6-4 | +97 ± 25 d (n=6); first 6-3 | +17 ± 36 d (n=6); first 3-7 |
 | Tiered screening (the funnel) | the rule of thumb (heuristic) | +41 ± 36 d (n=6); first 4-8 | +17 ± 57 d (n=6); first 3-9 | +59 ± 41 d (n=6); first 5-7 | -1 ± 40 d (n=6); first 2-10 |
-| BOFN, time-aware | the rule of thumb (heuristic) | not run | +5 ± 33 d (n=12); first 5-7 | +39 ± 30 d (n=12); first 8-4 | not run |
-| pKGFN, time-aware | the rule of thumb (heuristic) | not run | +34 ± 36 d (n=12); first 6-6 | +68 ± 29 d (n=12); first 9-3 | not run |
+| BOFN, time-aware | the same policy | +27 ± 27 d (n=3); first 2-1 | +70 ± 89 d (n=3); first 2-1 | +93 ± 22 d (n=3); first 3-0 | +3 ± 49 d (n=3); first 2-1 |
+| BOFN, time-aware | the rule of thumb (heuristic) | +6 ± 24 d (n=12); first 5-7 | +5 ± 33 d (n=12); first 5-7 | +39 ± 30 d (n=12); first 8-4 | -28 ± 30 d (n=12); first 4-8 |
+| pKGFN, time-aware | the same policy | +12 ± 35 d (n=3); first 2-1 | +41 ± 32 d (n=3); first 2-1 | +106 ± 8 d (n=3); first 3-0 | -53 ± 44 d (n=3); first 1-2 |
+| pKGFN, time-aware | the rule of thumb (heuristic) | -20 ± 23 d (n=12); first 5-7 | +34 ± 36 d (n=12); first 6-6 | +68 ± 29 d (n=12); first 9-3 | -53 ± 27 d (n=12); first 3-9 |
 
 ### Aluminium (FLAIME): halfway to the best alloy (T2)
 
@@ -113,8 +131,10 @@ Per seed, the days the vertical lab saved (the conventional lab's day minus the 
 | Heuristic | the same policy | +95 ± 16 d (n=2); first 4-4 | +394 d (n=1); first 1-1 | none both (1/12 vs 6/12) | +178 d (n=1); first 4-1 |
 | Tiered screening (the funnel) | the same policy | none both (0/12 vs 0/12) | +9 d (n=1); first 1-0 | none both (1/12 vs 0/12) | none both (0/12 vs 1/12) |
 | Tiered screening (the funnel) | the rule of thumb (heuristic) | none both (0/12 vs 6/12) | none both (1/12 vs 2/12) | none both (1/12 vs 6/12) | none both (0/12 vs 2/12) |
-| BOFN, time-aware | the rule of thumb (heuristic) | not run | +171 ± 191 d (n=2); first 10-1 | +121 ± 45 d (n=6); first 10-1 | not run |
-| pKGFN, time-aware | the rule of thumb (heuristic) | not run | -4 d (n=1); first 9-2 | +147 ± 45 d (n=5); first 9-2 | not run |
+| BOFN, time-aware | the same policy | -47 ± 36 d (n=2); first 0-3 | +102 ± 179 d (n=2); first 2-1 | +102 ± 15 d (n=3); first 3-0 | +65 d (n=1); first 2-1 |
+| BOFN, time-aware | the rule of thumb (heuristic) | +67 ± 42 d (n=5); first 10-2 | +171 ± 191 d (n=2); first 10-1 | +121 ± 45 d (n=6); first 10-1 | +59 ± 221 d (n=2); first 10-1 |
+| pKGFN, time-aware | the same policy | -13 ± 90 d (n=2); first 1-2 | +120 ± 108 d (n=3); first 2-1 | +98 ± 13 d (n=3); first 3-0 | +101 ± 44 d (n=2); first 2-1 |
+| pKGFN, time-aware | the rule of thumb (heuristic) | +73 ± 40 d (n=5); first 9-3 | -4 d (n=1); first 9-2 | +147 ± 45 d (n=5); first 9-2 | +80 ± 170 d (n=2); first 10-1 |
 
 ### Copper (ONR): the best existing alloy on this synthetic benchmark (T1)
 
@@ -123,8 +143,10 @@ Per seed, the days the vertical lab saved (the conventional lab's day minus the 
 | Heuristic | the same policy | +275 ± 41 d (n=6); first 9-2 | +344 ± 80 d (n=6); first 7-4 | +236 ± 67 d (n=5); first 7-3 | +318 ± 45 d (n=8); first 9-2 |
 | Tiered screening (the funnel) | the same policy | +262 ± 47 d (n=11); first 10-2 | +264 ± 65 d (n=11); first 9-3 | +298 ± 48 d (n=11); first 11-1 | +229 ± 46 d (n=11); first 11-1 |
 | Tiered screening (the funnel) | the rule of thumb (heuristic) | +264 ± 51 d (n=8); first 10-1 | +356 ± 51 d (n=9); first 11-1 | +327 ± 41 d (n=8); first 11-0 | +302 ± 65 d (n=9); first 11-1 |
-| BOFN, time-aware | the rule of thumb (heuristic) | not run | +273 ± 84 d (n=6); first 8-4 | +220 ± 60 d (n=5); first 8-3 | not run |
-| pKGFN, time-aware | the rule of thumb (heuristic) | not run | +244 ± 86 d (n=7); first 9-3 | +186 ± 63 d (n=5); first 8-4 | not run |
+| BOFN, time-aware | the same policy | +172 d (n=1); first 1-2 | -18 d (n=1); first 0-3 | +211 d (n=1); first 1-2 | -57 d (n=1); first 0-3 |
+| BOFN, time-aware | the rule of thumb (heuristic) | +214 ± 49 d (n=5); first 7-3 | +273 ± 84 d (n=6); first 8-4 | +220 ± 60 d (n=5); first 8-3 | +280 ± 84 d (n=6); first 7-4 |
+| pKGFN, time-aware | the same policy | +202 d (n=1); first 1-1 | +56 ± 105 d (n=2); first 1-2 | +141 ± 36 d (n=2); first 2-0 | -24 d (n=1); first 0-3 |
+| pKGFN, time-aware | the rule of thumb (heuristic) | +214 ± 38 d (n=6); first 8-2 | +244 ± 86 d (n=7); first 9-3 | +186 ± 63 d (n=5); first 8-4 | +248 ± 64 d (n=7); first 8-3 |
 
 ### Copper (ONR): halfway to the best alloy (T2)
 
@@ -133,8 +155,10 @@ Per seed, the days the vertical lab saved (the conventional lab's day minus the 
 | Heuristic | the same policy | +218 d (n=1); first 1-0 | +300 d (n=1); first 1-0 | +212 d (n=1); first 1-0 | +306 d (n=1); first 1-0 |
 | Tiered screening (the funnel) | the same policy | +317 ± 44 d (n=8); first 10-1 | +297 ± 64 d (n=10); first 9-1 | +335 ± 49 d (n=9); first 10-0 | +262 ± 60 d (n=9); first 10-1 |
 | Tiered screening (the funnel) | the rule of thumb (heuristic) | +53 d (n=1); first 10-0 | +222 d (n=1); first 10-0 | +134 d (n=1); first 10-0 | +141 d (n=1); first 10-0 |
-| BOFN, time-aware | the rule of thumb (heuristic) | not run | +170 d (n=1); first 5-0 | +82 d (n=1); first 5-0 | not run |
-| pKGFN, time-aware | the rule of thumb (heuristic) | not run | +153 d (n=1); first 4-0 | +65 d (n=1); first 4-0 | not run |
+| BOFN, time-aware | the same policy | none both (0/3 vs 2/3) | none both (0/3 vs 2/3) | none both (0/3 vs 2/3) | none both (0/3 vs 2/3) |
+| BOFN, time-aware | the rule of thumb (heuristic) | +84 d (n=1); first 4-0 | +170 d (n=1); first 5-0 | +82 d (n=1); first 5-0 | +172 d (n=1); first 4-0 |
+| pKGFN, time-aware | the same policy | +202 d (n=1); first 1-1 | none both (0/3 vs 2/3) | none both (0/3 vs 2/3) | +280 d (n=1); first 1-1 |
+| pKGFN, time-aware | the rule of thumb (heuristic) | none both (4/12 vs 1/12) | +153 d (n=1); first 4-0 | +65 d (n=1); first 4-0 | none both (4/12 vs 1/12) |
 
 ## Each arm on its own
 
@@ -142,13 +166,17 @@ Kaplan-Meier median days to each target, the seeds that got there, and the final
 
 | Lab | Stock | Policy | Al best | Al T1 | Al T2 | Cu best | Cu T1 | Cu T2 | Mean campaign spend Al / Cu |
 |---|---|---|---|---|---|---|---|---|---|
-| conventional | lean | BOFN, time-aware | 0.75 ± 0.00 | 1/1; 184 | 1/1; 184 | 0.62 ± 0.00 | 1/1; 1025 | 0/1; >1095 | $323k / $132k |
+| conventional | lean | BOFN, time-aware | 0.75 ± 0.00 | 3/3; 175 | 3/3; 184 | 0.67 ± 0.03 | 3/3; 471 | 2/3; 471 | $330k / $142k |
 | conventional | lean | Heuristic | 0.64 ± 0.03 | 12/12; 159 | 6/12; 337 | 0.57 ± 0.02 | 8/12; 540 | 1/12; >1095 | $360k / $180k |
-| conventional | lean | pKGFN, time-aware | 0.75 ± 0.00 | 1/1; 192 | 1/1; 192 | 0.48 ± 0.00 | 0/1; >1095 | 0/1; >1095 | $293k / $99k |
+| conventional | lean | pKGFN, time-aware | 0.74 ± 0.01 | 3/3; 165 | 3/3; 192 | 0.62 ± 0.07 | 2/3; 479 | 2/3; 479 | $305k / $103k |
 | conventional | lean | Tiered screening (the funnel) | 0.44 ± 0.06 | 9/12; 215 | 0/12; >1095 | 0.69 ± 0.01 | 12/12; 405 | 9/12; 561 | $360k / $180k |
+| conventional | stocked | BOFN, time-aware | 0.69 ± 0.03 | 3/3; 129 | 2/3; 323 | 0.69 ± 0.02 | 3/3; 274 | 2/3; 497 | $299k / $182k |
 | conventional | stocked | Heuristic | 0.57 ± 0.02 | 12/12; 46 | 2/12; >1095 | 0.59 ± 0.02 | 10/12; 540 | 1/12; >1095 | $360k / $181k |
+| conventional | stocked | pKGFN, time-aware | 0.74 ± 0.02 | 3/3; 137 | 3/3; 260 | 0.67 ± 0.05 | 3/3; 407 | 2/3; 557 | $329k / $169k |
 | conventional | stocked | Tiered screening (the funnel) | 0.48 ± 0.05 | 10/12; 190 | 1/12; >1095 | 0.70 ± 0.01 | 12/12; 348 | 10/12; 437 | $360k / $180k |
+| vertical | lean | BOFN, time-aware | 0.73 ± 0.01 | 12/12; 127 | 11/12; 183 | 0.58 ± 0.03 | 7/12; 288 | 4/12; >365 | $118k / $60k |
 | vertical | lean | Heuristic | 0.60 ± 0.02 | 12/12; 67 | 4/12; >365 | 0.59 ± 0.02 | 9/12; 199 | 1/12; >365 | $120k / $60k |
+| vertical | lean | pKGFN, time-aware | 0.72 ± 0.01 | 12/12; 162 | 11/12; 183 | 0.56 ± 0.04 | 8/12; 277 | 4/12; >365 | $117k / $60k |
 | vertical | lean | Tiered screening (the funnel) | 0.30 ± 0.08 | 6/12; 123 | 0/12; >365 | 0.68 ± 0.02 | 11/12; 164 | 10/12; 178 | $119k / $60k |
 | vertical | stocked | BOFN, time-aware | 0.73 ± 0.02 | 12/12; 83 | 11/12; 96 | 0.58 ± 0.04 | 8/12; 221 | 5/12; >365 | $105k / $61k |
 | vertical | stocked | Heuristic | 0.55 ± 0.03 | 11/12; 24 | 1/12; >365 | 0.57 ± 0.03 | 7/12; 234 | 1/12; >365 | $120k / $61k |
@@ -165,7 +193,15 @@ Each lab lean against itself stocked, same policy, same seeds: the factor is the
 | vertical | Heuristic | Cu | 0.9x (0-1.3); 7/12 vs 9/12 | neither; 1/12 vs 1/12 | -0.02 ± 0.04 (n=12) |
 | vertical | Tiered screening (the funnel) | Al | 0.8x (0.6-8.4); 6/12 vs 6/12 | neither; 1/12 vs 0/12 | +0.00 ± 0.00 (n=12) |
 | vertical | Tiered screening (the funnel) | Cu | 1.2x (0.9-2.0); 11/12 vs 11/12 | 1.2x (0.8-2.1); 10/12 vs 10/12 | +0.01 ± 0.01 (n=12) |
+| vertical | BOFN, time-aware | Al | 1.5x (0.9-5.4); 12/12 vs 12/12 | 1.9x (0.7-3.3); 11/12 vs 11/12 | -0.00 ± 0.02 (n=12) |
+| vertical | BOFN, time-aware | Cu | 1.3x (0.8-∞); 8/12 vs 7/12 | neither; 5/12 vs 4/12 | -0.00 ± 0.03 (n=12) |
+| vertical | pKGFN, time-aware | Al | 2.4x (1.5-7.5); 12/12 vs 12/12 | 2.2x (1.0-5.1); 10/12 vs 11/12 | -0.01 ± 0.03 (n=12) |
+| vertical | pKGFN, time-aware | Cu | 0.9x (0.7-∞); 9/12 vs 8/12 | neither; 4/12 vs 4/12 | +0.05 ± 0.04 (n=12) |
 | conventional | Heuristic | Al | 3.5x (0.8-4.6); 12/12 vs 12/12 | <= 0.3x; 2/12 vs 6/12 | -0.08 ± 0.03 (n=12) |
 | conventional | Heuristic | Cu | 1.0x (0.7-∞); 10/12 vs 8/12 | neither; 1/12 vs 1/12 | +0.03 ± 0.02 (n=12) |
 | conventional | Tiered screening (the funnel) | Al | 1.1x (0.8-10.9); 10/12 vs 9/12 | neither; 1/12 vs 0/12 | +0.05 ± 0.04 (n=12) |
 | conventional | Tiered screening (the funnel) | Cu | 1.2x (0.8-1.6); 12/12 vs 12/12 | 1.3x (0.9-2.1); 10/12 vs 9/12 | +0.00 ± 0.01 (n=12) |
+| conventional | BOFN, time-aware | Al | 1.4x (0.6-3.8); 3/3 vs 3/3 | 0.6x (0-4.8); 2/3 vs 3/3 | -0.06 ± 0.03 (n=3) |
+| conventional | BOFN, time-aware | Cu | 1.7x (1.3-1.9); 3/3 vs 3/3 | 0.9x (0.9-1.4); 2/3 vs 2/3 | +0.01 ± 0.02 (n=3) |
+| conventional | pKGFN, time-aware | Al | 1.2x (1.2-3.8); 3/3 vs 3/3 | 0.7x (0.5-4.8); 3/3 vs 3/3 | -0.00 ± 0.01 (n=3) |
+| conventional | pKGFN, time-aware | Cu | 1.2x (0.9-∞); 3/3 vs 2/3 | 0.9x (0.9-0.9); 2/3 vs 2/3 | +0.04 ± 0.03 (n=3) |

@@ -80,15 +80,41 @@ def test_string_hashing_moves_a_last_bit():
 
 
 def test_reruns_in_round_3b_match_their_committed_rows():
-    """Every rerun round 3b committed (out/twin3b/runs/re_*.jsonl) matched its committed round-3 row, and no run drew
-    from torch's global generator."""
-    rows = []
-    for p in sorted((ROOT / "out" / "twin3b" / "runs").glob("*.jsonl")):
-        rows += [json.loads(l) for l in p.read_text().splitlines() if l.strip()]
+    """Every rerun round 3b committed (out/twin3b/runs/re_*.jsonl) matches its committed round-3 row: exactly, or with
+    only true utilities a few units apart in the last place (the hash key of the process that made the committed row
+    was random and is not recorded) and everything else identical. No run drew from torch's global generator, and
+    every run was made under the pin."""
+    from twin import bench3b as B3b
+    rows, bad = [], []
+    for name, src in B3b.RERUN_OF.items():
+        refs = B3b.committed_rows(src)
+        for r in B3b.load(name):
+            kind, info = B3b.match_kind(r, refs[B3b.run_id(r["cfg"])])
+            if kind not in ("exact", "last bit"):
+                bad.append((B3b.run_id(r["cfg"]), info))
+            rows.append(r)
     if not rows:
-        pytest.skip("no round-3b runs committed")
-    bad = [(r["cfg"]["policy"], r["cfg"]["seed"], r.get("committed_match")) for r in rows
-           if r.get("rerun_of") and r.get("committed_match") is not True]
+        pytest.skip("no round-3b reruns committed")
     assert not bad, bad
-    assert not [r for r in rows if r.get("torch_rng_used")]
-    assert all(r["env"]["hash_pinned"] and r["env"]["pin"] == "avx512" for r in rows)
+    every = []
+    for p in sorted((ROOT / "out" / "twin3b" / "runs").glob("*.jsonl")):
+        every += [json.loads(l) for l in p.read_text().splitlines() if l.strip()]
+    assert not [r for r in every if r.get("torch_rng_used")]
+    assert all(r["env"]["hash_pinned"] and r["env"]["pin"] == "avx512" for r in every)
+
+
+def test_rerun_logs_equal_round_3s_committed_logs():
+    """Round 3 kept seed 0's event logs (out/twin3/events/*.json). Each rerun's log (out/twin3b/events/*.json.xz) is the
+    same, booking for booking: the logs of the other seeds are the logs those committed runs would have written."""
+    from twin import bench3b as B3b
+    n = 0
+    for p in sorted((ROOT / "out" / "twin3" / "events").glob("*.json")):
+        q = ROOT / "out" / "twin3b" / "events" / f"{p.stem}.json.xz"
+        if not q.exists():
+            continue
+        a, b = B3b.read_events(q), json.loads(p.read_text())
+        for k in ("stations", "events", "designs", "results", "curves"):
+            assert a[k] == b[k], (p.stem, k)
+        n += 1
+    if not n:
+        pytest.skip("no rerun logs committed")

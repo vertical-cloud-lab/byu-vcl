@@ -64,8 +64,12 @@ EXPERIMENTS = {
     "re_main": _re("main"),
     "re_main_more": _re("main_more"),
     "re_conventional": _re("conventional"),
+    # round 3's copper tests, the cheap policies only (a check that they reproduce too; BOFN and pKGFN there are
+    # 16 runs of 10-18 minutes and were not rerun)
+    "re_cu": [c for nm in ("cu_hidden", "cu_proxy", "cu_ablation", "cu_money") for c in _re(nm)
+              if c["policy"] not in NET],
 }
-RERUN_OF = {"re_main": "main", "re_main_more": "main_more", "re_conventional": "conventional"}
+RERUN_OF = {"re_main": "main", "re_main_more": "main_more", "re_conventional": "conventional", "re_cu": "cu"}
 
 
 def run_id(cfg):
@@ -103,7 +107,8 @@ def first_diff(a, b, path=""):
 
 def committed_rows(name):
     out = {}
-    for nm in [name] + {"conventional": ["conventional_net"]}.get(name, []):
+    names = {"cu": ["cu_hidden", "cu_proxy", "cu_ablation", "cu_money"]}.get(name, [name])
+    for nm in names + {"conventional": ["conventional_net"]}.get(name, []):
         p = R3_RUNS / f"{nm}.jsonl"
         if p.exists():
             for line in p.read_text().splitlines():
@@ -173,7 +178,8 @@ def plan(names):
         mine = [c for c in EXPERIMENTS[name] if run_id(c) not in done]
         print(f"{name}: {len(mine)} runs to do ({len(done)} done)", flush=True)
         todo += [(name, c) for c in mine]
-    exp_rank = {"v_lean": 0, "c_stocked": 1, "c_lean_net": 1, "re_main": 2, "re_main_more": 3, "re_conventional": 4}
+    exp_rank = {"v_lean": 0, "c_stocked": 1, "c_lean_net": 1, "re_main": 2, "re_main_more": 3, "re_conventional": 4,
+                "re_cu": 5}
     pol_rank = {"bofn3": 0, "pkgfn3": 1, "bofn3_usd": 2}
 
     def key(t):
@@ -247,7 +253,7 @@ if __name__ == "__main__":
 
 def match_kind(new, ref, rel=4e-16):
     """How a rerun compares with its committed row: 'exact'; 'last bit' (every difference a float within a few units
-    in the last place, everything else, counts, days, dollars, decisions, identical); or the first real difference."""
+    in the last place, everything else in the row identical: counts, days, dollars); or the first real difference."""
     d = first_diff(new, ref)
     if d is None:
         return "exact", None
