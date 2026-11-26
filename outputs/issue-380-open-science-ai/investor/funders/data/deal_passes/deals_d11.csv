@@ -1,0 +1,27 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+u4-sourcebot,Sourcebot,U4,accelerator,YC F25,2025,,,Y Combinator,https://www.ycombinator.com/companies/sourcebot,other,batch from YC company page
+u4-sourcebot,Sourcebot,U4,venture_unspecified,Backed by (site),2025,,,Liquid 2 Ventures | Pioneer Fund | Floris van Lint (person),https://www.sourcebot.dev/,company,site shows 'Liquid 2' and 'Pioneer Fund' logos; investor names as shown
+u4-sst,SST,U4,angel,Angel investors (about page),,,,Jim Young (person) | James Hong (person) | Tom McInerney (person) | Harry Cheung (person) | Paul Bragiel (person) | Dan Bragiel (person),https://sst.dev/about,company,about page lists investors; no round or date given
+u4-stably-ai,Stably AI,U4,accelerator,YC W22,2022,,,Y Combinator,https://www.ycombinator.com/companies/stably-ai-orca,other,batch from YC company page
+u4-stackup,Stackup,U4,accelerator,YC S22,2022,,,Y Combinator,https://www.ycombinator.com/companies/stackup,other,batch from YC company page
+u4-stagewise,Stagewise,U4,accelerator,YC S25,2025,,,Y Combinator,https://www.ycombinator.com/companies/stagewise,other,batch from YC company page
+u4-stagewise,Stagewise,U4,venture_unspecified,Backed by (site),2025,,,TwentyTwo Ventures | Blast Club | Teuto Seed Club,https://www.stagewise.io/,company,logos near 'backed by' on site; round and date not disclosed
+u4-standard-cyborg,Standard Cyborg,U4,accelerator,YC W15,2015-02,,,Y Combinator,https://www.ycombinator.com/companies/standard-cyborg,other,batch from YC company page
+u4-standard-physics,Standard Physics,U4,accelerator,YC W26,2026,,,Y Combinator,https://www.ycombinator.com/companies/standard-physics,other,batch from YC company page
+u4-stellon-labs,Stellon Labs,U4,accelerator,YC S25,2025,,,Y Combinator,https://www.ycombinator.com/companies/stellon-labs,other,batch from YC company page
+u4-storia-ai,Storia AI,U4,accelerator,YC S24,2024,,,Y Combinator,https://www.ycombinator.com/companies/storia-ai,other,batch from YC company page
+u4-subimage,Subimage,U4,accelerator,YC W25,2025,,,Y Combinator,https://www.ycombinator.com/companies/subimage,other,batch from YC company page
+u4-sublingual,Sublingual,U4,accelerator,YC W25,2025,,,Y Combinator,https://www.ycombinator.com/companies/sublingual,other,batch from YC company page
+u4-sudocode,sudocode,U4,accelerator,YC S23,2023,,,Y Combinator,https://www.ycombinator.com/companies/sudocode,other,batch from YC company page
+u4-superagent,Superagent,U4,accelerator,YC W24,2024,,,Y Combinator,https://www.ycombinator.com/companies/superagent,other,batch from YC company page
+u4-superagent,Superagent,U4,venture_unspecified,Backed by (about page),,,,Rebel Fund,https://www.superagent.sh/about,company,"also founders of Okta, Replit, HubSpot, unnamed"
+u4-superlog,Superlog,U4,accelerator,YC Spring 2026,2026,,,Y Combinator,https://www.ycombinator.com/companies/superlog,other,batch from YC company page
+u4-supertokens,SuperTokens,U4,accelerator,YC S20,2020,,,Y Combinator,https://www.ycombinator.com/companies/supertokens,other,batch from YC company page
+u4-supertokens,SuperTokens,U4,venture_unspecified,Raised more venture capital,2023-12,,,Root Ventures | Continuity | WestWave,https://supertokens.com/about-us,company,about page investor list; Dec 2023 raise stated without amount
+u4-superwall,Superwall,U4,accelerator,YC S21,2021,,,Y Combinator,https://www.ycombinator.com/companies/staffbar,other,batch from YC company page
+u4-svix,Svix,U4,accelerator,YC W21,2021,,,Y Combinator,https://www.ycombinator.com/companies/svix,other,batch from YC company page
+u4-svix,Svix,U4,venture_unspecified,Investors (about page),,,,Andreessen Horowitz | Aleph | Rogue Capital | Wayfinder Ventures | Christopher Golda (person) | Yuri Sagalov (person) | Andrew Miklas (person) | Kevin Patrick Mahaffey (person) | Jason Warner (person),https://www.svix.com/about/,company,no round labels or dates; YC page also names a16z and Aleph
+u4-sync,sync.,U4,accelerator,YC W24,2024,,,Y Combinator,https://www.ycombinator.com/companies/sync-2,other,batch from YC company page
+u4-sync,sync.,U4,seed,Seed,2024-08,5500000,Google Ventures,Y Combinator | Creator Ventures | Rebel Fund,https://sync.so/blog/sync-announces-5-5m-seed-round-to-make-video-content-creation-less-camera-dependent-using-ai,company,amount from page via fetch
+u4-sync,sync.,U4,venture_unspecified,Backers (about page),,,,Lobster Capital,https://sync.so/about,company,"about page also lists GV, YC, Rebel Fund, Creator Ventures"
+u4-teclada,Teclada,U4,accelerator,YC W23,2023,,,Y Combinator,https://www.ycombinator.com/companies/teclada,other,batch from YC company page

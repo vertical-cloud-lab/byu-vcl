@@ -1,0 +1,28 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+u4-gaia,Gaia,U4,seed,Seed,2024-05,10000000,,Generative Ventures | Republic Capital | 7RIDGE | Kishore Bhatia (person) | EVM Capital | Mantle EcoFund | ByteTrade Lab,https://siliconangle.com/2024/05/28/gaianet-raises-10m-decentralized-ai-agent-project/,news,Article calls these advisors bringing resources; no lead named. Firms taken as participants.
+u4-gitbutler,GitButler,U4,series_a,Series A,2026-04,17000000,Andreessen Horowitz,Fly Ventures | A.Capital Ventures,https://siliconangle.com/2026/04/08/gitbutler-raises-17m-simplify-git-workflows-developers/,news,a16z lead confirmed on a16z post.
+u4-grai,Grai,U4,accelerator,YC S22,2022,,,Y Combinator,https://www.ycombinator.com/companies/grai,other,Batch from YC directory; cheque size not stated
+u4-growthbook,GrowthBook,U4,accelerator,YC W22,2022,,,Y Combinator,https://www.ycombinator.com/companies/growthbook,other,Batch from YC directory; cheque size not stated
+u4-harnessrouter,HarnessRouter,U4,accelerator,YC S23,2023,,,Y Combinator,https://www.ycombinator.com/companies/harnessrouter,other,Batch from YC directory; cheque size not stated
+u4-hatchet,Hatchet,U4,accelerator,YC W24,2024,,,Y Combinator,https://www.ycombinator.com/companies/hatchet-run,other,Batch from YC directory; cheque size not stated
+u4-hatchet,Hatchet,U4,seed,Seed,2026,5700000,,,https://hatchet.run/announcement/hatchet-v2,company,Post gives amount; investors not named on page.
+u4-hebbian-robotics,Hebbian Robotics,U4,accelerator,YC S26,2026,,,Y Combinator,https://www.ycombinator.com/companies/hebbian-robotics,other,Batch from YC directory; cheque size not stated
+u4-hegel-ai,Hegel AI,U4,accelerator,YC S23,2023,,,Y Combinator,https://www.ycombinator.com/companies/hegel-ai,other,Batch from YC directory; cheque size not stated
+u4-helicone,Helicone,U4,accelerator,YC W23,2023,,,Y Combinator,https://www.ycombinator.com/companies/helicone,other,Batch from YC directory; cheque size not stated
+u4-helixdb,HelixDB,U4,accelerator,YC Spring 2025,2025,,,Y Combinator,https://www.ycombinator.com/companies/helixdb,other,Batch from YC directory; cheque size not stated
+u4-herdr,Herdr,U4,accelerator,YC F26,2026,,,Y Combinator,https://www.ycombinator.com/companies/herdr,other,Batch from YC directory; cheque size not stated
+u4-herdr,Herdr,U4,seed,Seed,2026-09,6000000,Bessemer Venture Partners,Y Combinator | e2vc | Tobi Lütke (person) | Dane Knecht (person) | Görkem Yurtseven (person),https://herdr.dev/blog/herdr-raised-a-seed/,company,
+u4-highlight-io,highlight.io,U4,accelerator,YC W23,2023,,,Y Combinator,https://www.ycombinator.com/companies/highlight-io,other,Batch from YC directory; cheque size not stated
+u4-hydra,Hydra,U4,accelerator,YC W22,2022,,,Y Combinator,https://www.ycombinator.com/companies/hydra,other,Batch from YC directory; cheque size not stated
+u4-hyperdx,HyperDX,U4,accelerator,YC S22,2022,,,Y Combinator,https://www.ycombinator.com/companies/hyperdx,other,Batch from YC directory; cheque size not stated
+u4-imgix,Imgix,U4,accelerator,YC S11,2011,,,Y Combinator,https://www.ycombinator.com/companies/imgix,other,Batch from YC directory; cheque size not stated
+u4-imgix,Imgix,U4,seed,Seed,2011,,Y Combinator | SV Angel,,https://www.imgix.com/about,company,Company about page; amount not given.
+u4-imgix,Imgix,U4,series_a,Series A,2014,,RRE Ventures,,https://www.imgix.com/about,company,Amount not stated.
+u4-inconvo,Inconvo,U4,accelerator,YC S23,2023,,,Y Combinator,https://www.ycombinator.com/companies/inconvo,other,Batch from YC directory; cheque size not stated
+u4-infield,Infield,U4,accelerator,YC W20,2020,,,Y Combinator,https://www.ycombinator.com/companies/infield,other,Batch from YC directory; cheque size not stated
+u4-infracost,Infracost,U4,accelerator,YC W21,2021,,,Y Combinator,https://www.ycombinator.com/companies/infracost,other,Batch from YC directory; cheque size not stated
+u4-infracost,Infracost,U4,series_a,Series A,2025-11,15000000,Pruven Capital,Y Combinator | Sequoia Capital | Mango Capital | Alumni Ventures | TIAA Ventures | Paul Copplestone (person) | Timothy Chen (person),https://www.infracost.io/blog/infracost-has-raised-a-15-million-series-a/,company,
+u4-inth,Inth,U4,accelerator,YC Spring 2026,2026,,,Y Combinator,https://www.ycombinator.com/companies/inth,other,Batch from YC directory; cheque size not stated
+u4-inth,Inth,U4,corporate_strategic,Backer,2026,,,Vercel,https://www.ycombinator.com/companies/inth,other,YC page says backed by YC and Vercel; round not detailed.
+u4-jitsu,Jitsu,U4,accelerator,YC S20,2020,,,Y Combinator,https://www.ycombinator.com/companies/jitsu,other,Batch from YC directory; cheque size not stated
+u4-jitsu,Jitsu,U4,seed,Seed,2020-12,2000000,Costanoa Ventures,Y Combinator | The House Fund | SignalFire,https://techcrunch.com/2020/12/02/jitsu-nabs-2m-seed-to-build-open-source-data-integration-platform/,news,
