@@ -135,3 +135,29 @@ TWIN_WORKERS=4 /tmp/venv/bin/python -m twin.bench3 run main cu_hidden cu_proxy c
 Round 2's engine is unchanged in `mode="wip"`, except one fix behind a flag: `Campaign._cu_check` scored a copper alloy
 when its tensile came back if its immersion had only started. `twin/bench2.py` keeps the old check
 (`legacy_cu_check`), so round 2's committed results reproduce; `TWIN_FIX_CU_CHECK=1` runs round 2 with the fix.
+
+## Round 4 (2026-11-26): building the lab while running real experiments, every route at once
+
+Round 3 started with the vertical lab built. Round 4 counts from the day the funding arrives. The in-house stations are
+ordered then and come online after their lead times, installation and commissioning, and ramp up on a learning curve
+fitted to the lab's own atomizer runs. Meanwhile the campaigns run on the existing atomizer, BYU's own equipment and
+every partner route, and a router sends each step to whichever route returns its result first. The write-up and
+results are in [`../notes/twin_round4.md`](../notes/twin_round4.md).
+
+| Piece | Code |
+|---|---|
+| Build-out: the stations' lead times (stand-ins), installation once the room is fitted out, commissioning, the cell's integration, capital payments | `round4.py` (`BUILD`, `build_schedule`) |
+| Ramp-up: the learning curve fitted to DAL PR 286's ten atomizer runs (redone jobs, slower jobs, equipment faults) | `round4.py` (`LEARN`, `fit_learning`, `Resource4`, `Facility4.job_done`) |
+| Routes: in house, BYU, Utah's MIDI and MX-Lab, 3D Powder Tech, Mines, Valimet, outside testing; standing slots filled as late as possible; site offsets and provenance visits | `round4.py` (`STANDING`, `EXTRA`, `OFFSETS`, `PROVENANCE`, `Facility4.pick`, `Campaign4`) |
+| Two admission rules for every policy: money kept for the coming week's standing slots, and a WIP limit before the first fabrication step | `round4.py` (`Campaign4.reserve`, `Campaign4.submit3`) |
+| The stages after discovery: a gas lot, a validation network across the sites, a full-part test | `round4.py` (`STAGES`, `Twin4._stage_tick`) |
+| The three plans (wait for the cell, ramp up in parallel, external routes only), the benchmark, tables and figures | `bench4.py`, `figures4.py` |
+
+```bash
+cd vertical-lab
+python -m pytest -q twin/tests/test_round4.py
+TWIN_WORKERS=4 python -m twin.bench4 run plans plans_best plans_3x provenance routes nolearn
+python -m twin.figures4
+```
+
+Round 3's code is unchanged: round 4 subclasses `Facility`, `Campaign` and `Twin`.
