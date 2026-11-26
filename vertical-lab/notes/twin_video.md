@@ -4,7 +4,7 @@ Round 2's video: the two campaigns' year in the vertical lab, replayed from the 
 we track and what the benchmark found. **Everything in it is simulated**, except the lab design's 3-D renders (PR 318),
 the lab's own atomizer footage and photos, the search spaces (the proposals) and the prices and their sources.
 
-**On YouTube:** VIDEO_URL (public, subscribers not notified).
+**On YouTube:** [Pz7hxqfODmE](https://www.youtube.com/watch?v=Pz7hxqfODmE) (public, subscribers not notified; uploaded 2026-11-26 from commit 73b155f).
 
 ## What is on screen
 
