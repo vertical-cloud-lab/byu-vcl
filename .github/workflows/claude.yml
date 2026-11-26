@@ -703,37 +703,30 @@ jobs:
             --effort ${{ steps.select.outputs.effort }}
             --permission-mode bypassPermissions
 
-      # Execution logs, encrypted to the repo owner's age key and uploaded as
-      # an artifact. This repo is public, so show_full_output stays off and
-      # nothing readable is uploaded: only someone holding the private key for
-      # vars.CLAUDE_TRANSCRIPT_AGE_RECIPIENT can read these. Decrypt with
-      # `age -d -i <key file> claude-execution-log.json.age`.
-      - name: Encrypt and upload execution logs (owner-only)
-        if: ${{ !cancelled() && vars.CLAUDE_TRANSCRIPT_AGE_RECIPIENT != '' && (steps.claude.outputs.execution_file != '' || steps.fallback.outputs.execution_file != '') }}
-        continue-on-error: true
-        env:
-          RECIPIENT: ${{ vars.CLAUDE_TRANSCRIPT_AGE_RECIPIENT }}
-          FIRST: ${{ steps.claude.outputs.execution_file }}
-          RETRY: ${{ steps.fallback.outputs.execution_file }}
-        run: |
-          set -euo pipefail
-          command -v age >/dev/null || sudo apt-get install -y -qq age >/dev/null 2>&1 \
-            || { sudo apt-get update -qq >/dev/null && sudo apt-get install -y -qq age >/dev/null; }
-          out="$RUNNER_TEMP/claude-logs-encrypted"
-          mkdir -p "$out"
-          [[ -n "$FIRST" && -f "$FIRST" ]] && age -r "$RECIPIENT" -o "$out/claude-execution-log.json.age" "$FIRST"
-          [[ -n "$RETRY" && -f "$RETRY" ]] && age -r "$RECIPIENT" -o "$out/claude-execution-log-retry.json.age" "$RETRY"
-          ls -l "$out"
-
-      - name: Upload the encrypted execution logs
-        if: ${{ !cancelled() && vars.CLAUDE_TRANSCRIPT_AGE_RECIPIENT != '' && (steps.claude.outputs.execution_file != '' || steps.fallback.outputs.execution_file != '') }}
+      # Execution logs of a failed attempt, uploaded as an artifact so the
+      # cause can be read. This repo is public: anyone signed in to GitHub can
+      # download its artifacts, and GitHub masks secrets only in the log
+      # display, not inside artifacts. So the logs are uploaded only when an
+      # attempt failed, and kept for 3 days. show_full_output stays off.
+      - name: Upload execution log (first attempt, failed)
+        if: ${{ !cancelled() && steps.claude.outcome == 'failure' && steps.claude.outputs.execution_file != '' }}
         continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
-          name: claude-execution-logs-encrypted
-          path: ${{ runner.temp }}/claude-logs-encrypted/*.age
+          name: claude-execution-log
+          path: ${{ steps.claude.outputs.execution_file }}
           if-no-files-found: ignore
-          retention-days: 14
+          retention-days: 3
+
+      - name: Upload execution log (retry, failed)
+        if: ${{ !cancelled() && steps.fallback.outcome == 'failure' && steps.fallback.outputs.execution_file != '' }}
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: claude-execution-log-retry
+          path: ${{ steps.fallback.outputs.execution_file }}
+          if-no-files-found: ignore
+          retention-days: 3
 
       # continue-on-error above hides the first attempt's failure from the job
       # status, so put it back when nothing succeeded.
