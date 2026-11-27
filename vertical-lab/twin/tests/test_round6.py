@@ -11,6 +11,7 @@ import pytest
 os.environ.setdefault("TWIN6_OUT", "/tmp/twin6_test")
 
 from twin import bench6 as B6  # noqa: E402
+from twin import round4 as R4  # noqa: E402
 from twin import round5 as R5  # noqa: E402
 from twin import round6 as R6  # noqa: E402
 from twin.opt import net6  # noqa: E402
@@ -202,7 +203,8 @@ SURVEY_COLS = ["lab", "station", "component", "item", "qty", "new_usd_each", "ne
                "n_exact", "n_family", "n_substitute", "median_used_usd", "median_exact_family_usd",
                "n_priced_exact_family", "p25_used_usd", "p75_used_usd", "min_used_usd", "max_used_usd",
                "median_bid_usd", "discount_vs_new", "freight_rigging_usd", "median_delivered_usd", "price_frac",
-               "lead_w", "lead_sigma", "p_fault", "p_fault_best", "refurb_w", "refurb_sigma", "refurb_frac",
+               "lead_w", "lead_sigma", "new_parts_lead_w", "lead_w_with_new_parts", "p_fault", "p_fault_best",
+               "refurb_w", "refurb_sigma", "refurb_frac",
                "refurb_source", "extra_com_w", "share_as_is", "share_used", "share_tested", "share_refurb_or_warranty",
                "share_new_surplus", "share_of_new_bought_used", "wt", "new_source", "note"]
 
@@ -217,7 +219,7 @@ def test_market_file_in_the_surveys_own_format(tmp_path):
             dict(station="machining", component="lathe", market="yes", used_ok="", n_listings="30",
                  price_frac="0.2", lead_w="2"),                                  # a component: not read
             dict(station="machining", component="(station)", market="yes (lathe)", used_ok="True", n_listings="31",
-                 price_frac="0.7", lead_w="2.5", p_fault="0.2"),
+                 price_frac="0.7", lead_w="2.5", new_parts_lead_w="20", lead_w_with_new_parts="20", p_fault="0.2"),
             dict(station="pip", component="", market="none", used_ok="False", n_listings="0")]
     p = tmp_path / "summary.csv"
     with p.open("w", newline="") as fh:
@@ -228,6 +230,8 @@ def test_market_file_in_the_surveys_own_format(tmp_path):
     m = R6.load_market(p)
     assert set(m) == {"sem", "machining", "pip"}
     assert m["machining"]["price_frac"] == 0.7 and m["machining"]["market_text"] == "yes (lathe)"
+    # bought partly used, the cell is on site when its new parts are: the station's lead, not its used parts'
+    assert (m["machining"]["lead_w"], m["machining"]["lead_w_used_parts"]) == (20.0, 2.5)
     assert m["pip"]["ok"] is False and "price_frac" not in m["pip"]
     ps = R6.used_params("sem", m)
     assert (ps["ok"], ps["price_frac"], ps["lead_w"], ps["p_fault"], ps["refurb_w"]) == (True, 0.31, 3.5, 0.18, 5.0)
@@ -299,3 +303,31 @@ def test_the_portable_pin():
     bad = dict(fp, pin_env={k: v for k, v in pin.items() if k != "OPENBLAS_L2_SIZE"})
     assert any("OPENBLAS_L2_SIZE" in x for x in R.problems6(bad))
     assert B6.PIN == "portable" and B6.timings({}) == {}
+
+
+def test_engine_reads_the_committed_survey_as_market6_does():
+    """Every station the automated lab builds: the engine's reading of out/twin6/market/summary.csv gives the same
+    eight numbers and the same used_ok as the survey's own reader (twin/market6.py used_params)."""
+    from twin import market6 as M6
+    m, m6 = R6.load_market(), M6.load()
+    assert m, "out/twin6/market/summary.csv is missing"
+    for k in R4.BUILD:
+        p, q = R6.used_params(k, m), M6.used_params(k, m6)
+        for f in ("ok", "lead_w", "lead_sigma", "price_frac", "p_fault", "refurb_w", "refurb_sigma", "refurb_frac",
+                  "extra_com_w"):
+            assert p[f] == q[f], (k, f, p[f], q[f])
+
+
+def test_stations_without_a_used_market():
+    """The survey found no used market the lab would buy from for these (Sterling's list on PR 427, and the rest):
+    they are bought new in every seed, and every row says so per station."""
+    none = R6.no_used_market()
+    assert {"pip", "nanoindenter", "chamber", "carvera"} <= set(none)
+    assert not {"edm", "instron"} & set(none)
+    m = R6.load_market()
+    for seed in range(6):
+        s = R6.build_schedule6(seed, "parallel", market=m)
+        assert not set(s["used"]) & set(none)
+        assert set(s["used"]) <= {k for k, v in s["used_rule"].items() if v["bought_used"]}
+        assert all(not v["bought_used"] for k, v in s["used_rule"].items() if k in none)
+    assert not R6.build_schedule6(0, "parallel", opts=dict(used=False), market=m)["used"]

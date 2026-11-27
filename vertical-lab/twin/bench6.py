@@ -163,7 +163,7 @@ def simulate(cfg: dict):
     from twin import round6 as R6
     from twin import spaces as SP
     from twin.opt.gp import STATS
-    t0 = time.time()
+    t0, c0, load0 = time.time(), time.process_time(), os.getloadavg()
     fits0 = dict(STATS)
     days = int(os.environ.get("TWIN6_DAYS", cfg.get("days", DAYS)))
     specs = {k: C.Spec(k, R6.REFERENCE_USD[k], B2.WIP[k], cfg["seed"], 1.0, stock=cfg["stock"])
@@ -174,6 +174,12 @@ def simulate(cfg: dict):
     s = tw.run()
     out = dict(cfg=cfg, days_run=days, seconds=round(time.time() - t0, 1),
                gp={k: round(STATS[k] - fits0.get(k, 0), 3) for k in STATS}, campaigns={})
+    # the process's own CPU seconds: what a run costs a slice that runs one per vCPU, whatever else this machine was
+    # running alongside (``seconds`` is wall time, which stretches when there are more runs than vCPUs); the load
+    # averages at its start and end say how busy the machine was
+    out["timing"] = dict(wall_seconds=out["seconds"], cpu_seconds=round(time.process_time() - c0, 1),
+                         loadavg_start=[round(x, 2) for x in load0],
+                         loadavg_end=[round(x, 2) for x in os.getloadavg()], vcpus=os.cpu_count())
     T = B2.targets()
     r6 = tw.report6()
     sp = r6["spend"]
@@ -411,6 +417,12 @@ def stream_cost(rec=None) -> dict:
     return rec.get("stream_cost", {})
 
 
+def _secs(rec) -> float:
+    """A timing record's seconds: its CPU seconds where it has them (a run's cost on one vCPU of a busy runner, which
+    is how a slice runs them), else its wall seconds."""
+    return float(rec.get("cpu_seconds") or rec["seconds"])
+
+
 def timings(groups=None, k=None) -> dict:
     """Seconds a two-year run of each group takes, with how each was found (``checks/smoke.json``). A run's time is
     its work plus the HPC stream's, which grows with the scale and not with anything else the grid varies: about
@@ -439,14 +451,14 @@ def timings(groups=None, k=None) -> dict:
     for g, e in groups.items():
         f = e.get("full")
         if f:
-            full_at[g] = (f["seconds"], f.get("scale", HPC_SCALE))
+            full_at[g] = (_secs(f), f.get("scale", HPC_SCALE))
     out = {}
     for g, (name, c) in cfgs.items():
         e = groups.get(g) or {}
         sc = (c["opts"].get("hpc") or {}).get("scale", HPC_SCALE)
         kk = (k.get(_pclass(c["policy"])) or {}).get(c["lab"])
         if e.get("full") and e["full"].get("scale", HPC_SCALE) == sc:
-            out[g] = dict(seconds_2y=e["full"]["seconds"], how="measured (two years, seed 0)")
+            out[g] = dict(seconds_2y=_secs(e["full"]), how="measured (two years, seed 0)")
             continue
         base = base_cfg(c)
         cand = []                                      # the base's two-year runs, at whatever scale they were made
@@ -469,7 +481,7 @@ def timings(groups=None, k=None) -> dict:
             continue
         sh = e.get("short")
         if sh:
-            out[g] = dict(seconds_2y=round(sh["seconds"] * DAYS / sh["days"], 1),
+            out[g] = dict(seconds_2y=round(_secs(sh) * DAYS / sh["days"], 1),
                           how=f"a {sh['days']}-day run scaled by days (a lower bound)")
     return out
 
@@ -607,7 +619,9 @@ def smoke(days=None, groups=None, workers=3, seed=0):
                 continue
             e.pop("error", None)
             full = r["days_run"] >= DAYS
-            e["full" if full else "short"] = dict(seconds=r["seconds"], days=r["days_run"], gp_fits=r["gp"].get("fits"),
+            e["full" if full else "short"] = dict(seconds=r["seconds"], cpu_seconds=r["timing"]["cpu_seconds"],
+                                                  loadavg_end=r["timing"]["loadavg_end"], days=r["days_run"],
+                                                  gp_fits=r["gp"].get("fits"),
                                                   scale=(c["opts"].get("hpc") or {}).get("scale", HPC_SCALE),
                                                   cpu=R.cpu_model(), concurrent=workers, commit=r["code"]["commit"],
                                                   twin_dirty=r["code"]["twin_dirty"], best_new=r["best_new"],
@@ -627,7 +641,7 @@ def _smoke_one(cfg):
         tg = {k: {tn: (lambda h: None if h is None else h[0])(B2.hit(c["curve_new"], T[tn][k], 2))
                   for tn in ("T1", "T2")} for k, c in out["campaigns"].items()}
         return json.loads(json.dumps(B2._jsonable(dict(seconds=out["seconds"], days_run=out["days_run"], gp=out["gp"],
-                                                       code=out["code"], targets=tg,
+                                                       timing=out["timing"], code=out["code"], targets=tg,
                                                        best_new={k: c["best_new"]
                                                                  for k, c in out["campaigns"].items()}))))
     except Exception:
@@ -642,9 +656,9 @@ def status(write=True):
     tm = timings()
     L = ["# Round 6: runs done and left", "",
          "Made by `python -m twin.bench6 status`. An arm is reported from 12 seeds; the grid has 16 for every arm. "
-         "Seconds are a two-year run's on the runner that built the grid (an AMD EPYC 9V74, four runs at a time); "
-         "how each was found is in the last column (twin/bench6.py `timings`, from `checks/smoke.json`). "
-         "Core-hours are for the runs left; a runner runs four at a time.", "",
+         "Seconds are a two-year run's CPU seconds on the runner that built the grid (its CPU is in "
+         "`checks/smoke.json`), with every vCPU busy, as in a slice; how each was found is in the last column "
+         "(twin/bench6.py `timings`). Core-hours are for the runs left; a runner runs four at a time.", "",
          "| Tier | Experiment | Arm | Seeds done | Seeds left | s per run | Core-hours left | How |",
          "|---|---|---|---|---|---|---|---|"]
     tot_left, tot_runs, hours, unknown, exp_h = 0, 0, {}, 0, {}

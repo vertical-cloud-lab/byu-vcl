@@ -53,7 +53,7 @@ RUNS = (
 # The simulated candidates at 4 x round 5's (a pool of 512), whatever the grid's main scale: more than the 384 the
 # network values in one decision, so BOFN's and pKGFN's cut of the pool (twin/opt/net6.py) runs in the check too.
 SCALE = 4
-NOT_IN_ROW = ("seconds", "gp", "env", "code", "events_file")       # timing and provenance, as round 5's comparisons
+NOT_IN_ROW = ("seconds", "timing", "gp", "env", "code", "events_file")       # timing and provenance, as round 5's comparisons
 STEERING = ("MKL_", "OPENBLAS_", "NPY_", "ATEN_", "ONEDNN_", "DNNL_", "OMP_", "KMP_", "GOMP_", "BLIS_", "NUMEXPR_",
             "VECLIB_", "TORCH_", "GLIBC_TUNABLES", "LD_PRELOAD")
 

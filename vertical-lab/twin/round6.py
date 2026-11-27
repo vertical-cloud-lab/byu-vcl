@@ -142,7 +142,13 @@ def load_market(path=None) -> dict:
     is several machines, one row per machine as well (``component`` named): only the station's own row is read, since
     it already combines its machines. A station the survey lists replaces round 5's numbers for it field by field; a
     field the survey leaves empty keeps round 5's, and ``used_ok`` (whether a real used market exists and is cheaper
-    than new) replaces round 5's ``USED_OK``."""
+    than new) replaces round 5's ``USED_OK``.
+
+    A station bought partly used (the machining cell's lathe, bar feeder and arm used, its baths, dryer and
+    integration new) is on site when its last part is: its lead is ``lead_w_with_new_parts`` where the survey gives
+    one, the later of its used parts' lead (``lead_w``, kept as ``lead_w_used_parts``) and its new parts' lead
+    (``new_parts_lead_w``), as ``twin/market6.py``'s own ``used_params`` reads it. Reading ``lead_w`` alone would have
+    the doser on site in 2 weeks while its carousel, bought new, takes 14."""
     p = market_file(path)
     if not p.exists():
         return {}
@@ -162,7 +168,9 @@ def load_market(path=None) -> dict:
             if ok is not None:
                 m["ok"] = ok
             for f, names in (("price_frac", ("price_frac", "used_price_frac", "used_frac_of_new")),
-                             ("lead_w", ("lead_w", "used_lead_w", "lead_weeks")),
+                             ("lead_w", ("lead_w_with_new_parts", "lead_w", "used_lead_w", "lead_weeks")),
+                             ("lead_w_used_parts", ("lead_w",)),
+                             ("new_parts_lead_w", ("new_parts_lead_w",)),
                              ("lead_sigma", ("lead_sigma", "used_lead_sigma")),
                              ("p_fault", ("p_fault", "fault_risk", "p_refurb")),
                              ("refurb_w", ("refurb_w", "refurb_weeks")),
@@ -196,6 +204,25 @@ def used_params(k: str, market: dict | None) -> dict:
     return p
 
 
+def no_used_market(market: dict | None = None) -> dict:
+    """The stations the automated lab buys (``round4.BUILD``, less what it owns and the space itself) for which the
+    survey found no used market it would buy from (``used_ok`` false), with its verdict (``none``: no listing of the
+    model or its line; ``thin``: too few to count on; ``n/a (new only)``: commodity or building work, not surveyed).
+    The conventional lab buys nothing: it works with the equipment it has."""
+    from twin import econ as E
+    market = load_market() if market is None else market
+    items = {it.key: it for it in E.items("vertical_lab")}
+    out = {}
+    for k in sorted(R4.BUILD):
+        it = items.get(k)
+        if it is None or k in ("cubxl", "services") or it.kind == "owned":
+            continue
+        p = used_params(k, market)
+        if not p["ok"]:
+            out[k] = dict(name=it.name, market=p["market"], n_listings=p.get("n_listings"))
+    return out
+
+
 def used_rule6(k: str, p: dict) -> dict:
     """Round 5's rule with the station's own numbers: buy used when the expected days saved, against the expected
     date the space is ready, are at least ``rule_days``, with the risk of a fault priced in."""
@@ -215,7 +242,7 @@ def build_schedule6(seed: int, plan: str, opts: dict | None = None, market: dict
     opts = opts or {}
     items = {it.key: it for it in E.items("vertical_lab")}
     rng = np.random.default_rng(60_000 + seed)
-    out = dict(items={}, payments=[], stations={}, cell_h=None, start_h=0.0, room_h=None, used={},
+    out = dict(items={}, payments=[], stations={}, cell_h=None, start_h=0.0, room_h=None, used={}, used_rule={},
                used_source="out/twin6/market/summary.csv" if market else "round 5's stand-ins")
     if plan == "external":
         return out
@@ -250,6 +277,10 @@ def build_schedule6(seed: int, plan: str, opts: dict | None = None, market: dict
         inst_n = max(t_arr[k], room_h)
         on_new = inst_n + (inst_w + com_w) * WEEK
         rule = used_rule6(k, p)
+        # every station the lab buys, with the survey's verdict on its used market and what the rule made of it
+        out["used_rule"][k] = dict(market=p["market"], used_ok=bool(p["ok"]), lead_w=p["lead_w"],
+                                   expected_days_saved=rule["expected_days_saved"],
+                                   bought_used=bool(allow_used and rule["ok"]))
         if allow_used and rule["ok"]:
             arr = lu + (refurb if fault else 0.0)
             inst0 = max(arr, room_h)
@@ -1052,7 +1083,7 @@ class Twin6(R5.Twin5):
         return dict(lab=self.lab, plan=self.plan, notes=list(NOTES_APPLIED), room_h=sch.get("room_h"),
                     money=dict(limited=False, gates_removed=sorted(GATES_REMOVED), gates_kept=sorted(GATES_KEPT)),
                     used=dict(source=sch.get("used_source"), n_market=len(F.market_used), file_sha256=F.market_sha,
-                              items=sch.get("used", {})),
+                              items=sch.get("used", {}), stations=sch.get("used_rule", {})),
                     atom=dict(switch_h=F.atom_switch_h, cycle=F.atom_cycle,
                               runs=sum(1 for j in jobs if j[3] == "atomize"), runs_by=R5._count_by(jobs, "atomize")),
                     crucibles=dict(families=cr, cell_d=None if F.atom_switch_h is None else
