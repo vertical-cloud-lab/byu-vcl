@@ -1,0 +1,111 @@
+{
+ "what": "Not asked for in #417, and no row is appended: the requested check (arms, r5_conventional_external_fast_lean_s0) uses the heuristic and the funnel, which fit no GP (gp.fits 0), so it doesn't exercise BOFN's and pKGFN's code. These reruns of committed conventional-lab BOFN and pKGFN rows (net, seed 0, 2-4 minutes each) do, under the same pin (TWIN_PIN=avx2, PYTHONHASHSEED=0) on the same runner as this slice's 11 rows. Committed event logs restored.",
+ "runner_cpu": "Intel(R) Xeon(R) 6975P-C",
+ "committed_rows_cpu": "AMD EPYC 9V45 96-Core Processor",
+ "engine": "twin/ at b410477; the committed rows were made from 9ecef6f, whose twin/ differs only in bench5.plan's queue order and like5 (analysis), not the engine",
+ "reruns_vs_committed": [
+  {
+   "run_id": "r5_conventional_external_bofn3_lean_s0",
+   "row_identical": false,
+   "events_identical": false,
+   "first_diffs": [
+    [
+     "/campaigns/flaime_al/best",
+     "0.5107822195064838",
+     "0.7473545777998093"
+    ],
+    [
+     "/campaigns/flaime_al/best_new",
+     "0.5107822195064838",
+     "0.7473545777998093"
+    ],
+    [
+     "/campaigns/flaime_al/curve_new (length)",
+     "9",
+     "26"
+    ],
+    [
+     "/campaigns/flaime_al/curve_new[5][0]",
+     "347.4",
+     "393.442"
+    ],
+    [
+     "/campaigns/flaime_al/curve_new[5][1]",
+     "69266.61",
+     "75546.98"
+    ]
+   ],
+   "gp_fits": [
+    70,
+    85
+   ],
+   "note": "[rerun, committed]"
+  },
+  {
+   "run_id": "r5_conventional_external_pkgfn3_lean_s0",
+   "row_identical": false,
+   "events_identical": false,
+   "first_diffs": [
+    [
+     "/campaigns/flaime_al/best",
+     "0.7435038024685953",
+     "0.7574490932346435"
+    ],
+    [
+     "/campaigns/flaime_al/best_new",
+     "0.7435038024685953",
+     "0.7574490932346435"
+    ],
+    [
+     "/campaigns/flaime_al/curve_new (length)",
+     "15",
+     "16"
+    ],
+    [
+     "/campaigns/flaime_al/curve_new[9][0]",
+     "480.51",
+     "484.4"
+    ],
+    [
+     "/campaigns/flaime_al/curve_new[9][1]",
+     "93350.45",
+     "96417.97"
+    ]
+   ],
+   "gp_fits": [
+    76,
+    83
+   ],
+   "note": "[rerun, committed]"
+  }
+ ],
+ "determinism": {
+  "how": "r5_conventional_external_bofn3_lean_s0 three times on this runner: A and B in fresh workers, C in a worker that first ran r5_conventional_external_bofn3_reorder_s0 (check_det_slice_6.py). Compared apart from timing, provenance and the GP counters bench5 accumulates per worker.",
+  "A_vs_B_diffs": [],
+  "A_vs_C_diffs": [],
+  "al_best": [
+   0.5107822195064838,
+   0.5107822195064838,
+   0.5107822195064838
+  ],
+  "committed_al_best": 0.7473545777998093,
+  "pre_run_vs_committed_first_diffs": [
+   [
+    "/campaigns/flaime_al/best",
+    "0.7350184118878464",
+    "0.7234629287748429"
+   ],
+   [
+    "/campaigns/flaime_al/best_new",
+    "0.7350184118878464",
+    "0.7234629287748429"
+   ],
+   [
+    "/campaigns/flaime_al/curve_new (length)",
+    "28",
+    "23"
+   ]
+  ]
+ },
+ "conclusion": "On this runner BOFN and pKGFN runs are deterministic and don't depend on the worker's history, but they don't reproduce the committed rows made on an AMD EPYC 9V45, though the pin, the package versions and the engine are the same and the heuristic-and-funnel row does reproduce. So under TWIN_PIN=avx2, GP-based rows depend on the CPU (Intel against AMD here), through something the pin doesn't fix. This slice's 11 rows are new seeds made on the Intel runner; each records its CPU in env.cpu."
+}
