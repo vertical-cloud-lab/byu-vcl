@@ -1,0 +1,39 @@
+1
+00:00:00,800 --> 00:00:05,980
+Forty-three instruments, laid out three ways. These are design layouts, not built labs.
+
+2
+00:00:07,000 --> 00:00:18,010
+First, a conventional materials lab, grouped by workflow: rooms for powder, the metal printers, the machine shop, the furnace and the SEM, and open benches for the rest.
+
+3
+00:00:18,600 --> 00:00:29,930
+Benches are thirty inches deep and aisles five feet wide, with service space behind every floor machine. Measured to its walls, it comes to 4,280 square feet.
+
+4
+00:00:31,800 --> 00:00:41,850
+Next, the same floor plan, automated. Mobile robots drive the routes people walked, with fixed arms, docking targets and sample racks at the stations.
+
+5
+00:00:43,500 --> 00:00:50,280
+The floor area stays the same. And a robot docked in a five-foot aisle leaves too little room for another to pass.
+
+6
+00:00:51,600 --> 00:00:57,420
+The vertical lab. Two Kardex Shuttles come in, and every benchtop instrument moves onto a tray.
+
+7
+00:01:05,500 --> 00:01:12,410
+The floor machines rearrange along one robot aisle, and the floor area falls to 3,029 square feet.
+
+8
+00:01:26,000 --> 00:01:35,130
+Side by side, the vertical lab needs 29 percent less floor: 14.2 instruments per thousand square feet, against 10.0.
+
+9
+00:01:35,800 --> 00:01:45,510
+Most of what is left is floor machines, their clearances and the robot aisle. And the Shuttles stand 9.15 meters tall, so it needs a high bay.
+
+10
+00:01:46,200 --> 00:01:54,670
+For scale, Emerald Cloud Lab in South San Francisco held more than a hundred items of equipment in about 15,000 square feet.

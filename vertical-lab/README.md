@@ -19,7 +19,9 @@ jump. Round 1 ([`notes/twin.md`](notes/twin.md)) built the network, the market a
 BoTorch policies (GP-BO, SAASBO, BOFN), the conventional lab, DAL #256's schedule, the campaign trace, the economics
 ([`notes/twin_econ.md`](notes/twin_econ.md)) and a video ([`notes/twin_video.md`](notes/twin_video.md),
 [on YouTube](https://www.youtube.com/watch?v=Pz7hxqfODmE)). Everything in it is simulated. The package is
-self-contained in [`twin/`](twin/README.md), with its outputs in `out/twin/` and `out/twin2/`.
+self-contained in [`twin/`](twin/README.md), with its outputs in `out/twin/` and `out/twin2/`. A video segment on floor
+space ([`notes/twin_floorspace.md`](notes/twin_floorspace.md), `twin/video/floorspace*.py`) lays the same equipment out
+three ways (a conventional materials lab, the same plan automated, and the vertical lab) and measures each one's area.
 
 ## Round 15: everything brought together, one lab in every clip, re-rendered at 720p (2026-11-23)
 

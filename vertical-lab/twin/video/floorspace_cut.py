@@ -114,8 +114,11 @@ class Cut:
         S = self.S
         # the title
         ft, fs = ST.font(31, bold=True), ST.font(19)
-        self.panel(d, (ST.px(24), ST.px(20), ST.px(24 + 800), ST.px(20 + 86)))
-        self.text(d, (ST.px(42), ST.px(30)), "Floor space: the same 43 instruments, three ways", ft)
+        title = "Floor space: the same 43 instruments, three ways"
+        tw = max(d.textlength(title, font=ft), d.textlength("Design layouts, not built labs  ·  equipment from PR "
+                                                              "318's 3-D lab", font=fs))
+        self.panel(d, (ST.px(24), ST.px(20), ST.px(24) + tw + ST.px(38), ST.px(20 + 86)))
+        self.text(d, (ST.px(42), ST.px(30)), title, ft)
         self.text(d, (ST.px(42), ST.px(72)), "Design layouts, not built labs  ·  equipment from PR 318's 3-D lab", fs,
                   fill=INK2)
         # the stage
@@ -166,18 +169,19 @@ class Cut:
                    "Service space 0.6 m beside and behind every floor machine",
                    "Walls 150 mm; no room narrower than one 11 ft module; area to the walls' outer faces"]
         rules_v = ["The vertical lab, by the same rules",
-                   "Two Kardex Shuttle XP 500s, 9.15 m tall: the benchtop instruments ride on their trays",
+                   "Two Kardex Shuttle XP 500s, 9.15 m tall, hold the benchtop instruments",
                    "One MiR aisle, 3.0 m: two MiR250s pass (MiR250 spec sheet)",
-                   "Service space 0.6 m beside and behind every floor machine, as before",
+                   "Service space 0.6 m beside and behind every floor machine",
                    "Area to the walls' outer faces"]
-        for rules, a in ((rules_c, ST.window(t, f3, PH["vert"] + 12.0, 0.6)),
-                         (rules_v, ST.window(t, f7, PH["plans"] + 0.5, 0.6))):
+        f6_ = next(ln for ln in self.lines if ln["id"] == "f6")["t0"]
+        for rules, a, top in ((rules_c, ST.window(t, f3, f6_ + 0.2, 0.6), False),
+                              (rules_v, ST.window(t, f7, PH["plans"] + 0.5, 0.6), True)):
             if a <= 0:
                 continue
             f1, f2 = ST.font(19, bold=True), ST.font(18)
             wmax = max(d.textlength(rules[0], font=f1), *(d.textlength("•  " + r, font=f2) for r in rules[1:]))
-            x0, y1b = ST.px(24), ST.px(1060)
             hh = ST.px(36 + 27 * (len(rules) - 1) + 10)
+            x0, y1b = ST.px(24), (ST.px(120) + hh if top else ST.px(1060))
             self.panel(d, (x0, y1b - hh, x0 + wmax + ST.px(36), y1b), a)
             self.text(d, (x0 + ST.px(18), y1b - hh + ST.px(12)), rules[0], f1, a=a)
             for i, r in enumerate(rules[1:]):
@@ -210,8 +214,9 @@ class Cut:
                      f"{fl['docks']} docking targets: one per floor machine and bench",
                      f"{fl['arms']} fixed arms with sample racks, where a bench has room",
                      f"{fl['chargers']} chargers"]
-            ox, oy = ST.px(1896 - 470), ST.px(256)
             f1, f2 = ST.font(20, bold=True), ST.font(18)
+            wmax = max(d.textlength("+  " + s_, font=f2) for s_ in items)
+            ox, oy = ST.px(1896) - wmax - ST.px(36), ST.px(256)
             self.panel(d, (ox, oy, ST.px(1896), oy + ST.px(48 + 28 * len(items))), a_auto)
             self.text(d, (ox + ST.px(18), oy + ST.px(12)), "Automation added", f1, a=a_auto)
             for i, s in enumerate(items):
@@ -237,7 +242,8 @@ class Cut:
             n_bench = self.counts["benchtop"]
             n_store = sum(1 for it in self.S.inv.values() if it.tray is not None and not it.instrument)
             s1 = "Two Kardex Shuttle XP 500s, 9.15 m tall, come in"
-            s2 = f"{n_bench} benchtop instruments and {n_store} stores and racks go onto their {n_trays} trays"
+            s2 = (f"{n_bench} benchtop instruments and {n_store} other items (stores, racks, accessories) go onto "
+                  f"their {n_trays} trays")
             f1, f2 = ST.font(22, bold=True), ST.font(20)
             w = max(d.textlength(s1, font=f1), d.textlength(s2, font=f2))
             cx = ST.px(960)
@@ -251,12 +257,18 @@ class Cut:
             cx0, cy0, cx1, cy1 = S.conv.envelope
             vx0, vy0, vx1, vy1 = S.vert.envelope
             fr = ST.font(19, bold=True)
-            for s, p, col in (("the conventional lab's footprint", ((cx0 + cx1) / 2, (cy0 + vy0) / 2 - 900.0, 0.0),
-                               (120, 70, 56)),
-                              ("the vertical lab", ((vx0 + vx1) / 2 + 2500.0, (vy0 + vy1) / 2 - 3600.0, 0.0),
-                               (16, 96, 52))):
-                q = FSS.project(cam, [p])[0]
-                if not (0 < q[0] < 1920 and 0 < q[1] < 1080):
+            cands = {"the conventional lab's footprint": [(cx1 - 2600.0, vy0 - 1400.0, 0.0),
+                                                          (cx1 - 2600.0, (cy0 + vy0) / 2, 0.0),
+                                                          ((cx0 + cx1) / 2, vy0 - 1600.0, 0.0)],
+                     "the vertical lab": [(vx0 + 3800.0, vy0 + 700.0, 0.0), ((vx0 + vx1) / 2 - 3000.0, vy0 + 700.0, 0.0)]}
+            for s, col in (("the conventional lab's footprint", (120, 70, 56)), ("the vertical lab", (16, 96, 52))):
+                q = None
+                for p in cands[s]:
+                    qq = FSS.project(cam, [p])[0]
+                    if 250 < qq[0] < 1670 and 140 < qq[1] < 1000:
+                        q = qq
+                        break
+                if q is None:
                     continue
                 w = d.textlength(s, font=fr)
                 bx = (q[0] - w / 2 - ST.px(10), q[1] - ST.px(16), q[0] + w / 2 + ST.px(10), q[1] + ST.px(16))
@@ -519,11 +531,28 @@ def audio(cut: Cut, path: Path) -> Path:
     meas = subprocess.run(["ffmpeg", "-hide_banner", "-i", str(raw), "-af", "loudnorm=I=-16:TP=-1.5:LRA=11:"
                            "print_format=json", "-f", "null", "-"], capture_output=True, text=True).stderr
     js = json.loads(meas[meas.rindex("{"):meas.rindex("}") + 1])
-    gain = -16.0 - float(js["input_i"])
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(raw), "-af", f"volume={gain:.2f}dB", "-ar", str(sr),
-                    str(path)], check=True)
+    # the second pass: one linear gain when the true peak allows it (loudnorm's linear mode), as the campaign video
+    af = (f"loudnorm=I=-16:TP=-1.5:LRA=11:measured_I={js['input_i']}:measured_TP={js['input_tp']}:"
+          f"measured_LRA={js['input_lra']}:measured_thresh={js['input_thresh']}:offset={js['target_offset']}:"
+          "linear=true:print_format=json")
+    out = subprocess.run(["ffmpeg", "-hide_banner", "-y", "-i", str(raw), "-af", af, "-ar", str(sr), str(path)],
+                         capture_output=True, text=True).stderr
+    js2 = json.loads(out[out.rindex("{"):out.rindex("}") + 1])
+    print(f"audio: {js['input_i']} LUFS -> {js2['output_i']} LUFS, true peak {js2['output_tp']} dBTP, "
+          f"{js2['normalization_type']}", flush=True)
     raw.unlink()
     return path
+
+
+def remux():
+    """The narration mixed again and muxed onto the encoded picture (/tmp/fscut/video.mp4), the picture copied."""
+    cut = Cut()
+    tmp = Path("/tmp/fscut")
+    wav = audio(cut, tmp / "narration.wav")
+    out = OUTD / "floorspace_preview.mp4"
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(tmp / "video.mp4"), "-i", str(wav), "-c:v", "copy",
+                    "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", str(out)], check=True)
+    print("wrote", out, flush=True)
 
 
 def srt(cut: Cut, path: Path):
@@ -655,6 +684,8 @@ if __name__ == "__main__":
         stills([float(v) for v in sys.argv[2:]])
     elif cmd == "sheet":
         sheet()
+    elif cmd == "remux":
+        remux()
     elif cmd == "meta":
         meta(sys.argv[2] if sys.argv[2:] else "HEAD")
     else:

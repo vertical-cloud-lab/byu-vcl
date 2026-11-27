@@ -130,6 +130,36 @@ def check(model="small.en") -> dict:
     return out
 
 
+def check_encoded(mp4: Path, model="small.en") -> dict:
+    """The encoded file's own audio, transcribed whole and compared word by word with the whole script."""
+    import subprocess
+    import tempfile
+    import jiwer
+    from faster_whisper import WhisperModel
+    from num2words import num2words
+    with tempfile.TemporaryDirectory() as td:
+        wav = Path(td) / "a.wav"
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(mp4), "-vn", "-ac", "1", "-ar", "16000", str(wav)],
+                       check=True)
+        y = _audio16k(wav)
+    wm = WhisperModel(model, device="cpu", compute_type="int8", cpu_threads=int(os.environ.get("WHISPER_THREADS", "2")))
+    segs, _ = wm.transcribe(y, language="en", beam_size=5)
+    hyp = " ".join(sg.text for sg in segs).strip()
+    sc = script()
+    say = sc.get("say", {})
+
+    def words(t):
+        t = N.spoken(spoken(t, say))
+        t = re.sub(r"(\d+)\.(\d+)", lambda m: f"{m.group(1)} point {' '.join(m.group(2))}", t)
+        t = re.sub(r"\d+", lambda m: num2words(int(m.group(0))), t.replace(",", ""))
+        return " ".join(_norm(t))
+    ref = " ".join(words(ln["text"]) for ln in sc["lines"])
+    out = dict(model=model, file=Path(mp4).name, wer=round(jiwer.wer(ref, words(hyp)), 4), heard=hyp)
+    (NDIR / "encoded_check.json").write_text(json.dumps(out, indent=1) + "\n")
+    print("encoded file's audio WER", out["wer"])
+    return out
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if sys.argv[1:] else "tts"
     if cmd == "tts":
@@ -137,5 +167,7 @@ if __name__ == "__main__":
         print(json.dumps(durations()))
     elif cmd == "check":
         check(sys.argv[2] if sys.argv[2:] else "small.en")
+    elif cmd == "check_encoded":
+        check_encoded(Path(sys.argv[2]))
     else:
         raise SystemExit(__doc__)

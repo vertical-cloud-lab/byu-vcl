@@ -151,6 +151,20 @@ thousands separator are respelled for the voice ("4,280" as "four thousand two h
 the comma as a pause and says "four, two hundred eighty". Each line says only what is on screen when it is said, and
 every number in it is `layouts.json`'s (`twin/tests/test_floorspace.py` checks).
 
+**Heard back:** every line by faster-whisper small.en, 0.85 % word error over the script
+(`out/floorspace/narration/check.json`). Two lines were reworded after the first pass: "Now automate it on the same floor
+plan" came back as "now automated on the same floor plan", and "Emerald Cloud Lab's lab" read awkwardly. small.en still
+writes "Kardex" as "cardiac", a word it doesn't know. The encoded file's own audio was transcribed too
+(`out/floorspace/narration/encoded_check.json`).
+
+**The track:** each line levelled to -19 dBFS RMS at its time, 48 kHz, then ffmpeg's `loudnorm` in two passes to -16
+LUFS and -1.5 dBTP. A single linear gain would have put the peaks over -1.5 dBTP, so `loudnorm` used its dynamic mode.
+Subtitles: `out/floorspace/floorspace_preview.srt`.
+
+**What it cost on the runner** (2026-11-27, 4 cores): the scene builds in 3 min with the tessellation cached (each of
+three workers builds its own; 2.8-3.2 GB each), 1,284 renders at 1.4-1.5 s each with three workers side by side (10-11
+min), and the cut with its overlays and plans in 2 min.
+
 ## Rebuilding it
 
 ```bash
