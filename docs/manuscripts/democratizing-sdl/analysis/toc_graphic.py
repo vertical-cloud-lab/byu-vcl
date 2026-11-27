@@ -1,13 +1,15 @@
-"""Draft table-of-contents graphic: a simplified Figure 1(b).
+"""Layout sketch for the table-of-contents graphic. Not for submission.
 
-Digital Discovery asks for a TOC graphic of 8 cm x 4 cm at 600 dpi or more,
-original and without logos. This draws each project's break-even wage (the
-hourly rate at which build labour costs as much as the parts) as one dot,
-against the $25-75/h band of plausible loaded labour costs used in Figure 1.
+Digital Discovery wants the TOC graphic at the revision stage, 8 cm x 4 cm at
+600 dpi or more, and "original, unpublished artwork created by one of the
+co-authors. Preferably, the graphic should not be reused and appear again within
+the article." This sketch reuses Figure 1(b) and was drafted with an AI coding
+assistant, so it is only a starting point for the co-author who draws the real one.
+It draws each project's break-even wage as a dot against the $25-75/h band.
 
-    python toc_graphic.py   # writes ../figures/toc-graphic.tif and a PNG preview
+    python toc_graphic.py   # writes ../figures/source/toc-layout-sketch.png
 
-It reads the same PROJECTS as labor_cost_analysis.py, so the two cannot drift.
+It reads the same PROJECTS as labor_cost_analysis.py.
 """
 
 from __future__ import annotations
@@ -83,14 +85,10 @@ def main() -> None:
                           "labour costs as much as its parts. Above that wage, labour costs more.",
              ha="left", va="top", color=INK_2, fontsize=5.8, linespacing=1.3)
 
-    FIGDIR.mkdir(exist_ok=True)
-    tif = FIGDIR / "toc-graphic.tif"
-    fig.savefig(tif, dpi=DPI, facecolor=SURFACE, pil_kwargs={"compression": "tiff_lzw"})
-    from PIL import Image  # flatten to RGB: journals reject alpha channels in TIFFs
-
-    Image.open(tif).convert("RGB").save(tif, compression="tiff_lzw", dpi=(DPI, DPI))
-    fig.savefig(FIGDIR / "toc-graphic-preview.png", dpi=200, facecolor=SURFACE)
-    print("Wrote figures/toc-graphic.tif (8 x 4 cm, 600 dpi) and figures/toc-graphic-preview.png")
+    out = FIGDIR / "source" / "toc-layout-sketch.png"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(out, dpi=200, facecolor=SURFACE)
+    print(f"Wrote {out.relative_to(HERE.parent)} (layout sketch, not for submission)")
 
 
 if __name__ == "__main__":

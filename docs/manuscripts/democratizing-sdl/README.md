@@ -91,8 +91,15 @@ original placement.
 Figures 2–7 and 9 were re-extracted from the Word source at roughly twice the linear
 resolution of the earlier PDF extractions. Figures 4 and 8 are new: neither project had a
 figure in v1, and both were recovered from material the contributors had already
-submitted. Both are marked `[NEEDED — confirm figure]` in the manuscript, because neither
-was approved for publication.
+submitted. Neither was approved for publication, so each carries a sign-off item in the
+manuscript (TV-2, P7-2).
+
+**No figure may be altered with an AI tool.** RSC does not allow "GenAI or AI-assisted tools"
+to alter submitted images, including "adding, removing, moving, or obscuring features". Every
+figure here is the contributor's image as extracted from their file. Figure 9 was also
+downscaled, and Figure 1 is drawn by the analysis script. A crop of Figure 8 made with an AI
+tool for v3 was withdrawn on 2026-11-27 (see P7-2). Any further change to a contributed figure
+should be made by a person with ordinary software, or by the team from its own source file.
 
 | Figure | File | Source |
 |---|---|---|
@@ -103,7 +110,7 @@ was approved for publication.
 | 5 | `fig5-color-mixing-bot.jpg` | DTU slide deck, 3302 × 2476 (beats the Word copy's 2500 × 1874) |
 | 6 | `fig6-disco.png` | Word source, 2048 × 579 |
 | 7 | `fig7-science-jubilee.png` | Word source, 2048 × 1012 |
-| **8** | `fig8-electrochemical-workflow.png` | **new** — original Google Form figure set; logo strip cropped and a spell-check underline removed for v3 (1842 × 652). Original in `figures/source/` |
+| **8** | `fig8-electrochemical-workflow.png` | **new**: the unaltered original from the Google Form figure set (1842 × 808), with its logo strip. The P7 team is asked for a clean export (P7-2) |
 | 9 | `fig9-ivoryos.png` | downscaled from the 16039 × 6235 TIFF in `figures/source/` |
 
 `figures/source/` holds what is not used: the IvoryOS TIFF at full size, the DTU slide

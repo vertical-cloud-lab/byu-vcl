@@ -92,11 +92,12 @@ Ten of the 14 showcased projects are analysed here: those whose developers contr
 <!-- SIGN-OFF: BP-1. The selection criterion above is the most likely one but has not been confirmed. Brenden
      must confirm or correct it. If the true criterion differs, rewrite the sentence; do not delete it. -->
 
-During the workshop we also surveyed attendees on what the community needs to adopt democratized SDLs. Respondents (n = 58) ranked "developing low-cost SDL equipment and shared blueprints" as a top priority for advancing democratized SDLs, and over 70% said they were willing to publish hardware designs and related software. The survey items, the aggregate responses available to us, and the survey's ethics and consent information are given in Supplementary Note S2.
+During the workshop we also surveyed attendees on what the community needs to adopt democratized SDLs. Respondents (n = 58) ranked "developing low-cost SDL equipment and shared blueprints" as a top priority for advancing democratized SDLs, and over 70% said they were willing to publish hardware designs and related software. The survey items and the aggregate responses available to us are given in Supplementary Note S2. **[TO SUPPLY: the ethics statement, which RSC wants here in the main text: the committee that approved or exempted the survey and its reference number, and how consent was obtained; or, if there was no review, a plain statement of how responses were collected (for example, whether anonymously) and that only aggregate results are reported.]**
 
 <!-- SIGN-OFF: BP-2 / LDP-1. Supplementary Note S2 needs the instrument and full response distribution. If they
      cannot be recovered, use the fallback wording in sign-off-checklist.md (BP-2), which says so plainly.
-     SIGN-OFF: BP-3 / LDP-1. Ethics/consent status of publishing aggregate survey results. -->
+     SIGN-OFF: BP-3 / LDP-1. The ethics and consent sentence above. RSC requires it "in the methods/experimental section",
+     which for the survey is this paragraph, not only the ESI. Repeat it in Note S2. -->
 
 Two features of this result set up the rest of this Perspective. First, the community's stated priority is *equipment and blueprints*, that is, artefacts. Second, a large majority say they are willing to publish designs. Both fit the cost framing we argue against. They describe an intention to produce and release hardware, not an intention to make hardware reproducible. Section 6 shows what happened to that intention in our own sample.
 
@@ -198,9 +199,12 @@ The descriptions below are condensed. The full descriptions as the developers co
 
 ***Figure 8.*** *Electrochemical workflow for redox-active compounds (P7). The Jubilee motion platform carries an Opentrons Gen 2 pipette for sample preparation and reaction, and a BluRev rotating disk electrode, whose science-jubilee tool is still in development, for cyclic voltammetry and kinetic analysis of redox events.*
 
-<!-- SIGN-OFF: P7-2. Figure 8 was recovered from the figure set submitted with the original showcase form. For v3 the
-     institutional-logo strip was cropped and a spell-check underline removed; the original is
-     figures/source/electrochemical-workflow-original-with-logos.png. The P7 team confirms the schematic is current. -->
+<!-- SIGN-OFF: P7-2 (needed before submission). Figure 8 is the unaltered original from the figure set submitted with the
+     showcase form, including its institutional-logo strip and a proofing underline under "Opentrons". The crop made for v3
+     with an AI tool was withdrawn on 2026-11-27: RSC does not allow GenAI or AI-assisted tools to alter submitted images,
+     including removing features. The P7 team exports a clean version from its own source file, without AI tools: no logos,
+     no proofing marks, at least 1960 px wide (600 dpi at 8.3 cm). DD also discourages brand names inside figures, so
+     "Pipette" with the brand in the caption avoids a production query. The team also confirms the schematic is current. -->
 
 **P8: Digital pipette integration for multiple platforms.** Integrating heterogeneous mounting, power and control connections is a recurring cost when SDLs are built from existing equipment. Devices with their own packaging, power and control are far easier to adopt. This project modified the Digital Pipette,<sup>28</sup> a sub-$100 liquid handler with replaceable fluid-contacting parts and luer-lock fluidic connections, built from a self-contained linear servo actuator, a syringe and 3D printed frame parts. The modification lets it operate stand-alone. A 3D printed attachment mounts it on motion platforms such as science-jubilee or on robotic arms, and MQTT communication lets it work alongside other devices. The integration has been reproduced by several groups and science-jubilee users and is in active research use. *Evidence:* the clearest positive case for C2, a 3 h, $100 rebuild that others have made. It complicates C3, because it spread with only forum threads and direct help from its developers as documentation.
 
@@ -402,16 +406,17 @@ There are no conflicts to declare.
 
 ## Data availability
 
-The code for the labour-cost analysis (`labor_cost_analysis.py`), the derived per-project values (`table1-derived.csv`) and the full rate-sensitivity sweep (`sensitivity.csv`) are provided as ESI. They can also be found at https://github.com/vertical-cloud-lab/byu-vcl/tree/main/docs/manuscripts/democratizing-sdl/analysis, and a Zenodo DOI for the archived version will be added at acceptance. The analysis uses only the self-reported figures in Table 1. The public resource behind every cell of Table 5 is listed in Supplementary Note S3. The project descriptions as contributed are given in Supplementary Note S1. Design files and documentation for the contributed projects are at the URLs listed in Table 1. The survey items and aggregate results are given in Supplementary Note S2; individual survey responses are not available for confidentiality reasons.
+The code for the labour-cost analysis (`labor_cost_analysis.py`), the derived per-project values (`table1-derived.csv`) and the full rate-sensitivity sweep (`sensitivity.csv`) are provided as ESI. They can also be found at https://github.com/vertical-cloud-lab/byu-vcl/tree/main/docs/manuscripts/democratizing-sdl/analysis. The version of the code employed for this study is **[TO SUPPLY: at submission, the tag or commit, which also replaces `main` in the URL]**. Zenodo DOIs for this version and for the latest version (concept DOI) will be added at acceptance. The analysis uses only the self-reported figures in Table 1. The public resource behind every cell of Table 5 is listed in Supplementary Note S3. The project descriptions as contributed are given in Supplementary Note S1. Design files and documentation for the contributed projects are at the URLs listed in Table 1. The survey items and aggregate results are given in Supplementary Note S2; individual survey responses are not available for confidentiality reasons.
 
-<!-- SIGN-OFF: SGB-4. Pin the GitHub URL to the submission commit (or merge PR #193 first so /main/ resolves), and
-     mint the Zenodo DOI from that commit by acceptance; metadata is ready in analysis/.zenodo.json. -->
+<!-- SIGN-OFF: SGB-4. At submission: merge PR #193 (so the folder exists on main), tag the submission commit, and put the
+     tag in the URL and in the "version of the code" sentence (Digital Discovery's template). At acceptance: mint the Zenodo
+     deposit from that tag and add both DOIs (version and concept); metadata is ready in analysis/.zenodo.json. -->
 
 ## Acknowledgements
 
 We thank the attendees of the Democratizing Self-Driving Labs workshop at Accelerate 2024 for their participation and survey responses, and its co-organizers, including Milad Abolhasani and Curtis Berlinguette.
 
-During the preparation of this manuscript, the authors used Claude (Anthropic) through Claude Code, August–November 2026: Claude Opus 5 and Claude Opus 5.5 for the work described here, with Claude Haiku 4.5 and Claude Haiku 5.5 used by Claude Code for auxiliary steps such as summarizing fetched web pages. They used it to restructure and draft the revised text; to write the analysis code that generates Figure 1 and Tables 3 and 4; to propose the documentation scores in Table 5 from public resources; to check references against Crossref and repositories, licences and deposits against the live resources; and to crop institutional logos and a spell-check mark from Figure 8. The prompts and the model's responses are preserved in the public issue and pull-request threads of the repository named in the Data availability statement. The authors have reviewed and edited the output and take full responsibility for the content of this publication.
+During the preparation of this manuscript, the authors used Claude (Anthropic) through Claude Code, August–November 2026: Claude Opus 5 and Claude Opus 5.5 for the work described here, with Claude Haiku 4.5 and Claude Haiku 5.5 used by Claude Code for auxiliary steps such as summarizing fetched web pages. They used it to restructure and draft the revised text; to write the analysis code that generates Figure 1 and Tables 3 and 4; to propose the documentation scores in Table 5 from public resources; and to check references against Crossref and repositories, licences and deposits against the live resources. Figures 2–9 are the contributors' own images, taken unaltered from the files they supplied apart from resizing; no figure was edited with an AI tool. The prompts and the model's responses are preserved in the public issue and pull-request threads of the repository named in the Data availability statement. The authors have reviewed and edited the output and take full responsibility for the content of this publication.
 
 <!-- SIGN-OFF: SGB-3. RSC requires this declaration in the cover letter and the tool and model in the
      Acknowledgements (a Perspective has no Methods section). Model list verified 2026-11-27 against the
@@ -486,8 +491,7 @@ During the preparation of this manuscript, the authors used Claude (Anthropic) t
 
 **Text (1–2 sentences, ≤ 250 characters):** Eight teams reported what ten lab-automation projects cost to rebuild, in dollars and in hours. The hours are the bigger bill, so open hardware pays off only once someone else can build it from the documentation.
 
-**Graphic:** draft at `figures/toc-graphic.tif`: 8.0 cm × 4.0 cm at 600 dpi (1890 × 945 px), RGB TIFF, original, no logos. It is a simplified Figure 1(b), generated by `analysis/toc_graphic.py` from the same data. A preview is in `figures/toc-graphic-preview.png`.
+**Graphic:** due at the revision stage: 8 cm × 4 cm, at least 600 dpi, no logos, and "original, unpublished artwork created by one of the co-authors", preferably not a figure reused from the article. A layout sketch is in `figures/source/toc-layout-sketch.png`. It reuses Figure 1(b) and was drafted with an AI coding assistant, so it is a starting point only.
 
-<!-- SIGN-OFF: SGB-15. Approve the drafted TOC graphic or replace it. -->
-
-![TOC graphic draft](figures/toc-graphic-preview.png)
+<!-- SIGN-OFF: SGB-15 (at revision). A co-author draws the TOC graphic. If any AI tool helps, RSC requires the authors to
+     confirm that it was trained on fully licensed data and that its output may be reused commercially. -->

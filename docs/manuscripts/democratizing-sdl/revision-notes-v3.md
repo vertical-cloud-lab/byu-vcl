@@ -27,7 +27,7 @@
 | Contributions | v1 statement + `[NEEDED]` | Per-author CRediT; RSC requires a per-author statement for papers with more than 10 authors |
 | Back matter | Data availability first | RSC order: contributions → conflicts → **Data availability** → Acknowledgements |
 | Generative-AI use | not disclosed | Disclosed in the Acknowledgements and the cover letter, in RSC's recommended wording |
-| Figure 8 | Recovered slide with UBC/UofT/AC logos | Logo strip cropped, PowerPoint spell-check squiggle under "Opentrons" removed (the "p" descender it overlapped was restored); original kept in `figures/source/` |
+| Figure 8 | Recovered slide with UBC/UofT/AC logos | On 2026-10-10 the logo strip was cropped and a spell-check squiggle removed with an AI tool. **Withdrawn on 2026-11-27**: RSC does not allow AI-assisted tools to alter submitted images, so Figure 8 is the unaltered original again, and the P7 team is asked for a clean export (P7-2) |
 | References | 34 | 45 (renumbered in first-citation order by `tools/check_manuscript.py`): ref 6 corrected, ref 13 updated, 11 added (see §7) |
 
 **Factual corrections to v2:**
@@ -53,7 +53,7 @@ v2 had 18 `[NEEDED]` occurrences covering 12 distinct items, plus 4 author-list 
 | Table 1 P7 repository | **Found**: tool files and code public in two forks, never linked; now cited | P7-1 confirms, ideally consolidates |
 | Table 1 P8 archival deposit | **Repository folder found and cited**; DOI by publication | SGB-7 |
 | Figure 4 confirm | Kept; DTU approves the view | TV-2 |
-| Figure 8 confirm | **Logos removed** (the journal would strip them); P7 team confirms the schematic is current | P7-2 |
+| Figure 8 confirm | Unaltered original restored 2026-11-27 (the AI-assisted crop was withdrawn); the P7 team exports a clean, logo-free version and confirms the schematic | P7-2 |
 | Table 5 verification and consent | **Verification done** 2026-10-10; 18 of the 48 scores changed from v2, every cell tied to evidence in Note S3 (§4 below); consent still per team | TV-4, OM-3, TB-3, BP-8, P7-4, SGB-10, JEH-2 |
 | §6 commitment sentence | **Rewritten** to separate "at submission" from "by publication", in line with the journal's code policy; every team still has to agree | per team |
 | §9 selection-criterion cross-reference | Resolved by the §2 sentence | BP-1 |
@@ -168,13 +168,13 @@ Sources, all accessed 2026-10-10: the *Digital Discovery* author guidelines (htt
 | GenAI: "must be declared at submission within the cover letter"; tool and model in Acknowledgements; if there is no Methods section, all details go in the Acknowledgements; AI cannot be an author | Cover letter paragraph; Acknowledgements paragraph in RSC's recommended wording; prompts are the public issue and PR threads; Claude is in neither the author list nor CRediT |
 | ">10 co-authors: the corresponding author must provide… the contribution of each co-author" | Per-author CRediT |
 | "the corresponding author attests… that those named as co-authors have agreed to its submission" | ALL-1 for all 28 authors |
-| Submitting author ORCID required | ALL-7, SGB |
+| Submitting author ORCID required "when submitting a revised manuscript" (re-checked 2026-11-27); link it at submission anyway | ALL-7, SGB-12 |
 | Human subjects: name the ethics committee and approval number, and give a consent statement | Owed (BP-3/LDP-1); RSC gives no anonymous-survey exemption |
-| TOC: required at the revision stage; graphic 8 × 4 cm, ≥ 600 dpi TIFF, original, no logos; text 1–2 sentences, ≤ 250 characters, not paraphrasing the title or abstract | Text drafted (212 characters); graphic drafted 2026-11-27 (`figures/toc-graphic.tif`), approval is SGB-15 |
+| TOC: required at the revision stage; graphic 8 × 4 cm, ≥ 600 dpi TIFF, original, no logos; text 1–2 sentences, ≤ 250 characters, not paraphrasing the title or abstract | Text drafted (212 characters). Graphic due at revision, as original artwork by a co-author that preferably does not reuse a figure (SGB-15); `figures/source/toc-layout-sketch.png` is a layout sketch only |
 | Cover letter "will be sent to reviewers" | Written accordingly |
 | Resubmission | No RSC rule found that requires citing the previous ID, but the cover letter and response do so throughout. "If you submit a revised version of a previously considered manuscript this will be treated as a resubmission and not an appeal." |
 
-**Themed collections.** The Accelerate 2023–2024 collection is published and closed. The **AI4X – Accelerate 2026** collection is open until **31 October 2026**. It takes work "whether specifically presented at the conference or not", but a Perspective needs a proposal to the Editorial Office first (SGB-13).
+**Themed collections.** The Accelerate 2023–2024 collection is published and closed. The **AI4X – Accelerate 2026** collection closed on **31 October 2026**; on 2026-11-27 there was no extension and no other *Digital Discovery* call was open. The paper therefore goes in as a regular Perspective, which needs no proposal or invitation (SGB-13).
 
 **The editor's own guidelines.** Hein and Schrier, "Guidelines for hardware-focused articles", *Digit. Discov.* 2024, 3, 447–448. Together with the journal's requirement of "a comprehensive bill of materials and a construction guide" for hardware papers, this is cited in §6. It is the natural anchor for the paper's recommendation: the journal already demands procure and build, and v3 argues for configure, run and troubleshoot.
 

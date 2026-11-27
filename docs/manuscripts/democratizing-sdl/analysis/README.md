@@ -12,7 +12,7 @@ python labor_cost_analysis.py
 | `table1-derived.csv` | Per project: bill of materials, build hours, break-even wage, and labour cost and labour share at $25, $50 and $75 per hour |
 | `sensitivity.csv` | Number of projects where labour exceeds parts, and median and mean labour share, at 12 loaded rates from $10 to $150 per hour |
 | `../figures/fig1-labour-vs-bom.png` | Figure 1 |
-| `../figures/toc-graphic.tif`, `../figures/toc-graphic-preview.png` | Draft table-of-contents graphic (8.0 × 4.0 cm, 600 dpi), written by `toc_graphic.py`, a simplified Figure 1(b) |
+| `../figures/source/toc-layout-sketch.png` | Layout sketch for the table-of-contents graphic, written by `toc_graphic.py`. **Not for submission**: the journal wants original artwork by a co-author that preferably does not reuse a figure |
 
 The only inputs are the self-reported cost-to-reproduce and time-to-reproduce figures in the paper's Table 1, which are hard-coded in `PROJECTS`. Ranges enter at their midpoint, and DiSCO's "3 months" is read as 480 h at 1 FTE. The break-even wage is `bom / hours` and does not depend on any assumed rate.
 

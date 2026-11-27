@@ -8,7 +8,7 @@ Section, table and figure numbers below refer to the revised manuscript.
 
 ---
 
-Dear Dr Schrier,
+Dear Professor Schrier,
 
 Thank you for your assessment of our Perspective and for the invitation to submit a substantially revised version. We agree with all three points in your decision. The manuscript was a workshop catalogue with a position buried near its end, it did not connect the projects to that position, and three of its projects had no supporting materials. We rebuilt it around a single hypothesis, which is now stated in the first sentence of the abstract. Every project is used as evidence for or against it, and in the case of the missing repositories that evidence counts against us. We respond to each point below, quoting your decision letter.
 
@@ -64,7 +64,7 @@ In a Perspective arguing that documentation is the binding constraint, this is e
 | P7 Electrochemical workflow (AC/UBC) | "Manuscript in progress" | Electrode tool files public since August 2024 and tool control code since February 2025, but not linked; now cited in Table 1 |
 | P8 Digital pipette integration | Two forum threads | Repository folder with the firmware and print files. Forum threads are no longer cited as documentation (Table 1 footnote) |
 | P2, P4, P5, P6, P9, P10 | Repository or documentation links | All re-verified. Three renamed repositories updated (P2, P6, P9). Licences and archival deposits reported in Table 5 and Note S3 |
-| Analysis in this Perspective | — | Script, derived values and sensitivity sweep provided as ESI and in a public GitHub repository; Zenodo DOI at acceptance, as the journal's code policy requires |
+| Analysis in this Perspective | — | Script, derived values and sensitivity sweep provided as ESI and in a public GitHub repository, at a tagged version; Zenodo DOIs (version and concept) at acceptance, as the journal's code policy requires |
 
 <!-- Checked 2026-10-10. P1's release (2025-01-27) postdates the original submission (December 2024) but predates
      the preprint (2025-02-12), whose Table 1 still said "manuscript in progress"; "not linked" is accurate for both.

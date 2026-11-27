@@ -55,7 +55,7 @@ Three confirmations:
    - 11 firmware files contain unresolved merge-conflict markers;
    - the Zenodo deposit has empty submodule folders;
    - 16 of 22 file names in the build guide don't match the files.
-2. **Figure 4** (viscometer) comes from slide 4 of your showcase deck. Is that view OK for publication?
+2. **Figure 4** (viscometer) comes from slide 4 of your showcase deck. Is that view OK for publication? If so, please send the original photograph. At revision the journal needs 600 dpi, and the slide copy is too small.
 3. **Your rows:** Tables 1 and 5 for P1, P3 and P4, and whether anyone outside the team has built any of the three. P4 (`gitlab.com/auto_lab/47332-student-excercises`) also has no licence file.
 
 The items are TV-1 to TV-7 in the checklist, and each of you also has the general items in your own section.
@@ -80,7 +80,7 @@ The editor objected that P7 had no repository. Searching for this revision, we f
 
 Also:
 
-1. Is Figure 8 still an accurate picture of the workflow? The logo strip has been cropped.
+1. **Figure 8 (needed before submission).** The journal does not accept logos in figures, and RSC does not allow AI tools to edit submitted images, so we can't crop it ourselves. Could you export a clean version from your own slide, with ordinary software? It needs no logo strip, no red proofing underline, and a width of at least 1960 px. "Pipette" in place of "Opentrons" in the image avoids a brand-name query; the caption can keep the name. Please also confirm the schematic is still current.
 2. Is the P7 row ($20 K, 300 h) right?
 3. **Ilya Yakavets** is named as a P7 developer in Table 1 but is not in the author list. Was that intended? Please ask Ilya before we change anything.
 

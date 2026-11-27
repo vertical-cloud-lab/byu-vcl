@@ -102,7 +102,7 @@ Department of Mechanical Engineering, Brigham Young University; Acceleration Con
   - ☐ SGB-7 and SGB-8, the P8 and P9 rows and their fixes;
   - ☐ SGB-12 and SGB-13, submission logistics and venue route;
   - ☐ SGB-14, the co-organizers named in the Acknowledgements;
-  - ☐ SGB-15, approving the drafted TOC graphic.
+  - ☐ SGB-15 (at revision), a table-of-contents graphic drawn by a co-author.
 
 ### 3. Eunice Aissi
 
@@ -143,7 +143,7 @@ Acceleration Consortium, University of Toronto. Project P7.
   - [machineagency/jubilee#204](https://github.com/machineagency/jubilee/pull/204), which names Yang Cao as a supervisor of the RDE adapter work.
 - **Confirm:** ALL-1 to ALL-7, and for the P7 team:
   - ☐ **P7-1 (blocking):** that the two forks are P7's files, ideally consolidated into one work-in-progress repository; plus the P7 row ($20 K, 300 h);
-  - ☐ P7-2, Figure 8;
+  - ☐ **P7-2 (needed before submission):** a clean export of Figure 8 from your own source file, made without AI tools: no logos or proofing marks, at least 1960 px wide;
   - ☐ P7-3, Ilya Yakavets's authorship;
   - ☐ P7-4, the P7 row of Table 5;
   - ☐ P7-5, a deposit by publication.
@@ -157,7 +157,7 @@ Technical University of Denmark. Projects P1, P3, P4.
 - **Files that back it:** the P1, P3 and P4 descriptions in ESI Note S1. Named in the CAPeX funding line.
 - **Confirm:** ALL-1 to ALL-7, and for the DTU team:
   - ☐ **TV-1 (blocking):** a public work-in-progress repository for P3; confirmation that the `loppe35` release is P1; the P1, P3 and P4 rows;
-  - ☐ TV-2, Figure 4;
+  - ☐ TV-2, Figure 4: approval, and the original photograph (the current image is below the 600 dpi the journal needs at revision);
   - ☐ TV-3, any replications;
   - ☐ TV-4, the Table 5 rows;
   - ☐ TV-5, licences;
@@ -300,7 +300,7 @@ University of British Columbia (formerly University of Washington). Project P6.
 - **Contribution:** investigation (P6); writing – review and editing.
 - **Where it appears:** P6 throughout ([pack P6](#p6-science-jubilee)).
 - **Files that back it:** first author of ref 27, the sonochemical quantum-dot workflow cited for P6; also a co-author of refs 7 and 36.
-- **Confirm:** ALL-1 to ALL-7 (please check the UBC affiliation), and BP-7 to BP-9 with the P6 team.
+- **Confirm:** ALL-1 to ALL-7, and BP-7 to BP-9 with the P6 team. On ALL-2: v3 lists the University of British Columbia, but RSC lists the institution where the work was done, with a later address as a footnote. If the P6 work was done at the University of Washington, the affiliation becomes UW, with UBC as the present address.
 
 ### 19. Ethan Rajkumar
 
@@ -475,7 +475,7 @@ Each pack lists everything in the manuscript, ESI and repository that rests on a
 - **Team:** Cao, Rajkumar, Yakavets (not an author; P7-3).
 - **In the manuscript:** Table 1 (two links); Table 2 (C, S⁻, S⁻, —, S); §3 description and Figure 8; Table 3 ($67/h); §5 (negative case); Table 5 (◐◐○○○).
 - **Public record:** [`ethraj2001/jubilee`](https://github.com/ethraj2001/jubilee) at `d5c5969`; [`cyrilcaoyang/jubilee-sdl2`](https://github.com/cyrilcaoyang/jubilee-sdl2) at `bc548db`; [machineagency/jubilee#204](https://github.com/machineagency/jubilee/pull/204).
-- **Files here:** [`../figures/fig8-electrochemical-workflow.png`](../figures/fig8-electrochemical-workflow.png), with the original (logos included) in [`../figures/source/`](../figures/source/); ESI Notes S1 and S3; the P6–P10 audit.
+- **Files here:** [`../figures/fig8-electrochemical-workflow.png`](../figures/fig8-electrochemical-workflow.png), the unaltered original with its logo strip, until the team sends a clean export (P7-2); ESI Notes S1 and S3; the P6–P10 audit.
 
 ### P8 Digital pipette integration
 
