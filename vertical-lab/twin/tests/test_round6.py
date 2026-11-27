@@ -185,8 +185,11 @@ def test_grid():
         assert pols == {"fast", "bofn3", "pkgfn3"}, name
     assert len(B6.EXPERIMENTS["arms"]) == 4 * 3 * 16
     assert set(B6.TIERS) == set(B6.EXPERIMENTS)
-    c = B6._cfg("vertical", "parallel", "fast", "reorder", 3, decisions="slow", late=240, hpc=64)
-    assert B6.run_id(c) == "r6_vertical_parallel_fast_reorder_s3_dec-slow_hpc64_late240"
+    other = next(sc for sc in B6.HPC_SCALES if sc != B6.HPC_SCALE)
+    c = B6._cfg("vertical", "parallel", "fast", "reorder", 3, decisions="slow", late=240, hpc=other)
+    assert B6.run_id(c) == f"r6_vertical_parallel_fast_reorder_s3_dec-slow_hpc{other}_late240"
+    scales = sorted({c["opts"]["hpc"]["scale"] for n in B6.EXPERIMENTS for c in B6.EXPERIMENTS[n]})
+    assert scales == sorted(B6.HPC_SCALES)                                   # every scale is in the grid once
     assert B6.run_id(B6._cfg("vertical", "parallel", "fast", "reorder", 3)) == "r6_vertical_parallel_fast_reorder_s3"
     assert B6._cfg("vertical", "parallel", "fast", "reorder", 3)["opts"]["hpc"]["scale"] == B6.HPC_SCALE
     order = [B6.run_id(c) for _, c in B6.order([(n, c) for n, cs in B6.EXPERIMENTS.items() for c in cs])]

@@ -26,6 +26,7 @@ from __future__ import annotations
 import hashlib
 import json
 import lzma
+import math
 import os
 import sys
 import time
@@ -394,49 +395,78 @@ def base_cfg(cfg):
     return _cfg(cfg["lab"], plan, cfg["policy"], "reorder", cfg["seed"])
 
 
-def timings(groups=None) -> dict:
-    """Seconds a two-year run of each group takes, with how each was found (``checks/smoke.json``):
+def _pclass(policy):
+    return "fast" if policy == "fast" else "gp"
 
-    * ``measured``: a two-year run of the group's seed 0 on this runner;
-    * otherwise from its arms group's two-year run (``base_cfg``), adjusted by what the group's own shortened run
-      shows: for a group at another HPC scale, plus the stream's extra seconds a day (from shortened runs of both,
-      the stream's cost is the same every day); for one of the automated lab's other plans, times round 5's ratio
-      of that plan's seconds to the parallel plan's (``R5_PLAN_RATIO``); for anything else (lean stock, decision
-      windows, the atomizer's cycle, late crucibles, all-new equipment), as its arms group, whose work it shares;
+
+def stream_cost(rec=None) -> dict:
+    """Seconds of runtime per simulated day per unit of HPC scale, by policy class and lab: the slope of the HPC
+    pilot's runs (``checks/hpc_pilot.jsonl``: the same seeds at several scales) over scale, as ``smoke.json`` records
+    it (``stream_cost``; ``smoke_merge.py`` writes it)."""
+    if rec is None:
+        p = CHECKS / "smoke.json"
+        rec = json.loads(p.read_text()) if p.exists() else {}
+    return rec.get("stream_cost", {})
+
+
+def timings(groups=None, k=None) -> dict:
+    """Seconds a two-year run of each group takes, with how each was found (``checks/smoke.json``). A run's time is
+    its work plus the HPC stream's, which grows with the scale and not with anything else the grid varies: about
+    ``k`` seconds a simulated day per unit of scale (``stream_cost``, measured by the pilot). So:
+
+    * ``measured``: a two-year run of the group's own seed 0 on this runner;
+    * otherwise its arms group's two-year run (``base_cfg``: the same lab and policy, stocked, the main plan), with
+      the stream's cost moved from that run's scale to the group's (``k`` x scale difference x 730 days); for one of
+      the automated lab's other plans, the arms group's work times round 5's ratio of that plan's seconds to the
+      parallel plan's (``R5_PLAN_RATIO``); anything else (lean stock, decision windows, the atomizer's cycle, late
+      crucibles, all-new equipment) as its arms group, whose work it shares;
     * with no two-year run to go by, the shortened run scaled by days (a lower bound for BOFN and pKGFN).
     """
     if groups is None:
         p = CHECKS / "smoke.json"
-        groups = json.loads(p.read_text()).get("groups", {}) if p.exists() else {}
+        rec = json.loads(p.read_text()) if p.exists() else {}
+        groups = rec.get("groups", {})
+        k = stream_cost(rec) if k is None else k
+    k = k or {}
     cfgs = {}
     for name, cs in EXPERIMENTS.items():
         for c in cs:
             if c["seed"] == 0:
                 cfgs[group_key(c)] = (name, c)
+    full_at = {}                                  # base group key -> (seconds, scale) of a two-year run
+    for g, e in groups.items():
+        f = e.get("full")
+        if f:
+            full_at[g] = (f["seconds"], f.get("scale", HPC_SCALE))
     out = {}
     for g, (name, c) in cfgs.items():
         e = groups.get(g) or {}
-        if e.get("full"):
+        sc = (c["opts"].get("hpc") or {}).get("scale", HPC_SCALE)
+        kk = (k.get(_pclass(c["policy"])) or {}).get(c["lab"])
+        if e.get("full") and e["full"].get("scale", HPC_SCALE) == sc:
             out[g] = dict(seconds_2y=e["full"]["seconds"], how="measured (two years, seed 0)")
             continue
-        bk = group_key(base_cfg(c))
-        b = groups.get(bk) or {}
-        sh, bsh = e.get("short"), b.get("short")
-        if b.get("full"):
-            full = b["full"]["seconds"]
-            sc = (c["opts"].get("hpc") or {}).get("scale", HPC_SCALE)
-            if sc != HPC_SCALE and sh and bsh and sh["days"] == bsh["days"]:
-                extra = (sh["seconds"] - bsh["seconds"]) / sh["days"] * DAYS
-                out[g] = dict(seconds_2y=round(max(full + extra, 0.5 * full), 1),
-                              how=f"its arms group's two years plus the stream's extra cost at {sc:g}x "
-                                  f"({sh['days']}-day runs of both)")
-            elif c["plan"] in ("wait",) or (c["lab"] == "vertical" and c["plan"] == "external"):
-                r = R5_PLAN_RATIO["fast" if c["policy"] == "fast" else "gp"][c["plan"]]
-                out[g] = dict(seconds_2y=round(full * r, 1), how=f"its arms group's two years x round 5's {c['plan']} "
-                                                                  f"ratio ({r:.2f})")
-            else:
-                out[g] = dict(seconds_2y=full, how="as its arms group (two years, seed 0)")
-        elif sh:
+        base = base_cfg(c)
+        cand = []                                      # the base's two-year runs, at whatever scale they were made
+        for s_f in sorted(set(HPC_SCALES) | {HPC_SCALE}):
+            bb = dict(base, seed=0, opts=dict(base["opts"], hpc=dict(scale=s_f)))
+            if group_key(bb) in full_at:
+                cand.append(full_at[group_key(bb)])
+        fb = min(cand, key=lambda x: abs(math.log(x[1] / sc))) if cand else None
+        if fb is not None and kk is not None:
+            secs, s_f = fb
+            work = secs - kk * s_f * DAYS
+            how = f"its arms group's two years at {s_f:g}x"
+            if c["plan"] == "wait" or (c["lab"] == "vertical" and c["plan"] == "external"):
+                r = R5_PLAN_RATIO[_pclass(c["policy"])][c["plan"]]
+                work *= r
+                how += f", its work x round 5's {c['plan']} ratio ({r:.2f})"
+            if sc != s_f:
+                how += f", the stream's cost moved to {sc:g}x ({kk:.4f} s a day per unit of scale)"
+            out[g] = dict(seconds_2y=round(max(work, 0.0) + kk * sc * DAYS, 1), how=how)
+            continue
+        sh = e.get("short")
+        if sh:
             out[g] = dict(seconds_2y=round(sh["seconds"] * DAYS / sh["days"], 1),
                           how=f"a {sh['days']}-day run scaled by days (a lower bound)")
     return out
@@ -576,6 +606,7 @@ def smoke(days=None, groups=None, workers=3, seed=0):
             e.pop("error", None)
             full = r["days_run"] >= DAYS
             e["full" if full else "short"] = dict(seconds=r["seconds"], days=r["days_run"], gp_fits=r["gp"].get("fits"),
+                                                  scale=(c["opts"].get("hpc") or {}).get("scale", HPC_SCALE),
                                                   cpu=R.cpu_model(), concurrent=workers, commit=r["code"]["commit"],
                                                   twin_dirty=r["code"]["twin_dirty"], best_new=r["best_new"],
                                                   targets=r["targets"])
