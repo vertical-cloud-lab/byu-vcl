@@ -48,8 +48,8 @@ at the end names them).
 - **Cost.** Two 9.15 m Shuttles with their couplings and UPSs are about $0.5M in the twin's own estimates, the price of
   about 3.5 mobile manipulators.
   - Kardex's own maintenance guidance is 10-20 % of the purchase price a year, against the twin's 3 %.
-  - Kardex sells no powered tray, and no air or data to a tray, so PR 318 had to design its own couplings and fit a UPS
-    to every powered tray.
+  - Kardex lists no powered tray, and no air or data to a tray (PR 318's search and ours), so PR 318 had to design its
+    own couplings and fit a UPS to every powered tray.
 - **No precedent.** Neither our searches nor Edison found any lab that runs instruments inside a VLM.
   - The group that got furthest, the Acceleration Consortium, had its Kardex lab's technical requirements met, then
     dropped it in November 2025 "due to perceived risks" ([ac-dev-lab #471](https://github.com/AccelerationConsortium/ac-dev-lab/issues/471)).
@@ -71,7 +71,7 @@ The tables are below.*
 |---|---|---|---|
 | **Floor space** | Dense storage up the height of the room; vendors claim "up to 85-92 %" | **Real, and the only big one.** 281 m² against 398 m² for the same 43 instruments ([PR 406](https://github.com/vertical-cloud-lab/byu-vcl/pull/406), [`twin_floorspace.md`](https://github.com/vertical-cloud-lab/byu-vcl/blob/72177f1/vertical-lab/notes/twin_floorspace.md) on its branch). The saving is benches and their aisles: 31 benchtop instruments go into 18 m² of Shuttle footprint | 117 m² less, 29 %. Worth about $51k a year at the twin's space rates ($215/m² a year to run it plus $222/m² a year of building, [`twin/econ.py`](../twin/econ.py) `RATES`), and nothing if the room is already ours. It needs a 9.15 m bay. The vertical lab is not smaller in volume |
 | **Throughput** | Goods-to-person: the picker stops walking | **Not a gain.** The replay never finds the VLM faster for internal work, and with outside users it is slower (section 6) | Driving falls from 51-81 s a task on benches to 29-61 s at the VLM. That doesn't matter while the robots are 1-2 % busy |
-| **Positioning at a fixed bay** | One pick face, known geometry | **Real but small.** The arm calibrates at 2 openings instead of 24 bench docks. A MiR250 docks to a VL-marker to ±3 mm in up to 14 s (MiR250 spec, 2023), and an arm camera takes that to about 1 mm (Enabled Robotics' ER-VISION). Liverpool's touch-off reached ±0.12 mm (Burger et al. 2020). Kardex doesn't publish the extractor's repeatability at the opening; PR 318's coupling needs 4 mm ([`services.md`](services.md)) | Seconds a visit. Vision calibration takes about 5 s, touch-off about 53 s (Edison, mobile manipulators) |
+| **Positioning at a fixed bay** | One pick face, known geometry | **Real but small.** For the benchtop instruments the arm calibrates at 2 openings instead of at every bench. A MiR250 docks to a VL-marker to ±3 mm in up to 14 s (MiR250 spec, 2023), and an arm camera takes that to about 1 mm (Enabled Robotics' ER-VISION). Liverpool's touch-off reached ±0.12 mm (Burger et al. 2020). Kardex doesn't publish the extractor's repeatability at the opening; PR 318's coupling needs 4 mm ([`services.md`](services.md)) | Seconds a visit. Vision calibration takes about 5 s, touch-off about 53 s (Edison, mobile manipulators) |
 | **Enclosure** (dust, light, temperature, humidity) | Kardex sells climate-controlled, clean-room and low-humidity units | **Mixed.** It keeps out dust and light, but every watt a stored tray uses stays inside the cladding: 1.3 kW in Shuttle 1 when idle, 3.7 kW with a printer and the furnace running, which needs 1,100-2,200 m³/h of forced air ([`services.md`](services.md)). A room's HVAC does this for benches | Small, and partly a cost |
 | **Safety and access control** | Items released only to an authorized user at one opening | **Real but small.** People never reach into a moving machine, and the opening is the only access. The robots still drive the floor in both layouts. A badge-locked room gives most of the access control | Small. It matters more with outside users |
 | **Tracking and provenance** | Every pick logged against a slot | **Negligible.** The lab's scheduler logs every step anyway (the twin's event logs do). Provenance that matters, who ran what on which instrument with which calibration, comes from our software, not from the store | None beyond what we'd build anyway |
@@ -148,7 +148,7 @@ inside a VLM. Edison's precedent search found:
 - **Powered trays from two VLM makers**, to keep cold boxes running and to charge batteries:
   - Hänel's trays with a plug-in contact, for cold boxes down to −80 °C;
   - Modula's 240 V socket, on at most 10 trays a machine.
-  - Kardex offers neither.
+  - Kardex lists neither.
 
 Labs that move instruments do it differently: on docking carts with utilities at the dock (HighRes Biosolutions'
 patent US 7,560,071; Ginkgo's carts). Self-driving labs leave instruments where they stand and move the samples
@@ -261,7 +261,7 @@ within a factor of two: about $250k against about $150k. PR 318 has two Shuttles
 
 **The engineering a VLM needs that a standard one doesn't** (all from PR 318's own design notes):
 
-- **Services to a stored tray.** Kardex powers a tray in its slot and at the opening, but not in transit. It offers
+- **Services to a stored tray.** Kardex powers a tray in its slot and at the opening, but not in transit. It lists
   no powered tray and no air or data, so PR 318 designed a CombiTac coupling for mains, Ethernet, compressed air,
   N₂ and chilled water ([`services.md`](services.md), [`coupling.md`](coupling.md)). A retractable line was tried and
   dropped: while its tray was out it spanned the shaft, so no other tray could be fetched.
