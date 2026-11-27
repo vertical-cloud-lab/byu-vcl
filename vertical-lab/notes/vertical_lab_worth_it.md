@@ -38,7 +38,9 @@ at the end names them).
   - The limit is the trays, not the robots: instruments that share a tray can't be loaded while any of them is
     running. With two units, tray D (SEM and XRD) is held 89 % of the time. If trays could move while their
     instruments run, the two plans would tie; for a measurement in progress, they can't.
-  - One unit is too few on either plan at 60 %: it loses atomizer slots (below).
+  - One unit is too few on either plan at 60 %: it loses atomizer slots (below). The one case where the VLM does
+    better is a single, heavily loaded unit whose battery isn't the limit: its shorter drives then keep the atomizer's
+    slots, which one unit on benches loses (section 6, sensitivities).
   - Round 5's two-year logs give the same picture: 99.9 % served in 2.4 h on benches, against 88-94 % in 8-14 h at
     the VLM.
 - **If the arm has to stay at the instrument for part of each step,** as PR 332 assumed, the number of units binds
@@ -377,7 +379,7 @@ Medians over 24 logs (full tables, with 10th-90th percentiles: [`tables.md`](../
 - Every layout with two units keeps every target within 0.03 days at the median, and within 0.4 days in the worst
   log, at any outside load and either timing.
 - One unit moves targets most where it loses atomizer slots: at 60 % with the twin's timing, up to 0.04 days at the
-  median and 2.3-4.9 days in the worst log, on either plan.
+  median and up to 4.9 days in the worst log, on either plan.
 - The replay keeps the twin's order of work. A lost atomizer slot therefore moves every later run, while the twin
   itself would have re-planned. Read those rows as "this many units can't carry this load", not as a forecast of the
   delay.
