@@ -116,7 +116,10 @@ class Lab3D5(L3.Lab3D):
                 sc.alpha[n] = self._alpha0.get(n, 1.0) * a
 
     def view(self, name: str):
-        cam, va = VIEWS[name]
+        if name not in VIEWS and name not in L3.VIEWS:      # the replay's own cameras ('high5', ...): each render
+            from . import replay5 as R5                     # process registers them itself, not only the parent
+            R5.register_views()
+        cam, va = VIEWS[name] if name in VIEWS else L3.VIEWS[name]
         self.sc.cam = [tuple(v) for v in cam]
         self.sc.view_angle = va
         self.sc._clip_n = 0

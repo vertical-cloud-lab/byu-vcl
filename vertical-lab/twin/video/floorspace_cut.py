@@ -685,6 +685,63 @@ def segment_frame(t: float) -> np.ndarray:
     return np.ascontiguousarray(cut.frame(t, base))
 
 
+def check_numbers(verbose: bool = True) -> list:
+    """Every figure the segment's lines speak, against what floorspace.py measured (out/floorspace/layouts.json) and
+    the published Emerald Cloud Lab figures it keeps (floorspace.ECL): rows [line, says, value, source]. Raises
+    SystemExit when a line says something else, or speaks a figure no row covers."""
+    import re
+    js = json.loads((OUTD / "layouts.json").read_text())
+    S, cp = js["summary"], js["capacity"]
+    L = {r["name"]: r for r in S["rows"]}
+    fl, vv = cp["same_capacity"]["flat"], cp["same_capacity"]["vertical"]
+    words = {"five": 5, "thirty": 30, "forty-three": 43, "a hundred": 100}
+    ft_aisle = S["assume"]["aisle"] / 304.8
+    want = [("f1", "Forty-three", S["counts"]["instruments"], "summary.counts.instruments"),
+            ("f3", "thirty", S["assume"]["bench_d"] / 25.4, "summary.assume.bench_d (mm, in inches)"),
+            ("f3", "five", ft_aisle, "summary.assume.aisle (mm, in feet)"),
+            ("f3", "4,280", L["conventional"]["area_sqft"], "summary.rows.conventional.area_sqft"),
+            ("f5", "five", ft_aisle, "summary.assume.aisle (mm, in feet)"),
+            ("f7", "3,029", L["vertical"]["area_sqft"], "summary.rows.vertical.area_sqft"),
+            ("f8", "43", S["counts"]["instruments"], "summary.counts.instruments"),
+            ("f8", "4,128", L["robots"]["area_sqft"], "summary.rows.robots.area_sqft"),
+            ("f10", "a hundred", 100, "floorspace.ECL ssf: " + FS.ECL["ssf"]["instruments"]),
+            ("f10", "15,000", FS.ECL["ssf"]["sqft"], "floorspace.ECL ssf.sqft"),
+            ("f11", "18", cp["trays"]["in_use"], "capacity.trays.in_use"),
+            ("f11", "45", cp["trays"]["trays"], "capacity.trays.trays"),
+            ("f11", "6,192", fl["area_sqft"], "capacity.same_capacity.flat.area_sqft"),
+            ("f12", "3,029", vv["area_sqft"], "capacity.same_capacity.vertical.area_sqft"),
+            ("f12", "51", cp["percent"]["vertical_vs_flat_capacity"], "capacity.percent.vertical_vs_flat_capacity"),
+            ("f12", "14.9", vv["positions_per_1000_sqft"], "capacity.same_capacity.vertical.positions_per_1000_sqft"),
+            ("f12", "7.3", fl["positions_per_1000_sqft"], "capacity.same_capacity.flat.positions_per_1000_sqft"),
+            ("f9", "9.15", cp["trays"]["unit_h_mm"] / 1000.0, "capacity.trays.unit_h_mm (in metres)")]
+    text = {ln["id"]: ln["text"] for ln in json.loads(Path(__file__).with_name("narration_floorspace.json")
+                                                      .read_text())["lines"]}
+    bad, rows = [], []
+    for lid, says, val, src in want:
+        if lid not in text or says.lower() not in text[lid].lower():
+            bad.append(f"{lid}: no '{says}' in its text")
+            continue
+        n = words.get(says.lower())
+        if n is None:
+            n = float(says.replace(",", ""))
+        nd = len(says.split(".")[1]) if "." in says else 0
+        if round(float(val), nd) != round(n, nd):
+            bad.append(f"{lid}: says {says}, {src} is {val}")
+        rows.append(dict(line=lid, says=says, value=val, src=src))
+    for lid, t in text.items():
+        covered = {r["says"] for r in rows if r["line"] == lid}
+        for fig in re.findall(r"\d[\d,]*(?:\.\d+)?", t):
+            if fig.rstrip(",") not in covered:
+                bad.append(f"{lid}: the figure {fig} is not checked")
+    if bad:
+        raise SystemExit("floorspace_cut.check_numbers:\n  " + "\n  ".join(bad))
+    if verbose:
+        for r in rows:
+            print(f"ok  {r['line']:4s} says {r['says']:12s} {r['value']!s:10.10s} <- {r['src']}")
+        print(f"{len(rows)} spoken figures, all as out/floorspace/layouts.json and floorspace.ECL have them")
+    return rows
+
+
 def narration_lines() -> list:
     """The segment's narration for a longer cut, in the order it is said: [{id, t (seconds into the segment), text,
     flac (the committed recording, 24 kHz), seconds (its length), spoken (the text as the voice was given it), shows

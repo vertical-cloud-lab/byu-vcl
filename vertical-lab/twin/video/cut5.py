@@ -596,7 +596,7 @@ def check() -> dict:
     if not I["is_median_seed"] and not os.environ.get("TWIN_VIDEO_SEED"):
         raise SystemExit("the replayed seed is not the arm's median seed")
     out["replay"] = dict(seed=I["seed"], is_median_seed=I["is_median_seed"], counters="end on the rows' own")
-    for mod in ("figs5_intro", "figs5_labs", "experiments"):
+    for mod in ("figs5_intro", "figs5_labs", "experiments", "floorspace_cut"):
         m, why = _mod(mod)
         if m is None or not hasattr(m, "check_numbers"):
             out[mod] = f"not checked: {why or 'no check_numbers()'}"
