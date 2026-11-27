@@ -1,0 +1,4 @@
+{
+ "vertical bofn3 64x lean": "stopped at day 10 at 21:39 UTC: the automated lab's GP runs proved to take several CPU-hours each, so the CPU went to the runs asked for",
+ "vertical bofn3 64x wait": "stopped at day 20 at 21:39 UTC, for the same reason"
+}

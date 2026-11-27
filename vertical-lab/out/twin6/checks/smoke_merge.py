@@ -93,9 +93,13 @@ def _label_meta(label):
     m = module_from_spec(spec)
     spec.loader.exec_module(m)
     for jobs in m.SETS.values():
-        for lb, lab, pol, seed, sc, days in jobs:
-            if lb == label:
-                return dict(label=lb, lab=lab, policy=pol, seed=seed, scale=sc, days=days)
+        for j in jobs:
+            if j[0] == label:
+                lb, lab, pol, seed, sc, days = j[:6]
+                out = dict(label=lb, lab=lab, policy=pol, seed=seed, scale=sc, days=days)
+                if len(j) > 6:
+                    out.update(plan=j[6], stock=j[7])
+                return out
     return None
 
 
@@ -122,6 +126,37 @@ def main():
                          best_new={k: v["best_new"] for k, v in r["campaigns"].items()})
         n += 1
         print(g, r["cpu_seconds"], "CPU s")
+    # two-year runs stopped before day 730 (``timing6.py``'s ``gp_auto`` and ``other`` sets): their two years
+    # extrapolated from the cost curve, the cautious end (``timing6.extrapolate`` ``high``), marked as such
+    from importlib.util import module_from_spec, spec_from_file_location
+    spec = spec_from_file_location("timing6", HERE / "timing6.py")
+    T6 = module_from_spec(spec)
+    spec.loader.exec_module(T6)
+    done = {r["label"] for r in rows}
+    curves = {}
+    for q in prog:
+        curves.setdefault(q["label"], []).append(q)
+    for lb, ps in curves.items():
+        meta = _label_meta(lb)
+        if lb in done or meta is None or meta["days"] < B6.DAYS or meta["seed"] != 0:
+            continue
+        x = T6.extrapolate(ps)
+        if x is None or x["day"] < 300:
+            continue
+        lab, plan = ARM[meta["lab"]]
+        plan, stock = meta.get("plan", plan), meta.get("stock", "reorder")
+        g = B6.group_key(B6._cfg(meta["lab"], plan, meta["policy"], stock, 0, hpc=dict(scale=meta["scale"])))
+        name = next((n for n, cs in B6.EXPERIMENTS.items() for c in cs if c["seed"] == 0 and B6.group_key(c) == g),
+                    None)
+        e = rec["groups"].setdefault(g, dict(experiment=name))
+        e["full"] = dict(seconds=None, cpu_seconds=x["high"], days=B6.DAYS, scale=meta["scale"],
+                         source="checks/timing6_progress.jsonl",
+                         extrapolated=dict(from_day=x["day"], cpu_at_day=x["cpu"], rate=x["rate"], slope=x["slope"],
+                                           low=x["low"], high=x["high"]),
+                         how=f"extrapolated from day {x['day']} of a two-year run (seed 0): the cautious end, "
+                             f"{x['low']:,}-{x['high']:,} s")
+        n += 1
+        print(g, "extrapolated from day", x["day"], x["low"], "-", x["high"], "CPU s")
     k, pairs = stream_cost(rows, prog)
     rec["stream_cost"] = k
     rec["stream_cost_pairs"] = pairs

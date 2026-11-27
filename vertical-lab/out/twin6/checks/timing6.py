@@ -101,8 +101,33 @@ def one(job):
     return B2._jsonable(rec)
 
 
+def extrapolate(ps, days=730):
+    """A two-year run's CPU seconds from its cost curve so far (``ps``: progress lines, any order): ``low`` at the
+    latest 50 days' rate, ``high`` with that rate still rising at the slope of its 10-day rates over the last 100 days
+    (no less than flat). Past the cell, the GP nodes fill to their 600-point cap (twin/opt/gp.py ``max_n``) and the
+    rate should level off, so ``low`` is the likelier and ``high`` the cautious one."""
+    ps = sorted(ps, key=lambda p: p["day"])
+    last = ps[-1]
+    D, C = last["day"], last["cpu"]
+    back = [p for p in ps if p["day"] <= D - 50]
+    if not back or D >= days:
+        return None
+    r = (C - back[-1]["cpu"]) / (D - back[-1]["day"])
+    pts = [(b["day"], (b["cpu"] - a["cpu"]) / max(b["day"] - a["day"], 1)) for a, b in zip(ps, ps[1:])
+           if b["day"] > D - 100]
+    s = 0.0
+    if len(pts) >= 4:
+        mx = sum(x for x, _ in pts) / len(pts)
+        my = sum(y for _, y in pts) / len(pts)
+        sxx = sum((x - mx) ** 2 for x, _ in pts)
+        s = max(0.0, sum((x - mx) * (y - my) for x, y in pts) / sxx) if sxx else 0.0
+    L = days - D
+    return dict(day=D, cpu=C, rate=round(r, 2), slope=round(s, 4), low=round(C + r * L), high=round(C + r * L +
+                                                                                              s * L * L / 2))
+
+
 def table():
-    rows = [json.loads(l) for l in OUT.read_text().splitlines() if l.strip()]
+    rows = [json.loads(l) for l in OUT.read_text().splitlines() if l.strip()] if OUT.exists() else []
     prog = {}
     if PROG.exists():
         for l in PROG.read_text().splitlines():
@@ -126,18 +151,23 @@ def table():
                  f"{r['timing']['loadavg_end'][0]} | {r['gp_fits']} | {a['T1_day']} / {a['T2_day']} | "
                  f"{c['T1_day']} / {c['T2_day']} | {a['tested']} / {c['tested']} | {a['best_new']} / {c['best_new']} | "
                  f"{', '.join(r['used']) or '-'} | {r['code'].get('twin_dirty')} |")
-    run = [k for k in prog if k not in done]
+    stopped = json.loads((HERE / "timing6_stopped.json").read_text()) if (HERE / "timing6_stopped.json").exists() else {}
+    run = [k for k in prog if k not in done and k not in stopped]
     if run:
-        L += ["", "**Not finished** (the cost so far, from the progress file):", "",
-              "| Run | Last day reached | CPU s so far | Wall s so far | CPU s a simulated day, last 50 days |",
-              "|---|---|---|---|---|"]
+        L += ["", "**Not finished** (the cost so far, from the progress file, and the two years extrapolated: `low` at "
+                  "the latest 50 days' rate, `high` with that rate still rising at its slope over the last 100 days):",
+              "", "| Run | Last day reached | CPU s so far | Wall s so far | CPU s a simulated day, last 50 days | "
+                  "Its rise a day | Two years, low | Two years, high |",
+              "|---|---|---|---|---|---|---|---|"]
         for k in sorted(run):
             ps = sorted(prog[k], key=lambda p: p["day"])
             last = ps[-1]
-            back = [p for p in ps if p["day"] <= last["day"] - 50]
-            rate = None if not back else (last["cpu"] - back[-1]["cpu"]) / max(last["day"] - back[-1]["day"], 1)
+            x = extrapolate(ps)
             L.append(f"| {k} | {last['day']} | {last['cpu']:,.0f} | {last['wall']:,.0f} | "
-                     + ("-" if rate is None else f"{rate:.1f}") + " |")
+                     + ("- | - | - | -" if x is None else
+                        f"{x['rate']:.1f} | {x['slope']:.3f} | {x['low']:,} | {x['high']:,}") + " |")
+    if stopped:
+        L += [""] + [f"* **{k}**: {v}." for k, v in stopped.items()]
     if prog:
         L += ["", "CPU seconds by simulated day (every 100 days), all runs:", "",
               "| Run | " + " | ".join(f"day {d}" for d in range(100, 800, 100)) + " |",

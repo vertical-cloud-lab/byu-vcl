@@ -460,7 +460,7 @@ def timings(groups=None, k=None) -> dict:
         sc = (c["opts"].get("hpc") or {}).get("scale", HPC_SCALE)
         kk = (k.get(_pclass(c["policy"])) or {}).get(c["lab"])
         if e.get("full") and e["full"].get("scale", HPC_SCALE) == sc:
-            out[g] = dict(seconds_2y=_secs(e["full"]), how="measured (two years, seed 0)")
+            out[g] = dict(seconds_2y=_secs(e["full"]), how=e["full"].get("how") or "measured (two years, seed 0)")
             continue
         base = base_cfg(c)
         cand = []                                      # the base's two-year runs, at whatever scale they were made

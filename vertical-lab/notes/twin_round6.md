@@ -255,8 +255,9 @@ themselves report it: numpy's enabled kernels, MKL's branch, CNR state and threa
 torch's capability and threads (`env`); `repro.problems6` lists anything that isn't.
 
 **The GP determinism check** (`python -m twin.gpcheck6`, `twin/gpcheck6.py`; the reference is
-[`out/twin6/checks/gpcheck.json`](../out/twin6/checks/gpcheck.json), made on this job's EPYC 9V74 from `330d5aa` with a
-clean `twin/`). Each part runs in a fresh interpreter under the pin, with every variable that could steer the
+[`out/twin6/checks/gpcheck.json`](../out/twin6/checks/gpcheck.json), made on an EPYC 9V45 from `568ab5f`, the engine with
+the used market wired in, with a clean `twin/`. The first reference, made on an EPYC 9V74 from `330d5aa` before the
+merge, is in git history). Each part runs in a fresh interpreter under the pin, with every variable that could steer the
 libraries removed first:
 
 * **a kernel probe**: fixed inputs through every numerical building block the network policies use, hashed in seven
@@ -291,6 +292,14 @@ Development Emulator (SDE 9.58) runs the same binaries while presenting another 
 * **The whole check under emulated Granite Rapids** (`TWIN_GPCHECK_WRAP="sde64 -gnr --" python -m twin.gpcheck6`):
   **it matches the reference in every part**, the seven probe groups and all three runs' rows, event logs and GP
   states ([`gpcheck_sde_gnr.json`](../out/twin6/checks/gpcheck_sde_gnr.json)). Under the emulator it took 29 minutes.
+  That was against the first reference, before the used market was merged.
+* **On a second native CPU, after the merge.** The second job ran on an EPYC 9V45. Against the first reference (the
+  9V74's, before the merge) the 9V45 matched all seven probe groups, and the three runs' event logs and GP states
+  ([`gpcheck_9v45_vs_ref_330d5aa.json`](../out/twin6/checks/gpcheck_9v45_vs_ref_330d5aa.json)). Only the rows
+  differed, because round 6's rows now record each station's market verdict (`r6.used.stations`). The new reference
+  was then written on the 9V45; the check and the write, run eight minutes apart, gave identical hashes in every
+  part. The 9V45 and 9V74 share the 1,024 KB L2 that OpenBLAS blocks by, so this is not the cross-family test the
+  slices will be.
 
 The emulator presents another CPU's identity, instruction set and cache sizes to the libraries, not another chip's
 silicon. A real Intel runner and a real EPYC 7763 are the test that counts, and the slices will be it. If a slice's
