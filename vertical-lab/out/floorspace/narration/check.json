@@ -1,0 +1,66 @@
+{
+ "model": "small.en",
+ "wer": 0.0217,
+ "lines": {
+  "f1": {
+   "text": "Forty-three instruments, laid out three ways. These are design layouts, not built labs.",
+   "heard": "43 instruments laid out three ways.  These are design layouts, not built labs.",
+   "wer": 0.0
+  },
+  "f2": {
+   "text": "First, a conventional materials lab, grouped by workflow: rooms for powder, the metal printers, the machine shop, the furnace and the SEM, and open benches for the rest.",
+   "heard": "First, a conventional materials lab, grouped by workflow.  Rooms for powder, the metal printers, the machine shop,  the furnace and the SEM, and open benches for the rest.",
+   "wer": 0.0
+  },
+  "f3": {
+   "text": "Benches are thirty inches deep and aisles five feet wide, with service space behind every floor machine. Measured to its walls, it comes to 4,280 square feet.",
+   "heard": "Benches are 30 inches deep and aisles five feet wide,  with service space behind every floor machine.  Measured to its walls, it comes to 4,280 square feet.",
+   "wer": 0.0
+  },
+  "f4": {
+   "text": "Next, the same floor plan, automated. Mobile robots drive the routes people walked, with fixed arms, docking targets and sample racks at the stations.",
+   "heard": "Next, the same floor plan, automated.  Mobile robots drive the routes people walked,  with fixed arms, docking targets,  and sample racks at the stations.",
+   "wer": 0.0
+  },
+  "f5": {
+   "text": "The floor area stays the same. And a robot docked in a five-foot aisle leaves too little room for another to pass.",
+   "heard": "the floor area stays the same,  and a robot docked in a five-foot aisle  leaves too little room for another to pass.",
+   "wer": 0.0
+  },
+  "f6": {
+   "text": "The vertical lab. Two Kardex Shuttles come in, and every benchtop instrument moves onto a tray.",
+   "heard": "The vertical lab.  Two cardiac shuttles come in and every benchtop instrument  moves onto a tray.",
+   "wer": 0.0625
+  },
+  "f7": {
+   "text": "The floor machines rearrange along one robot aisle, and the floor area falls to 3,029 square feet.",
+   "heard": "The floor machines rearrange along one robot aisle,  and the floor area falls to 3,029 square feet.",
+   "wer": 0.0
+  },
+  "f8": {
+   "text": "Side by side. For today's 43 instruments, a flat lab laid out so robots can dock and pass needs 4,128 square feet, about what the conventional lab does.",
+   "heard": "side by side. For today's 43 instruments, a flat lab laid out so robots can dock and  pass needs 4,128 square feet, about what the conventional lab does.",
+   "wer": 0.0
+  },
+  "f10": {
+   "text": "For scale, Emerald Cloud Lab in South San Francisco held more than a hundred items of equipment in about 15,000 square feet.",
+   "heard": "For scale, Emerald Cloud Lab in South, San Francisco held more than 100 items of equipment  in about 15,000 square feet.",
+   "wer": 0.0435
+  },
+  "f11": {
+   "text": "But today's equipment uses only 18 of the Shuttles' 45 trays. Laid out flat, as bench positions robots can serve, all 45 need 6,192 square feet.",
+   "heard": "But today's equipment uses only 18 of the shuttle's 45 trays.  Laid out flat, as bench positions robots can serve, all 45 needs 6,192 square feet.",
+   "wer": 0.0882
+  },
+  "f12": {
+   "text": "The vertical lab holds them in 3,029: 51 percent less floor, at 14.9 tray positions per thousand square feet, against 7.3.",
+   "heard": "the vertical lab holds them in 3,029, 51% less floor,  at 14.9 tray positions per thousand square feet against 7.3.",
+   "wer": 0.069
+  },
+  "f9": {
+   "text": "In the vertical lab, most of the floor goes to the floor machines, their clearances and the robot aisle, the same as in the flat layouts for robots. And the Shuttles stand 9.15 meters tall, so it needs a high bay.",
+   "heard": "In the vertical lab, most of the floor goes to the floor machines, their clearances and  the robot aisle, the same as in the flat layouts for robots.  And the shuttles stand 9.15 meters tall, so it needs a high bay.",
+   "wer": 0.0
+  }
+ }
+}

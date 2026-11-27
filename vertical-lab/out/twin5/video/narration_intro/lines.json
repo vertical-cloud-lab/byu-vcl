@@ -1,0 +1,127 @@
+{
+ "voice": "Kokoro v1.0 af_heart (kokoro-onnx, open weights), speed 0.96",
+ "lines": {
+  "chg1": {
+   "key": "7e1a7f9ebc96052f",
+   "text": "Round five starts the clock on the day the money arrives, and runs for two years. Each campaign has all of its money on day zero. The facility is ready between day 60 and day 100, and the equipment is ordered on day zero: some of it used, chosen by a rule.",
+   "spoken": "Round five starts the clock on the day the money arrives, and runs for two years. Each campaign has all of its money on day zero. The facility is ready between day 60 and day 100, and the equipment is ordered on day zero: some of it used, chosen by a rule.",
+   "phonemes": "ɹˈaʊnd fˈaɪv stˈɑːɹts ðə klˈɑːk ɔnðə dˈeɪ ðə mˈʌni ɚɹˈaɪvz, ænd ɹˈʌnz fɔːɹ tˈuː jˈɪɹz. ˈiːtʃ kæmpˈeɪn hɐz ˈɔːl ʌv ɪts mˈʌni ˌɔn dˈeɪ zˈiəɹoʊ. ðə fəsˈɪlᵻɾi ɪz ɹˈɛdi bᵻtwˌiːn dˈeɪ sˈɪksti ænd dˈeɪ wˈʌnhˈʌndɹɪd, ænd ðɪ ɪkwˈɪpmənt ɪz ˈɔːɹdɚd ˌɔn dˈeɪ zˈiəɹoʊ: sˌʌm ʌv ɪt jˈuːzd, tʃˈoʊzən baɪ ɐ ɹˈuːl.",
+   "seconds": 17.11,
+   "sha256": "6c64751924411d2b81dad62eaea45988831a047203d577699a925fdf1051f2d1"
+  },
+  "chg2": {
+   "key": "8dfaccc2716d8edb",
+   "text": "Experiments also start on day zero, through partners, while the lab is built. Decisions made by people take time. The conventional lab's atomizer runs at most 8 times a week; the automated lab's runs around the clock once its cell is integrated. And the HPC computes candidates continuously. Every lead time, price and decision window here is a stand-in.",
+   "spoken": "Experiments also start on day zero, through partners, while the lab is built. Decisions made by people take time. The conventional lab's atomizer runs at most 8 times a week; the automated lab's runs around the clock once its cell is integrated. And the H P C computes candidates continuously. Every lead time, price and decision window here is a stand-in.",
+   "phonemes": "ɛkspˈɛɹɪmənts ˈɔːlsoʊ stˈɑːɹt ˌɔn dˈeɪ zˈiəɹoʊ, θɹuː pˈɑːɹtnɚz, wˌaɪl ðə lˈæb ɪz bˈɪlt. dᵻsˈɪʒənz mˌeɪd baɪ pˈiːpəl tˈeɪk tˈaɪm. ðə kənvˈɛnʃənəl lˈæbz ˈæɾəmˌaɪzɚ ɹˈʌnz æt mˈoʊst ˈeɪt tˈaɪmz ɐ wˈiːk; ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæbz ɹˈʌnz ɚɹˈaʊnd ðə klˈɑːk wˈʌns ɪts sˈɛl ɪz ˈɪntᵻɡɹˌeɪɾᵻd. ænd ðɪ ˈeɪtʃ pˈiː sˈiː kəmpjˈuːts kˈændᵻdˌeɪts kəntˈɪnjuːəsli. ˈɛvɹi lˈiːd tˈaɪm, pɹˈaɪs ænd dᵻsˈɪʒən wˈɪndoʊ hˈɪɹ ɪz ɐ stˈændˈɪn.",
+   "seconds": 23.25,
+   "sha256": "0736cc8ec7b99f42abf630a857be3dcd1a34ad8970e32cfa1f312adc66297209"
+  },
+  "cnt1": {
+   "key": "8fdfc974dfa09a2f",
+   "text": "Three counters run through the replay. Designed means computed candidates: a stream on the HPC evaluates 122,880 a day, at full capacity and outside the experiments' cost. The policy sees 64 new ones a day.",
+   "spoken": "Three counters run through the replay. Designed means computed candidates: a stream on the H P C evaluates one hundred twenty-two thousand eight hundred eighty a day, at full capacity and outside the experiments' cost. The policy sees 64 new ones a day.",
+   "phonemes": "θɹˈiː kˈaʊntɚz ɹˈʌn θɹuː ðə ɹˈiːpleɪ. dɪzˈaɪnd mˈiːnz kəmpjˈuːɾᵻd kˈændᵻdˌeɪts: ɐ stɹˈiːm ɔnðɪ ˈeɪtʃ pˈiː sˈiː ɪvˈæljuːˌeɪts wˈʌn hˈʌndɹɪd twˈɛntitˈuː θˈaʊzənd ˈeɪt hˈʌndɹɪd ˈeɪɾi ɐ dˈeɪ, æt fˈʊl kəpˈæsᵻɾi ænd aʊtsˈaɪd ðɪ ɛkspˈɛɹɪmənts kˈɔst. ðə pˈɑːlɪsi sˈiːz sˈɪksti fˈɔːɹ nˈuː wˈʌnz ɐ dˈeɪ.",
+   "seconds": 17.6,
+   "sha256": "fdd612febfff672558fc308ea8811c1b59bef3ec1abeff712f5806a71ce28f20"
+  },
+  "cnt2": {
+   "key": "d29ee6096cb1824c",
+   "text": "Made means powder lots, or alloys made. Tested means alloys through the full chain: in the replayed run, 104 aluminium alloys and 6 copper alloys.",
+   "spoken": "Made means powder lots, or alloys made. Tested means alloys through the full chain: in the replayed run, 104 aluminum alloys and 6 copper alloys.",
+   "phonemes": "mˌeɪd mˈiːnz pˈaʊdɚ lˈɑːts, ɔːɹ ˈælɔɪz mˈeɪd. tˈɛstᵻd mˈiːnz ˈælɔɪz θɹuː ðə fˈʊl tʃˈeɪn: ɪnðə ɹˈiːpleɪd ɹˈʌn, wˈʌnhˈʌndɹɪd fˈɔːɹ ɐlˈuːmɪnəm ˈælɔɪz ænd sˈɪks kˈɑːpɚɹ ˈælɔɪz.",
+   "seconds": 10.77,
+   "sha256": "1b1743d9ea1530209040e2feec1983fa78ebe82153af194ac4040ee745a713fe"
+  },
+  "cnt3": {
+   "key": "0f094957390e4e64",
+   "text": "Early stopping means only promising alloys finish every step.",
+   "spoken": "Early stopping means only promising alloys finish every step.",
+   "phonemes": "ˈɜːli stˈɑːpɪŋ mˈiːnz ˈoʊnli pɹˈɑːmɪsɪŋ ˈælɔɪz fˈɪnɪʃ ˈɛvɹi stˈɛp.",
+   "seconds": 3.8,
+   "sha256": "d04af5286d77567c6f74ee5bc4100cbab488394d7d8fc847ab84ad8901ec60d7"
+  },
+  "cnt4": {
+   "key": "492a80d1f4d2f84e",
+   "text": "In the replay's plots, the solid curve is the best new alloy tested so far in the automated lab, and the dashed curve is the conventional lab, on the same seed and policy. The dotted lines are the two targets.",
+   "spoken": "In the replay's plots, the solid curve is the best new alloy tested so far in the automated lab, and the dashed curve is the conventional lab, on the same seed and policy. The dotted lines are the two targets.",
+   "phonemes": "ɪnðə ɹˈiːpleɪz plˈɑːts, ðə sˈɑːlɪd kˈɜːv ɪz ðə bˈɛst nˈuː ˈælɔɪ tˈɛstᵻd sˈoʊ fˌɑːɹ ɪnðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb, ænd ðə dˈæʃt kˈɜːv ɪz ðə kənvˈɛnʃənəl lˈæb, ɔnðə sˈeɪm sˈiːd ænd pˈɑːlɪsi. ðə dˈɑːɾᵻd lˈaɪnz ɑːɹ ðə tˈuː tˈɑːɹɡɪts.",
+   "seconds": 13.55,
+   "sha256": "b8e52096f0a0092a6792094e8598d08502b93b6671f263a3f960fdedf0d9b397"
+  },
+  "cnt5": {
+   "key": "1888fac329dd0c13",
+   "text": "Money is shown as cumulative spend in each lab, not as a budget bar. And when best so far goes flat, the replay says why.",
+   "spoken": "Money is shown as cumulative spend in each lab, not as a budget bar. And when best so far goes flat, the replay says why.",
+   "phonemes": "mˈʌni ɪz ʃˈoʊn æz kjˈuːmjʊlətˌɪv spˈɛnd ɪn ˈiːtʃ lˈæb, nˌɑːt æz ɐ bˈʌdʒɪt bˈɑːɹ. ænd wɛn bˈɛst sˈoʊ fˌɑːɹ ɡoʊz flˈæt, ðə ɹˈiːpleɪ sˈɛz wˈaɪ.",
+   "seconds": 8.02,
+   "sha256": "56da8c1cf714ec71e18a9b8869eb07fcd83569ec727fca568e28efcd51ca031c"
+  },
+  "atm1": {
+   "key": "727acea2d29d9841",
+   "text": "Once its cell is integrated, the automated lab's atomizer runs around the clock at a derived cycle: about 2.2 hours per aluminium composition, or 76 a week. That is a design target, not a demonstrated rate.",
+   "spoken": "Once its cell is integrated, the automated lab's atomizer runs around the clock at a derived cycle: about 2.2 hours per aluminum composition, or 76 a week. That is a design target, not a demonstrated rate.",
+   "phonemes": "wˈʌns ɪts sˈɛl ɪz ˈɪntᵻɡɹˌeɪɾᵻd, ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæbz ˈæɾəmˌaɪzɚ ɹˈʌnz ɚɹˈaʊnd ðə klˈɑːk æɾə dᵻɹˈaɪvd sˈaɪkəl: ɐbˌaʊt tˈuː pɔɪnt tˈuː ˈaʊɚz pɜːɹ ɐlˈuːmɪnəm kˌɑːmpəzˈɪʃən, ɔːɹ sˈɛvənti sˈɪks ɐ wˈiːk. ðæt ɪz ɐ dɪzˈaɪn tˈɑːɹɡɪt, nˌɑːɾə dˈɛmənstɹˌeɪɾᵻd ɹˈeɪt.",
+   "seconds": 14.78,
+   "sha256": "bbc1f9368859e8751bd64e2ee4102a1b162f445b40fd311cd34f820f569ce4dc"
+  },
+  "atm2": {
+   "key": "124680d5e1b24987",
+   "text": "It needs 6 to 8 pre-coated crucibles per alloy family in rotation, and the lab has one. The lab's record so far is 10 runs in 43 days, about 1.6 a week. Before the cell, and in the conventional lab, the twin assumes 8 a week.",
+   "spoken": "It needs 6 to 8 pre-coated crucibles per alloy family in rotation, and the lab has one. The lab's record so far is 10 runs in 43 days, about 1.6 a week. Before the cell, and in the conventional lab, the twin assumes 8 a week.",
+   "phonemes": "ɪt nˈiːdz sˈɪks tʊ ˈeɪt pɹˈiːkˈoʊɾᵻd kɹˈuːsᵻbəlz pɜːɹ ˈælɔɪ fˈæmɪli ɪn ɹoʊtˈeɪʃən, ænd ðə lˈæb hɐz wˌʌn. ðə lˈæbz ɹˈɛkɚd sˈoʊ fˌɑːɹ ɪz tˈɛn ɹˈʌnz ɪn fˈɔːɹɾi θɹˈiː dˈeɪz, ɐbˌaʊt wˈʌn pɔɪnt sˈɪks ɐ wˈiːk. bᵻfˌɔːɹ ðə sˈɛl, ænd ɪnðə kənvˈɛnʃənəl lˈæb, ðə twˈɪn ɐsˈuːmz ˈeɪt ɐ wˈiːk.",
+   "seconds": 16.62,
+   "sha256": "ea1d07d58e9bd4dc8fc82e964e08270b697b185a96911909bd5b0904a041d7b6"
+  },
+  "note1": {
+   "key": "3dd75913daa4703c",
+   "text": "Everything here is simulated: the alloys, the results, and every measurement, with modelled noise not yet calibrated on the lab's instruments. The facility window, every lead time, the used-equipment prices, the decision windows, the HPC allocation, and the atomizer's design cycle are assumptions and stand-ins. It shows how two lab designs and their policies interact in a model, not what the real lab will find.",
+   "spoken": "Everything here is simulated: the alloys, the results, and every measurement, with modelled noise not yet calibrated on the lab's instruments. The facility window, every lead time, the used-equipment prices, the decision windows, the H P C allocation, and the atomizer's design cycle are assumptions and stand-ins. It shows how two lab designs and their policies interact in a model, not what the real lab will find.",
+   "phonemes": "ˈɛvɹɪθˌɪŋ hˈɪɹ ɪz sˈɪmjʊlˌeɪɾᵻd: ðɪ ˈælɔɪz, ðə ɹɪzˈʌlts, ænd ˈɛvɹi mˈɛʒɚmənt, wɪð mˈɑːdəld nˈɔɪz nˌɑːt jˈɛt kˈælɪbɹˌeɪɾᵻd ɔnðə lˈæbz ˈɪnstɹəmənts. ðə fəsˈɪlᵻɾi wˈɪndoʊ, ˈɛvɹi lˈiːd tˈaɪm, ðə jˈuːzdɪkwˈɪpmənt pɹˈaɪsᵻz, ðə dᵻsˈɪʒən wˈɪndoʊz, ðɪ ˈeɪtʃ pˈiː sˈiː ˌæləkˈeɪʃən, ænd ðɪ ˈæɾəmˌaɪzɚz dɪzˈaɪn sˈaɪkəl ɑːɹ ɐsˈʌmpʃənz ænd stˈændˈɪnz. ɪt ʃˈoʊz hˌaʊ tˈuː lˈæb dɪzˈaɪnz ænd ðɛɹ pˈɑːlɪsiz ˌɪntɚɹˈækt ɪn ɐ mˈɑːdəl, nˌɑːt wʌt ðə ɹˈiːəl lˈæb wɪl fˈaɪnd.",
+   "seconds": 25.75,
+   "sha256": "494577a83b7af364912386911a14eb0414811a0f5cc100b4144a32e09b1c74ef"
+  }
+ },
+ "voice_id": "af_heart",
+ "speed": 0.96,
+ "rate": 24000,
+ "model_sha256": {
+  "kokoro-v1.0.onnx": "7d5df8ecf7d4b1878015a32686053fd0eebe2bc377234608764cc0ef3636a6c5",
+  "voices-v1.0.bin": "bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d"
+ },
+ "say": {
+  "MiR250": "MiR two-fifty",
+  "OT-2": "O T two",
+  "UPS": "U P S",
+  "SEM": "S E M",
+  "BYU": "B Y U",
+  "EDM": "E D M",
+  "ICP-MS": "I C P M S",
+  "UR12e": "U R twelve E",
+  "aluminium": "aluminum",
+  "AlSi10Mg": "A L S I ten M G",
+  "FLAIME": "flame",
+  "ONR": "O N R",
+  "BOFN": "B O F N",
+  "GP-BO": "G P B O",
+  "LPBF": "L P B F",
+  "DED": "D E D",
+  "HPC": "H P C",
+  "EDS": "E D S",
+  "XRD": "X R D",
+  "3-D": "three D",
+  "VHX": "V H X",
+  "labour": "labor",
+  "pKGFN": "P K G F N",
+  "122,880": "one hundred twenty-two thousand eight hundred eighty"
+ },
+ "ipa": {
+  "MiR": "mˈiːɹ",
+  "CALPHAD": "kˈælfæd",
+  "Kardex": "kˈɑːɹdɛks",
+  "Sobol": "sˈoʊbɑːl",
+  "doser": "dˈoʊsɚ",
+  "dosed": "dˈoʊsd",
+  "pycalphad": "pˈaɪkælfæd"
+ }
+}

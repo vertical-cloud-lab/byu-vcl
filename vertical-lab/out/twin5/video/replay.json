@@ -1,0 +1,4758 @@
+{
+ "round": 5,
+ "arm": "r5_vertical_parallel_bofn3_reorder",
+ "conv_arm": "r5_conventional_external_bofn3_reorder",
+ "seed": 1,
+ "n_seeds": 16,
+ "n_seeds_conv": 16,
+ "median_seed": {
+  "seed": 1,
+  "score": 0.144,
+  "events": "out/twin5/events/r5_vertical_parallel_bofn3_reorder_s1.json.xz",
+  "days": {
+   "flaime_al|T1": 175.672,
+   "flaime_al|T2": 181.877,
+   "onr_cu|T1": 291.068,
+   "onr_cu|T2": 291.068
+  },
+  "medians": {
+   "flaime_al|T1": 176.036,
+   "flaime_al|T2": 189.175,
+   "onr_cu|T1": 297.591,
+   "onr_cu|T2": 338.923
+  }
+ },
+ "is_median_seed": true,
+ "targets": {
+  "T1": {
+   "flaime_al": 0.4232,
+   "onr_cu": 0.5559
+  },
+  "T2": {
+   "flaime_al": 0.6393,
+   "onr_cu": 0.6565
+  }
+ },
+ "policy": "bofn3",
+ "stock": "reorder",
+ "policy_words": "time-aware BOFN",
+ "stock_words": "stocked",
+ "auto": {
+  "run_id": "r5_vertical_parallel_bofn3_reorder_s1",
+  "events": "out/twin5/events/r5_vertical_parallel_bofn3_reorder_s1.json.xz",
+  "cfg": {
+   "lab": "vertical",
+   "plan": "parallel",
+   "policy": "bofn3",
+   "stock": "reorder",
+   "seed": 1,
+   "days": 730,
+   "money": 1.0,
+   "opts": {
+    "lab": "vertical",
+    "decisions": "nominal",
+    "atom": "derived",
+    "used": true
+   }
+  },
+  "campaigns": {
+   "flaime_al": {
+    "budget": 240000.0,
+    "spent": 238898.66,
+    "best_new": 0.7893911794889414,
+    "curve_new": [
+     [
+      106.4,
+      63173.75,
+      0.0
+     ],
+     [
+      143.633,
+      64964.7,
+      0.0
+     ],
+     [
+      175.672,
+      89650.57,
+      0.4271
+     ],
+     [
+      181.877,
+      100472.24,
+      0.6555
+     ],
+     [
+      182.12,
+      100472.24,
+      0.6555
+     ],
+     [
+      182.241,
+      100472.24,
+      0.6555
+     ],
+     [
+      183.468,
+      102564.74,
+      0.6555
+     ],
+     [
+      183.504,
+      102564.74,
+      0.6555
+     ],
+     [
+      183.562,
+      102564.74,
+      0.6555
+     ],
+     [
+      183.667,
+      102896.59,
+      0.6555
+     ],
+     [
+      184.442,
+      104038.0,
+      0.6555
+     ],
+     [
+      184.51,
+      104038.0,
+      0.6555
+     ],
+     [
+      184.535,
+      104038.0,
+      0.6788
+     ],
+     [
+      185.181,
+      104702.0,
+      0.6788
+     ],
+     [
+      187.511,
+      105087.34,
+      0.6788
+     ],
+     [
+      187.836,
+      105232.72,
+      0.6788
+     ],
+     [
+      190.367,
+      115660.7,
+      0.6788
+     ],
+     [
+      190.65,
+      115806.09,
+      0.6788
+     ],
+     [
+      199.783,
+      127884.14,
+      0.6788
+     ],
+     [
+      202.203,
+      131535.34,
+      0.6788
+     ],
+     [
+      204.202,
+      132729.89,
+      0.6788
+     ],
+     [
+      206.202,
+      139258.6,
+      0.6788
+     ],
+     [
+      207.673,
+      139736.46,
+      0.6788
+     ],
+     [
+      211.444,
+      147872.91,
+      0.6788
+     ],
+     [
+      213.012,
+      148395.63,
+      0.6788
+     ],
+     [
+      214.074,
+      149589.75,
+      0.6788
+     ],
+     [
+      220.525,
+      151228.43,
+      0.6788
+     ],
+     [
+      220.568,
+      151373.88,
+      0.6788
+     ],
+     [
+      220.81,
+      151851.25,
+      0.6788
+     ],
+     [
+      221.081,
+      151912.63,
+      0.6788
+     ],
+     [
+      221.65,
+      152058.08,
+      0.6788
+     ],
+     [
+      222.946,
+      152264.92,
+      0.6788
+     ],
+     [
+      223.196,
+      152410.37,
+      0.6788
+     ],
+     [
+      224.321,
+      153342.39,
+      0.6788
+     ],
+     [
+      227.32,
+      155030.83,
+      0.6788
+     ],
+     [
+      227.567,
+      155176.29,
+      0.7489
+     ],
+     [
+      231.431,
+      156897.03,
+      0.7489
+     ],
+     [
+      231.716,
+      157228.92,
+      0.7489
+     ],
+     [
+      231.732,
+      157228.92,
+      0.7489
+     ],
+     [
+      237.194,
+      163220.36,
+      0.7489
+     ],
+     [
+      237.444,
+      163805.72,
+      0.7489
+     ],
+     [
+      238.804,
+      164669.23,
+      0.7489
+     ],
+     [
+      241.069,
+      167268.18,
+      0.7489
+     ],
+     [
+      246.248,
+      175022.5,
+      0.7489
+     ],
+     [
+      249.692,
+      179551.67,
+      0.7489
+     ],
+     [
+      252.692,
+      183401.22,
+      0.7489
+     ],
+     [
+      255.818,
+      186898.31,
+      0.7489
+     ],
+     [
+      256.943,
+      187853.39,
+      0.7489
+     ],
+     [
+      258.826,
+      189050.0,
+      0.7489
+     ],
+     [
+      259.776,
+      189310.26,
+      0.7489
+     ],
+     [
+      260.776,
+      190040.88,
+      0.7489
+     ],
+     [
+      261.532,
+      191163.62,
+      0.7489
+     ],
+     [
+      262.068,
+      191714.82,
+      0.7489
+     ],
+     [
+      262.65,
+      192030.56,
+      0.7489
+     ],
+     [
+      263.692,
+      192481.48,
+      0.7489
+     ],
+     [
+      263.943,
+      192481.48,
+      0.7894
+     ],
+     [
+      264.192,
+      192627.02,
+      0.7894
+     ],
+     [
+      265.198,
+      193041.01,
+      0.7894
+     ],
+     [
+      265.567,
+      195686.97,
+      0.7894
+     ],
+     [
+      266.442,
+      195893.97,
+      0.7894
+     ],
+     [
+      267.942,
+      196495.13,
+      0.7894
+     ],
+     [
+      268.192,
+      196640.68,
+      0.7894
+     ],
+     [
+      269.525,
+      197558.64,
+      0.7894
+     ],
+     [
+      269.776,
+      197765.66,
+      0.7894
+     ],
+     [
+      270.442,
+      198244.34,
+      0.7894
+     ],
+     [
+      274.442,
+      199117.59,
+      0.7894
+     ],
+     [
+      276.65,
+      199983.5,
+      0.7894
+     ],
+     [
+      281.942,
+      201716.32,
+      0.7894
+     ],
+     [
+      282.192,
+      202384.5,
+      0.7894
+     ],
+     [
+      282.775,
+      202575.19,
+      0.7894
+     ],
+     [
+      284.192,
+      203767.89,
+      0.7894
+     ],
+     [
+      285.442,
+      204308.8,
+      0.7894
+     ],
+     [
+      287.067,
+      205518.43,
+      0.7894
+     ],
+     [
+      291.192,
+      206926.6,
+      0.7894
+     ],
+     [
+      291.317,
+      206926.6,
+      0.7894
+     ],
+     [
+      302.067,
+      209972.53,
+      0.7894
+     ],
+     [
+      302.317,
+      210452.57,
+      0.7894
+     ],
+     [
+      304.442,
+      210713.04,
+      0.7894
+     ],
+     [
+      306.067,
+      212246.46,
+      0.7894
+     ],
+     [
+      315.525,
+      216319.12,
+      0.7894
+     ],
+     [
+      321.95,
+      217522.22,
+      0.7894
+     ],
+     [
+      323.65,
+      221059.76,
+      0.7894
+     ],
+     [
+      332.192,
+      222970.64,
+      0.7894
+     ],
+     [
+      332.442,
+      223116.32,
+      0.7894
+     ],
+     [
+      338.942,
+      224463.22,
+      0.7894
+     ],
+     [
+      339.942,
+      224861.34,
+      0.7894
+     ],
+     [
+      340.192,
+      225007.04,
+      0.7894
+     ],
+     [
+      340.192,
+      225007.04,
+      0.7894
+     ],
+     [
+      344.692,
+      225877.56,
+      0.7894
+     ],
+     [
+      345.442,
+      226084.87,
+      0.7894
+     ],
+     [
+      346.317,
+      226283.95,
+      0.7894
+     ],
+     [
+      354.192,
+      226810.61,
+      0.7894
+     ],
+     [
+      363.192,
+      227690.83,
+      0.7894
+     ],
+     [
+      366.567,
+      228509.55,
+      0.7894
+     ],
+     [
+      390.192,
+      231314.82,
+      0.7894
+     ],
+     [
+      421.567,
+      233254.06,
+      0.7894
+     ],
+     [
+      421.817,
+      233399.92,
+      0.7894
+     ],
+     [
+      427.442,
+      234619.93,
+      0.7894
+     ],
+     [
+      461.442,
+      235157.67,
+      0.7894
+     ],
+     [
+      522.317,
+      237834.25,
+      0.7894
+     ],
+     [
+      522.317,
+      237834.25,
+      0.7894
+     ],
+     [
+      522.567,
+      237834.25,
+      0.7894
+     ],
+     [
+      627.317,
+      238898.66,
+      0.7894
+     ]
+    ],
+    "spend_curve": [
+     [
+      0,
+      32761.48
+     ],
+     [
+      7,
+      40758.72
+     ],
+     [
+      14,
+      42793.26
+     ],
+     [
+      21,
+      48746.25
+     ],
+     [
+      28,
+      48746.25
+     ],
+     [
+      35,
+      50514.44
+     ],
+     [
+      42,
+      53318.63
+     ],
+     [
+      49,
+      55358.95
+     ],
+     [
+      56,
+      55358.95
+     ],
+     [
+      63,
+      58393.45
+     ],
+     [
+      70,
+      58393.45
+     ],
+     [
+      77,
+      62034.75
+     ],
+     [
+      84,
+      62034.75
+     ],
+     [
+      91,
+      62034.75
+     ],
+     [
+      98,
+      62841.29
+     ],
+     [
+      105,
+      62902.47
+     ],
+     [
+      112,
+      63173.75
+     ],
+     [
+      119,
+      63173.75
+     ],
+     [
+      126,
+      63173.75
+     ],
+     [
+      133,
+      64690.41
+     ],
+     [
+      140,
+      64743.55
+     ],
+     [
+      147,
+      65774.37
+     ],
+     [
+      154,
+      65774.37
+     ],
+     [
+      161,
+      65774.37
+     ],
+     [
+      168,
+      82537.86
+     ],
+     [
+      175,
+      87432.28
+     ],
+     [
+      182,
+      100472.24
+     ],
+     [
+      189,
+      105294.04
+     ],
+     [
+      196,
+      115806.09
+     ],
+     [
+      203,
+      131596.69
+     ],
+     [
+      210,
+      146685.87
+     ],
+     [
+      217,
+      150667.44
+     ],
+     [
+      224,
+      153342.39
+     ],
+     [
+      231,
+      156565.18
+     ],
+     [
+      238,
+      163867.13
+     ],
+     [
+      245,
+      173511.57
+     ],
+     [
+      252,
+      182861.37
+     ],
+     [
+      259,
+      189103.28
+     ],
+     [
+      266,
+      195748.43
+     ],
+     [
+      273,
+      198638.97
+     ],
+     [
+      280,
+      201318.57
+     ],
+     [
+      287,
+      205518.43
+     ],
+     [
+      294,
+      207595.07
+     ],
+     [
+      301,
+      208597.85
+     ],
+     [
+      308,
+      213334.54
+     ],
+     [
+      315,
+      215838.81
+     ],
+     [
+      322,
+      218191.52
+     ],
+     [
+      329,
+      222701.82
+     ],
+     [
+      336,
+      223116.32
+     ],
+     [
+      343,
+      225342.47
+     ],
+     [
+      350,
+      226283.95
+     ],
+     [
+      357,
+      226810.61
+     ],
+     [
+      364,
+      228027.26
+     ],
+     [
+      371,
+      228509.55
+     ],
+     [
+      378,
+      229263.16
+     ],
+     [
+      385,
+      230020.84
+     ],
+     [
+      392,
+      231989.7
+     ],
+     [
+      399,
+      232326.86
+     ],
+     [
+      406,
+      232326.86
+     ],
+     [
+      413,
+      232326.86
+     ],
+     [
+      420,
+      233063.01
+     ],
+     [
+      427,
+      234136.0
+     ],
+     [
+      434,
+      234619.93
+     ],
+     [
+      441,
+      234949.95
+     ],
+     [
+      448,
+      235011.72
+     ],
+     [
+      455,
+      235011.72
+     ],
+     [
+      462,
+      235157.67
+     ],
+     [
+      469,
+      235495.93
+     ],
+     [
+      476,
+      236503.14
+     ],
+     [
+      483,
+      236503.14
+     ],
+     [
+      490,
+      236503.14
+     ],
+     [
+      497,
+      236896.09
+     ],
+     [
+      504,
+      236941.3
+     ],
+     [
+      511,
+      237280.56
+     ],
+     [
+      518,
+      237396.01
+     ],
+     [
+      525,
+      237834.25
+     ],
+     [
+      532,
+      237834.25
+     ],
+     [
+      539,
+      237834.25
+     ],
+     [
+      546,
+      237834.25
+     ],
+     [
+      553,
+      237834.25
+     ],
+     [
+      560,
+      237834.25
+     ],
+     [
+      567,
+      237834.25
+     ],
+     [
+      574,
+      237834.25
+     ],
+     [
+      581,
+      238752.35
+     ],
+     [
+      588,
+      238752.35
+     ],
+     [
+      595,
+      238752.35
+     ],
+     [
+      602,
+      238752.35
+     ],
+     [
+      609,
+      238752.35
+     ],
+     [
+      616,
+      238752.35
+     ],
+     [
+      623,
+      238752.35
+     ],
+     [
+      630,
+      238898.66
+     ],
+     [
+      637,
+      238898.66
+     ],
+     [
+      644,
+      238898.66
+     ],
+     [
+      651,
+      238898.66
+     ],
+     [
+      658,
+      238898.66
+     ],
+     [
+      665,
+      238898.66
+     ],
+     [
+      672,
+      238898.66
+     ],
+     [
+      679,
+      238898.66
+     ],
+     [
+      686,
+      238898.66
+     ],
+     [
+      693,
+      238898.66
+     ],
+     [
+      700,
+      238898.66
+     ],
+     [
+      707,
+      238898.66
+     ],
+     [
+      714,
+      238898.66
+     ],
+     [
+      721,
+      238898.66
+     ],
+     [
+      728,
+      238898.66
+     ],
+     [
+      735,
+      238898.66
+     ]
+    ],
+    "spend_by": {
+     "order": 167692.92,
+     "print": 48587.68,
+     "test": 15667.79,
+     "section": 4189.46,
+     "pip": 2738.31,
+     "powder": 22.5,
+     "sim_open": 0.0
+    },
+    "counters": {
+     "designed": 47157,
+     "lots_made": 346,
+     "alloys_made": 345,
+     "alloys_printed": 229,
+     "builds_or_deposits": 273,
+     "alloys_tested": 104,
+     "tests": 104
+    },
+    "days": {
+     "T1": {
+      "day": 175.672,
+      "hit": true
+     },
+     "T2": {
+      "day": 181.877,
+      "hit": true
+     }
+    },
+    "idle": {
+     "atomizer": [
+      {
+       "start_d": 2,
+       "end_d": 85,
+       "days": 83,
+       "cause": "WIP limit",
+       "causes": {
+        "WIP limit": 78,
+        "policy waiting (results in flight)": 5
+       },
+       "station_busy_frac": 0.007,
+       "flag": false
+      },
+      {
+       "start_d": 187,
+       "end_d": 195,
+       "days": 8,
+       "cause": "capacity",
+       "causes": {
+        "WIP limit": 3,
+        "policy waiting (results in flight)": 1,
+        "capacity": 4
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 343,
+       "end_d": 353,
+       "days": 10,
+       "cause": "money",
+       "causes": {
+        "money": 10
+       },
+       "station_busy_frac": 0.004,
+       "flag": false
+      },
+      {
+       "start_d": 367,
+       "end_d": 374,
+       "days": 7,
+       "cause": "money",
+       "causes": {
+        "money": 7
+       },
+       "station_busy_frac": 0.06,
+       "flag": false
+      },
+      {
+       "start_d": 400,
+       "end_d": 410,
+       "days": 10,
+       "cause": "money",
+       "causes": {
+        "money": 10
+       },
+       "station_busy_frac": 0.09,
+       "flag": false
+      },
+      {
+       "start_d": 415,
+       "end_d": 424,
+       "days": 9,
+       "cause": "money",
+       "causes": {
+        "money": 9
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 425,
+       "end_d": 438,
+       "days": 13,
+       "cause": "money",
+       "causes": {
+        "capacity": 1,
+        "money": 12
+       },
+       "station_busy_frac": 0.032,
+       "flag": false
+      },
+      {
+       "start_d": 439,
+       "end_d": 468,
+       "days": 29,
+       "cause": "money",
+       "causes": {
+        "money": 29
+       },
+       "station_busy_frac": 0.045,
+       "flag": false
+      },
+      {
+       "start_d": 470,
+       "end_d": 489,
+       "days": 19,
+       "cause": "money",
+       "causes": {
+        "money": 19
+       },
+       "station_busy_frac": 0.022,
+       "flag": false
+      },
+      {
+       "start_d": 490,
+       "end_d": 507,
+       "days": 17,
+       "cause": "spending plan",
+       "causes": {
+        "spending plan": 17
+       },
+       "station_busy_frac": 0.04,
+       "flag": false
+      },
+      {
+       "start_d": 508,
+       "end_d": 558,
+       "days": 50,
+       "cause": "money",
+       "causes": {
+        "spending plan": 22,
+        "money": 28
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 562,
+       "end_d": 582,
+       "days": 20,
+       "cause": "spending plan",
+       "causes": {
+        "spending plan": 15,
+        "money": 5
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 583,
+       "end_d": 731,
+       "days": 148,
+       "cause": "policy waiting (results in flight)",
+       "causes": {
+        "spending plan": 44,
+        "policy waiting (results in flight)": 104
+       },
+       "station_busy_frac": 0.007,
+       "flag": false
+      }
+     ],
+     "fab": [
+      {
+       "start_d": 0,
+       "end_d": 16,
+       "days": 16,
+       "cause": "WIP limit",
+       "causes": {
+        "capacity": 1,
+        "WIP limit": 14,
+        "policy waiting (results in flight)": 1
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 17,
+       "end_d": 100,
+       "days": 83,
+       "cause": "WIP limit",
+       "causes": {
+        "WIP limit": 67,
+        "policy waiting (results in flight)": 4,
+        "capacity": 12
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 101,
+       "end_d": 136,
+       "days": 35,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 26,
+        "WIP limit": 9
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 137,
+       "end_d": 148,
+       "days": 11,
+       "cause": "capacity",
+       "causes": {
+        "WIP limit": 3,
+        "capacity": 8
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 149,
+       "end_d": 164,
+       "days": 15,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 15
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 363,
+       "end_d": 371,
+       "days": 8,
+       "cause": "money",
+       "causes": {
+        "money": 8
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 399,
+       "end_d": 416,
+       "days": 17,
+       "cause": "money",
+       "causes": {
+        "money": 17
+       },
+       "station_busy_frac": 0.011,
+       "flag": false
+      },
+      {
+       "start_d": 427,
+       "end_d": 439,
+       "days": 12,
+       "cause": "money",
+       "causes": {
+        "money": 12
+       },
+       "station_busy_frac": 0.002,
+       "flag": false
+      },
+      {
+       "start_d": 447,
+       "end_d": 460,
+       "days": 13,
+       "cause": "money",
+       "causes": {
+        "money": 13
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 461,
+       "end_d": 481,
+       "days": 20,
+       "cause": "money",
+       "causes": {
+        "money": 19,
+        "spending plan": 1
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 482,
+       "end_d": 490,
+       "days": 8,
+       "cause": "money",
+       "causes": {
+        "money": 8
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 498,
+       "end_d": 512,
+       "days": 14,
+       "cause": "spending plan",
+       "causes": {
+        "spending plan": 14
+       },
+       "station_busy_frac": 0.006,
+       "flag": false
+      },
+      {
+       "start_d": 521,
+       "end_d": 528,
+       "days": 7,
+       "cause": "money",
+       "causes": {
+        "spending plan": 1,
+        "money": 6
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 529,
+       "end_d": 576,
+       "days": 47,
+       "cause": "spending plan",
+       "causes": {
+        "money": 21,
+        "spending plan": 26
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 585,
+       "end_d": 627,
+       "days": 42,
+       "cause": "spending plan",
+       "causes": {
+        "spending plan": 42
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 634,
+       "end_d": 694,
+       "days": 60,
+       "cause": "policy waiting (results in flight)",
+       "causes": {
+        "policy waiting (results in flight)": 60
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 704,
+       "end_d": 731,
+       "days": 27,
+       "cause": "policy waiting (results in flight)",
+       "causes": {
+        "policy waiting (results in flight)": 27
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      }
+     ]
+    },
+    "hpc": {
+     "evaluated": 89707520,
+     "seen": 46722
+    },
+    "stock": {
+     "mode": "reorder",
+     "n_charges": 620,
+     "n_stockouts": 566,
+     "n_capped": 4232,
+     "n_stockouts_wait_gt1d": 546,
+     "days_waited": 20322.08,
+     "wait_mean_d": 35.9,
+     "wait_p90_d": 71.63,
+     "n_stockouts_first90": 37,
+     "n_stockouts_after90": 529,
+     "days_waited_after90": 18657.4,
+     "n_episodes": 963,
+     "charges_short_frac": 0.9129,
+     "stock_usd": 167692.92,
+     "bought_usd": 167692.92,
+     "left_usd": 12037.06,
+     "n_orders": 712
+    }
+   },
+   "onr_cu": {
+    "budget": 120000.0,
+    "spent": 119915.83,
+    "best_new": 0.7048877758150808,
+    "curve_new": [
+     [
+      218.7,
+      45959.95,
+      0.3192
+     ],
+     [
+      291.068,
+      89908.47,
+      0.7049
+     ],
+     [
+      309.079,
+      95138.79,
+      0.7049
+     ],
+     [
+      418.728,
+      107798.8,
+      0.7049
+     ],
+     [
+      533.551,
+      116349.54,
+      0.7049
+     ],
+     [
+      550.011,
+      118326.31,
+      0.7049
+     ]
+    ],
+    "spend_curve": [
+     [
+      0,
+      22197.0
+     ],
+     [
+      7,
+      28010.85
+     ],
+     [
+      14,
+      31581.02
+     ],
+     [
+      21,
+      31581.02
+     ],
+     [
+      28,
+      31581.02
+     ],
+     [
+      35,
+      31581.02
+     ],
+     [
+      42,
+      31581.02
+     ],
+     [
+      49,
+      31581.02
+     ],
+     [
+      56,
+      31877.45
+     ],
+     [
+      63,
+      31877.45
+     ],
+     [
+      70,
+      31877.45
+     ],
+     [
+      77,
+      31877.45
+     ],
+     [
+      84,
+      31877.45
+     ],
+     [
+      91,
+      31877.45
+     ],
+     [
+      98,
+      31927.76
+     ],
+     [
+      105,
+      31927.76
+     ],
+     [
+      112,
+      31927.76
+     ],
+     [
+      119,
+      31927.76
+     ],
+     [
+      126,
+      35947.34
+     ],
+     [
+      133,
+      36848.35
+     ],
+     [
+      140,
+      39821.03
+     ],
+     [
+      147,
+      39944.18
+     ],
+     [
+      154,
+      40348.18
+     ],
+     [
+      161,
+      40348.18
+     ],
+     [
+      168,
+      40779.27
+     ],
+     [
+      175,
+      42352.86
+     ],
+     [
+      182,
+      42352.86
+     ],
+     [
+      189,
+      42523.17
+     ],
+     [
+      196,
+      42523.17
+     ],
+     [
+      203,
+      42576.86
+     ],
+     [
+      210,
+      45303.04
+     ],
+     [
+      217,
+      45959.95
+     ],
+     [
+      224,
+      45959.95
+     ],
+     [
+      231,
+      45959.95
+     ],
+     [
+      238,
+      49552.17
+     ],
+     [
+      245,
+      49970.58
+     ],
+     [
+      252,
+      49970.58
+     ],
+     [
+      259,
+      63118.32
+     ],
+     [
+      266,
+      70689.19
+     ],
+     [
+      273,
+      80367.5
+     ],
+     [
+      280,
+      85139.48
+     ],
+     [
+      287,
+      89570.79
+     ],
+     [
+      294,
+      90257.81
+     ],
+     [
+      301,
+      93457.14
+     ],
+     [
+      308,
+      95050.86
+     ],
+     [
+      315,
+      99473.68
+     ],
+     [
+      322,
+      99892.25
+     ],
+     [
+      329,
+      100366.13
+     ],
+     [
+      336,
+      100544.91
+     ],
+     [
+      343,
+      101057.63
+     ],
+     [
+      350,
+      101236.43
+     ],
+     [
+      357,
+      101236.43
+     ],
+     [
+      364,
+      103473.93
+     ],
+     [
+      371,
+      103867.42
+     ],
+     [
+      378,
+      104200.88
+     ],
+     [
+      385,
+      104200.88
+     ],
+     [
+      392,
+      106708.54
+     ],
+     [
+      399,
+      106708.54
+     ],
+     [
+      406,
+      106708.54
+     ],
+     [
+      413,
+      107336.91
+     ],
+     [
+      420,
+      107798.8
+     ],
+     [
+      427,
+      107798.8
+     ],
+     [
+      434,
+      107798.8
+     ],
+     [
+      441,
+      108281.97
+     ],
+     [
+      448,
+      108695.65
+     ],
+     [
+      455,
+      110806.62
+     ],
+     [
+      462,
+      111203.8
+     ],
+     [
+      469,
+      111203.8
+     ],
+     [
+      476,
+      112656.96
+     ],
+     [
+      483,
+      112749.34
+     ],
+     [
+      490,
+      112780.15
+     ],
+     [
+      497,
+      113083.84
+     ],
+     [
+      504,
+      113263.0
+     ],
+     [
+      511,
+      115962.93
+     ],
+     [
+      518,
+      116172.98
+     ],
+     [
+      525,
+      116220.53
+     ],
+     [
+      532,
+      116349.54
+     ],
+     [
+      539,
+      116349.54
+     ],
+     [
+      546,
+      116349.54
+     ],
+     [
+      553,
+      118326.31
+     ],
+     [
+      560,
+      118326.31
+     ],
+     [
+      567,
+      118326.31
+     ],
+     [
+      574,
+      118326.31
+     ],
+     [
+      581,
+      118326.31
+     ],
+     [
+      588,
+      118357.28
+     ],
+     [
+      595,
+      118357.28
+     ],
+     [
+      602,
+      118357.28
+     ],
+     [
+      609,
+      118357.28
+     ],
+     [
+      616,
+      118357.28
+     ],
+     [
+      623,
+      119421.04
+     ],
+     [
+      630,
+      119562.08
+     ],
+     [
+      637,
+      119562.08
+     ],
+     [
+      644,
+      119562.08
+     ],
+     [
+      651,
+      119562.08
+     ],
+     [
+      658,
+      119562.08
+     ],
+     [
+      665,
+      119562.08
+     ],
+     [
+      672,
+      119562.08
+     ],
+     [
+      679,
+      119863.55
+     ],
+     [
+      686,
+      119884.69
+     ],
+     [
+      693,
+      119915.83
+     ],
+     [
+      700,
+      119915.83
+     ],
+     [
+      707,
+      119915.83
+     ],
+     [
+      714,
+      119915.83
+     ],
+     [
+      721,
+      119915.83
+     ],
+     [
+      728,
+      119915.83
+     ],
+     [
+      735,
+      119915.83
+     ]
+    ],
+    "spend_by": {
+     "order": 85299.58,
+     "blend_ded": 18422.54,
+     "blown_large": 6947.57,
+     "tensile": 3000.0,
+     "pip": 1663.1,
+     "immersion": 1599.44,
+     "corrosion": 1578.09,
+     "blown_small": 948.83,
+     "NSL": 456.68,
+     "sim_open": 0.0,
+     "powder": 0.0
+    },
+    "counters": {
+     "designed": 43402,
+     "lots_made": 29,
+     "alloys_made": 94,
+     "alloys_printed": 94,
+     "builds_or_deposits": 120,
+     "alloys_tested": 6,
+     "tests": 6
+    },
+    "days": {
+     "T1": {
+      "day": 291.068,
+      "hit": true
+     },
+     "T2": {
+      "day": 291.068,
+      "hit": true
+     }
+    },
+    "idle": {
+     "atomizer": [
+      {
+       "start_d": 0,
+       "end_d": 74,
+       "days": 74,
+       "cause": "policy waiting (results in flight)",
+       "causes": {
+        "sign-off": 1,
+        "capacity": 7,
+        "policy waiting (results in flight)": 66
+       },
+       "station_busy_frac": 0.005,
+       "flag": true
+      },
+      {
+       "start_d": 124,
+       "end_d": 158,
+       "days": 34,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 30,
+        "sign-off": 4
+       },
+       "station_busy_frac": 0.079,
+       "flag": false
+      },
+      {
+       "start_d": 171,
+       "end_d": 211,
+       "days": 40,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 36,
+        "sign-off": 4
+       },
+       "station_busy_frac": 0.43,
+       "flag": false
+      },
+      {
+       "start_d": 213,
+       "end_d": 276,
+       "days": 63,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 45,
+        "sign-off": 13,
+        "policy waiting (results in flight)": 5
+       },
+       "station_busy_frac": 0.334,
+       "flag": false
+      },
+      {
+       "start_d": 279,
+       "end_d": 290,
+       "days": 11,
+       "cause": "money",
+       "causes": {
+        "capacity": 2,
+        "money": 8,
+        "sign-off": 1
+       },
+       "station_busy_frac": 0.167,
+       "flag": false
+      },
+      {
+       "start_d": 292,
+       "end_d": 299,
+       "days": 7,
+       "cause": "money",
+       "causes": {
+        "money": 7
+       },
+       "station_busy_frac": 0.061,
+       "flag": false
+      },
+      {
+       "start_d": 325,
+       "end_d": 337,
+       "days": 12,
+       "cause": "money",
+       "causes": {
+        "money": 12
+       },
+       "station_busy_frac": 0.031,
+       "flag": false
+      },
+      {
+       "start_d": 338,
+       "end_d": 373,
+       "days": 35,
+       "cause": "money",
+       "causes": {
+        "money": 35
+       },
+       "station_busy_frac": 0.067,
+       "flag": false
+      },
+      {
+       "start_d": 374,
+       "end_d": 406,
+       "days": 32,
+       "cause": "money",
+       "causes": {
+        "money": 32
+       },
+       "station_busy_frac": 0.048,
+       "flag": false
+      },
+      {
+       "start_d": 408,
+       "end_d": 434,
+       "days": 26,
+       "cause": "money",
+       "causes": {
+        "money": 26
+       },
+       "station_busy_frac": 0.028,
+       "flag": false
+      },
+      {
+       "start_d": 435,
+       "end_d": 448,
+       "days": 13,
+       "cause": "money",
+       "causes": {
+        "money": 13
+       },
+       "station_busy_frac": 0.036,
+       "flag": false
+      },
+      {
+       "start_d": 450,
+       "end_d": 473,
+       "days": 23,
+       "cause": "money",
+       "causes": {
+        "money": 23
+       },
+       "station_busy_frac": 0.043,
+       "flag": false
+      },
+      {
+       "start_d": 474,
+       "end_d": 496,
+       "days": 22,
+       "cause": "money",
+       "causes": {
+        "money": 22
+       },
+       "station_busy_frac": 0.008,
+       "flag": false
+      },
+      {
+       "start_d": 497,
+       "end_d": 505,
+       "days": 8,
+       "cause": "money",
+       "causes": {
+        "money": 8
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 506,
+       "end_d": 615,
+       "days": 109,
+       "cause": "money",
+       "causes": {
+        "money": 107,
+        "sign-off": 2
+       },
+       "station_busy_frac": 0.009,
+       "flag": false
+      },
+      {
+       "start_d": 616,
+       "end_d": 626,
+       "days": 10,
+       "cause": "money",
+       "causes": {
+        "money": 10
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 628,
+       "end_d": 669,
+       "days": 41,
+       "cause": "money",
+       "causes": {
+        "money": 41
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 670,
+       "end_d": 731,
+       "days": 61,
+       "cause": "money",
+       "causes": {
+        "money": 61
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      }
+     ],
+     "fab": [
+      {
+       "start_d": 0,
+       "end_d": 50,
+       "days": 50,
+       "cause": "policy waiting (results in flight)",
+       "causes": {
+        "sign-off": 1,
+        "capacity": 7,
+        "policy waiting (results in flight)": 42
+       },
+       "station_busy_frac": 0.0,
+       "flag": true
+      },
+      {
+       "start_d": 51,
+       "end_d": 92,
+       "days": 41,
+       "cause": "policy waiting (results in flight)",
+       "causes": {
+        "policy waiting (results in flight)": 37,
+        "sign-off": 4
+       },
+       "station_busy_frac": 0.0,
+       "flag": true
+      },
+      {
+       "start_d": 93,
+       "end_d": 127,
+       "days": 34,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 30,
+        "sign-off": 4
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 128,
+       "end_d": 162,
+       "days": 34,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 30,
+        "sign-off": 4
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 163,
+       "end_d": 184,
+       "days": 21,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 21
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 185,
+       "end_d": 197,
+       "days": 12,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 12
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 198,
+       "end_d": 232,
+       "days": 34,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 30,
+        "sign-off": 4
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 233,
+       "end_d": 257,
+       "days": 24,
+       "cause": "capacity",
+       "causes": {
+        "sign-off": 2,
+        "capacity": 20,
+        "policy waiting (results in flight)": 2
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 324,
+       "end_d": 334,
+       "days": 10,
+       "cause": "money",
+       "causes": {
+        "money": 10
+       },
+       "station_busy_frac": 0.028,
+       "flag": false
+      },
+      {
+       "start_d": 338,
+       "end_d": 347,
+       "days": 9,
+       "cause": "money",
+       "causes": {
+        "money": 9
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 348,
+       "end_d": 372,
+       "days": 24,
+       "cause": "money",
+       "causes": {
+        "money": 24
+       },
+       "station_busy_frac": 0.008,
+       "flag": false
+      },
+      {
+       "start_d": 389,
+       "end_d": 407,
+       "days": 18,
+       "cause": "money",
+       "causes": {
+        "money": 18
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 415,
+       "end_d": 438,
+       "days": 23,
+       "cause": "money",
+       "causes": {
+        "money": 23
+       },
+       "station_busy_frac": 0.008,
+       "flag": false
+      },
+      {
+       "start_d": 459,
+       "end_d": 477,
+       "days": 18,
+       "cause": "money",
+       "causes": {
+        "money": 18
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 487,
+       "end_d": 500,
+       "days": 13,
+       "cause": "money",
+       "causes": {
+        "money": 13
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 520,
+       "end_d": 547,
+       "days": 27,
+       "cause": "money",
+       "causes": {
+        "money": 27
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 548,
+       "end_d": 582,
+       "days": 34,
+       "cause": "money",
+       "causes": {
+        "money": 34
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 583,
+       "end_d": 617,
+       "days": 34,
+       "cause": "money",
+       "causes": {
+        "money": 34
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 618,
+       "end_d": 625,
+       "days": 7,
+       "cause": "money",
+       "causes": {
+        "money": 7
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 626,
+       "end_d": 652,
+       "days": 26,
+       "cause": "money",
+       "causes": {
+        "spending plan": 1,
+        "money": 25
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 653,
+       "end_d": 673,
+       "days": 20,
+       "cause": "money",
+       "causes": {
+        "money": 20
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 688,
+       "end_d": 712,
+       "days": 24,
+       "cause": "money",
+       "causes": {
+        "money": 24
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 713,
+       "end_d": 722,
+       "days": 9,
+       "cause": "money",
+       "causes": {
+        "money": 9
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 723,
+       "end_d": 731,
+       "days": 8,
+       "cause": "money",
+       "causes": {
+        "money": 8
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      }
+     ]
+    },
+    "hpc": {
+     "evaluated": 89707520,
+     "seen": 43014
+    },
+    "stock": {
+     "mode": "reorder",
+     "n_charges": 154,
+     "n_stockouts": 151,
+     "n_capped": 5572,
+     "n_stockouts_wait_gt1d": 151,
+     "days_waited": 5493.36,
+     "wait_mean_d": 36.38,
+     "wait_p90_d": 85.52,
+     "n_stockouts_first90": 19,
+     "n_stockouts_after90": 132,
+     "days_waited_after90": 4721.86,
+     "n_episodes": 291,
+     "charges_short_frac": 0.9805,
+     "stock_usd": 85299.58,
+     "bought_usd": 85299.58,
+     "left_usd": 659.84,
+     "n_orders": 250
+    }
+   }
+  },
+  "build": {
+   "cameras": {
+    "capex": 18900.0,
+    "order_h": 0.0,
+    "arrive_h": 926.6,
+    "install_h": 1615.1,
+    "commission_h": 1615.1,
+    "online_h": 1615.1,
+    "used": false,
+    "source": "assumed"
+   },
+   "carvera": {
+    "capex": 5799.0,
+    "order_h": 0.0,
+    "arrive_h": 418.2,
+    "install_h": 1615.1,
+    "commission_h": 1615.1,
+    "online_h": 1615.1,
+    "used": false,
+    "source": "assumed"
+   },
+   "chamber": {
+    "capex": 22500.0,
+    "order_h": 0.0,
+    "arrive_h": 644.0,
+    "install_h": 1615.1,
+    "commission_h": 1615.1,
+    "online_h": 1951.1,
+    "used": true,
+    "source": "assumed"
+   },
+   "couplings": {
+    "capex": 56000.0,
+    "order_h": 0.0,
+    "arrive_h": 1363.3,
+    "install_h": 1615.1,
+    "commission_h": 1783.1,
+    "online_h": 1951.1,
+    "used": false,
+    "source": "CombiTac docks: assumed"
+   },
+   "doser": {
+    "capex": 50000.0,
+    "order_h": 0.0,
+    "arrive_h": 3132.4,
+    "install_h": 3132.4,
+    "commission_h": 3300.4,
+    "online_h": 3804.4,
+    "used": false,
+    "source": "multi-doser carousel: assumed"
+   },
+   "ebsd": {
+    "capex": 120000.0,
+    "order_h": 0.0,
+    "arrive_h": 3190.4,
+    "install_h": 3190.4,
+    "commission_h": 3358.4,
+    "online_h": 3694.4,
+    "used": false,
+    "source": "assumed"
+   },
+   "edm": {
+    "capex": 138000.0,
+    "order_h": 0.0,
+    "arrive_h": 1675.6,
+    "install_h": 1675.6,
+    "commission_h": 2011.6,
+    "online_h": 2683.6,
+    "used": true,
+    "source": "assumed"
+   },
+   "eds": {
+    "capex": 55000.0,
+    "order_h": 0.0,
+    "arrive_h": 1754.4,
+    "install_h": 1754.4,
+    "commission_h": 1754.4,
+    "online_h": 1922.4,
+    "used": false,
+    "source": "assumed"
+   },
+   "floor_unit": {
+    "capex": 155000.0,
+    "order_h": 0.0,
+    "arrive_h": 1933.8,
+    "install_h": 1933.8,
+    "commission_h": 2101.8,
+    "online_h": 2437.8,
+    "used": false,
+    "source": "assumed"
+   },
+   "furnaces": {
+    "capex": 40000.0,
+    "order_h": 0.0,
+    "arrive_h": 1502.2,
+    "install_h": 1615.1,
+    "commission_h": 1615.1,
+    "online_h": 1783.1,
+    "used": false,
+    "source": "assumed"
+   },
+   "glovebox": {
+    "capex": 55000.0,
+    "order_h": 0.0,
+    "arrive_h": 1933.1,
+    "install_h": 1933.1,
+    "commission_h": 2101.1,
+    "online_h": 2269.1,
+    "used": false,
+    "source": "assumed"
+   },
+   "hardness": {
+    "capex": 70000.0,
+    "order_h": 0.0,
+    "arrive_h": 1256.9,
+    "install_h": 1615.1,
+    "commission_h": 1615.1,
+    "online_h": 1783.1,
+    "used": false,
+    "source": "assumed"
+   },
+   "hoods": {
+    "capex": 70000.0,
+    "order_h": 0.0,
+    "arrive_h": 1484.0,
+    "install_h": 1615.1,
+    "commission_h": 1783.1,
+    "online_h": 1783.1,
+    "used": false,
+    "source": "assumed"
+   },
+   "icpms": {
+    "capex": 260000.0,
+    "order_h": 0.0,
+    "arrive_h": 2010.0,
+    "install_h": 2010.0,
+    "commission_h": 2178.0,
+    "online_h": 2682.0,
+    "used": false,
+    "source": "assumed"
+   },
+   "instron": {
+    "capex": 78750.0,
+    "order_h": 0.0,
+    "arrive_h": 474.1,
+    "install_h": 1615.1,
+    "commission_h": 1951.1,
+    "online_h": 2455.1,
+    "used": true,
+    "source": "assumed"
+   },
+   "machining": {
+    "capex": 275000.0,
+    "order_h": 0.0,
+    "arrive_h": 2980.2,
+    "install_h": 2980.2,
+    "commission_h": 3316.2,
+    "online_h": 3988.2,
+    "used": false,
+    "source": "PR 373's cell: assumed"
+   },
+   "mastersizer": {
+    "capex": 110000.0,
+    "order_h": 0.0,
+    "arrive_h": 1443.1,
+    "install_h": 1615.1,
+    "commission_h": 1783.1,
+    "online_h": 1951.1,
+    "used": false,
+    "source": "assumed"
+   },
+   "midi": {
+    "capex": 700000.0,
+    "order_h": 0.0,
+    "arrive_h": 2600.4,
+    "install_h": 2600.4,
+    "commission_h": 2936.4,
+    "online_h": 3944.4,
+    "used": false,
+    "source": "Aconity's lead not found; comparable LPBF machines 12-16 weeks (Xact Metal 12, DAL #133; AO Metal A30 12-16, DAL PR 245 lpbf-options.md L62): the top of that; commissioning with Aconity's acceptance test and parameter qualification, assumed"
+   },
+   "mxlab": {
+    "capex": 300000.0,
+    "order_h": 0.0,
+    "arrive_h": 4755.2,
+    "install_h": 4755.2,
+    "commission_h": 5091.2,
+    "online_h": 6099.2,
+    "used": false,
+    "source": "InssTek's lead not found (installation and training included, DAL PR 245 ded-options.md L198): assumed, made in Korea"
+   },
+   "nanoindenter": {
+    "capex": 150000.0,
+    "order_h": 0.0,
+    "arrive_h": 1121.4,
+    "install_h": 1615.1,
+    "commission_h": 1783.1,
+    "online_h": 2287.1,
+    "used": true,
+    "source": "assumed"
+   },
+   "pip": {
+    "capex": 130000.0,
+    "order_h": 0.0,
+    "arrive_h": 2037.6,
+    "install_h": 2037.6,
+    "commission_h": 2037.6,
+    "online_h": 2205.6,
+    "used": false,
+    "source": "assumed"
+   },
+   "polish": {
+    "capex": 55000.0,
+    "order_h": 0.0,
+    "arrive_h": 1679.8,
+    "install_h": 1679.8,
+    "commission_h": 1847.8,
+    "online_h": 2015.8,
+    "used": false,
+    "source": "assumed (BYU already has an MX400 and PX500, ONR YIP field 10 L22)"
+   },
+   "sem": {
+    "capex": 100000.0,
+    "order_h": 0.0,
+    "arrive_h": 1349.4,
+    "install_h": 1615.1,
+    "commission_h": 1783.1,
+    "online_h": 1951.1,
+    "used": false,
+    "source": "assumed"
+   },
+   "services": {
+    "capex": 450000.0,
+    "order_h": 0.0,
+    "arrive_h": 1615.1,
+    "install_h": 1615.1,
+    "commission_h": 1615.1,
+    "online_h": 1615.1,
+    "used": false,
+    "source": "stand-in (Sterling, PR 400, 2026-11-27): the facility is ready between day 60 and day 100, drawn per seed from a uniform distribution; round 4's room took about four months (the atomizer room's 16 weeks)"
+   },
+   "shuttle": {
+    "capex": 420000.0,
+    "order_h": 0.0,
+    "arrive_h": 1843.1,
+    "install_h": 1843.1,
+    "commission_h": 2179.1,
+    "online_h": 2515.1,
+    "used": false,
+    "source": "Kardex QuickShip 4-6 weeks for standard sizes, custom longer (PR 331 build_our_own_vlm.md L76): 12 weeks for two 9 m Shuttles, assumed"
+   },
+   "sieve_cell": {
+    "capex": 60000.0,
+    "order_h": 0.0,
+    "arrive_h": 1895.8,
+    "install_h": 1895.8,
+    "commission_h": 2063.8,
+    "online_h": 2399.8,
+    "used": false,
+    "source": "assumed"
+   },
+   "units": {
+    "capex": 280000.0,
+    "order_h": 0.0,
+    "arrive_h": 1250.4,
+    "install_h": 1615.1,
+    "commission_h": 1783.1,
+    "online_h": 2455.1,
+    "used": false,
+    "source": "MiR250 + UR12e x2: assumed"
+   },
+   "ups": {
+    "capex": 22000.0,
+    "order_h": 0.0,
+    "arrive_h": 1135.8,
+    "install_h": 1615.1,
+    "commission_h": 1615.1,
+    "online_h": 1615.1,
+    "used": false,
+    "source": "assumed"
+   },
+   "vhx": {
+    "capex": 190000.0,
+    "order_h": 0.0,
+    "arrive_h": 1561.2,
+    "install_h": 1615.1,
+    "commission_h": 1615.1,
+    "online_h": 1783.1,
+    "used": false,
+    "source": "assumed"
+   },
+   "xrd": {
+    "capex": 105000.0,
+    "order_h": 0.0,
+    "arrive_h": 1447.7,
+    "install_h": 1615.1,
+    "commission_h": 1783.1,
+    "online_h": 1951.1,
+    "used": false,
+    "source": "assumed"
+   },
+   "xrf": {
+    "capex": 120000.0,
+    "order_h": 0.0,
+    "arrive_h": 1649.1,
+    "install_h": 1649.1,
+    "commission_h": 1817.1,
+    "online_h": 2489.1,
+    "used": false,
+    "source": "set-up 3-4 weeks (BYU's WDXRF, VCL PR 95 c-4972202625), applied here"
+   },
+   "zwick": {
+    "capex": 35000.0,
+    "order_h": 0.0,
+    "arrive_h": 1155.6,
+    "install_h": 1615.1,
+    "commission_h": 1783.1,
+    "online_h": 1951.1,
+    "used": false,
+    "source": "assumed"
+   }
+  },
+  "station_online": {
+   "utah_midi@vcl": 3944.4,
+   "utah_mxlab@vcl": 6099.2,
+   "edm@vcl": 2683.6,
+   "byu_sem@vcl": 1951.1,
+   "byu_icpms@vcl": 2682.0,
+   "density@vcl": 1783.1,
+   "tensile@vcl": 2455.1,
+   "tensile_hot@vcl": 2455.1,
+   "sieve@vcl": 2399.8,
+   "psd@vcl": 1951.1,
+   "doser@vcl": 3804.4,
+   "shop@vcl": 3988.2,
+   "xrd@vcl": 1951.1,
+   "xrf@vcl": 2489.1,
+   "prep@vcl": 2015.8,
+   "hardness@vcl": 1783.1,
+   "nanoindent@vcl": 2287.1,
+   "pip@vcl": 2205.6,
+   "furnace@vcl": 1783.1
+  },
+  "cell_h": 3859.0518982945828,
+  "full_h": 6099.19705243471,
+  "room_h": 1615.140819858806,
+  "atom": {
+   "switch_h": 3859.0518982945828,
+   "cycle": {
+    "flaime_al": null,
+    "onr_cu": null,
+    "changeover_h": 1.5
+   },
+   "runs": 799,
+   "runs_by": {
+    "flaime_al": 692,
+    "onr_cu": 107
+   }
+  },
+  "used": {
+   "chamber": {
+    "name": "Instron 3119-608 environmental chamber (to 600 C)",
+    "fault": false,
+    "usd_saved": 27500.0
+   },
+   "edm": {
+    "name": "FANUC ROBOCUT wire EDM",
+    "fault": true,
+    "usd_saved": 92000.0
+   },
+   "instron": {
+    "name": "Instron 68FM-100 floor frame with grips and extensometer",
+    "fault": false,
+    "usd_saved": 96250.0
+   },
+   "nanoindenter": {
+    "name": "KLA iMicro nanoindenter",
+    "fault": true,
+    "usd_saved": 100000.0
+   }
+  },
+  "hpc": {
+   "cores": 256,
+   "per_day": 122880.0,
+   "add_per_day": 64,
+   "keep": 128
+  },
+  "cpu": "AMD EPYC 9V45 96-Core Processor",
+  "commit": "3de9012351ae624cb5f661757b27d9ec11cebb1e"
+ },
+ "conv": {
+  "run_id": "r5_conventional_external_bofn3_reorder_s1",
+  "events": "out/twin5/events/r5_conventional_external_bofn3_reorder_s1.json.xz",
+  "cfg": {
+   "lab": "conventional",
+   "plan": "external",
+   "policy": "bofn3",
+   "stock": "reorder",
+   "seed": 1,
+   "days": 730,
+   "money": 1.0,
+   "opts": {
+    "lab": "conventional",
+    "decisions": "nominal",
+    "atom": "derived",
+    "used": true
+   }
+  },
+  "campaigns": {
+   "flaime_al": {
+    "budget": 240000.0,
+    "spent": 188237.08,
+    "best_new": 0.7678773102806744,
+    "curve_new": [
+     [
+      129.4,
+      49989.47,
+      0.0
+     ],
+     [
+      154.4,
+      52723.68,
+      0.0
+     ],
+     [
+      191.4,
+      64260.49,
+      0.4102
+     ],
+     [
+      196.4,
+      64555.72,
+      0.5353
+     ],
+     [
+      198.4,
+      65025.18,
+      0.5353
+     ],
+     [
+      235.4,
+      77411.72,
+      0.5353
+     ],
+     [
+      240.463,
+      80548.13,
+      0.5353
+     ],
+     [
+      255.4,
+      87284.39,
+      0.5353
+     ],
+     [
+      255.525,
+      87284.39,
+      0.5353
+     ],
+     [
+      269.525,
+      94093.34,
+      0.5353
+     ],
+     [
+      274.442,
+      95230.69,
+      0.5353
+     ],
+     [
+      276.4,
+      95527.09,
+      0.558
+     ],
+     [
+      281.65,
+      96120.04,
+      0.558
+     ],
+     [
+      282.4,
+      96120.04,
+      0.558
+     ],
+     [
+      283.4,
+      96393.51,
+      0.558
+     ],
+     [
+      311.4,
+      101914.25,
+      0.558
+     ],
+     [
+      332.525,
+      111084.66,
+      0.558
+     ],
+     [
+      358.483,
+      116924.69,
+      0.558
+     ],
+     [
+      378.4,
+      123842.11,
+      0.7671
+     ],
+     [
+      389.4,
+      126815.63,
+      0.7671
+     ],
+     [
+      395.525,
+      127436.61,
+      0.7671
+     ],
+     [
+      400.525,
+      127905.39,
+      0.7671
+     ],
+     [
+      409.4,
+      130201.59,
+      0.7671
+     ],
+     [
+      444.4,
+      139435.88,
+      0.7671
+     ],
+     [
+      449.65,
+      141880.24,
+      0.7671
+     ],
+     [
+      480.4,
+      145717.5,
+      0.7671
+     ],
+     [
+      480.525,
+      145717.5,
+      0.7671
+     ],
+     [
+      512.4,
+      152442.6,
+      0.7671
+     ],
+     [
+      519.4,
+      152742.51,
+      0.7671
+     ],
+     [
+      525.4,
+      153660.14,
+      0.7671
+     ],
+     [
+      529.4,
+      153960.19,
+      0.7679
+     ],
+     [
+      581.51,
+      169145.11,
+      0.7679
+     ],
+     [
+      591.525,
+      169936.68,
+      0.7679
+     ],
+     [
+      644.4,
+      178107.57,
+      0.7679
+     ],
+     [
+      666.442,
+      183278.96,
+      0.7679
+     ],
+     [
+      693.4,
+      186094.87,
+      0.7679
+     ]
+    ],
+    "spend_curve": [
+     [
+      0,
+      14796.02
+     ],
+     [
+      7,
+      24356.64
+     ],
+     [
+      14,
+      26967.32
+     ],
+     [
+      21,
+      29570.72
+     ],
+     [
+      28,
+      33501.85
+     ],
+     [
+      35,
+      38254.41
+     ],
+     [
+      42,
+      38592.93
+     ],
+     [
+      49,
+      38661.01
+     ],
+     [
+      56,
+      38729.13
+     ],
+     [
+      63,
+      38729.13
+     ],
+     [
+      70,
+      38729.13
+     ],
+     [
+      77,
+      38729.13
+     ],
+     [
+      84,
+      44243.04
+     ],
+     [
+      91,
+      44243.04
+     ],
+     [
+      98,
+      45946.22
+     ],
+     [
+      105,
+      47988.08
+     ],
+     [
+      112,
+      47988.08
+     ],
+     [
+      119,
+      47988.08
+     ],
+     [
+      126,
+      49695.15
+     ],
+     [
+      133,
+      50350.42
+     ],
+     [
+      140,
+      50418.69
+     ],
+     [
+      147,
+      51341.74
+     ],
+     [
+      154,
+      51659.15
+     ],
+     [
+      161,
+      55842.26
+     ],
+     [
+      168,
+      57635.3
+     ],
+     [
+      175,
+      58883.23
+     ],
+     [
+      182,
+      61322.59
+     ],
+     [
+      189,
+      63942.45
+     ],
+     [
+      196,
+      64555.72
+     ],
+     [
+      203,
+      66743.4
+     ],
+     [
+      210,
+      69955.83
+     ],
+     [
+      217,
+      69955.83
+     ],
+     [
+      224,
+      74520.01
+     ],
+     [
+      231,
+      77138.84
+     ],
+     [
+      238,
+      79157.75
+     ],
+     [
+      245,
+      82538.47
+     ],
+     [
+      252,
+      86715.16
+     ],
+     [
+      259,
+      90227.24
+     ],
+     [
+      266,
+      92184.12
+     ],
+     [
+      273,
+      94957.33
+     ],
+     [
+      280,
+      95527.09
+     ],
+     [
+      287,
+      96416.54
+     ],
+     [
+      294,
+      97809.55
+     ],
+     [
+      301,
+      97855.66
+     ],
+     [
+      308,
+      101640.43
+     ],
+     [
+      315,
+      102804.26
+     ],
+     [
+      322,
+      104083.75
+     ],
+     [
+      329,
+      106560.73
+     ],
+     [
+      336,
+      112296.37
+     ],
+     [
+      343,
+      113615.59
+     ],
+     [
+      350,
+      114745.61
+     ],
+     [
+      357,
+      115311.84
+     ],
+     [
+      364,
+      117841.42
+     ],
+     [
+      371,
+      118934.64
+     ],
+     [
+      378,
+      123842.11
+     ],
+     [
+      385,
+      126173.03
+     ],
+     [
+      392,
+      127115.27
+     ],
+     [
+      399,
+      127459.85
+     ],
+     [
+      406,
+      128983.39
+     ],
+     [
+      413,
+      131075.42
+     ],
+     [
+      420,
+      133563.1
+     ],
+     [
+      427,
+      135366.91
+     ],
+     [
+      434,
+      135712.52
+     ],
+     [
+      441,
+      138989.27
+     ],
+     [
+      448,
+      139459.21
+     ],
+     [
+      455,
+      141880.24
+     ],
+     [
+      462,
+      143860.94
+     ],
+     [
+      469,
+      143860.94
+     ],
+     [
+      476,
+      145165.62
+     ],
+     [
+      483,
+      146596.3
+     ],
+     [
+      490,
+      146943.38
+     ],
+     [
+      497,
+      147823.18
+     ],
+     [
+      504,
+      150811.17
+     ],
+     [
+      511,
+      151937.94
+     ],
+     [
+      518,
+      152442.6
+     ],
+     [
+      525,
+      153126.86
+     ],
+     [
+      532,
+      154267.26
+     ],
+     [
+      539,
+      156815.8
+     ],
+     [
+      546,
+      157364.03
+     ],
+     [
+      553,
+      160229.33
+     ],
+     [
+      560,
+      163303.38
+     ],
+     [
+      567,
+      165585.38
+     ],
+     [
+      574,
+      167059.26
+     ],
+     [
+      581,
+      169145.11
+     ],
+     [
+      588,
+      169145.11
+     ],
+     [
+      595,
+      169936.68
+     ],
+     [
+      602,
+      171556.96
+     ],
+     [
+      609,
+      173166.55
+     ],
+     [
+      616,
+      174760.76
+     ],
+     [
+      623,
+      174784.5
+     ],
+     [
+      630,
+      176434.82
+     ],
+     [
+      637,
+      176434.82
+     ],
+     [
+      644,
+      178107.57
+     ],
+     [
+      651,
+      179349.41
+     ],
+     [
+      658,
+      181132.19
+     ],
+     [
+      665,
+      183000.65
+     ],
+     [
+      672,
+      184608.46
+     ],
+     [
+      679,
+      185169.53
+     ],
+     [
+      686,
+      185169.53
+     ],
+     [
+      693,
+      186094.87
+     ],
+     [
+      700,
+      186094.87
+     ],
+     [
+      707,
+      186833.04
+     ],
+     [
+      714,
+      186833.04
+     ],
+     [
+      721,
+      187339.65
+     ],
+     [
+      728,
+      188237.08
+     ],
+     [
+      735,
+      188237.08
+     ]
+    ],
+    "spend_by": {
+     "order": 87205.0,
+     "print": 71585.03,
+     "pip": 10692.49,
+     "test": 10158.25,
+     "powder": 5544.71,
+     "section": 3051.61,
+     "sim_open": 0.0
+    },
+    "counters": {
+     "designed": 46773,
+     "lots_made": 224,
+     "alloys_made": 224,
+     "alloys_printed": 66,
+     "builds_or_deposits": 77,
+     "alloys_tested": 37,
+     "tests": 37
+    },
+    "days": {
+     "T1": {
+      "day": 196.4,
+      "hit": true
+     },
+     "T2": {
+      "day": 378.4,
+      "hit": true
+     }
+    },
+    "idle": {
+     "atomizer": [
+      {
+       "start_d": 2,
+       "end_d": 21,
+       "days": 19,
+       "cause": "WIP limit",
+       "causes": {
+        "WIP limit": 13,
+        "policy waiting (results in flight)": 1,
+        "capacity": 5
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 22,
+       "end_d": 63,
+       "days": 41,
+       "cause": "WIP limit",
+       "causes": {
+        "WIP limit": 34,
+        "decision time": 1,
+        "policy waiting (results in flight)": 1,
+        "capacity": 5
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 456,
+       "end_d": 476,
+       "days": 20,
+       "cause": "WIP limit",
+       "causes": {
+        "WIP limit": 20
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 610,
+       "end_d": 637,
+       "days": 27,
+       "cause": "WIP limit",
+       "causes": {
+        "WIP limit": 25,
+        "capacity": 2
+       },
+       "station_busy_frac": 0.025,
+       "flag": false
+      },
+      {
+       "start_d": 673,
+       "end_d": 716,
+       "days": 43,
+       "cause": "WIP limit",
+       "causes": {
+        "WIP limit": 42,
+        "capacity": 1
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      }
+     ],
+     "fab": [
+      {
+       "start_d": 0,
+       "end_d": 22,
+       "days": 22,
+       "cause": "WIP limit",
+       "causes": {
+        "capacity": 6,
+        "WIP limit": 15,
+        "policy waiting (results in flight)": 1
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 23,
+       "end_d": 92,
+       "days": 69,
+       "cause": "WIP limit",
+       "causes": {
+        "WIP limit": 47,
+        "decision time": 1,
+        "policy waiting (results in flight)": 1,
+        "capacity": 20
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 107,
+       "end_d": 120,
+       "days": 13,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 13
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 128,
+       "end_d": 141,
+       "days": 13,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 13
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 142,
+       "end_d": 162,
+       "days": 20,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 20
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 163,
+       "end_d": 171,
+       "days": 8,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 8
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 184,
+       "end_d": 204,
+       "days": 20,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 20
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 205,
+       "end_d": 218,
+       "days": 13,
+       "cause": "capacity",
+       "causes": {
+        "WIP limit": 1,
+        "capacity": 12
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 240,
+       "end_d": 247,
+       "days": 7,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 7
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 275,
+       "end_d": 288,
+       "days": 13,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 13
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 303,
+       "end_d": 316,
+       "days": 13,
+       "cause": "capacity",
+       "causes": {
+        "WIP limit": 1,
+        "capacity": 12
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 339,
+       "end_d": 351,
+       "days": 12,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 12
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 388,
+       "end_d": 407,
+       "days": 19,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 19
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 451,
+       "end_d": 484,
+       "days": 33,
+       "cause": "WIP limit",
+       "causes": {
+        "capacity": 4,
+        "WIP limit": 29
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 485,
+       "end_d": 498,
+       "days": 13,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 13
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 507,
+       "end_d": 540,
+       "days": 33,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 33
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 570,
+       "end_d": 589,
+       "days": 19,
+       "cause": "capacity",
+       "causes": {
+        "WIP limit": 4,
+        "capacity": 15
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 597,
+       "end_d": 610,
+       "days": 13,
+       "cause": "WIP limit",
+       "causes": {
+        "capacity": 5,
+        "WIP limit": 8
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 626,
+       "end_d": 645,
+       "days": 19,
+       "cause": "capacity",
+       "causes": {
+        "WIP limit": 9,
+        "capacity": 10
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 667,
+       "end_d": 687,
+       "days": 20,
+       "cause": "WIP limit",
+       "causes": {
+        "capacity": 5,
+        "WIP limit": 15
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 688,
+       "end_d": 701,
+       "days": 13,
+       "cause": "WIP limit",
+       "causes": {
+        "WIP limit": 13
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 702,
+       "end_d": 731,
+       "days": 29,
+       "cause": "capacity",
+       "causes": {
+        "WIP limit": 13,
+        "capacity": 15,
+        "policy waiting (results in flight)": 1
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      }
+     ]
+    },
+    "hpc": {
+     "evaluated": 89707520,
+     "seen": 46722
+    },
+    "stock": {
+     "mode": "reorder",
+     "n_charges": 317,
+     "n_stockouts": 95,
+     "n_capped": 947,
+     "n_stockouts_wait_gt1d": 95,
+     "days_waited": 2277.59,
+     "wait_mean_d": 23.97,
+     "wait_p90_d": 45.79,
+     "n_stockouts_first90": 30,
+     "n_stockouts_after90": 65,
+     "days_waited_after90": 1430.7,
+     "n_episodes": 42,
+     "charges_short_frac": 0.2997,
+     "stock_usd": 87205.0,
+     "bought_usd": 87205.0,
+     "left_usd": 9000.24,
+     "n_orders": 125
+    }
+   },
+   "onr_cu": {
+    "budget": 120000.0,
+    "spent": 93817.96,
+    "best_new": 0.534069244551911,
+    "curve_new": [
+     [
+      242.717,
+      44430.2,
+      0.5341
+     ]
+    ],
+    "spend_curve": [
+     [
+      0,
+      23689.05
+     ],
+     [
+      7,
+      24893.45
+     ],
+     [
+      14,
+      24893.45
+     ],
+     [
+      21,
+      24893.45
+     ],
+     [
+      28,
+      25189.12
+     ],
+     [
+      35,
+      25189.12
+     ],
+     [
+      42,
+      25796.82
+     ],
+     [
+      49,
+      25796.82
+     ],
+     [
+      56,
+      25796.82
+     ],
+     [
+      63,
+      25796.82
+     ],
+     [
+      70,
+      25796.82
+     ],
+     [
+      77,
+      27291.27
+     ],
+     [
+      84,
+      27291.27
+     ],
+     [
+      91,
+      27588.4
+     ],
+     [
+      98,
+      27588.4
+     ],
+     [
+      105,
+      27588.4
+     ],
+     [
+      112,
+      27588.4
+     ],
+     [
+      119,
+      28500.53
+     ],
+     [
+      126,
+      28500.53
+     ],
+     [
+      133,
+      28500.53
+     ],
+     [
+      140,
+      28798.71
+     ],
+     [
+      147,
+      28798.71
+     ],
+     [
+      154,
+      28798.71
+     ],
+     [
+      161,
+      28798.71
+     ],
+     [
+      168,
+      34932.89
+     ],
+     [
+      175,
+      35084.95
+     ],
+     [
+      182,
+      35084.95
+     ],
+     [
+      189,
+      35084.95
+     ],
+     [
+      196,
+      36927.9
+     ],
+     [
+      203,
+      37667.54
+     ],
+     [
+      210,
+      43332.39
+     ],
+     [
+      217,
+      43778.85
+     ],
+     [
+      224,
+      43778.85
+     ],
+     [
+      231,
+      44430.2
+     ],
+     [
+      238,
+      44430.2
+     ],
+     [
+      245,
+      44430.2
+     ],
+     [
+      252,
+      44731.12
+     ],
+     [
+      259,
+      46206.01
+     ],
+     [
+      266,
+      46497.28
+     ],
+     [
+      273,
+      46647.28
+     ],
+     [
+      280,
+      53153.9
+     ],
+     [
+      287,
+      53926.7
+     ],
+     [
+      294,
+      53926.7
+     ],
+     [
+      301,
+      54228.9
+     ],
+     [
+      308,
+      54228.9
+     ],
+     [
+      315,
+      55857.31
+     ],
+     [
+      322,
+      56011.2
+     ],
+     [
+      329,
+      56390.56
+     ],
+     [
+      336,
+      59923.57
+     ],
+     [
+      343,
+      59923.57
+     ],
+     [
+      350,
+      59923.57
+     ],
+     [
+      357,
+      59923.57
+     ],
+     [
+      364,
+      60391.51
+     ],
+     [
+      371,
+      60391.51
+     ],
+     [
+      378,
+      60391.51
+     ],
+     [
+      385,
+      62026.6
+     ],
+     [
+      392,
+      62026.6
+     ],
+     [
+      399,
+      62321.01
+     ],
+     [
+      406,
+      62471.01
+     ],
+     [
+      413,
+      65822.27
+     ],
+     [
+      420,
+      65977.38
+     ],
+     [
+      427,
+      66282.49
+     ],
+     [
+      434,
+      66282.49
+     ],
+     [
+      441,
+      66282.49
+     ],
+     [
+      448,
+      69886.17
+     ],
+     [
+      455,
+      70792.56
+     ],
+     [
+      462,
+      71088.6
+     ],
+     [
+      469,
+      71238.6
+     ],
+     [
+      476,
+      71238.6
+     ],
+     [
+      483,
+      71238.6
+     ],
+     [
+      490,
+      71238.6
+     ],
+     [
+      497,
+      71643.43
+     ],
+     [
+      504,
+      72114.8
+     ],
+     [
+      511,
+      73765.28
+     ],
+     [
+      518,
+      74072.53
+     ],
+     [
+      525,
+      74526.54
+     ],
+     [
+      532,
+      74676.54
+     ],
+     [
+      539,
+      74676.54
+     ],
+     [
+      546,
+      75142.61
+     ],
+     [
+      553,
+      75142.61
+     ],
+     [
+      560,
+      75142.61
+     ],
+     [
+      567,
+      75142.61
+     ],
+     [
+      574,
+      76800.72
+     ],
+     [
+      581,
+      79128.43
+     ],
+     [
+      588,
+      79128.43
+     ],
+     [
+      595,
+      79779.0
+     ],
+     [
+      602,
+      79929.0
+     ],
+     [
+      609,
+      80402.53
+     ],
+     [
+      616,
+      80402.53
+     ],
+     [
+      623,
+      80560.21
+     ],
+     [
+      630,
+      80870.12
+     ],
+     [
+      637,
+      80870.12
+     ],
+     [
+      644,
+      82533.29
+     ],
+     [
+      651,
+      82533.29
+     ],
+     [
+      658,
+      85799.97
+     ],
+     [
+      665,
+      87422.28
+     ],
+     [
+      672,
+      88373.6
+     ],
+     [
+      679,
+      89507.14
+     ],
+     [
+      686,
+      90973.53
+     ],
+     [
+      693,
+      90973.53
+     ],
+     [
+      700,
+      91363.9
+     ],
+     [
+      707,
+      93036.02
+     ],
+     [
+      714,
+      93348.01
+     ],
+     [
+      721,
+      93515.42
+     ],
+     [
+      728,
+      93515.42
+     ],
+     [
+      735,
+      93817.96
+     ]
+    ],
+    "spend_by": {
+     "order": 64021.96,
+     "blown_large": 16154.79,
+     "blend_ded": 6085.97,
+     "pip": 3745.27,
+     "NSL": 1546.86,
+     "tensile": 960.0,
+     "corrosion": 504.52,
+     "immersion": 426.51,
+     "powder": 372.07,
+     "sim_open": 0.0
+    },
+    "counters": {
+     "designed": 43061,
+     "lots_made": 13,
+     "alloys_made": 19,
+     "alloys_printed": 16,
+     "builds_or_deposits": 24,
+     "alloys_tested": 1,
+     "tests": 1
+    },
+    "days": {
+     "T1": {
+      "day": 730.0,
+      "hit": false
+     },
+     "T2": {
+      "day": 730.0,
+      "hit": false
+     }
+    },
+    "idle": {
+     "atomizer": [
+      {
+       "start_d": 0,
+       "end_d": 81,
+       "days": 81,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 81
+       },
+       "station_busy_frac": 0.032,
+       "flag": false
+      },
+      {
+       "start_d": 145,
+       "end_d": 158,
+       "days": 13,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 13
+       },
+       "station_busy_frac": 0.085,
+       "flag": false
+      },
+      {
+       "start_d": 166,
+       "end_d": 179,
+       "days": 13,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 13
+       },
+       "station_busy_frac": 0.08,
+       "flag": false
+      },
+      {
+       "start_d": 187,
+       "end_d": 200,
+       "days": 13,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 13
+       },
+       "station_busy_frac": 0.078,
+       "flag": false
+      },
+      {
+       "start_d": 208,
+       "end_d": 235,
+       "days": 27,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 27
+       },
+       "station_busy_frac": 0.08,
+       "flag": false
+      },
+      {
+       "start_d": 327,
+       "end_d": 389,
+       "days": 62,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 62
+       },
+       "station_busy_frac": 0.076,
+       "flag": false
+      },
+      {
+       "start_d": 411,
+       "end_d": 494,
+       "days": 83,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 83
+       },
+       "station_busy_frac": 0.057,
+       "flag": false
+      },
+      {
+       "start_d": 516,
+       "end_d": 592,
+       "days": 76,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 76
+       },
+       "station_busy_frac": 0.068,
+       "flag": false
+      },
+      {
+       "start_d": 614,
+       "end_d": 627,
+       "days": 13,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 13
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 635,
+       "end_d": 648,
+       "days": 13,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 13
+       },
+       "station_busy_frac": 0.085,
+       "flag": false
+      },
+      {
+       "start_d": 656,
+       "end_d": 731,
+       "days": 75,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 74,
+        "policy waiting (results in flight)": 1
+       },
+       "station_busy_frac": 0.03,
+       "flag": false
+      }
+     ],
+     "fab": [
+      {
+       "start_d": 0,
+       "end_d": 22,
+       "days": 22,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 22
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 23,
+       "end_d": 85,
+       "days": 62,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 62
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 86,
+       "end_d": 127,
+       "days": 41,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 41
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 128,
+       "end_d": 162,
+       "days": 34,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 34
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 163,
+       "end_d": 197,
+       "days": 34,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 34
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 199,
+       "end_d": 246,
+       "days": 47,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 47
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 247,
+       "end_d": 261,
+       "days": 14,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 14
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 262,
+       "end_d": 295,
+       "days": 33,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 33
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 296,
+       "end_d": 330,
+       "days": 34,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 34
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 332,
+       "end_d": 379,
+       "days": 47,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 47
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 380,
+       "end_d": 394,
+       "days": 14,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 14
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 395,
+       "end_d": 421,
+       "days": 26,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 26
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 422,
+       "end_d": 457,
+       "days": 35,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 35
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 458,
+       "end_d": 470,
+       "days": 12,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 12
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 471,
+       "end_d": 512,
+       "days": 41,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 41
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 513,
+       "end_d": 520,
+       "days": 7,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 7
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 521,
+       "end_d": 575,
+       "days": 54,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 54
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 576,
+       "end_d": 590,
+       "days": 14,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 14
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 591,
+       "end_d": 624,
+       "days": 33,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 33
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 625,
+       "end_d": 653,
+       "days": 28,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 28
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 654,
+       "end_d": 666,
+       "days": 12,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 12
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 667,
+       "end_d": 708,
+       "days": 41,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 41
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      },
+      {
+       "start_d": 709,
+       "end_d": 731,
+       "days": 22,
+       "cause": "capacity",
+       "causes": {
+        "capacity": 21,
+        "policy waiting (results in flight)": 1
+       },
+       "station_busy_frac": 0.0,
+       "flag": false
+      }
+     ]
+    },
+    "hpc": {
+     "evaluated": 89707520,
+     "seen": 43014
+    },
+    "stock": {
+     "mode": "reorder",
+     "n_charges": 41,
+     "n_stockouts": 37,
+     "n_capped": 2553,
+     "n_stockouts_wait_gt1d": 37,
+     "days_waited": 1195.05,
+     "wait_mean_d": 32.3,
+     "wait_p90_d": 79.02,
+     "n_stockouts_first90": 6,
+     "n_stockouts_after90": 31,
+     "days_waited_after90": 830.25,
+     "n_episodes": 72,
+     "charges_short_frac": 0.9024,
+     "stock_usd": 64021.96,
+     "bought_usd": 64021.96,
+     "left_usd": 1546.66,
+     "n_orders": 106
+    }
+   }
+  },
+  "build": {},
+  "station_online": {},
+  "cell_h": null,
+  "full_h": null,
+  "room_h": null,
+  "atom": {
+   "switch_h": null,
+   "cycle": {
+    "flaime_al": null,
+    "onr_cu": null,
+    "changeover_h": 1.5
+   },
+   "runs": 520,
+   "runs_by": {
+    "flaime_al": 451,
+    "onr_cu": 69
+   }
+  },
+  "used": {},
+  "hpc": {
+   "cores": 256,
+   "per_day": 122880.0,
+   "add_per_day": 64,
+   "keep": 128
+  },
+  "cpu": "AMD EPYC 9V45 96-Core Processor",
+  "commit": "3de9012351ae624cb5f661757b27d9ec11cebb1e"
+ },
+ "arm_stats": {
+  "auto|flaime_al|T1": {
+   "n": 16,
+   "hit": 16,
+   "median": 175.672
+  },
+  "auto|flaime_al|T2": {
+   "n": 16,
+   "hit": 16,
+   "median": 181.877
+  },
+  "auto|onr_cu|T1": {
+   "n": 16,
+   "hit": 16,
+   "median": 295.188
+  },
+  "auto|onr_cu|T2": {
+   "n": 16,
+   "hit": 12,
+   "median": 337.527
+  },
+  "conv|flaime_al|T1": {
+   "n": 16,
+   "hit": 16,
+   "median": 213.525
+  },
+  "conv|flaime_al|T2": {
+   "n": 16,
+   "hit": 15,
+   "median": 228.4
+  },
+  "conv|onr_cu|T1": {
+   "n": 16,
+   "hit": 7,
+   "median": Infinity
+  },
+  "conv|onr_cu|T2": {
+   "n": 16,
+   "hit": 4,
+   "median": Infinity
+  }
+ },
+ "horizon_days": 730.0
+}

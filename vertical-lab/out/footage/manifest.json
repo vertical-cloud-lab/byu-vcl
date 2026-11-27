@@ -1,5 +1,5 @@
 {
- "note": "The excerpts and photos alloy_atomize.py cuts into chapter 2 and alloy_print.py into chapter 3, kept small: clips cut to the window used (excerpt_window_s, seconds in the parent's fetch), 720 px tall, no sound; photos at 1600 px. All the lab's own (BYU VCL channel, DAL #159 and #219); credits per file. vlm_real_ck8QJhVqPiY.mp4 is Sterling Baird's own video of a real VLM, used to open the long-form video. Round 8 dropped al_pour_oct08.mp4 (Oct 8, Al 6063: it dripped rather than atomized). Round 14 dropped mst2026_stream.mp4, a melt stream from Sterling's MS&T 2026 talk that is AMAZEMET's footage, not the lab's, and al4047_oct22_c3k0n5_bag_and_jar.jpg (a bag of splats), for al_4yghtr_oct06_jar.jpg; notes/footage.md.",
+ "note": "The excerpts and photos alloy_atomize.py cuts into chapter 2 and alloy_print.py into chapter 3, kept small: clips cut to the window used (excerpt_window_s, seconds in the parent's fetch), 720 px tall, no sound; photos at 1600 px. All the lab's own (BYU VCL channel, DAL #159 and #219); credits per file. vlm_real_ck8QJhVqPiY.mp4 is Sterling Baird's own video of a real VLM, used to open the long-form video. Round 8 dropped al_pour_oct08.mp4 (Oct 8, Al 6063: it dripped rather than atomized). Round 14 dropped mst2026_stream.mp4, a melt stream from Sterling's MS&T 2026 talk that is AMAZEMET's footage, not the lab's, and al4047_oct22_c3k0n5_bag_and_jar.jpg (a bag of splats), for al_4yghtr_oct06_jar.jpg; notes/footage.md. Round 5's cut (issue 425) adds two aluminium clips for the atomizing step, where aluminium is the subject: al_4yghtr_melt.mp4 (Oct 6, Al 6063, run 4yghtr) and al_c3k0n5_pour.mp4 (Oct 22, Al 4047, run c3k0n5), both DAL #159. The bronze clips (nab_*) stay for copper only.",
  "files": [
   {
    "file": "nab_k7m2q9_four_rod_pieces_1079.886g.jpg",
@@ -110,6 +110,38 @@
    "source_end_s": 17.8,
    "shows": "Camera riding on a vertical lift module tray: it looks out of the access opening at the storeroom (operator panel, pallet racking), is drawn back into the machine, then rises with the lift past the column of stored trays (toothed drive rack at left) and fades to black at 16.6-17.3 s as it climbs into the unlit column.",
    "used_in": "longform.py, the opening of out/mp4/vertical_lab_longform.mp4 (PR #318: \"I think I have a link ... showing my testing with a real VLM which I'd like to have on hand\")"
+  },
+  {
+   "file": "al_4yghtr_melt.mp4",
+   "subject": "al",
+   "beat": "melt",
+   "source": "https://youtu.be/DWH1CEygsTI",
+   "source_title": "10/6/2026 Atomizer Run Video 3: gas wash, melt, pour (stack too high, vibration off)",
+   "source_start_s": 1625.4,
+   "source_end_s": 1636.4,
+   "shows": "the aluminium charge glowing in the crucible, through the furnace window",
+   "date": "2026-10-06",
+   "run": "4yghtr (DAL #159)",
+   "alloy": "Al 6063 (logged as '6067'; 180 g)",
+   "log": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/159#issuecomment-6353392712",
+   "cut": "11.0 s at 1280 x 720 from the 720p stream, no sound; window matched frame by frame against the source",
+   "used_in": "twin/video/exp_atomize.py (round 5's cut, issue 425): the melt beat, where aluminium is the subject"
+  },
+  {
+   "file": "al_c3k0n5_pour.mp4",
+   "subject": "al",
+   "beat": "pour",
+   "source": "https://youtu.be/2gQk-Syj7Yc",
+   "source_title": "10/22/2026 - Atomizer Run Video 1",
+   "source_start_s": 1577.8,
+   "source_end_s": 1587.2,
+   "shows": "through the chamber's view port, handheld: the melt stream coming down onto the plate, and the droplets",
+   "date": "2026-10-22",
+   "run": "c3k0n5 (DAL #159)",
+   "alloy": "Al 4047 (169 g)",
+   "log": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/159#issuecomment-6353395276",
+   "cut": "9.4 s at 1280 x 720 from the 720p stream, no sound; window matched frame by frame against the source",
+   "used_in": "twin/video/exp_atomize.py (round 5's cut, issue 425): the pour beat, where aluminium is the subject"
   }
  ]
 }

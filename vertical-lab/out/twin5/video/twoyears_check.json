@@ -1,0 +1,23 @@
+{
+ "own": {
+  "lines": 11,
+  "figures": 22
+ },
+ "replay": {
+  "seed": 1,
+  "is_median_seed": true,
+  "counters": "end on the rows' own"
+ },
+ "figs5_intro": {
+  "checked": 18
+ },
+ "figs5_labs": {
+  "checked": 28
+ },
+ "experiments": {
+  "checked": 18
+ },
+ "floorspace_cut": {
+  "checked": 18
+ }
+}

@@ -1,0 +1,782 @@
+{
+ "segments": [
+  {
+   "name": "title",
+   "start_s": 0.0,
+   "seconds": 13.0,
+   "title": "Two simulated years of alloy discovery: round 5",
+   "missing": null
+  },
+  {
+   "name": "simulated",
+   "start_s": 13.0,
+   "seconds": 46.0,
+   "title": "What is simulated: the lab and two search spaces",
+   "missing": null
+  },
+  {
+   "name": "changes",
+   "start_s": 59.0,
+   "seconds": 43.8,
+   "title": "Round 5: what changed in the twin",
+   "missing": null
+  },
+  {
+   "name": "experiments",
+   "start_s": 102.8,
+   "seconds": 292.5,
+   "title": "The function networks: each experiment beside its data",
+   "missing": null
+  },
+  {
+   "name": "counters",
+   "start_s": 395.3,
+   "seconds": 60.6,
+   "title": "The counters, and how to read the replay's plots",
+   "missing": null
+  },
+  {
+   "name": "atomizer",
+   "start_s": 455.9,
+   "seconds": 34.8,
+   "title": "The atomizer: a design target, next to the lab's record",
+   "missing": null
+  },
+  {
+   "name": "replay",
+   "start_s": 490.7,
+   "seconds": 330.0,
+   "title": "The replay: two years on one seed",
+   "missing": null
+  },
+  {
+   "name": "labs",
+   "start_s": 820.7,
+   "seconds": 156.4,
+   "title": "The lab comparison, like for like",
+   "missing": null
+  },
+  {
+   "name": "floorspace",
+   "start_s": 977.1,
+   "seconds": 146.5,
+   "title": "Floor space: three labs, capacity matched",
+   "missing": null
+  },
+  {
+   "name": "takeaway",
+   "start_s": 1123.6,
+   "seconds": 41.8,
+   "title": "The takeaway",
+   "missing": null
+  },
+  {
+   "name": "notes",
+   "start_s": 1165.4,
+   "seconds": 28.6,
+   "title": "Notes: real, assumed, simulated",
+   "missing": null
+  }
+ ],
+ "total_s": 1194.0,
+ "chapters": [
+  [
+   0.0,
+   "Two simulated years of alloy discovery: round 5"
+  ],
+  [
+   13.0,
+   "What is simulated: the lab and two search spaces"
+  ],
+  [
+   59.0,
+   "Round 5: what changed in the twin"
+  ],
+  [
+   102.8,
+   "The function networks: each experiment beside its data"
+  ],
+  [
+   395.3,
+   "The counters, and how to read the replay's plots"
+  ],
+  [
+   455.9,
+   "The atomizer: a design target, next to the lab's record"
+  ],
+  [
+   490.7,
+   "Day 0: the money arrives (seed 1)"
+  ],
+  [
+   516.0,
+   "Day 67: the space is ready, equipment comes in"
+  ],
+  [
+   554.4,
+   "Day 161: the cell is integrated"
+  ],
+  [
+   567.5,
+   "Day 176: aluminium passes its first target"
+  ],
+  [
+   656.2,
+   "Day 291: copper passes its first target"
+  ],
+  [
+   820.7,
+   "The lab comparison, like for like"
+  ],
+  [
+   977.1,
+   "Floor space: three labs, capacity matched"
+  ],
+  [
+   1123.6,
+   "The takeaway"
+  ],
+  [
+   1165.4,
+   "Notes: real, assumed, simulated"
+  ]
+ ],
+ "file": "out/twin5/video/twoyears.mp4",
+ "seconds": 1194.0,
+ "round": 5,
+ "commit": "4bbe0d9",
+ "replay": {
+  "run": "r5_vertical_parallel_bofn3_reorder_s1",
+  "conventional": "r5_conventional_external_bofn3_reorder_s1",
+  "seed": 1,
+  "n_seeds": 16,
+  "is_median_seed": true
+ },
+ "narration": {
+  "placed": [
+   {
+    "id": "open1",
+    "seg": "title",
+    "t": 0.6,
+    "end": 12.01,
+    "text": "This is a simulated benchmark, in round 5: two alloy discovery campaigns, replayed for two years in a digital twin of our planned automated lab, from the day the money arrives.",
+    "warn": []
+   },
+   {
+    "id": "open2",
+    "seg": "simulated",
+    "t": 13.8,
+    "end": 29.8,
+    "text": "Some of it comes from real sources: the lab's design and its 3-D model, footage from our own atomizer, the search spaces in the two proposals, and published prices. Everything else is simulated: every alloy, every measurement, and every result.",
+    "warn": []
+   },
+   {
+    "id": "chg1",
+    "seg": "changes",
+    "t": 59.9,
+    "end": 77.01,
+    "text": "Round five starts the clock on the day the money arrives, and runs for two years. Each campaign has all of its money on day zero. The facility is ready between day 60 and day 100, and the equipment is ordered on day zero: some of it used, chosen by a rule.",
+    "warn": []
+   },
+   {
+    "id": "chg2",
+    "seg": "changes",
+    "t": 77.71,
+    "end": 100.96,
+    "text": "Experiments also start on day zero, through partners, while the lab is built. Decisions made by people take time. The conventional lab's atomizer runs at most 8 times a week; the automated lab's runs around the clock once its cell is integrated. And the HPC computes candidates continuously. Every lead time, price and decision window here is a stand-in.",
+    "warn": []
+   },
+   {
+    "id": "dag1",
+    "seg": "experiments",
+    "t": 103.4,
+    "end": 116.73,
+    "text": "Each campaign is a function network: a chain of steps, where each step's results feed the next. BOFN, Bayesian optimization over function networks, models every step, not just the final score.",
+    "warn": []
+   },
+   {
+    "id": "exp1",
+    "seg": "experiments",
+    "t": 118.2,
+    "end": 128.72,
+    "text": "Here is each step itself, for one alloy from each campaign: the experiment, and the data it makes. Everything is simulated by the twin, unless a label says otherwise.",
+    "warn": []
+   },
+   {
+    "id": "comp1",
+    "seg": "experiments",
+    "t": 130.6,
+    "end": 137.87,
+    "text": "The aluminium alloy is design number 11042: aluminium with three additions, cerium the largest.",
+    "warn": []
+   },
+   {
+    "id": "comp2",
+    "seg": "experiments",
+    "t": 138.7,
+    "end": 149.05,
+    "text": "On this map, it is one of 635 designs in this run's log. The HPC stream's 89.7 million candidates are counted, not drawn.",
+    "warn": []
+   },
+   {
+    "id": "comp3",
+    "seg": "experiments",
+    "t": 150.9,
+    "end": 157.13,
+    "text": "The copper alloy is design number 91: a nickel aluminium bronze, with a little titanium.",
+    "warn": []
+   },
+   {
+    "id": "sch1",
+    "seg": "experiments",
+    "t": 163.6,
+    "end": 172.43,
+    "text": "CALPHAD comes first. As the melt cools, a Scheil model follows how much of it has frozen. This curve is the one the optimizer sees.",
+    "warn": []
+   },
+   {
+    "id": "sch2",
+    "seg": "experiments",
+    "t": 173.8,
+    "end": 182.61,
+    "text": "A full Scheil run on an open database adds the phases as they form. The twin's hidden truth differs again, as a real alloy would.",
+    "warn": []
+   },
+   {
+    "id": "sch3",
+    "seg": "experiments",
+    "t": 183.5,
+    "end": 188.26,
+    "text": "From its curve, the network takes two numbers: the liquidus, and a hot-cracking index.",
+    "warn": []
+   },
+   {
+    "id": "sch4",
+    "seg": "experiments",
+    "t": 189.6,
+    "end": 195.1,
+    "text": "Every run in round five used this open node. The Thermo-Calc stand-in was never bought.",
+    "warn": []
+   },
+   {
+    "id": "am1",
+    "seg": "experiments",
+    "t": 197.5,
+    "end": 206.48,
+    "text": "The twin stands in for the AM module with a moving point source of heat. It gives the melt pool's width and depth, and how fast the metal cools.",
+    "warn": []
+   },
+   {
+    "id": "am2",
+    "seg": "experiments",
+    "t": 213.9,
+    "end": 222.03,
+    "text": "This is not Thermo-Calc output, and no run bought this node. But the same model decides the porosity of every simulated build.",
+    "warn": []
+   },
+   {
+    "id": "dag2",
+    "seg": "experiments",
+    "t": 224.4,
+    "end": 231.25,
+    "text": "For aluminium, the lab makes each alloy's powder itself. Then each alloy is printed, and every build is checked.",
+    "warn": []
+   },
+   {
+    "id": "atm1",
+    "seg": "experiments",
+    "t": 231.8,
+    "end": 239.86,
+    "text": "This footage is real: our own atomizer, running aluminium. The size distribution beside it is the twin's, for this alloy.",
+    "warn": []
+   },
+   {
+    "id": "atm2",
+    "seg": "experiments",
+    "t": 240.8,
+    "end": 246.62,
+    "text": "Here, one of three runs failed, and 13 percent of the charge ended up in the printer's size range.",
+    "warn": []
+   },
+   {
+    "id": "prt1",
+    "seg": "experiments",
+    "t": 249.3,
+    "end": 253.37,
+    "text": "One build is nine cubes, each at its own laser power and speed.",
+    "warn": []
+   },
+   {
+    "id": "prt2",
+    "seg": "experiments",
+    "t": 259.6,
+    "end": 266.96,
+    "text": "Each cube's density and crack reading goes on the map. Too little energy leaves lack of fusion. Too much makes keyhole pores.",
+    "warn": []
+   },
+   {
+    "id": "prt3",
+    "seg": "experiments",
+    "t": 269.7,
+    "end": 273.16,
+    "text": "One build gives the network's print node nine data points.",
+    "warn": []
+   },
+   {
+    "id": "sem1",
+    "seg": "experiments",
+    "t": 275.3,
+    "end": 282.7,
+    "text": "In the SEM, one electron beam scans the sample line by line, and four detectors each catch a different signal.",
+    "warn": []
+   },
+   {
+    "id": "sem2",
+    "seg": "experiments",
+    "t": 283.3,
+    "end": 294.88,
+    "text": "Secondary electrons show the powder's surface. Backscattered electrons show the section's pores and cracks. X-rays give the elements, and diffraction gives each grain's orientation.",
+    "warn": []
+   },
+   {
+    "id": "sem3",
+    "seg": "experiments",
+    "t": 295.5,
+    "end": 298.93,
+    "text": "Every image here is simulated by the twin, for this alloy.",
+    "warn": []
+   },
+   {
+    "id": "sem4",
+    "seg": "experiments",
+    "t": 300.6,
+    "end": 309.92,
+    "text": "The network uses three of them: satellites on the powder, the section's pores and cracks, and the grain size. EDS only checks the composition.",
+    "warn": []
+   },
+   {
+    "id": "mec1",
+    "seg": "experiments",
+    "t": 313.9,
+    "end": 322.97,
+    "text": "Bars are aged straight from the as-built state, then pulled. The furnace profile here is only illustrative: the twin models the strength it leaves.",
+    "warn": []
+   },
+   {
+    "id": "mec2",
+    "seg": "experiments",
+    "t": 323.47,
+    "end": 327.72,
+    "text": "The curve is the twin's simulated record of the test, up to fracture.",
+    "warn": []
+   },
+   {
+    "id": "mec3",
+    "seg": "experiments",
+    "t": 335.1,
+    "end": 343.46,
+    "text": "Yield strength, 244 megapascals, and elongation, 11.8 percent, are the two numbers the network keeps.",
+    "warn": []
+   },
+   {
+    "id": "dag3",
+    "seg": "experiments",
+    "t": 344.4,
+    "end": 352.36,
+    "text": "For copper, a one-hour corrosion screen ranks the DED deposits, and thirty days in seawater come before a utility is known.",
+    "warn": []
+   },
+   {
+    "id": "cor1",
+    "seg": "experiments",
+    "t": 352.9,
+    "end": 358.6,
+    "text": "After an hour at rest, two quick scans give an early corrosion rate and a breakdown potential.",
+    "warn": []
+   },
+   {
+    "id": "cor2",
+    "seg": "experiments",
+    "t": 360.8,
+    "end": 368.1,
+    "text": "In immersion, the coupon is weighed on days 1, 3, 7 and 14. After any reading, the policy may stop it.",
+    "warn": []
+   },
+   {
+    "id": "cor3",
+    "seg": "experiments",
+    "t": 371.3,
+    "end": 376.06,
+    "text": "On day 30 it is cleaned and weighed: 13.2 micrometres a year.",
+    "warn": []
+   },
+   {
+    "id": "dag4",
+    "seg": "experiments",
+    "t": 386.2,
+    "end": 392.11,
+    "text": "Both campaigns share one lab. From here on, each step is an icon that lights up while it runs.",
+    "warn": []
+   },
+   {
+    "id": "cnt1",
+    "seg": "counters",
+    "t": 396.2,
+    "end": 413.8,
+    "text": "Three counters run through the replay. Designed means computed candidates: a stream on the HPC evaluates 122,880 a day, at full capacity and outside the experiments' cost. The policy sees 64 new ones a day.",
+    "warn": []
+   },
+   {
+    "id": "cnt2",
+    "seg": "counters",
+    "t": 414.5,
+    "end": 425.27,
+    "text": "Made means powder lots, or alloys made. Tested means alloys through the full chain: in the replayed run, 104 aluminium alloys and 6 copper alloys.",
+    "warn": []
+   },
+   {
+    "id": "cnt3",
+    "seg": "counters",
+    "t": 425.97,
+    "end": 429.77,
+    "text": "Early stopping means only promising alloys finish every step.",
+    "warn": []
+   },
+   {
+    "id": "cnt4",
+    "seg": "counters",
+    "t": 431.77,
+    "end": 445.32,
+    "text": "In the replay's plots, the solid curve is the best new alloy tested so far in the automated lab, and the dashed curve is the conventional lab, on the same seed and policy. The dotted lines are the two targets.",
+    "warn": []
+   },
+   {
+    "id": "cnt5",
+    "seg": "counters",
+    "t": 446.02,
+    "end": 454.04,
+    "text": "Money is shown as cumulative spend in each lab, not as a budget bar. And when best so far goes flat, the replay says why.",
+    "warn": []
+   },
+   {
+    "id": "atm1",
+    "seg": "atomizer",
+    "t": 456.8,
+    "end": 471.58,
+    "text": "Once its cell is integrated, the automated lab's atomizer runs around the clock at a derived cycle: about 2.2 hours per aluminium composition, or 76 a week. That is a design target, not a demonstrated rate.",
+    "warn": []
+   },
+   {
+    "id": "atm2",
+    "seg": "atomizer",
+    "t": 472.28,
+    "end": 488.9,
+    "text": "It needs 6 to 8 pre-coated crucibles per alloy family in rotation, and the lab has one. The lab's record so far is 10 runs in 43 days, about 1.6 a week. Before the cell, and in the conventional lab, the twin assumes 8 a week.",
+    "warn": []
+   },
+   {
+    "id": "rep1",
+    "seg": "replay",
+    "t": 491.5,
+    "end": 500.08,
+    "text": "The replay starts on the day the money arrives. All of it is there, for both campaigns, and every station is ordered. There is no lab yet.",
+    "warn": []
+   },
+   {
+    "id": "rep2",
+    "seg": "replay",
+    "t": 501.3,
+    "end": 512.18,
+    "text": "This is seed 1 of 16, with time-aware BOFN in the stocked automated lab: the median seed for both campaigns together. It stays the same seed to the end.",
+    "warn": []
+   },
+   {
+    "id": "rep3",
+    "seg": "replay",
+    "t": 516.51,
+    "end": 526.98,
+    "text": "Day 67. The space is ready, and equipment comes in. A station is see-through until it is online, and until the cell is integrated, people run each of them.",
+    "warn": []
+   },
+   {
+    "id": "rep3b",
+    "seg": "replay",
+    "t": 529.21,
+    "end": 542.63,
+    "text": "Meanwhile the first alloys are made on the existing atomizer and printed at the partners: the panel on the left lists what runs outside the new lab. Under each plot, a line says why its curve is not moving yet.",
+    "warn": []
+   },
+   {
+    "id": "rep4",
+    "seg": "replay",
+    "t": 555.04,
+    "end": 567.37,
+    "text": "Day 161. The Shuttles and the mobile units are integrated. From here, the run's own bookings move the 3-D model: trays to the openings and units to the docks, round the clock.",
+    "warn": []
+   },
+   {
+    "id": "rep5",
+    "seg": "replay",
+    "t": 568.0,
+    "end": 585.19,
+    "text": "Day 176: aluminium's best new alloy passes the best existing alloy on this synthetic benchmark, and on day 182, the halfway target. In the conventional lab, the same seed gets there on days 196 and 378.",
+    "warn": []
+   },
+   {
+    "id": "rep6",
+    "seg": "replay",
+    "t": 656.65,
+    "end": 666.53,
+    "text": "Day 291: copper's best new alloy passes both targets at once. In the conventional lab, this seed's copper reaches neither within two years.",
+    "warn": []
+   },
+   {
+    "id": "rep7",
+    "seg": "replay",
+    "t": 692.72,
+    "end": 708.93,
+    "text": "Now both curves are flat. With all of its money there from the start, this lab has spent 90 percent of its two years of money by day 337, and from here it mostly waits: the line under each plot says why. The conventional lab is still spending.",
+    "warn": []
+   },
+   {
+    "id": "rep8",
+    "seg": "replay",
+    "t": 797.7,
+    "end": 818.03,
+    "text": "In this seed, the automated lab's best new alloys end at 0.79 for aluminium and 0.70 for copper, and the conventional lab's at 0.77 and 0.53. One seed is an example, not a result. The comparison over all 16 seeds comes next.",
+    "warn": []
+   },
+   {
+    "id": "lab1",
+    "seg": "labs",
+    "t": 821.6,
+    "end": 829.81,
+    "text": "Now the two labs, like for like: the same policy and the same stock rule in both, over 16 seeds each. All of it is simulated.",
+    "warn": []
+   },
+   {
+    "id": "lab2",
+    "seg": "labs",
+    "t": 830.51,
+    "end": 844.48,
+    "text": "Aluminium's first target, the best existing alloy, is a tie with the heuristic. With BOFN or pKGFN in both labs it comes 1.2 times sooner, and every interval includes one.",
+    "warn": []
+   },
+   {
+    "id": "lab3",
+    "seg": "labs",
+    "t": 845.18,
+    "end": 856.53,
+    "text": "Aluminium's halfway target comes 1.3 to 1.4 times sooner with an optimizer in both labs. With the heuristic, about half the seeds get there in either lab.",
+    "warn": []
+   },
+   {
+    "id": "lab4",
+    "seg": "labs",
+    "t": 857.23,
+    "end": 870.03,
+    "text": "Copper is where the automated lab leads: 1.5 to 2.1 times sooner with the funnel, and at least 2.0 to 2.5 times with BOFN or pKGFN.",
+    "warn": []
+   },
+   {
+    "id": "nw1",
+    "seg": "labs",
+    "t": 871.53,
+    "end": 886.29,
+    "text": "Where the automated lab does not win. Aluminium's first target is a tie: with the heuristic, the automated lab prints most of its first alloys at the same partners, before its own printer comes online around day 180.",
+    "warn": []
+   },
+   {
+    "id": "nw2",
+    "seg": "labs",
+    "t": 886.89,
+    "end": 897.75,
+    "text": "The optimizers reach that first target later than the heuristic: in the stocked automated lab, on day 176 with BOFN, against day 81.",
+    "warn": []
+   },
+   {
+    "id": "nw3",
+    "seg": "labs",
+    "t": 898.35,
+    "end": 909.46,
+    "text": "A stocked conventional lab keeps up with an automated lab that orders its metal as it goes: 0.7 to 0.9 times on aluminium's first target.",
+    "warn": []
+   },
+   {
+    "id": "nw4",
+    "seg": "labs",
+    "t": 910.06,
+    "end": 919.55,
+    "text": "And reaching a target costs the campaigns no less: about the same money with both labs stocked, and more with an optimizer when both order as they go.",
+    "warn": []
+   },
+   {
+    "id": "lab5",
+    "seg": "labs",
+    "t": 921.05,
+    "end": 935.45,
+    "text": "Where it does win: copper, with every policy and in every pairing, mostly through its own DED machine, in house from around day 228. And aluminium's halfway target, when both labs run an optimizer.",
+    "warn": []
+   },
+   {
+    "id": "mon1",
+    "seg": "labs",
+    "t": 936.95,
+    "end": 951.76,
+    "text": "Money, as spending over time. With all of it available on day zero, the automated lab has spent 90 percent of aluminium's two-year money by day 402, and of copper's by day 371. Then it idles.",
+    "warn": []
+   },
+   {
+    "id": "mon2",
+    "seg": "labs",
+    "t": 952.36,
+    "end": 963.13,
+    "text": "The conventional lab, with the same policy, spreads its spending over both years: by the end it has spent 75 percent of aluminium's money and 78 percent of copper's.",
+    "warn": []
+   },
+   {
+    "id": "mon3",
+    "seg": "labs",
+    "t": 963.73,
+    "end": 974.67,
+    "text": "Counting fixed costs, an aluminium alloy costs about 25 thousand dollars with BOFN in the automated lab, against 10 thousand in the conventional lab.",
+    "warn": []
+   },
+   {
+    "id": "f1",
+    "seg": "floorspace",
+    "t": 977.9,
+    "end": 983.08,
+    "text": "Forty-three instruments, laid out three ways. These are design layouts, not built labs.",
+    "warn": []
+   },
+   {
+    "id": "f2",
+    "seg": "floorspace",
+    "t": 984.1,
+    "end": 995.11,
+    "text": "First, a conventional materials lab, grouped by workflow: rooms for powder, the metal printers, the machine shop, the furnace and the SEM, and open benches for the rest.",
+    "warn": []
+   },
+   {
+    "id": "f3",
+    "seg": "floorspace",
+    "t": 995.7,
+    "end": 1007.03,
+    "text": "Benches are thirty inches deep and aisles five feet wide, with service space behind every floor machine. Measured to its walls, it comes to 4,280 square feet.",
+    "warn": []
+   },
+   {
+    "id": "f4",
+    "seg": "floorspace",
+    "t": 1008.9,
+    "end": 1018.95,
+    "text": "Next, the same floor plan, automated. Mobile robots drive the routes people walked, with fixed arms, docking targets and sample racks at the stations.",
+    "warn": []
+   },
+   {
+    "id": "f5",
+    "seg": "floorspace",
+    "t": 1020.6,
+    "end": 1027.38,
+    "text": "The floor area stays the same. And a robot docked in a five-foot aisle leaves too little room for another to pass.",
+    "warn": []
+   },
+   {
+    "id": "f6",
+    "seg": "floorspace",
+    "t": 1028.7,
+    "end": 1034.52,
+    "text": "The vertical lab. Two Kardex Shuttles come in, and every benchtop instrument moves onto a tray.",
+    "warn": []
+   },
+   {
+    "id": "f7",
+    "seg": "floorspace",
+    "t": 1042.6,
+    "end": 1049.51,
+    "text": "The floor machines rearrange along one robot aisle, and the floor area falls to 3,029 square feet.",
+    "warn": []
+   },
+   {
+    "id": "f8",
+    "seg": "floorspace",
+    "t": 1061.9,
+    "end": 1073.91,
+    "text": "Side by side. For today's 43 instruments, a flat lab laid out so robots can dock and pass needs 4,128 square feet, about what the conventional lab does.",
+    "warn": []
+   },
+   {
+    "id": "f10",
+    "seg": "floorspace",
+    "t": 1074.4,
+    "end": 1082.87,
+    "text": "For scale, Emerald Cloud Lab in South San Francisco held more than a hundred items of equipment in about 15,000 square feet.",
+    "warn": []
+   },
+   {
+    "id": "f11",
+    "seg": "floorspace",
+    "t": 1083.4,
+    "end": 1096.09,
+    "text": "But today's equipment uses only 18 of the Shuttles' 45 trays. Laid out flat, as bench positions robots can serve, all 45 need 6,192 square feet.",
+    "warn": []
+   },
+   {
+    "id": "f12",
+    "seg": "floorspace",
+    "t": 1096.6,
+    "end": 1107.82,
+    "text": "The vertical lab holds them in 3,029: 51 percent less floor, at 14.9 tray positions per thousand square feet, against 7.3.",
+    "warn": []
+   },
+   {
+    "id": "f9",
+    "seg": "floorspace",
+    "t": 1108.3,
+    "end": 1122.25,
+    "text": "In the vertical lab, most of the floor goes to the floor machines, their clearances and the robot aisle, the same as in the flat layouts for robots. And the Shuttles stand 9.15 meters tall, so it needs a high bay.",
+    "warn": []
+   },
+   {
+    "id": "take1",
+    "seg": "takeaway",
+    "t": 1124.5,
+    "end": 1138.58,
+    "text": "So, in this simulated benchmark, like for like. Copper comes sooner in the automated lab with every policy: 1.5 to 2.1 times with the funnel, and at least 2.0 times with an optimizer.",
+    "warn": []
+   },
+   {
+    "id": "take2",
+    "seg": "takeaway",
+    "t": 1139.18,
+    "end": 1151.81,
+    "text": "Aluminium's first target is a tie. Its halfway target comes 1.3 to 1.4 times sooner, and only with an optimizer in both labs. There, the policy does more than the lab.",
+    "warn": []
+   },
+   {
+    "id": "take3",
+    "seg": "takeaway",
+    "t": 1152.41,
+    "end": 1162.99,
+    "text": "And the automated lab is not cheaper. Its two-year money is spent in about 12 to 13 months, and with fixed costs each aluminium alloy costs about twice as much.",
+    "warn": []
+   },
+   {
+    "id": "note1",
+    "seg": "notes",
+    "t": 1166.4,
+    "end": 1192.15,
+    "text": "Everything here is simulated: the alloys, the results, and every measurement, with modelled noise not yet calibrated on the lab's instruments. The facility window, every lead time, the used-equipment prices, the decision windows, the HPC allocation, and the atomizer's design cycle are assumptions and stand-ins. It shows how two lab designs and their policies interact in a model, not what the real lab will find.",
+    "warn": []
+   }
+  ],
+  "voice": "Kokoro v1.0 af_heart (open weights), speed 0.96",
+  "srt": "twoyears.srt"
+ },
+ "wall_s": 393.4,
+ "preset": "medium",
+ "workers": 4,
+ "built_utc": "2026-11-27 19:48 UTC",
+ "missing": null
+}

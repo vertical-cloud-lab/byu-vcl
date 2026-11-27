@@ -1,0 +1,21 @@
+{
+ "title": "PREVIEW: the function networks, step by step, with the experiments (simulated; twin video)",
+ "description": "PREVIEW for review, not a public cut: the function-network chapter of the twin's campaign video, rebuilt to show each step as the experiment and the data it makes.\n\nEverything is simulated unless a label on screen says otherwise. The curves, micrographs and maps are the digital twin's own models and instrument simulators run for two alloys of round 3b's replay: aluminium design 299 of seed 0 (Al-3.3Mn-0.8Cr-0.3Ti-0.3Li-0.2Er-...) and copper design 74 of seed 5 (Cu-7.4Al-2.7Ni-0.3Ti). They are those alloys' simulated data, not the replayed runs' own draws, at stated example settings. Schematics are labelled illustrative; the atomizer footage is the lab's own (630 bronze, 27 Oct 2026: another alloy); the pictures of stations are the lab's 3-D model. Nothing here is Thermo-Calc output or real SEM data.\n\n0:00 Two campaigns, one lab: the function networks\n0:27 Composition: one design in its search space\n0:55 CALPHAD: Scheil solidification\n1:29 The AM module: one laser track\n1:57 Atomizing: the alloy becomes powder\n2:21 Printing: nine cubes, nine settings\n2:48 SEM: one beam, four signals\n3:26 Heat treatment, then the tensile test\n3:57 Copper: one hour in the screen, thirty days in seawater\n4:31 Both campaigns, one lab\n\nCode: https://github.com/vertical-cloud-lab/byu-vcl/blob/b0c027d/vertical-lab/twin/video/experiments.py (built from b0c027d)\nVoice: Kokoro v1.0, af_heart (open weights; nobody's voice cloned).\nNotes and review: https://github.com/vertical-cloud-lab/byu-vcl/pull/403",
+ "tags": [
+  "digital twin",
+  "alloy discovery",
+  "self-driving lab",
+  "CALPHAD",
+  "Scheil",
+  "laser powder bed fusion",
+  "SEM",
+  "EBSD",
+  "tensile test",
+  "corrosion",
+  "BYU",
+  "vertical cloud lab",
+  "simulated"
+ ],
+ "categoryId": "28",
+ "commit": "b0c027d"
+}

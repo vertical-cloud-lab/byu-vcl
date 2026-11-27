@@ -1,0 +1,109 @@
+{
+ "about": "twin/video/narration5.json with its facts filled in for round 5 (cut5.resolved())",
+ "lines": [
+  {
+   "id": "open1",
+   "seg": "title",
+   "at": 0.6,
+   "text": "This is a simulated benchmark, in round 5: two alloy discovery campaigns, replayed for two years in a digital twin of our planned automated lab, from the day the money arrives.",
+   "src": "cut5.title_frame: the title, 'Round 5 of a digital-twin benchmark', 'every result is simulated'",
+   "template": "This is a simulated benchmark, in round {round}: two alloy discovery campaigns, replayed for {years} in a digital twin of our planned automated lab, from the day the money arrives."
+  },
+  {
+   "id": "open2",
+   "seg": "simulated",
+   "at": 0.8,
+   "text": "Some of it comes from real sources: the lab's design and its 3-D model, footage from our own atomizer, the search spaces in the two proposals, and published prices. Everything else is simulated: every alloy, every measurement, and every result.",
+   "src": "compose.simulated_frame: the lab's 3-D model, then the two search spaces; the closing notes list what is real",
+   "template": "Some of it comes from real sources: the lab's design and its 3-D model, footage from our own atomizer, the search spaces in the two proposals, and published prices. Everything else is simulated: every alloy, every measurement, and every result."
+  },
+  {
+   "id": "rep1",
+   "seg": "replay",
+   "mark": "start",
+   "offset": 0.8,
+   "text": "The replay starts on the day the money arrives. All of it is there, for both campaigns, and every station is ordered. There is no lab yet.",
+   "src": "replay5: the pill 'No lab yet: everything is ordered'; the build-out panel's first row; the spend plot's line 'two years' money, all at day 0'",
+   "template": "The replay starts on the day the money arrives. All of it is there, for both campaigns, and every station is ordered. There is no lab yet."
+  },
+  {
+   "id": "rep2",
+   "seg": "replay",
+   "mark": "start",
+   "offset": 10.6,
+   "when": "is_median",
+   "text": "This is seed 1 of 16, with time-aware BOFN in the stocked automated lab: the median seed for both campaigns together. It stays the same seed to the end.",
+   "src": "replay5.seed_badge, on screen for the whole replay (data5.info(): the round's median_seed for the replayed arm)",
+   "template": "This is seed {seed} of {n_seeds}, with {policy} in the {stock} automated lab: the median seed for both campaigns together. It stays the same seed to the end."
+  },
+  {
+   "id": "rep3",
+   "seg": "replay",
+   "mark": "room",
+   "offset": 0.5,
+   "when": "has_room",
+   "text": "Day 67. The space is ready, and equipment comes in. A station is see-through until it is online, and until the cell is integrated, people run each of them.",
+   "src": "replay5: the pill 'The space is ready: N of 19 stations online, run by people'; the legend 'see-through: ordered, not online yet'",
+   "template": "Day {room_day}. The space is ready, and equipment comes in. A station is see-through until it is online, and until the cell is integrated, people run each of them."
+  },
+  {
+   "id": "rep3b",
+   "seg": "replay",
+   "mark": "room",
+   "offset": 13.2,
+   "when": "has_room",
+   "text": "Meanwhile the first alloys are made on the existing atomizer and printed at the partners: the panel on the left lists what runs outside the new lab. Under each plot, a line says why its curve is not moving yet.",
+   "src": "replay5.outside_panel; the strip under each best-so-far plot (data5.Replay5.flat)",
+   "template": "Meanwhile the first alloys are made on the existing atomizer and printed at the partners: the panel on the left lists what runs outside the new lab. Under each plot, a line says why its curve is not moving yet."
+  },
+  {
+   "id": "rep4",
+   "seg": "replay",
+   "mark": "cell",
+   "offset": 0.6,
+   "when": "has_cell",
+   "text": "Day 161. The Shuttles and the mobile units are integrated. From here, the run's own bookings move the 3-D model: trays to the openings and units to the docks, round the clock.",
+   "src": "replay5: the pill 'The cell is integrated: robots run the lab'; the build-out panel; the moves panel",
+   "template": "Day {cell_day}. The Shuttles and the mobile units are integrated. From here, the run's own bookings move the 3-D model: trays to the openings and units to the docks, round the clock."
+  },
+  {
+   "id": "rep5",
+   "seg": "replay",
+   "mark": "hit.flaime_al.T1",
+   "offset": 0.5,
+   "when": "al_story",
+   "text": "Day 176: aluminium's best new alloy passes the best existing alloy on this synthetic benchmark, and on day 182, the halfway target. In the conventional lab, the same seed gets there on days 196 and 378.",
+   "src": "replay5.target_tags: both aluminium tags, each with the conventional lab's same seed's day; the aluminium plot",
+   "template": "Day {auto_al_T1}: aluminium's best new alloy passes the best existing alloy on this synthetic benchmark, and on day {auto_al_T2}, the halfway target. In the conventional lab, the same seed gets there on days {conv_al_T1} and {conv_al_T2}."
+  },
+  {
+   "id": "rep6",
+   "seg": "replay",
+   "mark": "hit.onr_cu.T1",
+   "offset": 0.5,
+   "when": "cu_story",
+   "text": "Day 291: copper's best new alloy passes both targets at once. In the conventional lab, this seed's copper reaches neither within two years.",
+   "src": "replay5.target_tags: copper's tag ('passes both targets'; 'the conventional lab's seed: not within 730 days'); the copper plot",
+   "template": "Day {auto_cu_T1}: copper's best new alloy passes both targets at once. In the conventional lab, this seed's copper reaches neither within {years}."
+  },
+  {
+   "id": "rep7",
+   "seg": "replay",
+   "mark": "spent",
+   "offset": 4.0,
+   "when": "money_story",
+   "text": "Now both curves are flat. With all of its money there from the start, this lab has spent 90 percent of its two years of money by day 337, and from here it mostly waits: the line under each plot says why. The conventional lab is still spending.",
+   "src": "replay5.spend_panel: the mark '90 % spent by day N' on the automated lab's line, the conventional lab's dashed line still rising; the strips 'flat since day N. Why: ...' (stock, too little money left to start new alloys, then the money spent: data5.Run.reasons), not claimed to say the same in both plots",
+   "template": "Now both curves are flat. With all of its money there from the start, this lab has spent {pct_spent} percent of its {years} of money by day {d90}, and from here it mostly waits: the line under each plot says why. The conventional lab is still spending."
+  },
+  {
+   "id": "rep8",
+   "seg": "replay",
+   "mark": "end",
+   "offset": -23.0,
+   "text": "In this seed, the automated lab's best new alloys end at 0.79 for aluminium and 0.70 for copper, and the conventional lab's at 0.77 and 0.53. One seed is an example, not a result. The comparison over all 16 seeds comes next.",
+   "src": "replay5.best_panel: each curve's last value, both labs, both campaigns; the seed badge. Said as the clock runs to the end, every last value already on screen (no day number before the clock shows it)",
+   "template": "In this seed, the automated lab's best new alloys end at {auto_al_best} for aluminium and {auto_cu_best} for copper, and the conventional lab's at {conv_al_best} and {conv_cu_best}. One seed is an example, not a result. The comparison over all {n_seeds} seeds comes next."
+  }
+ ]
+}

@@ -342,6 +342,34 @@
     "privacy": "unlisted"
    }
   ],
+  "floorspace/floorspace_preview.mp4": [
+   {
+    "id": "RUXoZQPodyU",
+    "sha256": "baddc8b8653ba2711757eaf90c186ab1144bf705b3f677f9dcf8fd7d37495719",
+    "bytes": 33591257,
+    "commit": "0902898",
+    "uploaded": "2026-11-27T06:23:27Z",
+    "title": "Floor space: three labs, the same equipment (preview)",
+    "privacy": "private",
+    "notified_subscribers": false,
+    "superseded_by": "RCcNL1mthBE",
+    "privacy_read": {
+     "at": "2026-11-27T07:50Z",
+     "privacy": "unlisted",
+     "note": "uploaded private; YouTube reads it as unlisted now, changed since outside this record"
+    }
+   },
+   {
+    "id": "RCcNL1mthBE",
+    "sha256": "b5bbd11d626a3c32b9ae93806627c348990630e528bc0fc178a56e5cff892be0",
+    "bytes": 34989678,
+    "commit": "f18dd48",
+    "uploaded": "2026-11-27T07:48:42Z",
+    "title": "Floor space: four labs, the same equipment, and the same capacity (preview)",
+    "privacy": "unlisted",
+    "notified_subscribers": false
+   }
+  ],
   "instruments/cubxl_corrosion.mp4": [
    {
     "id": "nUf68Kl3kdk",
@@ -850,6 +878,30 @@
     "uploaded": "2026-11-27T04:32:13Z",
     "title": "A simulated year of alloy discovery in an automated lab: round 3b, like for like (digital twin)",
     "privacy": "public",
+    "notified_subscribers": false
+   }
+  ],
+  "twin3b/video/experiments/experiments_preview.mp4": [
+   {
+    "id": "4bAAygzrX10",
+    "sha256": "4ba1cb9b740ad725f66c38ef761394adadca8599160139338415fb4f5ee6c802",
+    "bytes": 44044867,
+    "commit": "b0c027d",
+    "uploaded": "2026-11-27T06:20:51Z",
+    "title": "PREVIEW: the function networks, step by step, with the experiments (simulated; twin video)",
+    "privacy": "private",
+    "notified_subscribers": false
+   }
+  ],
+  "twin5/video/twoyears.mp4": [
+   {
+    "id": "Ty6njW-GF74",
+    "sha256": "fa8d9e8804457d8cb4c84c3001567fdb5cc4fdea7499c44d026147571f632675",
+    "bytes": 208158849,
+    "commit": "4bbe0d9",
+    "uploaded": "2026-11-27T19:49:40Z",
+    "title": "Two simulated years of alloy discovery, from the day the money arrives: round 5 (preview)",
+    "privacy": "unlisted",
     "notified_subscribers": false
    }
   ],

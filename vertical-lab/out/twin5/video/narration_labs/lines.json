@@ -1,0 +1,166 @@
+{
+ "voice": "Kokoro v1.0 af_heart (kokoro-onnx, open weights), speed 0.96",
+ "lines": {
+  "lab1": {
+   "key": "272c005fad4110ee",
+   "text": "Now the two labs, like for like: the same policy and the same stock rule in both, over 16 seeds each. All of it is simulated.",
+   "spoken": "Now the two labs, like for like: the same policy and the same stock rule in both, over 16 seeds each. All of it is simulated.",
+   "phonemes": "nˈaʊ ðə tˈuː lˈæbz, lˈaɪk fɔːɹ lˈaɪk: ðə sˈeɪm pˈɑːlɪsi ænd ðə sˈeɪm stˈɑːk ɹˈuːl ɪn bˈoʊθ, ˌoʊvɚ sˈɪkstiːn sˈiːdz ˈiːtʃ. ˈɔːl ʌv ɪɾ ɪz sˈɪmjʊlˌeɪɾᵻd.",
+   "seconds": 8.21,
+   "sha256": "4f4a89dcb0296422ea7a5e7d5258c840719f14a115514c9cb9351e270c033d67"
+  },
+  "lab2": {
+   "key": "8abbfbf26dde95bb",
+   "text": "Aluminium's first target, the best existing alloy, is a tie with the heuristic. With BOFN or pKGFN in both labs it comes 1.2 times sooner, and every interval includes one.",
+   "spoken": "Aluminium's first target, the best existing alloy, is a tie with the heuristic. With B O F N or P K G F N in both labs it comes 1.2 times sooner, and every interval includes one.",
+   "phonemes": "ˌæljʊmˈɪniəmz fˈɜːst tˈɑːɹɡɪt, ðə bˈɛst ɛɡzˈɪstɪŋ ˈælɔɪ, ɪz ɐ tˈaɪ wɪððə hjuːɹˈɪstɪk. wɪð bˈiː ˈoʊ ˈɛf ˈɛn ɔːɹ pˈiː kˈeɪ dʒˈiː ˈɛf ˈɛn ɪn bˈoʊθ lˈæbz ɪt kˈʌmz wˈʌn pɔɪnt tˈuː tˈaɪmz sˈuːnɚ, ænd ˈɛvɹi ˈɪntɚvəl ɪŋklˈuːdz wˌʌn.",
+   "seconds": 13.97,
+   "sha256": "224b1d7ea7a1a5fc9517a339d3a48a8d6fe58ef7bf1146d51f918610d8d2ee7d"
+  },
+  "lab3": {
+   "key": "c4346155f87d0065",
+   "text": "Aluminium's halfway target comes 1.3 to 1.4 times sooner with an optimizer in both labs. With the heuristic, about half the seeds get there in either lab.",
+   "spoken": "Aluminium's halfway target comes 1.3 to 1.4 times sooner with an optimizer in both labs. With the heuristic, about half the seeds get there in either lab.",
+   "phonemes": "ˌæljʊmˈɪniəmz hˈæfweɪ tˈɑːɹɡɪt kˈʌmz wˈʌn pɔɪnt θɹˈiː tə wˈʌn pɔɪnt fˈɔːɹ tˈaɪmz sˈuːnɚ wɪð ɐn ˈɑːptɪmˌaɪzɚɹ ɪn bˈoʊθ lˈæbz. wɪððə hjuːɹˈɪstɪk, ɐbˌaʊt hˈæf ðə sˈiːdz ɡɛt ðɛɹ ɪn ˈiːðɚ lˈæb.",
+   "seconds": 11.35,
+   "sha256": "5a6ac686156fc8236cffe96c765fe90c5fee1f9f7481176e1c0aa46d93be612a"
+  },
+  "lab4": {
+   "key": "7c2f6c11e8a031b6",
+   "text": "Copper is where the automated lab leads: 1.5 to 2.1 times sooner with the funnel, and at least 2.0 to 2.5 times with BOFN or pKGFN.",
+   "spoken": "Copper is where the automated lab leads: 1.5 to 2.1 times sooner with the funnel, and at least 2.0 to 2.5 times with B O F N or P K G F N.",
+   "phonemes": "kˈɑːpɚɹ ɪz wˌɛɹ ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb lˈiːdz: wˈʌn pɔɪnt fˈaɪv tə tˈuː pɔɪnt wˈʌn tˈaɪmz sˈuːnɚ wɪððə fˈʌnəl, ænd æt lˈiːst tˈuː pɔɪnt zˈiəɹoʊ tə tˈuː pɔɪnt fˈaɪv tˈaɪmz wɪð bˈiː ˈoʊ ˈɛf ˈɛn ɔːɹ pˈiː kˈeɪ dʒˈiː ˈɛf ˈɛn.",
+   "seconds": 12.8,
+   "sha256": "a4255b9e76eb0e6b707ced8fdda139651d005add13c0716a677a8a96652218ef"
+  },
+  "nw1": {
+   "key": "fe07b7e0ac882489",
+   "text": "Where the automated lab does not win. Aluminium's first target is a tie: with the heuristic, the automated lab prints most of its first alloys at the same partners, before its own printer comes online around day 180.",
+   "spoken": "Where the automated lab does not win. Aluminium's first target is a tie: with the heuristic, the automated lab prints most of its first alloys at the same partners, before its own printer comes online around day 180.",
+   "phonemes": "wˌɛɹ ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb dʌznˌɑːt wˈɪn. ˌæljʊmˈɪniəmz fˈɜːst tˈɑːɹɡɪt ɪz ɐ tˈaɪ: wɪððə hjuːɹˈɪstɪk, ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb pɹˈɪnts mˈoʊst əv ɪts fˈɜːst ˈælɔɪz æt ðə sˈeɪm pˈɑːɹtnɚz, bᵻfˌɔːɹ ɪts ˈoʊn pɹˈɪntɚ kˈʌmz ˈɑːnlaɪn ɚɹˈaʊnd dˈeɪ wˈʌnhˈʌndɹɪd ˈeɪɾi.",
+   "seconds": 14.76,
+   "sha256": "6dc082a7ddb629a406dd80abb679eb5a72368bc2da09e7924343643f3245d47e"
+  },
+  "nw2": {
+   "key": "5d4c3c2c9bc41bee",
+   "text": "The optimizers reach that first target later than the heuristic: in the stocked automated lab, on day 176 with BOFN, against day 81.",
+   "spoken": "The optimizers reach that first target later than the heuristic: in the stocked automated lab, on day 176 with B O F N, against day 81.",
+   "phonemes": "ðɪ ˈɑːptɪmˌaɪzɚz ɹˈiːtʃ ðæt fˈɜːst tˈɑːɹɡɪt lˈeɪɾɚ ðɐn ðə hjuːɹˈɪstɪk: ɪnðə stˈɑːkt ˈɔːɾəmˌeɪɾᵻd lˈæb, ˌɔn dˈeɪ wˈʌnhˈʌndɹɪd sˈɛvənti sˈɪks wɪð bˈiː ˈoʊ ˈɛf ˈɛn, ɐɡˈɛnst dˈeɪ ˈeɪɾi wˈʌn.",
+   "seconds": 10.86,
+   "sha256": "7b1a13d232cd45c29c581d04d419044e455e1c21623cff132d67d7d19be2d8b1"
+  },
+  "nw3": {
+   "key": "3e6ed155c6099f6f",
+   "text": "A stocked conventional lab keeps up with an automated lab that orders its metal as it goes: 0.7 to 0.9 times on aluminium's first target.",
+   "spoken": "A stocked conventional lab keeps up with an automated lab that orders its metal as it goes: 0.7 to 0.9 times on aluminum's first target.",
+   "phonemes": "ɐ stˈɑːkt kənvˈɛnʃənəl lˈæb kˈiːps ˌʌp wɪð ɐn ˈɔːɾəmˌeɪɾᵻd lˈæb ðæt ˈɔːɹdɚz ɪts mˈɛɾəl æz ɪt ɡˈoʊz: zˈiəɹoʊ pɔɪnt sˈɛvən tə zˈiəɹoʊ pɔɪnt nˈaɪn tˈaɪmz ˌɔn ɐlˈuːmɪnəmz fˈɜːst tˈɑːɹɡɪt.",
+   "seconds": 11.11,
+   "sha256": "7182be908153eddcefe11811f3038836518052df32d609ea40f2217c2f296407"
+  },
+  "nw4": {
+   "key": "ca22e8b9f479b5dd",
+   "text": "And reaching a target costs the campaigns no less: about the same money with both labs stocked, and more with an optimizer when both order as they go.",
+   "spoken": "And reaching a target costs the campaigns no less: about the same money with both labs stocked, and more with an optimizer when both order as they go.",
+   "phonemes": "ænd ɹˈiːtʃɪŋ ɐ tˈɑːɹɡɪt kˈɔsts ðə kæmpˈeɪnz nˈoʊ lˈɛs: ɐbˌaʊt ðə sˈeɪm mˈʌni wɪð bˈoʊθ lˈæbz stˈɑːkt, ænd mˈɔːɹ wɪð ɐn ˈɑːptɪmˌaɪzɚ wɛn bˈoʊθ ˈɔːɹdɚɹ æz ðeɪ ɡˈoʊ.",
+   "seconds": 9.49,
+   "sha256": "29d71d596fa1df21464737af7496993b03ccb1b4e68ff3af57ac74368933cdd8"
+  },
+  "lab5": {
+   "key": "55be180418cc1300",
+   "text": "Where it does win: copper, with every policy and in every pairing, mostly through its own DED machine, in house from around day 228. And aluminium's halfway target, when both labs run an optimizer.",
+   "spoken": "Where it does win: copper, with every policy and in every pairing, mostly through its own D E D machine, in house from around day 228. And aluminum's halfway target, when both labs run an optimizer.",
+   "phonemes": "wˌɛɹ ɪt dˈʌz wˈɪn: kˈɑːpɚ, wɪð ˈɛvɹi pˈɑːlɪsi ænd ɪn ˈɛvɹi pˈɛɹɪŋ, mˈoʊstli θɹuː ɪts ˈoʊn dˈiː ˈiː dˈiː məʃˈiːn, ɪn hˈaʊs fɹʌm ɚɹˈaʊnd dˈeɪ tˈuːhˈʌndɹɪd twˈɛnti ˈeɪt. ænd ɐlˈuːmɪnəmz hˈæfweɪ tˈɑːɹɡɪt, wˌɛn bˈoʊθ lˈæbz ɹˈʌn ɐn ˈɑːptɪmˌaɪzɚ.",
+   "seconds": 14.4,
+   "sha256": "548fc2ca3b4577ead2efc25e2b690e8ad6ee3728beac214f403f46bbc2749b1e"
+  },
+  "mon1": {
+   "key": "f11bcab665d7c9b6",
+   "text": "Money, as spending over time. With all of it available on day zero, the automated lab has spent 90 percent of aluminium's two-year money by day 402, and of copper's by day 371. Then it idles.",
+   "spoken": "Money, as spending over time. With all of it available on day zero, the automated lab has spent 90 percent of aluminum's two-year money by day 402, and of copper's by day 371. Then it idles.",
+   "phonemes": "mˈʌni, æz spˈɛndɪŋ ˌoʊvɚ tˈaɪm. wɪð ˈɔːl ʌv ɪɾ ɐvˈeɪləbəl ˌɔn dˈeɪ zˈiəɹoʊ, ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb hɐz spˈɛnt nˈaɪnti pɚsˈɛnt ʌv ɐlˈuːmɪnəmz tˈuːjˈɪɹ mˈʌni baɪ dˈeɪ fˈɔːɹhˈʌndɹɪd tˈuː, ænd ʌv kˈɑːpɚz baɪ dˈeɪ θɹˈiːhˈʌndɹɪd sˈɛvənti wˈʌn. ðˈɛn ɪɾ ˈaɪdəlz.",
+   "seconds": 14.81,
+   "sha256": "2dff574cc88dadc619f33fc52b36b471b7b5f635c86baeb6893fd4decba4b1bd"
+  },
+  "mon2": {
+   "key": "ca34b32d6af9705f",
+   "text": "The conventional lab, with the same policy, spreads its spending over both years: by the end it has spent 75 percent of aluminium's money and 78 percent of copper's.",
+   "spoken": "The conventional lab, with the same policy, spreads its spending over both years: by the end it has spent 75 percent of aluminum's money and 78 percent of copper's.",
+   "phonemes": "ðə kənvˈɛnʃənəl lˈæb, wɪððə sˈeɪm pˈɑːlɪsi, spɹˈɛdz ɪts spˈɛndɪŋ ˌoʊvɚ bˈoʊθ jˈɪɹz: baɪ ðɪ ˈɛnd ɪt hɐz spˈɛnt sˈɛvənti fˈaɪv pɚsˈɛnt ʌv ɐlˈuːmɪnəmz mˈʌni ænd sˈɛvənti ˈeɪt pɚsˈɛnt ʌv kˈɑːpɚz.",
+   "seconds": 10.77,
+   "sha256": "3331497132213a39c0eb6895485e4680515b7f0a7ded65f8b2d963fb93ef4a0b"
+  },
+  "mon3": {
+   "key": "2f380c0ad113ce06",
+   "text": "Counting fixed costs, an aluminium alloy costs about 25 thousand dollars with BOFN in the automated lab, against 10 thousand in the conventional lab.",
+   "spoken": "Counting fixed costs, an aluminum alloy costs about 25 thousand dollars with B O F N in the automated lab, against 10 thousand in the conventional lab.",
+   "phonemes": "kˈaʊntɪŋ fˈɪkst kˈɔsts, ɐn ɐlˈuːmɪnəm ˈælɔɪ kˈɔsts ɐbˌaʊt twˈɛnti fˈaɪv θˈaʊzənd dˈɑːlɚz wɪð bˈiː ˈoʊ ˈɛf ˈɛn ɪnðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb, ɐɡˈɛnst tˈɛn θˈaʊzənd ɪnðə kənvˈɛnʃənəl lˈæb.",
+   "seconds": 10.94,
+   "sha256": "2b6dd080c00ccf346bc324ad4fb30c9f59b60941da6f74b2a262a1c118e50a06"
+  },
+  "take1": {
+   "key": "606fd475b1438cf3",
+   "text": "So, in this simulated benchmark, like for like. Copper comes sooner in the automated lab with every policy: 1.5 to 2.1 times with the funnel, and at least 2.0 times with an optimizer.",
+   "spoken": "So, in this simulated benchmark, like for like. Copper comes sooner in the automated lab with every policy: 1.5 to 2.1 times with the funnel, and at least 2.0 times with an optimizer.",
+   "phonemes": "sˈoʊ, ɪn ðɪs sˈɪmjʊlˌeɪɾᵻd bˈɛntʃmɑːɹk, lˈaɪk fɔːɹ lˈaɪk. kˈɑːpɚ kˈʌmz sˈuːnɚɹ ɪnðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb wɪð ˈɛvɹi pˈɑːlɪsi: wˈʌn pɔɪnt fˈaɪv tə tˈuː pɔɪnt wˈʌn tˈaɪmz wɪððə fˈʌnəl, ænd æt lˈiːst tˈuː pɔɪnt zˈiəɹoʊ tˈaɪmz wɪð ɐn ˈɑːptɪmˌaɪzɚ.",
+   "seconds": 14.08,
+   "sha256": "226eb2271da1c1c6204fa3cc6fee399470984f9f4960f64c43d2e4e45f33c3e2"
+  },
+  "take2": {
+   "key": "053c41360b7bf305",
+   "text": "Aluminium's first target is a tie. Its halfway target comes 1.3 to 1.4 times sooner, and only with an optimizer in both labs. There, the policy does more than the lab.",
+   "spoken": "Aluminium's first target is a tie. Its halfway target comes 1.3 to 1.4 times sooner, and only with an optimizer in both labs. There, the policy does more than the lab.",
+   "phonemes": "ˌæljʊmˈɪniəmz fˈɜːst tˈɑːɹɡɪt ɪz ɐ tˈaɪ. ɪts hˈæfweɪ tˈɑːɹɡɪt kˈʌmz wˈʌn pɔɪnt θɹˈiː tə wˈʌn pɔɪnt fˈɔːɹ tˈaɪmz sˈuːnɚ, ænd ˈoʊnli wɪð ɐn ˈɑːptɪmˌaɪzɚɹ ɪn bˈoʊθ lˈæbz. ðˈɛɹ, ðə pˈɑːlɪsi dˈʌz mˈɔːɹ ðɐn ðə lˈæb.",
+   "seconds": 12.63,
+   "sha256": "ec04e1cbd14624a9d029ae7648bc4996533cb6a12996ce2a166a79149265409e"
+  },
+  "take3": {
+   "key": "2a3febeec67e829d",
+   "text": "And the automated lab is not cheaper. Its two-year money is spent in about 12 to 13 months, and with fixed costs each aluminium alloy costs about twice as much.",
+   "spoken": "And the automated lab is not cheaper. Its two-year money is spent in about 12 to 13 months, and with fixed costs each aluminum alloy costs about twice as much.",
+   "phonemes": "ænd ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb ɪz nˌɑːt tʃˈiːpɚ. ɪts tˈuːjˈɪɹ mˈʌni ɪz spˈɛnt ɪn ɐbˌaʊt twˈɛlv tə θˈɜːtiːn mˈʌnθs, ænd wɪð fˈɪkst kˈɔsts ˈiːtʃ ɐlˈuːmɪnəm ˈælɔɪ kˈɔsts ɐbˌaʊt twˈaɪs æz mˈʌtʃ.",
+   "seconds": 10.58,
+   "sha256": "6c2a6ae35a252d4dff92b75d12ca0d2b48e62f969bc0e88ea8a69229563e8ab8"
+  }
+ },
+ "voice_id": "af_heart",
+ "speed": 0.96,
+ "rate": 24000,
+ "model_sha256": {
+  "kokoro-v1.0.onnx": "7d5df8ecf7d4b1878015a32686053fd0eebe2bc377234608764cc0ef3636a6c5",
+  "voices-v1.0.bin": "bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d"
+ },
+ "say": {
+  "MiR250": "MiR two-fifty",
+  "OT-2": "O T two",
+  "UPS": "U P S",
+  "SEM": "S E M",
+  "BYU": "B Y U",
+  "EDM": "E D M",
+  "ICP-MS": "I C P M S",
+  "UR12e": "U R twelve E",
+  "aluminium": "aluminum",
+  "AlSi10Mg": "A L S I ten M G",
+  "FLAIME": "flame",
+  "ONR": "O N R",
+  "BOFN": "B O F N",
+  "GP-BO": "G P B O",
+  "LPBF": "L P B F",
+  "DED": "D E D",
+  "HPC": "H P C",
+  "EDS": "E D S",
+  "XRD": "X R D",
+  "3-D": "three D",
+  "VHX": "V H X",
+  "labour": "labor",
+  "pKGFN": "P K G F N"
+ },
+ "ipa": {
+  "MiR": "mˈiːɹ",
+  "CALPHAD": "kˈælfæd",
+  "Kardex": "kˈɑːɹdɛks",
+  "Sobol": "sˈoʊbɑːl",
+  "doser": "dˈoʊsɚ",
+  "dosed": "dˈoʊsd",
+  "pycalphad": "pˈaɪkælfæd"
+ }
+}

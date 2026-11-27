@@ -19,6 +19,10 @@ results and notes reworded as DAL's audit of the first cut suggested (digital-al
 
 **Round 3b's re-cut** (PR 400, 2026-11-27): round 3's cut again with round 3b's results: the lab comparison like for like, the stock as its own effect, and the replay on the replay arm's two median seeds. Public, subscribers not notified: [97BZNOI5V1w](https://www.youtube.com/watch?v=97BZNOI5V1w) (15:42). See [Round 3b's re-cut](#round-3bs-re-cut) below.
 
+**The experiments chapter, a private preview** (PR 403, 2026-11-27): the function-network chapter rebuilt so that each step is shown as the experiment and the data it makes, for one alloy of each campaign. Private, 4:48: [4bAAygzrX10](https://www.youtube.com/watch?v=4bAAygzrX10). Not a cut of the whole video, and no public upload. See [The experiments chapter](#the-experiments-chapter-a-preview) below.
+
+**Round 5's two-year cut, an unlisted preview** (PR 428, issue 425, 2026-11-27): one continuous replay from the day the money arrives to day 730 on one seed, both campaigns, with the experiment chapter, the floor-space segment and round 5's results. Unlisted, 19:54: [Ty6njW-GF74](https://www.youtube.com/watch?v=Ty6njW-GF74). Round 6's results will be re-rendered with one switch. See [Round 5's two-year cut](#round-5s-two-year-cut-a-preview) below.
+
 ## What is on screen
 
 | Part | What it shows | Code |
@@ -692,3 +696,322 @@ python -m twin.video.upload --yes --file out/twin3b/video/campaign_lab3d_narrate
 - Two sentences on the stock card and the tie card were corrected after that, before the upload. Only their segments were encoded again: `python -m twin.video.compose finish labs notes` (4 pieces, 2 min), which also redoes the join, the narration, the record, the description and the contact sheet. The notes segment was among them so that the commit it shows is the one every frame comes from.
 
 **Not on YouTube:** the subtitles. The upload token can't add a caption track. They are `out/twin3b/video/narration/narration.srt`.
+
+## The experiments chapter (a preview)
+
+**A private preview** (PR 403, 2026-11-27): the function-network chapter (about 1:40 to 3:17 of round 3b's cut,
+[97BZNOI5V1w](https://www.youtube.com/watch?v=97BZNOI5V1w)) rebuilt so that it shows each step of the two networks as
+the experiment and the data it makes, not only the network diagram. It is a standalone chapter, not a cut of the whole
+video: [4bAAygzrX10](https://www.youtube.com/watch?v=4bAAygzrX10) (private; 4:48; built from commit b0c027d). No public video was uploaded and no earlier
+upload was touched.
+
+![Contact sheet of the preview](../out/twin3b/video/experiments/sheet.png)
+
+### What it follows, and where its data comes from
+
+**One alloy from each campaign**, read from the committed event logs of the two runs round 3b's cut replays
+(`exp_data.follow()`; nothing is typed in):
+
+| Campaign | Run | Design | What it did in that run | Composition (wt%) |
+|---|---|---|---|---|
+| FLAIME (Al, LPBF) | time-aware BOFN, stocked automated lab, seed 0 | 299 | took the run past the halfway target on day 96 (the replay's first target tag) | Al-3.33Mn-0.77Cr-0.31Ti-0.29Li-0.24Er-0.20Zr-0.07Ni-0.07Sn |
+| ONR (Cu, DED) | the same arm, seed 5 | 74 | took the run past the best existing alloy on this synthetic benchmark on day 221 (the second tag) | Cu-7.39Al-2.68Ni-0.26Ti |
+
+**The event logs hold no raw data and no process settings.** The campaign's instruments run in their fast mode, which
+returns numbers only, and a log keeps a design's composition, its bookings and its true utility. So the chapter makes
+each alloy again:
+
+- through the twin's own truth (`twin/truth_al.py`, `twin/truth_cu.py`) with the run's seed, so it is the same hidden
+  alloy. A check: the part made here has a true yield strength of 349 MPa and 11.5 % elongation, against
+  361 MPa and 11.2 % in the run's record for design 299; copper's is 279 MPa and 26.6 % against 278 MPa and
+  28.0 % (`test_same_hidden_alloy_as_the_run`);
+- measured by the twin's own instrument simulators at full fidelity (`twin/instruments`), which make the raw data a
+  real instrument would (micrographs, spectra, orientation maps, load records) and then run the analysis a lab runs.
+
+That makes every curve and map on screen this alloy's simulated data from the benchmark's own models, but **not the
+replayed run's own draws**, and the atomizer and laser settings are **stated example settings** (the instrument
+gallery's, and a 3 × 3 power × speed grid for the nine cubes), not the settings the policy chose. The engine is not
+changed: `exp_data.py` calls it.
+
+### What the network uses, and what round 3b's runs did not buy
+
+Read from `twin/opt/policies2.py` (the nodes' data) and `twin/campaign.py` (what each step measures), and checked
+against all 436 of round 3b's committed event logs (`facts.json`, `sim_kinds`):
+
+| Step | What the lab measures | What the replayed policy's network takes |
+|---|---|---|
+| CALPHAD | the open-database node: liquidus, freezing range, Kou's cracking index, growth restriction (Al); liquidus, freezing range, β at 900 °C, κ at 700 °C (Cu) | Al: the cracking index and the liquidus, as inputs of the print node (and the liquidus sets the atomizer's melt temperature). Cu: freezing range, β, κ and liquidus, as inputs of the DED node |
+| Atomize | yield, size distribution, SEM (SE) of the powder, EDS, oxygen | the in-cut yield per charge (the atomize node's output); the powder's oxygen and satellite share (inputs of the print node) |
+| Print (Al) | per cube: Archimedes density and a section's porosity and cracks | per cube and its settings: density (the lower of the two readings) and crack density, the print node's two outputs |
+| Section | SEM (BSE), EBSD, Vickers | EBSD's grain size and equiaxed share, the section node's two outputs |
+| PIP | yield, UTS, uniform elongation from one indent | all three, the PIP node's outputs |
+| Tensile | yield, UTS, elongation of three bars | yield and elongation, the tensile node's outputs, and from them the utility |
+| Screen (Cu) | OCP, EIS, LPR, cyclic polarization | the early rate and the breakdown potential |
+| Immersion (Cu) | interim mass readings on days 1, 3, 7, 14; at day 30 the cleaned mass loss, a section, ICP-MS | the 30-day rate and the selective attack; each interim reading, through a node that predicts the 30-day rate from it |
+
+- **EDS is measured on every lot and is not an input of any node.**
+- **Every simulation call in round 3b is the open-database node: 232,005 calls in 436 logs.** The twin also has a
+  Thermo-Calc Scheil stand-in (`sim_tc`: the truth with a few percent error) and an AM-Module stand-in (`sim_am`:
+  Rosenthal's point source with 10 % error). No policy among round 3b's arms buys either, and no log has one. The
+  chapter shows both models and says so on screen and in the narration. The AM-module's model is also inside the
+  truth, where it decides every simulated build's porosity and cell size.
+- **No run booked a hot tensile test** (0 bookings of the 250 °C station in 436 logs), so the chapter's tensile
+  caption drops the old chapter's "and at 250 C".
+
+### The parts, and what each thing on screen is
+
+Every panel carries a tag that says what it is: **simulated** (the twin's own output for that alloy), **computed**
+(an open CALPHAD tool on an open database), **illustrative** (a schematic, drawn to explain), **real** (the lab's own
+footage or photograph) or **3-D model** (PR 318's renders of the lab as designed). The intro explains the tags before
+the first part.
+
+| Part (module) | Length | The experiment | Its data | What is not the twin's output for this alloy |
+|---|---|---|---|---|
+| The networks (`experiments.Intro`) | 27 s | the two networks, as the cut has always drawn them, built quickly; a pulse along each | what follows, and how to read the tags | - |
+| Composition (`exp_composition`) | 28.5 s | a periodic table: the search space's elements outlined, the design's lighting up and filling to their share of each upper bound; aluminium, then copper | the fractions as bars; the design among every design of the run, on the first two principal components of composition | the map is a projection that carries 19 % (Al) and 40 % (Cu) of the spread, and says so |
+| Scheil solidification (`exp_scheil`) | 33.5 s | a melt freezing, its solid share following the curve being drawn | temperature against fraction solid: the open-database node's curve, an independent pycalphad + scheil run with its phases, the twin's hidden truth; liquidus, freezing range, cracking index, Q; the two the print node takes | the picture of the melt is illustrative; the pycalphad run is tagged computed (see below) |
+| The AM module (`exp_am`) | 28 s | one laser track over a powder bed from above, the model's temperature field carried with the laser, the liquidus isotherm as the pool | the centre-plane section with the pool's width and depth; the thermal history of a point two layers down, drawn as the laser passes; the five numbers the twin takes | the powder bed and the scanned tracks are illustrative. The model is the twin's stand-in (Rosenthal's point source), **not Thermo-Calc output**, said on screen for the whole part |
+| Atomizing (`exp_atomize`) | 24 s | the lab's own footage of the melt and the pour, and the 3-D model's crucible and plate | the powder's size distribution building up with the printer's cut shaded; the mass balance of three runs; the in-cut yield | the footage is **real but of another alloy** (630 bronze, 27 Oct 2026, run k7m2q9, DAL #219), written on the picture; the jars are that run's photograph; the 3-D model is a render |
+| Printing (`exp_print`) | 27 s | PR 318's printer close-up, and a schematic of this build: nine cubes and the blanks growing layer by layer | laser power against scan speed, each cube's density and crack reading arriving; lack of fusion and keyholing where the twin's indices peak; the middle setting ringed | the render shows another build (four tensile bars); the build schematic is illustrative; the grid is an example grid |
+| SEM (`exp_sem`) | 38 s | a schematic of the column, the beam and the four detectors, the scan position shared with the panels; an inset of the lab's desktop SEM | the secondary-electron image of the powder, the backscattered-electron image of the section, the EDS spectrum counting up, the EBSD map with a Kikuchi pattern; the twin's analysis of each; which the network uses | the schematic is illustrative (and one scan stands for what are separate scans); the **element maps are illustrative**: the twin simulates a spectrum, not maps |
+| Heat treatment and tensile (`exp_mech`) | 31 s | the 3-D model's furnace, then its load frame; a specimen that heats, stretches with the record's strain, necks and breaks | the furnace profile drawn as it runs; the stress-strain curve drawn as the bar pulls, to fracture; yield, UTS and elongation marked | the **furnace profile is illustrative** (the T6 in the lab's 3-D model: 530 °C, quench, 160 °C): the twin books three furnace hours and models the strength after heat treatment, not a profile. The specimen is a schematic |
+| Corrosion (`exp_corrosion`) | 34 s | the 3-D model's CubXL and a cell schematic; then a coupon in seawater with a day counter; this alloy's own days in the replayed run, from its event log | the open-circuit potential across the hour, the linear and cyclic scans, the early rate and breakdown potential; then mass loss as each reading arrives on days 1, 3, 7, 14 and 30, the 30-day rate and the selective attack | the cell and the beaker are illustrative; the day counter runs slowly over the first days so the early readings can be read |
+| Both at once (`experiments.Outro`) | 17.5 s | the old chapter's own closing: both networks, what they share, the cards collapsing to the icons the replay lights | - | - |
+
+**The open-database Scheil run** (`python -m twin.video.exp_data scheil`, 12 s, committed as
+`out/twin3b/video/experiments/scheil_open.json`): pycalphad 0.12.0 and scheil 0.3.0 on MatCalc's mc_al v2.037
+(TU Wien, ODbL 1.0; downloaded and checked by sha256 as `twin/calphad.py` does), 1 K steps from 860 °C. It covers Mn,
+Cr, Zr, Ti and Ni; **Li, Er and Sn are not in that database** and are left out and named on screen. It finds primary
+Al4Cr from 789 °C and Al3Ti from 744 °C, the fcc matrix from 660 °C, then Al6Mn, Al3Zr and Al3Ni, and ends at
+648 °C. The package reports `converged: false`: the run reaches 98.1 % solid and the last 1.9 % freezes in its final
+step; the curve is drawn as it is. This is a third view of the same alloy, beside the two the twin has: the open node's
+fast model (liquidus 670 °C, no primary phases) and the truth (primary Al3Ti at 731 °C). They differ, which is the
+twin's point about simulators, and the chapter says so.
+
+**The numbers on screen** are read from the models, never typed: `out/twin3b/video/experiments/facts.json`
+(`python -m twin.video.exp_data`) lists them, and `test_facts_are_current` recomputes it. The narration's numbers
+point into that file and are checked (`python -m twin.video.experiments nums`: 17 spoken numbers).
+
+### The script, with its times in the preview
+
+29 lines, 3:27 of speech in 4:48 (Kokoro v1.0, `af_heart`, speed 0.96, as the cuts). The old
+chapter's four lines (`dag1` to `dag4`) are kept word for word and moved to where their step now is; they are marked
+with an asterisk.
+
+| Time | Part | Line |
+|---|---|---|
+| 0:00-0:13 | The networks | Each campaign is a function network: a chain of steps, where each step's results feed the next. BOFN, Bayesian optimization over function networks, models every step, not just the final score. * |
+| 0:15-0:25 | The networks | Here is each step itself, for one alloy from each campaign: the experiment, and the data it makes. Everything is simulated by the twin, unless a label says otherwise. |
+| 0:27-0:36 | Composition | The aluminium alloy is design number 299: aluminium with eight additions, manganese and chromium the largest. |
+| 0:36-0:42 | Composition | On this map of the search space, it is one of 435 designs the run simulated. |
+| 0:44-0:50 | Composition | The copper alloy is design number 74: an aluminium bronze, with a little nickel and titanium. |
+| 0:56-1:05 | Scheil | CALPHAD comes first. As the melt cools, a Scheil model follows how much of it has frozen. This curve is the one the optimizer sees. |
+| 1:07-1:15 | Scheil | A full Scheil run on an open database adds the phases as they form. The twin's hidden truth differs again, as a real alloy would. |
+| 1:16-1:21 | Scheil | From its curve, the network takes two numbers: the liquidus, and a hot-cracking index. |
+| 1:22-1:28 | Scheil | Every run in round three b used this open node. The Thermo-Calc stand-in was never bought. |
+| 1:30-1:39 | The AM module | The twin stands in for the AM module with a moving point source of heat. It gives the melt pool's width and depth, and how fast the metal cools. |
+| 1:47-1:55 | The AM module | This is not Thermo-Calc output, and no run bought this node. But the same model decides the porosity of every simulated build. |
+| 1:57-2:03 | Atomizing | For aluminium, the lab makes each alloy's powder itself, then prints it and checks every build. * |
+| 2:03-2:11 | Atomizing | This footage is real: our own atomizer, running a bronze. The size distribution beside it is the twin's, for this alloy. |
+| 2:13-2:18 | Atomizing | Here, one of three runs failed, and 13 percent of the charge ended up in the printer's size range. |
+| 2:22-2:26 | Printing | One build is nine cubes, each at its own laser power and speed. |
+| 2:32-2:40 | Printing | Each cube's density and crack reading goes on the map. Too little energy leaves lack of fusion. Too much makes keyhole pores. |
+| 2:42-2:46 | Printing | One build gives the network's print node nine data points. |
+| 2:48-2:55 | SEM | In the SEM, one electron beam scans the sample line by line, and four detectors each catch a different signal. |
+| 2:56-3:08 | SEM | Secondary electrons show the powder's surface. Backscattered electrons show the section's pores and cracks. X-rays give the elements, and diffraction gives each grain's orientation. |
+| 3:08-3:12 | SEM | Every image here is simulated by the twin, for this alloy. |
+| 3:13-3:23 | SEM | The network uses three of them: satellites on the powder, the section's pores and cracks, and the grain size. EDS only checks the composition. |
+| 3:27-3:34 | Heat treatment, tensile | Bars are heat treated, then pulled. The furnace profile here is only illustrative: the twin models the strength it leaves. |
+| 3:36-3:40 | Heat treatment, tensile | The curve is the twin's simulated record of the test, up to fracture. |
+| 3:48-3:56 | Heat treatment, tensile | Yield strength, 349 megapascals, and elongation, 10.1 percent, are the two numbers the network keeps. |
+| 3:57-4:05 | Corrosion | For copper, a one-hour corrosion screen ranks the DED deposits, and thirty days in seawater come before a utility is known. * |
+| 4:06-4:11 | Corrosion | After an hour at rest, two quick scans give an early corrosion rate and a breakdown potential. |
+| 4:14-4:21 | Corrosion | In immersion, the coupon is weighed on days 1, 3, 7 and 14. After any reading, the policy may stop it. |
+| 4:24-4:29 | Corrosion | On day 30 it is cleaned and weighed: 16.6 micrometres a year. |
+| 4:39-4:45 | Both at once | Both campaigns share one lab. From here on, each step is an icon that lights up while it runs. * |
+
+**Heard back.** Every line was transcribed by faster-whisper and compared word by word with what it should say: 1.72 % (small.en) and 2.41 % (base.en) word error over 580 words; 22 and 19 of the 29 lines word-perfect (`out/twin3b/video/experiments/narration/check.json`; `lines.ogg` has every line in a row, to listen to). small.en's differences are spellings and words it doesn't know: "CALPHAD" as "calfad", "Scheil" as "shyle" or "shile", "Thermo-Calc" as "thermocalc" (twice), "megapascals" written "MPa", "lack of fusion" as "lack a fusion", and "pores" as "pours". Five lines were reworded after the first pass: "design 299" and "design 74" came back as "designed" from both recognizers, so they say "design number"; and a possessive before an s was swallowed three times ("the twin's stand-in", "the twin's simulation", "the powder's satellites"). Two respellings came from reading the phonemes before any audio: a lone "a" before "Scheil" was read as the letter, and "AM" as "uh em" (`experiments.IPA_MORE`). Four lines were also transcribed from the encoded file at their recorded times and match the script; the file's track is at -16.0 LUFS.
+
+### Limits of the preview
+
+- **Not the replayed run's own data.** The alloys are the run's, the models are the benchmark's, the draws and the
+  settings are not (see above). Numbers on screen are close to the run's record, not equal to it.
+- **The crack reading scatters.** The middle cube's section reads 0.07 to 0.10 mm of crack per mm², its true value is
+  0.046, and the lab's gate is 0.05. One 2 mm field finds zero to a few short cracks. The chapter shows the reading
+  and the true value and does not say that the alloy passes or fails.
+- **The screen shown is not the one the run did.** In seed 5's log, design 74 was screened on day 10, on a block
+  deposited from blended elemental powders; its powder was atomized on days 173 to 188, the larger deposit made on
+  day 190, and the coupon was in seawater from day 190 to day 220. The chapter screens the larger deposit, made again
+  at example settings, and its left card says so and shows the run's own days.
+- **The interim and final masses use different constants** in the engine (`Campaign._interim`: a nominal density and
+  area; the instrument: the alloy's density and the coupon's own area), so the five points are plotted as reported
+  and no curve is drawn through them.
+- **Two steps have no part of their own:** PIP (the SEM part's last caption) and copper's small DED blocks (a line in
+  the corrosion part).
+- **The 3-D model's clips are PR 318's**, made for an Al-10Si route: they show the stations, not this alloy's run, and
+  are cropped clear of their own inset figures.
+- **It is long:** 4:48 against the old chapter's 1:45. Each part stands alone, so a cut can take some of them.
+- **No subtitles on YouTube:** the upload token can't add a caption track. They are
+  `out/twin3b/video/experiments/narration/narration.srt`.
+
+### Using the parts in another cut
+
+Each part is a class with `DURATION`, `frame(t)`, `captions`, `marks` and `sources`, drawn from an `exp_data.Alloy`.
+`exp_data.Alloy(campaign, seed, design, events)` follows any design of any run with an event log, so round 5's
+re-cut (two years, one continuous seed) can point the same parts at its own alloys: `follow()` is the one place that
+chooses them. `experiments.Chapter()` is the whole chapter behind the interface the cut uses for the old one
+(`intro_frame(t)`, `DURATION`, `captions`), plus `marks` for the narration. To drop it in:
+
+1. in `compose.segments()`, give the `dag` segment `Chapter().frame` and `Chapter().DURATION` (its last part is
+   already `dag_anim`'s own closing, so the dock into the replay follows as before);
+2. add `experiments.marks()` to `narration.marks()` (offset by the segment's start);
+3. move the lines of `narration_exp.json` into the cut's script with `seg` set to the cut's segment name, and
+   `SAY_MORE` / `IPA_MORE` into `narration.SAY` / `IPA`.
+
+### Rebuilding it
+
+```bash
+cd vertical-lab
+export TWIN_VIDEO_ROUND=3b
+pip install numpy scipy pillow matplotlib scikit-image scikit-learn pycalphad scheil kokoro-onnx soundfile \
+    faster-whisper jiwer num2words google-api-python-client google-auth-oauthlib   # and ffmpeg
+python -m twin.video.exp_data scheil     # the open-database Scheil run -> scheil_open.json (12 s; needs the network once)
+python -m twin.video.exp_data            # facts.json
+python -m twin.video.experiments nums    # every spoken number against facts.json
+python -m twin.video.experiments tts     # speak the lines whose text changed (Kokoro) -> experiments/narration/
+python -m twin.video.experiments check   # heard back by faster-whisper
+TWIN_VIDEO_WORKERS=4 python -m twin.video.experiments build   # experiments_preview.mp4, record.json, sheet.png
+python -m twin.video.experiments build sem mech                # only these parts again, then the join and the sound
+python -m twin.video.upload --yes --file out/twin3b/video/experiments/experiments_preview.mp4 \
+    --meta out/twin3b/video/experiments/youtube_meta.json --privacy private \
+    --key twin3b/video/experiments/experiments_preview.mp4
+python -m pytest -q twin/tests/test_video_experiments.py
+```
+
+**What it cost on the runner** (2026-11-27, 4 cores): about 65 minutes from the request to the upload.
+- Reading the twin, then the data layer, the shared drawing code and the first part (tensile): 25 minutes.
+- The other eight parts were written in parallel by four forks of the same session, each against the shared code and each checking its own stills: 13 to 22 minutes each. Their frames were then reviewed here, and three shared faults they found were fixed once (faded text that did not fade on this Pillow; a held last frame that re-seeked its clip on every frame; the header's fit).
+- The lines' speech: 2 minutes. The heard-back check: 2 minutes, twice.
+- The encode: 36 pieces on four workers, about 5 minutes for 8655 frames; the join, the narration and the sound mix: 20 seconds (`experiments finish`).
+
+## Round 5's two-year cut (a preview)
+
+Sterling, on [issue 425](https://github.com/vertical-cloud-lab/byu-vcl/issues/425) (2026-11-27): "one continuous
+two-year replay, every new module, and round 5's results for now ... uploads an **unlisted preview** made from round
+5's results. Once round 6 lands, a later ping will re-render it from round 6's results and upload it public without
+notifying subscribers."
+
+**On YouTube:** [Ty6njW-GF74](https://www.youtube.com/watch?v=Ty6njW-GF74) (**unlisted**, subscribers not notified; 19:54; uploaded 2026-11-27 from commit 4bbe0d9). It is the preview made from round 5's results; round 6's re-render will be a new upload. No earlier upload was touched: all 596 videos on the channel were read before and after the upload and are unchanged (`out/twin5/video/earlier_uploads.json`), and the upload token can only add a video. Round 3b's cut, [97BZNOI5V1w](https://www.youtube.com/watch?v=97BZNOI5V1w), is still up as it was; its replay changed seed partway through, so this cut replaces it.
+
+![Contact sheet of round 5's two-year cut](../out/twin5/video/twoyears_sheet.png)
+
+Built on PR 405's head (`4bb91b1`, round 5) with PR 403's branch (the experiment chapter) and PR 406's branch (the
+floor-space segment) merged in; [PR 428](https://github.com/vertical-cloud-lab/byu-vcl/pull/428). Everything in it is simulated, except what the closing notes list as real.
+
+### One switch for the round
+
+```
+cd vertical-lab
+export TWIN_VIDEO_ROUND=5                  # 6 re-renders the same cut from round 6's results
+python -m twin.video.cut5 all              # the checks, the speech, the 3-D track, the encode, the record, the sheet
+python -m twin.video.upload --yes --file out/twin5/video/twoyears.mp4 \
+    --meta out/twin5/video/youtube_meta_twoyears.json --privacy unlisted --key twin5/video/twoyears.mp4
+```
+
+`TWIN_VIDEO_ROUND` picks `out/twin<R>/` (the round's `like<R>.json`, `runs/`, `events/`), its analysis module
+(`twin/like<R>.py`) and writes everything to `out/twin<R>/video/`. Nothing about a round is typed into the cut: the
+replayed seed is the round's own `median_seed()`, and every line is a template filled from the round's tables, which
+says something only while the tables support it (`cut5.facts`, `figs5_labs.lines`, `figs5_intro.lines`,
+`experiments.script`). For round 6 that needs `twin/like6.py` and `out/twin6/like6.json` with `like5.json`'s keys
+(`arms` with `median_seed`, `four_way`, `policy_effect`, `economics`, `used`), and each row's `spend_curve`. Round 6
+has no money limit: the lines about the money running out are switched off by the rows' own budgets
+(`cut5.facts`: `has_limit`, `money_story`), and the spend plots drop the dotted two-years'-money line. `meta5` makes
+round 5 the unlisted preview and any later round public, subscribers not notified, and the upload's privacy is the
+command's `--privacy`.
+
+### What is in it
+
+| Part | What it shows | Code |
+|---|---|---|
+| Title, what is simulated | The title on the 3-D lab; the lab's set-up movie, then both search spaces on the periodic table | `cut5.title_frame`, `compose.simulated_frame` |
+| What changed | Round 5's rules: all the money on day 0, the facility ready between day 60 and day 100, equipment ordered on day 0 (some used), experiments from day 0 through partners, people's decision windows, the atomizer's 8 a week or 24/7, the HPC stream | `figs5_intro` |
+| The experiment chapter (PR 403) | Each step as the experiment beside its data, for one alloy of each campaign from the replayed run's own log: the composition on the periodic table and its place among the run's designs; Scheil on an open database next to the fast node and the hidden truth; Thermo-Calc's AM module (a stand-in, labelled); atomizing with the lab's own aluminium footage; nine cubes; the SEM's four detectors; a direct age (the furnace profile labelled illustrative), then the tensile curve plotted live; copper's one-hour screen and 30-day immersion | `experiments`, `exp_*` |
+| Counters | Designed (computed candidates, at the HPC stream's full capacity, outside the experiments' cost), made (powder lots, alloys made), tested (alloys through the full chain); "early stopping means only promising alloys finish every step"; how to read the replay's plots | `figs5_intro` |
+| The atomizer | Its design targets (2.2 h per aluminium composition, 76 a week, 6 to 8 crucibles per family) next to the lab's record (10 runs in 43 days, 1.6 a week, 1 crucible) and the assumed 8 a week | `figs5_intro` |
+| The replay | Day 0 to day 730 on seed 1 of 16, both campaigns, both labs; below | `replay5`, `lab3d5` |
+| The lab comparison | Like for like first (16 seeds an arm, the same seeds in both labs), then where the automated lab doesn't win, where it does, and money as cumulative spending per lab | `figs5_labs`, `numbers5` |
+| Floor space (PR 406) | Conventional, then flat automated, then vertical with the Shuttles; the result at matched capacity (the Shuttles' 45 trays laid out flat: 6,192 sq ft against 3,029); Emerald Cloud Lab for scale | `floorspace_cut`, `floorspace3d` |
+| Takeaway, notes | Like for like; what is real, assumed and simulated | `figs5_labs`, `figs5_intro` |
+
+### The replay: one seed, two years
+
+**Seed 1 of 16 for its whole length**, time-aware BOFN in the stocked automated lab (`r5_vertical_parallel_bofn3_reorder_s1`),
+with the conventional lab's same seed, policy and stock rule dashed in each plot
+(`r5_conventional_external_bofn3_reorder_s1`). It is the arm's median seed for both campaigns together, as round 5's
+notes name it (`like5.json`, `arms.r5_vertical_parallel_bofn3_reorder.median_seed`): this seed's days to the targets
+are aluminium 176 and 182, copper 291 and 291, against the arm's medians of 176, 189, 298 and 339. A badge names the
+seed on screen throughout, and nothing switches it.
+
+It starts on day 0, when the money arrives and everything is ordered, with no lab: each part of PR 318's 3-D lab is
+see-through until the twin has it online and solid from then on, with a list of the build-out beside it (the space on
+day 67, the first stations on day 74, the Shuttles on day 105, the cell on day 161, the LPBF on day 164, the DED on day
+254). Until the cell is integrated people run each station and nothing moves in 3-D; from day 161 the run's own
+bookings move the trays and the mobile units. A panel lists what runs outside the new lab (BYU's existing equipment
+and the partners).
+
+Under each best-so-far plot a line says why the curve is flat, from the run's own daily log (`data5.Run.flat`): the
+stock it is waiting for and when it is due, a 30-day immersion and its day, the queue for a station, results still in
+flight, and, from day 337 in this seed, the money being spent. The spend panel is cumulative spending per lab, not a
+budget bar.
+
+### The atomizer footage
+
+Aluminium is the subject of the atomizing step, so it shows only the lab's own aluminium runs (`exp_atomize.al_footage`,
+`out/footage/manifest.json`, entries with `subject: "al"`). The bronze clips are used nowhere in this cut. The clip at
+5:32 of 97BZNOI5V1w was 630 bronze (run k7m2q9) at an aluminium alloy's atomize step; it is gone.
+
+| Clip | Shows | Run, alloy | Source |
+|---|---|---|---|
+| `al_4yghtr_melt.mp4` | the charge glowing in the crucible, through the furnace window | 4yghtr, 6 Oct 2026, Al 6063 (logged as "6067"), 180 g; DAL #159 | [DWH1CEygsTI](https://youtu.be/DWH1CEygsTI) 1625.4-1636.4 s |
+| `al_c3k0n5_pour.mp4` | through the view port: the melt stream coming down onto the plate, and the droplets | c3k0n5, 22 Oct 2026, Al 4047, 169 g; DAL #159 | 2gQk-Syj7Yc 1577.8-1587.2 s |
+| `al_4yghtr_oct06_jar.jpg` (photo) | a jar of the run's atomized aluminium powder | lot 4yghtr, 6 Oct 2026; DAL #159 | as before |
+
+Each window was matched frame by frame against its source. Each picture names its run, alloy and day on screen, and
+says the alloy is not the simulated alloy followed.
+
+### The audit rules
+
+- `python -m twin.video.cut5 check`: every spoken and on-screen number against the round's tables (the lab comparison
+  and takeaway: 28 numbers and 28 worded claims against `like5.json`; the opening cards: 18 against round 5's
+  constants and the replayed row; the experiment chapter: 18 against `facts.json`; floor space: 18 against
+  `out/floorspace/layouts.json`; the cut's own lines: 22 figures, all from `cut5.facts`). A line whose claim the
+  tables no longer support is reworded by its template's alternatives or stops the build.
+- "simulated" on every simulated thing; "illustrative" on drawings (the furnace profile, the specimen, the SEM
+  schematic); "design target" on the atomizer's cycle and the crucibles, next to "the lab's record".
+- Narration only of what is on screen: each line is placed at the moment its card, curve or tag appears.
+
+### What changed from 97BZNOI5V1w
+
+| | 97BZNOI5V1w (round 3b) | This cut (round 5) |
+|---|---|---|
+| The replay | One year, seed 0 to day 119, then seed 5 | Two years, day 0 to day 730, seed 1 throughout, named on screen |
+| The start | Day 1, a running lab | Day 0, the money arrives; the space, the equipment and the cell come in as the twin has them |
+| The campaigns | Each seed chosen for one campaign | Both campaigns together on the seed that is median for both |
+| The function networks | The diagram, with data popping out at its nodes | Each step as the experiment beside its data (PR 403), with a direct age instead of T6 |
+| Atomizer footage | A 630 bronze clip at an aluminium alloy's step | The lab's own aluminium runs (4yghtr, c3k0n5); bronze nowhere |
+| The lab comparison | Like for like over round 3b's 12-run arms | Like for like over 16 seeds an arm, both labs from the same day 0, then where the automated lab doesn't win |
+| Floor space | Not in it | Three labs, capacity matched, with Emerald Cloud Lab for scale (PR 406) |
+| Length | 15:42 | 19:54 |
+
+Also new, as the issue asked: the counters say what they count (designed, made, tested) and that early stopping means
+only promising alloys finish every step; a line under each plot says why a flat curve is flat; money is cumulative
+spending per lab over time, not a budget bar.
+
+### What it cost on the runner
+
+On the runner (4 cores, 16 GB), 2026-11-27, with the first attempt's work already done (its narration, numbers and figures, and 894 of the floor-space track's 1,284 frames):
+
+- **The floor-space 3-D track**: the other 390 frames at 1920 x 1080 in three processes, about 5 min each after a 4.5 min scene build, joined to the first attempt's three partial renders (the frame differences across each join match those within a part).
+- **The replay's 3-D track**: 20 jobs (16 at 1920 x 1080, 4 insets at 960 x 540), 4,068 frames from 3,384 renders (a render is reused while nothing in the lab changes), 54 min wall on three to four processes. Slower than it needs to be: it shared the cores with the other segments' encode, and one batch was restarted after the camera fix (`lab3d5.Lab3D5.view`).
+- **The encode**: the 31 pieces of the other ten segments on two workers alongside the 3-D renders, 28 min; then the replay's 11 pieces and the notes card on four workers, the join, the mix and the record, 6.6 min. 1194 s of video, 208 MB, x264 `medium` CRF 20, AAC 160 kb/s, -16.1 LUFS integrated.
+- **The upload**: 10 s.

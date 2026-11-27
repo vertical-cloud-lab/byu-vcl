@@ -1,0 +1,66 @@
+{
+ "about": "The two-year cut's opening and closing cards (twin/video/figs5_intro.py; TWIN_VIDEO_ROUND=5, or a later round): what changed in the twin, how to read the counters and the replay's plots, the atomizer's design target next to the lab's record, and the closing notes. One entry per line: id, seg (the card segment it belongs to), text, src (what on screen it says), and optionally gap (seconds of silence before it, beyond the default). A line's time is not typed in: the lines of a segment follow one another in this order, each after the one before has ended (figs5_intro.timing reads their recorded lengths), and each card's parts appear when the phrase that names them is said. Every number is a placeholder {path|format} into figs5_intro.numbers() (out/twin<ROUND>/video/numbers_intro.json), filled when the line is rendered, so a line can only say what that file holds: `python -m twin.video.figs5_intro nums` renders every line and fails on any figure that is not a placeholder. Formats: d (integer), ,d (thousands), .1f, w (the number as a word), s (words from numbers()).",
+ "lines": [
+  {
+   "id": "chg1",
+   "seg": "changes",
+   "text": "Round {intro.round|w} starts the clock on the day the money arrives, and runs for {intro.horizon_years|w} years. Each campaign has all of its money on day zero. The facility is ready between day {intro.room.lo|d} and day {intro.room.hi|d}, and the equipment is ordered on day zero: some of it used, chosen by a rule.",
+   "src": "changes card, left column: the money on day 0, the facility window (twin/round5.py ROOM_DAYS), equipment ordered on day 0 and the used rule (USED, used_rule)"
+  },
+  {
+   "id": "chg2",
+   "seg": "changes",
+   "text": "Experiments also start on day zero, through partners, while the lab is built. Decisions made by people take time. The conventional lab's atomizer runs at most {intro.atomizer.manual_week|d} times a week; the automated lab's runs around the clock once its cell is integrated. And the HPC computes candidates continuously. Every lead time, price and decision window here is a stand-in.",
+   "src": "changes card, right column: experiments from day 0, decision windows (DECISIONS), the atomizer (ATOM_MANUAL: 2 starts a day on 4 days; note 2), the HPC stream (HPC); the card's subtitle says what is a stand-in"
+  },
+  {
+   "id": "cnt1",
+   "seg": "counters",
+   "text": "Three counters run through the replay. Designed means computed candidates: a stream on the HPC evaluates {intro.hpc.per_day|,d} a day, at full capacity and outside the experiments' cost. The policy sees {intro.hpc.add_per_day|d} new ones a day.",
+   "src": "counters card: 'Designed' with its hero number (rows' r5.hpc: per_day, add_per_day); the per-campaign total over two years is on the card, not spoken"
+  },
+  {
+   "id": "cnt2",
+   "seg": "counters",
+   "text": "Made means powder lots, or alloys made. Tested means alloys through the full chain: in the replayed run, {intro.counters.run.flaime_al.alloys_tested|d} aluminium alloys and {intro.counters.run.onr_cu.alloys_tested|d} copper alloys.",
+   "src": "counters card: 'Made' and 'Tested', and the replayed run's bars (the row's r5.counters: alloys_tested)"
+  },
+  {
+   "id": "cnt3",
+   "seg": "counters",
+   "text": "Early stopping means only promising alloys finish every step.",
+   "src": "counters card: the banner 'Early stopping: only promising alloys finish every step.'"
+  },
+  {
+   "id": "cnt4",
+   "seg": "counters",
+   "gap": 1.3,
+   "text": "In the replay's plots, the solid curve is the best new alloy tested so far in the automated lab, and the dashed curve is the conventional lab, on the same seed and policy. The dotted lines are the two targets.",
+   "src": "plots card, left panel: the replayed run's aluminium curve (solid), the conventional lab's same seed and policy (dashed), the two targets (like<ROUND>.json targets), each labelled with what it is"
+  },
+  {
+   "id": "cnt5",
+   "seg": "counters",
+   "text": "Money is shown as cumulative spend in each lab, not as a budget bar. And when best so far goes flat, the replay says why.",
+   "src": "plots card, right panel: campaign money spent so far in each lab (the rows' spend_curve); the strip 'When best so far is flat, the replay says why' with its labels (the run's idle-cause report)"
+  },
+  {
+   "id": "atm1",
+   "seg": "atomizer",
+   "text": "Once its cell is integrated, the automated lab's atomizer runs around the clock at a derived cycle: about {intro.atomizer.run_h.flaime_al|.1f} hours per aluminium composition, or {intro.atomizer.week_247.flaime_al|d} a week. That is a design target, not a demonstrated rate.",
+   "src": "atomizer card, the design-target column: the cycle (twin/round5.py ATOM_RUN_H, the charge plan's hours) and runs a week at 24/7 (168 h over the cycle); tagged DESIGN TARGET"
+  },
+  {
+   "id": "atm2",
+   "seg": "atomizer",
+   "text": "It needs {intro.atomizer.crucibles.need_lo|d} to {intro.atomizer.crucibles.need_hi|d} pre-coated crucibles per alloy family in rotation, and the lab has {intro.atomizer.crucibles.now|w}. The lab's record so far is {intro.atomizer.record.runs|d} runs in {intro.atomizer.record.days|d} days, about {intro.atomizer.record.per_week|.1f} a week. Before the cell, and in the conventional lab, the twin assumes {intro.atomizer.manual_week|d} a week.",
+   "src": "atomizer card: the crucibles row (notes/twin_round5.md section 2), the lab's record column (DAL atomizer-runs/runs.csv at 8320f13, through numbers3.LAB_ATOMIZER), the assumed 8 a week (ATOM_MANUAL)"
+  },
+  {
+   "id": "note1",
+   "seg": "notes",
+   "text": "Everything here is simulated: the alloys, the results, and every measurement, with modelled noise not yet calibrated on the lab's instruments. The facility window, every lead time, the used-equipment prices, the decision windows, the HPC allocation, and the atomizer's design cycle are assumptions and stand-ins. It shows how two lab designs and their policies interact in a model, not what the real lab will find.",
+   "src": "notes card: the three columns (real, assumed and stand-ins, simulated)"
+  }
+ ]
+}

@@ -1,0 +1,116 @@
+1
+00:00:00,600 --> 00:00:13,930
+Each campaign is a function network: a chain of steps, where each step's results feed the next. BOFN, Bayesian optimization over function networks, models every step, not just the final score.
+
+2
+00:00:15,400 --> 00:00:25,920
+Here is each step itself, for one alloy from each campaign: the experiment, and the data it makes. Everything is simulated by the twin, unless a label says otherwise.
+
+3
+00:00:27,800 --> 00:00:36,080
+The aluminium alloy is design number 299: aluminium with eight additions, manganese and chromium the largest.
+
+4
+00:00:36,900 --> 00:00:42,700
+On this map of the search space, it is one of 435 designs the run simulated.
+
+5
+00:00:44,100 --> 00:00:50,590
+The copper alloy is design number 74: an aluminium bronze, with a little nickel and titanium.
+
+6
+00:00:56,800 --> 00:01:05,630
+CALPHAD comes first. As the melt cools, a Scheil model follows how much of it has frozen. This curve is the one the optimizer sees.
+
+7
+00:01:07,000 --> 00:01:15,810
+A full Scheil run on an open database adds the phases as they form. The twin's hidden truth differs again, as a real alloy would.
+
+8
+00:01:16,700 --> 00:01:21,440
+From its curve, the network takes two numbers: the liquidus, and a hot-cracking index.
+
+9
+00:01:22,800 --> 00:01:28,520
+Every run in round three b used this open node. The Thermo-Calc stand-in was never bought.
+
+10
+00:01:30,700 --> 00:01:39,680
+The twin stands in for the AM module with a moving point source of heat. It gives the melt pool's width and depth, and how fast the metal cools.
+
+11
+00:01:47,100 --> 00:01:55,230
+This is not Thermo-Calc output, and no run bought this node. But the same model decides the porosity of every simulated build.
+
+12
+00:01:57,600 --> 00:02:03,250
+For aluminium, the lab makes each alloy's powder itself, then prints it and checks every build.
+
+13
+00:02:03,800 --> 00:02:11,650
+This footage is real: our own atomizer, running a bronze. The size distribution beside it is the twin's, for this alloy.
+
+14
+00:02:13,000 --> 00:02:18,820
+Here, one of three runs failed, and 13 percent of the charge ended up in the printer's size range.
+
+15
+00:02:22,500 --> 00:02:26,530
+One build is nine cubes, each at its own laser power and speed.
+
+16
+00:02:32,800 --> 00:02:40,160
+Each cube's density and crack reading goes on the map. Too little energy leaves lack of fusion. Too much makes keyhole pores.
+
+17
+00:02:42,900 --> 00:02:46,360
+One build gives the network's print node nine data points.
+
+18
+00:02:48,500 --> 00:02:55,900
+In the SEM, one electron beam scans the sample line by line, and four detectors each catch a different signal.
+
+19
+00:02:56,500 --> 00:03:08,080
+Secondary electrons show the powder's surface. Backscattered electrons show the section's pores and cracks. X-rays give the elements, and diffraction gives each grain's orientation.
+
+20
+00:03:08,700 --> 00:03:12,090
+Every image here is simulated by the twin, for this alloy.
+
+21
+00:03:13,800 --> 00:03:23,120
+The network uses three of them: satellites on the powder, the section's pores and cracks, and the grain size. EDS only checks the composition.
+
+22
+00:03:27,100 --> 00:03:34,800
+Bars are heat treated, then pulled. The furnace profile here is only illustrative: the twin models the strength it leaves.
+
+23
+00:03:36,400 --> 00:03:40,650
+The curve is the twin's simulated record of the test, up to fracture.
+
+24
+00:03:48,300 --> 00:03:56,470
+Yield strength, 349 megapascals, and elongation, 10.1 percent, are the two numbers the network keeps.
+
+25
+00:03:57,600 --> 00:04:05,560
+For copper, a one-hour corrosion screen ranks the DED deposits, and thirty days in seawater come before a utility is known.
+
+26
+00:04:06,100 --> 00:04:11,770
+After an hour at rest, two quick scans give an early corrosion rate and a breakdown potential.
+
+27
+00:04:14,000 --> 00:04:21,300
+In immersion, the coupon is weighed on days 1, 3, 7 and 14. After any reading, the policy may stop it.
+
+28
+00:04:24,500 --> 00:04:29,470
+On day 30 it is cleaned and weighed: 16.6 micrometres a year.
+
+29
+00:04:39,400 --> 00:04:45,290
+Both campaigns share one lab. From here on, each step is an icon that lights up while it runs.
+

@@ -37,7 +37,8 @@ import numpy as np
 from . import data as D
 
 SCRIPT = Path(__file__).with_name("narration3b.json" if D.R3B else "narration3.json" if D.ROUND == 3 else
-                                  "narration.json")         # rounds 3 and 3b have their own scripts
+                                  "narration5.json" if D.R5 else
+                                  "narration.json")         # rounds 3 and 3b have their own scripts; 5 and later one
 NDIR = D.VID / "narration"                                  # committed: each line's FLAC, lines.json, check.json
 VOICE = os.environ.get("NARRATION_VOICE", "af_heart")       # Kokoro v1.0's stock voice, best rated in its VOICES.md
 SPEED = float(os.environ.get("NARRATION_SPEED", "0.96"))    # as the long-form's narration
@@ -57,7 +58,7 @@ SAY = {
     "ONR": "O N R", "BOFN": "B O F N", "GP-BO": "G P B O", "LPBF": "L P B F", "DED": "D E D", "HPC": "H P C",
     "EDS": "E D S", "XRD": "X R D", "3-D": "three D", "VHX": "V H X", "labour": "labor",
 }
-if D.ROUND == 3:                         # round 3's script only, so round 2's committed lines stay reusable
+if D.ROUND >= 3:                         # round 3's script on, so round 2's committed lines stay reusable
     SAY = dict(SAY, pKGFN="P K G F N")
 IPA = {
     "MiR": "mˈiːɹ",                       # longform.py: said "meer"
@@ -68,6 +69,23 @@ IPA = {
     "pycalphad": "pˈaɪkælfæd",
 }
 _TOK = None
+
+
+def configure(script: Path | None = None, ndir: Path | None = None, say: dict | None = None,
+              ipa: dict | None = None):
+    """Another script on the same voice and the same machinery (a chapter's standalone preview, twin/video/
+    experiments.py): its lines, where its audio is kept, and respellings for the words its lines add. The cut's own
+    script, its record and its committed audio are not touched: its SAY and IPA stay as they are unless a caller
+    asks for more in its own process."""
+    global SCRIPT, NDIR, SAY, IPA
+    if script is not None:
+        SCRIPT = Path(script)
+    if ndir is not None:
+        NDIR = Path(ndir)
+    if say:
+        SAY = dict(SAY, **say)
+    if ipa:
+        IPA = dict(IPA, **ipa)
 
 
 def _word(keys):

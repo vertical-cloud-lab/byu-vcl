@@ -1,0 +1,506 @@
+{
+ "follow": {
+  "flaime_al": {
+   "run": "r5_vertical_parallel_bofn3_reorder_s1",
+   "seed": 1,
+   "design": 11042,
+   "day": 181.8768,
+   "target": "T2",
+   "reached": true,
+   "composition": {
+    "Ce": 2.849,
+    "Li": 0.163,
+    "Sn": 0.061,
+    "Al": 96.927
+   },
+   "u_true": 0.6555,
+   "ys": 236.4969,
+   "el": 13.6049,
+   "policy": "bofn3",
+   "hit": 16,
+   "of": 16,
+   "route_fab": "utah_midi@vcl",
+   "route_test": "tensile@vcl",
+   "target_u": 0.6393
+  },
+  "onr_cu": {
+   "run": "r5_vertical_parallel_bofn3_reorder_s1",
+   "seed": 1,
+   "design": 91,
+   "day": 291.0683,
+   "target": "T1",
+   "reached": true,
+   "composition": {
+    "Ni": 6.144,
+    "Al": 7.809,
+    "Fe": 2.348,
+    "Ti": 0.241,
+    "Cu": 83.458
+   },
+   "u_true": 0.7049,
+   "ys": 351.1068,
+   "el": 22.6279,
+   "policy": "bofn3",
+   "hit": 16,
+   "of": 16,
+   "route_fab": "utah_mxlab@vcl",
+   "route_test": "tensile@vcl",
+   "target_u": 0.5559
+  }
+ },
+ "run": {
+  "flaime_al": {
+   "designs": 635,
+   "made": 345,
+   "built": 229,
+   "demonstrated": 104,
+   "elements": 15,
+   "in_design": 3
+  },
+  "onr_cu": {
+   "designs": 456,
+   "made": 29,
+   "built": 94,
+   "demonstrated": 6,
+   "elements": 8,
+   "in_design": 4
+  }
+ },
+ "al": {
+  "open": {
+   "liquidus_C": 654.1,
+   "kou_K": 4.9,
+   "range_K": 21.1,
+   "Q_K": 6.1,
+   "missing": []
+  },
+  "truth": {
+   "liquidus_C": 653.6,
+   "alpha_liquidus_C": 653.6,
+   "kou_K": 20.8,
+   "range_K": 27.2,
+   "Q_K": 6.1,
+   "primary": {}
+  },
+  "scheil_open": {
+   "first_solid_C": 656.3,
+   "end_C": 581.1,
+   "phases": [
+    "AL11_CEND3L",
+    "FCC_A1"
+   ],
+   "left_out": {},
+   "converged": false,
+   "seconds": 51.1
+  },
+  "am": {
+   "P_W": 250.0,
+   "v_mm_s": 1000.0,
+   "h_um": 110,
+   "t_um": 30,
+   "T0_C": 150,
+   "W_um": 155.0,
+   "D_um": 78.0,
+   "kh": 0.47,
+   "lof": 0.65,
+   "cool_K_s": 4015454.0,
+   "cool_MK_s": 4.0,
+   "probe_um": 60.0,
+   "probe_layers": 2.0,
+   "probe_cool_MK_s": 3.2,
+   "molten_ms": 0.11,
+   "iso_depth_um": 78.0,
+   "Ev_J_mm3": 76.0,
+   "boil_C": 2461.0,
+   "probe_peak_C": 866.0,
+   "liquidus_C": 654.0,
+   "node": {
+    "W_um": 128.0,
+    "D_um": 57.0,
+    "lof": 0.73,
+    "kh": 0.55,
+    "cool_K_s": 4901680.0
+   }
+  },
+  "powder": {
+   "runs": 3,
+   "failed": 1,
+   "superheat_K": 150,
+   "pour_mbar": 200,
+   "d10_um": 47.0,
+   "d50_um": 89.0,
+   "d90_um": 173.0,
+   "cut_frac_pct": 24.0,
+   "cut": [
+    20.0,
+    63.0
+   ],
+   "charge_g": 900.0,
+   "collected_g": 542.0,
+   "cut_g": 115.0,
+   "yield_pct": 60.0,
+   "cut_yield_pct": 13.0,
+   "sphericity": 0.98,
+   "satellite_pct": 2.9,
+   "particles": 243,
+   "oxygen_ppm": 727.0,
+   "T_melt_C": 804.0,
+   "amplitude": 0.8,
+   "charge_per_run_g": 300.0
+  },
+  "eds": {
+   "comp": {
+    "Ce": 2.83
+   },
+   "live_s": 60.0,
+   "below_detection": [
+    "Sn"
+   ],
+   "invisible": [
+    "Li"
+   ]
+  },
+  "cubes": [
+   {
+    "P_W": 150.0,
+    "v_mm_s": 600.0,
+    "density_pct": 90.86,
+    "true_pct": 90.9,
+    "crack": 0.0,
+    "kh": 0.36,
+    "lof": 1.13
+   },
+   {
+    "P_W": 150.0,
+    "v_mm_s": 1000.0,
+    "density_pct": 89.7,
+    "true_pct": 88.28,
+    "crack": 0.0,
+    "kh": 0.28,
+    "lof": 1.4
+   },
+   {
+    "P_W": 150.0,
+    "v_mm_s": 1700.0,
+    "density_pct": 90.2,
+    "true_pct": 87.87,
+    "crack": 0.053,
+    "kh": 0.22,
+    "lof": 1.83
+   },
+   {
+    "P_W": 250.0,
+    "v_mm_s": 600.0,
+    "density_pct": 99.59,
+    "true_pct": 99.54,
+    "crack": 0.061,
+    "kh": 0.6,
+    "lof": 0.5
+   },
+   {
+    "P_W": 250.0,
+    "v_mm_s": 1000.0,
+    "density_pct": 99.67,
+    "true_pct": 99.2,
+    "crack": 0.084,
+    "kh": 0.47,
+    "lof": 0.65
+   },
+   {
+    "P_W": 250.0,
+    "v_mm_s": 1700.0,
+    "density_pct": 96.03,
+    "true_pct": 96.1,
+    "crack": 0.033,
+    "kh": 0.36,
+    "lof": 0.91
+   },
+   {
+    "P_W": 350.0,
+    "v_mm_s": 600.0,
+    "density_pct": 98.83,
+    "true_pct": 98.96,
+    "crack": 0.043,
+    "kh": 0.85,
+    "lof": 0.28
+   },
+   {
+    "P_W": 350.0,
+    "v_mm_s": 1000.0,
+    "density_pct": 98.88,
+    "true_pct": 99.57,
+    "crack": 0.0,
+    "kh": 0.66,
+    "lof": 0.4
+   },
+   {
+    "P_W": 350.0,
+    "v_mm_s": 1700.0,
+    "density_pct": 99.41,
+    "true_pct": 99.44,
+    "crack": 0.04,
+    "kh": 0.5,
+    "lof": 0.58
+   }
+  ],
+  "n_cubes": 9,
+  "best": {
+   "index": 4,
+   "P_W": 250.0,
+   "v_mm_s": 1000.0,
+   "density_pct": 99.67,
+   "crack": 0.084,
+   "true_pct": 99.2,
+   "true_crack": 0.025
+  },
+  "densest": {
+   "index": 4,
+   "P_W": 250.0,
+   "v_mm_s": 1000.0,
+   "density_pct": 99.67
+  },
+  "gates": {
+   "density_pct": 99.5,
+   "crack": 0.05
+  },
+  "section": {
+   "porosity_pct": 0.44,
+   "cracks": 3,
+   "pores": 44,
+   "crack_density": 0.02,
+   "pore_dmax_um": 85.0
+  },
+  "ebsd": {
+   "grain_um": 24.0,
+   "equiaxed_pct": 4.0,
+   "texture_mrd": 5.4,
+   "indexed_pct": 98.0,
+   "step_um": 2.09
+  },
+  "tensile": {
+   "ys_MPa": 244.0,
+   "uts_MPa": 340.0,
+   "el_pct": 11.8,
+   "E_GPa": 66.0,
+   "bars": 3,
+   "truth_ys": 244.0,
+   "truth_el": 12.9
+  }
+ },
+ "cu": {
+  "open": {
+   "liquidus_C": 1101.0,
+   "range_K": 64.0,
+   "beta_900": 0.01,
+   "kappa_700_pct": 13.7
+  },
+  "proc": {
+   "superheat_K": 120,
+   "pour_mbar": 220,
+   "amplitude": 0.8,
+   "P_W": 600,
+   "v_mm_min": 600,
+   "feed_g_min": 6
+  },
+  "part": {
+   "density_pct": 95.7,
+   "beta_prime": 0.003,
+   "ys_MPa": 327.0,
+   "el_pct": 17.4
+  },
+  "screen": {
+   "ocp_mV": -209.0,
+   "rp_kohm_cm2": 17.8,
+   "icorr_uA_cm2": 1.9,
+   "early_um_yr": 21.0,
+   "Eb_mV": 225.0,
+   "minutes": 60,
+   "area_cm2": 0.071
+  },
+  "immersion": {
+   "days": 30,
+   "rate30_um_yr": 13.2,
+   "mass_loss_mg": 4.8,
+   "attack_um": 3.6,
+   "cu_ppb": 11870.0,
+   "ni_ppb": 545.0,
+   "interim": {
+    "1": {
+     "mass_mg": 0.22,
+     "rate_um_yr": 14.9
+    },
+    "3": {
+     "mass_mg": 0.66,
+     "rate_um_yr": 13.3
+    },
+    "7": {
+     "mass_mg": 1.46,
+     "rate_um_yr": 10.6
+    },
+    "14": {
+     "mass_mg": 2.72,
+     "rate_um_yr": 12.3
+    }
+   },
+   "read_days": {
+    "first": 1,
+    "second": 3,
+    "third": 7,
+    "fourth": 14
+   },
+   "true_rate_um_yr": 13.1
+  }
+ },
+ "sim_kinds": {
+  "logs": 488,
+  "calls": {
+   "sim_open": 159888
+  },
+  "hot_tests": 0
+ },
+ "round": 5,
+ "replay": {
+  "run": "r5_vertical_parallel_bofn3_reorder_s1",
+  "seed": 1,
+  "of": 16,
+  "arm": {
+   "lab": "vertical",
+   "plan": "parallel",
+   "policy": "bofn3",
+   "stock": "reorder"
+  },
+  "horizon_days": 730.0,
+  "days": {
+   "flaime_al|T1": 175.672,
+   "flaime_al|T2": 181.877,
+   "onr_cu|T1": 291.068,
+   "onr_cu|T2": 291.068
+  },
+  "medians": {
+   "flaime_al|T1": 176.036,
+   "flaime_al|T2": 189.175,
+   "onr_cu|T1": 297.591,
+   "onr_cu|T2": 338.923
+  }
+ },
+ "hpc": {
+  "cores": 256,
+  "per_day": 122880.0,
+  "seen_per_day": 64,
+  "kept": 128,
+  "flaime_al": {
+   "evaluated": 89707520,
+   "evaluated_millions": 89.7,
+   "seen": 46722,
+   "own_sims": 435
+  },
+  "onr_cu": {
+   "evaluated": 89707520,
+   "evaluated_millions": 89.7,
+   "seen": 43014,
+   "own_sims": 435
+  }
+ },
+ "heat": {
+  "kind": "direct age",
+  "modelled": false,
+  "hold_C": 175.0,
+  "hold_for": "age",
+  "hold_words": "low-temperature precipitates",
+  "furnace_h": 3.0,
+  "ramp_h": 0.25,
+  "hold_h": 2.75,
+  "cool_h": 0.5,
+  "ramp_K_min": 10.0,
+  "profile": [
+   [
+    0.0,
+    25.0
+   ],
+   [
+    0.25,
+    175.0
+   ],
+   [
+    3.0,
+    175.0
+   ],
+   [
+    3.05,
+    125.5
+   ],
+   [
+    3.1,
+    92.4
+   ],
+   [
+    3.15,
+    70.2
+   ],
+   [
+    3.2,
+    55.3
+   ],
+   [
+    3.25,
+    45.3
+   ],
+   [
+    3.3,
+    38.6
+   ],
+   [
+    3.35,
+    34.1
+   ],
+   [
+    3.4,
+    31.1
+   ],
+   [
+    3.45,
+    29.1
+   ],
+   [
+    3.5,
+    27.7
+   ]
+  ],
+  "strength_parts_MPa": {
+   "ss": 2.9,
+   "hp": 15.3,
+   "cell": 140.4,
+   "l12": 0.0,
+   "age": 62.2
+  }
+ },
+ "map": {
+  "flaime_al": {
+   "no_lot": 290,
+   "no_lot_but_booked": 1
+  },
+  "onr_cu": {
+   "no_lot": 362,
+   "no_lot_but_booked": 0
+  }
+ },
+ "open_db": {
+  "key": "cost507",
+  "has": [
+   "Ce",
+   "Li",
+   "Sn"
+  ],
+  "left_out": []
+ },
+ "say": {
+  "al_describe": "aluminium with three additions, cerium the largest",
+  "cu_describe": "a nickel aluminium bronze, with a little titanium",
+  "al_additions": "three",
+  "atm_failed": "one",
+  "atm_runs": "three",
+  "cubes": "nine",
+  "round": "round 5",
+  "round_spoken": "round five"
+ }
+}

@@ -1,0 +1,228 @@
+{
+ "voice": "Kokoro v1.0 af_heart, speed 0.96",
+ "recognizers": [
+  "faster-whisper small.en"
+ ],
+ "word_error_rate": {
+  "small.en": 0.0061
+ },
+ "words": 488,
+ "lines": [
+  {
+   "id": "lab1",
+   "text": "Now the two labs, like for like: the same policy and the same stock rule in both, over 16 seeds each. All of it is simulated.",
+   "spoken": "Now the two labs, like for like: the same policy and the same stock rule in both, over 16 seeds each. All of it is simulated.",
+   "seconds": 8.21,
+   "small.en": {
+    "heard": "Now the two labs, like for like, the same policy and the same stock rule in both, over 16 seeds each. All of it is simulated.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "lab2",
+   "text": "Aluminium's first target, the best existing alloy, is a tie with the heuristic. With BOFN or pKGFN in both labs it comes 1.2 times sooner, and every interval includes one.",
+   "spoken": "Aluminium's first target, the best existing alloy, is a tie with the heuristic. With B O F N or P K G F N in both labs it comes 1.2 times sooner, and every interval includes one.",
+   "seconds": 13.97,
+   "small.en": {
+    "heard": "Aluminium's first target, the best existing alloy, is a tie with the heuristic. With B-O-F-N or P-K-G-F-N in both labs, it comes 1.2 times sooner, and every interval includes one.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "lab3",
+   "text": "Aluminium's halfway target comes 1.3 to 1.4 times sooner with an optimizer in both labs. With the heuristic, about half the seeds get there in either lab.",
+   "spoken": "Aluminium's halfway target comes 1.3 to 1.4 times sooner with an optimizer in both labs. With the heuristic, about half the seeds get there in either lab.",
+   "seconds": 11.35,
+   "small.en": {
+    "heard": "Aluminium's halfway target comes 1.3 to 1.4 times sooner with an optimizer in both labs. With the heuristic, about half the seeds get there in either lab.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "lab4",
+   "text": "Copper is where the automated lab leads: 1.5 to 2.1 times sooner with the funnel, and at least 2.0 to 2.5 times with BOFN or pKGFN.",
+   "spoken": "Copper is where the automated lab leads: 1.5 to 2.1 times sooner with the funnel, and at least 2.0 to 2.5 times with B O F N or P K G F N.",
+   "seconds": 12.8,
+   "small.en": {
+    "heard": "Copper is where the automated lab leads, 1.5 to 2.1 times sooner with the funnel, and at least 2.0 to 2.5 times with BOFN or PKG-FN.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "-FN.",
+      0.49
+     ]
+    ]
+   }
+  },
+  {
+   "id": "nw1",
+   "text": "Where the automated lab does not win. Aluminium's first target is a tie: with the heuristic, the automated lab prints most of its first alloys at the same partners, before its own printer comes online around day 180.",
+   "spoken": "Where the automated lab does not win. Aluminium's first target is a tie: with the heuristic, the automated lab prints most of its first alloys at the same partners, before its own printer comes online around day 180.",
+   "seconds": 14.76,
+   "small.en": {
+    "heard": "where the automated lab does not win. Aluminium's first target is a tie. With the heuristic, the automated lab prints most of its first alloys at the same partners before its own printer comes online around day 180.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "nw2",
+   "text": "The optimizers reach that first target later than the heuristic: in the stocked automated lab, on day 176 with BOFN, against day 81.",
+   "spoken": "The optimizers reach that first target later than the heuristic: in the stocked automated lab, on day 176 with B O F N, against day 81.",
+   "seconds": 10.86,
+   "small.en": {
+    "heard": "the optimizers reach that first target later than the heuristic. In the stocked automated lab, on day 176 with B-O-F-N, against day 81.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "stocked",
+      0.44
+     ]
+    ]
+   }
+  },
+  {
+   "id": "nw3",
+   "text": "A stocked conventional lab keeps up with an automated lab that orders its metal as it goes: 0.7 to 0.9 times on aluminium's first target.",
+   "spoken": "A stocked conventional lab keeps up with an automated lab that orders its metal as it goes: 0.7 to 0.9 times on aluminum's first target.",
+   "seconds": 11.11,
+   "small.en": {
+    "heard": "A stocked conventional lab keeps up with an automated lab that orders its metal as it goes, 0.7 to 0.9 times on aluminum's first target.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "nw4",
+   "text": "And reaching a target costs the campaigns no less: about the same money with both labs stocked, and more with an optimizer when both order as they go.",
+   "spoken": "And reaching a target costs the campaigns no less: about the same money with both labs stocked, and more with an optimizer when both order as they go.",
+   "seconds": 9.49,
+   "small.en": {
+    "heard": "and reaching a target costs the campaigns no less. About the same money with both labs stocked and more with an optimizer when both order as they go.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "lab5",
+   "text": "Where it does win: copper, with every policy and in every pairing, mostly through its own DED machine, in house from around day 228. And aluminium's halfway target, when both labs run an optimizer.",
+   "spoken": "Where it does win: copper, with every policy and in every pairing, mostly through its own D E D machine, in house from around day 228. And aluminum's halfway target, when both labs run an optimizer.",
+   "seconds": 14.4,
+   "small.en": {
+    "heard": "where it does win. Copper, with every policy and in every pairing, mostly through its own DED machine, in-house from around day 228. And aluminum's halfway target when both labs run an optimizer.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "when",
+      0.23
+     ]
+    ]
+   }
+  },
+  {
+   "id": "mon1",
+   "text": "Money, as spending over time. With all of it available on day zero, the automated lab has spent 90 percent of aluminium's two-year money by day 402, and of copper's by day 371. Then it idles.",
+   "spoken": "Money, as spending over time. With all of it available on day zero, the automated lab has spent 90 percent of aluminum's two-year money by day 402, and of copper's by day 371. Then it idles.",
+   "seconds": 14.81,
+   "small.en": {
+    "heard": "Money as spending over time. With all of it available on day zero, the automated lab has spent 90% of aluminum's two-year money by day 402 and of coppers by day 371. Then it idles.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "it",
+      0.45
+     ]
+    ]
+   }
+  },
+  {
+   "id": "mon2",
+   "text": "The conventional lab, with the same policy, spreads its spending over both years: by the end it has spent 75 percent of aluminium's money and 78 percent of copper's.",
+   "spoken": "The conventional lab, with the same policy, spreads its spending over both years: by the end it has spent 75 percent of aluminum's money and 78 percent of copper's.",
+   "seconds": 10.77,
+   "small.en": {
+    "heard": "The conventional lab, with the same policy, spreads its spending over both years. By the end, it has spent 75% of aluminum's money and 78% of coppers.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "mon3",
+   "text": "Counting fixed costs, an aluminium alloy costs about 25 thousand dollars with BOFN in the automated lab, against 10 thousand in the conventional lab.",
+   "spoken": "Counting fixed costs, an aluminum alloy costs about 25 thousand dollars with B O F N in the automated lab, against 10 thousand in the conventional lab.",
+   "seconds": 10.94,
+   "small.en": {
+    "heard": "Counting fixed costs, an aluminum alloy costs about $25,000 with BOFN in the automated lab, against $10,000 in the conventional lab.",
+    "wer": 0.12,
+    "diffs": [
+     [
+      "substitute",
+      "dollars",
+      "dollarswith"
+     ],
+     [
+      "delete",
+      "with",
+      ""
+     ],
+     [
+      "substitute",
+      "in",
+      "dollarsin"
+     ]
+    ],
+    "unsure": []
+   }
+  },
+  {
+   "id": "take1",
+   "text": "So, in this simulated benchmark, like for like. Copper comes sooner in the automated lab with every policy: 1.5 to 2.1 times with the funnel, and at least 2.0 times with an optimizer.",
+   "spoken": "So, in this simulated benchmark, like for like. Copper comes sooner in the automated lab with every policy: 1.5 to 2.1 times with the funnel, and at least 2.0 times with an optimizer.",
+   "seconds": 14.08,
+   "small.en": {
+    "heard": "So, in this simulated benchmark, like for like, copper comes sooner in the automated lab with every policy, 1.5 to 2.1 times with the funnel, and at least 2.0 times with an optimizer.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "take2",
+   "text": "Aluminium's first target is a tie. Its halfway target comes 1.3 to 1.4 times sooner, and only with an optimizer in both labs. There, the policy does more than the lab.",
+   "spoken": "Aluminium's first target is a tie. Its halfway target comes 1.3 to 1.4 times sooner, and only with an optimizer in both labs. There, the policy does more than the lab.",
+   "seconds": 12.63,
+   "small.en": {
+    "heard": "Aluminium's first target is a tie. Its halfway target comes 1.3 to 1.4 times sooner, and only with an optimizer in both labs. There, the policy does more than the lab.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "take3",
+   "text": "And the automated lab is not cheaper. Its two-year money is spent in about 12 to 13 months, and with fixed costs each aluminium alloy costs about twice as much.",
+   "spoken": "And the automated lab is not cheaper. Its two-year money is spent in about 12 to 13 months, and with fixed costs each aluminum alloy costs about twice as much.",
+   "seconds": 10.58,
+   "small.en": {
+    "heard": "and the automated lab is not cheaper. Its two-year money is spent in about 12 to 13 months, and with fixed costs, each aluminum alloy costs about twice as much.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  }
+ ]
+}
