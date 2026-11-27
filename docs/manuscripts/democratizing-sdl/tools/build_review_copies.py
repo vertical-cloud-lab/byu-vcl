@@ -23,6 +23,7 @@ submission uses the full-resolution files in figures/.
 
 from __future__ import annotations
 
+import os
 import re
 import shutil
 import subprocess
@@ -99,7 +100,7 @@ def preprocess(text: str, src: Path, imgdir: Path, review: bool) -> str:
             anchor = "#" + anchor
         if not target:
             return m.group(0)
-        path = Path(rel) / target if rel != "." else Path(target)
+        path = Path(os.path.normpath(Path(rel) / target)) if rel != "." else Path(os.path.normpath(target))
         kind = "tree" if target.endswith("/") else "blob"
         return f"[{m.group(1)}]({base.format(kind=kind)}{path.as_posix()}{'/' if target.endswith('/') else ''}{anchor})"
 
@@ -193,7 +194,7 @@ def main() -> int:
             docx = outdir / f"{stem}.docx"
             pypandoc.convert_file(
                 str(md_path), "docx", outputfile=str(docx),
-                format="markdown+pipe_tables+superscript+subscript-implicit_figures",
+                format="markdown+pipe_tables+superscript+subscript+gfm_auto_identifiers-implicit_figures",
                 extra_args=[f"--resource-path={src.parent}", "--wrap=none"],
             )
             style_docx(docx, line_numbers=review)
