@@ -7,7 +7,9 @@
 Sets: ``gp_auto`` (the automated lab's BOFN and pKGFN, stocked, two years at 64x and 16x: the grid's main cost),
 ``other`` (the other arms groups' two-year runs at 64x: the automated lab's heuristic and funnel, the conventional
 lab's three policies), ``pilot`` (BOFN's scale pilot: the automated lab stocked, 300 days, seeds 0-1 at 1x, 16x and
-64x and seed 0 at 4x, as the first attempt's pilot ran it).
+64x and seed 0 at 4x, as the first attempt's pilot ran it), ``pilot1x`` (the conventional lab's BOFN and both labs'
+heuristic and funnel at 1x for 300 days, against the same seed's two-year run at 64x read at day 300: the stream's
+cost for those).
 
 Each run is seed ``s`` of a grid configuration (``bench6._cfg``), run by ``bench6.simulate`` in a fresh process. Its
 line records the wall seconds, **the process's CPU seconds** (what it costs a slice that runs one run per vCPU,
@@ -46,6 +48,11 @@ SETS = {
               ("pilot vertical bofn3 s0 4x", "vertical", "bofn3", 0, 4, 300),
               ("pilot vertical bofn3 s0 1x", "vertical", "bofn3", 0, 1, 300),
               ("pilot vertical bofn3 s1 1x", "vertical", "bofn3", 1, 1, 300)],
+    # the other policy classes and the conventional lab at 1x for 300 days: against the same seed's two-year run at
+    # 64x read at day 300 (timing6_progress.jsonl), the stream's cost per unit of scale for each
+    "pilot1x": [("pilot conventional bofn3 s0 1x", "conventional", "bofn3", 0, 1, 300),
+                ("pilot vertical fast s0 1x", "vertical", "fast", 0, 1, 300),
+                ("pilot conventional fast s0 1x", "conventional", "fast", 0, 1, 300)],
 }
 
 

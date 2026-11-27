@@ -69,12 +69,54 @@ space's readiness, with the fault risk priced in. Every row records where its nu
 (`r6.used.source`) and the summary's sha256 (`r6.used.file_sha256`), so rows made before and after the file lands
 can't be mixed by accident.
 
-**The survey had not landed when this job ended** (`claude/twin-used-market` didn't exist; its checkpoints are on
-`claude/issue-424-20261127-1746`, without a `summary.csv`). Everything this job ran used round 5's stand-ins, and
-says so. Sterling asked for that: the slices start once both are in. When it lands: merge `claude/twin-used-market`
-into this branch, rerun `python -m twin.gpcheck6 write` (the used purchases change the automated lab's schedule, so the
-reference's runs change) and commit the reference before any slice starts. Nothing in `twin/` needs to change. A
-test reads a file in the survey's own column layout (`test_market_file_in_the_surveys_own_format`).
+**The survey landed (PR 429, merged here on 2026-11-27) and is wired in.** Its per-station summary,
+[`out/twin6/market/summary.csv`](../out/twin6/market/summary.csv), comes from 1,181 listings on LabX, Machinio,
+Machineseeker, Exapro, GovDeals, AllSurplus, Public Surplus, DOTmed, Federal Equipment and Marshall Scientific
+([its README](../out/twin6/market/README.md)). eBay, BidSpotter, EquipNet and Surplus Record blocked or challenged
+the survey's browser, so they're not in it. Every row of the grid records the file's sha256 (`51ba653a…`).
+
+**One fix was needed to read it.** A station bought partly used is on site when its last part is. The survey gives
+that lead as `lead_w_with_new_parts`: the later of the used parts' lead (`lead_w`) and the new parts' lead. The
+engine read `lead_w` alone. That would have had the doser on site in 2 weeks while its carousel, bought new, takes
+14, and the machining cell in 3 while its baths, dryer and integration take 20. The same applied to the floor unit,
+the mobile units, the ICP-MS, the sieve cell and the VHX. The engine now reads `lead_w_with_new_parts` where the survey
+gives it, as the survey's own `market6.used_params` does. A test checks that the two readers agree on all eight
+numbers and `used_ok` for every station the lab builds
+(`test_engine_reads_the_committed_survey_as_market6_does`).
+
+**What it changes** ([`out/twin6/checks/used_market.md`](../out/twin6/checks/used_market.md), the 16 seeds' build-out
+both ways, made by `checks/used_market.py`):
+
+* **Two stations are bought used: the EDM and the Instron frame**, in every seed. A used unit saves 32 and 21.5
+  expected days, at 20 % and 12 % of the new price delivered, against round 5's stand-in of 45 %. Each arrives
+  faulty in some seeds (the EDM in 5 of 16, the Instron in 2), at 31 % and 29 % odds from the listings' mix of
+  conditions.
+* **The environmental chamber and the nanoindenter are now bought new.** Round 5's stand-ins bought both used. The
+  survey found 4 and 3 listings, too few to count on (`thin`), so they arrive after their 16-week leads.
+* **Every other station with a real market saves fewer than 14 expected days**, round 5's threshold, so it's bought
+  new. Most of these have leads of 8-12 weeks that the space's readiness (day 60-100) hides. The rest are partly
+  used and wait for their new parts anyway.
+* **The cell is integrated on the same day in all 16 seeds** (median day 201), and the last station is online on
+  the same day (median 247). Capital is $4.68M rather than $4.66M (medians).
+
+**Stations the lab buys with no used market it would buy from** (`round6.no_used_market()`; every row records each
+station's verdict in `r6.used.stations`):
+
+| Station | Survey's verdict | Listings |
+|---|---|---|
+| Plastometrex PLX-Benchtop (PIP) | none: made since 2019, no used unit found | 0 |
+| KLA iMicro nanoindenter | thin | 3 |
+| Instron 3119-608 environmental chamber | thin | 4 |
+| Makera Carvera desktop CNC | none | 0 |
+| Aconity3D AconityMIDI+ LPBF | none like for like (82 other LPBF machines listed) | 82 |
+| InssTek MX-Lab DED | none like for like | 4 |
+| Kardex Shuttle XP 500 | thin: common in Europe, prices on request, almost none in the US | 35 |
+| EBSD detector | thin | 2 |
+| AZtecOne EDS for the TM4000 | thin | 1 |
+| Cameras, UPSs | not surveyed: commodity, bought new | 0 |
+
+The fit-out (`services`) is building work, and the conventional lab buys nothing: it works with the equipment it
+has. Its stations are in the survey for the economics only.
 
 ## 3. Pre-coated crucibles
 
@@ -381,8 +423,6 @@ under 16 core-hours, the longest runs first; `fold` brings the slices' rows in; 
 ## 9. What this job did not do
 
 * **The grid itself**, as asked: no row of it was made. `python -m twin.bench6 status` lists every run as left.
-* **The used-equipment survey** hadn't landed (section 2). The slices should wait for it: merge it, rewrite the GP
-  check's reference (`python -m twin.gpcheck6 write`), commit, then start.
 * **The HPC at its full capacity** (about 123,000 candidates a day for each campaign, 1,920× round 5's) can't be
   simulated with this stream: about 12 hours of stream per two-year run (section 4). The grid goes to 256×.
 * **Real Intel and EPYC 7763 runners.** The pin was shown on this AMD EPYC 9V74 and under an emulated Granite Rapids

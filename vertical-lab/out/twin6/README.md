@@ -5,10 +5,10 @@ is simulated. The write-up is [`../../notes/twin_round6.md`](../../notes/twin_ro
 
 | Path | What |
 |---|---|
-| `market/` | the used-equipment market survey (issue 424, branch `claude/twin-used-market`): `listings.csv`, the per-station `summary.csv` the engine reads, its README. Not here yet: until it is, every run uses round 5's stand-ins and says so (`r6.used.source`) |
+| `market/` | the used-equipment market survey (issue 424, PR 429, merged): `listings.csv`, the per-station `summary.csv` the engine reads (every row records its sha256, `r6.used.file_sha256`), its README. What it changes in the build-out: `checks/used_market.md` |
 | `runs/` | one JSON line per run, per experiment (`<experiment>.jsonl.xz`; a slice's own `<experiment>.slice-<k>.jsonl` until it is folded in) |
 | `events/` | each run's event log (`<run id>.json.xz`) |
-| `checks/` | the GP determinism check's reference (`gpcheck.json`), what was measured to find the pin (`pin_search/`), the smoke run's timings (`smoke.json`), the HPC pilot (`hpc_pilot.*`), copper's idle check (`copper_idle.*`) |
+| `checks/` | the GP determinism check's reference (`gpcheck.json`), what was measured to find the pin (`pin_search/`), the timing runs and BOFN's scale pilot (`timing6.*`), the three-day run of every group and the timings the grid plans with (`smoke.json`), each sensitivity's code path (`paths.*`), the used market in the build-out (`used_market.*`), copper's idle check (`copper_idle.*`) |
 | `slices/` | the compute slices' run lists (`slice-<k>.txt`) and each slice's GP check (`gpcheck-slice-<k>.json`) |
 | `left.md` | runs done and left, seconds per run and core-hours, made by `python -m twin.bench6 status` |
 
