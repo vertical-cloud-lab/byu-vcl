@@ -462,6 +462,11 @@ that. What would make the instrument VLM worth it:
 The script that submits, waits and fetches is [`twin/worth_it_edison.py`](../twin/worth_it_edison.py). Edison's answers
 are not checked line by line; where this note leans on one, it says so.
 
+**The research ledgers**, every figure with its URL, a short quote and a reliability tag:
+[`out/worth_it/sources/vendors.md`](../out/worth_it/sources/vendors.md) (VLMs, mobile manipulators, the standards on
+speed) and [`out/worth_it/sources/cases.md`](../out/worth_it/sources/cases.md) (automated labs, stores in labs,
+pharmacies and biobanks, practitioners).
+
 **Vendor documents** (read, not copied; figures and short quotes above):
 
 - **Kardex:**
