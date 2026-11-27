@@ -1,0 +1,33 @@
+{
+ "about": "the atomizer footage and photos the cut shows (twin/video/cut5.py write_footage_used, from out/footage/manifest.json)",
+ "clips": [
+  {
+   "run": "4yghtr",
+   "alloy": "Al 6063",
+   "date": "6 October 2026",
+   "issue": "DAL #159",
+   "files": [
+    {
+     "file": "al_4yghtr_melt.mp4",
+     "beat": "melt"
+    },
+    {
+     "file": "al_4yghtr_oct06_jar.jpg",
+     "beat": "jar"
+    }
+   ]
+  },
+  {
+   "run": "c3k0n5",
+   "alloy": "Al 4047",
+   "date": "22 October 2026",
+   "issue": "DAL #159",
+   "files": [
+    {
+     "file": "al_c3k0n5_pour.mp4",
+     "beat": "pour"
+    }
+   ]
+  }
+ ]
+}

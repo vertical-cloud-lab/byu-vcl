@@ -543,6 +543,29 @@ def commit() -> str:
                           cwd=HERE).stdout.strip()
 
 
+def write_footage_used() -> Path:
+    """out/twin<R>/video/footage_used.json: the lab's own atomizer pictures the cut shows (exp_atomize.al_footage, from
+    out/footage/manifest.json), one entry per run, with its alloy and day, for the closing notes (figs5_intro
+    .footage_items) and the record."""
+    from . import exp_atomize as EA
+    ft = EA.al_footage()
+    runs: dict = {}
+    for beat in ("melt", "pour", "jar"):
+        if beat not in ft:
+            continue
+        c = ft[beat]["credit"]
+        r = runs.setdefault(c["run"], dict(run=c["run"], alloy=None, date=c["day"], issue=c["issue"], files=[]))
+        if beat != "jar" and not r["alloy"]:
+            r["alloy"] = c["alloy"]
+        r["files"].append(dict(file=ft[beat]["file"], beat=beat))
+    dst = VID / "footage_used.json"
+    VID.mkdir(parents=True, exist_ok=True)
+    dst.write_text(json.dumps(dict(about="the atomizer footage and photos the cut shows (twin/video/cut5.py "
+                                         "write_footage_used, from out/footage/manifest.json)",
+                                   clips=list(runs.values())), indent=1, ensure_ascii=False) + "\n")
+    return dst
+
+
 def build(only: list | None = None) -> dict:
     """The encode: every segment in pieces (or only the named ones again), the join, the narration, the record."""
     t_start = time.time()
@@ -551,6 +574,7 @@ def build(only: list | None = None) -> dict:
     miss = missing()
     if miss and os.environ.get("TWIN_VIDEO_ALLOW_MISSING") != "1":
         raise SystemExit("segments not built: " + "; ".join(f"{n} ({w})" for n, w in miss))
+    write_footage_used()
     rec = plan_record()
     todo, every = _pieces(rec, only)
     if not R5.have_tracks():
