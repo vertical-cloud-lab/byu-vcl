@@ -30,7 +30,7 @@ PARTS = (r"\b(parts? only|for parts|spare parts?|part no\b|p/n\b|pcb|board\b|cir
 st("sem", "Hitachi TM4000PlusII benchtop SEM", 1, 100_000, "vertical", "bench_sens",
    r"\bTM\s?-?4000\s?plus\s?(ii|2)\b|\bTM\s?-?4000\s?(ii|2)\b",
    r"\bTM\s?-?(4000|3030|3000|1000)\b|hitachi.*(table\s?top|bench\s?top|desktop).*(sem|electron)",
-   r"phenom.*(sem|electron|microscope|pro\s?x?\b|\bxl\b|pure|\bg[1-6]\b|desktop)|(sem|electron).*phenom|neoscope|\bJCM-?\d{4}|coxem|\bEM-30|\bSNE-?\d{4}|(table\s?top|bench\s?top|desktop|compact)\s+(sem|scanning electron)",
+   r"phenom.*(sem|electron|microscope|pro\s?x?\b|\bxl\b|pure|\bg[1-6]\b|desktop)|(sem|electron).*phenom|neoscope|\bJCM-?\d{4}|coxem|\bEM-30|\bSNE-?\d{4}|(table\s?top|bench\s?top|desktop|compact)\s+(sem\b|scanning electron)",
    PARTS + r"|\bstub|carbon tape|sputter|coater|\btem\b|transmission electron|filament|cathode|turbo|"
            r"detector only|bse detector|stage only|chiller only|\bpump\b(?!.*(sem|microscope))|catheter|medtronic|"
            r"boston scientific|stent|guidewire|sheath|semiconductor wafer",
@@ -50,30 +50,44 @@ st("eds", "Oxford Instruments AZtecOne EDS for the TM4000", 1, 55_000, "vertical
    r"aztec\s?one",
    r"oxford.*\b(eds|edx|x-?max|ultim|x-?act|inca|swift|aztec)\b|\b(x-?max|ultim max|x-?act)\b",
    r"\b(eds|edx|edax|xflash|quantax|octane|apollo|element eds|ultradry|noran|pathfinder|bruker eds)\b",
-   PARTS + r"|\bxrf\b|x-ray fluorescence|handheld|\bvanta\b|\bniton\b",
+   PARTS + r"|\bxrf\b|x-ray fluorescence|handheld|\bvanta\b|\bniton\b|auger|microprobe|scanning electron|"
+           r"electron microscope|\bsem\b",
    note="EDS is often sold mounted on a used SEM; such bundles are listed under the SEM")
 st("ebsd", "EBSD detector on the SEM", 1, 120_000, "vertical", "bench_sens",
    r"symmetry",
    r"oxford.*(ebsd|nordlys|c-?nano|c-?swift)|nordlys|c-?nano",
    r"\bebsd\b|hikari|velocity.*edax|digiview|e-?flash|electron backscatter diffraction|\btsl\b",
-   PARTS, note="an EBSD detector needs a full-size SEM with a 70 degree tilt, not a benchtop SEM")
+   PARTS + r"|scale\b|preamp", note="an EBSD detector needs a full-size SEM with a 70 degree tilt, not a benchtop SEM")
 st("xrd", "Rigaku MiniFlex 600-C benchtop XRD with prep station", 1, 105_000, "vertical", "bench_sens",
    r"miniflex\s?-?600|miniflex\s?6g",
    r"miniflex|rigaku.*(bench|desktop|compact).*(xrd|diffract)",
-   r"\bd2 phaser\b|\baeris\b|\bAXRD\b|equinox\s?(100|1000)|(bench\s?top|benchtop|desktop|compact)\s+(xrd|x-?ray diffract)|"
-   r"\bxrd\b|x-?ray diffract|diffractometer|\bD8\b|\bD5000\b|x'?pert|empyrean|smartlab|ultima\s?(iv|iii|\+)|"
-   r"\bXRD-?\d{4}\b|\bARL X'?TRA\b|bruker.*advance",
+   r"\bd2 phaser\b|\baeris\b|\bAXRD\b|equinox\s?(100|1000)|(bench\s?top|benchtop|desktop|compact)\s+(xrd|x-?ray diffract)",
    PARTS + r"|x-?ray tube only|\btube\b(?!.*(diffract|xrd))|goniometer only|detector only|single crystal|"
            r"x-?ray (inspection|imaging|cabinet|film|source|generator)|radiograph|dental|veterinary|baggage|faxitron",
    note="tray instrument: benchtop units fit the tray; floor diffractometers are kept as 'floor' substitutes")
+st("xrd_floor", "floor-standing diffractometer (does not fit a tray; a substitute for the XRD role)", 0, 0,
+   "vertical", "floor_sens", r"$^", r"$^",
+   r"\bD8\b|\bD5000\b|\bD5005\b|x'?pert|empyrean|smartlab|ultima\s?(iv|iii|\+)|\bXRD-?\d{4}\b|\bARL X'?TRA\b|"
+   r"bruker.*advance|\bxrd\b|x-?ray diffract|diffractometer",
+   PARTS + r"|x-?ray tube only|\btube\b(?!.*(diffract|xrd))|goniometer only|detector only|single crystal|"
+           r"x-?ray (inspection|imaging|cabinet|film|source|generator)|radiograph|dental|veterinary|baggage|faxitron|"
+           r"miniflex|d2 phaser|aeris|bench\s?top|benchtop|desktop",
+   note="kept for the XRD role in a conventional lab; excluded from the tray XRD's statistics")
+st("xrf_floor", "floor-standing WDXRF (does not fit a tray)", 0, 0, "vertical", "floor_sens", r"$^", r"$^",
+   r"\bAxios\b|\bZSX\b|\bS8\s?tiger|\bS4\s?explorer|\bwdxrf\b|wd-xrf|\bPW\s?\d{4}\b|magix|zetium|\bx900\b|"
+   r"\bARL\s?(9900|perform|x900)|\bXRF-?1800\b|sequential.*(xrf|x-ray)|simultaneous.*(xrf|x-ray)|supermini|optim'?\s?x\b",
+   PARTS + r"|handheld|portable|tube only", note="excluded from the tray XRF's statistics")
 st("xrf", "Bruker S2 PUMA Series 2 EDXRF with XY autochanger", 1, 120_000, "vertical", "bench_sens",
    r"s2\s?puma",
-   r"bruker.*(s2|s8|ranger|tiger|xrf)|s2\s?ranger|s8\s?tiger",
+   r"bruker.*(s2|ranger|xrf)(?!.*tiger)|s2\s?ranger",
    r"\bNEX\s?(CG|DE|QC|DE VS)\b|epsilon\s?[1345]|\bminipal\b|quant'?x|\bEDX-?\s?(7000|8000|720|800|900|8100|7200)|"
-   r"\bEA-?1000|x-?supreme|xepos|midex|spectro.*xrf|\b(edxrf|wdxrf|xrf spectrometer|x-?ray fluorescence)\b|"
-   r"\bAxios\b|\bZSX\b|supermini|\bxrf\b",
+   r"\bEA-?1000|x-?supreme|xepos|midex|spectro.*xrf|\b(edxrf|xrf spectrometer|x-?ray fluorescence)\b|"
+   r"supermini|\bxrf\b",
    PARTS + r"|handheld|hand-?held|\bvanta\b|\bdelta\b|\bniton\b|\bxl[23t]\b|s1 titan|\btitan\b|tracer|sci-?aps|"
-           r"\bx-?met\b|olympus innov|analyzer gun|portable|coating thickness|fischerscope|xdal|xdv|thick800",
+           r"\bx-?met\b|olympus innov|analyzer gun|portable|coating thickness|fischerscope|xdal|xdv|thick800|"
+           r"picofox|txrf|gold|precious|jewel|karat|thickness|coating|plating|treated wood|lube oil|sulfur|rohs|"
+           r"zetium|axios|\bzsx|s8 tiger|s4 explorer|\bpw\s?\d{4}|\bx900\b|arl 9900|perform'?x|wdxrf|wd-xrf|"
+           r"sequential|simultaneous|supermini",
    note="handheld analysers are left out: they don't do the station's job (lab EDXRF with an autochanger)")
 st("mastersizer", "Malvern Mastersizer 3000 with Aero S", 1, 110_000, "vertical", "bench_sens",
    r"mastersizer\s?3000",
@@ -82,17 +96,21 @@ st("mastersizer", "Malvern Mastersizer 3000 with Aero S", 1, 110_000, "vertical"
    r"microtrac|\bS3500\b|sympatec|\bHELOS\b|cilas|\bSALD-?\d{3,4}|analysette\s?22|"
    r"(laser diffraction|laser particle size|particle size analy[sz]er)",
    PARTS + r"|zetasizer|\bzeta\b|nanosight|morphologi|dls\b|dynamic light|sieve|camsizer|coulter counter|"
-           r"multisizer|accusizer|particle counter|hiac|liquid particle|air particle|aerosol|met one|climet|lasair",
+           r"multisizer|accusizer|particle counter|hiac|liquid particle|air particle|aerosol|met one|climet|lasair|"
+           r"\bzsu\d*|zetasizer|sedigraph|^(?:malvern\s+)?(?:scirocco|hydro|aero)\b|window tool|\btool\b|"
+           r"^(?!.*(mastersizer|analy[sz]er|system)).*module\b",
    note="the Aero S (dry dispersion) is the part that matters for powder; a wet-only unit needs one added")
 st("hardness", "Mitutoyo HM-220 micro-Vickers with AVPAK", 1, 70_000, "vertical", "bench",
    r"\bHM-?220\b",
-   r"\bHM-?(2\d\d|1\d\d)\b|mitutoyo.*(micro\s?-?vickers|micro\s?hardness|hardness)",
-   r"micro\s?-?vickers|micro\s?-?hardness|\btukon\b|\bVH\s?(1102|1202|3100|3300)\b|\bLM\s?-?(100|110|247|248|300|310|700|800)(at)?\b|"
-   r"\bAMH\s?-?\d+|clemex|duramin|durascan|\bqness\b|\bQ(10|30|60)\s?A?\b|\bFM-?(7|8|1)\d0e?\b|\bHMV-?(G|2|1)|"
-   r"knoop|vickers",
+   r"\bHM-?(2[0-2]\d|1[0-2]\d)\b.*(hardness|vickers|tester|mitutoyo)|mitutoyo.*(micro\s?-?vickers|micro\s?hardness|hardness tester)",
+   r"micro\s?-?vickers|micro\s?-?hardness|\btukon\b|miniload|micromet|\bHMV-?\w+|\bDUH-?\d+|duramin|durascan|"
+   r"\bqness\b|clemex|\bLM\s?-?(100|110|247|248|300|310|700|800)(at)?\b|\bFM-?(7|8|1)\d0e?\b|\bHV-?1000|\bAMH\s?-?\d+|"
+   r"(vickers|knoop) hardness (tester|testing)|hardness test(er|ing (machine|system|microscope))",
    PARTS + r"|rockwell|brinell|shore|durometer|\bleeb\b|portable|test block|indenter only|\bindenter\b(?!.*tester)|"
-           r"tablet|calibration block|nano",
-   note="Rockwell, Brinell and portable testers are left out")
+           r"tablet|calibration block|nano|comparison plate|reference material|hardness plate|indentation body|"
+           r"testing plate|retractor|incubator|simulator|wound|photoplan|macro-?vickers|\bLV series|universal hardness|"
+           r"stand base|frame base|parts repair",
+   note="micro-Vickers and Knoop testers; Rockwell, Brinell, portable testers and reference blocks are left out")
 st("nanoindenter", "KLA iMicro nanoindenter", 1, 250_000, "vertical", "bench_sens",
    r"\bimicro\b",
    r"\bG200\b|nano\s?indenter\s?(xp|g200|dcm)|\binano\b|keysight.*nano|agilent.*nano\s?indent|\bmts nano|kla.*indent",
@@ -111,7 +129,10 @@ st("vhx", "Keyence VHX-7000 with VHX-S750E stand and EA-300 LIBS head", 1, 190_0
    r"\bDSX\s?-?(1000|510|500|110|100)\b|\bDVM\s?-?[56]\b|smartzoom|hirox|\bRH-?(2000|8800|5500)\b|\bKH-?(7700|8700)\b|"
    r"digital microscope",
    PARTS + r"|usb microscope|handheld|dino-?lite|celestron|toy|kids|loupe|lens only|zoom lens only|"
-           r"\bVK-?X?\d+|laser (scanning|confocal)|\bVR-?\d{4}|\bIM-?\d{4}|\bLJ-?\w+|\bCV-?\w+|\bIV-?\w+",
+           r"\bVK-?X?\d+|laser (scanning|confocal)|\bVR-?\d{4}|\bIM-?\d{4}|\bLJ-?\w+|\bCV-?\w+|\bIV-?\w+|"
+           r"stand base|stand only|lens kit|zoom lens|\blens\b(?!.*(microscope|system))|controller only|camera only|"
+           r"monitor only|\bVH-?Z\d+",
+   comp=dict(libs=r"\bEA-?300\b|libs|laser induced", microscope=r"."),
    note="the EA-300 LIBS head is half the station's price and is rare used")
 st("polish", "LECO PX500 grinder/polisher, MX400 mounting press and a sectioning saw", 1, 55_000, "vertical", "bench",
    r"\bPX\s?-?500\b|\bMX\s?-?400\b",
@@ -142,7 +163,9 @@ st("furnaces", "Nabertherm NAT 15/65 forced-convection furnace (to 650 C)", 2, 2
            r"pottery|glass kiln|dental|tube furnace|rotary|vacuum furnace|induction|melting furnace|forge|"
            r"hvac|gas furnace|home furnace|residential|propane|natural gas|btu|trane|lennox|carrier|goodman|"
            r"rheem|york|furnace filter|incubator|drying oven|vacuum oven|toaster|pizza|convection oven(?!.*(furnace|\d{3,4}\s?°?\s?c))|"
-           r"bakery|kitchen|food|smoker|reflow|curing oven|paint",
+           r"bakery|kitchen|food|smoker|reflow|curing oven|paint|trockenschrank|tmax 300|drying|rohrofen|tube|"
+           r"rautomead|die cooler|control console|controller|process box|retort|brazing|debinding|more than heat|"
+           r"accessories|mechanical oven|laboratory oven|lab oven|600\s?°?\s?f|\bNEW\b$",
    note="the vertical lab's two NAT 15/65; a box furnace is a substitute for heat treatment above 650 C")
 st("furnace", "Box furnace (about 1,200 C) and a forced-convection ageing oven", 1, 30_000, "conventional", "bench_heavy",
    r"$^", r"$^",
@@ -150,7 +173,9 @@ st("furnace", "Box furnace (about 1,200 C) and a forced-convection ageing oven",
    r"\bF\d{5}\b|\bBF\d{5}\b|\bLHT\b|\bCWF\b|\bRHF\b|\bELF\b|vulcan|neytech|thermcraft|\bfurnace\b",
    PARTS + r"|heating element|thermocouple only|controller only|crucible|kiln (shelf|furniture)|ceramic kiln|"
            r"pottery|glass kiln|dental|rotary|induction|melting furnace|forge|hvac|gas furnace|home furnace|"
-           r"residential|propane|natural gas|btu|trane|lennox|carrier|goodman|rheem|york|furnace filter|reflow",
+           r"residential|propane|natural gas|btu|trane|lennox|carrier|goodman|rheem|york|furnace filter|reflow|"
+           r"trockenschrank|rohrofen|tube|rautomead|die cooler|control console|controller|process box|retort|"
+           r"brazing|debinding|more than heat|accessories|\bNEW\b$",
    note="the conventional lab's furnace; the same listings serve both labs' furnace roles")
 st("sieve_cell", "Sieve cell: Retsch AS 200, tipper, wash module, downdraft enclosure", 1, 60_000, "vertical", "bench",
    r"\bAS\s?200\b",
@@ -159,6 +184,7 @@ st("sieve_cell", "Sieve cell: Retsch AS 200, tipper, wash module, downdraft encl
    r"analysette\s?3|fritsch.*sieve|test sieve shaker|vibratory sieve|sieving machine|\bSS-?(8|15|23)R?\b",
    PARTS + r"|sieves? only|test sieves?\b(?!.*shaker)|sieve pans?|lids?\b|stainless sieves?\b(?!.*shaker)|"
            r"flour|kitchen|garden|soil sifter|screen\b(?!.*shaker)",
+   comp=dict(shaker=r"."),
    note="the shaker is the only part with a used market; the tipper, wash module and enclosure are custom")
 st("sieve", "Retsch AS 200 sieve shaker and a set of sieves", 1, 8_000, "conventional", "bench",
    r"\bAS\s?200\b",
@@ -205,16 +231,18 @@ st("hoods", "Ducted 6 ft fume hood, installed", 2, 35_000, "both", "floor",
    PARTS + r"|ductless|filter|carbon|biological safety|\bbsc\b|biosafety|laminar|clean bench|pcr|"
            r"range hood|kitchen|hood vent|car hood|truck hood|exhaust fan only|sash only|base cabinet only|"
            r"weighing|powder hood|balance enclosure|downdraft table",
+   comp=dict(hood=r"."),
    note="installation, ducting and the exhaust fan are most of a ducted hood's installed cost, used or new")
 st("icpms", "Agilent 7850 ICP-MS with SPS 4, chiller, trace-metals hood, hot block and dilutor", 1, 260_000,
    "vertical", "floor_sens",
    r"\b78[05]0\b.*(icp|agilent)|agilent.*\b78[05]0\b",
    r"agilent.*\b(7900|7800|7700x?|7700e|7500\w*|8800|8900|7850)\b|\b(7900|7700x|7500cx|7500ce|8800|8900)\b.*icp",
    r"icp-?\s?ms|nexion|icap\s?(q|rq|tq)|elan\s?(6000|6100|9000|drc)|\bx\s?series\s?(ii|2)|plasmaquant ms|"
-   r"\bICPMS-?2030|\bicpms\b",
-   PARTS + r"|cones?\b|torch\b|nebuli[sz]er|spray chamber|injector|autosampler only|\bsps\s?4\b only|"
+   r"\bICPMS-?2030|\bicpms\b|agilent.*\bsps\s?4\b|\bsps\s?4\b.*autosampler",
+   PARTS + r"|cones?\b|torch\b|nebuli[sz]er|spray chamber|injector|"
            r"icp-?oes|optima|icap\s?(6000|7000|pro)|\b5100\b|\b5110\b|\b5800\b|\b5900\b|\b720\b|\b730\b|"
            r"vista|mp-?aes|aas\b|atomic absorption|gc-?ms|lc-?ms|quadrupole only|turbo pump",
+   comp=dict(autosampler=r"\bsps\s?4\b|autosampler|\basx-?\d+", instrument=r"."),
    note="ICP-OES is a different instrument and left out")
 st("instron", "Instron 68FM-100 floor frame (100 kN) with grips and extensometer", 1, 175_000, "vertical",
    "floor_heavy",
@@ -315,7 +343,7 @@ st("shuttle", "Kardex Shuttle XP 500, 9.15 m (30 ft), 2450 x 864 mm trays", 2, 2
    r"vertical (storage|lift) (system|machine)|storage lift|tower storage",
    PARTS + r"|tray only|trays only|tray dividers?|bin dividers?|controller only|keypad|light curtain only|"
            r"carousel|horizontal carousel|vertical carousel|lektriever|megamat|lr\s?35|paternoster|"
-           r"file (cabinet|carousel)|pallet rack|shelving",
+           r"file (cabinet|carousel)|pallet rack|shelving|schrank|cabinet|drawer",
    note="a used VLM is dismantled, shipped in pieces and re-erected; height and tray size have to fit the room")
 st("couplings", "Staubli CombiTac docks and tray plates (each)", 14, 4_000, "vertical", "parcel",
    r"combi\s?-?tac", r"st[aä]ubli.*(coupl|connector|tool changer|mps|rbe)",
@@ -335,11 +363,13 @@ st("midi", "Aconity3D AconityMIDI+ laser powder-bed fusion", 1, 700_000, "vertic
    r"\bSLM\s?(125|250|280|500)(hl)?\b|slm solutions|renishaw.*\bAM\s?(250|400|500)|\bAM\s?(250|400|500)\b.*renishaw|"
    r"concept laser|\bmlab\b|\bM2 cusing\b|cusing|truprint|trumpf.*(1000|2000|3000).*print|"
    r"\bDMP\s?(flex|factory)?\s?\d+|prox\s?(dmp\s?)?(100|200|300|320)|sisma|mysint|xact metal|\bXM\s?200|"
-   r"farsoon|\bBLT-?S\d+|or laser|orlas|\bAddUp\b|velo3d|\bDMLS\b|direct metal laser|selective laser melting|"
+   r"farsoon|\bBLT-?S\d+|\bor laser\b|\borlas\b|\bAddUp\b|velo3d|\bDMLS\b|direct metal laser|selective laser melting|"
    r"laser (powder bed|melting)|\blpbf\b|\bslm\b|metal (3d|additive) (printer|manufacturing)",
    PARTS + r"|resin|\bsla\b|\bfdm\b|fff|filament|ultimaker|markforged|desktop metal|binder jet|exone|"
            r"formlabs|stratasys|prusa|creality|polyjet|objet|nylon|sls\b(?!.*metal)|formiga|\bP\s?(100|110|396|500|770)\b|"
-           r"recoater blade|build plate|powder only|filter cartridge|camera only",
+           r"recoater blade|build plate|powder only|filter cartridge|camera only|siev\w* station|powder (sieving|handling) "
+           r"(station|unit)|unpacking station|\bipcm\b|^(?!.*print).*laser cutting machine|^(?!.*print).*laser cutter|"
+           r"fiber laser|engrav|marking|welding",
    note="small to mid-size LPBF machines; polymer printers (EOS Formiga, P-series) are left out")
 st("mxlab", "InssTek MX-Lab blown-powder DED", 1, 300_000, "vertical", "machine",
    r"mx-?lab", r"insstek|\bMX-?(mini|grande|600|1000|450)\b",

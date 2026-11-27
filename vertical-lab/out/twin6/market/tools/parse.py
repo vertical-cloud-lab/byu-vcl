@@ -43,37 +43,39 @@ def money(text):
 
 
 COND = [
-    ("parts", r"for parts|not working|parts only|non-?working|for repair|defective|broken|does not (power|work|turn)|"
-              r"won'?t (power|turn)|needs? repair|missing (parts|components)|incomplete"),
+    ("parts", r"for parts|not working|parts only|non-?working|for repair|parts[ /]+repair|repair or parts|defective|"
+              r"broken|does not (power|work|turn)|won'?t (power|turn)|needs? repair|missing (parts|components)|incomplete"),
     ("refurbished", r"refurbish|reconditioned|rebuilt|remanufactur|certified pre-?owned|\bCPO\b|overhaul"),
-    ("warranty", r"warrant(y|ied)|guarantee|\b\d+[- ]day (return|right of return)|money[- ]back"),
+    ("warranty", r"\b\d+[- ]?(day|month|year|yr)s?\b[^.\n]{0,25}warrant|warrant(y|ied)[^.\n]{0,15}\b(\d+|one|two|three|six|"
+                 r"twelve|ninety)[- ]?(day|month|year)|under warranty|with (a |full |the |manufacturer'?s? )?warranty|"
+                 r"warranty (included|incl\.?)|warranty:\s*yes|start-?up warranty|guaranteed? (to work|working|for)|"
+                 r"money[- ]back|right of return"),
     ("tested", r"\btested\b|working condition|in working order|fully functional|ready for operation|"
                r"functionality: fully|operational|functional\b|demo (unit|instrument)|like new|excellent \(used\)|"
                r"calibrated|under power|can be seen running|in production|runs? (well|good|great)|"
-               r"was working|working when (removed|taken)|good working"),
+               r"was working|working when (removed|taken)|good working|used - good|used - excellent"),
     ("as_is", r"\bas[- ]is\b|untested|not tested|where[- ]is|no warranty|unknown condition|condition unknown|"
-              r"sold as is|buyer.*inspect"),
+              r"sold as is|buyer.*inspect|seller assumes all responsibility"),
     ("new", r"\bnew in (box|crate)|\bunused\b|never used|\bNIB\b|new old stock|new surplus|brand new|"
             r"condition:\s?new\b|^new\n"),
 ]
 
 
 def condition(text, site):
+    """parts > refurbished or warranted > as-is (with or without a seller's 'tested') > new surplus > tested > used."""
     t = text or ""
-    hits = [c for c, p in COND if re.search(p, t, re.I | re.M)]
+    hits = [c for c, pat in COND if re.search(pat, t, re.I | re.M)]
     if "parts" in hits:
         return "parts", hits
     if "refurbished" in hits or "warranty" in hits:
         return ("refurbished_warranty" if ("refurbished" in hits and "warranty" in hits) else
                 ("refurbished" if "refurbished" in hits else "warranty")), hits
-    if site in ("govdeals", "publicsurplus", "allsurplus"):
-        return ("as_is_tested" if "tested" in hits else "as_is"), hits      # these auctions sell as-is, where-is
+    if "as_is" in hits or site in ("govdeals", "publicsurplus", "allsurplus"):    # these auctions sell as-is, where-is
+        return ("as_is_tested" if "tested" in hits else "as_is"), hits
     if "new" in hits:
         return "new_surplus", hits
     if "tested" in hits:
         return "tested", hits
-    if "as_is" in hits:
-        return "as_is", hits
     m = re.match(r"\s*(New|Used|Refurbished|Demo|For Parts\w*|Parts)\b", t)
     if m and site == "labx":
         return {"new": "new_surplus", "used": "used", "refurbished": "refurbished", "demo": "tested"}.get(
@@ -131,12 +133,19 @@ def main():
         if r["site"] == "labx":
             title = re.sub(r"^(New|Used|Refurbished|Demo|For Parts\S*)\s+", "", title)
             title = re.sub(r"\s+(Please Inquire|\$[\d,.]+\s?USD.*)$", "", title)
+        if r["site"] == "exapro" and title.startswith("Best used machines"):
+            slug = href.rstrip("/").split("/")[-1]
+            title = re.sub(r"-p\d+$", "", slug).replace("-", " ")
         model = ""
         m = re.search(r"Manufacturer\n(.+)\nModel\n(.+)", r["text"])
         if m:
             model = f"{m.group(1)} {m.group(2)}"
         st = STN.classify(r["station"], title, model) if r["station"] in STN.S else None
         station = r["station"]
+        if not st and (r["station"] + "_floor") in STN.S:
+            c = STN.classify(r["station"] + "_floor", title, model)
+            if c:
+                station, st = r["station"] + "_floor", c
         if not st:
             for k in STN.S:
                 if k == r["station"]:

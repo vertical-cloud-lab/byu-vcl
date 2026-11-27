@@ -9,6 +9,7 @@ import stations as STN
 import parse as P
 
 RAW = "/tmp/market/raw"
+VL = "/home/runner/work/byu-vcl/byu-vcl/vertical-lab"
 # ECB euro reference rates of 17 Nov 2026 (Banca d'Italia's republication): value of 1 EUR
 EUR = dict(USD=1.0989, GBP=0.83305, CHF=0.9233, SEK=11.11, JPY=175.05, CAD=1.5704, PLN=4.4038, DKK=7.4749,
            CNY=7.3254, HUF=364.93, CZK=24.387, EUR=1.0)
@@ -124,11 +125,15 @@ def detail_fields(site, t):
         f["warranty"] = g(r"((?:\d+[- ](?:day|month|year))[^\n]{0,60}warranty[^\n]{0,60})", t)
         f["location"] = "Cambridge, MA, US (Marshall Scientific)"
     elif site == "dotmed":
-        m = re.search(r"Price:?\s*\n?\s*\$([\d,]+(?:\.\d\d)?)", t)
+        m = re.search(r"Asking Price :\s*\n\s*\$([\d,]+(?:\.\d\d)?)", t)
         if m:
             f["price"] = (float(m.group(1).replace(",", "")), "USD")
-        f["cond_label"] = g(r"Condition:?\s*\n?(.+)", t)
-        f["location"] = g(r"(?:Location|Ships from):?\s*\n?(.+)", t)
+        f["cond_label"] = g(r"^Condition :\s*\n(.+)", t)
+        f["location"] = g(r"^Location :\s*\n(.+)", t)
+        f["seller"] = g(r"^Seller Information\n(.+)", t)
+        f["listed"] = g(r"^Date :\s*\n(.+)", t)
+        f["availability"] = ("in stock" if re.search(r"^In Stock :\s*\nYes", t, re.M) else "")
+        f["desc"] = g(r"Description([\s\S]{0,1200}?)\nReturn Policy", t)
     elif site == "fedequip":
         f["location"] = g(r"Location:?\s*\n?(.+)", t)
         f["desc"] = g(r"(Used [^\n]{0,600})", t)
@@ -213,6 +218,65 @@ def main(out_dir):
             weight_kg=round(f["weight_kg"]) if f.get("weight_kg") else "",
             date_seen=(d["t_utc"] if d else c["seen_utc"])[:10], detail_read=bool(d),
             shot=(d or {}).get("shot", "")))
+    # the same unit listed twice (two sites, or two searches that reached it by different URLs): same station, same
+    # price within 1 %, and the same model tokens; or, unpriced, the same title and place. Later copies get keep=0.
+    def toks(t):
+        t = STN.norm(t).lower()
+        t = re.sub(r"\b([a-z]{1,4})[\s-]+(\d)", r"\1\2", t)            # 'st-10', 'tm 3030' -> 'st10', 'tm3030'
+        words = set(re.findall(r"[a-z0-9]*\d[a-z0-9]*|[a-z]{3,}", t))
+        return " ".join(sorted(words - {"used", "for", "sale", "with", "and", "the", "cnc", "machine", "industrial",
+                                        "robot", "cobot", "robots"}))
+    seen = {}
+    for r in rows:
+        r["keep"] = 1
+        r["dup_of"] = ""
+        p = r["price_usd"]
+        if p:
+            k = (r["station"], r["component"], round(math.log(p) / math.log(1.01)), toks(r["title"]))
+        elif r["location"] and r["year"]:
+            k = (r["station"], r["component"], None, toks(r["title"]), r["location"], r["year"])
+        else:
+            k = None
+        if k is not None and k in seen:
+            r["keep"], r["dup_of"] = 0, seen[k]
+        elif k is not None:
+            seen[k] = r["url"]
+    for r in rows:
+        r.setdefault("reason", "")
+        if r["source"] == "labx" and r["condition"] == "new_surplus":
+            r["keep"], r["reason"] = 0, "new equipment advertised on LabX, not a used unit"
+        elif r["keep"] == 0 and r["dup_of"]:
+            r["reason"] = "the same unit as dup_of"
+    ov = {}
+    try:
+        for o in csv.DictReader(open(f"{out_dir}/overrides.csv")):
+            ov[o["url"]] = o
+    except FileNotFoundError:
+        pass
+    for r in rows:
+        o = ov.get(r["url"])
+        if not o:
+            continue
+        for k in ("station", "component", "match", "condition"):
+            if o.get(k):
+                r[k] = o[k]
+        if o.get("keep", "") != "":
+            r["keep"] = int(o["keep"])
+        if o.get("reason"):
+            r["reason"] = o["reason"]
+    # freight and rigging, and the lead to site, per listing: the same tables the summary uses (twin/market6.py)
+    sys.path.insert(0, VL)
+    from twin import market6 as M
+    wt_of = {}
+    for n in csv.DictReader(open(f"{VL}/out/twin6/market/new.csv")):
+        wt_of[(n["station"], n["component"])] = n["wt"]
+        wt_of.setdefault((n["station"], ""), n["wt"])
+    for r in rows:
+        wt = wt_of.get((r["station"], r["component"])) or wt_of.get((r["station"], "")) or STN.S.get(
+            r["station"], {}).get("wt", "bench")
+        r["ship_class"] = wt
+        r["freight_rigging_usd"] = M.freight(wt, r["region"], r["dist_km"] or None)
+        r["lead_w_est"] = M.lead_of(r, wt)
     keys = list(rows[0].keys()) if rows else []
     with open(f"{out_dir}/listings_raw.csv", "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=keys)
