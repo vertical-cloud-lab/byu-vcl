@@ -29,13 +29,17 @@ HERE = Path(__file__).resolve().parents[2]          # vertical-lab/
 # TWIN_VIDEO_ROUND=3b: round 3's cut again with round 3b's results (out/twin3b: like3b.json, the event logs of every
 # seed): the lab comparison like for like, and the replay on the replay arm's median seeds. It reads round 3's runs and
 # summaries as round 3's cut does (ROUND is 3), and keeps its own cut in out/twin3b/video.
+# TWIN_VIDEO_ROUND=5 (or 6, 7, ...): the two-year cut (twin/video/cut5.py): one continuous replay from the day the
+# money arrives, with that round's results in out/twin<ROUND> (like<ROUND>.json, runs/, events/) and its own cut in
+# out/twin<ROUND>/video. The round is the one switch: twin/video/data5.py reads everything else from it.
 _RND = os.environ.get("TWIN_VIDEO_ROUND", "2").strip().lower()
 R3B = _RND == "3b"
 ROUND = 3 if R3B else int(_RND)
+R5 = ROUND >= 5
 OUT2 = HERE / "out" / "twin2"
 OUT3 = HERE / "out" / "twin3"
 OUT3B = HERE / "out" / "twin3b"
-RES = OUT3 if ROUND == 3 else OUT2
+RES = (HERE / "out" / f"twin{ROUND}") if R5 else OUT3 if ROUND == 3 else OUT2
 VID = (OUT3B if R3B else RES) / "video"
 EVENTS_DIR = (OUT3B if R3B else RES) / "events"
 CAMPAIGNS = ("flaime_al", "onr_cu")
