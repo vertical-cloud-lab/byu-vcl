@@ -1,0 +1,278 @@
+From bca5b9baf8d6af54ffb31b58d51a01204edbb1f9 Mon Sep 17 00:00:00 2001
+From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
+Date: Fri, 27 Nov 2026 20:31:05 +0000
+Subject: [PATCH 24/24] Section II refers to the Fig. 4 caption for the
+ recordings instead of an inline URL (keeps page 4 from being left nearly
+ empty); letter pointers for the 26-page build
+
+---
+ RESPONSE_TO_REVIEWERS.md | 78 ++++++++++++++++++++--------------------
+ main.tex                 |  2 +-
+ 2 files changed, 40 insertions(+), 40 deletions(-)
+
+diff --git a/RESPONSE_TO_REVIEWERS.md b/RESPONSE_TO_REVIEWERS.md
+index ba6f841..18fca13 100644
+--- a/RESPONSE_TO_REVIEWERS.md
++++ b/RESPONSE_TO_REVIEWERS.md
+@@ -21,7 +21,7 @@ Thank you!
+ > project scoping, judging, mentoring, and post-event archiving? What did not work well? What would
+ > the organizers change in a future event?
+ 
+-Added as Lessons Learned, Organizational lessons (Section V.A, pages 20 and 21).
++Added as Lessons Learned, Organizational lessons (Section V.A, pages 19 and 20).
+ 
+ > Second, the authors should synthesize the scientific lessons from the project outcomes. [...] I
+ > encourage the authors to add a section summarizing the observed pros and cons of BO across the
+@@ -31,7 +31,7 @@ Added as Lessons Learned, Organizational lessons (Section V.A, pages 20 and 21).
+ > selection, acquisition-function optimization, computational overhead, and reproducibility of
+ > benchmark comparisons.
+ 
+-Added as Lessons Learned, Scientific lessons (Section V.B, page 21), covering both identified strengths and limitations,
++Added as Lessons Learned, Scientific lessons (Section V.B, page 20), covering both identified strengths and limitations,
+ each tied to the projects that showed it.
+ 
+ > Third, the authors should add a forward-looking section on future opportunities for Bayesian
+@@ -40,7 +40,7 @@ each tied to the projects that showed it.
+ > preference-based BO, multi-objective materials design, robust BO under noisy experimental data,
+ > benchmark development, and domain-specific BO tools for synthesis and processing optimization.
+ 
+-Added as Future Opportunities (Section VII, page 22); its two paragraphs cover each direction
++Added as Future Opportunities (Section VII, page 21); its two paragraphs cover each direction
+ listed.
+ 
+ > I also recommend that the authors provide a more systematic evaluation of the 45 project outputs.
+@@ -49,8 +49,8 @@ listed.
+ > availability, licensing, documentation, reproducibility, dependency status, and maintenance plans
+ > would strengthen the resource value of the paper.
+ 
+-Added as Cross-Project Synthesis (Section IV, pages 19 and 20): the classification in Table IV
+-(page 20), discussed in the section's second paragraph; license counts in Table V (page 20), discussed
++Added as Cross-Project Synthesis (Section IV, pages 18 and 19): the classification in Table IV
++(page 19), discussed in the section's second paragraph; license counts in Table V (page 19), discussed
+ in the fourth paragraph; per-project categories in ESI Table S1, and each project's license, README,
+ dependency files and last update in ESI Table S2.
+ 
+@@ -59,7 +59,7 @@ dependency files and last update in ESI Table S2.
+ > lessons from the BO applications, limitations revealed by the project outcomes, and future
+ > opportunities for Bayesian optimization in chemistry and materials.
+ 
+-Addressed by the new sections (Sections IV to VII, pages 19 to 22): Cross-Project Synthesis,
++Addressed by the new sections (Sections IV to VII, pages 18 to 21): Cross-Project Synthesis,
+ Lessons Learned, Post-hackathon Outcomes, and Future Opportunities.
+ 
+ ---
+@@ -78,24 +78,24 @@ Thank you!
+ > beyond summary listings of the project titles and the description of the individual projects. For
+ > example, were there commonalities/differences in the way different teams approach their problems?
+ 
+-Added as Cross-Project Synthesis (Section IV, pages 19 and 20). Commonalities and differences in how
+-teams approached their problems are in its last paragraph (page 20).
++Added as Cross-Project Synthesis (Section IV, pages 18 and 19). Commonalities and differences in how
++teams approached their problems are in its last paragraph (page 19).
+ 
+ > Does the level of prior expertise impact the outcomes?
+ 
+ We did not explore this; however, the mix of participant backgrounds is noted in the last paragraph of Cross-Project Synthesis
+-(Section IV, page 20).
++(Section IV, page 19).
+ 
+ > Are there follow up studies to see whether participants are applying BO methods in their own
+ > research? What was the ultimate gain from the hackaton? increased awareness? increased
+ > understanding of the methods? more interactions across many groups?
+ 
+-This was very interesting for us. We looked at this and found a number of examples. These are now described in Post-hackathon Outcomes (Section VI, pages 21 and 22).
++This was very interesting for us. We looked at this and found a number of examples. These are now described in Post-hackathon Outcomes (Section VI, pages 20 and 21).
+ 
+ > While I would not expect the authors to address all the items presented above, it would be very
+ > useful to have a reflective component to the paper and at least some discussion on lessons learned.
+ 
+-Added as Lessons Learned (Section V, pages 20 and 21).
++Added as Lessons Learned (Section V, pages 19 and 20).
+ 
+ ---
+ 
+@@ -112,27 +112,27 @@ Thank you!
+ > It would be nice if some takeaways from the hackathon are produced at the end:
+ 
+ The manuscript no longer ends with the project listing: Cross-Project Synthesis (Section IV, pages
+-19 and 20), Lessons Learned (Section V, pages 20 and 21), Post-hackathon Outcomes (Section VI, pages
+-21 and 22), and Future Opportunities (Section VII, page 22) follow it.
++18 and 19), Lessons Learned (Section V, pages 19 and 20), Post-hackathon Outcomes (Section VI, pages
++20 and 21), and Future Opportunities (Section VII, page 21) follow it.
+ 
+ > 1. are there agreed upon frameworks that work better for specific tasks (i.e. with noisy data or
+ > less noisy data)?
+ 
+ The projects support only a narrow observation: in the one direct test (project 23), a noise-aware
+ Gaussian process beat a fixed-noise one in 15 of 16 settings, more clearly as noise grew (Section V.B,
+-second paragraph, page 21).
++second paragraph, page 20).
+ 
+ > 2. Are BO tools going to be easily deployable in experimental data settings (the hackathon seems to
+ > imply that it will!).
+ 
+-Addressed in the last paragraph of Lessons Learned, Scientific lessons (Section V.B, page 21) and
+-in the second paragraph of Future Opportunities (Section VII, page 22), which cites graphical and
++Addressed in the last paragraph of Lessons Learned, Scientific lessons (Section V.B, page 20) and
++in the second paragraph of Future Opportunities (Section VII, page 21), which cites graphical and
+ web-based BO interfaces.
+ 
+ > 3. Where is it useful to use Bayesian Optimization vs. where did end users find little utility?
+ 
+ Project-anchored examples are in the first two paragraphs of Lessons Learned, Scientific lessons
+-(Section V.B, page 21); without a participant survey we do not generalize beyond them, but we also added a note stating that we would like to do a survey for similar events in the future.
++(Section V.B, page 20); without a participant survey we do not generalize beyond them, but we also added a note stating that we would like to do a survey for similar events in the future.
+ 
+ > However, this reviewer also commends the fantastic effort in making everyone's data and code
+ > publicly available.
+@@ -158,13 +158,13 @@ The items are addressed below.
+ 
+ Not withheld: these six teams did not submit the closing video the summarization pipeline ran on.
+ Their summaries were written from the teams' project pages and public project outputs and added back
+-for completeness; see the opening paragraph of Projects' Key Findings (Section III, page 9). All 45
+-projects now appear in the text (pages 9 to 19) and in Table III (pages 8 and 9).
++for completeness; see the opening paragraph of Projects' Key Findings (Section III, page 8). All 45
++projects now appear in the text (pages 8 to 18) and in Table III (pages 7 and 8).
+ 
+ > 1a. For example, a reader would likely want to know more about the first- and second-place winners
+ > (projects 23 and 34).
+ 
+-Projects 23 and 34 now have full summaries in Projects' Key Findings (pages 14 and 17), each
++Projects 23 and 34 now have full summaries in Projects' Key Findings (pages 13 and 16), each
+ noting its award.
+ 
+ > 2. Many of the code repositories do not provide adequate module requirement. (Projects 2–8, 10–16,
+@@ -173,7 +173,7 @@ noting its award.
+ > metadata may not apply.
+ 
+ Noted. The aggregate finding is reported in the fourth paragraph of Cross-Project Synthesis
+-(Section IV, page 20), and each repository's dependency files are listed in ESI Table S2.
++(Section IV, page 19), and each repository's dependency files are listed in ESI Table S2.
+ 
+ > 3. There are some projects for which the dataset used is not clear. (Projects 6, 19–21, 29, 30, 31,
+ > 36, 37, 40, 42, & 45; project 15 provides the dataset, but it is buried within the code
+@@ -181,8 +181,8 @@ Noted. The aggregate finding is reported in the fourth paragraph of Cross-Projec
+ 
+ Each flagged summary now names its data source with a citation, or states that the data came from a
+ simulator, synthetic test functions or the team's own measurements, or that none were used (Section
+-III, pages 10 to 19). A data-provenance paragraph summarizes the patterns (Section IV, fifth
+-paragraph, page 20).
++III, pages 9 to 18). A data-provenance paragraph summarizes the patterns (Section IV, fifth
++paragraph, page 19).
+ 
+ > 4. Can the rubric used for evaluating projects be included in the supplemental materials?
+ 
+@@ -194,36 +194,36 @@ and Setup (Section II, page 3).
+ > level of detail. Furthermore, the claim that this approach provides a structured and objective
+ > assessment of the submissions is not supported by any evidence or reference to prior works.
+ 
+-Addressed in the opening paragraph of Projects' Key Findings (Section III, page 9), which now gives
++Addressed in the opening paragraph of Projects' Key Findings (Section III, page 8), which now gives
+ the model, its temperature and the generation date; the raw and edited summaries are archived (Data
+-availability, page 22). The objective-assessment claim has been withdrawn.
++availability, page 21). The objective-assessment claim has been withdrawn.
+ 
+ ### Tables and figures
+ 
+ > 6. Figure 2: The black text which falls above the map can be difficult to read.
+ 
+-Fixed: a thin white outline now surrounds the histogram labels and titles. See Figure 2 (page 6).
++Fixed: a thin white outline now surrounds the histogram labels and titles. See Figure 2 (page 5).
+ 
+ > 7. Table 1 spans two pages but contains no entries on the second page.
+ 
+-Fixed: the project table (now Table III, pages 8 and 9) breaks cleanly with entries on every page.
++Fixed: the project table (now Table III, pages 7 and 8) breaks cleanly with entries on every page.
+ 
+ > 9. Figure 3: The caption contains a statement on preprint server policies which should be updated to
+ > adhere to Digital Discovery's polices.
+ 
+-Fixed: the caption now states the actual reason for the blurring. See Figure 3 (page 6).
++Fixed: the caption now states the actual reason for the blurring. See Figure 3 (page 5).
+ 
+ > 11. Table 2: The "Prize" header is marked for a footnote that is not present.
+ 
+ Fixed: the explanation is folded into the caption and the header carries no marker. The rankings
+ table is now referenced from the community-judging paragraph in Hackathon Details and Setup
+-(Section II, fifth paragraph, page 3) and appears as Table I (page 5).
++(Section II, fifth paragraph, page 3) and appears as Table I (page 4).
+ 
+ > 13. Figures 4 & 5: Were participants informed that their names and commentary may be made public
+ > prior to joining the event?
+ 
+ Participants were not asked in advance about publishing their display names, so the names are now
+-pixelated throughout the keynote room panel in Figure 4 and in Figure 5 (both on page 7), and each
++pixelated throughout the keynote room panel in Figure 4 and in Figure 5 (both on page 6), and each
+ caption states this. The names still legible in Figure 4's other panels are those of co-authors.
+ 
+ ### Minor comments
+@@ -232,18 +232,18 @@ caption states this. The names still legible in Figure 4's other panels are thos
+ > transparent hyperlink standards and is inaccessible on paper copies. In addition, these hyperlinks
+ > are redundant with the links already provided in Table 1.
+ 
+-Changed to plain text throughout the summary headings (Section III, pages 9 to 19); the links
+-remain in Table III (pages 8 and 9), and ESI Table S3 prints the full URL behind each of its icons.
++Changed to plain text throughout the summary headings (Section III, pages 8 to 18); the links
++remain in Table III (pages 7 and 8), and ESI Table S3 prints the full URL behind each of its icons.
+ Papers named in Post-hackathon Outcomes are now numbered references rather than links (Section VI,
+-second paragraph, page 22), and the website links in Section II and in the Table II, Figure 3 and
+-Figure 4 captions are printed as URLs.
++second paragraph, page 21), and the website links in the Table II, Figure 3 and Figure 4 captions are
++printed as URLs.
+ 
+ > 13a. Project 40 has been migrated from the github listed on its project page to the repo listed in
+ > the Zenodo metadata file.
+ > 13b. Projects 33 and 34 do not have github links on their project pages despite having links in the
+ > Zenodo metadata file.
+ 
+-Fixed on the project pages and in Table III (pages 8 and 9).
++Fixed on the project pages and in Table III (pages 7 and 8).
+ 
+ > 13. Typographical errors in the Acknowledgement section, around the header for Project 3, and in the
+ > Author Contributions section. ("Ryan-Rhys Gri ths", "Jakub LÆla", "Can zkan", "Adrian o†i¢",
+@@ -251,20 +251,20 @@ Fixed on the project pages and in Table III (pages 8 and 9).
+ > "ff", etc.).
+ 
+ Fixed: the PDF now maps every glyph to Unicode and sets accented letters as single characters, so
+-these names extract and copy correctly (Acknowledgements, page 22; the Project 3 heading, page 9).
++these names extract and copy correctly (Acknowledgements, page 21; the Project 3 heading, page 8).
+ The separate author contributions statement was regenerated and checked the same way.
+ 
+ ### Data reviewer checklist
+ 
+ Noted. The scripts behind Tables III and V, the project summaries and the figure preparation, and
+-the raw AI-drafted summaries, are in the repository listed under Data availability (page 22).
++the raw AI-drafted summaries, are in the repository listed under Data availability (page 21).
+ 
+ ---
+ 
+ ## Other changes
+ 
+ - At their request, Jiale Shi and Dandan Tang are no longer authors.
+-- The Acknowledgements declare the generative AI tools used, with model names and dates (page 23).
++- The Acknowledgements declare the generative AI tools used, with model names and dates (page 22).
+ - References were checked against Crossref: wrong DOIs and author lists corrected, missing DOIs
+   added, duplicate entries merged, and preprints since published cited in their published form.
+ - Table I's ninth-place entry is project 45 (it said 43); Table V was rechecked in November 2026;
+@@ -273,4 +273,4 @@ the raw AI-drafted summaries, are in the repository listed under Data availabili
+   summaries says so.
+ - Participants came from five continents, not four: Fig. 2 includes Algeria, Ghana and Australia.
+ - Data availability follows Conflicts of interest and lists the material behind each analysis
+-  (page 22).
++  (page 21).
+diff --git a/main.tex b/main.tex
+index fc38ea5..d3698a9 100644
+--- a/main.tex
++++ b/main.tex
+@@ -314,7 +314,7 @@ This hackathon was in large part inspired by \citet{jablonka_14_2023} and is one
+ 
+ Participants were provided with various resources to prepare for the hackathon: GitHub classroom assignments with automated feedback, application- and theory-focused videos and tutorials, Python refresher materials, a list of tools to consider using during the hackathon, project submission instructions, and authorship criteria (\cref{fig:preparation}).
+ 
+-One of the unique aspects of this event is that it was hosted in Gather Town, a sort of union between traditional video conferencing software and retro arcade-style avatars and virtual spaces (\cref{fig:gathertown}). Participants create a custom avatar and maneuver in a two-dimensional space. The videos and audio of other participants appear and become audible when nearby, and fade out when far away, simulating an in-person experience. At the beginning of the hackathon, all participants gathered to listen to keynotes in realtime, which were broadcasted via YouTube live and embedded into the Gather Town space. The videos were then made available on the hackathon website (\url{https://ac-bo-hackathon.github.io/videos-slides/}), which collectively garnered approximately 1600 views within two months. After the keynotes, teams were assigned tables in breakout rooms, each with a whiteboard. Individual tables were assigned as "private spaces" which isolated the shared audio and video within each space. This had a number of advantages for collaboration within and across teams.
++One of the unique aspects of this event is that it was hosted in Gather Town, a sort of union between traditional video conferencing software and retro arcade-style avatars and virtual spaces (\cref{fig:gathertown}). Participants create a custom avatar and maneuver in a two-dimensional space. The videos and audio of other participants appear and become audible when nearby, and fade out when far away, simulating an in-person experience. At the beginning of the hackathon, all participants gathered to listen to keynotes in realtime, which were broadcasted via YouTube live and embedded into the Gather Town space. The videos were then made available on the hackathon website (\cref{fig:gathertown}), which collectively garnered approximately 1600 views within two months. After the keynotes, teams were assigned tables in breakout rooms, each with a whiteboard. Individual tables were assigned as "private spaces" which isolated the shared audio and video within each space. This had a number of advantages for collaboration within and across teams.
+ 
+ The hackathon concluded with a project showcase accompanied by crowdsourced judging within a "poster room" (\cref{fig:poster}).
+ 
+-- 
+2.56.1
+

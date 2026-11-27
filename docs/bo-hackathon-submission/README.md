@@ -29,7 +29,7 @@ submission as listed in the portal on 8 October (screenshot in issue 185).
 | --- | --- | --- | --- |
 | [`cover-letter/cover-letter.docx`](cover-letter/cover-letter.docx) ([PDF](cover-letter/cover-letter.pdf)) | Cover letter field, or a file | Letter_to_Referees_BYU_letterhead_signed_fullpage.docx | **Draft.** Put it on letterhead, fill in the editor's name and the date, sign. Declares the AI use and the authorship change, as RSC requires. |
 | [`response/Response_to_Referees.pdf`](response/Response_to_Referees.pdf) | Response to Referees | (new for the revision) | Every page pointer checked against the PDF below. Also paste or attach in the "Response to Decision Letter" step. |
-| [`manuscript/BO_Hackathon_Manuscript_Revised.pdf`](manuscript/BO_Hackathon_Manuscript_Revised.pdf) | Main Article | BO_Hackathon_Manuscript_Final.pdf | 27 pages, 0 unresolved references or citations. |
+| [`manuscript/BO_Hackathon_Manuscript_Revised.pdf`](manuscript/BO_Hackathon_Manuscript_Revised.pdf) | Main Article | BO_Hackathon_Manuscript_Final.pdf | 26 pages, 0 unresolved references or citations. |
 | [`manuscript/BO_Hackathon_Manuscript_Revised_marked_changes.pdf`](manuscript/BO_Hackathon_Manuscript_Revised_marked_changes.pdf) | Revised manuscript with changes marked | (new) | latexdiff against the submitted source (`6d2c616`). |
 | [`manuscript/BO_Hackathon_Manuscript_Revised_LaTeX_source.zip`](manuscript/BO_Hackathon_Manuscript_Revised_LaTeX_source.zip) | LaTeX source files | (new) | Compiles without shell-escape: tested by unzipping into an empty folder. Needs TeX Live 2023 (see below). |
 | [`figures/Fig1.tif`](figures/) to `Fig5.tif` | Figure | (new) | TIFF at 600 dpi or more at print width (8.3 cm for Fig. 1, 17.1 cm for the rest), transparency flattened onto white. Figs. 3 to 5 were upsampled to reach 600 dpi; Fig. 5's source screenshot is only 1660 px wide. |
@@ -73,8 +73,8 @@ see step 5 below), and every PDF above was rebuilt from them.
    of every project's repository: the documentation, dependency and maintenance part of
    Referee 1's request that was still open, and the evidence for Referee 4's point 2. S3 prints
    the full URL behind every link icon in Table III, for printed copies (Referee 4, minor 11);
-   the few links that sat behind words (Section II, Table II, Figs. 3 and 4) are now printed
-   URLs. Tracking parameters were stripped from the Table III links; one LinkedIn link carried
+   the links that sat behind words in the Table II, Fig. 3 and Fig. 4 captions are now
+   printed URLs. Tracking parameters were stripped from the Table III links; one LinkedIn link carried
    the sharer's member token.
 7. **Presentation:** Data availability now sits after Conflicts of interest with full URLs
    (RSC's rule); the follow-up papers in Section VI are numbered references instead of opaque
@@ -131,7 +131,7 @@ In this order:
    `git am --keep-cr docs/bo-hackathon-submission/patches/*.patch`, then
    `sed -i 's/Los Angles/Los Angeles/g; s/Departmentt/Department/' latex/authors-hardcoded.tex`
    (two affiliation typos, kept out of the patches because that file's context lines carry
-   co-authors' personal e-mail addresses). Tested: the 23 patches plus that command reproduce
+   co-authors' personal e-mail addresses). Tested: the 24 patches plus that command reproduce
    the tree the PDFs were built from, exactly. Or ask `@claude` on PR 171 to do it.
 6. **Fix the participant spreadsheet before reviewers follow the new link (Sterling).**
    `AC-bo-hackathon-2024.csv` in the public AC-BO repository holds 131 participants' e-mail
@@ -206,7 +206,7 @@ add the office's turnaround: about **11 December**. If the office wants a signed
   build reads are included, so no participant spreadsheet, no `edison_output/` and no unused
   `latex/authors.tex`, and the commented-out personal e-mail addresses in the author file are
   dropped (only the two printed corresponding-author addresses remain). Unzipped into an
-  empty folder and compiled with plain `pdflatex`/`bibtex`: same 27 pages and the same text as
+  empty folder and compiled with plain `pdflatex`/`bibtex`: same 26 pages and the same text as
   the manuscript PDF (one word breaks differently at a line end).
 - Figures: lossless TIFF (Deflate), RGB, white background, resolution tag set to the print width.
 - Response letter: `scripts/make_response_letter.sh` (pandoc), as before.

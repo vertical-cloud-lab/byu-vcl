@@ -1,7 +1,7 @@
-From f7ab1467e83d89f73912278a1b064ab709351418 Mon Sep 17 00:00:00 2001
+From be0d3f4d68f7ce8d2b5800c45b6e7014ab281aba Mon Sep 17 00:00:00 2001
 From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
 Date: Fri, 27 Nov 2026 19:24:29 +0000
-Subject: [PATCH 04/23] References: merge five duplicate entries, cite Ament et
+Subject: [PATCH 04/24] References: merge five duplicate entries, cite Ament et
  al. NeurIPS 2023 for acquisition optimization
 
 - Five works were in both .bib files under different keys and printed twice

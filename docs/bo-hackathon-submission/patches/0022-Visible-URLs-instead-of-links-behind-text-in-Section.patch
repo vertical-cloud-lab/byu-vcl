@@ -1,7 +1,7 @@
-From cd058cd656ff8e36cb23acf784daa1de3d195dd7 Mon Sep 17 00:00:00 2001
+From 9556434405f84e2fdc35173f4572799e13a7d06f Mon Sep 17 00:00:00 2001
 From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
 Date: Fri, 27 Nov 2026 20:29:33 +0000
-Subject: [PATCH 22/23] Visible URLs instead of links behind text in Section
+Subject: [PATCH 22/24] Visible URLs instead of links behind text in Section
  II, Table II and the Fig. 3 and 4 captions (Referee 4, minor 11); letter
  pointers for the 27-page build
 

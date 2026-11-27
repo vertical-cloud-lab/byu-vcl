@@ -1,7 +1,7 @@
-From 32251c5ee61afd1fb4a18560546ab3a13f4e1b12 Mon Sep 17 00:00:00 2001
+From 47798755db84d863a69f172e68573e5bb92a688e Mon Sep 17 00:00:00 2001
 From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
 Date: Fri, 27 Nov 2026 20:20:02 +0000
-Subject: [PATCH 17/23] Consistency and wording fixes from an independent
+Subject: [PATCH 17/24] Consistency and wording fixes from an independent
  second-round read
 
 - Table I: ninth place is project 45 (General Optimizers), not 43 (the

@@ -1,7 +1,7 @@
-From b09be0ffb8e14f16e6af46f80ebba70106e08a30 Mon Sep 17 00:00:00 2001
+From 9c83e011632044fcff8cf1a65e30f4e0c9328c7b Mon Sep 17 00:00:00 2001
 From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
 Date: Fri, 27 Nov 2026 19:48:53 +0000
-Subject: [PATCH 16/23] AI statement: add Claude Opus 5.5 (used for this round
+Subject: [PATCH 16/24] AI statement: add Claude Opus 5.5 (used for this round
  of revisions and the Crossref check)
 
 ---
