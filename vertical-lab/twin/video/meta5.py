@@ -104,11 +104,11 @@ def description(rec: dict, commit: str) -> str:
          f"runs {footage_credits()}; the search spaces in the two proposals; published prices. Simulated: every "
          "alloy, every measurement and every result. The atomizer's cycle and its crucibles are design targets, "
          "shown next to the lab's record. The heat-treatment profile drawn is illustrative."),
-        (f"What changed from round 3b's cut ({OLD}, whose replay changed seed partway through): one continuous "
-         f"replay of {f['years']} on one seed, both campaigns together, from day 0 through the build-out; each "
-         "experiment beside its data (SEM detectors, a direct age, tensile plotted live, the periodic table, "
-         "Scheil and AM stand-ins); floor space at matched capacity; aluminium footage for aluminium; counters "
-         "that say what they count, and why a curve is flat; spending over time instead of a budget bar."),
+        (f"What changed from round 3b's cut (https://www.youtube.com/watch?v={OLD}, whose replay changed seed "
+         f"partway): one continuous replay of {f['years']} on one seed, both campaigns, from day 0 through the "
+         "build-out; each experiment beside its data; floor space at matched capacity; aluminium footage for "
+         "aluminium; counters that say what they count, and why a curve is flat; spending over time, not a budget "
+         "bar."),
         (f"Code: https://github.com/{M.REPO}/tree/{commit}/vertical-lab/twin (the cut: twin/video/cut5.py; notes: "
          f"notes/twin_video.md)\nPR: https://github.com/{M.REPO}/pull/{PR}"),
     ]
