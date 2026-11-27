@@ -683,6 +683,22 @@ jobs:
           git config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ${basic}"
           git ls-remote --heads origin main >/dev/null && echo "origin reachable with the job token"
 
+          # The first attempt can leave uncommitted files, and the retry's branch
+          # setup then can't check out its base ("Your local changes ... would be
+          # overwritten by checkout"; byu-finances issue 131, run 45967038494).
+          # Keep them in a local commit on a claude/ branch, where the retry's
+          # prompt tells it to look, so the tree is clean and nothing is lost.
+          if [ -n "$(git status --porcelain)" ]; then
+            wip="claude/first-attempt-wip-${GITHUB_RUN_ID}"
+            git switch -q -c "$wip"
+            git add -A
+            git -c user.name="claude[bot]" -c user.email="41898282+claude[bot]@users.noreply.github.com" \
+              commit -q --no-verify -m "First attempt's uncommitted changes (run ${GITHUB_RUN_ID}), kept for the retry"
+            echo "Kept the first attempt's uncommitted changes on local branch $wip ($(git rev-parse --short HEAD))"
+          else
+            echo "The first attempt left no uncommitted changes"
+          fi
+
       # The action pins a comment-triggered PR run to the version the commenter
       # saw: it won't start if the branch's latest push is at or after the
       # trigger ("PR #N was updated after the trigger"). If the first attempt
