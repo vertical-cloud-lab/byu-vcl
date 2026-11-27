@@ -51,8 +51,10 @@ ARMS = (("vertical", "parallel", "reorder"), ("vertical", "parallel", "lean"),
 N_SEEDS = int(os.environ.get("TWIN6_SEEDS", "16"))
 FLOOR = 12                             # an arm is reported from 12 seeds
 # The simulated candidates the policies see, as a multiple of round 5's (64 new a day, 128 kept): the main arms'
-# scale, chosen from the pilot (out/twin6/checks/hpc_pilot.json; notes/twin_round6.md, section 4).
-HPC_SCALE = 16
+# scale, chosen from the pilot (out/twin6/checks/hpc_pilot.md; notes/twin_round6.md, section 4): outcomes still change
+# at 64x (the conventional lab's copper, which tests about two alloys a year), and a two-year run there takes at most
+# about an hour and a half; at 256x the stream alone takes about two hours a run.
+HPC_SCALE = 64
 HPC_SCALES = (1, 4, 16, 64, 256)
 LATE_D = 240.0                         # "late crucibles": the pool arrives 240 days later than its lead time
 
