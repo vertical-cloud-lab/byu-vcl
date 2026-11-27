@@ -41,6 +41,10 @@ def round5_flags():
     return out
 
 
+def flag5(x):
+    return x["station_busy_frac"] < 0.5 and x["cause"].startswith("policy waiting") and x["days"] >= 14
+
+
 def one(case):
     from twin import bench6 as B6
     lab, plan, pol, stock, seed, days = case
@@ -49,12 +53,15 @@ def one(case):
     out, tw = B6.simulate(cfg)
     st = out["r6"]["idle"]["stretches"]["onr_cu"]
     keep = ("start_d", "days", "cause", "could_start", "flag", "days_asked", "days_nothing_proposed", "pending_median",
-            "causes")
+            "causes", "station_busy_frac")
     cu = tw.campaigns["onr_cu"]
     return dict(run=B6.run_id(cfg), case=list(case), days=days, seconds=out["seconds"], code=out["code"],
                 pin=out["env"]["pin"], cpu=out["env"]["cpu"],
                 stretches={g: [{k: x[k] for k in keep} for x in v if x["days"] >= 14] for g, v in st.items()},
                 flagged={g: [(x["start_d"], x["days"]) for x in v if x["flag"]] for g, v in st.items()},
+                # round 5's rule on the same stretches: the station busy under half of every hour of the stretch, the
+                # policy waiting, two weeks or more (money never runs out in round 6)
+                flagged_r5_rule={g: [(x["start_d"], x["days"]) for x in v if flag5(x)] for g, v in st.items()},
                 policy_counts=out["campaigns"]["onr_cu"]["policy_counts"], status=out["campaigns"]["onr_cu"]["status"],
                 counters=out["r6"]["counters"]["onr_cu"],
                 blend_screens=sum(1 for D in cu.deposits.values() if D.get("mode") == "blend"),
@@ -74,20 +81,29 @@ def table():
          "copper's first fabrication step (or the atomizer) started nothing for two weeks or more while the policy "
          "was waiting and the campaign could have started a job (twin/round6.py `idle_report6`). Everything is "
          "simulated.", "",
-         "| Lab | Policy | Stock | Seed | Days | Flagged, cap put back | Flagged, round 6 (no cap) | Blend screens, cap | "
-         "Blend screens, no cap | Lots, cap | Lots, no cap |", "|---|---|---|---|---|---|---|---|---|---|---|"]
-    tot = {"cap": 0, "nocap": 0}
+         "Round 5's rule (the station busy under half of every hour of the stretch) is applied to the same stretches "
+         "beside round 6's (a partner's session offered and not used, or an in-house station free half its open "
+         "hours), so that a change of rule is not mistaken for a change of policy. Counts are of copper's first "
+         "fabrication step, where round 5 found its stretches.", "",
+         "| Lab | Policy | Stock | Seed | Days | Round 5 flagged | Flagged, cap (r6 rule / r5 rule) | "
+         "Flagged, no cap (r6 rule / r5 rule) | Blend screens, cap / no cap | Lots, cap / no cap |",
+         "|---|---|---|---|---|---|---|---|---|---|"]
+    tot = {(k, rule): 0 for k in ("cap", "nocap") for rule in ("flagged", "flagged_r5_rule")}
+    n = lambda r, f: sum(len(v) for g, v in r[f].items() if g == "fab")
     for (lab, pol, stock, seed, days), d in sorted(by.items()):
-        f = {k: sum(len(v) for v in r["flagged"].values()) for k, r in d.items()}
-        for k in f:
-            tot[k] += f[k]
+        for k, r in d.items():
+            for rule in ("flagged", "flagged_r5_rule"):
+                tot[(k, rule)] += n(r, rule)
         cell = lambda k, fn: str(fn(d[k])) if k in d else "-"
-        L.append(f"| {lab} | {pol} | {stock} | {seed} | {days} | "
-                 f"{cell('cap', lambda r: sum(len(v) for v in r['flagged'].values()))} | "
-                 f"{cell('nocap', lambda r: sum(len(v) for v in r['flagged'].values()))} | "
-                 f"{cell('cap', lambda r: r['blend_screens'])} | {cell('nocap', lambda r: r['blend_screens'])} | "
-                 f"{cell('cap', lambda r: r['lots'])} | {cell('nocap', lambda r: r['lots'])} |")
-    L += ["", f"Flagged stretches in all: {tot['cap']} with the cap put back, {tot['nocap']} without it."]
+        r5f = next(iter(d.values()))["round5_flagged"].get("fab", [])
+        L.append(f"| {lab} | {pol} | {stock} | {seed} | {days} | {len(r5f)} | "
+                 f"{cell('cap', lambda r: n(r, 'flagged'))} / {cell('cap', lambda r: n(r, 'flagged_r5_rule'))} | "
+                 f"{cell('nocap', lambda r: n(r, 'flagged'))} / {cell('nocap', lambda r: n(r, 'flagged_r5_rule'))} | "
+                 f"{cell('cap', lambda r: r['blend_screens'])} / {cell('nocap', lambda r: r['blend_screens'])} | "
+                 f"{cell('cap', lambda r: r['lots'])} / {cell('nocap', lambda r: r['lots'])} |")
+    L += ["", "Copper's first fabrication step, flagged stretches in all: with the cap put back "
+              f"{tot[('cap', 'flagged')]} by round 6's rule and {tot[('cap', 'flagged_r5_rule')]} by round 5's; "
+              f"without it {tot[('nocap', 'flagged')]} and {tot[('nocap', 'flagged_r5_rule')]}."]
     (HERE / "copper_idle.md").write_text("\n".join(L) + "\n")
     print("\n".join(L))
 
