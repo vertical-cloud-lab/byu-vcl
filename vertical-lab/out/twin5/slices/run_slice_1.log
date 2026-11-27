@@ -1,0 +1,35 @@
+11 runs to do, 4 at a time:
+  net r5_vertical_parallel_pkgfn3_reorder_s3
+  net r5_vertical_parallel_pkgfn3_lean_s6
+  net r5_vertical_parallel_pkgfn3_lean_s9
+  net r5_vertical_parallel_bofn3_reorder_s10
+  plans_net r5_vertical_wait_bofn3_reorder_s1
+  plans_net r5_vertical_wait_bofn3_reorder_s4
+  plans_net r5_vertical_wait_bofn3_reorder_s7
+  plans_net r5_vertical_wait_bofn3_reorder_s10
+  net_more r5_vertical_parallel_pkgfn3_lean_s12
+  net_more r5_vertical_parallel_bofn3_reorder_s13
+  net_more r5_vertical_parallel_pkgfn3_lean_s15
+  net r5_vertical_parallel_bofn3_reorder_s10: Al 0.822 Cu 0.725 (1460.5 s; 1464 s in; twin_dirty False)
+  net r5_vertical_parallel_pkgfn3_lean_s6: Al 0.808 Cu 0.713 (1759.0 s; 1762 s in; twin_dirty False)
+  net r5_vertical_parallel_pkgfn3_lean_s9: Al 0.774 Cu 0.705 (1899.9 s; 1904 s in; twin_dirty False)
+  plans_net r5_vertical_wait_bofn3_reorder_s1: Al 0.817 Cu 0.657 (513.5 s; 1980 s in; twin_dirty False)
+  net r5_vertical_parallel_pkgfn3_reorder_s3: Al 0.854 Cu 0.715 (2009.8 s; 2014 s in; twin_dirty False)
+  plans_net r5_vertical_wait_bofn3_reorder_s4: Al 0.775 Cu 0.719 (550.1 s; 2315 s in; twin_dirty False)
+  plans_net r5_vertical_wait_bofn3_reorder_s7: Al 0.786 Cu 0.722 (641.0 s; 2549 s in; twin_dirty False)
+  plans_net r5_vertical_wait_bofn3_reorder_s10: Al 0.778 Cu 0.686 (635.8 s; 2620 s in; twin_dirty False)
+  net_more r5_vertical_parallel_bofn3_reorder_s13: Al 0.797 Cu 0.692 (1347.5 s; 3665 s in; twin_dirty False)
+  net_more r5_vertical_parallel_pkgfn3_lean_s15: Al 0.799 Cu 0.661 (1251.4 s; 3802 s in; twin_dirty False)
+  net_more r5_vertical_parallel_pkgfn3_lean_s12: Al 0.792 Cu 0.755 (1814.5 s; 3830 s in; twin_dirty False)
+net        r5_vertical_parallel_bofn3_reorder_s10        done
+net        r5_vertical_parallel_pkgfn3_lean_s6           done
+net        r5_vertical_parallel_pkgfn3_lean_s9           done
+net        r5_vertical_parallel_pkgfn3_reorder_s3        done
+net_more   r5_vertical_parallel_bofn3_reorder_s13        done
+net_more   r5_vertical_parallel_pkgfn3_lean_s12          done
+net_more   r5_vertical_parallel_pkgfn3_lean_s15          done
+plans_net  r5_vertical_wait_bofn3_reorder_s1             done
+plans_net  r5_vertical_wait_bofn3_reorder_s10            done
+plans_net  r5_vertical_wait_bofn3_reorder_s4             done
+plans_net  r5_vertical_wait_bofn3_reorder_s7             done
+runs left: 0
