@@ -1,0 +1,47 @@
+{
+ "check": "gpcheck6 resume",
+ "match": true,
+ "runs": {
+  "conventional_bofn3": {
+   "stopped_at_day": 110.0,
+   "checkpoint_bytes": 734924,
+   "match": {
+    "row": true,
+    "log": true,
+    "gp": true
+   },
+   "seconds": [
+    64.3,
+    105.0
+   ]
+  },
+  "conventional_pkgfn3": {
+   "stopped_at_day": 110.0,
+   "checkpoint_bytes": 734888,
+   "match": {
+    "row": true,
+    "log": true,
+    "gp": true
+   },
+   "seconds": [
+    57.5,
+    100.7
+   ]
+  },
+  "automated_bofn3": {
+   "stopped_at_day": 100.0,
+   "checkpoint_bytes": 838864,
+   "match": {
+    "row": true,
+    "log": true,
+    "gp": true
+   },
+   "seconds": [
+    41.2,
+    119.6
+   ]
+  }
+ },
+ "seconds": 499.7,
+ "compared_with": "out/twin6/checks/gpcheck.json"
+}

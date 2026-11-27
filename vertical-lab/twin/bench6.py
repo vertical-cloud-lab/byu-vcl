@@ -2,7 +2,10 @@
 slice needs to run part of it.
 
     python -m twin.bench6 status                    # runs and seeds per arm, done and left, estimated hours (left.md)
-    python -m twin.bench6 ids FILE|ID ... [--slice K] [--workers N]   # run a list of run ids (a compute slice)
+    python -m twin.bench6 ids FILE|ID ... [--slice K] [--workers N] [--hours H]   # run a list of run ids (a compute
+                                                    # slice); with --hours, a run still going H hours in stops at its
+                                                    # next simulated day and is saved to checkpoints/, and the next
+                                                    # job given its id carries it on to the row an unbroken run gives
     python -m twin.bench6 slices N|0 [GROUP ...]    # split the runs left into N lists of about equal run time (0:
                                                     # as many as keep each under SLICE_CORE_H core-hours)
     python -m twin.bench6 run [experiment ...]      # run whole experiments here (not meant for one job: see status)
@@ -152,34 +155,73 @@ def make_policies(name, seed):
     return {k: net6.make6(v, k, seed) for k, v in pol_names(name).items()}
 
 
-def simulate(cfg: dict):
+def simulate(cfg: dict, ckpt=None, stop_at=None, stop_day=None):
+    """One run. With ``ckpt`` (a file path), a run saved there earlier carries on from where it stopped, and with
+    ``stop_at`` (epoch seconds) or ``stop_day`` (a simulated day) the run stops at the first simulated day's boundary
+    past it, is saved to ``ckpt`` (twin/ckpt6.py) and ``(None, info)`` is returned. A run that is carried on to its
+    end gives the row an unbroken run gives (``python -m twin.gpcheck6 resume`` checks it)."""
     import torch
     torch.set_num_threads(1)
+    from twin import ckpt6
     from twin import repro as R
-    code0 = _code()
-    R.seed_globals(cfg["seed"])
-    rng0 = R.torch_rng_state()
     from twin import campaign as C
     from twin import round6 as R6
     from twin import spaces as SP
     from twin.opt.gp import STATS
-    t0, c0, load0 = time.time(), time.process_time(), os.getloadavg()
-    fits0 = dict(STATS)
+    rid = run_id(cfg)
     days = int(os.environ.get("TWIN6_DAYS", cfg.get("days", DAYS)))
-    specs = {k: C.Spec(k, R6.REFERENCE_USD[k], B2.WIP[k], cfg["seed"], 1.0, stock=cfg["stock"])
-             for k in ("flaime_al", "onr_cu")}
-    pols = make_policies(cfg["policy"], cfg["seed"])
-    tw = R6.Twin6(specs, pols, plan=cfg["plan"], seed=cfg["seed"], horizon_days=days, opts=cfg.get("opts"),
-                  pol_names=pol_names(cfg["policy"]))
+    if ckpt is not None and Path(ckpt).exists():
+        st = ckpt6.load(ckpt)
+        if st["run_id"] != rid or st["days"] != days:
+            raise ValueError(f"{ckpt} holds {st['run_id']} over {st['days']} days, not {rid} over {days}")
+        tw, specs, pols = st["tw"], st["specs"], st["pols"]
+        code0, rng0, segments = st["code0"], st["rng0"], st["segments"]
+        ckpt6.set_globals_state(st["globals"])
+        fits0 = {k: STATS.get(k, 0) - st["gp"].get(k, 0) for k in set(STATS) | set(st["gp"])}
+    else:
+        code0 = _code()
+        R.seed_globals(cfg["seed"])
+        rng0 = R.torch_rng_state()
+        segments = []
+        fits0 = dict(STATS)
+        specs = {k: C.Spec(k, R6.REFERENCE_USD[k], B2.WIP[k], cfg["seed"], 1.0, stock=cfg["stock"])
+                 for k in ("flaime_al", "onr_cu")}
+        pols = make_policies(cfg["policy"], cfg["seed"])
+        tw = R6.Twin6(specs, pols, plan=cfg["plan"], seed=cfg["seed"], horizon_days=days, opts=cfg.get("opts"),
+                      pol_names=pol_names(cfg["policy"]))
+    t0, c0, load0 = time.time(), time.process_time(), os.getloadavg()
+    day0 = (tw._loop or {}).get("g", 0.0) / 24.0
+    if stop_at is not None or stop_day is not None:
+        def _stop(g, _at=stop_at, _day=stop_day):
+            if g % 24.0 or g <= day0 * 24.0:                    # at a day's boundary, and not where it started
+                return False
+            return (_day is not None and g >= _day * 24.0) or (_at is not None and time.time() >= _at)
+        tw._stop = _stop
     s = tw.run()
-    out = dict(cfg=cfg, days_run=days, seconds=round(time.time() - t0, 1),
+    tw._stop = None
+    seg = dict(cpu=R.cpu_model(), from_day=round(day0, 3), cpu_seconds=round(time.process_time() - c0, 1),
+               wall_seconds=round(time.time() - t0, 1))
+    if s is None:                                               # stopped: saved, to be carried on by a later job
+        seg["to_day"] = round(tw._loop["g"] / 24.0, 3)
+        segments = segments + [seg]
+        n = ckpt6.save(ckpt, dict(run_id=rid, days=days, tw=tw, specs=specs, pols=pols, code0=code0, rng0=rng0,
+                                  segments=segments,
+                                  globals=ckpt6.globals_state(),
+                                  gp={k: STATS[k] - fits0.get(k, 0) for k in STATS}))
+        return None, dict(run_id=rid, day=seg["to_day"], bytes=n, segments=segments)
+    seg["to_day"] = float(days)
+    segments = segments + [seg]
+    out = dict(cfg=cfg, days_run=days, seconds=round(sum(x["wall_seconds"] for x in segments), 1),
                gp={k: round(STATS[k] - fits0.get(k, 0), 3) for k in STATS}, campaigns={})
     # the process's own CPU seconds: what a run costs a slice that runs one per vCPU, whatever else this machine was
     # running alongside (``seconds`` is wall time, which stretches when there are more runs than vCPUs); the load
-    # averages at its start and end say how busy the machine was
-    out["timing"] = dict(wall_seconds=out["seconds"], cpu_seconds=round(time.process_time() - c0, 1),
+    # averages at its start and end say how busy the machine was; a run carried on from a checkpoint adds up its
+    # jobs' shares (``segments``: each job's CPU, CPU seconds and simulated days)
+    out["timing"] = dict(wall_seconds=out["seconds"], cpu_seconds=round(sum(x["cpu_seconds"] for x in segments), 1),
                          loadavg_start=[round(x, 2) for x in load0],
                          loadavg_end=[round(x, 2) for x in os.getloadavg()], vcpus=os.cpu_count())
+    if len(segments) > 1:
+        out["timing"]["segments"] = segments
     T = B2.targets()
     r6 = tw.report6()
     sp = r6["spend"]
@@ -282,9 +324,25 @@ def event_log(tw, cfg) -> dict:
     return B2._jsonable(log)
 
 
-def run_one(cfg: dict, name: str | None = None) -> dict:
-    out, tw = simulate(cfg)
+CKPTS = OUT / "checkpoints"             # runs stopped at a job's limit, to be carried on (twin/ckpt6.py)
+
+
+def ckpt_path(rid) -> Path:
+    return CKPTS / f"{rid}.ckpt.xz"
+
+
+def run_one(cfg: dict, name: str | None = None, stop_at=None) -> dict:
+    """One run of the grid: its row, and its event log written to ``events/``. A run with a checkpoint carries on
+    from it; with ``stop_at`` (epoch seconds) a run still going then is saved at the next simulated day and
+    ``dict(cfg=..., checkpointed=...)`` is returned instead of a row. The checkpoint is removed once the row is
+    written."""
     rid = run_id(cfg)
+    ck = ckpt_path(rid)
+    if stop_at is not None and time.time() >= stop_at and not ck.exists():
+        return dict(cfg=cfg, not_started=True)               # too late to start: leave it to the next job
+    out, tw = simulate(cfg, ckpt=ck, stop_at=stop_at)
+    if out is None:
+        return dict(cfg=cfg, checkpointed=tw)
     data = json.dumps(event_log(tw, cfg)).encode()
     out["events_sha256"] = hashlib.sha256(data).hexdigest()
     EVENTS.mkdir(parents=True, exist_ok=True)
@@ -295,9 +353,9 @@ def run_one(cfg: dict, name: str | None = None) -> dict:
 
 
 def _safe(args):
-    name, cfg = args
+    name, cfg, stop_at = args
     try:
-        return run_one(cfg, name)
+        return run_one(cfg, name, stop_at)
     except Exception:
         import traceback
         return dict(cfg=cfg, error=traceback.format_exc()[-4000:])
@@ -564,15 +622,24 @@ def order(todo):
 
 
 # ------------------------------------------------------------------------------------------------- running
-def _run(todo, workers, suffix=""):
+def _run(todo, workers, suffix="", stop_at=None):
     RUNS.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
     n_err = 0
     with ProcessPoolExecutor(workers, max_tasks_per_child=1) as ex:      # a fresh interpreter for every run
-        futs = {ex.submit(_safe, (name, c)): (name, c) for name, c in todo}
+        futs = {ex.submit(_safe, (name, c, stop_at)): (name, c) for name, c in todo}
         for fut in as_completed(futs):
             name, c = futs[fut]
             res = fut.result()
+            if res.get("checkpointed"):
+                ck = res["checkpointed"]
+                print(f"  {name} {run_id(c)}: stopped at day {ck['day']:g} and saved to "
+                      f"{os.path.relpath(ckpt_path(run_id(c)), HERE.parent)} ({ck['bytes'] / 1e6:.1f} MB); the next "
+                      f"job given this id carries it on", flush=True)
+                continue
+            if res.get("not_started"):
+                print(f"  {name} {run_id(c)}: not started (the job's time is up)", flush=True)
+                continue
             if "error" in res:
                 n_err += 1
                 with (RUNS / f"{name}{suffix}.errors.jsonl").open("a") as fh:
@@ -581,6 +648,7 @@ def _run(todo, workers, suffix=""):
                 continue
             with (RUNS / f"{name}{suffix}.jsonl").open("a") as fh:
                 fh.write(json.dumps(res) + "\n")
+            ckpt_path(run_id(c)).unlink(missing_ok=True)
             print(f"  {name} {run_id(c)}: Al {res['campaigns']['flaime_al']['best_new']:.3f} "
                   f"Cu {res['campaigns']['onr_cu']['best_new']:.3f} ({res['seconds']} s; "
                   f"{time.time() - t0:.0f} s in)", flush=True)
@@ -593,7 +661,7 @@ def run(names, workers=4):
     return _run(todo, workers)
 
 
-def run_ids(ids, workers=4, slice_k=None):
+def run_ids(ids, workers=4, slice_k=None, hours=None):
     """Run the given run ids (a compute slice's list), skipping those already done. Rows go to
     ``runs/<experiment>.slice-<K>.jsonl`` with ``--slice K`` (so slices never write the same file), else to
     ``runs/<experiment>.jsonl``."""
@@ -603,10 +671,14 @@ def run_ids(ids, workers=4, slice_k=None):
         raise SystemExit(f"unknown run ids: {unknown[:5]}{' ...' if len(unknown) > 5 else ''}")
     done = {n: _done(n) for n in EXPERIMENTS}
     todo = [table[i] for i in ids if i not in done[table[i][0]]]
-    print(f"{len(ids)} ids, {len(ids) - len(todo)} already done, {len(todo)} to run", flush=True)
+    n_ck = sum(1 for _, c in todo if ckpt_path(run_id(c)).exists())
+    print(f"{len(ids)} ids, {len(ids) - len(todo)} already done, {len(todo)} to run ({n_ck} carried on from a "
+          f"checkpoint)", flush=True)
     tm = timings()
-    todo.sort(key=lambda t: -(est_seconds(t[1], tm) or 0.0))             # the long ones first
-    return _run(todo, workers, f".slice-{slice_k}" if slice_k is not None else "")
+    # the long ones first, and a run with a checkpoint before any that starts from nothing
+    todo.sort(key=lambda t: (not ckpt_path(run_id(t[1])).exists(), -(est_seconds(t[1], tm) or 0.0)))
+    stop_at = None if hours is None else time.time() + float(hours) * 3600.0
+    return _run(todo, workers, f".slice-{slice_k}" if slice_k is not None else "", stop_at)
 
 
 SLICE_CORE_H = 16.0                    # a slice's core-hours: 4 h on a 4-core runner, inside a 6-h job with set-up
@@ -789,15 +861,19 @@ def main(argv):
         return 1 if n else 0
     if argv[0] == "ids":
         args = argv[1:]
-        k = None
+        k, hours = None, None
         if "--slice" in args:
             i = args.index("--slice")
             k = args[i + 1]
             args = args[:i] + args[i + 2:]
+        if "--hours" in args:
+            i = args.index("--hours")
+            hours = float(args[i + 1])
+            args = args[:i] + args[i + 2:]
         ids = []
         for a in args:
             ids += [l.strip() for l in Path(a).read_text().splitlines() if l.strip()] if Path(a).exists() else [a]
-        return 1 if run_ids(ids, workers, k) else 0
+        return 1 if run_ids(ids, workers, k, hours) else 0
     if argv[0] == "slices":
         slices(int(argv[1]), argv[2:])
         return 0

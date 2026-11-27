@@ -7,6 +7,8 @@
     python -m twin.gpcheck6 write           # run it and write the reference
     python -m twin.gpcheck6 probe           # the kernel probe only (seconds), compared with the reference
     python -m twin.gpcheck6 show            # the committed reference
+    python -m twin.gpcheck6 resume [DAY]    # checkpoints: each run stopped and saved at DAY (default: half way) in
+                                            # one fresh interpreter and carried on in another, against the reference
     TWIN_GPCHECK_WRAP="sde64 -gnr --" python -m twin.gpcheck6 probe     # under an emulated CPU (Intel SDE, QEMU)
 
 Round 5's BOFN and pKGFN rows differed between CPU models under ``TWIN_PIN=avx2`` because numpy's own float64 kernels
@@ -240,15 +242,22 @@ def gp_state(tw) -> dict:
     return st
 
 
-def run(name: str) -> dict:
-    """One short run in this (pinned, fresh) interpreter: hashes of its row, event log and GP state."""
+def run(name: str, ckpt=None, stop_day=None) -> dict:
+    """One short run in this (pinned, fresh) interpreter: hashes of its row, event log and GP state. With ``ckpt``
+    and ``stop_day``, the run stops at that day and is saved to ``ckpt`` instead (twin/ckpt6.py); with ``ckpt``
+    alone, a run saved there is carried on to its end and hashed."""
     _, lab, plan, policy, stock, seed, days = next(r for r in RUNS if r[0] == name)
     os.environ["TWIN6_DAYS"] = os.environ["TWIN5_DAYS"] = str(days)
     B, engine = _bench()
     from twin import bench2 as B2
     t0 = time.time()
     cfg = B._cfg(lab, plan, policy, stock, seed, **({"hpc": dict(scale=SCALE)} if engine == "twin.bench6" else {}))
-    out, tw = B.simulate(cfg)
+    if ckpt is not None:
+        out, tw = B.simulate(cfg, ckpt=ckpt, stop_day=stop_day)
+        if out is None:
+            return dict(stopped=tw, seconds=round(time.time() - t0, 1))
+    else:
+        out, tw = B.simulate(cfg)
     row = json.loads(json.dumps(B2._jsonable(out)))
     if engine == "twin.bench6":                             # the log a grid row's event file holds, named after
         log = B.event_log(tw, cfg)                          # the check's run (not the grid's run id, which names
@@ -356,6 +365,47 @@ def _line(got: dict, cmp_: dict | None) -> dict:
     return line
 
 
+def resume(stop_day=None, out_file=None) -> int:
+    """Checkpoints: each of the three runs stopped at ``stop_day`` (default: half way) and saved in one fresh pinned
+    interpreter, carried on to its end in a second, and its row, event log and GP state compared with the
+    reference (made by unbroken runs). Exit 0 if all three match."""
+    import tempfile
+    ref = json.loads(REF.read_text())
+    t0 = time.time()
+    res, ok = {}, True
+    with tempfile.TemporaryDirectory(prefix="gpcheck6-") as tmp:
+        for name, *_, days in RUNS:
+            d = stop_day if stop_day is not None else float(days // 2)
+            ck = str(Path(tmp) / f"{name}.ckpt.xz")
+            first = _child_args(["split", name, ck, str(d)])
+            second = _child_args(["split", name, ck]) if "stopped" in first else first
+            if "error" in second or "row" not in second:
+                res[name] = dict(error=(second.get("error") or first.get("error") or str(first))[-800:])
+                ok = False
+                continue
+            m = {k: second[k] == ref["runs"][name][k] for k in ("row", "log", "gp")}
+            ok = ok and all(m.values())
+            res[name] = dict(stopped_at_day=first.get("stopped", {}).get("day"),
+                             checkpoint_bytes=first.get("stopped", {}).get("bytes"), match=m,
+                             seconds=[first.get("seconds"), second.get("seconds")])
+    line = dict(check="gpcheck6 resume", match=ok, runs=res, seconds=round(time.time() - t0, 1))
+    if out_file is not None:
+        out_file.parent.mkdir(parents=True, exist_ok=True)
+        out_file.write_text(json.dumps(dict(line, compared_with=str(REF.relative_to(HERE.parent))), indent=1) + "\n")
+    print(json.dumps(line))
+    return 0 if ok else 1
+
+
+def _child_args(args) -> dict:
+    wrap = os.environ.get("TWIN_GPCHECK_WRAP", "").split()
+    p = subprocess.run(wrap + [sys.executable, "-m", "twin.gpcheck6", "_child", *args], cwd=HERE.parent,
+                       env=_env(), capture_output=True, text=True)
+    lines = [ln for ln in p.stdout.splitlines() if ln.startswith("{")]
+    if p.returncode != 0 or not lines:
+        return dict(error=(p.stderr or p.stdout)[-1500:])
+    return json.loads(lines[-1])
+
+
 def main(argv) -> int:
     if argv[:1] == ["_child"]:                              # a pinned child: one part, one JSON line
         from twin import repro as R
@@ -370,6 +420,8 @@ def main(argv) -> int:
                 code = None
             print(json.dumps(dict(probe=pr, env=fp, problems=R.problems6(fp), code=code,
                                   seconds=round(time.time() - t0, 1))))
+        elif argv[1] == "split":                            # _child split NAME CKPT [STOP_DAY]
+            print(json.dumps(run(argv[2], ckpt=argv[3], stop_day=float(argv[4]) if len(argv) > 4 else None)))
         else:
             print(json.dumps(run(argv[2])))
         return 0
@@ -382,6 +434,8 @@ def main(argv) -> int:
     if cmd == "show":
         print(REF.read_text())
         return 0
+    if cmd == "resume":
+        return resume(float(argv[1]) if len(argv) > 1 else None, out_file)
     if cmd not in ("check", "write", "probe"):
         raise SystemExit(__doc__)
     got = measure(runs=cmd != "probe")

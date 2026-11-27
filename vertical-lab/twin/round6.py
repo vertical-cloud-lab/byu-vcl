@@ -766,19 +766,31 @@ class Twin6(R5.Twin5):
                                         pending=len(c.pending), st={})
         return D
 
+    _stop = None        # checkpoints (twin/ckpt6.py): g -> True stops the loop before step g
+    _loop = None        # the loop's own state while it is stopped
+
     def run_async(self, verbose=False):
-        """Round 5's loop without its money rules: a campaign is asked whenever something changed for it."""
-        q, ends = [], []
+        """Round 5's loop without its money rules: a campaign is asked whenever something changed for it.
+
+        With ``_stop`` set, the loop can stop before any step: it keeps its state in ``_loop`` and returns None.
+        Called again, in this process or after the twin has been saved and loaded (twin/ckpt6.py), it carries on
+        from that step exactly as if it had never stopped."""
         F = self.fac4
+        st, self._loop = self._loop, None
+        if st is None:
+            q, ends = [], []
+            dirty = {k: True for k in self.campaigns}
+            last = {k: -1e9 for k in self.campaigns}
+            keys = list(self.campaigns)
+            held = {k: {"review": [], "meeting": []} for k in keys}
+            g, step = 0.0, 0
+        else:
+            q, ends, dirty, last, keys, held, g, step = (st[x] for x in ("q", "ends", "dirty", "last", "keys",
+                                                                          "held", "g", "step"))
         for r in F.res.values():
             r.on_commit = lambda e, _ends=ends: heapq.heappush(_ends, e)
-        dirty = {k: True for k in self.campaigns}
-        last = {k: -1e9 for k in self.campaigns}
         tot_b = sum(REFERENCE_USD.get(k, 1.0) for k in self.campaigns)
         self._money_share = {k: REFERENCE_USD.get(k, 1.0) / tot_b for k in self.campaigns}
-        keys = list(self.campaigns)
-        held = {k: {"review": [], "meeting": []} for k in keys}
-        g, step = 0.0, 0
         start = F.start_h
 
         def flush(k, c):
@@ -787,6 +799,9 @@ class Twin6(R5.Twin5):
             c.events_out = []
 
         while g <= self.h + 1e-9:
+            if self._stop is not None and self._stop(g):
+                self._loop = dict(q=q, ends=ends, dirty=dirty, last=last, keys=keys, held=held, g=g, step=step)
+                return None
             F.now = g
             while q and q[0][0] <= g + 1e-9:
                 tr, _, k, p = heapq.heappop(q)

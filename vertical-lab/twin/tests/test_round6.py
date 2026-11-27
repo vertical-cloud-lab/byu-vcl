@@ -352,3 +352,31 @@ def test_timings_use_measured_variant_ratios():
     assert "round 5's" in tm["r6_vertical_external_pkgfn3_reorder"]["how"]          # not measured: round 5's ratio
     assert math.isclose(tm["r6_vertical_parallel_pkgfn3_reorder_hpc16"]["seconds_2y"], 8000 - 0.05 * 48 * B6.DAYS,
                         abs_tol=0.1)
+
+
+@pytest.mark.parametrize("lab,plan,policy,stock", [("conventional", "external", "bofn3", "lean"),
+                                                   ("vertical", "parallel", "fast", "reorder")])
+def test_a_run_stopped_saved_and_carried_on_is_the_same_run(tmp_path, monkeypatch, lab, plan, policy, stock):
+    """bench6.simulate with a checkpoint: stopped at a day, saved (twin/ckpt6.py), loaded and carried on, the row
+    and the event log are an unbroken run's. ``python -m twin.gpcheck6 resume`` does the same across two fresh
+    interpreters for the GP check's three runs."""
+    import hashlib
+    from twin import bench2 as B2
+    monkeypatch.setenv("TWIN6_DAYS", "40")
+    cfg = B6._cfg(lab, plan, policy, stock, 0, hpc=dict(scale=2))
+
+    def h(out, tw):
+        row = {k: v for k, v in json.loads(json.dumps(B2._jsonable(out))).items()
+               if k not in ("seconds", "timing", "gp", "env", "code", "events_file")}
+        log = json.loads(json.dumps(B2._jsonable(B6.event_log(tw, cfg))))
+        return [hashlib.sha256(json.dumps(x, sort_keys=True).encode()).hexdigest() for x in (row, log)]
+
+    a = h(*B6.simulate(cfg))
+    ck = tmp_path / "run.ckpt.xz"
+    out, info = B6.simulate(cfg, ckpt=ck, stop_day=17)
+    assert out is None and info["day"] == 17.0 and ck.exists()
+    out, info = B6.simulate(cfg, ckpt=ck, stop_day=29)          # a second stop, from the first's checkpoint
+    assert out is None and info["day"] == 29.0 and len(info["segments"]) == 2
+    out, tw = B6.simulate(cfg, ckpt=ck)
+    assert h(out, tw) == a
+    assert [s["to_day"] for s in out["timing"]["segments"]] == [17.0, 29.0, 40.0]
