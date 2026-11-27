@@ -33,7 +33,7 @@
 **Factual corrections to v2:**
 
 - **"Three in under 10 hours"** (§5) was wrong. Only two projects (0.5 h, 3 h) are *under* 10 h; five are *at or under* 10 h. v3 says "five in 10 hours or less".
-- **"Three orders of magnitude"** of bill of materials overstated it. Excluding software, the range is $100 to $35,000, which v3 now gives as "nearly three orders of magnitude".
+- **"Three orders of magnitude"** of bill of materials overstated it. Excluding software, the range is $100 to $35,000, which v3 gave as "nearly three orders of magnitude". On 2026-11-27 that became "more than two orders of magnitude", since $100 to $35,000 is a factor of 350 (§9.4).
 - **"Eighteen months on"** was already inaccurate in August 2026: the workshop was on **6 August 2024**. v3 says "more than two years after the workshop".
 - **"We organized the workshop"**: the official Accelerate 2024 programme also lists Milad Abolhasani and Curtis Berlinguette as organizers, and neither is an author. v3 says "several of us co-organized" and thanks them by name (SGB-14).
 - The workshop's exhibition is called a "hardware exhibition" in the programme. v3 uses that term.
@@ -115,7 +115,7 @@ Every repository, documentation site, licence and deposit was checked against th
 
 1. Only one of nine hardware projects is completely documented.
 2. Half of the applicable cells (24 of 48) are partial.
-3. Projects document *operating* better than *obtaining and building*: Run is ● for four projects, while Procure and Build are ● for two of nine.
+3. Projects document *operating* better than *obtaining and building*: Run is ● for four projects, while Procure and Build are ● for two of nine. *(Superseded on 2026-11-27, §9.4: among the nine hardware projects alone it is three against two, and Configure is the weakest capability.)*
 4. Existing documentation often fails on contact with a stranger: merge-conflict markers, wrong file names, an empty deposit, function names that don't match the code, a down interface, an empty placeholder repository.
 5. Licensing and archiving are unattended. Two projects have no licence file, two declare different licences in different places, and none of the three deposits archives the complete, current design.
 

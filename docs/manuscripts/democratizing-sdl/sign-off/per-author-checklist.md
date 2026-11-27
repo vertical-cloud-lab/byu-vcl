@@ -94,7 +94,7 @@ Department of Mechanical Engineering, Brigham Young University; Acceleration Con
   - [`../audit/`](../audit/), the verification reports behind Table 5, with the exact searches behind every negative result;
   - [`../manuscript-v2.md`](../manuscript-v2.md), [`../manuscript-v3.md`](../manuscript-v3.md), [`../revision-notes-v3.md`](../revision-notes-v3.md), [`../response-to-decision-letter.md`](../response-to-decision-letter.md), [`../cover-letter.md`](../cover-letter.md);
   - the prompts behind the AI-assisted revision, in the public threads [#188](https://github.com/vertical-cloud-lab/byu-vcl/issues/188), [#190](https://github.com/vertical-cloud-lab/byu-vcl/pull/190) and [#193](https://github.com/vertical-cloud-lab/byu-vcl/pull/193).
-- **Confirm:** ALL-1 to ALL-7, and SGB-1 to SGB-15 ([`../sign-off-checklist.md`](../sign-off-checklist.md) §2). The ones only you can close:
+- **Confirm:** ALL-1 to ALL-7, ALL-8 for P8 and P9, and SGB-1 to SGB-16 ([`../sign-off-checklist.md`](../sign-off-checklist.md) §2). The ones only you can close:
   - ☐ SGB-1 and SGB-2, the corresponding-author line and the author order;
   - ☐ SGB-3, the generative-AI statement (the model list is now verified from the run logs);
   - ☐ SGB-4, minting the analysis DOI at acceptance;
@@ -104,6 +104,7 @@ Department of Mechanical Engineering, Brigham Young University; Acceleration Con
   - ☐ SGB-12 and SGB-13, submission logistics and venue route;
   - ☐ SGB-14, the co-organizers named in the Acknowledgements;
   - ☐ SGB-15 (at revision), a table-of-contents graphic drawn by a co-author.
+  - ☐ **SGB-16, the changes made after the independent pre-submission read** (Claim 1 wording, Table 2 re-scoring of P2, P4 and P9, the §6 pattern, four Limitations sentences), and the open suggestions listed in `../audit/2026-11-27-presubmission-review.md`.
 
 ### 3. Eunice Aissi
 

@@ -342,7 +342,7 @@ The implications are concrete, and we state them as obligations rather than aspi
 
 We hold this Perspective to the first part of the builders' obligation. Every project in Table 1 has a public repository at submission, and every project will have an archival deposit with a persistent identifier by publication.
 
-<!-- SIGN-OFF: ALL teams (TV-6, OM-5, TB-4, BP-9, P7-5, SGB-11, JEH-3). This sentence commits ten teams. It must not
+<!-- SIGN-OFF: ALL teams (TV-6, OM-5, TB-4, BP-9, P7-5, SGB-11, JEH-3). This sentence commits eight teams (ten projects). It must not
      be submitted until every team has agreed and every repository exists. If a project cannot meet it, remove
      that project from Table 1 rather than weaken the sentence (revision-notes-v3.md §5 lists what then changes). -->
 
