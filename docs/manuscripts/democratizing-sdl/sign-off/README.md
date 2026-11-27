@@ -82,3 +82,12 @@ Nothing outside the authors' control sets the date: the AI4X collection has clos
 | **Fri 15 Jan 2027 (realistic)** | Submit with P3. Without P3, allow one more week to re-run the analysis and recirculate: **Fri 22 Jan**. |
 
 The APC is £2,200 for 2026 submissions, and no 2027 price has been published. If the price follows the submission date, December is slightly cheaper. That is an inference, and not a reason to rush the approvals.
+
+## On submission day
+
+1. Every blocking item above is closed, and every author has replied "approved" to the final PDF.
+2. Fill the `[TO SUPPLY]` placeholders: the P3 sentence, row and URL (or remove P3 using `../revision-notes-v3.md` §5(b)); the survey ethics statement; the code version. Then run `python tools/check_manuscript.py manuscript-v3.md` and fix anything it reports.
+3. Merge PR #193, then tag the merge commit (for example `democratizing-sdl-submission-1`) and put the tag in the Data availability statement (SGB-4).
+4. Re-count the preprint's citations for the cover letter (SGB-12), and remove the HTML comments from the submitted copies. `tools/build_review_copies.py` already drops them from `review-copies/manuscript-v3.docx`.
+5. In ScholarOne: article type Perspective; the previous manuscript ID; the ChemRxiv DOI; funders; ORCID; reviewers (no co-authors, no Milad Abolhasani); transparent peer review (SGB-12).
+6. Upload the manuscript (Word), the ESI, and the cover letter with the point-by-point response. Figures as separate files, and the TOC graphic, come at revision.
