@@ -47,7 +47,7 @@ One item blocks the resubmission, and only you can do it. **The editor's third o
 - a licence;
 - a README saying "pre-release; documentation incomplete".
 
-Please send the URL by `<deadline>`. If it can't be done, we will take P3 out of the paper. The replacement text is already drafted.
+Please send the URL by `<deadline>`. If the files already sit in a private repository, making it public is enough. If it can't be done, we will take P3 out of the paper. The replacement text is already drafted.
 
 Three confirmations:
 
@@ -134,7 +134,7 @@ Sterling
 
 Dear Owen, Monique and Jeffrey,
 
-Please confirm the P2 rows of Tables 1 and 5 (OM-1, OM-3), and let us know whether anyone outside the team has built LEDbyXample (OM-2). Each of the following takes minutes and improves both the repository and the paper:
+Please confirm the P2 rows of Tables 1 and 5 (OM-1, OM-3), and let us know whether anyone outside the team has built LEDbyXample (OM-2). For example, does Kelvin Chow's Rev B work in `kelvinchow23/photo-reactor` count? A build by someone outside the three of you would turn the paper's "not informative" mark for P2 on replication into a positive case. Each of the following takes minutes and improves both the repository and the paper:
 
 - **Licence (OM-4):** `AC-SDL4/photo-reactor` has no licence file, so strictly no one may build from it. A licence also changes the paper's count of unlicensed projects.
 - **README:** it names `turn_on_led` and `set_led_brightness`, but the code defines `turn_on_LED` and `set_brightness`.

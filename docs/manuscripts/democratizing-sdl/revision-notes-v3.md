@@ -245,3 +245,24 @@ Sterling asked for every blocker to be re-checked against the live repositories 
 - **No-P3 fallback numbers** computed and written into §5(b) above: the median rebuild time would move from 17 h to 24 h; the break-even median and maximum would not change.
 - **Pronouns.** Several notes and one sentence of §6 used pronouns inferred from names. They now use names or neutral wording.
 - **Review copies.** Table column widths are set in the markdown separators so that the Word and PDF copies are readable; GitHub ignores them.
+
+### 9.3 The projects and references, re-checked
+
+**The three blockers of 10 October are unchanged.**
+
+| Blocker | 2026-10-10 | 2026-11-27 |
+| --- | --- | --- |
+| P3 repository | Nothing public anywhere | **Still nothing public**, on GitHub, GitLab, Zenodo, Figshare/DTU Data, DataCite, OSF, arXiv, Crossref or OpenAlex. Two leads to ask DTU about, neither linked to P3 by evidence: the GitHub organisation `DTU-Energy-Instruments` (created 2026-10-14, no public repositories), and `auto_lab/sdl-next-generation-batteries`, which stopped being public |
+| P1 files confirmed by the team | Found, not confirmed | **Unchanged.** Same heads, the same single release, all 11 conflict-marker files and the empty Zenodo folders still there; no confirmation on record |
+| P7 files confirmed by the team | Found, not confirmed | **Unchanged.** The STL blobs are byte-identical; machineagency/jubilee#204 has had no activity since it was opened; nothing consolidates the work; no confirmation on record |
+| Approval by all 28 authors | Not started | **None received** |
+
+**No Table 5 score changes.** Every resource behind a score is live and unchanged. Small facts updated:
+- IvoryOS has shipped six releases since October (latest v1.8.3, 2026-11-24), none of them archived on Zenodo;
+- P9's two Hugging Face Spaces are still down;
+- a fork of P2 (`kelvinchow23/photo-reactor`, November 2026) holds a "Rev B" redesign by an AC engineer, added to OM-2 as a possible replication for the team to judge;
+- Ethan Rajkumar's GitHub profile now gives McMaster University, so ALL-2 asks about a present-address footnote.
+
+**References.** All 45 re-checked against Crossref: no factual errors, retractions or expressions of concern, and both standards are still current. Ref 31's page range, unconfirmed in October, is now confirmed. Optional edits applied: ref 14 names OpenTrickler v1.4, ref 26 reads "PLoS One", and the web references carry the 2026-11-27 access date. The preprint has ten verified citations, not the six the cover letter claimed, and six of them share no author with the paper; the cover letter now says so.
+
+**URLs.** Every link in Table 1 and every web reference returned HTTP 200 on 2026-11-27. The exception was the P4 GitLab page, which rate-limited the runner (HTTP 429) after its API had confirmed the project public.

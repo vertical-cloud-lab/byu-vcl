@@ -80,7 +80,7 @@ A survey of attendees was administered during the Democratizing Self-Driving Lab
 
 ## Note S3. Evidence for the documentation self-audit (Table 5)
 
-**Method.** On 2026-10-10 we checked every project against its live public resources: repositories via the GitHub and GitLab APIs, documentation sites, Zenodo, Software Heritage, Crossref and OpenAlex. Scores use one rubric for all projects:
+**Method.** On 2026-10-10 we checked every project against its live public resources: repositories via the GitHub and GitLab APIs, documentation sites, Zenodo, Software Heritage, Crossref and OpenAlex. On 2026-11-27 we checked every resource again; nothing that bears on a score had changed. Scores use one rubric for all projects:
 
 - **Procure:** a bill of materials with parts, quantities and sources (print files count for printed parts).
 - **Build:** assembly or fabrication instructions together with CAD or fabrication files.

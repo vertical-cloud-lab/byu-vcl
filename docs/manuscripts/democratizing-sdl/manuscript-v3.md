@@ -105,7 +105,7 @@ Two features of this result set up the rest of this Perspective. First, the comm
 
 Table 1 summarizes the ten projects. Table 2 then states, in advance and for every project, which of the five claims it bears on and in which direction. We ask readers to hold us to Table 2. A Perspective that presents examples without saying what they are evidence for is a catalogue, and we do not offer these projects as a catalogue.
 
-**Table 1. The ten contributed user-developed automation projects.** Cost and time to reproduce are as reported by each project's developers. Repository status, licence and archival deposits were checked on 2026-10-10; the evidence is in Supplementary Note S3.
+**Table 1. The ten contributed user-developed automation projects.** Cost and time to reproduce are as reported by each project's developers. Repository status, licence and archival deposits were checked on 2026-10-10 and again on 2026-11-27; the evidence is in Supplementary Note S3.
 
 | # | Project | Developers | Cost to reproduce (USD) | Time to reproduce | Design files and documentation |
 | ----- | -------------- | ------------------ | ---------- | ---------- | ------------------------------ |
@@ -284,7 +284,7 @@ For other researchers to adopt it, automation infrastructure needs documentation
 
 Table 5 audits our own ten projects against the five capabilities, plus the licence that the OSHWA definition makes a precondition of open hardware. Audits of open hardware against a documentation standard have found deficits that block reproduction.<sup>38</sup> We are not aware of another Perspective in this area that audits its own exemplars, and we think that omission is part of the problem. Every cell is tied to a specific public resource in Supplementary Note S3, so readers can check our scoring.
 
-**Table 5. Documentation self-audit against the five capabilities a replicator needs, plus licensing.** ● complete · ◐ partial · ○ absent · n/a not applicable. Assessed from public resources on 2026-10-10; evidence for every cell is in Supplementary Note S3.
+**Table 5. Documentation self-audit against the five capabilities a replicator needs, plus licensing.** ● complete · ◐ partial · ○ absent · n/a not applicable. Assessed from public resources on 2026-10-10 and re-checked on 2026-11-27; evidence for every cell is in Supplementary Note S3.
 
 | Project | Procure | Build | Configure | Run | Troubleshoot | Licence |
 | ------------------------ | :------: | :------: | :------: | :------: | :------: | :------------: |

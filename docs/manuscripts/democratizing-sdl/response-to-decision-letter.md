@@ -48,7 +48,7 @@ Thank you for your assessment of our Perspective and for the invitation to submi
 
 > *"Three projects do not have electronic supporting materials (i.e., github repos) that would support the work. We would generally expect to see at least the current "work in progress" repositories for the current state of the work, in keeping with the journal's broader data & code policies."*
 
-**Response.** We re-checked every project against its live public resources on 10 October 2026 and report the result in Table 1, with the evidence in Supplementary Note S3. The finding was more interesting than a simple gap:
+**Response.** We re-checked every project against its live public resources on 10 October 2026, and again on 27 November 2026, and report the result in Table 1, with the evidence in Supplementary Note S3. The finding was more interesting than a simple gap:
 
 - Two of the three projects the original submission listed as "manuscript in progress" had put files in public that nothing in the manuscript linked. P7's electrode-tool files went into a public fork in August 2024, before our submission. P1's versioned release with a DOI followed in January 2025, after our submission but before the preprint, which still said "manuscript in progress". No reader of either version could have found them.
 - The third project, P3, had nothing public. **[TO SUPPLY: at submission, one of two sentences. If the repository exists: "Its developers have since published a work-in-progress repository, now cited in Table 1." If P3 is removed: "Its developers could not release its design files in time, so we have removed it; the analysis now covers nine projects." The second case also needs the changes in revision-notes-v3.md §5(b).]**

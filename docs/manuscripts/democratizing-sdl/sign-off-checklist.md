@@ -157,7 +157,7 @@ Seth has left the group. Authorship still requires Seth's consent: RSC requires 
 
 Jin Hyun Chang, Kshitij Gambhir, Rógvi Ziskason, Louie Lucas Bisgaard Nyeland; Tejs Vegge as PI.
 
-- [ ] **TV-1. BLOCKING (P3).** A public work-in-progress repository for **P3 Rolling ball viscometer**, with its URL for Table 1 and the response letter.
+- [ ] **TV-1. BLOCKING (P3).** A public work-in-progress repository for **P3 Rolling ball viscometer**, with its URL for Table 1 and the response letter. Still nothing public on 2026-11-27. Two leads to ask about, neither confirmed as P3: a GitHub organisation `DTU-Energy-Instruments` created 2026-10-14 that has no public repositories, and the `auto_lab` GitLab project `sdl-next-generation-batteries`, which stopped being public between the two checks. If the viscometer files already sit in a private repository, making it public (with a licence and a README) is enough.
 - [ ] **TV-1 (P1).** Confirm that `github.com/loppe35/PowderDispensing_and_Weighing_Module` (release v1.0.0, 2025-01-27, Zenodo 10.5281/zenodo.14746532) is P1. It credits only Louie Nyeland. While you are there, please fix the three defects the audit found. §6 reports them in the past tense either way, and fixing them is the better outcome:
   - 11 files in `PowderDispenser_FWSW` contain unresolved merge-conflict markers (`platformio.ini`, all five headers, `requirements.txt`, `LICENSE.md` and others), so the documented build and install steps fail as written;
   - the Zenodo deposit contains empty `BuildFiles/`, `FWSW/` and `Data/` folders, because Zenodo does not capture git submodules. Re-release with the files vendored in, or upload them manually;
@@ -175,7 +175,7 @@ Jin Hyun Chang, Kshitij Gambhir, Rógvi Ziskason, Louie Lucas Bisgaard Nyeland; 
 Owen A. Melville, Monique Ngan, Jeffrey Watchorn.
 
 - [ ] **OM-1.** P2 row of Table 1: $80–160, 24 h. The repository link is updated to `github.com/AC-SDL4/photo-reactor`, where the old URL now redirects. The audit found that the README documents `turn_on_led` and `set_led_brightness`, but the code defines `turn_on_LED` and `set_brightness`; fixing this is a two-minute edit.
-- [ ] **OM-2.** Has LEDbyXample been built outside your team? If yes, by whom? Table 2 C2 becomes S.
+- [ ] **OM-2.** Has LEDbyXample been built outside your team? If yes, by whom? Table 2 C2 becomes S. A lead from 2026-11-27: Kelvin Chow (Acceleration Consortium; a collaborator on the repository) has a "Rev B" redesign with custom PCBs, BOMs and CAD in the fork `kelvinchow23/photo-reactor` (November 2026), and its commits mention assembled reactors. Whether that counts as a build outside the three developers is for the team to say.
 - [ ] **OM-3.** Consent to the P2 row of Table 5.
 - [ ] **OM-4.** Add a licence to `github.com/AC-SDL4/photo-reactor` (none found). This is the better outcome; the Licence column will then show it, and §6's count of projects without a licence file drops from two to one.
 - [ ] **OM-5.** §6 commitment: a Zenodo DOI (GitHub release → Zenodo integration).
