@@ -130,7 +130,7 @@ agent can resolve has been resolved. What remains is in
 a work-in-progress repository for the rolling ball viscometer (P3, DTU), the only project
 with nothing public. A search on 2026-10-10 found that the other two "missing" projects
 (P1 and P7) had public files all along that the manuscript never linked; their teams only
-need to confirm them. The editor said he would accept "work in progress" repositories, so
+need to confirm them. The editor's letter accepts "work in progress" repositories, so
 the bar is low.
 
 Check the manuscript after any edit:

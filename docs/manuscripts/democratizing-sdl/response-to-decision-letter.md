@@ -95,7 +95,7 @@ These were not requested in the decision, but the editor and referees will want 
 5. **Authorship.**
    - Sterling G. Baird is now corresponding author. Brenden Pelkie, who corresponded on the original submission, remains first author.
    - Seth Leavitt (Brigham Young University) joins the author list for coordinating the revision and for conceptualization of the revised argument.
-   - Sterling G. Baird's affiliation now leads with Brigham Young University, his current institution.
+   - Sterling G. Baird's affiliation now lists Brigham Young University, the current institution, first.
    - The Author contributions statement now uses CRediT roles.
    <!-- SIGN-OFF: SGB-5. If Basita Das and/or Ilya Yakavets are added (TB-2, P7-3), say so here with the reason:
         both were credited as project developers in the original Table 1 but omitted from the author list. -->

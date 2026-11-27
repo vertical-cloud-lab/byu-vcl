@@ -2,7 +2,7 @@
 
 **What this file is:** the changelog from [`manuscript-v2.md`](manuscript-v2.md) to [`manuscript-v3.md`](manuscript-v3.md); what happened to every `[NEEDED]` marker in v2; the evidence gathered on 2026-10-10; and the text to use if the three missing repositories do or do not appear. The per-person asks are in [`sign-off-checklist.md`](sign-off-checklist.md).
 
-**Ownership.** Sterling G. Baird owns the revision and is corresponding author. Seth Leavitt, who directed v2, has left the group and stays an author for that work, subject to his consent (SL-1).
+**Ownership.** Sterling G. Baird owns the revision and is corresponding author. Seth Leavitt, who directed v2, has left the group and stays an author for that work, subject to Seth's consent (SL-1).
 
 **Text of record.** v1 (`manuscript-v1.md`, verified against the as-submitted arXiv `.docx` that Brenden Pelkie sent). Tonio Buonassisi's 13 December 2024 draft and Brenden's `.docx` both precede v1, so neither was merged. Tonio's reading of the decision letter is the design brief for v3:
 

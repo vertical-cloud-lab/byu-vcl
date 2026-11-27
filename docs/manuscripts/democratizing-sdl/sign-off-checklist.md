@@ -22,7 +22,7 @@ The paper cannot be submitted until these are done. Everything else is a confirm
 | 4 | Consent to publish each team's Table 5 row | all project teams | TV-4, OM-3, TB-3, BP-8, P7-4, SGB-10, JEH-2 |
 | 5 | Every author approves the final text and agrees to submission (RSC requires this) | all 28 authors | ALL-1 |
 
-**The bar for item 1 is low.** The editor wrote that he would accept "at least the current 'work in progress' repositories". A public repository is enough if it contains:
+**The bar for item 1 is low.** The decision letter says the editors would expect "at least the current 'work in progress' repositories". A public repository is enough if it contains:
 
 - the CAD files;
 - a bill of materials;
@@ -90,7 +90,7 @@ Two people are named as project developers in Table 1 but are **not** in the aut
 ## 2. Sterling G. Baird (SGB): corresponding author, owner of the revision; P8 and P9 developer
 
 - [ ] **SGB-1.** Corresponding-author line: "Sterling G. Baird, sterling.baird@byu.edu" (the address on your commits to this repository). Also the affiliation order, BYU Mechanical Engineering then Acceleration Consortium, which follows your TMS 2027 abstract.
-- [ ] **SGB-2.** Author order. Brenden stays first. Seth is placed alphabetically in the contributor block (between Hein and Luo), the least presumptuous position. Move him if you and Brenden prefer otherwise.
+- [ ] **SGB-2.** Author order. Brenden stays first. Seth is placed alphabetically in the contributor block (between Hein and Luo), the least presumptuous position. Move Seth if you and Brenden prefer otherwise.
 - [ ] **SGB-3.** You accept responsibility for the formal analysis (§4 labour-cost analysis, §6 documentation audit) credited to you in CRediT, and for the **Use of generative AI** statement. That statement discloses that Claude drafted the revision under your and Seth's direction. Check the wording against RSC policy (`revision-notes-v3.md` §6).
 - [ ] **SGB-4.** Mint the Zenodo DOI for `analysis/` from the final commit, then paste it into the Data availability statement and Table 1 of the response letter. Metadata is ready in `analysis/.zenodo.json`. I did not create the deposit, because publishing a DOI is irreversible and publicly visible; I can do it on request.
 - [ ] **SGB-5.** Authorship of Basita Das and Ilya Yakavets, decided with TB-2 and P7-3. If either is added, the response letter (Other changes, item 5) must say so and why.
@@ -116,7 +116,7 @@ Two people are named as project developers in Table 1 but are **not** in the aut
 
 ## 3. Seth Leavitt (SL): revision coordination
 
-Seth has left the group. Authorship still requires his consent: RSC requires every author to approve the submission.
+Seth has left the group. Authorship still requires Seth's consent: RSC requires every author to approve the submission.
 
 - [ ] **SL-1.** Consent to being listed as an author. Affiliation at the time of the work: "Department of Mechanical Engineering, Brigham Young University", as in the TMS 2027 abstract. Your contribution as worded: "conceptualization (revised argument), project administration (coordination of the revision, August–September 2026), writing – review and editing". Also a current e-mail address for the submission system.
 - [ ] **ALL-1 to ALL-7** as for everyone.
