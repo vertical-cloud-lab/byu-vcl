@@ -151,8 +151,18 @@ def style_docx(path: Path, line_numbers: bool) -> None:
             for cell in row.cells:
                 for p in cell.paragraphs:
                     p.paragraph_format.space_after = Pt(0)
-                    for r in p.runs:
-                        r.font.size = Pt(8.5)
+                # Every run, including those inside hyperlinks, which p.runs skips.
+                for r in cell._tc.iter(qn("w:r")):
+                    rpr = r.find(qn("w:rPr"))
+                    if rpr is None:
+                        rpr = OxmlElement("w:rPr")
+                        r.insert(0, rpr)
+                    for tag in ("w:sz", "w:szCs"):
+                        el = rpr.find(qn(tag))
+                        if el is None:
+                            el = OxmlElement(tag)
+                            rpr.append(el)
+                        el.set(qn("w:val"), "17")  # half-points: 8.5 pt
     # Figures: cap width at the text width.
     for shape in doc.inline_shapes:
         max_w = Cm(17.0)

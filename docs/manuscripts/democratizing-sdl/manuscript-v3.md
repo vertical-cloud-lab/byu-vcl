@@ -107,7 +107,7 @@ Table 1 summarizes the ten projects. Table 2 then states, in advance and for eve
 **Table 1. The ten contributed user-developed automation projects.** Cost and time to reproduce are as reported by each project's developers. Repository status, licence and archival deposits were checked on 2026-10-10; the evidence is in Supplementary Note S3.
 
 | # | Project | Developers | Cost to reproduce (USD) | Time to reproduce | Design files and documentation |
-| --- | --- | --- | --- | --- | --- |
+| ----- | -------------- | ------------------ | ---------- | ---------- | ------------------------------ |
 | P1 | Powder dispensing module | Jin Hyun Chang, Kshitij Gambhir, Rógvi Ziskason, Louie Lucas Bisgaard Nyeland | $300 | 10 h | <https://github.com/loppe35/PowderDispensing_and_Weighing_Module> |
 | P2 | LEDbyXample modular photoreactor | Owen A. Melville, Monique Ngan, Jeffrey Watchorn | $80–160 | 24 h | <https://github.com/AC-SDL4/photo-reactor> |
 | P3 | Rolling ball viscometer | Jin Hyun Chang, Kshitij Gambhir, Rógvi Ziskason, Louie Lucas Bisgaard Nyeland | $300 | 10 h | **[TO SUPPLY: work-in-progress repository, DTU team]** |
@@ -128,7 +128,7 @@ Table 1 summarizes the ten projects. Table 2 then states, in advance and for eve
 **Table 2. How each project bears on each claim, stated before the claims are argued.** *S* = supports; *S⁻* = supports as a negative case (design files absent or not linked from any description of the project, and no reported replication, which is what the claim predicts); *C* = complicates; *X* = contradicts; — = not informative. Criteria: for C1, S if the break-even wage (Table 3) is below $50/h and C if it is between $50 and $75/h (none exceeds $75/h). For C2 and C3, S requires that the project's replication or deployment beyond its developers is reported, either by them or in the literature. Every *C* is discussed in the section for that claim.
 
 | Project | C1 cost | C2 replication | C3 documentation | C4 skills | C5 limits |
-| --- | :---: | :---: | :---: | :---: | :---: |
+| ------------------------ | :-------: | :-------: | :-------: | :-------: | :-------: |
 | P1 Powder dispensing module | S | S⁻ | S⁻ | S | S |
 | P2 LEDbyXample photoreactor | S | — | S | S | — |
 | P3 Rolling ball viscometer | S | S⁻ | S⁻ | S | S |
@@ -225,7 +225,7 @@ We can quantify the rest from Table 1, because Table 1 reports build *time* as w
 **Table 3. Labour and materials in the true cost of a first build, at a fully loaded rate of $50/h.** The break-even wage is the rate at which labour cost equals the bill of materials; it does not depend on the assumed rate.
 
 | Project | Bill of materials | Build hours | Labour @ $50/h | Labour share | Break-even wage |
-| --- | ---: | ---: | ---: | ---: | ---: |
+| ------------------------ | ---------: | -------: | ---------: | --------: | ---------: |
 | P10 IvoryOS | $0 | 0.5 | $25 | 100% | $0/h |
 | P2 LEDbyXample photoreactor | $120 | 24 | $1,200 | 91% | $5/h |
 | P9 OpenFlexure public control | $300 | 30 | $1,500 | 83% | $10/h |
@@ -283,7 +283,7 @@ Table 5 audits our own ten projects against the five capabilities, plus the lice
 **Table 5. Documentation self-audit against the five capabilities a replicator needs, plus licensing.** ● complete · ◐ partial · ○ absent · n/a not applicable. Assessed from public resources on 2026-10-10; evidence for every cell is in Supplementary Note S3.
 
 | Project | Procure | Build | Configure | Run | Troubleshoot | Licence |
-| --- | :---: | :---: | :---: | :---: | :---: | :---: |
+| ------------------------ | :------: | :------: | :------: | :------: | :------: | :------------: |
 | P1 Powder dispensing module | ◐ | ◐ | ◐ | ● | ● | inconsistent<sup>a</sup> |
 | P2 LEDbyXample photoreactor | ● | ● | ◐ | ◐ | ◐ | none |
 | P3 Rolling ball viscometer | ○ | ○ | ○ | ○ | ○ | — |
