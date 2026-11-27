@@ -117,6 +117,17 @@ def test_narration_numbers_match_the_layouts():
     assert f"{v['per_1000_sqft']:.1f}" in text and f"{c['per_1000_sqft']:.1f}" in text
     assert "Forty-three instruments" in text and js["summary"]["counts"]["instruments"] == 43
     assert "9.15 meters" in text
+    # the capacity line (f11): the layout for robots, the Shuttles' trays, positions per 1,000 sq ft both ways
+    cp = js["capacity"]
+    assert f"{rows['robots']['area_sqft']:,} square feet" in text
+    assert f"hold {cp['trays']['trays']} trays" in text
+    sc_ = cp["same_capacity"]
+    assert (f"{sc_['vertical']['positions_per_1000_sqft']:.1f} tray positions per thousand square feet, against "
+            f"{sc_['flat']['positions_per_1000_sqft']:.1f}") in text
+    assert cp["machine_block"]["area_m2"] / rows["vertical"]["area_m2"] > 0.5      # f9: "most of the floor"
+    say = sc["say"]
+    for n in re.findall(r"\d[\d,]*\.\d+|\d{1,3}(?:,\d{3})+", text):              # every decimal and thousands respelled
+        assert n in say, n
     rec = json.loads((HERE / "out" / "floorspace" / "narration" / "lines.json").read_text())["lines"]
     times = sorted((FSS.PH[ln["phase"]] + ln["at"], rec[ln["id"]]["seconds"], ln["id"]) for ln in sc["lines"])
     for (a, da, ia), (b, _, ib) in zip(times[:-1], times[1:]):

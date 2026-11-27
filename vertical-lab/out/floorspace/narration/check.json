@@ -1,6 +1,6 @@
 {
  "model": "small.en",
- "wer": 0.0085,
+ "wer": 0.0102,
  "lines": {
   "f1": {
    "text": "Forty-three instruments, laid out three ways. These are design layouts, not built labs.",
@@ -19,17 +19,17 @@
   },
   "f4": {
    "text": "Next, the same floor plan, automated. Mobile robots drive the routes people walked, with fixed arms, docking targets and sample racks at the stations.",
-   "heard": "Next, the same floor plan, automated.  Mobile robots drive the routes people walked  with fixed arms, docking targets,  and sample racks at the stations.",
+   "heard": "Next, the same floor plan, automated.  Mobile robots drive the routes people walked,  with fixed arms, docking targets,  and sample racks at the stations.",
    "wer": 0.0
   },
   "f5": {
    "text": "The floor area stays the same. And a robot docked in a five-foot aisle leaves too little room for another to pass.",
-   "heard": "the floor area stays the same.  And a robot docked in a five-foot aisle  leaves too little room for another to pass.",
+   "heard": "the floor area stays the same,  and a robot docked in a five-foot aisle  leaves too little room for another to pass.",
    "wer": 0.0
   },
   "f6": {
    "text": "The vertical lab. Two Kardex Shuttles come in, and every benchtop instrument moves onto a tray.",
-   "heard": "The vertical lab.  Two cardiac shuttles come in, and every benchtop instrument  moves onto a tray.",
+   "heard": "The vertical lab.  Two cardiac shuttles come in and every benchtop instrument  moves onto a tray.",
    "wer": 0.0625
   },
   "f7": {
@@ -39,12 +39,17 @@
   },
   "f8": {
    "text": "Side by side, the vertical lab needs 29 percent less floor: 14.2 instruments per thousand square feet, against 10.0.",
-   "heard": "Side by side, the vertical lab needs 29 percent less floor, 14.2 instruments per thousand  square feet against 10.0.",
+   "heard": "Side by side, the vertical lab needs 29% less floor, 14.2 instruments per thousand square  feet against 10.0.",
+   "wer": 0.0417
+  },
+  "f11": {
+   "text": "Laid out so robots can dock and pass, a flat lab needs 4,128 square feet. And by capacity, the Shuttles hold 45 trays: 14.9 tray positions per thousand square feet, against 7.3 laid out flat.",
+   "heard": "Laid out so robots can dock and pass, a flat lab needs 4,128 square feet.  And by capacity, the shuttles hold 45 trays, 14.9 tray positions per thousand square feet,  against 7.3 laid out flat.",
    "wer": 0.0
   },
   "f9": {
-   "text": "Most of what is left is floor machines, their clearances and the robot aisle. And the Shuttles stand 9.15 meters tall, so it needs a high bay.",
-   "heard": "Most of what is left is floor machines, their clearances and the robot aisle.  And the shuttles stand 9.15 meters tall, so it needs a high bay.",
+   "text": "In the vertical lab, most of the floor goes to the floor machines, their clearances and the robot aisle, the same as in the flat layouts for robots. And the Shuttles stand 9.15 meters tall, so it needs a high bay.",
+   "heard": "In the vertical lab, most of the floor goes to the floor machines, their clearances and  the robot aisle, the same as in the flat layouts for robots.  And the shuttles stand 9.15 meters tall, so it needs a high bay.",
    "wer": 0.0
   },
   "f10": {

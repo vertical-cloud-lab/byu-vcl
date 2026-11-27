@@ -1,5 +1,6 @@
-"""The floor-space segment, cut: the 3-D renders (floorspace3d.py) with their overlays, the three footprints side by
-side (2-D, at one scale), the narration (floorspace_voice.py), and the preview's record, contact sheet, subtitles and
+"""The floor-space segment, cut: the 3-D renders (floorspace3d.py) with their overlays, the footprints side by side
+(2-D, at one scale: the four layouts of today's equipment, then the Shuttles' capacity laid out flat, with the floor
+machines' block apart), the narration (floorspace_voice.py), and the preview's record, contact sheet, subtitles and
 YouTube metadata.
 
     cd vertical-lab
@@ -39,12 +40,15 @@ PLAN_BG = (229, 229, 226)            # the 3-D ground's colour, so the cross-fad
 COL = dict(floor_conv=(201, 207, 214), floor_vert=(209, 220, 204), wall=(58, 60, 64), corridor=(184, 192, 205),
            aisle=(240, 233, 205), mir=(244, 228, 160), bench=(190, 172, 146), shelf=(150, 156, 164),
            machine=(110, 140, 176), inst=(222, 118, 88), vlm=(74, 86, 104), dock=(30, 140, 70), charger=(120, 84, 160),
-           arm=(235, 170, 40))
+           arm=(235, 170, 40), mir1=(238, 214, 120), free=(236, 226, 210), store=(150, 156, 164))
 BAR = {"floor machines": (110, 140, 176), "benches, shelves and Shuttles": (190, 152, 100),
        "service clearance": (150, 196, 160), "aisles and corridor": (236, 206, 110), "walls": (58, 60, 64),
        "other floor": (200, 200, 198)}
 STAGE = {"conv": "1   Conventional lab", "flat": "2   Automated, same floor plan", "vert": "3   Vertical lab",
          "plans": "Side by side"}
+ROW_A = ("conventional", "flat", "robots", "vertical")
+TITLES = {"conventional": "Conventional lab", "flat": "Automated, same floor plan",
+          "robots": "Automated, laid out for robots", "vertical": "Vertical lab"}
 
 
 def fmt(v: float) -> str:
@@ -69,6 +73,11 @@ class Cut:
                 print(f"floorspace_cut: line {b['id']} starts {a['t1'] - b['t0']:.2f} s before {a['id']} ends",
                       flush=True)
         self._plan_cache: dict = {}
+        self.cap = js["capacity"]
+        self.rob = FS.robots(self.S.inv)
+        self.capf = FS.capacity_flat(self.S.inv, self.cap["trays"]["trays"])
+        self.lays = {"conventional": self.S.conv, "flat": self.S.flat, "robots": self.rob, "vertical": self.S.vert,
+                     "capacity": self.capf}
         self.top = self.S.camera(PH["plans"])
         q = FSS.project(self.top, [(self.S.vert.envelope[0], self.S.vert.envelope[3], 0.0),
                                    (self.S.vert.envelope[2], self.S.vert.envelope[1], 0.0)])
@@ -284,7 +293,7 @@ class Cut:
         if key in self._plan_cache:
             return self._plan_cache[key]
         S = self.S
-        lay = {"conventional": S.conv, "flat": S.flat, "vertical": S.vert}[name]
+        lay = self.lays[name]
         inv = S.inv
         x0, y0, x1, y1 = lay.envelope
         W_, H_ = int(math.ceil((x1 - x0) * k)) + 2, int(math.ceil((y1 - y0) * k)) + 2
@@ -295,10 +304,15 @@ class Cut:
             return ((r[0] - x0) * k, (y1 - r[3]) * k, (r[2] - x0) * k, (y1 - r[1]) * k)
         d.rectangle(R(lay.envelope), fill=COL["floor_vert" if name == "vertical" else "floor_conv"])
         for a in lay.aisles:
-            col = {"corridor": COL["corridor"], "aisle": COL["aisle"], "mir": COL["mir"], "dock": COL["aisle"]}
+            col = {"corridor": COL["corridor"], "aisle": COL["aisle"], "mir": COL["mir"], "dock": COL["aisle"],
+                   "mir1": COL["mir1"]}
             d.rectangle(R(a["rect"]), fill=col.get(a["kind"], COL["aisle"]))
         for b in lay.benches:
-            d.rectangle(R(b["rect"]), fill=COL["bench" if b["kind"] == "bench" else "shelf"])
+            if b.get("free"):
+                d.rectangle(R(b["rect"]), fill=COL["free"], outline=(170, 160, 146), width=1)
+            else:
+                d.rectangle(R(b["rect"]), fill=COL["bench" if b["kind"] == "bench" else "shelf"],
+                            outline=(150, 134, 112) if "tray" in b else None, width=1)
         for kk, p in lay.places.items():
             if kk in FS.VLM_KEYS:
                 r = (p.x - FS.VLM["w"] / 2, p.y - FS.VLM["d"] / 2, p.x + FS.VLM["w"] / 2, p.y + FS.VLM["d"] / 2)
@@ -312,7 +326,7 @@ class Cut:
             if p.on is None:
                 d.rectangle(R(r), fill=COL["machine"], outline=(60, 80, 104), width=max(1, int(k * 30)))
             elif p.on == "bench":
-                d.rectangle(R(r), fill=COL["inst"])
+                d.rectangle(R(r), fill=COL["inst"] if inv[kk].instrument else COL["store"])
         for c in lay.chargers:
             d.rectangle(R((c[0] - 300, c[1] - 300, c[0] + 300, c[1] + 300)), fill=COL["charger"])
         for a in lay.arms:
@@ -331,142 +345,211 @@ class Cut:
         return im
 
     def plans_geometry(self):
-        """Where each plan sits at the end: three in a row, one scale, the vertical lab on the right."""
-        S = self.S
-        envs = {n: l.envelope for n, l in (("conventional", S.conv), ("flat", S.flat), ("vertical", S.vert))}
-        widths = {n: e[2] - e[0] for n, e in envs.items()}
-        gap = 2200.0
-        total = sum(widths.values()) + 2 * gap
-        k = (1920 - 2 * 46) / total
-        x = 46.0
-        pos = {}
-        ytop = 268.0
-        for n in ("conventional", "flat", "vertical"):
-            pos[n] = (x, ytop)
-            x += widths[n] * k + gap * k
-        return k, pos
+        """Where each plan sits at the end, all at one scale, north up: today's equipment in the first row (the
+        conventional lab, the same plan automated, laid out for robots, the vertical lab) and the same capacity in the
+        second (the Shuttles' trays laid out flat, the vertical lab again). -> (k px/mm, {name: (x, y)}, the rows'
+        heights in px)."""
+        env = {n: l.envelope for n, l in self.lays.items()}
+        wid = {n: e[2] - e[0] for n, e in env.items()}
+        hei = {n: e[3] - e[1] for n, e in env.items()}
+        gap = 1800.0
+        k = (1920 - 2 * 46) / (sum(wid[n] for n in ROW_A) + 3 * gap)
+        pos, x = {}, 46.0
+        for n in ROW_A:
+            pos[n] = (x, 192.0)
+            x += (wid[n] + gap) * k
+        pos["capacity"] = (46.0, 584.0)
+        pos["vertical2"] = (46.0 + (wid["capacity"] + gap) * k, 584.0)
+        return k, pos, max(hei[n] for n in ROW_A) * k, max(hei["capacity"], hei["vertical"]) * k
+
+    def t0(self, lid: str) -> float:
+        return next(ln for ln in self.lines if ln["id"] == lid)["t0"]
+
+    def _fade_in(self, img, name, k, xy, a):
+        if a <= 0:
+            return
+        L = self.plan_layer(name, k)
+        if a < 1:
+            L = L.copy()
+            L.putalpha(L.getchannel("A").point(lambda v: int(v * a)))
+        img.alpha_composite(L, (int(round(xy[0] - (1 - a) * 160)), int(round(xy[1]))))
+
+    def _badge(self, d, x, y, s, a, size=24):
+        fw = ST.font(size, bold=True)
+        w = d.textlength(s, font=fw)
+        d.rounded_rectangle((x, y, x + w + 24, y + size + 14), 9, fill=(10, 140, 35, int(240 * a)))
+        self.text(d, (x + 12, y + 5), s, fw, fill=(255, 255, 255), a=a)
+        return x + w + 24
 
     def plans(self, t: float) -> np.ndarray:
         S = self.S
         img = Image.new("RGBA", (1920, 1080), (*PLAN_BG, 255))
-        k1, pos = self.plans_geometry()
+        k1, pos, hA, hB = self.plans_geometry()
         u = ST.ramp(t, PH["plans"] + 2.6, PH["plans"] + 5.4)
-        # the vertical lab: from the top view's scale and place to its slot
+        # the vertical lab: from the top view's scale and place to its slot in the first row
         kv = self.k_top + (k1 - self.k_top) * u
         ox = self.o_top[0] + (pos["vertical"][0] - self.o_top[0]) * u
         oy = self.o_top[1] + (pos["vertical"][1] - self.o_top[1]) * u
         img.alpha_composite(self.plan_layer("vertical", kv), (int(round(ox)), int(round(oy))))
-        for n in ("conventional", "flat"):
-            a = ST.ramp(t, PH["plans"] + 3.8 + (0.5 if n == "flat" else 0.0), PH["plans"] + 5.6 + (
-                0.5 if n == "flat" else 0.0))
-            if a <= 0:
-                continue
-            L = self.plan_layer(n, k1)
-            if a < 1:
-                L = L.copy()
-                L.putalpha(L.getchannel("A").point(lambda v: int(v * a)))
-            img.alpha_composite(L, (int(round(pos[n][0] - (1 - a) * 160)), int(round(pos[n][1]))))
+        for i, n in enumerate(("conventional", "flat", "robots")):
+            self._fade_in(img, n, k1, pos[n], ST.ramp(t, PH["plans"] + 3.8 + 0.4 * i, PH["plans"] + 5.6 + 0.4 * i))
+        f8, f11, f9, f10 = (self.t0(x) for x in ("f8", "f11", "f9", "f10"))
+        f11b = f11 + 7.6                                   # "And by capacity, ..."
+        aB = ST.ramp(t, f11b - 1.2, f11b)
+        self._fade_in(img, "capacity", k1, pos["capacity"], aB)
+        self._fade_in(img, "vertical", k1, pos["vertical2"], aB)
         d = ImageDraw.Draw(img)
+        rows, cp = self.rows, self.cap
         a_txt = ST.ramp(t, PH["plans"] + 5.2, PH["plans"] + 6.2)
+        green = (10, 110, 30)
         if a_txt > 0:
-            self.text(d, (46, 34), "Three footprints, one set of equipment", ST.font(34, bold=True), fill=DARK,
+            self.text(d, (46, 24), "Floor space, compared two ways", ST.font(34, bold=True), fill=DARK, a=a_txt)
+            self.text(d, (46, 72), "At one scale, north up. Design layouts, not built labs.", ST.font(20), fill=DARK2,
                       a=a_txt)
-            self.text(d, (46, 84), "At one scale, north up. Design layouts, not built labs: the same 43 instruments "
-                                   "in each.", ST.font(21), fill=DARK2, a=a_txt)
-            titles = {"conventional": "Conventional lab", "flat": "Automated, same floor plan",
-                      "vertical": "Vertical lab"}
-            for n in ("conventional", "flat", "vertical"):
-                r = self.rows[n]
+            self.text(d, (46, 116), "Same equipment: today's 43 instruments", ST.font(24, bold=True), fill=DARK,
+                      a=a_txt)
+            extra = {"flat": (f"+ {FS.FLAT_UNITS} robots, {rows['flat']['arms']} fixed arms, {rows['flat']['docks']} "
+                              "docks", "a docked robot leaves 0.94 m of a 5 ft aisle", False),
+                     "robots": (f"{rows['robots']['positions']} tray-sized positions, a dock lane each",
+                                "one-way 1.45 m robot aisles; floor machines as in the vertical lab", False),
+                     "vertical": ("Shuttles 9.15 m tall: it needs a high bay", "", True), "conventional": ("", "", False)}
+            yl = 192 + hA + 8
+            for n in ROW_A:
+                r = rows[n]
                 x, y = pos[n]
-                self.text(d, (x, y - 74), titles[n], ST.font(25, bold=True), fill=DARK, a=a_txt)
-                self.text(d, (x, y - 40), f"{r['length_m']:.1f} × {r['width_m']:.1f} m  ·  {r['area_m2']:.0f} m²",
-                          ST.font(19), fill=DARK2, a=a_txt)
-                e = {"conventional": S.conv, "flat": S.flat, "vertical": S.vert}[n].envelope
-                h = (e[3] - e[1]) * k1
-                yb = y + h + 14
-                self.text(d, (x, yb), f"{fmt(r['area_sqft'])} sq ft", ST.font(36, bold=True), fill=DARK, a=a_txt)
-                self.text(d, (x, yb + 48), f"{r['per_1000_sqft']:.1f} instruments per 1,000 sq ft", ST.font(20),
+                self.text(d, (x, 162), TITLES[n], ST.font(19, bold=True), fill=DARK, a=a_txt)
+                self.text(d, (x, yl), f"{fmt(r['area_sqft'])} sq ft", ST.font(27, bold=True), fill=DARK, a=a_txt)
+                self.text(d, (x, yl + 36), f"{r['length_m']:.1f} × {r['width_m']:.1f} m · {r['area_m2']:.0f} m² · "
+                                           f"{r['per_1000_sqft']:.1f} instruments / 1,000 sq ft", ST.font(14),
                           fill=DARK2, a=a_txt)
-                if n == "flat":
-                    self.text(d, (x, yb + 76), f"+ {FS.FLAT_UNITS} mobile manipulators, {r['arms']} fixed arms, "
-                                               f"{r['docks']} docks", ST.font(18), fill=DARK2, a=a_txt)
-                if n == "vertical":
-                    self.text(d, (x, yb + 76), "Shuttles 9.15 m tall: it needs a high bay", ST.font(18, bold=True),
-                              fill=(150, 60, 20), a=a_txt)
-        # what the plans' marks are
-        if a_txt > 0:
-            lx, ly = 46, 700
+                e1, e2, bold = extra[n]
+                self.text(d, (x, yl + 56), e1, ST.font(14, bold=bold), fill=(150, 60, 20) if bold else DARK2, a=a_txt)
+                self.text(d, (x, yl + 74), e2, ST.font(14), fill=DARK2, a=a_txt)
+            # what the plans' marks are
+            lx, ly = 46, 872
             marks = [("floor machine", "rect", COL["machine"]), ("benchtop instrument", "rect", COL["inst"]),
-                     ("bench", "rect", COL["bench"]), ("shelving", "rect", COL["shelf"]),
-                     ("Shuttle", "rect", COL["vlm"]), ("aisle", "rect", COL["aisle"]), ("MiR aisle", "rect", COL["mir"]),
-                     ("docking target", "tri", COL["dock"]), ("fixed arm", "dot", COL["arm"]),
-                     ("charger", "rect", COL["charger"])]
-            fl = ST.font(16)
+                     ("store", "rect", COL["store"]), ("bench", "rect", COL["bench"]),
+                     ("free tray position", "rect", COL["free"]), ("Shuttle", "rect", COL["vlm"]),
+                     ("aisle, dock lane", "rect", COL["aisle"]), ("MiR aisle", "rect", COL["mir"]),
+                     ("one-way MiR aisle", "rect", COL["mir1"]), ("docking target", "tri", COL["dock"]),
+                     ("fixed arm", "dot", COL["arm"]), ("charger", "rect", COL["charger"])]
+            fl = ST.font(15)
             for lab_, kind, col in marks:
                 if kind == "rect":
-                    d.rectangle((lx, ly + 3, lx + 18, ly + 19), fill=(*col, int(255 * a_txt)))
+                    d.rectangle((lx, ly + 3, lx + 16, ly + 18), fill=(*col, int(255 * a_txt)))
                 elif kind == "tri":
-                    d.polygon([(lx + 9, ly + 2), (lx, ly + 19), (lx + 18, ly + 19)], fill=(*col, int(255 * a_txt)))
+                    d.polygon([(lx + 8, ly + 2), (lx, ly + 18), (lx + 16, ly + 18)], fill=(*col, int(255 * a_txt)))
                 else:
-                    d.ellipse((lx + 1, ly + 3, lx + 17, ly + 19), fill=(*col, int(255 * a_txt)))
-                self.text(d, (lx + 24, ly), lab_, fl, fill=DARK2, a=a_txt)
-                lx += 24 + d.textlength(lab_, font=fl) + 22
-        # the comparison (f8)
-        f8 = next(ln for ln in self.lines if ln["id"] == "f8")["t0"]
-        a8 = ST.ramp(t, f8, f8 + 0.8)
+                    d.ellipse((lx + 1, ly + 3, lx + 15, ly + 18), fill=(*col, int(255 * a_txt)))
+                self.text(d, (lx + 21, ly), lab_, fl, fill=DARK2, a=a_txt)
+                lx += 21 + d.textlength(lab_, font=fl) + 18
+        # the first comparison (f8), and the layout for robots (f11's first sentence)
+        a8 = min(ST.ramp(t, f8, f8 + 0.8), a_txt)          # with the labels it sits by
+        xv = pos["vertical"][0]
+        yl = 192 + hA + 8
+        fh = ST.font(24, bold=True)
+        xh = 46 + d.textlength("Same equipment: today's 43 instruments", font=fh) + 28
+        c, v, rb = rows["conventional"], rows["vertical"], rows["robots"]
+        pc = cp["percent"]
         if a8 > 0:
-            c, v = self.rows["conventional"], self.rows["vertical"]
-            pct = (1 - v["area_sqft"] / c["area_sqft"]) * 100
-            x, y = pos["vertical"]
-            e = S.vert.envelope
-            yb = y + (e[3] - e[1]) * k1 + 14
-            s = f"−{pct:.0f} % floor"
-            fw = ST.font(30, bold=True)
-            w = d.textlength(s, font=fw)
-            xx = x + (e[2] - e[0]) * k1 - w - 24
-            d.rounded_rectangle((xx - 14, yb - 2, xx + w + 14, yb + 44), 10, fill=(10, 140, 35, int(240 * a8)))
-            self.text(d, (xx, yb + 4), s, fw, fill=(255, 255, 255), a=a8)
-            s2 = (f"{v['per_1000_sqft']:.1f} against {c['per_1000_sqft']:.1f} instruments per 1,000 sq ft;  "
-                  f"{fmt(v['area_sqft'])} against {fmt(c['area_sqft'])} sq ft")
-            self.text(d, (46, 128), s2, ST.font(22, bold=True), fill=(10, 110, 30), a=a8)
-        # where the floor goes (f9)
-        f9 = next(ln for ln in self.lines if ln["id"] == "f9")["t0"]
+            wv = d.textlength(f"{fmt(v['area_sqft'])} sq ft", font=ST.font(27, bold=True))
+            xb = self._badge(d, xv + wv + 14, yl - 2, f"−{pc['vertical_vs_conventional']} %", a8, 22)
+            self.text(d, (xh, 120), f"The vertical lab: {pc['vertical_vs_conventional']} % less floor than the "
+                                    f"conventional lab ({v['per_1000_sqft']:.1f} against {c['per_1000_sqft']:.1f} "
+                                    "instruments per 1,000 sq ft)", ST.font(18, bold=True), fill=green, a=a8)
+        a11 = ST.ramp(t, f11, f11 + 0.8)
+        if a11 > 0:
+            xr = pos["robots"][0]
+            wr = d.textlength(f"{fmt(rb['area_sqft'])} sq ft", font=ST.font(27, bold=True))
+            d.rounded_rectangle((xr - 8, yl - 4, xr + wr + 10, yl + 34), 8, outline=(*green, int(255 * a11)),
+                                width=3)
+            self.text(d, (xh, 143), f"and {pc['vertical_vs_robots']} % less than the flat lab laid out for robots "
+                                    f"({fmt(v['area_sqft'])} against {fmt(rb['area_sqft'])} sq ft)",
+                      ST.font(18, bold=True), fill=green, a=a11)
+        # the second row: the same capacity
+        if aB > 0:
+            tr = cp["trays"]
+            fl_, vv = cp["same_capacity"]["flat"], cp["same_capacity"]["vertical"]
+            self.text(d, (46, 508), f"Same capacity: the Shuttles' {tr['trays']} trays as bench positions",
+                      ST.font(24, bold=True), fill=DARK, a=aB)
+            self.text(d, (46, 540), f"{tr['in_use']} trays in use today, {tr['added']} more at the tray plan's "
+                                    f"{tr['span_mm']:.0f} mm; each 2.45 × 0.86 m ({tr['tray_m2']:.1f} m²): "
+                                    f"{fmt(tr['surface_m2'])} m² of tray surface in all", ST.font(16), fill=DARK2, a=aB)
+            yb = 584 + hB + 8
+            labs = {"capacity": (f"Automated, {fl_['positions']} tray positions laid out flat",
+                                 f"{fl_['length_m']:.1f} × {fl_['width_m']:.1f} m  ·  {fl_['area_m2']:.0f} m²  ·  "
+                                 f"{fl_['positions_per_1000_sqft']:.1f} positions / 1,000 sq ft",
+                                 f"{tr['added']} free positions, light; the same rules as the layout for robots",
+                                 fl_["area_sqft"]),
+                    "vertical2": (f"Vertical lab: {vv['positions']} trays in two Shuttles",
+                                  f"{v['length_m']:.1f} × {v['width_m']:.1f} m  ·  {v['area_m2']:.0f} m²  ·  "
+                                  f"{vv['positions_per_1000_sqft']:.1f} positions / 1,000 sq ft",
+                                  "", vv["area_sqft"])}
+            for n, (ti, l2, l3, sq) in labs.items():
+                x, _ = pos[n]
+                self.text(d, (x, yb), f"{fmt(sq)} sq ft", ST.font(27, bold=True), fill=DARK, a=aB)
+                self.text(d, (x, yb + 36), l2, ST.font(14), fill=DARK2, a=aB)
+                self.text(d, (x, yb + 56), l3, ST.font(14), fill=DARK2, a=aB)
+            # plan titles for the second row sit over the plans, in the plans' own gap
+            for n, (ti, _, _, _) in labs.items():
+                x, _ = pos[n]
+                self.text(d, (x, 584 - 24), ti, ST.font(17, bold=True), fill=DARK, a=aB)
+        aB2 = ST.ramp(t, f11b + 2.0, f11b + 2.8)
+        if aB2 > 0:
+            vv = cp["same_capacity"]["vertical"]
+            fl_ = cp["same_capacity"]["flat"]
+            wv = d.textlength(f"{fmt(vv['area_sqft'])} sq ft", font=ST.font(27, bold=True))
+            yb = 584 + hB + 8
+            self._badge(d, pos["vertical2"][0] + wv + 14, yb - 2, f"−{pc['vertical_vs_flat_capacity']} %", aB2, 22)
+            fh2 = ST.font(24, bold=True)
+            xh2 = 46 + d.textlength(f"Same capacity: the Shuttles' {cp['trays']['trays']} trays as bench positions",
+                                    font=fh2) + 28
+            self.text(d, (xh2, 512), f"{vv['positions_per_1000_sqft']:.1f} against {fl_['positions_per_1000_sqft']:.1f}"
+                                     " tray positions per 1,000 sq ft", ST.font(18, bold=True), fill=green, a=aB2)
+        # where the floor goes, the floor machines apart (f9)
         a9 = ST.ramp(t, f9, f9 + 0.8)
         if a9 > 0:
-            ybar = 790
-            self.text(d, (46, ybar - 44), "Where the floor goes (m²)", ST.font(21, bold=True), fill=DARK, a=a9)
-            for n in ("conventional", "flat", "vertical"):
-                r = self.rows[n]
-                bd = r["breakdown_m2"]
-                tot = sum(bd.values())
-                x, _ = pos[n]
-                e = {"conventional": S.conv, "flat": S.flat, "vertical": S.vert}[n].envelope
-                wfull = (e[2] - e[0]) * k1 * (tot / self.rows["conventional"]["area_m2"]) * (
-                    (self.rows["conventional"]["length_m"]) / (e[2] - e[0]) * 1000)
-                wfull = min(wfull, (e[2] - e[0]) * k1)
-                wfull = 560.0 * tot / sum(self.rows["conventional"]["breakdown_m2"].values())
-                xx = x
-                for cat in FS.CATS:
-                    w = wfull * bd[cat] / tot
-                    d.rectangle((xx, ybar, xx + w, ybar + 34), fill=(*BAR[cat], int(255 * a9)))
-                    if w > 34:
-                        self.text(d, (xx + w / 2, ybar + 7), f"{bd[cat]:.0f}", ST.font(15, bold=True),
-                                  fill=(255, 255, 255) if cat in ("walls", "floor machines") else DARK, a=a9,
-                                  anchor="ma")
+            ve = self.lays["vertical"].envelope
+            x0 = pos["vertical2"][0] + (ve[2] - ve[0]) * k1 + 64
+            y0 = 552
+            mbm = cp["machine_block"]["area_m2"]
+            self.text(d, (x0, y0), "Where the floor goes (m²)", ST.font(19, bold=True), fill=DARK, a=a9)
+            bars = [("Conventional lab: rooms mix machines and benches", None, c["area_m2"]),
+                    ("Vertical lab: + the two Shuttles", mbm, v["area_m2"] - mbm),
+                    ("Laid out for robots: + 18 tray positions", mbm, rb["area_m2"] - mbm),
+                    (f"{cp['same_capacity']['flat']['positions']} tray positions, flat", mbm,
+                     cp["same_capacity"]["flat"]["area_m2"] - mbm)]
+            sc = (1880 - x0) / 600.0
+            yy = y0 + 34
+            for lab_, m_, rest in bars:
+                self.text(d, (x0, yy), lab_, ST.font(14), fill=DARK2, a=a9)
+                yy += 19
+                xx = x0
+                if m_ is not None:
+                    w = m_ * sc
+                    d.rectangle((xx, yy, xx + w, yy + 24), fill=(*COL["machine"], int(255 * a9)))
+                    self.text(d, (xx + w / 2, yy + 4), f"{m_:.0f}", ST.font(14, bold=True), fill=(255, 255, 255),
+                              a=a9, anchor="ma")
                     xx += w
-            lx, ly = 46, ybar + 48
-            for cat in FS.CATS:
-                d.rectangle((lx, ly + 3, lx + 18, ly + 21), fill=(*BAR[cat], int(255 * a9)))
-                self.text(d, (lx + 26, ly), cat, ST.font(17), fill=DARK2, a=a9)
-                lx += 34 + d.textlength(cat, font=ST.font(17))
+                    w = rest * sc
+                    d.rectangle((xx, yy, xx + w, yy + 24), fill=(*BAR["benches, shelves and Shuttles"], int(255 * a9)))
+                    self.text(d, (xx + w + 6, yy + 4), f"+ {rest:.0f}", ST.font(14, bold=True), fill=DARK, a=a9)
+                else:
+                    w = rest * sc
+                    d.rectangle((xx, yy, xx + w, yy + 24), fill=(*BAR["other floor"], int(255 * a9)))
+                    self.text(d, (xx + w + 6, yy + 4), f"{rest:.0f}", ST.font(14, bold=True), fill=DARK, a=a9)
+                yy += 34
+            self.text(d, (x0, yy + 2), f"Blue: the floor machines' block ({mbm:.0f} m²): the 12 machines, their 0.6 m",
+                      ST.font(14), fill=DARK2, a=a9)
+            self.text(d, (x0, yy + 20), "service space and the 3.0 m robot aisle, the same in all three",
+                      ST.font(14), fill=DARK2, a=a9)
         # Emerald Cloud Lab (f10)
-        f10 = next(ln for ln in self.lines if ln["id"] == "f10")["t0"]
         a10 = ST.ramp(t, f10, f10 + 0.8)
         if a10 > 0:
             e = FS.ECL
             per = 100 / e["ssf"]["sqft"] * 1000
             y = 912
-            d.rounded_rectangle((36, y, 1884, y + 136), 12, fill=(255, 255, 255, int(200 * a10)),
+            d.rounded_rectangle((36, y, 1884, y + 136), 12, fill=(255, 255, 255, int(225 * a10)),
                                 outline=(150, 154, 160, int(255 * a10)), width=2)
             self.text(d, (56, y + 14), "For scale: Emerald Cloud Lab, built labs, as published", ST.font(21, bold=True),
                       fill=DARK, a=a10)
@@ -631,7 +714,7 @@ def stills(ts):
         print("still", t, flush=True)
 
 
-SHEET_T = (2.0, 10.0, 24.0, 33.0, 40.0, 47.0, 53.0, 57.0, 61.0, 64.5, 68.0, 73.0, 79.0, 90.0, 100.0, 112.0)
+SHEET_T = (2.0, 10.0, 24.0, 33.0, 40.0, 47.0, 53.0, 57.0, 61.0, 64.5, 68.0, 73.0, 79.0, 92.0, 108.0, 125.0)
 
 
 def sheet():
@@ -656,22 +739,27 @@ def sheet():
 
 def meta(commit: str):
     cut = Cut()
-    c, f, v = cut.rows["conventional"], cut.rows["flat"], cut.rows["vertical"]
-    desc = f"""A preview segment for review (private): the vertical lab's equipment laid out three ways, and the floor area each layout takes. Design layouts, not built labs.
+    c, f, r, v = (cut.rows[n] for n in ("conventional", "flat", "robots", "vertical"))
+    cp = cut.cap
+    tr, fl, vv, pc = cp["trays"], cp["same_capacity"]["flat"], cp["same_capacity"]["vertical"], cp["percent"]
+    desc = f"""A preview segment for review (unlisted): the vertical lab's equipment laid out four ways, the floor area each layout takes, and the Shuttles' tray capacity laid out flat. Design layouts, not built labs.
 
-The same 43 instruments in each (31 benchtop, 12 floor machines), from the 3-D lab of PR 318:
+Same equipment: today's 43 instruments (31 benchtop, 12 floor machines), from the 3-D lab of PR 318:
 1. Conventional materials lab, grouped by workflow: {c['length_m']:.1f} x {c['width_m']:.1f} m, {c['area_m2']:.0f} m2 ({c['area_sqft']:,} sq ft), {c['per_1000_sqft']:.1f} instruments per 1,000 sq ft.
-2. The same plan automated ({FS.FLAT_UNITS} MiR250 + UR12e mobile manipulators, {f['docks']} docking targets, {f['arms']} fixed arms with sample racks, {f['chargers']} chargers): the same {f['area_sqft']:,} sq ft.
-3. Vertical lab (two Kardex Shuttle XP 500s, 9.15 m tall, with the benchtop instruments on their trays; the floor machines along one 3.0 m MiR aisle): {v['length_m']:.1f} x {v['width_m']:.1f} m, {v['area_m2']:.0f} m2 ({v['area_sqft']:,} sq ft), {v['per_1000_sqft']:.1f} instruments per 1,000 sq ft: {(1 - v['area_sqft'] / c['area_sqft']) * 100:.0f} % less floor, but it needs a high bay.
+2. The same plan automated ({FS.FLAT_UNITS} MiR250 + UR12e mobile manipulators, {f['docks']} docking targets, {f['arms']} fixed arms with sample racks, {f['chargers']} chargers): the same {f['area_sqft']:,} sq ft, but a docked robot leaves 0.94 m of a 5 ft aisle, under the 1.45 m another needs to pass.
+3. Automated, laid out for robots: the {r['positions']} trays in use as tray-sized bench positions (864 mm benches, a dock lane in front of each row, one-way 1.45 m MiR aisles in loops), the floor machines as in the vertical lab: {r['length_m']:.1f} x {r['width_m']:.1f} m, {r['area_m2']:.0f} m2 ({r['area_sqft']:,} sq ft).
+4. Vertical lab (two Kardex Shuttle XP 500s, 9.15 m tall, with the benchtop instruments on their trays; the floor machines along one 3.0 m MiR aisle): {v['length_m']:.1f} x {v['width_m']:.1f} m, {v['area_m2']:.0f} m2 ({v['area_sqft']:,} sq ft), {v['per_1000_sqft']:.1f} instruments per 1,000 sq ft: {pc['vertical_vs_conventional']} % less floor than the conventional lab and {pc['vertical_vs_robots']} % less than the layout for robots, but it needs a high bay.
 
-Rules, the same in every layout: benches 30 in deep (36 in for deeper instruments), aisles 5 ft (NIH Office of Research Facilities, Lab Module Design Considerations, 2013), a 6 ft corridor, 0.6 m service space beside and behind every floor machine, 150 mm walls, no room narrower than one 11 ft module; area to the walls' outer faces.
+Same capacity: the two Shuttles hold {tr['trays']} trays at 9.15 m with the tray plan's slot spans ({tr['in_use']} in use, {tr['added']} more at {tr['span_mm']:.0f} mm), {tr['surface_m2']:.0f} m2 of tray. Laid out flat by the same rules, they need {fl['area_m2']:.0f} m2 ({fl['area_sqft']:,} sq ft) against the vertical lab's {vv['area_m2']:.0f} m2: {vv['positions_per_1000_sqft']:.1f} tray positions per 1,000 sq ft against {fl['positions_per_1000_sqft']:.1f}. The floor machines' block ({cp['machine_block']['area_m2']:.0f} m2) is the same in the vertical lab and both layouts for robots.
+
+Rules: benches 30 in deep (36 in for deeper instruments), aisles 5 ft (NIH Office of Research Facilities, Lab Module Design Considerations, 2013), a 6 ft corridor, 0.6 m service space beside and behind every floor machine, 150 mm walls, no room narrower than one 11 ft module; for robots, the trays' own 2,450 x 864 mm per position, an 838 mm dock lane, MiR aisles of 1.45 m one way and 3.0 m to pass (MiR250 spec sheet); area to the walls' outer faces.
 
 For scale: Emerald Cloud Lab's South San Francisco lab, about 15,000 sq ft with more than 100 items of equipment (The Guardian, 11 September 2022); its Austin facility, 105,000 sq ft for over 230 instrument types (Emerald Cloud Lab press release, 28 February 2023).
 
 Narration: Kokoro v1.0 (open weights), voice af_heart. Code and notes: https://github.com/vertical-cloud-lab/byu-vcl/tree/{commit}/vertical-lab (twin/video/floorspace*.py, notes/twin_floorspace.md)."""
-    js = dict(title="Floor space: three labs, the same equipment (preview)", description=desc,
+    js = dict(title="Floor space: four labs, the same equipment, and the same capacity (preview)", description=desc,
               tags=["vertical lab", "self-driving lab", "lab automation", "floor space", "Kardex", "MiR250"],
-              categoryId="28", commit=commit)
+              categoryId="28", privacy="unlisted", commit=commit)
     (OUTD / "youtube_meta.json").write_text(json.dumps(js, indent=1) + "\n")
     print("wrote", OUTD / "youtube_meta.json")
 

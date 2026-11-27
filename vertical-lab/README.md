@@ -21,7 +21,8 @@ BoTorch policies (GP-BO, SAASBO, BOFN), the conventional lab, DAL #256's schedul
 [on YouTube](https://www.youtube.com/watch?v=Pz7hxqfODmE)). Everything in it is simulated. The package is
 self-contained in [`twin/`](twin/README.md), with its outputs in `out/twin/` and `out/twin2/`. A video segment on floor
 space ([`notes/twin_floorspace.md`](notes/twin_floorspace.md), `twin/video/floorspace*.py`) lays the same equipment out
-three ways (a conventional materials lab, the same plan automated, and the vertical lab) and measures each one's area.
+four ways (a conventional materials lab, the same plan automated, a flat lab laid out for robots, and the vertical lab)
+and measures each one's area, and lays the Shuttles' tray capacity (45 trays) out flat for the same comparison.
 
 ## Round 15: everything brought together, one lab in every clip, re-rendered at 720p (2026-11-23)
 

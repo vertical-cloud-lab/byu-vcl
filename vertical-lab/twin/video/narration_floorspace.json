@@ -1,7 +1,9 @@
 {
  "note": "The floor-space segment's narration (twin/video/floorspace_cut.py): Kokoro v1.0, voice af_heart, as the campaign video. Each line names the phase it is spoken in (at: seconds into that phase) and what on screen it says (shows). Numbers are as layouts.json has them.",
  "say": {"4,280": "four thousand two hundred eighty", "3,029": "three thousand twenty-nine",
-         "15,000": "fifteen thousand", "9.15": "nine point one five", "14.2": "fourteen point two", "10.0": "ten point oh"},
+         "15,000": "fifteen thousand", "9.15": "nine point one five", "14.2": "fourteen point two",
+         "10.0": "ten point oh", "4,128": "four thousand one hundred twenty-eight", "14.9": "fourteen point nine",
+         "7.3": "seven point three"},
  "lines": [
   {"id": "f1", "phase": "conv", "at": 0.8,
    "text": "Forty-three instruments, laid out three ways. These are design layouts, not built labs.",
@@ -26,11 +28,14 @@
    "shows": "area panel: 3,029 sq ft"},
   {"id": "f8", "phase": "plans", "at": 3.0,
    "text": "Side by side, the vertical lab needs 29 percent less floor: 14.2 instruments per thousand square feet, against 10.0.",
-   "shows": "the three plans; -29 %; 14.2 and 10.0 per 1,000 sq ft"},
-  {"id": "f9", "phase": "plans", "at": 12.8,
-   "text": "Most of what is left is floor machines, their clearances and the robot aisle. And the Shuttles stand 9.15 meters tall, so it needs a high bay.",
-   "shows": "where the floor goes bars; 'Shuttles 9.15 m tall: a high bay'"},
-  {"id": "f10", "phase": "plans", "at": 23.2,
+   "shows": "row 1, the four plans for today's equipment; -29 %; 14.2 and 10.0 per 1,000 sq ft"},
+  {"id": "f11", "phase": "plans", "at": 12.8,
+   "text": "Laid out so robots can dock and pass, a flat lab needs 4,128 square feet. And by capacity, the Shuttles hold 45 trays: 14.9 tray positions per thousand square feet, against 7.3 laid out flat.",
+   "shows": "row 1: the layout for robots, 4,128 sq ft; row 2: the Shuttles' 45 trays laid out flat, 6,192 against 3,029 sq ft; 14.9 and 7.3 positions per 1,000 sq ft"},
+  {"id": "f9", "phase": "plans", "at": 30.1,
+   "text": "In the vertical lab, most of the floor goes to the floor machines, their clearances and the robot aisle, the same as in the flat layouts for robots. And the Shuttles stand 9.15 meters tall, so it needs a high bay.",
+   "shows": "the bars: the floor machines' block, the same in the vertical lab and both layouts for robots, and the benchtop part; 'Shuttles 9.15 m tall: a high bay'"},
+  {"id": "f10", "phase": "plans", "at": 44.7,
    "text": "For scale, Emerald Cloud Lab in South San Francisco held more than a hundred items of equipment in about 15,000 square feet.",
    "shows": "the Emerald Cloud Lab line"}
  ]

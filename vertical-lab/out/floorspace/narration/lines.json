@@ -64,12 +64,19 @@
    "seconds": 9.13,
    "sha256": "d07f50162c3e27e2a6fc093339983350c73d395a7cecf28de1213543709bd529"
   },
+  "f11": {
+   "text": "Laid out so robots can dock and pass, a flat lab needs 4,128 square feet. And by capacity, the Shuttles hold 45 trays: 14.9 tray positions per thousand square feet, against 7.3 laid out flat.",
+   "spoken": "Laid out so robots can dock and pass, a flat lab needs four thousand one hundred twenty-eight square feet. And by capacity, the Shuttles hold 45 trays: fourteen point nine tray positions per thousand square feet, against seven point three laid out flat.",
+   "phonemes": "lˈeɪd ˈaʊt sˌoʊ ɹˈoʊbɑːts kæn dˈɑːk ænd pˈæs, ɐ flˈæt lˈæb nˈiːdz fˈɔːɹ θˈaʊzənd wˈʌn hˈʌndɹɪd twˈɛntiˈeɪt skwˈɛɹ fˈiːt. ænd baɪ kəpˈæsᵻɾi, ðə ʃˈʌɾəlz hˈoʊld fˈɔːɹɾi fˈaɪv tɹˈeɪz: fˈɔːɹtiːn pˈɔɪnt nˈaɪn tɹˈeɪ pəzˈɪʃənz pɜː θˈaʊzənd skwˈɛɹ fˈiːt, ɐɡˈɛnst sˈɛvən pˈɔɪnt θɹˈiː lˈeɪd ˈaʊt flˈæt.",
+   "seconds": 16.6,
+   "sha256": "991ad5b39425eb307b79d237f92b66e204b61c5c4d302a0f10c2a3dfa6754a25"
+  },
   "f9": {
-   "text": "Most of what is left is floor machines, their clearances and the robot aisle. And the Shuttles stand 9.15 meters tall, so it needs a high bay.",
-   "spoken": "Most of what is left is floor machines, their clearances and the robot aisle. And the Shuttles stand nine point one five meters tall, so it needs a high bay.",
-   "phonemes": "mˈoʊst əv wʌt ɪz lˈɛft ɪz flˈɔːɹ məʃˈiːnz, ðɛɹ klˈɪɹənsᵻz ænd ðə ɹˈoʊbɑːt ˈaɪəl. ænd ðə ʃˈʌɾəlz stˈænd nˈaɪn pˈɔɪnt wˈʌn fˈaɪv mˈiːɾɚz tˈɔːl, sˌoʊ ɪt nˈiːdz ɐ hˈaɪ bˈeɪ.",
-   "seconds": 9.71,
-   "sha256": "da263889c736b84b0dae5b1b6bf3a8804461373071e3f188c6461a1152740d13"
+   "text": "In the vertical lab, most of the floor goes to the floor machines, their clearances and the robot aisle, the same as in the flat layouts for robots. And the Shuttles stand 9.15 meters tall, so it needs a high bay.",
+   "spoken": "In the vertical lab, most of the floor goes to the floor machines, their clearances and the robot aisle, the same as in the flat layouts for robots. And the Shuttles stand nine point one five meters tall, so it needs a high bay.",
+   "phonemes": "ɪnðə vˈɜːɾɪkəl lˈæb, mˈoʊst əv ðə flˈɔːɹ ɡoʊz tə ðə flˈɔːɹ məʃˈiːnz, ðɛɹ klˈɪɹənsᵻz ænd ðə ɹˈoʊbɑːt ˈaɪəl, ðə sˈeɪm æz ɪnðə flˈæt lˈeɪaʊts fɔːɹ ɹˈoʊbɑːts. ænd ðə ʃˈʌɾəlz stˈænd nˈaɪn pˈɔɪnt wˈʌn fˈaɪv mˈiːɾɚz tˈɔːl, sˌoʊ ɪt nˈiːdz ɐ hˈaɪ bˈeɪ.",
+   "seconds": 13.95,
+   "sha256": "2072a0d9677284edee1fc7f9c63e7a36df9e058d82b5ff8d1aac1474c446b00f"
   },
   "f10": {
    "text": "For scale, Emerald Cloud Lab in South San Francisco held more than a hundred items of equipment in about 15,000 square feet.",
