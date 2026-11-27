@@ -82,6 +82,8 @@ class Params:
     charge_every_h: float = 4.5    # Vendor: MiR's MC250 (MiR250 + UR arm) runs 4.5 h from 100 % to 10 %; an idle unit
     #                                tops up at its charger (a bare MiR250: 13 h at full payload)
     charge_h: float = 1.0          # 40 min for 20-80 % (MC250), so about an hour for the 90 % a full run uses
+    opp_min_h: float = 5.0 / 60.0  # an idle gap tops the battery up only beyond the round trip to the charger and
+    #                                this long on it (stand-in)
     aisle_exclusive: bool = True   # flat: one unit in an aisle at a time (PR 406's layout note)
     max_queue: int = 20        # external jobs waiting at a station before a new request is turned away
     slot_grace_h: float = 0.5  # a slotted station (atomizer starts, furnace cycles) starts up to this late. Stand-in
@@ -345,6 +347,7 @@ class Sim:
         # Time-critical stations go first: a slotted station (the atomizer's starts, the furnace's cycles) loses its
         # slot after `slot_grace_h`, and so does a slotted job whose predecessor (the crucible's charge) is late.
         slotted = {st for st, _ in self.slots}
+        self.slotted = slotted
         self.urgent = set(slotted)
         for j in self.jobs:
             if j["station"] in slotted and j["pred"] is not None and j["pred_kind"] == "chain":
@@ -438,7 +441,7 @@ class Sim:
         t = self.now
         self._state(u, "running")
         j["t_start"] = t
-        if u["loc"][0] == "tray" and u["lock"]:
+        if u["loc"][0] == "tray" and u["lock"] and not u.pop("held", False):
             sh = self.sh[u["loc"][1]]
             tray = u["loc"][2]
             if sh["running"][tray] == 0:
@@ -557,6 +560,11 @@ class Sim:
         sh["open_h"] += min(t, self.H) - min(sh["pres_start"], self.H)
         sh["presented"], sh["pres_start"] = None, None
         for u in sh["pending"]:
+            tray = u["loc"][2]                  # the tray is theirs from now: nobody may fetch it while it docks
+            if sh["running"][tray] == 0:
+                sh["lock_t0"][tray] = self.now
+            sh["running"][tray] += 1
+            u["held"] = True
             self._push(t, "start", u)
         sh["pending"] = []
         self._push(t, "noop", None)             # wake the dispatcher when the extractor is free
@@ -573,7 +581,7 @@ class Sim:
         for u in self.done_units:
             if u["state"] == "done":            # not one a unit is already on its way to unload
                 yield "OUT", u, u["job"]
-        for st in list(self.waiting):
+        for st in sorted(self.waiting):             # sorted: a set's order follows the hash seed
             if st in self.cell:
                 continue
             q = self.q_int[st] or self.q_ext[st]
@@ -584,7 +592,17 @@ class Sim:
             for u in self.units[st]:
                 if u["state"] == "idle" and u["loc"] not in seen:
                     seen.add(u["loc"])
-                    yield "IN", u, q[0]
+                    yield "IN", u, self._head(u, q)
+
+    def _head(self, u, q):
+        """The job a free unit of a station takes next: the first in the queue, or at a slotted station the first
+        whose start window is open (the two campaigns' atomizer jobs share a queue but not their days)."""
+        if u["station"] not in self.slotted or len(q) == 1:
+            return q[0]
+        for j in q:
+            if self._slot_open(u, j):
+                return j
+        return q[0]
 
     def _slot_open(self, u, j) -> bool:
         """A slotted station (the atomizer's starts, the furnace's cycles) is loaded only while a start window is
@@ -656,13 +674,16 @@ class Sim:
         return True
 
     def _serve_cells(self):
-        for st in self.cell:
+        for st in sorted(self.cell):
             q = self.q_int[st] or self.q_ext[st]
             while q:
                 u = next((u for u in self.units[st] if u["state"] == "idle"), None)
-                if u is None or not self._slot_open(u, q[0]):
+                if u is None:
                     break
-                j = q.popleft()
+                j = self._head(u, q)
+                if not self._slot_open(u, j):
+                    break
+                q.remove(j)
                 j["att"] = 0.0
                 u["job"] = j
                 self._state(u, "reserved")
@@ -687,7 +708,7 @@ class Sim:
                     bonus = self.p.bonus_dock
                 # time-critical stations first, then internal loads and every unload (a finished outside job
                 # must not hold an instrument that internal work is waiting for), then outside loads
-                cls = 0 if u["station"] in self.urgent else (2 if (j["ext"] and kind == "IN") else 1)
+                cls = 2 if (j["ext"] and kind == "IN") else (0 if u["station"] in self.urgent else 1)
                 key = (cls, t_req - bonus / 3600.0)
                 if best is None or key < best[0]:
                     best = (key, kind, u, j)
@@ -716,14 +737,22 @@ class Sim:
         self._release_opening(m, sh["id"] if tray else None)
         if kind == "IN":
             q = self.q_int[u["station"]] if not j["ext"] else self.q_ext[u["station"]]
-            q.popleft()
+            if q and q[0] is j:
+                q.popleft()
+            else:
+                q.remove(j)
             u["job"] = j
             self._state(u, "reserved")
         else:
             self._state(u, "unloading")
         m["busy"] = True
-        # an idle unit recharges: charge_h at the charger gives back charge_every_h of work
-        m["used_h"] = max(0.0, m["used_h"] - (self.now - m["free_since"]) * p.charge_every_h / p.charge_h)
+        # an idle unit recharges at its charger, but only in a gap long enough to drive there and back: the rest of
+        # the gap gives back charge_every_h of work per charge_h
+        home = VERT_CHARGER if self.layout == "vlm" else FLAT_CHARGER
+        trip = 2.0 * drive_s(self._dist(m["pos"], m["dock"], home, None), p) / 3600.0 + p.opp_min_h
+        gap = self.now - m["free_since"]
+        if gap > trip:
+            m["used_h"] = max(0.0, m["used_h"] - (gap - trip) * p.charge_every_h / p.charge_h)
         if self.layout == "flat":
             m["aisles"] = {flat_aisle(dock)}
         arm = p.t_arm + p.t_rack

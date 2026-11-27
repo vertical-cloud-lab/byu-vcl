@@ -192,3 +192,50 @@ def test_days_to_targets_move_with_the_replay():
     for k, d in base.items():
         if d is not None:
             assert later[k] == pytest.approx(d + 1.0)
+
+
+def test_one_campaigns_late_job_does_not_block_the_others_slot():
+    """The two campaigns' atomizer jobs share a queue but not their days: an aluminium job that missed Thursday and
+    waits for Monday must not hold up copper's Friday start."""
+    ev = []
+    for week in (1, 2):                        # bookings on the clock, so that the atomizer is read as slotted
+        for day, tods in ((0, (8.0, 10.5, 13.0)), (1, (8.0, 10.5, 13.0)), (2, (8.0, 10.5, 13.0)),
+                          (3, (8.0, 10.5, 13.0)), (4, (8.0, 13.0))):
+            for tod in tods:
+                t0 = 24.0 * (7 * week + day) + tod
+                ev.append(dict(t0_h=t0, t1_h=t0 + 2.2, station="atomizer", what="x", node="n", design=len(ev),
+                               campaign="onr_cu" if day == 4 else "flaime_al"))
+    log = _log([], days=21)
+    log["events"] = ev
+    log["stations"]["atomizer"]["hours"] = "day6"   # as in the twin: day-shift starts, each campaign on its own days
+    sim = W.Sim(log, "flat", 1, 0.0, W.Params(), seed=0)
+    assert ("atomizer", "onr_cu") in sim.slots and ("atomizer", "flaime_al") in sim.slots
+    base = dict(station="atomizer", design=None, dur=2.2, ext=False, pred=None, succ=[], credit=0.1)
+    al = dict(base, id=-1, campaign="flaime_al", t0=85.0, t1=87.2, t_req=86.0)     # missed Thursday 13:00
+    cu = dict(base, id=-2, campaign="onr_cu", t0=104.0, t1=107.4, t_req=104.0)     # Friday 08:00
+    sim.now = 104.0
+    sim.q_int["atomizer"].extend([al, cu])
+    sim.waiting.add("atomizer")
+    picked = [j for kind, u, j in sim._candidates() if kind == "IN" and u["station"] == "atomizer"]
+    assert picked and picked[0] is cu
+    assert sim._feasible(sim.mm[0], "IN", sim.units["atomizer"][0], cu)
+    assert not sim._slot_open(sim.units["atomizer"][0], al)
+
+
+def test_a_replay_does_not_depend_on_the_hash_seed():
+    import json
+    import os
+    import subprocess
+    import sys
+    code = ("import json; from twin import worth_it as W; "
+            "log = W.load_log(W.EVENTS / 'r3_vertical_lab_bofn3_s0.json.xz'); "
+            "s = W.Sim(log, 'vlm', 2, 0.6, W.Params(attend='cells'), seed=3, horizon_h=24 * 40.0); "
+            "r = s.run(drain_h=24 * 5.0); print(json.dumps([r['mm_busy'], r['internal'], r['external']]))")
+    out = []
+    for seed in ("1", "2"):
+        env = dict(os.environ, PYTHONHASHSEED=seed, TWIN_PIN="off")
+        p = subprocess.run([sys.executable, "-c", code], cwd=str(W.ROOT), env=env, capture_output=True, text=True,
+                           timeout=300)
+        assert p.returncode == 0, p.stderr[-2000:]
+        out.append(json.loads(p.stdout.strip().splitlines()[-1]))
+    assert out[0] == out[1]
