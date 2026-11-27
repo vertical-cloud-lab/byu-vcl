@@ -238,9 +238,9 @@ def render_job(job: dict, lab=None, plans: dict | None = None):
     lab.kin = lab.kin or LS.load_kin()
     plans = {} if plans is None else plans
     ck = json.dumps({k: job[k] for k in job if k in ("clock", "lab_h0", "hours_per_s", "seconds", "clock_v0",
-                                                     "clock_v1")}, sort_keys=True)
+                                                     "clock_v1", "run")}, sort_keys=True)
     if ck not in plans:
-        plans[ck] = LS.plan(D.Replay(), lab.kin, clock_of(job))
+        plans[ck] = LS.plan(replay_of(job), lab.kin, clock_of(job))
     p = plans[ck]
     fps = float(job.get("fps", RENDER_FPS))
     v0, v1 = float(job["v0"]), float(job["v1"])
@@ -292,6 +292,19 @@ def render_batch(jobs: list):
     plans: dict = {}
     for j in jobs:
         render_job(j, lab, plans)
+
+
+def replay_of(job: dict):
+    """The run a job draws: the one it names (round 3b's replay has two, each over its own stretch of the clock), else
+    the replay's."""
+    from . import data as D
+    if job.get("run"):
+        from . import compose as C
+        for r in getattr(C.S("R"), "runs", []):
+            if r.path.name == job["run"]:
+                return r
+        raise ValueError(f"job names run {job['run']}, which this cut does not replay")
+    return D.Replay()
 
 
 def clock_of(job: dict):

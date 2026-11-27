@@ -140,3 +140,32 @@ when its tensile came back if its immersion had only started. `twin/bench2.py` k
 in `video/numbers3.py`, the script in `video/narration3.json`): see
 [`../notes/twin_video.md`](../notes/twin_video.md#round-3s-video). `python -m pytest -q twin/tests/test_video_round3.py`
 checks every spoken number against the committed summaries.
+
+## Round 3b (2026-11-26): round 3 reproduces, and the lab comparison like with like
+
+Round 3's BOFN and pKGFN rows depend on the floating-point kernels the BLAS libraries pick for the CPU (AVX-512 on
+round 3's runner), and, in the last bit now and then, on Python's per-process string hashing. Round 3b pins both, and
+reruns round 3's committed rows to check. It also runs the missing arms of the lab comparison: the vertical lab
+ordering metal as it goes, and the conventional lab stocked. Every seed now has an event log. The write-up is
+[`../notes/twin_round3b.md`](../notes/twin_round3b.md).
+
+| Piece | Code |
+|---|---|
+| The pin (one BLAS thread, the AVX-512 kernels, `PYTHONHASHSEED=0`, global generators seeded per run, the set-up recorded in every row), applied when `twin` is imported; `check` reruns BOFN seed 0 for 30 days against the committed log, `row` reruns a whole committed row | `repro.py`, `__init__.py` |
+| `Twin.stop_h`: end a run early without changing its horizon (the spending plan still sees the full year) | `campaign.py` |
+| The runs: the missing arms (`v_lean`, `c_stocked`, `c_lean_net`) and round 3's runs again for their event logs (`re_main`, `re_main_more`, `re_conventional`), xz-compressed logs in `out/twin3b/events/` (`bench3b.read_events`) | `bench3b.py`, `bench3.py` (`simulate`) |
+| The comparison four ways, the median seeds for a replay, the figure | `like3b.py`, `figures3b.py` |
+
+```bash
+cd vertical-lab
+/tmp/venv/bin/python -m twin.repro check
+/tmp/venv/bin/python -m pytest -q twin/tests/test_round3b.py
+TWIN_WORKERS=4 /tmp/venv/bin/python -m twin.bench3b run v_lean c_stocked c_lean_net re_main re_main_more re_conventional
+/tmp/venv/bin/python -m twin.like3b && /tmp/venv/bin/python -m twin.figures3b
+```
+
+**Round 3b's video** is round 3's cut again with these results (`TWIN_VIDEO_ROUND=3b`: the cards in `video/figs3b.py`,
+their numbers in `video/numbers3b.py`, the script in `video/narration3b.json`). It leads the lab comparison with like
+for like, shows the stock as its own effect, and replays the replay arm's two median seeds. See
+[`../notes/twin_video.md`](../notes/twin_video.md#round-3bs-re-cut). `python -m pytest -q
+twin/tests/test_video_round3b.py` checks every spoken number against `like3b.json` and the cells against `tables.md`.

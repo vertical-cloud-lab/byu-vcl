@@ -1308,7 +1308,10 @@ class Twin:
         self._money_share = {k: c.spec.budget_usd / tot_b for k, c in self.campaigns.items()}
         keys = list(self.campaigns)
         g, step = 0.0, 0
-        while g <= self.h + 1e-9:
+        # round 3b: ``stop_h`` ends the loop early without changing the horizon (the spending plan and everything
+        # else still see the full year), so the first weeks of a committed run can be rerun and compared quickly
+        lim = self.h if getattr(self, "stop_h", None) is None else min(self.h, float(self.stop_h))
+        while g <= lim + 1e-9:
             while q and q[0][0] <= g + 1e-9:
                 tr, _, k, p = heapq.heappop(q)
                 c = self.campaigns[k]

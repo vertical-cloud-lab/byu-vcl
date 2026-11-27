@@ -597,7 +597,9 @@ def plan(R, kin: dict, clock: Clock, dt: float = 1.0 / 120.0) -> Plan:
                     st.update(phase="drive", until=v + dur, dest=u, where=None, job=None)
     counts["tray_drawn"] = sum(1 for r in reqs if r.kind == "tray" and r.drawn)
     counts["floor_drawn"] = sum(1 for r in reqs if r.kind == "floor" and r.drawn)
-    return Plan(kin, clock, towers, units, counts, reqs)
+    out = Plan(kin, clock, towers, units, counts, reqs)
+    out.R = R                                              # the run its requests index (lab3d_cut's tags)
+    return out
 
 
 def summary(p: Plan) -> dict:

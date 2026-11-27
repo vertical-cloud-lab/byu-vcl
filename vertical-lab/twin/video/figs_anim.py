@@ -113,6 +113,13 @@ class Ctx:
             self.base[camp] = self._curves(self.group(self.conv, camp, self.cmp_b))
             self.auto_mean[camp] = self._curves(self.group(self.auto, camp, self.cmp_a))
             self.base_replay[camp] = self._curves(self.group(self.conv, camp, self.pol))
+            if D.R3B:
+                # round 3b: the replayed runs are the stocked automated lab's, so the live plots' reference is like
+                # for like: the same policy in the conventional lab, stocked too (out/twin3b/runs/c_stocked.jsonl)
+                cv = [np.array(r["campaigns"][camp]["curve_new"], float).reshape(-1, 3)
+                      for r in sorted(D.rows3b("c_stocked"), key=lambda r: r["cfg"]["seed"])
+                      if r["cfg"]["policy"] == self.pol and r["cfg"]["facility"] == self.conv]
+                self.base_replay[camp] = self._curves(cv) if cv else None
         try:
             from twin import spaces as SP
             self.refs = {c: list(SP.REFERENCE.get(c, {}).keys()) for c in D.CAMPAIGNS}
@@ -514,7 +521,8 @@ class PlotPanel:
             x = legend_line(d, x, y, "solid2", None, "automated lab (this run)", fs=13, w=26)
         if r3:                                          # BOFN was not run in the conventional lab: rule of thumb
             x = legend_line(d, px(14), y, "solid2", None, "this run", fs=13, w=26)
-            x = legend_line(d, x, y, "dashed", St.BASE, f"conventional, rule of thumb (mean of {nb})", fs=13, w=26)
+            x = legend_line(d, x, y, "dashed", St.BASE, f"conventional, stocked, same policy (mean of {nb})" if D.R3B
+                            else f"conventional, rule of thumb (mean of {nb})", fs=13, w=26)
             legend_line(d, x, y, "dotted", St.TARGET, "targets", fs=13, w=20)
             return im
         x = legend_line(d, x, y, "dashed", St.BASE, "conventional" + (f" (mean of {nb})" if nb else ""), fs=13, w=26)
