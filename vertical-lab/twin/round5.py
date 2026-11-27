@@ -63,7 +63,25 @@ NOTES = {
                text="The automated lab sat idle for long stretches in round 3: its own 24/7 atomizer used by both "
                     "campaigns as needed, not by weekday; idle time per station and campaign with causes; counters."),
 }
-NOTES_APPLIED = ("n1", "n2", "n3")
+NOTES["n4"] = dict(t="2026-11-27T06:11:40Z", comment=7211302355, by="sgbaird",
+                  text="'Designed' should run at full computational capacity, outside the cost-aware choice: model "
+                       "the compute available, keep it running through both years, the simulation nodes not part of "
+                       "pKGFN's p or BOFN's cost; report HPC utilization, candidates evaluated, and whether more "
+                       "compute would have changed anything.")
+NOTES_APPLIED = ("n1", "n2", "n3", "n4")
+
+# ------------------------------------------------------------------------------------------------- note 4: the HPC
+# The simulated candidates ("designed") come from a stream that runs on the HPC allocation continuously, outside the
+# campaigns' money and outside the acquisitions' cost-aware choice. The open-CALPHAD node (pycalphad, what the
+# policies' candidate pools use) scales with cores: 0.05 core-hours a candidate (rounds 1-4's figure), on a stand-in
+# allocation of 256 cores (BYU's Office of Research Computing; FLAIME App. 2 counts ~28,000 cores on the cluster),
+# is 122,880 candidates a day. Thermo-Calc's nodes are limited by licence seats, not cores, and stay as before.
+# The policies can't use that many: the twin keeps a rolling pool of the newest ``keep`` unexplored candidates
+# visible to them, ``add_per_day`` new ones a day spread over the day (every candidate the policies make, build or
+# test stays visible), and counts the rest as evaluated.
+HPC = dict(cores=256, node="sim_open", core_h=0.05, keep=128, add_per_day=64,
+           source="stand-in allocation: 256 cores of BYU's Office of Research Computing (FLAIME App. 2: ~28,000 "
+                  "cores on the cluster); 0.05 core-h a candidate for the open-CALPHAD node (rounds 1-4)")
 
 # ------------------------------------------------------------------------------------------------- facility window
 ROOM_DAYS = (60.0, 100.0)
@@ -460,6 +478,7 @@ class Campaign5(R4.Campaign4):
                 immersion=([("prep", 0.5)], "immersion", 720.0))
 
     def __init__(self, spec, policy, market, facility, horizon_h, lab="vertical"):
+        self._dindex, self._vd, self._vi = {}, {}, {}
         super().__init__(spec, policy, market, facility, horizon_h)
         self.lab = lab
         self.dec = None
@@ -476,6 +495,52 @@ class Campaign5(R4.Campaign4):
             self._reorder(0.0, initial=True)
         else:
             self.prior_d = {}
+
+    # ---------------------------------------------------------------------------------------- designs (note 4)
+    def design_id(self, design: dict) -> int:
+        """Round 3's design id, with an index (the HPC stream adds tens of thousands of designs)."""
+        comp = {e: round(design.get(e, 0.0), 3) for e in self.space.elements}
+        key = tuple(sorted(comp.items()))
+        i = self._dindex.get(key)
+        if i is not None:
+            return i
+        i = next(self.ids)
+        c = self.space.composition(comp)
+        self.designs[i] = dict(key=key, composition=c, design=dict(design))
+        self._dindex[key] = i
+        self._vd[i] = c
+        self._vi[i] = self.designs[i]["design"]
+        return i
+
+    def view(self, now_h):
+        """Round 3's view, with the design maps kept up to date as designs are added instead of rebuilt."""
+        designs, self.designs = self.designs, {}
+        try:
+            v = super().view(now_h)
+        finally:
+            self.designs = designs
+        v["designs"], v["design_inputs"] = self._vd, self._vi
+        return v
+
+    def _sim(self, action, now_h, kind):
+        """Round 3's simulation, on the HPC allocation (note 4): no money from the campaign."""
+        did = self.design_id(action["design"])
+        comp = self.designs[did]["composition"]
+        proc = {v.name: action["design"][v.name] for v in self.space.process if v.name in action["design"]}
+        if kind == "sim_open":
+            out = self.truth.sim_open(comp)
+        elif kind == "sim_tc":
+            out = self.truth.sim_tc(comp, self.rng)
+        elif kind == "sim_am":
+            out = self.truth.sim_am(comp, proc, self.rng)
+        else:
+            out = self.truth.sim_heat(comp, proc, self.rng) if hasattr(self.truth, "sim_heat") else \
+                self.truth.sim_heatflow(comp, proc, self.rng)
+        A = C.ACTIONS[self.key][kind]
+        t_res, usd = self._route(A["steps"], now_h, kind, tag=dict(design=did, node="sim"))
+        self.charge(now_h, (A["usd"] if kind != "sim_open" else 0.0) + usd, kind)
+        self._emit(t_res, dict(type="sim", kind=kind, design=did, proc=proc, out=out))
+        return True
 
     # ---------------------------------------------------------------------------------------- money
     def plan(self, t_h: float) -> float:
@@ -683,8 +748,10 @@ class Campaign5(R4.Campaign4):
 
     # ---------------------------------------------------------------------------------------- estimates
     def estimate(self, action) -> float:
-        base = super().estimate(action)
         k = action.get("kind")
+        if k == "sim_open":
+            return 0.0
+        base = super().estimate(action)
         t = getattr(self, "now_h", 0.0)
         F = self.fac
 
@@ -925,6 +992,10 @@ class Twin5(R4.Twin4):
             c.dec = self.dec
         self.held_log = {k: [] for k in specs}       # (class, t_result, t_seen)
         self.daily = {k: {} for k in specs}
+        self.hpc = dict(HPC, **(opts.get("hpc") or {}))
+        self.stream = {k: dict(rng=np.random.default_rng(70_000 + 97 * seed + i), acc=0.0, pool=[], evaluated=0.0,
+                               materialized=0, evicted=0, pool_sizes=[])
+                       for i, k in enumerate(specs)}
 
     def _day(self, k, g):
         d = int(g // H)
@@ -984,6 +1055,7 @@ class Twin5(R4.Twin4):
             while ends and ends[0] <= g + 1e-9:
                 heapq.heappop(ends)
                 freed = True
+            self._stream_tick(g)
             if g + 1e-9 < start:
                 g += self.DT_H
                 step += 1
@@ -1033,6 +1105,58 @@ class Twin5(R4.Twin4):
         self._held_end = {k: {cls: len(v) for cls, v in held[k].items()} for k in keys}
         return self.summary()
 
+    def _stream_tick(self, g):
+        """Note 4: the HPC allocation simulates candidates continuously; the newest unexplored ones are visible to
+        the policies as simulation results (open CALPHAD), at no cost to the campaign."""
+        hp = self.hpc
+        per_h = hp["cores"] / hp["core_h"]
+        for k, c in self.campaigns.items():
+            S = self.stream[k]
+            S["evaluated"] += per_h * self.DT_H
+            S["acc"] += hp["add_per_day"] / 24.0 * self.DT_H
+            n = int(S["acc"])
+            if n <= 0:
+                continue
+            S["acc"] -= n
+            for d in c.space.sample(n, seed=int(S["rng"].integers(1 << 30))):
+                did = c.design_id(d)
+                if did in S.setdefault("seen", set()):
+                    continue
+                S["seen"].add(did)
+                comp = c.designs[did]["composition"]
+                proc = {v.name: d[v.name] for v in c.space.process if v.name in d}
+                c.sims.append(dict(kind=hp["node"], design=did, proc=proc, out=c.truth.sim_open(comp), t=g,
+                                   stream=True))
+                S["pool"].append(did)
+                S["materialized"] += 1
+            if len(S["pool"]) > hp["keep"]:
+                used = {L["design"] for L in c.lots.values()} | {D["design"] for D in c.deposits.values()}
+                used |= {tuple(p["key"])[1] for p in c.pending.values()
+                         if p.get("key") and tuple(p["key"])[0] == "design"}
+                drop = set()
+                while len(S["pool"]) > hp["keep"]:
+                    did = S["pool"].pop(0)
+                    if did not in used:
+                        drop.add(did)
+                if drop:
+                    c.sims = [x for x in c.sims if not (x.get("stream") and x["design"] in drop)]
+                    S["evicted"] += len(drop)
+            if int(g) % (24 * 7) == 0:
+                S["pool_sizes"].append(sum(1 for x in c.sims if x.get("stream")))
+
+    def event_log(self, meta=None) -> dict:
+        """Round 3's event log, with only the designs something was done with (the HPC stream's other candidates
+        are counted in ``report5``)."""
+        log = super().event_log(meta)
+        keep = {}
+        for k, c in self.campaigns.items():
+            ids = {str(e["design"]) for e in log["events"] if e.get("campaign") == k and e.get("design") is not None}
+            ids |= {str(r["design"]) for r in log["results"] if r.get("campaign") == k and r.get("design") is not None}
+            keep[k] = {i: d for i, d in log["designs"][k].items() if i in ids}
+        log["designs"] = keep
+        log["designs_note"] = "designs with a booking or a result; the HPC stream's other candidates are counted"
+        return log
+
     def _stage_tick(self, g):
         allowed = {k: c for k, c in self.campaigns.items() if self.dec.stage_ok(k, g)}
         if not allowed:
@@ -1060,7 +1184,16 @@ class Twin5(R4.Twin4):
                                   held_end=getattr(self, "_held_end", None)),
                    stock={k: c.stock_report(self.h) for k, c in self.campaigns.items()},
                    counters={k: counters(c) for k, c in self.campaigns.items()},
-                   shared=shared_use(self), idle=idle_report(self))
+                   shared=shared_use(self), idle=idle_report(self),
+                   hpc=dict(cores=self.hpc["cores"], core_h=self.hpc["core_h"], keep=self.hpc["keep"],
+                            add_per_day=self.hpc["add_per_day"], utilization=1.0,
+                            per_day=self.hpc["cores"] * 24.0 / self.hpc["core_h"],
+                            campaigns={k: dict(evaluated=round(S["evaluated"]), materialized=S["materialized"],
+                                               evicted=S["evicted"], pool_weekly=S["pool_sizes"][:120],
+                                               own_sims=sum(1 for x in c.sims if not x.get("stream")),
+                                               hpc_station_h=round(sum(j[1] - j[0] for j in
+                                                                       self.fac4.res["hpc"].jobs if j[2] == k), 1))
+                                       for (k, S), c in zip(self.stream.items(), self.campaigns.values())}))
         return out
 
 
