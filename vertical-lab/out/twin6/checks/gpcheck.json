@@ -3,7 +3,7 @@
  "pin": "portable",
  "env": {
   "python": "3.14.4",
-  "cpu": "AMD EPYC 9V74 80-Core Processor",
+  "cpu": "AMD EPYC 9V45 96-Core Processor",
   "avx512": true,
   "pin": "portable",
   "pin_late": false,
@@ -76,8 +76,8 @@
  },
  "problems": [],
  "code": {
-  "commit": "330d5aa765432d31f1556cf06da75501e3f28dc3",
-  "twin_tree": "2057dcf652bde2b5a7e6df6b99f948a1427f2730",
+  "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+  "twin_tree": "aa296e76725cd0c7267f2df749281fe0b32a469a",
   "twin_dirty": false
  },
  "probe": {
@@ -89,14 +89,14 @@
   "torch_blas": "8f887b2e2a4771e4bf0535a238f780a511121aec3903e117df6cc9a130e69bac",
   "torch_math": "ddb6e49ff850454dbb64ca3ce8fe0b0bb245fdbefe0468c0c050f32983f91378"
  },
- "probe_seconds": 19.0,
+ "probe_seconds": 31.2,
  "errors": {},
  "runs": {
   "conventional_bofn3": {
    "run_id": "r6_conventional_external_bofn3_lean_s0_hpc4",
    "days": 220,
    "engine": "twin.bench6",
-   "row": "6939db0a8379256102988ee33de900e711a85fe71b6d071cae147acd0da92e5a",
+   "row": "f7794ffc98cb076ec7bbdd0407580b8e5d0fe4301c743f68d56f113472c28743",
    "log": "0788aa0940954f95ff6afe19f1686c167ff1f811e8ea3d519d3ce3fa85428daf",
    "gp": "f7bed992e516a0fb16a489ecbe93e41c1a243c9ed13f17b72bf58cec871ffb86",
    "gp_nodes_fitted": {
@@ -107,13 +107,13 @@
    "n_bookings": 1346,
    "n_results": 75,
    "torch_rng_used": false,
-   "seconds": 111.9
+   "seconds": 214.7
   },
   "conventional_pkgfn3": {
    "run_id": "r6_conventional_external_pkgfn3_lean_s0_hpc4",
    "days": 220,
    "engine": "twin.bench6",
-   "row": "67e90432729721986ef61eaaf341db0f5d974e2acc28073b60f9cfda265bcb6d",
+   "row": "36e9235f65fac87b38aad1f5bd2d56e28066a5515ff6dc7b70776ff08586c8e0",
    "log": "b12b0aae065ae61acfdddaa31a841761dc49ec491c6bcdbd08e9c45336023201",
    "gp": "f7bed992e516a0fb16a489ecbe93e41c1a243c9ed13f17b72bf58cec871ffb86",
    "gp_nodes_fitted": {
@@ -124,13 +124,13 @@
    "n_bookings": 1346,
    "n_results": 75,
    "torch_rng_used": false,
-   "seconds": 111.9
+   "seconds": 223.1
   },
   "automated_bofn3": {
    "run_id": "r6_vertical_parallel_bofn3_reorder_s0_hpc4",
    "days": 200,
    "engine": "twin.bench6",
-   "row": "5d633d6a6406bead885d1d74b5a06e85e3741bbb2e70d2573276fc42a6a8657e",
+   "row": "5c09d4bcf8ab53e741d241e75833e3cd518003f665e2d2a706db83a5e14eec94",
    "log": "99ab4b0d9b838fb244de62ca6ae3f9de1d010cae241d69c932b7b0776193936d",
    "gp": "b77c825438a85f8e456789f73fc5c9fa12546d6ae7f51c2eef34fea9f1a7f551",
    "gp_nodes_fitted": {
@@ -141,9 +141,9 @@
    "n_bookings": 1568,
    "n_results": 571,
    "torch_rng_used": false,
-   "seconds": 90.9
+   "seconds": 165.8
   }
  },
  "engine": "twin.bench6",
- "seconds": 112.7
+ "seconds": 645.6
 }
