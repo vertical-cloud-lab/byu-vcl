@@ -65,3 +65,18 @@ None of these blocks submission. Each one fixed before submission is recorded in
 - A table-of-contents graphic drawn by a co-author (SGB-15).
 - The response to the referees.
 - At acceptance: the Zenodo DOIs for the analysis code (SGB-4) and the archival deposits the teams committed to in §6.
+
+## Suggested timeline
+
+Nothing outside the authors' control sets the date: the AI4X collection has closed, and a regular Perspective has no deadline. The people listed above set it, and so do the December holidays at all seven institutions.
+
+| When | Step |
+| --- | --- |
+| Mon 30 Nov 2026 | Send the package, using the drafts in [`messages.md`](messages.md), with replies due **Mon 14 Dec**. Send the two blocking asks first: DTU (P3 repository) and P7 (file confirmation and a clean Figure 8). |
+| Mon 7 Dec | Nudge the DTU and P7 teams if their items have not arrived. |
+| Mon 14 – Thu 17 Dec | Fold in corrections; rebuild the review copies; circulate the final PDF for explicit approval. |
+| **Fri 18 Dec (best case)** | Submit, if every blocking item and all 28 approvals are in. |
+| Mon 4 – Fri 8 Jan 2027 | Chase the remaining approvals. **Fri 8 Jan: decide on P3.** If its repository has not appeared, drop it, using the text and numbers in [`../revision-notes-v3.md`](../revision-notes-v3.md) §5(b). |
+| **Fri 15 Jan 2027 (realistic)** | Submit with P3. Without P3, allow one more week to re-run the analysis and recirculate: **Fri 22 Jan**. |
+
+The APC is £2,200 for 2026 submissions, and no 2027 price has been published. If the price follows the submission date, December is slightly cheaper. That is an inference, and not a reason to rush the approvals.
