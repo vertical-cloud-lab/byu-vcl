@@ -112,7 +112,7 @@ Two people are named as project developers in Table 1 but are **not** in the aut
 - [ ] **SGB-12.** At submission: enter the previous manuscript ID (DD-PER-12-2024-000410) and upload the cover letter with the point-by-point response (`cover-letter.md`, `response-to-decision-letter.md`), the ESI (`esi/`), and the TOC graphic and sentence (end of the manuscript).
 - [ ] **SGB-13.** Choose the venue route. The Accelerate 2023–2024 themed collection has closed. The **AI4X – Accelerate 2026** collection is open until **31 October 2026** and accepts work "whether specifically presented at the conference or not". For a Perspective or Review it needs a proposal e-mailed to the Editorial Office first, and the collection is selected in the submission system, not mentioned in the cover letter. Otherwise, submit as a regular Perspective (`revision-notes-v3.md` §6).
 - [ ] **SGB-14.** The Acknowledgements thank the workshop's other two official co-organizers, Milad Abolhasani and Curtis Berlinguette, who are not authors. §2 now says "several of us co-organized" because the official programme lists them as organizers. Check that they are content to be named.
-- [ ] **SGB-15.** Approve or replace the drafted TOC graphic, `figures/toc-graphic.tif`: 8.0 × 4.0 cm at 600 dpi, original, no logos, a simplified Figure 1(b) drawn by `analysis/toc_graphic.py` (drafted 2026-11-27). The 204-character TOC sentence is at the end of the manuscript.
+- [ ] **SGB-15.** Approve or replace the drafted TOC graphic, `figures/toc-graphic.tif`: 8.0 × 4.0 cm at 600 dpi, original, no logos, a simplified Figure 1(b) drawn by `analysis/toc_graphic.py` (drafted 2026-11-27). The 212-character TOC text is at the end of the manuscript.
 
 ## 3. Seth Leavitt (SL): revision coordination
 

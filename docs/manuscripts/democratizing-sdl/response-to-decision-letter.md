@@ -50,7 +50,7 @@ Thank you for your assessment of our Perspective and for the invitation to submi
 
 **Response.** We re-checked every project against its live public resources on 10 October 2026 and report the result in Table 1, with the evidence in Supplementary Note S3. The finding was more interesting than a simple gap:
 
-- Two of the three projects the original submission listed as "manuscript in progress" had in fact put their files in public, P1 as a versioned release with a DOI and P7 as tool files in a public fork. But nothing in the manuscript linked to them, so no reader could have found them.
+- Two of the three projects the original submission listed as "manuscript in progress" had put files in public that nothing in the manuscript linked. P7's electrode-tool files went into a public fork in August 2024, before our submission. P1's versioned release with a DOI followed in January 2025, after our submission but before the preprint, which still said "manuscript in progress". No reader of either version could have found them.
 - The third project, P3, has nothing public. Its developers are creating a work-in-progress repository, and the manuscript will not be submitted without it.
 
 In a Perspective arguing that documentation is the binding constraint, this is evidence and not only an omission, and Sections 5 and 6 treat it that way: a design file that cannot be found does not get replicated.

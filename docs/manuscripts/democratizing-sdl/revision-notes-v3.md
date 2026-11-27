@@ -140,7 +140,12 @@ v3's text already reflects the verified state: P1 and P7 have public files that 
 
 - Remove P3 from Tables 1, 2, 3 and 5 and from Figure 1.
 - Delete the P3 row from `PROJECTS` in `analysis/labor_cost_analysis.py` and re-run it.
-- Update every number in the abstract and §§1, 4 and 5 from the output. P3 sits at the median break-even wage, so the median is almost unchanged; recheck the median rebuild time and the counts.
+- Update every number in the abstract and §§1, 4 and 5 from the output. Computed on 2026-11-27 for nine projects:
+  - unchanged: median break-even wage $30/h, maximum $73/h (DiSCO), the two projects above $50/h (P5, P7), the bill-of-materials range $100–35,000;
+  - **median rebuild time 17 h → 24 h** (abstract, §1, §5);
+  - "eight of the ten in 100 hours or less" → **seven of the nine**; "five in 10 hours or less" → **four**;
+  - Table 4: labour exceeds parts for 4/9 at $25/h (median share 45%), 7/9 at $50/h (62%) and 9/9 at $75/h (71%);
+  - "ten projects" → "nine projects" throughout, including the title of Table 1 and the TOC text.
 - Add to §2: "An eleventh project was presented but is not included because its design files could not be released."
 - Change "Three projects…" in the abstract and §5 to "Two projects…".
 - Do **not** keep P3 while weakening the §6 commitment.
@@ -165,7 +170,7 @@ Sources, all accessed 2026-10-10: the *Digital Discovery* author guidelines (htt
 | "the corresponding author attests… that those named as co-authors have agreed to its submission" | ALL-1 for all 28 authors |
 | Submitting author ORCID required | ALL-7, SGB |
 | Human subjects: name the ethics committee and approval number, and give a consent statement | Owed (BP-3/LDP-1); RSC gives no anonymous-survey exemption |
-| TOC: required at the revision stage; graphic 8 × 4 cm, ≥ 600 dpi TIFF, original, no logos; text 1–2 sentences, ≤ 250 characters, not paraphrasing the title or abstract | Text drafted (204 characters); graphic is SGB-15 |
+| TOC: required at the revision stage; graphic 8 × 4 cm, ≥ 600 dpi TIFF, original, no logos; text 1–2 sentences, ≤ 250 characters, not paraphrasing the title or abstract | Text drafted (212 characters); graphic drafted 2026-11-27 (`figures/toc-graphic.tif`), approval is SGB-15 |
 | Cover letter "will be sent to reviewers" | Written accordingly |
 | Resubmission | No RSC rule found that requires citing the previous ID, but the cover letter and response do so throughout. "If you submit a revised version of a previously considered manuscript this will be treated as a resubmission and not an appeal." |
 
