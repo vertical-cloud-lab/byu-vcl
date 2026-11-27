@@ -739,8 +739,13 @@ fabrication step), each given the cause the campaign's daily log shows most (day
 
   * The optimizers' new copper designs are blend screens (the doser, then the MX-Lab), which don't use the atomizer,
     so an idle copper atomizer is not by itself a stall. The first fabrication step is the telling one.
-  * Why the policy started no deposit in those stretches was not traced here: the log shows only that it was asked,
-    refused nothing and had results coming.
+  * **What the logs show:** on 79 % of the flagged days at copper's first fabrication step (2,356 of 2,996, the eight
+    arms together) the policy was asked, two or three times a day, and proposed nothing at all, with a median of 18
+    actions already in flight. 50 of the 67 stretches start before day 120.
+  * **The likely reason is a rule of the policy's own, not the engine.** Copper's BOFN and pKGFN carry round 3's cap
+    on blend screens: they may take a quarter of the money spent so far plus $2,500 (`_screen_share_ok` in
+    `twin/opt/net3.py`). Early on little has been spent, so once that allowance is in flight the policy can start no
+    new design until results come back. That fits these stretches. It was not confirmed by a run without the rule.
   * It is a small part of copper's idle time at the first fabrication step: 2-18 flagged days a seed of 568-580 idle
     days in the automated lab, and 33-40 of 697-703 in the conventional lab.
 * **A correction to the last write-up,** which said no stretch was flagged. That holds for the heuristic's and the
@@ -857,7 +862,7 @@ Like with like throughout: the same policy and the same stock rule in both labs 
   only); the automated lab's copper lead is its in-house MX-Lab, not faster decisions.
 * **With the optimizers, copper sometimes sits with money and free capacity and starts nothing:** flagged stretches
   at copper's first fabrication step in 2-3 seeds of 16 in the automated lab's arms (and in 5-8 in the conventional
-  lab's). Section 7.11.
+  lab's), most likely the policy's own cap on blend screens. Section 7.11.
 * **Its BOFN and pKGFN rows can't all be reproduced on one machine.** They were made on four CPU models, and such a
   row reruns bit for bit on some models and not others ("Reproducibility" near the top). The conventional lab's were
   all made on one.
@@ -1063,8 +1068,8 @@ runs planned, 488 done, each once.
   the Xeon on a runner that matches the first job's (an EPYC 9V45 or 9V74), or first find what the pin misses
   (`MKL_CBWR` is the untested lead) and remake all 152. The second changes `twin/repro.py`, so it belongs to a new
   round.
-* **Why copper's optimizers sometimes start nothing with money and free capacity** (the flagged stretches, section
-  7.11). The daily logs are in the event logs; it wasn't traced.
+* **Copper's optimizers without their cap on blend screens,** the likely cause of the flagged stretches (section
+  7.11). It changes the policy, so it belongs to a new round.
 * **A bigger HPC pool, the decision windows and the atomizer's cycle with BOFN or pKGFN** (run with the cheap policies
   only).
 * **The "current hardware" atomizer case** (about 1 run a day: one crucible per family, BN dried overnight).
