@@ -9,13 +9,15 @@ Self-Driving Labs" workshop Perspective. Tracked in
 | File | What it is |
 |---|---|
 | [`manuscript-v3.md`](manuscript-v3.md) | **The submission text.** Hypothesis-first, Sterling G. Baird as corresponding author. Every statement a co-author must still confirm carries a `<!-- SIGN-OFF: ID -->` comment; the few values that do not exist yet are marked `[TO SUPPLY: …]` |
-| [`sign-off-checklist.md`](sign-off-checklist.md) | **What each co-author has to confirm**, by person and team, with the blocking items first |
+| [`sign-off/`](sign-off/) | **The sign-off package** (2026-11-27): a one-page summary of what changed since the decision letter, a per-author checklist of contributions and the files behind them, draft notes to each team (not sent), Word/PDF review copies, and the list of who still has to do what |
+| [`sign-off-checklist.md`](sign-off-checklist.md) | The master list of sign-off IDs, by person and team, with the blocking items first |
 | [`response-to-decision-letter.md`](response-to-decision-letter.md) | Point-by-point response to the DD-PER-12-2024-000410 decision |
 | [`cover-letter.md`](cover-letter.md) | Cover letter for the resubmission |
 | [`esi/supplementary-information.md`](esi/supplementary-information.md) | ESI: Note S1 (project descriptions as contributed), S2 (survey), S3 (evidence for every Table 5 cell), S4 (labour analysis) |
 | [`revision-notes-v3.md`](revision-notes-v3.md) | Changelog v2 → v3, what happened to every v2 `[NEEDED]` marker, and the 2026-10-10 verification of all ten projects |
-| [`audit/`](audit/) | The 2026-10-10 verification reports (projects P1–P5 and P6–P10, references, journal policy), including the exact searches behind every negative result |
+| [`audit/`](audit/) | The verification reports of 2026-10-10 and 2026-11-27 (projects P1–P5 and P6–P10, references, journal policy), with the exact searches behind every negative result, and `llm-provenance.md` (which model did what, when) |
 | [`tools/check_manuscript.py`](tools/check_manuscript.py) | Renumbers citations into first-appearance order and lists open sign-off IDs and placeholders. Run it after any edit that adds a reference |
+| [`tools/build_review_copies.py`](tools/build_review_copies.py) | Renders the manuscript, ESI, letters and sign-off documents to Word and PDF in `sign-off/` |
 | [`manuscript-v2.md`](manuscript-v2.md) | v2: the first restructure around the thesis. Superseded by v3 |
 | [`revision-notes-v2.md`](revision-notes-v2.md) | Changelog v1 → v2 and the title shortlist (§2) |
 | [`analysis/`](analysis/) | Self-contained script deriving the break-even wage and labour shares from Table 1, plus its CSV outputs |
@@ -130,15 +132,14 @@ no new data — and rewrites `table1-derived.csv`, `sensitivity.csv` and
 
 ## Status
 
-**v3 is the submission text (2026-10-10).** Sterling G. Baird owns the revision and is
-corresponding author; Seth Leavitt, who coordinated v2, is kept as an author. Everything an
-agent can resolve has been resolved. What remains is in
-[`sign-off-checklist.md`](sign-off-checklist.md), led by the one item writing cannot fix:
-a work-in-progress repository for the rolling ball viscometer (P3, DTU), the only project
-with nothing public. A search on 2026-10-10 found that the other two "missing" projects
-(P1 and P7) had public files all along that the manuscript never linked; their teams only
-need to confirm them. The editor's letter accepts "work in progress" repositories, so
-the bar is low.
+**v3 is the submission text; re-checked on 2026-11-27.** Sterling G. Baird owns the revision and is
+corresponding author; Seth Leavitt, who coordinated v2, is kept as an author subject to consent.
+Everything an agent can resolve has been resolved. What remains needs people, and is listed with
+owners in [`sign-off/README.md`](sign-off/README.md#who-still-has-to-do-what). It is led by the one
+item writing cannot fix: a work-in-progress repository for the rolling ball viscometer (P3, DTU), the
+only project with nothing public. The P1 and P7 teams need to confirm the files found for them. The
+P7 team also needs to supply a clean Figure 8, because RSC does not accept images altered with AI
+tools. No co-author had replied by 2026-11-27.
 
 Check the manuscript after any edit:
 

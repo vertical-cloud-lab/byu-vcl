@@ -6,7 +6,7 @@ target_journal: "Digital Discovery (Royal Society of Chemistry)"
 supersedes: "manuscript-v2.md; original submission DD-PER-12-2024-000410 (preprint 10.26434/chemrxiv-2025-zhkrf)"
 journal_history: "Submitted as DD-PER-12-2024-000410; rejected at editorial assessment 2025-01-09 with an invitation to submit a substantially revised version."
 corresponding_author: "Sterling G. Baird"
-status: "v3, the submission text. Every statement that a co-author still has to confirm carries an HTML comment of the form <!-- SIGN-OFF: ID -->, keyed to sign-off-checklist.md. The comments do not render. Grep for SIGN-OFF to list them and for TO SUPPLY to list the few values that do not exist yet."
+status: "v3, the submission text, re-checked against the live projects and the journal's policies on 2026-11-27. Every statement that a co-author still has to confirm carries an HTML comment of the form <!-- SIGN-OFF: ID -->, keyed to sign-off-checklist.md and sign-off/per-author-checklist.md. The comments do not render. Grep for SIGN-OFF to list them and for TO SUPPLY to list the few values that do not exist yet."
 ---
 
 # Replication, not fabrication: documentation is the rate-limiting step for democratized self-driving labs
