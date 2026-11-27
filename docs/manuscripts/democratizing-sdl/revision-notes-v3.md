@@ -135,6 +135,13 @@ v3's text already reflects the verified state: P1 and P7 have public files that 
 - Re-score the P3 row of Table 5 from the repository's contents. A pre-release repository with CAD and a BOM typically scores Procure ◐, Build ◐ and ○ for the rest.
 - In §5, change "P3 has released no files at all." to "P3's developers released a work-in-progress repository only during this revision, more than two years after the workshop."
 - The abstract's "the third has released none" becomes "the third released files only during this revision".
+- Also change, so that nothing still says P3 has no files (list from the 2026-11-27 pre-submission read):
+  - §3, P3's *Evidence:* sentence ("with no public design files at all");
+  - §6, "one is still an empty row";
+  - Table 5's caption date and the P3 row, and ESI Note S3's P3 section;
+  - the response letter's P3 sentence (a `[TO SUPPLY]` holds both versions) and its Point 3 table;
+  - the cover letter's point 3 (its SIGN-OFF note has the wording);
+  - Table 2 stays S⁻ for P3, because its legend now says "not linked … before this revision".
 
 **(b) P3's team cannot publish a repository.**
 
@@ -266,3 +273,29 @@ Sterling asked for every blocker to be re-checked against the live repositories 
 **References.** All 45 re-checked against Crossref: no factual errors, retractions or expressions of concern, and both standards are still current. Ref 31's page range, unconfirmed in October, is now confirmed. Optional edits applied: ref 14 names OpenTrickler v1.4, ref 26 reads "PLoS One", and the web references carry the 2026-11-27 access date. The preprint has ten verified citations, not the six the cover letter claimed, and six of them share no author with the paper; the cover letter now says so.
 
 **URLs.** Every link in Table 1 and every web reference returned HTTP 200 on 2026-11-27. The exception was the P4 GitLab page, which rate-limited the runner (HTTP 429) after its API had confirmed the project public.
+
+### 9.4 Changes after an independent pre-submission read
+
+A separate session read the package as a referee and handling editor would and raised 25 items; [`audit/2026-11-27-presubmission-review.md`](audit/2026-11-27-presubmission-review.md) lists each one and what was done. It confirmed every number in Tables 3–5, Note S4 and Figure 1. The changes that touch the argument, all flagged for approval (SGB-9, SGB-16):
+
+- **Claim 1** no longer says "at any realistic loaded rate". At $25/h, the bottom of the paper's own band, labour exceeds parts for only four of the ten, so it now says "at the loaded rates of most people who build these systems".
+- **Table 2 follows its own caption.** An S on C2 or C3 needs reported replication, so:
+  - P2 C3 S → — (documented, no reported build);
+  - P4 C2 — → S⁻ and C3 S → S⁻ (no bill of materials or build files, no reported build);
+  - P9 C2 and C3 S → — (the replication was the microscope's, not the control layer's).
+
+  After this, C2 is S for P6, P8 and P10 (three of ten, the "minority" Claim 2 predicts) and C3 is S for P6 and P10.
+- **§6's pattern** is restated from the counts. Among the nine hardware projects, Run is complete for three and Procure and Build for two each, and Configure, complete only for science-jubilee, is the weakest. "Document how to operate better than how to build" overstated a one-project difference.
+- **§1, step three:** "its documentation, and the support behind it". The positive cases (P6, P8) replicated with support around the documentation.
+- **New text:** a §6 paragraph on the two C3 complications the caption promised (P5, P8); a §5 sentence on P4; four Limitations sentences (the identical DTU figures, the cash constraint, self-reported replication, no second rater); and the disclosure that two of us co-wrote Lo *et al.*
+
+Precision and consistency fixes, applied without changing the argument:
+- the impossible "labour share … higher by an order of magnitude";
+- the Outlook's "cheaper than the hardware";
+- "nearly three" → "more than two" orders of magnitude;
+- P5's modules "most", not all, open source;
+- P8's licence footnote;
+- the letters' four statements the manuscript did not support;
+- typos in Note S1 and the abstract.
+
+Left open for Sterling (SGB-16): criteria for X in Table 2, the hardware-only median rebuild time (24 h), DOIs in Table 1, and the script's file name. New team item ALL-8 asks each team for the records that would turn three assertions into evidence: its reported difficulties (§7), a rough estimate of its development hours (§5), and any builds by outsiders (Table 2, C2).

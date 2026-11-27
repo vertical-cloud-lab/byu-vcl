@@ -24,7 +24,7 @@ The one-page summary says what changed, and your section of the per-author check
 2. your full affiliation, CRediT role, funding line, conflicts of interest and ORCID;
 3. the title.
 
-Project teams also confirm what is said about their project, their row of the documentation audit (Table 5), and the commitment in §6 to an archival deposit by publication.
+Project teams also confirm what is said about their project, their row of the documentation audit (Table 5), and the commitment in §6 to an archival deposit by publication. Each team also sends three short facts (ALL-8): the difficulties it ran into while building, a rough estimate of the original development hours, and anyone outside the team who has built the design.
 
 Please reply by `<deadline>`, with "confirmed" or a correction against each ID in your section. Tracked changes in the Word copy are welcome. RSC requires every author's explicit agreement, so silence cannot count as consent.
 

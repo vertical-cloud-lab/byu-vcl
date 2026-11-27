@@ -42,6 +42,8 @@ State on 27 November 2026. No co-author has confirmed anything yet: no reply has
 
 ### Needed for the text as written, but not blocking on their own
 
+- Every team (ALL-8): the difficulties it reported, a rough estimate of original development hours, and any builds by outsiders. These turn §7, §5 and Table 2's C2 marks from assertions into evidence; a referee will ask.
+- Sterling: approve the changes made after the independent pre-submission read (SGB-16), and decide the open suggestions listed there.
 - Brenden Pelkie: the selection criterion (BP-1), the survey instrument and responses (BP-2; a fallback sentence is ready), whether the ChemRxiv text is what the editor read (BP-4), the "manifesto" (BP-5, with Lilo D. Pozzo).
 - Nadya Peek: the keynote paraphrase (NP-1); Sonya Vasquez's affiliation (NP-2).
 - Funding lines: Sterling for the AC and BYU authors (SGB-6), Tonio Buonassisi (TB-5), Brenden Pelkie and Nadya Peek for UW (BP-10, NP-3).

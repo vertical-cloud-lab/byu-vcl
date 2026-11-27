@@ -51,6 +51,7 @@ It takes an afternoon. If it cannot be done, P3 comes out of Table 1. See [`revi
 | ALL-5 | Your funding acknowledgement. The list is v1's and is known to be incomplete (see SGB-6, TB-5, BP-10, NP-3). |
 | ALL-6 | The title. v3 uses *"Replication, not fabrication: documentation is the rate-limiting step for democratized self-driving labs"*. Alternatives are ranked in `revision-notes-v2.md` §2. The old title cannot be reused, because Doloi *et al.* (2025) holds it in this journal. |
 | ALL-7 | Your ORCID iD. Required for the submitting author; strongly encouraged for everyone. |
+| ALL-8 | *One answer per project team.* (a) What difficulties your team reported while building the project, with where and when you reported them. §7 and the C4 column of Table 2 rest on these reports, which are not yet recorded anywhere a referee can check, so they will go into the ESI. (b) A rough estimate of the hours that original development took. §5's "leverage of tens to hundreds" currently rests on unrecorded estimates. (c) Any build of your design by people outside your team, named if possible. Table 2's C2 marks need it. |
 
 ### Roster
 
@@ -110,7 +111,7 @@ Two people are named as project developers in Table 1 but are **not** in the aut
   - both Hugging Face Spaces were down on 2026-10-10, and still on 2026-11-27 (one sleeping, one in a runtime error).
 
   Fix either and the score goes back up. Also confirm the P9 row: $300, 30 h including the microscope build.
-- [ ] **SGB-9.** **Table 2 relabelling.** v2 marked P1, P3 and P7 as *contradicting* Claims 2 and 3. But v2's own §5 argued that they behave exactly as those claims predict, which a referee would spot. v3 marks them *S⁻* (supports, as a negative case), states the criteria in the caption, and moves P2 and P4 on Claim 2 from S to "—" until their teams report replications (OM-2, TV-3). See `revision-notes-v3.md` §3.
+- [ ] **SGB-9.** **Table 2 relabelling** (extended on 2026-11-27: P2 C3 S → —, P4 C2 and C3 → S⁻, P9 C2 and C3 S → —, so that every S on C2 or C3 has reported replication, as the caption requires). v2 marked P1, P3 and P7 as *contradicting* Claims 2 and 3. But v2's own §5 argued that they behave exactly as those claims predict, which a referee would spot. v3 marks them *S⁻* (supports, as a negative case), states the criteria in the caption, and moves P2 and P4 on Claim 2 from S to "—" until their teams report replications (OM-2, TV-3). See `revision-notes-v3.md` §3.
 - [ ] **SGB-10.** Consent to the P8 and P9 rows of Table 5.
 - [ ] **SGB-11.** Agreement to the §6 commitment for P8 and P9.
 - [ ] **SGB-12.** At submission, in ScholarOne:
@@ -126,6 +127,16 @@ Two people are named as project developers in Table 1 but are **not** in the aut
 - [ ] **SGB-13.** Venue route: **a regular Perspective.** The AI4X – Accelerate 2026 themed collection closed on 31 October 2026 with no extension (checked 2026-11-27), and no other *Digital Discovery* call is open. Perspectives need no proposal or invitation (only Opinions are by invitation). Asking the Editorial Office (digitaldiscovery-rsc@rsc.org) whether a late AI4X contribution is possible is your call.
 - [ ] **SGB-14.** The Acknowledgements thank the workshop's other two official co-organizers, Milad Abolhasani and Curtis Berlinguette, who are not authors. §2 now says "several of us co-organized" because the official programme lists them as organizers. Check that they are content to be named.
 - [ ] **SGB-15.** *At revision, not before submission:* a co-author draws the TOC graphic. Requirements: 8 × 4 cm, at least 600 dpi, no logos, and "original, unpublished artwork created by one of the co-authors" that preferably does not reuse a figure from the article. If an AI tool helps, the authors must confirm that it was trained on fully licensed data and that its output may be reused commercially. `figures/source/toc-layout-sketch.png` is a layout sketch only: it reuses Figure 1(b) and was drafted with an AI coding assistant. The 212-character TOC text is at the end of the manuscript.
+- [ ] **SGB-16.** Approve the changes made on 2026-11-27 after an independent referee-style read, listed in `revision-notes-v3.md` §9.4 and `audit/2026-11-27-presubmission-review.md`:
+  - Claim 1 now says "at the loaded rates of most people who build these systems", not "at any realistic loaded rate";
+  - Table 2 re-scored for P2, P4 and P9 to follow its own caption;
+  - §6's pattern is restated from the counts (Configure is the weakest capability);
+  - P5's modules are now "most", not all, open source;
+  - P8's licence cell is footnoted;
+  - four new Limitations sentences;
+  - the disclosure that two of us co-wrote Lo *et al.*
+
+  Also decide the suggestions left open there: define what would count as *contradicting* each claim in Table 2 (X); report the median rebuild time for the nine hardware projects (24 h) instead of all ten (17 h); list every project's DOI in Table 1, or none; rename `labor_cost_analysis.py` to the British spelling before tagging.
 
 ## 3. Seth Leavitt (SL): revision coordination
 

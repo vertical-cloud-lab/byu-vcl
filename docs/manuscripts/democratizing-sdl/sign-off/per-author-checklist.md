@@ -12,7 +12,7 @@ Each author has a section below with four parts:
 
 Project-level evidence (repositories, figures, table rows and audit notes) is collected once per project in the [project evidence packs](#project-evidence-packs) at the end, and each author section links to its pack.
 
-**Seven items every author confirms** (shown as "ALL-1 to ALL-7" below):
+**Seven items every author confirms** (shown as "ALL-1 to ALL-7" below), plus one per team (ALL-8):
 
 | ID | Confirm |
 | --- | --- |
@@ -23,6 +23,7 @@ Project-level evidence (repositories, figures, table rows and audit notes) is co
 | ALL-5 | Your funding acknowledgement (the list is v1's and known to be incomplete). |
 | ALL-6 | The title. |
 | ALL-7 | Your ORCID iD (required for the submitting author, encouraged for all). |
+| ALL-8 | *One answer per team:* the difficulties your team reported while building (for §7 and Table 2's C4 marks), a rough estimate of original development hours (for §5), and any builds by people outside your team (for Table 2's C2 marks). |
 
 ---
 
@@ -438,7 +439,7 @@ Each pack lists everything in the manuscript, ESI and repository that rests on a
 ### P2 LEDbyXample photoreactor
 
 - **Team:** Melville, Ngan, Watchorn.
-- **In the manuscript:** Table 1; Table 2 (S, —, S, S, —); §3 description and Figure 3; Table 3 ($5/h, the most labour-dominated hardware build); §7 (teaching the small stuff); Table 5 (●●◐◐◐; no licence).
+- **In the manuscript:** Table 1; Table 2 (S, —, —, S, —; not informative on replication until an outside build is reported, OM-2); §3 description and Figure 3; Table 3 ($5/h, the most labour-dominated hardware build); §7 (teaching the small stuff); Table 5 (●●◐◐◐; no licence).
 - **Public record:** [`AC-SDL4/photo-reactor`](https://github.com/AC-SDL4/photo-reactor).
 - **Files here:** [`../figures/fig3-ledbyxample-photoreactor.png`](../figures/fig3-ledbyxample-photoreactor.png), with an unannotated photograph in [`../figures/source/`](../figures/source/); ESI Notes S1 and S3; the P1–P5 audit.
 
@@ -452,14 +453,14 @@ Each pack lists everything in the manuscript, ESI and repository that rests on a
 ### P4 Color mixing bot
 
 - **Team:** Chang, Gambhir, Ziskason, Nyeland; PI Vegge.
-- **In the manuscript:** Table 1; Table 2 (S, —, S, S, —); §3 description and Figure 5; Table 3 ($30/h); §7 (designed for teaching); Table 5 (○○◐●◐; no licence file).
+- **In the manuscript:** Table 1; Table 2 (S, S⁻, S⁻, S, —; a negative case: no BOM or build files, and no reported build outside the developers, TV-3); §3 description and Figure 5; Table 3 ($30/h); §5 and §6 (operation documented, hardware not); §7 (designed for teaching); Table 5 (○○◐●◐; no licence file).
 - **Public record:** [`gitlab.com/auto_lab/47332-student-excercises`](https://gitlab.com/auto_lab/47332-student-excercises); mirrors [`dtu-energy/color_mixing_pumpbot`](https://github.com/dtu-energy/color_mixing_pumpbot) and [`gambhirkshitij/47332-2024`](https://github.com/gambhirkshitij/47332-2024).
 - **Files here:** [`../figures/fig5-color-mixing-bot.jpg`](../figures/fig5-color-mixing-bot.jpg) (from the DTU deck); ESI Notes S1 and S3.
 
 ### P5 DiSCO platform
 
 - **Team:** Siemenn, Aissi, Das (not an author; TB-2); PI Buonassisi.
-- **In the manuscript:** Table 1; Table 2 (C, C, C, —, S); §3 description and Figure 6; Table 3 ($73/h, the highest); §4 and §5 (the strongest complication); §8 (hybrid commercial and custom); Table 5 (◐◐◐◐○); refs 21–24.
+- **In the manuscript:** Table 1; Table 2 (C, C, C, —, S); §3 description and Figure 6 (most modules open source; the ten-precursor Archerfish unreleased); Table 3 ($73/h, the highest); §4, §5 and §6 (the strongest complication); §8 (hybrid commercial and custom); Table 5 (◐◐◐◐○); refs 21–24.
 - **Public record:** [`PV-Lab/Archerfish`](https://github.com/PV-Lab/Archerfish), [`PV-Lab/SDCNN`](https://github.com/PV-Lab/SDCNN), [`PV-Lab/Autocharacterization-Bandgap`](https://github.com/PV-Lab/Autocharacterization-Bandgap); `PV-Lab/DiSCO` (an empty placeholder, deliberately not cited); thesis [hdl 1721.1/165609](https://hdl.handle.net/1721.1/165609).
 - **Files here:** [`../figures/fig6-disco.png`](../figures/fig6-disco.png); ESI Notes S1 and S3; the P1–P5 audit.
 
@@ -480,14 +481,14 @@ Each pack lists everything in the manuscript, ESI and repository that rests on a
 ### P8 Digital pipette integration
 
 - **Team:** Hattrick, Baird.
-- **In the manuscript:** Table 1 (repository folder; the forum threads are no longer cited as documentation); Table 2 (S, S, C, —, —); §3; Table 3 ($33/h); §5 (the clearest positive case); Table 5 (◐ throughout).
+- **In the manuscript:** Table 1 (repository folder; the forum threads are no longer cited as documentation); Table 2 (S, S, C, —, —); §3; Table 3 ($33/h); §5 (the clearest positive case); §6 (spread with developer support rather than documentation); Table 5 (◐ throughout; licence footnoted, because the print files lack the CC BY attribution).
 - **Public record:** [`ac-dev-lab/src/ac_training_lab/picow/digital-pipette`](https://github.com/AccelerationConsortium/ac-dev-lab/tree/main/src/ac_training_lab/picow/digital-pipette); forum [/t/236](https://accelerated-discovery.org/t/improvements-to-the-digital-pipette/236).
 - **Files here:** ESI Notes S1 and S3; the P6–P10 audit.
 
 ### P9 OpenFlexure public control
 
 - **Team:** Aspuru-Takata, Baird.
-- **In the manuscript:** Table 1; Table 2 (S, S, S, S, —); §3; Table 3 ($10/h); Table 5 (◐ throughout).
+- **In the manuscript:** Table 1; Table 2 (S, —, —, S, —; the replication behind the old S marks was the microscope's, not the control layer's); §3; Table 3 ($10/h); Table 5 (◐ throughout).
 - **Public record:** [`ac-dev-lab/src/ac_training_lab/openflexure`](https://github.com/AccelerationConsortium/ac-dev-lab/tree/main/src/ac_training_lab/openflexure); [ac-training-lab.readthedocs.io](https://ac-training-lab.readthedocs.io/); forum threads /t/231 and /t/254.
 - **Files here:** ESI Notes S1 and S3; the P6–P10 audit.
 

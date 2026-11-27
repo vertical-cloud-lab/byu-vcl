@@ -352,8 +352,8 @@ Contributors reported remarkably similar development difficulties, and the patte
 
 Building automation equipment requires fluency in mechanical design and fabrication, electronics assembly and software configuration. With notable exceptions, the projects presented were built by chemists and materials scientists rather than by mechanical or electrical engineers. Contributors reported friction with all three skills and frustration that seemingly trivial tasks held up progress. What they did *not* widely report is instructive. Complex, application-specific design problems were largely not the blocker, and neither was programming. The blockers were wire crimping, connector selection, tolerance and fit in printed parts, and power supply selection: the small stuff.
 
-<!-- SIGN-OFF: ALL teams. Each team confirms that the difficulties described here match what it reported; the C4 marks
-     in Table 2 depend on it. -->
+<!-- SIGN-OFF: ALL teams, ALL-8. Each team confirms that the difficulties described here match what it reported, and says
+     where and when it reported them, so that the reports can go into the ESI; the C4 marks in Table 2 depend on it. -->
 
 We hypothesize that programming was not a barrier because Python coursework has spread through science curricula over the past five to ten years. Two decades ago, "the students cannot program" would have been the obvious first-order constraint on this kind of work. Today it is not. That is a genuine success, and it is a success of curriculum rather than of tooling. If it can be done for programming, it can be done for the small stuff.
 

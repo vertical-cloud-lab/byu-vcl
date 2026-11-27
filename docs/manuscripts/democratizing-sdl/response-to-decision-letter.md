@@ -10,7 +10,7 @@ Section, table and figure numbers below refer to the revised manuscript.
 
 Dear Professor Schrier,
 
-Thank you for your assessment of our Perspective and for the invitation to submit a substantially revised version. We agree with all three points in your decision. The manuscript was a workshop catalogue with a position buried near its end, it did not connect the projects to that position, and three of its projects had no supporting materials. We rebuilt it around a single hypothesis, which is now stated in the first sentence of the abstract. Every project is used as evidence for or against it, and in the case of the missing repositories that evidence counts against us. We respond to each point below, quoting your decision letter.
+Thank you for your assessment of our Perspective and for the invitation to submit a substantially revised version. We agree with all three points in your decision. The manuscript was a workshop catalogue with a position buried near its end, it did not connect the projects to that position, and three of its projects had no supporting materials. We rebuilt it around a single hypothesis, which is now stated in the first sentence of the abstract. Every project is used as evidence for or against it. The missing repositories are evidence about our own contributors' practice, and we score them as the claims predict: as negative cases. We respond to each point below, quoting your decision letter.
 
 ---
 
@@ -24,7 +24,7 @@ Thank you for your assessment of our Perspective and for the invitation to submi
 
 - **Abstract.** The abstract now opens with the hypothesis. It then states how we test it, gives the quantitative result, describes the exceptions, and states what follows. The original abstract began "As self-driving labs become widely deployed…" and described the workshop.
 - **Section 1** sets out the hypothesis as a three-step argument: labour dominates first-build cost; savings therefore arise only on replication; and replication requires documentation. It then breaks the hypothesis into five claims, each tested in its own section (Sections 4–8), and says how each will be tested.
-- **New quantitative evidence (Section 4, Figure 1, Tables 3 and 4).** The original Table 1 already reported each project's time to reproduce as well as its cost, but the original manuscript never used the time column. From these figures we derive each project's **break-even wage**, the loaded hourly rate at which build labour costs as much as the parts. The median is $30/h and the maximum $73/h, so at any realistic research labour rate labour dominates first-build cost. This statistic needs no assumed wage. Table 4 reports the sensitivity to the wage we do assume elsewhere. No new data were introduced, and the analysis script is in the ESI.
+- **New quantitative evidence (Section 4, Figure 1, Tables 3 and 4).** The original Table 1 already reported each project's time to reproduce as well as its cost, but the original manuscript never used the time column. From these figures we derive each project's **break-even wage**, the loaded hourly rate at which build labour costs as much as the parts. The median is $30/h and the maximum $73/h, so at the loaded rates of most people who build these systems, labour costs more than the parts. This statistic needs no assumed wage. Table 4 reports the sensitivity to the wage we do assume elsewhere. No new data were introduced, and the analysis script is in the ESI.
 - **Limitations (Section 9)** states what the evidence cannot show and what a stronger test of the central claim would look like.
 
 ### Point 2: make explicit how each project supports or undermines the position
@@ -63,7 +63,7 @@ In a Perspective arguing that documentation is the binding constraint, this is e
 | P3 Rolling ball viscometer (DTU) | "Manuscript in progress" | Work-in-progress repository: **[TO SUPPLY: URL, DTU team]** |
 | P7 Electrochemical workflow (AC/UBC) | "Manuscript in progress" | Electrode tool files public since August 2024 and tool control code since February 2025, but not linked; now cited in Table 1 |
 | P8 Digital pipette integration | Two forum threads | Repository folder with the firmware and print files. Forum threads are no longer cited as documentation (Table 1 footnote) |
-| P2, P4, P5, P6, P9, P10 | Repository or documentation links | All re-verified. Three renamed repositories updated (P2, P6, P9). Licences and archival deposits reported in Table 5 and Note S3 |
+| P2, P4, P5, P6, P9, P10 | Repository or documentation links | All re-verified. One renamed repository updated (P2); repositories added alongside the documentation sites for P6 and P9. Licences and archival deposits reported in Table 5 and Note S3 |
 | Analysis in this Perspective | — | Script, derived values and sensitivity sweep provided as ESI and in a public GitHub repository, at a tagged version; Zenodo DOIs (version and concept) at acceptance, as the journal's code policy requires |
 
 <!-- Checked 2026-10-10. P1's release (2025-01-27) postdates the original submission (December 2024) but predates
@@ -83,7 +83,7 @@ In a Perspective arguing that documentation is the binding constraint, this is e
 
 These were not requested in the decision, but the editor and referees will want to know about them.
 
-1. **New title, and a differentiation from Doloi *et al.*** After our submission, this journal published Doloi *et al.*, "Democratizing self-driving labs: advances in low-cost 3D printing for laboratory automation" (*Digital Discovery* 2025, 4, 1685; ref 8). Our original title would now collide with it. We have retitled the manuscript. Section 1 ("Relation to existing work") cites Doloi *et al.* and explains how we differ: they catalogue what can be built cheaply, while we argue that capital cost is close to irrelevant to whether anything is democratized.
+1. **New title, and a differentiation from Doloi *et al.*** After our submission, this journal published Doloi *et al.*, "Democratizing self-driving labs: advances in low-cost 3D printing for laboratory automation" (*Digital Discovery* 2025, 4, 1685; ref 8). Our original title would now collide with it. We have retitled the manuscript. Section 1 ("Relation to existing work") cites Doloi *et al.* and explains how we differ: they catalogue what can be built cheaply, while we argue that capital cost is not what decides whether a design spreads.
 2. **Engagement with the open-hardware literature.** Pearce's return-on-investment analysis, Bonvoisin *et al.* on the "source" of open hardware, and the DIN SPEC 3105 documentation standard are now cited and built on (Sections 1, 5 and 6).
 3. **References brought up to date.**
    - Four preprints are now cited as their published versions: Archerfish in *Digital Discovery*, the contact-mapping robot in *Science Advances*, IvoryOS in *Nature Communications*, and OpenFlexure in *Biomedical Optics Express*.
@@ -99,7 +99,7 @@ These were not requested in the decision, but the editor and referees will want 
    - The Author contributions statement now uses CRediT roles.
    <!-- SIGN-OFF: SGB-5. If Basita Das and/or Ilya Yakavets are added (TB-2, P7-3), say so here with the reason:
         both were credited as project developers in the original Table 1 but omitted from the author list. -->
-6. **Use of generative AI.** In line with RSC policy, a statement discloses that the revision was drafted with the assistance of a large language model under the authors' direction, and that the authors verified all such content and take responsibility for it.
+6. **Use of generative AI.** In line with RSC policy, the Acknowledgements and the cover letter disclose that the authors used Claude (Anthropic) to restructure and draft the revised text, write the analysis code, propose the documentation scores and verify references and repositories, and that no figure was edited with an AI tool. The authors verified all of this output and take responsibility for it.
 
 We believe the revised manuscript is the Perspective your decision asked for: a contestable position, stated first, and tested project by project against the community's own evidence, including where that evidence goes against us. We would be glad to have it considered for *Digital Discovery*.
 
