@@ -1,0 +1,52 @@
+# Cover letter
+
+Professor Joshua Schrier
+Associate Editor, *Digital Discovery*
+Royal Society of Chemistry
+
+Dear Professor Schrier,
+
+We submit for consideration as a **Perspective** a substantially revised version of manuscript **DD-PER-12-2024-000410**. That manuscript, "Democratizing self-driving labs through user-developed automation infrastructure", was rejected at editorial assessment on 9 January 2025 with an invitation to submit a substantially revised version that addressed three concerns. The revised manuscript is titled:
+
+**"Replication, not fabrication: documentation is the rate-limiting step for democratized self-driving labs"**
+
+The manuscript now argues a single, contestable hypothesis from its first sentence: **for user-developed laboratory automation, documentation, not hardware, is the rate-limiting step to democratization.** It tests that hypothesis against ten of the 14 projects shown at the Accelerate 2024 Democratizing Self-Driving Labs workshop, including those that cut against it.
+
+We address each point of your decision in the enclosed point-by-point response. In brief:
+
+1. **Position and validation.** The paper is organized around one hypothesis, broken into five claims, each tested in its own section, with a new quantitative analysis built from data the original manuscript collected but never analysed.
+2. **How each project supports or undermines the position.** A project-by-claim matrix (Table 2) with stated criteria. Every project description ends with what it is evidence for, and a documentation self-audit of all ten projects (Table 5) is backed by public evidence for every score.
+3. **Supporting materials.** We re-verified every project's design files and documentation, and Table 1 links every public resource we found. The analysis code is public and will be archived on Zenodo at acceptance. The paper treats what we found as evidence for its own thesis: two of the three "missing" projects had public files that nothing linked, and the third had none.
+
+<!-- SIGN-OFF: TV-1 / P7-1. Point 3 is true only once the P1 and P7 teams confirm their files and P3's outcome is known.
+     If P3 publishes, end point 3 with "and the third has now published a work-in-progress repository".
+     If P3 is removed, end it with "and the third, which could not release its files, has been removed", and change
+     "ten of the 14 projects" above to "nine of the 14" (revision-notes-v3.md §5(b)). -->
+
+We also draw your attention to Doloi *et al.*, "Democratizing self-driving labs: advances in low-cost 3D printing for laboratory automation", published in *Digital Discovery* in 2025, after our original submission. We have changed our title to avoid a collision, and we cite and differentiate from that work explicitly. It catalogues what can be built cheaply. We argue that capital cost is not what decides whether a design spreads. The two papers are complementary rather than duplicative.
+
+The preprint of the original version has been cited ten times while under revision, in venues including *Science Robotics*, *Nature Computational Science*, *Materials Horizons* and this journal; six of the citing papers share no author with this one. This suggests the community is already engaging with the question.
+
+<!-- SGB-12: verified 2026-11-27 from each citing work's reference list (audit/2026-11-27-references.md §5). Re-count just before sending. -->
+
+The original version is available as a preprint on ChemRxiv (10.26434/chemrxiv-2025-zhkrf, posted 12 February 2025, CC BY-NC 4.0). The revised manuscript differs from it substantially in structure, argument and evidence.
+
+Since the original submission, Sterling G. Baird has become corresponding author in place of Brenden Pelkie, who remains first author. Seth Leavitt has joined the author list for coordinating the revision and for conceptualization of its revised argument. Brigham Young University therefore appears for the first time: the revision was carried out there by Sterling G. Baird, who keeps the Acceleration Consortium affiliation under which the original work was done, and by Seth Leavitt. All authors have approved the revised manuscript and its submission. The authors declare no conflicts of interest.
+
+For the handling of the manuscript, we note that co-author Lilo D. Pozzo is a member of the *Digital Discovery* Editorial Board, and that the Acknowledgements thank Associate Editor Milad Abolhasani as a co-organizer of the workshop.
+
+**Use of generative AI.** In line with RSC policy, we declare that the authors used Claude (Anthropic; Claude Opus 5 and Claude Opus 5.5, through Claude Code, which also used Claude Haiku 4.5 and Claude Haiku 5.5 for auxiliary steps such as summarizing fetched web pages). They used it to restructure and draft the revised text, write the analysis code, propose the documentation scores, and verify references and repositories. Figures 2–9 are the contributors' own images, taken unaltered from the files they supplied apart from resizing; no figure was edited with an AI tool. The Acknowledgements give the details, and the prompts and responses are preserved in the public repository's issue and pull-request threads. The authors reviewed, edited and verified all of this output and take full responsibility for the manuscript.
+
+<!-- SIGN-OFF: ALL-1. "All authors have approved" must be true before this letter is sent. SGB-5: if Basita Das or
+     Ilya Yakavets are added, add a sentence here. -->
+
+Yours sincerely,
+
+Sterling G. Baird
+Department of Mechanical Engineering, Brigham Young University, Provo, UT, USA
+Acceleration Consortium, University of Toronto, Toronto, ON, Canada
+sterling.baird@byu.edu
+
+on behalf of all authors
+
+**Enclosures:** revised manuscript, with the table-of-contents text; point-by-point response to the decision on DD-PER-12-2024-000410; Electronic Supplementary Information (Notes S1–S4, analysis code and outputs).

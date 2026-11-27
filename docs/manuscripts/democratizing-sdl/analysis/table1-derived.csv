@@ -1,0 +1,11 @@
+project,bom_usd,hours,breakeven_wage_usd_per_h,labour_usd_at_25,labour_usd_at_50,labour_usd_at_75,labour_share_at_25,labour_share_at_50,labour_share_at_75,note
+IvoryOS GUI control software,0,0.5,0.00,12,25,38,1.000,1.000,1.000,reported 0-1 h per new hardware integration; midpoint used
+LEDbyXample modular photoreactor,120,24,5.00,600,1200,1800,0.833,0.909,0.938,BOM range midpoint used
+Public control of OpenFlexure microscope,300,30,10.00,750,1500,2250,0.714,0.833,0.882,time includes the microscope build itself
+Science-jubilee flexible automation platform,2000,100,20.00,2500,5000,7500,0.556,0.714,0.789,
+Powder dispensing module,300,10,30.00,250,500,750,0.455,0.625,0.714,
+Rolling ball viscometer,300,10,30.00,250,500,750,0.455,0.625,0.714,
+Color mixing bot,300,10,30.00,250,500,750,0.455,0.625,0.714,
+Digital pipette Jubilee integration,100,3,33.33,75,150,225,0.429,0.600,0.692,
+Electrochemical workflow on science-jubilee,20000,300,66.67,7500,15000,22500,0.273,0.429,0.529,
+DiSCO photovoltaics platform,35000,480,72.92,12000,24000,36000,0.255,0.407,0.507,'3 months' read as 12 weeks x 40 h = 480 h at 1 FTE
