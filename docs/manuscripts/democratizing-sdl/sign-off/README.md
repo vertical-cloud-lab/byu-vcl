@@ -22,6 +22,46 @@ Reply to the e-mail or on [PR #193](https://github.com/vertical-cloud-lab/byu-vc
 
 Silence is not consent: RSC requires the corresponding author to attest that every author agreed to the submission.
 
-## Status and what still blocks submission
+## Who still has to do what
 
-See [Who still has to do what](#who-still-has-to-do-what) below. It is kept in step with [`../sign-off-checklist.md`](../sign-off-checklist.md), the master list of IDs.
+State on 27 November 2026. No co-author has confirmed anything yet: no reply has reached the PR thread or the repository since the v3 package went up on 10 October.
+
+### Blocking: it cannot be submitted without these
+
+| # | What | Who | ID |
+| --- | --- | --- | --- |
+| 1 | A public work-in-progress repository for **P3, the rolling ball viscometer**: CAD, BOM, code as it stands, licence, and a README saying "pre-release". Otherwise P3 comes out of the paper; the replacement text and numbers are drafted in [`../revision-notes-v3.md`](../revision-notes-v3.md) §5(b) | DTU team: Louie Lucas Bisgaard Nyeland, Jin Hyun Chang, Kshitij Gambhir, Rógvi Ziskason; escalation Tejs Vegge. Dropping P3 is Sterling's and Tejs's decision | TV-1 |
+| 2 | Confirmation that `loppe35/PowderDispensing_and_Weighing_Module` is **P1** | DTU team | TV-1 |
+| 3 | Confirmation that the two forks are **P7**'s files, ideally consolidated into one repository | Yang Cao, Ethan Rajkumar; escalation Jason E. Hein | P7-1 |
+| 4 | A clean **Figure 8**, exported by the team from its own file without AI tools: no logos, no proofing marks, at least 1960 px wide | P7 team | P7-2 |
+| 5 | The **survey ethics statement** for §2: the committee and its number, or a plain statement of how responses were collected | Brenden Pelkie, Lilo D. Pozzo | BP-3, LDP-1 |
+| 6 | Consent to each team's **Table 5 row** and to the **§6 deposit commitment** | every project team | TV-4/6, OM-3/5, TB-3/4, BP-8/9, P7-4/5, SGB-10/11, JEH-2/3 |
+| 7 | **Authorship**: Seth Leavitt's consent; whether Basita Das and Ilya Yakavets are added | Seth Leavitt; Tonio Buonassisi with Basita Das; the P7 team with Ilya Yakavets; Sterling | SL-1, TB-2, P7-3, SGB-5 |
+| 8 | **Approval from all 28 authors**, with affiliation, CRediT role, conflicts, funding and ORCID | everyone | ALL-1 to ALL-7 |
+| 9 | At submission: merge PR #193, tag the commit and put the tag in the Data availability statement; fill the ScholarOne fields | Sterling | SGB-4, SGB-12 |
+
+### Needed for the text as written, but not blocking on their own
+
+- Brenden Pelkie: the selection criterion (BP-1), the survey instrument and responses (BP-2; a fallback sentence is ready), whether the ChemRxiv text is what the editor read (BP-4), the "manifesto" (BP-5, with Lilo D. Pozzo).
+- Nadya Peek: the keynote paraphrase (NP-1); Sonya Vasquez's affiliation (NP-2).
+- Funding lines: Sterling for the AC and BYU authors (SGB-6), Tonio Buonassisi (TB-5), Brenden Pelkie and Nadya Peek for UW (BP-10, NP-3).
+- Sterling: the AI statement (SGB-3), the author order (SGB-2), and whether the two co-organizers are content to be thanked (SGB-14).
+
+### Fixes the teams could make that would improve the paper
+
+None of these blocks submission. Each one fixed before submission is recorded in ESI Note S3, and §6 keeps its past tense ("we found").
+
+- **P1 (DTU):** the merge-conflict markers in 11 firmware files, the empty folders in the Zenodo deposit, the 16 wrong file names in the build guide, and the inconsistent licences.
+- **P2 (Melville):** a licence; the README's function names.
+- **P4 (DTU):** a licence file.
+- **P6 (Pelkie):** a release with the Zenodo integration.
+- **P8 (Baird, Hattrick):** move the parts list into the repository, credit the CC BY 4.0 Digital Pipette, and tag a release.
+- **P9 (Baird, Aspuru-Takata):** the microscope-side code; a running public interface.
+- **P10 (Hein):** archive later releases; align the deposit's licence with the repository's.
+
+### At revision, after review (nothing needed now)
+
+- Figures as separate TIFF files at 600 dpi or more. Figure 4 (DTU original photograph) and Figure 8 (clean export) need new files; Figure 1 can be re-rendered from the script, and Figure 9 taken from the TIFF in `figures/source/`. Figure 7's Documentation panel shows a YouTube player logo, which the journal discourages.
+- A table-of-contents graphic drawn by a co-author (SGB-15).
+- The response to the referees.
+- At acceptance: the Zenodo DOIs for the analysis code (SGB-4) and the archival deposits the teams committed to in §6.
