@@ -688,7 +688,13 @@ def final():
     srt(cut, OUTD / "floorspace_preview.srt")
     rec = dict(file=out.name, seconds=cut.T, fps=FPS, size=[1920, 1080], render_fps_3d=15,
                lines=[dict(id=ln["id"], t0=round(ln["t0"], 2), t1=round(ln["t1"], 2), text=ln["text"])
-                      for ln in cut.lines], phases=PH, rows=cut.rows)
+                      for ln in cut.lines], phases=PH, rows=cut.rows,
+               capacity=dict(trays=cut.cap["trays"]["trays"], in_use=cut.cap["trays"]["in_use"],
+                             machine_block_m2=cut.cap["machine_block"]["area_m2"],
+                             same_capacity={k: {kk: v[kk] for kk in ("area_m2", "area_sqft", "benchtop_m2",
+                                                                     "positions_per_1000_sqft")}
+                                            for k, v in cut.cap["same_capacity"].items()},
+                             percent=cut.cap["percent"]))
     (OUTD / "floorspace_preview.json").write_text(json.dumps(rec, indent=1) + "\n")
     print("wrote", out, flush=True)
 

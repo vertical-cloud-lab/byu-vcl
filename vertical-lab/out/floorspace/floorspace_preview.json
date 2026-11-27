@@ -1,6 +1,6 @@
 {
  "file": "floorspace_preview.mp4",
- "seconds": 118.0,
+ "seconds": 138.5,
  "fps": 30,
  "size": [
   1920,
@@ -57,15 +57,21 @@
    "text": "Side by side, the vertical lab needs 29 percent less floor: 14.2 instruments per thousand square feet, against 10.0."
   },
   {
-   "id": "f9",
+   "id": "f11",
    "t0": 95.8,
-   "t1": 105.51,
-   "text": "Most of what is left is floor machines, their clearances and the robot aisle. And the Shuttles stand 9.15 meters tall, so it needs a high bay."
+   "t1": 112.4,
+   "text": "Laid out so robots can dock and pass, a flat lab needs 4,128 square feet. And by capacity, the Shuttles hold 45 trays: 14.9 tray positions per thousand square feet, against 7.3 laid out flat."
+  },
+  {
+   "id": "f9",
+   "t0": 113.1,
+   "t1": 127.05,
+   "text": "In the vertical lab, most of the floor goes to the floor machines, their clearances and the robot aisle, the same as in the flat layouts for robots. And the Shuttles stand 9.15 meters tall, so it needs a high bay."
   },
   {
    "id": "f10",
-   "t0": 106.2,
-   "t1": 114.67,
+   "t0": 127.7,
+   "t1": 136.17,
    "text": "For scale, Emerald Cloud Lab in South San Francisco held more than a hundred items of equipment in about 15,000 square feet."
   }
  ],
@@ -74,7 +80,7 @@
   "flat": 31.0,
   "vert": 51.0,
   "plans": 83.0,
-  "end": 118.0
+  "end": 138.5
  },
  "rows": {
   "conventional": {
@@ -87,6 +93,11 @@
    "instruments": 43,
    "per_1000_sqft": 10.0,
    "sqft_per_instrument": 100,
+   "positions": null,
+   "positions_used": null,
+   "positions_per_1000_sqft": null,
+   "machine_block_m2": null,
+   "benchtop_m2": null,
    "docks": 0,
    "arms": 0,
    "chargers": 0,
@@ -100,7 +111,8 @@
    },
    "notes": [
     "Zones along a 6 ft corridor; each zone's back row against its far wall, its front row against the corridor wall, a 5 ft aisle between them."
-   ]
+   ],
+   "meta": null
   },
   "flat": {
    "name": "flat",
@@ -112,6 +124,11 @@
    "instruments": 43,
    "per_1000_sqft": 10.0,
    "sqft_per_instrument": 100,
+   "positions": null,
+   "positions_used": null,
+   "positions_per_1000_sqft": null,
+   "machine_block_m2": null,
+   "benchtop_m2": null,
    "docks": 24,
    "arms": 5,
    "chargers": 2,
@@ -125,7 +142,53 @@
    },
    "notes": [
     "4 mobile manipulators; 24 docking targets; 5 fixed arms, each with a sample rack; 2 chargers. A docked MiR250 (580 mm wide) leaves 0.94 m of a 5 ft aisle: less than the 1.45 m one needs to drive by, so robots wait in the aisles."
-   ]
+   ],
+   "meta": null
+  },
+  "robots": {
+   "name": "robots",
+   "title": "Automated, laid out for robots",
+   "length_m": 34.3,
+   "width_m": 11.18,
+   "area_m2": 383.5,
+   "area_sqft": 4128,
+   "instruments": 43,
+   "per_1000_sqft": 10.4,
+   "sqft_per_instrument": 96,
+   "positions": 18,
+   "positions_used": 18,
+   "positions_per_1000_sqft": 4.4,
+   "machine_block_m2": 241.5,
+   "benchtop_m2": 142.0,
+   "docks": 28,
+   "arms": 0,
+   "chargers": 3,
+   "breakdown_m2": {
+    "floor machines": 48.2,
+    "benches, shelves and Shuttles": 39.2,
+    "service clearance": 60.3,
+    "aisles and corridor": 153.5,
+    "walls": 14.7,
+    "other floor": 68.5
+   },
+   "notes": [
+    "18 tray-sized bench positions (18 with today's trays): 2 where the Shuttles stood, facing the MiR aisle; 16 in 4 rows of up to 4, 2 one-way 1.45 m MiR aisles with an 838 mm dock lane each side, cross-aisles at both ends; the floor machines as in the vertical lab."
+   ],
+   "meta": {
+    "modules": 2,
+    "rows": 4,
+    "per_row": 4,
+    "positions": 18,
+    "used": 18,
+    "north_row": 2,
+    "bench_block_m": [
+     12.7,
+     11.18
+    ],
+    "two_way": false,
+    "machine_block_m2": 241.5,
+    "aisle_mm": 1450.0
+   }
   },
   "vertical": {
    "name": "vertical",
@@ -137,6 +200,11 @@
    "instruments": 43,
    "per_1000_sqft": 14.2,
    "sqft_per_instrument": 70,
+   "positions": 45,
+   "positions_used": 18,
+   "positions_per_1000_sqft": 14.9,
+   "machine_block_m2": 241.5,
+   "benchtop_m2": 39.9,
    "docks": 12,
    "arms": 0,
    "chargers": 3,
@@ -150,7 +218,42 @@
    },
    "notes": [
     "North row: glovebox, atomizer, sieving cell, two Shuttles, LPBF. South row: two Instrons, three chargers, fume hood, DED, wire EDM, packaging. East end: EOS M 400-4 and Meltio cell (no MiR dock)."
-   ]
+   ],
+   "meta": null
+  }
+ },
+ "capacity": {
+  "trays": 45,
+  "in_use": 18,
+  "machine_block_m2": 241.5,
+  "same_capacity": {
+   "flat": {
+    "area_m2": 575.2,
+    "area_sqft": 6192,
+    "benchtop_m2": 333.7,
+    "positions_per_1000_sqft": 7.3
+   },
+   "vertical": {
+    "area_m2": 281.4,
+    "area_sqft": 3029,
+    "benchtop_m2": 39.9,
+    "positions_per_1000_sqft": 14.9
+   },
+   "flat_2way": {
+    "area_m2": 723.2,
+    "area_sqft": 7785,
+    "benchtop_m2": 481.7,
+    "positions_per_1000_sqft": 5.8
+   }
+  },
+  "percent": {
+   "vertical_vs_conventional": 29,
+   "vertical_vs_robots": 27,
+   "vertical_vs_robots_2way": 43,
+   "vertical_vs_flat_capacity": 51,
+   "vertical_vs_flat_capacity_2way": 61,
+   "flat_capacity_over_vertical": 2.04,
+   "bench_block_ratio_full": 8.4
   }
  }
 }
