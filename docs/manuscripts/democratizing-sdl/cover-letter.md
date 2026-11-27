@@ -18,7 +18,10 @@ We address each point of your decision in the enclosed point-by-point response. 
 2. **How each project supports or undermines the position.** A project-by-claim matrix (Table 2) with stated criteria. Every project description ends with what it is evidence for, and a documentation self-audit of all ten projects (Table 5) is backed by public evidence for every score.
 3. **Supporting materials.** We re-verified every project's design files and documentation, and Table 1 now links them all. The analysis code is public and will be archived on Zenodo at acceptance. The paper treats what we found as evidence for its own thesis: two of the three "missing" projects had public files that nothing linked, and the third had none.
 
-<!-- SIGN-OFF: TV-1 / P7-1. Point 3 is true only once P3 has a public repository and the P1 and P7 teams confirm their files. -->
+<!-- SIGN-OFF: TV-1 / P7-1. Point 3 is true only once the P1 and P7 teams confirm their files and P3's outcome is known.
+     If P3 publishes, end point 3 with "and the third has now published a work-in-progress repository".
+     If P3 is removed, end it with "and the third, which could not release its files, has been removed", and change
+     "the ten projects" above to nine (revision-notes-v3.md §5(b)). -->
 
 We also draw your attention to Doloi *et al.*, "Democratizing self-driving labs: advances in low-cost 3D printing for laboratory automation", published in *Digital Discovery* in 2025, after our original submission. We have changed our title to avoid a collision, and we cite and differentiate from that work explicitly. It catalogues what can be built cheaply. We argue that capital cost is close to irrelevant to whether anything is democratized. The two papers are complementary rather than duplicative.
 

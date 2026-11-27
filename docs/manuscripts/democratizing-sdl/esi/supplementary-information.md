@@ -205,7 +205,7 @@ Software-only projects are n/a (not applicable) for Procure and Build. The score
 
 - **Repository:** github.com/AccelerationConsortium/ac-dev-lab, renamed from `ac-training-lab`, which redirects. The canonical documentation remains ac-training-lab.readthedocs.io; ac-dev-lab.readthedocs.io returns 404.
 - **Missing:** the code that runs on the microscope itself is not in the repository (issue #37, open since 2024-09-16).
-- **Public interface:** on 2026-10-10, the two Hugging Face Spaces that host it were sleeping and in a runtime error.
+- **Public interface:** on 2026-10-10, and again on 2026-11-27, the two Hugging Face Spaces that host it were sleeping and in a runtime error.
 - **Deposit:** none.
 
 | Capability | Score | Evidence |

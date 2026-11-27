@@ -107,7 +107,7 @@ Two people are named as project developers in Table 1 but are **not** in the aut
   Also confirm the P8 row: $100, 3 h, "reproduced by several groups". Who are they? Naming one or two would strengthen §5. Do not confuse P8 with science-jubilee's HTTP syringe tool or with the ac-rad Digital Pipette v2; both are separate projects.
 - [ ] **SGB-8.** **P9** (with Kenzo Aspuru-Takata). Table 1 cites the docs at `ac-training-lab.readthedocs.io` (still canonical; `ac-dev-lab.readthedocs.io` returns 404) and the renamed repository `ac-dev-lab`. Table 5 now scores Configure and Run ◐, not ●, for two reasons:
   - the microscope-side code is not in the repository (issue #37, open since 2024-09-16);
-  - both Hugging Face Spaces were down on 2026-10-10.
+  - both Hugging Face Spaces were down on 2026-10-10, and still on 2026-11-27 (one sleeping, one in a runtime error).
 
   Fix either and the score goes back up. Also confirm the P9 row: $300, 30 h including the microscope build.
 - [ ] **SGB-9.** **Table 2 relabelling.** v2 marked P1, P3 and P7 as *contradicting* Claims 2 and 3. But v2's own §5 argued that they behave exactly as those claims predict, which a referee would spot. v3 marks them *S⁻* (supports, as a negative case), states the criteria in the caption, and moves P2 and P4 on Claim 2 from S to "—" until their teams report replications (OM-2, TV-3). See `revision-notes-v3.md` §3.
