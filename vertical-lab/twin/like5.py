@@ -110,7 +110,7 @@ def four_way(A, T, n_boot=2000) -> list:
                 if all(v is None for v in cells.values()):
                     continue
                 rows.append(dict(camp=camp, target=tn, vert=pv, conv=pc, vert_name=POL[pv][camp],
-                                 conv_name=POL[pc][camp], cells=cells, money=money))
+                                 conv_name=POL[pc][camp], like=pv == pc, cells=cells, money=money))
     return rows
 
 
@@ -245,6 +245,22 @@ def plans(A, T, n_boot=1000) -> dict:
           "external": A.get(gk("vertical", "external", "bofn3", "reorder"), {})}
     out["net"] = {p: {f"{camp}|{tn}": arm_stats(arm, camp, T[tn][camp]) for camp in CAMPS for tn in ("T1", "T2")}
                   for p, arm in PN.items() if len(arm) >= MIN_SEEDS}
+    for p, d in out["net"].items():
+        d["start_d"] = float(np.median([r["r4"]["start_h"] / 24.0 for r in PN[p].values()]))
+        d["n"] = len(PN[p])
+    # the three plans on the seeds all three have (the parallel plan has more: it is comparison 1's arm), and paired
+    out["net_same"], out["net_paired"] = {}, {}
+    if len(out["net"]) == 3:
+        same = sorted(set(PN["wait"]) & set(PN["parallel"]) & set(PN["external"]))
+        out["net_seeds"] = same
+        if len(same) >= MIN_SEEDS:
+            out["net_same"] = {p: {f"{camp}|{tn}": arm_stats(arm, camp, T[tn][camp], same) for camp in CAMPS
+                                   for tn in ("T1", "T2")} for p, arm in PN.items()}
+            for other in ("wait", "external"):
+                for camp in CAMPS:
+                    for tn in ("T1", "T2"):
+                        out["net_paired"][f"{other}|{camp}|{tn}"] = factor(PN[other], PN["parallel"], camp,
+                                                                           T[tn][camp], n_boot=n_boot)
     return out
 
 
@@ -591,6 +607,60 @@ def median_seed(arm, T) -> dict | None:
                 days={f"{c}|{t}": float(D[(c, t)][i]) for c, t in D}, medians={f"{c}|{t}": med[(c, t)] for c, t in D})
 
 
+# ------------------------------------------------------------------------------------------- provenance
+def provenance(A) -> dict:
+    """Where each arm's rows were made: the CPU model each seed ran on, the commit, and whether ``twin/`` was clean
+    (each row's ``env`` and ``code``)."""
+    out = {}
+    for key, arm in A.items():
+        cpus, commits = {}, {}
+        for s_, r in sorted(arm.items()):
+            cpus.setdefault(r["env"]["cpu"], []).append(s_)
+            c = r.get("code") or {}
+            ck = (c.get("commit") or "?")[:7] + (" (twin/ dirty)" if c.get("twin_dirty") else "")
+            commits[ck] = commits.get(ck, 0) + 1
+        out[key] = dict(n=len(arm), cpus=cpus, commits=commits, pins=sorted({r["env"]["pin"] for r in arm.values()}))
+    return out
+
+
+def cpu_effect(A, T) -> dict:
+    """The arms whose rows were made on more than one CPU model (the automated lab's BOFN and pKGFN: this PR's own
+    runner was an AMD EPYC, and three of the six compute slices that finished the seeds ran on Intel Xeons). A BOFN or
+    pKGFN row doesn't reproduce bit for bit across CPU vendors under the pin (the slices' checks,
+    ``out/twin5/slices/``), so a seed's row depends on the CPU it was made on. This sets the Intel-made rows against the
+    AMD-made ones: each outcome standardized within its arm (so the arms pool), the two groups' means, and a two-sided
+    Mann-Whitney test. The groups hold different seeds, so it can only show a shift well beyond the seed-to-seed
+    spread; a bit-for-bit answer needs the same seed on both, which the slices' reruns give for a few rows."""
+    from scipy import stats
+    arms = {k: a for k, a in A.items() if len({r["env"]["cpu"] for r in a.values()}) > 1}
+    if not arms:
+        return {}
+    fns = {"Al best": lambda r: r["campaigns"]["flaime_al"]["best_new"],
+           "Cu best": lambda r: r["campaigns"]["onr_cu"]["best_new"]}
+    for camp in CAMPS:
+        for tn in ("T1", "T2"):
+            fns[f"{CAMPS[camp]} {tn}, days (730 if never)"] = \
+                lambda r, camp=camp, tn=tn: to_target(r, camp, T[tn][camp])[0]
+    out = dict(arms=sorted(arms), outcomes={})
+    for name, fn in fns.items():
+        z = {"Intel": [], "AMD": []}
+        raw = {"Intel": [], "AMD": []}
+        for arm in arms.values():
+            v = {s_: fn(r) for s_, r in arm.items()}
+            m, sd = float(np.mean(list(v.values()))), float(np.std(list(v.values()), ddof=1)) or 1.0
+            for s_, r in arm.items():
+                g = "Intel" if "Intel" in r["env"]["cpu"] else "AMD"
+                z[g].append((v[s_] - m) / sd)
+                raw[g].append(v[s_])
+        if not z["Intel"] or not z["AMD"]:
+            continue
+        u = stats.mannwhitneyu(z["Intel"], z["AMD"], alternative="two-sided")
+        out["outcomes"][name] = dict(n_intel=len(z["Intel"]), n_amd=len(z["AMD"]), mean_intel=float(np.mean(raw["Intel"])),
+                                     mean_amd=float(np.mean(raw["AMD"])), z_intel=float(np.mean(z["Intel"])),
+                                     z_amd=float(np.mean(z["AMD"])), p=float(u.pvalue))
+    return out
+
+
 # ------------------------------------------------------------------------------------------- run
 def run(n_boot=2000) -> dict:
     A = load_all()
@@ -613,6 +683,13 @@ def run(n_boot=2000) -> dict:
                 gk("vertical", "parallel", "fast", "lean"), gk("conventional", "external", "fast", "lean")):
         S.setdefault("lookback", {})[key] = lookback(A, key)
         S.setdefault("shared", {})[key] = shared(A, key)
+    for pol in ("bofn3", "pkgfn3"):
+        for lab, plan in (("vertical", "parallel"), ("conventional", "external")):
+            key = gk(lab, plan, pol, "reorder")
+            if len(A.get(key, {})) >= MIN_SEEDS:
+                S["shared"][key] = shared(A, key)
+    S["provenance"] = provenance(A)
+    S["cpu_effect"] = cpu_effect(A, T)
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "like5.json").write_text(json.dumps(B2._jsonable(S), default=lambda o: sorted(o) if isinstance(o, set)
                                                else str(o)))
@@ -637,15 +714,37 @@ def tables(S) -> str:
     L += ["## 1. Like with like, four ways (nominal decision windows, the derived atomizer cycle)", "",
           "| Target | Automated lab | Conventional lab | " + " | ".join(PAIR_NAMES[p] for p in PAIRS) + " |",
           "|---|---|---|" + "---|" * len(PAIRS)]
-    for r in S["four_way"]:
+    like = [r for r in S["four_way"] if r.get("like", r["vert"] == r["conv"])]
+    cross = [r for r in S["four_way"] if not r.get("like", r["vert"] == r["conv"])]
+
+    def four_rows(rows):
+        out = []
+        for r in rows:
+            cells = []
+            for sv, sc in PAIRS:
+                x = r["cells"].get(f"{sv}|{sc}")
+                cells.append(f"{_f(x)}; {_cnt(x)}" if x else "not enough seeds")
+            out.append(f"| {CAMPS[r['camp']]} {r['target']} | {r['vert_name']} | {r['conv_name']} | "
+                       + " | ".join(cells) + " |")
+        return out
+    L[-2:-2] = ["The same policy in both labs: the heuristic (aluminium) and the funnel (copper), BOFN on both campaigns, "
+                "pKGFN on both campaigns. Each cell: the factor, then the seeds that got there (automated vs "
+                "conventional).", ""]
+    L += four_rows(like)
+    L += ["", "Median day in each lab, and the seeds in which each lab got there first (automated / conventional; a seed "
+          "where neither got there, or both on the same day, counts for neither):", "",
+          "| Target | Policy | both ordering as they go: automated, conventional (days); first | both stocked: automated, "
+          "conventional (days); first |", "|---|---|---|---|"]
+    for r in like:
         cells = []
-        for sv, sc in PAIRS:
-            x = r["cells"].get(f"{sv}|{sc}")
-            cells.append(f"{_f(x)}; {_cnt(x)}" if x else "not enough seeds")
-        L.append(f"| {CAMPS[r['camp']]} {r['target']} | {r['vert_name']} | {r['conv_name']} | " + " | ".join(cells) + " |")
+        for k in ("lean|lean", "reorder|reorder"):
+            x = r["cells"].get(k)
+            cells.append(f"{_d(x['median_vert'])}, {_d(x['median_conv'])}; {x['v_first']} / {x['c_first']}" if x
+                         else "not enough seeds")
+        L.append(f"| {CAMPS[r['camp']]} {r['target']} | {r['vert_name']} | " + " | ".join(cells) + " |")
     L += ["", "Cost on one basis (campaign spend to the target; fixed costs and equipment left out; section 3 adds them):",
           "", "| Target | Automated | Conventional | both lean | both stocked |", "|---|---|---|---|---|"]
-    for r in S["four_way"]:
+    for r in like:
         m = r["money"]
         L.append(f"| {CAMPS[r['camp']]} {r['target']} | {r['vert_name']} | {r['conv_name']} | "
                  f"{_f(m.get('lean|lean'), True)} | {_f(m.get('reorder|reorder'), True)} |")
@@ -670,6 +769,13 @@ def tables(S) -> str:
         for x in S["policy_effect"]:
             L.append(f"| {x['lab']} | {'stocked' if x['stock'] == 'reorder' else 'lean'} | {POL[x['policy']][x['camp']]} | "
                      f"{CAMPS[x['camp']]} {x['target']} | {_f(x['r'])}; {_cnt(x['r'])} |")
+    if cross:
+        L += ["", "### Not like with like: a different policy in each lab (the lab and the policy both change)", "",
+              "Kept for reference. The like-for-like table above and the within-lab table just above separate the two "
+              "effects.", "",
+              "| Target | Automated lab | Conventional lab | " + " | ".join(PAIR_NAMES[p] for p in PAIRS) + " |",
+              "|---|---|---|" + "---|" * len(PAIRS)]
+        L += four_rows(cross)
     # decisions
     L += ["", "## Decision time: the four-way factors with no delay, the nominal windows and slow windows (cheap "
           "policies)", "", "| Target | Pairing | no delay | nominal | slow |", "|---|---|---|---|---|"]
@@ -726,9 +832,30 @@ def tables(S) -> str:
         if r:
             L.append(f"| {o} | {CAMPS[c]} {t} | {_f(r)}; {r['v_first']} / {r['c_first']} |")
     if P.get("net"):
-        L += ["", "With BOFN on both campaigns:", "", "| Plan | Al T1 | Al T2 | Cu T1 | Cu T2 |", "|---|---|---|---|---|"]
-        for p, d in P["net"].items():
-            L.append(f"| {p} | " + " | ".join(_arm_line(d[f'{c}|{t}']) for c in CAMPS for t in ("T1", "T2")) + " |")
+        L += ["", "### Round 4's three plans with BOFN on both campaigns (stocked)", "",
+              "| Plan | seeds | starts (median day) | Al T1 | Al T2 | Cu T1 | Cu T2 | Al best | Cu best |",
+              "|---|---|---|---|---|---|---|---|---|"]
+        for p in ("wait", "parallel", "external"):
+            d = P["net"].get(p)
+            if not d:
+                continue
+            L.append(f"| {p} | {d['n']} | {d['start_d']:.0f} | "
+                     + " | ".join(_arm_line(d[f'{c}|{t}']) for c in CAMPS for t in ("T1", "T2"))
+                     + f" | {d['flaime_al|T1']['best_mean']:.2f} ± {d['flaime_al|T1']['best_se']:.2f} | "
+                     f"{d['onr_cu|T1']['best_mean']:.2f} ± {d['onr_cu|T1']['best_se']:.2f} |")
+        if P.get("net_same"):
+            ss = P.get("net_seeds") or []
+            L += ["", f"On the {len(ss)} seeds all three plans have (seeds {min(ss)}-{max(ss)}; the parallel plan is "
+                  "comparison 1's arm, which has more):", "", "| Plan | Al T1 | Al T2 | Cu T1 | Cu T2 |", "|---|---|---|---|---|"]
+            for p in ("wait", "parallel", "external"):
+                d = P["net_same"][p]
+                L.append(f"| {p} | " + " | ".join(_arm_line(d[f'{c}|{t}']) for c in CAMPS for t in ("T1", "T2")) + " |")
+            L += ["", "| Parallel against | Target | factor (other plan's median over parallel's); seeds there (parallel "
+                  "vs other); parallel first / other first |", "|---|---|---|"]
+            for k, r in P["net_paired"].items():
+                o, c, t = k.split("|")
+                if r:
+                    L.append(f"| {o} | {CAMPS[c]} {t} | {_f(r)}; {_cnt(r)}; {r['v_first']} / {r['c_first']} |")
     # economics
     E = S["economics"]
     L += ["", "## 3. Economics (round 3's model; the bases are in `twin/like5.py` `economics`)", "",
@@ -812,6 +939,25 @@ def tables(S) -> str:
                      f"{x['stretches_per_seed']:.1f} | {x['idle_days_per_seed']:.0f} | "
                      + ", ".join(f"{kk} {vv:.0f}" for kk, vv in list(x["by_cause"].items())[:5]) +
                      f" | {len(x['flagged'])} |")
+    fl = []
+    for key, a in sorted(S["arms"].items()):
+        for k, x in a["idle"].items():
+            if x["flagged"]:
+                c, g = k.split("|")
+                days = sorted(f["days"] for f in x["flagged"])
+                fl.append(f"| `{key}` | {CAMPS[c]}, {'atomizer' if g == 'atomizer' else 'first fabrication step'} | "
+                          f"{len(days)} | {len({f['seed'] for f in x['flagged']})} of {a['n']} | {sum(days)} | "
+                          f"{days[len(days) // 2]}; {days[-1]} | {min(f['start_d'] for f in x['flagged'])}-"
+                          f"{max(f['start_d'] for f in x['flagged'])} |")
+    L += ["", "### Flagged stretches", "",
+          "A stretch is flagged when it lasted at least 14 days, the campaign had at least $5,000 left on 80 % of its "
+          "days, the station was under half busy, and the daily log's main cause is the policy waiting (asked, it started "
+          "nothing there, and nothing was turned away). Every arm with one, sensitivities included:", ""]
+    if fl:
+        L += ["| Arm | Campaign, station | flagged stretches | seeds with one | days in all seeds | days: median; longest | "
+              "start day (range) |", "|---|---|---|---|---|---|---|"] + fl
+    else:
+        L += ["None in any arm."]
     L += ["", "## Counters (mean per run)", "", "| Arm | Campaign | designed | lots made | alloys made | alloys printed or "
           "deposited | alloys tested | tests |", "|---|---|---|---|---|---|---|---|"]
     for key, a in sorted(S["arms"].items()):
@@ -847,6 +993,33 @@ def tables(S) -> str:
         L.append(f"| `{key}` | {m['seed']} | {dd['flaime_al|T1']:.0f}, {dd['flaime_al|T2']:.0f} "
                  f"({md['flaime_al|T1']:.0f}, {md['flaime_al|T2']:.0f}) | {dd['onr_cu|T1']:.0f}, {dd['onr_cu|T2']:.0f} "
                  f"({md['onr_cu|T1']:.0f}, {md['onr_cu|T2']:.0f}) | `{m['events']}` |")
+    PV = S.get("provenance") or {}
+    if PV:
+        def cpu_name(c):
+            for a, b in (("AMD EPYC ", "EPYC "), ("Intel(R) Xeon(R) ", "Xeon "), (" Processor", "")):
+                c = c.replace(a, b)
+            return c
+        L += ["", "## Where the rows were made (each row's `env` and `code`)", "",
+              "Every row was made under `TWIN_PIN=avx2`. A heuristic and funnel row reran bit for bit on every CPU model "
+              "below; BOFN and pKGFN rows made on an AMD EPYC did not reproduce on the Intel Xeon (the checks in "
+              "`out/twin5/slices/`), so for those arms the CPU is part of what a seed's row depends on.", "",
+              "| Arm | seeds | CPU: seeds made on it | commit: rows |", "|---|---|---|---|"]
+        for key, d in sorted(PV.items()):
+            cp = "; ".join(f"{cpu_name(c)}: {', '.join(map(str, ss))}" if len(d["cpus"]) > 1 else f"{cpu_name(c)}: all"
+                           for c, ss in d["cpus"].items())
+            L.append(f"| `{key}` | {d['n']} | {cp} | " + "; ".join(f"`{c.split(' ')[0]}`{c[7:]}: {n}"
+                                                                 for c, n in d["commits"].items()) + " |")
+    CE = S.get("cpu_effect") or {}
+    if CE.get("outcomes"):
+        L += ["", "Intel-made against AMD-made rows in the arms made on both (" + ", ".join(f"`{a}`" for a in CE["arms"])
+              + "): each outcome's mean in the two groups, the mean of its within-arm z-score, and a two-sided "
+              "Mann-Whitney test on the z-scores. The two groups hold different seeds.", "",
+              "| Outcome | Intel-made rows | AMD-made rows | mean (Intel, AMD) | mean z (Intel, AMD) | p |",
+              "|---|---|---|---|---|---|"]
+        for name, d in CE["outcomes"].items():
+            fm = (lambda v: f"{v:.3f}") if "best" in name else (lambda v: f"{v:.0f}")
+            L.append(f"| {name} | {d['n_intel']} | {d['n_amd']} | {fm(d['mean_intel'])}, {fm(d['mean_amd'])} | "
+                     f"{d['z_intel']:+.2f}, {d['z_amd']:+.2f} | {d['p']:.2f} |")
     return "\n".join(L) + "\n"
 
 

@@ -4,37 +4,56 @@ Made by `python -m twin.like5` from `out/twin5/runs/`. All simulated. Days from 
 
 ## 1. Like with like, four ways (nominal decision windows, the derived atomizer cycle)
 
+The same policy in both labs: the heuristic (aluminium) and the funnel (copper), BOFN on both campaigns, pKGFN on both campaigns. Each cell: the factor, then the seeds that got there (automated vs conventional).
+
 | Target | Automated lab | Conventional lab | both ordering as they go | both stocked | vertical stocked, conventional lean (round 3's pairing) | vertical lean, conventional stocked |
 |---|---|---|---|---|---|---|
 | Aluminium T1 | heuristic | heuristic | 1.0x (0.8-1.1); 16/16 vs 16/16 | 1.1x (0.7-1.9); 16/16 vs 16/16 | 1.6x (1.0-2.3); 16/16 vs 16/16 | 0.7x (0.5-1.2); 16/16 vs 16/16 |
-| Aluminium T1 | heuristic | BOFN | 2.3x (1.6-3.0); 16/16 vs 16/16 | 2.6x (1.6-3.6); 16/16 vs 16/16 | 3.7x (2.1-4.8); 16/16 vs 16/16 | 1.6x (1.2-2.1); 16/16 vs 16/16 |
-| Aluminium T1 | heuristic | pKGFN | 2.4x (1.6-3.0); 16/16 vs 15/16 | 2.7x (1.6-3.7); 16/16 vs 16/16 | 3.8x (1.9-4.7); 16/16 vs 15/16 | 1.7x (1.2-2.1); 16/16 vs 16/16 |
+| Aluminium T1 | BOFN | BOFN | 1.2x (0.9-1.5); 16/16 vs 16/16 | 1.2x (1.0-1.5); 16/16 vs 16/16 | 1.7x (1.1-2.0); 16/16 vs 16/16 | 0.8x (0.7-1.0); 16/16 vs 16/16 |
+| Aluminium T1 | pKGFN | pKGFN | 1.2x (0.9-1.5); 16/16 vs 15/16 | 1.2x (1.0-1.5); 16/16 vs 16/16 | 1.7x (1.2-2.0); 16/16 vs 15/16 | 0.9x (0.8-1.1); 16/16 vs 16/16 |
 | Aluminium T2 | heuristic | heuristic | 1.9x (0-∞); 9/16 vs 8/16 | <= 0.8x; 7/16 vs 8/16 | <= 1.0x; 7/16 vs 8/16 | 1.5x (0-∞); 9/16 vs 8/16 |
-| Aluminium T2 | heuristic | BOFN | 1.0x (0-1.5); 9/16 vs 15/16 | <= 0.3x; 7/16 vs 15/16 | <= 0.5x; 7/16 vs 15/16 | 0.6x (0-0.9); 9/16 vs 15/16 |
-| Aluminium T2 | heuristic | pKGFN | 0.9x (0-1.2); 9/16 vs 15/16 | <= 0.4x; 7/16 vs 15/16 | <= 0.5x; 7/16 vs 15/16 | 0.8x (0-1.1); 9/16 vs 15/16 |
+| Aluminium T2 | BOFN | BOFN | 1.4x (1.1-1.8); 16/16 vs 15/16 | 1.3x (1.0-1.7); 16/16 vs 15/16 | 2.0x (1.4-2.8); 16/16 vs 15/16 | 0.8x (0.7-1.1); 16/16 vs 15/16 |
+| Aluminium T2 | pKGFN | pKGFN | 1.3x (1.1-1.4); 16/16 vs 15/16 | 1.4x (1.0-1.6); 16/16 vs 15/16 | 1.6x (1.3-1.8); 16/16 vs 15/16 | 1.1x (0.8-1.3); 16/16 vs 15/16 |
 | Copper T1 | funnel | funnel | 1.6x (1.4-2.1); 15/16 vs 14/16 | 1.5x (1.2-∞); 15/16 vs 11/16 | 1.6x (1.4-2.2); 15/16 vs 14/16 | 1.6x (1.3-∞); 15/16 vs 11/16 |
-| Copper T1 | funnel | BOFN | >= 2.6x; 15/16 vs 5/16 | >= 2.6x; 15/16 vs 7/16 | >= 2.6x; 15/16 vs 5/16 | >= 2.6x; 15/16 vs 7/16 |
-| Copper T1 | funnel | pKGFN | 2.6x (1.7-∞); 15/16 vs 8/16 | >= 2.6x; 15/16 vs 6/16 | 2.6x (1.7-∞); 15/16 vs 8/16 | >= 2.6x; 15/16 vs 6/16 |
+| Copper T1 | BOFN | BOFN | >= 2.1x; 16/16 vs 5/16 | >= 2.5x; 16/16 vs 7/16 | >= 2.5x; 16/16 vs 5/16 | >= 2.1x; 16/16 vs 7/16 |
+| Copper T1 | pKGFN | pKGFN | 2.4x (1.4-∞); 15/16 vs 8/16 | >= 2.5x; 16/16 vs 6/16 | 2.5x (1.6-∞); 16/16 vs 8/16 | >= 2.4x; 15/16 vs 6/16 |
 | Copper T2 | funnel | funnel | 1.7x (1.4-∞); 14/16 vs 11/16 | 2.1x (1.4-∞); 15/16 vs 9/16 | 1.6x (1.2-∞); 15/16 vs 11/16 | 2.2x (1.6-∞); 14/16 vs 9/16 |
-| Copper T2 | funnel | BOFN | >= 2.5x; 14/16 vs 3/16 | >= 2.3x; 15/16 vs 4/16 | >= 2.3x; 15/16 vs 3/16 | >= 2.5x; 14/16 vs 4/16 |
-| Copper T2 | funnel | pKGFN | >= 2.5x; 14/16 vs 3/16 | >= 2.3x; 15/16 vs 4/16 | >= 2.3x; 15/16 vs 3/16 | >= 2.5x; 14/16 vs 4/16 |
+| Copper T2 | BOFN | BOFN | >= 2.0x; 14/16 vs 3/16 | >= 2.2x; 12/16 vs 4/16 | >= 2.2x; 12/16 vs 3/16 | >= 2.0x; 14/16 vs 4/16 |
+| Copper T2 | pKGFN | pKGFN | >= 2.0x; 12/16 vs 3/16 | >= 2.0x; 14/16 vs 4/16 | >= 2.0x; 14/16 vs 3/16 | >= 2.0x; 12/16 vs 4/16 |
+
+Median day in each lab, and the seeds in which each lab got there first (automated / conventional; a seed where neither got there, or both on the same day, counts for neither):
+
+| Target | Policy | both ordering as they go: automated, conventional (days); first | both stocked: automated, conventional (days); first |
+|---|---|---|---|
+| Aluminium T1 | heuristic | 130, 133; 9 / 7 | 81, 92; 10 / 6 |
+| Aluminium T1 | BOFN | 255, 304; 12 / 4 | 176, 214; 11 / 5 |
+| Aluminium T1 | pKGFN | 253, 311; 10 / 6 | 179, 218; 10 / 6 |
+| Aluminium T2 | heuristic | 365, 695; 8 / 3 | >730, 562; 6 / 3 |
+| Aluminium T2 | BOFN | 270, 372; 13 / 3 | 182, 228; 12 / 4 |
+| Aluminium T2 | pKGFN | 270, 344; 13 / 3 | 213, 292; 12 / 4 |
+| Copper T1 | funnel | 278, 457; 14 / 2 | 281, 432; 15 / 0 |
+| Copper T1 | BOFN | 340, >730; 14 / 2 | 295, >730; 15 / 1 |
+| Copper T1 | pKGFN | 302, 717; 14 / 2 | 291, >730; 14 / 2 |
+| Copper T2 | funnel | 293, 495; 13 / 1 | 313, 647; 15 / 0 |
+| Copper T2 | BOFN | 359, >730; 14 / 0 | 338, >730; 12 / 0 |
+| Copper T2 | pKGFN | 373, >730; 12 / 0 | 360, >730; 13 / 2 |
 
 Cost on one basis (campaign spend to the target; fixed costs and equipment left out; section 3 adds them):
 
 | Target | Automated | Conventional | both lean | both stocked |
 |---|---|---|---|---|
 | Aluminium T1 | heuristic | heuristic | 1.1x (0.8-1.4) | 0.9x (0.7-1.3) |
-| Aluminium T1 | heuristic | BOFN | 3.4x (2.0-4.7) | 1.6x (1.4-2.3) |
-| Aluminium T1 | heuristic | pKGFN | 3.5x (2.1-4.4) | 1.7x (1.4-2.2) |
+| Aluminium T1 | BOFN | BOFN | 0.6x (0.4-1.1) | 1.0x (0.8-1.3) |
+| Aluminium T1 | pKGFN | pKGFN | 0.6x (0.4-1.2) | 1.0x (0.8-1.2) |
 | Aluminium T2 | heuristic | heuristic | 0.9x (0-∞) | <= 0.9x |
-| Aluminium T2 | heuristic | BOFN | 0.3x (0-0.7) | <= 0.4x |
-| Aluminium T2 | heuristic | pKGFN | 0.3x (0-0.6) | <= 0.4x |
+| Aluminium T2 | BOFN | BOFN | 0.6x (0.5-0.9) | 1.1x (0.8-1.3) |
+| Aluminium T2 | pKGFN | pKGFN | 0.6x (0.5-0.8) | 1.0x (0.8-1.3) |
 | Copper T1 | funnel | funnel | 0.8x (0.7-1.0) | 0.8x (0.7-∞) |
-| Copper T1 | funnel | BOFN | >= 1.0x | 1.0x (0.7-∞) |
-| Copper T1 | funnel | pKGFN | 0.8x (0.5-∞) | >= 1.0x |
+| Copper T1 | BOFN | BOFN | >= 1.1x | 1.0x (0.8-∞) |
+| Copper T1 | pKGFN | pKGFN | 0.9x (0.6-∞) | >= 1.1x |
 | Copper T2 | funnel | funnel | 0.8x (0.7-∞) | 0.9x (0.7-∞) |
-| Copper T2 | funnel | BOFN | >= 1.0x | >= 0.9x |
-| Copper T2 | funnel | pKGFN | >= 1.0x | >= 0.9x |
+| Copper T2 | BOFN | BOFN | >= 1.0x | >= 1.0x |
+| Copper T2 | pKGFN | pKGFN | >= 1.0x | >= 1.0x |
 
 ### The arms
 
@@ -51,7 +70,10 @@ Cost on one basis (campaign spend to the target; fixed costs and equipment left 
 | `r5_conventional_external_fast_reorder_hpc-add_per_day256-keep512` | 16 | 16/16; 91 | 9/16; 393 | 14/16; 406 | 10/16; 518 | 0.65 ± 0.02 | 0.66 ± 0.02 | 546, 662 |
 | `r5_conventional_external_pkgfn3_lean` | 16 | 15/16; 311 | 15/16; 344 | 8/16; 717 | 3/16; >730 | 0.74 ± 0.03 | 0.56 ± 0.03 | 730, 730 |
 | `r5_conventional_external_pkgfn3_reorder` | 16 | 16/16; 218 | 15/16; 292 | 6/16; >730 | 4/16; >730 | 0.76 ± 0.02 | 0.51 ± 0.05 | 730, 730 |
+| `r5_vertical_external_bofn3_reorder` | 12 | 12/12; 207 | 11/12; 229 | 9/12; 487 | 5/12; >730 | 0.76 ± 0.02 | 0.59 ± 0.04 | 730, 730 |
 | `r5_vertical_external_fast_reorder` | 16 | 15/16; 82 | 10/16; 399 | 13/16; 434 | 9/16; 542 | 0.62 ± 0.04 | 0.60 ± 0.04 | 511, 644 |
+| `r5_vertical_parallel_bofn3_lean` | 16 | 16/16; 255 | 16/16; 270 | 16/16; 340 | 14/16; 359 | 0.79 ± 0.01 | 0.69 ± 0.01 | 434, 385 |
+| `r5_vertical_parallel_bofn3_reorder` | 16 | 16/16; 176 | 16/16; 182 | 16/16; 295 | 12/16; 338 | 0.79 ± 0.01 | 0.69 ± 0.01 | 402, 371 |
 | `r5_vertical_parallel_fast_lean` | 16 | 16/16; 130 | 9/16; 365 | 15/16; 278 | 14/16; 293 | 0.64 ± 0.02 | 0.69 ± 0.02 | 354, 318 |
 | `r5_vertical_parallel_fast_lean_atom-3h` | 16 | 16/16; 130 | 8/16; 400 | 16/16; 275 | 16/16; 275 | 0.64 ± 0.02 | 0.71 ± 0.01 | 357, 329 |
 | `r5_vertical_parallel_fast_lean_atom-slow` | 16 | 16/16; 130 | 7/16; >730 | 16/16; 282 | 15/16; 289 | 0.63 ± 0.02 | 0.71 ± 0.01 | 392, 336 |
@@ -64,6 +86,9 @@ Cost on one basis (campaign spend to the target; fixed costs and equipment left 
 | `r5_vertical_parallel_fast_reorder_dec-slow` | 16 | 16/16; 102 | 10/16; 324 | 14/16; 300 | 14/16; 300 | 0.66 ± 0.02 | 0.68 ± 0.02 | 318, 315 |
 | `r5_vertical_parallel_fast_reorder_hpc-add_per_day256-keep512` | 16 | 16/16; 81 | 8/16; 347 | 15/16; 302 | 15/16; 304 | 0.63 ± 0.02 | 0.69 ± 0.02 | 312, 308 |
 | `r5_vertical_parallel_fast_reorder_noused` | 16 | 16/16; 81 | 7/16; >730 | 14/16; 283 | 13/16; 309 | 0.63 ± 0.02 | 0.68 ± 0.02 | 312, 294 |
+| `r5_vertical_parallel_pkgfn3_lean` | 16 | 16/16; 253 | 16/16; 270 | 15/16; 302 | 12/16; 373 | 0.79 ± 0.01 | 0.67 ± 0.02 | 427, 378 |
+| `r5_vertical_parallel_pkgfn3_reorder` | 16 | 16/16; 179 | 16/16; 213 | 16/16; 291 | 14/16; 360 | 0.80 ± 0.01 | 0.69 ± 0.01 | 392, 371 |
+| `r5_vertical_wait_bofn3_reorder` | 12 | 12/12; 305 | 12/12; 339 | 12/12; 380 | 11/12; 403 | 0.78 ± 0.01 | 0.69 ± 0.01 | 494, 424 |
 | `r5_vertical_wait_fast_reorder` | 16 | 16/16; 277 | 7/16; >730 | 16/16; 362 | 14/16; 380 | 0.63 ± 0.02 | 0.70 ± 0.01 | 427, 360 |
 
 ### What the stock buys within a lab (lean over stocked, same policy)
@@ -74,6 +99,14 @@ Cost on one basis (campaign spend to the target; fixed costs and equipment left 
 | vertical | heuristic | Aluminium T2 | <= 0.5x; 7/16 vs 9/16 |
 | vertical | funnel | Copper T1 | 1.0x (0.9-1.1); 15/16 vs 15/16 |
 | vertical | funnel | Copper T2 | 0.9x (0.8-1.1); 15/16 vs 14/16 |
+| vertical | BOFN | Aluminium T1 | 1.5x (1.0-1.6); 16/16 vs 16/16 |
+| vertical | BOFN | Aluminium T2 | 1.5x (1.1-1.7); 16/16 vs 16/16 |
+| vertical | BOFN | Copper T1 | 1.2x (0.9-1.2); 16/16 vs 16/16 |
+| vertical | BOFN | Copper T2 | 1.1x (0.6-1.3); 12/16 vs 14/16 |
+| vertical | pKGFN | Aluminium T1 | 1.4x (1.1-1.5); 16/16 vs 16/16 |
+| vertical | pKGFN | Aluminium T2 | 1.3x (1.1-1.4); 16/16 vs 16/16 |
+| vertical | pKGFN | Copper T1 | 1.0x (0.9-1.2); 16/16 vs 15/16 |
+| vertical | pKGFN | Copper T2 | 1.0x (0.8-1.4); 14/16 vs 12/16 |
 | conventional | heuristic | Aluminium T1 | 1.4x (0.9-2.0); 16/16 vs 16/16 |
 | conventional | heuristic | Aluminium T2 | 1.2x (0-∞); 8/16 vs 8/16 |
 | conventional | funnel | Copper T1 | 1.1x (0-1.4); 11/16 vs 14/16 |
@@ -91,6 +124,22 @@ Cost on one basis (campaign spend to the target; fixed costs and equipment left 
 
 | Lab | Stock | Optimizer | Target | factor; seeds there (optimizer vs cheap policy) |
 |---|---|---|---|---|
+| vertical | stocked | BOFN | Aluminium T1 | 0.5x (0.3-0.7); 16/16 vs 16/16 |
+| vertical | stocked | BOFN | Aluminium T2 | >= 4.0x; 16/16 vs 7/16 |
+| vertical | stocked | BOFN | Copper T1 | 1.0x (0.8-1.1); 16/16 vs 15/16 |
+| vertical | stocked | BOFN | Copper T2 | 0.9x (0.5-1.1); 12/16 vs 15/16 |
+| vertical | stocked | pKGFN | Aluminium T1 | 0.5x (0.3-0.7); 16/16 vs 16/16 |
+| vertical | stocked | pKGFN | Aluminium T2 | >= 3.4x; 16/16 vs 7/16 |
+| vertical | stocked | pKGFN | Copper T1 | 1.0x (0.8-1.1); 16/16 vs 15/16 |
+| vertical | stocked | pKGFN | Copper T2 | 0.9x (0.7-1.1); 14/16 vs 15/16 |
+| vertical | lean | BOFN | Aluminium T1 | 0.5x (0.4-0.8); 16/16 vs 16/16 |
+| vertical | lean | BOFN | Aluminium T2 | 1.4x (1.0-∞); 16/16 vs 9/16 |
+| vertical | lean | BOFN | Copper T1 | 0.8x (0.7-1.0); 16/16 vs 15/16 |
+| vertical | lean | BOFN | Copper T2 | 0.8x (0.7-1.0); 14/16 vs 14/16 |
+| vertical | lean | pKGFN | Aluminium T1 | 0.5x (0.4-0.7); 16/16 vs 16/16 |
+| vertical | lean | pKGFN | Aluminium T2 | 1.4x (1.0-∞); 16/16 vs 9/16 |
+| vertical | lean | pKGFN | Copper T1 | 0.9x (0.7-1.1); 15/16 vs 15/16 |
+| vertical | lean | pKGFN | Copper T2 | 0.8x (0.7-1.0); 12/16 vs 14/16 |
 | conventional | stocked | BOFN | Aluminium T1 | 0.4x (0.3-0.8); 16/16 vs 16/16 |
 | conventional | stocked | BOFN | Aluminium T2 | 2.5x (1.3-∞); 15/16 vs 8/16 |
 | conventional | stocked | BOFN | Copper T1 | <= 0.6x; 7/16 vs 11/16 |
@@ -107,6 +156,25 @@ Cost on one basis (campaign spend to the target; fixed costs and equipment left 
 | conventional | lean | pKGFN | Aluminium T2 | 2.0x (0.6-∞); 15/16 vs 8/16 |
 | conventional | lean | pKGFN | Copper T1 | 0.6x (0-1.0); 8/16 vs 14/16 |
 | conventional | lean | pKGFN | Copper T2 | <= 0.7x; 3/16 vs 11/16 |
+
+### Not like with like: a different policy in each lab (the lab and the policy both change)
+
+Kept for reference. The like-for-like table above and the within-lab table just above separate the two effects.
+
+| Target | Automated lab | Conventional lab | both ordering as they go | both stocked | vertical stocked, conventional lean (round 3's pairing) | vertical lean, conventional stocked |
+|---|---|---|---|---|---|---|
+| Aluminium T1 | BOFN | heuristic | 0.5x (0.4-0.8); 16/16 vs 16/16 | 0.5x (0.3-0.9); 16/16 vs 16/16 | 0.8x (0.6-1.0); 16/16 vs 16/16 | 0.4x (0.3-0.7); 16/16 vs 16/16 |
+| Aluminium T1 | pKGFN | heuristic | 0.5x (0.4-0.7); 16/16 vs 16/16 | 0.5x (0.4-0.9); 16/16 vs 16/16 | 0.7x (0.5-1.0); 16/16 vs 16/16 | 0.4x (0.3-0.7); 16/16 vs 16/16 |
+| Aluminium T1 | heuristic | BOFN | 2.3x (1.6-3.0); 16/16 vs 16/16 | 2.6x (1.6-3.6); 16/16 vs 16/16 | 3.7x (2.1-4.8); 16/16 vs 16/16 | 1.6x (1.2-2.1); 16/16 vs 16/16 |
+| Aluminium T1 | heuristic | pKGFN | 2.4x (1.6-3.0); 16/16 vs 15/16 | 2.7x (1.6-3.7); 16/16 vs 16/16 | 3.8x (1.9-4.7); 16/16 vs 15/16 | 1.7x (1.2-2.1); 16/16 vs 16/16 |
+| Aluminium T2 | BOFN | heuristic | 2.6x (0.7-∞); 16/16 vs 8/16 | 3.1x (1.7-∞); 16/16 vs 8/16 | 3.8x (1.0-∞); 16/16 vs 8/16 | 2.1x (1.2-∞); 16/16 vs 8/16 |
+| Aluminium T2 | pKGFN | heuristic | 2.6x (0.7-∞); 16/16 vs 8/16 | 2.6x (1.6-∞); 16/16 vs 8/16 | 3.3x (0.9-∞); 16/16 vs 8/16 | 2.1x (1.2-∞); 16/16 vs 8/16 |
+| Aluminium T2 | heuristic | BOFN | 1.0x (0-1.5); 9/16 vs 15/16 | <= 0.3x; 7/16 vs 15/16 | <= 0.5x; 7/16 vs 15/16 | 0.6x (0-0.9); 9/16 vs 15/16 |
+| Aluminium T2 | heuristic | pKGFN | 0.9x (0-1.2); 9/16 vs 15/16 | <= 0.4x; 7/16 vs 15/16 | <= 0.5x; 7/16 vs 15/16 | 0.8x (0-1.1); 9/16 vs 15/16 |
+| Copper T1 | funnel | BOFN | >= 2.6x; 15/16 vs 5/16 | >= 2.6x; 15/16 vs 7/16 | >= 2.6x; 15/16 vs 5/16 | >= 2.6x; 15/16 vs 7/16 |
+| Copper T1 | funnel | pKGFN | 2.6x (1.7-∞); 15/16 vs 8/16 | >= 2.6x; 15/16 vs 6/16 | 2.6x (1.7-∞); 15/16 vs 8/16 | >= 2.6x; 15/16 vs 6/16 |
+| Copper T2 | funnel | BOFN | >= 2.5x; 14/16 vs 3/16 | >= 2.3x; 15/16 vs 4/16 | >= 2.3x; 15/16 vs 3/16 | >= 2.5x; 14/16 vs 4/16 |
+| Copper T2 | funnel | pKGFN | >= 2.5x; 14/16 vs 3/16 | >= 2.3x; 15/16 vs 4/16 | >= 2.3x; 15/16 vs 3/16 | >= 2.5x; 14/16 vs 4/16 |
 
 ## Decision time: the four-way factors with no delay, the nominal windows and slow windows (cheap policies)
 
@@ -194,6 +262,33 @@ Cost on one basis (campaign spend to the target; fixed costs and equipment left 
 | external | Copper T1 | 1.5x (1.2-2.6); 15 / 1 |
 | external | Copper T2 | 1.7x (1.2-∞); 15 / 0 |
 
+### Round 4's three plans with BOFN on both campaigns (stocked)
+
+| Plan | seeds | starts (median day) | Al T1 | Al T2 | Cu T1 | Cu T2 | Al best | Cu best |
+|---|---|---|---|---|---|---|---|---|
+| wait | 12 | 257 | 12/12; 305 | 12/12; 339 | 12/12; 380 | 11/12; 403 | 0.78 ± 0.01 | 0.69 ± 0.01 |
+| parallel | 16 | 0 | 16/16; 176 | 16/16; 182 | 16/16; 295 | 12/16; 338 | 0.79 ± 0.01 | 0.69 ± 0.01 |
+| external | 12 | 0 | 12/12; 207 | 11/12; 229 | 9/12; 487 | 5/12; >730 | 0.76 ± 0.02 | 0.59 ± 0.04 |
+
+On the 12 seeds all three plans have (seeds 0-11; the parallel plan is comparison 1's arm, which has more):
+
+| Plan | Al T1 | Al T2 | Cu T1 | Cu T2 |
+|---|---|---|---|---|
+| wait | 12/12; 305 | 12/12; 339 | 12/12; 380 | 11/12; 403 |
+| parallel | 12/12; 176 | 12/12; 196 | 12/12; 333 | 10/12; 338 |
+| external | 12/12; 207 | 11/12; 229 | 9/12; 487 | 5/12; >730 |
+
+| Parallel against | Target | factor (other plan's median over parallel's); seeds there (parallel vs other); parallel first / other first |
+|---|---|---|
+| wait | Aluminium T1 | 1.7x (1.3-1.9); 12/12 vs 12/12; 12 / 0 |
+| wait | Aluminium T2 | 1.7x (1.4-1.9); 12/12 vs 12/12; 11 / 1 |
+| wait | Copper T1 | 1.1x (1.0-1.3); 12/12 vs 12/12; 9 / 3 |
+| wait | Copper T2 | 1.2x (0.8-1.4); 10/12 vs 11/12; 8 / 4 |
+| external | Aluminium T1 | 1.2x (0.9-1.3); 12/12 vs 12/12; 9 / 3 |
+| external | Aluminium T2 | 1.2x (0.9-1.7); 12/12 vs 11/12; 7 / 5 |
+| external | Copper T1 | 1.5x (1.1-2.3); 12/12 vs 9/12; 11 / 1 |
+| external | Copper T2 | >= 2.2x; 10/12 vs 5/12; 10 / 2 |
+
 ## 3. Economics (round 3's model; the bases are in `twin/like5.py` `economics`)
 
 Fixed costs a year: vertical $1,184,047 (depreciation $599,907); conventional $121,470 (depreciation $63,761).
@@ -204,6 +299,14 @@ Fixed costs a year: vertical $1,184,047 (depreciation $599,907); conventional $1
 | `vertical|fast|reorder` | Copper | $909,529 | 19.4 | $41,449 | $5,495 | $1,804,969 (15/16) | $1,837,325 (15/16) |
 | `vertical|fast|lean` | Aluminium | $1,815,839 | 163.1 | $11,005 | $1,441 | $2,727,352 (16/16) | $3,500,547 (9/16) |
 | `vertical|fast|lean` | Copper | $909,557 | 20.8 | $40,455 | $5,355 | $1,802,028 (15/16) | $1,808,691 (14/16) |
+| `vertical|bofn3|reorder` | Aluminium | $1,816,716 | 75.1 | $24,747 | $3,243 | $3,348,677 (16/16) | $3,358,634 (16/16) |
+| `vertical|bofn3|reorder` | Copper | $908,438 | 9.3 | $100,871 | $13,164 | $1,806,817 (16/16) | $1,805,447 (12/16) |
+| `vertical|bofn3|lean` | Aluminium | $1,816,895 | 70.1 | $26,532 | $3,474 | $3,475,548 (16/16) | $3,522,767 (16/16) |
+| `vertical|bofn3|lean` | Copper | $907,982 | 7.6 | $121,621 | $15,903 | $1,824,332 (16/16) | $1,829,790 (14/16) |
+| `vertical|pkgfn3|reorder` | Aluminium | $1,816,833 | 85.7 | $20,306 | $2,666 | $3,353,260 (16/16) | $3,434,061 (16/16) |
+| `vertical|pkgfn3|reorder` | Copper | $908,269 | 9.5 | $95,857 | $12,535 | $1,809,043 (16/16) | $1,825,660 (14/16) |
+| `vertical|pkgfn3|lean` | Aluminium | $1,816,470 | 87.0 | $22,708 | $2,970 | $3,473,773 (16/16) | $3,518,372 (16/16) |
+| `vertical|pkgfn3|lean` | Copper | $908,366 | 10.0 | $102,255 | $13,451 | $1,807,749 (15/16) | $1,828,198 (12/16) |
 | `conventional|fast|reorder` | Aluminium | $392,785 | 74.1 | $5,352 | $3,178 | $48,842 (16/16) | $180,029 (8/16) |
 | `conventional|fast|reorder` | Copper | $196,212 | 5.4 | $39,023 | $22,827 | $97,720 (11/16) | $110,151 (9/16) |
 | `conventional|fast|lean` | Aluminium | $366,195 | 64.3 | $5,515 | $3,149 | $37,816 (16/16) | $77,696 (8/16) |
@@ -237,6 +340,14 @@ Fixed costs a year: vertical $1,184,047 (depreciation $599,907); conventional $1
 | `r5_conventional_external_pkgfn3_lean` | Copper | 44 | 96% | 34 | 51.8 | $55,976 | $649 |
 | `r5_conventional_external_pkgfn3_reorder` | Aluminium | 291 | 45% | 100 | 33.1 | $86,256 | $11,916 |
 | `r5_conventional_external_pkgfn3_reorder` | Copper | 44 | 94% | 30 | 40.4 | $63,093 | $4,064 |
+| `r5_vertical_parallel_bofn3_reorder` | Aluminium | 661 | 90% | 568 | 38.0 | $179,551 | $12,023 |
+| `r5_vertical_parallel_bofn3_reorder` | Copper | 146 | 97% | 131 | 33.8 | $86,692 | $862 |
+| `r5_vertical_parallel_bofn3_lean` | Aluminium | 716 | 100% | 682 | 47.1 | $182,601 | $1,805 |
+| `r5_vertical_parallel_bofn3_lean` | Copper | 149 | 98% | 138 | 37.9 | $85,812 | $1,257 |
+| `r5_vertical_parallel_pkgfn3_reorder` | Aluminium | 653 | 91% | 563 | 38.6 | $177,700 | $11,825 |
+| `r5_vertical_parallel_pkgfn3_reorder` | Copper | 150 | 97% | 135 | 34.7 | $86,278 | $900 |
+| `r5_vertical_parallel_pkgfn3_lean` | Aluminium | 695 | 100% | 662 | 46.1 | $177,505 | $1,898 |
+| `r5_vertical_parallel_pkgfn3_lean` | Copper | 146 | 98% | 135 | 38.3 | $87,844 | $1,312 |
 | `r5_vertical_external_fast_reorder` | Aluminium | 303 | 35% | 84 | 28.6 | $61,102 | $5,745 |
 | `r5_vertical_external_fast_reorder` | Copper | 67 | 70% | 29 | 77.4 | $91,791 | $575 |
 | `r5_vertical_wait_fast_reorder` | Aluminium | 672 | 92% | 620 | 28.1 | $151,079 | $5,194 |
@@ -245,6 +356,10 @@ Fixed costs a year: vertical $1,184,047 (depreciation $599,907); conventional $1
 | `r5_conventional_external_fast_reorder_hpc-add_per_day256-keep512` | Copper | 67 | 69% | 30 | 76.3 | $89,335 | $757 |
 | `r5_vertical_parallel_fast_reorder_hpc-add_per_day256-keep512` | Aluminium | 577 | 85% | 470 | 28.6 | $124,878 | $5,343 |
 | `r5_vertical_parallel_fast_reorder_hpc-add_per_day256-keep512` | Copper | 108 | 63% | 49 | 61.0 | $99,449 | $706 |
+| `r5_vertical_external_bofn3_reorder` | Aluminium | 292 | 43% | 96 | 36.1 | $89,310 | $12,814 |
+| `r5_vertical_external_bofn3_reorder` | Copper | 47 | 91% | 33 | 40.7 | $63,348 | $3,957 |
+| `r5_vertical_wait_bofn3_reorder` | Aluminium | 675 | 96% | 649 | 36.0 | $188,827 | $5,756 |
+| `r5_vertical_wait_bofn3_reorder` | Copper | 157 | 98% | 154 | 35.4 | $87,471 | $1,026 |
 
 ### Purchasing look-back: `r5_vertical_parallel_fast_reorder`
 
@@ -544,6 +659,144 @@ Recommended buying schedule (q = 0.75), Copper: the 8 items with the most money 
 | byu_icpms | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |  |
 | nsl | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |  |
 
+### Shared stations: `r5_vertical_parallel_bofn3_reorder` (use over offered unit-hours by quarter; share by campaign)
+
+| Station kind | Q1 | Q2 | Q3 | Q4 | Q5 | Q6 | Q7 | Q8 | Al share | binds |
+|---|---|---|---|---|---|---|---|---|---|---|
+| lpbf_3dpt (jobs over its standing slots) | 0% | 5% | 10% | 8% | 9% | 6% | 10% | 8% | - |  |
+| mines_x2 (jobs over its standing slots) | 0% | 0% | 43% | 28% | 25% | 7% | 4% | 11% | - |  |
+| utah_midi (jobs over its standing slots) | 5% | 32% | 13% | 4% | 5% | 3% | 5% | 4% | - |  |
+| utah_mxlab (jobs over its standing slots) | 58% | 74% | 84% | 60% | 58% | 39% | 31% | 23% | - | yes |
+| valimet (jobs over its standing slots) | 0% | 6% | 27% | 29% | 38% | 34% | 36% | 27% | - |  |
+| atomizer | 28% | 70% | 42% | 42% | 17% | 7% | 3% | 1% | 84% | yes |
+| operator | 9% | 24% | 37% | 25% | 9% | 4% | 2% | 1% | 79% |  |
+| doser | 8% | 6% | 13% | 15% | 6% | 3% | 1% | 0% | 87% |  |
+| shop | 5% | 8% | 11% | 11% | 4% | 2% | 1% | 0% | 88% |  |
+| utah_midi | 0% | 4% | 9% | 10% | 4% | 2% | 1% | 1% | 100% |  |
+| byu_sem | 1% | 1% | 5% | 8% | 3% | 1% | 0% | 0% | 77% |  |
+| prep | 1% | 1% | 5% | 7% | 3% | 1% | 0% | 0% | 62% |  |
+| utah_mxlab | 0% | 0% | 7% | 6% | 3% | 1% | 0% | 0% | 0% |  |
+| immersion | 0% | 0% | 3% | 6% | 5% | 2% | 1% | 1% | 0% |  |
+| sieve | 1% | 1% | 5% | 5% | 2% | 1% | 0% | 0% | 92% |  |
+| robot | 0% | 0% | 3% | 5% | 2% | 1% | 0% | 0% | 79% |  |
+| psd | 0% | 0% | 1% | 2% | 1% | 0% | 0% | 0% | 94% |  |
+| edm | 0% | 1% | 1% | 2% | 1% | 0% | 0% | 0% | 68% |  |
+| density | 0% | 0% | 1% | 1% | 1% | 0% | 0% | 0% | 100% |  |
+| cubxl | 0% | 0% | 1% | 1% | 0% | 0% | 0% | 0% | 0% |  |
+| pip | 0% | 0% | 1% | 1% | 1% | 0% | 0% | 0% | 49% |  |
+| furnace | 0% | 0% | 1% | 1% | 1% | 0% | 0% | 0% | 87% |  |
+| hardness | 0% | 0% | 1% | 1% | 0% | 0% | 0% | 0% | 36% |  |
+| tensile | 0% | 0% | 0% | 1% | 0% | 0% | 0% | 0% | 77% |  |
+| ames | 0% | 0% | 0% | 1% | 0% | 0% | 0% | 0% | 0% |  |
+| lpbf_3dpt | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 100% |  |
+| valimet | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 100% |  |
+| mines_x2 | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |  |
+| byu_icpms | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |  |
+| nsl | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |  |
+
+### Shared stations: `r5_conventional_external_bofn3_reorder` (use over offered unit-hours by quarter; share by campaign)
+
+| Station kind | Q1 | Q2 | Q3 | Q4 | Q5 | Q6 | Q7 | Q8 | Al share | binds |
+|---|---|---|---|---|---|---|---|---|---|---|
+| lpbf_3dpt (jobs over its standing slots) | 0% | 6% | 15% | 13% | 15% | 17% | 14% | 11% | - |  |
+| mines_x2 (jobs over its standing slots) | 0% | 0% | 57% | 68% | 68% | 78% | 71% | 78% | - | yes |
+| utah_midi (jobs over its standing slots) | 6% | 34% | 43% | 39% | 41% | 37% | 34% | 30% | - |  |
+| utah_mxlab (jobs over its standing slots) | 58% | 68% | 88% | 74% | 82% | 78% | 80% | 78% | - | yes |
+| valimet (jobs over its standing slots) | 0% | 2% | 21% | 21% | 21% | 31% | 29% | 25% | - |  |
+| atomizer | 30% | 77% | 75% | 65% | 66% | 61% | 54% | 47% | 77% | yes |
+| operator | 10% | 20% | 24% | 22% | 22% | 21% | 18% | 17% | 82% |  |
+| doser | 8% | 11% | 12% | 12% | 12% | 11% | 10% | 9% | 83% |  |
+| shop | 6% | 7% | 9% | 9% | 8% | 8% | 7% | 6% | 83% |  |
+| sieve | 1% | 5% | 4% | 4% | 4% | 4% | 3% | 3% | 94% |  |
+| byu_sem | 1% | 3% | 3% | 3% | 3% | 3% | 3% | 2% | 83% |  |
+| prep | 1% | 2% | 3% | 2% | 2% | 2% | 2% | 2% | 74% |  |
+| utah_midi | 0% | 2% | 3% | 2% | 3% | 2% | 2% | 2% | 100% |  |
+| psd | 0% | 2% | 1% | 1% | 1% | 1% | 1% | 1% | 94% |  |
+| immersion | 0% | 0% | 1% | 1% | 1% | 1% | 1% | 1% | 0% |  |
+| edm | 0% | 0% | 1% | 1% | 1% | 1% | 1% | 1% | 76% |  |
+| density | 0% | 1% | 1% | 1% | 1% | 1% | 1% | 1% | 100% |  |
+| furnace | 0% | 0% | 1% | 1% | 1% | 1% | 1% | 1% | 91% |  |
+| tensile | 0% | 0% | 1% | 1% | 1% | 1% | 1% | 1% | 85% |  |
+| pip | 0% | 0% | 1% | 1% | 1% | 1% | 1% | 1% | 63% |  |
+| lpbf_3dpt | 0% | 0% | 1% | 0% | 1% | 1% | 1% | 0% | 100% |  |
+| hardness | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 52% |  |
+| utah_mxlab | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |  |
+| valimet | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 100% |  |
+| mines_x2 | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |  |
+| cubxl | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |  |
+| ames | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |  |
+| byu_icpms | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |  |
+| nsl | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |  |
+
+### Shared stations: `r5_vertical_parallel_pkgfn3_reorder` (use over offered unit-hours by quarter; share by campaign)
+
+| Station kind | Q1 | Q2 | Q3 | Q4 | Q5 | Q6 | Q7 | Q8 | Al share | binds |
+|---|---|---|---|---|---|---|---|---|---|---|
+| lpbf_3dpt (jobs over its standing slots) | 0% | 7% | 6% | 9% | 9% | 10% | 8% | 9% | - |  |
+| mines_x2 (jobs over its standing slots) | 0% | 0% | 46% | 21% | 11% | 7% | 11% | 11% | - |  |
+| utah_midi (jobs over its standing slots) | 5% | 31% | 14% | 5% | 5% | 5% | 5% | 4% | - |  |
+| utah_mxlab (jobs over its standing slots) | 58% | 74% | 80% | 62% | 47% | 33% | 31% | 14% | - | yes |
+| valimet (jobs over its standing slots) | 0% | 4% | 27% | 33% | 33% | 34% | 38% | 36% | - |  |
+| atomizer | 28% | 71% | 42% | 43% | 16% | 7% | 2% | 1% | 84% | yes |
+| operator | 9% | 24% | 38% | 25% | 9% | 4% | 2% | 1% | 80% |  |
+| doser | 8% | 5% | 13% | 15% | 5% | 2% | 1% | 0% | 87% |  |
+| shop | 5% | 8% | 11% | 11% | 4% | 2% | 1% | 0% | 88% |  |
+| utah_midi | 0% | 3% | 9% | 9% | 5% | 2% | 1% | 1% | 100% |  |
+| byu_sem | 1% | 1% | 5% | 8% | 3% | 1% | 0% | 0% | 77% |  |
+| prep | 1% | 1% | 5% | 7% | 3% | 1% | 0% | 0% | 62% |  |
+| utah_mxlab | 0% | 0% | 7% | 6% | 3% | 1% | 0% | 0% | 0% |  |
+| immersion | 0% | 0% | 3% | 6% | 4% | 3% | 2% | 1% | 0% |  |
+| sieve | 1% | 1% | 5% | 5% | 2% | 1% | 0% | 0% | 92% |  |
+| robot | 0% | 0% | 3% | 5% | 2% | 1% | 0% | 0% | 78% |  |
+| psd | 0% | 0% | 1% | 2% | 1% | 0% | 0% | 0% | 94% |  |
+| edm | 0% | 1% | 1% | 2% | 1% | 0% | 0% | 0% | 69% |  |
+| cubxl | 0% | 0% | 1% | 2% | 0% | 0% | 0% | 0% | 0% |  |
+| pip | 0% | 0% | 1% | 1% | 1% | 0% | 0% | 0% | 49% |  |
+| density | 0% | 0% | 1% | 1% | 1% | 0% | 0% | 0% | 100% |  |
+| furnace | 0% | 0% | 1% | 1% | 1% | 0% | 0% | 0% | 88% |  |
+| hardness | 0% | 0% | 1% | 1% | 0% | 0% | 0% | 0% | 38% |  |
+| tensile | 0% | 0% | 0% | 1% | 0% | 0% | 0% | 0% | 83% |  |
+| lpbf_3dpt | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 100% |  |
+| valimet | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 100% |  |
+| ames | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |  |
+| mines_x2 | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |  |
+| byu_icpms | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |  |
+| nsl | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |  |
+
+### Shared stations: `r5_conventional_external_pkgfn3_reorder` (use over offered unit-hours by quarter; share by campaign)
+
+| Station kind | Q1 | Q2 | Q3 | Q4 | Q5 | Q6 | Q7 | Q8 | Al share | binds |
+|---|---|---|---|---|---|---|---|---|---|---|
+| lpbf_3dpt (jobs over its standing slots) | 0% | 7% | 13% | 16% | 12% | 16% | 11% | 16% | - |  |
+| mines_x2 (jobs over its standing slots) | 0% | 0% | 54% | 68% | 68% | 78% | 61% | 75% | - | yes |
+| utah_midi (jobs over its standing slots) | 6% | 33% | 49% | 48% | 35% | 36% | 30% | 31% | - |  |
+| utah_mxlab (jobs over its standing slots) | 58% | 68% | 90% | 74% | 78% | 82% | 84% | 74% | - | yes |
+| valimet (jobs over its standing slots) | 0% | 2% | 15% | 25% | 27% | 25% | 34% | 21% | - |  |
+| atomizer | 30% | 77% | 76% | 67% | 61% | 60% | 51% | 49% | 77% | yes |
+| operator | 10% | 20% | 26% | 24% | 21% | 21% | 17% | 16% | 82% |  |
+| doser | 8% | 11% | 13% | 12% | 12% | 11% | 10% | 8% | 83% |  |
+| shop | 6% | 7% | 10% | 9% | 8% | 8% | 7% | 6% | 83% |  |
+| sieve | 1% | 5% | 4% | 4% | 4% | 4% | 3% | 3% | 94% |  |
+| byu_sem | 1% | 3% | 4% | 4% | 3% | 3% | 2% | 2% | 83% |  |
+| prep | 1% | 2% | 3% | 3% | 2% | 2% | 2% | 2% | 75% |  |
+| utah_midi | 0% | 2% | 3% | 3% | 2% | 2% | 2% | 2% | 100% |  |
+| edm | 0% | 0% | 1% | 2% | 1% | 1% | 1% | 1% | 78% |  |
+| psd | 0% | 2% | 1% | 1% | 1% | 1% | 1% | 1% | 94% |  |
+| immersion | 0% | 0% | 1% | 1% | 1% | 1% | 1% | 1% | 0% |  |
+| furnace | 0% | 0% | 1% | 1% | 1% | 1% | 1% | 1% | 93% |  |
+| tensile | 0% | 0% | 1% | 1% | 1% | 1% | 1% | 1% | 87% |  |
+| density | 0% | 1% | 1% | 1% | 1% | 1% | 1% | 1% | 100% |  |
+| pip | 0% | 0% | 1% | 1% | 1% | 1% | 1% | 1% | 65% |  |
+| lpbf_3dpt | 0% | 0% | 0% | 1% | 0% | 1% | 0% | 1% | 100% |  |
+| hardness | 0% | 0% | 1% | 1% | 0% | 0% | 0% | 0% | 56% |  |
+| valimet | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 100% |  |
+| utah_mxlab | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |  |
+| mines_x2 | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |  |
+| cubxl | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |  |
+| ames | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |  |
+| byu_icpms | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |  |
+| nsl | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |  |
+
 ## Idle stretches (note 3): at least 7 days with no start at a campaign's pacing station
 
 | Arm | Campaign, station | stretches per seed | idle days per seed | by cause (days per seed) | flagged |
@@ -576,10 +829,22 @@ Recommended buying schedule (q = 0.75), Copper: the 8 items with the most money 
 | `r5_conventional_external_pkgfn3_reorder` | Aluminium, first fabrication step | 22.1 | 476 | capacity (station busy) 262, WIP limit (lots already waiting for the first fabrication step) 215 | 0 |
 | `r5_conventional_external_pkgfn3_reorder` | Copper, atomizer | 9.9 | 465 | capacity (station busy) 430, policy waiting (results in flight) 35 | 5 |
 | `r5_conventional_external_pkgfn3_reorder` | Copper, first fabrication step | 23.2 | 697 | capacity (station busy) 662, policy waiting (results in flight) 33, decision time 2 | 11 |
+| `r5_vertical_external_bofn3_reorder` | Aluminium, atomizer | 7.6 | 191 | WIP limit (lots already waiting for the first fabrication step) 186, capacity (station busy) 5 | 0 |
+| `r5_vertical_external_bofn3_reorder` | Aluminium, first fabrication step | 21.8 | 491 | capacity (station busy) 283, WIP limit (lots already waiting for the first fabrication step) 208 | 0 |
+| `r5_vertical_external_bofn3_reorder` | Copper, atomizer | 10.0 | 455 | capacity (station busy) 436, policy waiting (results in flight) 19 | 2 |
+| `r5_vertical_external_bofn3_reorder` | Copper, first fabrication step | 22.6 | 700 | capacity (station busy) 677, policy waiting (results in flight) 23 | 6 |
 | `r5_vertical_external_fast_reorder` | Aluminium, atomizer | 8.6 | 264 | money 103, WIP limit (lots already waiting for the first fabrication step) 91, money (the last few thousand dollars, held for the partners' slots) 38, capacity (station busy) 23, policy waiting 8 | 0 |
 | `r5_vertical_external_fast_reorder` | Aluminium, first fabrication step | 18.9 | 360 | capacity (station busy) 138, WIP limit (lots already waiting for the first fabrication step) 106, money 68, money (the last few thousand dollars, held for the partners' slots) 40, policy waiting 4 | 0 |
 | `r5_vertical_external_fast_reorder` | Copper, atomizer | 8.8 | 278 | capacity (station busy) 184, WIP limit (lots already waiting for the first fabrication step) 94 | 0 |
 | `r5_vertical_external_fast_reorder` | Copper, first fabrication step | 23.0 | 700 | capacity (station busy) 584, WIP limit (lots already waiting for the first fabrication step) 116 | 0 |
+| `r5_vertical_parallel_bofn3_lean` | Aluminium, atomizer | 14.2 | 301 | money 119, WIP limit (lots already waiting for the first fabrication step) 110, money (the last few thousand dollars, held for the partners' slots) 67, capacity (station busy) 3, policy waiting (results in flight) 2 | 0 |
+| `r5_vertical_parallel_bofn3_lean` | Aluminium, first fabrication step | 17.3 | 407 | WIP limit (lots already waiting for the first fabrication step) 169, money 132, money (the last few thousand dollars, held for the partners' slots) 61, capacity (station busy) 43, policy waiting (results in flight) 2 | 0 |
+| `r5_vertical_parallel_bofn3_lean` | Copper, atomizer | 13.9 | 603 | money 347, capacity (station busy) 209, policy waiting (results in flight) 23, money (the last few thousand dollars, held for the partners' slots) 16, sign-off 8 | 6 |
+| `r5_vertical_parallel_bofn3_lean` | Copper, first fabrication step | 20.1 | 568 | money 299, capacity (station busy) 245, money (the last few thousand dollars, held for the partners' slots) 14, policy waiting (results in flight) 9, sign-off 0 | 2 |
+| `r5_vertical_parallel_bofn3_reorder` | Aluminium, atomizer | 14.5 | 311 | money 129, WIP limit (lots already waiting for the first fabrication step) 86, money (the last few thousand dollars, held for the partners' slots) 80, policy waiting (results in flight) 9, policy waiting 3 | 0 |
+| `r5_vertical_parallel_bofn3_reorder` | Aluminium, first fabrication step | 19.7 | 420 | money 150, WIP limit (lots already waiting for the first fabrication step) 108, money (the last few thousand dollars, held for the partners' slots) 81, capacity (station busy) 72, policy waiting (results in flight) 6 | 0 |
+| `r5_vertical_parallel_bofn3_reorder` | Copper, atomizer | 13.9 | 598 | money 360, capacity (station busy) 176, money (the last few thousand dollars, held for the partners' slots) 28, policy waiting (results in flight) 21, sign-off 14 | 3 |
+| `r5_vertical_parallel_bofn3_reorder` | Copper, first fabrication step | 19.6 | 576 | money 305, capacity (station busy) 228, money (the last few thousand dollars, held for the partners' slots) 23, policy waiting (results in flight) 19 | 6 |
 | `r5_vertical_parallel_fast_lean` | Aluminium, atomizer | 13.1 | 405 | money (the last few thousand dollars, held for the partners' slots) 245, WIP limit (lots already waiting for the first fabrication step) 101, money 54, capacity (station busy) 3, policy waiting (results in flight) 1 | 0 |
 | `r5_vertical_parallel_fast_lean` | Aluminium, first fabrication step | 13.8 | 454 | money (the last few thousand dollars, held for the partners' slots) 246, WIP limit (lots already waiting for the first fabrication step) 108, capacity (station busy) 56, money 44, policy waiting (results in flight) 1 | 0 |
 | `r5_vertical_parallel_fast_lean` | Copper, atomizer | 14.0 | 533 | money 371, capacity (station busy) 72, WIP limit (lots already waiting for the first fabrication step) 67, money (the last few thousand dollars, held for the partners' slots) 21, sign-off 2 | 0 |
@@ -592,10 +857,54 @@ Recommended buying schedule (q = 0.75), Copper: the 8 items with the most money 
 | `r5_vertical_parallel_fast_reorder_hpc-add_per_day256-keep512` | Aluminium, first fabrication step | 10.6 | 421 | money (the last few thousand dollars, held for the partners' slots) 291, WIP limit (lots already waiting for the first fabrication step) 59, capacity (station busy) 40, money 15, policy waiting 14 | 1 |
 | `r5_vertical_parallel_fast_reorder_hpc-add_per_day256-keep512` | Copper, atomizer | 13.2 | 565 | money 404, WIP limit (lots already waiting for the first fabrication step) 94, capacity (station busy) 66, sign-off 0 | 0 |
 | `r5_vertical_parallel_fast_reorder_hpc-add_per_day256-keep512` | Copper, first fabrication step | 15.5 | 604 | money 355, capacity (station busy) 135, WIP limit (lots already waiting for the first fabrication step) 115 | 0 |
+| `r5_vertical_parallel_pkgfn3_lean` | Aluminium, atomizer | 14.5 | 316 | money 122, WIP limit (lots already waiting for the first fabrication step) 106, money (the last few thousand dollars, held for the partners' slots) 83, capacity (station busy) 3, policy waiting (results in flight) 2 | 0 |
+| `r5_vertical_parallel_pkgfn3_lean` | Aluminium, first fabrication step | 17.8 | 426 | WIP limit (lots already waiting for the first fabrication step) 163, money 133, money (the last few thousand dollars, held for the partners' slots) 84, capacity (station busy) 44, policy waiting (results in flight) 2 | 0 |
+| `r5_vertical_parallel_pkgfn3_lean` | Copper, atomizer | 13.8 | 597 | money 333, capacity (station busy) 213, money (the last few thousand dollars, held for the partners' slots) 30, sign-off 12, policy waiting (results in flight) 9 | 3 |
+| `r5_vertical_parallel_pkgfn3_lean` | Copper, first fabrication step | 17.8 | 573 | money 293, capacity (station busy) 248, money (the last few thousand dollars, held for the partners' slots) 29, policy waiting (results in flight) 3, sign-off 1 | 2 |
+| `r5_vertical_parallel_pkgfn3_reorder` | Aluminium, atomizer | 15.0 | 312 | money 121, money (the last few thousand dollars, held for the partners' slots) 101, WIP limit (lots already waiting for the first fabrication step) 86, policy waiting (results in flight) 3, capacity (station busy) 2 | 0 |
+| `r5_vertical_parallel_pkgfn3_reorder` | Aluminium, first fabrication step | 18.6 | 413 | money 130, WIP limit (lots already waiting for the first fabrication step) 106, money (the last few thousand dollars, held for the partners' slots) 101, capacity (station busy) 72, policy waiting (results in flight) 4 | 0 |
+| `r5_vertical_parallel_pkgfn3_reorder` | Copper, atomizer | 14.9 | 603 | money 364, capacity (station busy) 187, money (the last few thousand dollars, held for the partners' slots) 25, policy waiting (results in flight) 22, sign-off 5 | 6 |
+| `r5_vertical_parallel_pkgfn3_reorder` | Copper, first fabrication step | 20.2 | 580 | money 302, capacity (station busy) 229, money (the last few thousand dollars, held for the partners' slots) 29, policy waiting (results in flight) 20 | 6 |
+| `r5_vertical_wait_bofn3_reorder` | Aluminium, atomizer | 10.6 | 413 | not asked (before start) 276, money 114, WIP limit (lots already waiting for the first fabrication step) 16, policy waiting (results in flight) 6, capacity (station busy) 1 | 0 |
+| `r5_vertical_wait_bofn3_reorder` | Aluminium, first fabrication step | 12.8 | 460 | not asked (before start) 286, money 141, WIP limit (lots already waiting for the first fabrication step) 16, capacity (station busy) 12, policy waiting (results in flight) 2 | 0 |
+| `r5_vertical_wait_bofn3_reorder` | Copper, atomizer | 11.1 | 650 | money 314, not asked (before start) 312, sign-off 12, capacity (station busy) 9, policy waiting (results in flight) 3 | 0 |
+| `r5_vertical_wait_bofn3_reorder` | Copper, first fabrication step | 11.4 | 569 | not asked (before start) 280, money 278, policy waiting (results in flight) 6, sign-off 3, capacity (station busy) 1 | 1 |
 | `r5_vertical_wait_fast_reorder` | Aluminium, atomizer | 9.8 | 506 | not asked (before start) 262, money 165, policy waiting (results in flight) 30, WIP limit (lots already waiting for the first fabrication step) 27, policy waiting 11 | 0 |
 | `r5_vertical_wait_fast_reorder` | Aluminium, first fabrication step | 9.5 | 492 | not asked (before start) 274, money 153, policy waiting (results in flight) 27, policy waiting 14, capacity (station busy) 14 | 0 |
 | `r5_vertical_wait_fast_reorder` | Copper, atomizer | 9.9 | 635 | money 336, not asked (before start) 283, sign-off 11, capacity (station busy) 5 | 0 |
 | `r5_vertical_wait_fast_reorder` | Copper, first fabrication step | 7.2 | 618 | money 329, not asked (before start) 285, sign-off 3, capacity (station busy) 1 | 0 |
+
+### Flagged stretches
+
+A stretch is flagged when it lasted at least 14 days, the campaign had at least $5,000 left on 80 % of its days, the station was under half busy, and the daily log's main cause is the policy waiting (asked, it started nothing there, and nothing was turned away). Every arm with one, sensitivities included:
+
+| Arm | Campaign, station | flagged stretches | seeds with one | days in all seeds | days: median; longest | start day (range) |
+|---|---|---|---|---|---|---|
+| `r5_conventional_external_bofn3_lean` | Copper, atomizer | 5 | 5 of 16 | 342 | 67; 81 | 0-0 |
+| `r5_conventional_external_bofn3_lean` | Copper, first fabrication step | 14 | 8 of 16 | 585 | 41; 76 | 0-562 |
+| `r5_conventional_external_bofn3_reorder` | Aluminium, atomizer | 3 | 1 of 16 | 80 | 28; 32 | 218-269 |
+| `r5_conventional_external_bofn3_reorder` | Aluminium, first fabrication step | 2 | 1 of 16 | 106 | 74; 74 | 200-277 |
+| `r5_conventional_external_bofn3_reorder` | Copper, atomizer | 6 | 6 of 16 | 614 | 74; 228 | 0-110 |
+| `r5_conventional_external_bofn3_reorder` | Copper, first fabrication step | 14 | 6 of 16 | 646 | 41; 78 | 0-198 |
+| `r5_conventional_external_pkgfn3_lean` | Copper, atomizer | 6 | 6 of 16 | 362 | 67; 81 | 0-320 |
+| `r5_conventional_external_pkgfn3_lean` | Copper, first fabrication step | 12 | 7 of 16 | 530 | 43; 76 | 0-268 |
+| `r5_conventional_external_pkgfn3_reorder` | Copper, atomizer | 5 | 5 of 16 | 559 | 74; 228 | 0-0 |
+| `r5_conventional_external_pkgfn3_reorder` | Copper, first fabrication step | 11 | 5 of 16 | 529 | 41; 78 | 0-184 |
+| `r5_vertical_external_bofn3_reorder` | Copper, atomizer | 2 | 2 of 12 | 232 | 158; 158 | 0-0 |
+| `r5_vertical_external_bofn3_reorder` | Copper, first fabrication step | 6 | 3 of 12 | 278 | 50; 69 | 0-128 |
+| `r5_vertical_parallel_bofn3_lean` | Copper, atomizer | 6 | 6 of 16 | 350 | 60; 82 | 117-255 |
+| `r5_vertical_parallel_bofn3_lean` | Copper, first fabrication step | 2 | 2 of 16 | 93 | 76; 76 | 100-240 |
+| `r5_vertical_parallel_bofn3_reorder` | Copper, atomizer | 3 | 3 of 16 | 300 | 74; 158 | 0-283 |
+| `r5_vertical_parallel_bofn3_reorder` | Copper, first fabrication step | 6 | 3 of 16 | 292 | 50; 76 | 0-93 |
+| `r5_vertical_parallel_fast_reorder_atom-slow` | Aluminium, atomizer | 1 | 1 of 16 | 25 | 25; 25 | 278-278 |
+| `r5_vertical_parallel_fast_reorder_atom-slow` | Aluminium, first fabrication step | 2 | 2 of 16 | 38 | 24; 24 | 228-283 |
+| `r5_vertical_parallel_fast_reorder_dec-none` | Aluminium, first fabrication step | 1 | 1 of 16 | 14 | 14; 14 | 237-237 |
+| `r5_vertical_parallel_fast_reorder_hpc-add_per_day256-keep512` | Aluminium, first fabrication step | 1 | 1 of 16 | 26 | 26; 26 | 247-247 |
+| `r5_vertical_parallel_pkgfn3_lean` | Copper, atomizer | 3 | 3 of 16 | 144 | 47; 70 | 208-226 |
+| `r5_vertical_parallel_pkgfn3_lean` | Copper, first fabrication step | 2 | 2 of 16 | 29 | 15; 15 | 240-240 |
+| `r5_vertical_parallel_pkgfn3_reorder` | Copper, atomizer | 6 | 6 of 16 | 332 | 48; 158 | 0-260 |
+| `r5_vertical_parallel_pkgfn3_reorder` | Copper, first fabrication step | 6 | 3 of 16 | 292 | 50; 76 | 0-93 |
+| `r5_vertical_wait_bofn3_reorder` | Copper, first fabrication step | 1 | 1 of 12 | 15 | 15; 15 | 436-436 |
 
 ## Counters (mean per run)
 
@@ -615,14 +924,26 @@ Recommended buying schedule (q = 0.75), Copper: the 8 items with the most money 
 | `r5_conventional_external_pkgfn3_lean` | Copper | 43228 | 11 | 19 | 17 | 3 | 3 |
 | `r5_conventional_external_pkgfn3_reorder` | Aluminium | 46771 | 203 | 203 | 63 | 38 | 38 |
 | `r5_conventional_external_pkgfn3_reorder` | Copper | 43228 | 13 | 21 | 18 | 4 | 4 |
+| `r5_vertical_external_bofn3_reorder` | Aluminium | 47155 | 206 | 206 | 61 | 31 | 31 |
+| `r5_vertical_external_bofn3_reorder` | Copper | 43572 | 13 | 20 | 17 | 4 | 4 |
 | `r5_vertical_external_fast_reorder` | Aluminium | 46835 | 172 | 115 | 84 | 76 | 120 |
 | `r5_vertical_external_fast_reorder` | Copper | 43411 | 34 | 33 | 17 | 5 | 5 |
+| `r5_vertical_parallel_bofn3_lean` | Aluminium | 47155 | 506 | 505 | 178 | 71 | 71 |
+| `r5_vertical_parallel_bofn3_lean` | Copper | 43571 | 29 | 90 | 89 | 8 | 8 |
+| `r5_vertical_parallel_bofn3_reorder` | Aluminium | 47155 | 476 | 475 | 163 | 76 | 76 |
+| `r5_vertical_parallel_bofn3_reorder` | Copper | 43571 | 30 | 87 | 87 | 10 | 10 |
 | `r5_vertical_parallel_fast_lean` | Aluminium | 46955 | 364 | 235 | 177 | 166 | 270 |
 | `r5_vertical_parallel_fast_lean` | Copper | 43411 | 41 | 41 | 37 | 21 | 21 |
 | `r5_vertical_parallel_fast_reorder` | Aluminium | 46927 | 319 | 207 | 163 | 153 | 248 |
 | `r5_vertical_parallel_fast_reorder` | Copper | 43411 | 42 | 42 | 36 | 19 | 20 |
 | `r5_vertical_parallel_fast_reorder_hpc-add_per_day256-keep512` | Aluminium | 187076 | 314 | 204 | 165 | 154 | 249 |
 | `r5_vertical_parallel_fast_reorder_hpc-add_per_day256-keep512` | Copper | 164116 | 42 | 42 | 35 | 19 | 19 |
+| `r5_vertical_parallel_pkgfn3_lean` | Aluminium | 47155 | 479 | 478 | 184 | 88 | 88 |
+| `r5_vertical_parallel_pkgfn3_lean` | Copper | 43571 | 30 | 86 | 86 | 11 | 11 |
+| `r5_vertical_parallel_pkgfn3_reorder` | Aluminium | 47155 | 472 | 471 | 160 | 86 | 86 |
+| `r5_vertical_parallel_pkgfn3_reorder` | Copper | 43571 | 30 | 91 | 91 | 10 | 10 |
+| `r5_vertical_wait_bofn3_reorder` | Aluminium | 46771 | 477 | 477 | 163 | 64 | 64 |
+| `r5_vertical_wait_bofn3_reorder` | Copper | 43229 | 34 | 89 | 89 | 16 | 16 |
 | `r5_vertical_wait_fast_reorder` | Aluminium | 46972 | 390 | 251 | 177 | 168 | 271 |
 | `r5_vertical_wait_fast_reorder` | Copper | 43411 | 44 | 44 | 38 | 23 | 23 |
 
@@ -637,10 +958,16 @@ Recommended buying schedule (q = 0.75), Copper: the 8 items with the most money 
 | `r5_conventional_external_fast_reorder_hpc-add_per_day256-keep512` | 256 | 122,880 | 89,707,520 | 186,873 | 89,707,520 | 163,901 | 0, 13 |
 | `r5_conventional_external_pkgfn3_lean` | 256 | 122,880 | 89,707,520 | 46,720 | 89,707,520 | 43,182 | 3, 3 |
 | `r5_conventional_external_pkgfn3_reorder` | 256 | 122,880 | 89,707,520 | 46,720 | 89,707,520 | 43,182 | 3, 3 |
+| `r5_vertical_external_bofn3_reorder` | 256 | 122,880 | 89,707,520 | 46,720 | 89,707,520 | 43,184 | 22, 22 |
 | `r5_vertical_external_fast_reorder` | 256 | 122,880 | 89,707,520 | 46,720 | 89,707,520 | 43,182 | 0, 13 |
+| `r5_vertical_parallel_bofn3_lean` | 256 | 122,880 | 89,707,520 | 46,720 | 89,707,520 | 43,182 | 22, 22 |
+| `r5_vertical_parallel_bofn3_reorder` | 256 | 122,880 | 89,707,520 | 46,720 | 89,707,520 | 43,182 | 22, 22 |
 | `r5_vertical_parallel_fast_lean` | 256 | 122,880 | 89,707,520 | 46,720 | 89,707,520 | 43,182 | 0, 13 |
 | `r5_vertical_parallel_fast_reorder` | 256 | 122,880 | 89,707,520 | 46,720 | 89,707,520 | 43,182 | 0, 13 |
 | `r5_vertical_parallel_fast_reorder_hpc-add_per_day256-keep512` | 256 | 122,880 | 89,707,520 | 186,873 | 89,707,520 | 163,901 | 0, 13 |
+| `r5_vertical_parallel_pkgfn3_lean` | 256 | 122,880 | 89,707,520 | 46,720 | 89,707,520 | 43,182 | 22, 22 |
+| `r5_vertical_parallel_pkgfn3_reorder` | 256 | 122,880 | 89,707,520 | 46,720 | 89,707,520 | 43,182 | 22, 22 |
+| `r5_vertical_wait_bofn3_reorder` | 256 | 122,880 | 89,707,520 | 46,720 | 89,707,520 | 43,184 | 3, 3 |
 | `r5_vertical_wait_fast_reorder` | 256 | 122,880 | 89,707,520 | 46,720 | 89,707,520 | 43,182 | 0, 13 |
 
 Four times the candidates the policies see (512 kept, 256 new a day) against the nominal pool (128, 64 a day): factor (nominal's median over the bigger pool's); seeds there (bigger vs nominal)
@@ -671,7 +998,10 @@ Four times the candidates the policies see (512 kept, 256 new a day) against the
 | `r5_conventional_external_fast_reorder_hpc-add_per_day256-keep512` | 12 | 92, 610 (92, 501) | 428, 428 (412, 545) | `out/twin5/events/r5_conventional_external_fast_reorder_s12_hpc-add_per_day256-keep512.json.xz` |
 | `r5_conventional_external_pkgfn3_lean` | 8 | 319, 344 (315, 348) | 730, 730 (723, 730) | `out/twin5/events/r5_conventional_external_pkgfn3_lean_s8.json.xz` |
 | `r5_conventional_external_pkgfn3_reorder` | 5 | 218, 305 (220, 295) | 730, 730 (730, 730) | `out/twin5/events/r5_conventional_external_pkgfn3_reorder_s5.json.xz` |
+| `r5_vertical_external_bofn3_reorder` | 0 | 207, 207 (218, 256) | 392, 676 (495, 730) | `out/twin5/events/r5_vertical_external_bofn3_reorder_s0.json.xz` |
 | `r5_vertical_external_fast_reorder` | 8 | 80, 399 (87, 422) | 475, 475 (454, 627) | `out/twin5/events/r5_vertical_external_fast_reorder_s8.json.xz` |
+| `r5_vertical_parallel_bofn3_lean` | 5 | 272, 272 (259, 271) | 340, 340 (342, 364) | `out/twin5/events/r5_vertical_parallel_bofn3_lean_s5.json.xz` |
+| `r5_vertical_parallel_bofn3_reorder` | 1 | 176, 182 (176, 189) | 291, 291 (298, 339) | `out/twin5/events/r5_vertical_parallel_bofn3_reorder_s1.json.xz` |
 | `r5_vertical_parallel_fast_lean` | 12 | 122, 444 (135, 405) | 262, 262 (283, 295) | `out/twin5/events/r5_vertical_parallel_fast_lean_s12.json.xz` |
 | `r5_vertical_parallel_fast_lean_atom-3h` | 12 | 122, 400 (135, 565) | 272, 272 (276, 287) | `out/twin5/events/r5_vertical_parallel_fast_lean_s12_atom-3h.json.xz` |
 | `r5_vertical_parallel_fast_lean_atom-slow` | 12 | 122, 730 (135, 730) | 269, 269 (282, 293) | `out/twin5/events/r5_vertical_parallel_fast_lean_s12_atom-slow.json.xz` |
@@ -684,4 +1014,56 @@ Four times the candidates the policies see (512 kept, 256 new a day) against the
 | `r5_vertical_parallel_fast_reorder_dec-slow` | 13 | 91, 91 (102, 331) | 300, 300 (300, 321) | `out/twin5/events/r5_vertical_parallel_fast_reorder_s13_dec-slow.json.xz` |
 | `r5_vertical_parallel_fast_reorder_hpc-add_per_day256-keep512` | 11 | 57, 730 (86, 539) | 320, 320 (303, 312) | `out/twin5/events/r5_vertical_parallel_fast_reorder_s11_hpc-add_per_day256-keep512.json.xz` |
 | `r5_vertical_parallel_fast_reorder_noused` | 8 | 75, 730 (87, 730) | 309, 351 (291, 311) | `out/twin5/events/r5_vertical_parallel_fast_reorder_s8_noused.json.xz` |
+| `r5_vertical_parallel_pkgfn3_lean` | 12 | 266, 295 (255, 272) | 302, 335 (303, 377) | `out/twin5/events/r5_vertical_parallel_pkgfn3_lean_s12.json.xz` |
+| `r5_vertical_parallel_pkgfn3_reorder` | 3 | 175, 226 (179, 219) | 267, 360 (294, 362) | `out/twin5/events/r5_vertical_parallel_pkgfn3_reorder_s3.json.xz` |
+| `r5_vertical_wait_bofn3_reorder` | 1 | 305, 318 (311, 340) | 379, 418 (388, 411) | `out/twin5/events/r5_vertical_wait_bofn3_reorder_s1.json.xz` |
 | `r5_vertical_wait_fast_reorder` | 11 | 293, 730 (280, 730) | 383, 383 (362, 382) | `out/twin5/events/r5_vertical_wait_fast_reorder_s11.json.xz` |
+
+## Where the rows were made (each row's `env` and `code`)
+
+Every row was made under `TWIN_PIN=avx2`. A heuristic and funnel row reran bit for bit on every CPU model below; BOFN and pKGFN rows made on an AMD EPYC did not reproduce on the Intel Xeon (the checks in `out/twin5/slices/`), so for those arms the CPU is part of what a seed's row depends on.
+
+| Arm | seeds | CPU: seeds made on it | commit: rows |
+|---|---|---|---|
+| `r5_conventional_external_bofn3_lean` | 16 | EPYC 9V45 96-Core: all | `9ecef6f`: 2; `3de9012` (twin/ dirty): 14 |
+| `r5_conventional_external_bofn3_reorder` | 16 | EPYC 9V45 96-Core: all | `9ecef6f`: 1; `3de9012` (twin/ dirty): 15 |
+| `r5_conventional_external_fast_lean` | 16 | EPYC 9V45 96-Core: all | `6895a09`: 16 |
+| `r5_conventional_external_fast_lean_dec-none` | 16 | EPYC 9V45 96-Core: all | `6895a09`: 16 |
+| `r5_conventional_external_fast_lean_dec-slow` | 16 | EPYC 9V45 96-Core: all | `6895a09`: 16 |
+| `r5_conventional_external_fast_reorder` | 16 | EPYC 9V45 96-Core: all | `6895a09`: 16 |
+| `r5_conventional_external_fast_reorder_dec-none` | 16 | EPYC 9V45 96-Core: all | `6895a09`: 16 |
+| `r5_conventional_external_fast_reorder_dec-slow` | 16 | EPYC 9V45 96-Core: all | `6895a09`: 16 |
+| `r5_conventional_external_fast_reorder_hpc-add_per_day256-keep512` | 16 | EPYC 9V45 96-Core: all | `f2b40fd` (twin/ dirty): 16 |
+| `r5_conventional_external_pkgfn3_lean` | 16 | EPYC 9V45 96-Core: all | `9ecef6f`: 1; `3de9012` (twin/ dirty): 15 |
+| `r5_conventional_external_pkgfn3_reorder` | 16 | EPYC 9V45 96-Core: all | `9ecef6f`: 1; `3de9012` (twin/ dirty): 15 |
+| `r5_vertical_external_bofn3_reorder` | 12 | EPYC 9V45 96-Core: 0; EPYC 9V74 80-Core: 1, 4, 7, 10; Xeon 6975P-C: 2, 3, 5, 6, 8, 9, 11 | `9ecef6f`: 1; `88d5161`: 2; `b410477`: 4; `c7767b2`: 3; `6ee4cd5`: 1; `21d9b1a`: 1 |
+| `r5_vertical_external_fast_reorder` | 16 | EPYC 9V45 96-Core: all | `6895a09`: 16 |
+| `r5_vertical_parallel_bofn3_lean` | 16 | EPYC 9V45 96-Core: 0, 1, 2, 3, 4; EPYC 7763 64-Core: 5; Xeon 6975P-C: 6, 8, 9, 11, 12, 14, 15; EPYC 9V74 80-Core: 7, 10, 13 | `9ecef6f`: 1; `3de9012` (twin/ dirty): 4; `662621d`: 1; `b410477`: 4; `21d9b1a`: 2; `c7767b2`: 3; `6ee4cd5`: 1 |
+| `r5_vertical_parallel_bofn3_reorder` | 16 | EPYC 9V45 96-Core: 0, 1, 2, 3, 4, 10, 13; EPYC 9V74 80-Core: 5; Xeon 6975P-C: 6, 7, 9, 12, 15; EPYC 7763 64-Core: 8, 11, 14 | `9ecef6f`: 1; `3de9012` (twin/ dirty): 4; `88d5161`: 1; `b410477`: 6; `c7767b2`: 1; `662621d`: 3 |
+| `r5_vertical_parallel_fast_lean` | 16 | EPYC 9V45 96-Core: all | `6895a09`: 16 |
+| `r5_vertical_parallel_fast_lean_atom-3h` | 16 | EPYC 9V45 96-Core: all | `6895a09`: 16 |
+| `r5_vertical_parallel_fast_lean_atom-slow` | 16 | EPYC 9V45 96-Core: all | `6895a09`: 16 |
+| `r5_vertical_parallel_fast_lean_dec-none` | 16 | EPYC 9V45 96-Core: all | `6895a09`: 16 |
+| `r5_vertical_parallel_fast_lean_dec-slow` | 16 | EPYC 9V45 96-Core: all | `6895a09`: 16 |
+| `r5_vertical_parallel_fast_reorder` | 16 | EPYC 9V45 96-Core: all | `6895a09`: 16 |
+| `r5_vertical_parallel_fast_reorder_atom-3h` | 16 | EPYC 9V45 96-Core: all | `6895a09`: 16 |
+| `r5_vertical_parallel_fast_reorder_atom-slow` | 16 | EPYC 9V45 96-Core: all | `6895a09`: 16 |
+| `r5_vertical_parallel_fast_reorder_dec-none` | 16 | EPYC 9V45 96-Core: all | `6895a09`: 16 |
+| `r5_vertical_parallel_fast_reorder_dec-slow` | 16 | EPYC 9V45 96-Core: all | `6895a09`: 16 |
+| `r5_vertical_parallel_fast_reorder_hpc-add_per_day256-keep512` | 16 | EPYC 9V45 96-Core: all | `f2b40fd` (twin/ dirty): 16 |
+| `r5_vertical_parallel_fast_reorder_noused` | 16 | EPYC 9V45 96-Core: all | `6895a09`: 16 |
+| `r5_vertical_parallel_pkgfn3_lean` | 16 | EPYC 9V45 96-Core: 0, 1, 2, 3, 6, 9, 12, 15; EPYC 7763 64-Core: 4, 7, 10, 13; Xeon 6975P-C: 5, 8, 11, 14 | `9ecef6f`: 1; `3de9012` (twin/ dirty): 3; `662621d`: 4; `b410477`: 8 |
+| `r5_vertical_parallel_pkgfn3_reorder` | 16 | EPYC 9V45 96-Core: 0, 1, 2, 3; EPYC 9V74 80-Core: 4, 7, 10, 13; Xeon 6975P-C: 5, 6, 8, 9, 11, 12, 14, 15 | `9ecef6f`: 1; `3de9012` (twin/ dirty): 2; `b410477`: 5; `88d5161`: 3; `c7767b2`: 4; `6ee4cd5`: 1 |
+| `r5_vertical_wait_bofn3_reorder` | 12 | EPYC 9V45 96-Core: 0, 1, 4, 7, 10; EPYC 7763 64-Core: 2, 5, 8, 11; Xeon 6975P-C: 3, 6, 9 | `9ecef6f`: 1; `b410477`: 7; `662621d`: 4 |
+| `r5_vertical_wait_fast_reorder` | 16 | EPYC 9V45 96-Core: all | `6895a09`: 16 |
+
+Intel-made against AMD-made rows in the arms made on both (`r5_vertical_external_bofn3_reorder`, `r5_vertical_parallel_bofn3_lean`, `r5_vertical_parallel_bofn3_reorder`, `r5_vertical_parallel_pkgfn3_lean`, `r5_vertical_parallel_pkgfn3_reorder`, `r5_vertical_wait_bofn3_reorder`): each outcome's mean in the two groups, the mean of its within-arm z-score, and a two-sided Mann-Whitney test on the z-scores. The two groups hold different seeds.
+
+| Outcome | Intel-made rows | AMD-made rows | mean (Intel, AMD) | mean z (Intel, AMD) | p |
+|---|---|---|---|---|---|
+| Al best | 34 | 54 | 0.793, 0.785 | +0.13, -0.08 | 0.42 |
+| Cu best | 34 | 54 | 0.659, 0.684 | -0.00, +0.00 | 0.70 |
+| Aluminium T1, days (730 if never) | 34 | 54 | 240, 228 | +0.21, -0.13 | 0.07 |
+| Aluminium T2, days (730 if never) | 34 | 54 | 259, 271 | -0.00, +0.00 | 0.94 |
+| Copper T1, days (730 if never) | 34 | 54 | 392, 356 | +0.16, -0.10 | 0.44 |
+| Copper T2, days (730 if never) | 34 | 54 | 481, 438 | +0.09, -0.06 | 0.28 |
