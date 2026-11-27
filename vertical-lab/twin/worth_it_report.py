@@ -78,7 +78,7 @@ def metrics(r: dict) -> dict:
         attended_h_day=r.get("attended_h_per_day"),
     )
     for k, _ in TARGETS:
-        d, d0 = r["days"].get(k), r["days_twin"].get(k)
+        d, d0 = (r.get("days") or {}).get(k), (r.get("days_twin") or {}).get(k)
         out["shift_" + k] = (d - d0) if (d is not None and d0 is not None) else None
         out["reached_" + k] = d is not None
         out["twin_" + k] = d0
@@ -177,7 +177,26 @@ def handling_table(rows, mode: str) -> str:
     return "\n".join(lines)
 
 
-def write(rows) -> str:
+R5_HEAD = ("# Round 5's automated lab through the same model (issue #407)\n\n"
+           "Written by `python -m twin.worth_it run5 <dir>` from `out/worth_it/results_r5.json.xz`. Simulated: round "
+           "5's 16 two-year logs of the automated lab (PR 405: built from the day the money arrives, every route at "
+           "once, decisions that wait for people as nominal, the cheap policies), its own instruments only (BYU's "
+           "existing equipment, core facilities and partners are served by people, so they are left out), outside "
+           "jobs from the day its first instrument opens. Days to targets are not computed: round 5's targets are its "
+           "own. Medians over the logs, 10th-90th percentile in brackets.\n")
+
+
+def write(rows, name: str = "tables.md", round5: bool = False) -> str:
+    if round5:
+        parts = [R5_HEAD]
+        for mode in ("none", "cells"):
+            if any((r.get("params") or {}).get("attend", "none") == mode for r in rows):
+                parts += [f"## Timing: {MODE_NAME[mode]}", "", main_table(rows, mode), "", "Handling:", "",
+                          handling_table(rows, mode), ""]
+        text = "\n".join(parts)
+        OUT.mkdir(parents=True, exist_ok=True)
+        (OUT / name).write_text(text)
+        return text
     parts = ["# Is the vertical lab worth it? The queue model's tables (issue #407)", "",
              "Written by `python -m twin.worth_it tables` from `out/worth_it/results.json.xz`. Simulated: the "
              "twin's round-3 event logs (24: 12 seeds of time-aware BOFN, 12 of the funnel, the vertical lab, one "
@@ -196,7 +215,7 @@ def write(rows) -> str:
                   "Handling:", "", handling_table(rows, mode), ""]
     text = "\n".join(parts)
     OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "tables.md").write_text(text)
+    (OUT / name).write_text(text)
     return text
 
 

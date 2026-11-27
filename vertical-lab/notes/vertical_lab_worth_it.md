@@ -25,6 +25,8 @@ at the end names them).
   - Replaying the twin's 24 event logs through either layout moves no target by more than 0.15 days.
   - What binds is money, the shared atomizer, DED capacity, the 30-day immersion and, from round 5, people's decision
     time. The VLM touches none of them, except money, which it spends.
+  - In round 5's logs, about 250 results a run wait for a person's decision point, a median of 77 h each. A tray or a
+    drive costs minutes.
 - **Its one real gain is floor: 29 % less** (281 against 398 m², [PR 406](https://github.com/vertical-cloud-lab/byu-vcl/pull/406)).
   - That floor is only worth something if we pay for space by the square metre: about $51k a year at the twin's rates.
   - It comes with a 9.15 m bay, 31.5 ft to the sprinklers.
@@ -106,7 +108,7 @@ Two things count against the VLM in the same table:
 | **The shared atomizer** | Round 4: "about three new aluminium designs a week in every plan"; round 3: it runs 55-71 % of what its start slots allow | **No.** It is a floor machine in both layouts. The replay keeps every atomizer slot in both layouts unless one unit is overloaded (section 6) |
 | **DED capacity** | Round 4: "Copper waits for DED capacity" | **No.** The MX-Lab is a floor machine |
 | **The 30-day immersion** | 24 vial positions; a coupon holds one for a month | **No.** The vials ride tray A on the CubXL's deck; the VLM changes neither their number nor their month |
-| **Decision time** | Round 5 ([PR 405](https://github.com/vertical-cloud-lab/byu-vcl/pull/405)): "A person's decision waits for the next review or weekly meeting." Its results haven't landed (its notes' summary is still a placeholder on 2026-11-27) | **No.** A decision that waits for a meeting waits days; the VLM saves or costs minutes |
+| **Decision time** | Round 5 ([PR 405](https://github.com/vertical-cloud-lab/byu-vcl/pull/405)): "A person's decision waits for the next review or weekly meeting." Its summary isn't written yet, but its logs are on its branch. In its automated lab with the cheap policies (16 two-year logs), about 250 results a run are held for a person's decision point (`round5.held`), a median of 77 h each, and 169 h with slow decisions | **No.** A held result waits about three days; the VLM saves or costs minutes. The VLM replay on round 5's logs is in section 6 |
 | *(not binding)* the robots | Round 3: "the robots are about 1.5 % busy"; here 1-2 % in every layout | This is the one resource a VLM could relieve, and it isn't short |
 
 The replay confirms it. With no outside work, every layout reproduces the twin's year:
@@ -400,6 +402,35 @@ Medians over 24 logs (full tables, with 10th-90th percentiles: [`tables.md`](../
    for a tray after arriving, and the opening is 19-28 % busy at most with the twin's timing. Tray locks, a
    measurement holding the tray for hours, are the main queue.
 
+### Round 5's lab says the same
+
+Round 5's logs landed on [PR 405](https://github.com/vertical-cloud-lab/byu-vcl/pull/405)'s branch while this ran.
+`python -m twin.worth_it run5 <dir>` replays its 16 two-year logs of the automated lab through the same model:
+
+- the lab built from the day the money arrives, with every route at once;
+- nominal decision time and the cheap policies;
+- the lab's own instruments only: BYU's existing equipment, core facilities and partners are served by people, so
+  they are left out;
+- outside jobs from the day its first instrument opens, about day 87.
+
+The tables are in [`tables_r5.md`](../out/worth_it/tables_r5.md). Days to targets are left out, because round 5's
+targets are its own.
+
+| Timing, outside load | Layout | Units busy (over two years) | Outside requests served | Request to sample back (h): mean |
+|---|---|---|---|---|
+| Twin's, 0 % | all four | 1-2 % | - | - |
+| Twin's, 60 % | VLM + 1 | 57 % | 86.3 % | 11.9 |
+| Twin's, 60 % | flat + 2 | 34 % | **99.9 %** | **2.4** |
+| Twin's, 60 % | VLM + 2 | 29 % | 93.5 % | 8.2 |
+| Attended, 30 % | flat + 2 | 59 % | 100 % | 2.3 |
+| Attended, 30 % | VLM + 2 | 59 % | 99.6 % | 3.6 |
+| Attended, 60 % | flat + 2 / VLM + 2 | 72 % | 51-53 % | 34-36 |
+| Attended, 30 % | either plan with 1 unit | 72 % | 49-50 % | 70-71 |
+
+The units are idle for the first three months while the lab is built, which is why their busiest is about 72 % here
+against 82 % in round 3b. Round 5's atomizer runs round the clock without start slots, so a late start costs that run
+only, with no cascade. Internal steps stay within 0.5 h of round 5's own timing in every layout with two units.
+
 **Sensitivities** (4 logs, 30 % and 60 % outside load; [`sens.md`](../out/worth_it/sens.md)):
 
 - **The tray lock is the VLM's whole disadvantage.** If trays could move while their instruments run, two units at the
@@ -540,18 +571,20 @@ pharmacies and biobanks, practitioners).
   the robots or the Shuttles, maintenance windows, or the requalification after a tray move.
 - **Fixed floor plans.** PR 406's flat plan is the conventional one automated as it stands. A flat plan designed for
   robots might be smaller, which would narrow the floor gap.
-- **Round 5's logs** (decision time) weren't committed when this ran. The model reads any log in round 3b's format,
-  so it can rerun on them when they land.
+- **Round 5's logs** are on PR 405's branch, not this one; `run5` reads them from a directory. Its summary isn't
+  written yet, so the decision-hold figures here (`python -m twin.worth_it holds <dir>`) are read straight off its
+  logs.
 
 **For a follow-up:**
 
-1. When round 5 lands, rerun on its logs:
+1. When round 5 is final, rerun on its logs (they are on PR 405's branch):
 
    ```bash
-   cd vertical-lab
-   python -m twin.worth_it run      # after pointing EVENTS and MAIN_LOGS at its logs
-   python -m twin.worth_it tables
-   python -m twin.worth_it_figure
+   cd vertical-lab && mkdir -p /tmp/r5
+   for s in $(seq 0 15); do f=r5_vertical_parallel_fast_reorder_s$s.json.xz
+     git show origin/claude/twin-round5-20261127:vertical-lab/out/twin5/events/$f > /tmp/r5/$f; done
+   python -m twin.worth_it run5 /tmp/r5      # out/worth_it/results_r5.json.xz, tables_r5.md
+   python -m twin.worth_it holds /tmp/r5     # the decision holds (add the _dec-slow and _dec-none logs to compare)
    ```
 
 2. Ask Kardex the six questions in [`services.md`](services.md), and for a service quote.
@@ -567,6 +600,7 @@ pharmacies and biobanks, practitioners).
 cd vertical-lab
 python -m twin.worth_it run            # about 7 min on 4 cores: out/worth_it/results.json.xz and tables.md
 python -m twin.worth_it sens           # about 8 min: out/worth_it/sensitivity.json.xz and sens.md
+python -m twin.worth_it run5 /tmp/r5   # round 5's 16 logs, fetched as in the follow-up list above
 python -m twin.worth_it tables         # the tables again from the saved results
 python -m twin.worth_it_figure         # out/worth_it/worth_it.png
 python -m pytest -q twin/tests/test_worth_it.py

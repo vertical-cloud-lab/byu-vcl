@@ -2,6 +2,7 @@
 
     python -m twin.worth_it run            # 2 timings x 4 layouts x 3 external loads x 24 logs -> out/worth_it/
     python -m twin.worth_it sens           # sensitivities on 4 logs at 30 % and 60 % outside load
+    python -m twin.worth_it run5 <dir>     # the same on round 5's 16 automated-lab logs (PR 405), from <dir>
     python -m twin.worth_it tables         # out/worth_it/tables.md from the saved results
     python -m twin.worth_it one <log> <layout> <n_mm> <ext> ['{"attend": "cells"}']
 
@@ -97,6 +98,7 @@ class Params:
     #                            the next internal step due at its station (or, in the VLM, anywhere on its tray), as
     #                            the twin's plan has it. False: first come, first served (internal first in the queue)
     protect_margin_h: float = 0.25  # handling allowance when fitting an outside job into a gap
+    ext_start_h: float = 0.0   # outside jobs start arriving at this hour (round 5: when the lab's own stations open)
     ext_intake: bool = False   # True: every outside sample is carried from the packaging station to its instrument;
     #                            False: outside samples wait in a rack at the instrument's dock (delivered in batches)
 
@@ -395,7 +397,7 @@ class Sim:
             units = EXT_UNITS.get(st, len(self.units[st]))
             mean_h = sum(h for h, _ in cat) / len(cat)
             rate = self.ext * units / mean_h          # jobs an hour that keep `ext` of the units' clock hours busy
-            t = self.rng.expovariate(rate)
+            t = self.p.ext_start_h + self.rng.expovariate(rate)
             while t < self.H:
                 h, cv = cat[self.rng.randrange(len(cat))]
                 s2 = math.log(1.0 + cv * cv)
@@ -862,11 +864,42 @@ def days_to_targets(log: dict, jobs: list, t_end: dict | None, refs: dict, T: di
 
 
 # ----------------------------------------------------------------------------------------------------- runs
+OWN_PLAIN = {"atomizer", "immersion", "cubxl"}     # round 5: the lab's own stations that carry no "@vcl"
+
+
+def round5_log(log: dict) -> tuple[dict, float]:
+    """A round-5 event log (PR 405, twin/round5.py) in round 3b's terms: the lab's own instruments ("<station>@vcl")
+    under their round-3 names, with the atomizer, the immersion and the CubXL; BYU's existing equipment, core
+    facilities and partners (stations without "@vcl") are left out, since people, not the lab's robots, serve them.
+    Returns the log and the hour of its first in-house step (when outside work could start)."""
+    st = dict(log["stations"])
+    stations = {}
+    for k, v in st.items():
+        if k.endswith("@vcl") and k[:-4] in STATIONS:
+            stations[k[:-4]] = dict(v, external=False)
+        elif k in OWN_PLAIN or k in HELPERS:
+            stations[k] = dict(v)
+    events, first = [], None
+    for e in log["events"]:
+        k = e["station"]
+        if k.endswith("@vcl") and k[:-4] in STATIONS:
+            events.append(dict(e, station=k[:-4]))
+            first = e["t0_h"] if first is None else min(first, e["t0_h"])
+        elif k in OWN_PLAIN or k in HELPERS:
+            events.append(e)
+    return dict(log, stations=stations, events=events), (first or 0.0)
+
+
 def run_one(log_path, layout: str, n_mm: int, ext: float, seed: int = 0, params: dict | None = None,
-            with_targets: bool = True) -> dict:
+            with_targets: bool = True, round5: bool = False) -> dict:
     log = load_log(log_path)
+    params = dict(params or {})
+    if round5:
+        log, first = round5_log(log)
+        params.setdefault("ext_start_h", first)
+        with_targets = False          # round 5's targets are its own (twin/like5.py), not round 2's oracle
     jobs = internal_jobs(log)
-    sim = Sim(log, layout, n_mm, ext, Params(**(params or {})), seed=seed, jobs=jobs)
+    sim = Sim(log, layout, n_mm, ext, Params(**params), seed=seed, jobs=jobs)
     out = sim.run()
     out.update(log=Path(log_path).name.replace(".json.xz", ""), seed=seed, params=params or {})
     if with_targets:
@@ -876,8 +909,25 @@ def run_one(log_path, layout: str, n_mm: int, ext: float, seed: int = 0, params:
     return out
 
 
+def decision_holds(paths) -> dict:
+    """Round 5's decision time, read off its logs: the results held for a person's decision point
+    (``round5.held``: (kind, from h, to h) per campaign). {"holds": per-log counts, "median_h": per-log medians}."""
+    out = dict(holds=[], median_h=[], total_h=[])
+    for path in paths:
+        held = load_log(path).get("round5", {}).get("held", {})
+        durs = sorted(b - a for c in held for (_, a, b) in held[c])
+        out["holds"].append(len(durs))
+        out["median_h"].append(durs[len(durs) // 2] if durs else 0.0)
+        out["total_h"].append(sum(durs))
+    return out
+
+
 def _worker(a):
     return run_one(*a)
+
+
+def _worker5(a):
+    return run_one(*a, with_targets=False, round5=True)
 
 
 MAIN_LOGS = [f"r3_vertical_lab_{pol}_s{s}.json.xz" for pol in ("bofn3", "tiered") for s in range(12)]
@@ -905,13 +955,21 @@ SENS = {
 }
 
 
-def grid(logs=None, layouts=LAYOUTS, loads=LOADS, params=None, workers: int = 4) -> list:
+def grid(logs=None, layouts=LAYOUTS, loads=LOADS, params=None, workers: int = 4, events=None,
+         round5: bool = False) -> list:
     from multiprocessing import Pool
     logs = logs or MAIN_LOGS
-    args = [(str(EVENTS / lg), lay, n, ext, i, params) for i, lg in enumerate(logs) for lay, n in layouts
+    events = Path(events) if events else EVENTS
+    args = [(str(events / lg), lay, n, ext, i, params) for i, lg in enumerate(logs) for lay, n in layouts
             for ext in loads]
     with Pool(workers) as pool:
-        return pool.map(_worker, args, chunksize=1)
+        return pool.map(_worker5 if round5 else _worker, args, chunksize=1)
+
+
+# Round 5 (PR 405): the automated lab, built from the day the money arrives and run for two years, with every route at
+# once and decisions that wait for people (nominal), the cheap policies. Its logs are on PR 405's branch, not this one:
+#   git show origin/claude/twin-round5-20261127:vertical-lab/out/twin5/events/<log> > <dir>/<log>
+R5_LOGS = [f"r5_vertical_parallel_fast_reorder_s{s}.json.xz" for s in range(16)]
 
 
 def _save(path: Path, obj) -> None:
@@ -939,10 +997,26 @@ def main(argv):
         out = {name: grid(SENS_LOGS, loads=(0.3, 0.6), params=prm) for name, prm in SENS.items()}
         _save(OUT / "sensitivity.json.xz", out)
         R.write_sens(out)
+    elif cmd == "run5":                       # python -m twin.worth_it run5 <dir with round 5's logs>
+        rows = [r for mode in MODES for r in grid(R5_LOGS, params=dict(attend=mode), events=argv[2], round5=True)]
+        _save(OUT / "results_r5.json.xz", dict(params=asdict(Params()), logs=R5_LOGS, rows=rows))
+        R.write(rows, name="tables_r5.md", round5=True)
+    elif cmd == "holds":                      # python -m twin.worth_it holds <dir>: round 5's decision time
+        import statistics
+        d = Path(argv[2])
+        for tag, names in (("nominal", R5_LOGS), ("slow", [n.replace(".json.xz", "_dec-slow.json.xz") for n in R5_LOGS]),
+                           ("none", [n.replace(".json.xz", "_dec-none.json.xz") for n in R5_LOGS])):
+            paths = [d / n for n in names if (d / n).exists()]
+            if paths:
+                h = decision_holds(paths)
+                print(tag, len(paths), "logs: holds a log", statistics.median(h["holds"]), "; median hold (h)",
+                      round(statistics.median(h["median_h"]), 1))
     elif cmd == "tables":
         R.write(_load(OUT / "results.json.xz")["rows"])
         if (OUT / "sensitivity.json.xz").exists():
             R.write_sens(_load(OUT / "sensitivity.json.xz"))
+        if (OUT / "results_r5.json.xz").exists():
+            R.write(_load(OUT / "results_r5.json.xz")["rows"], name="tables_r5.md", round5=True)
 
 
 if __name__ == "__main__":
