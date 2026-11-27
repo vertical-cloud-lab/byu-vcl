@@ -94,6 +94,15 @@ REFURB_SRC = ("assumed by class: 3 weeks and 10 % of new for bench tools, 6-8 we
 # America, and at least one with a price.
 MARKET_MIN, MARKET_NA_MIN = 5, 2
 PO_W = 2.0                    # BYU's purchase order, round4.PO_W: before the lead, used or new
+LFL_REQUIRED = {"shuttle", "midi", "mxlab", "repowder", "pip", "couplings", "units:mir", "units:arm", "units:gripper",
+                "floor_unit:mir", "floor_unit:arm", "floor_unit:gripper", "machining:robot_arm"}
+# ^ stations and components whose integration depends on the model (tray geometry, an open LPBF or DED machine, the
+#   robots' programs and tooling): priced and judged on like-for-like listings only. Elsewhere another maker's
+#   instrument that does the job counts.
+INSTRUMENTS = {"sem", "eds", "ebsd", "xrd", "xrf", "mastersizer", "nanoindenter", "icpms", "vhx", "hardness"}
+# ^ measuring instruments: the same maker's generation first (an older or manual one measures, but not always as the
+#   automated lab needs), then any maker's in North America. Generic tools (furnaces, hoods, gloveboxes, prep, frames,
+#   sieve shakers, the EDM and lathe) are priced on what can be trucked in first.
 LFL_MIN = 3                   # priced like-for-like listings (the twin's model or its maker's line) needed to price on
                               # those alone; otherwise every listing that fits the role is used
 LEAD_SIGMA_MIN = 0.25         # round 4's new-item spread, the floor for a used one
@@ -146,6 +155,21 @@ def lead_of(r, wt):
     return LEAD["handling"][seller_kind(r)] + LEAD["transit"][reg] + LEAD["rigging"][wt]
 
 
+PLAUSIBLE = (0.02, 1.5)        # a price under 2 % or over 150 % of new is a part, a placeholder or a bundle: listed,
+                              # but not in the price statistics
+
+
+def in_stats(r, new_usd) -> bool:
+    """Whether a listing's price counts: an asking, sold or starting price (not a running auction's current bid), not
+    for parts, and plausible against the new price."""
+    p = _f(r.get("price_usd"))
+    if not p or r.get("price_kind") not in ("asking", "sold", "starting bid") or r.get("condition") == "parts":
+        return False
+    if new_usd and not (PLAUSIBLE[0] * new_usd <= p <= PLAUSIBLE[1] * new_usd):
+        return False
+    return True
+
+
 def summarize(listings, new):
     """Per station (and per component where the station is several machines)."""
     by = defaultdict(list)
@@ -164,24 +188,31 @@ def summarize(listings, new):
                 ps, pc = (pk.split(":") + [""])[:2]
                 rows += [r for r in by.get((ps, pc), []) if r["condition"] != "parts"]
         na = [r for r in rows if r.get("region") in ("US", "CA")]
-        priced = [r for r in rows if _f(r.get("price_usd")) and r.get("price_kind") in ("asking", "sold", "starting bid")]
+        priced = [r for r in rows if in_stats(r, new_usd)]
         bids = [r for r in rows if _f(r.get("price_usd")) and r.get("price_kind") == "current bid"]
         px = [_f(r["price_usd"]) for r in priced]
         pxf = [_f(r["price_usd"]) for r in priced if r["match"] in ("exact", "family")]
         med = _q(px, 0.5)
         lfl = [r for r in priced if r["match"] in ("exact", "family")]
+        lfl_only = key in LFL_REQUIRED or f"{key}:{comp}" in LFL_REQUIRED
+        lfl_na = [r for r in lfl if r.get("region") in ("US", "CA")]
+        any_na = [r for r in priced if r.get("region") in ("US", "CA")]
+        if lfl_only:
+            chain = (("like-for-like in North America", lfl_na), ("like-for-like", lfl))
+        elif key in INSTRUMENTS:
+            chain = (("like-for-like in North America", lfl_na), ("like-for-like", lfl), ("North America", any_na))
+        else:
+            chain = (("like-for-like in North America", lfl_na), ("North America", any_na), ("like-for-like", lfl))
         price_basis, basis_rows = "", []
-        if priced:
-            price_basis, basis_rows = "all that fit", priced
-            for name, cand in (("like-for-like in North America", [r for r in lfl if r.get("region") in ("US", "CA")]),
-                               ("like-for-like", lfl),
-                               ("North America", [r for r in priced if r.get("region") in ("US", "CA")])):
+        pool = lfl if lfl_only else priced
+        if pool:
+            price_basis, basis_rows = ("like-for-like" if lfl_only else "all that fit"), pool
+            for name, cand in chain:
                 if len(cand) >= LFL_MIN:
                     price_basis, basis_rows = name, cand
                     break
             price_basis = f"{price_basis} ({len(basis_rows)} priced)"
         med_basis = _q([_f(r["price_usd"]) for r in basis_rows], 0.5) if basis_rows else None
-        delivered = [_f(r["price_usd"]) + freight(wt, r.get("region"), _f(r.get("dist_km"))) for r in basis_rows]
         cond = Counter(r["condition"] for r in rows)
         nfit = len(rows)
         buy = na if len(na) >= MARKET_NA_MIN else rows      # where the lab would buy: at home if it can
@@ -195,9 +226,9 @@ def summarize(listings, new):
                  for r in buy]
         lead_w = _q(leads, 0.5) if leads else None
         lead_sigma = None
-        if len(leads) >= 3:
+        if leads:
             ll = [math.log(x) for x in leads if x > 0]
-            lead_sigma = max(LEAD_SIGMA_MIN, stats.pstdev(ll)) if len(ll) >= 2 else LEAD_SIGMA_MIN
+            lead_sigma = max(LEAD_SIGMA_MIN, stats.pstdev(ll)) if len(ll) >= 3 else LEAD_SIGMA_MIN
         rw, rf = REFURB[wt]
         rf_src = "class"
         ref_p = [_f(r["price_usd"]) for r in priced if r["condition"].startswith("refurbished") or r["condition"] == "warranty"]
@@ -213,9 +244,19 @@ def summarize(listings, new):
         lna = [r for r in lrows if r.get("region") in ("US", "CA")]
         market_lfl = ("yes" if len(lrows) >= MARKET_MIN and len(lna) >= MARKET_NA_MIN and lfl else
                       "thin" if lrows else "none")
+        if lfl_only:
+            market = market_lfl
         if n.get("used_market") == "no":
             market = "n/a (new only)"
-        dmed = _q(delivered, 0.5)
+        if med_basis:
+            if buy is na and na:
+                fr = freight(wt, "NA", _q([_f(r.get("dist_km")) for r in na if _f(r.get("dist_km"))], 0.5))
+            else:
+                regs = Counter("overseas" if r.get("region") == "overseas" else "NA" for r in basis_rows)
+                fr = freight(wt, regs.most_common(1)[0][0], None)
+            dmed = med_basis + fr
+        else:
+            fr, dmed = None, None
         tl, ti, tc = _f(n.get("twin_lead_w")), _f(n.get("twin_install_w")) or 0.0, _f(n.get("twin_com_w")) or 0.0
         otw = (PO_W + lead_w + (pf or 0) * rw + ti + tc + extra) if lead_w is not None else None
         otw_new = (tl + ti + tc) if tl else None
@@ -236,7 +277,8 @@ def summarize(listings, new):
             median_bid_usd=round(_q([_f(r["price_usd"]) for r in bids], 0.5)) if bids else None,
             discount_vs_new=round(1 - med_basis / new_usd, 3) if (med_basis and new_usd) else None,
             discount_vs_new_all=round(1 - med / new_usd, 3) if (med and new_usd) else None,
-            freight_rigging_usd=freight(wt, "NA", None), median_delivered_usd=round(dmed) if dmed else None,
+            freight_rigging_usd=fr, median_delivered_usd=round(dmed) if dmed else None,
+            priced_on_like_for_like_only=lfl_only,
             price_frac=round(dmed / new_usd, 3) if (dmed and new_usd) else None, price_basis=price_basis,
             market_like_for_like=market_lfl if n.get("used_market") != "no" else "n/a (new only)",
             lead_w=round(lead_w, 2) if lead_w is not None else None,
@@ -277,14 +319,19 @@ def station_rows(comp_rows, new):
         wsum = sum(r["new_usd_each"] for r in used) or 1.0
         avg = lambda f: (round(sum(r[f] * r["new_usd_each"] for r in used if r[f] is not None) / wsum, 3)
                          if used else None)
-        slow_new = [r for r in rs if r not in used and (r.get("twin_lead_w") or 0) > 0]
+        slow_new = [r for r in rs if r not in used and (r.get("twin_lead_w") or 0) > 0 and r["component"] != "install"]
+        new_parts_lead = max(((r.get("twin_lead_w") or 0) - PO_W for r in slow_new), default=None)
+        used_lead = max((r["lead_w"] for r in used if r["lead_w"] is not None), default=None)
         r0 = dict(lab=rs[0].get("lab", ""), station=k, component="(station)", item=" + ".join(r["component"] for r in rs),
                   twin_lead_w=rs[0].get("twin_lead_w"),
                   qty=rs[0]["qty"], wt=rs[0]["wt"], new_usd_each=tot_new, new_source="sum of the components",
                   n_listings=sum(r["n_listings"] for r in rs), n_north_america=sum(r["n_north_america"] for r in rs),
                   n_priced=sum(r["n_priced"] for r in rs), price_frac=round(paid / tot_new, 3) if used else None,
                   discount_vs_new=round(1 - paid / tot_new, 3) if used else None,
-                  lead_w=max((r["lead_w"] for r in used if r["lead_w"] is not None), default=None),
+                  lead_w=used_lead,
+                  new_parts_lead_w=new_parts_lead,
+                  lead_w_with_new_parts=(max(used_lead, new_parts_lead) if (used_lead is not None and
+                                         new_parts_lead is not None) else used_lead),
                   lead_sigma=max((r["lead_sigma"] for r in used if r["lead_sigma"] is not None), default=None),
                   p_fault=round(1 - math.prod(1 - (r["p_fault"] or 0) for r in used), 3) if used else None,
                   refurb_w=max((r["refurb_w"] for r in used), default=None), refurb_sigma=REFURB_SIGMA,
@@ -305,7 +352,7 @@ COLS = ["lab", "station", "component", "item", "qty", "new_usd_each", "new_lead_
         "market", "market_like_for_like", "used_ok", "n_listings", "n_north_america", "n_priced", "n_current_bids", "n_exact", "n_family",
         "n_substitute", "median_used_usd", "median_exact_family_usd", "n_priced_exact_family", "price_basis", "median_basis_usd", "bought_from", "p25_used_usd", "p75_used_usd", "min_used_usd", "max_used_usd",
         "median_bid_usd", "discount_vs_new", "discount_vs_new_all", "freight_rigging_usd", "median_delivered_usd", "price_frac", "lead_w",
-        "lead_sigma", "ship_w", "rigging_w", "refurb_expected_w", "checkout_w", "p_fault", "p_fault_best", "refurb_w", "refurb_sigma", "refurb_frac", "refurb_source",
+        "lead_sigma", "new_parts_lead_w", "lead_w_with_new_parts", "ship_w", "rigging_w", "refurb_expected_w", "checkout_w", "p_fault", "p_fault_best", "refurb_w", "refurb_sigma", "refurb_frac", "refurb_source",
         "extra_com_w", "order_to_working_used_w", "order_to_working_new_w", "share_as_is", "share_used", "share_tested", "share_refurb_or_warranty", "share_new_surplus",
         "share_of_new_bought_used", "wt", "new_source", "note"]
 
@@ -332,6 +379,7 @@ def build(out=OUT):
                 extra_com_lpbf_ded=EXTRA_COM_LPBF_DED, extra_com_source=EXTRA_COM_SRC, p_fault=P_FAULT,
                 p_fault_source=P_FAULT_SRC, refurb=REFURB, refurb_sigma=REFURB_SIGMA, refurb_source=REFURB_SRC,
                 market_rule=f">= {MARKET_MIN} listings that fit, >= {MARKET_NA_MIN} in North America, >= 1 priced",
+                plausible_price=dict(low=PLAUSIBLE[0], high=PLAUSIBLE[1], of="the twin's new price"),
                 stations={k: v for k, v in st.items()},
                 components={f"{k}:{c}": v for (k, c), v in comp.items() if c})
     (out / "summary.json").write_text(json.dumps(meta, indent=1, default=str) + "\n")
@@ -351,6 +399,33 @@ def load(out=OUT) -> dict:
         d["used_ok"] = r.get("used_ok") in ("True", "true", "1")
         res[r["station"]] = d
     return res
+
+
+ROUND5_USED = dict(lead_w=2.0, lead_sigma=0.35, price_frac=0.45, p_fault=0.25, refurb_w=6.0, refurb_sigma=0.4,
+                   refurb_frac=0.15, extra_com_w=1.0)     # round5.USED's stand-ins, the fallback for a missing value
+
+
+def used_params(key: str, m: dict | None = None) -> dict:
+    """Round 5's ``USED`` for one station, from the market: ``ok`` (buy used at all: a real used market at a saving)
+    and the eight values round 5 reads. For a station bought partly used, ``lead_w`` is the later of its used parts'
+    lead and its new parts' lead. A value the market doesn't give falls back to round 5's stand-in, named in
+    ``fallback``."""
+    m = m if m is not None else load()
+    r = m.get(key)
+    out, fb = {}, []
+    for k, v in ROUND5_USED.items():
+        x = r.get(k) if r else None
+        if k == "lead_w" and r and isinstance(r.get("lead_w_with_new_parts"), float):
+            x = r["lead_w_with_new_parts"]          # a station bought partly used waits for its new parts too
+        if isinstance(x, float) and not math.isnan(x):
+            out[k] = x
+        else:
+            out[k] = v
+            fb.append(k)
+    out["ok"] = bool(r and r.get("used_ok"))
+    out["fallback"] = fb
+    out["market"] = r.get("market") if r else "none"
+    return out
 
 
 if __name__ == "__main__":

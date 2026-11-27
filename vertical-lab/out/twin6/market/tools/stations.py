@@ -26,7 +26,8 @@ PARTS = (r"\b(parts? only|for parts|spare parts?|part no\b|p/n\b|pcb|board\b|cir
          r"holder\b|grips? only|jaw faces|chuck jaws?|collets?\b|insert\b|inserts\b|tooling only|"
          r"lot of (?!\d+ ?(?:sem|edm))|assorted|miscellaneous|misc\.?\b|service request|internal standard|"
          r"maintenance|service\b|\bsems$|^(zeiss/leo|jeol|hitachi|fei/philips|amray|tescan) sems?$|resource|blog|"
-         r"\bparts$|why buy)")
+         r"\bparts$|why buy|what is|difference between|^\d+ results? for|keyboard|operator panel|nosepiece|"
+         r"objective lens|lens mount|eyepiece|collar\b)")
 
 # ---------------------------------------------------------------------------------------------- tray instruments
 st("sem", "Hitachi TM4000PlusII benchtop SEM", 1, 100_000, "vertical", "bench_sens",
@@ -51,10 +52,10 @@ st("sem_floor", "full-size SEM (does not fit a tray; a substitute for the SEM ro
    note="kept for the SEM role in a conventional lab and as EBSD's host; excluded from the tray SEM's statistics")
 st("eds", "Oxford Instruments AZtecOne EDS for the TM4000", 1, 55_000, "vertical", "bench_sens",
    r"aztec\s?one",
-   r"oxford.*\b(eds|edx|x-?max|ultim|x-?act|inca|swift|aztec)\b|\b(x-?max|ultim max|x-?act)\b",
+   r"oxford.*\b(eds|edx|x-?max|ultim|x-?act|inca|swift|aztec)\b|\b(x-?max|ultim max)\b",
    r"\b(eds|edx|edax|xflash|quantax|octane|apollo|element eds|ultradry|noran|pathfinder|bruker eds)\b",
    PARTS + r"|\bxrf\b|x-ray fluorescence|handheld|\bvanta\b|\bniton\b|auger|microprobe|scanning electron|"
-           r"electron microscope|\bsem\b",
+           r"electron microscope|\bsem\b|bystronic|press brake|laser cutting",
    note="EDS is often sold mounted on a used SEM; such bundles are listed under the SEM")
 st("ebsd", "EBSD detector on the SEM", 1, 120_000, "vertical", "bench_sens",
    r"symmetry",
@@ -171,7 +172,8 @@ st("furnaces", "Nabertherm NAT 15/65 forced-convection furnace (to 650 C)", 2, 2
            r"rheem|york|furnace filter|incubator|drying oven|vacuum oven|toaster|pizza|convection oven(?!.*(furnace|\d{3,4}\s?°?\s?c))|"
            r"bakery|kitchen|food|smoker|reflow|curing oven|paint|trockenschrank|tmax 300|drying|rohrofen|tube|"
            r"rautomead|die cooler|control console|controller|process box|retort|brazing|debinding|more than heat|"
-           r"accessories|mechanical oven|laboratory oven|lab oven|600\s?°?\s?f|\bNEW\b$",
+           r"accessories|mechanical oven|laboratory oven|lab oven|600\s?°?\s?f|\bNEW\b$|binder removal|catalytic|hydrox|"
+           r"sintering|brazing|vacuum",
    note="the vertical lab's two NAT 15/65; a box furnace is a substitute for heat treatment above 650 C")
 st("furnace", "Box furnace (about 1,200 C) and a forced-convection ageing oven", 1, 30_000, "conventional", "bench_heavy",
    r"$^", r"$^",
@@ -189,7 +191,7 @@ st("sieve_cell", "Sieve cell: Retsch AS 200, tipper, wash module, downdraft encl
    r"sieve shaker|ro-?tap|\bRX-?(29|30|812|86)\b|gilson.*(sieve|shaker)|endecotts|octagon (200|digital)|"
    r"analysette\s?3|fritsch.*sieve|test sieve shaker|vibratory sieve|sieving machine|\bSS-?(8|15|23)R?\b",
    PARTS + r"|sieves? only|test sieves?\b(?!.*shaker)|sieve pans?|lids?\b|stainless sieves?\b(?!.*shaker)|"
-           r"flour|kitchen|garden|soil sifter|screen\b(?!.*shaker)",
+           r"flour|kitchen|garden|soil sifter|screen\b(?!.*shaker)|cutting mill|\bmill\b",
    comp=dict(shaker=r"."),
    note="the shaker is the only part with a used market; the tipper, wash module and enclosure are custom")
 st("sieve", "Retsch AS 200 sieve shaker and a set of sieves", 1, 8_000, "conventional", "bench",
@@ -208,7 +210,7 @@ st("doser", "Multi-doser carousel, A&D HR-202i balance, Specac Atlas Autotouch 1
    r"mettler.*balance|sartorius.*balance|cubis|quintix|secura|\brv\s?[35]\b|rotary vane (vacuum )?pump",
    PARTS + r"|weights?\b(?!.*balance)|calibration weight|scale\b(?!.*(analytical|lab))|platform scale|floor scale|"
            r"bathroom|kitchen|jewelry|postal|counting scale|shop press|arbor press|h-?frame|rosin|heat press|"
-           r"t-?shirt|garage|automotive|bearing press|log splitter|oil only|pump oil",
+           r"t-?shirt|garage|automotive|bearing press|log splitter|oil only|pump oil|gc-?ms|lc-?ms|clarus|mass spec",
    comp=dict(press=r"press|atlas|crushir|carver", balance=r"balance|HR-?2|cubis|quintix|secura|mettler|sartorius",
              pump=r"pump|rv\s?[35]"),
    note="the carousel is custom (BoM $2,362); the balance, press and pump have used markets")
@@ -229,7 +231,8 @@ st("glovebox", "Inert PureLab HE glovebox with purifier, O2 and dew-point sensor
            r"acrylic|plas-?labs|isolat|anaerobic|coy\b|biological|pcr|sandblast|blast cabinet|bead blast|"
            r"abrasive blast|cleanroom|clean bench|\bbsc\b|laminar|hood\b|spray coating|static dissipative|plastic|"
            r"germfree|weigh box|multi-?hazard|solvent purification|\bsps\b|freezer|^(?!.*glove).*purifier|"
-           r"vacuum oven|oxygen monitor|analy[sz]er|scrap|isoguard|negative pressure|cabinet|desiccator|"
+           r"vacuum oven|oxygen monitor|analy[sz]er|scrap|isoguard|negative pressure|cabinet|desiccator|evaporat|"
+           r"angstrom engineering|deposition|"
            r"^(?!.*(purifier|inert|argon|nitrogen|mbraun|vacuum atmospheres|jacomex|glovebox systemtechnik|\bgs\b|"
            r"omni|nexus|nexgen|labmaster|unilab|labstar|etelux|vigor|mikrouna)).*",
    note="inert-atmosphere gloveboxes with a regenerating purifier; acrylic, isolator and weighing boxes are left out")
@@ -253,8 +256,10 @@ st("icpms", "Agilent 7850 ICP-MS with SPS 4, chiller, trace-metals hood, hot blo
    r"\bICPMS-?2030|\bicpms\b|agilent.*\bsps\s?4\b|\bsps\s?4\b.*autosampler",
    PARTS + r"|cones?\b|torch\b|nebuli[sz]er|spray chamber|injector|"
            r"icp-?oes|optima|icap\s?(6000|7000|pro)|\b5100\b|\b5110\b|\b5800\b|\b5900\b|\b720\b|\b730\b|"
-           r"vista|mp-?aes|aas\b|atomic absorption|gc-?ms|lc-?ms|quadrupole only|turbo pump",
-   comp=dict(autosampler=r"\bsps\s?4\b|autosampler|\basx-?\d+", instrument=r"."),
+           r"vista|mp-?aes|aas\b|atomic absorption|gc-?ms|lc-?ms|quadrupole only|turbo pump|recirculating chiller|"
+           r"\bG3292|^(?!.*icp).*chiller",
+   comp=dict(autosampler=r"^(?!.*(icp-?\s?ms|\b7[5-9]\d0|\b8[89]00|nexion|icap|elan)).*(\bsps\s?4\b|autosampler|\basx-?\d+)",
+             instrument=r"."),
    note="ICP-OES is a different instrument and left out")
 st("instron", "Instron 68FM-100 floor frame (100 kN) with grips and extensometer", 1, 175_000, "vertical",
    "floor_heavy",
@@ -270,7 +275,7 @@ st("instron", "Instron 68FM-100 floor frame (100 kN) with grips and extensometer
            r"hardness|impact|charpy|izod|torsion|compression only|concrete|cement|asphalt|soil|"
            r"\b34SC|\b33(42|43|44|45)\b|\b59(42|43|44)\b|\b55(42|43|44)\b|\b34TM|single column|table\s?top|"
            r"tensile strength tester for|paper|textile|bottle|cap torque|peel|seal strength|sheet line|edgebander|"
-           r"endurance test bench|test stand|test cylinder|temperature chamber|climate chamber",
+           r"endurance test bench|test stand|test cylinder|temperature chamber|climate chamber|furnace",
    note="floor frames of 50 kN and up; single-column and table-top frames are the zwick station's")
 st("chamber", "Instron 3119-608 environmental chamber (to 600 C)", 1, 50_000, "vertical", "bench_heavy",
    r"\b3119-?6\d\d\b",
@@ -279,7 +284,7 @@ st("chamber", "Instron 3119-608 environmental chamber (to 600 C)", 1, 50_000, "v
    r"(instron|mts|zwick|tensile|testing machine|load frame|utm).*(environmental|temperature|thermal|heating) chamber|"
    r"(split|high temperature).*furnace.*(tensile|creep|instron|mts|testing)|\bMTS 651\b|\b653\b.*mts|"
    r"(temperature|climate|environmental|thermal) chamber.*(allround|zwick|instron|testing machine|tensile)|"
-   r"(zwick|instron|allround).*(temperature|climate|environmental) chamber",
+   r"(zwick|instron|allround).*(temperature|climate|environmental) chamber|instron.*furnace|\bSFL\b.*furnace",
    PARTS, note="only chambers made for a load frame; product-test chambers (Thermotron, ESPEC) are left out")
 st("zwick", "ZwickRoell zwickiLine Z5.0 TN with testControl II", 1, 35_000, "vertical", "bench",
    r"zwickiline\s?Z?\s?5|\bZ\s?5\.0\s?TN\b",
@@ -293,7 +298,8 @@ st("zwick", "ZwickRoell zwickiLine Z5.0 TN with testControl II", 1, 35_000, "ver
            r"grips?\b(?!.*(frame|tester|machine))|wedge|fixture|controller only|hardness|impact|charpy|izod|"
            r"concrete|cement|asphalt|soil|paper|textile|bottle|cap torque|\bforce gauge\b|sheet line|edgebander|"
            r"endurance test bench|test stand|test cylinder|temperature chamber|climate chamber|plastic|valve|butterfly|"
-           r"hardness|gardness|durometer|shore|pendulum|melt (flow|index)|\bmfi\b|extrusion|^zwick( and co\.?)?$",
+           r"hardness|gardness|durometer|shore|pendulum|melt (flow|index)|\bmfi\b|extrusion|^zwick( and co\.?)?$|"
+           r"\bLTM\s?\d|electrodynamic|fatigue|furnace|torsion",
    note="table-top frames up to about 10 kN")
 # ---------------------------------------------------------------------------------------------- floor machines
 st("edm", "FANUC ROBOCUT wire EDM", 1, 230_000, "vertical", "machine",
@@ -318,7 +324,8 @@ st("machining", "Machining cell (PR 373): Haas ST-10 bar-fed lathe, pedestal UR1
    r"bar feeder|lns\b|edge (patriot|technologies)|iemca|\bSL-?(10|20)\b.*(haas|lathe)",
    PARTS + r"|tool holder|toolholder|turret disc|chuck\b(?!.*lathe)|collet chuck|spindle only|"
            r"manual lathe|engine lathe|toolroom lathe(?!.*haas)|wood lathe|metal lathe(?!.*cnc)|mini lathe|"
-           r"swiss(?!.*bar)|gang tool|teach pendant only|pendant only|controller only|robot cable",
+           r"swiss(?!.*bar)|gang tool|teach pendant only|pendant only|controller only|robot cable|weld|vectis|"
+           r"hirebotics|spray finish|packer|palletiz",
    comp=dict(lathe=r"lathe|turn|\bST\b|\bTL\b|lynx|puma|qtn|quick turn|conquest|\bSL-?\d",
              bar_feeder=r"bar feeder|lns|edge|iemca",
              robot_arm=r"\bur\s?\d|universal robots"),
@@ -339,7 +346,7 @@ st("units", "MiR250 + UR12e + Robotiq 2F-85 mobile manipulator, with cabinet, ca
    PARTS + r"|teach pendant only|pendant only|controller only|control box only|robot cable|battery only|"
            r"charger only|top module only|shelf carrier only|cart only|hook only|gripper fingers?|finger tips|"
            r"pads only|\bfor ur\b|ur (compatible|mount|flange)|adapter plate|weld|palletiz|screwdriv|sanding|"
-           r"injection|moulding|molding|\bton\b|"
+           r"injection|moulding|molding|\bton\b|vectis|hirebotics|spray finish|packer|baxter|"
            r"dispens|cell\b|cart\b|\bon (a )?(cart|amr)\b",
    comp=dict(mir=r"mir|mobile industrial|otto|omron|ld-|amr|autonomous mobile|fetch",
              arm=r"\bur\s?\d|universal robots|crx|gofa|cobot|collaborative|techman|doosan|kinova|aubo",
@@ -358,11 +365,12 @@ st("floor_unit", "Third MiR250 unit for the floor, with a Nilfisk CFM 118EXP exp
 st("shuttle", "Kardex Shuttle XP 500, 9.15 m (30 ft), 2450 x 864 mm trays", 2, 210_000, "vertical", "vlm",
    r"shuttle\s?xp\s?-?500|\bxp\s?-?500\b.*kardex",
    r"kardex.*\b(shuttle|xp\s?-?\d{3,4}|xplus|remstar)\b|remstar|shuttle\s?xp",
-   r"vertical lift (module|storage)|\bvlm\b|lean-?lift|h[aä]nel|modula\s?(lift|ml|mc)?|logimat|ferlift|"
+   r"vertical lift (module|storage)|\bvlm\b|lean-?lift|h[aä]nel|modula\s?-?(lift|ml|mc|mx|vlm|vertical)|logimat|ferlift|"
    r"vertical (storage|lift) (system|machine)|storage lift|tower storage",
    PARTS + r"|tray only|trays only|tray dividers?|bin dividers?|controller only|keypad|light curtain only|"
            r"carousel|horizontal carousel|vertical carousel|lektriever|megamat|lr\s?35|paternoster|"
-           r"file (cabinet|carousel)|pallet rack|shelving|schrank|cabinet|drawer",
+           r"file (cabinet|carousel)|pallet rack|shelving|schrank|cabinet|drawer|generator|rotor|controller|schaffner|"
+           r"\bfrey\b|\bdico|\bI/O\b|\bmodule\b|toothed|\bbelt\b|dough|pasta|saldoflex|wavemed|italgi|food",
    note="a used VLM is dismantled, shipped in pieces and re-erected; height and tray size have to fit the room")
 st("couplings", "Staubli CombiTac docks and tray plates (each)", 14, 4_000, "vertical", "parcel",
    r"combi\s?-?tac", r"st[aä]ubli.*(coupl|connector|tool changer|mps|rbe)",
@@ -384,20 +392,20 @@ st("midi", "Aconity3D AconityMIDI+ laser powder-bed fusion", 1, 700_000, "vertic
    r"concept laser|\bmlab\b|\bM2 cusing\b|cusing|truprint|trumpf.*(1000|2000|3000).*print|"
    r"\bDMP\s?(flex|factory)?\s?\d+|prox\s?(dmp\s?)?(100|200|300|320)|sisma|mysint|xact metal|\bXM\s?200|"
    r"farsoon|\bBLT-?S\d+|\bor laser\b|\borlas\b|\bAddUp\b|velo3d|\bDMLS\b|direct metal laser|selective laser melting|"
-   r"laser (powder bed|melting)|\blpbf\b|\bslm\b|metal (3d|additive) (printer|manufacturing)",
+   r"laser (powder bed|melting)|\blpbf\b|metal (3d|additive) (printer|manufacturing)|3d (metal )?printer.*(slm|eos|concept)",
    PARTS + r"|resin|\bsla\b|\bfdm\b|fff|filament|ultimaker|markforged|desktop metal|binder jet|exone|"
            r"formlabs|stratasys|prusa|creality|polyjet|objet|nylon|sls\b(?!.*metal)|formiga|\bP\s?(100|110|396|500|770)\b|"
            r"recoater blade|build plate|powder only|filter cartridge|camera only|siev\w* station|powder (sieving|handling) "
            r"(station|unit)|unpacking station|\bipcm\b|^(?!.*print).*laser cutting machine|^(?!.*print).*laser cutter|"
-           r"fiber laser|engrav|marking|welding",
+           r"fiber laser|engrav|marking|welding|festo|linear drive|slide\b|pump|microswitch|switch|carboxylator|valve",
    note="small to mid-size LPBF machines; polymer printers (EOS Formiga, P-series) are left out")
 st("mxlab", "InssTek MX-Lab blown-powder DED", 1, 300_000, "vertical", "machine",
    r"mx-?lab", r"insstek|\bMX-?(mini|grande|600|1000|450)\b",
    r"optomec|\blens\s?(450|750|850|mr-?7|cs\s?\d+)\b|beam modulo|\bmodulo\b|lasertec\s?\d+\s?3d|"
    r"formalloy|directed energy deposition|\bded\b|laser metal deposition|\blmd\b|laser cladding|blown powder|"
    r"powder (fed|feeder) laser|huffman",
-   PARTS + r"|wire|meltio|arc|waam|weld(?!.*laser)|plasma|thermal spray|cold spray|powder feeder only|nozzle only|"
-           r"chiller only|camera",
+   PARTS + r"|wire|meltio|\barc\b|waam|wlam|weld(?!.*laser)|plasma|thermal spray|cold spray|powder feeder only|nozzle|"
+           r"chiller only|camera|\bkit\b|tubing|aerosol jet|control\b|controller",
    note="powder-fed DED only (wire-fed and arc machines are left out)")
 NA = {
     "ups": "commodity UPSs, bought new with the trays; not surveyed",
@@ -455,7 +463,7 @@ def tensile_kn(title):
         return float(m.group(1))
     if re.search(r"\bZ\s?2[,.]5\b|zwicki", t, re.I):
         return 2.5
-    known = {r"59(42|43)": 1, r"5944": 2, r"3342|3343": 1, r"3345|5965|5966|5565|5566": 5, r"5567|5967|5867|3367": 30,
+    known = {r"5564|5542|5543|5544|3342|3343": 2, r"1122|1011|1026|4301|4411|5565": 5, r"4303|4201|4202|5566": 25, r"59(42|43)": 1, r"5944": 2, r"3342|3343": 1, r"3345|5965|5966|5565|5566": 5, r"5567|5967|5867|3367": 30,
              r"3369|5569|5969|4204|4502": 50, r"5982|3382|4482|4505|1125|8801|68FM-?100|4206": 100,
              r"5585|4485|3384|5584": 150, r"5985|3386|8802|4486": 250, r"5989|1195": 600}
     for pat, kn in known.items():

@@ -14,6 +14,8 @@ ORDER = {"exact": 0, "family": 1, "sub": 2}
 def main():
     cap = 30
     stations = sites = None
+    part = None
+    matches = None
     for a in sys.argv[1:]:
         if a.startswith("--cap="):
             cap = int(a.split("=")[1])
@@ -21,6 +23,10 @@ def main():
             stations = set(a.split("=")[1].split(","))
         if a.startswith("--sites="):
             sites = set(a.split("=")[1].split(","))
+        if a.startswith("--match="):
+            matches = set(a.split("=")[1].split(","))
+        if a.startswith("--part="):
+            part = tuple(int(x) for x in a.split("=")[1].split("/"))
     os.makedirs(SHOTS, exist_ok=True)
     done = set()
     if os.path.exists(f"{RAW}/details.jsonl"):
@@ -35,6 +41,8 @@ def main():
         cands = [c for c in cands if c["station"] in stations]
     if sites:
         cands = [c for c in cands if c["site"] in sites]
+    if matches:
+        cands = [c for c in cands if c["match"] in matches]
     cands.sort(key=lambda c: (ORDER[c["match"]], c["amount"] is None, c["station"]))
     per = {}
     todo = []
@@ -46,6 +54,9 @@ def main():
         todo.append(c)
     random.shuffle(todo)          # interleave sites
     todo.sort(key=lambda c: ORDER[c["match"]])
+    if part:                       # a stable split by URL, the same in every process
+        import zlib
+        todo = [c for c in todo if zlib.crc32(c["url"].encode()) % part[1] == part[0] - 1]
     print(len(todo), "pages to read", flush=True)
     pw, br, ctx, page = B.connect()
     blocked = {}

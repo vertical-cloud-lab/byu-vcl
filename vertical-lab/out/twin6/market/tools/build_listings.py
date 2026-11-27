@@ -34,7 +34,7 @@ def detail_fields(site, t):
     if not t:
         return f
     if site == "labx":
-        head = t.split("More From")[0]
+        head = re.split(r"More From|Related Items", t)[0]
         f["seller"] = g(r"Sold By:\s*(.+)", head)
         f["location"] = g(r"Location:\s*\n(.+)", head)
         f["cond_label"] = g(r"Condition:\s*\n(.+)", head)
@@ -51,7 +51,8 @@ def detail_fields(site, t):
         m = re.search(r"Location\n(?:[\U0001F1E6-\U0001F1FF]{2}\s?)?(.+?)\n·\s?([\d,]+)\s?mi away", t)
         if m:
             f["location"], f["dist_km"] = m.group(1).strip(), float(m.group(2).replace(",", "")) * 1.609
-        m = re.search(r"\n(?:\$|US\$)([\d,]+)\s?USD\n|\n€([\d,.]+)\s?EUR\n|\n£([\d,]+)\s?GBP\n", t)
+        m = re.search(r"\n(?:(?:\$|US\$)([\d,]+)\s?USD|€([\d,.]+)\s?EUR|£([\d,]+)\s?GBP)\n(?:[^\n]*financing[^\n]*\n)?"
+                      r"Manufacturer\n", t)
         if m:
             if m.group(1):
                 f["price"] = (float(m.group(1).replace(",", "")), "USD")
@@ -59,17 +60,20 @@ def detail_fields(site, t):
                 f["price"] = (float(re.sub(r"[.,]", "", m.group(2))), "EUR")
             else:
                 f["price"] = (float(m.group(3).replace(",", "")), "GBP")
-        f["no_price"] = "Contact Seller for Price" in t or "Request Price" in t
+        f["no_price"] = bool(re.search(r"Contact Seller for Price\n(?:[^\n]*\n)?Manufacturer\n", t))
+        if "This listing is no longer available" in t:
+            f["availability"] = "no longer available when read (sold or withdrawn)"
         f["seller"] = g(r"Seller Information\n(.+)", t)
         f["desc"] = g(r"\nDescription\n([\s\S]{0,1800}?)(?:\nShow more|\nClick to Request)", t)
     elif site == "machineseeker":
-        m = re.search(r"\n(Starting price|Buy now price|Price|Fixed price plus VAT|Price plus VAT|Negotiable price)?\n?"
-                      r"(€[\d.,]+|[\d.,]+\s?€|\$[\d,]+|£[\d,]+|CHF\s?[\d.,']+)\n", t)
+        hdr = t.split("Basic data")[0]
+        m = re.search(r"\n([A-Z]{3} )?(Starting price|Buy now price|Price|Fixed price plus VAT|Price plus VAT|Negotiable price|"
+                      r"Fixed price)?[^\n]{0,20}\n?(€[\d.,]+|[\d.,]+\s?€|\$[\d,]+|£[\d,]+|CHF\s?[\d.,']+)\n", hdr)
         if m:
-            amt, cur = P.money(m.group(2))
+            amt, cur = P.money(m.group(3))
             f["price"] = (amt, cur) if amt else None
-            f["price_kind"] = "starting bid" if (m.group(1) or "").startswith("Starting") else "asking"
-        f["no_price"] = "Price info" in t[:1500] and not f.get("price")
+            f["price_kind"] = "starting bid" if (m.group(2) or "").startswith("Starting") else "asking"
+        f["no_price"] = "Price info" in hdr and not f.get("price")
         f["year"] = g(r"Year of construction:?\n(\d{4})", t)
         f["cond_label"] = g(r"^Condition:\n(.+)", t)
         f["function"] = g(r"^Functionality:\n(.+)", t)
@@ -90,7 +94,7 @@ def detail_fields(site, t):
         f["cond_label"] = g(r"^state\t(.+)", t)
         f["availability"] = g(r"^Last availability date\t(.+)", t)
         f["weight_kg"] = g(r"^Weight\t([\d.]+) kg", t)
-        m = re.search(r"\n(?:Price:?\s*)?(€\s?[\d.,]+|[\d.,]+\s?€)\s*(?:excl|\n)", t[:3000])
+        m = re.search(r"\n(?:Price:?\s*)?(€\s?[\d.,]+|[\d.,]+\s?€)\s*(?:excl|\n)", t.split("Manufacturer\t")[0])
         if m:
             amt, cur = P.money(m.group(1))
             f["price"] = (amt, cur) if amt else None
@@ -180,8 +184,14 @@ COUNTRY_US = r"\b(USA|US|United States|[A-Z]{2}, USA|Alabama|Alaska|Arizona|Arka
 
 def region(loc, dist_km, cur=None, site=None):
     """US, CA or overseas from the location; for a LabX listing not opened, from its currency (EUR or GBP: overseas)."""
+    if site == "labx" and loc:                      # LabX writes "<region>, <ISO country code>"
+        m = re.search(r",\s*([A-Z]{2})\s*$", loc)
+        if m:
+            return {"US": "US", "CA": "CA"}.get(m.group(1), "overseas")
     r = _region(loc, dist_km)
     if not r and site == "labx" and cur in ("EUR", "GBP", "CHF", "SEK"):
+        return "overseas"
+    if not r and site == "exapro":                # a European broker: a listing not opened is taken as European
         return "overseas"
     return r
 
@@ -213,6 +223,8 @@ def main(out_dir):
         d = det.get(c["url"])
         f = detail_fields(c["site"], d["text"]) if d else {}
         amt, cur = (f["price"] if f.get("price") else (c["amount"], c["currency"]))
+        if c["site"] == "machineseeker" and d and not f.get("price"):
+            amt, cur = (None, None) if f.get("no_price") else (c["amount"], c["currency"])
         kind = f.get("price_kind") or (c["price_kind"] if (amt and c["price_kind"] != "on request") else
                                          "asking" if amt else "on request")
         if c["site"] in ("govdeals", "allsurplus", "publicsurplus") and amt:
@@ -295,15 +307,19 @@ def main(out_dir):
     sys.path.insert(0, VL)
     from twin import market6 as M
     wt_of = {}
+    new_of = {}
     for n in csv.DictReader(open(f"{VL}/out/twin6/market/new.csv")):
         wt_of[(n["station"], n["component"])] = n["wt"]
         wt_of.setdefault((n["station"], ""), n["wt"])
+        new_of[(n["station"], n["component"])] = float(n["new_usd_each"])
     for r in rows:
         wt = wt_of.get((r["station"], r["component"])) or wt_of.get((r["station"], "")) or STN.S.get(
             r["station"], {}).get("wt", "bench")
         r["ship_class"] = wt
         r["freight_rigging_usd"] = M.freight(wt, r["region"], r["dist_km"] or None)
         r["lead_w_est"] = M.lead_of(r, wt)
+        nu = new_of.get((r["station"], r["component"])) or new_of.get((r["station"], ""))
+        r["in_price_stats"] = int(r["keep"] == 1 and M.in_stats(r, nu))
     keys = list(rows[0].keys()) if rows else []
     with open(f"{out_dir}/listings_raw.csv", "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=keys)
