@@ -263,8 +263,8 @@ def pack(keep_appended=False):
 
 def plan(names):
     """The queue, in an order that leaves usable, balanced results at any point: the cheap policies first (each
-    experiment seed by seed across its arms), then BOFN and pKGFN seed by seed across their eight arms, the
-    conventional lab's runs first within a seed."""
+    experiment seed by seed across its arms), then BOFN and pKGFN: the conventional lab's seed by seed, then the
+    automated lab's (net), the plans with BOFN, and the automated lab's last four seeds (net_more)."""
     todo = []
     for name in names:
         done = _done(name)
@@ -277,8 +277,16 @@ def plan(names):
         name, c = t
         if name in rank:
             return (0, rank[name], c["seed"], run_id(c))
-        return (1, c["seed"], {"net": 0, "net_more": 1, "plans_net": 2}.get(name, 3),
-                0 if c["lab"] == "conventional" else 1, run_id(c))
+        # BOFN and pKGFN: a two-year run takes 3-5 minutes in the conventional lab (people decide at their meetings)
+        # and 25-35 minutes in the automated lab (hourly decisions on a 24/7 lab: many more results and refits). The
+        # conventional lab's first (all its seeds), then the automated lab's 12 seeds, the plans with BOFN, its 4 more
+        if c["lab"] == "conventional":
+            return (1, c["seed"], run_id(c))
+        if name == "net":
+            return (2, c["seed"], run_id(c))
+        if name == "plans_net":
+            return (3, c["seed"], run_id(c))
+        return (4, c["seed"], run_id(c))
     todo.sort(key=key)
     return todo
 
