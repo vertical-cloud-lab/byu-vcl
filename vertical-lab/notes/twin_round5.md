@@ -119,7 +119,10 @@ the notes it includes. `twin/tests/test_round5.py` reruns a short run and checks
   32 `hpc_more` rows (`f2b40fd`). They were made while files in `twin/` were edited and not yet committed, and the
   flag can't say which files. After `3de9012` only `like5.py` (analysis) changed. After `f2b40fd`, `bench5.py`, the
   analysis, a comment in `round5.py` and the blend-screen fix changed; `hpc_more` runs the heuristic and the funnel,
-  which never reach that fix. The 69 slice rows are all clean.
+  which never reach that fix. **Five of them, rerun with the engine at `b410477` from a clean checkout on the same CPU
+  model, came back identical, rows and event logs:** two `hpc_more` rows, a conventional-lab BOFN row and pKGFN row,
+  and the automated lab's stocked BOFN seed 1 ([`check_dirty_rows.json`](../out/twin5/slices/check_dirty_rows.json)).
+  The 69 slice rows are all clean.
 * **A heuristic or funnel row reruns bit for bit on every CPU tried:** an AMD EPYC 9V45, 9V74 and 7763 and an Intel
   Xeon 6975P-C, the row and its event log byte for byte.
 * **A BOFN or pKGFN row doesn't on every CPU, under the same pin.** It is deterministic on one machine. Rows made on
@@ -709,7 +712,7 @@ fabrication step), each given the cause the campaign's daily log shows most (day
   limit: lots already waiting for a build), and copper's small deposits wait for Utah's monthly MX-Lab session.
 * **Round 3's stall is gone.** With all the money at t = 0 nothing pauses the automated lab between day 90 and 150;
   before the money runs out its idle stretches are the WIP limit and the partners' capacity.
-* **No stretch was flagged in these four arms** (nor in the lean arms or the plans with the heuristic and the funnel):
+* **No stretch was flagged in these two arms** (nor in the lean arms or the plans with the heuristic and the funnel):
   in no seed did a campaign have money and free capacity at its pacing station for two weeks and start nothing.
   Decision time never stopped a pacing station for a week (the conventional lab's reviews and meetings hold results
   1-4 days, section 7.4); it slows each step instead.
@@ -1103,6 +1106,7 @@ python out/twin5/slices/fold_check.py after      # the packed rows against the f
    `twin/supply.py` (the market model of rounds 1-4: DAL's procurement experience).
 7. Round 4's build-out, routes and learning curve: [`twin_round4.md`](twin_round4.md) and its sources.
 8. The six compute slices: PRs 421, 419, 423, 420, 422 and 418 (slices 1-6), their drivers and checks in
-   [`out/twin5/slices/`](../out/twin5/slices/); the fold's check (`fold_check.py`, `fold_check.json`) and the CPU
-   check (`check_gp_cpu.py`, `check_gp_cpu.json`) there too. Sterling's request for this write-up: PR 405, comment
+   [`out/twin5/slices/`](../out/twin5/slices/); the fold's check (`fold_check.py`, `fold_check.json`), the CPU
+   check (`check_gp_cpu.py`, `check_gp_cpu.json`) and the rerun of dirty-flagged rows (`check_dirty_rows.py`,
+   `check_dirty_rows.json`) there too. Sterling's request for this write-up: PR 405, comment
    7219480588 (2026-11-27).

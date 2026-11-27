@@ -222,5 +222,10 @@ TWIN_WORKERS=4 python -m twin.bench5 run arms plans dec_none dec_slow atom nouse
 python -m twin.bench5 pack && python -m twin.like5 && python -m twin.figures5
 ```
 
+Every planned run is committed (488 rows; `python -m twin.bench5 status` says 0 left), so `run` has nothing to do. The
+last 69 (the automated lab's BOFN and pKGFN seeds and the plans with BOFN) were made in six compute slices and
+folded in: their drivers, their checks and the fold's check are in `../out/twin5/slices/`. A BOFN or pKGFN row
+reproduces bit for bit only on some CPU models (the notes' "Reproducibility").
+
 Round 4's code is unchanged but for a hook (`Facility4.schedule`): round 5 subclasses `Facility4`, `Campaign4` and
 `Twin4`.
