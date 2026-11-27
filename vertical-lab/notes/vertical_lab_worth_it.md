@@ -35,8 +35,8 @@ at the end names them).
   - The VLM with one unit turns away 9.5 % and takes 10.5 h; with two units, 6 % and 7.6 h.
   - The limit is the trays, not the robots: instruments that share a tray can't be loaded while any of them is
     running. Tray D (SEM and XRD) is held 85-89 % of the time.
-  - A second unit at the VLM barely helps. Even one unit on benches (7.9 h) beats it on turnaround, but one unit is
-    too few on any plan, because it loses atomizer slots (below).
+  - A second unit at the VLM barely helps. One unit on benches (7.9 h) does about as well as two at the VLM, but one
+    unit is too few on any plan at 60 %: it loses atomizer slots (below).
 - **If the arm has to stay at the instrument for part of each step,** as PR 332 assumed, the number of units binds
   whatever the layout:
   - one unit can't carry 30 % outside load (about 60 % of requests served, about 58 h each);
@@ -69,7 +69,7 @@ The tables are below.*
 | Gain claimed for VLM trays | What it is for a warehouse | For us | How big |
 |---|---|---|---|
 | **Floor space** | Dense storage up the height of the room; vendors claim "up to 85-92 %" | **Real, and the only big one.** 281 m² against 398 m² for the same 43 instruments ([PR 406](https://github.com/vertical-cloud-lab/byu-vcl/pull/406), [`twin_floorspace.md`](twin_floorspace.md) on its branch). The saving is benches and their aisles: 31 benchtop instruments go into 18 m² of Shuttle footprint | 117 m² less, 29 %. Worth about $51k a year at the twin's space rates ($215/m² a year to run it plus $222/m² a year of building, [`twin/econ.py`](../twin/econ.py) `RATES`), and nothing if the room is already ours. It needs a 9.15 m bay. The vertical lab is not smaller in volume |
-| **Throughput** | Goods-to-person: the picker stops walking | **Not a gain.** The replay never finds the VLM faster for internal work, and with outside users it is slower (section 6) | Driving falls from 53-81 s a task on benches to 29-43 s at the VLM. That doesn't matter while the robots are 1-2 % busy |
+| **Throughput** | Goods-to-person: the picker stops walking | **Not a gain.** The replay never finds the VLM faster for internal work, and with outside users it is slower (section 6) | Driving falls from 51-81 s a task on benches to 29-61 s at the VLM. That doesn't matter while the robots are 1-2 % busy |
 | **Positioning at a fixed bay** | One pick face, known geometry | **Real but small.** The arm calibrates at 2 openings instead of 24 bench docks. A MiR250 docks to a VL-marker to ±3 mm in up to 14 s (MiR250 spec, 2023), and an arm camera takes that to about 1 mm (Enabled Robotics' ER-VISION). Liverpool's touch-off reached ±0.12 mm (Burger et al. 2020). Kardex doesn't publish the extractor's repeatability at the opening; PR 318's coupling needs 4 mm ([`services.md`](services.md)) | Seconds a visit. Vision calibration takes about 5 s, touch-off about 53 s (Edison, mobile manipulators) |
 | **Enclosure** (dust, light, temperature, humidity) | Kardex sells climate-controlled, clean-room and low-humidity units | **Mixed.** It keeps out dust and light, but every watt a stored tray uses stays inside the cladding: 1.3 kW in Shuttle 1 when idle, 3.7 kW with a printer and the furnace running, which needs 1,100-2,200 m³/h of forced air ([`services.md`](services.md)). A room's HVAC does this for benches | Small, and partly a cost |
 | **Safety and access control** | Items released only to an authorized user at one opening | **Real but small.** People never reach into a moving machine, and the opening is the only access. The robots still drive the floor in both layouts. A badge-locked room gives most of the access control | Small. It matters more with outside users |
@@ -77,8 +77,8 @@ The tables are below.*
 
 Two things count against the VLM in the same table:
 
-- **Every visit moves the instrument.** Tray presentations run from 4-6 a day (the twin's own work) to 130-185 a day
-  (with outside users).
+- **Every visit moves the instrument.** Tray presentations run from 4-6 a day (the twin's own work) to as many as 185
+  a day (with outside users).
   - The Acceleration Consortium measured a Kardex tray with a microscope on it ([ac-dev-lab #216](https://github.com/AccelerationConsortium/ac-dev-lab/issues/216)).
     Peaks were 1.0-4.3 m/s², logged once a second, so short peaks are missed. It vibrates "with the most intensity
     when going in and out of the open port, not really when going up or down". A stored tray read about 0, and the
@@ -160,8 +160,8 @@ capex-weighted capacity (round 3). The same work in less floor matters only if t
 - if the lab goes into a building we pay for by the square metre, it saves about $51k a year at the twin's rates;
 - if it goes into a room we already have, it saves nothing;
 - it needs a room at least 9.17 m tall with 31.5 ft to the sprinkler deflectors (33 ft under ESFR;
-  [`kardex_height.md`](kardex_height.md)). PR 344 found that no building near BYU is over 36 ft, and that the lab
-  without 9 m Shuttles needs only 16-18 ft.
+  [`kardex_height.md`](kardex_height.md)). PR 344 found no building near BYU over 36 ft, and that PR 318's lab with
+  its earlier 3.95 m Shuttles needed only 16-18 ft clear.
 
 ## 4. Is there a speed gain from trays over driving?
 
@@ -174,8 +174,8 @@ capex-weighted capacity (round 3). The same work in less floor matters only if t
 
   These are at 100 % speed, but units ship with the extractor at 70 %, and an always-closed door adds about 6 s
   ([configuration sheet](https://products.storemorestore.com/hubfs/StoreMoreStore/Kardex-Vertical-Lift-Module/VLM-Option-1-96x34-Light-Specification-Sheet.pdf)).
-  Kardex publishes no figure for taller units beyond "can increase", and "for robot handling with cycle times a prior
-  consultation with the factory is recommended".
+  Kardex publishes no figure for taller units beyond "can increase", and for robot handling "a prior consultation
+  with the factory is recommended".
 - **Modula:** "Tray delivered to the bay in under 30 seconds", up to 120 trays an hour.
 - **The MiR250:**
   - 2.0 m/s at most, accelerating at 0.3 m/s², so it needs 9.5 m to reach that speed;
@@ -186,7 +186,7 @@ capex-weighted capacity (round 3). The same work in less floor matters only if t
 
 **In the model** (handling table in [`tables.md`](../out/worth_it/tables.md)):
 
-- A task's driving is 29-43 s at the VLM and 53-81 s on PR 406's benches.
+- A task's driving is 29-61 s at the VLM and 51-81 s on PR 406's benches.
 - At the VLM the arm waits 10-22 s for its tray after it arrives, even though the Shuttle starts fetching when the unit
   is assigned.
 - Either way it is about a minute, against instrument steps of 0.5-8 h. The VLM saves about half a minute of driving a
@@ -233,7 +233,7 @@ is a quote.
 | | Two Shuttles, as PR 318 has them | One more mobile manipulator |
 |---|---|---|
 | Purchase | 2 × $210k: Kardex's "$6,000-8,000 per vertical foot" × 30 ft is $180-240k ([Kardex](https://www.kardex.com/en-us/blog/how-much-does-a-vertical-lift-module-cost)); a 6.75 m Shuttle 500 lists at $166k, product only ([reseller, 2026](https://storemorestore.com/shelving-and-racks/industrial-shelving/kardex-shuttle-xld-500-vertical-lift-module-96-x-34-light-duty-storage-trays)) | $140k: MiR250 (no list price; the twin uses $59-65k), UR12e $44,636 ([Vention, 2026](https://vention.com/parts/universal-robots-ur12e-collaborative-robot-arm-3443)), gripper $5,240, integration. A MiR250 + FANUC CRX package lists from $159,615 (search snippet only) |
-| What only the VLM needs | CombiTac couplings on 12 powered trays and 2 bays, 14 × $4k (estimate); a UPS on every powered tray, $22k; tray cameras; forced ventilation for the heat; a 9.17 m room; a slab for up to 39.5 t on 8.5 m² per Shuttle (4.6 t/m² fully loaded, Kardex configuration sheet) | Docking targets; benches for the 31 benchtop instruments (not priced here) |
+| What only the VLM needs | CombiTac couplings on 12 powered trays and 2 bays, 14 × $4k (estimate); a UPS on every powered tray, $22k; tray cameras; forced ventilation for the heat; a 9.17 m room; a slab for up to 70 t a unit on about 8.5 m² (a 6.75 m unit fully loaded is 39.5 t, Kardex configuration sheet) | Docking targets; benches for the 31 benchtop instruments (not priced here) |
 | Capital | **about $0.50M** | **about $0.14-0.16M** |
 | Service a year | Twin: 3 %, $12.6k. Kardex's own guidance: **10-20 %** of the purchase price, $42-84k ([Kardex](https://info.kardex-remstar.com/knowledge/how-much-should-i-budget-for-asrs-maintenance)); integrators 5-10 %; two preventive visits a year to keep the warranty | Twin: 5 %, $7k. The MiR250's design life is 5 years or 20,000 h (spec sheet), so a base is replaced within ten years |
 | Floor | 117 m² less; about $51k a year at the twin's rates, if the space is paid for | none |
@@ -282,7 +282,7 @@ within a factor of two: about $250k against about $150k. PR 318 has two Shuttles
 ## 6. Outside users: the queue model
 
 **What it is.** [`twin/worth_it.py`](../twin/worth_it.py) replays the twin's committed event logs through a transport
-layer, and adds outside jobs. Twenty tests are in [`twin/tests/test_worth_it.py`](../twin/tests/test_worth_it.py).
+layer, and adds outside jobs. Eighteen tests are in [`twin/tests/test_worth_it.py`](../twin/tests/test_worth_it.py).
 
 - **The logs.** Round 3b's vertical lab for a year ([`out/twin3b/events/`](../out/twin3b/events)): 12 seeds of
   time-aware BOFN and 12 of the funnel, each campaign's best policy. That is 2,500 or so in-house steps a log.
@@ -356,9 +356,10 @@ Medians over 24 logs (full tables, with 10th-90th percentiles: [`tables.md`](../
 - With outside load, a layout moves a target only where it loses atomizer slots:
   - with the twin's timing, flat + 1 at 60 %: the halfway targets come 7 days later for aluminium and 20 for copper
     (medians over the logs that reach them);
-  - with attended time, one unit at 30 % or 60 % on either plan: 0.1-0.3 days later at the median, and up to 29-81
-    days in the worst logs.
-- Every layout with two units keeps every target within 0.3 days at the median.
+  - with attended time, one unit at 30 % or 60 % on either plan: 0.04-0.3 days later at the median, and 15-81 days
+    in the worst log.
+- Every layout with two units keeps every target within 0.11 days at the median. At 60 % with attended time, the worst
+  log loses atomizer slots on either plan: up to 75-81 days later on benches, 15-20 days at the VLM.
 - The replay keeps the twin's order of work. A lost atomizer slot therefore moves every later run, while the twin
   itself would have re-planned. Read those rows as "this many units can't carry this load", not as a forecast of the
   delay.
@@ -371,8 +372,7 @@ Medians over 24 logs (full tables, with 10th-90th percentiles: [`tables.md`](../
    - At 60 % outside load, tray D (SEM and XRD) is held by a running measurement 85-89 % of the time. Outside jobs at
      the VLM then take 7.6-10.5 h against 2.0 h on benches, and 6-10 % are turned away.
    - A second unit at the VLM cuts the turnaround from 10.5 h to 7.6 h but leaves it far above the benches. One
-     unit on benches already has the lower turnaround (7.9 h), but loses atomizer slots, so it is not a real option
-     at 60 %.
+     unit on benches does about as well (7.9 h), but it loses atomizer slots, so it is not a real option at 60 %.
 3. **With attended time, units bind on both plans.** One unit is not enough for 30 % outside load. Two carry 30 %,
    with a little more wait at the VLM: its opening is held 60 % of the time while the arm attends at a presented
    tray. Neither carries 60 %; both serve about 61-63 %.
@@ -396,7 +396,7 @@ Medians over 24 logs (full tables, with 10th-90th percentiles: [`tables.md`](../
 | **Outside users at 30 %** | No: slower (1.6-2.5 h against 1.3-1.7 h) | Yes, if the arm attends steps: one unit can't carry it on either plan, two can | A measured attended share at our instruments (PR 332's are assumptions) |
 | **Outside users at 60 %** | No: trays bind; 6-10 % turned away, 7.6-10.5 h | Yes: two units on benches serve everything in 2 h with the twin's timing; with attended time, a third unit or fixed arms at the busiest instruments | Who the outside users are and what they send; whether instruments can be split across trays (one busy instrument a tray) |
 | **Sensitive instruments** (balances, the SEM, XRD, the nanoindenter, microscopes) | Only if measurements show tray moves harmless and requalification is unnecessary after a presentation | Yes: benches never move them | A vibration and requalification test with our instruments on a Kardex tray (the AC's microscope test is the only one, at 1 Hz) |
-| **Passive storage** (1,506 powder jars, sample stores) | **Yes: this is what a VLM is for.** A store VLM can be shorter and needs no services | Not on its own: shelves plus an arm also work for this volume | Our own jar and sample counts and how often the robots fetch them (not modelled here: about 1.2 store visits a day for the twin's prints and lots) |
+| **Passive storage** (1,506 powder jars, sample stores) | **Yes: this is what a VLM is for.** A store VLM can be shorter and needs no services | Not on its own: shelves plus an arm also work for this volume | Our own jar and sample counts and how often the robots fetch them (not modelled here; our count from one log is about 1.2 store visits a day for the twin's prints and lots) |
 | **Reliability** | No: a Shuttle down takes 7-8 instruments with it, and recovery needs Kardex | Yes: two units back each other up, and every instrument stays reachable by hand | Kardex's figures for downtime and manual retrieval, which no vendor publishes |
 | **Precedent and risk** | No: no lab runs instruments in a VLM; the AC dropped its own | Yes: Liverpool, Argonne, the A-Lab and others all fix instruments and move samples | Someone running instruments in a VLM for a year and publishing it |
 
@@ -467,7 +467,8 @@ are not checked line by line; where this note leans on one, it says so.
   [#216](https://github.com/AccelerationConsortium/ac-dev-lab/issues/216), [#370](https://github.com/AccelerationConsortium/ac-dev-lab/issues/370),
   [#371](https://github.com/AccelerationConsortium/ac-dev-lab/issues/371), [#374](https://github.com/AccelerationConsortium/ac-dev-lab/issues/374)
   and [#471](https://github.com/AccelerationConsortium/ac-dev-lab/issues/471).
-- **Liverpool:** its robot drove about 1 % of the time and was charged but idle 32 %. GC was the slow step (Burger et
+- **Liverpool:** its robot drove about 1 % of the time (our arithmetic: 2.17 km in 8 days at its 0.3 m/s cap) and
+  was charged but idle 32 %. GC was the slow step (Burger et
   al. 2020). Its solid-state workflow spent 8 of 9 h on PXRD (Lunt et al. 2024).
 - **The A-Lab:** furnaces in batches of eight; failures came from chemistry, not handling (Szymanski et al. 2023).
 - **Samsung's ASTRAL:** one arm on a rail.
@@ -493,7 +494,7 @@ are not checked line by line; where this note leans on one, it says so.
 - **A replay, not a re-plan.** The twin's decisions are fixed, so a lost slot can't be made up by choosing other work.
   The days-to-target shifts are upper bounds where slots are lost and exact where none are.
 - **Missing traffic.** Store visits for powder jars and samples aren't modelled: about 1.2 a day for the twin's prints
-  and lots, through Shuttle 2's opening. Neither are outside samples' trips from packaging (a sensitivity), failures of
+  and lots (our count from one log), through Shuttle 2's opening. Neither are outside samples' trips from packaging (a sensitivity), failures of
   the robots or the Shuttles, maintenance windows, or the requalification after a tray move.
 - **Fixed floor plans.** PR 406's flat plan is the conventional one automated as it stands. A flat plan designed for
   robots might be smaller, which would narrow the floor gap.
