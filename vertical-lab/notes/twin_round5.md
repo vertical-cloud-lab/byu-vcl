@@ -13,7 +13,47 @@ how the labs, plans and policies interact in the model, not what the real lab wi
 lead time, and no used-equipment price or risk has been quoted, so every build-out date, used purchase and stock
 lead rests on stand-ins.**
 
-<!-- RESULTS-SUMMARY -->
+**In short.** All simulated, from the day the money arrives, over two years. 16 seeds per arm for the heuristic
+(aluminium) and the funnel (copper); BOFN and pKGFN in section 9. Every row includes Sterling's four notes (section 0).
+
+- **Like with like, the automated lab's lead is copper's, not aluminium's.**
+  - Aluminium's best existing alloy (T1): **a tie**, 1.0× with both labs ordering metal as they go and 1.1× (0.7-1.9)
+    with both stocked. Both labs print aluminium's first alloys at the same partners, before the automated lab's
+    in-house MIDI (day 180) and cell (day 201) are up.
+  - Copper: **1.5-2.1× sooner** (first in 13-15 seeds of 16), mostly from the automated lab's in-house MX-Lab.
+  - Aluminium's halfway target (T2) with the heuristic: about half the seeds get there in either lab; no lead.
+  - Round 3's pairing (automated stocked against conventional lean) gives 1.6× on aluminium's T1: the stock is most of
+    it (1.4-1.6× within either lab).
+- **Money binds the automated lab.** With all of it at t = 0, both campaigns spend 90 % of two years' money by day
+  312-354 and then idle; the conventional lab, held to 8 atomizations a week (note 1), spreads it over two years. Campaign
+  spend to each target is about the same, or 25 % more on copper in the automated lab.
+- **Decision time is a small part of each factor** at the nominal windows (DAL #256's Friday meeting, working-day
+  reviews): with no delay the factors are the same within their intervals. Slow windows (biweekly meetings) push copper's
+  factor to 1.9-2.5×. What each step waits for is weeks: partners' slots, the atomizer's 8 a week, consumables with
+  7-8-week leads.
+- **The atomizer's derived cycle** (note 2: about 2.2 h an aluminium composition, 76 a week, a design target that needs
+  spare crucibles) **changes nothing measurable**: the same days at 3 h or 5.5 h. After the cell, money and the WIP limit
+  bind, not atomizer hours.
+- **Used equipment:** the rule bought four stations used (wire EDM, floor frame, chamber, nanoindenter), 15-48 days
+  sooner and $360k cheaper, but no target came sooner.
+- **The HPC stream** (note 4): 89.7 million candidates evaluated per campaign; the policies use 64 a day, and four
+  times as many changes nothing. More compute would not have helped.
+- **Round 4's plans:** ramping up in parallel beats waiting for the cell (now starting at day 247) by 3.4× on
+  aluminium's T1 and 1.2-1.3× on copper; against external routes only it ties on aluminium's T1, **reaches aluminium's
+  T2 in fewer seeds** (7 of 16 against 10), and is 1.5-1.7× sooner on copper.
+- **Economics** (round 3's model): per aluminium alloy, $12.0k with fixed costs against the conventional lab's $5.4k
+  ($1.6k against $3.2k on campaign money alone); to each target with equipment, $1.8-3.5M against $49-180k.
+- **Stock:** the reorder heuristic doesn't make running out unlikely (85 % of the automated lab's aluminium charges
+  waited for something); the look-back's schedule, buying the per-run consumables in bulk on day 0 and every 8 weeks,
+  halves aluminium's stock-out weeks and cuts copper's by three quarters for 2-3 % more money.
+- **Shared stations and idle time** (note 3): only the atomizer binds, in both labs; the copper steps added (EDM, heat
+  treatment, prep, hardness, PIP) run at a few percent. The automated lab's idle time is money; the conventional lab's
+  is capacity (the partners' printers and Utah's monthly MX-Lab). No stretch had money and free capacity and no start.
+- **BOFN and pKGFN** (section 9): the conventional lab's four arms are done (16 seeds). They reach aluminium's halfway
+  target in 15 of 16 seeds (day 228-372): more often and sooner than the automated lab with the rule of thumb (7-9 of
+  16). On copper they do worse than the funnel. The automated lab's BOFN and pKGFN arms have <!-- V-NET-SEEDS-SHORT -->
+  (a run takes 24-37 minutes there), fewer than 12, so their like-for-like factors are left to a follow-up; "What's
+  left" gives the command.
 
 ## 0. Sterling's notes while round 5 ran
 
@@ -133,7 +173,7 @@ end").
 * **When it applies:** from the day the cell is integrated (the robots tend the runs). Until then people run the
   atomizer as the conventional lab does, at most 8 a week (note 1). In the external-only plan it never changes.
 
-<!-- RESULTS-ATOM -->
+Results: section 7.5.
 
 ## 3. Money and stock
 
@@ -162,7 +202,7 @@ end").
 * **"Lean"** is round 3b's: what is on hand at day 0 (DAL's own stock by November 2026), and each charge's metal and
   consumables ordered when it needs them (1.5 times the shortfall, at least the minimum order).
 
-<!-- RESULTS-STOCK -->
+Results: sections 7.2, 7.3 and 7.9.
 
 ## 4. Shared equipment as the real process uses it
 
@@ -181,7 +221,7 @@ for:
 In the conventional lab the EDM is the Provo service (7 days, $150), PIP the Plastometrex service, prep, hardness
 and the furnaces BYU's own on day shifts; in the automated lab, the in-house stations once online.
 
-<!-- RESULTS-SHARED -->
+Results: section 7.10.
 
 ## 5. Decisions made by people take time
 
@@ -210,7 +250,7 @@ so the windows below are stand-ins built on those cadences (`DECISIONS`). Day 0 
   and only then shown to the policy; when the result is an alloy's score, the alloy counts as demonstrated at the time
   the result came back, not when someone looked at it, so the window slows the next decision, not the measurement.
 
-<!-- RESULTS-DECISIONS -->
+Results: section 7.4.
 
 ## 6. The HPC stream (note 4)
 
@@ -225,7 +265,7 @@ so the windows below are stand-ins built on those cadences (`DECISIONS`). Day 0 
   candidates visible to them, 64 new a day spread over the day; every candidate a policy makes, builds or tests stays
   visible. `hpc_more` runs four times that (512 kept, 256 a day).
 
-<!-- RESULTS-HPC -->
+Results: section 7.6.
 
 ## 7. Results
 
@@ -278,7 +318,7 @@ Median days (seeds there): aluminium T1, automated 81 stocked and 130 lean again
   in-house MX-Lab (online at day 228, median; 186-414); the conventional lab's came from Mines (11 of 11).
 * **Cost on one basis (campaign spend to the target; fixed costs and equipment left out):** about the same, or more in
   the automated lab: 0.9-1.1× on aluminium's first target, 0.8× on copper's (the automated lab spends about 25 % more
-  campaign money to reach copper's targets). Section 7.9 adds the fixed costs and equipment.
+  campaign money to reach copper's targets). Section 7.8 adds the fixed costs and equipment.
 
 ### 7.2 Money: the automated lab spends its two years' money in about ten to twelve months
 
@@ -292,7 +332,7 @@ Median days (seeds there): aluminium T1, automated 81 stocked and 130 lean again
 ![Round 5: money spent against the day](../out/twin5/fig/twin5_money.png)
 
 * With all the money at t = 0 and no spending plan, **the automated lab runs out of money in its first year** in both
-  campaigns, and then idles (section 7.12: money is the cause of most of its idle stretches from about day 300). The
+  campaigns, and then idles (section 7.11: money is the cause of most of its idle stretches from about day 300). The
   conventional lab, held to 8 atomizations a week, spreads its money over the two years.
 * **Where the automated lab's money goes:** aluminium makes 1.8-2.2 times the conventional lab's powder lots (319-364
   against 164-179) and tests 2.0-2.5 times the alloys (153-166 against 66-76); copper tests about four times the alloys (19-21
@@ -346,7 +386,7 @@ Each arm's median day (seeds there), no delay / nominal / slow:
   seed-to-seed noise, not decision time.
 * **Why so little:** the nominal windows hold a result 1-4 days (the conventional lab's reviews a median of a day, its
   Friday meetings three; section 5), while what each next step waits for is measured in weeks: the partners' next
-  slot, the atomizer's 8 starts a week, and atomizer consumables with 7-8-week median leads (section 7.10).
+  slot, the atomizer's 8 starts a week, and atomizer consumables with 7-8-week median leads (section 7.9).
 * **The slow windows cost the conventional lab more:** reviews twice a week and meetings every other week push its
   lean arm's aluminium first target from day 133 to 151 and copper's from 457 to 552, and copper's halfway target past
   two years in 9 seeds of 16. Copper's factor rises to 1.9× (first target) and at least 2.5× (halfway) with both
@@ -397,7 +437,7 @@ Each arm's median day (seeds there), no delay / nominal / slow:
 
 <!-- PENDING-SENSITIVITIES -->
 
-### 7.8 Round 4's three plans under the facility window and advance ordering (comparison 2; the heuristic and the funnel, stocked, 16 seeds)
+### 7.7 Round 4's three plans under the facility window and advance ordering (comparison 2; the heuristic and the funnel, stocked, 16 seeds)
 
 | Plan | starts (median day) | Al T1 | Al T2 | Cu T1 | Cu T2 | Al best | Cu best |
 |---|---|---|---|---|---|---|---|
@@ -423,7 +463,7 @@ Each arm's median day (seeds there), no delay / nominal / slow:
   setting forward (median 19 g of usable powder a lot against 57 g in the conventional lab's seed 9). A failure of the
   rule of thumb, not of the routes.
 
-### 7.9 Economics (comparison 3; round 3's model)
+### 7.8 Economics (comparison 3; round 3's model)
 
 Bases (`twin/like5.py`, `economics`): each lab's annual fixed costs from round 2's model (`twin/econ.py`:
 depreciation, service, utilities and space, fixed staff), from day 0 for both years (the automated lab's in full from
@@ -448,7 +488,7 @@ day 0, though its stations arrive over months: conservative for it), split betwe
 * **To each target with equipment, the automated lab costs $1.8-3.5M against $49-180k:** its capital is committed on
   day 0 (deposits, and used items paid in full), long before its first result.
 
-### 7.10 Stock and the purchasing look-back
+### 7.9 Stock and the purchasing look-back
 
 | Arm | Campaign | charges | charges that waited for stock | mean wait (days) | stock bought | left at the end |
 |---|---|---|---|---|---|---|
@@ -497,7 +537,7 @@ day 0, though its stations arrive over months: conservative for it), split betwe
     needs them. The heuristic learns the use rate from the campaign's own history, so it reorders after the use has
     risen, a lead time too late.
 
-### 7.11 Shared stations
+### 7.10 Shared stations
 
 Use of each station kind over the unit-hours it offered while online, by quarter, mean over seeds (both labs
 stocked; partners as jobs over their standing slots; `tables.md` has all four arms and every station):
@@ -518,11 +558,11 @@ stocked; partners as jobs over their standing slots; `tables.md` has all four ar
   furnaces, prep, hardness, PIP, SEM, ICP-MS) run at a few percent of their hours: copper makes 33-42 lots in two
   years, aluminium 164-364, and each copper lot is a few hours of these stations.
 * **Utah's MX-Lab slots run at 60-66 % for copper** through the first year in the automated lab, and copper's first
-  fabrication step (small DED) is copper's binding constraint in the conventional lab (section 7.12).
+  fabrication step (small DED) is copper's binding constraint in the conventional lab (section 7.11).
 * **People:** the conventional lab's three people are 27-28 % busy through the first six quarters; the automated lab's
   are busiest before the cell (41 % in the third quarter) and then the robots take over.
 
-### 7.12 Idle stretches (note 3)
+### 7.11 Idle stretches (note 3)
 
 ![Round 5: why each campaign's atomizer sat idle](../out/twin5/fig/twin5_idle.png)
 
@@ -548,7 +588,7 @@ fabrication step), each given the cause the campaign's daily log shows most (day
   meetings hold results 1-4 days, section 7.4); it slows each step instead.
 * Every day's log is in each run's event log (`round5.daily`); `tables.md` has the four arms and the plans.
 
-### 7.13 Counters (note 3)
+### 7.12 Counters (note 3)
 
 Mean per run, stocked arms (`tables.md` has all):
 
@@ -565,7 +605,7 @@ Mean per run, stocked arms (`tables.md` has all):
   least once; **alloys tested** those through the whole chain (aluminium's tensile; copper's tensile and immersion on a
   large deposit), which early stopping keeps selective by design; **tests** counts tested parts.
 
-### 7.14 Median seed for both campaigns together
+### 7.13 Median seed for both campaigns together
 
 The one seed whose aluminium and copper days to both targets are all closest to the arm's medians (the largest of
 the four distances, each in units of that target's interquartile range over seeds, is the smallest), for a
@@ -582,7 +622,111 @@ The medians in brackets here are the plain medians of the seeds' days (censored 
 the distance uses; the Kaplan-Meier medians in section 7.1 differ where seeds never got there. `tables.md` lists the
 median seed of every arm, the plans' included.
 
-<!-- RESULTS-BODY -->
+## 8. Where the automated lab doesn't win, plainly
+
+* **Aluminium's best existing alloy, like with like: a tie.** 1.0× with both labs ordering as they go, 1.1× (0.7-1.9)
+  with both stocked. Both labs print aluminium's first alloys at the same partners, before the automated lab's
+  in-house MIDI and cell are up, and the automated lab's atomizer runs at the conventional lab's 8 a week until then.
+  It holds with no decision delay (1.0-1.2×) and with slow windows (0.9-1.2×).
+* **Aluminium's halfway target with the heuristic: no lead.** About half the seeds get there in either lab; with both
+  stocked the conventional lab gets there in one more (8 of 16 against 7), so the factor is a bound below 1 (paired,
+  the automated lab is first in 6 seeds, the conventional lab in 3).
+* **Money runs out in the automated lab's first year.** Both campaigns spend 90 % of their two-year money by day
+  312-354 and the lab then idles for most of a year; the conventional lab, at 8 atomizations a week, spreads its money
+  over two years. The automated lab spends about the same campaign money to each target as the conventional lab, or
+  about 25 % more on copper.
+* **Against external routes only** (no cell, the same partners), the parallel plan ties on aluminium's first target
+  (day 81 against 82) and reaches aluminium's halfway target in fewer seeds (7 of 16 against 10; external-only first
+  in 7, parallel in 4), because external-only keeps spending into the second year.
+* **Per aluminium alloy, with fixed costs, the automated lab is dearer** ($12.0k against $5.4k), and to each target
+  with its equipment it has committed $1.8-3.5M against the conventional lab's $49-180k.
+* **The faster atomizer, used equipment and more simulated candidates change no target** (sections 7.5, 1 and 7.6):
+  the automated lab is limited by money and the WIP limit after its cell, not by atomizer hours, its four used stations
+  or candidates.
+* **Its charges wait for stock more often** (85 % of the stocked automated lab's aluminium charges against 37 % of the
+  conventional lab's): its use jumps when the cell's atomizer starts, and the reorder heuristic learns the rate too late.
+* **Decision time explains little of either lab's speed** at the nominal windows; the automated lab's copper lead is
+  its in-house MX-Lab, not faster decisions.
+* **A conventional lab with an optimizer beats the automated lab with the rule of thumb on aluminium's halfway
+  target:** BOFN and pKGFN in the conventional lab get there in 15 of 16 seeds (day 228-372), the automated lab's
+  heuristic in 7-9 (section 9; not like with like, the policy changes too).
+
+Where it does win: **copper, 1.5-2.1× sooner like with like** (first in 13-15 seeds of 16 in every pairing, and in more
+seeds: 15 of 16 against 9-14), and its copper alloys end higher (0.69 against 0.61-0.67); and **against waiting for the
+cell**, 3.4× sooner to aluminium's first target and 1.2-1.3× to copper's.
+
+
+## 9. BOFN and pKGFN (time-aware, on both campaigns)
+
+**What ran in this job:** the conventional lab's four arms (BOFN and pKGFN, stocked and lean) on 16 seeds each, and
+the automated lab's on <!-- V-NET-SEEDS -->. A conventional-lab run takes 3-5 minutes (people decide at their reviews
+and meetings, so the optimizers refit rarely); an automated-lab run takes 24-37 minutes (hourly decisions on a lab
+that runs round the clock after its cell). **The automated lab's BOFN and pKGFN arms have fewer than 12 seeds, so the
+like-for-like table for these policies isn't reported yet**; "What's left" says what a follow-up runs.
+
+**The conventional lab with BOFN or pKGFN** (16 seeds; median day, seeds there):
+
+| Arm | Al T1 | Al T2 | Cu T1 | Cu T2 | Al best | Cu best |
+|---|---|---|---|---|---|---|
+| BOFN, stocked | 16/16; 214 | 15/16; 228 | 7/16; >730 | 4/16; >730 | 0.77 ± 0.01 | 0.53 ± 0.04 |
+| BOFN, lean | 16/16; 304 | 15/16; 372 | 5/16; >730 | 3/16; >730 | 0.76 ± 0.01 | 0.54 ± 0.03 |
+| pKGFN, stocked | 16/16; 218 | 15/16; 292 | 6/16; >730 | 4/16; >730 | 0.76 ± 0.02 | 0.51 ± 0.05 |
+| pKGFN, lean | 15/16; 311 | 15/16; 344 | 8/16; 717 | 3/16; >730 | 0.74 ± 0.03 | 0.56 ± 0.03 |
+| (the heuristic and the funnel, stocked) | 16/16; 92 | 8/16; 562 | 11/16; 432 | 9/16; 647 | 0.65 ± 0.02 | 0.61 ± 0.03 |
+
+* **In the conventional lab, BOFN and pKGFN reach aluminium's halfway target in 15 of 16 seeds** (day 228-372),
+  1.9-2.5× sooner than the heuristic, which gets there in 8; they are 2.5× slower to aluminium's first target (0.4×), as
+  round 4 found: they are selective early.
+* **On copper they do worse than the funnel** in the conventional lab: copper's first target in 5-8 seeds of 16, its
+  halfway target in 3-4, against the funnel's 11-14 and 9-11. Their new copper designs are blend screens, and the
+  conventional lab gets one MX-Lab session a month for them.
+* **They don't run out of money** in the conventional lab (90 % is not spent in two years), unlike the automated lab
+  with the cheap policies.
+
+**The automated lab with the heuristic and the funnel, against the conventional lab with BOFN or pKGFN** (not like
+with like: the lab and the policy both change; 16 seeds; conventional over automated):
+
+| Target | both ordering as they go | both stocked |
+|---|---|---|
+| Al T1: heuristic vs BOFN; vs pKGFN | 2.3× (1.6-3.0); 2.4× (1.6-3.0) | 2.6× (1.6-3.6); 2.7× (1.6-3.7) |
+| Al T2: heuristic vs BOFN; vs pKGFN | 1.0× (0-1.5), 9/16 vs 15/16; 0.9× (0-1.2) | **<= 0.3×**, 7/16 vs 15/16; **<= 0.4×** |
+| Cu T1: funnel vs BOFN; vs pKGFN | >= 2.6×, 15/16 vs 5/16; 2.6× (1.7-∞) | >= 2.6×, 15/16 vs 7/16; >= 2.6× |
+| Cu T2: funnel vs BOFN; vs pKGFN | >= 2.5×, 14/16 vs 3/16; >= 2.5× | >= 2.3×, 15/16 vs 4/16; >= 2.3× |
+
+* **A conventional lab with an optimizer reaches aluminium's halfway target in more seeds, and sooner, than the
+  automated lab with the rule of thumb** (15 of 16 against 7-9). For that target the policy matters more than the lab.
+* The automated lab with the funnel reaches copper's targets more than 2.3× sooner than the conventional lab with
+  either optimizer.
+
+<!-- V-NET-TEXT -->
+
+## Limits
+
+All simulated: synthetic truths, simulated instruments, assumed capacities, prices, lead times and schedules.
+
+* **Stand-ins everywhere a quote belongs.** The facility window (day 60-100), every lead and installation time
+  (round 4's), the used-equipment leads, prices and fault rates, the copper and aluminium step hours added in
+  section 4, the decision windows, the sign-off threshold and the HPC allocation are assumptions, labelled as such.
+  The comparisons move with them.
+* **The atomizer's design cycle is not a demonstrated rate.** It assumes pre-coated spare crucibles in rotation (6-8
+  per family for a 2-3 h cadence) that the lab doesn't have; with today's hardware the ceiling is about 1 run a day.
+* **Money binds the automated lab.** Round 3's money a year (aluminium $120k, copper $60k), two years' worth from
+  day 0, runs out in the automated lab around day 300-350 in both campaigns, and the lab then idles. A lab that fast
+  would be planned with more money or paced spending; neither was run here. The third engine rule (money kept for the
+  work in progress) and the stock's money rules are round 5's own and hold for every policy in both labs.
+* **The stock heuristic is a simple rule with money caps**, not an optimized policy. With the market model's lead
+  spreads (a geometric spread of 1.5-1.8, backorders, failing channels and office lapses) and the money caps, it
+  doesn't make running out unlikely; the look-back shows what buying would have.
+* **The look-back uses each seed's use as it happened**, which itself depended on the stock-outs of that run; a
+  different buying rule would have changed the use a little.
+* **The decision windows are cadences, not measured delays.** No source gives the time from a result to the next
+  decision in this lab; the windows are built on its meeting and handling cadences (DAL #256, #277, PR 297).
+* **The HPC stream is bounded for the policies' sake.** 122,880 candidates a day are counted, but the policies see 128
+  at a time, 64 new a day. Thermo-Calc's nodes stay licence-limited.
+* **The policies are round 3's**, with round 4's and round 5's engine rules. They don't pace money over two years,
+  don't know that partner slots are scarce, and weren't retuned for a lab that is half built.
+* **Not in the model:** hiring and training; the room's own risks (switchgear can take 40-80 weeks, VCL #343);
+  shipping damage and customs; the partners' downtime beyond their slots; a used unit's shorter life.
 
 ## What's left, and what a follow-up should run
 
@@ -621,33 +765,3 @@ leaves usable rows: the queue runs seed by seed across the eight arms, and `pack
 6. Stock: Silver, Pyke & Thomas, *Inventory and Production Management in Supply Chains*, 4th ed. (2017), ch. 6;
    `twin/supply.py` (the market model of rounds 1-4: DAL's procurement experience).
 7. Round 4's build-out, routes and learning curve: [`twin_round4.md`](twin_round4.md) and its sources.
-
-
-## Limits
-
-All simulated: synthetic truths, simulated instruments, assumed capacities, prices, lead times and schedules.
-
-* **Stand-ins everywhere a quote belongs.** The facility window (day 60-100), every lead and installation time
-  (round 4's), the used-equipment leads, prices and fault rates, the copper and aluminium step hours added in
-  section 4, the decision windows, the sign-off threshold and the HPC allocation are assumptions, labelled as such.
-  The comparisons move with them.
-* **The atomizer's design cycle is not a demonstrated rate.** It assumes pre-coated spare crucibles in rotation (6-8
-  per family for a 2-3 h cadence) that the lab doesn't have; with today's hardware the ceiling is about 1 run a day.
-* **Money binds the automated lab.** Round 3's money a year (aluminium $120k, copper $60k), two years' worth from
-  day 0, runs out in the automated lab around day 300-350 in both campaigns, and the lab then idles. A lab that fast
-  would be planned with more money or paced spending; neither was run here. The third engine rule (money kept for the
-  work in progress) and the stock's money rules are round 5's own and hold for every policy in both labs.
-* **The stock heuristic is a simple rule with money caps**, not an optimized policy. With the market model's lead
-  spreads (a geometric spread of 1.5-1.8, backorders, failing channels and office lapses) and the money caps, it
-  doesn't make running out unlikely; the look-back shows what buying would have.
-* **The look-back uses each seed's use as it happened**, which itself depended on the stock-outs of that run; a
-  different buying rule would have changed the use a little.
-* **The decision windows are cadences, not measured delays.** No source gives the time from a result to the next
-  decision in this lab; the windows are built on its meeting and handling cadences (DAL #256, #277, PR 297).
-* **The HPC stream is bounded for the policies' sake.** 122,880 candidates a day are counted, but the policies see 128
-  at a time, 64 new a day. Thermo-Calc's nodes stay licence-limited.
-* **The policies are round 3's**, with round 4's and round 5's engine rules. They don't pace money over two years,
-  don't know that partner slots are scarce, and weren't retuned for a lab that is half built.
-* **Not in the model:** hiring and training; the room's own risks (switchgear can take 40-80 weeks, VCL #343);
-  shipping damage and customs; the partners' downtime beyond their slots; a used unit's shorter life.
-

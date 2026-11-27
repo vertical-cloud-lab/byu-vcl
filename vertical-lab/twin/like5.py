@@ -89,7 +89,8 @@ def four_way(A, T, n_boot=2000) -> list:
     """Each campaign, target and policy pairing: the four stockings, both labs' arms nominal (decision windows,
     the derived atomizer cycle, used equipment allowed)."""
     rows = []
-    combos = [("fast", "fast"), ("bofn3", "bofn3"), ("pkgfn3", "pkgfn3"), ("bofn3", "fast"), ("pkgfn3", "fast")]
+    combos = [("fast", "fast"), ("bofn3", "bofn3"), ("pkgfn3", "pkgfn3"), ("bofn3", "fast"), ("pkgfn3", "fast"),
+              ("fast", "bofn3"), ("fast", "pkgfn3")]
     for camp in CAMPS:
         for tn in ("T1", "T2"):
             tv = T[tn][camp]
@@ -111,6 +112,23 @@ def four_way(A, T, n_boot=2000) -> list:
                 rows.append(dict(camp=camp, target=tn, vert=pv, conv=pc, vert_name=POL[pv][camp],
                                  conv_name=POL[pc][camp], cells=cells, money=money))
     return rows
+
+
+def policy_effect(A, T, n_boot=2000) -> list:
+    """Within one lab and stock level: the heuristic (aluminium) or the funnel (copper) against BOFN or pKGFN, the
+    same seeds (the factor is the cheap policy's median over the optimizer's)."""
+    out = []
+    for lab, plan in (("vertical", "parallel"), ("conventional", "external")):
+        for st in ("reorder", "lean"):
+            F = A.get(gk(lab, plan, "fast", st), {})
+            for pol in ("bofn3", "pkgfn3"):
+                N = A.get(gk(lab, plan, pol, st), {})
+                for camp in CAMPS:
+                    for tn in ("T1", "T2"):
+                        r = factor(F, N, camp, T[tn][camp], n_boot=n_boot)
+                        if r:
+                            out.append(dict(lab=lab, stock=st, policy=pol, camp=camp, target=tn, r=r))
+    return out
 
 
 def stock_effect(A, T, n_boot=2000) -> list:
@@ -579,6 +597,7 @@ def run(n_boot=2000) -> dict:
     T = B2.targets()
     S = dict(targets=T, min_seeds=MIN_SEEDS, n_seeds={k: len(v) for k, v in A.items()},
              four_way=four_way(A, T, n_boot), stock_effect=stock_effect(A, T, n_boot),
+             policy_effect=policy_effect(A, T, n_boot),
              decisions=decision_sensitivity(A, T), atom=atom_sensitivity(A, T), used=used_effect(A, T),
              plans=plans(A, T), economics=economics(A, T), stock=stock_summary(A))
     S["arms"] = {}
@@ -645,6 +664,12 @@ def tables(S) -> str:
     for x in S["stock_effect"]:
         L.append(f"| {x['lab']} | {POL[x['policy']][x['camp']]} | {CAMPS[x['camp']]} {x['target']} | "
                  f"{_f(x['r'])}; {_cnt(x['r'])} |")
+    if S.get("policy_effect"):
+        L += ["", "### What the optimizer buys within a lab (the heuristic or the funnel over BOFN or pKGFN, same seeds)",
+              "", "| Lab | Stock | Optimizer | Target | factor; seeds there (optimizer vs cheap policy) |", "|---|---|---|---|---|"]
+        for x in S["policy_effect"]:
+            L.append(f"| {x['lab']} | {'stocked' if x['stock'] == 'reorder' else 'lean'} | {POL[x['policy']][x['camp']]} | "
+                     f"{CAMPS[x['camp']]} {x['target']} | {_f(x['r'])}; {_cnt(x['r'])} |")
     # decisions
     L += ["", "## Decision time: the four-way factors with no delay, the nominal windows and slow windows (cheap "
           "policies)", "", "| Target | Pairing | no delay | nominal | slow |", "|---|---|---|---|---|"]
