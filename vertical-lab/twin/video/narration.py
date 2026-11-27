@@ -36,7 +36,8 @@ import numpy as np
 
 from . import data as D
 
-SCRIPT = Path(__file__).with_name("narration3.json" if D.ROUND == 3 else "narration.json")   # round 3's own script
+SCRIPT = Path(__file__).with_name("narration3b.json" if D.R3B else "narration3.json" if D.ROUND == 3 else
+                                  "narration.json")         # rounds 3 and 3b have their own scripts
 NDIR = D.VID / "narration"                                  # committed: each line's FLAC, lines.json, check.json
 VOICE = os.environ.get("NARRATION_VOICE", "af_heart")       # Kokoro v1.0's stock voice, best rated in its VOICES.md
 SPEED = float(os.environ.get("NARRATION_SPEED", "0.96"))    # as the long-form's narration
@@ -198,6 +199,10 @@ def marks(rec: dict) -> dict:
     lab3d = [t for t, p in zip(tl.phase_t, C.PHASES) if p[1] == "3d"]
     if lab3d:                                           # the animated lab takes over from day 1's shots
         out["replay.lab3d"] = seg0["replay"] + lab3d[0]
+    if D.R3B:                                           # round 3b's replay: where it changes run, and where the
+        out["replay.switch"] = seg0["replay"] + tl.switch_t     # second run reaches the target it is the median for
+        b = C.S("R").parts[1]
+        out["replay.b_hit"] = seg0["replay"] + float(np.interp(float(b["day"]) * D.HPD, tl.lab_g, tl.vg))
     out["replay.end"] = seg0["replay"] + tl.dur
     return {k: round(float(v), 2) for k, v in out.items()}
 
@@ -371,6 +376,8 @@ def captions_at(name: str, t0: float, t1: float) -> list:
         caps = C.S("figs3").explain_caps()
     elif name == "results" and D.ROUND == 3:
         caps = C.S("figs3").results_caps()
+    elif name == "labs" and D.R3B:
+        caps = C.S("figs3").labs_caps()
     elif name == "figures":
         caps = C.S("figs").EXPLAIN_CAPTIONS
     elif name == "results":
@@ -395,7 +402,8 @@ def plan_table(placed: list, rec: dict) -> str:
 
 SECTION = {"title": "Opening", "simulated": "Opening", "dag": "The function networks", "figures": "Reading the figures",
            "replay": "The campaign year", "results": "Results", "takeaway": "The takeaway", "notes": "Closing notes",
-           "changes": "What changed in round 3", "assume": "The atomizer's assumptions"}
+           "changes": "What changed in round 3", "assume": "The atomizer's assumptions",
+           "labs": "The lab comparison, like for like"}
 WORDS = {"zero": 0, "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9,
          "ten": 10, "eleven": 11, "twelve": 12, "sixteen": 16}
 
@@ -432,7 +440,10 @@ def check_numbers() -> list:
     summaries: the value at the path, in its format, must be the figure in the text (or the number the word names),
     and the figure must be in the text. Also: every digit string in a line must be covered by its nums. Returns the
     rows; raises SystemExit on a mismatch."""
-    from . import numbers3 as N3
+    if D.R3B:                                           # round 3b: its numbers (like3b.json on top of round 3's)
+        from . import numbers3b as N3
+    else:
+        from . import numbers3 as N3
     n = N3.numbers()
     rows, bad = [], []
     for ln in lines():

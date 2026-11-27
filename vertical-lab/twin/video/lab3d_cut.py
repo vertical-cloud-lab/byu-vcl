@@ -232,9 +232,9 @@ def _tag(text: str, col=None, size: float = 16) -> Image.Image:
     return im
 
 
-def _req_words(r) -> tuple:
-    """(text, campaign colour) for a request."""
-    R = C.S("R")
+def _req_words(r, plan=None) -> tuple:
+    """(text, campaign colour) for a request of a plan (its own run's bookings)."""
+    R = getattr(plan, "R", None) or C.S("R")
     des = R.design[r.event] if r.event < len(R.design) else None
     camp = St.CAMP_NAME.get(r.campaign, r.campaign)
     who = f"{camp} #{des}" if des is not None else camp
@@ -269,7 +269,7 @@ def moving_tags(fr: np.ndarray, plan, v: float, view: str, placed: list):
         r = getattr(m, "req", None) if m is not None else None
         if not k or r is None:
             continue
-        words, col = _req_words(r)
+        words, col = _req_words(r, plan)
         if ts["moving"]:
             txt = f"tray {k} {'out to the opening' if m.kind == 'fetch' else 'back to its slot'}"
         else:
@@ -424,6 +424,23 @@ def _phase_span(i: int) -> tuple:
     return a, b
 
 
+LEAD = 8.0                     # round 3b: the second run's plan starts this long before it is on screen, so its lab
+#                                is in the middle of its work at the switch, and "the last 7 days" counts are its own
+
+
+def part_of_phase(i: int) -> int:
+    """Round 3b: which of the replay's two runs phase i shows."""
+    return 1 if (D.R3B and i >= C.SWITCH_PHASE) else 0
+
+
+def part_clock(k: int) -> dict:
+    """Round 3b: the run of part k and the stretch of the replay's clock its plan covers."""
+    tl, R = C.S("tl"), C.S("R")
+    if k == 0:
+        return dict(run=R.runs[0].path.name, clock_v0=round(tl.t_pov, 4), clock_v1=round(tl.switch_t, 4))
+    return dict(run=R.runs[1].path.name, clock_v0=round(tl.switch_t - LEAD, 4), clock_v1=round(tl.dur, 4))
+
+
 def replay_jobs() -> list:
     """The animated cut's 3-D jobs: each phase's camera over its span (from XF before it, for the crossfade in), in
     chunks of CHUNK seconds, and the inset's camera where the phase has one."""
@@ -432,6 +449,8 @@ def replay_jobs() -> list:
     out = []
     for i, ph in enumerate(C.PHASES3D):
         a, b = _phase_span(i)
+        if D.R3B:
+            base.update(part_clock(part_of_phase(i)))
         base["fps"] = L3FPS if i < 2 else L3FPS_FAST
         a0 = max(tl.t_pov, a - (XF if i else 0.0))
         for track, view, x0, x1, size in (("main", ph[2], a0, b, [W, H]),
@@ -453,8 +472,16 @@ def replay_state() -> dict:
     if not _REPLAY:
         tl = C.S("tl")
         kin = LS.load_kin()
-        clock = LS.Clock.from_timeline(tl, round(tl.t_pov, 4), round(tl.dur, 4))
-        _REPLAY.update(kin=kin, clock=clock, plan=LS.plan(C.S("R"), kin, clock), anc={}, tracks={})
+        if D.R3B:                                       # one plan per run, each over its own stretch of the clock
+            plans = []
+            for k, run in enumerate(C.S("R").runs):
+                pc = part_clock(k)
+                plans.append(LS.plan(run, kin, LS.Clock.from_timeline(tl, pc["clock_v0"], pc["clock_v1"])))
+            clock = plans[0].clock
+        else:
+            clock = LS.Clock.from_timeline(tl, round(tl.t_pov, 4), round(tl.dur, 4))
+            plans = [LS.plan(C.S("R"), kin, clock)]
+        _REPLAY.update(kin=kin, clock=clock, plan=plans[0], plans=plans, anc={}, tracks={})
         groups: dict = {}
         for j in replay_jobs():
             groups.setdefault((j["phase"], j["track"]), []).append(j)
@@ -468,7 +495,7 @@ def replay_picture(i: int, t: float, t_h: float, sp: float) -> np.ndarray:
     st = replay_state()
     ph = C.PHASES3D[i]
     view = ph[2]
-    kin, plan = st["kin"], st["plan"]
+    kin, plan = st["kin"], st["plans"][part_of_phase(i)]
     img = st["tracks"][(i, "main")].frame(t)
     if view not in st["anc"]:
         st["anc"][view] = anchors(view, kin)

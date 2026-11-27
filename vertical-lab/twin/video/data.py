@@ -26,12 +26,18 @@ HERE = Path(__file__).resolve().parents[2]          # vertical-lab/
 # TWIN_VIDEO_ROUND=3: round 3's results (out/twin3: runs/*.jsonl, econ/econ_summary.json, events/) and its own cut in
 # out/twin3/video. Round 2's cuts build exactly as before without it. OUT2 stays what both rounds share: the oracle's
 # targets, the instruments' pictures, the lab's stills and kin.json.
-ROUND = int(os.environ.get("TWIN_VIDEO_ROUND", "2"))
+# TWIN_VIDEO_ROUND=3b: round 3's cut again with round 3b's results (out/twin3b: like3b.json, the event logs of every
+# seed): the lab comparison like for like, and the replay on the replay arm's median seeds. It reads round 3's runs and
+# summaries as round 3's cut does (ROUND is 3), and keeps its own cut in out/twin3b/video.
+_RND = os.environ.get("TWIN_VIDEO_ROUND", "2").strip().lower()
+R3B = _RND == "3b"
+ROUND = 3 if R3B else int(_RND)
 OUT2 = HERE / "out" / "twin2"
 OUT3 = HERE / "out" / "twin3"
+OUT3B = HERE / "out" / "twin3b"
 RES = OUT3 if ROUND == 3 else OUT2
-VID = RES / "video"
-EVENTS_DIR = RES / "events"
+VID = (OUT3B if R3B else RES) / "video"
+EVENTS_DIR = (OUT3B if R3B else RES) / "events"
 CAMPAIGNS = ("flaime_al", "onr_cu")
 HPD = 24.0
 HELPERS = ("robot", "operator")                     # round 3 books a step's robot or person as well as its station
@@ -178,11 +184,39 @@ REPLAY_RUNS = [os.environ.get("TWIN_VIDEO_RUN", "vertical_lab_bofn_blend_s0"),  
 # seed gets there on day 221): the replay says so (compose.seed_badge, narration3.json seed1). A re-run of seed 5
 # (near the median in both campaigns) did not reproduce its committed row on this runner, so its log is not used.
 REPLAY_RUN3 = os.environ.get("TWIN_VIDEO_RUN", "r3_vertical_lab_bofn3_s0")
+# round 3b's replay: the replay arm (time-aware BOFN in the stocked vertical lab) on its median seeds, as round 3b's
+# notes name them (like3b.json median_seeds, notes/twin_round3b.md section 3): the median seed for aluminium's halfway
+# target first, then the median seed for copper's best existing alloy. See replay3b_parts() and Replay2.
+REPLAY_ARM3B = "vertical_lab|stocked|bofn3"
+REPLAY_PARTS3B = (("flaime_al", "T2"), ("onr_cu", "T1"))
+
+
+def _load_json(p: Path):
+    """An event log as committed: plain JSON (round 3), or xz-compressed (round 3b, out/twin3b/events/*.json.xz)."""
+    p = Path(p)
+    if p.suffix == ".xz":
+        import lzma
+        with lzma.open(p, "rt") as f:
+            return json.load(f)
+    return json.loads(p.read_text())
+
+
+def replay3b_parts() -> list:
+    """Round 3b's replay, in order: [{campaign, target, seed, day, hit, of, events (path)}], read from
+    out/twin3b/like3b.json median_seeds for the replay arm. Nothing is typed in: if round 3b's medians move, so does
+    the replay."""
+    ms = json.loads((OUT3B / "like3b.json").read_text())["median_seeds"][REPLAY_ARM3B]
+    out = []
+    for camp, tn in REPLAY_PARTS3B:
+        m = ms[camp][tn]
+        out.append(dict(campaign=camp, target=tn, seed=int(m["seed"]), day=m["day"], hit=int(m["hit"]),
+                        of=int(m["of"]), events=HERE / m["events"]))
+    return out
 
 
 def _meta_of(p: Path) -> dict:
     try:
-        m = json.loads(Path(p).read_text()).get(KEYS["meta"], {})
+        m = _load_json(p).get(KEYS["meta"], {})
     except Exception:                                   # noqa: BLE001
         return {}
     cfg = m.get("cfg") if isinstance(m.get("cfg"), dict) else {}
@@ -195,6 +229,8 @@ def _newest_events() -> Path | None:
     env = os.environ.get("TWIN_VIDEO_EVENTS")
     if env:
         return Path(env)
+    if R3B:                                             # the first part's log; replay() gives both (Replay2)
+        return replay3b_parts()[0]["events"]
     if ROUND == 3:
         return EVENTS_DIR / f"{REPLAY_RUN3}.json"
     if not EVENTS_DIR.exists():
@@ -245,7 +281,7 @@ class Replay:
             path = make_placeholder_events("vertical_lab")
             self.placeholder = True
         self.path = Path(path)
-        js = json.loads(self.path.read_text())
+        js = _load_json(self.path)
         K = KEYS
         m0 = js.get(K["meta"], {})
         cfg = m0.get("cfg") if isinstance(m0.get("cfg"), dict) else {}
@@ -314,6 +350,10 @@ class Replay:
             self._designs_t[c] = sorted(first.values())
 
     # -------------------------------------------------------------------------------------------- per-frame queries
+    def part(self, t_h: float = 0.0) -> "Replay":
+        """The run on screen at lab hour t_h: this one (Replay2 holds two)."""
+        return self
+
     def active(self, t_h: float, span_h: float = 0.0, campaign: str | None = None) -> np.ndarray:
         """Indices of events running at any moment of [t_h - span_h, t_h]."""
         m = (self.t0 <= t_h) & (self.t1 > t_h - span_h)
@@ -430,6 +470,50 @@ class Replay:
         return None
 
 
+class Replay2:
+    """Round 3b's replay: one simulated year drawn from two committed runs of the same arm. `a` is on screen until lab
+    hour `switch_h`, `b` from then on. Every per-frame question goes to the run on screen at that hour, so the plots,
+    counters, compositions, lit nodes and stations are always one run's own (b's curves include its year before the
+    switch). Anything else (the stations, the horizon, day 1's alloy, the policy) is a's: both runs are the same arm in
+    the same lab. The cut sets switch_h from its timeline (compose.S("tl")); until then everything is a's."""
+
+    _BY_TIME = ("active", "lit", "busy_stations", "wip", "in_progress", "in_flight", "steps_now")
+    _BY_CAMP_TIME = ("best_at", "spent_at", "curve_upto", "counts")
+
+    def __init__(self, a: Replay, b: Replay, parts: list, switch_h: float | None = None):
+        self.a, self.b, self.parts, self.switch_h = a, b, parts, switch_h
+        self.runs = [a, b]
+
+    def part(self, t_h: float = 0.0) -> Replay:
+        return self.b if (self.switch_h is not None and t_h >= self.switch_h) else self.a
+
+    def part_index(self, t_h: float) -> int:
+        return 1 if (self.switch_h is not None and t_h >= self.switch_h) else 0
+
+    def __getattr__(self, name):
+        if name in ("a", "b", "parts", "switch_h", "runs"):
+            raise AttributeError(name)
+        if name in Replay2._BY_TIME:
+            return lambda t_h, *args, **kw: getattr(self.part(t_h), name)(t_h, *args, **kw)
+        if name in Replay2._BY_CAMP_TIME:
+            return lambda campaign, t_h, *args, **kw: getattr(self.part(t_h), name)(campaign, t_h, *args, **kw)
+        return getattr(self.a, name)
+
+
+_REPLAY2: dict = {}
+
+
+def replay():
+    """The replay the cut shows: one committed run (Replay), or round 3b's two (Replay2). Loaded once a process."""
+    if "r" not in _REPLAY2:
+        if R3B and not os.environ.get("TWIN_VIDEO_EVENTS"):
+            parts = replay3b_parts()
+            _REPLAY2["r"] = Replay2(Replay(parts[0]["events"]), Replay(parts[1]["events"]), parts)
+        else:
+            _REPLAY2["r"] = Replay()
+    return _REPLAY2["r"]
+
+
 # ------------------------------------------------------------------------------------------ round 3's runs
 RUNS3 = {"main": "main.jsonl", "conventional": "conventional.jsonl", "main_more": "main_more.jsonl",
          "cu_money": "cu_money.jsonl", "cu_hidden": "cu_hidden.jsonl", "cu_hidden_net": "cu_hidden_net.jsonl",
@@ -443,6 +527,17 @@ def rows3(exp: str = "main") -> list:
         p = OUT3 / "runs" / RUNS3.get(exp, f"{exp}.jsonl")
         _ROWS[exp] = [json.loads(ln) for ln in p.read_text().splitlines() if ln.strip()] if p.exists() else []
     return _ROWS[exp]
+
+
+_ROWS3B: dict = {}
+
+
+def rows3b(name: str) -> list:
+    """Round 3b's committed runs of one experiment (out/twin3b/runs/<name>.jsonl), one dict a run."""
+    if name not in _ROWS3B:
+        p = OUT3B / "runs" / f"{name}.jsonl"
+        _ROWS3B[name] = [json.loads(ln) for ln in p.read_text().splitlines() if ln.strip()] if p.exists() else []
+    return _ROWS3B[name]
 
 
 def run_row(facility: str, policy: str, seed) -> dict | None:

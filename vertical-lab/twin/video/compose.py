@@ -29,6 +29,7 @@ from . import data as D
 from . import style as St
 
 FPS = 30
+R3B = D.R3B                      # round 3b's re-cut of round 3's video (TWIN_VIDEO_ROUND=3b)
 VID = D.VID
 # the narrated cut (twin/video/narration.py): TWIN_VIDEO_NARRATION=1. It keeps its own files (campaign_narrated.mp4,
 # final_narrated_record.json, youtube_meta_narrated.json, sheet_narrated.png), so the cut without narration and its
@@ -48,7 +49,10 @@ def S(key):
     if key in _S:
         return _S[key]
     if key == "R":
-        v = D.Replay()
+        v = D.replay()
+        if R3B:                                         # two runs: the timeline says where the replay changes run
+            _S["R"] = v
+            v.switch_h = S("tl").switch_h
     elif key == "B":
         v = D.bench([S("R")])
     elif key == "E":
@@ -60,8 +64,11 @@ def S(key):
         from . import figs_anim as F
         F.context(S("R"), S("B"))
         v = F
-    elif key == "figs3":                                # round 3's cards (TWIN_VIDEO_ROUND=3)
-        from . import figs3 as F3
+    elif key == "figs3":                                # round 3's cards (TWIN_VIDEO_ROUND=3), or round 3b's (3b)
+        if R3B:
+            from . import figs3b as F3
+        else:
+            from . import figs3 as F3
         S("figs")
         v = F3
     elif key == "plots":
@@ -120,6 +127,8 @@ ROUND3 = D.ROUND == 3
 if ROUND3:
     TITLE = "A simulated year of alloy discovery in an automated lab"
     SUBTITLE = "Round 3 of a digital-twin benchmark: two campaigns, replayed"
+if R3B:
+    SUBTITLE = "Round 3b of a digital-twin benchmark: the lab comparison, like for like"
 
 
 def title_frame(t: float) -> np.ndarray:
@@ -146,7 +155,10 @@ def title_frame(t: float) -> np.ndarray:
         y += px(52)
     d.text((W / 2, px(800)), "BYU Vertical Cloud Lab, PR 318's lab design. No real experiments: every result is "
            "simulated.", font=St.font(24), fill=St.INK2, anchor="mm")
-    if ROUND3:
+    if R3B:
+        d.text((W / 2, px(846)), "A re-cut of round 3's video with round 3b's results. Both earlier videos and the "
+               "audit are linked in the description.", font=St.font(20), fill=St.INK2, anchor="mm")
+    elif ROUND3:
         d.text((W / 2, px(846)), "Round 2's video and its audit are linked in the description.", font=St.font(20),
                fill=St.INK2, anchor="mm")
     St.paste(fr, im, 0, 0, k)
@@ -246,6 +258,11 @@ PHASES3D = [
 if LAB3D:
     PHASES = [(a, b, c, None, None) for a, b, c, _ in PHASES3D]
 SPEED_SHAPE = [(0.0, 1.0), (0.10, 3.0), (0.28, 10.0), (0.55, 28.0), (1.0, 40.0)]   # relative lab h per video s
+# round 3b: the replay is the replay arm's median seed for aluminium's halfway target until this phase starts, and its
+# median seed for copper's best existing alloy from there (data.Replay2). The phase is the cut to "month by month": by
+# then the first seed's aluminium is past both targets, and the second's copper has not reached its first.
+SWITCH_PHASE = 4
+SWITCH_CARD_S = 7.0               # seconds the card that says so stays up
 POV_SECONDS = {"charge": 7.0, "atomize": 12.0, "powder QC": 5.5, "print": 8.0, "test": 6.0, "section": 6.0,
                "pip": 6.0, "screen": 7.0, "immersion": 7.0, "tensile": 6.0}
 STATION_NAME = {"shop": "machining cell", "doser": "doser + vacuum press (tray B)", "atomizer": "rePowder atomizer",
@@ -326,6 +343,8 @@ class Timeline:
         self.speed_g = shape * k
         self.lab_g = self.l_pov + integ * k
         self.phase_t = [self.t_pov + p[0] * (duration - self.t_pov) for p in PHASES]
+        self.switch_t = self.phase_t[SWITCH_PHASE]         # round 3b: the second run takes over here
+        self.switch_h = float(np.interp(self.switch_t, self.vg, self.lab_g))
         self.grid_st = {4: self._grid_stations(4), 9: self._grid_stations(9)}
 
     # ------------------------------------------------------------------------------------------------ day 1
@@ -434,6 +453,10 @@ class Timeline:
                  4: "Month by month, to the end of the year"}
         if LAB3D:
             names[0] = "Day by day: the lab up close, moved by the event log"
+        if R3B:                                             # which seed each stretch is
+            sa, sb = (q["seed"] for q in self.R.parts)
+            out = [(0.0, f"The first alloy, start to finish (seed {sa})")]
+            names = {k: v + f" (seed {sa if k < SWITCH_PHASE else sb})" for k, v in names.items()}
         for i, tt in enumerate(self.phase_t):
             if i in names:
                 out.append((tt, names[i]))
@@ -581,7 +604,7 @@ GRID_BOX = (16, 150, 1264, 700)      # the cameras' wall: clear of the clock, co
 
 
 def _grid_frame(t: float, t_h: float, sp: float, n: int, t_mode: float) -> np.ndarray:
-    R = S("R")
+    R = S("R").part(t_h)
     tl = S("tl")
     sts = tl.grid_st[n]
     cols = 2 if n == 4 else 3
@@ -724,7 +747,10 @@ def replay_frame(t: float) -> np.ndarray:
                                                           "waiting (results, budget or the calendar)"))
     St.paste(fr, im, px(1446), px(186), k_right)
     St.paste(fr, S("plots").draw(t_h), px(1296), px(640), k_right)
-    if NARRATE and ROUND3:                         # DAL's audit (PR 293): which seed this is, all the way through
+    if NARRATE and R3B:                            # round 3b: which seed is on screen, for each of the two
+        b = seed_badge3b(t_h)
+        St.paste(fr, b, px(866), px(1076) - b.height)
+    elif NARRATE and ROUND3:                       # DAL's audit (PR 293): which seed this is, all the way through
         b = seed_badge()
         St.paste(fr, b, px(866), px(1076) - b.height)  # under the moves panel (866, 900, 420 x 104)
     elif NARRATE:                                  # DAL's audit (PR 293 §4): say which seed this is, all the way
@@ -733,6 +759,14 @@ def replay_frame(t: float) -> np.ndarray:
     lit = {k: dag.intensity(v) for k, v in R.lit(t_h, span).items()}
     x, y, _, _ = dag.DOCK
     St.paste(fr, dag.overlay(lit, t=t), px(x), px(y))
+    if R3B:                                        # a tag as a campaign passes a target; the card at the change of seed
+        for im_, k in target_tags(t):
+            St.paste(fr, im_, px(1296), px(632) - im_.height, k * k_right)
+        k = min(St.ramp(t, tl.switch_t - 0.3, tl.switch_t + 0.4), 1.0 - St.ramp(t, tl.switch_t + SWITCH_CARD_S - 0.6,
+                                                                              tl.switch_t + SWITCH_CARD_S))
+        if k > 0.003:
+            c = switch_card()
+            St.paste(fr, c, px(SWITCH_CARD_XY[0]), px(SWITCH_CARD_XY[1]), k)
     return tag_placeholder(fr)
 
 
@@ -805,6 +839,132 @@ def seed_words3() -> str:
     return out
 
 
+# ------------------------------------------------------------------------------ round 3b: two seeds, each named
+TARGET_WORDS = {"T1": "the best existing alloy on this synthetic benchmark", "T2": "the halfway target"}
+SWITCH_CARD_XY = (300, 300)       # the card's top left: over the lab's picture, clear of the clock and the panels
+
+
+def replay3b() -> dict:
+    """Round 3b's replay as the numbers have it (numbers3b.numbers()["replay"]): the two parts with their seeds, what
+    each is the median seed for and on which day, and the day of the clock at the switch."""
+    from . import numbers3b as N3B
+    return N3B.numbers()["replay"]
+
+
+def seed_words3b(i: int) -> str:
+    """The badge while part i of round 3b's replay is on screen: which seed it is and what it is the median seed for
+    (like3b.json median_seeds), and which seed the rest of the year is."""
+    rep_ = replay3b()
+    q, o = rep_["parts"][i], rep_["parts"][1 - i]
+    camp = {"flaime_al": "aluminium", "onr_cu": "copper"}
+    pol = {"bofn3": "time-aware BOFN", "pkgfn3": "time-aware pKGFN"}.get(rep_["policy"], rep_["policy"])
+    what = "halfway target" if q["target"] == "T2" else "best existing alloy"
+    out = (f"Seed {q['seed']} of {rep_['n']}, {pol}, the stocked automated lab. The median seed for "
+           f"{camp[q['campaign']]}'s {what}: day {q['day']:.0f}. ")
+    out += (f"From day {rep_['switch_day']} the replay is seed {o['seed']}." if i == 0 else
+            f"Until day {rep_['switch_day']} the replay was seed {o['seed']}.")
+    return out
+
+
+def seed_badge3b(t_h: float) -> Image.Image:
+    i = S("R").part_index(t_h)
+    if ("3b", i) not in _BADGE:
+        f = St.font(13.5)
+        lines = St.wrap(seed_words3b(i), f, px(404))[:4]
+        w, h = px(420), px(12) + px(19) * len(lines)
+        im, d = St.layer(w, h)
+        d.rounded_rectangle((0, 0, w - 1, h - 1), radius=px(8), fill=St.SURF + (242,))
+        for j, ln in enumerate(lines):
+            d.text((px(10), px(6) + j * px(19)), ln, font=f, fill=St.INK2)
+        _BADGE[("3b", i)] = im
+    return _BADGE[("3b", i)]
+
+
+TAG_S = 8.0                       # seconds a target tag stays above the plots
+
+
+def target_events() -> list:
+    """Round 3b's replay: [(seconds into the replay, campaign, words, small words)] for each target a campaign passes
+    while its run is on screen (the first run before the switch, the second after), from each run's own days."""
+    if "events" not in _BADGE:
+        tl, rep_ = S("tl"), replay3b()
+        camp = {"flaime_al": "FLAIME (aluminium)", "onr_cu": "ONR (copper)"}
+        out = []
+        for i, q in enumerate(rep_["parts"]):
+            for c in D.CAMPAIGNS:
+                d1, d2 = q["days"][c]["T1"], q["days"][c]["T2"]
+                hits = q["arm_hits"][c]
+                ev = []
+                if d1 is not None and d2 is not None and abs(d1 - d2) < 0.5:
+                    ev.append((d1, "past both targets", "T2"))
+                else:
+                    if d1 is not None:
+                        ev.append((d1, "past the best existing alloy on this synthetic benchmark", "T1"))
+                    if d2 is not None:
+                        ev.append((d2, "past the halfway target", "T2"))
+                for day, words, tn in ev:
+                    on_screen = (day * D.HPD < rep_["switch_h"]) if i == 0 else (day * D.HPD >= rep_["switch_h"])
+                    if not on_screen:
+                        continue
+                    med = (q["campaign"], q["target"]) == (c, tn)
+                    small = (f"seed {q['seed']}: the median seed for this target ({hits[tn]} of {q['of']} seeds reach "
+                             "it)" if med else f"seed {q['seed']}; {hits[tn]} of {q['of']} seeds reach it")
+                    out.append((float(np.interp(day * D.HPD, tl.lab_g, tl.vg)), c,
+                                f"{camp[c]}: {words}, day {day:.0f}", small))
+        _BADGE["events"] = sorted(out)
+    return _BADGE["events"]
+
+
+def target_tags(t: float) -> list:
+    """[(image, opacity)] of the tags on screen at t seconds into the replay."""
+    out = []
+    for v, c, words, small in target_events():
+        k = min(St.ramp(t, v, v + 0.5), 1.0 - St.ramp(t, v + TAG_S - 0.6, v + TAG_S))
+        if k <= 0.003:
+            continue
+        key = ("tag", v, c)
+        if key not in _BADGE:
+            w = px(600)
+            f1, f2 = St.font(17, bold=True), St.font(14)
+            lines = St.wrap(words, f1, w - px(52))[:2]
+            h = px(14) + px(24) * len(lines) + px(24)
+            im, d = St.layer(w, h)
+            d.rounded_rectangle((0, 0, w - 1, h - 1), radius=px(10), fill=St.SURF + (244,), outline=St.CAMP[c] + (255,),
+                                width=px(2))
+            d.rounded_rectangle((px(14), px(13), px(28), px(27)), radius=px(3), fill=St.CAMP[c] + (255,))
+            for j, ln in enumerate(lines):
+                d.text((px(38), px(8) + j * px(24)), ln, font=f1, fill=St.INK)
+            d.text((px(38), px(10) + px(24) * len(lines)), small, font=f2, fill=St.INK2)
+            _BADGE[key] = im
+        out.append((_BADGE[key], k))
+    return out[-1:]
+
+
+def switch_card() -> Image.Image:
+    """The card at the switch: the second seed, what it is the median seed for, and where its own year stands."""
+    if "card" not in _BADGE:
+        rep_ = replay3b()
+        a, b = rep_["parts"]
+        camp = {"flaime_al": "aluminium", "onr_cu": "copper"}
+        w, h = px(940), px(250)
+        im, d = St.layer(w, h)
+        d.rounded_rectangle((0, 0, w - 1, h - 1), radius=px(16), fill=St.SURF + (244,), outline=St.RULE + (255,),
+                            width=px(2))
+        d.text((px(32), px(22)), f"From here: seed {b['seed']} of {rep_['n']}", font=St.font(40, bold=True),
+               fill=St.INK)
+        d.text((px(32), px(80)), f"the median seed for {camp[b['campaign']]}'s best existing alloy on this synthetic "
+               f"benchmark: day {b['day']:.0f}", font=St.font(22, bold=True), fill=St.INK)
+        y = px(124)
+        for ln in St.wrap(f"The same simulated lab and policy (time-aware BOFN), another seed's year. Days 1 to "
+                          f"{rep_['switch_day']} were seed {a['seed']}, the median seed for {camp[a['campaign']]}'s "
+                          f"halfway target (day {a['day']:.0f}). The plots now draw seed {b['seed']}'s own year so "
+                          f"far: {rep_['b_so_far']}.", St.font(19), w - px(64))[:4]:
+            d.text((px(32), y), ln, font=St.font(19), fill=St.INK2)
+            y += px(27)
+        _BADGE["card"] = im
+    return _BADGE["card"]
+
+
 def _seed_badge3() -> Image.Image:
     f = St.font(13.5)
     lines = St.wrap(seed_words3(), f, px(404))[:4]
@@ -850,6 +1010,10 @@ def results_frame(t: float) -> np.ndarray:
 
 def takeaway_frame(t: float) -> np.ndarray:
     return tag_placeholder(np.array((S("figs3") if ROUND3 else S("figs")).takeaway_frame(t), copy=True))
+
+
+def labs_frame(t: float) -> np.ndarray:                # round 3b: the lab comparison, like for like
+    return tag_placeholder(np.array(S("figs3").labs_frame(t), copy=True))
 
 
 def changes_frame(t: float) -> np.ndarray:             # round 3: what changed in the twin
@@ -916,13 +1080,27 @@ NOTES_R3 = [
 ]
 
 
+# round 3b's notes: round 3's, with what round 3b adds to "Assumed" (its two stock arms) and where its results are
+NOTES_R3B = [
+    NOTES_R3[0],
+    ("Assumed", ["The atomizer's runs a week, failure rate and yield: design targets, not the lab's record",
+                 "Station times, fees, calendars and capacities (twin/facility.py)",
+                 "The stock: about a month's metal, bought on day 0 (in round 3b's runs, for either lab)",
+                 "Round 3's choices: the spending plan, the atomizer's weekly split, robot and operator times",
+                 "Outside facilities' booking and turnaround times",
+                 "Each assumption is marked in notes/twin_round3.md and twin_round3b.md"]),
+    NOTES_R3[2],
+]
+
+
 def notes_frame(t: float) -> np.ndarray:
     fr = St.blank()
     im, d = St.layer()
     d.text((px(80), px(70)), "A synthetic benchmark", font=St.font(48, bold=True), fill=St.INK)
     d.text((px(80), px(138)), "What is real, what is assumed and what is simulated in this video",
            font=St.font(26), fill=St.INK2)
-    for i, (head, items) in enumerate(NOTES_R3 if ROUND3 else (NOTES_NARRATED if NARRATE else NOTES)):
+    for i, (head, items) in enumerate(NOTES_R3B if R3B else NOTES_R3 if ROUND3 else
+                                      (NOTES_NARRATED if NARRATE else NOTES)):
         x = px(80) + i * px(600)
         k = St.ramp(t, 0.4 + 0.5 * i, 1.2 + 0.5 * i)
         d.text((x, px(230)), head, font=St.font(32, bold=True), fill=St.mix(St.BG, St.INK, k))
@@ -946,6 +1124,16 @@ def _meta_lines() -> list:
     R = S("R")
     commit = subprocess.run(["git", "rev-parse", "--short=7", "HEAD"], capture_output=True, text=True,
                             cwd=D.HERE).stdout.strip()
+    if R3B:
+        a, b = R.runs
+        return [f"Replayed runs: {a.path.name} to day {replay3b()['switch_day']}, then {b.path.name} (seeds {a.seed} "
+                f"and {b.seed} of 12, policy {a.policy})",
+                "Results: out/twin3b/like3b.json and tables.md (the lab comparison), out/twin3/runs and fig/numbers.json; "
+                "the cards' numbers: out/twin3b/video/numbers.json",
+                f"Code: github.com/vertical-cloud-lab/byu-vcl, vertical-lab/twin/video (commit {commit}); "
+                "write-up in notes/twin_round3b.md, twin_round3.md and twin_video.md",
+                "Renders: PR 318's chapters, reused. Narration: a synthetic voice, Kokoro v1.0 (open weights, run "
+                "locally), script in twin/video/narration3b.json"]
     if ROUND3:
         return [f"Replayed run: {R.path.name} (seed {R.seed} of 12, policy {R.policy}); {len(R.ev):,} station "
                 f"bookings over {R.horizon_days:.0f} days",
@@ -970,6 +1158,23 @@ def segments() -> list:
     """[(name, duration, frame function, chapter title)] in order."""
     dag = S("dag")
     F = S("figs")
+    if R3B:
+        F3 = S("figs3")
+        return [
+            ("title", 8.0, title_frame, "Title"),
+            ("simulated", SIM_DUR, simulated_frame, "What is simulated: the lab and two search spaces"),
+            ("changes", float(F3.CHANGES_DURATION), changes_frame, "Rounds 3 and 3b: what changed in the twin"),
+            ("dag", float(dag.DURATION), dag.intro_frame, "The function networks"),
+            ("figures", float(F3.EXPLAIN_DURATION), figures_frame, "The figures we track, the two targets, and "
+                                                                 "like for like"),
+            ("assume", float(F3.ASSUME_DURATION), assume_frame, "The atomizer: design targets, not demonstrated "
+                                                               "rates"),
+            ("replay", REPLAY_DUR, replay_frame, "The campaign year, replayed"),
+            ("results", float(F3.RESULTS_DURATION), results_frame, "Results: the policies in the automated lab"),
+            ("labs", float(F3.LABS_DURATION), labs_frame, "The lab comparison, like for like"),
+            ("takeaway", float(F3.TAKEAWAY_DURATION), takeaway_frame, "The takeaway"),
+            ("notes", NOTES_DURATION, notes_frame, "Notes: real, assumed, simulated"),
+        ]
     if ROUND3:
         F3 = S("figs3")
         return [
@@ -1150,7 +1355,8 @@ def build(kind: str):
             pass
     info = dict(kind=kind, file=str(dst.relative_to(D.HERE)), seconds=_duration(dst), wall_s=round(time.time() -
                 t_start, 1), python_cpu_s=round(cpu, 1), preset=preset, workers=workers, placeholder=placeholder(),
-                replay=S("R").path.name, built_utc=time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime()))
+                replay=([r.path.name for r in S("R").runs] if R3B else S("R").path.name),
+                built_utc=time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime()))
     rec.update(info)
     (VID / f"{kind}{NAR if kind in ('final', 'final3d') else ''}_record.json").write_text(json.dumps(rec, indent=1) +
                                                                                        "\n")
@@ -1160,7 +1366,10 @@ def build(kind: str):
         sheet(dst, VID / f"sheet{NAR}.png", rec)
     if kind == "final3d":
         from . import meta
-        if ROUND3:
+        if R3B:
+            from . import meta3b
+            meta3b.write(rec)
+        elif ROUND3:
             from . import meta3
             meta3.write(rec)
         else:

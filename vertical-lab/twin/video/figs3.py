@@ -33,7 +33,7 @@ from . import style as St
 from .style import px
 
 W, H = St.W, St.H
-SCRIPT = D.HERE / "twin" / "video" / "narration3.json"
+SCRIPT = D.HERE / "twin" / "video" / ("narration3b.json" if D.R3B else "narration3.json")
 CHANGES_DURATION = 22.0
 EXPLAIN_DURATION = 68.0
 ASSUME_DURATION = 24.5
@@ -61,6 +61,9 @@ def cue(line_id: str, default: float = 0.0) -> float:
 
 
 def _n() -> dict:
+    if D.R3B:                                           # round 3b's re-cut: round 3's numbers with like3b.json's on top
+        from . import numbers3b as N3B
+        return N3B.numbers()
     return N3.numbers()
 
 
@@ -337,7 +340,8 @@ def assume_frame(t: float) -> np.ndarray:
     used = rep.get("atomizer_runs_week")
     rows = [
         ("Runs a week", f"{tw['slots_week']} start slots",
-         f"about {used:.0f} used in the replayed year" if used else "",
+         (f"about {used:.0f} used in each replayed seed's year" if D.R3B else
+          f"about {used:.0f} used in the replayed year") if used else "",
          f"{lab['runs_week']:.1f}", f"{lab['runs']} runs in {lab['weeks']} weeks"),
         ("Runs that fail", f"{100 * tw['p_fail_base']:.0f} %",
          "the base chance; more for a cold melt",
@@ -457,8 +461,8 @@ def _res_curves(d, lay, t, ctx):
             ax.frame(d, fs=15, nx=4, ny=4)
             for fac, c, dashed in ((ctx.conv, St.BASE, True), (ctx.auto, col, False)):
                 cv = ctx.B["groups"].get((fac, p), {}).get(camp, [])
-                if not cv or k < 2:
-                    continue
+                if not cv or k < 2 or (D.R3B and dashed):   # round 3b: the policies only; the labs meet like for
+                    continue                                # like in their own chapter, not stocked against lean here
                 key = ("res3_mean", fac, p, camp)
                 cache = ctx.__dict__.setdefault("_cache", {})
                 if key not in cache:
@@ -477,6 +481,15 @@ def _res_curves(d, lay, t, ctx):
         else:
             ax.line(d, pts, c, px(3), dashed=dashed)
     lx, ly = px(80), px(880)
+    if D.R3B:
+        F.legend_line(d, lx, ly, "solid2", None, "automated lab, stocked on day 0: mean ± SE of 12 one-year runs "
+                      "(round 3's main benchmark, rerun under a pinned set-up in round 3b)", fs=19, w=44)
+        F.legend_line(d, lx, ly + px(38), "dotted", St.TARGET, "the two targets: the best existing alloy on this "
+                      "synthetic benchmark (lower) and the halfway target; right of each title: the final best new "
+                      "alloy, mean ± SE", fs=19, w=44)
+        d.text((lx, ly + px(64)), "The lab against a conventional lab comes after these three cards, like for like.",
+               font=St.font(19), fill=St.INK2)
+        return
     x = F.legend_line(d, lx, ly, "solid2", None, "automated lab, mean ± SE of 12 one-year runs", fs=19, w=44)
     x = F.legend_line(d, x, ly, "dashed", St.BASE, "conventional lab, the first year of 12 three-year runs "
                       "(BOFN and pKGFN were not run there)", fs=19, w=44)

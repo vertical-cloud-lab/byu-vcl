@@ -384,7 +384,7 @@ class Birdseye:
 
     def _blend_now(self, t_h: float, span_h: float) -> bool:
         """Is a blended-powder DED screen (what == 'blend_ded') running on the DED machine over [t_h - span_h, t_h]?"""
-        R = self.R
+        R = self.R.part(t_h)                              # the run on screen (round 3b's replay holds two)
         return any(R.what[i] == "blend_ded" and R.station[i] == "utah_mxlab" for i in R.active(t_h, span_h))
 
     def _label(self, ak: str, g: dict) -> str:
