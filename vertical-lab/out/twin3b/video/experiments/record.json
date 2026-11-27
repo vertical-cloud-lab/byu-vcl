@@ -1,0 +1,825 @@
+{
+ "segments": [
+  {
+   "name": "intro",
+   "title": "Two campaigns, one lab: the function networks",
+   "start_s": 0.0,
+   "seconds": 27.0
+  },
+  {
+   "name": "composition",
+   "title": "Composition: one design in its search space",
+   "start_s": 27.0,
+   "seconds": 28.5
+  },
+  {
+   "name": "scheil",
+   "title": "CALPHAD: Scheil solidification",
+   "start_s": 55.5,
+   "seconds": 33.5
+  },
+  {
+   "name": "am",
+   "title": "The AM module: one laser track",
+   "start_s": 89.0,
+   "seconds": 28.0
+  },
+  {
+   "name": "atomize",
+   "title": "Atomizing: the alloy becomes powder",
+   "start_s": 117.0,
+   "seconds": 24.0
+  },
+  {
+   "name": "print",
+   "title": "Printing: nine cubes, nine settings",
+   "start_s": 141.0,
+   "seconds": 27.0
+  },
+  {
+   "name": "sem",
+   "title": "SEM: one beam, four signals",
+   "start_s": 168.0,
+   "seconds": 38.0
+  },
+  {
+   "name": "mech",
+   "title": "Heat treatment, then the tensile test",
+   "start_s": 206.0,
+   "seconds": 31.0
+  },
+  {
+   "name": "corrosion",
+   "title": "Copper: one hour in the screen, thirty days in seawater",
+   "start_s": 237.0,
+   "seconds": 34.0
+  },
+  {
+   "name": "outro",
+   "title": "Both campaigns, one lab",
+   "start_s": 271.0,
+   "seconds": 17.5
+  }
+ ],
+ "total_s": 288.5,
+ "file": "experiments_preview.mp4",
+ "seconds": 288.5,
+ "fps": 30,
+ "size": [
+  1920,
+  1080
+ ],
+ "commit": "b0c027d",
+ "sha256": "4ba1cb9b740ad725f66c38ef761394adadca8599160139338415fb4f5ee6c802",
+ "bytes": 44044867,
+ "marks": {
+  "intro.start": 0.0,
+  "intro.lanes": 1.0,
+  "intro.pulse": 9.8,
+  "intro.legend": 15.0,
+  "composition.start": 27.0,
+  "composition.al": 27.5,
+  "composition.al.light": 29.5,
+  "composition.al.space": 36.0,
+  "composition.al.ring": 37.4,
+  "composition.cu": 43.5,
+  "composition.cu.light": 45.1,
+  "composition.cu.space": 48.2,
+  "composition.cu.ring": 49.6,
+  "scheil.start": 55.5,
+  "scheil.cool": 56.4,
+  "scheil.phases": 65.1,
+  "scheil.truth": 71.5,
+  "scheil.indicators": 76.4,
+  "scheil.range": 77.8,
+  "scheil.crack": 79.2,
+  "scheil.net": 82.3,
+  "am.start": 89.0,
+  "am.track": 90.2,
+  "am.section": 92.0,
+  "am.history": 93.9,
+  "am.takes": 103.6,
+  "am.not_tc": 109.5,
+  "atomize.start": 117.0,
+  "atomize.melt": 117.5,
+  "atomize.charge": 118.3,
+  "atomize.pour": 122.4,
+  "atomize.psd": 123.0,
+  "atomize.marks": 129.9,
+  "atomize.jars": 130.2,
+  "atomize.yield": 132.7,
+  "atomize.net": 137.2,
+  "print.start": 141.0,
+  "print.build": 142.0,
+  "print.readings": 150.6,
+  "print.bars": 160.0,
+  "print.net": 162.6,
+  "sem.start": 168.0,
+  "sem.raster": 170.0,
+  "sem.se": 170.4,
+  "sem.bse": 174.4,
+  "sem.eds": 178.4,
+  "sem.ebsd": 182.4,
+  "sem.done": 186.0,
+  "sem.read": 186.6,
+  "sem.net": 193.2,
+  "sem.next": 201.5,
+  "mech.start": 206.0,
+  "mech.furnace": 206.8,
+  "mech.pull": 215.8,
+  "mech.fracture": 225.6,
+  "mech.marks": 228.8,
+  "mech.net": 232.8,
+  "corrosion.start": 237.0,
+  "corrosion.screen": 237.6,
+  "corrosion.ocp": 237.8,
+  "corrosion.scans": 245.4,
+  "corrosion.screen_out": 250.3,
+  "corrosion.immersion": 253.6,
+  "corrosion.day30": 264.0,
+  "corrosion.net": 266.6,
+  "corrosion.day1": 255.11,
+  "corrosion.day3": 256.3,
+  "corrosion.day7": 257.97,
+  "corrosion.day14": 260.17,
+  "outro.start": 271.0,
+  "outro.both": 271.0,
+  "outro.collapse": 279.0,
+  "outro.icons": 286.0
+ },
+ "captions": [
+  [
+   0.6,
+   9.6,
+   "Each campaign is a network of models and measurements. Each node is a step the lab runs."
+  ],
+  [
+   9.8,
+   14.6,
+   "Each step's results feed the next. BOFN models every step, not just the final score."
+  ],
+  [
+   15.0,
+   26.6,
+   "Next: every step as the experiment and the data it makes, for one alloy of each campaign."
+  ],
+  [
+   27.4,
+   35.8,
+   "FLAIME: aluminium alloys for laser powder bed fusion. A design is aluminium plus up to 8 of 15 alloying elements."
+  ],
+  [
+   36.0,
+   42.7,
+   "This is design 299 of the replayed run, seed 0: the alloy that took it past the halfway target, on day 96."
+  ],
+  [
+   43.4,
+   48.0,
+   "ONR: copper alloys designed as powders for blown-powder DED. A design is copper plus up to 6 of 8 elements."
+  ],
+  [
+   48.2,
+   55.2,
+   "This is design 74 of the replayed run, seed 5: the alloy that took it past the best existing alloy on this synthetic benchmark, on day 221."
+  ],
+  [
+   56.1,
+   63.9,
+   "CALPHAD runs on the BYU HPC: pycalphad on open databases, Thermo-Calc as an interface. This curve is the open-database node's, the one the optimizer sees."
+  ],
+  [
+   64.1,
+   75.0,
+   "The same alloy three ways: the node's fast model, a full Scheil run on an open database, and the twin's hidden truth. They differ, as a simulator differs from a real alloy."
+  ],
+  [
+   75.3,
+   82.1,
+   "From its curve the node reads the liquidus, the freezing range, a hot-cracking index and a growth-restriction factor."
+  ],
+  [
+   82.3,
+   88.7,
+   "The network's print node takes two of them, the liquidus and the cracking index. The atomizer's melt is set from the same liquidus."
+  ],
+  [
+   89.5,
+   93.6,
+   "One laser track over the powder bed, shown 10,000 times slower. The colours are the temperature field of the twin's melt-pool model for this alloy."
+  ],
+  [
+   93.9,
+   102.9,
+   "A point 2 layers down melts again as the track passes over it, then cools through the liquidus at 2.0 million kelvin a second."
+  ],
+  [
+   103.6,
+   109.2,
+   "The twin takes five numbers from this model: the pool's width and depth, a lack-of-fusion index, a keyhole index and the cooling rate."
+  ],
+  [
+   109.5,
+   116.6,
+   "This is the twin's stand-in for Thermo-Calc's AM Module, not Thermo-Calc output. No run in round 3b bought this node."
+  ],
+  [
+   117.6,
+   122.9,
+   "The lab makes its own powder: it doses and presses the charge, atomizes it and checks the powder."
+  ],
+  [
+   123.2,
+   132.4,
+   "Laser diffraction sizes the powder. This distribution is the twin's simulated measurement of this alloy's lot."
+  ],
+  [
+   132.7,
+   140.6,
+   "One of three runs failed here. 13 % of the charge ends up in the cut the printer takes: the atomize node's output."
+  ],
+  [
+   141.6,
+   150.3,
+   "Each powder is printed at several laser settings; every build is checked for density and cracks."
+  ],
+  [
+   150.6,
+   159.8,
+   "Each cube is weighed in air and in water, then sectioned and imaged. Its density and its crack reading go on the map at its setting."
+  ],
+  [
+   160.0,
+   167.6,
+   "The tensile blanks are printed at the middle setting. One build gives the network nine rows: settings in, density and cracks out."
+  ],
+  [
+   169.0,
+   174.4,
+   "One electron beam scans the sample line by line. Each detector catches a different signal from the spot it is on."
+  ],
+  [
+   174.6,
+   186.2,
+   "Secondary electrons show the surface, backscattered electrons the composition, X-rays the elements, diffraction the crystal's orientation."
+  ],
+  [
+   186.6,
+   192.8,
+   "Every image here is simulated by the twin for this alloy. The read-outs are the twin's own analysis of those images."
+  ],
+  [
+   193.2,
+   201.2,
+   "The network uses three of the four: the powder's satellites, the section's pores and cracks, EBSD's grains."
+  ],
+  [
+   201.5,
+   205.7,
+   "Sections show pores, cracks and grains; PIP reads a stress-strain curve from one indent."
+  ],
+  [
+   206.6,
+   214.9,
+   "Bars are cut by wire EDM, then heat treated. The twin books the furnace for three hours and models the strength it leaves, not the profile: this one is illustrative."
+  ],
+  [
+   215.8,
+   228.4,
+   "Then three bars are pulled to fracture. Each curve is the twin's simulated load record for this alloy."
+  ],
+  [
+   228.8,
+   236.6,
+   "Yield strength and elongation feed the tensile node. The utility scores them against the reference alloys, and counts the mineral burden."
+  ],
+  [
+   237.6,
+   245.0,
+   "A one-hour corrosion screen ranks the deposits before bars are made and tested."
+  ],
+  [
+   245.3,
+   252.2,
+   "Two quick scans follow the hour at rest. The network takes the early rate and the breakdown potential."
+  ],
+  [
+   253.7,
+   264.0,
+   "Then 30 days in seawater, read on days 1, 3, 7 and 14 on the way, and ICP-MS of what dissolved."
+  ],
+  [
+   264.3,
+   270.6,
+   "The 30-day rate and the selective attack are the immersion node's outputs. A policy may stop a coupon early."
+  ],
+  [
+   271.0,
+   275.0,
+   "Both campaigns run at once in one lab, sharing its atomizer, SEM, outside facilities, market and calendar."
+  ],
+  [
+   275.0,
+   279.0,
+   "A node lights up while the lab is running that step."
+  ],
+  [
+   279.0,
+   288.5,
+   "From here on each node is an icon, lit while its step runs."
+  ]
+ ],
+ "follow": {
+  "flaime_al": {
+   "run": "r3_vertical_lab_bofn3_s0",
+   "seed": 0,
+   "design": 299,
+   "day": 95.9417,
+   "target": "T2",
+   "composition": {
+    "Mn": 3.332,
+    "Cr": 0.771,
+    "Zr": 0.199,
+    "Ti": 0.314,
+    "Ni": 0.067,
+    "Li": 0.286,
+    "Er": 0.24,
+    "Sn": 0.065,
+    "Al": 94.726
+   },
+   "u_true": 0.7473,
+   "ys": 360.9337,
+   "el": 11.2034,
+   "policy": "bofn3",
+   "hit": 11,
+   "of": 12
+  },
+  "onr_cu": {
+   "run": "r3_vertical_lab_bofn3_s5",
+   "seed": 5,
+   "design": 74,
+   "day": 221.2996,
+   "target": "T1",
+   "composition": {
+    "Ni": 2.681,
+    "Al": 7.386,
+    "Ti": 0.258,
+    "Cu": 89.675
+   },
+   "u_true": 0.5708,
+   "ys": 277.861,
+   "el": 27.9851,
+   "policy": "bofn3",
+   "hit": 8,
+   "of": 12
+  }
+ },
+ "sources": {
+  "intro": [
+   [
+    "sim",
+    "the two networks: twin/video/data.py NETWORKS (the campaigns' steps)"
+   ]
+  ],
+  "composition": [
+   [
+    "sim",
+    "the design and the run's other designs: the committed event log of seed 0 (r3_vertical_lab_bofn3_s0)"
+   ],
+   [
+    "sim",
+    "the search space, its bounds and how many elements a design may have: twin/spaces.py (the proposals')"
+   ],
+   [
+    "illus",
+    "the map: a projection (two principal components of composition scaled by the bounds)"
+   ],
+   [
+    "sim",
+    "the design and the run's other designs: the committed event log of seed 5 (r3_vertical_lab_bofn3_s5)"
+   ]
+  ],
+  "scheil": [
+   [
+    "sim",
+    "the open-database node's curve and its four numbers: twin/thermo.py AlSolidification('open') and AlTruth.sim_open, for the alloy followed"
+   ],
+   [
+    "calc",
+    "pycalphad + scheil on MatCalc mc_al (open database), for the elements it has (out/twin3b/video/experiments/scheil_open.json)"
+   ],
+   [
+    "sim",
+    "the hidden truth's curve and primary intermetallics: AlSolidification('truth')"
+   ],
+   [
+    "illus",
+    "the picture of the melt: grains and particles drawn so that the solid share equals the curve's fraction solid"
+   ]
+  ],
+  "am": [
+   [
+    "sim",
+    "temperature field, melt-pool outline, thermal history, width, depth, indices, cooling rate: the twin's melt-pool model (Rosenthal's point source, twin/physics.py and truth_al.AlTruth.melt_pool) for the alloy followed, at the middle setting of the print grid"
+   ],
+   [
+    "illus",
+    "the powder bed, the scanned tracks and their ripples, the powder layer and the bead in the section"
+   ]
+  ],
+  "atomize": [
+   [
+    "sim",
+    "size distribution: twin/instruments/psd.py (laser diffraction, three aliquots, full fidelity) on the alloy followed; the dashed line is the lot's true distribution"
+   ],
+   [
+    "sim",
+    "mass balance and in-cut yield: twin/instruments/atomize_yield.py (full fidelity)"
+   ],
+   [
+    "real",
+    "melt, pour and sieved powder: the lab's own atomizer, 630 bronze, 27 October 2026 (run k7m2q9, DAL #219): another alloy"
+   ],
+   [
+    "render",
+    "the crucible and the plate with its droplets: PR 318's render (out/mp4/alloy_atomize.mp4)"
+   ],
+   [
+    "illus",
+    "the bars filling in as the powder arrives (laser diffraction measures an aliquot at once)"
+   ]
+  ],
+  "print": [
+   [
+    "sim",
+    "nine cubes' density and crack readings: truth_al.AlTruth.build at exp_data.GRID_P x GRID_V for the alloy followed, each measured as Campaign._soundness does (instrument models at full fidelity); the regime labels from the twin's lack-of-fusion and keyhole indices"
+   ],
+   [
+    "illus",
+    "the plate with nine cubes and the tensile blanks: drawn without powder, not to scale"
+   ],
+   [
+    "render",
+    "the printer: PR 318's render (alloy_print.mp4), which prints four tensile bars from Al-10Si powder, not this build"
+   ]
+  ],
+  "sem": [
+   [
+    "sim",
+    "secondary-electron image of the powder lot and its particle analysis: twin/instruments/sem.py measure_powder, full fidelity, the alloy followed"
+   ],
+   [
+    "sim",
+    "backscattered-electron image of the polished section and its pore and crack analysis: twin/instruments/sem.py measure_section, full fidelity"
+   ],
+   [
+    "sim",
+    "EDS spectrum of the powder lot and its standardless quantification: twin/instruments/eds.py, full fidelity; the counts shown part-way are the final spectrum thinned binomially"
+   ],
+   [
+    "sim",
+    "EBSD orientation map, Kikuchi pattern and grain analysis: twin/instruments/ebsd.py, full fidelity"
+   ],
+   [
+    "illus",
+    "element maps: drawn from the simulated powder image's particles and the designed wt%, with counting noise; the twin simulates a spectrum, not maps"
+   ],
+   [
+    "illus",
+    "the microscope: a schematic, not to scale, drawn as one scan"
+   ],
+   [
+    "render",
+    "the lab's desktop SEM: PR 318's render (out/mp4/alloy_characterize.mp4), cropped"
+   ]
+  ],
+  "mech": [
+   [
+    "sim",
+    "stress-strain curves, yield, UTS, elongation: twin/instruments/tensile.py (full fidelity, three bars) on the alloy followed"
+   ],
+   [
+    "illus",
+    "furnace profile: the lab model's T6 (PR 318), not modelled by the twin"
+   ],
+   [
+    "illus",
+    "the specimen: extension follows the record, drawn twice life size"
+   ],
+   [
+    "render",
+    "furnace and load frame: PR 318's renders (out/mp4/alloy_workflow.mp4)"
+   ]
+  ],
+  "corrosion": [
+   [
+    "sim",
+    "open-circuit potential, linear and cyclic polarization, early rate, breakdown potential: twin/instruments/corrosion.py measure_screen (full fidelity) on the alloy followed"
+   ],
+   [
+    "sim",
+    "interim readings (twin/campaign.py _interim) and the day-30 result (measure_immersion, full fidelity): mass loss, 30-day rate, selective attack, ICP-MS"
+   ],
+   [
+    "sim",
+    "the deposit: this alloy's larger deposit made again at example settings (micro.CU_PROC), not the replayed run's own"
+   ],
+   [
+    "illus",
+    "the cell and the beaker; the coupon dulls with the twin's film time constant"
+   ],
+   [
+    "render",
+    "the CubXL dosing seawater: PR 318's render (vlm_workflow)"
+   ]
+  ],
+  "outro": [
+   [
+    "sim",
+    "dag_anim.Dag: the cut's own closing of the chapter, unchanged"
+   ]
+  ]
+ },
+ "narration": {
+  "voice": "Kokoro v1.0 af_heart, speed 0.96",
+  "lines": 29,
+  "spoken_s": 207.4,
+  "placed": [
+   {
+    "id": "dag1",
+    "seg": "intro",
+    "t": 0.6,
+    "end": 13.93,
+    "text": "Each campaign is a function network: a chain of steps, where each step's results feed the next. BOFN, Bayesian optimization over function networks, models every step, not just the final score.",
+    "warn": []
+   },
+   {
+    "id": "exp1",
+    "seg": "intro",
+    "t": 15.4,
+    "end": 25.92,
+    "text": "Here is each step itself, for one alloy from each campaign: the experiment, and the data it makes. Everything is simulated by the twin, unless a label says otherwise.",
+    "warn": []
+   },
+   {
+    "id": "comp1",
+    "seg": "composition",
+    "t": 27.8,
+    "end": 36.08,
+    "text": "The aluminium alloy is design number 299: aluminium with eight additions, manganese and chromium the largest.",
+    "warn": []
+   },
+   {
+    "id": "comp2",
+    "seg": "composition",
+    "t": 36.9,
+    "end": 42.7,
+    "text": "On this map of the search space, it is one of 435 designs the run simulated.",
+    "warn": []
+   },
+   {
+    "id": "comp3",
+    "seg": "composition",
+    "t": 44.1,
+    "end": 50.59,
+    "text": "The copper alloy is design number 74: an aluminium bronze, with a little nickel and titanium.",
+    "warn": []
+   },
+   {
+    "id": "sch1",
+    "seg": "scheil",
+    "t": 56.8,
+    "end": 65.63,
+    "text": "CALPHAD comes first. As the melt cools, a Scheil model follows how much of it has frozen. This curve is the one the optimizer sees.",
+    "warn": []
+   },
+   {
+    "id": "sch2",
+    "seg": "scheil",
+    "t": 67.0,
+    "end": 75.81,
+    "text": "A full Scheil run on an open database adds the phases as they form. The twin's hidden truth differs again, as a real alloy would.",
+    "warn": []
+   },
+   {
+    "id": "sch3",
+    "seg": "scheil",
+    "t": 76.7,
+    "end": 81.44,
+    "text": "From its curve, the network takes two numbers: the liquidus, and a hot-cracking index.",
+    "warn": []
+   },
+   {
+    "id": "sch4",
+    "seg": "scheil",
+    "t": 82.8,
+    "end": 88.52,
+    "text": "Every run in round three b used this open node. The Thermo-Calc stand-in was never bought.",
+    "warn": []
+   },
+   {
+    "id": "am1",
+    "seg": "am",
+    "t": 90.7,
+    "end": 99.68,
+    "text": "The twin stands in for the AM module with a moving point source of heat. It gives the melt pool's width and depth, and how fast the metal cools.",
+    "warn": []
+   },
+   {
+    "id": "am2",
+    "seg": "am",
+    "t": 107.1,
+    "end": 115.23,
+    "text": "This is not Thermo-Calc output, and no run bought this node. But the same model decides the porosity of every simulated build.",
+    "warn": []
+   },
+   {
+    "id": "dag2",
+    "seg": "atomize",
+    "t": 117.6,
+    "end": 123.25,
+    "text": "For aluminium, the lab makes each alloy's powder itself, then prints it and checks every build.",
+    "warn": []
+   },
+   {
+    "id": "atm1",
+    "seg": "atomize",
+    "t": 123.8,
+    "end": 131.65,
+    "text": "This footage is real: our own atomizer, running a bronze. The size distribution beside it is the twin's, for this alloy.",
+    "warn": []
+   },
+   {
+    "id": "atm2",
+    "seg": "atomize",
+    "t": 133.0,
+    "end": 138.82,
+    "text": "Here, one of three runs failed, and 13 percent of the charge ended up in the printer's size range.",
+    "warn": []
+   },
+   {
+    "id": "prt1",
+    "seg": "print",
+    "t": 142.5,
+    "end": 146.53,
+    "text": "One build is nine cubes, each at its own laser power and speed.",
+    "warn": []
+   },
+   {
+    "id": "prt2",
+    "seg": "print",
+    "t": 152.8,
+    "end": 160.16,
+    "text": "Each cube's density and crack reading goes on the map. Too little energy leaves lack of fusion. Too much makes keyhole pores.",
+    "warn": []
+   },
+   {
+    "id": "prt3",
+    "seg": "print",
+    "t": 162.9,
+    "end": 166.36,
+    "text": "One build gives the network's print node nine data points.",
+    "warn": []
+   },
+   {
+    "id": "sem1",
+    "seg": "sem",
+    "t": 168.5,
+    "end": 175.9,
+    "text": "In the SEM, one electron beam scans the sample line by line, and four detectors each catch a different signal.",
+    "warn": []
+   },
+   {
+    "id": "sem2",
+    "seg": "sem",
+    "t": 176.5,
+    "end": 188.08,
+    "text": "Secondary electrons show the powder's surface. Backscattered electrons show the section's pores and cracks. X-rays give the elements, and diffraction gives each grain's orientation.",
+    "warn": []
+   },
+   {
+    "id": "sem3",
+    "seg": "sem",
+    "t": 188.7,
+    "end": 192.09,
+    "text": "Every image here is simulated by the twin, for this alloy.",
+    "warn": []
+   },
+   {
+    "id": "sem4",
+    "seg": "sem",
+    "t": 193.8,
+    "end": 203.12,
+    "text": "The network uses three of them: satellites on the powder, the section's pores and cracks, and the grain size. EDS only checks the composition.",
+    "warn": []
+   },
+   {
+    "id": "mec1",
+    "seg": "mech",
+    "t": 207.1,
+    "end": 214.8,
+    "text": "Bars are heat treated, then pulled. The furnace profile here is only illustrative: the twin models the strength it leaves.",
+    "warn": []
+   },
+   {
+    "id": "mec2",
+    "seg": "mech",
+    "t": 216.4,
+    "end": 220.65,
+    "text": "The curve is the twin's simulated record of the test, up to fracture.",
+    "warn": []
+   },
+   {
+    "id": "mec3",
+    "seg": "mech",
+    "t": 228.3,
+    "end": 236.47,
+    "text": "Yield strength, 349 megapascals, and elongation, 10.1 percent, are the two numbers the network keeps.",
+    "warn": []
+   },
+   {
+    "id": "dag3",
+    "seg": "corrosion",
+    "t": 237.6,
+    "end": 245.56,
+    "text": "For copper, a one-hour corrosion screen ranks the DED deposits, and thirty days in seawater come before a utility is known.",
+    "warn": []
+   },
+   {
+    "id": "cor1",
+    "seg": "corrosion",
+    "t": 246.1,
+    "end": 251.77,
+    "text": "After an hour at rest, two quick scans give an early corrosion rate and a breakdown potential.",
+    "warn": []
+   },
+   {
+    "id": "cor2",
+    "seg": "corrosion",
+    "t": 254.0,
+    "end": 261.3,
+    "text": "In immersion, the coupon is weighed on days 1, 3, 7 and 14. After any reading, the policy may stop it.",
+    "warn": []
+   },
+   {
+    "id": "cor3",
+    "seg": "corrosion",
+    "t": 264.5,
+    "end": 269.47,
+    "text": "On day 30 it is cleaned and weighed: 16.6 micrometres a year.",
+    "warn": []
+   },
+   {
+    "id": "dag4",
+    "seg": "outro",
+    "t": 279.4,
+    "end": 285.29,
+    "text": "Both campaigns share one lab. From here on, each step is an icon that lights up while it runs.",
+    "warn": []
+   }
+  ]
+ },
+ "chapters": [
+  [
+   0.0,
+   "Two campaigns, one lab: the function networks"
+  ],
+  [
+   27.0,
+   "Composition: one design in its search space"
+  ],
+  [
+   55.5,
+   "CALPHAD: Scheil solidification"
+  ],
+  [
+   89.0,
+   "The AM module: one laser track"
+  ],
+  [
+   117.0,
+   "Atomizing: the alloy becomes powder"
+  ],
+  [
+   141.0,
+   "Printing: nine cubes, nine settings"
+  ],
+  [
+   168.0,
+   "SEM: one beam, four signals"
+  ],
+  [
+   206.0,
+   "Heat treatment, then the tensile test"
+  ],
+  [
+   237.0,
+   "Copper: one hour in the screen, thirty days in seawater"
+  ],
+  [
+   271.0,
+   "Both campaigns, one lab"
+  ]
+ ],
+ "build_minutes": 0.3
+}

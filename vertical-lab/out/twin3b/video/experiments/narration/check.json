@@ -1,0 +1,737 @@
+{
+ "voice": "Kokoro v1.0 af_heart, speed 0.96",
+ "recognizers": [
+  "faster-whisper base.en",
+  "faster-whisper small.en"
+ ],
+ "word_error_rate": {
+  "base.en": 0.0241,
+  "small.en": 0.0172
+ },
+ "words": 580,
+ "lines": [
+  {
+   "id": "dag1",
+   "text": "Each campaign is a function network: a chain of steps, where each step's results feed the next. BOFN, Bayesian optimization over function networks, models every step, not just the final score.",
+   "spoken": "Each campaign is a function network: a chain of steps, where each step's results feed the next. B O F N, Bayesian optimization over function networks, models every step, not just the final score.",
+   "seconds": 13.33,
+   "base.en": {
+    "heard": "Each campaign is a function network. A chain of steps, where each step results feed the next. B-O-F-N, Bayesian optimization over function networks, models every step, not just the final score.",
+    "wer": 0.032,
+    "diffs": [
+     [
+      "substitute",
+      "steps",
+      "step"
+     ]
+    ],
+    "unsure": [
+     [
+      "results",
+      0.42
+     ],
+     [
+      "B",
+      0.46
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "Each campaign is a function network, a chain of steps where each step's results feed the next. BOFN, Bayesian Optimization Over Function Networks, models every step, not just the final score.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "Over",
+      0.46
+     ]
+    ]
+   }
+  },
+  {
+   "id": "exp1",
+   "text": "Here is each step itself, for one alloy from each campaign: the experiment, and the data it makes. Everything is simulated by the twin, unless a label says otherwise.",
+   "spoken": "Here is each step itself, for one alloy from each campaign: the experiment, and the data it makes. Everything is simulated by the twin, unless a label says otherwise.",
+   "seconds": 10.52,
+   "base.en": {
+    "heard": "Here is each step itself, for one alloy from each campaign, the experiment, and the data it makes. Everything is simulated by the twin, unless a label says otherwise.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "Here is each step itself, for one alloy from each campaign, the experiment, and the data it makes. Everything is simulated by the twin, unless a label says otherwise.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "comp1",
+   "text": "The aluminium alloy is design number 299: aluminium with eight additions, manganese and chromium the largest.",
+   "spoken": "The aluminum alloy is design number 299: aluminum with eight additions, manganese and chromium the largest.",
+   "seconds": 8.28,
+   "base.en": {
+    "heard": "The aluminum alloy is design number 299, aluminum with eight additions, manganese and chromium the largest.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "The aluminum alloy is design number 299. Aluminum with eight additions, manganese and chromium the largest.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "comp2",
+   "text": "On this map of the search space, it is one of 435 designs the run simulated.",
+   "spoken": "On this map of the search space, it is one of 435 designs the run simulated.",
+   "seconds": 5.8,
+   "base.en": {
+    "heard": "On this map of the search space, it is one of 435 designs the run simulated.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "On this map of the search space, it is one of 435 designs the run simulated.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "comp3",
+   "text": "The copper alloy is design number 74: an aluminium bronze, with a little nickel and titanium.",
+   "spoken": "The copper alloy is design number 74: an aluminum bronze, with a little nickel and titanium.",
+   "seconds": 6.49,
+   "base.en": {
+    "heard": "The copper alloy is design number 74, an aluminum bronze with a little nickel and titanium.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "The copper alloy is design number 74, an aluminum bronze with a little nickel and titanium.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "sch1",
+   "text": "CALPHAD comes first. As the melt cools, a Scheil model follows how much of it has frozen. This curve is the one the optimizer sees.",
+   "spoken": "CALPHAD comes first. As the melt cools, a Scheil model follows how much of it has frozen. This curve is the one the optimizer sees.",
+   "seconds": 8.83,
+   "base.en": {
+    "heard": "CalFAD comes first. As the melt cools, a Shile model follows how much of it has frozen. This curve is the one the optimizer sees.",
+    "wer": 0.08,
+    "diffs": [
+     [
+      "substitute",
+      "calphad",
+      "calfad"
+     ],
+     [
+      "substitute",
+      "scheil",
+      "shile"
+     ]
+    ],
+    "unsure": [
+     [
+      "Shile",
+      0.38
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "CALFAD comes first. As the melt cools, a Shyle model follows how much of it has frozen. This curve is the one the optimizer sees.",
+    "wer": 0.08,
+    "diffs": [
+     [
+      "substitute",
+      "calphad",
+      "calfad"
+     ],
+     [
+      "substitute",
+      "scheil",
+      "shyle"
+     ]
+    ],
+    "unsure": [
+     [
+      "Shyle",
+      0.36
+     ]
+    ]
+   }
+  },
+  {
+   "id": "sch2",
+   "text": "A full Scheil run on an open database adds the phases as they form. The twin's hidden truth differs again, as a real alloy would.",
+   "spoken": "A full Scheil run on an open database adds the phases as they form. The twin's hidden truth differs again, as a real alloy would.",
+   "seconds": 8.81,
+   "base.en": {
+    "heard": "A full Shiloh run on an open database adds the phases as they form. The twins' hidden truth differs again as a real alloy would.",
+    "wer": 0.04,
+    "diffs": [
+     [
+      "substitute",
+      "scheil",
+      "shiloh"
+     ]
+    ],
+    "unsure": [
+     [
+      "Shiloh",
+      0.31
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "A full shile run on an open database adds the phases as they form. The twins' hidden truth differs again as a real alloy would.",
+    "wer": 0.04,
+    "diffs": [
+     [
+      "substitute",
+      "scheil",
+      "shile"
+     ]
+    ],
+    "unsure": [
+     [
+      "shile",
+      0.28
+     ]
+    ]
+   }
+  },
+  {
+   "id": "sch3",
+   "text": "From its curve, the network takes two numbers: the liquidus, and a hot-cracking index.",
+   "spoken": "From its curve, the network takes two numbers: the liquidus, and a hot-cracking index.",
+   "seconds": 4.74,
+   "base.en": {
+    "heard": "From its curve, the network takes two numbers, the liquidus and a hot cracking index.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "From its curve, the network takes two numbers, the liquidus and a hot cracking index.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "sch4",
+   "text": "Every run in round three b used this open node. The Thermo-Calc stand-in was never bought.",
+   "spoken": "Every run in round three b used this open node. The Thermo-Calc stand-in was never bought.",
+   "seconds": 5.72,
+   "base.en": {
+    "heard": "Every run in round 3B used this open node. The thermocalk stand-in was never bought.",
+    "wer": 0.111,
+    "diffs": [
+     [
+      "substitute",
+      "thermo",
+      "thermocalk"
+     ],
+     [
+      "delete",
+      "calc",
+      ""
+     ]
+    ],
+    "unsure": [
+     [
+      "thermocalk",
+      0.45
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "Every run in round 3B used this open node. The thermocalc stand-in was never bought.",
+    "wer": 0.111,
+    "diffs": [
+     [
+      "substitute",
+      "thermo",
+      "thermocalc"
+     ],
+     [
+      "delete",
+      "calc",
+      ""
+     ]
+    ],
+    "unsure": []
+   }
+  },
+  {
+   "id": "am1",
+   "text": "The twin stands in for the AM module with a moving point source of heat. It gives the melt pool's width and depth, and how fast the metal cools.",
+   "spoken": "The twin stands in for the AM module with a moving point source of heat. It gives the melt pool's width and depth, and how fast the metal cools.",
+   "seconds": 8.98,
+   "base.en": {
+    "heard": "The twin stands in for the AM module with a moving point source of heat. It gives the melt pools width and depth and how fast the metal cools.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "The TWIN stands in for the AM module with a moving point source of heat. It gives the melt pools width and depth and how fast the metal cools.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "am2",
+   "text": "This is not Thermo-Calc output, and no run bought this node. But the same model decides the porosity of every simulated build.",
+   "spoken": "This is not Thermo-Calc output, and no run bought this node. But the same model decides the porosity of every simulated build.",
+   "seconds": 8.13,
+   "base.en": {
+    "heard": "This is not Thermicalk output, and no run bought this node. But the same model decides the porosity of every simulated build.",
+    "wer": 0.087,
+    "diffs": [
+     [
+      "substitute",
+      "thermo",
+      "thermicalk"
+     ],
+     [
+      "delete",
+      "calc",
+      ""
+     ]
+    ],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "This is not thermocalc output, and no run bought this node. But the same model decides the porosity of every simulated build.",
+    "wer": 0.087,
+    "diffs": [
+     [
+      "substitute",
+      "thermo",
+      "thermocalc"
+     ],
+     [
+      "delete",
+      "calc",
+      ""
+     ]
+    ],
+    "unsure": []
+   }
+  },
+  {
+   "id": "dag2",
+   "text": "For aluminium, the lab makes each alloy's powder itself, then prints it and checks every build.",
+   "spoken": "For aluminum, the lab makes each alloy's powder itself, then prints it and checks every build.",
+   "seconds": 5.65,
+   "base.en": {
+    "heard": "For aluminum, the lab makes each alloys powder itself, then prints it and checks every build.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "For aluminum, the lab makes each alloy's powder itself, then prints it and checks every build.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "atm1",
+   "text": "This footage is real: our own atomizer, running a bronze. The size distribution beside it is the twin's, for this alloy.",
+   "spoken": "This footage is real: our own atomizer, running a bronze. The size distribution beside it is the twin's, for this alloy.",
+   "seconds": 7.85,
+   "base.en": {
+    "heard": "This footage is real, our own atomizer running a bronze. The size distribution beside it is the twins for this alloy.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "This footage is real, our own atomizer running a bronze. The size distribution beside it is the twins for this alloy.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "atm2",
+   "text": "Here, one of three runs failed, and 13 percent of the charge ended up in the printer's size range.",
+   "spoken": "Here, one of three runs failed, and 13 percent of the charge ended up in the printer's size range.",
+   "seconds": 5.82,
+   "base.en": {
+    "heard": "Here, one of three runs failed, and 13% of the charge ended up in the printer's size range.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "Here, one of three runs failed and 13% of the charge ended up in the printer's size range.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "and",
+      0.26
+     ]
+    ]
+   }
+  },
+  {
+   "id": "prt1",
+   "text": "One build is nine cubes, each at its own laser power and speed.",
+   "spoken": "One build is nine cubes, each at its own laser power and speed.",
+   "seconds": 4.03,
+   "base.en": {
+    "heard": "One build is nine cubes, each at its own laser power and speed.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "One build is nine cubes, each at its own laser power and speed.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "prt2",
+   "text": "Each cube's density and crack reading goes on the map. Too little energy leaves lack of fusion. Too much makes keyhole pores.",
+   "spoken": "Each cube's density and crack reading goes on the map. Too little energy leaves lack of fusion. Too much makes keyhole pores.",
+   "seconds": 7.36,
+   "base.en": {
+    "heard": "Each cube's density and crack reading goes on the map. Two little energy leaves lack a fusion. Too much makes keyhole pores.",
+    "wer": 0.091,
+    "diffs": [
+     [
+      "substitute",
+      "too",
+      "two"
+     ],
+     [
+      "substitute",
+      "of",
+      "a"
+     ]
+    ],
+    "unsure": [
+     [
+      "a",
+      0.41
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "Each cube's density and crack reading goes on the map. Too little energy leaves lack a fusion. Too much makes keyhole pores.",
+    "wer": 0.045,
+    "diffs": [
+     [
+      "substitute",
+      "of",
+      "a"
+     ]
+    ],
+    "unsure": []
+   }
+  },
+  {
+   "id": "prt3",
+   "text": "One build gives the network's print node nine data points.",
+   "spoken": "One build gives the network's print node nine data points.",
+   "seconds": 3.46,
+   "base.en": {
+    "heard": "One build gives the network's print node nine data points.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "build",
+      0.42
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "One build gives the network's print node nine data points.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "sem1",
+   "text": "In the SEM, one electron beam scans the sample line by line, and four detectors each catch a different signal.",
+   "spoken": "In the S E M, one electron beam scans the sample line by line, and four detectors each catch a different signal.",
+   "seconds": 7.4,
+   "base.en": {
+    "heard": "In the SEM, one electron beam scans the sample line by line, and four detectors each catch a different signal. No.",
+    "wer": 0.05,
+    "diffs": [
+     [
+      "insert",
+      "",
+      "no"
+     ]
+    ],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "In the SEM, one electron beam scans the sample line by line, and four detectors each catch a different signal.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "sem2",
+   "text": "Secondary electrons show the powder's surface. Backscattered electrons show the section's pores and cracks. X-rays give the elements, and diffraction gives each grain's orientation.",
+   "spoken": "Secondary electrons show the powder's surface. Backscattered electrons show the section's pores and cracks. X-rays give the elements, and diffraction gives each grain's orientation.",
+   "seconds": 11.58,
+   "base.en": {
+    "heard": "Secondary electrons show the powder's surface. Backscattered electrons show the sections pores and cracks. X-rays give the elements, and diffraction gives each grain's orientation.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "Secondary electrons show the powder's surface. Backscattered electrons show the section's pores and cracks. X-rays give the elements, and diffraction gives each grain's orientation.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "sem3",
+   "text": "Every image here is simulated by the twin, for this alloy.",
+   "spoken": "Every image here is simulated by the twin, for this alloy.",
+   "seconds": 3.39,
+   "base.en": {
+    "heard": "Every image here is simulated by the twin for this alloy.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "Every image here is simulated by the twin, for this alloy.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "sem4",
+   "text": "The network uses three of them: satellites on the powder, the section's pores and cracks, and the grain size. EDS only checks the composition.",
+   "spoken": "The network uses three of them: satellites on the powder, the section's pores and cracks, and the grain size. E D S only checks the composition.",
+   "seconds": 9.32,
+   "base.en": {
+    "heard": "The network uses three of them – satellites on the powder, the sections pours and cracks, and the grain size. EDS only checks the composition.",
+    "wer": 0.042,
+    "diffs": [
+     [
+      "substitute",
+      "pores",
+      "pours"
+     ]
+    ],
+    "unsure": [
+     [
+      "–",
+      0.17
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "The network uses three of them. Satellites on the powder, the sections pours and cracks, and the grain size. EDS only checks the composition.",
+    "wer": 0.042,
+    "diffs": [
+     [
+      "substitute",
+      "pores",
+      "pours"
+     ]
+    ],
+    "unsure": []
+   }
+  },
+  {
+   "id": "mec1",
+   "text": "Bars are heat treated, then pulled. The furnace profile here is only illustrative: the twin models the strength it leaves.",
+   "spoken": "Bars are heat treated, then pulled. The furnace profile here is only illustrative: the twin models the strength it leaves.",
+   "seconds": 7.7,
+   "base.en": {
+    "heard": "Bars are heat treated, then pulled. The furnace profile here is only illustrative. The twin models the strength that leaves.",
+    "wer": 0.05,
+    "diffs": [
+     [
+      "substitute",
+      "it",
+      "that"
+     ]
+    ],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "Bars are heat treated, then pulled. The furnace profile here is only illustrative. The twin models the strength it leaves.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "mec2",
+   "text": "The curve is the twin's simulated record of the test, up to fracture.",
+   "spoken": "The curve is the twin's simulated record of the test, up to fracture.",
+   "seconds": 4.25,
+   "base.en": {
+    "heard": "The curve is the twin's simulated record of the test, up to fracture.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "The curve is the twin's simulated record of the test, up to fracture.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "mec3",
+   "text": "Yield strength, 349 megapascals, and elongation, 10.1 percent, are the two numbers the network keeps.",
+   "spoken": "Yield strength, 349 megapascals, and elongation, 10.1 percent, are the two numbers the network keeps.",
+   "seconds": 8.17,
+   "base.en": {
+    "heard": "Yield strength, 349 megapascals, and elongation, 10.1% are the two numbers the network keeps.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "%",
+      0.45
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "Yield strength, 349 MPa, and elongation, 10.1%, are the two numbers the network keeps.",
+    "wer": 0.048,
+    "diffs": [
+     [
+      "substitute",
+      "megapascals",
+      "mpa"
+     ]
+    ],
+    "unsure": []
+   }
+  },
+  {
+   "id": "dag3",
+   "text": "For copper, a one-hour corrosion screen ranks the DED deposits, and thirty days in seawater come before a utility is known.",
+   "spoken": "For copper, a one-hour corrosion screen ranks the D E D deposits, and thirty days in seawater come before a utility is known.",
+   "seconds": 7.96,
+   "base.en": {
+    "heard": "For copper, a one-hour corrosion screen ranks the DED deposits, and 30 days in seawater come before utility is known.",
+    "wer": 0.045,
+    "diffs": [
+     [
+      "delete",
+      "a",
+      ""
+     ]
+    ],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "For copper, a one-hour corrosion screen ranks the DED deposits, and 30 days in seawater come before a utility is known.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "cor1",
+   "text": "After an hour at rest, two quick scans give an early corrosion rate and a breakdown potential.",
+   "spoken": "After an hour at rest, two quick scans give an early corrosion rate and a breakdown potential.",
+   "seconds": 5.67,
+   "base.en": {
+    "heard": "After an hour at rest, two quick scans give an early corrosion rate and a breakdown potential.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "After an hour at rest, two quick scans give an early corrosion rate and a breakdown potential.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "cor2",
+   "text": "In immersion, the coupon is weighed on days 1, 3, 7 and 14. After any reading, the policy may stop it.",
+   "spoken": "In immersion, the coupon is weighed on days 1, 3, 7 and 14. After any reading, the policy may stop it.",
+   "seconds": 7.3,
+   "base.en": {
+    "heard": "In immersion, the coupon is weighed on days 1, 3, 7, and 14. After any reading, the policy may stop it.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "In immersion, the coupon is weighed on days 1, 3, 7, and 14. After any reading, the policy may stop it.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "cor3",
+   "text": "On day 30 it is cleaned and weighed: 16.6 micrometres a year.",
+   "spoken": "On day 30 it is cleaned and weighed: 16.6 micrometers a year.",
+   "seconds": 4.97,
+   "base.en": {
+    "heard": "On day 30, it is cleaned and weighed. 16.6 micrometers a year.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "On day 30, it is cleaned and weighed, 16.6 micrometers a year.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "dag4",
+   "text": "Both campaigns share one lab. From here on, each step is an icon that lights up while it runs.",
+   "spoken": "Both campaigns share one lab. From here on, each step is an icon that lights up while it runs.",
+   "seconds": 5.89,
+   "base.en": {
+    "heard": "Both campaigns share one lab. From here on, each step is an icon that lights up while it runs.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "Both campaigns share one lab. From here on, each step is an icon that lights up while it runs.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,389 @@
+{
+ "follow": {
+  "flaime_al": {
+   "run": "r3_vertical_lab_bofn3_s0",
+   "seed": 0,
+   "design": 299,
+   "day": 95.9417,
+   "target": "T2",
+   "composition": {
+    "Mn": 3.332,
+    "Cr": 0.771,
+    "Zr": 0.199,
+    "Ti": 0.314,
+    "Ni": 0.067,
+    "Li": 0.286,
+    "Er": 0.24,
+    "Sn": 0.065,
+    "Al": 94.726
+   },
+   "u_true": 0.7473,
+   "ys": 360.9337,
+   "el": 11.2034,
+   "policy": "bofn3",
+   "hit": 11,
+   "of": 12
+  },
+  "onr_cu": {
+   "run": "r3_vertical_lab_bofn3_s5",
+   "seed": 5,
+   "design": 74,
+   "day": 221.2996,
+   "target": "T1",
+   "composition": {
+    "Ni": 2.681,
+    "Al": 7.386,
+    "Ti": 0.258,
+    "Cu": 89.675
+   },
+   "u_true": 0.5708,
+   "ys": 277.861,
+   "el": 27.9851,
+   "policy": "bofn3",
+   "hit": 8,
+   "of": 12
+  }
+ },
+ "run": {
+  "flaime_al": {
+   "designs": 435,
+   "made": 226,
+   "built": 102,
+   "demonstrated": 13,
+   "elements": 15,
+   "in_design": 8
+  },
+  "onr_cu": {
+   "designs": 99,
+   "made": 17,
+   "built": 43,
+   "demonstrated": 10,
+   "elements": 8,
+   "in_design": 3
+  }
+ },
+ "al": {
+  "open": {
+   "liquidus_C": 670.2,
+   "kou_K": 35.7,
+   "range_K": 36.8,
+   "Q_K": 114.3,
+   "missing": [
+    "Er"
+   ]
+  },
+  "truth": {
+   "liquidus_C": 731.1,
+   "alpha_liquidus_C": 661.6,
+   "kou_K": 61.6,
+   "range_K": 40.5,
+   "Q_K": 38.1,
+   "primary": {
+    "Cr": {
+     "phase": "Al13Cr2",
+     "T_C": 686.2
+    },
+    "Mn": {
+     "phase": "Al6Mn",
+     "T_C": 666.4
+    },
+    "Ti": {
+     "phase": "Al3Ti",
+     "T_C": 731.1
+    },
+    "Zr": {
+     "phase": "Al3Zr",
+     "T_C": 724.8
+    }
+   }
+  },
+  "scheil_open": {
+   "first_solid_C": 789.3,
+   "end_C": 647.5,
+   "phases": [
+    "AL3NI",
+    "AL3TI_H",
+    "AL3ZR",
+    "AL4CR",
+    "AL6MN",
+    "FCC_A1"
+   ],
+   "left_out": {
+    "Li": 0.286,
+    "Er": 0.24,
+    "Sn": 0.065
+   },
+   "converged": false,
+   "seconds": 12.4
+  },
+  "am": {
+   "P_W": 250.0,
+   "v_mm_s": 1000.0,
+   "h_um": 110,
+   "t_um": 30,
+   "T0_C": 150,
+   "W_um": 189.0,
+   "D_um": 99.0,
+   "kh": 0.65,
+   "lof": 0.43,
+   "cool_K_s": 2177437.0,
+   "cool_MK_s": 2.2,
+   "probe_um": 60.0,
+   "probe_layers": 2.0,
+   "probe_cool_MK_s": 2.0,
+   "molten_ms": 0.22,
+   "iso_depth_um": 95.0,
+   "Ev_J_mm3": 76.0,
+   "boil_C": 2458.0,
+   "probe_peak_C": 1200.0,
+   "liquidus_C": 662.0,
+   "node": {
+    "W_um": 156.0,
+    "D_um": 73.0,
+    "lof": 0.48,
+    "kh": 0.76,
+    "cool_K_s": 2658005.0
+   }
+  },
+  "powder": {
+   "runs": 3,
+   "failed": 1,
+   "superheat_K": 150,
+   "pour_mbar": 200,
+   "d10_um": 47.0,
+   "d50_um": 89.0,
+   "d90_um": 173.0,
+   "cut_frac_pct": 24.0,
+   "cut": [
+    20.0,
+    63.0
+   ],
+   "charge_g": 900.0,
+   "collected_g": 542.0,
+   "cut_g": 115.0,
+   "yield_pct": 60.0,
+   "cut_yield_pct": 13.0,
+   "sphericity": 0.98,
+   "satellite_pct": 2.9,
+   "particles": 243,
+   "oxygen_ppm": 727.0,
+   "T_melt_C": 881.0,
+   "amplitude": 0.8,
+   "charge_per_run_g": 300.0
+  },
+  "eds": {
+   "comp": {
+    "Mn": 3.28,
+    "Cr": 0.8,
+    "Ti": 0.28
+   },
+   "live_s": 60.0,
+   "below_detection": [
+    "Er",
+    "Ni",
+    "Sn",
+    "Zr"
+   ],
+   "invisible": [
+    "Li"
+   ]
+  },
+  "cubes": [
+   {
+    "P_W": 150.0,
+    "v_mm_s": 600.0,
+    "density_pct": 99.15,
+    "true_pct": 99.4,
+    "crack": 0.04,
+    "kh": 0.5,
+    "lof": 0.59
+   },
+   {
+    "P_W": 150.0,
+    "v_mm_s": 1000.0,
+    "density_pct": 98.66,
+    "true_pct": 97.46,
+    "crack": 0.033,
+    "kh": 0.39,
+    "lof": 0.83
+   },
+   {
+    "P_W": 150.0,
+    "v_mm_s": 1700.0,
+    "density_pct": 88.7,
+    "true_pct": 89.29,
+    "crack": 0.0,
+    "kh": 0.3,
+    "lof": 1.24
+   },
+   {
+    "P_W": 250.0,
+    "v_mm_s": 600.0,
+    "density_pct": 98.99,
+    "true_pct": 98.98,
+    "crack": 0.099,
+    "kh": 0.84,
+    "lof": 0.28
+   },
+   {
+    "P_W": 250.0,
+    "v_mm_s": 1000.0,
+    "density_pct": 99.7,
+    "true_pct": 99.55,
+    "crack": 0.072,
+    "kh": 0.65,
+    "lof": 0.43
+   },
+   {
+    "P_W": 250.0,
+    "v_mm_s": 1700.0,
+    "density_pct": 99.26,
+    "true_pct": 99.05,
+    "crack": 0.024,
+    "kh": 0.5,
+    "lof": 0.68
+   },
+   {
+    "P_W": 350.0,
+    "v_mm_s": 600.0,
+    "density_pct": 96.82,
+    "true_pct": 96.58,
+    "crack": 0.0,
+    "kh": 1.18,
+    "lof": 0.17
+   },
+   {
+    "P_W": 350.0,
+    "v_mm_s": 1000.0,
+    "density_pct": 98.62,
+    "true_pct": 98.52,
+    "crack": 0.0,
+    "kh": 0.91,
+    "lof": 0.26
+   },
+   {
+    "P_W": 350.0,
+    "v_mm_s": 1700.0,
+    "density_pct": 99.72,
+    "true_pct": 99.44,
+    "crack": 0.072,
+    "kh": 0.7,
+    "lof": 0.44
+   }
+  ],
+  "n_cubes": 9,
+  "best": {
+   "index": 4,
+   "P_W": 250.0,
+   "v_mm_s": 1000.0,
+   "density_pct": 99.7,
+   "crack": 0.072,
+   "true_pct": 99.55,
+   "true_crack": 0.046
+  },
+  "densest": {
+   "index": 8,
+   "P_W": 350.0,
+   "v_mm_s": 1700.0,
+   "density_pct": 99.72
+  },
+  "gates": {
+   "density_pct": 99.5,
+   "crack": 0.05
+  },
+  "section": {
+   "porosity_pct": 0.25,
+   "cracks": 6,
+   "pores": 47,
+   "crack_density": 0.095,
+   "pore_dmax_um": 44.0
+  },
+  "ebsd": {
+   "grain_um": 12.3,
+   "equiaxed_pct": 8.0,
+   "texture_mrd": 5.1,
+   "indexed_pct": 98.0,
+   "step_um": 1.08
+  },
+  "tensile": {
+   "ys_MPa": 349.0,
+   "uts_MPa": 473.0,
+   "el_pct": 10.1,
+   "E_GPa": 67.0,
+   "bars": 3,
+   "truth_ys": 349.0,
+   "truth_el": 11.5
+  }
+ },
+ "cu": {
+  "open": {
+   "liquidus_C": 1095.0,
+   "range_K": 56.0,
+   "beta_900": 0.0,
+   "kappa_700_pct": 4.6
+  },
+  "proc": {
+   "superheat_K": 120,
+   "pour_mbar": 220,
+   "amplitude": 0.8,
+   "P_W": 600,
+   "v_mm_min": 600,
+   "feed_g_min": 6
+  },
+  "part": {
+   "density_pct": 99.02,
+   "beta_prime": 0.0,
+   "ys_MPa": 277.0,
+   "el_pct": 25.4
+  },
+  "screen": {
+   "ocp_mV": -245.0,
+   "rp_kohm_cm2": 15.9,
+   "icorr_uA_cm2": 2.0,
+   "early_um_yr": 23.0,
+   "Eb_mV": 201.0,
+   "minutes": 60,
+   "area_cm2": 0.071
+  },
+  "immersion": {
+   "days": 30,
+   "rate30_um_yr": 16.6,
+   "mass_loss_mg": 6.0,
+   "attack_um": 2.2,
+   "cu_ppb": 16274.0,
+   "ni_ppb": 303.0,
+   "interim": {
+    "1": {
+     "mass_mg": 0.26,
+     "rate_um_yr": 16.9
+    },
+    "3": {
+     "mass_mg": 0.76,
+     "rate_um_yr": 15.4
+    },
+    "7": {
+     "mass_mg": 1.72,
+     "rate_um_yr": 12.7
+    },
+    "14": {
+     "mass_mg": 3.31,
+     "rate_um_yr": 15.0
+    }
+   },
+   "read_days": {
+    "first": 1,
+    "second": 3,
+    "third": 7,
+    "fourth": 14
+   },
+   "true_rate_um_yr": 16.6
+  }
+ },
+ "sim_kinds": {
+  "logs": 436,
+  "calls": {
+   "sim_open": 232005
+  },
+  "hot_tests": 0
+ }
+}
