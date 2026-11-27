@@ -34,7 +34,8 @@ at the end names them).
   - At 60 % outside load, two mobile manipulators on benches serve every request, in 2.0 h on average.
   - The VLM with one unit turns away 9.5 % and takes 10.5 h; with two units, 6 % and 7.6 h.
   - The limit is the trays, not the robots: instruments that share a tray can't be loaded while any of them is
-    running. Tray D (SEM and XRD) is held 85-89 % of the time.
+    running. Tray D (SEM and XRD) is held 85-89 % of the time. If trays could move while their instruments run, the
+    two plans would tie; for a measurement in progress, they can't.
   - A second unit at the VLM barely helps. One unit on benches (7.9 h) does about as well as two at the VLM, but one
     unit is too few on any plan at 60 %: it loses atomizer slots (below).
 - **If the arm has to stay at the instrument for part of each step,** as PR 332 assumed, the number of units binds
@@ -200,7 +201,14 @@ capex-weighted capacity (round 3). The same work in less floor matters only if t
 - Nearly every instrument tray in PR 318 holds something sensitive: the SEM, the XRD, the Mastersizer, the
   nanoindenter, the PIP, the microscope, the hardness tester, and the doser's balance. So a slow profile would apply to
   almost every tray.
-- The sensitivities run trays at 2.5× their time: SENS_GENTLE
+- The sensitivities run every tray at 2.5× its time ([`sens.md`](../out/worth_it/sens.md), 4 logs). The cost is
+  small, because the openings have slack:
+  - at 60 % outside load with the twin's timing, the VLM's turnaround goes from 10.5 h to 11.8 h with one unit and
+    from 7.5 h to 7.9 h with two, and the busiest opening from 28 % to 32-33 %;
+  - at 30 % it adds about 0.1 h;
+  - with attended time at 30 % and two units, it adds 0.4 h (2.5 to 2.9 h; the opening 60 % to 64 %).
+
+  What costs time is a measurement holding its tray, not the tray's speed.
 
 **How fast can a mobile manipulator go near people?** No standard caps it at walking speed. What they say, and what
 people set:
@@ -223,7 +231,14 @@ people set:
   intimidating" (Pacchierotti et al. 2006, small samples).
 
 The model drives at 0.8 m/s (a stand-in, between Liverpool's cap and a hospital robot's), with sensitivities at
-0.3 m/s and 1.5 m/s: SENS_SPEED
+0.3 m/s and 1.5 m/s:
+
+- At 0.3 m/s, Liverpool's cap, two units on benches go from 2.0 h to 2.1 h at 60 % outside load, and the VLM doesn't
+  change. Only a single unit on benches suffers (15.2 h).
+- At 1.5 m/s nothing changes but the single unit on benches (6.3 h).
+
+So with two units, a mobile manipulator can drive at a pace people are comfortable with, at or below walking speed,
+for almost nothing.
 
 ## 5. Cost and implementation
 
@@ -385,7 +400,29 @@ Medians over 24 logs (full tables, with 10th-90th percentiles: [`tables.md`](../
    for a tray after arriving, and the opening is 19-28 % busy at most with the twin's timing. Tray locks, a
    measurement holding the tray for hours, are the main queue.
 
-**Sensitivities** (4 logs, 30 % and 60 %; [`sens.md`](../out/worth_it/sens.md)): SENS_SUMMARY
+**Sensitivities** (4 logs, 30 % and 60 % outside load; [`sens.md`](../out/worth_it/sens.md)):
+
+- **The tray lock is the VLM's whole disadvantage.** If trays could move while their instruments run, two units at the
+  VLM would match two on benches: 2.0 h, everything served at 60 %. They can't, for a measurement in progress, and
+  [`ups.md`](ups.md) forbids it for heaters, printers, polishers and presses.
+- **Slowing the trays costs little** (section 4); neither does turning off the pre-fetch (10.5 h to 11.6 h with one
+  unit at 60 %).
+- **Handling time matters more than the layout.**
+  - With docking at 150 s and loading at 120 s, one unit fails at 30 % on either plan. Two on benches still serve
+    60 % in 4.4 h; two at the VLM take 10.7 h and serve 89 %.
+  - At 30 s each, one unit on benches serves 60 % in 1.9 h, while the VLM still takes 6.5-7.4 h.
+- **The battery decides whether one unit is enough.** MiR's MC250 runs 4.5 h a charge.
+  - With a bare MiR250's 13 h, one unit on benches serves 60 % in 3.1 h and keeps every atomizer slot. With the
+    MC250's battery it loses them.
+  - The VLM with one unit doesn't change: its trays bind first.
+- **Carrying every outside sample from packaging** roughly doubles the units' work. At 60 %, two units on benches
+  still serve everything (3.0 h); two at the VLM take 9.5 h and serve 90 %; one unit fails on either plan.
+- **Without gaps kept for internal work, outside users cost the campaigns atomizer runs.** At 60 % with the twin's
+  timing, 285 of about 500 runs a year miss their slot at the VLM with two units, against 68 on benches with two. A
+  scheduler that keeps internal work first matters on any layout, and more at the VLM.
+- **If the units also tend the powder line** (PR 332's shares everywhere), every layout loses most of the atomizer's
+  slots. The powder line needs a cell of its own, as PR 332 concluded.
+- Driving speed and shared aisles change almost nothing with two units.
 
 ## 7. Is it justified? The decision table
 
@@ -394,7 +431,7 @@ Medians over 24 logs (full tables, with 10th-90th percentiles: [`tables.md`](../
 | **The lab as the twin runs it** (two campaigns, no outside users) | No: nothing to speed up, and every target lands on the same day | Neither is needed: two units are 1-2 % busy. The money is better spent where the twin says it binds (metal, the atomizer, DED) | A twin in which transport binds: none of rounds 3-5 has that |
 | **Floor** | If we must pay for floor by the m² (new build or lease) at about the twin's rate, **and** a 9.2 m+ bay is available or cheap, **and** Kardex's service comes in near the twin's 3 % rather than its own 10-20 % | If the lab goes into space we already have, or into an ordinary-height room | A site decision (PR 344); Kardex's service quote; the cost of a 31.5 ft room against a 14-18 ft one |
 | **Outside users at 30 %** | No: slower (1.6-2.5 h against 1.3-1.7 h) | Yes, if the arm attends steps: one unit can't carry it on either plan, two can | A measured attended share at our instruments (PR 332's are assumptions) |
-| **Outside users at 60 %** | No: trays bind; 6-10 % turned away, 7.6-10.5 h | Yes: two units on benches serve everything in 2 h with the twin's timing; with attended time, a third unit or fixed arms at the busiest instruments | Who the outside users are and what they send; whether instruments can be split across trays (one busy instrument a tray) |
+| **Outside users at 60 %** | No: trays bind; 6-10 % turned away, 7.6-10.5 h | Yes: two units on benches serve everything in 2 h with the twin's timing; with attended time, a third unit or fixed arms at the busiest instruments | Who the outside users are and what they send; one busy instrument a tray (the two plans tie when no tray is shared); measured handling times (at 150 s to dock and 120 s to load, one unit fails at 30 % on either plan) |
 | **Sensitive instruments** (balances, the SEM, XRD, the nanoindenter, microscopes) | Only if measurements show tray moves harmless and requalification is unnecessary after a presentation | Yes: benches never move them | A vibration and requalification test with our instruments on a Kardex tray (the AC's microscope test is the only one, at 1 Hz) |
 | **Passive storage** (1,506 powder jars, sample stores) | **Yes: this is what a VLM is for.** A store VLM can be shorter and needs no services | Not on its own: shelves plus an arm also work for this volume | Our own jar and sample counts and how often the robots fetch them (not modelled here; our count from one log is about 1.2 store visits a day for the twin's prints and lots) |
 | **Reliability** | No: a Shuttle down takes 7-8 instruments with it, and recovery needs Kardex | Yes: two units back each other up, and every instrument stays reachable by hand | Kardex's figures for downtime and manual retrieval, which no vendor publishes |
