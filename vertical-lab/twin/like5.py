@@ -439,7 +439,23 @@ def shared(A, key) -> dict:
                 b[:len(arr)] += np.array(arr) / len(arm)
             av = np.array(d["avail"]) / len(arm)
             g["avail"] = av if g["avail"] is None else g["avail"] + av
-    out = {}
+    # the partners' standing slots: jobs over the slots reserved (round 4's measure), by quarter
+    from twin import round4 as R4
+    per = {k: v["per_period"] for k, v in R4.STANDING.items()}
+    per.update({s_.key: s_.per_period for s_ in R4.EXTRA if s_.per_period})
+    slots = {}
+    for r in arm.values():
+        for st, d in (r["r4"].get("monthly") or {}).items():
+            if st not in per or not d.get("external"):
+                continue
+            n, days = per[st]
+            jobs = d["jobs"]
+            q = slots.setdefault(st, dict(jobs=np.zeros(8), offered=np.zeros(8)))
+            for m, j in enumerate(jobs[:24]):
+                q["jobs"][min(m // 3, 7)] += j / len(arm)
+                q["offered"][min(m // 3, 7)] += n * 30.4 / days / len(arm)
+    out = {"_slots": {st: [round(float(a / b), 3) if b > 0 else None for a, b in zip(q["jobs"], q["offered"])]
+                      for st, q in slots.items()}}
     for role, g in agg.items():
         tot = sum(g["busy"].values()) if g["busy"] else np.zeros_like(g["avail"])
         util = [float(b / a) if a > 0 else None for b, a in zip(tot, g["avail"])]
@@ -451,7 +467,7 @@ def shared(A, key) -> dict:
     return out
 
 
-CAUSE_NAMES = {"spending plan": "money kept for the partners' standing slots",
+CAUSE_NAMES = {"spending plan": "money (the last few thousand dollars, held for the partners' slots)",
                "WIP limit": "WIP limit (lots already waiting for the first fabrication step)",
                "capacity": "capacity (station busy)"}
 
@@ -747,7 +763,12 @@ def tables(S) -> str:
             continue
         L += ["", f"### Shared stations: `{key}` (use over offered unit-hours by quarter; share by campaign)", "",
               "| Station kind | Q1 | Q2 | Q3 | Q4 | Q5 | Q6 | Q7 | Q8 | Al share | binds |", "|---|---|---|---|---|---|---|---|---|---|---|"]
-        for role, d in sorted(sh.items(), key=lambda kv: -max([u or 0 for u in kv[1]["util"]] or [0])):
+        for st, u in sorted((sh.get("_slots") or {}).items()):
+            uu = [("-" if x is None else f"{x:.0%}") for x in u[:8]]
+            L.append(f"| {st} (jobs over its standing slots) | " + " | ".join(uu) + " | - | "
+                     f"{'yes' if any(x is not None and x > 0.7 for x in u) else ''} |")
+        for role, d in sorted(((k, v) for k, v in sh.items() if k != "_slots"),
+                              key=lambda kv: -max([u or 0 for u in kv[1]["util"]] or [0])):
             if not d["busy"]:
                 continue
             u = [("-" if x is None else f"{x:.0%}") for x in d["util"][:8]]

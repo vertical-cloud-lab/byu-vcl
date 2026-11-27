@@ -1,6 +1,7 @@
 """Round 5's figures (simulated), from out/twin5/like5.json and the rows in out/twin5/runs.
 
-    python3 -m twin.figures5      # -> out/twin5/fig/twin5_four_ways.png, twin5_money.png, twin5_decisions.png
+    python3 -m twin.figures5      # -> out/twin5/fig/twin5_four_ways.png, twin5_money.png, twin5_decisions.png,
+                                  #    twin5_idle.png
 
 * ``twin5_four_ways``: days from the money to each target for every arm of comparison 1. Small multiples, one panel
   per campaign and target; each row a policy; each marker an arm's Kaplan-Meier median: blue the automated lab,
@@ -10,6 +11,8 @@
   policies, with the two-year budget.
 * ``twin5_decisions``: the same medians as the first figure for the cheap policies, with no decision delay, the
   nominal windows and slow windows.
+* ``twin5_idle``: note 3: on each day, the share of seeds whose atomizer was in an idle stretch of a week or more
+  for each campaign, by cause, the stocked arms of both labs.
 """
 from __future__ import annotations
 
@@ -192,11 +195,59 @@ def decisions(S):
     plt.close(fig)
 
 
+CAUSES = [("money", "money", "#ec4647"), ("spending plan", "money (last few $k, held for slots)", "#ee7fac"),
+          ("WIP limit", "WIP limit (lots waiting for the first fabrication step)", "#f2a600"),
+          ("capacity", "capacity (station busy)", "#257de0"), ("decision time", "decision time", "#6a4ce2"),
+          ("sign-off", "sign-off", "#00b894"), ("policy waiting", "policy waiting", "#666666")]
+
+
+def idle(Arows):
+    """Note 3: for each campaign's atomizer in each stocked arm, the share of seeds in an idle stretch (at least a
+    week with no start) on each day, by cause."""
+    arms = [("vertical", "parallel", "automated lab"), ("conventional", "external", "conventional lab")]
+    fig, axes = plt.subplots(2, 2, figsize=(11.5, 5.6), sharex=True, sharey=True)
+    nd = int(HOR) + 1
+    for i, (lab, plan, lname) in enumerate(arms):
+        arm = Arows.get(L5.gk(lab, plan, "fast", "reorder"), {})
+        for j, (camp, cname) in enumerate(CAMPS):
+            ax = axes[i][j]
+            M = {c: np.zeros(nd) for c, _, _ in CAUSES}
+            for r in arm.values():
+                for x in r["r5"]["idle"]["stretches"][camp]["atomizer"]:
+                    c = x["cause"]
+                    c = "policy waiting" if c.startswith("policy waiting") else c
+                    if c not in M:
+                        continue
+                    M[c][x["start_d"]:min(x["end_d"], nd)] += 1.0 / max(len(arm), 1)
+            base = np.zeros(nd)
+            for c, lab_, col in CAUSES:
+                ax.fill_between(np.arange(nd), base, base + M[c], color=col, lw=0, alpha=0.9, label=lab_)
+                base = base + M[c]
+            ax.set_ylim(0, 1)
+            ax.set_xlim(0, HOR)
+            for sp in ("top", "right"):
+                ax.spines[sp].set_visible(False)
+            ax.tick_params(colors=INK2, labelsize=8)
+            ax.grid(axis="y", color=GRID, lw=0.8)
+            ax.set_title(f"{lname}, {cname.lower()}: atomizer idle (share of seeds)", fontsize=9.5, color=INK, loc="left")
+            if i == 1:
+                ax.set_xlabel("days from the day the money arrives", fontsize=8.5, color=INK2)
+    h, l = axes[0][0].get_legend_handles_labels()
+    fig.legend(h, l, loc="lower center", ncol=4, fontsize=7.5, frameon=False, bbox_to_anchor=(0.5, -0.01))
+    fig.suptitle("Round 5 (simulated): why each campaign's atomizer sat idle (stretches of a week or more; heuristic "
+                 "and funnel, stocked)", fontsize=10.5, color=INK, x=0.01, ha="left")
+    fig.tight_layout(rect=(0, 0.1, 1, 0.96))
+    fig.savefig(FIG / "twin5_idle.png", dpi=150)
+    plt.close(fig)
+
+
 def main():
     S = json.loads((OUT / "like5.json").read_text())
     four_ways(S)
-    money(L5.load_all())
+    A = L5.load_all()
+    money(A)
     decisions(S)
+    idle(A)
 
 
 if __name__ == "__main__":
