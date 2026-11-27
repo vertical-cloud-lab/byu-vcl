@@ -1,0 +1,7 @@
+# python -m out.twin5.slices.run_slice_3 check, 2026-11-27T11:06Z, on this runner, before any slice-3 run
+check: rerunning arms r5_conventional_external_fast_lean_s0 (config as committed: True)
+  ignored (provenance) code.commit: 6895a097c78ea5aadaa6edf2f640c8ab17df6726 -> b410477a3e41dd8d6eb40cb566c8eb11deed70d7
+  ignored (provenance) env.avx512: True -> False
+  ignored (provenance) env.cpu: AMD EPYC 9V45 96-Core Processor -> AMD EPYC 7763 64-Core Processor
+  ignored (timing) seconds: 24.4 -> 35.7
+{"run_id": "r5_conventional_external_fast_lean_s0", "row_identical": true, "n_differences": 0, "event_log_identical": true, "seconds": [24.4, 35.7], "cpu": ["AMD EPYC 9V45 96-Core Processor", "AMD EPYC 7763 64-Core Processor"], "pin": "avx2", "hash_pinned": true, "pin_late": false, "torch_cpu": "AVX2", "blas": ["Haswell", null, "Haswell"], "code": {"commit": "b410477a3e41dd8d6eb40cb566c8eb11deed70d7", "twin_dirty": false}}
