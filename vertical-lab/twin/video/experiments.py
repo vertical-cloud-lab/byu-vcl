@@ -51,7 +51,7 @@ from . import exp_data as X
 from . import exp_draw as G
 from . import style as St
 from .exp_draw import Canvas, Segment, lin, ramp
-from .style import BG, CAMP, INK, INK2, H, W
+from .style import CAMP, INK, INK2, H, W
 
 FPS = 30
 OUT = X.OUT
@@ -466,9 +466,8 @@ def meta(rec: dict) -> dict:
         lines.append(f"{int(t // 60)}:{int(t % 60):02d} {p['title']}")
     lines += ["",
               f"Code: {base}/twin/video/experiments.py (built from {c})",
-              f"Notes: {base}/notes/twin_video.md",
               "Voice: Kokoro v1.0, af_heart (open weights; nobody's voice cloned).",
-              "PR: https://github.com/vertical-cloud-lab/byu-vcl/pull/403"]
+              "Notes and review: https://github.com/vertical-cloud-lab/byu-vcl/pull/403"]
     return dict(title="PREVIEW: the function networks, step by step, with the experiments (simulated; twin video)",
                 description="\n".join(lines), tags=["digital twin", "alloy discovery", "self-driving lab", "CALPHAD",
                                                     "Scheil", "laser powder bed fusion", "SEM", "EBSD", "tensile test",
