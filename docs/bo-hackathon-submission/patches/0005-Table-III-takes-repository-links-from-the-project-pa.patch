@@ -1,0 +1,232 @@
+From 1368f7d5171eeb5caf068cae85e5962d02766ba8 Mon Sep 17 00:00:00 2001
+From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
+Date: Fri, 27 Nov 2026 19:26:06 +0000
+Subject: [PATCH 5/6] Table III takes repository links from the project pages;
+ V.B notes batch size and overhead
+
+- process_spreadsheet.py now prefers each project page's github field over
+  the registration spreadsheet. The spreadsheet linked project 15 to project
+  13's repository (jakobzeitler/interpretable-BO); its page and the summary
+  name janweinreich/best_batchers. No other project changes. Both repos have
+  no license file, so Table V is unaffected.
+- Scientific lessons gains one sentence on batch size (project 15) and
+  computational overhead (project 37), two limitations Referee 1 listed.
+---
+ main.tex                              |   2 +-
+ python_scripts/process_spreadsheet.py | 193 +++++++++++++++-----------
+ 2 files changed, 113 insertions(+), 82 deletions(-)
+
+diff --git a/main.tex b/main.tex
+index a1a1558..33aa86f 100644
+--- a/main.tex
++++ b/main.tex
+@@ -537,7 +537,7 @@ Other aspects proved more difficult. Some registered teams did not converge into
+ 
+ On the strengths side, teams repeatedly exploited BO's sample efficiency in low-data regimes, recovering strong candidates within a handful of iterations relative to design-of-experiments or random baselines~\cite{frazier_tutorial_2018, shahriari_taking_2016}. The submissions collectively demonstrated flexibility in handling continuous, categorical, mixed, molecular, multi-objective, multi-fidelity, contextual, batched, and cost-aware problems, including successful prototypes of multi-objective search and preference-based, human-in-the-loop workflows~\cite{lin_preference_2022}. Specialized kernels and representations (e.g., for molecules) further extended BO to structured inputs~\cite{griffiths_gauche_2024}.
+ 
+-The projects also surfaced well-known limitations. Default BO was not always superior to simple baselines: two teams reported little advantage over random search on their tasks (projects 33 and 1), and while these two-day comparisons were not run at benchmark rigor, they underscore the value of always including a simple baseline~\cite{liang_benchmarking_2021}. Results were sensitive to molecular representation, featurization, and kernel choice; warm-start data quality, observation noise, and high-dimensional search spaces were recurring pain points, for which noise-robust and heteroscedastic-aware methods are relevant remedies~\cite{aldeghi_golem_2021, altamirano_robust_2023}. Acquisition-function optimization itself mattered: one of the top-ranked projects (project 3) showed that investing more computation in the acquisition optimizer changed observed performance, connecting to ongoing work on scalable and high-dimensional acquisition strategies~\cite{ament_unexpected_2023, maus_local_2023}. Finally, retrospective benchmark gains do not guarantee wet-laboratory success, and reproducing comparisons across studies remains difficult~\cite{liang_benchmarking_2021}. Where teams integrated LLMs, the models lowered access barriers and helped specify spaces or retrieve priors, but they added another uncertain component that can degrade on complex objectives and requires validation against non-LLM baselines~\cite{kristiadi_sober_2024}.
++The projects also surfaced well-known limitations. Default BO was not always superior to simple baselines: two teams reported little advantage over random search on their tasks (projects 33 and 1), and while these two-day comparisons were not run at benchmark rigor, they underscore the value of always including a simple baseline~\cite{liang_benchmarking_2021}. Results were sensitive to molecular representation, featurization, and kernel choice; warm-start data quality, observation noise, and high-dimensional search spaces were recurring pain points, for which noise-robust and heteroscedastic-aware methods are relevant remedies~\cite{aldeghi_golem_2021, altamirano_robust_2023}. Acquisition-function optimization itself mattered: one of the top-ranked projects (project 3) showed that investing more computation in the acquisition optimizer changed observed performance, connecting to ongoing work on scalable and high-dimensional acquisition strategies~\cite{ament_unexpected_2023, maus_local_2023}. Batch size and computational overhead also mattered in practice: project 15 found that the best batch size balances model retraining time against experimental overhead, and project 37 cut fitting time by modeling yield alone and computing the objectives from the predicted yield afterwards. Finally, retrospective benchmark gains do not guarantee wet-laboratory success, and reproducing comparisons across studies remains difficult~\cite{liang_benchmarking_2021}. Where teams integrated LLMs, the models lowered access barriers and helped specify spaces or retrieve priors, but they added another uncertain component that can degrade on complex objectives and requires validation against non-LLM baselines~\cite{kristiadi_sober_2024}.
+ 
+ \section{Post-hackathon Outcomes}
+ \label{sec:outcomes}
+diff --git a/python_scripts/process_spreadsheet.py b/python_scripts/process_spreadsheet.py
+index bd54ea7..af78536 100644
+--- a/python_scripts/process_spreadsheet.py
++++ b/python_scripts/process_spreadsheet.py
+@@ -1,81 +1,112 @@
+-import csv
+-import os
+-
+-
+-def clean_url(url):
+-    return url.strip() if isinstance(url, str) else ""
+-
+-
+-def get_social_icon(url):
+-    if "linkedin.com" in url:
+-        return "\\faLinkedin"
+-    elif "twitter.com" in url or "x.com" in url:
+-        return "\\faTwitter"
+-    elif "youtube.com" in url:
+-        return "\\faVideo"
+-    else:
+-        return "\\faGithub"
+-
+-
+-# Get the directory of the script
+-script_dir = os.path.dirname(os.path.abspath(__file__))
+-# Go up one level to the root directory
+-root_dir = os.path.dirname(script_dir)
+-# Path to the CSV file
+-csv_path = os.path.join(root_dir, "AC-bo-hackathon-2024.csv")
+-
+-# Load the CSV file
+-table_content = ""
+-unique_projects = set()
+-
+-def project_sort_key(row):
+-    """Sort by numeric project number so the table is always ordered 1..N."""
+-    try:
+-        return (0, int(str(row.get("Project num", "")).strip()))
+-    except (TypeError, ValueError):
+-        return (1, str(row.get("Project num", "")))
+-
+-
+-try:
+-    with open(csv_path, mode="r", encoding="utf-8") as file:
+-        reader = csv.DictReader(file)
+-        rows = list(reader)
+-
+-    # Sort by project number so appended rows appear in numeric order
+-    rows.sort(key=project_sort_key)
+-
+-    # Iterate over each row in the CSV
+-    for row in rows:
+-            project_name = row["Project Name"]
+-            if project_name in unique_projects:
+-                continue  # Skip this row if the project name repeats
+-
+-            unique_projects.add(project_name)
+-            project_num = row["Project num"]
+-            project_name_escaped = project_name.replace("&", "\\&")
+-            github_repo = clean_url(row["Github Repo"])
+-            social_media = clean_url(row["Link to Social Media Post"])
+-            video_link = clean_url(row["Link to Video (if recorded)"])
+-
+-            links = []
+-            if github_repo:
+-                links.append(f"\\href{{{github_repo}}}{{\\faGithub}}")
+-            if social_media:
+-                links.append(
+-                    f"\\href{{{social_media}}}{{{get_social_icon(social_media)}}}"
+-                )
+-            if video_link:
+-                links.append(f"\\href{{{video_link}}}{{\\faVideo}}")
+-
+-            links_str = " \\, ".join(links)  # Separate links with a small space
+-
+-            table_content += (
+-                f"{project_num} & {project_name_escaped} & {links_str} \\\\\n"
+-            )
+-except FileNotFoundError:
+-    table_content = "% CSV file not found at " + csv_path + "\n"
+-    table_content += "% Providing empty table to allow compilation\n"
+-    table_content += "% Please make sure the CSV file exists\n"
+-    table_content += "\\multicolumn{3}{c}{CSV data not available} \\\\\n"
+-
+-print(table_content)
++import csv
++import glob
++import os
++import re
++
++
++def clean_url(url):
++    return url.strip() if isinstance(url, str) else ""
++
++
++def get_social_icon(url):
++    if "linkedin.com" in url:
++        return "\\faLinkedin"
++    elif "twitter.com" in url or "x.com" in url:
++        return "\\faTwitter"
++    elif "youtube.com" in url:
++        return "\\faVideo"
++    else:
++        return "\\faGithub"
++
++
++# Get the directory of the script
++script_dir = os.path.dirname(os.path.abspath(__file__))
++# Go up one level to the root directory
++root_dir = os.path.dirname(script_dir)
++# Path to the CSV file
++csv_path = os.path.join(root_dir, "AC-bo-hackathon-2024.csv")
++
++# Load the CSV file
++table_content = ""
++unique_projects = set()
++
++
++def project_page_repos():
++    """Map project number -> GitHub URL from each project page's front matter.
++
++    The project pages are maintained by hand and were corrected during the
++    revision (Referee 4, minor 13a/b); the spreadsheet is a registration-time
++    snapshot.  Where a page names a repository, it wins.  Example: the
++    spreadsheet row for project 15 pointed at project 13's repository.
++    """
++    repos = {}
++    for path in glob.glob(os.path.join(root_dir, "_projects", "project-*.md")):
++        match = re.search(r"project-(\d+)", os.path.basename(path))
++        if not match:
++            continue
++        with open(path, encoding="utf-8") as handle:
++            text = handle.read()
++        parts = text.split("---")
++        front = parts[1] if text.startswith("---") and len(parts) > 2 else ""
++        field = re.search(r"^github:\s*(\S+)\s*$", front, re.MULTILINE)
++        if field:
++            value = field.group(1).strip().strip("\"'")
++            if value and not value.startswith("http"):
++                value = "https://github.com/" + value
++            repos[str(int(match.group(1)))] = value
++    return repos
++
++
++page_repos = project_page_repos()
++
++def project_sort_key(row):
++    """Sort by numeric project number so the table is always ordered 1..N."""
++    try:
++        return (0, int(str(row.get("Project num", "")).strip()))
++    except (TypeError, ValueError):
++        return (1, str(row.get("Project num", "")))
++
++
++try:
++    with open(csv_path, mode="r", encoding="utf-8") as file:
++        reader = csv.DictReader(file)
++        rows = list(reader)
++
++    # Sort by project number so appended rows appear in numeric order
++    rows.sort(key=project_sort_key)
++
++    # Iterate over each row in the CSV
++    for row in rows:
++            project_name = row["Project Name"]
++            if project_name in unique_projects:
++                continue  # Skip this row if the project name repeats
++
++            unique_projects.add(project_name)
++            project_num = row["Project num"]
++            project_name_escaped = project_name.replace("&", "\\&")
++            github_repo = page_repos.get(str(project_num).strip()) or clean_url(row["Github Repo"])
++            social_media = clean_url(row["Link to Social Media Post"])
++            video_link = clean_url(row["Link to Video (if recorded)"])
++
++            links = []
++            if github_repo:
++                links.append(f"\\href{{{github_repo}}}{{\\faGithub}}")
++            if social_media:
++                links.append(
++                    f"\\href{{{social_media}}}{{{get_social_icon(social_media)}}}"
++                )
++            if video_link:
++                links.append(f"\\href{{{video_link}}}{{\\faVideo}}")
++
++            links_str = " \\, ".join(links)  # Separate links with a small space
++
++            table_content += (
++                f"{project_num} & {project_name_escaped} & {links_str} \\\\\n"
++            )
++except FileNotFoundError:
++    table_content = "% CSV file not found at " + csv_path + "\n"
++    table_content += "% Providing empty table to allow compilation\n"
++    table_content += "% Please make sure the CSV file exists\n"
++    table_content += "\\multicolumn{3}{c}{CSV data not available} \\\\\n"
++
++print(table_content)
+-- 
+2.56.1
+

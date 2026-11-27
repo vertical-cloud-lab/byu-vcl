@@ -1,0 +1,785 @@
+From 9e18aabaee56e55dabfb04df3b7dd465ad43d6a4 Mon Sep 17 00:00:00 2001
+From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
+Date: Fri, 27 Nov 2026 19:30:03 +0000
+Subject: [PATCH 6/6] ESI Table S2: per-project repository status (license,
+ README, dependency files, last push), checked 27 Nov 2026
+
+Referee 1 asked for documentation, dependency status and maintenance per
+project; Referee 4 (point 2) listed repositories without module
+requirements. scripts/repo_status.py records them for the repository each
+project links from Table III; outputs/repo_status.json is the raw result.
+
+The check also updates Table V: project 22's repository
+(shijiale0609/BO-EMD-Materials, MIT in July) has since been removed, so the
+tally is 19 MIT and 5 inaccessible. Section IV reports the README,
+dependency-file and last-update counts.
+---
+ latex/esi_classification.tex    |  34 ++-
+ latex/esi_repo_status_table.tex |  45 +++
+ main.tex                        |  10 +-
+ outputs/repo_status.json        | 491 ++++++++++++++++++++++++++++++++
+ scripts/repo_status.py          | 110 +++++++
+ 5 files changed, 684 insertions(+), 6 deletions(-)
+ create mode 100644 latex/esi_repo_status_table.tex
+ create mode 100644 outputs/repo_status.json
+ create mode 100644 scripts/repo_status.py
+
+diff --git a/latex/esi_classification.tex b/latex/esi_classification.tex
+index d10aa04..dca365b 100644
+--- a/latex/esi_classification.tex
++++ b/latex/esi_classification.tex
+@@ -7,9 +7,12 @@
+ %
+ % Compile with: pdflatex latex/esi_classification.tex
+ \documentclass[11pt]{article}
+-\usepackage[margin=2.5cm]{geometry}
++\usepackage[margin=2.2cm]{geometry}
+ \usepackage{booktabs}
+ \usepackage{array}
++\usepackage{longtable}
++\usepackage{url}
++\def\UrlBreaks{\do\/\do-\do\_}
+ \pagestyle{empty}
+ 
+ \begin{document}
+@@ -41,4 +44,33 @@ Mature software & 3 & 4, 11, 35 \\
+ \end{tabular}
+ \end{table}
+ 
++\clearpage
++\section*{ESI Table S2: Repository status per project}
++
++For the repository each project links from Table III of the main text, checked on
++27 November 2026 through the GitHub API: the license, whether the repository has
++a README, the standard dependency files at its root (for example requirements.txt,
++environment.yml or pyproject.toml), and the month of the last push. The license
++counts in Table V of the main text are tallied from this table; the CC0-1.0
++dedication of project 43 is not recognized by the GitHub API, which reports it as
++unclassified. Projects 30 and 31 share one repository. The script that produced
++the table (\path{scripts/repo_status.py}) and its raw output are in the hackathon
++repository.
++
++{\footnotesize
++\begin{longtable}{>{\raggedright\arraybackslash}p{0.8cm} >{\raggedright\arraybackslash}p{5.8cm} >{\raggedright\arraybackslash}p{1.7cm} >{\raggedright\arraybackslash}p{1.5cm} >{\raggedright\arraybackslash}p{3.6cm} >{\raggedright\arraybackslash}p{1.3cm}}
++\toprule
++\textbf{Proj.} & \textbf{Repository} & \textbf{License} & \textbf{README} & \textbf{Dependency files} & \textbf{Last push} \\
++\midrule
++\endfirsthead
++\toprule
++\textbf{Proj.} & \textbf{Repository} & \textbf{License} & \textbf{README} & \textbf{Dependency files} & \textbf{Last push} \\
++\midrule
++\endhead
++\bottomrule
++\endlastfoot
++\input{esi_repo_status_table}
++\end{longtable}
++}
++
+ \end{document}
+diff --git a/latex/esi_repo_status_table.tex b/latex/esi_repo_status_table.tex
+new file mode 100644
+index 0000000..66efa9e
+--- /dev/null
++++ b/latex/esi_repo_status_table.tex
+@@ -0,0 +1,45 @@
++1 & \path{A-Ijishakin/Multi-Objective-BO} & MIT & yes & requirements.txt & 2024-09 \\
++2 & \path{jean72human/LRBMFO} & Apache-2.0 & yes & none & 2024-03 \\
++3 & \path{AndrewFalkowski/TakeYourTime} & none & yes & none & 2024-05 \\
++4 & \path{AC-BO-Hackathon/project-simplegpt-bo} & MIT & yes & pyproject.toml, requirements.txt, setup.cfg & 2024-04 \\
++5 & \path{AC-BO-Hackathon/general-project-KLM} & none & yes & pyproject.toml, requirements.txt, setup.cfg & 2024-03 \\
++6 & \path{AC-BO-Hackathon/project-pitt} & none & yes & requirements.txt & 2024-03 \\
++7 & \path{AC-BO-Hackathon/project-surface-science-syndicate} & MIT & yes & pyproject.toml, requirements.txt, setup.cfg & 2024-09 \\
++8 & \path{frankwanger/ACBO-Feat} & MIT & yes & none & 2024-04 \\
++9 & \path{AC-BO-Hackathon/real-world-pme-no-hikari} & \multicolumn{4}{l}{private or removed when checked} \\
++10 & \path{AC-BO-Hackathon/project-zeolite-synthesis-bayesian-optimisation} & MIT & yes & requirements.txt & 2024-03 \\
++11 & \path{danieleongari/blends} & MIT & yes & pyproject.toml, requirements.txt & 2024-04 \\
++12 & \path{jakobzeitler/sustainable-concrete} & Apache-2.0 & no & none & 2024-09 \\
++13 & \path{jakobzeitler/interpretable-BO} & none & yes & none & 2024-03 \\
++14 & \path{mehradans92/BO-PU} & none & yes & none & 2024-03 \\
++15 & \path{janweinreich/best_batchers} & none & yes & requirements.txt & 2024-05 \\
++16 & \path{AC-BO-Hackathon/BOPE-GPT} & GPL-3.0 & yes & none & 2024-12 \\
++17 & \path{AC-BO-Hackathon/project_acquisition_functions} & Apache-2.0 & yes & requirements.txt & 2024-03 \\
++18 & \path{AC-BO-Hackathon/project-mobo-qm9} & none & yes & environment.yml, pyproject.toml, requirements.txt, setup.cfg & 2024-03 \\
++19 & no repository (proposal stage) & \multicolumn{4}{l}{} \\
++20 & \path{AC-BO-Hackathon/project-optimystics} & none & yes & pyproject.toml, requirements.txt, setup.cfg & 2024-03 \\
++21 & \path{AC-BO-Hackathon/project-The_OSU_ChemEs} & \multicolumn{4}{l}{private or removed when checked} \\
++22 & \path{shijiale0609/BO-EMD-Materials} & \multicolumn{4}{l}{private or removed when checked} \\
++23 & \path{AC-BO-Hackathon/project-noisy-nerds} & none & yes & pyproject.toml, requirements.txt, setup.cfg & 2024-04 \\
++24 & \path{AndySAnker/ScattBO} & Apache-2.0 & yes & pyproject.toml, requirements.txt, setup.cfg & 2024-11 \\
++25 & \path{alxfgh/BO-De-Novo-Drug-Design-Docking} & MIT & yes & environment.yml, pyproject.toml & 2024-03 \\
++26 & \path{AC-BO-Hackathon/project-26-multiple-context-bo} & MIT & yes & pyproject.toml, requirements.txt, setup.cfg & 2024-07 \\
++27 & \path{eltonpan/bayes-warmup} & MIT & yes & requirements.txt & 2024-04 \\
++28 & \path{AC-BO-Hackathon/Chihuahuas} & none & yes & pyproject.toml, requirements.txt, setup.cfg & 2024-04 \\
++29 & no repository (proposal stage) & \multicolumn{4}{l}{} \\
++30 & \path{csmova/AC_BO_Hackathon2024} & MIT & no & none & 2024-03 \\
++31 & \path{csmova/AC_BO_Hackathon2024} & MIT & no & none & 2024-03 \\
++32 & \path{AC-BO-Hackathon/project-AiChemMcGill} & none & yes & requirements.txt & 2025-01 \\
++33 & \path{stair-lab/bo4ag} & MIT & yes & none & 2024-05 \\
++34 & \path{sartaajkhan/BOMS-ProBs} & MIT & yes & requirements.txt & 2025-06 \\
++35 & \path{leojklarner/gauche} & MIT & yes & pyproject.toml, setup.py & 2024-10 \\
++36 & \path{sangttruong/nonmyopia} & \multicolumn{4}{l}{private or removed when checked} \\
++37 & \path{TSAndrews/EmbeddedKnowledgeBO} & MIT & yes & requirements.txt & 2026-08 \\
++38 & \path{spgarcica/symbolic_test} & MIT & yes & none & 2024-03 \\
++39 & \path{AC-BO-Hackathon/project-localGPs_for_COF} & MIT & yes & pyproject.toml, requirements.txt, setup.cfg & 2024-04 \\
++40 & \path{bznan/Multi_agents_BO} & none & yes & none & 2024-03 \\
++41 & \path{schwallergroup/rambo-I} & MIT & yes & pyproject.toml, setup.cfg & 2024-03 \\
++42 & no repository (proposal stage) & \multicolumn{4}{l}{} \\
++43 & \path{materials-data-facility/awesome-bayesian-optimization} & CC0-1.0 & yes & none & 2024-04 \\
++44 & \path{gkwt/rank-bo} & MIT & yes & none & 2024-05 \\
++45 & \path{felix-s-k/general-optimizers} & \multicolumn{4}{l}{private or removed when checked} \\
+diff --git a/main.tex b/main.tex
+index 33aa86f..7ba1c27 100644
+--- a/main.tex
++++ b/main.tex
+@@ -491,22 +491,22 @@ Mature software & 3 & 7\% \\
+ \end{tabular}
+ \end{table}
+ 
+-We also assessed code availability and licensing. Of the 45 projects, 42 link to a code repository; \cref{tab:licenses} tallies license status per project. Explicit licenses are overwhelmingly permissive (20 MIT, 4 Apache-2.0); 12 projects provide no license file, and 4 link to repositories that were private or removed when checked. Dependency specifications were frequently incomplete, so most outputs are reusable starting points rather than finished tools~\cite{nolte_what_2020}. The license tabulation script is available in the hackathon repository (see Data availability).
++We also assessed code availability, licensing, documentation, and dependencies. Of the 45 projects, 42 link to a code repository; \cref{tab:licenses} tallies license status per project. Explicit licenses are overwhelmingly permissive (19 MIT, 4 Apache-2.0); 12 projects provide no license file, and 5 link to repositories that were private or removed when checked in November 2026. Of the 37 repositories still public, 34 have a README, but only 23 declare their dependencies in a standard file such as requirements.txt, environment.yml, or pyproject.toml, and only 3 have been updated since January 2025; per-project details are in ESI Table S2. Most outputs are therefore reusable starting points rather than maintained tools~\cite{nolte_what_2020}. The tabulation scripts are available in the hackathon repository (see Data availability).
+ 
+ \begin{table}[tbp]
+ \centering
+-\caption{License status of the code repositories linked from \cref{tab:projects}, tallied per project so that all 45 projects are accounted for; projects sharing a repository share its license. The CC0-1.0 repository carries its dedication in a form the GitHub API does not auto-classify. ``No license file'' indicates a public repository lacking a license; ``inaccessible'' indicates a private or removed repository.}
++\caption{License status of the code repositories linked from \cref{tab:projects}, checked in November 2026 and tallied per project so that all 45 projects are accounted for; projects sharing a repository share its license. The CC0-1.0 repository carries its dedication in a form the GitHub API does not auto-classify. ``No license file'' indicates a public repository lacking a license; ``inaccessible'' indicates a private or removed repository.}
+ \label{tab:licenses}
+ \begin{tabular}{l c}
+ \toprule
+ \textbf{License} & \textbf{Projects} \\
+ \midrule
+-MIT & 20 \\
++MIT & 19 \\
+ Apache-2.0 & 4 \\
+ GPL-3.0 & 1 \\
+ CC0-1.0 & 1 \\
+ No license file & 12 \\
+-Inaccessible (private/removed) & 4 \\
++Inaccessible (private/removed) & 5 \\
+ No public repository (proposal stage) & 3 \\
+ \midrule
+ \textbf{Total} & \textbf{45} \\
+@@ -562,7 +562,7 @@ There are no conflicts of interest to declare.
+ 
+ \section*{Data availability}
+ 
+-The code and materials associated with the projects in this hackathon are archived on Zenodo at \url{https://doi.org/10.5281/zenodo.20496810}. The manuscript source and the material behind its analyses are in the hackathon repository at \url{https://github.com/AC-BO-Hackathon/ac-bo-hackathon.github.io}: the project pages, the scripts that generate Table III and the project summaries, the repository license tabulation behind Table V, the figure redaction script, the raw and edited AI-drafted project summaries, and the archived outputs of the AI analysis and literature queries. A versioned snapshot of this repository will be deposited on Zenodo upon acceptance. Per-project category assignments are given in the ESI. Participant demographics (Fig. 2) are reported only in aggregate.
++The code and materials associated with the projects in this hackathon are archived on Zenodo at \url{https://doi.org/10.5281/zenodo.20496810}. The manuscript source and the material behind its analyses are in the hackathon repository at \url{https://github.com/AC-BO-Hackathon/ac-bo-hackathon.github.io}: the project pages, the scripts that generate Table III and the project summaries, the repository status and license tabulation behind Table V and ESI Table S2, the figure redaction script, the raw and edited AI-drafted project summaries, and the archived outputs of the AI analysis and literature queries. A versioned snapshot of this repository will be deposited on Zenodo upon acceptance. Per-project category assignments are given in the ESI. Participant demographics (Fig. 2) are reported only in aggregate.
+ 
+ \section*{Acknowledgements}
+ 
+diff --git a/outputs/repo_status.json b/outputs/repo_status.json
+new file mode 100644
+index 0000000..b221147
+--- /dev/null
++++ b/outputs/repo_status.json
+@@ -0,0 +1,491 @@
++{
++ "checked": "2026-11-27",
++ "projects": [
++  {
++   "project": 1,
++   "repo": "A-Ijishakin/Multi-Objective-BO",
++   "status": "public",
++   "license": "MIT",
++   "readme": true,
++   "dependency_files": [
++    "requirements.txt"
++   ],
++   "pushed_at": "2024-09-11T09:30:22Z",
++   "archived": false
++  },
++  {
++   "project": 2,
++   "repo": "jean72human/LRBMFO",
++   "status": "public",
++   "license": "Apache-2.0",
++   "readme": true,
++   "dependency_files": [],
++   "pushed_at": "2024-03-28T15:42:07Z",
++   "archived": false
++  },
++  {
++   "project": 3,
++   "repo": "AndrewFalkowski/TakeYourTime",
++   "status": "public",
++   "license": "none",
++   "readme": true,
++   "dependency_files": [],
++   "pushed_at": "2024-05-02T23:19:39Z",
++   "archived": false
++  },
++  {
++   "project": 4,
++   "repo": "AC-BO-Hackathon/project-simplegpt-bo",
++   "status": "public",
++   "license": "MIT",
++   "readme": true,
++   "dependency_files": [
++    "pyproject.toml",
++    "requirements.txt",
++    "setup.cfg"
++   ],
++   "pushed_at": "2024-04-03T01:11:07Z",
++   "archived": false
++  },
++  {
++   "project": 5,
++   "repo": "AC-BO-Hackathon/general-project-KLM",
++   "status": "public",
++   "license": "none",
++   "readme": true,
++   "dependency_files": [
++    "pyproject.toml",
++    "requirements.txt",
++    "setup.cfg"
++   ],
++   "pushed_at": "2024-03-29T04:40:28Z",
++   "archived": false
++  },
++  {
++   "project": 6,
++   "repo": "AC-BO-Hackathon/project-pitt",
++   "status": "public",
++   "license": "none",
++   "readme": true,
++   "dependency_files": [
++    "requirements.txt"
++   ],
++   "pushed_at": "2024-03-29T03:37:25Z",
++   "archived": false
++  },
++  {
++   "project": 7,
++   "repo": "AC-BO-Hackathon/project-surface-science-syndicate",
++   "status": "public",
++   "license": "MIT",
++   "readme": true,
++   "dependency_files": [
++    "pyproject.toml",
++    "requirements.txt",
++    "setup.cfg"
++   ],
++   "pushed_at": "2024-09-29T19:52:42Z",
++   "archived": false
++  },
++  {
++   "project": 8,
++   "repo": "frankwanger/ACBO-Feat",
++   "status": "public",
++   "license": "MIT",
++   "readme": true,
++   "dependency_files": [],
++   "pushed_at": "2024-04-12T09:19:47Z",
++   "archived": false
++  },
++  {
++   "project": 9,
++   "repo": "AC-BO-Hackathon/real-world-pme-no-hikari",
++   "status": "inaccessible",
++   "error": "gh: Not Found (HTTP 404)"
++  },
++  {
++   "project": 10,
++   "repo": "AC-BO-Hackathon/project-zeolite-synthesis-bayesian-optimisation",
++   "status": "public",
++   "license": "MIT",
++   "readme": true,
++   "dependency_files": [
++    "requirements.txt"
++   ],
++   "pushed_at": "2024-03-29T03:37:27Z",
++   "archived": false
++  },
++  {
++   "project": 11,
++   "repo": "danieleongari/blends",
++   "status": "public",
++   "license": "MIT",
++   "readme": true,
++   "dependency_files": [
++    "pyproject.toml",
++    "requirements.txt"
++   ],
++   "pushed_at": "2024-04-18T12:01:22Z",
++   "archived": false
++  },
++  {
++   "project": 12,
++   "repo": "jakobzeitler/sustainable-concrete",
++   "status": "public",
++   "license": "Apache-2.0",
++   "readme": false,
++   "dependency_files": [],
++   "pushed_at": "2024-09-10T15:04:10Z",
++   "archived": false
++  },
++  {
++   "project": 13,
++   "repo": "jakobzeitler/interpretable-BO",
++   "status": "public",
++   "license": "none",
++   "readme": true,
++   "dependency_files": [],
++   "pushed_at": "2024-03-28T18:47:09Z",
++   "archived": false
++  },
++  {
++   "project": 14,
++   "repo": "mehradans92/BO-PU",
++   "status": "public",
++   "license": "none",
++   "readme": true,
++   "dependency_files": [],
++   "pushed_at": "2024-03-28T01:05:29Z",
++   "archived": false
++  },
++  {
++   "project": 15,
++   "repo": "janweinreich/best_batchers",
++   "status": "public",
++   "license": "none",
++   "readme": true,
++   "dependency_files": [
++    "requirements.txt"
++   ],
++   "pushed_at": "2024-05-17T14:56:20Z",
++   "archived": false
++  },
++  {
++   "project": 16,
++   "repo": "AC-BO-Hackathon/BOPE-GPT",
++   "status": "public",
++   "license": "GPL-3.0",
++   "readme": true,
++   "dependency_files": [],
++   "pushed_at": "2024-12-08T17:56:18Z",
++   "archived": false
++  },
++  {
++   "project": 17,
++   "repo": "AC-BO-Hackathon/project_acquisition_functions",
++   "status": "public",
++   "license": "Apache-2.0",
++   "readme": true,
++   "dependency_files": [
++    "requirements.txt"
++   ],
++   "pushed_at": "2024-03-29T14:51:22Z",
++   "archived": false
++  },
++  {
++   "project": 18,
++   "repo": "AC-BO-Hackathon/project-mobo-qm9",
++   "status": "public",
++   "license": "none",
++   "readme": true,
++   "dependency_files": [
++    "environment.yml",
++    "pyproject.toml",
++    "requirements.txt",
++    "setup.cfg"
++   ],
++   "pushed_at": "2024-03-29T03:37:27Z",
++   "archived": false
++  },
++  {
++   "project": 19,
++   "repo": null,
++   "status": "no repository"
++  },
++  {
++   "project": 20,
++   "repo": "AC-BO-Hackathon/project-optimystics",
++   "status": "public",
++   "license": "none",
++   "readme": true,
++   "dependency_files": [
++    "pyproject.toml",
++    "requirements.txt",
++    "setup.cfg"
++   ],
++   "pushed_at": "2024-03-29T03:37:27Z",
++   "archived": false
++  },
++  {
++   "project": 21,
++   "repo": "AC-BO-Hackathon/project-The_OSU_ChemEs",
++   "status": "inaccessible",
++   "error": "gh: Not Found (HTTP 404)"
++  },
++  {
++   "project": 22,
++   "repo": "shijiale0609/BO-EMD-Materials",
++   "status": "inaccessible",
++   "error": "gh: Not Found (HTTP 404)"
++  },
++  {
++   "project": 23,
++   "repo": "AC-BO-Hackathon/project-noisy-nerds",
++   "status": "public",
++   "license": "none",
++   "readme": true,
++   "dependency_files": [
++    "pyproject.toml",
++    "requirements.txt",
++    "setup.cfg"
++   ],
++   "pushed_at": "2024-04-12T20:58:17Z",
++   "archived": false
++  },
++  {
++   "project": 24,
++   "repo": "AndySAnker/ScattBO",
++   "status": "public",
++   "license": "Apache-2.0",
++   "readme": true,
++   "dependency_files": [
++    "pyproject.toml",
++    "requirements.txt",
++    "setup.cfg"
++   ],
++   "pushed_at": "2024-11-26T17:13:12Z",
++   "archived": false
++  },
++  {
++   "project": 25,
++   "repo": "alxfgh/BO-De-Novo-Drug-Design-Docking",
++   "status": "public",
++   "license": "MIT",
++   "readme": true,
++   "dependency_files": [
++    "environment.yml",
++    "pyproject.toml"
++   ],
++   "pushed_at": "2024-03-29T02:39:05Z",
++   "archived": false
++  },
++  {
++   "project": 26,
++   "repo": "AC-BO-Hackathon/project-26-multiple-context-bo",
++   "status": "public",
++   "license": "MIT",
++   "readme": true,
++   "dependency_files": [
++    "pyproject.toml",
++    "requirements.txt",
++    "setup.cfg"
++   ],
++   "pushed_at": "2024-07-04T13:32:30Z",
++   "archived": false
++  },
++  {
++   "project": 27,
++   "repo": "eltonpan/bayes-warmup",
++   "status": "public",
++   "license": "MIT",
++   "readme": true,
++   "dependency_files": [
++    "requirements.txt"
++   ],
++   "pushed_at": "2024-04-06T21:21:34Z",
++   "archived": false
++  },
++  {
++   "project": 28,
++   "repo": "AC-BO-Hackathon/Chihuahuas",
++   "status": "public",
++   "license": "none",
++   "readme": true,
++   "dependency_files": [
++    "pyproject.toml",
++    "requirements.txt",
++    "setup.cfg"
++   ],
++   "pushed_at": "2024-04-02T19:44:41Z",
++   "archived": false
++  },
++  {
++   "project": 29,
++   "repo": null,
++   "status": "no repository"
++  },
++  {
++   "project": 30,
++   "repo": "csmova/AC_BO_Hackathon2024",
++   "status": "public",
++   "license": "MIT",
++   "readme": false,
++   "dependency_files": [],
++   "pushed_at": "2024-03-28T15:29:37Z",
++   "archived": false
++  },
++  {
++   "project": 31,
++   "repo": "csmova/AC_BO_Hackathon2024",
++   "status": "public",
++   "license": "MIT",
++   "readme": false,
++   "dependency_files": [],
++   "pushed_at": "2024-03-28T15:29:37Z",
++   "archived": false
++  },
++  {
++   "project": 32,
++   "repo": "AC-BO-Hackathon/project-AiChemMcGill",
++   "status": "public",
++   "license": "none",
++   "readme": true,
++   "dependency_files": [
++    "requirements.txt"
++   ],
++   "pushed_at": "2025-01-20T21:58:01Z",
++   "archived": false
++  },
++  {
++   "project": 33,
++   "repo": "stair-lab/bo4ag",
++   "status": "public",
++   "license": "MIT",
++   "readme": true,
++   "dependency_files": [],
++   "pushed_at": "2024-05-07T22:03:30Z",
++   "archived": false
++  },
++  {
++   "project": 34,
++   "repo": "sartaajkhan/BOMS-ProBs",
++   "status": "public",
++   "license": "MIT",
++   "readme": true,
++   "dependency_files": [
++    "requirements.txt"
++   ],
++   "pushed_at": "2025-06-30T22:57:36Z",
++   "archived": false
++  },
++  {
++   "project": 35,
++   "repo": "leojklarner/gauche",
++   "status": "public",
++   "license": "MIT",
++   "readme": true,
++   "dependency_files": [
++    "pyproject.toml",
++    "setup.py"
++   ],
++   "pushed_at": "2024-10-11T18:14:52Z",
++   "archived": false
++  },
++  {
++   "project": 36,
++   "repo": "sangttruong/nonmyopia",
++   "status": "inaccessible",
++   "error": "gh: Not Found (HTTP 404)"
++  },
++  {
++   "project": 37,
++   "repo": "TSAndrews/EmbeddedKnowledgeBO",
++   "status": "public",
++   "license": "MIT",
++   "readme": true,
++   "dependency_files": [
++    "requirements.txt"
++   ],
++   "pushed_at": "2026-08-20T01:05:23Z",
++   "archived": true
++  },
++  {
++   "project": 38,
++   "repo": "spgarcica/symbolic_test",
++   "status": "public",
++   "license": "MIT",
++   "readme": true,
++   "dependency_files": [],
++   "pushed_at": "2024-03-29T13:49:55Z",
++   "archived": false
++  },
++  {
++   "project": 39,
++   "repo": "AC-BO-Hackathon/project-localGPs_for_COF",
++   "status": "public",
++   "license": "MIT",
++   "readme": true,
++   "dependency_files": [
++    "pyproject.toml",
++    "requirements.txt",
++    "setup.cfg"
++   ],
++   "pushed_at": "2024-04-02T13:30:28Z",
++   "archived": false
++  },
++  {
++   "project": 40,
++   "repo": "bznan/Multi_agents_BO",
++   "status": "public",
++   "license": "none",
++   "readme": true,
++   "dependency_files": [],
++   "pushed_at": "2024-03-29T13:59:18Z",
++   "archived": false
++  },
++  {
++   "project": 41,
++   "repo": "schwallergroup/rambo-I",
++   "status": "public",
++   "license": "MIT",
++   "readme": true,
++   "dependency_files": [
++    "pyproject.toml",
++    "setup.cfg"
++   ],
++   "pushed_at": "2024-03-29T13:15:30Z",
++   "archived": false
++  },
++  {
++   "project": 42,
++   "repo": null,
++   "status": "no repository"
++  },
++  {
++   "project": 43,
++   "repo": "materials-data-facility/awesome-bayesian-optimization",
++   "status": "public",
++   "license": "NOASSERTION",
++   "readme": true,
++   "dependency_files": [],
++   "pushed_at": "2024-04-02T19:17:20Z",
++   "archived": false
++  },
++  {
++   "project": 44,
++   "repo": "gkwt/rank-bo",
++   "status": "public",
++   "license": "MIT",
++   "readme": true,
++   "dependency_files": [],
++   "pushed_at": "2024-05-22T02:55:21Z",
++   "archived": false
++  },
++  {
++   "project": 45,
++   "repo": "felix-s-k/general-optimizers",
++   "status": "inaccessible",
++   "error": "gh: Not Found (HTTP 404)"
++  }
++ ]
++}
+diff --git a/scripts/repo_status.py b/scripts/repo_status.py
+new file mode 100644
+index 0000000..184f97c
+--- /dev/null
++++ b/scripts/repo_status.py
+@@ -0,0 +1,110 @@
++#!/usr/bin/env python3
++"""Per-project repository status for ESI Table S2.
++
++Referee 1 asked for code availability, licensing, documentation, dependency
++status and maintenance per project.  For the repository each project links
++from Table III (project page first, registration spreadsheet otherwise, as in
++python_scripts/process_spreadsheet.py), this records whether it is reachable,
++its license, whether it has a README, which standard dependency files sit at
++its root, and when it was last pushed to.  Read-only GitHub REST calls via the
++``gh`` CLI.
++
++Usage:
++    python scripts/repo_status.py            # query GitHub, write JSON + table
++    python scripts/repo_status.py --table    # rebuild the table from the JSON
++
++Outputs: outputs/repo_status.json and latex/esi_repo_status_table.tex.
++"""
++import datetime as dt
++import json
++import re
++import subprocess
++import sys
++import time
++from pathlib import Path
++
++ROOT = Path(__file__).resolve().parent.parent
++JSON_OUT = ROOT / "outputs" / "repo_status.json"
++TEX_OUT = ROOT / "latex" / "esi_repo_status_table.tex"
++DEP_RE = re.compile(
++    r"(?i)^(requirements.*\.txt|environment.*\.ya?ml|pyproject\.toml|setup\.py|setup\.cfg|"
++    r"pipfile(\.lock)?|poetry\.lock|uv\.lock|renv\.lock|project\.toml|description|package\.json)$"
++)
++
++
++def gh(path):
++    r = subprocess.run(["gh", "api", path], capture_output=True, text=True)
++    return (json.loads(r.stdout), None) if r.returncode == 0 else (None, r.stderr.strip()[:120])
++
++
++def project_repos():
++    out = subprocess.run(["python3", str(ROOT / "python_scripts" / "process_spreadsheet.py")],
++                         capture_output=True, text=True, check=True).stdout
++    repos = {}
++    for line in out.splitlines():
++        m = re.match(r"(\d+) & .*? & (.*)\\\\$", line.strip())
++        if m:
++            g = re.search(r"\\href\{https://github\.com/([\w.-]+/[\w.-]+?)(?:\.git)?/?\}\{\\faGithub\}", m.group(2))
++            repos[int(m.group(1))] = g.group(1) if g else None
++    return repos
++
++
++def collect():
++    rows = []
++    for n, slug in sorted(project_repos().items()):
++        rec = {"project": n, "repo": slug}
++        if not slug:
++            rec["status"] = "no repository"
++        else:
++            meta, err = gh(f"repos/{slug}")
++            if meta is None:
++                rec.update(status="inaccessible", error=err)
++            else:
++                root, _ = gh(f"repos/{slug}/contents/")
++                names = [x["name"] for x in root] if isinstance(root, list) else []
++                rec.update(
++                    status="public",
++                    license=(meta.get("license") or {}).get("spdx_id") or "none",
++                    readme=gh(f"repos/{slug}/readme")[0] is not None,
++                    dependency_files=sorted(x for x in names if DEP_RE.match(x)),
++                    pushed_at=meta.get("pushed_at"),
++                    archived=meta.get("archived"),
++                )
++                time.sleep(0.2)
++        rows.append(rec)
++    data = {"checked": dt.date.today().isoformat(), "projects": rows}
++    JSON_OUT.parent.mkdir(exist_ok=True)
++    JSON_OUT.write_text(json.dumps(data, indent=1) + "\n")
++    return data
++
++
++def tex_escape(s):
++    return s.replace("_", r"\_").replace("&", r"\&")
++
++
++def table(data):
++    lic = {"none": "none", "NOASSERTION": "CC0-1.0"}
++    lines = []
++    for r in data["projects"]:
++        if r["status"] == "public":
++            deps = ", ".join(tex_escape(x) for x in r["dependency_files"]) or "none"
++            lines.append(
++                f"{r['project']} & \\path{{{r['repo']}}} & {lic.get(r['license'], r['license'])} & "
++                f"{'yes' if r['readme'] else 'no'} & {deps} & {r['pushed_at'][:7]} \\\\"
++            )
++        elif r["status"] == "inaccessible":
++            lines.append(f"{r['project']} & \\path{{{r['repo']}}} & \\multicolumn{{4}}{{l}}{{private or removed when checked}} \\\\")
++        else:
++            lines.append(f"{r['project']} & no repository (proposal stage) & \\multicolumn{{4}}{{l}}{{}} \\\\")
++    TEX_OUT.write_text("\n".join(lines) + "\n")
++
++
++if __name__ == "__main__":
++    data = json.loads(JSON_OUT.read_text()) if "--table" in sys.argv else collect()
++    table(data)
++    pub = [r for r in data["projects"] if r["status"] == "public"]
++    print(f"checked {data['checked']}: {len(pub)} public, "
++          f"{sum(r['status'] == 'inaccessible' for r in data['projects'])} inaccessible, "
++          f"{sum(r['status'] == 'no repository' for r in data['projects'])} without a repository; "
++          f"README {sum(r['readme'] for r in pub)}, dependency file {sum(bool(r['dependency_files']) for r in pub)}, "
++          f"pushed since 2025 {sum(r['pushed_at'] >= '2025-01-01' for r in pub)}")
+-- 
+2.56.1
+
