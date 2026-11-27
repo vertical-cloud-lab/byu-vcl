@@ -229,3 +229,35 @@ reproduces bit for bit only on some CPU models (the notes' "Reproducibility").
 
 Round 4's code is unchanged but for a hook (`Facility4.schedule`): round 5 subclasses `Facility4`, `Campaign4` and
 `Twin4`.
+
+## Round 6 (2026-11-27): money tracked instead of limited, the used market, crucibles, the HPC at scale
+
+Round 5 gave each campaign two years' money at t = 0; the automated lab spent it in ten to fourteen months and then
+sat idle. Round 6 removes every rule that stops spending and records every dollar by category instead; takes used
+prices, lead times and fault risks per station from a survey of listings when it is there; models the atomizer's
+coated crucibles; scales the simulated candidates the policies see; pins what round 5's pin missed, so that BOFN and
+pKGFN rows reproduce on any CPU; and runs copper's optimizers without their cap on blend screens. The write-up is
+[`../notes/twin_round6.md`](../notes/twin_round6.md). The grid is run in compute slices, not by the job that built it.
+
+| Piece | Code |
+|---|---|
+| No money gates (the list), every dollar by category, spend to each target and per alloy | `round6.py` (`GATES_REMOVED`, `GATES_KEPT`, `Campaign6.charge`, `Campaign6._route`, `Twin6.spend_report`, `spend_at`) |
+| Used equipment from `out/twin6/market/summary.csv`, round 5's stand-ins without it | `round6.py` (`load_market`, `used_params`, `used_rule6`, `build_schedule6`) |
+| Crucibles: a pool per alloy family, its lead time, turnaround and wear; the day the derived cycle starts | `round6.py` (`CRUCIBLES`, `ITEM`, `CruciblePool`, `ResourceAtom6`, `Facility6.derived_start_h`) |
+| The HPC stream at scale, without keeping every candidate in memory | `round6.py` (`Twin6._stream_tick`, `_keep_visible`, `Campaign6._forget`, `_restore`) |
+| Idle stretches with causes, counting a partner's sessions offered | `round6.py` (`idle_report6`, `_could_start`) |
+| BOFN and pKGFN without their money rules, with a cut of a large pool before the network values it | `opt/net6.py` |
+| The pin that reproduces on any CPU, and the GP determinism check | `repro.py`, `gpcheck6.py` |
+| The grid, the slice tools (`ids`, `slices`, `fold`), timings (`smoke`), `status` | `bench6.py` |
+
+```bash
+cd vertical-lab
+export PIP_TIMEOUT=600 PIP_RETRIES=2
+pip install --index-url https://download.pytorch.org/whl/cpu torch==2.15.0 && pip install -r out/twin6/requirements.txt
+python -m pytest -q twin/tests/test_round6.py twin/tests/test_repro6.py
+python -m twin.gpcheck6                                   # the GP determinism check: exit 0 if this CPU matches
+python -m twin.bench6 status                              # runs and seeds per arm, core-hours left
+python -m twin.bench6 ids out/twin6/slices/slice-1.txt --slice 1   # what a compute slice runs
+```
+
+Round 5's code is unchanged: round 6 subclasses `Facility5`, `Campaign5` and `Twin5`, and `net3`'s policies.

@@ -1057,18 +1057,59 @@ class Twin6(R5.Twin5):
 
 
 # ------------------------------------------------------------------------------------------------- idle stretches
+def _could_start(F, keys, k, a_d, b_d, horizon_h) -> bool:
+    """Whether campaign ``k`` could have started a job at one of these stations in days [a, b): a partner's standing
+    slot went by unused (the stretch is longer than the slot's cadence plus a week, and fewer sessions were booked
+    than offered); a station with fixed starts (the atomizer run by people) offered the campaign a start; or a
+    station that works by the hour was busy less than half its open hours. Stations online for under a week of the
+    stretch don't count."""
+    A, B = a_d * H, min(b_d * H, horizon_h)
+    for key in keys:
+        r = F.res[key]
+        lo = max(A, r.online_h)
+        if B - lo < 7 * H:
+            continue
+        sts = [r.st]
+        if isinstance(r, R5.ResourceAtom):
+            sts = [(r.st_manual, lo, min(B, r.switch_h if r.switch_h is not None else B)),
+                   (r.st_auto, max(lo, r.switch_h if r.switch_h is not None else B), B)]
+        else:
+            sts = [(r.st, lo, B)]
+        for st, x, y in sts:
+            if y - x < 7 * H:
+                continue
+            if st.per_period:
+                n, days = st.per_period
+                used = sum(1 for s in r.period_starts if x <= s < y)
+                if (y - x) >= (days / n + 7) * H and int((y - x) / (days * H / n)) - used >= 1:
+                    return True
+            elif st.starts and st.hours != "24/7":
+                wd = (st.campaign_weekdays or {}).get(k, st.weekdays)
+                d0, d1 = int(math.ceil(x / H)), int(y // H)
+                if any((wd is None or d % 7 in wd) and d % 7 < 5 for d in range(d0, d1)):
+                    return True
+            else:
+                busy = sum(min(j[1], y) - max(j[0], x) for j in r.jobs if j[0] < y and j[1] > x) / max(st.units, 1)
+                if busy < 0.5 * R4._cal_hours(st.hours, x, y):
+                    return True
+    return False
+
+
 def idle_report6(tw) -> dict:
     """Round 5's idle report without money as a cause: for each campaign, stretches of at least a week with no start
     at its pacing stations (the atomizer; its first fabrication step), each with a cause read off the daily log:
     sign-off, capacity (a busy station, no crucible) or the WIP limit, decision time (results waiting on a person),
     or the policy waiting (asked, proposed nothing it could start, nothing turned away; 'results in flight' when it
-    had actions pending). A stretch of two weeks or more is flagged when the station had free capacity (busy under
-    half the time) and the policy was waiting: with money no longer a limit, nothing else explains it."""
+    had actions pending). A stretch of two weeks or more is flagged when the policy was waiting and the campaign
+    could have started a job (``_could_start``): with money no longer a limit, nothing else explains it. Round 5
+    called a station free when it was busy under half of every hour of the day, which flags the gap between a
+    partner's monthly sessions; round 6 counts the sessions offered."""
     F = tw.fac4
     nd = int(tw.h // H) + 1
     out = {}
     for k, c in tw.campaigns.items():
         fab = ("utah_midi", "lpbf_3dpt") if k == "flaime_al" else ("utah_mxlab", "mines_x2")
+        keys = {"atomizer": [], "fab": []}
         starts = {"atomizer": np.zeros(nd), "fab": np.zeros(nd)}
         busy = {"atomizer": np.zeros(nd), "fab": np.zeros(nd)}
         for key, r in F.res.items():
@@ -1076,6 +1117,7 @@ def idle_report6(tw) -> dict:
             grp = "atomizer" if role == "atomizer" else ("fab" if role in fab else None)
             if grp is None:
                 continue
+            keys[grp].append(key)
             for j in r.jobs:
                 if j[2] == k and j[0] < tw.h and not (isinstance(j[4], dict) and j[4].get("helper_for")):
                     starts[grp][int(j[0] // H)] += 1
@@ -1101,12 +1143,17 @@ def idle_report6(tw) -> dict:
             items = []
             for a, b in stretches:
                 cnt = {}
+                asked = none = 0
+                pend = []
                 for d in range(a, b):
                     x = D.get(d)
                     if x is None:
                         cnt["not asked (before start)"] = cnt.get("not asked (before start)", 0) + 1
                         continue
                     stt = x["st"]
+                    asked += 1 if x["asked"] else 0
+                    none += 1 if (x["asked"] and not x["proposed"]) else 0
+                    pend.append(x["pending"])
                     if stt.get("signoff"):
                         cause = "sign-off"
                     elif stt.get("capacity") or stt.get("kanban"):
@@ -1120,8 +1167,11 @@ def idle_report6(tw) -> dict:
                     cnt[cause] = cnt.get(cause, 0) + 1
                 bf = float(np.mean(busy[grp][a:b])) / 24.0 if b > a else 0.0
                 main = max(cnt.items(), key=lambda kv: kv[1])[0] if cnt else "?"
-                flag = bf < 0.5 and main.startswith("policy waiting") and (b - a) >= 14
-                items.append(dict(start_d=a, end_d=b, days=b - a, cause=main, causes=cnt,
+                free = _could_start(F, keys[grp], k, a, b, tw.h)
+                flag = free and main.startswith("policy waiting") and (b - a) >= 14
+                items.append(dict(start_d=a, end_d=b, days=b - a, cause=main, causes=cnt, could_start=bool(free),
+                                  days_asked=asked, days_nothing_proposed=none,
+                                  pending_median=float(np.median(pend)) if pend else 0.0,
                                   station_busy_frac=round(bf, 3), flag=bool(flag)))
             res[grp] = items
         out[k] = res
