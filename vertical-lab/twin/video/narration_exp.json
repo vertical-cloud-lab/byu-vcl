@@ -166,23 +166,30 @@
   {
    "id": "sem1",
    "mark": "sem.raster",
-   "offset": 0.5,
-   "text": "In the SEM, one beam gives four signals. Secondary electrons show the powder's shape. Backscattered electrons show the pores and cracks of a polished section.",
-   "src": "exp_sem: the SE image of the powder and the BSE image of the section building up (twin/instruments/sem.py)"
+   "offset": -1.5,
+   "text": "In the SEM, one electron beam scans the sample line by line, and four detectors each catch a different signal.",
+   "src": "exp_sem: the schematic of the column, the beam and the four detectors (illustrative), the four panels starting"
   },
   {
    "id": "sem2",
-   "mark": "sem.eds",
-   "offset": 0.3,
-   "text": "X-rays give the composition, and EBSD the grains and their orientations.",
-   "src": "exp_sem: the EDS spectrum and the EBSD map (twin/instruments/eds.py, ebsd.py)"
+   "mark": "sem.bse",
+   "offset": 1.6,
+   "text": "Secondary electrons show the powder's surface. Backscattered electrons show the section's pores and cracks. X-rays give the elements, and diffraction gives each grain's orientation.",
+   "src": "exp_sem: the four panels building from one raster position (twin/instruments/sem.py, eds.py, ebsd.py, full fidelity)"
   },
   {
    "id": "sem3",
+   "mark": "sem.read",
+   "offset": 1.3,
+   "text": "Every image here is the twin's simulation of this alloy.",
+   "src": "exp_sem: the tag on the data card and the third caption"
+  },
+  {
+   "id": "sem4",
    "mark": "sem.net",
-   "offset": 0.3,
-   "text": "The network uses three of these. EDS is a check on each lot, not an input.",
-   "src": "exp_sem: which the network uses (policies2.powder_feat, _soundness, section_out)"
+   "offset": 0.6,
+   "text": "The network uses three of them: the powder's satellites, the section's pores and cracks, and the grain size. EDS only checks the composition.",
+   "src": "exp_sem: the four badges (policies2.powder_feat, campaign._soundness, policies2.section_out; EDS: measured, not an input)"
   },
   {
    "id": "mec1",
