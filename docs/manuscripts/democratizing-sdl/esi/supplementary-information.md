@@ -219,8 +219,8 @@ Software-only projects are n/a (not applicable) for Procure and Build. The score
 
 ### P10 IvoryOS
 
-- **Repository:** gitlab.com/heingroup/ivoryos (canonical), mirrored at github.com/ivoryos-ai/IvoryOS. Release v1.7.0 on 2026-10-07.
-- **Deposit:** Zenodo concept DOI 10.5281/zenodo.15272617 resolves to a single version (10.5281/zenodo.15272618, 2025-04-24). No later release is archived, and the deposit declares CC BY 4.0 while the repository is MIT.
+- **Repository:** gitlab.com/heingroup/ivoryos (canonical), mirrored at github.com/ivoryos-ai/IvoryOS. Actively developed: six releases between the 2026-10-10 and 2026-11-27 checks, the latest v1.8.3 on 2026-11-24.
+- **Deposit:** Zenodo concept DOI 10.5281/zenodo.15272617 resolves to a single version (10.5281/zenodo.15272618, 2025-04-24). No later release is archived, including the six since 2026-10-10, and the deposit declares CC BY 4.0 while the repository is MIT.
 
 | Capability | Score | Evidence |
 |---|:-:|---|

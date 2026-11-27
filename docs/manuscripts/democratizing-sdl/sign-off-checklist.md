@@ -198,7 +198,7 @@ Wenyu Zhang, Lucy Hao, Jason E. Hein. Jason is also the likely escalation point 
 
 - [ ] **JEH-1.** P10 row of Table 1: $0, 0–1 h per integration, GitLab link plus Zenodo concept DOI 10.5281/zenodo.15272617.
 - [ ] **JEH-2.** Consent to the P10 row of Table 5. Troubleshoot is now ●, on the strength of the "Workflow step warnings" and "Human intervention and errors" pages. Also consent to §7's reading of IvoryOS as *complicating* Claim 4.
-- [ ] **JEH-3.** §6 commitment: met by the Zenodo deposit (concept 10.5281/zenodo.15272617). However, it is a single 2025-04-24 snapshot, while v1.7.0 shipped on 2026-10-07, and it declares CC BY 4.0 while the repository is MIT. Consider enabling automatic release archiving and correcting the licence on the deposit.
+- [ ] **JEH-3.** §6 commitment: met by the Zenodo deposit (concept 10.5281/zenodo.15272617). However, it is a single 2025-04-24 snapshot, while IvoryOS has shipped many releases since (the latest v1.8.3, 2026-11-24), and it declares CC BY 4.0 while the repository is MIT. Consider enabling automatic release archiving and correcting the licence on the deposit.
 - [ ] Your three affiliations (AC; UBC; University of Bergen), as in v1.
 
 ## 10. P7 team: electrochemical workflow

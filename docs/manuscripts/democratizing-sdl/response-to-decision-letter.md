@@ -90,7 +90,7 @@ These were not requested in the decision, but the editor and referees will want 
    - Reference 6 now carries the 2026 Author Correction to its title.
    - The ASTM viscosity standard is cited in its current edition.
    - The OSHWA definition, previously uncited because of a numbering collision, now has its own reference.
-   - All references were checked against Crossref.
+   - All references were checked against Crossref, most recently on 27 November 2026. None carries a retraction or an expression of concern.
 4. **Figures.** Figures now appear in citation order (the original printed 1, 2, 4, 3, 5, 6). Two projects that had no figure now have one (Figures 4 and 8). The figures are taken from the source files at higher resolution.
 5. **Authorship.**
    - Sterling G. Baird is now corresponding author. Brenden Pelkie, who corresponded on the original submission, remains first author.

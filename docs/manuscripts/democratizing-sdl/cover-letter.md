@@ -22,7 +22,9 @@ We address each point of your decision in the enclosed point-by-point response. 
 
 We also draw your attention to Doloi *et al.*, "Democratizing self-driving labs: advances in low-cost 3D printing for laboratory automation", published in *Digital Discovery* in 2025, after our original submission. We have changed our title to avoid a collision, and we cite and differentiate from that work explicitly. It catalogues what can be built cheaply. We argue that capital cost is close to irrelevant to whether anything is democratized. The two papers are complementary rather than duplicative.
 
-The preprint of the original version has been cited six times while under revision, including in *Science Robotics*, *Nature Computational Science*, *Materials Horizons* and this journal. This suggests the community is already engaging with the question.
+The preprint of the original version has been cited ten times while under revision, in venues including *Science Robotics*, *Nature Computational Science*, *Materials Horizons* and this journal; six of the citing papers share no author with this one. This suggests the community is already engaging with the question.
+
+<!-- SGB-12: verified 2026-11-27 from each citing work's reference list (audit/2026-11-27-references.md §5). Re-count just before sending. -->
 
 The original version is available as a preprint on ChemRxiv (10.26434/chemrxiv-2025-zhkrf, posted 12 February 2025, CC BY-NC 4.0). The revised manuscript differs from it substantially in structure, argument and evidence.
 

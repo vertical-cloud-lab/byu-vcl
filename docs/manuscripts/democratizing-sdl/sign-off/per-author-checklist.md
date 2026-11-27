@@ -311,7 +311,7 @@ Acceleration Consortium, University of Toronto; University of British Columbia. 
 - **Files that back it:**
   - [`ethraj2001/jubilee`](https://github.com/ethraj2001/jubilee) at commit `d5c5969` (2024-08-27), "added a new RDE tool for Jubilee 2.2", with the three RDE adapter STLs;
   - the upstream pull request [machineagency/jubilee#204](https://github.com/machineagency/jubilee/pull/204).
-- **Confirm:** ALL-1 to ALL-7, and P7-1 to P7-5 with the P7 team (see Yang Cao).
+- **Confirm:** ALL-1 to ALL-7, and P7-1 to P7-5 with the P7 team (see Yang Cao). On ALL-2: the GitHub profile `ethraj2001` now reads "Masters Student at McMaster University". If that is a move, keep the affiliation where the P7 work was done and give McMaster as the present address in a footnote, as RSC asks.
 
 ### 20. Alexander E. Siemenn
 

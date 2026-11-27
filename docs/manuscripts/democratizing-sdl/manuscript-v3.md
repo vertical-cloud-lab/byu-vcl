@@ -449,12 +449,12 @@ During the preparation of this manuscript, the authors used Claude (Anthropic) t
 8. Doloi, S.; Das, M.; Li, Y.; Cho, Z. H.; Xiao, X.; Hanna, J. V.; Osvaldo, M.; Ng Wei Tat, L. Democratizing Self-Driving Labs: Advances in Low-Cost 3D Printing for Laboratory Automation. *Digit. Discov.* **2025**, *4* (7), 1685–1721. https://doi.org/10.1039/D4DD00411F.
 9. Maia Chagas, A. Haves and Have Nots Must Find a Better Way: The Case for Open Scientific Hardware. *PLoS Biol.* **2018**, *16* (9), e3000014. https://doi.org/10.1371/journal.pbio.3000014.
 10. Pearce, J. M. Economic Savings for Scientific Free and Open Source Technology: A Review. *HardwareX* **2020**, *8*, e00139. https://doi.org/10.1016/j.ohx.2020.e00139.
-11. Open Source Hardware Association. Open Source Hardware (OSHW) Definition 1.0. https://oshwa.org/definition/ (accessed 2026-10-10).
+11. Open Source Hardware Association. Open Source Hardware (OSHW) Definition 1.0. https://oshwa.org/definition/ (accessed 2026-11-27).
 12. Pearce, J. M. Return on Investment for Open Source Scientific Hardware Development. *Sci. Public Policy* **2016**, *43* (2), 192–195. https://doi.org/10.1093/scipol/scv034.
 13. Bonvoisin, J.; Mies, R.; Boujut, J.-F.; Stark, R. What Is the "Source" of Open Source Hardware? *J. Open Hardw.* **2017**, *1* (1), 5. https://doi.org/10.5334/joh.7.
-14. Bao, R. eamars/OpenTrickler, 2024. https://github.com/eamars/OpenTrickler (accessed 2026-10-10).
+14. Bao, R. eamars/OpenTrickler, v1.4, 2024. https://github.com/eamars/OpenTrickler/releases/tag/v1.4 (accessed 2026-11-27).
 15. Lampkin, P. P.; Thompson, B. J.; Gellman, S. H. Versatile Open-Source Photoreactor Architecture for Photocatalysis Across the Visible Spectrum. *Org. Lett.* **2021**, *23* (13), 5277–5281. https://doi.org/10.1021/acs.orglett.1c01910.
-16. Pioreactor. https://pioreactor.com/ (accessed 2026-10-10).
+16. Pioreactor. https://pioreactor.com/ (accessed 2026-11-27).
 17. ASTM International. *Standard Test Method for Viscosity by Ford Viscosity Cup*; ASTM D1200-23; ASTM International: West Conshohocken, PA, 2023. https://doi.org/10.1520/D1200-23.
 18. Soh, B. W.; Chitre, A.; Lee, W. Y.; Bash, D.; Kumar, J. N.; Hippalgaonkar, K. Automated Pipetting Robot for Proxy High-Throughput Viscometry of Newtonian Fluids. *Digit. Discov.* **2023**, *2* (2), 481–488. https://doi.org/10.1039/D2DD00126H.
 19. Ginsburg, T.; Hippe, K.; Lewis, R.; Cleary, A.; Ozgulbas, D.; Butler, R.; Stone, C.; Stroka, A.; Vescovi, R.; Foster, I. Exploring Benchmarks for Self-Driving Labs Using Color Matching. In *Proceedings of the SC '23 Workshops of the International Conference on High Performance Computing, Network, Storage, and Analysis*; ACM: New York, NY, USA, 2023; pp 2147–2152. https://doi.org/10.1145/3624062.3624615.
@@ -464,7 +464,7 @@ During the preparation of this manuscript, the authors used Claude (Anthropic) t
 23. Siemenn, A. E.; Das, B.; Ji, K.; Sheng, F.; Buonassisi, T. A Self-Supervised Robotic System for Autonomous Contact-Based Spatial Mapping of Semiconductor Properties. *Sci. Adv.* **2025**, *11* (27), eadw7071. https://doi.org/10.1126/sciadv.adw7071.
 24. Siemenn, A. E.; Ren, Z.; Li, Q.; Buonassisi, T. Fast Bayesian Optimization of Needle-in-a-Haystack Problems Using Zooming Memory-Based Initialization (ZoMBI). *npj Comput. Mater.* **2023**, *9* (1), 79. https://doi.org/10.1038/s41524-023-01048-x.
 25. Vasquez, S.; Twigg-Smith, H.; Tran O'Leary, J.; Peek, N. Jubilee: An Extensible Machine for Multi-Tool Fabrication. In *Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems*; CHI '20; ACM: New York, NY, USA, 2020; pp 1–13. https://doi.org/10.1145/3313831.3376425.
-26. Subbaraman, B.; de Lange, O.; Ferguson, S.; Peek, N. The Duckbot: A System for Automated Imaging and Manipulation of Duckweed. *PLOS ONE* **2024**, *19* (1), e0296717. https://doi.org/10.1371/journal.pone.0296717.
+26. Subbaraman, B.; de Lange, O.; Ferguson, S.; Peek, N. The Duckbot: A System for Automated Imaging and Manipulation of Duckweed. *PLoS One* **2024**, *19* (1), e0296717. https://doi.org/10.1371/journal.pone.0296717.
 27. Politi, M.; Baum, F.; Vaddi, K.; Antonio, E.; Vasquez, S.; Bishop, B. P.; Peek, N.; Holmberg, V. C.; Pozzo, L. D. A High-Throughput Workflow for the Synthesis of CdSe Nanocrystals Using a Sonochemical Materials Acceleration Platform. *Digit. Discov.* **2023**, *2* (4), 1042–1057. https://doi.org/10.1039/D3DD00033H.
 28. Yoshikawa, N.; Darvish, K.; Vakili, M. G.; Garg, A.; Aspuru-Guzik, A. Digital Pipette: Open Hardware for Liquid Transfer in Self-Driving Laboratories. *Digit. Discov.* **2023**, *2* (6), 1745–1751. https://doi.org/10.1039/D3DD00115F.
 29. Guevarra, D.; Kan, K.; Lai, Y.; Jones, R. J. R.; Zhou, L.; Donnelly, P.; Richter, M.; Stein, H. S.; Gregoire, J. M. Orchestrating Nimble Experiments Across Interconnected Labs. *Digit. Discov.* **2023**, *2* (6), 1806–1812. https://doi.org/10.1039/D3DD00166K.
@@ -478,12 +478,12 @@ During the preparation of this manuscript, the authors used Claude (Anthropic) t
 37. Antoniou, R.; Pinquié, R.; Boujut, J.-F.; Ezoji, A.; Dekoninck, E. Identifying the Factors Affecting the Replicability of Open Source Hardware Designs. *Proc. Des. Soc.* **2021**, *1*, 1817–1826. https://doi.org/10.1017/pds.2021.443.
 38. Saubke, D.; Krenz, P.; Redlich, T. Howling for a New Standard – Deficits in Open Source Hardware Documentation. *Procedia CIRP* **2025**, *136*, 195–200. https://doi.org/10.1016/j.procir.2025.08.035.
 39. Hein, J. E.; Schrier, J. Guidelines for Hardware-Focused Articles. *Digit. Discov.* **2024**, *3* (3), 447–448. https://doi.org/10.1039/D4DD90009J.
-40. Royal Society of Chemistry. Digital Discovery: Author Guidelines. https://www.rsc.org/publishing/publish-with-us/publish-a-journal-article/digital-discovery (accessed 2026-10-10).
+40. Royal Society of Chemistry. Digital Discovery: Author Guidelines. https://www.rsc.org/publishing/publish-with-us/publish-a-journal-article/digital-discovery (accessed 2026-11-27).
 41. Aspuru-Guzik, A.; Hein, J. E.; Schrier, J. Commit: Mini Article for Dynamic Reporting of Incremental Improvements to Previous Scholarly Work. *Digit. Discov.* **2025**, *4* (2), 301–302. https://doi.org/10.1039/D4DD90053G.
 42. Yoshikawa, N.; Angers, K.; Darvish, K.; Okhovatian, S.; Bannerman, D.; Yakavets, I.; Radisic, M.; Aspuru-Guzik, A. Commit: Digital Pipette: Open Hardware for Liquid Transfer in Self-Driving Laboratories. *Digit. Discov.* **2026**, *5* (1), 93–97. https://doi.org/10.1039/D5DD00336A.
 43. DIN SPEC 3105-1:2020-07. *Open Source Hardware – Part 1: Requirements for Technical Documentation* (text in English); DIN Media: Berlin, 2020. https://doi.org/10.31030/3173063.
-44. Lab Automation Forums. https://labautomation.io/ (accessed 2026-10-10).
-45. Accelerated Discovery — AI and Automation to Accelerate Materials Discovery. https://accelerated-discovery.org/ (accessed 2026-10-10).
+44. Lab Automation Forums. https://labautomation.io/ (accessed 2026-11-27).
+45. Accelerated Discovery — AI and Automation to Accelerate Materials Discovery. https://accelerated-discovery.org/ (accessed 2026-11-27).
 
 ---
 
