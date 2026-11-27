@@ -1380,7 +1380,10 @@ def build(kind: str):
             meta3.write(rec)
         else:
             meta.write(rec, lab3d=True, narrated=NARRATE)
-        sheet(dst, VID / f"sheet_lab3d{NAR}.png", rec)
+        if R3B:                                         # round 3b: chosen moments, so the changed parts are on it
+            sheet_at(dst, VID / f"sheet_lab3d{NAR}.png", sheet_moments(rec))
+        else:
+            sheet(dst, VID / f"sheet_lab3d{NAR}.png", rec)
     print(json.dumps(info), flush=True)
     return rec
 
@@ -1412,6 +1415,98 @@ def sheet(video: Path, dst: Path, rec: dict, n: int = 12):
         lab = f"{int(tt // 60)}:{int(tt % 60):02d}  {ch[-1][1] if ch else ''}"
         d.text(((i % 4) * w + 8, (i // 4) * (h + 34) + h + 6), lab[:52], font=St.font(15 / St.S), fill=St.INK)
     out.save(dst, optimize=True)
+
+
+def sheet_moments(rec: dict) -> list:
+    """Round 3b's contact sheet: sixteen chosen moments of the cut as built, [(seconds, label)]: what round 3b changed
+    (the explainer, the change of seed, the lab comparison's four cards) among what it kept. The times come from the
+    record and the script's cues, so they follow the cut when it is re-timed."""
+    F3, tl = S("figs3"), S("tl")
+    s0 = {s["name"]: s["start_s"] for s in rec["segments"]}
+    ev = {c: v for v, c, _, _ in target_events()[:2]}
+    LT = F3.labs_t()
+    rep_ = replay3b()
+    a, b = rep_["parts"]
+    return [
+        (s0["title"] + 6.0, "Title"),
+        (s0["changes"] + F3.CHANGES_DURATION - 2.0, "What changed: rounds 3 and 3b"),
+        (s0["figures"] + F3.cue("fig5", 57.3) - 1.5, "Like for like: at least 1.8x"),
+        (s0["figures"] + F3.EXPLAIN_DURATION - 1.5, "The stock, a separate effect"),
+        (s0["assume"] + F3.ASSUME_DURATION - 2.0, "The atomizer: design targets"),
+        (s0["replay"] + tl.phase_t[1] + 16.0, f"Replay, day by day (seed {a['seed']})"),
+        (s0["replay"] + ev["flaime_al"] + 2.5, f"Day {a['day']:.0f}: aluminium, seed {a['seed']}"),
+        (s0["replay"] + tl.switch_t + 2.0, f"The change of seed, day {rep_['switch_day']}"),
+        (s0["replay"] + ev["onr_cu"] + 2.5, f"Day {b['day']:.0f}: copper, seed {b['seed']}"),
+        (s0["results"] + F3.res_t()[1] - 1.5, "Results: the policies"),
+        (s0["labs"] + LT[1] - 1.2, "The labs, like for like"),
+        (s0["labs"] + LT[2] - 1.2, "What the stock buys"),
+        (s0["labs"] + LT[3] - 1.2, "Where it doesn't win"),
+        (s0["labs"] + LT[4] - 1.2, "Cost: campaign spend"),
+        (s0["takeaway"] + F3.TAKEAWAY_DURATION - 1.5, "The takeaway"),
+        (s0["notes"] + NOTES_DURATION - 4.0, "Notes: real, assumed, simulated"),
+    ]
+
+
+def sheet_at(video: Path, dst: Path, moments: list, cols: int = 4):
+    """Chosen frames of the cut, each with its time and label."""
+    w, h = 480, 270
+    rows = (len(moments) + cols - 1) // cols
+    out = Image.new("RGB", (cols * w, rows * (h + 34)), St.BG)
+    d = ImageDraw.Draw(out)
+    for i, (tt, lab) in enumerate(moments):
+        r = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{tt:.2f}", "-i", str(video), "-vframes", "1", "-f",
+                            "rawvideo", "-pix_fmt", "rgb24", "-s", f"{w}x{h}", "-"], capture_output=True)
+        if len(r.stdout) >= w * h * 3:
+            im = Image.fromarray(np.frombuffer(r.stdout[:w * h * 3], np.uint8).reshape(h, w, 3))
+            out.paste(im, ((i % cols) * w, (i // cols) * (h + 34)))
+        d.text(((i % cols) * w + 8, (i // cols) * (h + 34) + h + 6), f"{int(tt // 60)}:{int(tt % 60):02d}  {lab}"[:54],
+               font=St.font(15 / St.S), fill=St.INK)
+    out.save(dst, optimize=True)
+
+
+def finish(kind: str = "final3d", redo: list | None = None) -> dict:
+    """The build's last steps again from the pieces already encoded (out/.../parts): encode again only the segments
+    named in `redo`, then join, narrate, and write the record, the description and the contact sheet. For a change
+    to one card after a full build: `python -m twin.video.compose finish labs notes`."""
+    t_start = time.time()
+    preset = os.environ.get("TWIN_VIDEO_PRESET", "medium")
+    workers = int(os.environ.get("TWIN_VIDEO_WORKERS", "2"))
+    rec = plan_record()
+    pieces, CH = [], 45.0                               # the pieces as build() cuts them
+    for s in rec["segments"]:
+        a, dur, k = 0.0, s["seconds"], 0
+        while a < dur - 1e-6:
+            b = min(dur, a + CH)
+            if dur - b < 8.0:
+                b = dur
+            pieces.append((s["name"], a, b, TMP / f"{kind}_{len(pieces):02d}_{s['name']}_{k}.mp4"))
+            a, k = b, k + 1
+    todo = [p for p in pieces if p[0] in (redo or []) or not p[3].exists()]
+    print(f"finish: {len(todo)} of {len(pieces)} pieces encoded again", flush=True)
+    if todo:
+        _run_pieces(todo, preset, workers)
+    dst = VID / (("campaign_lab3d" if kind == "final3d" else "campaign") + NAR + ".mp4")
+    concat([p[3] for p in sorted(pieces, key=lambda p: str(p[3]))], dst)
+    if NARRATE:
+        rec["narration"] = narrate(dst, rec, kind)
+    old = {}
+    rp = VID / f"{kind}{NAR}_record.json"
+    if rp.exists():
+        old = json.loads(rp.read_text())
+    info = dict(kind=kind, file=str(dst.relative_to(D.HERE)), seconds=_duration(dst), wall_s=old.get("wall_s"),
+                python_cpu_s=old.get("python_cpu_s"), preset=preset, workers=old.get("workers", workers),
+                placeholder=placeholder(), replay=([r.path.name for r in S("R").runs] if R3B else S("R").path.name),
+                built_utc=time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime()),
+                finished_again=dict(pieces=[f"{p[0]} {p[1]:.1f}-{p[2]:.1f}" for p in todo],
+                                    wall_s=round(time.time() - t_start, 1)))
+    rec.update(info)
+    rp.write_text(json.dumps(rec, indent=1) + "\n")
+    if R3B:
+        from . import meta3b
+        meta3b.write(rec)
+        sheet_at(dst, VID / f"sheet_lab3d{NAR}.png", sheet_moments(rec))
+    print(json.dumps(info), flush=True)
+    return rec
 
 
 def stills(times: list):
@@ -1562,6 +1657,8 @@ if __name__ == "__main__":
         print(json.dumps(render_piece(name, a, b, out, preset)), flush=True)
     elif cmd in ("preview", "final", "final3d"):
         build(cmd)
+    elif cmd == "finish":                               # finish [segment ...]: join, narrate and record again
+        finish("final3d" if LAB3D else "final", args[1:])
     elif cmd == "npreview":                             # the narrated preview: the opening and the switch to the lab
         narrated_preview(render="--meta-only" not in args)
     elif cmd == "remux":                                # remux <video> <wav>: the narration track again, picture copied

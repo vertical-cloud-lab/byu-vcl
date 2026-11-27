@@ -591,7 +591,8 @@ def _lab_stock(d, lay, t, ctx=None):
     _para(d, X0, px(800), "The stock is about a month's metal, bought on day 0 and charged to the campaign. It brings "
           "the first results forward; the final alloy is the same either way (stocked minus ordering as it goes: "
           f"BOFN {b['mean']:+.2f} ± {b['se']:.2f}, pKGFN {p['mean']:+.2f} ± {p['se']:.2f}). It does little for "
-          "copper's tiered screening, which waits on money, not on metal.", St.font(18),
+          f"copper's tiered screening: {_x(st['tiered'][CU]['T1']['days'])} and "
+          f"{_x(st['tiered'][CU]['T2']['days'])} to its two targets.", St.font(18),
           St.mix(St.BG, St.INK2, kf), px(1760), px(26))
 
 
@@ -670,7 +671,8 @@ def _lab_tie(d, lay, t, ctx=None):
     _para(d, px(994), px(686), "Sooner than the automated lab ordering metal as it goes with any policy: "
           f"{_day(lean['heuristic']['day'])} for the heuristic, {_day(lean['bofn3']['day'])} for BOFN, "
           f"{_day(lean['pkgfn3']['day'])} for pKGFN. The best existing alloy on this synthetic benchmark is a low "
-          "bar: a lab with metal on the shelf reaches it soon.", St.font(17), ink2, px(820), px(25), max_lines=4)
+          f"bar: one random design in {n['targets']['one_in']} beats it.", St.font(17), ink2, px(820), px(25),
+          max_lines=4)
     kf = St.ramp(t, 21.5, 22.3)
     _para(d, X0, px(840), "BOFN and pKGFN ran in the conventional lab on 4 seeds, three simulated years each, so these "
           "comparisons rest on 4 pairs. Three years' money also gives the conventional lab a first-day release "
