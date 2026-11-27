@@ -651,7 +651,7 @@ def best_panel(c: str, t_h: float) -> Image.Image:
         ymax = max(0.9, float(max(ra.curves[c][:, 2].max() if len(ra.curves[c]) else 0.0,
                                   rc.curves[c][:, 2].max() if len(rc.curves[c]) else 0.0)) * 1.08)
         P = Plot(w, h - 46, ra.horizon_days, ymax)
-        d.text((px(16), px(8)), f"{CAMP_WORD[c]}: best new alloy so far", font=St.font(16, bold=True), fill=St.INK)
+        d.text((px(16), px(8)), f"{CAMP_WORD[c]}: best new alloy so far (simulated)", font=St.font(16, bold=True), fill=St.INK)
         P.axes(d, [v for v in (0.0, 0.2, 0.4, 0.6, 0.8) if v <= ymax], lambda v: f"{v:.1f}", _xticks(ra.horizon_days))
         x0, y0, x1, y1 = P.box
         for tn, tv, words, below in (("T1", T1, "best existing alloy", True), ("T2", T2, "halfway target", False)):

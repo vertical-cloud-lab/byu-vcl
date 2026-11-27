@@ -352,7 +352,12 @@ class Replay5(D.Replay):
         budget = self.budget[campaign]
         money = any(c == "money" for _, c in causes) or (left is not None and budget and left < 0.02 * budget)
         if money:
-            out.append(("money", f"the money is spent ({_usd(self.spent_at(campaign, d * HPD))} of {_usd(budget)})"))
+            # the engine refuses a new alloy for money when it costs more than is left, or when what is left must be
+            # kept to test the alloys already made (round5.wip_reserve): only near zero is the money spent
+            if left is None or left < 0.02 * budget:
+                out.append(("money", f"the money is spent ({_usd(self.spent_at(campaign, d * HPD))} of {_usd(budget)})"))
+            else:
+                out.append(("money", f"too little money left to start new alloys ({_usd(left)} of {_usd(budget)})"))
         fabw = "a printer" if campaign == "flaime_al" else "a DED slot"
         for grp, c in causes:
             if c == "money":

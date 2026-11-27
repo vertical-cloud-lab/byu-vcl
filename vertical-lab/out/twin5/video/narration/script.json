@@ -92,9 +92,9 @@
    "mark": "spent",
    "offset": 4.0,
    "when": "money_story",
-   "text": "Now both curves are flat, and each plot says why: the money is spent. With all of it there from the start, this lab has spent 90 percent of its two years of money by day 337, and from here it mostly waits. The conventional lab is still spending.",
-   "src": "replay5.spend_panel: the mark '90 % spent by day N' on the automated lab's line, the conventional lab's dashed line still rising; the strips 'flat since day N. Why: the money is spent'",
-   "template": "Now both curves are flat, and each plot says why: the money is spent. With all of it there from the start, this lab has spent {pct_spent} percent of its {years} of money by day {d90}, and from here it mostly waits. The conventional lab is still spending."
+   "text": "Now both curves are flat. With all of its money there from the start, this lab has spent 90 percent of its two years of money by day 337, and from here it mostly waits: the line under each plot says why. The conventional lab is still spending.",
+   "src": "replay5.spend_panel: the mark '90 % spent by day N' on the automated lab's line, the conventional lab's dashed line still rising; the strips 'flat since day N. Why: ...' (stock, too little money left to start new alloys, then the money spent: data5.Run.reasons), not claimed to say the same in both plots",
+   "template": "Now both curves are flat. With all of its money there from the start, this lab has spent {pct_spent} percent of its {years} of money by day {d90}, and from here it mostly waits: the line under each plot says why. The conventional lab is still spending."
   },
   {
    "id": "rep8",
