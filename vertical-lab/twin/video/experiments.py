@@ -65,8 +65,10 @@ PARTS = [("intro", "experiments", "Intro"), ("composition", "exp_composition", "
          ("corrosion", "exp_corrosion", "Corrosion"), ("outro", "experiments", "Outro")]
 ONLY = [k for k in os.environ.get("TWIN_EXP_PARTS", "").split(",") if k]     # a subset, while segments are being written
 # how the voice says what the lines of this chapter add (narration.SAY / IPA are the cut's and stay as they are)
-SAY_MORE = {"EBSD": "E B S D", "UTS": "U T S", "CubXL": "cube X L", "3-D": "three D", "AM": "A M"}
-IPA_MORE = {"Scheil": "ʃˈaɪl", "Rosenthal": "ɹˈoʊzənθɔːl"}
+SAY_MORE = {"EBSD": "E B S D", "UTS": "U T S", "micrometres": "micrometers"}
+# "a Scheil": a lone article before a respelled word is read as the letter ("ay Scheil"); "AM" as letters came
+# out "uh em" after "the" (both found by reading the phonemes back)
+IPA_MORE = {"a Scheil": "ɐ ʃˈaɪl", "Scheil": "ʃˈaɪl", "AM": "ˌeɪ ˈɛm"}
 MORE_WORDS = {"thirty": 30, "sixty": 60, "fifteen": 15, "fourteen": 14, "hundred": 100}
 
 
@@ -393,7 +395,7 @@ def check_numbers() -> list:
             covered.add(tok)
             if not ok:
                 bad.append(rows[-1])
-        for fig in re.findall(r"(?<![\w-])\d[\d,]*(?:\.\d+)?(?![\w-])", ln["text"]):
+        for fig in re.findall(r"(?<![\w-])\d+(?:,\d{3})*(?:\.\d+)?(?![\w-])", ln["text"]):
             if fig not in covered:
                 rows.append(dict(id=ln["id"], says=fig, path=None, value=None, shown=None, ok=False))
                 bad.append(rows[-1])

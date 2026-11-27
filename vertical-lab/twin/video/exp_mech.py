@@ -88,12 +88,12 @@ class Mech(Segment):
         f = X.load_facts()["al"]["tensile"]
         self.f = f
         self.captions = [
-            (0.6, 8.9, "Heat treatment first. The twin books the furnace for three hours and models the strength it "
-                       "leaves, not the profile: this one is illustrative."),
+            (0.6, 8.9, "Bars are cut by wire EDM, then heat treated. The twin books the furnace for three hours and "
+                       "models the strength it leaves, not the profile: this one is illustrative."),
             (9.8, 22.4, "Then three bars are pulled to fracture. Each curve is the twin's simulated load record for "
                         "this alloy."),
-            (22.8, 30.6, "Yield strength and elongation feed the network's tensile node, and from there the "
-                         "utility."),
+            (22.8, 30.6, "Yield strength and elongation feed the tensile node. The utility scores them against the "
+                         "reference alloys, and counts the mineral burden."),
         ]
         self.marks = {"mech.furnace": self.T_FURNACE[0], "mech.pull": self.T_PULL[0], "mech.fracture": self.T_PULL[1],
                       "mech.marks": self.T_MARK[0], "mech.net": self.T_NET}

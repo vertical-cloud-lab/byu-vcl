@@ -245,6 +245,7 @@
     "lof": 0.44
    }
   ],
+  "n_cubes": 9,
   "best": {
    "index": 4,
    "P_W": 250.0,
@@ -339,6 +340,12 @@
      "mass_mg": 3.31,
      "rate_um_yr": 15.0
     }
+   },
+   "read_days": {
+    "first": 1,
+    "second": 3,
+    "third": 7,
+    "fourth": 14
    },
    "true_rate_um_yr": 16.6
   }

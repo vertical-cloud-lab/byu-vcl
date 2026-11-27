@@ -489,6 +489,7 @@ def facts() -> dict:
         cubes=[dict(P_W=c["P_W"], v_mm_s=c["v_mm_s"], density_pct=_r(100 * c["measured"]["rel_density"], 2),
                     true_pct=_r(100 * c["true_density"], 2), crack=_r(c["measured"]["crack_density"], 3),
                     kh=_r(c["kh"], 2), lof=_r(c["lof"], 2)) for c in cubes],
+        n_cubes=len(cubes),
         best=dict(index=al.best, P_W=b["P_W"], v_mm_s=b["v_mm_s"],
                   density_pct=_r(100 * b["measured"]["rel_density"], 2), crack=_r(b["measured"]["crack_density"], 3),
                   true_pct=_r(100 * b["true_density"], 2), true_crack=_r(b["part"]["crack_density"], 3)),
@@ -521,6 +522,7 @@ def facts() -> dict:
                        attack_um=_r(imm["final"]["attack_um"], 1),
                        interim={str(d): dict(mass_mg=_r(m["mass_change_mg"], 2), rate_um_yr=_r(m["rate_um_yr"], 1))
                                 for d, m in imm["interim"].items()},
+                       read_days=dict(zip(("first", "second", "third", "fourth"), sorted(imm["interim"]))),
                        true_rate_um_yr=_r(cu.part["corrosion"]["rate_um_yr"], 1)))
     # what round 3b's runs bought from the simulation nodes
     out["sim_kinds"] = sim_kinds()
