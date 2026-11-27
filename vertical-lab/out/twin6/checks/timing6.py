@@ -109,8 +109,8 @@ def one(job):
 def extrapolate(ps, days=730):
     """A two-year run's CPU seconds from its cost curve so far (``ps``: progress lines, any order): ``low`` at the
     latest 50 days' rate, ``high`` with that rate still rising at the slope of its 10-day rates over the last 100 days
-    (no less than flat). Past the cell, the GP nodes fill to their 600-point cap (twin/opt/gp.py ``max_n``) and the
-    rate should level off, so ``low`` is the likelier and ``high`` the cautious one."""
+    (no less than flat). Past the cell the GP nodes fill toward their 600-point cap (twin/opt/gp.py ``max_n``),
+    copper's slowly, which keeps the rate rising; campaigns don't stop at their targets."""
     ps = sorted(ps, key=lambda p: p["day"])
     last = ps[-1]
     D, C = last["day"], last["cpu"]

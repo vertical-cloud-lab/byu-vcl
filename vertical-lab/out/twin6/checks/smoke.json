@@ -1411,19 +1411,19 @@
    },
    "full": {
     "seconds": null,
-    "cpu_seconds": 18829,
+    "cpu_seconds": 21391,
     "days": 730,
     "scale": 64,
     "source": "checks/timing6_progress.jsonl",
     "extrapolated": {
-     "from_day": 390,
-     "cpu_at_day": 2986.6,
-     "rate": 22.22,
-     "slope": 0.1434,
-     "low": 10543,
-     "high": 18829
+     "from_day": 410,
+     "cpu_at_day": 3622.2,
+     "rate": 27.38,
+     "slope": 0.1759,
+     "low": 12384,
+     "high": 21391
     },
-    "how": "extrapolated from day 390 of a two-year run (seed 0): the cautious end, 10,543-18,829 s"
+    "how": "extrapolated from day 410 of a two-year run (seed 0): the cautious end, 12,384-21,391 s"
    }
   },
   "r6_vertical_parallel_bofn3_reorder_atom-3h": {
@@ -1625,19 +1625,19 @@
    },
    "full": {
     "seconds": null,
-    "cpu_seconds": 25003,
+    "cpu_seconds": 22596,
     "days": 730,
     "scale": 16,
     "source": "checks/timing6_progress.jsonl",
     "extrapolated": {
-     "from_day": 400,
-     "cpu_at_day": 2945.9,
-     "rate": 28.28,
-     "slope": 0.2337,
-     "low": 12277,
-     "high": 25003
+     "from_day": 420,
+     "cpu_at_day": 3590.4,
+     "rate": 32.32,
+     "slope": 0.187,
+     "low": 13609,
+     "high": 22596
     },
-    "how": "extrapolated from day 400 of a two-year run (seed 0): the cautious end, 12,277-25,003 s"
+    "how": "extrapolated from day 420 of a two-year run (seed 0): the cautious end, 13,609-22,596 s"
    }
   },
   "r6_vertical_parallel_bofn3_reorder_hpc256": {
@@ -2595,19 +2595,19 @@
    },
    "full": {
     "seconds": null,
-    "cpu_seconds": 19380,
+    "cpu_seconds": 19000,
     "days": 730,
     "scale": 64,
     "source": "checks/timing6_progress.jsonl",
     "extrapolated": {
-     "from_day": 390,
-     "cpu_at_day": 2995.5,
-     "rate": 23.69,
-     "slope": 0.1441,
-     "low": 11049,
-     "high": 19380
+     "from_day": 410,
+     "cpu_at_day": 3564.7,
+     "rate": 26.48,
+     "slope": 0.136,
+     "low": 12037,
+     "high": 19000
     },
-    "how": "extrapolated from day 390 of a two-year run (seed 0): the cautious end, 11,049-19,380 s"
+    "how": "extrapolated from day 410 of a two-year run (seed 0): the cautious end, 12,037-19,000 s"
    }
   },
   "r6_vertical_parallel_pkgfn3_reorder_atom-3h": {
@@ -2809,19 +2809,19 @@
    },
    "full": {
     "seconds": null,
-    "cpu_seconds": 25347,
+    "cpu_seconds": 24524,
     "days": 730,
     "scale": 16,
     "source": "checks/timing6_progress.jsonl",
     "extrapolated": {
-     "from_day": 400,
-     "cpu_at_day": 2992.7,
-     "rate": 28.17,
-     "slope": 0.2398,
-     "low": 12289,
-     "high": 25347
+     "from_day": 410,
+     "cpu_at_day": 3359.3,
+     "rate": 31.51,
+     "slope": 0.2164,
+     "low": 13444,
+     "high": 24524
     },
-    "how": "extrapolated from day 400 of a two-year run (seed 0): the cautious end, 12,289-25,347 s"
+    "how": "extrapolated from day 410 of a two-year run (seed 0): the cautious end, 13,444-24,524 s"
    }
   },
   "r6_vertical_parallel_pkgfn3_reorder_hpc256": {
