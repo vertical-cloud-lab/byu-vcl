@@ -1,9 +1,9 @@
 """Is the vertical lab worth it? A queue model of sample transport, replayed on the twin's event logs (issue #407).
 
-    python -m twin.worth_it run            # the grid: 4 layouts x 3 external loads x the logs -> out/worth_it/
-    python -m twin.worth_it sens           # sensitivities on a few logs
+    python -m twin.worth_it run            # 2 timings x 4 layouts x 3 external loads x 24 logs -> out/worth_it/
+    python -m twin.worth_it sens           # sensitivities on 4 logs at 30 % and 60 % outside load
     python -m twin.worth_it tables         # out/worth_it/tables.md from the saved results
-    python -m twin.worth_it one <log> <layout> <n_mm> <ext>
+    python -m twin.worth_it one <log> <layout> <n_mm> <ext> ['{"attend": "cells"}']
 
 What it adds to the twin. Round 3 books one 6 min robot transfer with every in-house step and has no tray, extractor
 or opening (twin/facility.py ROBOT_H), so it cannot say whether a Shuttle opening or a robot would bind. This model
@@ -51,21 +51,26 @@ OUT = ROOT / "out" / "worth_it"
 @dataclass
 class Params:
     """Handling times. 'vendor' and 'repo' figures have a source; every 'stand-in' is a guess to be measured."""
-    v_mm: float = 0.8          # m/s driving. Stand-in: MiR250's rated top speed is 2.0 m/s (vendor); see the note, 4.3
-    a_mm: float = 0.3          # m/s2. Vendor: MiR250 at full payload (notes/alloy_workflow.md)
-    t_dock: float = 60.0       # s to dock at a marker and localize the arm. Stand-in (machining_sim.py assumes 150 s
-    #                            to drive in, dock and re-localize; Burger 2020 touched a cube at every station)
+    v_mm: float = 0.8          # m/s driving. Stand-in, between Liverpool's 0.3 m/s cap (Burger 2020, SI) and an Aethon
+    #                            T3's 0.76 m/s hospital maximum, under the 1.0 m/s people walk beside a robot (Neggers
+    #                            2022); MiR250's rated top speed is 2.0 m/s (MiR250 spec, 2023)
+    a_mm: float = 0.3          # m/s2. Vendor: MiR250 at full payload (MiR250 spec, 2023)
+    t_dock: float = 60.0       # s to dock at a marker and localize the arm. Stand-in: MiR250 docks to a VL-marker in up
+    #                            to 14 s (spec); the arm's calibration time is not published (ER-VISION "to 1 mm");
+    #                            machining_sim.py assumes 150 s to drive in, dock and re-localize
     t_arm: float = 60.0        # s to load or unload one instrument (door, fixture, grip). Stand-in
     t_rack: float = 20.0       # s to pick from or place on an open rack. Stand-in
-    t_fetch: float = 26.0      # s, slot to opening: Kardex's 20 s to fetch (notes/bottleneck.md, Kardex's figure for a
-    #                            6.75 m unit) + 2 x 3 s for the tray's coupling to undock and dock (notes/services.md)
+    t_fetch: float = 26.0      # s, slot to opening: Kardex's 20 s average to fetch (configured Shuttle 500, 6.75 m, at
+    #                            100 % speed; units ship at 70 % extractor speed) + 2 x 3 s for the tray's coupling to
+    #                            undock and dock (notes/services.md)
     t_store: float = 26.0      # s, opening to slot, the same way; store + fetch = 52 s against Kardex's 38 s + 12 s
     t_tray_loc: float = 10.0   # s, a camera look at a newly presented tray. Stand-in (the extractor's repeatability
     #                            against the arm's needs is unknown: notes/services.md)
     tray_slow: float = 1.0     # multiplier on t_fetch and t_store (a gentle profile for sensitive trays)
     lock: str = "running"      # "running": a tray stays put while an instrument on it runs; "never": it may move
-    charge_every_h: float = 10.0   # Stand-in: hours of work a charge lasts; an idle unit tops up at its charger
-    charge_h: float = 52.0 / 60.0  # Vendor: MiR250 10-90 % in 52 min (notes/warehouse.md)
+    charge_every_h: float = 4.5    # Vendor: MiR's MC250 (MiR250 + UR arm) runs 4.5 h from 100 % to 10 %; an idle unit
+    #                                tops up at its charger (a bare MiR250: 13 h at full payload)
+    charge_h: float = 1.0          # 40 min for 20-80 % (MC250), so about an hour for the 90 % a full run uses
     aisle_exclusive: bool = True   # flat: one unit in an aisle at a time (PR 406's layout note)
     max_queue: int = 20        # external jobs waiting at a station before a new request is turned away
     slot_grace_h: float = 0.5  # a slotted station (atomizer starts, furnace cycles) starts up to this late. Stand-in
@@ -614,7 +619,9 @@ class Sim:
                     bonus = self.p.bonus_tray
                 elif m["dock"] == dock:
                     bonus = self.p.bonus_dock
-                cls = 2 if j["ext"] else (0 if u["station"] in self.urgent else 1)
+                # time-critical stations first, then internal loads and every unload (a finished outside job
+                # must not hold an instrument that internal work is waiting for), then outside loads
+                cls = 0 if u["station"] in self.urgent else (2 if (j["ext"] and kind == "IN") else 1)
                 key = (cls, t_req - bonus / 3600.0)
                 if best is None or key < best[0]:
                     best = (key, kind, u, j)
@@ -806,15 +813,25 @@ def _worker(a):
 
 
 MAIN_LOGS = [f"r3_vertical_lab_{pol}_s{s}.json.xz" for pol in ("bofn3", "tiered") for s in range(12)]
+MODES = ("none", "cells")              # the twin's timing; PR 332's attended time with the powder line in a cell
+SENS_LOGS = [f"r3_vertical_lab_{pol}_s{s}.json.xz" for pol in ("bofn3", "tiered") for s in range(2)]
 SENS = {
-    "base": {},
+    "base (the twin's timing)": {},
+    "attended time (PR 332, powder line in a cell)": dict(attend="cells"),
+    "attended time everywhere (PR 332; the replay loses atomizer slots)": dict(attend="pr332"),
     "trays may move while instruments run": dict(lock="never"),
+    "attended, trays may move while instruments run": dict(attend="cells", lock="never"),
     "gentle trays (2.5x slower)": dict(tray_slow=2.5),
+    "attended, gentle trays (2.5x slower)": dict(attend="cells", tray_slow=2.5),
+    "no pre-fetch (the Shuttle waits for the unit)": dict(prefetch=False),
     "slow handling (dock 150 s, load 120 s)": dict(t_dock=150.0, t_arm=120.0),
     "fast handling (dock 30 s, load 30 s)": dict(t_dock=30.0, t_arm=30.0),
-    "driving at 0.3 m/s": dict(v_mm=0.3),
+    "driving at 0.3 m/s (Liverpool's cap)": dict(v_mm=0.3),
     "driving at 1.5 m/s": dict(v_mm=1.5),
+    "a bare MiR250's battery (13 h a charge, 52 min to charge)": dict(charge_every_h=13.0, charge_h=52.0 / 60.0),
+    "attended, a bare MiR250's battery": dict(attend="cells", charge_every_h=13.0, charge_h=52.0 / 60.0),
     "aisles shared (flat)": dict(aisle_exclusive=False),
+    "outside samples carried from packaging": dict(ext_intake=True),
 }
 
 
@@ -827,27 +844,35 @@ def grid(logs=None, layouts=LAYOUTS, loads=LOADS, params=None, workers: int = 4)
         return pool.map(_worker, args, chunksize=1)
 
 
+def _save(path: Path, obj) -> None:
+    with lzma.open(path, "wt") as fh:
+        json.dump(obj, fh, separators=(",", ":"))
+
+
+def _load(path: Path):
+    with lzma.open(path, "rt") as fh:
+        return json.load(fh)
+
+
 def main(argv):
     cmd = argv[1] if len(argv) > 1 else "run"
     OUT.mkdir(parents=True, exist_ok=True)
+    from twin import worth_it_report as R
     if cmd == "one":
-        print(json.dumps(run_one(EVENTS / argv[2], argv[3], int(argv[4]), float(argv[5])), indent=1))
+        prm = json.loads(argv[6]) if len(argv) > 6 else None
+        print(json.dumps(run_one(EVENTS / argv[2], argv[3], int(argv[4]), float(argv[5]), params=prm), indent=1))
     elif cmd == "run":
-        rows = grid()
-        (OUT / "results.json").write_text(json.dumps(dict(params=asdict(Params()), rows=rows), indent=1))
-        from twin import worth_it_report as R
+        rows = [r for mode in MODES for r in grid(params=dict(attend=mode))]
+        _save(OUT / "results.json.xz", dict(params=asdict(Params()), logs=MAIN_LOGS, rows=rows))
         R.write(rows)
     elif cmd == "sens":
-        logs = [f"r3_vertical_lab_bofn3_s{s}.json.xz" for s in range(3)]
-        out = {name: grid(logs, loads=(0.3, 0.6), params=prm) for name, prm in SENS.items()}
-        (OUT / "sensitivity.json").write_text(json.dumps(out, indent=1))
-        from twin import worth_it_report as R
+        out = {name: grid(SENS_LOGS, loads=(0.3, 0.6), params=prm) for name, prm in SENS.items()}
+        _save(OUT / "sensitivity.json.xz", out)
         R.write_sens(out)
     elif cmd == "tables":
-        from twin import worth_it_report as R
-        R.write(json.loads((OUT / "results.json").read_text())["rows"])
-        if (OUT / "sensitivity.json").exists():
-            R.write_sens(json.loads((OUT / "sensitivity.json").read_text()))
+        R.write(_load(OUT / "results.json.xz")["rows"])
+        if (OUT / "sensitivity.json.xz").exists():
+            R.write_sens(_load(OUT / "sensitivity.json.xz"))
 
 
 if __name__ == "__main__":
