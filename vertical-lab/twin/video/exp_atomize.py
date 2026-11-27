@@ -122,9 +122,11 @@ def al_words() -> dict:
     ft = al_footage()
     clips = [b for b in ("melt", "pour") if b in ft]
     if clips:
-        return dict(kind="footage", beats=clips, line="This footage is real: our own atomizer, on one of its "
-                                                      "aluminium runs.",
-                    runs=sorted({ft[b]["credit"]["run"] for b in clips}))
+        runs = sorted({ft[b]["credit"]["run"] for b in clips})
+        # each clip's run and alloy is named on its picture; the line only says what is true of them all
+        line = ("This footage is real: our own atomizer, running aluminium." if len(runs) > 1 else
+                "This footage is real: our own atomizer, on one of its aluminium runs.")
+        return dict(kind="footage", beats=clips, line=line, runs=runs)
     if "jar" in ft:
         return dict(kind="photo", beats=[], line="This photograph is real: aluminium powder from our own atomizer.",
                     runs=[ft["jar"]["credit"]["run"]])

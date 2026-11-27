@@ -383,6 +383,16 @@ def _panel(w: int, h: int, a: float | None = None):
     return im, d
 
 
+def _fit(text: str, font, width: float) -> str:
+    """text, cut at a word and closed with an ellipsis if it is wider than width (never cut mid-word)."""
+    if St.text_w(font, text) <= width:
+        return text
+    words = text.split(" ")
+    while len(words) > 1 and St.text_w(font, " ".join(words) + " …") > width:
+        words.pop()
+    return " ".join(words).rstrip(",;:") + " …"
+
+
 def _cached(key, make):
     if key not in _IM:
         if len(_IM) > 400:
@@ -676,11 +686,20 @@ def best_panel(c: str, t_h: float) -> Image.Image:
                     else f"{n_new} new alloy{'s' if n_new != 1 else ''} tested, none past its gates")
             rs = [wds for _, wds in fl["reasons"][:2]] or ["results still in flight"]
             f1, f2 = St.font(14, bold=True), St.font(14)
+            right = px(w - 14)
             d.text((px(16), ys + px(5)), head + ". Why:", font=f1, fill=St.WARN)
             xx = px(16) + St.text_w(f1, head + ". Why: ")
-            d.text((xx, ys + px(5)), rs[0], font=f2, fill=St.INK)
-            if len(rs) > 1:
-                d.text((px(16), ys + px(24)), "and " + rs[1], font=f2, fill=St.INK)
+            # two lines at most, each kept inside the panel: the first reason beside the head when it fits there,
+            # else on the second line; the second reason after it on the second line, when there is room
+            if xx + St.text_w(f2, rs[0]) <= right:
+                d.text((xx, ys + px(5)), rs[0], font=f2, fill=St.INK)
+                if len(rs) > 1:
+                    d.text((px(16), ys + px(24)), _fit("and " + rs[1], f2, right - px(16)), font=f2, fill=St.INK)
+            else:
+                line2 = rs[0] + ("; and " + rs[1] if len(rs) > 1 else "")
+                if St.text_w(f2, line2) > right - px(16):
+                    line2 = rs[0]
+                d.text((px(16), ys + px(24)), _fit(line2, f2, right - px(16)), font=f2, fill=St.INK)
         return im
     return _cached(key, make)
 

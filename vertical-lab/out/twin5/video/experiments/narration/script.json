@@ -2,11 +2,15 @@
  "about": "The experiments chapter's lines as spoken for round 5: twin/video/narration_exp5.json filled from out/twin5/video/experiments/facts.json by twin/video/experiments.py script(). Written by the build; edit the template, not this.",
  "round": 5,
  "footage": {
-  "kind": "photo",
-  "beats": [],
-  "line": "This photograph is real: aluminium powder from our own atomizer.",
+  "kind": "footage",
+  "beats": [
+   "melt",
+   "pour"
+  ],
+  "line": "This footage is real: our own atomizer, running aluminium.",
   "runs": [
-   "4yghtr"
+   "4yghtr",
+   "c3k0n5"
   ]
  },
  "lines": [
@@ -128,14 +132,14 @@
   {
    "id": "atm1",
    "mark": "atomize.pour",
-   "offset": 1.4,
+   "offset": 2.6,
    "src": "exp_atomize: the lab's own aluminium run in the footage's frame (out/footage/manifest.json, subject al; exp_atomize.al_words says what is there) and the simulated laser-diffraction result",
-   "text": "This photograph is real: aluminium powder from our own atomizer. The size distribution beside it is the twin's, for this alloy."
+   "text": "This footage is real: our own atomizer, running aluminium. The size distribution beside it is the twin's, for this alloy."
   },
   {
    "id": "atm2",
    "mark": "atomize.yield",
-   "offset": 0.3,
+   "offset": 1.3,
    "src": "exp_atomize: the mass balance (twin/instruments/atomize_yield.py on this lot)",
    "text": "Here, one of three runs failed, and 13 percent of the charge ended up in the printer's size range.",
    "nums": [

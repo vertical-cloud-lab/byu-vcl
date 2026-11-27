@@ -98,12 +98,12 @@
    "sha256": "cd11dada4ce5454199d1cd3f336a7c3fd3819587cbca8bec912ff523c2526966"
   },
   "atm1": {
-   "key": "873137edf1977bed",
-   "text": "This photograph is real: aluminium powder from our own atomizer. The size distribution beside it is the twin's, for this alloy.",
-   "spoken": "This photograph is real: aluminum powder from our own atomizer. The size distribution beside it is the twin's, for this alloy.",
-   "phonemes": "ðɪs fˈoʊɾəɡɹˌæf ɪz ɹˈiːəl: ɐlˈuːmɪnəm pˈaʊdɚ fɹʌm ˌaʊɚɹ ˈoʊn ˈæɾəmˌaɪzɚ. ðə sˈaɪz dˌɪstɹɪbjˈuːʃən bᵻsˌaɪd ɪɾ ɪz ðə twˈɪnz, fɔːɹ ðɪs ˈælɔɪ.",
-   "seconds": 8.47,
-   "sha256": "2818cf876264ad0f0ead5fc3e42fff1e077361b8ca2e72adf08139cf70e75c6d"
+   "key": "8c7558cb50e2fb80",
+   "text": "This footage is real: our own atomizer, running aluminium. The size distribution beside it is the twin's, for this alloy.",
+   "spoken": "This footage is real: our own atomizer, running aluminum. The size distribution beside it is the twin's, for this alloy.",
+   "phonemes": "ðɪs fˈʊɾɪdʒ ɪz ɹˈiːəl: ˌaʊɚɹ ˈoʊn ˈæɾəmˌaɪzɚ, ɹˈʌnɪŋ ɐlˈuːmɪnəm. ðə sˈaɪz dˌɪstɹɪbjˈuːʃən bᵻsˌaɪd ɪɾ ɪz ðə twˈɪnz, fɔːɹ ðɪs ˈælɔɪ.",
+   "seconds": 8.06,
+   "sha256": "ce76bee9c4ae2144767dbc97751ea01d5152fdec7ca8b39bd64f37538d0c7120"
   },
   "atm2": {
    "key": "b7008b5bb6e7406e",
