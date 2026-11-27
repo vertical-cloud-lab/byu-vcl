@@ -1,0 +1,102 @@
+{
+ "experiment": "arms",
+ "run_id": "r5_conventional_external_fast_lean_s0",
+ "config_as_committed": true,
+ "identical": true,
+ "n_differences": 0,
+ "differences": [],
+ "not_compared": [
+  "seconds",
+  "gp",
+  "env",
+  "code"
+ ],
+ "event_log_identical": true,
+ "event_log_identical_bytes": true,
+ "rerun": {
+  "seconds": 21.2,
+  "code": {
+   "commit": "b410477a3e41dd8d6eb40cb566c8eb11deed70d7",
+   "twin_dirty": false
+  },
+  "env": {
+   "python": "3.14.4",
+   "cpu": "Intel(R) Xeon(R) 6975P-C",
+   "avx512": true,
+   "pin": "avx2",
+   "pin_late": false,
+   "hash_pinned": true,
+   "numpy": "2.5.5",
+   "scipy": "1.18.1",
+   "torch": "2.15.0+cpu",
+   "botorch": "0.18.1",
+   "gpytorch": "1.15.2",
+   "linear_operator": "0.6.1",
+   "blas": [
+    {
+     "api": "openblas",
+     "version": "0.3.31.dev",
+     "arch": "Haswell",
+     "threads": 1
+    },
+    {
+     "api": "openmp",
+     "version": null,
+     "arch": null,
+     "threads": 1
+    },
+    {
+     "api": "openblas",
+     "version": "0.3.34.237.2",
+     "arch": "Haswell",
+     "threads": 1
+    }
+   ],
+   "torch_cpu": "AVX2",
+   "torch_threads": 1
+  }
+ },
+ "committed": {
+  "seconds": 24.4,
+  "code": {
+   "commit": "6895a097c78ea5aadaa6edf2f640c8ab17df6726",
+   "twin_dirty": false
+  },
+  "env": {
+   "python": "3.14.4",
+   "cpu": "AMD EPYC 9V45 96-Core Processor",
+   "avx512": true,
+   "pin": "avx2",
+   "pin_late": false,
+   "hash_pinned": true,
+   "numpy": "2.5.5",
+   "scipy": "1.18.1",
+   "torch": "2.15.0+cpu",
+   "botorch": "0.18.1",
+   "gpytorch": "1.15.2",
+   "linear_operator": "0.6.1",
+   "blas": [
+    {
+     "api": "openblas",
+     "version": "0.3.31.dev",
+     "arch": "Haswell",
+     "threads": 1
+    },
+    {
+     "api": "openmp",
+     "version": null,
+     "arch": null,
+     "threads": 1
+    },
+    {
+     "api": "openblas",
+     "version": "0.3.34.237.2",
+     "arch": "Haswell",
+     "threads": 1
+    }
+   ],
+   "torch_cpu": "AVX2",
+   "torch_threads": 1
+  }
+ }
+}
