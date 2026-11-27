@@ -3058,11 +3058,38 @@
  },
  "what": "seed 0 of each group of the grid, timed on the runner that built it (twin/bench6.py smoke); 'short' is a shortened run (it shows the group runs and what it costs a day), 'full' a two-year run; twin/bench6.py timings() turns them into seconds for two years",
  "stream_cost": {
+  "fast": {
+   "conventional": 0.02511,
+   "vertical": 0.02506
+  },
   "gp": {
+   "conventional": 0.02776,
    "vertical": 0.02679
   }
  },
  "stream_cost_pairs": {
+  "fast/conventional": [
+   {
+    "k": 0.02511,
+    "how": "fast s0: day 150 at 1x (pre conventional fast s0 1x) and 64x (conventional fast 64x)"
+   }
+  ],
+  "fast/vertical": [
+   {
+    "k": 0.02506,
+    "how": "fast s0: day 150 at 1x (pre vertical fast s0 1x) and 64x (vertical fast 64x)"
+   }
+  ],
+  "gp/conventional": [
+   {
+    "k": 0.02772,
+    "how": "bofn3 s0: day 150 at 1x (pre conventional bofn3 s0 1x) and 64x (conventional bofn3 64x)"
+   },
+   {
+    "k": 0.0278,
+    "how": "pkgfn3 s0: day 150 at 1x (pre conventional pkgfn3 s0 1x) and 64x (conventional pkgfn3 64x)"
+   }
+  ],
   "gp/vertical": [
    {
     "k": 0.02606,

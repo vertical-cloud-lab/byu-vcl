@@ -577,3 +577,16 @@
 {"label": "pre vertical fast s0 1x", "day": 150, "wall": 22.3, "cpu": 7.8, "load1": 11.91}
 {"label": "pre vertical fast s0 1x", "day": 160, "wall": 23.3, "cpu": 8.4, "load1": 11.91}
 {"label": "pre conventional bofn3 s0 1x", "day": 110, "wall": 23.7, "cpu": 10.9, "load1": 11.91}
+{"label": "pre conventional bofn3 s0 1x", "day": 120, "wall": 26.5, "cpu": 12.1, "load1": 12.08}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 110, "wall": 29.7, "cpu": 11.3, "load1": 12.24}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 120, "wall": 32.4, "cpu": 12.6, "load1": 12.24}
+{"label": "pilot vertical bofn3 s1 16x", "day": 170, "wall": 540.2, "cpu": 127.7, "load1": 12.24}
+{"label": "pre conventional bofn3 s0 1x", "day": 130, "wall": 33.8, "cpu": 15.4, "load1": 12.24}
+{"label": "pre conventional bofn3 s0 1x", "day": 140, "wall": 35.9, "cpu": 16.6, "load1": 12.3}
+{"label": "pre conventional bofn3 s0 1x", "day": 150, "wall": 38.7, "cpu": 18.3, "load1": 12.3}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 130, "wall": 39.6, "cpu": 15.8, "load1": 12.35}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 140, "wall": 42.6, "cpu": 17.0, "load1": 12.35}
+{"label": "pre conventional bofn3 s0 1x", "day": 160, "wall": 43.7, "cpu": 20.5, "load1": 12.35}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 150, "wall": 45.2, "cpu": 18.7, "load1": 12.17}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 160, "wall": 49.0, "cpu": 20.9, "load1": 12.17}
+{"label": "pilot vertical bofn3 s0 64x", "day": 180, "wall": 1961.0, "cpu": 379.5, "load1": 11.4}

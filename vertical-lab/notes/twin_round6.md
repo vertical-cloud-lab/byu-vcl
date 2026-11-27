@@ -430,14 +430,15 @@ experiment runs all three, 16 seeds an arm (12 is the floor a comparison is repo
 | `atom` | the automated atomizer's cycle at 3 h and slow, 5.5 h (derived is `arms`), the automated lab both ways | 12 | 192 |
 | `crucibles_late` | the crucible pool 240 days late, the automated lab both ways | 6 | 96 |
 | `noused` | every station bought new, the automated lab stocked | 3 | 48 |
-| `hpc` | the HPC stream at the other scales, both labs stocked | 24 | 384 |
+| `hpc` | the HPC stream at 1×, 4× and 16× (the main arms run at 64×), both labs stocked | 18 | 288 |
+| `hpc256` | the HPC stream at 256×, both labs stocked, on its own and last | 6 | 96 |
 | all | | 87 | 1,392 |
 
 <!-- GRID_HOURS -->
 
 **The order of work** (`TIERS`): tier 1 is `arms`; tier 2 what it rests on (`plans`, `hpc`); tier 3 `noused` and
-`crucibles_late`; tier 4 the decision windows and the atomizer's cycle. Within a tier the first 12 seeds of every arm
-come before the last four.
+`crucibles_late`; tier 4 the decision windows and the atomizer's cycle; tier 5 `hpc256`. Within a tier the first 12
+seeds of every arm come before the last four.
 
 **Rows.** One JSON line per run: the configuration; for each campaign the best new alloy over time, the day and money
 to each target (campaign money alone and with the lab's fixed costs), per new alloy, counters, the policy's own
@@ -450,12 +451,14 @@ differed from it at either point (`code`). Event logs are kept for `arms` and fo
 **A compute slice** (out/twin6/README.md has the whole procedure):
 
 ```bash
+set -e                                                    # Python 3.14.4, a 4-vCPU x86-64 runner
 cd vertical-lab
+test "$(git rev-parse HEAD:vertical-lab/twin)" = 469478fe0ee785ef82279ac84b186f656ac4a5de   # the engine checked here
 export PIP_TIMEOUT=600 PIP_RETRIES=2
 pip install --index-url https://download.pytorch.org/whl/cpu torch==2.15.0 && pip install -r out/twin6/requirements.txt
 K=1
 python -m twin.gpcheck6 --out out/twin6/slices/gpcheck-slice-$K.json            # exit 0 before any row is made
-python -m twin.bench6 ids out/twin6/slices/slice-$K.txt --slice $K --workers 4
+python -m twin.bench6 ids out/twin6/slices/slice-$K.txt --slice $K --workers 4   # or the run ids themselves
 ```
 
 `python -m twin.bench6 slices 0` writes the lists (`out/twin6/slices/slice-<k>.txt`), as many as keep each at or
@@ -467,10 +470,19 @@ under 16 core-hours, the longest runs first; `fold` brings the slices' rows in; 
 * **The grid itself**, as asked: no row of it was made. `python -m twin.bench6 status` lists every run as left.
 * **The HPC at its full capacity** (about 123,000 candidates a day for each campaign, 1,920× round 5's) can't be
   simulated with this stream: about 12 hours of stream per two-year run (section 4). The grid goes to 256×.
-* **Real Intel and EPYC 7763 runners.** The pin was shown on this AMD EPYC 9V74 and under an emulated Granite Rapids
-  and Haswell, not on those CPUs themselves; the slices' GP checks will be the test (section 5).
+* **Real Intel and EPYC 7763 runners.** The pin was shown on an AMD EPYC 9V74 and a 9V45 and under an emulated
+  Granite Rapids and Haswell, not on those CPUs themselves; the slices' GP checks will be the test (section 5).
 * **pKGFN in the HPC pilot**, and BOFN in the conventional lab's pilot beyond the stream's cost: BOFN in the automated
   lab stood for the network policies. The grid's `hpc` and `hpc256` experiments run all three policies in both labs.
+* **The first job's pilot data** (`hpc_pilot.jsonl`, and the `smoke.json` it fed) was never committed, so its
+  findings on the heuristic and the funnel (section 4) can't be rechecked; the second job reran BOFN's part.
+* **A finished two-year run of the automated lab with BOFN or pKGFN.** They cost several CPU-hours each and didn't
+  reach day 730 in the second job; their two-year cost is extrapolated from how far they got (section 8).
+* **Two-year runs of the variants the grid prices by ratio** (lean stock, and the wait and external plans, with BOFN
+  or pKGFN): they were started and stopped to leave the CPU to the runs asked for. Lean stock is priced as stocked
+  and the plans by round 5's ratios (`bench6.variant_ratios` uses a measured ratio as soon as `smoke.json` has a
+  two-year run of the variant). Every row of the grid records its own CPU seconds (`timing.cpu_seconds`), so the
+  first slices' rows will show each group's real cost.
 * **The copper check at the main scale.** It ran at 16× (and two cases at 1×), not 64×.
 * **The analysis module** for round 6's rows (round 5's `like5.py` reads round 5's record, `r5`; round 6's rows carry
   `r6`, with money by category instead of a budget, and the crucible item renamed `crucible_coated`). It belongs with

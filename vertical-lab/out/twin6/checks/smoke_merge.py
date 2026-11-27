@@ -56,8 +56,9 @@ def stream_cost(rows, prog):
             r1, r2 = info[l1], info[l2]
             if r1 is None or r2 is None or not (r1["scale"] < r2["scale"] and r2["scale"] >= 16):
                 continue
-            if (r1["policy"], r1["lab"], r1["seed"], r1.get("plan"), r1.get("stock")) != \
-                    (r2["policy"], r2["lab"], r2["seed"], r2.get("plan"), r2.get("stock")):
+            key = lambda r: (r["policy"], r["lab"], r["seed"], r.get("plan") or ARM[r["lab"]][1],
+                             r.get("stock") or "reorder")
+            if key(r1) != key(r2):
                 continue
             both = [d for d in set(c1) & set(c2) if 0 < d <= PRE_CELL_D]
             if not both or max(both) < 100:
