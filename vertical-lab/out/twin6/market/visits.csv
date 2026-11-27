@@ -813,14 +813,14 @@ t_utc,kind,site,url,status,blocked,error,title
 2026-11-27T19:12:19Z,listing,machineseeker,https://www.machineseeker.com/universal+robots-ur3/i-23392258,200,,,▷ Used 6-axis industrial robot Universal Robots UR3 for sale - Machineseeker.com
 2026-11-27T19:12:19Z,listing,machinio,https://www.machinio.com/listings/111884414-malvern-mastersizer-3000-in-burladingen-germany,200,,,"Malvern Mastersizer 3000 in Burladingen, Baden-Württemberg, Germany"
 2026-11-27T19:12:24Z,listing,labx,https://www.labx.com/item/rigaku-benchtop-xrd-new-6th-generation-rigaku-miniflex/3919807,200,,,Rigaku - Benchtop XRD New 6th Generation Rigaku MiniFlex | LabX.com
-2026-11-27T19:12:25Z,probe or vendor page,,https://penntoolco.com/mitutoyo-pc-driven-micro-vickers-hardness-tester-hm-220-type-b-64aab325p,200,,,"Mitutoyo PC Driven Micro Vickers Hardness Tester HM-220 Type B - 64AAB325P| Penn Tool Co.,"
+2026-11-27T19:12:25Z,probe or vendor page,penntool,https://penntoolco.com/mitutoyo-pc-driven-micro-vickers-hardness-tester-hm-220-type-b-64aab325p,200,,,"Mitutoyo PC Driven Micro Vickers Hardness Tester HM-220 Type B - 64AAB325P| Penn Tool Co.,"
 2026-11-27T19:12:34Z,listing,machinio,https://www.machinio.com/listings/118249767-2012-rigaku-miniflex-600-379718-in-livermore-ca,200,,,"2012 Rigaku MiniFlex 600 379718 in Livermore, CA, USA"
 2026-11-27T19:12:40Z,search,machinio,https://www.machinio.com/listings?search=concept+laser,200,,,New & Used Concept Laser for sale. Venus Concept equipment & more | Machinio
 2026-11-27T19:12:42Z,listing,machinio,https://www.machinio.com/listings/87315353-agilent-7800-icp-ms-in-arcade-ny,200,,,"Agilent 7800 ICP-MS in Arcade, NY, USA"
 2026-11-27T19:12:45Z,listing,exapro,https://www.exapro.com/fanuc-robocut-alpha-0c-p211105202/,200,,,Used FANUC Robocut Alpha 0C Wire cutting edm machine Used machines - Exapro
 2026-11-27T19:12:48Z,listing,govdeals,https://www.govdeals.com/en/asset/193/16057,200,,,2014 Haas TL1 CNC Lathe | GovDeals
 2026-11-27T19:12:50Z,listing,labx,https://www.labx.com/item/hitachi-high-tech-tm1000-tabletop-miscroscope/ESS-218916-135581066025,200,,,Hitachi High Tech TM1000 Tabletop Miscroscope | LabX.com
-2026-11-27T19:12:55Z,probe or vendor page,,https://robotiq.com/products/adaptive-grippers,200,,,"Adaptive Grippers for Cobots, Robots, Humanoids, and Model Building"
+2026-11-27T19:12:55Z,probe or vendor page,robotiq,https://robotiq.com/products/adaptive-grippers,200,,,"Adaptive Grippers for Cobots, Robots, Humanoids, and Model Building"
 2026-11-27T19:12:56Z,listing,machinio,https://www.machinio.com/listings/117526723-2015-haas-st-10y-in-usa,200,,,2015 Haas ST-10Y in USA
 2026-11-27T19:13:10Z,listing,machineseeker,https://www.machineseeker.com/zwickroell-zwicki+z2%2C5/i-21245962,200,,,"▷ Used Universal testing machine ZwickRoell Zwicki Z2,5 for sale - Machineseeker.com"
 2026-11-27T19:13:14Z,listing,machinio,https://www.machinio.com/listings/117890915-2015-haas-st-10-with-live-tooling-pre-setter-cnc-lathe-in-los-angeles-ca,200,,,"2015 HAAS ST-10 with Live Tooling & Pre-Setter CNC Lathe in Los Angeles, CA, USA"
@@ -831,7 +831,7 @@ t_utc,kind,site,url,status,blocked,error,title
 2026-11-27T19:13:33Z,search,machinio,https://www.machinio.com/listings?search=trumpf+truprint,200,,,New & Used Trumpf Truprint for sale. Trumpf equipment & more | Machinio
 2026-11-27T19:13:40Z,listing,machinio,https://www.machinio.com/listings/90555092-agilent-7800-icpms-in-missouri-usa,200,,,"Agilent 7800 ICPMS in Missouri, USA"
 2026-11-27T19:13:47Z,listing,labx,https://www.labx.com/item/zwick-roell-torsion-testing-machine/DIS-86979-4836,200,,,Zwick Roell torsion testing machine | LabX.com
-2026-11-27T19:13:50Z,probe or vendor page,,https://specac.com/products/atlas-autotouch-automatic-hydraulic-press/,404,,,Page not found - Specac Ltd
+2026-11-27T19:13:50Z,probe or vendor page,specac,https://specac.com/products/atlas-autotouch-automatic-hydraulic-press/,404,,,Page not found - Specac Ltd
 2026-11-27T19:13:55Z,listing,machinio,https://www.machinio.com/listings/94259292-agilent-technologies-7800-icp-ms-in-arcade-ny,200,,,"Agilent Technologies 7800 ICP/MS in Arcade, NY, USA"
 2026-11-27T19:13:56Z,listing,allsurplus,https://www.allsurplus.com/en/asset/193/16057,200,,,2014 Haas TL1 CNC Lathe | AllSurplus
 2026-11-27T19:13:59Z,listing,machineseeker,https://www.machineseeker.com/jeol-jsm-it810shl/i-22407372,200,,,▷ Used Field emission scanning electron microscope JEOL JSM-IT810SHL for sale - Machinesee
@@ -1398,3 +1398,171 @@ t_utc,kind,site,url,status,blocked,error,title
 2026-11-27T19:55:51Z,listing,machinio,https://www.machinio.com/listings/171591-agilent-keysight-7800-icp-ms-spectrometer,200,,,Agilent - Keysight 7800 ICP-MS Spectrometer
 2026-11-27T19:55:53Z,listing,machinio,https://www.machinio.com/listings/305225-haas-st-10y-cnc-lathe,200,,,Haas ST-10Y CNC Lathe
 2026-11-27T19:55:54Z,listing,labx,https://www.labx.com/item/agilent-7700x/DIS-96958-49500,200,,,Agilent 7700x | LabX.com
+2026-11-27T19:56:05Z,listing,machinio,https://www.machinio.com/listings/119954320-malvern-mastersizer-2000-hydro-2000mu-in-chorley-united-kingdom,200,,,"Malvern Mastersizer 2000 & Hydro 2000MU in Chorley, England, United Kingdom"
+2026-11-27T19:56:10Z,listing,machinio,https://www.machinio.com/listings/100976527-agilent-7800-and-aanton-parr-m-icp-ms-in-watertown-ma,200,,,"Agilent 7800 and Aanton Parr M ICP-MS in Watertown, MA, USA"
+2026-11-27T19:56:12Z,listing,labx,https://www.labx.com/item/agilent-icp-ms-7700e/scp-180776-5527185,200,,,Agilent ICP-MS 7700e | LabX.com
+2026-11-27T19:56:21Z,listing,machinio,https://www.machinio.com/listings/95018830-agilent-8800-icp-ms-in-arcade-ny,200,,,"Agilent 8800 ICP/MS in Arcade, NY, USA"
+2026-11-27T19:56:27Z,listing,labx,https://www.labx.com/item/agilent-7900-icp-ms/4917-5250083,200,,,Agilent 7900 ICP-MS | LabX.com
+2026-11-27T19:56:28Z,listing,machinio,https://www.machinio.com/listings/88998609-agilent-7700x-icp-ms-in-pennsylvania-usa,200,,,"Agilent 7700x ICP-MS in Pennsylvania, USA"
+2026-11-27T19:56:29Z,listing,labx,https://www.labx.com/item/nikkiso-bluewave-laser-diffraction-particle-size-analyzer/DIS-50372-A205887,200,,,Nikkiso Bluewave Laser Diffraction Particle Size Analyzer | LabX.com
+2026-11-27T19:56:41Z,listing,machinio,https://www.machinio.com/listings/106316166-agilent-7900-icp-ms-in-ramsey-mn,200,,,"Agilent 7900 ICP-MS in Ramsey, MN, USA"
+2026-11-27T19:56:44Z,listing,labx,https://www.labx.com/item/refurbished-malvern-mastersizer-2000-w-hydro-and-scirocco/11881236,200,,,Refurbished Malvern Mastersizer 2000 w/Hydro and Scirocco available | LabX.com
+2026-11-27T19:56:45Z,listing,machinio,https://www.machinio.com/listings/122696411-2016-agilent-7900-icp-ms-with-chiller-pump-pc-install-training-in-tukwila-wa,200,,,"2016 Agilent 7900 ICP-MS with Chiller, Pump, PC, Install & Training in Tukwila, WA, USA"
+2026-11-27T19:56:47Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-10-x/DIS-256828-PCE-DFG%2010%20X,200,,,Tensile Tester PCE-DFG 10 X | LabX.com
+2026-11-27T19:56:59Z,listing,machinio,https://www.machinio.com/listings/104497783-agilent-7700-icp-ms-in-arcade-ny,200,,,"Agilent 7700 ICP-MS in Arcade, NY, USA"
+2026-11-27T19:57:03Z,listing,labx,https://www.labx.com/item/beckman-coulter-ls-100-q-laser-diffraction-particle-size/DIS-59250-21924,200,,,Beckman Coulter LS 100 Q Laser Diffraction Particle Size Analyzer / Small Volume Module Pl
+2026-11-27T19:57:04Z,listing,labx,https://www.labx.com/item/agilent-7700-icp-ms/248780-4247,200,,,Agilent 7700 ICP-MS | LabX.com
+2026-11-27T19:57:09Z,listing,machinio,https://www.machinio.com/listings/171409-agilent-keysight-7900-spectrometer,200,,,Agilent - Keysight 7900 Spectrometer
+2026-11-27T19:57:21Z,listing,machinio,https://www.machinio.com/listings/106316163-agilent-7700-icp-ms-in-ramsey-mn,200,,,"Agilent 7700 ICP-MS in Ramsey, MN, USA"
+2026-11-27T19:57:37Z,listing,labx,https://www.labx.com/item/agilent-7500a-icp-ms/DIS-59250-826,200,,,Agilent 7500a ICP-MS | LabX.com
+2026-11-27T19:57:44Z,listing,machinio,https://www.machinio.com/listings/97604918-agilent-7700x-icp-ms-in-orlando-fl,200,,,"Agilent 7700X ICP MS in Orlando, FL, USA"
+2026-11-27T19:57:44Z,listing,labx,https://www.labx.com/item/thermo-i-cap-q-icp-ms/scp-199006-5939605,200,,,Thermo I CAP Q ICP-MS | LabX.com
+2026-11-27T19:57:49Z,listing,machinio,https://www.machinio.com/listings/90555136-agilent-7700x-icpms-in-missouri-usa,200,,,"Agilent 7700x ICPMS in Missouri, USA"
+2026-11-27T19:57:55Z,listing,labx,https://www.labx.com/item/malvern-mastersizer-2000-used-malvern-scirocco-2000-dry/DIS-87025-259612,200,,,Malvern Mastersizer 2000 used Malvern SCIROCCO 2000 Dry Powder Feeder used MALVERN HYDRO 2
+2026-11-27T19:58:04Z,listing,machinio,https://www.machinio.com/listings/57627854-agilent-7700-icp-ms-in-bonney-lake-wa,200,,,"Agilent 7700 ICP-MS in Bonney Lake, WA, USA"
+2026-11-27T19:58:04Z,listing,labx,https://www.labx.com/item/analytical-balance-pce-bs-3000-ica-incl-iso-calibration/DIS-256828-PCE-BS%203000-ICA,200,,,Analytical Balance PCE-BS 3000-ICA Incl. ISO Calibration Certificate | LabX.com
+2026-11-27T19:58:06Z,listing,machinio,https://www.machinio.com/listings/77327541-edwards-rv3-new-vacuum-pump-in-watertown-ma,200,,,"Edwards RV3 NEW Vacuum Pump in Watertown, MA, USA"
+2026-11-27T19:58:09Z,listing,labx,https://www.labx.com/item/agilent-technologies-8800-icp-ms-triple-quad/64755-5843370,200,,,Agilent Technologies 8800 ICP-MS Triple Quad | LabX.com
+2026-11-27T19:58:28Z,listing,machinio,https://www.machinio.com/listings/171555-agilent-keysight-7700-spectrometer,200,,,Agilent - Keysight 7700 Spectrometer
+2026-11-27T19:58:29Z,listing,machinio,https://www.machinio.com/listings/93495197-agilent-technologies-7700-in-arcade-ny,200,,,"Agilent Technologies 7700 in Arcade, NY, USA"
+2026-11-27T19:58:31Z,listing,labx,https://www.labx.com/item/agilent-8800-icp-ms-qqq-system/DIS-87816-60856,200,,,Agilent 8800 ICP-MS QQQ System | LabX.com
+2026-11-27T19:58:31Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-200-x/DIS-256828-PCE-DFG%20200%20X,200,,,Tensile Tester PCE-DFG 200 X | LabX.com
+2026-11-27T19:58:46Z,listing,labx,https://www.labx.com/item/agilent-7700-icp-ms/4917-5250081,200,,,Agilent 7700 ICP-MS | LabX.com
+2026-11-27T19:58:48Z,listing,machinio,https://www.machinio.com/listings/101224320-6-axis-10kg-payload-collaborative-robot-with-robotiq-manufacturer-produced-robotic-gripper-for-picking-and-placingur-robot-in-shanghai-china,200,,,6 Axis 10kg Payload Collaborative Robot with RobotiQ Manufacturer Produced Robotic Gripper
+2026-11-27T19:58:49Z,listing,machinio,https://www.machinio.com/listings/119485582-agilent-7900-icp-ms-system-in-new-york-ny,200,,,"Agilent 7900 ICP-MS System in New York City, NY, USA"
+2026-11-27T19:58:54Z,listing,labx,https://www.labx.com/item/beckman-ls-i3-320-particle-size-system-used-beckman-ls-i3/DIS-87025-261927,200,,,Beckman LS I3 320 Particle Size System used Beckman LS I3 320 ULM Beckman Universal Liquid
+2026-11-27T19:59:05Z,listing,labx,https://www.labx.com/item/7900-icp-ms/235849-5508635,200,,,7900 ICP-MS | LabX.com
+2026-11-27T19:59:05Z,listing,machinio,https://www.machinio.com/listings/114258299-2010-malvern-mastersizer-2000-malvern-mastersizer-2000-in-belchatow-poland,200,,,"2010 Malvern Mastersizer 2000 Malvern Mastersizer 2000 in Bełchatów, Łódź, Poland"
+2026-11-27T19:59:12Z,listing,machinio,https://www.machinio.com/listings/82623290-agilent-7900-icp-ms-wanted-in-tukwila-wa,200,,,"Agilent 7900 ICP-MS WANTED in Tukwila, WA, USA"
+2026-11-27T19:59:13Z,listing,labx,https://www.labx.com/item/thermo-scientific-icap-q-icp-ms-system/DIS-101429-791139,200,,,Thermo Scientific iCAP Q ICP/MS System | LabX.com
+2026-11-27T19:59:20Z,listing,labx,https://www.labx.com/item/agilent-technologies-8800-icp-ms-triple-quad/DIS-101429-1105574,200,,,Agilent Technologies 8800 ICP-MS Triple Quad | LabX.com
+2026-11-27T19:59:22Z,listing,machinio,https://www.machinio.com/listings/109925317-2008-fanuc-machines-robocut-a-0id-in-novi-mi,200,,,"2008 Fanuc Machines Robocut a-0iD in Novi, MI, USA"
+2026-11-27T19:59:26Z,listing,machinio,https://www.machinio.com/listings/93652053-2018-universal-robots-ur10e-13616-in-maitland-fl,200,,,"2018 Universal Robots UR10e 13616 in Maitland, FL, USA"
+2026-11-27T19:59:27Z,listing,labx,https://www.labx.com/item/lindberg-blue-m-box-furnace-model-bf51894c-1-1-100-c/DIS-43048-71447,200,,,"Lindberg/Blue M Box Furnace, Model BF51894C-1, 1,100 C | LabX.com"
+2026-11-27T19:59:40Z,listing,labx,https://www.labx.com/item/agilent-7700x-icp-ms-system-g3281a-with-chiller-pump/80486-08ec7e97-2ebb-4366-bd5d-980cdc3a6593,200,,,"Agilent 7700x ICP-MS System (G3281A) with Chiller, Pump, Sampler, Software | LabX.com"
+2026-11-27T19:59:42Z,listing,machinio,https://www.machinio.com/listings/121960168-agilent-7700x-icp-ms-in-pennsylvania-usa,200,,,"Agilent 7700x ICP-MS in Pennsylvania, USA"
+2026-11-27T19:59:45Z,listing,labx,https://www.labx.com/item/ohaus-solids-density-determination-kit-0-1mg-and-1mg/DIS-83192-f0347d9d568d57f2b0fd0f1d007757cf,200,,,Ohaus Solids Density Determination Kit; 0.1mg and 1mg (80253384) | LabX.com
+2026-11-27T19:59:49Z,listing,machinio,https://www.machinio.com/listings/115877747-2018-agilent-7900-icpms-chiller-pump-pc-install-training-in-seattle-wa,200,,,"2018 Agilent 7900 ICPMS, Chiller, Pump, PC, Install & Training in Seattle, WA, USA"
+2026-11-27T19:59:58Z,listing,machinio,https://www.machinio.com/listings/221660-fanuc-robocut-c400ib-edm-machine,200,,,Fanuc Robocut α-C400iB EDM machine
+2026-11-27T20:00:00Z,listing,labx,https://www.labx.com/item/agilent-g8403a-7900-icp-ms-includes-he-cell-gas-line-and/64755-5802216,200,,,Agilent G8403A 7900 ICP-MS Includes He Cell gas line and heat exchanger | LabX.com
+2026-11-27T20:00:01Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-50k-x/DIS-256828-PCE-DFG%2050K%20X,200,,,Tensile Tester PCE-DFG 50K X | LabX.com
+2026-11-27T20:00:06Z,listing,machinio,https://www.machinio.com/listings/111600493-universal-robots-ur10e-collaborative-robot-in-lockport-ny,200,,,"Universal Robots UR10e Collaborative Robot in Lockport, NY, USA"
+2026-11-27T20:00:14Z,listing,labx,https://www.labx.com/item/agilent-7700-icp-ms/DIS-84613-39894,200,,,Agilent 7700 ICP-MS | LabX.com
+2026-11-27T20:00:14Z,listing,machinio,https://www.machinio.com/listings/78058746-horizontal-sieve-shaker-as-400-control-in-haan-germany,200,,,"Horizontal Sieve Shaker AS 400 control in Haan, North Rhine-Westphalia, Germany"
+2026-11-27T20:00:21Z,listing,labx,https://www.labx.com/item/tyler-rotap-rx-29-kit-sieve-shaker/DIS-5087-N742,200,,,Tyler Rotap RX-29 KIT Sieve Shaker | LabX.com
+2026-11-27T20:00:25Z,listing,machinio,https://www.machinio.com/listings/93308879-2023-universal-robots-ur-10-e-collaborative-robot-never-used-in-los-angeles-ca,200,,,"2023 UNIVERSAL ROBOTS UR 10 E Collaborative Robot ***Never *** in Los Angeles, CA, USA"
+2026-11-27T20:00:32Z,listing,labx,https://www.labx.com/item/2016-agilent-7900-icp-ms-with-chiller-pump-pc-install/80486-e5d58743-9e79-4aad-9425-3a6e340b7474,200,,,"2016 Agilent 7900 ICP-MS with Chiller, Pump, PC, Install & Training | LabX.com"
+2026-11-27T20:00:34Z,listing,machinio,https://www.machinio.com/listings/119428126-2013-haas-st-20-in-california-usa,200,,,"2013 HAAS ST-20 in California, USA"
+2026-11-27T20:00:38Z,listing,labx,https://www.labx.com/item/carver-cmg-50h-24-50-ton-hydraulic-laboratory-press/41276-carver-cmg-50h-24,200,,,Carver CMG 50H-24 50 Ton Hydraulic Laboratory Press | LabX.com
+2026-11-27T20:00:41Z,listing,machinio,https://www.machinio.com/listings/111454437-granulometer-malvern-scirocco-mastersizer-2000-in-gallardon-france,200,,,"Granulometer MALVERN SCIROCCO & MASTERSIZER 2000 in Gallardon, Centre-Val de Loire, France"
+2026-11-27T20:00:48Z,listing,labx,https://www.labx.com/item/agilent-7700-icp-ms/DIS-4917-dc01b0be5fd47807516f2aa36f0a0745,200,,,Agilent 7700 ICP-MS | LabX.com
+2026-11-27T20:00:52Z,listing,machinio,https://www.machinio.com/listings/101224466-10kg-payload-6-axis-collaborative-robot-picking-and-placing-robot-with-robotiq-manufacturer-produced-robotic-gripper-and-vision-in-shanghai-china,200,,,10kg Payload 6 Axis Collaborative Robot Picking and Placing Robot with RobotiQ Manufacture
+2026-11-27T20:00:57Z,listing,labx,https://www.labx.com/item/carver-cmg-100h-24-100-ton-hydraulic-laboratory-press/41276-carver-cmg-100h-24,200,,,Carver CMG 100H-24 100 Ton Hydraulic Laboratory Press | LabX.com
+2026-11-27T20:00:57Z,listing,machinio,https://www.machinio.com/listings/317238-edwards-rv3-vacuum-pump,200,,,Edwards RV3 Vacuum Pump
+2026-11-27T20:01:03Z,listing,labx,https://www.labx.com/item/agilent-7700-icp-ms-inductively-coupled-plasma-mass/DIS-248780-LS-004814,200,,,Agilent 7700 ICP‑MS Inductively Coupled Plasma Mass Spectrometer | LabX.com
+2026-11-27T20:01:13Z,listing,machinio,https://www.machinio.com/listings/121456918-2023-universal-robots-ur10e-in-spain,200,,,2023 Universal Robots UR10e in Spain
+2026-11-27T20:01:13Z,listing,machinio,https://www.machinio.com/listings/110704773-agilent-7700-icp-ms-in-texas-usa,200,,,"Agilent 7700 ICP-MS in Texas, USA"
+2026-11-27T20:01:18Z,listing,labx,https://www.labx.com/item/shimadzu-x-ray-diffractometer-model-xrd-6000/DIS-43048-71396,200,,,"Shimadzu X-Ray Diffractometer, Model XRD-6000 | LabX.com"
+2026-11-27T20:01:22Z,listing,labx,https://www.labx.com/item/moorfield-nanotechnologies-graphene-nanocvd-with-edwards/DIS-225824-ITEM-53444,200,,,Moorfield Nanotechnologies Graphene nanoCVD with Edwards RV3 Pump | LabX.com
+2026-11-27T20:01:29Z,listing,machinio,https://www.machinio.com/listings/101224463-10kg-payload-6-axis-collaborative-robot-picking-and-placing-robot-universal-robots-with-manufacturer-robotiq-gripper-in-shanghai-china,200,,,10kg Payload 6 Axis Collaborative Robot Picking and Placing Robot Universal Robots with Ma
+2026-11-27T20:01:30Z,listing,machinio,https://www.machinio.com/listings/101224438-10kg-payload-6-axis-collaborative-robot-picking-and-placing-robot-ur-robots-with-manufacturer-robotiq-gripper-in-stock-in-shanghai-china,200,,,10kg Payload 6 Axis Collaborative Robot Picking and Placing Robot UR Robots with Manufactu
+2026-11-27T20:01:35Z,listing,labx,https://www.labx.com/item/agilent-certified-pre-owned-7900-icp-ms-g8403aa/14256914,200,,,Agilent Certified Pre-Owned 7900 ICP-MS - G8403AA | LabX.com
+2026-11-27T20:01:38Z,listing,labx,https://www.labx.com/item/motic-smz-168-stereo-microscope/DIS-86647-39155,200,,,Motic SMZ-168 Stereo Microscope | LabX.com
+2026-11-27T20:01:49Z,listing,machinio,https://www.machinio.com/listings/106934647-malvern-instruments-mastersizer-2000-apa2000-particle-size-analyzer-for-laser-diffraction-wet-and-dry-particle-size-distribution-analysis-in-new-brunswick-nj,200,,,Malvern Instruments Mastersizer 2000 APA2000 Particle Size Analyzer for Laser Diffraction 
+2026-11-27T20:01:49Z,listing,machinio,https://www.machinio.com/listings/106487775-agilent-8800-triple-quadrupole-icp-ms-in-ramsey-mn,200,,,"Agilent 8800 Triple Quadrupole ICP/MS in Ramsey, MN, USA"
+2026-11-27T20:01:56Z,listing,labx,https://www.labx.com/item/mettler-toledo-ae-166-analytical-balance/DIS-101429-969565,200,,,Mettler Toledo AE 166 Analytical Balance | LabX.com
+2026-11-27T20:02:04Z,listing,machinio,https://www.machinio.com/listings/119436294-malvern-mastersizer-2000-particle-size-analyzer-magritek-spinsolve-rpm-nmr-spectrometer-magritek-spinsolve-spa908-ref-a-0412-in-sant-feliu-de-llobregat-spain,200,,,MALVERN MasterSizer 2000 particle size analyzer + MAGRITEK spinsolve (RPM) NMR spectromete
+2026-11-27T20:02:05Z,listing,machinio,https://www.machinio.com/listings/118664840-agilent-7700x-icp-ms-system-g3281a-with-chiller-pump-sampler-software-in-tukwila-wa,200,,,"Agilent 7700x ICP-MS System (G3281A) with Chiller, Pump, Sampler, Software in Tukwila, WA,"
+2026-11-27T20:02:12Z,listing,labx,https://www.labx.com/item/analytical-balance-pce-abt-220-dakks-incl-dakks-calibration/DIS-256828-PCE-ABT%20220-DAkkS,200,,,Analytical Balance PCE-ABT 220-DAkkS Incl. DAkkS Calibration Certificate | LabX.com
+2026-11-27T20:02:19Z,listing,machinio,https://www.machinio.com/listings/92950119-2008-fanuc-robocut-a-oid-in-warren-mi,200,,,"2008 FANUC ROBOCUT A-OID in Warren, MI, USA"
+2026-11-27T20:02:26Z,listing,labx,https://www.labx.com/item/carver-3890-auto-m-pl-automatic-hydraulic-laboratory-press/41276-carver-3890,200,,,Carver 3890 Auto M-PL Automatic Hydraulic Laboratory Press (25 Ton) | LabX.com
+2026-11-27T20:02:39Z,listing,machinio,https://www.machinio.com/listings/121273501-malvern-mastersizer-2000-in-chorley-united-kingdom,200,,,"Malvern Mastersizer 2000 in Chorley, England, United Kingdom"
+2026-11-27T20:02:41Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-10k-x-ica-incl-iso-calibration/DIS-256828-PCE-DFG%2010K%20X-ICA,200,,,Tensile Tester PCE-DFG 10K X-ICA incl. ISO-Calibration Certificate | LabX.com
+2026-11-27T20:02:57Z,listing,machinio,https://www.machinio.com/listings/95962168-2023-haas-ds-30-y-cnc-turning-center-with-live-tooling-dual-spindle-barfeeder-parts-catcher-232hours-like-brand-new-in-los-angeles-ca,200,,,2023 HAAS DS 30 Y CNC Turning Center With Live Tooling / Dual Spindle / BarFeeder / Parts 
+2026-11-27T20:02:57Z,listing,labx,https://www.labx.com/item/advion-solation-inductively-coupled-plasma-mass/DIS-87816-74158,200,,,Advion SOLATION Inductively Coupled Plasma Mass Spectrometer (ICP-MS) System | LabX.com
+2026-11-27T20:03:11Z,listing,labx,https://www.labx.com/item/mettler-toledo-ml104t-analytical-balance-w-glass-draft/DIS-50372-A223722,200,,,Mettler Toledo ML104T Analytical Balance w/ Glass Draft Shield | LabX.com
+2026-11-27T20:03:16Z,listing,machinio,https://www.machinio.com/listings/116868419-universal-robots-ur5e-collaborative-robot-in-lockport-ny,200,,,"Universal Robots UR5e Collaborative Robot in Lockport, NY, USA"
+2026-11-27T20:03:24Z,listing,labx,https://www.labx.com/item/malvern-2000-laser-diffraction-particle-size-analyzer/DIS-50372-A64316,200,,,Malvern 2000 Laser Diffraction Particle Size Analyzer | LabX.com
+2026-11-27T20:03:39Z,listing,labx,https://www.labx.com/item/szx10-stereo-microscope/1633201,200,,,SZX10 Stereo Microscope | LabX.com
+2026-11-27T20:03:41Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-10k-x/DIS-256828-PCE-DFG%2010K%20X,200,,,Tensile Tester PCE-DFG 10K X | LabX.com
+2026-11-27T20:03:55Z,listing,labx,https://www.labx.com/item/perkinelmer-nexion-2000-icp-ms-inductively-coupled-plasma/DIS-228186-02734-117401977,200,,,PerkinElmer NexION 2000 ICP-MS Inductively Coupled Plasma Mass Spectrometer Trace Element 
+2026-11-27T20:03:57Z,listing,labx,https://www.labx.com/item/uh-x-fx-series-hydraulic-universal-testing-machines/509698,200,,,UH-X/FX Series Hydraulic Universal Testing Machines | LabX.com
+2026-11-27T20:04:15Z,listing,labx,https://www.labx.com/item/olympus-sz40-stereo-microscope/DIS-50372-A218051,200,,,Olympus SZ40 Stereo Microscope | LabX.com
+2026-11-27T20:04:18Z,listing,labx,https://www.labx.com/item/carver-cmg-100h-15-100-ton-hydraulic-laboratory-press/41276-carver-cmg-100h-15,200,,,Carver CMG 100H-15 100 Ton Hydraulic Laboratory Press | LabX.com
+2026-11-27T20:04:32Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-50k-xf-ica-incl-iso-calibration/DIS-256828-PCE-DFG%2050K%20XF-ICA,200,,,Tensile Tester PCE-DFG 50K XF-ICA incl. ISO-Calibration Certificate | LabX.com
+2026-11-27T20:04:37Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-20k-xf/DIS-256828-PCE-DFG%2020K%20XF,200,,,Tensile Tester PCE-DFG 20K XF | LabX.com
+2026-11-27T20:04:51Z,listing,labx,https://www.labx.com/item/analytical-balances-pce-ma-110n/DIS-256828-PCE-MA%20110N,200,,,Analytical Balances PCE-MA 110N | LabX.com
+2026-11-27T20:04:52Z,listing,labx,https://www.labx.com/item/spektrometr-masowy-icp-ms-perkin-elmer-nexion-2000/scp-255485-5916390,200,,,Spektrometr masowy ICP MS Perkin Elmer NexION 2000 | LabX.com
+2026-11-27T20:05:09Z,listing,labx,https://www.labx.com/item/siemens-d500-d501-diffractometer-xrd-x-ray-diffraction/DIS-225824-ITEM-61071,200,,,Siemens D500/D501 Diffractometer XRD X-Ray Diffraction System Lab | LabX.com
+2026-11-27T20:05:10Z,listing,labx,https://www.labx.com/item/binocular-stereo-microscope-with-2x-4x-objectives-and/DIS-50372-A225633,200,,,Binocular Stereo Microscope with 2X/4X Objectives and Illuminated Base | LabX.com
+2026-11-27T20:05:24Z,listing,labx,https://www.labx.com/item/beckman-coulter-ls-13-320-xr-laser-diffraction-particle/DIS-228186-02375-113601975,200,,,Beckman Coulter LS 13 320 XR Laser Diffraction Particle Size Analyzer with ULM and DPS in 
+2026-11-27T20:05:28Z,listing,labx,https://www.labx.com/item/sartorius-entris-ii-analytical-balance-with-ydp40-printer/DIS-50372-A224087,200,,,Sartorius Entris II Analytical Balance with YDP40 Printer BCE124I-1S | LabX.com
+2026-11-27T20:05:39Z,listing,labx,https://www.labx.com/item/beckman-coulter-ls-13-320-laser-diffraction-particle-size/DIS-228186-01124-107178432,200,,,Beckman Coulter LS 13 320 Laser Diffraction Particle Size Analyzer for Wet & Dry Particle 
+2026-11-27T20:05:43Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-100k-x-ica-incl-iso-calibration/DIS-256828-PCE-DFG%20100K%20X-ICA,200,,,Tensile Tester PCE-DFG 100K X-ICA incl. ISO-Calibration Certificate | LabX.com
+2026-11-27T20:05:53Z,listing,labx,https://www.labx.com/item/carver-cmg-100h-18-100-ton-hydraulic-laboratory-press/41276-carver-cmg-100h-18,200,,,Carver CMG 100H-18 100 Ton Hydraulic Laboratory Press | LabX.com
+2026-11-27T20:06:01Z,listing,labx,https://www.labx.com/item/carver-cmg-75h-24-75-ton-hydraulic-laboratory-press/41276-carver-cmg75h-23,200,,,Carver CMG 75H-24 75 Ton Hydraulic Laboratory Press | LabX.com
+2026-11-27T20:06:06Z,listing,labx,https://www.labx.com/item/wilson-tester-tukon-tester/DIS-37993-8294681,200,,,WILSON TESTER TUKON TESTER | LabX.com
+2026-11-27T20:06:15Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-200-x-ica-incl-iso-calibration/DIS-256828-PCE-DFG%20200%20X-ICA,200,,,Tensile Tester PCE-DFG 200 X-ICA incl. ISO-Calibration Certificate | LabX.com
+2026-11-27T20:06:25Z,listing,labx,https://www.labx.com/item/analytical-balance-pce-bs-300/DIS-256828-PCE-BS%20300,200,,,Analytical Balance PCE-BS 300 | LabX.com
+2026-11-27T20:06:30Z,listing,labx,https://www.labx.com/item/carver-cmg-50h-15-50-ton-hydraulic-laboratory-press/41276-carver-cmg50h-15,200,,,Carver CMG 50H-15 50 Ton Hydraulic Laboratory Press | LabX.com
+2026-11-27T20:06:41Z,listing,labx,https://www.labx.com/item/sald-2300-laser-diffraction-particle-size-analyzer/512970,200,,,SALD-2300 Laser Diffraction Particle Size Analyzer | LabX.com
+2026-11-27T20:06:52Z,listing,labx,https://www.labx.com/item/8-ro-tap-sieve-shaker-model-rx-29/DIS-43048-50517,200,,,"8"" Ro-Tap Sieve Shaker, Model RX-29 | LabX.com"
+2026-11-27T20:06:57Z,listing,labx,https://www.labx.com/item/sartorius-new-cubis-iii-lab-balances/163459-5743215,200,,,Sartorius New Cubis® III Lab Balances | LabX.com
+2026-11-27T20:07:07Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-50k-xf/DIS-256828-PCE-DFG%2050K%20XF,200,,,Tensile Tester PCE-DFG 50K XF | LabX.com
+2026-11-27T20:07:11Z,listing,labx,https://www.labx.com/item/analytical-balance-pce-abt-220l-dakks-incl-dakks/DIS-256828-PCE-ABT%20220L-DAkkS,200,,,Analytical Balance PCE-ABT 220L-DAkkS incl. DAkkS Calibration Certificate | LabX.com
+2026-11-27T20:07:21Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-1000-x-ica-incl-iso-calibration/DIS-256828-PCE-DFG%201000%20X-ICA,200,,,Tensile Tester PCE-DFG 1000 X-ICA incl. ISO-Calibration Certificate | LabX.com
+2026-11-27T20:07:28Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-1k-x-ica-incl-iso-calibration/DIS-256828-PCE-DFG%201K%20X-ICA,200,,,Tensile Tester PCE-DFG 1K X-ICA incl. ISO-Calibration Certificate | LabX.com
+2026-11-27T20:07:35Z,listing,labx,https://www.labx.com/item/thermo-scientific-icp-ms-x-series-2-plasma-mass/DIS-225824-ITEM-60606,200,,,Thermo Scientific ICP-MS X-Series 2 Plasma Mass Spectrometer | LabX.com
+2026-11-27T20:07:45Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-10k-xf-ica-incl-iso-calibration/DIS-256828-PCE-DFG%2010K%20XF-ICA,200,,,Tensile Tester PCE-DFG 10K XF-ICA incl. ISO-Calibration Certificate | LabX.com
+2026-11-27T20:07:52Z,listing,labx,https://www.labx.com/item/rigaku-smartlab-intelligent-x-ray-diffraction-system/518980,200,,,Rigaku - SmartLab Intelligent X-ray Diffraction System | LabX.com
+2026-11-27T20:08:00Z,listing,labx,https://www.labx.com/item/unitron-z650hr-trinocular-high-res-zoom-stereo-microscope/DIS-88306-eb0f79a8167769c6b7d10a77b9296c24,200,,,UNITRON Z650HR Trinocular High-Res Zoom Stereo Microscope on Plain Focusing Stand | 13430 
+2026-11-27T20:08:09Z,listing,labx,https://www.labx.com/item/horiba-la-930-particle-size-analyzer-horiba-la930-laser/DIS-87025-251351,200,,,Horiba LA-930 Particle Size Analyzer HORIBA LA930 Laser Diffraction Particle Size Distribu
+2026-11-27T20:08:17Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-0k5-xf-ica-incl-iso-calibration/DIS-256828-PCE-DFG%200K5%20XF-ICA,200,,,Tensile Tester PCE-DFG 0K5 XF-ICA incl. ISO-Calibration Certificate | LabX.com
+2026-11-27T20:08:29Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-1000-x/DIS-256828-PCE-DFG%201000%20X,200,,,Tensile Tester PCE-DFG 1000 X | LabX.com
+2026-11-27T20:08:33Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-20k-x/DIS-256828-PCE-DFG%2020K%20X,200,,,Tensile Tester PCE-DFG 20K X | LabX.com
+2026-11-27T20:08:49Z,listing,labx,https://www.labx.com/item/perkin-elmer-nexion-300q-icp-ms/scp-255525-5903943,200,,,Perkin Elmer NexION™ 300q ICP-MS | LabX.com
+2026-11-27T20:08:50Z,listing,labx,https://www.labx.com/item/carver-cmg-50h-12-50-ton-hydraulic-laboratory-press/41276-carver-cmg-50h-12,200,,,Carver CMG 50H-12 50 Ton Hydraulic Laboratory Press | LabX.com
+2026-11-27T20:09:02Z,listing,labx,https://www.labx.com/item/sz61-sz51-stereo-microscope/1633203,200,,,SZ61/SZ51 Stereo Microscope | LabX.com
+2026-11-27T20:09:06Z,listing,labx,https://www.labx.com/item/unused-dynisco-tensitech-iii-testing-machine/DIS-101429-475834,200,,,Unused Dynisco tensiTECH III Testing Machine | LabX.com
+2026-11-27T20:09:17Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-5k-xf/DIS-256828-PCE-DFG%205K%20XF,200,,,Tensile Tester PCE-DFG 5K XF | LabX.com
+2026-11-27T20:09:24Z,listing,labx,https://www.labx.com/item/euromex-144-led-four-zone-stereo-microscope-ring-light-ele/DIS-88306-8e2c6ceed16198204d13c7e63f851b1b,200,,,Euromex 144-LED Four-Zone Stereo Microscope Ring Light | ELE-1973 | LabX.com
+2026-11-27T20:09:33Z,listing,labx,https://www.labx.com/item/mettler-toledo-xp205-deltarange-220g-analytical-balance/DIS-101429-963062,200,,,Mettler Toledo XP205 Deltarange 220g Analytical Balance | LabX.com
+2026-11-27T20:09:40Z,listing,labx,https://www.labx.com/item/thermo-x-series-ii-icp-ms-system-with-computer-software/DIS-59250-1633,200,,,"Thermo X Series II ICP-MS System with Computer/Software, Extra Parts (Agilent, Perkin) | L"
+2026-11-27T20:09:49Z,listing,labx,https://www.labx.com/item/unused-zeiss-stereo-discovery-stereo-microscope-system/DIS-101429-1142650,200,,,Unused Zeiss SteREO Discovery Stereo Microscope System | LabX.com
+2026-11-27T20:09:56Z,listing,labx,https://www.labx.com/item/beckman-coulter-ls230-laser-diffraction-particle-size/DIS-87025-251338,200,,,Beckman Coulter LS230 Laser Diffraction Particle Size Analyzer Beckman LS230 Beckman LS-23
+2026-11-27T20:10:06Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-20k-xf-ica-incl-iso-calibration/DIS-256828-PCE-DFG%2020K%20XF-ICA,200,,,Tensile Tester PCE-DFG 20K XF-ICA incl. ISO-Calibration Certificate | LabX.com
+2026-11-27T20:10:10Z,listing,labx,https://www.labx.com/item/carver-auto-series-ne-automatic-hydraulic-laboratory-press/DIS-50372-A207660,200,,,Carver Auto Series NE Automatic Hydraulic Laboratory Press System | LabX.com
+2026-11-27T20:10:28Z,listing,labx,https://www.labx.com/item/ags-x2-series-economical-electromechanical-universal/8063-5671807,200,,,AGS-X2 Series Economical Electromechanical Universal Testing Machines | LabX.com
+2026-11-27T20:10:29Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-500-x/DIS-256828-PCE-DFG%20500%20X,200,,,Tensile Tester PCE-DFG 500 X | LabX.com
+2026-11-27T20:10:43Z,listing,labx,https://www.labx.com/item/thomas-sieve-shaker/DIS-37993-8293728,200,,,THOMAS SIEVE SHAKER | LabX.com
+2026-11-27T20:10:49Z,listing,labx,https://www.labx.com/item/horiba-la-950-particle-size-analyzer-horiba-la950-laser/DIS-87025-251185,200,,,Horiba LA-950 Particle Size Analyzer HORIBA LA950 Laser Diffraction Particle Size Distribu
+2026-11-27T20:11:03Z,listing,labx,https://www.labx.com/item/nikon-smz745t-stereo-microscope-for-jewelry-inspection/DIS-88306-d2dc38dc86f535fabd5a2a9de93aceb1,200,,,Nikon SMZ745T Stereo Microscope for Jewelry Inspection | LabX.com
+2026-11-27T20:11:07Z,listing,labx,https://www.labx.com/item/rigaku-ultimaiv-x-ray-diffractometer/DIS-50372-382156,200,,,Rigaku UltimaIV X-Ray Diffractometer | LabX.com
+2026-11-27T20:11:19Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-100k-x/DIS-256828-PCE-DFG%20100K%20X,200,,,Tensile Tester PCE-DFG 100K X | LabX.com
+2026-11-27T20:11:23Z,listing,labx,https://www.labx.com/item/hounsfield-h10ks-dual-column-universal-testing-machine/DIS-225824-ITEM-60204,200,,,Hounsfield H10KS Dual-Column Universal Testing Machine | LabX.com
+2026-11-27T20:11:37Z,listing,labx,https://www.labx.com/item/beckman-ls-i3-320-laser-diffraction-particle-size-analyzer/DIS-87025-260572,200,,,Beckman LS I3 320 Laser Diffraction Particle Size Analyzer with UNIVEFSAL LIQUID ACCESSORY
+2026-11-27T20:11:40Z,listing,labx,https://www.labx.com/item/olympus-sz61-sz51-stereo-microscope-zoom-stereomicroscope/2433198,200,,,Olympus SZ61/SZ51 Stereo Microscope - Zoom Stereomicroscope | LabX.com
+2026-11-27T20:11:55Z,listing,labx,https://www.labx.com/item/agilent-supernova-a-cu-diffractometer/scp-221284-fcd8bb33-6f3c-41d4-9d28-4a1c4b5f4212,200,,,Agilent SuperNova A (Cu) Diffractometer | LabX.com
+2026-11-27T20:11:58Z,listing,labx,https://www.labx.com/item/carver-3892-autofour-1512-pl-automatic-hydraulic-laboratory/41276-carver-3892,200,,,Carver 3892 AutoFour 1512-PL Automatic Hydraulic Laboratory Press (15 Ton) | LabX.com
+2026-11-27T20:12:13Z,listing,labx,https://www.labx.com/item/szx7-stereo-microscope/1633202,200,,,SZX7 Stereo Microscope | LabX.com
+2026-11-27T20:12:14Z,listing,labx,https://www.labx.com/item/unitron-z650hr-trinocular-high-res-zoom-stereo-microscope/DIS-88306-fd8217ea2a34943d0a2bf9196e6f668e,200,,,UNITRON Z650HR Trinocular High-Res Zoom Stereo Microscope on Boom Stand | 13435 | LabX.com
+2026-11-27T20:12:28Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-2k-xf-ica-incl-iso-calibration/DIS-256828-PCE-DFG%202K%20XF-ICA,200,,,Tensile Tester PCE-DFG 2K XF-ICA incl. ISO-Calibration Certificate | LabX.com
+2026-11-27T20:12:28Z,listing,labx,https://www.labx.com/item/malvern-2000-laser-diffraction-particle-size-analyzer/DIS-50372-A64317,200,,,Malvern 2000 Laser Diffraction Particle Size Analyzer | LabX.com
+2026-11-27T20:12:44Z,listing,labx,https://www.labx.com/item/beckman-coulter-ls13320sw-laser-particle-size-analyzer/DIS-50372-A220159,200,,,Beckman Coulter LS13320SW Laser-Particle Size Analyzer | LabX.com
+2026-11-27T20:13:03Z,listing,labx,https://www.labx.com/item/farrel-100-ton-hydraulic-laboratory-press/DIS-66078-12228,200,,,Farrel 100-ton hydraulic Laboratory Press | LabX.com
+2026-11-27T20:13:18Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-20k-x-ica-incl-iso-calibration/DIS-256828-PCE-DFG%2020K%20X-ICA,200,,,Tensile Tester PCE-DFG 20K X-ICA incl. ISO-Calibration Certificate | LabX.com
+2026-11-27T20:13:33Z,listing,labx,https://www.labx.com/item/as-2011-laser-particle-size-analyzer/250137-5770068,200,,,AS-2011 Laser Particle Size Analyzer | LabX.com
+2026-11-27T20:13:49Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-5k-xf-ica-incl-iso-calibration/DIS-256828-PCE-DFG%205K%20XF-ICA,200,,,Tensile Tester PCE-DFG 5K XF-ICA incl. ISO-Calibration Certificate | LabX.com
+2026-11-27T20:14:02Z,listing,labx,https://www.labx.com/item/carver-cmg-75h-15-75-ton-hydraulic-laboratory-press/41276-carver-75h-15,200,,,Carver CMG 75H-15 75 Ton Hydraulic Laboratory Press | LabX.com
+2026-11-27T20:14:19Z,listing,labx,https://www.labx.com/item/szx16-stereo-microscope/1633200,200,,,SZX16 Stereo Microscope | LabX.com
+2026-11-27T20:14:35Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-500-x-ica-incl-iso-calibration/DIS-256828-PCE-DFG%20500%20X-ICA,200,,,Tensile Tester PCE-DFG 500 X-ICA incl. ISO-Calibration Certificate | LabX.com
+2026-11-27T20:14:52Z,listing,labx,https://www.labx.com/item/carver-cmg-50h-18-50-ton-hydraulic-laboratory-press/41276-carver-cmg50h-18,200,,,Carver CMG 50H-18 50 Ton Hydraulic Laboratory Press | LabX.com
+2026-11-27T20:15:06Z,listing,labx,https://www.labx.com/item/carver-cmg-30h-12-astm-30-ton-hydraulic-laboratory-press/41276-carver-cmg-30h-12-astm,200,,,Carver CMG 30H-12 ASTM 30 Ton Hydraulic Laboratory Press | LabX.com
+2026-11-27T20:15:22Z,listing,labx,https://www.labx.com/item/instron-elecropuls-e10000-dynamic-mechanical-testing-system/scp-256361-5939733,200,,,Instron Elecropuls E10000 Dynamic Mechanical Testing System- Excellent Condition | LabX.co
+2026-11-27T20:15:37Z,listing,labx,https://www.labx.com/item/w-s-tyler-ro-tap-sieve-shaker-rx-812/DIS-37993-8302466,200,,,W.S. TYLER RO-TAP SIEVE SHAKER RX-812 | LabX.com
+2026-11-27T20:15:52Z,listing,labx,https://www.labx.com/item/horiba-la-930-particle-size-analyzer-horiba-la930-laser/DIS-87025-251184,200,,,Horiba LA-930 Particle Size Analyzer HORIBA LA930 Laser Diffraction Particle Size Distribu
+2026-11-27T20:16:11Z,listing,labx,https://www.labx.com/item/mettler-toledo-xpe-analytical-balance-xpe26dr/DIS-50372-A225958,200,,,Mettler Toledo XPE Analytical Balance XPE26DR | LabX.com
+2026-11-27T20:16:28Z,listing,labx,https://www.labx.com/item/ohaus-explorer-analytical-balance-with-glass-draft-shield/DIS-50372-A220378,200,,,Ohaus Explorer Analytical Balance with Glass Draft Shield | LabX.com
+2026-11-27T20:16:45Z,listing,labx,https://www.labx.com/item/mettler-toledo-ms204s-analytical-balance-w-glass-draft/DIS-50372-A223330,200,,,Mettler Toledo MS204S Analytical Balance w/ Glass Draft Shield | LabX.com
+2026-11-27T20:17:03Z,listing,labx,https://www.labx.com/item/instron-4442-tensile-strength-tester/DIS-59250-1358,200,,,Instron 4442 Tensile Strength Tester | LabX.com
+2026-11-27T20:17:19Z,listing,labx,https://www.labx.com/item/tensile-tester-pce-dfg-5k-x/DIS-256828-PCE-DFG%205K%20X,200,,,Tensile Tester PCE-DFG 5K X | LabX.com

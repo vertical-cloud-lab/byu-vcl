@@ -28,6 +28,14 @@ def g(pat, t, flags=re.I | re.M, grp=1):
     return m.group(grp).strip() if m else ""
 
 
+def clean_seller(x):
+    """A business's name as the page gives it; page furniture and fragments dropped."""
+    x = (x or "").strip()
+    if len(x) <= 2 or re.search(r"need help|not been rated|as is|where is|^[A-Z][a-z]+, [A-Z]{2}$|cyberjoes", x, re.I):
+        return ""
+    return x[:60]
+
+
 def detail_fields(site, t):
     """Fields read off a listing page's text."""
     f = {}
@@ -63,7 +71,7 @@ def detail_fields(site, t):
         f["no_price"] = bool(re.search(r"Contact Seller for Price\n(?:[^\n]*\n)?Manufacturer\n", t))
         if "This listing is no longer available" in t:
             f["availability"] = "no longer available when read (sold or withdrawn)"
-        f["seller"] = g(r"Seller Information\n(.+)", t)
+        f["seller"] = g(r"Seller Information\n(?:.{1,2}\n)?(.{3,})", t)
         f["desc"] = g(r"\nDescription\n([\s\S]{0,1800}?)(?:\nShow more|\nClick to Request)", t)
     elif site == "machineseeker":
         hdr = t.split("Basic data")[0]
@@ -249,7 +257,7 @@ def main(out_dir):
             condition=cond, condition_evidence="; ".join(sorted(set(h for h in hits)))[:120],
             cond_label=(f.get("cond_label") or "")[:60], warranty=(f.get("warranty") or "")[:60],
             year=f.get("year", ""), location=(loc or "")[:80], region=region(loc, dkm, cur, c["site"]),
-            dist_km=round(dkm) if dkm else "", seller_type=c["seller_type"], seller=(f.get("seller") or "")[:60],
+            dist_km=round(dkm) if dkm else "", seller_type=c["seller_type"], seller=clean_seller(f.get("seller")),
             availability=(f.get("availability") or f.get("ship_txt") or "")[:160],
             delivery_terms="; ".join(x for x in [f.get("delivery", ""), ("dismantling & loading: " + f["dismantling"])
                                                   if f.get("dismantling") else "", ("shipping: " + f["shipping"])

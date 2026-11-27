@@ -49,7 +49,7 @@ rebuilds `summary.csv` and `summary.json` from `listings.csv` and `new.csv`.
   0.25): lower where refurbished units with a warranty are common (SEM, ICP-MS), higher at government and university
   auctions (sold as-is) and for stations bought as several used machines (prep, the doser, the robot units), any one of
   which can arrive faulty. A lab that buys the best-condition unit near the median price gets 0.10 (`p_fault_best`).
-* **`USED_OK` changes.** The market doesn't support `chamber`, `nanoindenter` (round 5 bought them used). It does support `couplings`, `density`, `doser`, `doser_conv`, `floor_unit`, `furnace`, `glovebox`, `glovebox_conv`, `hood`, `hoods`, `machining`, `sieve`, `sieve_cell`, `units`, which round 5 bought new.
+* **`USED_OK` changes.** The market doesn't support `chamber`, `nanoindenter` (round 5 allowed them used). It does support `couplings`, `doser`, `floor_unit`, `glovebox`, `hoods`, `machining`, `sieve_cell`, `units`, which round 5 kept new. The conventional lab's own items, which the rounds don't schedule, have used markets too (`density`, `doser_conv`, `furnace`, `glovebox_conv`, `hood`, `sieve`).
 * **Where the market can't say:** eBay (blocked) and closed auctions would have given sale prices; these are asking
   prices. Several stations have only a handful of priced listings (`n_priced` in `summary.csv`), and the fault rates per
   condition are assumptions.
@@ -60,7 +60,7 @@ rebuilds `summary.csv` and `summary.json` from `listings.csv` and `new.csv`.
 
 * **Stations with a real used market at a saving** (`used_ok`, 26): `couplings`, `density`, `doser`, `doser_conv`, `edm`, `floor_unit`, `furnace`, `furnaces`, `glovebox`, `glovebox_conv`, `hardness`, `hood`, `hoods`, `icpms`, `instron`, `machining`, `mastersizer`, `polish`, `sem`, `sieve`, `sieve_cell`, `units`, `vhx`, `xrd`, `xrf`, `zwick`.
 * **In round 5's `USED_OK` but not supported by the market** (2): `chamber`, `nanoindenter`.
-* **Not in `USED_OK` but with a real used market** (14): `couplings`, `density`, `doser`, `doser_conv`, `floor_unit`, `furnace`, `glovebox`, `glovebox_conv`, `hood`, `hoods`, `machining`, `sieve`, `sieve_cell`, `units`.
+* **Not in `USED_OK` but with a real used market** (14): `couplings`, `density`, `doser`, `doser_conv`, `floor_unit`, `furnace`, `glovebox`, `glovebox_conv`, `hood`, `hoods`, `machining`, `sieve`, `sieve_cell`, `units` (the conventional lab's keys among them aren't in round 4's `BUILD`).
 * Across the `used_ok` stations, the median `price_frac` is 0.31 (round 5: 0.45), the median `lead_w` 2.5 weeks (round 5: 2) and the median `p_fault` 0.28 (round 5: 0.25).
 
 ## Results by station
@@ -74,78 +74,78 @@ Round 5's stand-ins, for comparison: `price_frac` 0.45, `lead_w` 2, `p_fault` 0.
 | `ebsd` | vertical |  | thin | 2 (1) | 1 | $2,804 | all that fit (1 priced): $2,804 | 98 % | 0.04 | 5.0 | 0.30 (0.30) | 1.5 | 13.3 / 19.0 |
 | `xrd` | vertical | yes | yes | 8 (6) | 1 | $24k | all that fit (1 priced): $24k | 78 % | 0.24 | 2.5 | 0.30 (0.10) | 1.5 | 9.8 / 12.0 |
 | `xrf` | vertical | yes | yes | 18 (6) | 9 | $16k | North America (3 priced): $12k | 90 % | 0.12 | 2.5 | 0.28 (0.10) | 1.5 | 12.7 / 17.0 |
-| `mastersizer` | vertical | yes | yes | 68 (36) | 14 | $16k | like-for-like (7 priced): $17k | 84 % | 0.18 | 2.5 | 0.23 (0.05) | 1.5 | 9.4 / 12.0 |
-| `hardness` | vertical | yes | yes | 26 (14) | 13 | $5,277 | North America (9 priced): $7,999 | 89 % | 0.12 | 2.0 | 0.23 (0.10) | 0.5 | 6.2 / 9.0 |
+| `mastersizer` | vertical | yes | yes | 69 (49) | 14 | $16k | like-for-like (7 priced): $17k | 84 % | 0.18 | 2.5 | 0.25 (0.05) | 1.5 | 9.5 / 12.0 |
+| `hardness` | vertical | yes | yes | 26 (15) | 13 | $5,277 | North America (9 priced): $7,999 | 89 % | 0.12 | 2.0 | 0.23 (0.10) | 0.5 | 6.2 / 9.0 |
 | `nanoindenter` | vertical | yes | thin | 3 (3) | 2 | $23k | all that fit (2 priced): $23k | 91 % | 0.10 | 2.5 | 0.37 (0.30) | 1.5 | 11.2 / 19.0 |
 | `pip` | vertical |  | none | 0 (0) | 0 |  |  |  |  |  |  | 0.5 | – / 13.0 |
 | `vhx` | vertical | yes | yes (microscope) | 21 (8) | 12 |  | components (below) | 31 % | 0.69 | 2.0 | 0.33 | 0.5 | 6.5 / 7.0 |
 | `polish` | vertical | yes | yes (polisher, press, saw) | 33 (19) | 17 |  | components (below) | 78 % | 0.22 | 2.0 | 0.53 | 0.5 | 7.3 / 10.0 |
-| `furnaces` | vertical | yes | yes | 65 (29) | 23 | $4,396 | North America (10 priced): $3,225 | 84 % | 0.21 | 2.0 | 0.28 (0.05) | 0.5 | 6.3 / 9.0 |
-| `sieve_cell` | vertical |  | yes (shaker) | 42 (28) | 17 |  | components (below) | 5 % | 0.95 | 2.0 | 0.25 | 0.5 | 8.3 / 15.0 |
-| `doser` | vertical |  | yes (press, balance, pump) | 62 (41) | 36 |  | components (below) | 85 % | 0.15 | 2.0 | 0.59 | 0.5 | 9.4 / 20.0 |
+| `furnaces` | vertical | yes | yes | 65 (30) | 23 | $4,396 | North America (10 priced): $3,225 | 84 % | 0.21 | 2.0 | 0.28 (0.05) | 0.5 | 6.3 / 9.0 |
+| `sieve_cell` | vertical |  | yes (shaker) | 43 (30) | 17 |  | components (below) | 5 % | 0.95 | 2.0 | 0.26 | 0.5 | 8.3 / 15.0 |
+| `doser` | vertical |  | yes (balance, pump) | 62 (48) | 36 |  | components (below) | 6 % | 0.94 | 2.0 | 0.44 | 0.5 | 9.4 / 20.0 |
 | `glovebox` | vertical |  | yes | 14 (8) | 7 | $12k | North America (4 priced): $16k | 72 % | 0.31 | 2.5 | 0.28 (0.30) | 1.0 | 8.6 / 14.0 |
 | `hoods` | vertical |  | yes (hood) | 13 (10) | 8 |  | components (below) | 25 % | 0.75 | 2.5 | 0.34 | 1.0 | 7.9 / 11.0 |
-| `icpms` | vertical | yes | yes (instrument) | 94 (60) | 35 |  | components (below) | 39 % | 0.61 | 3.5 | 0.21 | 2.0 | 13.2 / 18.0 |
-| `instron` | vertical | yes | yes | 59 (25) | 29 | $12k | like-for-like in North America (3 priced): $15k | 91 % | 0.12 | 3.0 | 0.30 (0.20) | 1.5 | 12.3 / 20.0 |
+| `icpms` | vertical | yes | yes (instrument) | 95 (75) | 35 |  | components (below) | 40 % | 0.60 | 3.5 | 0.19 | 2.0 | 13.0 / 18.0 |
+| `instron` | vertical | yes | yes | 61 (27) | 30 | $13k | like-for-like in North America (3 priced): $15k | 91 % | 0.12 | 3.0 | 0.29 (0.10) | 1.5 | 12.3 / 20.0 |
 | `chamber` | vertical | yes | thin | 4 (2) | 3 | $3,694 | like-for-like (3 priced): $3,694 | 93 % | 0.09 | 2.5 | 0.17 (0.30) | 0.5 | 6.5 / 17.0 |
 | `zwick` | vertical | yes | yes | 32 (11) | 18 | $19k | North America (6 priced): $13k | 63 % | 0.38 | 3.0 | 0.17 (0.05) | 0.5 | 8.0 / 12.0 |
 | `edm` | vertical | yes | yes | 117 (50) | 24 | $37k | North America (10 priced): $38k | 84 % | 0.20 | 3.0 | 0.31 (0.20) | 2.0 | 13.8 / 23.0 |
-| `machining` | vertical |  | yes (lathe, bar_feeder, robot_arm) | 105 (32) | 21 |  | components (below) | 16 % | 0.84 | 3.0 | 0.61 | 2.0 | 14.9 / 28.0 |
+| `machining` | vertical |  | yes (lathe, bar_feeder, robot_arm) | 105 (32) | 21 |  | components (below) | 15 % | 0.85 | 3.0 | 0.60 | 2.0 | 14.9 / 28.0 |
 | `carvera` | vertical |  | none | 0 (0) | 0 |  |  |  |  |  |  | 0.5 | – / 3.0 |
-| `units` | vertical |  | yes (mir, arm) | 46 (9) | 18 |  | components (below) | 37 % | 0.63 | 2.0 | 0.37 | 1.0 | 10.9 / 19.0 |
-| `floor_unit` | vertical |  | yes (mir, arm, vacuum) | 53 (16) | 19 |  | components (below) | 35 % | 0.65 | 2.0 | 0.56 | 1.0 | 8.9 / 17.0 |
-| `shuttle` | vertical |  | thin | 35 (2) | 1 | $42k |  |  |  | 4.0 | 0.30 (0.30) | 2.0 | 13.8 / 18.0 |
+| `units` | vertical |  | yes (mir, arm) | 46 (9) | 18 |  | components (below) | 37 % | 0.63 | 2.0 | 0.33 | 1.0 | 10.8 / 19.0 |
+| `floor_unit` | vertical |  | yes (mir, arm, vacuum) | 53 (16) | 19 |  | components (below) | 35 % | 0.65 | 2.0 | 0.53 | 1.0 | 8.8 / 17.0 |
+| `shuttle` | vertical |  | thin | 35 (2) | 1 | $42k |  |  |  | 9.0 | 0.24 (0.10) | 2.0 | 18.5 / 18.0 |
 | `couplings` | vertical |  | yes | 6 (4) | 4 | $568 | like-for-like in North America (4 priced): $568 | 86 % | 0.18 | 2.0 | 0.25 (0.10) | 0.0 | 6.5 / 10.0 |
-| `midi` | vertical |  | none | 82 (11) | 22 | $71k |  |  |  | 3.0 | 0.32 (0.20) | 6.0 | 20.9 / 26.0 |
-| `mxlab` | vertical |  | none | 4 (4) | 1 | $10k |  |  |  | 3.0 | 0.30 (0.30) | 6.0 | 20.8 / 34.0 |
-| `repowder` | both |  | none | 2 (0) | 0 |  |  |  |  | 8.0 | 0.10 (0.10) | 2.0 | 12.6 /  |
+| `midi` | vertical |  | none | 82 (11) | 22 | $71k |  |  |  |  |  | 6.0 | – / 26.0 |
+| `mxlab` | vertical |  | none | 4 (4) | 1 | $10k |  |  |  |  |  | 6.0 | – / 34.0 |
+| `repowder` | both |  | none | 2 (0) | 0 |  |  |  |  |  |  | 2.0 |  |
 | `ups` | vertical |  | n/a (new only) | 0 (0) | 0 |  |  |  |  |  |  | 0.0 | – / 6.0 |
 | `cameras` | vertical |  | n/a (new only) | 0 (0) | 0 |  |  |  |  |  |  | 0.0 | – / 4.0 |
 | `services` | vertical |  | n/a (new only) | 0 (0) | 0 |  |  |  |  |  |  | 1.0 | – / 18.0 |
-| `sieve` | conventional |  | yes | 44 (28) | 17 | $2,625 | like-for-like in North America (7 priced): $3,000 | 62 % | 0.44 | 2.0 | 0.25 (0.05) | 0.5 | 5.3 /  |
-| `doser_conv` | conventional |  | yes (press, balance) | 36 (18) | 19 |  | components (below) | 52 % | 0.48 | 2.0 | 0.49 | 0.5 | 5.4 /  |
-| `furnace` | conventional |  | yes | 65 (29) | 23 | $4,524 | North America (10 priced): $3,225 | 89 % | 0.14 | 2.0 | 0.28 (0.05) | 0.5 | 5.3 /  |
-| `density` | conventional |  | yes | 16 (9) | 13 | $2,237 | North America (8 priced): $2,198 | 82 % | 0.23 | 2.0 | 0.26 (0.10) | 0.5 | 5.3 /  |
+| `sieve` | conventional |  | yes | 45 (30) | 17 | $2,625 | like-for-like in North America (7 priced): $3,000 | 62 % | 0.44 | 2.0 | 0.26 (0.05) | 0.5 | 5.3 /  |
+| `doser_conv` | conventional |  | yes (press, balance) | 36 (25) | 19 |  | components (below) | 49 % | 0.51 | 2.0 | 0.49 | 0.5 | 5.4 /  |
+| `furnace` | conventional |  | yes | 65 (30) | 23 | $4,524 | North America (10 priced): $3,225 | 89 % | 0.14 | 2.0 | 0.28 (0.05) | 0.5 | 5.3 /  |
+| `density` | conventional |  | yes | 17 (16) | 13 | $2,237 | North America (13 priced): $2,237 | 81 % | 0.23 | 2.0 | 0.26 (0.10) | 0.5 | 5.3 /  |
 | `glovebox_conv` | conventional |  | yes | 14 (8) | 7 | $12k | North America (4 priced): $16k | 72 % | 0.31 | 2.5 | 0.28 (0.30) | 1.0 | 6.6 /  |
 | `hood` | conventional |  | yes (hood) | 13 (10) | 8 |  | components (below) | 25 % | 0.75 | 2.5 | 0.34 | 1.0 | 6.9 /  |
 | `cubxl` | conventional |  | n/a (new only) | 0 (0) | 0 |  |  |  |  |  |  | 0.5 |  |
 
 ### Stations that are several machines
 
-| Key | Component | New (each) | Market | Listings (N. America) | Priced | Median used | `price_frac` |
-| --- | --- | --: | --- | --: | --: | --: | --: |
+| Key | Component | New (each) | Market | Listings (N. America) | Priced | Priced on | `price_frac` | `lead_w` |
+| --- | --- | --: | --- | --: | --: | --- | --: | --: |
 | `vhx` | libs | $95k | none | 0 (0) | 0 |  |  |  |
 | `vhx` | microscope | $95k | yes | 21 (8) | 12 | like-for-like (9 priced): $36k | 0.38 | 2.0 |
 | `polish` | polisher | $23k | yes | 12 (6) | 5 | North America (3 priced): $2,500 | 0.13 | 2.0 |
 | `polish` | press | $19k | yes | 9 (6) | 6 | North America (5 priced): $2,750 | 0.17 | 2.0 |
 | `polish` | saw | $13k | yes | 12 (7) | 6 | North America (5 priced): $5,550 | 0.47 | 2.0 |
 | `sieve_cell` | rest | $53k | n/a (new only) | 0 (0) | 0 |  |  |  |
-| `sieve_cell` | shaker | $6,700 | yes | 42 (28) | 17 | like-for-like in North America (7 priced): $3,000 | 0.52 | 2.0 |
-| `doser` | balance | $3,500 | yes | 17 (7) | 11 | North America (6 priced): $822 | 0.38 | 2.0 |
+| `sieve_cell` | shaker | $6,700 | yes | 43 (30) | 17 | like-for-like in North America (7 priced): $3,000 | 0.52 | 2.0 |
+| `doser` | balance | $3,500 | yes | 17 (12) | 11 | North America (10 priced): $1,250 | 0.50 | 2.0 |
 | `doser` | carousel | $2,362 | n/a (new only) | 0 (0) | 0 |  |  |  |
-| `doser` | press | $41k | yes | 19 (11) | 8 | North America (4 priced): $2,000 | 0.06 | 2.0 |
+| `doser` | press | $41k | thin | 19 (13) | 8 | like-for-like (3 priced): $6,561 | 0.22 | 7.0 |
 | `doser` | pump | $3,000 | yes | 26 (23) | 17 | like-for-like in North America (14 priced): $1,025 | 0.55 | 2.0 |
 | `hoods` | hood | $14k | yes | 13 (10) | 8 | like-for-like in North America (3 priced): $3,500 | 0.37 | 2.5 |
 | `hoods` | install | $21k | n/a (new only) | 0 (0) | 0 |  |  |  |
 | `icpms` | autosampler | $12k | none | 0 (0) | 0 |  |  |  |
-| `icpms` | instrument | $190k | yes | 94 (60) | 35 | like-for-like in North America (18 priced): $82k | 0.46 | 3.5 |
+| `icpms` | instrument | $190k | yes | 95 (75) | 35 | like-for-like in North America (21 priced): $80k | 0.45 | 3.5 |
 | `icpms` | rest | $58k | n/a (new only) | 0 (0) | 0 |  |  |  |
 | `machining` | bar_feeder | $16k | yes | 5 (5) | 1 | all that fit (1 priced): $6,500 | 0.47 | 2.0 |
 | `machining` | lathe | $65k | yes | 65 (21) | 6 | like-for-like (3 priced): $55k | 0.94 | 3.0 |
 | `machining` | rest | $142k | n/a (new only) | 0 (0) | 0 |  |  |  |
-| `machining` | robot_arm | $52k | yes | 35 (6) | 14 | like-for-like (14 priced): $20k | 0.41 | 2.0 |
-| `units` | arm | $45k | yes | 35 (6) | 14 | like-for-like (14 priced): $20k | 0.47 | 2.0 |
+| `machining` | robot_arm | $52k | yes | 35 (6) | 14 | like-for-like (14 priced): $20k | 0.42 | 2.0 |
+| `units` | arm | $45k | yes | 35 (6) | 14 | like-for-like (14 priced): $20k | 0.48 | 2.0 |
 | `units` | gripper | $5,500 | thin | 2 (0) | 0 |  |  | 7.0 |
 | `units` | mir | $62k | yes | 9 (3) | 4 | like-for-like (3 priced): $33k | 0.55 | 2.0 |
 | `units` | rest | $28k | n/a (new only) | 0 (0) | 0 |  |  |  |
-| `floor_unit` | arm | $45k | yes | 35 (6) | 14 | like-for-like (14 priced): $20k | 0.47 | 2.0 |
+| `floor_unit` | arm | $45k | yes | 35 (6) | 14 | like-for-like (14 priced): $20k | 0.48 | 2.0 |
 | `floor_unit` | gripper | $5,500 | thin | 2 (0) | 0 |  |  | 7.0 |
 | `floor_unit` | mir | $62k | yes | 9 (3) | 4 | like-for-like (3 priced): $33k | 0.55 | 2.0 |
 | `floor_unit` | rest | $30k | n/a (new only) | 0 (0) | 0 |  |  |  |
 | `floor_unit` | vacuum | $12k | yes | 7 (7) | 1 | all that fit (1 priced): $8,045 | 0.74 | 2.0 |
-| `doser_conv` | balance | $4,000 | yes | 17 (7) | 11 | North America (6 priced): $822 | 0.33 | 2.0 |
+| `doser_conv` | balance | $4,000 | yes | 17 (12) | 11 | North America (10 priced): $1,250 | 0.44 | 2.0 |
 | `doser_conv` | doser | $5,000 | n/a (new only) | 0 (0) | 0 |  |  |  |
-| `doser_conv` | press | $9,000 | yes | 19 (11) | 8 | North America (4 priced): $2,000 | 0.26 | 2.0 |
+| `doser_conv` | press | $9,000 | yes | 19 (13) | 8 | North America (4 priced): $2,000 | 0.26 | 2.0 |
 | `hood` | hood | $14k | yes | 13 (10) | 8 | like-for-like in North America (3 priced): $3,500 | 0.37 | 2.5 |
 | `hood` | install | $21k | n/a (new only) | 0 (0) | 0 |  |  |  |
 
@@ -179,7 +179,7 @@ Up to three priced listings per key that count in the statistics, the twin's own
 * `couplings`: [Stäubli 34.11024 Combitac Male Aluminum Air Supply Connection Housing](https://www.machinio.com/listings/122555075-staubli-34-11024-combitac-male-aluminum-air-supply-connection-housing-assembly-in-baroda-mi) (exact; $372; used; Baroda, MI, USA; machinio); [Stäubli 34.11024 Combitac Male Aluminum Air Supply Connection Housing](https://www.machinio.com/listings/122555076-staubli-34-11024-combitac-male-aluminum-air-supply-connection-housing-assembly-in-baroda-mi) (exact; $392; used; Baroda, MI, USA; machinio); [CT-K/MODUL86591/84480,31008124 | Staubli CT-K/MODUL86591/84480 CombiTa](https://www.machinio.com/listings/106730567-ct-k-modul86591-84480-31008124-staubli-ct-k-modul86591-84480-combitac-connector-assembly-31008124-new-in-baroda-mi) (exact; $745; used; Baroda, MI, USA; machinio).
 * `midi`: [Concept Laser Machines Mlab cusing 200R Steel Metal 3D Printer](https://www.machinio.com/listings/104975803-concept-laser-machines-mlab-cusing-200r-steel-metal-3d-printer-in-baltimore-md) (sub; $44k; tested; Baltimore, MD; machinio); [3d printer SLMSLM 280 HL](https://www.machineseeker.com/slm-slm+280+hl/i-23334206) (sub; $38k; 2013, tested; Liberec, Czech Republic; machineseeker); [Metal 3d printer Concept LaserMlab 100R](https://www.machineseeker.com/concept+laser-mlab+100r/i-23020031) (sub; $44k; 2021, tested; Lysá nad Labem, Czech Republic; machineseeker).
 * `mxlab`: [OPTOMEC 750 LENS MACHINE](https://www.machinio.com/listings/100969301-optomec-750-lens-machine-in-milton-freewater-or) (sub; $10k; used; Milton-Freewater, OR; machinio).
-* `density`: [AmScope Stereo Microscope](https://www.labx.com/item/amscope-stereo-microscope/DIS-50372-A217988) (sub; $750; used; Rhode Island, US; labx); [Leeds Stereo Microscope Extendable Eyepoint Adjuster for Olympus SZX](https://www.labx.com/item/leeds-stereo-microscope-extendable-eyepoint-adjuster-for/DIS-88306-e072eb72da43b302c7d541629a6e457b) (sub; $995; used; North Carolina, US; labx); [Carton SPZV-50 Stereo Microscope Specifications](https://marshallscientific.com/products/carton-spzv-50-stereo-microscope) (sub; $1,095; warranty; Cambridge, MA, US (Marshall Scientific); marshall).
+* `density`: [Euromex 144-LED Four-Zone Stereo Microscope Ring Light | ELE-1973](https://www.labx.com/item/euromex-144-led-four-zone-stereo-microscope-ring-light-ele/DIS-88306-8e2c6ceed16198204d13c7e63f851b1b) (sub; $327; used; North Carolina, US; labx); [Olympus SZ40 Stereo Microscope](https://www.labx.com/item/olympus-sz40-stereo-microscope/DIS-50372-A218051) (sub; $750; used; Rhode Island, US; labx); [AmScope Stereo Microscope](https://www.labx.com/item/amscope-stereo-microscope/DIS-50372-A217988) (sub; $750; used; Rhode Island, US; labx).
 
 ## New price and the vendor's stated lead time
 
@@ -210,8 +210,8 @@ Most instrument makers quote lead times only on request; the leads below are the
 | [BidSpotter](https://www.bidspotter.com/) | auction aggregator | challenged | 1 |  |
 | [EquipNet](https://www.equipnet.com/) | auction and dealer | challenged | 2 |  |
 | [Surplus Record](https://www.surplusrecord.com/) | machinery listings | challenged | 1 |  |
-| [LabX](https://www.labx.com/) | lab-equipment marketplace (dealers) | ok | 340 | 252 |
-| [Machinio](https://www.machinio.com/) | machinery and equipment aggregator (dealers) | ok | 342 | 440 |
+| [LabX](https://www.labx.com/) | lab-equipment marketplace (dealers) | ok | 465 | 259 |
+| [Machinio](https://www.machinio.com/) | machinery and equipment aggregator (dealers) | ok | 385 | 440 |
 | [GovDeals](https://www.govdeals.com/) | government and university surplus auctions | ok | 81 | 13 |
 | [AllSurplus](https://www.allsurplus.com/) | commercial surplus auctions (same platform as GovDeals) | ok | 99 | 40 |
 | [Public Surplus](https://www.publicsurplus.com/) | government and university surplus auctions | ok | 43 | 2 |
@@ -235,14 +235,14 @@ Most instrument makers quote lead times only on request; the leads below are the
 
 | File | What it is |
 | --- | --- |
-| [`listings.csv`](listings.csv) | One row per listing seen that fits a station's role: station key, component, how close a match (`exact` model, same maker's `family`, or a `sub`stitute that does the same job), title, source, URL, price as listed and in USD, price kind (asking, starting bid, current bid, on request), condition (as-is, used, tested, refurbished, warranty, new surplus), the words the condition was read from, location and region, distance where the site gives one, seller type and name, stated availability, delivery terms, weight, a freight and rigging estimate, date seen. Rows with `keep = 0` are kept for the record (duplicates of a unit listed twice, new equipment advertised on LabX, rows dropped on review) with the reason. |
+| [`listings.csv`](listings.csv) | One row per listing seen that fits a station's role: station key, component, how close a match (`exact` model, same maker's `family`, or a `sub`stitute that does the same job), title, source, URL, price as listed and in USD, price kind (asking, starting bid, current bid, on request), condition (as-is, used, tested, refurbished, warranty, new surplus), the words the condition was read from, location and region, distance where the site gives one, seller type and name, stated availability, delivery terms, weight, a freight and rigging estimate, date seen, the shipping class, the estimated lead to site (`lead_w_est`), and whether the price counts in the statistics (`in_price_stats`). Rows with `keep = 0` are kept for the record (duplicates of a unit listed twice, new equipment advertised on LabX) with the reason. |
 | [`summary.csv`](summary.csv) | Per station key, in the twin's units: listings found (and how many in North America, priced, exact, family, substitute), the median used price and its quartiles, the like-for-like median (exact and family only), the discount against new, freight and rigging, `price_frac` (median delivered used price over the twin's new price), `lead_w` and `lead_sigma`, `p_fault`, `refurb_w`, `refurb_frac`, `extra_com_w`, the condition mix, whether a real used market exists, and `used_ok`. |
 | [`summary.json`](summary.json) | The same, with every assumption the summary used and its source. |
 | [`new.csv`](new.csv) | Each item's new price (the twin's, with its source) and the vendor's stated lead time where one is published, with the page it came from. |
 | [`sources.csv`](sources.csv) | Every source tried, whether it could be read, and how many pages and listings it gave. |
 | [`visits.csv`](visits.csv) | Every page the browsers opened: time, URL, HTTP status, and whether it was a challenge or block page. |
 | [`shots/`](shots/) | Screenshots of representative listings. |
-| [`tools/`](tools/) | The scripts: the browser rig and pacing (`browse.py`, `chrome.sh`, `chrome_n.sh`), the search plans and crawler (`plan1.json`, `plan2.json`, `crawl.py`), the matching rules (`stations.py`), the card and page parsers (`parse.py`, `detail.py`, `build_listings.py`) and the report (`report.py`). |
+| [`tools/`](tools/) | The scripts: the browser rig and pacing (`browse.py`, `chrome.sh`, `chrome_n.sh`, `tab2.py`), the search plans and crawler (`plan1.json`, `plan2.json`, `plan3.json`, `crawl.py`, `direct.py`), the matching rules (`stations.py`), the card and page parsers (`parse.py`, `detail.py`, `build_listings.py`), and the outputs (`export.py`, `shots.py`, `report.py` with `inshort.md`). They read and write `/tmp/market`; the raw page text isn't committed. |
 
 ## `summary.csv`, column by column
 
@@ -270,11 +270,12 @@ with all of its traffic sent out through the CubXL Pi over an SSH SOCKS tunnel, 
 (`rig.sh` at byu-vcl `49677cf`). Chrome was not run on the Pi itself: that Pi has 1 GB of RAM and runs a live camera
 service. Nothing was installed or written on the Pi; it only relayed traffic.
 
-**At a person's pace.** Every page was preceded by a pause of 4-9 s (6-12 s for listing pages), then read with mouse
-moves along eased, slightly curved paths with jitter, and uneven wheel scrolls, before its contents were read. Each
-group of sites had a browser of its own, and each site was only ever open in one browser at a time, so no site saw
-more than one page every 20 s or so. (Chrome throttles hidden tabs so hard that a second tab stalls, which is why the
-groups were given separate browsers on separate virtual displays rather than tabs.)
+**At a person's pace.** Every page was preceded by a pause of 4-9 s (5-12 s for listing pages), then read with mouse
+moves along eased, slightly curved paths with jitter, and uneven wheel scrolls, before its contents were read. A page
+took 20-27 s in all. Each group of sites had a browser of its own; at most two browsers had the same site open at once
+(LabX and Machinio, for their listing pages), so no site saw more than about one page every 10-15 s. (Chrome throttles
+hidden tabs so hard that a second tab stalls, which is why the groups were given separate browsers on separate virtual
+displays rather than tabs.)
 
 **Public pages only.** No log-in, bid, purchase, quote request or message. Prices behind "request a price" were left
 unrequested. Every page was checked for a challenge or block page (Cloudflare, CAPTCHA, "confirm you are human", an
@@ -286,8 +287,10 @@ and its maker's other generations) and the generic name of the instrument, on th
 is sold. Every listing card on every results page was kept (`search.jsonl`, not committed: it holds page text), and
 matched against each station's rules (`tools/stations.py`): the twin's own model (`exact`), the same maker's line
 (`family`), or another maker's instrument that does the station's job (`sub`), with parts, accessories, consumables and
-things that only share a word left out. Then each listing that matched was opened, up to 30 per station and
-component, for its condition, location, seller, price, availability, delivery terms and weight.
+things that only share a word left out. Then the listings that matched were opened, the twin's own model and its
+maker's line first, then priced ones (eight to thirty per station and component and site, every like-for-like one in
+the end), for their condition, location, seller, price, availability, delivery terms and weight. Eight Machineseeker
+listings that a web search had turned up for the Kardex Shuttle were opened the same way; seven had expired.
 
 **Tray stations take benchtop instruments only.** The automated lab's SEM, XRD and XRF ride on trays, so a floor-standing
 SEM, diffractometer or WDXRF can't stand in for them. Those listings are kept as `sem_floor`, `xrd_floor` and
@@ -315,7 +318,8 @@ above what units sell for.
   * generic tools (furnaces, hoods, gloveboxes, prep, frames and chambers, sieve shakers, the doser's parts, the EDM,
     the lathe): like-for-like in North America, any that fit in North America, then like-for-like anywhere;
   * stations whose integration depends on the model (`LFL_REQUIRED`: the Kardex Shuttles, the LPBF and DED machines,
-    the atomizer, the PIP, the couplings, and the MiR, UR arm and gripper of the robot units and the machining cell):
+    the atomizer, the PIP, the couplings, the doser's automatic press, and the MiR, UR arm and gripper of the robot
+    units and the machining cell):
     like-for-like only, and the market is judged on like-for-like listings too.
 
   Like-for-like means the twin's own model or its maker's line of the same generation (a TM3000-TM4000 tabletop SEM,
@@ -344,6 +348,32 @@ station, the VHX with its LIBS head, the hoods) is summarized per component, and
 real used market are bought used at their delivered median, the rest new. Its lead and risks are those of its used
 components, and a component bought new can still set the station's lead.
 
+## Notes on particular stations
+
+* **`edm`**: wire EDMs are the deepest market of all (117 listings, 50 in North America). The twin's own model, a
+  ROBOCUT α-C400iC, was listed twice in Europe (2021 and 2024) at about €89,000 against $230k new; older ROBOCUTs and
+  other makers' machines in the US ask $20-40k. A used EDM needs riggers, a dielectric unit refill and a few days of
+  set-up, but no maker's requalification.
+* **`icpms`**: the instrument is the market's best-documented case: Agilent 7700, 7800, 7900 and 7850 units from US
+  refurbishers (GMI, Quantum Analytics on LabX) at $55-110k with a warranty (90 days where stated), as-is units from
+  dealers and auctions for less. The station's hood, hot block and dilutor are bought new.
+* **`sem`**: Hitachi TM3000-TM4000 and Phenom units are sold by US dealers that refurbish them; most prices are on
+  request. Full-size SEMs are plentiful and cheap (`sem_floor`), but don't fit a tray.
+* **`midi`, `mxlab`, `repowder`, `pip`**: nothing like-for-like anywhere. The used LPBF and DED machines listed
+  (EOS, SLM, Concept Laser, TruPrint, Optomec LENS) are other makers' production or older research machines; buying
+  one would change the station, not just its price.
+* **`shuttle`**: see the caveat on size above; Kardex units are common in Europe with prices on request, and the only
+  priced VLM in North America was a Modula.
+* **`units`, `floor_unit`**: UR arms (UR10, UR10e, UR5e) and MiR AMRs (MiR100, MiR250, MiR500) are on the market, and a
+  2018 MiR100 asks $18,900 in California; the units' cabinets, cameras, safety unit and integration are new, and they set
+  the lead (`new_parts_lead_w`).
+* **`machining`**: nine used Haas ST-10s were listed in the US, mostly price on request (one 2014 unit at $24,900),
+  while a new one is in stock at $64,995 with a week's lead: used saves money but not time.
+* **`hoods`, `hood`**: used fume hoods are cheap ($0.4-5.5k), but the ducting, exhaust fan and certification that make
+  up most of an installed hood's cost are the same used or new.
+* **`nanoindenter`, `chamber`**: thin. Three old Hysitron systems and a few Instron chambers and furnaces, against a KLA
+  iMicro and an Instron 3119-608 in the twin.
+
 ## Caveats
 
 * **Asking prices, not sale prices.** eBay's sold listings were not readable; Public Surplus and GovDeals show only
@@ -357,8 +387,13 @@ components, and a component bought new can still set the station's lead.
 * **Condition is what the seller says.** "Tested" and "fully functional" are the seller's words; government and
   university surplus auctions sell as-is, where-is.
 * **Matching is by rules, then by eye.** `stations.py` decides what fits a station; every station's list was then read
-  through and rows that slipped through were dropped with a reason. Some judgment calls remain (how old a wire EDM may
-  be, whether an older generation of benchtop SEM does the job).
-* **A used unit must also be the right size.** A Kardex Shuttle has to fit the room's height and the twin's tray size;
-  a used one usually needs its frame cut down or extended by Kardex. That is priced as relocation, not as a rebuild.
+  through and the rules tightened wherever something slipped through (Zwick butterfly valves, Medtronic "Phenom"
+  catheters, Festo "SLM" slides, a press brake called "Xact", pasta machines called "Modula"), and every price far
+  from the rest was checked against its page. Some judgment calls remain (how old a wire EDM may be, whether an older
+  generation of benchtop SEM does the job).
+* **A used unit must also be the right size.** A Kardex Shuttle has to fit the room's height (9.15 m) and the twin's
+  tray size (2450 x 864 mm); the used ones listed run from 6 to 12 m with trays from 1250 to 4050 mm wide, and would
+  need Kardex to dismantle, ship, re-height and re-erect them. None was priced, so `shuttle` stays new.
+* **Some listings had already gone.** Machinio still shows some sold or withdrawn listings; those are kept (they show
+  what was on the market) and flagged in `availability`. The same unit listed on two sites is counted once.
 * **One day's snapshot.** Listings come and go; a thin market can be empty next month.

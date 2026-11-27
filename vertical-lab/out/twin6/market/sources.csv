@@ -3,8 +3,8 @@ eBay,ebay,https://www.ebay.com/,marketplace (active and sold),blocked,2026-11-27
 BidSpotter,bidspotter,https://www.bidspotter.com/,auction aggregator,challenged,2026-11-27T17:55Z,1,HTTP 405 'Let's confirm you are human' on a search page; not solved
 EquipNet,equipnet,https://www.equipnet.com/,auction and dealer,challenged,2026-11-27T17:58Z,2,"a search page loaded once (HTTP 200, no results parsed); the home page then answered with Cloudflare 'Just a moment...' (HTTP 403); not solved"
 Surplus Record,surplusrecord,https://www.surplusrecord.com/,machinery listings,challenged,2026-11-27T17:56Z,1,Cloudflare 'Just a moment...' (HTTP 403) on a search page; not solved
-LabX,labx,https://www.labx.com/,lab-equipment marketplace (dealers),ok,2026-11-27T17:59Z,340,search-a?sw=<query>
-Machinio,machinio,https://www.machinio.com/,machinery and equipment aggregator (dealers),ok,2026-11-27T17:59Z,342,listings?search=<query>; shows each listing's distance from the browser's location
+LabX,labx,https://www.labx.com/,lab-equipment marketplace (dealers),ok,2026-11-27T17:59Z,465,search-a?sw=<query>
+Machinio,machinio,https://www.machinio.com/,machinery and equipment aggregator (dealers),ok,2026-11-27T17:59Z,385,listings?search=<query>; shows each listing's distance from the browser's location
 GovDeals,govdeals,https://www.govdeals.com/,government and university surplus auctions,ok,2026-11-27T17:55Z,81,search?kWord=<query>
 AllSurplus,allsurplus,https://www.allsurplus.com/,commercial surplus auctions (same platform as GovDeals),ok,2026-11-27T18:00Z,99,search?kWord=<query>
 Public Surplus,publicsurplus,https://www.publicsurplus.com/,government and university surplus auctions,ok,2026-11-27T17:56Z,43,browse/search?posting=y&keyWord=<query>

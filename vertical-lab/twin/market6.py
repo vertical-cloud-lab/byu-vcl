@@ -94,7 +94,7 @@ REFURB_SRC = ("assumed by class: 3 weeks and 10 % of new for bench tools, 6-8 we
 # America, and at least one with a price.
 MARKET_MIN, MARKET_NA_MIN = 5, 2
 PO_W = 2.0                    # BYU's purchase order, round4.PO_W: before the lead, used or new
-LFL_REQUIRED = {"shuttle", "midi", "mxlab", "repowder", "pip", "couplings", "units:mir", "units:arm", "units:gripper",
+LFL_REQUIRED = {"shuttle", "midi", "mxlab", "repowder", "pip", "couplings", "doser:press", "units:mir", "units:arm", "units:gripper",
                 "floor_unit:mir", "floor_unit:arm", "floor_unit:gripper", "machining:robot_arm"}
 # ^ stations and components whose integration depends on the model (tray geometry, an open LPBF or DED machine, the
 #   robots' programs and tooling): priced and judged on like-for-like listings only. Elsewhere another maker's
@@ -215,11 +215,12 @@ def summarize(listings, new):
         med_basis = _q([_f(r["price_usd"]) for r in basis_rows], 0.5) if basis_rows else None
         cond = Counter(r["condition"] for r in rows)
         nfit = len(rows)
-        buy = na if len(na) >= MARKET_NA_MIN else rows      # where the lab would buy: at home if it can
+        base = [r for r in rows if r["match"] in ("exact", "family")] if lfl_only else rows
+        base_na = [r for r in base if r.get("region") in ("US", "CA")]
+        buy = base_na if len(base_na) >= MARKET_NA_MIN else base   # where the lab would buy: at home if it can
         pf = (sum(P_FAULT.get(r["condition"], 0.3) for r in buy) / len(buy)) if buy else None
-        # best: the lowest-risk listing in North America at no more than 1.5 x the median price (or any, if unpriced)
-        best = [r for r in (na if len(na) >= MARKET_NA_MIN else rows)
-                if not med or not _f(r.get("price_usd")) or _f(r["price_usd"]) <= 1.5 * med]
+        # best: the lowest-risk listing where it would buy, at no more than 1.5 x the median price (or any, if unpriced)
+        best = [r for r in buy if not med or not _f(r.get("price_usd")) or _f(r["price_usd"]) <= 1.5 * med]
         pf_best = min((P_FAULT.get(r["condition"], 0.3) for r in best), default=None)
         leads = [lead_of(r, wt) for r in buy]
         ships = [LEAD["handling"][seller_kind(r)] + LEAD["transit"]["overseas" if r.get("region") == "overseas" else "NA"]
@@ -249,8 +250,8 @@ def summarize(listings, new):
         if n.get("used_market") == "no":
             market = "n/a (new only)"
         if med_basis:
-            if buy is na and na:
-                fr = freight(wt, "NA", _q([_f(r.get("dist_km")) for r in na if _f(r.get("dist_km"))], 0.5))
+            if buy is base_na and base_na:
+                fr = freight(wt, "NA", _q([_f(r.get("dist_km")) for r in base_na if _f(r.get("dist_km"))], 0.5))
             else:
                 regs = Counter("overseas" if r.get("region") == "overseas" else "NA" for r in basis_rows)
                 fr = freight(wt, regs.most_common(1)[0][0], None)
@@ -269,7 +270,7 @@ def summarize(listings, new):
             n_exact=sum(r["match"] == "exact" for r in rows), n_family=sum(r["match"] == "family" for r in rows),
             n_substitute=sum(r["match"] == "sub" for r in rows),
             median_used_usd=round(med) if med else None, median_basis_usd=round(med_basis) if med_basis else None,
-            bought_from=("North America" if buy is na and na else "anywhere") if buy else "",
+            bought_from=("North America" if buy is base_na and base_na else "anywhere") if buy else "",
             median_exact_family_usd=round(_q(pxf, 0.5)) if pxf else None, n_priced_exact_family=len(pxf),
             p25_used_usd=round(_q(px, 0.25)) if px else None,
             p75_used_usd=round(_q(px, 0.75)) if px else None, min_used_usd=round(min(px)) if px else None,

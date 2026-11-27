@@ -12,7 +12,8 @@ HOST = {"labx.com": "labx", "machinio.com": "machinio", "govdeals.com": "govdeal
         "bidspotter.com": "bidspotter", "equipnet.com": "equipnet", "surplusrecord.com": "surplusrecord",
         "biosurplus.com": "biosurplus", "gsaadvantage.gov": "gsa", "haascnc.com": "haas", "makera.com": "makera",
         "equipt.com": "equipt", "caeonline.com": "cae", "robotsdoneright.com": "rdr", "ipinfo.io": "ipinfo",
-        "conquerscientific.com": "conquer", "gmi-inc.com": "gmi", "semtechsolutions.com": "semtech"}
+        "conquerscientific.com": "conquer", "gmi-inc.com": "gmi", "semtechsolutions.com": "semtech",
+        "penntoolco.com": "penntool", "robotiq.com": "robotiq", "specac.com": "specac"}
 
 
 def site_of(url):

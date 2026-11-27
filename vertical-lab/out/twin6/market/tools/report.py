@@ -65,7 +65,8 @@ def main(d):
     out.append(f"* **In round 5's `USED_OK` but not supported by the market** ({len(lost)}): "
                + (", ".join(f"`{k}`" for k in lost) or "none") + ".")
     out.append(f"* **Not in `USED_OK` but with a real used market** ({len(gained)}): "
-               + (", ".join(f"`{k}`" for k in gained) or "none") + ".")
+               + (", ".join(f"`{k}`" for k in gained) or "none") + " (the conventional lab's keys among them aren't in "
+               "round 4's `BUILD`).")
     if pf:
         out.append(f"* Across the `used_ok` stations, the median `price_frac` is {med(pf):.2f} (round 5: 0.45), the "
                    f"median `lead_w` {med(lw):.1f} weeks (round 5: 2) and the median `p_fault` {med(pfa):.2f} "
@@ -102,8 +103,8 @@ def main(d):
     out.append("")
     if comp_rows:
         out.append("### Stations that are several machines\n")
-        out.append("| Key | Component | New (each) | Market | Listings (N. America) | Priced | Median used | `price_frac` |")
-        out.append("| --- | --- | --: | --- | --: | --: | --: | --: |")
+        out.append("| Key | Component | New (each) | Market | Listings (N. America) | Priced | Priced on | `price_frac` | `lead_w` |")
+        out.append("| --- | --- | --: | --- | --: | --: | --- | --: | --: |")
         for k in sorted(comp_rows, key=lambda k: order.get(k, 999)):
             for r in comp_rows[k]:
                 out.append(f"| `{k}` | {r['component']} | {money(r['new_usd_each'])} | {r['market']} | "
@@ -171,10 +172,18 @@ def main(d):
         S_ = {r["station"]: r for r in st_rows}
         C_ = {(r["station"], r["component"]): r for r in S}
         md = lambda xs, nd=2: (f"{xs[len(xs) // 2]:.{nd}f}" if xs else "n/a")
+        BUILD = {"services", "hoods", "glovebox", "shuttle", "units", "couplings", "ups", "cameras", "midi", "mxlab", "edm",
+                 "instron", "chamber", "zwick", "machining", "icpms", "sieve_cell", "furnaces", "sem", "eds", "ebsd", "xrd",
+                 "xrf", "mastersizer", "hardness", "nanoindenter", "pip", "vhx", "polish", "carvera", "doser",
+                 "floor_unit", "cubxl"}                              # round4.BUILD: what rounds 4-5 schedule
+        g_v = [k for k in gained if k in BUILD]
+        g_c = [k for k in gained if k not in BUILD]
         lost_txt = ("The market doesn't support " + ", ".join(f"`{k}`" for k in lost) +
-                    " (round 5 bought them used)." if lost else "Every station in round 5's `USED_OK` has a market.")
-        gained_txt = ("It does support " + ", ".join(f"`{k}`" for k in gained) +
-                      ", which round 5 bought new." if gained else "")
+                    " (round 5 allowed them used)." if lost else "Every station in round 5's `USED_OK` has a market.")
+        gained_txt = (("It does support " + ", ".join(f"`{k}`" for k in g_v) +
+                       ", which round 5 kept new.") if g_v else "") + (
+                      (" The conventional lab's own items, which the rounds don't schedule, have used markets too ("
+                       + ", ".join(f"`{k}`" for k in g_c) + ").") if g_c else "")
         fill = dict(pf_med=md(pfs), pf_min=f"{pfs[0]:.2f}" if pfs else "n/a", pf_max=f"{pfs[-1]:.2f}" if pfs else "n/a",
                     midi_n=S_.get("midi", {}).get("n_listings", "0"), midi_na=S_.get("midi", {}).get("n_north_america", "0"),
                     arm_n=C_.get(("units", "arm"), {}).get("n_listings", "0"), mir_n=C_.get(("units", "mir"), {}).get("n_listings", "0"),
