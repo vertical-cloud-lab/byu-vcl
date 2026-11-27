@@ -1,0 +1,9559 @@
+{
+ "note": "written by twin/video/floorspace.py: four layouts of the 3-D lab's equipment, and the Shuttles' capacity laid out flat (design layouts, not built labs)",
+ "summary": {
+  "rows": [
+   {
+    "name": "conventional",
+    "title": "Conventional lab",
+    "length_m": 28.9,
+    "width_m": 13.76,
+    "area_m2": 397.6,
+    "area_sqft": 4280,
+    "instruments": 43,
+    "per_1000_sqft": 10.0,
+    "sqft_per_instrument": 100,
+    "positions": null,
+    "positions_used": null,
+    "positions_per_1000_sqft": null,
+    "machine_block_m2": null,
+    "benchtop_m2": null,
+    "docks": 0,
+    "arms": 0,
+    "chargers": 0,
+    "breakdown_m2": {
+     "floor machines": 47.2,
+     "benches, shelves and Shuttles": 28.0,
+     "service clearance": 66.2,
+     "aisles and corridor": 121.2,
+     "walls": 25.1,
+     "other floor": 110.7
+    },
+    "notes": [
+     "Zones along a 6 ft corridor; each zone's back row against its far wall, its front row against the corridor wall, a 5 ft aisle between them."
+    ],
+    "meta": null
+   },
+   {
+    "name": "flat",
+    "title": "Automated, same floor plan",
+    "length_m": 28.9,
+    "width_m": 13.76,
+    "area_m2": 397.6,
+    "area_sqft": 4280,
+    "instruments": 43,
+    "per_1000_sqft": 10.0,
+    "sqft_per_instrument": 100,
+    "positions": null,
+    "positions_used": null,
+    "positions_per_1000_sqft": null,
+    "machine_block_m2": null,
+    "benchtop_m2": null,
+    "docks": 24,
+    "arms": 5,
+    "chargers": 2,
+    "breakdown_m2": {
+     "floor machines": 47.9,
+     "benches, shelves and Shuttles": 28.0,
+     "service clearance": 66.2,
+     "aisles and corridor": 120.5,
+     "walls": 25.1,
+     "other floor": 110.7
+    },
+    "notes": [
+     "4 mobile manipulators; 24 docking targets; 5 fixed arms, each with a sample rack; 2 chargers. A docked MiR250 (580 mm wide) leaves 0.94 m of a 5 ft aisle: less than the 1.45 m one needs to drive by, so robots wait in the aisles."
+    ],
+    "meta": null
+   },
+   {
+    "name": "robots",
+    "title": "Automated, laid out for robots",
+    "length_m": 34.3,
+    "width_m": 11.18,
+    "area_m2": 383.5,
+    "area_sqft": 4128,
+    "instruments": 43,
+    "per_1000_sqft": 10.4,
+    "sqft_per_instrument": 96,
+    "positions": 18,
+    "positions_used": 18,
+    "positions_per_1000_sqft": 4.4,
+    "machine_block_m2": 241.5,
+    "benchtop_m2": 142.0,
+    "docks": 28,
+    "arms": 0,
+    "chargers": 3,
+    "breakdown_m2": {
+     "floor machines": 48.2,
+     "benches, shelves and Shuttles": 39.2,
+     "service clearance": 60.3,
+     "aisles and corridor": 153.5,
+     "walls": 14.7,
+     "other floor": 68.5
+    },
+    "notes": [
+     "18 tray-sized bench positions (18 with today's trays): 2 where the Shuttles stood, facing the MiR aisle; 16 in 4 rows of up to 4, 2 one-way 1.45 m MiR aisles with an 838 mm dock lane each side, cross-aisles at both ends; the floor machines as in the vertical lab."
+    ],
+    "meta": {
+     "modules": 2,
+     "rows": 4,
+     "per_row": 4,
+     "positions": 18,
+     "used": 18,
+     "north_row": 2,
+     "bench_block_m": [
+      12.7,
+      11.18
+     ],
+     "two_way": false,
+     "machine_block_m2": 241.5,
+     "aisle_mm": 1450.0
+    }
+   },
+   {
+    "name": "vertical",
+    "title": "Vertical lab",
+    "length_m": 23.76,
+    "width_m": 11.84,
+    "area_m2": 281.4,
+    "area_sqft": 3029,
+    "instruments": 43,
+    "per_1000_sqft": 14.2,
+    "sqft_per_instrument": 70,
+    "positions": 45,
+    "positions_used": 18,
+    "positions_per_1000_sqft": 14.9,
+    "machine_block_m2": 241.5,
+    "benchtop_m2": 39.9,
+    "docks": 12,
+    "arms": 0,
+    "chargers": 3,
+    "breakdown_m2": {
+     "floor machines": 48.0,
+     "benches, shelves and Shuttles": 18.0,
+     "service clearance": 61.5,
+     "aisles and corridor": 71.1,
+     "walls": 11.5,
+     "other floor": 71.8
+    },
+    "notes": [
+     "North row: glovebox, atomizer, sieving cell, two Shuttles, LPBF. South row: two Instrons, three chargers, fume hood, DED, wire EDM, packaging. East end: EOS M 400-4 and Meltio cell (no MiR dock)."
+    ],
+    "meta": null
+   }
+  ],
+  "counts": {
+   "instruments": 43,
+   "benchtop": 31,
+   "floor": 12,
+   "benchtop_labels": [
+    "SEM (Hitachi TM4000Plus II)",
+    "XRD (Rigaku MiniFlex)",
+    "powder prep station",
+    "Opentrons OT-2",
+    "corrosion cell (CubXL + EZstat)",
+    "multi-doser",
+    "vacuum press (Specac)",
+    "PIP (Plastometrex)",
+    "nanoindenter (KLA iMicro)",
+    "particle size (Mastersizer)",
+    "Bambu Lab H2D",
+    "Bambu Lab A1 mini",
+    "polisher (LECO PX500)",
+    "furnace (Nabertherm)",
+    "mounting press (LECO MX400)",
+    "N2 glovebox",
+    "digital microscope (Keyence VHX)",
+    "tensile (zwickiLine)",
+    "hardness (Mitutoyo HM-220)",
+    "XRF (Bruker S2 PUMA)",
+    "ductless hood",
+    "CNC (Makera Carvera)",
+    "stencil printer",
+    "pick-and-place (LumenPnP)",
+    "reflow oven",
+    "Formlabs Form 4",
+    "Formlabs Form 4",
+    "Form Wash",
+    "Form Cure",
+    "desktop LPBF (SnowPod)",
+    "desktop LPBF (SnowPod)"
+   ],
+   "floor_labels": [
+    "atomizer (AMAZEMET rePowder)",
+    "sieving cell",
+    "glovebox (Ar)",
+    "LPBF (Aconity MIDI)",
+    "DED (MX-Lab)",
+    "LPBF (EOS M 400-4)",
+    "DED cell (Meltio)",
+    "wire EDM (FANUC)",
+    "tensile (Instron 68FM-100)",
+    "tensile (Instron 68SC-2)",
+    "fume hood",
+    "packaging station"
+   ]
+  },
+  "assume": {
+   "bench_d": 762.0,
+   "bench_d_deep": 914.0,
+   "bench_h": 914.0,
+   "bench_gap": 150.0,
+   "bench_module": 305.0,
+   "bench_back": 50.0,
+   "aisle": 1524.0,
+   "corridor": 1829.0,
+   "service": 600.0,
+   "wall": 150.0,
+   "door": 1219.0,
+   "mir_aisle": 3000.0,
+   "mir_corridor": 1450.0,
+   "dock_zone": 838.0,
+   "shelf_h": 1830.0,
+   "module": 3353.0
+  },
+  "ecl": {
+   "ssf": {
+    "sqft": 15000,
+    "m2": 1400,
+    "instruments": "more than 100 items of equipment",
+    "source": "The Guardian, Tom Ireland, 2022-09-11, 'Cloud labs and remote research aren't the future of science - they're here' (reprinted by CMU: cmu.edu/ambassadors/december-2022/pdf/guardian_cloud-labs.pdf)"
+   },
+   "austin": {
+    "sqft": 105000,
+    "instruments": "over 230 unique types of instruments",
+    "source": "Emerald Cloud Lab press release, 2023-02-28 (PR Newswire, 'Emerald Cloud Lab to relocate state-of-the-art facility from South San Francisco to Austin')"
+   },
+   "cmu": {
+    "sqft": 16000,
+    "m2": 1500,
+    "source": "The Guardian, 2022-09-11 (as above): Carnegie Mellon's cloud lab, built and run with Emerald"
+   }
+  }
+ },
+ "capacity": {
+  "note": "the Shuttles' tray capacity, and the floor it takes flat (twin/video/floorspace.py: tray_capacity, tray_benches); design layouts, not built labs",
+  "trays": {
+   "unit_h_mm": 9150.0,
+   "tray_mm": [
+    2450.0,
+    864.0
+   ],
+   "tray_m2": 2.1168,
+   "tray_sqft": 22.79,
+   "span_mm": 750.0,
+   "instrument_tray_spans_mm": [
+    750.0,
+    900.0,
+    725.0,
+    750.0,
+    725.0,
+    750.0,
+    725.0,
+    625.0,
+    725.0,
+    850.0,
+    725.0,
+    750.0
+   ],
+   "store_spans_mm": [
+    150.0,
+    150.0,
+    225.0,
+    225.0,
+    325.0,
+    325.0
+   ],
+   "columns": [
+    {
+     "shuttle": 1,
+     "column": "rear",
+     "from_mm": 300.0,
+     "to_mm": 8890.0,
+     "trays": [
+      "D",
+      "A",
+      "B",
+      "E",
+      "S"
+     ],
+     "used_mm": 3450,
+     "free_mm": 5140,
+     "added": 6,
+     "left_mm": 640
+    },
+    {
+     "shuttle": 1,
+     "column": "front_low",
+     "from_mm": 300.0,
+     "to_mm": 793.0,
+     "trays": [
+      "J"
+     ],
+     "used_mm": 325,
+     "free_mm": 168,
+     "added": 0,
+     "left_mm": 168
+    },
+    {
+     "shuttle": 1,
+     "column": "front",
+     "from_mm": 1950.0,
+     "to_mm": 8890.0,
+     "trays": [
+      "C",
+      "F"
+     ],
+     "used_mm": 1475,
+     "free_mm": 5465,
+     "added": 7,
+     "left_mm": 215
+    },
+    {
+     "shuttle": 2,
+     "column": "rear",
+     "from_mm": 300.0,
+     "to_mm": 8890.0,
+     "trays": [
+      "K",
+      "L",
+      "M",
+      "H",
+      "P",
+      "Q"
+     ],
+     "used_mm": 3325,
+     "free_mm": 5265,
+     "added": 7,
+     "left_mm": 15
+    },
+    {
+     "shuttle": 2,
+     "column": "front_low",
+     "from_mm": 300.0,
+     "to_mm": 793.0,
+     "trays": [
+      "N",
+      "O"
+     ],
+     "used_mm": 375,
+     "free_mm": 118,
+     "added": 0,
+     "left_mm": 118
+    },
+    {
+     "shuttle": 2,
+     "column": "front",
+     "from_mm": 1950.0,
+     "to_mm": 8890.0,
+     "trays": [
+      "G",
+      "I"
+     ],
+     "used_mm": 1450,
+     "free_mm": 5490,
+     "added": 7,
+     "left_mm": 240
+    }
+   ],
+   "units": {
+    "1": {
+     "in_use": 8,
+     "added": 13,
+     "trays": 21
+    },
+    "2": {
+     "in_use": 10,
+     "added": 14,
+     "trays": 24
+    }
+   },
+   "empty_unit": {
+    "by_column": {
+     "rear": 11,
+     "front_low": 0,
+     "front": 9
+    },
+    "instrument_trays": 20,
+    "note": "an empty 9.15 m unit at the 750 mm span; the 493 mm under the access table takes short stores only (the plan has one or two there)"
+   },
+   "in_use": 18,
+   "in_use_instrument_trays": 12,
+   "in_use_stores": 6,
+   "trays": 45,
+   "added": 27,
+   "surface_m2": 95.3,
+   "surface_sqft": 1025,
+   "in_use_surface_m2": 38.1,
+   "in_use_surface_sqft": 410,
+   "left_mm": 1396,
+   "pr344": {
+    "unit_mm": 9200.0,
+    "trays_per_unit": 24,
+    "mean_span_mm": 623.0,
+    "spans_mm": [
+     550.0,
+     725.0
+    ],
+    "front_from_mm": 1820.0
+   }
+  },
+  "rules": {
+   "w": 2450.0,
+   "d": 864.0,
+   "h": 914.0,
+   "dock": 838.0,
+   "one_way": 1450.0,
+   "two_way": 3000.0,
+   "chase": 150.0,
+   "dock_set": 370.0
+  },
+  "spacing": {
+   "conventional": {
+    "bench_m": 28.98,
+    "bench_m2": 23.2,
+    "items": 34,
+    "instruments": 31,
+    "bench_mm_per_item": 852,
+    "bench_m2_per_item": 0.683,
+    "aisle_mm": 1524.0,
+    "left_by_a_docked_mir_mm": 944
+   },
+   "trays": {
+    "trays": 12,
+    "items": 34,
+    "tray_mm_per_item": 865,
+    "tray_m2_per_item": 0.747,
+    "note": "each tray also carries its UPS, cameras, air monitor, dock plate and lines"
+   },
+   "robots": {
+    "dock_lane_mm": 838.0,
+    "one_way_mm": 1450.0,
+    "two_way_mm": 3000.0,
+    "between_facing_rows_mm": 3126,
+    "conventional_between_rows_mm": 1524.0,
+    "verdict": "more room: a docked MiR250 (580 mm wide) leaves 944 mm of a 5 ft aisle, under the 1,450 mm one needs to drive by; facing rows a robot can serve and pass along need 838 + 1,450 + 838 = 3,126 mm between them, twice the 1,524 mm aisle"
+   }
+  },
+  "machine_block": {
+   "area_m2": 241.5,
+   "area_sqft": 2600,
+   "length_m": 21.6,
+   "width_m": 11.18,
+   "machines": 12,
+   "note": "the 12 floor machines in the vertical lab's two rows along its 3.0 m MiR aisle, with their 0.6 m service space, three chargers and their docks, without the Shuttles: the same in the vertical lab and both flat automated layouts"
+  },
+  "same_equipment": {
+   "conventional": {
+    "area_m2": 397.6,
+    "area_sqft": 4280
+   },
+   "robots": {
+    "name": "robots",
+    "title": "Automated, laid out for robots",
+    "area_m2": 383.5,
+    "area_sqft": 4128,
+    "machine_block_m2": 241.5,
+    "benchtop_m2": 142.0,
+    "benchtop_sqft": 1528,
+    "positions": 18,
+    "positions_per_1000_sqft": 4.4,
+    "benchtop_positions_per_1000_sqft": 11.8,
+    "length_m": 34.3,
+    "width_m": 11.18,
+    "meta": {
+     "modules": 2,
+     "rows": 4,
+     "per_row": 4,
+     "positions": 18,
+     "used": 18,
+     "north_row": 2,
+     "bench_block_m": [
+      12.7,
+      11.18
+     ],
+     "two_way": false,
+     "machine_block_m2": 241.5,
+     "aisle_mm": 1450.0
+    }
+   },
+   "vertical": {
+    "name": "vertical",
+    "title": "Vertical lab",
+    "area_m2": 281.4,
+    "area_sqft": 3029,
+    "machine_block_m2": 241.5,
+    "benchtop_m2": 39.9,
+    "benchtop_sqft": 430,
+    "positions": 18,
+    "positions_per_1000_sqft": 5.9,
+    "benchtop_positions_per_1000_sqft": 41.9,
+    "length_m": 23.76,
+    "width_m": 11.84,
+    "meta": null
+   },
+   "robots_2way": {
+    "name": "robots_2way",
+    "title": "Automated, laid out for robots (3.0 m aisles)",
+    "area_m2": 495.9,
+    "area_sqft": 5338,
+    "machine_block_m2": 241.5,
+    "benchtop_m2": 254.4,
+    "benchtop_sqft": 2738,
+    "positions": 18,
+    "positions_per_1000_sqft": 3.4,
+    "benchtop_positions_per_1000_sqft": 6.6,
+    "length_m": 37.4,
+    "width_m": 13.26,
+    "meta": {
+     "modules": 2,
+     "rows": 4,
+     "per_row": 4,
+     "positions": 18,
+     "used": 18,
+     "north_row": 2,
+     "bench_block_m": [
+      15.8,
+      13.26
+     ],
+     "two_way": true,
+     "machine_block_m2": 241.5,
+     "aisle_mm": 3000.0
+    }
+   }
+  },
+  "same_capacity": {
+   "flat": {
+    "name": "capacity",
+    "title": "Automated, 45 tray positions",
+    "area_m2": 575.2,
+    "area_sqft": 6192,
+    "machine_block_m2": 241.5,
+    "benchtop_m2": 333.7,
+    "benchtop_sqft": 3592,
+    "positions": 45,
+    "positions_per_1000_sqft": 7.3,
+    "benchtop_positions_per_1000_sqft": 12.5,
+    "length_m": 51.45,
+    "width_m": 11.18,
+    "meta": {
+     "modules": 2,
+     "rows": 4,
+     "per_row": 11,
+     "positions": 45,
+     "used": 18,
+     "north_row": 2,
+     "bench_block_m": [
+      29.85,
+      11.18
+     ],
+     "two_way": false,
+     "machine_block_m2": 241.5,
+     "aisle_mm": 1450.0
+    }
+   },
+   "vertical": {
+    "name": "vertical",
+    "title": "Vertical lab",
+    "area_m2": 281.4,
+    "area_sqft": 3029,
+    "machine_block_m2": 241.5,
+    "benchtop_m2": 39.9,
+    "benchtop_sqft": 430,
+    "positions": 45,
+    "positions_per_1000_sqft": 14.9,
+    "benchtop_positions_per_1000_sqft": 104.7,
+    "length_m": 23.76,
+    "width_m": 11.84,
+    "meta": null
+   },
+   "flat_2way": {
+    "name": "capacity_2way",
+    "title": "Automated, 45 tray positions (3.0 m aisles)",
+    "area_m2": 723.2,
+    "area_sqft": 7785,
+    "machine_block_m2": 241.5,
+    "benchtop_m2": 481.7,
+    "benchtop_sqft": 5185,
+    "positions": 45,
+    "positions_per_1000_sqft": 5.8,
+    "benchtop_positions_per_1000_sqft": 8.7,
+    "length_m": 54.55,
+    "width_m": 13.26,
+    "meta": {
+     "modules": 2,
+     "rows": 4,
+     "per_row": 11,
+     "positions": 45,
+     "used": 18,
+     "north_row": 2,
+     "bench_block_m": [
+      32.95,
+      13.26
+     ],
+     "two_way": true,
+     "machine_block_m2": 241.5,
+     "aisle_mm": 3000.0
+    }
+   }
+  },
+  "percent": {
+   "vertical_vs_conventional": 29,
+   "vertical_vs_robots": 27,
+   "vertical_vs_robots_2way": 43,
+   "vertical_vs_flat_capacity": 51,
+   "vertical_vs_flat_capacity_2way": 61,
+   "flat_capacity_over_vertical": 2.04,
+   "bench_block_ratio_full": 8.4
+  }
+ },
+ "problems": [],
+ "inventory": [
+  {
+   "key": "D0",
+   "name": "Hitachi TM4000PlusII",
+   "label": "SEM (Hitachi TM4000Plus II)",
+   "group": "sem",
+   "instrument": true,
+   "w": 832,
+   "d": 650,
+   "h": 547,
+   "tray": "D"
+  },
+  {
+   "key": "D1",
+   "name": "Rigaku MiniFlex (6th generation)",
+   "label": "XRD (Rigaku MiniFlex)",
+   "group": "analytical",
+   "instrument": true,
+   "w": 620,
+   "d": 454,
+   "h": 722,
+   "tray": "D"
+  },
+  {
+   "key": "D2",
+   "name": "Powder prep station: XRD holder, SEM stub, XRF cup (our design)",
+   "label": "powder prep station",
+   "group": "analytical",
+   "instrument": true,
+   "w": 436,
+   "d": 233,
+   "h": 144,
+   "tray": "D"
+  },
+  {
+   "key": "A0",
+   "name": "Opentrons OT-2",
+   "label": "Opentrons OT-2",
+   "group": "wet",
+   "instrument": true,
+   "w": 624,
+   "d": 568,
+   "h": 662,
+   "tray": "A"
+  },
+  {
+   "key": "A1",
+   "name": "CubXL + NuVant EZstat Pro",
+   "label": "corrosion cell (CubXL + EZstat)",
+   "group": "wet",
+   "instrument": true,
+   "w": 1328,
+   "d": 605,
+   "h": 538,
+   "tray": "A"
+  },
+  {
+   "key": "B0",
+   "name": "vial rack",
+   "label": "vial rack",
+   "group": "powder",
+   "instrument": false,
+   "w": 220,
+   "d": 52,
+   "h": 69,
+   "tray": "B"
+  },
+  {
+   "key": "B1",
+   "name": "multi-doser: chain carousel v5 on an HR-202i, 13 powders",
+   "label": "multi-doser",
+   "group": "powder",
+   "instrument": true,
+   "w": 920,
+   "d": 690,
+   "h": 854,
+   "tray": "B"
+  },
+  {
+   "key": "B2",
+   "name": "Specac Atlas Autotouch 15T, vacuum press",
+   "label": "vacuum press (Specac)",
+   "group": "powder",
+   "instrument": true,
+   "w": 772,
+   "d": 573,
+   "h": 640,
+   "tray": "B"
+  },
+  {
+   "key": "E0",
+   "name": "Plastometrex PLX-Benchtop",
+   "label": "PIP (Plastometrex)",
+   "group": "mech",
+   "instrument": true,
+   "w": 526,
+   "d": 676,
+   "h": 689,
+   "tray": "E"
+  },
+  {
+   "key": "E1",
+   "name": "KLA iMicro",
+   "label": "nanoindenter (KLA iMicro)",
+   "group": "mech",
+   "instrument": true,
+   "w": 543,
+   "d": 522,
+   "h": 521,
+   "tray": "E"
+  },
+  {
+   "key": "E2",
+   "name": "Malvern Mastersizer 3000 + Aero S",
+   "label": "particle size (Mastersizer)",
+   "group": "analytical",
+   "instrument": true,
+   "w": 1080,
+   "d": 592,
+   "h": 506,
+   "tray": "E"
+  },
+  {
+   "key": "J0",
+   "name": "Storage load (our design)",
+   "label": "sample store",
+   "group": "store",
+   "instrument": false,
+   "w": 1760,
+   "d": 760,
+   "h": 300,
+   "tray": "J"
+  },
+  {
+   "key": "C0",
+   "name": "Bambu Lab H2D",
+   "label": "Bambu Lab H2D",
+   "group": "fab",
+   "instrument": true,
+   "w": 492,
+   "d": 514,
+   "h": 626,
+   "tray": "C"
+  },
+  {
+   "key": "C1",
+   "name": "Bambu Lab A1 mini",
+   "label": "Bambu Lab A1 mini",
+   "group": "fab",
+   "instrument": true,
+   "w": 360,
+   "d": 296,
+   "h": 483,
+   "tray": "C"
+  },
+  {
+   "key": "F0",
+   "name": "LECO PX500 + disc magazine",
+   "label": "polisher (LECO PX500)",
+   "group": "prep",
+   "instrument": true,
+   "w": 632,
+   "d": 729,
+   "h": 677,
+   "tray": "F"
+  },
+  {
+   "key": "F1",
+   "name": "Nabertherm NAT 15/65",
+   "label": "furnace (Nabertherm)",
+   "group": "furnace",
+   "instrument": true,
+   "w": 510,
+   "d": 824,
+   "h": 510,
+   "tray": "F"
+  },
+  {
+   "key": "F2",
+   "name": "LECO MX400",
+   "label": "mounting press (LECO MX400)",
+   "group": "prep",
+   "instrument": true,
+   "w": 206,
+   "d": 464,
+   "h": 666,
+   "tray": "F"
+  },
+  {
+   "key": "F3",
+   "name": "six-shelf disc magazine (ours)",
+   "label": "disc magazine",
+   "group": "prep",
+   "instrument": false,
+   "w": 356,
+   "d": 352,
+   "h": 638,
+   "tray": "F"
+  },
+  {
+   "key": "F4",
+   "name": "water tank with a lift basket, our design",
+   "label": "quench tank",
+   "group": "furnace",
+   "instrument": false,
+   "w": 240,
+   "d": 238,
+   "h": 326,
+   "tray": "F"
+  },
+  {
+   "key": "S0",
+   "name": "Storage load (our design)",
+   "label": "sample store",
+   "group": "store",
+   "instrument": false,
+   "w": 1760,
+   "d": 760,
+   "h": 300,
+   "tray": "S"
+  },
+  {
+   "key": "K0",
+   "name": "Custom N2 glovebox (purge-only)",
+   "label": "N2 glovebox",
+   "group": "powder",
+   "instrument": true,
+   "w": 1390,
+   "d": 826,
+   "h": 810,
+   "tray": "K"
+  },
+  {
+   "key": "K1",
+   "name": "Keyence VHX-7000 (VHX-S750E free-angle stand)",
+   "label": "digital microscope (Keyence VHX)",
+   "group": "sem",
+   "instrument": true,
+   "w": 630,
+   "d": 626,
+   "h": 716,
+   "tray": "K"
+  },
+  {
+   "key": "L0",
+   "name": "ZwickRoell zwickiLine Z5.0 TN",
+   "label": "tensile (zwickiLine)",
+   "group": "mech",
+   "instrument": true,
+   "w": 1289,
+   "d": 638,
+   "h": 448,
+   "tray": "L"
+  },
+  {
+   "key": "L1",
+   "name": "Mitutoyo HM-220 Type D (AVPAK)",
+   "label": "hardness (Mitutoyo HM-220)",
+   "group": "mech",
+   "instrument": true,
+   "w": 532,
+   "d": 696,
+   "h": 595,
+   "tray": "L"
+  },
+  {
+   "key": "M0",
+   "name": "Bruker S2 PUMA Series 2, XY Autochanger",
+   "label": "XRF (Bruker S2 PUMA)",
+   "group": "analytical",
+   "instrument": true,
+   "w": 670,
+   "d": 712,
+   "h": 620,
+   "tray": "M"
+  },
+  {
+   "key": "M1",
+   "name": "Sentry Air Systems ductless hood, 24 in",
+   "label": "ductless hood",
+   "group": "shop",
+   "instrument": true,
+   "w": 1030,
+   "d": 610,
+   "h": 714,
+   "tray": "M"
+  },
+  {
+   "key": "M2",
+   "name": "Makera Carvera",
+   "label": "CNC (Makera Carvera)",
+   "group": "shop",
+   "instrument": true,
+   "w": 610,
+   "d": 534,
+   "h": 540,
+   "tray": "M"
+  },
+  {
+   "key": "H0",
+   "name": "DDM Novastar SPR-45VA",
+   "label": "stencil printer",
+   "group": "fab",
+   "instrument": true,
+   "w": 903,
+   "d": 762,
+   "h": 516,
+   "tray": "H"
+  },
+  {
+   "key": "H1",
+   "name": "Opulo LumenPnP v4.2",
+   "label": "pick-and-place (LumenPnP)",
+   "group": "fab",
+   "instrument": true,
+   "w": 706,
+   "d": 672,
+   "h": 364,
+   "tray": "H"
+  },
+  {
+   "key": "H2",
+   "name": "Puhui T-962A",
+   "label": "reflow oven",
+   "group": "fab",
+   "instrument": true,
+   "w": 430,
+   "d": 392,
+   "h": 262,
+   "tray": "H"
+  },
+  {
+   "key": "G0",
+   "name": "Formlabs Form 4",
+   "label": "Formlabs Form 4",
+   "group": "fab",
+   "instrument": true,
+   "w": 398,
+   "d": 371,
+   "h": 554,
+   "tray": "G"
+  },
+  {
+   "key": "G1",
+   "name": "Formlabs Form 4",
+   "label": "Formlabs Form 4",
+   "group": "fab",
+   "instrument": true,
+   "w": 398,
+   "d": 371,
+   "h": 554,
+   "tray": "G"
+  },
+  {
+   "key": "G2",
+   "name": "Formlabs Form Wash (2nd Gen)",
+   "label": "Form Wash",
+   "group": "fab",
+   "instrument": true,
+   "w": 316,
+   "d": 296,
+   "h": 406,
+   "tray": "G"
+  },
+  {
+   "key": "G3",
+   "name": "Formlabs Form Cure (2nd Gen)",
+   "label": "Form Cure",
+   "group": "fab",
+   "instrument": true,
+   "w": 336,
+   "d": 360,
+   "h": 404,
+   "tray": "G"
+  },
+  {
+   "key": "I0",
+   "name": "SnowX SnowPod",
+   "label": "desktop LPBF (SnowPod)",
+   "group": "powder",
+   "instrument": true,
+   "w": 360,
+   "d": 364,
+   "h": 660,
+   "tray": "I"
+  },
+  {
+   "key": "I1",
+   "name": "SnowX SnowPod",
+   "label": "desktop LPBF (SnowPod)",
+   "group": "powder",
+   "instrument": true,
+   "w": 360,
+   "d": 364,
+   "h": 660,
+   "tray": "I"
+  },
+  {
+   "key": "N0",
+   "name": "264 powder jars in racks (our design)",
+   "label": "powder jars, feedstock",
+   "group": "jars",
+   "instrument": false,
+   "w": 2410,
+   "d": 758,
+   "h": 182,
+   "tray": "N"
+  },
+  {
+   "key": "O0",
+   "name": "489 powder jars in racks (our design)",
+   "label": "powder jars, atomized lots",
+   "group": "jars",
+   "instrument": false,
+   "w": 2410,
+   "d": 786,
+   "h": 104,
+   "tray": "O"
+  },
+  {
+   "key": "P0",
+   "name": "489 powder jars in racks (our design)",
+   "label": "powder jars, atomized lots",
+   "group": "jars",
+   "instrument": false,
+   "w": 2410,
+   "d": 786,
+   "h": 104,
+   "tray": "P"
+  },
+  {
+   "key": "Q0",
+   "name": "264 powder jars in racks (our design)",
+   "label": "powder jars, feedstock",
+   "group": "jars",
+   "instrument": false,
+   "w": 2410,
+   "d": 758,
+   "h": 182,
+   "tray": "Q"
+  },
+  {
+   "key": "repowder",
+   "name": "repowder",
+   "label": "atomizer (AMAZEMET rePowder)",
+   "group": "powder",
+   "instrument": true,
+   "w": 2900,
+   "d": 2460,
+   "h": 1862,
+   "tray": null
+  },
+  {
+   "key": "sieve_cell",
+   "name": "sieve_cell",
+   "label": "sieving cell",
+   "group": "powder",
+   "instrument": true,
+   "w": 1095,
+   "d": 630,
+   "h": 2370,
+   "tray": null
+  },
+  {
+   "key": "glovebox",
+   "name": "glovebox",
+   "label": "glovebox (Ar)",
+   "group": "powder",
+   "instrument": true,
+   "w": 804,
+   "d": 2305,
+   "h": 1795,
+   "tray": null
+  },
+  {
+   "key": "aconity",
+   "name": "aconity",
+   "label": "LPBF (Aconity MIDI)",
+   "group": "am",
+   "instrument": true,
+   "w": 2472,
+   "d": 1234,
+   "h": 2324,
+   "tray": null
+  },
+  {
+   "key": "ded",
+   "name": "ded",
+   "label": "DED (MX-Lab)",
+   "group": "am",
+   "instrument": true,
+   "w": 1323,
+   "d": 777,
+   "h": 1835,
+   "tray": null
+  },
+  {
+   "key": "eos_m400",
+   "name": "eos_m400",
+   "label": "LPBF (EOS M 400-4)",
+   "group": "am",
+   "instrument": true,
+   "w": 4181,
+   "d": 1743,
+   "h": 2355,
+   "tray": null
+  },
+  {
+   "key": "meltio_cell",
+   "name": "meltio_cell",
+   "label": "DED cell (Meltio)",
+   "group": "am",
+   "instrument": true,
+   "w": 4354,
+   "d": 3430,
+   "h": 3160,
+   "tray": null
+  },
+  {
+   "key": "wire_edm",
+   "name": "wire_edm",
+   "label": "wire EDM (FANUC)",
+   "group": "shop",
+   "instrument": true,
+   "w": 2120,
+   "d": 2544,
+   "h": 1970,
+   "tray": null
+  },
+  {
+   "key": "instron_floor",
+   "name": "instron_floor",
+   "label": "tensile (Instron 68FM-100)",
+   "group": "mech",
+   "instrument": true,
+   "w": 1575,
+   "d": 1053,
+   "h": 2287,
+   "tray": null
+  },
+  {
+   "key": "instron_small",
+   "name": "instron_small",
+   "label": "tensile (Instron 68SC-2)",
+   "group": "mech",
+   "instrument": true,
+   "w": 480,
+   "d": 635,
+   "h": 1410,
+   "tray": null
+  },
+  {
+   "key": "fumehood",
+   "name": "fumehood",
+   "label": "fume hood",
+   "group": "wet",
+   "instrument": true,
+   "w": 1219,
+   "d": 959,
+   "h": 2581,
+   "tray": null
+  },
+  {
+   "key": "packaging",
+   "name": "packaging",
+   "label": "packaging station",
+   "group": "ship",
+   "instrument": true,
+   "w": 2089,
+   "d": 753,
+   "h": 1268,
+   "tray": null
+  }
+ ],
+ "layouts": {
+  "conventional": {
+   "name": "conventional",
+   "title": "Conventional lab",
+   "envelope": [
+    -12637.4,
+    -15506.0,
+    16267.4,
+    -1750.0
+   ],
+   "area_m2": 397.61,
+   "area_sqft": 4279.9,
+   "places": {
+    "glovebox": {
+     "x": -10780.5,
+     "y": -3652.5,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "repowder": {
+     "x": -7623.5,
+     "y": -3730.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "sieve_cell": {
+     "x": -4321.1,
+     "y": -2815.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "B1": {
+     "x": -10228.2,
+     "y": -8893.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "B2": {
+     "x": -9232.2,
+     "y": -8951.5,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "B0": {
+     "x": -8586.2,
+     "y": -9212.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "I0": {
+     "x": -8146.2,
+     "y": -9056.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "I1": {
+     "x": -7636.2,
+     "y": -9056.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "K0": {
+     "x": -6261.0,
+     "y": -8825.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "N0": {
+     "x": -3907.4,
+     "y": -8855.0,
+     "facing": "N",
+     "z": 150.0,
+     "on": "shelf"
+    },
+    "O0": {
+     "x": -3907.4,
+     "y": -8855.0,
+     "facing": "N",
+     "z": 532.5,
+     "on": "shelf"
+    },
+    "P0": {
+     "x": -3907.4,
+     "y": -8855.0,
+     "facing": "N",
+     "z": 915.0,
+     "on": "shelf"
+    },
+    "Q0": {
+     "x": -3907.4,
+     "y": -8855.0,
+     "facing": "N",
+     "z": 1297.5,
+     "on": "shelf"
+    },
+    "eos_m400": {
+     "x": 460.0,
+     "y": -3371.5,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "meltio_cell": {
+     "x": 5415.8,
+     "y": -4215.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "aconity": {
+     "x": 2198.2,
+     "y": -8071.0,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "ded": {
+     "x": 5857.6,
+     "y": -8299.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "wire_edm": {
+     "x": 10390.4,
+     "y": -3772.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "M2": {
+     "x": 10559.9,
+     "y": -8971.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "M1": {
+     "x": 11529.9,
+     "y": -8933.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F1": {
+     "x": 14113.6,
+     "y": -2362.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F4": {
+     "x": 14638.6,
+     "y": -2069.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "instron_floor": {
+     "x": -11100.0,
+     "y": -14229.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "instron_small": {
+     "x": -9472.6,
+     "y": -14438.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "L0": {
+     "x": -7753.6,
+     "y": -14987.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "L1": {
+     "x": -6693.1,
+     "y": -14958.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "E0": {
+     "x": -8927.0,
+     "y": -11805.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "E1": {
+     "x": -8242.5,
+     "y": -11728.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "D0": {
+     "x": -4756.1,
+     "y": -14981.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "K1": {
+     "x": -3875.1,
+     "y": -14993.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "D1": {
+     "x": -2027.6,
+     "y": -15079.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "M0": {
+     "x": -1232.6,
+     "y": -14950.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "E2": {
+     "x": -207.6,
+     "y": -15010.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "D2": {
+     "x": 700.4,
+     "y": -15189.5,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F0": {
+     "x": -381.1,
+     "y": -11831.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F2": {
+     "x": 187.9,
+     "y": -11699.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F3": {
+     "x": 618.9,
+     "y": -11643.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "fumehood": {
+     "x": 2479.9,
+     "y": -14276.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "A0": {
+     "x": 4170.4,
+     "y": -15022.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "A1": {
+     "x": 5296.4,
+     "y": -15003.5,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "C0": {
+     "x": 7132.4,
+     "y": -15049.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "C1": {
+     "x": 7708.4,
+     "y": -15158.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G0": {
+     "x": 8237.4,
+     "y": -15120.5,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G1": {
+     "x": 8785.4,
+     "y": -15120.5,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G2": {
+     "x": 9292.4,
+     "y": -15158.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G3": {
+     "x": 9768.4,
+     "y": -15126.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "H0": {
+     "x": 8452.9,
+     "y": -11848.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "H1": {
+     "x": 9407.4,
+     "y": -11803.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "H2": {
+     "x": 10125.4,
+     "y": -11663.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "packaging": {
+     "x": 12337.9,
+     "y": -14379.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "J0": {
+     "x": 15049.9,
+     "y": -14936.0,
+     "facing": "N",
+     "z": 150.0,
+     "on": "shelf"
+    },
+    "S0": {
+     "x": 15049.9,
+     "y": -14936.0,
+     "facing": "N",
+     "z": 915.0,
+     "on": "shelf"
+    }
+   },
+   "benches": [
+    {
+     "rect": [
+      -10902.2,
+      -9288.0,
+      -7242.2,
+      -8526.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "Powder and melt room",
+     "keys": [
+      "B1",
+      "B2",
+      "B0",
+      "I0",
+      "I1"
+     ]
+    },
+    {
+     "rect": [
+      -7176.0,
+      -9288.0,
+      -5346.0,
+      -8374.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "Powder and melt room",
+     "keys": [
+      "K0"
+     ]
+    },
+    {
+     "rect": [
+      -5279.9,
+      -9288.0,
+      -2534.9,
+      -8422.0
+     ],
+     "h": 1830.0,
+     "kind": "shelf",
+     "zone": "Powder and melt room",
+     "keys": [
+      "N0",
+      "O0",
+      "P0",
+      "Q0"
+     ]
+    },
+    {
+     "rect": [
+      10082.4,
+      -9288.0,
+      12217.4,
+      -8526.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "Machine shop",
+     "keys": [
+      "M2",
+      "M1"
+     ]
+    },
+    {
+     "rect": [
+      13698.6,
+      -2814.0,
+      14918.6,
+      -1900.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "Furnace room",
+     "keys": [
+      "F1",
+      "F4"
+     ]
+    },
+    {
+     "rect": [
+      -8632.6,
+      -15356.0,
+      -6192.6,
+      -14594.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "Mechanical testing",
+     "keys": [
+      "L0",
+      "L1"
+     ]
+    },
+    {
+     "rect": [
+      -9343.0,
+      -12179.0,
+      -7818.0,
+      -11417.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "Mechanical testing",
+     "keys": [
+      "E0",
+      "E1"
+     ]
+    },
+    {
+     "rect": [
+      -5433.6,
+      -15356.0,
+      -3298.6,
+      -14594.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "SEM room",
+     "keys": [
+      "D0",
+      "K1"
+     ]
+    },
+    {
+     "rect": [
+      -2539.6,
+      -15356.0,
+      1120.4,
+      -14594.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "Analytical and sample prep",
+     "keys": [
+      "D1",
+      "M0",
+      "E2",
+      "D2"
+     ]
+    },
+    {
+     "rect": [
+      -865.1,
+      -12331.0,
+      964.9,
+      -11417.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "Analytical and sample prep",
+     "keys": [
+      "F0",
+      "F2",
+      "F3"
+     ]
+    },
+    {
+     "rect": [
+      3689.4,
+      -15356.0,
+      6129.4,
+      -14594.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "Wet lab",
+     "keys": [
+      "A0",
+      "A1"
+     ]
+    },
+    {
+     "rect": [
+      6733.9,
+      -15356.0,
+      10088.9,
+      -14594.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "Fabrication",
+     "keys": [
+      "C0",
+      "C1",
+      "G0",
+      "G1",
+      "G2",
+      "G3"
+     ]
+    },
+    {
+     "rect": [
+      7798.4,
+      -12331.0,
+      10543.4,
+      -11417.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "Fabrication",
+     "keys": [
+      "H0",
+      "H1",
+      "H2"
+     ]
+    },
+    {
+     "rect": [
+      13982.4,
+      -15356.0,
+      16117.4,
+      -14516.0
+     ],
+     "h": 1830.0,
+     "kind": "shelf",
+     "zone": "Shipping and storage",
+     "keys": [
+      "J0",
+      "S0"
+     ]
+    }
+   ],
+   "walls": [
+    [
+     -12637.4,
+     -1900.0,
+     16267.4,
+     -1750.0
+    ],
+    [
+     -12637.4,
+     -15506.0,
+     16267.4,
+     -15356.0
+    ],
+    [
+     -12637.4,
+     -15506.0,
+     -12487.4,
+     -11267.0
+    ],
+    [
+     -12637.4,
+     -9438.0,
+     -12487.4,
+     -1750.0
+    ],
+    [
+     16117.4,
+     -15506.0,
+     16267.4,
+     -11267.0
+    ],
+    [
+     16117.4,
+     -9438.0,
+     16267.4,
+     -1750.0
+    ],
+    [
+     -12487.4,
+     -9438.0,
+     -12337.4,
+     -9288.0
+    ],
+    [
+     -11118.4,
+     -9438.0,
+     -2468.7,
+     -9288.0
+    ],
+    [
+     -2468.7,
+     -9288.0,
+     -2318.7,
+     -1900.0
+    ],
+    [
+     -2318.7,
+     -9438.0,
+     -2168.7,
+     -9288.0
+    ],
+    [
+     -949.7,
+     -9438.0,
+     8281.0,
+     -9288.0
+    ],
+    [
+     8281.0,
+     -9288.0,
+     8431.0,
+     -1900.0
+    ],
+    [
+     8431.0,
+     -9438.0,
+     8581.0,
+     -9288.0
+    ],
+    [
+     9800.0,
+     -9438.0,
+     12349.7,
+     -9288.0
+    ],
+    [
+     12349.7,
+     -9288.0,
+     12499.7,
+     -1900.0
+    ],
+    [
+     12499.7,
+     -9438.0,
+     12649.7,
+     -9288.0
+    ],
+    [
+     13868.7,
+     -9438.0,
+     16117.4,
+     -9288.0
+    ],
+    [
+     -6192.6,
+     -15356.0,
+     -6042.6,
+     -11267.0
+    ],
+    [
+     -6042.6,
+     -11417.0,
+     -5892.6,
+     -11267.0
+    ],
+    [
+     -4673.6,
+     -11417.0,
+     -2689.6,
+     -11267.0
+    ],
+    [
+     -2689.6,
+     -15356.0,
+     -2539.6,
+     -11267.0
+    ],
+    [
+     1120.4,
+     -15356.0,
+     1270.4,
+     -11267.0
+    ],
+    [
+     6129.4,
+     -15356.0,
+     6279.4,
+     -11267.0
+    ],
+    [
+     10543.4,
+     -15356.0,
+     10693.4,
+     -11267.0
+    ]
+   ],
+   "rooms": [
+    {
+     "name": "Powder and melt room",
+     "rect": [
+      -12487.4,
+      -9288.0,
+      -2468.7,
+      -1900.0
+     ],
+     "enclosed": true,
+     "entry": [
+      -11727.9,
+      -9363.0
+     ],
+     "aisle_y": -5722.0,
+     "band": "N"
+    },
+    {
+     "name": "Metal AM bay",
+     "rect": [
+      -2318.7,
+      -9288.0,
+      8281.0,
+      -1900.0
+     ],
+     "enclosed": true,
+     "entry": [
+      -1559.199999999999,
+      -9363.0
+     ],
+     "aisle_y": -6692.0,
+     "band": "N"
+    },
+    {
+     "name": "Machine shop",
+     "rect": [
+      8431.0,
+      -9288.0,
+      12349.7,
+      -1900.0
+     ],
+     "enclosed": true,
+     "entry": [
+      9190.500000000002,
+      -9363.0
+     ],
+     "aisle_y": -5806.0,
+     "band": "N"
+    },
+    {
+     "name": "Furnace room",
+     "rect": [
+      12499.7,
+      -9288.0,
+      16117.4,
+      -1900.0
+     ],
+     "enclosed": true,
+     "entry": [
+      13259.2,
+      -9363.0
+     ],
+     "aisle_y": -3576.0,
+     "band": "N"
+    },
+    {
+     "name": "Mechanical testing",
+     "rect": [
+      -12487.4,
+      -15356.0,
+      -6192.6,
+      -11417.0
+     ],
+     "enclosed": false,
+     "entry": [
+      -11727.9,
+      -11342.0
+     ],
+     "aisle_y": -12941.0,
+     "band": "S"
+    },
+    {
+     "name": "SEM room",
+     "rect": [
+      -6042.6,
+      -15356.0,
+      -2689.6,
+      -11417.0
+     ],
+     "enclosed": true,
+     "entry": [
+      -5283.1,
+      -11342.0
+     ],
+     "aisle_y": -13832.0,
+     "band": "S"
+    },
+    {
+     "name": "Analytical and sample prep",
+     "rect": [
+      -2539.6,
+      -15356.0,
+      1120.4,
+      -11417.0
+     ],
+     "enclosed": false,
+     "entry": [
+      -1780.1000000000004,
+      -11342.0
+     ],
+     "aisle_y": -13832.0,
+     "band": "S"
+    },
+    {
+     "name": "Wet lab",
+     "rect": [
+      1270.4,
+      -15356.0,
+      6129.4,
+      -11417.0
+     ],
+     "enclosed": false,
+     "entry": [
+      2029.8999999999996,
+      -11342.0
+     ],
+     "aisle_y": -13035.0,
+     "band": "S"
+    },
+    {
+     "name": "Fabrication",
+     "rect": [
+      6279.4,
+      -15356.0,
+      10543.4,
+      -11417.0
+     ],
+     "enclosed": false,
+     "entry": [
+      7038.9,
+      -11342.0
+     ],
+     "aisle_y": -13832.0,
+     "band": "S"
+    },
+    {
+     "name": "Shipping and storage",
+     "rect": [
+      10693.4,
+      -15356.0,
+      16117.4,
+      -11417.0
+     ],
+     "enclosed": false,
+     "entry": [
+      11452.9,
+      -11342.0
+     ],
+     "aisle_y": -13241.0,
+     "band": "S"
+    }
+   ],
+   "aisles": [
+    {
+     "rect": [
+      -12487.4,
+      -11267.0,
+      16117.4,
+      -9438.0
+     ],
+     "kind": "corridor"
+    },
+    {
+     "rect": [
+      -12487.4,
+      -6484.0,
+      -2468.7,
+      -4960.0
+     ],
+     "kind": "aisle"
+    },
+    {
+     "rect": [
+      -2318.7,
+      -7454.0,
+      8281.0,
+      -5930.0
+     ],
+     "kind": "aisle"
+    },
+    {
+     "rect": [
+      8431.0,
+      -6568.0,
+      12349.7,
+      -5044.0
+     ],
+     "kind": "aisle"
+    },
+    {
+     "rect": [
+      12499.7,
+      -4338.0,
+      16117.4,
+      -2814.0
+     ],
+     "kind": "aisle"
+    },
+    {
+     "rect": [
+      -12487.4,
+      -13703.0,
+      -6192.6,
+      -12179.0
+     ],
+     "kind": "aisle"
+    },
+    {
+     "rect": [
+      -6042.6,
+      -14594.0,
+      -2689.6,
+      -13070.0
+     ],
+     "kind": "aisle"
+    },
+    {
+     "rect": [
+      -2539.6,
+      -14594.0,
+      1120.4,
+      -13070.0
+     ],
+     "kind": "aisle"
+    },
+    {
+     "rect": [
+      1270.4,
+      -13797.0,
+      6129.4,
+      -12273.0
+     ],
+     "kind": "aisle"
+    },
+    {
+     "rect": [
+      6279.4,
+      -14594.0,
+      10543.4,
+      -13070.0
+     ],
+     "kind": "aisle"
+    },
+    {
+     "rect": [
+      10693.4,
+      -14003.0,
+      16117.4,
+      -12479.0
+     ],
+     "kind": "aisle"
+    }
+   ],
+   "docks": [],
+   "chargers": [],
+   "arms": [],
+   "racks": [],
+   "notes": [
+    "Zones along a 6 ft corridor; each zone's back row against its far wall, its front row against the corridor wall, a 5 ft aisle between them."
+   ],
+   "meta": null
+  },
+  "flat": {
+   "name": "flat",
+   "title": "Automated, same floor plan",
+   "envelope": [
+    -12637.4,
+    -15506.0,
+    16267.4,
+    -1750.0
+   ],
+   "area_m2": 397.61,
+   "area_sqft": 4279.9,
+   "places": {
+    "glovebox": {
+     "x": -10780.5,
+     "y": -3652.5,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "repowder": {
+     "x": -7623.5,
+     "y": -3730.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "sieve_cell": {
+     "x": -4321.1,
+     "y": -2815.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "B1": {
+     "x": -10228.2,
+     "y": -8893.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "B2": {
+     "x": -9232.2,
+     "y": -8951.5,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "B0": {
+     "x": -8586.2,
+     "y": -9212.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "I0": {
+     "x": -8146.2,
+     "y": -9056.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "I1": {
+     "x": -7636.2,
+     "y": -9056.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "K0": {
+     "x": -6261.0,
+     "y": -8825.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "N0": {
+     "x": -3907.4,
+     "y": -8855.0,
+     "facing": "N",
+     "z": 150.0,
+     "on": "shelf"
+    },
+    "O0": {
+     "x": -3907.4,
+     "y": -8855.0,
+     "facing": "N",
+     "z": 532.5,
+     "on": "shelf"
+    },
+    "P0": {
+     "x": -3907.4,
+     "y": -8855.0,
+     "facing": "N",
+     "z": 915.0,
+     "on": "shelf"
+    },
+    "Q0": {
+     "x": -3907.4,
+     "y": -8855.0,
+     "facing": "N",
+     "z": 1297.5,
+     "on": "shelf"
+    },
+    "eos_m400": {
+     "x": 460.0,
+     "y": -3371.5,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "meltio_cell": {
+     "x": 5415.8,
+     "y": -4215.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "aconity": {
+     "x": 2198.2,
+     "y": -8071.0,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "ded": {
+     "x": 5857.6,
+     "y": -8299.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "wire_edm": {
+     "x": 10390.4,
+     "y": -3772.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "M2": {
+     "x": 10559.9,
+     "y": -8971.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "M1": {
+     "x": 11529.9,
+     "y": -8933.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F1": {
+     "x": 14113.6,
+     "y": -2362.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F4": {
+     "x": 14638.6,
+     "y": -2069.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "instron_floor": {
+     "x": -11100.0,
+     "y": -14229.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "instron_small": {
+     "x": -9472.6,
+     "y": -14438.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "L0": {
+     "x": -7753.6,
+     "y": -14987.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "L1": {
+     "x": -6693.1,
+     "y": -14958.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "E0": {
+     "x": -8927.0,
+     "y": -11805.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "E1": {
+     "x": -8242.5,
+     "y": -11728.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "D0": {
+     "x": -4756.1,
+     "y": -14981.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "K1": {
+     "x": -3875.1,
+     "y": -14993.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "D1": {
+     "x": -2027.6,
+     "y": -15079.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "M0": {
+     "x": -1232.6,
+     "y": -14950.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "E2": {
+     "x": -207.6,
+     "y": -15010.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "D2": {
+     "x": 700.4,
+     "y": -15189.5,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F0": {
+     "x": -381.1,
+     "y": -11831.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F2": {
+     "x": 187.9,
+     "y": -11699.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F3": {
+     "x": 618.9,
+     "y": -11643.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "fumehood": {
+     "x": 2479.9,
+     "y": -14276.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "A0": {
+     "x": 4170.4,
+     "y": -15022.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "A1": {
+     "x": 5296.4,
+     "y": -15003.5,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "C0": {
+     "x": 7132.4,
+     "y": -15049.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "C1": {
+     "x": 7708.4,
+     "y": -15158.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G0": {
+     "x": 8237.4,
+     "y": -15120.5,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G1": {
+     "x": 8785.4,
+     "y": -15120.5,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G2": {
+     "x": 9292.4,
+     "y": -15158.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G3": {
+     "x": 9768.4,
+     "y": -15126.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "H0": {
+     "x": 8452.9,
+     "y": -11848.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "H1": {
+     "x": 9407.4,
+     "y": -11803.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "H2": {
+     "x": 10125.4,
+     "y": -11663.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "packaging": {
+     "x": 12337.9,
+     "y": -14379.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "J0": {
+     "x": 15049.9,
+     "y": -14936.0,
+     "facing": "N",
+     "z": 150.0,
+     "on": "shelf"
+    },
+    "S0": {
+     "x": 15049.9,
+     "y": -14936.0,
+     "facing": "N",
+     "z": 915.0,
+     "on": "shelf"
+    }
+   },
+   "benches": [
+    {
+     "rect": [
+      -10902.2,
+      -9288.0,
+      -7242.2,
+      -8526.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "Powder and melt room",
+     "keys": [
+      "B1",
+      "B2",
+      "B0",
+      "I0",
+      "I1"
+     ]
+    },
+    {
+     "rect": [
+      -7176.0,
+      -9288.0,
+      -5346.0,
+      -8374.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "Powder and melt room",
+     "keys": [
+      "K0"
+     ]
+    },
+    {
+     "rect": [
+      -5279.9,
+      -9288.0,
+      -2534.9,
+      -8422.0
+     ],
+     "h": 1830.0,
+     "kind": "shelf",
+     "zone": "Powder and melt room",
+     "keys": [
+      "N0",
+      "O0",
+      "P0",
+      "Q0"
+     ]
+    },
+    {
+     "rect": [
+      10082.4,
+      -9288.0,
+      12217.4,
+      -8526.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "Machine shop",
+     "keys": [
+      "M2",
+      "M1"
+     ]
+    },
+    {
+     "rect": [
+      13698.6,
+      -2814.0,
+      14918.6,
+      -1900.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "Furnace room",
+     "keys": [
+      "F1",
+      "F4"
+     ]
+    },
+    {
+     "rect": [
+      -8632.6,
+      -15356.0,
+      -6192.6,
+      -14594.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "Mechanical testing",
+     "keys": [
+      "L0",
+      "L1"
+     ]
+    },
+    {
+     "rect": [
+      -9343.0,
+      -12179.0,
+      -7818.0,
+      -11417.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "Mechanical testing",
+     "keys": [
+      "E0",
+      "E1"
+     ]
+    },
+    {
+     "rect": [
+      -5433.6,
+      -15356.0,
+      -3298.6,
+      -14594.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "SEM room",
+     "keys": [
+      "D0",
+      "K1"
+     ]
+    },
+    {
+     "rect": [
+      -2539.6,
+      -15356.0,
+      1120.4,
+      -14594.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "Analytical and sample prep",
+     "keys": [
+      "D1",
+      "M0",
+      "E2",
+      "D2"
+     ]
+    },
+    {
+     "rect": [
+      -865.1,
+      -12331.0,
+      964.9,
+      -11417.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "Analytical and sample prep",
+     "keys": [
+      "F0",
+      "F2",
+      "F3"
+     ]
+    },
+    {
+     "rect": [
+      3689.4,
+      -15356.0,
+      6129.4,
+      -14594.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "Wet lab",
+     "keys": [
+      "A0",
+      "A1"
+     ]
+    },
+    {
+     "rect": [
+      6733.9,
+      -15356.0,
+      10088.9,
+      -14594.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "Fabrication",
+     "keys": [
+      "C0",
+      "C1",
+      "G0",
+      "G1",
+      "G2",
+      "G3"
+     ]
+    },
+    {
+     "rect": [
+      7798.4,
+      -12331.0,
+      10543.4,
+      -11417.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "Fabrication",
+     "keys": [
+      "H0",
+      "H1",
+      "H2"
+     ]
+    },
+    {
+     "rect": [
+      13982.4,
+      -15356.0,
+      16117.4,
+      -14516.0
+     ],
+     "h": 1830.0,
+     "kind": "shelf",
+     "zone": "Shipping and storage",
+     "keys": [
+      "J0",
+      "S0"
+     ]
+    }
+   ],
+   "walls": [
+    [
+     -12637.4,
+     -1900.0,
+     16267.4,
+     -1750.0
+    ],
+    [
+     -12637.4,
+     -15506.0,
+     16267.4,
+     -15356.0
+    ],
+    [
+     -12637.4,
+     -15506.0,
+     -12487.4,
+     -11267.0
+    ],
+    [
+     -12637.4,
+     -9438.0,
+     -12487.4,
+     -1750.0
+    ],
+    [
+     16117.4,
+     -15506.0,
+     16267.4,
+     -11267.0
+    ],
+    [
+     16117.4,
+     -9438.0,
+     16267.4,
+     -1750.0
+    ],
+    [
+     -12487.4,
+     -9438.0,
+     -12337.4,
+     -9288.0
+    ],
+    [
+     -11118.4,
+     -9438.0,
+     -2468.7,
+     -9288.0
+    ],
+    [
+     -2468.7,
+     -9288.0,
+     -2318.7,
+     -1900.0
+    ],
+    [
+     -2318.7,
+     -9438.0,
+     -2168.7,
+     -9288.0
+    ],
+    [
+     -949.7,
+     -9438.0,
+     8281.0,
+     -9288.0
+    ],
+    [
+     8281.0,
+     -9288.0,
+     8431.0,
+     -1900.0
+    ],
+    [
+     8431.0,
+     -9438.0,
+     8581.0,
+     -9288.0
+    ],
+    [
+     9800.0,
+     -9438.0,
+     12349.7,
+     -9288.0
+    ],
+    [
+     12349.7,
+     -9288.0,
+     12499.7,
+     -1900.0
+    ],
+    [
+     12499.7,
+     -9438.0,
+     12649.7,
+     -9288.0
+    ],
+    [
+     13868.7,
+     -9438.0,
+     16117.4,
+     -9288.0
+    ],
+    [
+     -6192.6,
+     -15356.0,
+     -6042.6,
+     -11267.0
+    ],
+    [
+     -6042.6,
+     -11417.0,
+     -5892.6,
+     -11267.0
+    ],
+    [
+     -4673.6,
+     -11417.0,
+     -2689.6,
+     -11267.0
+    ],
+    [
+     -2689.6,
+     -15356.0,
+     -2539.6,
+     -11267.0
+    ],
+    [
+     1120.4,
+     -15356.0,
+     1270.4,
+     -11267.0
+    ],
+    [
+     6129.4,
+     -15356.0,
+     6279.4,
+     -11267.0
+    ],
+    [
+     10543.4,
+     -15356.0,
+     10693.4,
+     -11267.0
+    ]
+   ],
+   "rooms": [
+    {
+     "name": "Powder and melt room",
+     "rect": [
+      -12487.4,
+      -9288.0,
+      -2468.7,
+      -1900.0
+     ],
+     "enclosed": true,
+     "entry": [
+      -11727.9,
+      -9363.0
+     ],
+     "aisle_y": -5722.0,
+     "band": "N"
+    },
+    {
+     "name": "Metal AM bay",
+     "rect": [
+      -2318.7,
+      -9288.0,
+      8281.0,
+      -1900.0
+     ],
+     "enclosed": true,
+     "entry": [
+      -1559.199999999999,
+      -9363.0
+     ],
+     "aisle_y": -6692.0,
+     "band": "N"
+    },
+    {
+     "name": "Machine shop",
+     "rect": [
+      8431.0,
+      -9288.0,
+      12349.7,
+      -1900.0
+     ],
+     "enclosed": true,
+     "entry": [
+      9190.500000000002,
+      -9363.0
+     ],
+     "aisle_y": -5806.0,
+     "band": "N"
+    },
+    {
+     "name": "Furnace room",
+     "rect": [
+      12499.7,
+      -9288.0,
+      16117.4,
+      -1900.0
+     ],
+     "enclosed": true,
+     "entry": [
+      13259.2,
+      -9363.0
+     ],
+     "aisle_y": -3576.0,
+     "band": "N"
+    },
+    {
+     "name": "Mechanical testing",
+     "rect": [
+      -12487.4,
+      -15356.0,
+      -6192.6,
+      -11417.0
+     ],
+     "enclosed": false,
+     "entry": [
+      -11727.9,
+      -11342.0
+     ],
+     "aisle_y": -12941.0,
+     "band": "S"
+    },
+    {
+     "name": "SEM room",
+     "rect": [
+      -6042.6,
+      -15356.0,
+      -2689.6,
+      -11417.0
+     ],
+     "enclosed": true,
+     "entry": [
+      -5283.1,
+      -11342.0
+     ],
+     "aisle_y": -13832.0,
+     "band": "S"
+    },
+    {
+     "name": "Analytical and sample prep",
+     "rect": [
+      -2539.6,
+      -15356.0,
+      1120.4,
+      -11417.0
+     ],
+     "enclosed": false,
+     "entry": [
+      -1780.1000000000004,
+      -11342.0
+     ],
+     "aisle_y": -13832.0,
+     "band": "S"
+    },
+    {
+     "name": "Wet lab",
+     "rect": [
+      1270.4,
+      -15356.0,
+      6129.4,
+      -11417.0
+     ],
+     "enclosed": false,
+     "entry": [
+      2029.8999999999996,
+      -11342.0
+     ],
+     "aisle_y": -13035.0,
+     "band": "S"
+    },
+    {
+     "name": "Fabrication",
+     "rect": [
+      6279.4,
+      -15356.0,
+      10543.4,
+      -11417.0
+     ],
+     "enclosed": false,
+     "entry": [
+      7038.9,
+      -11342.0
+     ],
+     "aisle_y": -13832.0,
+     "band": "S"
+    },
+    {
+     "name": "Shipping and storage",
+     "rect": [
+      10693.4,
+      -15356.0,
+      16117.4,
+      -11417.0
+     ],
+     "enclosed": false,
+     "entry": [
+      11452.9,
+      -11342.0
+     ],
+     "aisle_y": -13241.0,
+     "band": "S"
+    }
+   ],
+   "aisles": [
+    {
+     "rect": [
+      -12487.4,
+      -11267.0,
+      16117.4,
+      -9438.0
+     ],
+     "kind": "corridor"
+    },
+    {
+     "rect": [
+      -12487.4,
+      -6484.0,
+      -2468.7,
+      -4960.0
+     ],
+     "kind": "aisle"
+    },
+    {
+     "rect": [
+      -2318.7,
+      -7454.0,
+      8281.0,
+      -5930.0
+     ],
+     "kind": "aisle"
+    },
+    {
+     "rect": [
+      8431.0,
+      -6568.0,
+      12349.7,
+      -5044.0
+     ],
+     "kind": "aisle"
+    },
+    {
+     "rect": [
+      12499.7,
+      -4338.0,
+      16117.4,
+      -2814.0
+     ],
+     "kind": "aisle"
+    },
+    {
+     "rect": [
+      -12487.4,
+      -13703.0,
+      -6192.6,
+      -12179.0
+     ],
+     "kind": "aisle"
+    },
+    {
+     "rect": [
+      -6042.6,
+      -14594.0,
+      -2689.6,
+      -13070.0
+     ],
+     "kind": "aisle"
+    },
+    {
+     "rect": [
+      -2539.6,
+      -14594.0,
+      1120.4,
+      -13070.0
+     ],
+     "kind": "aisle"
+    },
+    {
+     "rect": [
+      1270.4,
+      -13797.0,
+      6129.4,
+      -12273.0
+     ],
+     "kind": "aisle"
+    },
+    {
+     "rect": [
+      6279.4,
+      -14594.0,
+      10543.4,
+      -13070.0
+     ],
+     "kind": "aisle"
+    },
+    {
+     "rect": [
+      10693.4,
+      -14003.0,
+      16117.4,
+      -12479.0
+     ],
+     "kind": "aisle"
+    }
+   ],
+   "docks": [
+    {
+     "station": "glovebox",
+     "x": -10780.474999999999,
+     "y": -5545.0,
+     "heading": 0.0
+    },
+    {
+     "station": "repowder",
+     "x": -7623.549999999999,
+     "y": -5700.0,
+     "heading": 0.0
+    },
+    {
+     "station": "sieve_cell",
+     "x": -4321.124999999999,
+     "y": -3870.0,
+     "heading": 0.0
+    },
+    {
+     "station": "B1",
+     "x": -10228.224999999999,
+     "y": -7786.0,
+     "heading": 0.0
+    },
+    {
+     "station": "K0",
+     "x": -6261.049999999998,
+     "y": -7634.0,
+     "heading": 0.0
+    },
+    {
+     "station": "eos_m400",
+     "x": 460.03333333333467,
+     "y": -4983.0,
+     "heading": 0.0
+    },
+    {
+     "station": "meltio_cell",
+     "x": 5415.766666666668,
+     "y": -6670.0,
+     "heading": 0.0
+    },
+    {
+     "station": "aconity",
+     "x": 2198.2000000000016,
+     "y": -6714.0,
+     "heading": 0.0
+    },
+    {
+     "station": "ded",
+     "x": 5857.600000000002,
+     "y": -7171.0,
+     "heading": 0.0
+    },
+    {
+     "station": "wire_edm",
+     "x": 10390.350000000002,
+     "y": -5784.0,
+     "heading": 0.0
+    },
+    {
+     "station": "M2",
+     "x": 10559.850000000002,
+     "y": -7786.0,
+     "heading": 0.0
+    },
+    {
+     "station": "F1",
+     "x": 14113.550000000001,
+     "y": -3554.0,
+     "heading": 0.0
+    },
+    {
+     "station": "instron_floor",
+     "x": -11100.0,
+     "y": -12963.0,
+     "heading": 0.0
+    },
+    {
+     "station": "instron_small",
+     "x": -9472.6,
+     "y": -13381.0,
+     "heading": 0.0
+    },
+    {
+     "station": "L0",
+     "x": -7753.6,
+     "y": -13854.0,
+     "heading": 0.0
+    },
+    {
+     "station": "E0",
+     "x": -8927.0,
+     "y": -12919.0,
+     "heading": 0.0
+    },
+    {
+     "station": "D0",
+     "x": -4756.1,
+     "y": -13854.0,
+     "heading": 0.0
+    },
+    {
+     "station": "D1",
+     "x": -2027.6000000000004,
+     "y": -13854.0,
+     "heading": 0.0
+    },
+    {
+     "station": "F0",
+     "x": -381.10000000000036,
+     "y": -13071.0,
+     "heading": 0.0
+    },
+    {
+     "station": "fumehood",
+     "x": 2479.8999999999996,
+     "y": -13057.0,
+     "heading": 0.0
+    },
+    {
+     "station": "A0",
+     "x": 4170.4,
+     "y": -13854.0,
+     "heading": 0.0
+    },
+    {
+     "station": "C0",
+     "x": 7132.4,
+     "y": -13854.0,
+     "heading": 0.0
+    },
+    {
+     "station": "H0",
+     "x": 8452.9,
+     "y": -13071.0,
+     "heading": 0.0
+    },
+    {
+     "station": "packaging",
+     "x": 12337.9,
+     "y": -13263.0,
+     "heading": 0.0
+    }
+   ],
+   "chargers": [
+    [
+     15620.4,
+     -13641.0,
+     90.0
+    ],
+    [
+     15620.4,
+     -12841.0,
+     90.0
+    ]
+   ],
+   "arms": [
+    {
+     "x": 15218.550000000001,
+     "y": -2357.0,
+     "side": 1,
+     "toward": [
+      -1.0,
+      0.0
+     ],
+     "zone": "Furnace room"
+    },
+    {
+     "x": -8932.6,
+     "y": -14975.0,
+     "side": -1,
+     "toward": [
+      1.0,
+      0.0
+     ],
+     "zone": "Mechanical testing"
+    },
+    {
+     "x": -7518.0,
+     "y": -11798.0,
+     "side": 1,
+     "toward": [
+      -1.0,
+      0.0
+     ],
+     "zone": "Mechanical testing"
+    },
+    {
+     "x": -2998.6000000000004,
+     "y": -14975.0,
+     "side": 1,
+     "toward": [
+      -1.0,
+      0.0
+     ],
+     "zone": "SEM room"
+    },
+    {
+     "x": 3389.3999999999996,
+     "y": -14975.0,
+     "side": -1,
+     "toward": [
+      1.0,
+      0.0
+     ],
+     "zone": "Wet lab"
+    }
+   ],
+   "racks": [
+    {
+     "x": 15218.550000000001,
+     "y": -2357.0,
+     "z": 880.0,
+     "zone": "Furnace room"
+    },
+    {
+     "x": -8932.6,
+     "y": -14975.0,
+     "z": 880.0,
+     "zone": "Mechanical testing"
+    },
+    {
+     "x": -7518.0,
+     "y": -11798.0,
+     "z": 880.0,
+     "zone": "Mechanical testing"
+    },
+    {
+     "x": -2998.6000000000004,
+     "y": -14975.0,
+     "z": 880.0,
+     "zone": "SEM room"
+    },
+    {
+     "x": 3389.3999999999996,
+     "y": -14975.0,
+     "z": 880.0,
+     "zone": "Wet lab"
+    }
+   ],
+   "notes": [
+    "4 mobile manipulators; 24 docking targets; 5 fixed arms, each with a sample rack; 2 chargers. A docked MiR250 (580 mm wide) leaves 0.94 m of a 5 ft aisle: less than the 1.45 m one needs to drive by, so robots wait in the aisles."
+   ],
+   "meta": null
+  },
+  "robots": {
+   "name": "robots",
+   "title": "Automated, laid out for robots",
+   "envelope": [
+    -21250.0,
+    -9532.0,
+    13051.8,
+    1648.0
+   ],
+   "area_m2": 383.49,
+   "area_sqft": 4127.9,
+   "places": {
+    "sieve_cell": {
+     "x": -847.5,
+     "y": -1247.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "repowder": {
+     "x": -3445.0,
+     "y": -332.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "glovebox": {
+     "x": -6647.5,
+     "y": -1160.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "aconity": {
+     "x": 1536.0,
+     "y": -945.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "instron_floor": {
+     "x": -7012.6,
+     "y": -6764.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "instron_small": {
+     "x": -5385.2,
+     "y": -6555.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "fumehood": {
+     "x": -269.7,
+     "y": -6717.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "ded": {
+     "x": 1601.3,
+     "y": -6626.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "wire_edm": {
+     "x": 3922.8,
+     "y": -7510.0,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "packaging": {
+     "x": 6627.3,
+     "y": -6614.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "meltio_cell": {
+     "x": 10586.8,
+     "y": -1423.0,
+     "facing": "W",
+     "z": 0.0,
+     "on": null
+    },
+    "eos_m400": {
+     "x": 9743.3,
+     "y": -6290.5,
+     "facing": "W",
+     "z": 0.0,
+     "on": null
+    },
+    "D0": {
+     "x": 3837.0,
+     "y": -1131.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "D1": {
+     "x": 4657.0,
+     "y": -1130.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "D2": {
+     "x": 5217.0,
+     "y": -1410.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "A0": {
+     "x": 7807.0,
+     "y": -1180.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "A1": {
+     "x": 6747.0,
+     "y": -1244.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "B0": {
+     "x": -18675.0,
+     "y": 694.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "B1": {
+     "x": -18345.0,
+     "y": 991.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "B2": {
+     "x": -19219.0,
+     "y": 952.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "E0": {
+     "x": -16855.0,
+     "y": 1066.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "E1": {
+     "x": -16225.5,
+     "y": 1066.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "E2": {
+     "x": -15385.0,
+     "y": 1006.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "J0": {
+     "x": -13525.0,
+     "y": 1066.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "C0": {
+     "x": -11635.0,
+     "y": 1066.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "C1": {
+     "x": -10715.0,
+     "y": 1066.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F0": {
+     "x": -18005.0,
+     "y": -2923.5,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F1": {
+     "x": -18705.0,
+     "y": -2924.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F2": {
+     "x": -17328.0,
+     "y": -3049.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F3": {
+     "x": -19447.0,
+     "y": -2734.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F4": {
+     "x": -19105.0,
+     "y": -2874.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "S0": {
+     "x": -15975.0,
+     "y": -2924.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "K0": {
+     "x": -13065.0,
+     "y": -2931.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "K1": {
+     "x": -14095.0,
+     "y": -2869.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "L0": {
+     "x": -11056.5,
+     "y": -2843.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "L1": {
+     "x": -10131.0,
+     "y": -2935.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "M0": {
+     "x": -19300.0,
+     "y": -3972.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "M1": {
+     "x": -18438.0,
+     "y": -4023.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "M2": {
+     "x": -17606.0,
+     "y": -4061.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "H0": {
+     "x": -16615.5,
+     "y": -3938.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "H1": {
+     "x": -15575.0,
+     "y": -4008.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "H2": {
+     "x": -14991.0,
+     "y": -4132.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G0": {
+     "x": -14445.0,
+     "y": -4142.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G1": {
+     "x": -13995.0,
+     "y": -4142.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G2": {
+     "x": -13565.0,
+     "y": -4180.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G3": {
+     "x": -13165.0,
+     "y": -4148.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "I0": {
+     "x": -11575.0,
+     "y": -4146.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "I1": {
+     "x": -10775.0,
+     "y": -4146.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "N0": {
+     "x": -18425.0,
+     "y": -7928.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "O0": {
+     "x": -15975.0,
+     "y": -7928.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "P0": {
+     "x": -13525.0,
+     "y": -7928.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "Q0": {
+     "x": -11075.0,
+     "y": -7928.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    }
+   },
+   "benches": [
+    {
+     "rect": [
+      3372.0,
+      -1562.0,
+      5822.0,
+      -698.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "north row",
+     "keys": [
+      "D0",
+      "D1",
+      "D2"
+     ],
+     "tray": "D",
+     "free": false
+    },
+    {
+     "rect": [
+      5822.0,
+      -1562.0,
+      8272.0,
+      -698.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "north row",
+     "keys": [
+      "A0",
+      "A1"
+     ],
+     "tray": "A",
+     "free": false
+    },
+    {
+     "rect": [
+      -19650.0,
+      634.0,
+      -17200.0,
+      1498.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "B0",
+      "B1",
+      "B2"
+     ],
+     "tray": "B",
+     "free": false
+    },
+    {
+     "rect": [
+      -17200.0,
+      634.0,
+      -14750.0,
+      1498.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "E0",
+      "E1",
+      "E2"
+     ],
+     "tray": "E",
+     "free": false
+    },
+    {
+     "rect": [
+      -14750.0,
+      634.0,
+      -12300.0,
+      1498.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "J0"
+     ],
+     "tray": "J",
+     "free": false
+    },
+    {
+     "rect": [
+      -12300.0,
+      634.0,
+      -9850.0,
+      1498.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "C0",
+      "C1"
+     ],
+     "tray": "C",
+     "free": false
+    },
+    {
+     "rect": [
+      -19650.0,
+      -3356.0,
+      -17200.0,
+      -2492.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "F0",
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+     ],
+     "tray": "F",
+     "free": false
+    },
+    {
+     "rect": [
+      -17200.0,
+      -3356.0,
+      -14750.0,
+      -2492.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "S0"
+     ],
+     "tray": "S",
+     "free": false
+    },
+    {
+     "rect": [
+      -14750.0,
+      -3356.0,
+      -12300.0,
+      -2492.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "K0",
+      "K1"
+     ],
+     "tray": "K",
+     "free": false
+    },
+    {
+     "rect": [
+      -12300.0,
+      -3356.0,
+      -9850.0,
+      -2492.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "L0",
+      "L1"
+     ],
+     "tray": "L",
+     "free": false
+    },
+    {
+     "rect": [
+      -19650.0,
+      -4370.0,
+      -17200.0,
+      -3506.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "M0",
+      "M1",
+      "M2"
+     ],
+     "tray": "M",
+     "free": false
+    },
+    {
+     "rect": [
+      -17200.0,
+      -4370.0,
+      -14750.0,
+      -3506.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "H0",
+      "H1",
+      "H2"
+     ],
+     "tray": "H",
+     "free": false
+    },
+    {
+     "rect": [
+      -14750.0,
+      -4370.0,
+      -12300.0,
+      -3506.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "G0",
+      "G1",
+      "G2",
+      "G3"
+     ],
+     "tray": "G",
+     "free": false
+    },
+    {
+     "rect": [
+      -12300.0,
+      -4370.0,
+      -9850.0,
+      -3506.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "I0",
+      "I1"
+     ],
+     "tray": "I",
+     "free": false
+    },
+    {
+     "rect": [
+      -19650.0,
+      -8360.0,
+      -17200.0,
+      -7496.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "N0"
+     ],
+     "tray": "N",
+     "free": false
+    },
+    {
+     "rect": [
+      -17200.0,
+      -8360.0,
+      -14750.0,
+      -7496.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "O0"
+     ],
+     "tray": "O",
+     "free": false
+    },
+    {
+     "rect": [
+      -14750.0,
+      -8360.0,
+      -12300.0,
+      -7496.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "P0"
+     ],
+     "tray": "P",
+     "free": false
+    },
+    {
+     "rect": [
+      -12300.0,
+      -8360.0,
+      -9850.0,
+      -7496.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "Q0"
+     ],
+     "tray": "Q",
+     "free": false
+    }
+   ],
+   "walls": [
+    [
+     -21250.0,
+     1498.0,
+     13051.8,
+     1648.0
+    ],
+    [
+     -21250.0,
+     -9532.0,
+     13051.8,
+     -9382.0
+    ],
+    [
+     -21250.0,
+     -9532.0,
+     -21100.0,
+     1648.0
+    ],
+    [
+     12901.8,
+     -9532.0,
+     13051.8,
+     1648.0
+    ]
+   ],
+   "rooms": [
+    {
+     "name": "Automated lab",
+     "rect": [
+      -21100.0,
+      -9382.0,
+      12901.8,
+      1498.0
+     ],
+     "enclosed": true
+    }
+   ],
+   "aisles": [
+    {
+     "rect": [
+      -8400.0,
+      -5400.0,
+      8271.8,
+      -2400.0
+     ],
+     "kind": "mir"
+    },
+    {
+     "rect": [
+      -8400.0,
+      -2400.0,
+      8271.8,
+      -1562.0
+     ],
+     "kind": "dock"
+    },
+    {
+     "rect": [
+      -8400.0,
+      -6238.0,
+      8271.8,
+      -5400.0
+     ],
+     "kind": "dock"
+    },
+    {
+     "rect": [
+      -21100.0,
+      -9382.0,
+      -19650.0,
+      1498.0
+     ],
+     "kind": "mir1"
+    },
+    {
+     "rect": [
+      -9850.0,
+      -9382.0,
+      -8400.0,
+      1498.0
+     ],
+     "kind": "mir1"
+    },
+    {
+     "rect": [
+      -19650.0,
+      -204.0,
+      -9850.0,
+      634.0
+     ],
+     "kind": "dock"
+    },
+    {
+     "rect": [
+      -19650.0,
+      -1654.0,
+      -9850.0,
+      -204.0
+     ],
+     "kind": "mir1"
+    },
+    {
+     "rect": [
+      -19650.0,
+      -2492.0,
+      -9850.0,
+      -1654.0
+     ],
+     "kind": "dock"
+    },
+    {
+     "rect": [
+      -19650.0,
+      -5208.0,
+      -9850.0,
+      -4370.0
+     ],
+     "kind": "dock"
+    },
+    {
+     "rect": [
+      -19650.0,
+      -6658.0,
+      -9850.0,
+      -5208.0
+     ],
+     "kind": "mir1"
+    },
+    {
+     "rect": [
+      -19650.0,
+      -7496.0,
+      -9850.0,
+      -6658.0
+     ],
+     "kind": "dock"
+    }
+   ],
+   "docks": [
+    {
+     "station": "sieve_cell",
+     "x": -847.5,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "repowder",
+     "x": -3445.0,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "glovebox",
+     "x": -6647.5,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "aconity",
+     "x": 1536.0,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "instron_floor",
+     "x": -7012.6,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "instron_small",
+     "x": -5385.200000000001,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "fumehood",
+     "x": -269.7000000000007,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "ded",
+     "x": 1601.2999999999993,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "wire_edm",
+     "x": 3922.7999999999993,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "packaging",
+     "x": 6627.299999999999,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "D",
+     "x": 4597.0,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "A",
+     "x": 7047.0,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "B",
+     "x": -18425.0,
+     "y": 264.0,
+     "heading": 0.0
+    },
+    {
+     "station": "E",
+     "x": -15975.0,
+     "y": 264.0,
+     "heading": 0.0
+    },
+    {
+     "station": "J",
+     "x": -13525.0,
+     "y": 264.0,
+     "heading": 0.0
+    },
+    {
+     "station": "C",
+     "x": -11075.0,
+     "y": 264.0,
+     "heading": 0.0
+    },
+    {
+     "station": "F",
+     "x": -18425.0,
+     "y": -2122.0,
+     "heading": 0.0
+    },
+    {
+     "station": "S",
+     "x": -15975.0,
+     "y": -2122.0,
+     "heading": 0.0
+    },
+    {
+     "station": "K",
+     "x": -13525.0,
+     "y": -2122.0,
+     "heading": 0.0
+    },
+    {
+     "station": "L",
+     "x": -11075.0,
+     "y": -2122.0,
+     "heading": 0.0
+    },
+    {
+     "station": "M",
+     "x": -18425.0,
+     "y": -4740.0,
+     "heading": 0.0
+    },
+    {
+     "station": "H",
+     "x": -15975.0,
+     "y": -4740.0,
+     "heading": 0.0
+    },
+    {
+     "station": "G",
+     "x": -13525.0,
+     "y": -4740.0,
+     "heading": 0.0
+    },
+    {
+     "station": "I",
+     "x": -11075.0,
+     "y": -4740.0,
+     "heading": 0.0
+    },
+    {
+     "station": "N",
+     "x": -18425.0,
+     "y": -7126.0,
+     "heading": 0.0
+    },
+    {
+     "station": "O",
+     "x": -15975.0,
+     "y": -7126.0,
+     "heading": 0.0
+    },
+    {
+     "station": "P",
+     "x": -13525.0,
+     "y": -7126.0,
+     "heading": 0.0
+    },
+    {
+     "station": "Q",
+     "x": -11075.0,
+     "y": -7126.0,
+     "heading": 0.0
+    }
+   ],
+   "chargers": [
+    [
+     -4234.200000000001,
+     -6481.5,
+     90.0
+    ],
+    [
+     -3012.2000000000007,
+     -6481.5,
+     90.0
+    ],
+    [
+     -1790.2000000000007,
+     -6481.5,
+     90.0
+    ]
+   ],
+   "arms": [],
+   "racks": [],
+   "notes": [
+    "18 tray-sized bench positions (18 with today's trays): 2 where the Shuttles stood, facing the MiR aisle; 16 in 4 rows of up to 4, 2 one-way 1.45 m MiR aisles with an 838 mm dock lane each side, cross-aisles at both ends; the floor machines as in the vertical lab."
+   ],
+   "meta": {
+    "modules": 2,
+    "rows": 4,
+    "per_row": 4,
+    "positions": 18,
+    "used": 18,
+    "north_row": 2,
+    "bench_block_m": [
+     12.7,
+     11.18
+    ],
+    "two_way": false,
+    "machine_block_m2": 241.5,
+    "aisle_mm": 1450.0
+   }
+  },
+  "vertical": {
+   "name": "vertical",
+   "title": "Vertical lab",
+   "envelope": [
+    -10265.0,
+    -9532.0,
+    13497.0,
+    2312.0
+   ],
+   "area_m2": 281.44,
+   "area_sqft": 3029.4,
+   "places": {
+    "sieve_cell": {
+     "x": -2562.5,
+     "y": -1247.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "repowder": {
+     "x": -5160.0,
+     "y": -332.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "glovebox": {
+     "x": -8362.5,
+     "y": -1160.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "aconity": {
+     "x": 6881.0,
+     "y": -945.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "instron_floor": {
+     "x": -8727.6,
+     "y": -6764.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "instron_small": {
+     "x": -7100.2,
+     "y": -6555.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "fumehood": {
+     "x": -1984.7,
+     "y": -6717.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "ded": {
+     "x": -113.7,
+     "y": -6626.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "wire_edm": {
+     "x": 2207.8,
+     "y": -7510.0,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "packaging": {
+     "x": 4912.3,
+     "y": -6614.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "meltio_cell": {
+     "x": 11032.0,
+     "y": -1423.0,
+     "facing": "W",
+     "z": 0.0,
+     "on": null
+    },
+    "eos_m400": {
+     "x": 10188.5,
+     "y": -6290.5,
+     "facing": "W",
+     "z": 0.0,
+     "on": null
+    },
+    "D0": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray D"
+    },
+    "D1": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray D"
+    },
+    "D2": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray D"
+    },
+    "A0": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray A"
+    },
+    "A1": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray A"
+    },
+    "B0": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray B"
+    },
+    "B1": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray B"
+    },
+    "B2": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray B"
+    },
+    "E0": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray E"
+    },
+    "E1": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray E"
+    },
+    "E2": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray E"
+    },
+    "J0": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray J"
+    },
+    "C0": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray C"
+    },
+    "C1": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray C"
+    },
+    "F0": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray F"
+    },
+    "F1": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray F"
+    },
+    "F2": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray F"
+    },
+    "F3": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray F"
+    },
+    "F4": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray F"
+    },
+    "S0": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray S"
+    },
+    "K0": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray K"
+    },
+    "K1": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray K"
+    },
+    "L0": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray L"
+    },
+    "L1": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray L"
+    },
+    "M0": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray M"
+    },
+    "M1": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray M"
+    },
+    "M2": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray M"
+    },
+    "H0": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray H"
+    },
+    "H1": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray H"
+    },
+    "H2": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray H"
+    },
+    "G0": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray G"
+    },
+    "G1": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray G"
+    },
+    "G2": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray G"
+    },
+    "G3": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray G"
+    },
+    "I0": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray I"
+    },
+    "I1": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray I"
+    },
+    "N0": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray N"
+    },
+    "O0": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray O"
+    },
+    "P0": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray P"
+    },
+    "Q0": {
+     "x": null,
+     "y": null,
+     "facing": "S",
+     "z": 0.0,
+     "on": "tray Q"
+    },
+    "vlm1": {
+     "x": 0.0,
+     "y": 0.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "vlm2": {
+     "x": 3630.0,
+     "y": 0.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    }
+   },
+   "benches": [],
+   "walls": [
+    [
+     -10265.0,
+     2162.0,
+     13497.0,
+     2312.0
+    ],
+    [
+     -10265.0,
+     -9532.0,
+     13497.0,
+     -9382.0
+    ],
+    [
+     -10265.0,
+     -9532.0,
+     -10115.0,
+     2312.0
+    ],
+    [
+     13347.0,
+     -9532.0,
+     13497.0,
+     2312.0
+    ]
+   ],
+   "rooms": [
+    {
+     "name": "Vertical lab",
+     "rect": [
+      -10115.0,
+      -9382.0,
+      13347.0,
+      2162.0
+     ],
+     "enclosed": true
+    }
+   ],
+   "aisles": [
+    {
+     "rect": [
+      -10115.0,
+      -5400.0,
+      8717.0,
+      -2400.0
+     ],
+     "kind": "mir"
+    },
+    {
+     "rect": [
+      -10115.0,
+      -2400.0,
+      8717.0,
+      -1562.0
+     ],
+     "kind": "dock"
+    },
+    {
+     "rect": [
+      -10115.0,
+      -6238.0,
+      8717.0,
+      -5400.0
+     ],
+     "kind": "dock"
+    }
+   ],
+   "docks": [
+    {
+     "station": "sieve_cell",
+     "x": -2562.5,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "repowder",
+     "x": -5160.0,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "glovebox",
+     "x": -8362.5,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "aconity",
+     "x": 6881.0,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "instron_floor",
+     "x": -8727.6,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "instron_small",
+     "x": -7100.200000000001,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "fumehood",
+     "x": -1984.7000000000007,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "ded",
+     "x": -113.70000000000073,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "wire_edm",
+     "x": 2207.7999999999993,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "packaging",
+     "x": 4912.299999999999,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "vlm1",
+     "x": 0.0,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "vlm2",
+     "x": 3630.0,
+     "y": -1932.0,
+     "heading": 0.0
+    }
+   ],
+   "chargers": [
+    [
+     -5949.200000000001,
+     -6481.5,
+     90.0
+    ],
+    [
+     -4727.200000000001,
+     -6481.5,
+     90.0
+    ],
+    [
+     -3505.2000000000007,
+     -6481.5,
+     90.0
+    ]
+   ],
+   "arms": [],
+   "racks": [],
+   "notes": [
+    "North row: glovebox, atomizer, sieving cell, two Shuttles, LPBF. South row: two Instrons, three chargers, fume hood, DED, wire EDM, packaging. East end: EOS M 400-4 and Meltio cell (no MiR dock)."
+   ],
+   "meta": null
+  },
+  "capacity": {
+   "name": "capacity",
+   "title": "Automated, 45 tray positions",
+   "envelope": [
+    -38400.0,
+    -9532.0,
+    13051.8,
+    1648.0
+   ],
+   "area_m2": 575.23,
+   "area_sqft": 6191.7,
+   "places": {
+    "sieve_cell": {
+     "x": -847.5,
+     "y": -1247.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "repowder": {
+     "x": -3445.0,
+     "y": -332.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "glovebox": {
+     "x": -6647.5,
+     "y": -1160.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "aconity": {
+     "x": 1536.0,
+     "y": -945.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "instron_floor": {
+     "x": -7012.6,
+     "y": -6764.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "instron_small": {
+     "x": -5385.2,
+     "y": -6555.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "fumehood": {
+     "x": -269.7,
+     "y": -6717.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "ded": {
+     "x": 1601.3,
+     "y": -6626.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "wire_edm": {
+     "x": 3922.8,
+     "y": -7510.0,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "packaging": {
+     "x": 6627.3,
+     "y": -6614.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "meltio_cell": {
+     "x": 10586.8,
+     "y": -1423.0,
+     "facing": "W",
+     "z": 0.0,
+     "on": null
+    },
+    "eos_m400": {
+     "x": 9743.3,
+     "y": -6290.5,
+     "facing": "W",
+     "z": 0.0,
+     "on": null
+    },
+    "D0": {
+     "x": 3837.0,
+     "y": -1131.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "D1": {
+     "x": 4657.0,
+     "y": -1130.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "D2": {
+     "x": 5217.0,
+     "y": -1410.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "A0": {
+     "x": 7807.0,
+     "y": -1180.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "A1": {
+     "x": 6747.0,
+     "y": -1244.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "B0": {
+     "x": -35825.0,
+     "y": 694.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "B1": {
+     "x": -35495.0,
+     "y": 991.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "B2": {
+     "x": -36369.0,
+     "y": 952.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "E0": {
+     "x": -34005.0,
+     "y": 1066.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "E1": {
+     "x": -33375.5,
+     "y": 1066.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "E2": {
+     "x": -32535.0,
+     "y": 1006.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "J0": {
+     "x": -30675.0,
+     "y": 1066.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "C0": {
+     "x": -28785.0,
+     "y": 1066.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "C1": {
+     "x": -27865.0,
+     "y": 1066.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F0": {
+     "x": -26195.0,
+     "y": 1065.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F1": {
+     "x": -25495.0,
+     "y": 1066.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F2": {
+     "x": -26872.0,
+     "y": 1191.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F3": {
+     "x": -24753.0,
+     "y": 876.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F4": {
+     "x": -25095.0,
+     "y": 1016.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "S0": {
+     "x": -23325.0,
+     "y": 1066.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "K0": {
+     "x": -21335.0,
+     "y": 1073.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "K1": {
+     "x": -20305.0,
+     "y": 1011.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "L0": {
+     "x": -18443.5,
+     "y": 985.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "L1": {
+     "x": -19369.0,
+     "y": 1077.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "M0": {
+     "x": -16850.0,
+     "y": 1032.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "M1": {
+     "x": -15988.0,
+     "y": 981.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "M2": {
+     "x": -15156.0,
+     "y": 943.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "H0": {
+     "x": -14165.5,
+     "y": 1066.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "H1": {
+     "x": -13125.0,
+     "y": 996.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "H2": {
+     "x": -12541.0,
+     "y": 872.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G0": {
+     "x": -11995.0,
+     "y": 861.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G1": {
+     "x": -11545.0,
+     "y": 861.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G2": {
+     "x": -11115.0,
+     "y": 824.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G3": {
+     "x": -10715.0,
+     "y": 856.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "I0": {
+     "x": -35075.0,
+     "y": -2716.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "I1": {
+     "x": -35875.0,
+     "y": -2716.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "N0": {
+     "x": -33125.0,
+     "y": -2924.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "O0": {
+     "x": -30675.0,
+     "y": -2924.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "P0": {
+     "x": -28225.0,
+     "y": -2924.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "Q0": {
+     "x": -25775.0,
+     "y": -2924.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    }
+   },
+   "benches": [
+    {
+     "rect": [
+      3372.0,
+      -1562.0,
+      5822.0,
+      -698.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "north row",
+     "keys": [
+      "D0",
+      "D1",
+      "D2"
+     ],
+     "tray": "D",
+     "free": false
+    },
+    {
+     "rect": [
+      5822.0,
+      -1562.0,
+      8272.0,
+      -698.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "north row",
+     "keys": [
+      "A0",
+      "A1"
+     ],
+     "tray": "A",
+     "free": false
+    },
+    {
+     "rect": [
+      -36800.0,
+      634.0,
+      -34350.0,
+      1498.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "B0",
+      "B1",
+      "B2"
+     ],
+     "tray": "B",
+     "free": false
+    },
+    {
+     "rect": [
+      -34350.0,
+      634.0,
+      -31900.0,
+      1498.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "E0",
+      "E1",
+      "E2"
+     ],
+     "tray": "E",
+     "free": false
+    },
+    {
+     "rect": [
+      -31900.0,
+      634.0,
+      -29450.0,
+      1498.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "J0"
+     ],
+     "tray": "J",
+     "free": false
+    },
+    {
+     "rect": [
+      -29450.0,
+      634.0,
+      -27000.0,
+      1498.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "C0",
+      "C1"
+     ],
+     "tray": "C",
+     "free": false
+    },
+    {
+     "rect": [
+      -27000.0,
+      634.0,
+      -24550.0,
+      1498.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "F0",
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+     ],
+     "tray": "F",
+     "free": false
+    },
+    {
+     "rect": [
+      -24550.0,
+      634.0,
+      -22100.0,
+      1498.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "S0"
+     ],
+     "tray": "S",
+     "free": false
+    },
+    {
+     "rect": [
+      -22100.0,
+      634.0,
+      -19650.0,
+      1498.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "K0",
+      "K1"
+     ],
+     "tray": "K",
+     "free": false
+    },
+    {
+     "rect": [
+      -19650.0,
+      634.0,
+      -17200.0,
+      1498.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "L0",
+      "L1"
+     ],
+     "tray": "L",
+     "free": false
+    },
+    {
+     "rect": [
+      -17200.0,
+      634.0,
+      -14750.0,
+      1498.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "M0",
+      "M1",
+      "M2"
+     ],
+     "tray": "M",
+     "free": false
+    },
+    {
+     "rect": [
+      -14750.0,
+      634.0,
+      -12300.0,
+      1498.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "H0",
+      "H1",
+      "H2"
+     ],
+     "tray": "H",
+     "free": false
+    },
+    {
+     "rect": [
+      -12300.0,
+      634.0,
+      -9850.0,
+      1498.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "G0",
+      "G1",
+      "G2",
+      "G3"
+     ],
+     "tray": "G",
+     "free": false
+    },
+    {
+     "rect": [
+      -36800.0,
+      -3356.0,
+      -34350.0,
+      -2492.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "I0",
+      "I1"
+     ],
+     "tray": "I",
+     "free": false
+    },
+    {
+     "rect": [
+      -34350.0,
+      -3356.0,
+      -31900.0,
+      -2492.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "N0"
+     ],
+     "tray": "N",
+     "free": false
+    },
+    {
+     "rect": [
+      -31900.0,
+      -3356.0,
+      -29450.0,
+      -2492.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "O0"
+     ],
+     "tray": "O",
+     "free": false
+    },
+    {
+     "rect": [
+      -29450.0,
+      -3356.0,
+      -27000.0,
+      -2492.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "P0"
+     ],
+     "tray": "P",
+     "free": false
+    },
+    {
+     "rect": [
+      -27000.0,
+      -3356.0,
+      -24550.0,
+      -2492.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "Q0"
+     ],
+     "tray": "Q",
+     "free": false
+    },
+    {
+     "rect": [
+      -24550.0,
+      -3356.0,
+      -22100.0,
+      -2492.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -22100.0,
+      -3356.0,
+      -19650.0,
+      -2492.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -19650.0,
+      -3356.0,
+      -17200.0,
+      -2492.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -17200.0,
+      -3356.0,
+      -14750.0,
+      -2492.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -14750.0,
+      -3356.0,
+      -12300.0,
+      -2492.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -12300.0,
+      -3356.0,
+      -9850.0,
+      -2492.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -36800.0,
+      -4370.0,
+      -34350.0,
+      -3506.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -34350.0,
+      -4370.0,
+      -31900.0,
+      -3506.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -31900.0,
+      -4370.0,
+      -29450.0,
+      -3506.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -29450.0,
+      -4370.0,
+      -27000.0,
+      -3506.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -27000.0,
+      -4370.0,
+      -24550.0,
+      -3506.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -24550.0,
+      -4370.0,
+      -22100.0,
+      -3506.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -22100.0,
+      -4370.0,
+      -19650.0,
+      -3506.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -19650.0,
+      -4370.0,
+      -17200.0,
+      -3506.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -17200.0,
+      -4370.0,
+      -14750.0,
+      -3506.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -14750.0,
+      -4370.0,
+      -12300.0,
+      -3506.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -12300.0,
+      -4370.0,
+      -9850.0,
+      -3506.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -36800.0,
+      -8360.0,
+      -34350.0,
+      -7496.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -34350.0,
+      -8360.0,
+      -31900.0,
+      -7496.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -31900.0,
+      -8360.0,
+      -29450.0,
+      -7496.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -29450.0,
+      -8360.0,
+      -27000.0,
+      -7496.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -27000.0,
+      -8360.0,
+      -24550.0,
+      -7496.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -24550.0,
+      -8360.0,
+      -22100.0,
+      -7496.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -22100.0,
+      -8360.0,
+      -19650.0,
+      -7496.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -19650.0,
+      -8360.0,
+      -17200.0,
+      -7496.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -17200.0,
+      -8360.0,
+      -14750.0,
+      -7496.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -14750.0,
+      -8360.0,
+      -12300.0,
+      -7496.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    }
+   ],
+   "walls": [
+    [
+     -38400.0,
+     1498.0,
+     13051.8,
+     1648.0
+    ],
+    [
+     -38400.0,
+     -9532.0,
+     13051.8,
+     -9382.0
+    ],
+    [
+     -38400.0,
+     -9532.0,
+     -38250.0,
+     1648.0
+    ],
+    [
+     12901.8,
+     -9532.0,
+     13051.8,
+     1648.0
+    ]
+   ],
+   "rooms": [
+    {
+     "name": "Automated lab",
+     "rect": [
+      -38250.0,
+      -9382.0,
+      12901.8,
+      1498.0
+     ],
+     "enclosed": true
+    }
+   ],
+   "aisles": [
+    {
+     "rect": [
+      -8400.0,
+      -5400.0,
+      8271.8,
+      -2400.0
+     ],
+     "kind": "mir"
+    },
+    {
+     "rect": [
+      -8400.0,
+      -2400.0,
+      8271.8,
+      -1562.0
+     ],
+     "kind": "dock"
+    },
+    {
+     "rect": [
+      -8400.0,
+      -6238.0,
+      8271.8,
+      -5400.0
+     ],
+     "kind": "dock"
+    },
+    {
+     "rect": [
+      -38250.0,
+      -9382.0,
+      -36800.0,
+      1498.0
+     ],
+     "kind": "mir1"
+    },
+    {
+     "rect": [
+      -9850.0,
+      -9382.0,
+      -8400.0,
+      1498.0
+     ],
+     "kind": "mir1"
+    },
+    {
+     "rect": [
+      -36800.0,
+      -204.0,
+      -9850.0,
+      634.0
+     ],
+     "kind": "dock"
+    },
+    {
+     "rect": [
+      -36800.0,
+      -1654.0,
+      -9850.0,
+      -204.0
+     ],
+     "kind": "mir1"
+    },
+    {
+     "rect": [
+      -36800.0,
+      -2492.0,
+      -9850.0,
+      -1654.0
+     ],
+     "kind": "dock"
+    },
+    {
+     "rect": [
+      -36800.0,
+      -5208.0,
+      -9850.0,
+      -4370.0
+     ],
+     "kind": "dock"
+    },
+    {
+     "rect": [
+      -36800.0,
+      -6658.0,
+      -9850.0,
+      -5208.0
+     ],
+     "kind": "mir1"
+    },
+    {
+     "rect": [
+      -36800.0,
+      -7496.0,
+      -9850.0,
+      -6658.0
+     ],
+     "kind": "dock"
+    }
+   ],
+   "docks": [
+    {
+     "station": "sieve_cell",
+     "x": -847.5,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "repowder",
+     "x": -3445.0,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "glovebox",
+     "x": -6647.5,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "aconity",
+     "x": 1536.0,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "instron_floor",
+     "x": -7012.6,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "instron_small",
+     "x": -5385.200000000001,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "fumehood",
+     "x": -269.7000000000007,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "ded",
+     "x": 1601.2999999999993,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "wire_edm",
+     "x": 3922.7999999999993,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "packaging",
+     "x": 6627.299999999999,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "D",
+     "x": 4597.0,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "A",
+     "x": 7047.0,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "B",
+     "x": -35575.0,
+     "y": 264.0,
+     "heading": 0.0
+    },
+    {
+     "station": "E",
+     "x": -33125.0,
+     "y": 264.0,
+     "heading": 0.0
+    },
+    {
+     "station": "J",
+     "x": -30675.0,
+     "y": 264.0,
+     "heading": 0.0
+    },
+    {
+     "station": "C",
+     "x": -28225.0,
+     "y": 264.0,
+     "heading": 0.0
+    },
+    {
+     "station": "F",
+     "x": -25775.0,
+     "y": 264.0,
+     "heading": 0.0
+    },
+    {
+     "station": "S",
+     "x": -23325.0,
+     "y": 264.0,
+     "heading": 0.0
+    },
+    {
+     "station": "K",
+     "x": -20875.0,
+     "y": 264.0,
+     "heading": 0.0
+    },
+    {
+     "station": "L",
+     "x": -18425.0,
+     "y": 264.0,
+     "heading": 0.0
+    },
+    {
+     "station": "M",
+     "x": -15975.0,
+     "y": 264.0,
+     "heading": 0.0
+    },
+    {
+     "station": "H",
+     "x": -13525.0,
+     "y": 264.0,
+     "heading": 0.0
+    },
+    {
+     "station": "G",
+     "x": -11075.0,
+     "y": 264.0,
+     "heading": 0.0
+    },
+    {
+     "station": "I",
+     "x": -35575.0,
+     "y": -2122.0,
+     "heading": 0.0
+    },
+    {
+     "station": "N",
+     "x": -33125.0,
+     "y": -2122.0,
+     "heading": 0.0
+    },
+    {
+     "station": "O",
+     "x": -30675.0,
+     "y": -2122.0,
+     "heading": 0.0
+    },
+    {
+     "station": "P",
+     "x": -28225.0,
+     "y": -2122.0,
+     "heading": 0.0
+    },
+    {
+     "station": "Q",
+     "x": -25775.0,
+     "y": -2122.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free19",
+     "x": -23325.0,
+     "y": -2122.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free20",
+     "x": -20875.0,
+     "y": -2122.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free21",
+     "x": -18425.0,
+     "y": -2122.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free22",
+     "x": -15975.0,
+     "y": -2122.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free23",
+     "x": -13525.0,
+     "y": -2122.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free24",
+     "x": -11075.0,
+     "y": -2122.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free25",
+     "x": -35575.0,
+     "y": -4740.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free26",
+     "x": -33125.0,
+     "y": -4740.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free27",
+     "x": -30675.0,
+     "y": -4740.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free28",
+     "x": -28225.0,
+     "y": -4740.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free29",
+     "x": -25775.0,
+     "y": -4740.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free30",
+     "x": -23325.0,
+     "y": -4740.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free31",
+     "x": -20875.0,
+     "y": -4740.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free32",
+     "x": -18425.0,
+     "y": -4740.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free33",
+     "x": -15975.0,
+     "y": -4740.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free34",
+     "x": -13525.0,
+     "y": -4740.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free35",
+     "x": -11075.0,
+     "y": -4740.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free36",
+     "x": -35575.0,
+     "y": -7126.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free37",
+     "x": -33125.0,
+     "y": -7126.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free38",
+     "x": -30675.0,
+     "y": -7126.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free39",
+     "x": -28225.0,
+     "y": -7126.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free40",
+     "x": -25775.0,
+     "y": -7126.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free41",
+     "x": -23325.0,
+     "y": -7126.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free42",
+     "x": -20875.0,
+     "y": -7126.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free43",
+     "x": -18425.0,
+     "y": -7126.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free44",
+     "x": -15975.0,
+     "y": -7126.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free45",
+     "x": -13525.0,
+     "y": -7126.0,
+     "heading": 0.0
+    }
+   ],
+   "chargers": [
+    [
+     -4234.200000000001,
+     -6481.5,
+     90.0
+    ],
+    [
+     -3012.2000000000007,
+     -6481.5,
+     90.0
+    ],
+    [
+     -1790.2000000000007,
+     -6481.5,
+     90.0
+    ]
+   ],
+   "arms": [],
+   "racks": [],
+   "notes": [
+    "45 tray-sized bench positions (18 with today's trays): 2 where the Shuttles stood, facing the MiR aisle; 43 in 4 rows of up to 11, 2 one-way 1.45 m MiR aisles with an 838 mm dock lane each side, cross-aisles at both ends; the floor machines as in the vertical lab."
+   ],
+   "meta": {
+    "modules": 2,
+    "rows": 4,
+    "per_row": 11,
+    "positions": 45,
+    "used": 18,
+    "north_row": 2,
+    "bench_block_m": [
+     29.85,
+     11.18
+    ],
+    "two_way": false,
+    "machine_block_m2": 241.5,
+    "aisle_mm": 1450.0
+   }
+  },
+  "robots_2way": {
+   "name": "robots_2way",
+   "title": "Automated, laid out for robots (3.0 m aisles)",
+   "envelope": [
+    -24350.0,
+    -9532.0,
+    13051.8,
+    3726.0
+   ],
+   "area_m2": 495.87,
+   "area_sqft": 5337.5,
+   "places": {
+    "sieve_cell": {
+     "x": -847.5,
+     "y": -1247.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "repowder": {
+     "x": -3445.0,
+     "y": -332.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "glovebox": {
+     "x": -6647.5,
+     "y": -1160.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "aconity": {
+     "x": 1536.0,
+     "y": -945.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "instron_floor": {
+     "x": -7012.6,
+     "y": -6764.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "instron_small": {
+     "x": -5385.2,
+     "y": -6555.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "fumehood": {
+     "x": -269.7,
+     "y": -6717.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "ded": {
+     "x": 1601.3,
+     "y": -6626.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "wire_edm": {
+     "x": 3922.8,
+     "y": -7510.0,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "packaging": {
+     "x": 6627.3,
+     "y": -6614.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "meltio_cell": {
+     "x": 10586.8,
+     "y": -1423.0,
+     "facing": "W",
+     "z": 0.0,
+     "on": null
+    },
+    "eos_m400": {
+     "x": 9743.3,
+     "y": -6290.5,
+     "facing": "W",
+     "z": 0.0,
+     "on": null
+    },
+    "D0": {
+     "x": 3837.0,
+     "y": -1131.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "D1": {
+     "x": 4657.0,
+     "y": -1130.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "D2": {
+     "x": 5217.0,
+     "y": -1410.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "A0": {
+     "x": 7807.0,
+     "y": -1180.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "A1": {
+     "x": 6747.0,
+     "y": -1244.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "B0": {
+     "x": -20225.0,
+     "y": 2772.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "B1": {
+     "x": -19895.0,
+     "y": 3069.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "B2": {
+     "x": -20769.0,
+     "y": 3030.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "E0": {
+     "x": -18405.0,
+     "y": 3144.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "E1": {
+     "x": -17775.5,
+     "y": 3144.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "E2": {
+     "x": -16935.0,
+     "y": 3084.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "J0": {
+     "x": -15075.0,
+     "y": 3144.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "C0": {
+     "x": -13185.0,
+     "y": 3144.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "C1": {
+     "x": -12265.0,
+     "y": 3144.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F0": {
+     "x": -19555.0,
+     "y": -2395.5,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F1": {
+     "x": -20255.0,
+     "y": -2396.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F2": {
+     "x": -18878.0,
+     "y": -2521.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F3": {
+     "x": -20997.0,
+     "y": -2206.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F4": {
+     "x": -20655.0,
+     "y": -2346.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "S0": {
+     "x": -17525.0,
+     "y": -2396.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "K0": {
+     "x": -14615.0,
+     "y": -2403.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "K1": {
+     "x": -15645.0,
+     "y": -2341.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "L0": {
+     "x": -12606.5,
+     "y": -2315.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "L1": {
+     "x": -11681.0,
+     "y": -2407.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "M0": {
+     "x": -20850.0,
+     "y": -3444.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "M1": {
+     "x": -19988.0,
+     "y": -3495.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "M2": {
+     "x": -19156.0,
+     "y": -3533.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "H0": {
+     "x": -18165.5,
+     "y": -3410.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "H1": {
+     "x": -17125.0,
+     "y": -3480.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "H2": {
+     "x": -16541.0,
+     "y": -3604.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G0": {
+     "x": -15995.0,
+     "y": -3614.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G1": {
+     "x": -15545.0,
+     "y": -3614.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G2": {
+     "x": -15115.0,
+     "y": -3652.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G3": {
+     "x": -14715.0,
+     "y": -3620.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "I0": {
+     "x": -13125.0,
+     "y": -3618.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "I1": {
+     "x": -12325.0,
+     "y": -3618.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "N0": {
+     "x": -19975.0,
+     "y": -8950.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "O0": {
+     "x": -17525.0,
+     "y": -8950.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "P0": {
+     "x": -15075.0,
+     "y": -8950.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "Q0": {
+     "x": -12625.0,
+     "y": -8950.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    }
+   },
+   "benches": [
+    {
+     "rect": [
+      3372.0,
+      -1562.0,
+      5822.0,
+      -698.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "north row",
+     "keys": [
+      "D0",
+      "D1",
+      "D2"
+     ],
+     "tray": "D",
+     "free": false
+    },
+    {
+     "rect": [
+      5822.0,
+      -1562.0,
+      8272.0,
+      -698.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "north row",
+     "keys": [
+      "A0",
+      "A1"
+     ],
+     "tray": "A",
+     "free": false
+    },
+    {
+     "rect": [
+      -21200.0,
+      2712.0,
+      -18750.0,
+      3576.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "B0",
+      "B1",
+      "B2"
+     ],
+     "tray": "B",
+     "free": false
+    },
+    {
+     "rect": [
+      -18750.0,
+      2712.0,
+      -16300.0,
+      3576.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "E0",
+      "E1",
+      "E2"
+     ],
+     "tray": "E",
+     "free": false
+    },
+    {
+     "rect": [
+      -16300.0,
+      2712.0,
+      -13850.0,
+      3576.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "J0"
+     ],
+     "tray": "J",
+     "free": false
+    },
+    {
+     "rect": [
+      -13850.0,
+      2712.0,
+      -11400.0,
+      3576.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "C0",
+      "C1"
+     ],
+     "tray": "C",
+     "free": false
+    },
+    {
+     "rect": [
+      -21200.0,
+      -2828.0,
+      -18750.0,
+      -1964.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "F0",
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+     ],
+     "tray": "F",
+     "free": false
+    },
+    {
+     "rect": [
+      -18750.0,
+      -2828.0,
+      -16300.0,
+      -1964.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "S0"
+     ],
+     "tray": "S",
+     "free": false
+    },
+    {
+     "rect": [
+      -16300.0,
+      -2828.0,
+      -13850.0,
+      -1964.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "K0",
+      "K1"
+     ],
+     "tray": "K",
+     "free": false
+    },
+    {
+     "rect": [
+      -13850.0,
+      -2828.0,
+      -11400.0,
+      -1964.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "L0",
+      "L1"
+     ],
+     "tray": "L",
+     "free": false
+    },
+    {
+     "rect": [
+      -21200.0,
+      -3842.0,
+      -18750.0,
+      -2978.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "M0",
+      "M1",
+      "M2"
+     ],
+     "tray": "M",
+     "free": false
+    },
+    {
+     "rect": [
+      -18750.0,
+      -3842.0,
+      -16300.0,
+      -2978.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "H0",
+      "H1",
+      "H2"
+     ],
+     "tray": "H",
+     "free": false
+    },
+    {
+     "rect": [
+      -16300.0,
+      -3842.0,
+      -13850.0,
+      -2978.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "G0",
+      "G1",
+      "G2",
+      "G3"
+     ],
+     "tray": "G",
+     "free": false
+    },
+    {
+     "rect": [
+      -13850.0,
+      -3842.0,
+      -11400.0,
+      -2978.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "I0",
+      "I1"
+     ],
+     "tray": "I",
+     "free": false
+    },
+    {
+     "rect": [
+      -21200.0,
+      -9382.0,
+      -18750.0,
+      -8518.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "N0"
+     ],
+     "tray": "N",
+     "free": false
+    },
+    {
+     "rect": [
+      -18750.0,
+      -9382.0,
+      -16300.0,
+      -8518.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "O0"
+     ],
+     "tray": "O",
+     "free": false
+    },
+    {
+     "rect": [
+      -16300.0,
+      -9382.0,
+      -13850.0,
+      -8518.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "P0"
+     ],
+     "tray": "P",
+     "free": false
+    },
+    {
+     "rect": [
+      -13850.0,
+      -9382.0,
+      -11400.0,
+      -8518.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "Q0"
+     ],
+     "tray": "Q",
+     "free": false
+    }
+   ],
+   "walls": [
+    [
+     -24350.0,
+     3576.0,
+     13051.8,
+     3726.0
+    ],
+    [
+     -24350.0,
+     -9532.0,
+     13051.8,
+     -9382.0
+    ],
+    [
+     -24350.0,
+     -9532.0,
+     -24200.0,
+     3726.0
+    ],
+    [
+     12901.8,
+     -9532.0,
+     13051.8,
+     3726.0
+    ]
+   ],
+   "rooms": [
+    {
+     "name": "Automated lab",
+     "rect": [
+      -24200.0,
+      -9382.0,
+      12901.8,
+      3576.0
+     ],
+     "enclosed": true
+    }
+   ],
+   "aisles": [
+    {
+     "rect": [
+      -8400.0,
+      -5400.0,
+      8271.8,
+      -2400.0
+     ],
+     "kind": "mir"
+    },
+    {
+     "rect": [
+      -8400.0,
+      -2400.0,
+      8271.8,
+      -1562.0
+     ],
+     "kind": "dock"
+    },
+    {
+     "rect": [
+      -8400.0,
+      -6238.0,
+      8271.8,
+      -5400.0
+     ],
+     "kind": "dock"
+    },
+    {
+     "rect": [
+      -24200.0,
+      -9382.0,
+      -21200.0,
+      3576.0
+     ],
+     "kind": "mir"
+    },
+    {
+     "rect": [
+      -11400.0,
+      -9382.0,
+      -8400.0,
+      3576.0
+     ],
+     "kind": "mir"
+    },
+    {
+     "rect": [
+      -21200.0,
+      1874.0,
+      -11400.0,
+      2712.0
+     ],
+     "kind": "dock"
+    },
+    {
+     "rect": [
+      -21200.0,
+      -1126.0,
+      -11400.0,
+      1874.0
+     ],
+     "kind": "mir"
+    },
+    {
+     "rect": [
+      -21200.0,
+      -1964.0,
+      -11400.0,
+      -1126.0
+     ],
+     "kind": "dock"
+    },
+    {
+     "rect": [
+      -21200.0,
+      -4680.0,
+      -11400.0,
+      -3842.0
+     ],
+     "kind": "dock"
+    },
+    {
+     "rect": [
+      -21200.0,
+      -7680.0,
+      -11400.0,
+      -4680.0
+     ],
+     "kind": "mir"
+    },
+    {
+     "rect": [
+      -21200.0,
+      -8518.0,
+      -11400.0,
+      -7680.0
+     ],
+     "kind": "dock"
+    }
+   ],
+   "docks": [
+    {
+     "station": "sieve_cell",
+     "x": -847.5,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "repowder",
+     "x": -3445.0,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "glovebox",
+     "x": -6647.5,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "aconity",
+     "x": 1536.0,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "instron_floor",
+     "x": -7012.6,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "instron_small",
+     "x": -5385.200000000001,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "fumehood",
+     "x": -269.7000000000007,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "ded",
+     "x": 1601.2999999999993,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "wire_edm",
+     "x": 3922.7999999999993,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "packaging",
+     "x": 6627.299999999999,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "D",
+     "x": 4597.0,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "A",
+     "x": 7047.0,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "B",
+     "x": -19975.0,
+     "y": 2342.0,
+     "heading": 0.0
+    },
+    {
+     "station": "E",
+     "x": -17525.0,
+     "y": 2342.0,
+     "heading": 0.0
+    },
+    {
+     "station": "J",
+     "x": -15075.0,
+     "y": 2342.0,
+     "heading": 0.0
+    },
+    {
+     "station": "C",
+     "x": -12625.0,
+     "y": 2342.0,
+     "heading": 0.0
+    },
+    {
+     "station": "F",
+     "x": -19975.0,
+     "y": -1594.0,
+     "heading": 0.0
+    },
+    {
+     "station": "S",
+     "x": -17525.0,
+     "y": -1594.0,
+     "heading": 0.0
+    },
+    {
+     "station": "K",
+     "x": -15075.0,
+     "y": -1594.0,
+     "heading": 0.0
+    },
+    {
+     "station": "L",
+     "x": -12625.0,
+     "y": -1594.0,
+     "heading": 0.0
+    },
+    {
+     "station": "M",
+     "x": -19975.0,
+     "y": -4212.0,
+     "heading": 0.0
+    },
+    {
+     "station": "H",
+     "x": -17525.0,
+     "y": -4212.0,
+     "heading": 0.0
+    },
+    {
+     "station": "G",
+     "x": -15075.0,
+     "y": -4212.0,
+     "heading": 0.0
+    },
+    {
+     "station": "I",
+     "x": -12625.0,
+     "y": -4212.0,
+     "heading": 0.0
+    },
+    {
+     "station": "N",
+     "x": -19975.0,
+     "y": -8148.0,
+     "heading": 0.0
+    },
+    {
+     "station": "O",
+     "x": -17525.0,
+     "y": -8148.0,
+     "heading": 0.0
+    },
+    {
+     "station": "P",
+     "x": -15075.0,
+     "y": -8148.0,
+     "heading": 0.0
+    },
+    {
+     "station": "Q",
+     "x": -12625.0,
+     "y": -8148.0,
+     "heading": 0.0
+    }
+   ],
+   "chargers": [
+    [
+     -4234.200000000001,
+     -6481.5,
+     90.0
+    ],
+    [
+     -3012.2000000000007,
+     -6481.5,
+     90.0
+    ],
+    [
+     -1790.2000000000007,
+     -6481.5,
+     90.0
+    ]
+   ],
+   "arms": [],
+   "racks": [],
+   "notes": [
+    "18 tray-sized bench positions (18 with today's trays): 2 where the Shuttles stood, facing the MiR aisle; 16 in 4 rows of up to 4, 2 two-way 3.0 m MiR aisles with an 838 mm dock lane each side, cross-aisles at both ends; the floor machines as in the vertical lab."
+   ],
+   "meta": {
+    "modules": 2,
+    "rows": 4,
+    "per_row": 4,
+    "positions": 18,
+    "used": 18,
+    "north_row": 2,
+    "bench_block_m": [
+     15.8,
+     13.26
+    ],
+    "two_way": true,
+    "machine_block_m2": 241.5,
+    "aisle_mm": 3000.0
+   }
+  },
+  "capacity_2way": {
+   "name": "capacity_2way",
+   "title": "Automated, 45 tray positions (3.0 m aisles)",
+   "envelope": [
+    -41500.0,
+    -9532.0,
+    13051.8,
+    3726.0
+   ],
+   "area_m2": 723.25,
+   "area_sqft": 7785.0,
+   "places": {
+    "sieve_cell": {
+     "x": -847.5,
+     "y": -1247.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "repowder": {
+     "x": -3445.0,
+     "y": -332.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "glovebox": {
+     "x": -6647.5,
+     "y": -1160.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "aconity": {
+     "x": 1536.0,
+     "y": -945.0,
+     "facing": "S",
+     "z": 0.0,
+     "on": null
+    },
+    "instron_floor": {
+     "x": -7012.6,
+     "y": -6764.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "instron_small": {
+     "x": -5385.2,
+     "y": -6555.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "fumehood": {
+     "x": -269.7,
+     "y": -6717.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "ded": {
+     "x": 1601.3,
+     "y": -6626.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "wire_edm": {
+     "x": 3922.8,
+     "y": -7510.0,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "packaging": {
+     "x": 6627.3,
+     "y": -6614.5,
+     "facing": "N",
+     "z": 0.0,
+     "on": null
+    },
+    "meltio_cell": {
+     "x": 10586.8,
+     "y": -1423.0,
+     "facing": "W",
+     "z": 0.0,
+     "on": null
+    },
+    "eos_m400": {
+     "x": 9743.3,
+     "y": -6290.5,
+     "facing": "W",
+     "z": 0.0,
+     "on": null
+    },
+    "D0": {
+     "x": 3837.0,
+     "y": -1131.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "D1": {
+     "x": 4657.0,
+     "y": -1130.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "D2": {
+     "x": 5217.0,
+     "y": -1410.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "A0": {
+     "x": 7807.0,
+     "y": -1180.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "A1": {
+     "x": 6747.0,
+     "y": -1244.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "B0": {
+     "x": -37375.0,
+     "y": 2772.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "B1": {
+     "x": -37045.0,
+     "y": 3069.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "B2": {
+     "x": -37919.0,
+     "y": 3030.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "E0": {
+     "x": -35555.0,
+     "y": 3144.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "E1": {
+     "x": -34925.5,
+     "y": 3144.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "E2": {
+     "x": -34085.0,
+     "y": 3084.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "J0": {
+     "x": -32225.0,
+     "y": 3144.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "C0": {
+     "x": -30335.0,
+     "y": 3144.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "C1": {
+     "x": -29415.0,
+     "y": 3144.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F0": {
+     "x": -27745.0,
+     "y": 3143.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F1": {
+     "x": -27045.0,
+     "y": 3144.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F2": {
+     "x": -28422.0,
+     "y": 3269.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F3": {
+     "x": -26303.0,
+     "y": 2954.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "F4": {
+     "x": -26645.0,
+     "y": 3094.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "S0": {
+     "x": -24875.0,
+     "y": 3144.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "K0": {
+     "x": -22885.0,
+     "y": 3151.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "K1": {
+     "x": -21855.0,
+     "y": 3089.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "L0": {
+     "x": -19993.5,
+     "y": 3063.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "L1": {
+     "x": -20919.0,
+     "y": 3155.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "M0": {
+     "x": -18400.0,
+     "y": 3110.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "M1": {
+     "x": -17538.0,
+     "y": 3059.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "M2": {
+     "x": -16706.0,
+     "y": 3021.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "H0": {
+     "x": -15715.5,
+     "y": 3144.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "H1": {
+     "x": -14675.0,
+     "y": 3074.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "H2": {
+     "x": -14091.0,
+     "y": 2950.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G0": {
+     "x": -13545.0,
+     "y": 2939.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G1": {
+     "x": -13095.0,
+     "y": 2939.5,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G2": {
+     "x": -12665.0,
+     "y": 2902.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "G3": {
+     "x": -12265.0,
+     "y": 2934.0,
+     "facing": "S",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "I0": {
+     "x": -36625.0,
+     "y": -2188.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "I1": {
+     "x": -37425.0,
+     "y": -2188.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "N0": {
+     "x": -34675.0,
+     "y": -2396.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "O0": {
+     "x": -32225.0,
+     "y": -2396.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "P0": {
+     "x": -29775.0,
+     "y": -2396.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    },
+    "Q0": {
+     "x": -27325.0,
+     "y": -2396.0,
+     "facing": "N",
+     "z": 914.0,
+     "on": "bench"
+    }
+   },
+   "benches": [
+    {
+     "rect": [
+      3372.0,
+      -1562.0,
+      5822.0,
+      -698.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "north row",
+     "keys": [
+      "D0",
+      "D1",
+      "D2"
+     ],
+     "tray": "D",
+     "free": false
+    },
+    {
+     "rect": [
+      5822.0,
+      -1562.0,
+      8272.0,
+      -698.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "north row",
+     "keys": [
+      "A0",
+      "A1"
+     ],
+     "tray": "A",
+     "free": false
+    },
+    {
+     "rect": [
+      -38350.0,
+      2712.0,
+      -35900.0,
+      3576.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "B0",
+      "B1",
+      "B2"
+     ],
+     "tray": "B",
+     "free": false
+    },
+    {
+     "rect": [
+      -35900.0,
+      2712.0,
+      -33450.0,
+      3576.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "E0",
+      "E1",
+      "E2"
+     ],
+     "tray": "E",
+     "free": false
+    },
+    {
+     "rect": [
+      -33450.0,
+      2712.0,
+      -31000.0,
+      3576.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "J0"
+     ],
+     "tray": "J",
+     "free": false
+    },
+    {
+     "rect": [
+      -31000.0,
+      2712.0,
+      -28550.0,
+      3576.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "C0",
+      "C1"
+     ],
+     "tray": "C",
+     "free": false
+    },
+    {
+     "rect": [
+      -28550.0,
+      2712.0,
+      -26100.0,
+      3576.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "F0",
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+     ],
+     "tray": "F",
+     "free": false
+    },
+    {
+     "rect": [
+      -26100.0,
+      2712.0,
+      -23650.0,
+      3576.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "S0"
+     ],
+     "tray": "S",
+     "free": false
+    },
+    {
+     "rect": [
+      -23650.0,
+      2712.0,
+      -21200.0,
+      3576.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "K0",
+      "K1"
+     ],
+     "tray": "K",
+     "free": false
+    },
+    {
+     "rect": [
+      -21200.0,
+      2712.0,
+      -18750.0,
+      3576.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "L0",
+      "L1"
+     ],
+     "tray": "L",
+     "free": false
+    },
+    {
+     "rect": [
+      -18750.0,
+      2712.0,
+      -16300.0,
+      3576.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "M0",
+      "M1",
+      "M2"
+     ],
+     "tray": "M",
+     "free": false
+    },
+    {
+     "rect": [
+      -16300.0,
+      2712.0,
+      -13850.0,
+      3576.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "H0",
+      "H1",
+      "H2"
+     ],
+     "tray": "H",
+     "free": false
+    },
+    {
+     "rect": [
+      -13850.0,
+      2712.0,
+      -11400.0,
+      3576.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "G0",
+      "G1",
+      "G2",
+      "G3"
+     ],
+     "tray": "G",
+     "free": false
+    },
+    {
+     "rect": [
+      -38350.0,
+      -2828.0,
+      -35900.0,
+      -1964.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "I0",
+      "I1"
+     ],
+     "tray": "I",
+     "free": false
+    },
+    {
+     "rect": [
+      -35900.0,
+      -2828.0,
+      -33450.0,
+      -1964.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "N0"
+     ],
+     "tray": "N",
+     "free": false
+    },
+    {
+     "rect": [
+      -33450.0,
+      -2828.0,
+      -31000.0,
+      -1964.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "O0"
+     ],
+     "tray": "O",
+     "free": false
+    },
+    {
+     "rect": [
+      -31000.0,
+      -2828.0,
+      -28550.0,
+      -1964.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "P0"
+     ],
+     "tray": "P",
+     "free": false
+    },
+    {
+     "rect": [
+      -28550.0,
+      -2828.0,
+      -26100.0,
+      -1964.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [
+      "Q0"
+     ],
+     "tray": "Q",
+     "free": false
+    },
+    {
+     "rect": [
+      -26100.0,
+      -2828.0,
+      -23650.0,
+      -1964.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -23650.0,
+      -2828.0,
+      -21200.0,
+      -1964.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -21200.0,
+      -2828.0,
+      -18750.0,
+      -1964.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -18750.0,
+      -2828.0,
+      -16300.0,
+      -1964.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -16300.0,
+      -2828.0,
+      -13850.0,
+      -1964.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -13850.0,
+      -2828.0,
+      -11400.0,
+      -1964.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -38350.0,
+      -3842.0,
+      -35900.0,
+      -2978.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -35900.0,
+      -3842.0,
+      -33450.0,
+      -2978.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -33450.0,
+      -3842.0,
+      -31000.0,
+      -2978.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -31000.0,
+      -3842.0,
+      -28550.0,
+      -2978.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -28550.0,
+      -3842.0,
+      -26100.0,
+      -2978.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -26100.0,
+      -3842.0,
+      -23650.0,
+      -2978.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -23650.0,
+      -3842.0,
+      -21200.0,
+      -2978.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -21200.0,
+      -3842.0,
+      -18750.0,
+      -2978.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -18750.0,
+      -3842.0,
+      -16300.0,
+      -2978.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -16300.0,
+      -3842.0,
+      -13850.0,
+      -2978.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -13850.0,
+      -3842.0,
+      -11400.0,
+      -2978.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -38350.0,
+      -9382.0,
+      -35900.0,
+      -8518.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -35900.0,
+      -9382.0,
+      -33450.0,
+      -8518.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -33450.0,
+      -9382.0,
+      -31000.0,
+      -8518.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -31000.0,
+      -9382.0,
+      -28550.0,
+      -8518.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -28550.0,
+      -9382.0,
+      -26100.0,
+      -8518.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -26100.0,
+      -9382.0,
+      -23650.0,
+      -8518.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -23650.0,
+      -9382.0,
+      -21200.0,
+      -8518.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -21200.0,
+      -9382.0,
+      -18750.0,
+      -8518.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -18750.0,
+      -9382.0,
+      -16300.0,
+      -8518.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    },
+    {
+     "rect": [
+      -16300.0,
+      -9382.0,
+      -13850.0,
+      -8518.0
+     ],
+     "h": 914.0,
+     "kind": "bench",
+     "zone": "bench block",
+     "keys": [],
+     "tray": null,
+     "free": true
+    }
+   ],
+   "walls": [
+    [
+     -41500.0,
+     3576.0,
+     13051.8,
+     3726.0
+    ],
+    [
+     -41500.0,
+     -9532.0,
+     13051.8,
+     -9382.0
+    ],
+    [
+     -41500.0,
+     -9532.0,
+     -41350.0,
+     3726.0
+    ],
+    [
+     12901.8,
+     -9532.0,
+     13051.8,
+     3726.0
+    ]
+   ],
+   "rooms": [
+    {
+     "name": "Automated lab",
+     "rect": [
+      -41350.0,
+      -9382.0,
+      12901.8,
+      3576.0
+     ],
+     "enclosed": true
+    }
+   ],
+   "aisles": [
+    {
+     "rect": [
+      -8400.0,
+      -5400.0,
+      8271.8,
+      -2400.0
+     ],
+     "kind": "mir"
+    },
+    {
+     "rect": [
+      -8400.0,
+      -2400.0,
+      8271.8,
+      -1562.0
+     ],
+     "kind": "dock"
+    },
+    {
+     "rect": [
+      -8400.0,
+      -6238.0,
+      8271.8,
+      -5400.0
+     ],
+     "kind": "dock"
+    },
+    {
+     "rect": [
+      -41350.0,
+      -9382.0,
+      -38350.0,
+      3576.0
+     ],
+     "kind": "mir"
+    },
+    {
+     "rect": [
+      -11400.0,
+      -9382.0,
+      -8400.0,
+      3576.0
+     ],
+     "kind": "mir"
+    },
+    {
+     "rect": [
+      -38350.0,
+      1874.0,
+      -11400.0,
+      2712.0
+     ],
+     "kind": "dock"
+    },
+    {
+     "rect": [
+      -38350.0,
+      -1126.0,
+      -11400.0,
+      1874.0
+     ],
+     "kind": "mir"
+    },
+    {
+     "rect": [
+      -38350.0,
+      -1964.0,
+      -11400.0,
+      -1126.0
+     ],
+     "kind": "dock"
+    },
+    {
+     "rect": [
+      -38350.0,
+      -4680.0,
+      -11400.0,
+      -3842.0
+     ],
+     "kind": "dock"
+    },
+    {
+     "rect": [
+      -38350.0,
+      -7680.0,
+      -11400.0,
+      -4680.0
+     ],
+     "kind": "mir"
+    },
+    {
+     "rect": [
+      -38350.0,
+      -8518.0,
+      -11400.0,
+      -7680.0
+     ],
+     "kind": "dock"
+    }
+   ],
+   "docks": [
+    {
+     "station": "sieve_cell",
+     "x": -847.5,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "repowder",
+     "x": -3445.0,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "glovebox",
+     "x": -6647.5,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "aconity",
+     "x": 1536.0,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "instron_floor",
+     "x": -7012.6,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "instron_small",
+     "x": -5385.200000000001,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "fumehood",
+     "x": -269.7000000000007,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "ded",
+     "x": 1601.2999999999993,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "wire_edm",
+     "x": 3922.7999999999993,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "packaging",
+     "x": 6627.299999999999,
+     "y": -5868.0,
+     "heading": 0.0
+    },
+    {
+     "station": "D",
+     "x": 4597.0,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "A",
+     "x": 7047.0,
+     "y": -1932.0,
+     "heading": 0.0
+    },
+    {
+     "station": "B",
+     "x": -37125.0,
+     "y": 2342.0,
+     "heading": 0.0
+    },
+    {
+     "station": "E",
+     "x": -34675.0,
+     "y": 2342.0,
+     "heading": 0.0
+    },
+    {
+     "station": "J",
+     "x": -32225.0,
+     "y": 2342.0,
+     "heading": 0.0
+    },
+    {
+     "station": "C",
+     "x": -29775.0,
+     "y": 2342.0,
+     "heading": 0.0
+    },
+    {
+     "station": "F",
+     "x": -27325.0,
+     "y": 2342.0,
+     "heading": 0.0
+    },
+    {
+     "station": "S",
+     "x": -24875.0,
+     "y": 2342.0,
+     "heading": 0.0
+    },
+    {
+     "station": "K",
+     "x": -22425.0,
+     "y": 2342.0,
+     "heading": 0.0
+    },
+    {
+     "station": "L",
+     "x": -19975.0,
+     "y": 2342.0,
+     "heading": 0.0
+    },
+    {
+     "station": "M",
+     "x": -17525.0,
+     "y": 2342.0,
+     "heading": 0.0
+    },
+    {
+     "station": "H",
+     "x": -15075.0,
+     "y": 2342.0,
+     "heading": 0.0
+    },
+    {
+     "station": "G",
+     "x": -12625.0,
+     "y": 2342.0,
+     "heading": 0.0
+    },
+    {
+     "station": "I",
+     "x": -37125.0,
+     "y": -1594.0,
+     "heading": 0.0
+    },
+    {
+     "station": "N",
+     "x": -34675.0,
+     "y": -1594.0,
+     "heading": 0.0
+    },
+    {
+     "station": "O",
+     "x": -32225.0,
+     "y": -1594.0,
+     "heading": 0.0
+    },
+    {
+     "station": "P",
+     "x": -29775.0,
+     "y": -1594.0,
+     "heading": 0.0
+    },
+    {
+     "station": "Q",
+     "x": -27325.0,
+     "y": -1594.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free19",
+     "x": -24875.0,
+     "y": -1594.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free20",
+     "x": -22425.0,
+     "y": -1594.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free21",
+     "x": -19975.0,
+     "y": -1594.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free22",
+     "x": -17525.0,
+     "y": -1594.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free23",
+     "x": -15075.0,
+     "y": -1594.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free24",
+     "x": -12625.0,
+     "y": -1594.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free25",
+     "x": -37125.0,
+     "y": -4212.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free26",
+     "x": -34675.0,
+     "y": -4212.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free27",
+     "x": -32225.0,
+     "y": -4212.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free28",
+     "x": -29775.0,
+     "y": -4212.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free29",
+     "x": -27325.0,
+     "y": -4212.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free30",
+     "x": -24875.0,
+     "y": -4212.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free31",
+     "x": -22425.0,
+     "y": -4212.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free32",
+     "x": -19975.0,
+     "y": -4212.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free33",
+     "x": -17525.0,
+     "y": -4212.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free34",
+     "x": -15075.0,
+     "y": -4212.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free35",
+     "x": -12625.0,
+     "y": -4212.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free36",
+     "x": -37125.0,
+     "y": -8148.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free37",
+     "x": -34675.0,
+     "y": -8148.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free38",
+     "x": -32225.0,
+     "y": -8148.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free39",
+     "x": -29775.0,
+     "y": -8148.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free40",
+     "x": -27325.0,
+     "y": -8148.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free41",
+     "x": -24875.0,
+     "y": -8148.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free42",
+     "x": -22425.0,
+     "y": -8148.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free43",
+     "x": -19975.0,
+     "y": -8148.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free44",
+     "x": -17525.0,
+     "y": -8148.0,
+     "heading": 0.0
+    },
+    {
+     "station": "free45",
+     "x": -15075.0,
+     "y": -8148.0,
+     "heading": 0.0
+    }
+   ],
+   "chargers": [
+    [
+     -4234.200000000001,
+     -6481.5,
+     90.0
+    ],
+    [
+     -3012.2000000000007,
+     -6481.5,
+     90.0
+    ],
+    [
+     -1790.2000000000007,
+     -6481.5,
+     90.0
+    ]
+   ],
+   "arms": [],
+   "racks": [],
+   "notes": [
+    "45 tray-sized bench positions (18 with today's trays): 2 where the Shuttles stood, facing the MiR aisle; 43 in 4 rows of up to 11, 2 two-way 3.0 m MiR aisles with an 838 mm dock lane each side, cross-aisles at both ends; the floor machines as in the vertical lab."
+   ],
+   "meta": {
+    "modules": 2,
+    "rows": 4,
+    "per_row": 11,
+    "positions": 45,
+    "used": 18,
+    "north_row": 2,
+    "bench_block_m": [
+     32.95,
+     13.26
+    ],
+    "two_way": true,
+    "machine_block_m2": 241.5,
+    "aisle_mm": 3000.0
+   }
+  }
+ },
+ "without_scaleup": {
+  "note": "the same rules and zones without the EOS M 400-4 and the Meltio cell",
+  "summary": {
+   "rows": [
+    {
+     "name": "conventional",
+     "title": "Conventional lab",
+     "length_m": 28.9,
+     "width_m": 11.87,
+     "area_m2": 343.0,
+     "area_sqft": 3692,
+     "instruments": 41,
+     "per_1000_sqft": 11.1,
+     "sqft_per_instrument": 90,
+     "positions": null,
+     "positions_used": null,
+     "positions_per_1000_sqft": null,
+     "machine_block_m2": null,
+     "benchtop_m2": null,
+     "docks": 0,
+     "arms": 0,
+     "chargers": 0,
+     "breakdown_m2": {
+      "floor machines": 24.6,
+      "benches, shelves and Shuttles": 28.0,
+      "service clearance": 48.0,
+      "aisles and corridor": 127.1,
+      "walls": 23.5,
+      "other floor": 92.3
+     },
+     "notes": [
+      "Zones along a 6 ft corridor; each zone's back row against its far wall, its front row against the corridor wall, a 5 ft aisle between them."
+     ],
+     "meta": null
+    },
+    {
+     "name": "flat",
+     "title": "Automated, same floor plan",
+     "length_m": 28.9,
+     "width_m": 11.87,
+     "area_m2": 343.0,
+     "area_sqft": 3692,
+     "instruments": 41,
+     "per_1000_sqft": 11.1,
+     "sqft_per_instrument": 90,
+     "positions": null,
+     "positions_used": null,
+     "positions_per_1000_sqft": null,
+     "machine_block_m2": null,
+     "benchtop_m2": null,
+     "docks": 22,
+     "arms": 5,
+     "chargers": 2,
+     "breakdown_m2": {
+      "floor machines": 25.3,
+      "benches, shelves and Shuttles": 28.0,
+      "service clearance": 48.0,
+      "aisles and corridor": 126.4,
+      "walls": 23.5,
+      "other floor": 92.3
+     },
+     "notes": [
+      "4 mobile manipulators; 22 docking targets; 5 fixed arms, each with a sample rack; 2 chargers. A docked MiR250 (580 mm wide) leaves 0.94 m of a 5 ft aisle: less than the 1.45 m one needs to drive by, so robots wait in the aisles."
+     ],
+     "meta": null
+    },
+    {
+     "name": "robots",
+     "title": "Automated, laid out for robots",
+     "length_m": 29.67,
+     "width_m": 11.18,
+     "area_m2": 331.7,
+     "area_sqft": 3571,
+     "instruments": 41,
+     "per_1000_sqft": 11.5,
+     "sqft_per_instrument": 87,
+     "positions": 18,
+     "positions_used": 18,
+     "positions_per_1000_sqft": 5.0,
+     "machine_block_m2": 189.7,
+     "benchtop_m2": 142.0,
+     "docks": 28,
+     "arms": 0,
+     "chargers": 3,
+     "breakdown_m2": {
+      "floor machines": 25.5,
+      "benches, shelves and Shuttles": 39.2,
+      "service clearance": 42.9,
+      "aisles and corridor": 153.5,
+      "walls": 13.2,
+      "other floor": 58.1
+     },
+     "notes": [
+      "18 tray-sized bench positions (18 with today's trays): 2 where the Shuttles stood, facing the MiR aisle; 16 in 4 rows of up to 4, 2 one-way 1.45 m MiR aisles with an 838 mm dock lane each side, cross-aisles at both ends; the floor machines as in the vertical lab."
+     ],
+     "meta": {
+      "modules": 2,
+      "rows": 4,
+      "per_row": 4,
+      "positions": 18,
+      "used": 18,
+      "north_row": 2,
+      "bench_block_m": [
+       12.7,
+       11.18
+      ],
+      "two_way": false,
+      "machine_block_m2": 189.7,
+      "aisle_mm": 1450.0
+     }
+    },
+    {
+     "name": "vertical",
+     "title": "Vertical lab",
+     "length_m": 19.13,
+     "width_m": 11.84,
+     "area_m2": 226.6,
+     "area_sqft": 2439,
+     "instruments": 41,
+     "per_1000_sqft": 16.8,
+     "sqft_per_instrument": 59,
+     "positions": 45,
+     "positions_used": 18,
+     "positions_per_1000_sqft": 18.4,
+     "machine_block_m2": 189.7,
+     "benchtop_m2": 36.9,
+     "docks": 12,
+     "arms": 0,
+     "chargers": 3,
+     "breakdown_m2": {
+      "floor machines": 25.5,
+      "benches, shelves and Shuttles": 18.0,
+      "service clearance": 44.1,
+      "aisles and corridor": 71.1,
+      "walls": 10.0,
+      "other floor": 58.3
+     },
+     "notes": [
+      "North row: glovebox, atomizer, sieving cell, two Shuttles, LPBF. South row: two Instrons, three chargers, fume hood, DED, wire EDM, packaging. East end: EOS M 400-4 and Meltio cell (no MiR dock)."
+     ],
+     "meta": null
+    }
+   ],
+   "counts": {
+    "instruments": 41,
+    "benchtop": 31,
+    "floor": 10,
+    "benchtop_labels": [
+     "SEM (Hitachi TM4000Plus II)",
+     "XRD (Rigaku MiniFlex)",
+     "powder prep station",
+     "Opentrons OT-2",
+     "corrosion cell (CubXL + EZstat)",
+     "multi-doser",
+     "vacuum press (Specac)",
+     "PIP (Plastometrex)",
+     "nanoindenter (KLA iMicro)",
+     "particle size (Mastersizer)",
+     "Bambu Lab H2D",
+     "Bambu Lab A1 mini",
+     "polisher (LECO PX500)",
+     "furnace (Nabertherm)",
+     "mounting press (LECO MX400)",
+     "N2 glovebox",
+     "digital microscope (Keyence VHX)",
+     "tensile (zwickiLine)",
+     "hardness (Mitutoyo HM-220)",
+     "XRF (Bruker S2 PUMA)",
+     "ductless hood",
+     "CNC (Makera Carvera)",
+     "stencil printer",
+     "pick-and-place (LumenPnP)",
+     "reflow oven",
+     "Formlabs Form 4",
+     "Formlabs Form 4",
+     "Form Wash",
+     "Form Cure",
+     "desktop LPBF (SnowPod)",
+     "desktop LPBF (SnowPod)"
+    ],
+    "floor_labels": [
+     "atomizer (AMAZEMET rePowder)",
+     "sieving cell",
+     "glovebox (Ar)",
+     "LPBF (Aconity MIDI)",
+     "DED (MX-Lab)",
+     "wire EDM (FANUC)",
+     "tensile (Instron 68FM-100)",
+     "tensile (Instron 68SC-2)",
+     "fume hood",
+     "packaging station"
+    ]
+   },
+   "assume": {
+    "bench_d": 762.0,
+    "bench_d_deep": 914.0,
+    "bench_h": 914.0,
+    "bench_gap": 150.0,
+    "bench_module": 305.0,
+    "bench_back": 50.0,
+    "aisle": 1524.0,
+    "corridor": 1829.0,
+    "service": 600.0,
+    "wall": 150.0,
+    "door": 1219.0,
+    "mir_aisle": 3000.0,
+    "mir_corridor": 1450.0,
+    "dock_zone": 838.0,
+    "shelf_h": 1830.0,
+    "module": 3353.0
+   },
+   "ecl": {
+    "ssf": {
+     "sqft": 15000,
+     "m2": 1400,
+     "instruments": "more than 100 items of equipment",
+     "source": "The Guardian, Tom Ireland, 2022-09-11, 'Cloud labs and remote research aren't the future of science - they're here' (reprinted by CMU: cmu.edu/ambassadors/december-2022/pdf/guardian_cloud-labs.pdf)"
+    },
+    "austin": {
+     "sqft": 105000,
+     "instruments": "over 230 unique types of instruments",
+     "source": "Emerald Cloud Lab press release, 2023-02-28 (PR Newswire, 'Emerald Cloud Lab to relocate state-of-the-art facility from South San Francisco to Austin')"
+    },
+    "cmu": {
+     "sqft": 16000,
+     "m2": 1500,
+     "source": "The Guardian, 2022-09-11 (as above): Carnegie Mellon's cloud lab, built and run with Emerald"
+    }
+   }
+  },
+  "same_capacity": {
+   "flat": {
+    "name": "capacity",
+    "title": "Automated, 45 tray positions",
+    "area_m2": 523.5,
+    "area_sqft": 5635,
+    "machine_block_m2": 189.7,
+    "benchtop_m2": 333.7,
+    "benchtop_sqft": 3592,
+    "positions": 45,
+    "positions_per_1000_sqft": 8.0,
+    "benchtop_positions_per_1000_sqft": 12.5,
+    "length_m": 46.82,
+    "width_m": 11.18,
+    "meta": {
+     "modules": 2,
+     "rows": 4,
+     "per_row": 11,
+     "positions": 45,
+     "used": 18,
+     "north_row": 2,
+     "bench_block_m": [
+      29.85,
+      11.18
+     ],
+     "two_way": false,
+     "machine_block_m2": 189.7,
+     "aisle_mm": 1450.0
+    }
+   },
+   "vertical": {
+    "name": "vertical",
+    "title": "Vertical lab",
+    "area_m2": 226.6,
+    "area_sqft": 2439,
+    "machine_block_m2": 189.7,
+    "benchtop_m2": 36.9,
+    "benchtop_sqft": 397,
+    "positions": 45,
+    "positions_per_1000_sqft": 18.4,
+    "benchtop_positions_per_1000_sqft": 113.4,
+    "length_m": 19.13,
+    "width_m": 11.84,
+    "meta": null
+   },
+   "flat_2way": {
+    "name": "capacity_2way",
+    "title": "Automated, 45 tray positions (3.0 m aisles)",
+    "area_m2": 661.9,
+    "area_sqft": 7124,
+    "machine_block_m2": 189.7,
+    "benchtop_m2": 472.1,
+    "benchtop_sqft": 5082,
+    "positions": 45,
+    "positions_per_1000_sqft": 6.3,
+    "benchtop_positions_per_1000_sqft": 8.9,
+    "length_m": 49.92,
+    "width_m": 13.26,
+    "meta": {
+     "modules": 2,
+     "rows": 4,
+     "per_row": 11,
+     "positions": 45,
+     "used": 18,
+     "north_row": 2,
+     "bench_block_m": [
+      32.95,
+      13.26
+     ],
+     "two_way": true,
+     "machine_block_m2": 189.7,
+     "aisle_mm": 3000.0
+    }
+   }
+  },
+  "percent": {
+   "vertical_vs_conventional": 34,
+   "vertical_vs_robots": 32,
+   "vertical_vs_robots_2way": 48,
+   "vertical_vs_flat_capacity": 57,
+   "vertical_vs_flat_capacity_2way": 66,
+   "flat_capacity_over_vertical": 2.31,
+   "bench_block_ratio_full": 9.1
+  },
+  "problems": []
+ }
+}
