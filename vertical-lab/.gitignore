@@ -19,3 +19,11 @@ out/twin2/video/*.mp4
 out/twin3/video/parts/
 out/twin3/video/cache/
 out/twin3/video/*.mp4
+# round 3b's cut and the experiments chapter (twin/video/experiments.py): encoder pieces, caches and the cuts
+# themselves (on YouTube, their sha256 in out/youtube.json); the records, the script's audio and the sheets are committed
+out/twin3b/video/parts/
+out/twin3b/video/cache/
+out/twin3b/video/*.mp4
+out/twin3b/video/experiments/parts/
+out/twin3b/video/experiments/*.mp4
+out/twin3b/video/experiments/*.wav

@@ -853,6 +853,18 @@
     "notified_subscribers": false
    }
   ],
+  "twin3b/video/experiments/experiments_preview.mp4": [
+   {
+    "id": "4bAAygzrX10",
+    "sha256": "4ba1cb9b740ad725f66c38ef761394adadca8599160139338415fb4f5ee6c802",
+    "bytes": 44044867,
+    "commit": "b0c027d",
+    "uploaded": "2026-11-27T06:20:51Z",
+    "title": "PREVIEW: the function networks, step by step, with the experiments (simulated; twin video)",
+    "privacy": "private",
+    "notified_subscribers": false
+   }
+  ],
   "vacuum_press.mp4": [
    {
     "id": "UGTGpEfyUeQ",
