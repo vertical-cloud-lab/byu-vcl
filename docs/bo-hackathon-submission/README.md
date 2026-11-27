@@ -157,7 +157,7 @@ In this order:
 | Participant e-mails and addresses in the public CSV | Sterling | should be done first |
 | Merge the original ESI with Tables S1 to S3 | Gage or Sterling | yes |
 | The summarization prompt (and transcripts if kept), to archive with the raw outputs. The journal's LLM policy asks for input and output logs, and Referee 4 raised reproducibility. Without it, say in the letter that the prompt was not retained | Mehrad Ansari | no, but the data reviewer may come back on it |
-| Fig. 1 is a DoE vs BO plot credited to ref. 1 (Baird and Sparks, STAR Protocols 2023, CC BY 4.0). If it is taken from that paper, add "Adapted from ref. 1 (CC BY 4.0)" to the caption | Sterling | no, but production will ask |
+| Fig. 1 is a DoE vs BO plot credited to ref. 2 (Baird and Sparks, STAR Protocols 2023, CC BY 4.0). If it is taken from that paper, add "Adapted from ref. 2 (CC BY 4.0)" to the caption | Sterling | no, but production will ask |
 | Project 22: Jiale Shi deleted the repository and withdrew; decide whether its summary and Table III row stay as they are | Sterling | no |
 | Zenodo snapshot of the AC-BO repository, DOI into Data availability | Sterling, at acceptance | no (journal requires it at acceptance) |
 | Competing interests: authors employed by Merck KGaA, which develops BayBE (discussed in the paper). The submission declared none; RSC may ask | Sterling | no |
