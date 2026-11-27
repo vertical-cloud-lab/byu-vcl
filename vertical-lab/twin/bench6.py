@@ -89,11 +89,15 @@ EXPERIMENTS = {
     "crucibles_late": _arms(_S, _V, crucibles=dict(late_d=LATE_D)),
     # what used equipment buys: the automated lab with every station bought new, stocked
     "noused": _arms(_S, _V[:1], used=False),
-    # the HPC stream's scale (the main arms run at HPC_SCALE), both labs stocked
-    "hpc": [c for sc in HPC_SCALES if sc != HPC_SCALE for c in _arms(_S, ARMS[::2], hpc=dict(scale=sc))],
+    # the HPC stream's scale (the main arms run at HPC_SCALE), both labs stocked; the largest scale on its own, last,
+    # since a run there costs hours of stream alone (notes/twin_round6.md, section 4)
+    "hpc": [c for sc in HPC_SCALES if sc not in (HPC_SCALE, HPC_SCALES[-1])
+            for c in _arms(_S, ARMS[::2], hpc=dict(scale=sc))],
+    f"hpc{HPC_SCALES[-1]}": _arms(_S, ARMS[::2], hpc=dict(scale=HPC_SCALES[-1])),
 }
 # the order of work: the comparison first, then what it rests on, then the sensitivities
-TIERS = {"arms": 1, "plans": 2, "hpc": 2, "noused": 3, "crucibles_late": 3, "atom": 4, "dec_none": 4, "dec_slow": 4}
+TIERS = {"arms": 1, "plans": 2, "hpc": 2, "noused": 3, "crucibles_late": 3, "atom": 4, "dec_none": 4, "dec_slow": 4,
+         f"hpc{HPC_SCALES[-1]}": 5}
 
 
 def run_id(cfg):

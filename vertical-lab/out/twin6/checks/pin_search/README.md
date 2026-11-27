@@ -48,8 +48,10 @@ Update 2), as `out/twin5/requirements.txt` pins them.
   the native EPYC in numpy's BLAS and in scipy ([`probe_sde_hsw_before_l2.line`](probe_sde_hsw_before_l2.line),
   [`probe_sde_gnr_before_l2.line`](probe_sde_gnr_before_l2.line)). With it, the native EPYC's probe
   ([`../gpcheck.json`](../gpcheck.json)) matches both emulated CPUs in all seven groups.
-* **The whole GP check under emulated Granite Rapids**, including its short BOFN and pKGFN runs:
-  [`../gpcheck_sde_gnr.json`](../gpcheck_sde_gnr.json).
+* **The whole GP check under emulated Granite Rapids**, including its short BOFN and pKGFN runs, **matches the
+  reference in every part**: the seven probe groups, and all three runs' rows, event logs and GP states
+  ([`../gpcheck_sde_gnr.json`](../gpcheck_sde_gnr.json), [`gpcheck_sde_gnr.line`](gpcheck_sde_gnr.line)). 29
+  minutes under the emulator, about 2 natively.
 
 The emulator presents another CPU's identity and instruction set to the same binaries, not another CPU's cache
 timings or microarchitecture. A real Intel runner and a real EPYC 7763 are the test that counts. Each compute slice

@@ -35,10 +35,21 @@ def cell(c):
     return f"{c['median_day'] if c['median_day'] is not None else '-'} ({c['reached']}/{c['of']})"
 
 
-print("| Policy | Days | Lab | Scale | Seeds | Al T1 | Al T2 | Al best | Cu T1 | Cu T2 | Cu best | s per run |")
-print("|---|---|---|---|---|---|---|---|---|---|---|---|")
+base = {(r["policy"], r["days"], r["lab"]): r for r in out if r["scale"] == 1}
+L = ["| Policy | Days | Lab | Scale | Seeds | Al T1 | Al T2 | Al best | Al tested | Cu T1 | Cu T2 | Cu best | Cu tested | "
+     "s per run | extra s a day |", "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
 for r in out:
     a, c = r["campaigns"]["flaime_al"], r["campaigns"]["onr_cu"]
-    print(f"| {r['policy']} | {r['days']} | {r['lab']} | {r['scale']}x | {len(r['seeds'])} | {cell(a['T1_day'])} | "
-          f"{cell(a['T2_day'])} | {a['best_new_median']} | {cell(c['T1_day'])} | {cell(c['T2_day'])} | "
-          f"{c['best_new_median']} | {r['seconds_median']} |")
+    b = base.get((r["policy"], r["days"], r["lab"]))
+    extra = "" if b is None or r["scale"] == 1 else f"{(r['seconds_median'] - b['seconds_median']) / r['days']:.2f}"
+    L.append(f"| {r['policy']} | {r['days']} | {r['lab']} | {r['scale']}x | {len(r['seeds'])} | {cell(a['T1_day'])} | "
+             f"{cell(a['T2_day'])} | {a['best_new_median']} | {a['tested_median']} | {cell(c['T1_day'])} | "
+             f"{cell(c['T2_day'])} | {c['best_new_median']} | {c['tested_median']} | {r['seconds_median']} | {extra} |")
+L += ["", "Medians over the seeds; a target's cell is the median day (a seed that doesn't reach it counts as later than "
+          "the horizon) and the seeds that reached it. 'extra s a day': the run's seconds over the same policy's and "
+          "lab's at 1x, per simulated day. Seeds are paired across scales (the same truths, build-outs and draws), "
+          "but a run's path parts as soon as one decision differs, so with a few seeds only large changes show."]
+txt = "\n".join(L)
+(HERE / "hpc_pilot.md").write_text("# HPC pilot (round 6)\n\nMade by `python out/twin6/checks/hpc_pilot_table.py` "
+                                    "from `hpc_pilot.jsonl`. Everything is simulated.\n\n" + txt + "\n")
+print(txt)
