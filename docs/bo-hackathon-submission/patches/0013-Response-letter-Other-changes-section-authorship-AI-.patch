@@ -1,0 +1,34 @@
+From 2aeb815dc6452f32bf5369a1e3ba54e5e859a70b Mon Sep 17 00:00:00 2001
+From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
+Date: Fri, 27 Nov 2026 19:42:23 +0000
+Subject: [PATCH 13/13] Response letter: Other changes section (authorship, AI
+ statement, references, Table III/V, data availability)
+
+---
+ RESPONSE_TO_REVIEWERS.md | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/RESPONSE_TO_REVIEWERS.md b/RESPONSE_TO_REVIEWERS.md
+index 4a9ccf9..49dde0d 100644
+--- a/RESPONSE_TO_REVIEWERS.md
++++ b/RESPONSE_TO_REVIEWERS.md
+@@ -253,3 +253,16 @@ The separate author contributions statement was regenerated and checked the same
+ 
+ Noted. The scripts behind Tables III and V, the project summaries and the figure preparation, and
+ the raw AI-drafted summaries, are in the repository listed under Data availability (page 22).
++
++---
++
++## Other changes
++
++- At their request, Jiale Shi and Dandan Tang are no longer authors.
++- The Acknowledgements declare the generative AI tools used, with model names (page 23).
++- References were checked against Crossref: wrong DOIs and author lists corrected, missing DOIs
++  added, duplicate entries merged, and preprints since published cited in their published form.
++- Table V was rechecked in November 2026, and Table III's link for project 15 now points to its
++  own repository.
++- Data availability follows Conflicts of interest and lists the material behind each analysis
++  (page 22).
+-- 
+2.56.1
+

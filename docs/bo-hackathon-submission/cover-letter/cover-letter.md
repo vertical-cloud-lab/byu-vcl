@@ -25,8 +25,9 @@ numbers it gives refer to the revised manuscript, not to the marked-up version.
 The main changes are:
 
 - **Cross-Project Synthesis (Section IV):** a classification of all 45 outputs by primary
-  deliverable (Table IV, with per-project assignments in ESI Table S1), license and
-  repository status (Table V), and the data source behind each project.
+  deliverable (Table IV, with per-project assignments in ESI Table S1), licensing (Table V),
+  documentation, dependencies and maintenance of every project's repository (ESI Table S2),
+  and the data source behind each project.
 - **Lessons Learned (Section V):** what worked and what did not in organizing the event,
   and the strengths and limitations of Bayesian optimization that the projects exposed.
 - **Post-hackathon Outcomes (Section VI):** a review of public records showing which

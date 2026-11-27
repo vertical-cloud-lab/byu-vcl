@@ -1,0 +1,26 @@
+From c1ad00fe88e60e5f1faab36259b7e5a339dbae22 Mon Sep 17 00:00:00 2001
+From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
+Date: Fri, 27 Nov 2026 19:30:59 +0000
+Subject: [PATCH 07/13] Abstract: one sentence on the new synthesis, lessons,
+ outcomes and outlook
+
+---
+ main.tex | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/main.tex b/main.tex
+index 7ba1c27..c54424c 100644
+--- a/main.tex
++++ b/main.tex
+@@ -263,7 +263,7 @@
+ 
+ \begin{abstract}
+ The Acceleration Consortium and Merck KGaA hosted a 2-day virtual hackathon on March 27-28, 2024, bringing together scientists to explore, collaborate, and innovate in the field of Bayesian optimization for the physical sciences. Participants were encouraged to select or develop Bayesian optimization algorithms, apply them to benchmarking tasks, design new benchmarks, create instructional tutorials, and describe real-world applications. With over 100 participants across 69 academic, industry, and government organizations located in 59 cities, 19 countries, and 4 continents, this was a global event. % https://chatgpt.com/share/f6cd733f-1126-4151-86c5-d4b59d158dc3
+-The outputs from this event, including developed algorithms, benchmarks, and tutorials, will serve as valuable resources for the research community, in addition to the new skills learned and connections formed. Released projects and general information are available at \url{https://ac-bo-hackathon.github.io/} and other locations linked from individual project pages. This event demonstrates the potential of community-driven research efforts to accelerate advances in Bayesian optimization in chemistry and materials science.
++We summarize all 45 projects, assess how reusable their code is, and synthesize what they reveal about the strengths and limitations of Bayesian optimization, together with lessons for organizing such events, post-event outcomes, and future opportunities. The outputs from this event, including developed algorithms, benchmarks, and tutorials, will serve as valuable resources for the research community, in addition to the new skills learned and connections formed. Released projects and general information are available at \url{https://ac-bo-hackathon.github.io/} and other locations linked from individual project pages. This event demonstrates the potential of community-driven research efforts to accelerate advances in Bayesian optimization in chemistry and materials science.
+ \end{abstract}
+ 
+ \maketitle
+-- 
+2.56.1
+

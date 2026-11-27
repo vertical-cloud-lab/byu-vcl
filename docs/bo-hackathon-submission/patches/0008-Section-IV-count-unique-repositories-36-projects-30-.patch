@@ -1,0 +1,26 @@
+From 9c86f9ddbc53f3b3ef51e1fe2e9db3adeca5ad1d Mon Sep 17 00:00:00 2001
+From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
+Date: Fri, 27 Nov 2026 19:33:59 +0000
+Subject: [PATCH 08/13] Section IV: count unique repositories (36; projects 30
+ and 31 share one)
+
+---
+ main.tex | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/main.tex b/main.tex
+index c54424c..ccea161 100644
+--- a/main.tex
++++ b/main.tex
+@@ -491,7 +491,7 @@ Mature software & 3 & 7\% \\
+ \end{tabular}
+ \end{table}
+ 
+-We also assessed code availability, licensing, documentation, and dependencies. Of the 45 projects, 42 link to a code repository; \cref{tab:licenses} tallies license status per project. Explicit licenses are overwhelmingly permissive (19 MIT, 4 Apache-2.0); 12 projects provide no license file, and 5 link to repositories that were private or removed when checked in November 2026. Of the 37 repositories still public, 34 have a README, but only 23 declare their dependencies in a standard file such as requirements.txt, environment.yml, or pyproject.toml, and only 3 have been updated since January 2025; per-project details are in ESI Table S2. Most outputs are therefore reusable starting points rather than maintained tools~\cite{nolte_what_2020}. The tabulation scripts are available in the hackathon repository (see Data availability).
++We also assessed code availability, licensing, documentation, and dependencies. Of the 45 projects, 42 link to a code repository; \cref{tab:licenses} tallies license status per project. Explicit licenses are overwhelmingly permissive (19 MIT, 4 Apache-2.0); 12 projects provide no license file, and 5 link to repositories that were private or removed when checked in November 2026. Of the 36 repositories still public (projects 30 and 31 share one), 34 have a README, but only 23 declare their dependencies in a standard file such as requirements.txt, environment.yml, or pyproject.toml, and only 3 have been updated since January 2025; per-project details are in ESI Table S2. Most outputs are therefore reusable starting points rather than maintained tools~\cite{nolte_what_2020}. The tabulation scripts are available in the hackathon repository (see Data availability).
+ 
+ \begin{table}[tbp]
+ \centering
+-- 
+2.56.1
+

@@ -1,0 +1,606 @@
+From 8cd57c8ac6b4563f9ad6140747b31172ce358019 Mon Sep 17 00:00:00 2001
+From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
+Date: Fri, 27 Nov 2026 19:40:34 +0000
+Subject: [PATCH 12/13] References checked against Crossref and DataCite: wrong
+ DOIs, wrong author lists, published versions
+
+Corrections backed by the registry record (full audit in byu-vcl
+docs/bo-hackathon-submission/reference-check.md):
+- Wrong DOI: Szymanski 2023 (resolved to a yeast interactome paper),
+  Aldeghi 2022 and Graff 2021 (did not resolve).
+- Wrong author lists: Szymanski 2023, Aldeghi 2022, Johansen 2024,
+  Leeman 2024, Judge 2024, Sabanza-Gil 2025, scikit-optimize.
+- Preprints now published: Ansari and White (Digital Discovery 2024),
+  Sabanza-Gil (Nat. Comput. Sci. 2025), Valentine (Soft Matter 2025),
+  Rankovic (GOLLuM, now Nat. Mach. Intell. 2026); Adachi 2024 is AISTATS,
+  not NeurIPS; Maus and GAUCHE years and pages.
+- 27 missing DOIs added (Crossref title, author and year all matching).
+- language = {en} becomes {english}, so the build no longer needs
+  latexmk -f; one non-ASCII initial escaped so BibTeX does not split it.
+---
+ latex/references.bib    |  86 ++++++++++++++++++++++------------
+ latex/revision-refs.bib |   1 +
+ latex/summaries-ref.bib | 101 ++++++++++++++++++++++++----------------
+ 3 files changed, 118 insertions(+), 70 deletions(-)
+
+diff --git a/latex/references.bib b/latex/references.bib
+index 409d1db..e018dee 100644
+--- a/latex/references.bib
++++ b/latex/references.bib
+@@ -9,7 +9,7 @@
+ 	abstract = {We report the findings of a hackathon focused on exploring the diverse applications of large language models in molecular and materials science.
+           , 
+             Large-language models (LLMs) such as GPT-4 caught the interest of many scientists. Recent studies suggested that these models could be useful in chemistry and materials science. To explore these possibilities, we organized a hackathon. This article chronicles the projects built as part of this hackathon. Participants employed LLMs for various applications, including predicting properties of molecules and materials, designing novel interfaces for tools, extracting knowledge from unstructured data, and developing new educational applications. The diverse topics and the fact that working prototypes could be generated in less than two days highlight that LLMs will profoundly impact the future of our fields. The rich collection of ideas and projects also indicates that the applications of LLMs are not limited to materials science and chemistry but offer potential benefits to a wide range of scientific disciplines.},
+-	language = {en},
++	language = {english},
+ 	number = {5},
+ 	urldate = {2025-04-08},
+ 	journal = {Digital Discovery},
+@@ -42,7 +42,7 @@
+ 	shorttitle = {Conference report},
+ 	url = {https://pubs.rsc.org/en/content/articlelanding/2019/me/c9me90018g},
+ 	doi = {10.1039/C9ME90018G},
+-	language = {en},
++	language = {english},
+ 	number = {3},
+ 	urldate = {2025-04-08},
+ 	journal = {Molecular Systems Design \& Engineering},
+@@ -59,7 +59,7 @@
+ 	url = {https://www.cambridge.org/core/journals/mrs-bulletin/article/hackathon-aims-to-solve-materials-problems/C67F73B4AF08E6858F629B4FE8FACE46},
+ 	doi = {10.1557/mrs.2015.80},
+ 	abstract = {//static.cambridge.org/content/id/urn\%3Acambridge.org\%3Aid\%3Aarticle\%3AS0883769415000809/resource/name/firstPage-S0883769415000809a.jpg},
+-	language = {en},
++	language = {english},
+ 	number = {4},
+ 	urldate = {2025-04-08},
+ 	journal = {MRS Bulletin},
+@@ -136,9 +136,9 @@
+ 	title = {An autonomous laboratory for the accelerated synthesis of novel materials},
+ 	volume = {624},
+ 	issn = {1476-4687},
+-	doi = {10.1038/s41586-023-06739-5},
++	doi = {10.1038/s41586-023-06734-w},
+ 	journal = {Nature},
+-	author = {Szymanski, Nathan J. and Zeng, Yan and Huo, Haotian and Bartel, Christopher J. and Kim, Hyungkyu and Parija, Abhishek and Shoghi, Nikita and Rigas, Savvas and Neaton, Jeffrey B. and Ceder, Gerbrand and Persson, Kristin A. and Toma, Francesca M. and Gregoire, John M.},
++	author = {Szymanski, Nathan J. and Rendy, Bernardus and Fei, Yuxing and Kumar, Rishi E. and He, Tanjin and Milsted, David and McDermott, Matthew J. and Gallant, Max and Cubuk, Ekin Dogus and Merchant, Amil and Kim, Haegyeom and Jain, Anubhav and Bartel, Christopher J. and Persson, Kristin and Zeng, Yan and Ceder, Gerbrand},
+ 	year = {2023},
+ 	pages = {86--91},
+ }
+@@ -150,7 +150,7 @@
+ 	issn = {2475-9066},
+ 	doi = {10.21105/joss.06024},
+ 	journal = {Journal of Open Source Software},
+-	author = {Johansen, Frederik L. and Anker, Andy S. and Christiansen, Thomas L. and Voss, Logan S. and Juhás, Pavol and Billinge, Simon J.L. and Jensen, Kirsten M.Ø.},
++	author = {Johansen, Frederik L. and Anker, Andy S. and Friis-Jensen, Ulrik and Dam, Erik B. and Jensen, Kirsten M. {\O}. and Selvan, Raghavendra},
+ 	year = {2024},
+ 	pages = {6024},
+ }
+@@ -162,7 +162,7 @@
+ 	issn = {2768-5608},
+ 	doi = {10.1103/PRXEnergy.3.011002},
+ 	journal = {PRX Energy},
+-	author = {Leeman, Josh and Kunitsa, Alexander A. and Vecchio, Kevin S. and Ceder, Gerbrand and Kusne, A. Gilad},
++	author = {Leeman, Josh and Liu, Yuhan and Stiles, Joseph and Lee, Scott B. and Bhatt, Prajna and Schoop, Leslie M. and Palgrave, Robert G.},
+ 	year = {2024},
+ 	pages = {011002},
+ }
+@@ -202,7 +202,7 @@
+ 	title = {Accelerating high-throughput virtual screening through molecular pool-based active learning},
+ 	volume = {12},
+ 	issn = {2041-6539},
+-	doi = {10.1039/d1sc02482a},
++	doi = {10.1039/D0SC06805E},
+ 	number = {22},
+ 	journal = {Chemical Science},
+ 	author = {Graff, David E. and Shakhnovich, Eugene I. and Coley, Connor W.},
+@@ -214,10 +214,10 @@
+ 	title = {Roughness of {Molecular} {Property} {Landscapes} and {Its} {Impact} on {Modellability}},
+ 	volume = {62},
+ 	issn = {1549-9596},
+-	doi = {10.1021/acs.jcim.2c00792},
++	doi = {10.1021/acs.jcim.2c00903},
+ 	number = {19},
+ 	journal = {Journal of Chemical Information and Modeling},
+-	author = {Aldeghi, Matteo and Häse, Florian and Hickman, Riley J. and Tamblyn, Isaac and Aspuru-Guzik, Alán},
++	author = {Aldeghi, Matteo and Graff, David E. and Frey, Nathan and Morrone, Joseph A. and Pyzer-Knapp, Edward O. and Jordan, Kirk E. and Coley, Connor W.},
+ 	year = {2022},
+ 	pages = {4660--4671},
+ }
+@@ -235,10 +235,14 @@
+ 
+ @article{ansari_learning_2023,
+ 	title = {Learning {Peptide} {Properties} with {Positive} {Examples} {Only}},
+-	url = {https://doi.org/10.1101/2023.06.01.543289},
+-	journal = {bioRxiv},
++	url = {https://doi.org/10.1039/D3DD00218G},
++	journal = {Digital Discovery},
+ 	author = {Ansari, Mehrad and White, Andrew D.},
+-	year = {2023},
++	year = {2024},
++	volume = {3},
++	number = {5},
++	pages = {977--986},
++	doi = {10.1039/D3DD00218G},
+ }
+ 
+ @article{frazier_tutorial_2018,
+@@ -247,6 +251,7 @@
+ 	journal = {arXiv},
+ 	author = {Frazier, Peter I.},
+ 	year = {2018},
++	doi = {10.48550/arXiv.1807.02811},
+ }
+ 
+ @article{shahriari_taking_2016,
+@@ -296,6 +301,7 @@
+ 	journal = {arXiv preprint arXiv:2311.00463},
+ 	author = {Altamirano, Matias and Briol, François-Xavier and Knoblauch, Jeremias},
+ 	year = {2023},
++	doi = {10.48550/arXiv.2311.00463},
+ }
+ 
+ @inproceedings{ament_sustainable_2023,
+@@ -535,14 +541,18 @@
+ 	journal = {arXiv preprint arXiv:2401.01398},
+ 	author = {Sorourifar, Fani and Banker, Tushar and Paulson, Joel A.},
+ 	year = {2024},
++	doi = {10.48550/arXiv.2401.01398},
+ }
+ 
+ @article{maus_local_2023,
+ 	title = {Local {Latent} {Space} {Bayesian} {Optimization} over {Structured} {Inputs}},
+-	url = {http://arxiv.org/abs/2201.11872},
+-	journal = {arXiv preprint arXiv:2201.11872},
++	url = {https://doi.org/10.52202/068431-2500},
++	journal = {Advances in Neural Information Processing Systems},
+ 	author = {Maus, Nicolas and Jones, Henry T. and Moore, Jeffrey S. and Kusner, Matt J. and Bradshaw, John and Gardner, Jacob R.},
+-	year = {2023},
++	year = {2022},
++	volume = {35},
++	pages = {34505--34518},
++	doi = {10.52202/068431-2500},
+ }
+ 
+ @article{dusselier_small-pore_2018,
+@@ -582,6 +592,7 @@
+ 	journal = {arXiv preprint arXiv:2010.01118},
+ 	author = {Moss, Henry B. and Griffiths, Ryan-Rhys},
+ 	year = {2020},
++	doi = {10.48550/arXiv.2010.01118},
+ }
+ 
+ % Source: project-22-chemical-similarity-EMD-kernel-BO.md
+@@ -593,6 +604,7 @@
+ 	author = {Hargreaves, Cameron J. and Dyer, Matthew S. and Gaultois, Michael W. and Kurlin, Vitaliy A. and Rosseinsky, Matthew J.},
+ 	year = {2020},
+ 	pages = {10610--10620},
++	doi = {10.1021/acs.chemmater.0c03381},
+ }
+ 
+ 
+@@ -616,6 +628,7 @@
+ 	author = {Ruddigkeit, L. and van Deursen, R. and Blum, L. C. and Reymond, J.-L.},
+ 	year = {2012},
+ 	pages = {2864--2875},
++	doi = {10.1021/ci300415d},
+ }
+ 
+ 
+@@ -625,7 +638,9 @@
+ 	volume = {36},
+ 	booktitle = {Advances in Neural Information Processing Systems},
+ 	author = {Griffiths, Ryan-Rhys and Klarner, Leo and Moss, Henry and Ravuri, Aditya and Truong, Sang and Du, Yuanqi and Stanton, Samuel and others},
+-	year = {2024},
++	year = {2023},
++	doi = {10.52202/075280-3362},
++	pages = {76923--76946},
+ }
+ 
+ % Source: project-36-nonmyopic.md
+@@ -677,8 +692,8 @@
+ 	volume = {21},
+ 	pages = {5381--5392},
+ 	year = {2025},
+-	doi = {10.48550/arXiv.2505.01365},
+-	url = {https://doi.org/10.48550/arXiv.2505.01365},
++	doi = {10.1039/D5SM00401B},
++	url = {https://doi.org/10.1039/D5SM00401B},
+ }
+ 
+ @article{diemar_report_2025,
+@@ -755,13 +770,13 @@
+ 
+ @article{sabanza-gil_best_2025,
+ 	title = {Best {Practices} for {Multi}-fidelity {Bayesian} {Optimization} in {Materials} and {Molecular} {Research}},
+-	author = {Sabanza-Gil, Victor and Bailly, Alexandre and others},
++	author = {Sabanza-Gil, Víctor and Barbano, Riccardo and Pacheco Gutiérrez, Daniel and Luterbacher, Jeremy S. and Hernández-Lobato, José Miguel and Schwaller, Philippe and Roch, Loïc},
+ 	journal = {Nature Computational Science},
+ 	volume = {5},
+ 	pages = {572--581},
+ 	year = {2025},
+-	doi = {10.48550/arXiv.2410.00544},
+-	url = {https://doi.org/10.48550/arXiv.2410.00544},
++	doi = {10.1038/s43588-025-00822-9},
++	url = {https://doi.org/10.1038/s43588-025-00822-9},
+ }
+ 
+ @article{tom_self-driving_2024,
+@@ -797,18 +812,25 @@
+ }
+ 
+ @article{rankovic_gollum_2025,
+-	title = {{GOLLuM}: {Gaussian} {Process} {Optimized} {LLMs} -- {Reframing} {LLM} {Finetuning} through {Bayesian} {Optimization}},
+-	author = {Ranković, Bojana and Schwaller, Philippe},
+-	journal = {arXiv},
+-	year = {2025},
+-	doi = {10.48550/arXiv.2504.06265},
+-	url = {https://doi.org/10.48550/arXiv.2504.06265},
++	title = {Large language models as uncertainty-calibrated optimizers for experimental discovery},
++	author = {Ranković, Bojana and Griffiths, Ryan-Rhys and Schwaller, Philippe},
++	journal = {Nature Machine Intelligence},
++	volume = {8},
++	number = {9},
++	pages = {1466--1477},
++	year = {2026},
++	doi = {10.1038/s42256-026-01283-z},
++	url = {https://doi.org/10.1038/s42256-026-01283-z},
++	note = {Preprint: arXiv:2504.06265, first posted as GOLLuM},
+ }
+ 
+-@article{adachi_looping_2024,
++@inproceedings{adachi_looping_2024,
+ 	title = {Looping in the {Human}: {Collaborative} and {Explainable} {Bayesian} {Optimization}},
+ 	author = {Adachi, Masaki and Planden, Brady and Howey, David A. and Osborne, Michael A. and Orbell, Sebastian and Ares, Natalia and Muandet, Krikamol and Chau, Siu Lun},
+-	journal = {Advances in Neural Information Processing Systems},
++	booktitle = {Proceedings of the 27th International Conference on Artificial Intelligence and Statistics (AISTATS)},
++	series = {Proceedings of Machine Learning Research},
++	volume = {238},
++	pages = {505--513},
+ 	year = {2024},
+ 	doi = {10.48550/arXiv.2310.17273},
+ 	url = {https://doi.org/10.48550/arXiv.2310.17273},
+@@ -821,6 +843,8 @@
+ 	year = {2025},
+ 	doi = {10.1039/D4DD00320A},
+ 	url = {https://doi.org/10.1039/D4DD00320A},
++	volume = {4},
++	pages = {723--737},
+ }
+ 
+ @article{low_evolution_2024,
+@@ -847,7 +871,7 @@
+ 
+ @article{judge_applying_2024,
+ 	title = {Applying {Multi}-{Fidelity} {Bayesian} {Optimization} in {Chemistry}: {Open} {Challenges} and {Major} {Considerations}},
+-	author = {Judge, Edmund and Ren, Tony and others},
++	author = {Judge, Edmund and Azzouzi, Mohammed and Mroz, Austin M. and del Rio Chanona, Antonio and Jelfs, Kim E.},
+ 	journal = {arXiv},
+ 	year = {2024},
+ 	doi = {10.48550/arXiv.2409.07190},
+diff --git a/latex/revision-refs.bib b/latex/revision-refs.bib
+index faaa131..361bdb5 100644
+--- a/latex/revision-refs.bib
++++ b/latex/revision-refs.bib
+@@ -100,4 +100,5 @@
+ 	pages = {20577--20612},
+ 	year = {2023},
+ 	doi = {10.52202/075280-0904},
++	volume = {36},
+ }
+diff --git a/latex/summaries-ref.bib b/latex/summaries-ref.bib
+index 86fd9ad..e909113 100644
+--- a/latex/summaries-ref.bib
++++ b/latex/summaries-ref.bib
+@@ -65,7 +65,8 @@
+   number={5},
+   pages={1425--1435},
+   year={2023},
+-  publisher={Royal Society of Chemistry}
++  publisher={Royal Society of Chemistry},
++  doi={10.1039/D3DD00082F}
+ }
+ @article{kim2023bayeso,
+   title={BayesO: A Bayesian optimization framework in Python},
+@@ -74,7 +75,8 @@
+   volume={8},
+   number={90},
+   pages={5320},
+-  year={2023}
++  year={2023},
++  doi={10.21105/joss.05320}
+ }
+ @article{li2022bayesian,
+   title={Bayesian optimization of nanophotonic electromagnetic shielding with very high visible transparency},
+@@ -84,7 +86,8 @@
+   number={18},
+   pages={33182--33194},
+   year={2022},
+-  publisher={Optica Publishing Group}
++  publisher={Optica Publishing Group},
++  doi={10.1364/oe.468843}
+ }
+ @misc{fitzner2022baybe,
+   author       = {Martin Fitzner and Adrian {\v{S}}o{\v{s}}i{\'c} and Alexander Hopp and Alex Lee},
+@@ -101,7 +104,8 @@
+   number={1},
+   pages={48},
+   year={2022},
+-  publisher={Nature Publishing Group UK London}
++  publisher={Nature Publishing Group UK London},
++  doi={10.1038/s41529-022-00259-9}
+ }
+ @article{rogers2010extended,
+   title={Extended-connectivity fingerprints},
+@@ -111,7 +115,8 @@
+   number={5},
+   pages={742--754},
+   year={2010},
+-  publisher={ACS Publications}
++  publisher={ACS Publications},
++  doi={10.1021/ci100050t}
+ }
+ @article{moriwaki2018mordred,
+   title={Mordred: a molecular descriptor calculator},
+@@ -121,7 +126,8 @@
+   number={1},
+   pages={4},
+   year={2018},
+-  publisher={Springer}
++  publisher={Springer},
++  doi={10.1186/s13321-018-0258-y}
+ }
+ @article{landrum2013rdkit,
+   title={Rdkit documentation},
+@@ -140,7 +146,8 @@
+   number={1},
+   pages={10752},
+   year={2019},
+-  publisher={Nature Publishing Group UK London}
++  publisher={Nature Publishing Group UK London},
++  doi={10.1038/s41598-019-47148-x}
+ }
+ @article{durant2002reoptimization,
+   title={Reoptimization of MDL keys for use in drug discovery},
+@@ -150,7 +157,8 @@
+   number={6},
+   pages={1273--1280},
+   year={2002},
+-  publisher={ACS Publications}
++  publisher={ACS Publications},
++  doi={10.1021/ci010132r}
+ }
+ @article{furukawa2013chemistry,
+   title={The chemistry and applications of metal-organic frameworks},
+@@ -160,7 +168,8 @@
+   number={6149},
+   pages={1230444},
+   year={2013},
+-  publisher={American Association for the Advancement of Science}
++  publisher={American Association for the Advancement of Science},
++  doi={10.1126/science.1230444}
+ }
+ @article{heo2020metal,
+   title={Metal-organic framework materials for perovskite solar cells},
+@@ -170,7 +179,8 @@
+   number={9},
+   pages={2061},
+   year={2020},
+-  publisher={MDPI}
++  publisher={MDPI},
++  doi={10.3390/polym12092061}
+ }
+ @article{desantis2017techno,
+   title={Techno-economic analysis of metal--organic frameworks for hydrogen and natural gas storage},
+@@ -180,7 +190,8 @@
+   number={2},
+   pages={2024--2032},
+   year={2017},
+-  publisher={ACS Publications}
++  publisher={ACS Publications},
++  doi={10.1021/acs.energyfuels.6b02510}
+ }
+ @article{oliveira2023crafted,
+   title={CRAFTED: An exploratory database of simulated adsorption isotherms of metal-organic frameworks},
+@@ -190,7 +201,8 @@
+   number={1},
+   pages={230},
+   year={2023},
+-  publisher={Nature Publishing Group UK London}
++  publisher={Nature Publishing Group UK London},
++  doi={10.1038/s41597-023-02116-z}
+ }
+ @article{dusselier2018small,
+   title={Small-pore zeolites: synthesis and catalysis},
+@@ -200,7 +212,8 @@
+   number={11},
+   pages={5265--5329},
+   year={2018},
+-  publisher={ACS Publications}
++  publisher={ACS Publications},
++  doi={10.1021/acs.chemrev.7b00738}
+ }
+ @article{mallette2024current,
+   title={The current understanding of mechanistic pathways in zeolite crystallization},
+@@ -210,7 +223,8 @@
+   number={6},
+   pages={3416--3493},
+   year={2024},
+-  publisher={ACS Publications}
++  publisher={ACS Publications},
++  doi={10.1021/acs.chemrev.3c00801}
+ }
+ @article{altamirano2023robust,
+   title={Robust and conjugate Gaussian process regression},
+@@ -219,9 +233,11 @@
+   year={2023}
+ }
+ @inproceedings{ament2310sustainable,
+-  title={Sustainable concrete via bayesian optimization, 2023},
++  title={Sustainable Concrete via Bayesian Optimization},
+   author={Ament, Sebastian and Witte, Andrew and Garg, Nishant and Kusuma, Julius},
+-  booktitle={URL https://arxiv. org/abs/2310.18288. NeurIPS 2023 Workshop on Adaptive Experimentation in the Real World}
++  booktitle={NeurIPS 2023 Workshop on Adaptive Experimentation in the Real World},
++  doi={10.48550/arXiv.2310.18288},
++  year={2023}
+ }
+ @article{mahmoudi2017review,
+   title={A review of Fischer Tropsch synthesis process, mechanism, surface chemistry and catalyst formulation},
+@@ -231,7 +247,8 @@
+   number={1},
+   pages={11--31},
+   year={2017},
+-  publisher={De Gruyter Open}
++  publisher={De Gruyter Open},
++  doi={10.1515/bfuel-2017-0002}
+ }
+ @inproceedings{lin2022preference,
+   title={Preference exploration for efficient bayesian optimization with multiple outcomes},
+@@ -249,7 +266,8 @@
+   number={16},
+   pages={5879--5891},
+   year={2008},
+-  publisher={ACS Publications}
++  publisher={ACS Publications},
++  doi={10.1021/ie071587u}
+ }
+ @article{chakkingal2022multi,
+   title={Multi-output machine learning models for kinetic data evaluation: A Fischer--Tropsch synthesis case study},
+@@ -258,7 +276,8 @@
+   volume={446},
+   pages={137186},
+   year={2022},
+-  publisher={Elsevier}
++  publisher={Elsevier},
++  doi={10.1016/j.cej.2022.137186}
+ }
+ @article{bellamy2022batched,
+   title={Batched bayesian optimization for drug design in noisy environments},
+@@ -268,7 +287,8 @@
+   number={17},
+   pages={3970--3981},
+   year={2022},
+-  publisher={ACS Publications}
++  publisher={ACS Publications},
++  doi={10.1021/acs.jcim.2c00602}
+ }
+ @article{wu2018quantitative,
+   title={Quantitative toxicity prediction using topology based multitask deep neural networks},
+@@ -278,7 +298,8 @@
+   number={2},
+   pages={520--531},
+   year={2018},
+-  publisher={ACS Publications}
++  publisher={ACS Publications},
++  doi={10.1021/acs.jcim.7b00558}
+ }
+ @article{chen2021algebraic,
+   title={Algebraic graph-assisted bidirectional transformers for molecular property prediction},
+@@ -288,7 +309,8 @@
+   number={1},
+   pages={3521},
+   year={2021},
+-  publisher={Nature Publishing Group UK London}
++  publisher={Nature Publishing Group UK London},
++  doi={10.1038/s41467-021-23720-w}
+ }
+ @article{stetefeld2016dynamic,
+   title={Dynamic light scattering: a practical guide and applications in biomedical sciences},
+@@ -297,7 +319,8 @@
+   volume={8},
+   pages={409--427},
+   year={2016},
+-  publisher={Springer}
++  publisher={Springer},
++  doi={10.1007/s12551-016-0218-6}
+ }
+ @article{ramakrishnan2014quantum,
+   title   = {Quantum chemistry structures and properties of 134 kilo molecules},
+@@ -315,15 +338,8 @@
+   year={2018},
+   howpublished={\url{https://github.com/facebook/Ax}}
+ }
+-@software{scikit-optimize_2021,
+-  author       = {Head, Tim and
+-                  MechCoder and
+-                  Louppe, Gilles and
+-                  Shcherbatyi, Iaroslav and
+-                  fcharras and
+-                  Cournapeau, David and
+-                  Fabian Pedregosa and
+-                  Mueller, Andreas},
++@misc{scikit-optimize_2021,
++  author       = {Head, Tim and Kumar, Manoj and Nahrstaedt, Holger and Louppe, Gilles and Shcherbatyi, Iaroslav},
+   title        = {scikit-optimize/scikit-optimize: v0.9.0},
+   month        = sep,
+   year         = 2021,
+@@ -340,7 +356,8 @@
+   number={5-6},
+   pages={587--602},
+   year={2022},
+-  publisher={SAGE Publications Sage UK: London, England}
++  publisher={SAGE Publications Sage UK: London, England},
++  doi={10.1177/10943420221121804}
+ }
+ @article{bick2017computational,
+   title={Computational design of environmental sensors for the potent opioid fentanyl},
+@@ -349,7 +366,8 @@
+   volume={6},
+   pages={e28909},
+   year={2017},
+-  publisher={eLife Sciences Publications, Ltd}
++  publisher={eLife Sciences Publications, Ltd},
++  doi={10.7554/elife.28909}
+ }
+ @article{jumper2021highly,
+   title={Highly accurate protein structure prediction with AlphaFold},
+@@ -359,7 +377,8 @@
+   number={7873},
+   pages={583--589},
+   year={2021},
+-  publisher={Nature Publishing Group}
++  publisher={Nature Publishing Group},
++  doi={10.1038/s41586-021-03819-2}
+ }
+ @misc{stair-lab_coh2,
+   title        = {{coh2}: Conversational HF interaction dataset},
+@@ -376,7 +395,8 @@
+   number={15},
+   pages={5069--5086},
+   year={2018},
+-  publisher={ACS Publications}
++  publisher={ACS Publications},
++  doi={10.1021/acs.chemmater.8b01425}
+ }
+ @article{yang2019multi,
+   title={Multi-objective Bayesian global optimization using expected hypervolume improvement gradient},
+@@ -385,7 +405,8 @@
+   volume={44},
+   pages={945--956},
+   year={2019},
+-  publisher={Elsevier}
++  publisher={Elsevier},
++  doi={10.1016/j.swevo.2018.10.007}
+ }
+ @article{knowles2006parego,
+   title={ParEGO: A hybrid algorithm with on-line landscape approximation for expensive multiobjective optimization problems},
+@@ -395,7 +416,8 @@
+   number={1},
+   pages={50--66},
+   year={2006},
+-  publisher={IEEE}
++  publisher={IEEE},
++  doi={10.1109/TEVC.2005.851274}
+ }
+ 
+ @article{shields2021bayesian,
+@@ -460,5 +482,6 @@
+   title={Neural nonmyopic {Bayesian} optimization in dynamic cost settings},
+   author={Truong, Sang T and Nguyen, Duc Q and Neiswanger, Willie and Griffiths, Ryan-Rhys and Ermon, Stefano and Haber, Nick and Koyejo, Sanmi},
+   journal={arXiv preprint arXiv:2601.06505},
+-  year={2026}
++  year={2026},
++  doi={10.48550/arXiv.2601.06505}
+ }
+-- 
+2.56.1
+
