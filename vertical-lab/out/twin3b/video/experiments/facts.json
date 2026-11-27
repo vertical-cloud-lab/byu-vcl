@@ -97,7 +97,25 @@
     }
    }
   },
-  "scheil_open": null,
+  "scheil_open": {
+   "first_solid_C": 789.3,
+   "end_C": 647.5,
+   "phases": [
+    "AL3NI",
+    "AL3TI_H",
+    "AL3ZR",
+    "AL4CR",
+    "AL6MN",
+    "FCC_A1"
+   ],
+   "left_out": {
+    "Li": 0.286,
+    "Er": 0.24,
+    "Sn": 0.065
+   },
+   "converged": false,
+   "seconds": 12.4
+  },
   "am": {
    "P_W": 250.0,
    "v_mm_s": 1000.0,
@@ -329,6 +347,7 @@
   "logs": 436,
   "calls": {
    "sim_open": 232005
-  }
+  },
+  "hot_tests": 0
  }
 }

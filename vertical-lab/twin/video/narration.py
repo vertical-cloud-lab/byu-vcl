@@ -70,6 +70,23 @@ IPA = {
 _TOK = None
 
 
+def configure(script: Path | None = None, ndir: Path | None = None, say: dict | None = None,
+              ipa: dict | None = None):
+    """Another script on the same voice and the same machinery (a chapter's standalone preview, twin/video/
+    experiments.py): its lines, where its audio is kept, and respellings for the words its lines add. The cut's own
+    script, its record and its committed audio are not touched: its SAY and IPA stay as they are unless a caller
+    asks for more in its own process."""
+    global SCRIPT, NDIR, SAY, IPA
+    if script is not None:
+        SCRIPT = Path(script)
+    if ndir is not None:
+        NDIR = Path(ndir)
+    if say:
+        SAY = dict(SAY, **say)
+    if ipa:
+        IPA = dict(IPA, **ipa)
+
+
 def _word(keys):
     return re.compile(r"(?<![\w-])(" + "|".join(map(re.escape, sorted(keys, key=len, reverse=True))) + r")(?![\w-])")
 

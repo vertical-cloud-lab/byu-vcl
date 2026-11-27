@@ -85,7 +85,7 @@ class Mech(Segment):
         seg = np.hypot(np.diff(px_), np.diff(py_))
         self.arc = np.concatenate([[0.0], np.cumsum(seg)]) / max(seg.sum(), 1e-9)
         self._clips = {}
-        f = X.facts()["al"]["tensile"]
+        f = X.load_facts()["al"]["tensile"]
         self.f = f
         self.captions = [
             (0.6, 8.9, "Heat treatment first. The twin books the furnace for three hours and models the strength it "

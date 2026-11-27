@@ -528,20 +528,41 @@ def facts() -> dict:
 
 
 def sim_kinds() -> dict:
-    """How often each simulation node ran in round 3b's committed event logs (kept in facts.json: reading all 436
-    logs takes a minute). Every call is the open-database node; no run bought the Thermo-Calc or AM-Module nodes."""
+    """How often each simulation node ran in round 3b's committed event logs, and how many hot tensile tests were
+    booked (kept in facts.json: reading all 436 logs takes a minute). Every call is the open-database node; no run
+    bought the Thermo-Calc or AM-Module nodes."""
     if FACTS_JSON.exists():
         have = json.loads(FACTS_JSON.read_text()).get("sim_kinds")
-        if have:
+        if have and "hot_tests" in have:
             return have
-    n, kinds = 0, {}
+    n, kinds, hot = 0, {}, 0
     for p in sorted(D.EVENTS_DIR.glob("*.json*")):
         ev = D._load_json(p)
         n += 1
         for e in ev["events"]:
             if e["station"] == "hpc":
                 kinds[e["what"]] = kinds.get(e["what"], 0) + 1
-    return dict(logs=n, calls=kinds)
+            elif e["station"] == "tensile_hot":
+                hot += 1
+    return dict(logs=n, calls=kinds, hot_tests=hot)
+
+
+_FACTS: dict = {}
+
+
+def load_facts() -> dict:
+    """facts(), from the committed facts.json when it is for the alloys followed (a segment needs a few numbers, not
+    every instrument run); computed and written otherwise."""
+    if not _FACTS:
+        if FACTS_JSON.exists():
+            d = json.loads(FACTS_JSON.read_text())
+            f = follow()
+            if all(d.get("follow", {}).get(c, {}).get("design") == f[c]["design"]
+                   and d["follow"][c].get("run") == f[c]["run"] for c in f):
+                _FACTS.update(d)
+        if not _FACTS:
+            _FACTS.update(json.loads(json.dumps(write_facts(), default=str)))
+    return _FACTS
 
 
 def write_facts() -> dict:
