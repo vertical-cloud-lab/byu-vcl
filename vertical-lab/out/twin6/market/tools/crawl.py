@@ -16,6 +16,10 @@ SITES = {
     "allsurplus": ("https://www.allsurplus.com/en/search?kWord={q}", 'a[href*="/asset/"]'),
     "publicsurplus": ("https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord={q}", 'a[href*="auction/view"]'),
     "fedequip": ("https://fedequip.com/ssearch?search={q}", 'a[href*="/inventory/"]'),
+    "machineseeker": ("https://www.machineseeker.com/main/search/index?search-word={q}", 'a[href*="/i-"]'),
+    "exapro": ("https://www.exapro.com/product-search/?text={q}", 'a[href*="-p"][href*="exapro.com/"]'),
+    "dotmed": ("https://www.dotmed.com/listings/search_equipment.html?key={q}", 'a[href*="/listing/"]'),
+    "marshall": ("https://www.marshallscientific.com/search?q={q}", 'a[href*="/products/"]'),
 }
 
 def main():
@@ -36,7 +40,18 @@ def main():
             if lab not in done:
                 queues[s].append((st, q, lab))
     strikes = defaultdict(int)
+    only = None
+    for a in sys.argv:
+        if a.startswith("--sites="):
+            only = set(a.split("=", 1)[1].split(","))
+    if only:
+        queues = defaultdict(deque, {s: q for s, q in queues.items() if s in only})
+    for a in sys.argv:
+        if a.startswith('--cdp='):
+            B.CDP = 'http://127.0.0.1:' + a.split('=', 1)[1]
     pw, br, ctx, page = B.connect()
+    if "--newtab" in sys.argv:
+        page = ctx.new_page()
     n = 0
     order = list(queues)
     while any(queues[s] for s in order):

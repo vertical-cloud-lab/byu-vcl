@@ -22,6 +22,8 @@ from playwright.sync_api import sync_playwright
 RAW = Path("/tmp/market/raw")
 SHOTS = Path("/tmp/market/shots")
 CDP = "http://127.0.0.1:9222"
+import os as _os
+CDP = _os.environ.get("MARKET_CDP", CDP)
 W, H = 1920, 1080
 POS = [W / 2, H / 2]
 
