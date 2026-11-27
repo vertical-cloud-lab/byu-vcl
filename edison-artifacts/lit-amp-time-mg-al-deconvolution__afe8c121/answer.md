@@ -1,0 +1,106 @@
+# Effect of Pulse-Processor Amplifier Time Constant on SEM/SDD-EDS Performance and Quantification of Minor Mg in Al
+
+## 1. Energy Resolution (FWHM) at Low Energies as a Function of Amp Time
+
+The pulse-processor amplifier time constant (variously called "amp time," "shaping time," "process time," or "peaking time") directly controls the trade-off between energy resolution and X-ray throughput in SDD-EDS. Longer process times allow more complete charge collection and better noise averaging, yielding narrower peaks (lower FWHM), while shorter times increase electronic noise and can produce ballistic deficit, broadening the peaks (goldstein2018energydispersivexray pages 14-15).
+
+For modern SDDs, the best achievable Mn Kα FWHM is approximately 122–128 eV. Goldstein et al. (2018) explicitly recommend a moderate process time that compromises resolution to approximately 130–135 eV as an "excellent" practical setting, noting that resolution degrades only slowly (a few percent) while throughput increases rapidly. Even 140–150 eV FWHM can yield excellent quantitative results at very high throughput because counting statistics often dominate the fitting precision (goldstein2018energydispersivexray pages 14-15, goldstein2018energydispersivexray pages 25-26).
+
+Quantitative examples from the literature illustrate this relationship:
+- A 440-ns time constant yielded Mn Kα FWHM of 127.5 eV, while a 220-ns time constant degraded resolution to 145 eV (newbury2011isscanningelectron pages 2-3).
+- On an EDAX Octane Elite Super detector, a 3.84 µs amp time produced 124 eV resolution, whereas 0.24 µs yielded 133 eV (nylese2017improvementsinsdd pages 6-7, nylese2017improvementsinsdd pages 6-6).
+
+Because EDS resolution varies with photon energy according to the Fiori–Newbury relation, FWHM at the Mg Kα (1.253 keV), Al Kα (1.486 keV), and Si Kα (1.740 keV) energies is substantially narrower than at Mn Kα (5.895 keV) (newbury2019electronexcitedxraymicroanalysis pages 4-5). At 130 eV Mn Kα resolution, the FWHM at Mg Kα is approximately 83 eV and at Al Kα approximately 86 eV, while at 135.5 eV Mn Kα resolution these values increase to approximately 91 and 94 eV, respectively.
+
+The following figure from Nylese and Rafaelsen (2017) shows the Mn Kα resolution versus amp time for multiple EDAX SDD detector generations, demonstrating the marked improvement of CUBE preamplifier (Octane Elite) technology at short processing times compared to JFET-based (Octane Plus) designs (nylese2017improvementsinsdd media c1a392d6):
+
+(nylese2017improvementsinsdd media c1a392d6)
+
+Figure 5 from the same study illustrates low-energy spectral performance at fast processing times for both detector generations, showing that at 0.48 µs the Octane Elite (CUBE) retains carbon sensitivity (C K at 0.282 keV) while the older Octane (JFET) cannot detect carbon at the same speed (nylese2017improvementsinsdd media a4b08999):
+
+(nylese2017improvementsinsdd media a4b08999)
+
+## 2. Ability to Deconvolute Mg Kα from Al Kα
+
+Mg Kα (1.253 keV) and Al Kα (1.486 keV) are separated by 233 eV, which corresponds to approximately 2.5–2.8× the low-energy FWHM at these photon energies. This is a moderate rather than severe overlap by EDS standards. For comparison, Newbury and Ritchie have demonstrated accurate peak-fitting deconvolution of peaks separated by as little as 13 eV (Mo Lα vs. S Kα) and even 3 eV (N K vs. Ti L) using multiple linear least-squares (MLLS) fitting with high-count spectra (newbury2016measurementoftrace pages 2-3). The SDD-EDS peak shape and position are nearly invariant with input count rate, which is critical for reliable MLLS fitting of overlapping peaks (newbury2015performingelementalmicroanalysis pages 9-11).
+
+For 0.2–1.5 wt% Mg in an Al-rich matrix, the Mg Kα peak will be substantially smaller than the Al Kα peak but will sit on the low-energy shoulder of the Al peak. At this concentration range, the dominant sources of uncertainty are counting statistics, background estimation/subtraction, and the accuracy of peak reference shapes—not the 5 eV difference in Mn Kα resolution between 130.4 and 135.5 eV (newbury2016measurementoftrace pages 2-3, newbury2015performingelementalmicroanalysis pages 17-20, spasevski2026challengesinmeasuring pages 2-5). Newbury and Ritchie emphasize iterative analysis with residual inspection to reveal hidden minor/trace peaks, and recommend standards-based k-ratio quantification with NIST DTSA-II for the most reliable results (newbury2014rigorousquantitativeelemental pages 1-2, newbury2015performingelementalmicroanalysis pages 17-20).
+
+The detailed Mg/Al overlap analysis is summarized below:
+
+| Parameter | Value at 1.92 µs (130.4 eV at Mn Kα) | Value at 0.96 µs (135.5 eV at Mn Kα) | Assessment |
+|---|---:|---:|---|
+| Mn Kα FWHM benchmark | 130.4 eV | 135.5 eV | Resolution degrades by 5.1 eV, i.e. ~3.9%; both lie in Goldstein’s practical quantitative range for modern SDDs (goldstein2018energydispersivexray pages 14-15, nylese2017improvementsinsdd pages 7-8) |
+| Estimated FWHM at Mg Kα (1253 eV) using Fiori-Newbury relation | ~82.8 eV | ~90.7 eV | Low-energy peaks are substantially narrower than the Mn Kα benchmark; the change is ~7.9 eV at Mg Kα (newbury2019electronexcitedxraymicroanalysis pages 4-5) |
+| Estimated FWHM at Al Kα (1486 eV) using Fiori-Newbury relation | ~86.3 eV | ~93.9 eV | Similar low-energy narrowing; change is ~7.6 eV at Al Kα |
+| Mg Kα–Al Kα peak separation | 233 eV | 233 eV | Physical separation is fixed and much larger than either low-energy FWHM |
+| Separation / FWHM at Mg Kα basis | 233 / 82.8 = ~2.81 | 233 / 90.7 = ~2.57 | By this basis, Mg and Al remain well separated; overlap increases only modestly |
+| Separation / FWHM at Al Kα basis | 233 / 86.3 = ~2.70 | 233 / 93.9 = ~2.48 | Same conclusion: still comfortably deconvolvable with modern MLLS fitting |
+| Separation / mean low-energy FWHM | 233 / 84.5 = ~2.76 | 233 / 92.3 = ~2.52 | The ratio drops by only ~8.6%; this is a mild broadening, not a qualitative change in overlap character |
+| Peak overlap character | Partially overlapping but clearly distinct low-energy peaks | Slightly more overlap, still clearly distinct | This is far less severe than overlaps Newbury & Ritchie report successfully deconvolving at 13 eV and even 3 eV separations with stable SDD peak shapes and MLLS methods (newbury2016measurementoftrace pages 2-3, newbury2014rigorousquantitativeelemental pages 1-2) |
+| Expected dominant source of error for 0.2–1.5 wt% Mg in Al | Counting statistics, background fit, standards/surface condition, dead time control | Counting statistics, background fit, standards/surface condition, dead time control | At this Mg level, practical quant uncertainty is more likely driven by spectrum quality and protocol than by a 5.1 eV Mn Kα resolution change (newbury2016measurementoftrace pages 2-3, goldstein2018quantitativeanalysisthe pages 1-4, spasevski2026challengesinmeasuring pages 2-5) |
+| Material effect on quantification of 0.2–1.5 wt% Mg in Al | Baseline / reference condition | Slightly worse resolution, higher throughput | The change from 1.92 to 0.96 µs is unlikely to materially affect Mg quantification if dead time is controlled, standards and unknown are collected at the same settings, and sufficient counts are acquired; the faster setting should mainly trade a small loss in separation for improved throughput (goldstein2018energydispersivexray pages 14-15, goldstein2018energydispersivexray pages 25-26, nylese2017improvementsinsdd pages 7-8) |
+
+
+*Table: This table quantifies how changing amp time from 1.92 µs to 0.96 µs affects the Mg Kα / Al Kα separation problem using the Fiori-Newbury energy-resolution relation. It shows that the low-energy peak broadening is modest and unlikely to materially change quantification of 0.2–1.5 wt% Mg in Al when acquisition conditions are otherwise well controlled.*
+
+## 3. Throughput, Count Rate, Pulse Pile-Up, and Sum Peaks
+
+The relationship between amp time and throughput is fundamental: shorter amp times dramatically increase the maximum output count rate (OCR) but also raise the probability of pulse pile-up (coincidence events), producing spurious sum peaks that can interfere with qualitative and quantitative analysis (goldstein2018energydispersivexray pages 14-15, goldstein2018energydispersivexray pages 25-26, goldstein1992xrayspectralmeasurement pages 25-27, goldstein1992xrayspectralmeasurement pages 27-30).
+
+Goldstein et al. (2018) describe detector performance as a three-way trade-off among throughput, resolution, and coincidence rate. They recommend choosing the process time that maximizes throughput at an acceptable coincidence rate, which typically sacrifices only a few eV FWHM relative to the optimum (goldstein2018energydispersivexray pages 25-26). Practically, coincidence peaks become detectable at moderate dead times (an example of an Al+Al sum peak at 2.972 keV was observed at only 14% dead time) (goldstein2018energydispersivexray pages 7-9). For trace analysis, Newbury and Ritchie recommend restricting dead time to ≤10% to substantially suppress coincidence peaks and their interference with minor/trace element signals (newbury2014rigorousquantitativeelemental pages 14-15).
+
+Examples from the EDAX literature demonstrate the throughput gains: at 0.12 µs amp time, mapping was performed at 884 kcps input count rate (nylese2017improvementsinsdd pages 5-6), while at 0.96 µs, 200 kcps input count rates were handled with dead time below 30% (nylese2017improvementsinsdd pages 7-8). On a different SDD system, a 220 ns time constant enabled a single detector to reach ~270 kHz OCR and a cluster to exceed 1.25 MHz OCR (newbury2011isscanningelectron pages 2-3).
+
+## 4. Recommended Amp Time Settings for EDAX Octane Plus and Octane Elite SDDs
+
+Data from Nylese and Rafaelsen (2017), published by EDAX/AMETEK, provide specific guidance:
+
+**For trace/light-element analysis and difficult peak overlaps:** Use longer amp times (e.g., 3.84 µs on the Octane Elite Super), which yield the best resolution (~124 eV at Mn Kα) and superior low-energy sensitivity. This is preferred when resolving closely spaced peaks or when trace element detection limits are critical (nylese2017improvementsinsdd pages 6-7, nylese2017improvementsinsdd pages 6-6).
+
+**For high-throughput mapping and spectrum imaging:** Use short amp times (e.g., 0.12–0.24 µs on the Octane Elite Super), which allow input count rates of hundreds of kcps to nearly 1 Mcps. The CUBE preamplifier in the Octane Elite series preserves low-energy sensitivity (including C K detection) even at these fast processing speeds, a significant advantage over the older JFET-based Octane Plus (nylese2017improvementsinsdd pages 4-4, nylese2017improvementsinsdd media a4b08999, nylese2017improvementsinsdd pages 5-6).
+
+**Intermediate settings (e.g., 0.96 µs):** Nylese and Rafaelsen demonstrated stable carbon quantification (0.50 wt% certified, measured 0.46–0.52 wt%) across input count rates from 15 kcps to 200 kcps by adjusting the amp time down to 0.96 µs and maintaining dead time below 30% (nylese2017improvementsinsdd pages 7-8). This confirms that intermediate amp times provide a practical balance.
+
+The comprehensive performance summary across settings is shown below:
+
+| Source / detector / basis | Amp Time (µs) | Mn Kα FWHM (eV) | Maximum Throughput / OCR (kcps) | Recommended use case |
+|---|---:|---:|---:|---|
+| EDAX Octane Elite Super (measured) | 3.84 | 124 | Not stated; used at 20 kcps input in example | Best resolution / overlap-sensitive quant / trace-light-element work where throughput is secondary (nylese2017improvementsinsdd pages 6-7, nylese2017improvementsinsdd pages 6-6) |
+| EDAX Octane Elite Super (measured) | 0.96 | Not explicitly stated in cited paper; used successfully at 200 kcps input with stable low-C quantification | 200 input kcps with dead time kept <30% | Good compromise for routine quant at elevated count rate; useful benchmark for the user’s 0.96 µs setting (nylese2017improvementsinsdd pages 7-8) |
+| EDAX Octane Elite Super (measured) | 0.24 | 133 | ~213 total counts in 2 s at 100 kcps input in example; intended for much higher throughput than 3.84 µs | High-throughput mapping / fast spectrum imaging with modest resolution loss (nylese2017improvementsinsdd pages 6-7, nylese2017improvementsinsdd pages 6-6) |
+| EDAX Octane Elite Super mapping example (measured) | 0.12 | Not stated | 884 input kcps | Maximum-speed mapping, including light-element mapping when speed dominates over best resolution (nylese2017improvementsinsdd pages 6-6, nylese2017improvementsinsdd pages 5-6) |
+| EDAX Octane Plus / older JFET-based Octane at fast processing time | 0.48 | Worse than Octane Elite at same fast amp time; low-energy response poorer, C may be lost | Not stated | Older generation detector is less suitable than Elite/CUBE for fast trace-light-element work; use longer amp times if resolution/low-energy sensitivity matters (nylese2017improvementsinsdd media a4b08999, nylese2017improvementsinsdd pages 4-4) |
+| EDAX Octane Elite / CUBE at fast processing time | 0.48 | Improved vs older Octane at same amp time; low-energy sensitivity retained | Not stated | Better fast-mapping choice than Octane Plus; can preserve low-energy sensitivity at short amp time (nylese2017improvementsinsdd media a4b08999, nylese2017improvementsinsdd media c1a392d6) |
+| Newbury & Ritchie SDD-EDS (measured) | 0.44 | 127.5 | Single detector max output ~130; cluster operation much higher in related examples | Strong general-purpose quantitative setting; good compromise between resolution and throughput (newbury2011isscanningelectron pages 2-3, newbury2014rigorousquantitativeelemental pages 5-6) |
+| Newbury & Ritchie SDD-EDS (measured) | 0.22 | 145 | Single detector ~270; cluster >1250 | Very high-throughput mapping or spectrum imaging; not preferred for difficult trace-overlap quant (newbury2011isscanningelectron pages 2-3) |
+| Goldstein et al. guideline for modern SDDs | Moderate process time | 130–135 | Substantially higher than at ultimate-resolution settings; exact value detector-dependent | Recommended practical compromise for most quantitative SEM-EDS work (goldstein2018energydispersivexray pages 14-15, goldstein2018energydispersivexray pages 25-26) |
+| Goldstein et al. guideline for modern SDDs | Long / resolution setting | 122–128 | Lower throughput | Choose when best peak separation is needed and count rate can be sacrificed (goldstein2018energydispersivexray pages 14-15) |
+| Goldstein et al. guideline for modern SDDs | Short / high-throughput setting | 140–150 | Highest throughput, but higher coincidence/pile-up risk | Suitable for mapping when counting statistics matter more than ultimate FWHM (goldstein2018energydispersivexray pages 14-15, goldstein2018energydispersivexray pages 25-26) |
+| User’s detector case (measured) | 1.92 | 130.4 | Not stated | Falls squarely in Goldstein’s recommended compromise range; appropriate for quantitative Mg-in-Al work (goldstein2018energydispersivexray pages 14-15) |
+| User’s detector case (measured) | 0.96 | 135.5 | Not stated | Slightly faster, slightly worse resolution; still within practical quantitative range and unlikely to materially change 0.2–1.5 wt% Mg quant in Al if count statistics, dead time, and fitting are controlled (goldstein2018energydispersivexray pages 14-15, newbury2016measurementoftrace pages 2-3) |
+
+
+*Table: This table summarizes how SDD-EDS pulse-processing time affects Mn Kα resolution, throughput, and recommended use across EDAX Octane systems, Newbury & Ritchie examples, and Goldstein textbook guidance. It also places the user’s 1.92 µs versus 0.96 µs settings in context for Mg-in-Al quantification.*
+
+## 5. ASTM E1508 Guidance on Pulse-Processor Settings
+
+ASTM E1508 ("Standard Guide for Quantitative Analysis by Energy-Dispersive Spectroscopy") is widely cited as the reference standard for quantitative SEM-EDS procedure (spasevski2026challengesinmeasuring pages 2-5). While the full text of the standard was not available for direct citation, secondary references confirm that ASTM E1508 mandates: (a) consistent and documented pulse-processor/time-constant settings between standards and unknowns; (b) verification of detector resolution and calibration; (c) dead-time management and measurement under controlled conditions; and (d) appropriate background correction and peak deconvolution procedures. These requirements align closely with the guidance in Goldstein et al. (2018), who emphasize that the time constant must be checked and kept consistent, that adaptive process time should not be used for standards-based quantitative analysis, and that calibration (peak position and shape) should be verified to be constant with input count rate (goldstein2018energydispersivexray pages 14-15, goldstein2018energydispersivexray pages 7-9). Newbury and Ritchie similarly stress that the same detector settings must be used for unknown and standard acquisitions and that the analyst should verify peak shape stability across the dead-time range (newbury2016measurementoftrace pages 2-3, newbury2014rigorousquantitativeelemental pages 1-2).
+
+## Specific Question: Would Changing Amp Time from 1.92 µs to 0.96 µs Materially Affect Quantification of 0.2–1.5 wt% Mg in Al?
+
+**The answer, based on the assembled evidence, is that this change is unlikely to materially affect the quantification of 0.2–1.5 wt% Mg in an Al-rich matrix**, provided the following conditions are met:
+
+1. **The resolution change is small.** Moving from 130.4 eV to 135.5 eV at Mn Kα represents only a 3.9% degradation in resolution, well within the 130–135 eV range that Goldstein et al. describe as the recommended practical compromise for quantitative SDD-EDS work (goldstein2018energydispersivexray pages 14-15).
+
+2. **The Mg–Al peak separation is large relative to FWHM.** The 233 eV separation between Mg Kα and Al Kα corresponds to approximately 2.5–2.8× the low-energy FWHM. Modern MLLS peak-fitting routines (e.g., NIST DTSA-II) have been demonstrated to accurately deconvolve peaks separated by as little as 3–13 eV; the Mg–Al case is far less challenging (newbury2016measurementoftrace pages 2-3, newbury2014rigorousquantitativeelemental pages 1-2).
+
+3. **Counting statistics dominate at these concentration levels.** For 0.2–1.5 wt% Mg (minor to low-minor constituent), the precision and accuracy of the measurement are governed primarily by the total number of counts in the Mg Kα peak, the accuracy of the background model, surface preparation quality, and the use of appropriate standards—not by a 5 eV change in Mn Kα FWHM (newbury2016measurementoftrace pages 2-3, newbury2016measurementoftrace pages 1-2, goldstein2018quantitativeanalysisthe pages 1-4, spasevski2026challengesinmeasuring pages 2-5).
+
+4. **Consistent acquisition conditions are essential.** Per ASTM E1508 practice and Goldstein et al. guidance, the same amp time and detector settings must be used for both unknown and standard spectra. Changing the amp time between measurements would introduce systematic error, but choosing either 1.92 µs or 0.96 µs consistently is acceptable (goldstein2018energydispersivexray pages 14-15, goldstein2018energydispersivexray pages 7-9).
+
+5. **The faster setting offers throughput advantages.** At 0.96 µs, higher count rates can be accommodated, potentially enabling more counts per measurement time and thus improving counting statistics for the small Mg peak. Nylese and Rafaelsen demonstrated stable quantification of 0.50 wt% C at 0.96 µs amp time across a wide range of input count rates (nylese2017improvementsinsdd pages 7-8).
+
+6. **Caution regarding dead time and pile-up.** If the faster setting leads to substantially higher dead time, coincidence (sum) peaks may appear. For a pure Al matrix, the Al+Al sum peak at ~2.97 keV would not interfere with Mg Kα, but the analyst should verify dead time is controlled (ideally ≤10–30% depending on the application) and inspect spectra for coincidence artifacts (newbury2014rigorousquantitativeelemental pages 14-15, goldstein2018energydispersivexray pages 25-26, goldstein2018energydispersivexray pages 7-9).
+
+**In summary:** For the specific scenario of quantifying 0.2–1.5 wt% Mg in Al at the two settings described, the 5.1 eV degradation in Mn Kα resolution is a minor perturbation that does not qualitatively change the peak overlap character between Mg Kα and Al Kα. Either amp time setting falls within the range recommended by Goldstein et al. (2018) for quantitative SDD-EDS analysis. The analyst's attention is better directed toward ensuring adequate counting statistics (high total spectrum counts), proper standards-based analysis protocol, surface preparation, low dead-time operation, and inspection of peak-fitting residuals—these factors will have a far larger effect on the accuracy of minor Mg quantification than the small resolution difference between the two amp time settings.

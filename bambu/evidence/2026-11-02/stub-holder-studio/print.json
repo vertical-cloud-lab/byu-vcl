@@ -1,0 +1,102 @@
+{
+ "what": "Stub holder plate (Top + Bottom) for SEM stubs, digital-alloy-lab PR #174, on the A1 mini in black PLA Basic",
+ "status": "complete",
+ "request": {
+  "by": "ronnie-guymon",
+  "comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/95#issuecomment-6589992268",
+  "trigger_for_this_run": "https://github.com/vertical-cloud-lab/byu-vcl/pull/95#issuecomment-6590655215 ('@claude-print it's been approved'); run 41541932926 approved and started 23:11:56 UTC",
+  "notes": "the earlier run for the same request, 41536877158, was still waiting for approval throughout this run"
+ },
+ "route": "route 3 in bambu/README.md (PR 234 branch): Bambu Studio 02.08.02.61 GUI on the GitHub Actions runner's Xvfb display, logged in to the lab's Bambu account (password plus a bambu-totp authenticator code), sent through Bambu's cloud",
+ "printer": {
+  "model": "Bambu Lab A1 mini",
+  "name_in_studio": "Thumbelina, the A1 Mini",
+  "state_before": "idle; last job 'compact_stirrer_parts_2' (1 h 11 min 20 s, 27.11 g) at 100 % Finished; nozzle 21 C, bed 21 C, targets 0; Assistant (HMS) tab empty",
+  "nozzle": "0.4 mm stainless steel, standard flow (Studio's Printer Parts, 23:30:08 UTC)",
+  "ams": "AMS lite: A1 PLA dark blue, A2 empty, A3 PLA black (mapped), A4 PETG",
+  "firmware": "01.08.01.00 (latest); AMS lite 00.00.08.15"
+ },
+ "source": {
+  "repo": "vertical-cloud-lab/digital-alloy-lab",
+  "commit": "9566ee1f669ada493387124c5127b5f732bba6f5",
+  "path": "stub-holder/stub_holder_A1mini_blackPLA.gcode.3mf",
+  "plate_1_gcode_md5": "4809e115ffdc94e4eaf293f81e3835e6 (= the 3MF's stored MD5 = the MD5 in the request)",
+  "notes": "https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/claude/issue-256-20261005-1631/stub-holder/README.md"
+ },
+ "gui_settings_changed": "Studio re-sliced the CLI project with circle compensation off; 'Auto circle contour-hole compensation' was ticked again (Quality -> Precision) and the plate re-sliced. See gcode_check.json: 90 layers, 30.90 g, total extrusion 10172.03 vs 10171.88 mm, at most 0.16 mm per layer; only Studio's stock acceleration limits differ",
+ "sent_file": {
+  "path": "sent/stub_holder_A1mini_blackPLA.3mf",
+  "provenance": "the 3MF Studio wrote at Send (/tmp/bamboo_model/.../Metadata/.9978.0.3mf, 23:49:36 UTC); DesignerUserId blanked in 3D/3dmodel.model, nothing else changed",
+  "plate_1_gcode_md5": "a1f716d1085f65f26d8129f51a82c447 (byte-identical to Studio's slice)"
+ },
+ "send_options": {
+  "job_name": "stub_holder_A1mini_blackPLA (renamed from 'stub_holder_A1mini_blackPLA.gcode_Top + Bottom' to drop the spaces)",
+  "printer": "Thumbelina, the A1 Mini (Bambu Lab A1 mini 0.4mm)",
+  "plate": "PEI (Textured PEI)",
+  "ams_mapping": "PLA -> A3 (black)",
+  "timelapse": "off",
+  "auto_bed_leveling": "on",
+  "flow_dynamics_calibration": "on"
+ },
+ "estimates": {
+  "studio": "53 min 32 s, 30.90 g, 90 layers",
+  "requested_file": "54 min 4 s"
+ },
+ "plate_check": {
+  "rule": "sgbaird 2026-10-23: frame first, read the plate, wait at least 90 s; if the run can't tell, wait for a person",
+  "frame": "NONE: Studio's live view never started. 15+ attempts 23:24-23:56 UTC across two Studio restarts all ended 'Loading failed. Please check the network and try again. [2:2]' (code 2 = no video within 15 s, MediaPlayCtrl.cpp in 02.08.02.61). The runner's outbound UDP worked (STUN) and the printer's Storage tab loaded over the same cloud tunnel, so the fault looked printer-side. Screenshot: 20261102T234817Z_a1mini_liveview_failed.png",
+  "asked": "23:33:37 UTC in the tracking comment: no frame, nothing will be sent; anyone with the camera open in Handy/Studio please close it, or power-cycle the printer",
+  "go": {
+   "by": "ronnie-guymon (write access)",
+   "at": "2026-11-02T23:46:33Z",
+   "comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/95#issuecomment-6591420981",
+   "text": "Ignore the camera frame, the plate is clear"
+  },
+  "send_notice": "2026-11-02T23:47:45Z in the tracking comment, with a 90 s window to object",
+  "wait_ended": "2026-11-02T23:49:35Z, no replies after the go (issue or review comments)",
+  "frame_before_send": "attempted 23:47:56 UTC; failed the same way"
+ },
+ "timeline_utc": {
+  "request": "2026-11-02T22:23:33Z",
+  "second_trigger": "2026-11-02T23:00:23Z",
+  "run_started": "2026-11-02T23:11:56Z",
+  "recording_started": "2026-11-02T23:15:16Z",
+  "studio_first_start": "2026-11-02T23:15:20Z; hung at 100 % CPU after the network plug-in install (23:17), killed and restarted at 23:19",
+  "login": "2026-11-02T23:20:55Z (Log In) to 23:21:11Z (authenticator code confirmed); first code worked",
+  "device_page": "2026-11-02T23:21:40Z",
+  "liveview_failures": "2026-11-02T23:24 to 23:56, every attempt",
+  "nozzle_read": "2026-11-02T23:30:08Z",
+  "status_posted": "2026-11-02T23:33:37Z (no frame; holding)",
+  "sliced_in_studio": "2026-11-02T23:38:54Z (circle compensation on)",
+  "go": "2026-11-02T23:46:33Z",
+  "send": "2026-11-02T23:49:37Z",
+  "printing_state": "2026-11-02T23:50:28Z (0 %, layer 0/90, heating)",
+  "layer_1": "by 2026-11-02T23:56:37Z (11 %, nozzle 220/220, bed 65/65; Device-page screenshot)",
+  "layer_14": "2026-11-03T00:09:59Z (36 %)",
+  "layer_50": "2026-11-03T00:25:01Z (65 %)",
+  "layer_90": "2026-11-03T00:41:10Z",
+  "heaters_off": "2026-11-03T00:42:41Z (nozzle and bed targets 0; 99 %, 'Finished')",
+  "finished_100pct": "by 2026-11-03T00:44:18Z (100 %, layer 90/90, 'Finished', Pause/Stop greyed)",
+  "hms_after": "2026-11-03T00:45:11Z, Assistant tab empty",
+  "signed_out": "2026-11-03T00:46:03Z, then Studio closed and ~/.config/BambuStudio deleted (it holds the printers' LAN access codes)"
+ },
+ "github_token": "re-minted with scripts/refresh_github_app_token.py (main) at 23:56 and 00:51 UTC. GH_TOKEN in this session was the 1-hour App token, not the job token: gh calls with it failed at 00:12:22, 60 min after the step started; DEFAULT_WORKFLOW_TOKEN kept working for reads",
+ "result": "FINISHED: 100 %, layer 90/90 by 00:44:18 UTC; the last layer at 00:41:10 and both heater targets back to 0 at 00:42:41, 53.1 min after Send (Studio's estimate 53 min 32 s). No HMS alert or dialog at any point (Assistant tab empty before and after). Not seen on camera: the live view never started, so the part itself was never imaged by this run",
+ "monitor": {
+  "how": "Studio's Device page, OCR every ~10 s (bambu/studio/watch_studio.py for the start-up, then a variant that also polled this thread and retried the camera every 3 min); log in watch.jsonl.gz",
+  "samples": 257,
+  "printing_samples": 227,
+  "nozzle_C_while_printing": [
+   218,
+   221
+  ],
+  "bed_C_while_printing": [
+   62,
+   65
+  ],
+  "dialogs": "none",
+  "replies_after_the_go": "none",
+  "camera": "never played: every retry, 23:24 UTC to 00:45 UTC, ended '[2:2]' (cam_mad 0 in every sample, i.e. the idle placeholder throughout)"
+ },
+ "recording": "recording/stub_holder_A1mini_2026-11-02.mp4 (13.3 min, 4.8 MB, chapters in recording/*_chapters.txt), cut from the session's x11grab segments by bambu/studio/cut_recording.py (copy patched to take full dates, since the session crossed midnight) per recording/cut_plan.json. Cut: the login 23:20:36-23:21:32 (e-mail and code on screen), the Update tab 23:30:15-23:30:40 (serial numbers), the restart's home page 23:31:10-23:31:50 and the sign-out from 00:45:25 (account name). Frames within 2 s of each cut were OCR-checked for login, serial and account text: none. No blur needed: the camera pane never showed the room. Not on YouTube: claude-print.yml has no YouTube token"
+}

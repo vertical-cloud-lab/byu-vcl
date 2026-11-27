@@ -1,0 +1,58 @@
+{
+ "requested_file": {
+  "repo": "vertical-cloud-lab/digital-alloy-lab",
+  "commit": "9566ee1f669ada493387124c5127b5f732bba6f5",
+  "path": "stub-holder/stub_holder_A1mini_blackPLA.gcode.3mf",
+  "file_md5": "fec2568a78ec1f46298bf04cc94ba832",
+  "plate_1_gcode_md5": "4809e115ffdc94e4eaf293f81e3835e6",
+  "stored_md5_matches": true
+ },
+ "requested_file_checks": {
+  "printer_model": "Bambu Lab A1 mini (printer_model_id N1)",
+  "nozzle_mm": 0.4,
+  "bed_type": "Textured PEI Plate, 65 C first layer and after",
+  "filament": "Bambu PLA Basic @BBL A1M (GFA00), #000000, 30.90 g",
+  "layers": 90,
+  "max_print_height_mm": 18.0,
+  "start_sequence": "M620 S0A and M412 S1 present",
+  "enable_circle_compensation": 1,
+  "slicer_warnings": "not_support_traditional_timelapse only (expected)",
+  "estimate": "54m 4s (Studio 02.08.02.61, CLI)"
+ },
+ "studio_reslice": {
+  "why": "Studio's GUI re-sliced the CLI-made project on opening and used the stock process preset values, which switched enable_circle_compensation 1 -> 0 (bambu/studio/README.md on PR 234's branch, 'The GUI resets a CLI project's changed settings')",
+  "fix": "Advanced on, Quality -> Precision -> 'Auto circle contour-hole compensation' ticked, re-sliced",
+  "config_differences_left": {
+   "machine_max_acceleration_x/y/travel": "6000/6000/6000 in the file, 20000/20000/9000 in Studio (stock values; same as every earlier GUI run)",
+   "enable_prime_tower": "1 in the file, 0 in Studio; single filament, so neither G-code has a prime tower (0 'FEATURE: Prime tower' lines in both)",
+   "other": "AMS/drying/host metadata keys only (extruder_ams_count, filament_dev_ams_drying_*, host_type, ...)"
+  },
+  "sent_plate_1_gcode_md5": "a1f716d1085f65f26d8129f51a82c447",
+  "comparison_requested_vs_sent": {
+   "layers": [
+    90,
+    90
+   ],
+   "max_z": [
+    118.0,
+    118.0
+   ],
+   "total_E_mm": [
+    10171.88,
+    10172.03
+   ],
+   "max_layer_E_diff_mm": 0.16,
+   "layers_E_diff_over_0.1mm": 1,
+   "motion_lines": [
+    49380,
+    49386
+   ],
+   "identical_motion_lines_in_order": 3924,
+   "motion_sha1": [
+    "2dee3f584766",
+    "c2fd7b67ee1f"
+   ]
+  },
+  "estimate": "53m 32s, 30.90 g"
+ }
+}
