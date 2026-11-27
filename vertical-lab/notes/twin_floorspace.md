@@ -9,9 +9,12 @@ reusable modules in `twin/video/` so round 5's re-cut can drop it in next to the
 **Everything here is a design layout, not a built lab.** The equipment is the 3-D lab's (PR 318's scene). The three
 floor plans, their rules and their areas are ours.
 
-**Preview:** see the PR 400 thread for the private upload's link. The record is
+**Preview:** [RUXoZQPodyU](https://www.youtube.com/watch?v=RUXoZQPodyU), **private**, for review (1:58, uploaded
+2026-11-27 from commit 0902898; `out/youtube.json`, key `floorspace/floorspace_preview.mp4`). The record is
 [`out/floorspace/floorspace_preview.json`](../out/floorspace/floorspace_preview.json) and the contact sheet
 [`out/floorspace/sheet.png`](../out/floorspace/sheet.png).
+
+![Contact sheet of the floor-space preview](../out/floorspace/sheet.png)
 
 ## The result
 
@@ -154,8 +157,9 @@ every number in it is `layouts.json`'s (`twin/tests/test_floorspace.py` checks).
 **Heard back:** every line by faster-whisper small.en, 0.85 % word error over the script
 (`out/floorspace/narration/check.json`). Two lines were reworded after the first pass: "Now automate it on the same floor
 plan" came back as "now automated on the same floor plan", and "Emerald Cloud Lab's lab" read awkwardly. small.en still
-writes "Kardex" as "cardiac", a word it doesn't know. The encoded file's own audio was transcribed too
-(`out/floorspace/narration/encoded_check.json`).
+writes "Kardex" as "cardiac", a word it doesn't know. The encoded file's own audio, transcribed whole: 1.7 % word error
+(`out/floorspace/narration/encoded_check.json`), all of it spelling ("29%" for "29 percent", "1,000" for "thousand",
+"100" for "a hundred") and "cardiac" again.
 
 **The track:** each line levelled to -19 dBFS RMS at its time, 48 kHz, then ffmpeg's `loudnorm` in two passes to -16
 LUFS and -1.5 dBTP. A single linear gain would have put the peaks over -1.5 dBTP, so `loudnorm` used its dynamic mode.

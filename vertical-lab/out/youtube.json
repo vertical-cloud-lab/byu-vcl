@@ -342,6 +342,18 @@
     "privacy": "unlisted"
    }
   ],
+  "floorspace/floorspace_preview.mp4": [
+   {
+    "id": "RUXoZQPodyU",
+    "sha256": "baddc8b8653ba2711757eaf90c186ab1144bf705b3f677f9dcf8fd7d37495719",
+    "bytes": 33591257,
+    "commit": "0902898",
+    "uploaded": "2026-11-27T06:23:27Z",
+    "title": "Floor space: three labs, the same equipment (preview)",
+    "privacy": "private",
+    "notified_subscribers": false
+   }
+  ],
   "instruments/cubxl_corrosion.mp4": [
    {
     "id": "nUf68Kl3kdk",

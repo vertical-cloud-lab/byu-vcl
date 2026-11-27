@@ -1,0 +1,14 @@
+{
+ "title": "Floor space: three labs, the same equipment (preview)",
+ "description": "A preview segment for review (private): the vertical lab's equipment laid out three ways, and the floor area each layout takes. Design layouts, not built labs.\n\nThe same 43 instruments in each (31 benchtop, 12 floor machines), from the 3-D lab of PR 318:\n1. Conventional materials lab, grouped by workflow: 28.9 x 13.8 m, 398 m2 (4,280 sq ft), 10.0 instruments per 1,000 sq ft.\n2. The same plan automated (4 MiR250 + UR12e mobile manipulators, 24 docking targets, 5 fixed arms with sample racks, 2 chargers): the same 4,280 sq ft.\n3. Vertical lab (two Kardex Shuttle XP 500s, 9.15 m tall, with the benchtop instruments on their trays; the floor machines along one 3.0 m MiR aisle): 23.8 x 11.8 m, 281 m2 (3,029 sq ft), 14.2 instruments per 1,000 sq ft: 29 % less floor, but it needs a high bay.\n\nRules, the same in every layout: benches 30 in deep (36 in for deeper instruments), aisles 5 ft (NIH Office of Research Facilities, Lab Module Design Considerations, 2013), a 6 ft corridor, 0.6 m service space beside and behind every floor machine, 150 mm walls, no room narrower than one 11 ft module; area to the walls' outer faces.\n\nFor scale: Emerald Cloud Lab's South San Francisco lab, about 15,000 sq ft with more than 100 items of equipment (The Guardian, 11 September 2022); its Austin facility, 105,000 sq ft for over 230 instrument types (Emerald Cloud Lab press release, 28 February 2023).\n\nNarration: Kokoro v1.0 (open weights), voice af_heart. Code and notes: https://github.com/vertical-cloud-lab/byu-vcl/tree/0902898/vertical-lab (twin/video/floorspace*.py, notes/twin_floorspace.md).",
+ "tags": [
+  "vertical lab",
+  "self-driving lab",
+  "lab automation",
+  "floor space",
+  "Kardex",
+  "MiR250"
+ ],
+ "categoryId": "28",
+ "commit": "0902898"
+}
