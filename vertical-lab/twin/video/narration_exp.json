@@ -1,87 +1,281 @@
 {
  "about": "The experiments chapter's narration (twin/video/experiments.py, on twin/video/narration.py's machinery: Kokoro v1.0, af_heart). The old chapter's four lines (dag1 to dag4 of narration3b.json) are kept word for word and moved to where their step now is; the others are short lines for the new visuals. One entry per line: id, then either seg (a part of the chapter) with at (seconds into it) or mark (a named moment, experiments.marks()) with offset; text is what the subtitles show and the voice says; src is where on screen its content is; nums lists every number the line speaks as [the figure or word in the text, its path in out/twin3b/video/experiments/facts.json, its format], checked by `python -m twin.video.experiments nums`.",
  "lines": [
-  {"id": "dag1", "seg": "intro", "at": 0.6,
+  {
+   "id": "dag1",
+   "seg": "intro",
+   "at": 0.6,
    "text": "Each campaign is a function network: a chain of steps, where each step's results feed the next. BOFN, Bayesian optimization over function networks, models every step, not just the final score.",
-   "src": "experiments.Intro: the two networks (dag_anim's cards), then the pulse along each; BOFN: Astudillo and Frazier, 2021"},
-  {"id": "exp1", "mark": "intro.legend", "offset": 0.4,
+   "src": "experiments.Intro: the two networks (dag_anim's cards), then the pulse along each; BOFN: Astudillo and Frazier, 2021"
+  },
+  {
+   "id": "exp1",
+   "mark": "intro.legend",
+   "offset": 0.4,
    "text": "Here is each step itself, for one alloy from each campaign: the experiment, and the data it makes. Everything is simulated by the twin, unless a label says otherwise.",
-   "src": "experiments.Intro: the panel 'What follows' and 'How to read the labels'"},
-  {"id": "comp1", "mark": "composition.al", "offset": 0.6,
-   "text": "The aluminium alloy is design 299: aluminium with eight additions, manganese and chromium the largest, out of fifteen elements it could have used.",
+   "src": "experiments.Intro: the panel 'What follows' and 'How to read the labels'"
+  },
+  {
+   "id": "comp1",
+   "mark": "composition.al",
+   "offset": 0.6,
+   "text": "The aluminium alloy is design 299: aluminium with eight additions, manganese and chromium the largest.",
    "src": "exp_composition: the periodic table and the fractions (the committed event log of seed 0; twin/spaces.py)",
-   "nums": [["299", "follow.flaime_al.design", "d"], ["eight", "run.flaime_al.in_design", "d"], ["fifteen", "run.flaime_al.elements", "d"]]},
-  {"id": "comp2", "mark": "composition.al.space", "offset": 0.4,
-   "text": "On this map of its search space, it is one of 435 designs the run simulated. Only 13 were made and tested all the way.",
+   "nums": [
+    [
+     "299",
+     "follow.flaime_al.design",
+     "d"
+    ],
+    [
+     "eight",
+     "run.flaime_al.in_design",
+     "d"
+    ]
+   ]
+  },
+  {
+   "id": "comp2",
+   "mark": "composition.al.space",
+   "offset": 0.4,
+   "text": "On this map of the search space, it is one of 435 designs the run simulated.",
    "src": "exp_composition: the projection of the run's designs (counts from the event log)",
-   "nums": [["435", "run.flaime_al.designs", "d"], ["13", "run.flaime_al.demonstrated", "d"]]},
-  {"id": "comp3", "mark": "composition.cu", "offset": 0.6,
+   "nums": [
+    [
+     "435",
+     "run.flaime_al.designs",
+     "d"
+    ]
+   ]
+  },
+  {
+   "id": "comp3",
+   "mark": "composition.cu",
+   "offset": 0.6,
    "text": "The copper alloy is design 74: an aluminium bronze, with a little nickel and titanium.",
    "src": "exp_composition: copper's periodic table and fractions (the committed event log of seed 5)",
-   "nums": [["74", "follow.onr_cu.design", "d"]]},
-  {"id": "sch1", "mark": "scheil.cool", "offset": 0.4,
-   "text": "CALPHAD comes first. As the melt cools, a Scheil model follows how much of it has frozen, and which phases form.",
-   "src": "exp_scheil: the open-database node's curve drawn as the temperature falls; the phases of the pycalphad run"},
-  {"id": "sch2", "mark": "scheil.truth", "offset": 0.3,
-   "text": "The optimizer sees only the open-database curve. The twin's hidden truth is different, as a real alloy's would be.",
-   "src": "exp_scheil: the truth's curve beside the open node's (twin/thermo.py, the two parameter sets)"},
-  {"id": "sch3", "mark": "scheil.net", "offset": 0.3,
-   "text": "From its curve, the network takes two numbers: the liquidus, and a hot-cracking index. Every run in round three b used this open node. The Thermo-Calc stand-in was never bought.",
-   "src": "exp_scheil: the two read-outs highlighted (policies2.sim_of); facts.json sim_kinds: 436 logs, sim_open only"},
-  {"id": "am1", "mark": "am.track", "offset": 0.5,
+   "nums": [
+    [
+     "74",
+     "follow.onr_cu.design",
+     "d"
+    ]
+   ]
+  },
+  {
+   "id": "sch1",
+   "mark": "scheil.cool",
+   "offset": 0.4,
+   "text": "CALPHAD comes first. As the melt cools, a Scheil model follows how much of it has frozen. This curve is the one the optimizer sees.",
+   "src": "exp_scheil: the open-database node's curve drawn as the temperature falls (twin/thermo.py, the open parameter set)"
+  },
+  {
+   "id": "sch2",
+   "mark": "scheil.phases",
+   "offset": 1.9,
+   "text": "A full Scheil run on an open database adds the phases as they form. The twin's hidden truth differs again, as a real alloy would.",
+   "src": "exp_scheil: the pycalphad + scheil run with its phases, then the truth's curve (twin/thermo.py, the truth's parameter set)"
+  },
+  {
+   "id": "sch3",
+   "mark": "scheil.indicators",
+   "offset": 0.3,
+   "text": "From its curve, the network takes two numbers: the liquidus, and a hot-cracking index.",
+   "src": "exp_scheil: the indicators drawn on the node's curve; the two read-outs highlighted (policies2.sim_of)"
+  },
+  {
+   "id": "sch4",
+   "mark": "scheil.net",
+   "offset": 0.5,
+   "text": "Every run in round three b used this open node. The Thermo-Calc stand-in was never bought.",
+   "src": "exp_scheil: the line under the picture; facts.json sim_kinds: 436 logs, sim_open only"
+  },
+  {
+   "id": "am1",
+   "mark": "am.track",
+   "offset": 0.5,
    "text": "The twin's stand-in for the AM module is a moving point source of heat. It gives the melt pool's width and depth, and how fast the metal cools.",
-   "src": "exp_am: the laser track, the section, the point's thermal history (twin/physics.py rosenthal; truth_al.sim_am)"},
-  {"id": "am2", "mark": "am.not_tc", "offset": 0.3,
+   "src": "exp_am: the laser track, the section, the point's thermal history (twin/physics.py rosenthal; truth_al.sim_am)"
+  },
+  {
+   "id": "am2",
+   "mark": "am.not_tc",
+   "offset": 0.3,
    "text": "This is not Thermo-Calc output, and no run bought this node. But the same model decides the porosity of every simulated build.",
-   "src": "exp_am: the statement on screen; facts.json sim_kinds; twin/truth_al.py build()"},
-  {"id": "dag2", "seg": "atomize", "at": 0.6,
+   "src": "exp_am: the statement on screen; facts.json sim_kinds; twin/truth_al.py build()"
+  },
+  {
+   "id": "dag2",
+   "seg": "atomize",
+   "at": 0.6,
    "text": "For aluminium, the lab makes each alloy's powder itself, then prints it and checks every build.",
-   "src": "exp_atomize, then exp_print (the old chapter's line, at the powder node)"},
-  {"id": "atm1", "mark": "atomize.pour", "offset": 0.3,
+   "src": "exp_atomize, then exp_print (the old chapter's line, at the powder node)"
+  },
+  {
+   "id": "atm1",
+   "mark": "atomize.pour",
+   "offset": 0.3,
    "text": "This footage is real: our own atomizer, running a bronze. The size distribution beside it is the twin's, for this alloy.",
-   "src": "exp_atomize: out/footage/nab_pour1.mp4 (DAL #219, 27 Oct 2026) and the simulated laser-diffraction result"},
-  {"id": "atm2", "mark": "atomize.yield", "offset": 0.3,
+   "src": "exp_atomize: out/footage/nab_pour1.mp4 (DAL #219, 27 Oct 2026) and the simulated laser-diffraction result"
+  },
+  {
+   "id": "atm2",
+   "mark": "atomize.yield",
+   "offset": 0.3,
    "text": "Here, one of three runs failed, and 13 percent of the charge ended up in the printer's size range.",
    "src": "exp_atomize: the mass balance (twin/instruments/atomize_yield.py on this lot)",
-   "nums": [["one", "al.powder.failed", "d"], ["three", "al.powder.runs", "d"], ["13", "al.powder.cut_yield_pct", ".0f"]]},
-  {"id": "prt1", "mark": "print.build", "offset": 0.5,
+   "nums": [
+    [
+     "one",
+     "al.powder.failed",
+     "d"
+    ],
+    [
+     "three",
+     "al.powder.runs",
+     "d"
+    ],
+    [
+     "13",
+     "al.powder.cut_yield_pct",
+     ".0f"
+    ]
+   ]
+  },
+  {
+   "id": "prt1",
+   "mark": "print.build",
+   "offset": 0.5,
    "text": "One build is nine cubes at nine laser settings. Too little energy leaves lack of fusion. Too much makes keyhole pores.",
    "src": "exp_print: the plate and the power-speed map (twin/truth_al.py build on a 3 x 3 grid)",
-   "nums": [["nine", "al.n_cubes", "d"]]},
-  {"id": "prt2", "mark": "print.net", "offset": 0.3,
+   "nums": [
+    [
+     "nine",
+     "al.n_cubes",
+     "d"
+    ]
+   ]
+  },
+  {
+   "id": "prt2",
+   "mark": "print.net",
+   "offset": 0.3,
    "text": "Each cube's density and crack reading is one data point for the network's print node.",
-   "src": "exp_print: what the network takes (policies2.datasets, the print node)"},
-  {"id": "sem1", "mark": "sem.raster", "offset": 0.5,
+   "src": "exp_print: what the network takes (policies2.datasets, the print node)"
+  },
+  {
+   "id": "sem1",
+   "mark": "sem.raster",
+   "offset": 0.5,
    "text": "In the SEM, one beam gives four signals. Secondary electrons show the powder's shape. Backscattered electrons show the pores and cracks of a polished section.",
-   "src": "exp_sem: the SE image of the powder and the BSE image of the section building up (twin/instruments/sem.py)"},
-  {"id": "sem2", "mark": "sem.eds", "offset": 0.3,
+   "src": "exp_sem: the SE image of the powder and the BSE image of the section building up (twin/instruments/sem.py)"
+  },
+  {
+   "id": "sem2",
+   "mark": "sem.eds",
+   "offset": 0.3,
    "text": "X-rays give the composition, and EBSD the grains and their orientations.",
-   "src": "exp_sem: the EDS spectrum and the EBSD map (twin/instruments/eds.py, ebsd.py)"},
-  {"id": "sem3", "mark": "sem.net", "offset": 0.3,
+   "src": "exp_sem: the EDS spectrum and the EBSD map (twin/instruments/eds.py, ebsd.py)"
+  },
+  {
+   "id": "sem3",
+   "mark": "sem.net",
+   "offset": 0.3,
    "text": "The network uses three of these. EDS is a check on each lot, not an input.",
-   "src": "exp_sem: which the network uses (policies2.powder_feat, _soundness, section_out)"},
-  {"id": "mec1", "mark": "mech.furnace", "offset": 0.3,
+   "src": "exp_sem: which the network uses (policies2.powder_feat, _soundness, section_out)"
+  },
+  {
+   "id": "mec1",
+   "mark": "mech.furnace",
+   "offset": 0.3,
    "text": "Bars are heat treated, then pulled. The furnace profile here is only illustrative: the twin models the strength it leaves.",
-   "src": "exp_mech: the furnace profile, tagged illustrative (twin/truth_al.py strength; campaign.py books 3 furnace hours)"},
-  {"id": "mec2", "mark": "mech.pull", "offset": 0.6,
+   "src": "exp_mech: the furnace profile, tagged illustrative (twin/truth_al.py strength; campaign.py books 3 furnace hours)"
+  },
+  {
+   "id": "mec2",
+   "mark": "mech.pull",
+   "offset": 0.6,
    "text": "The curve is the twin's simulated record of the test, up to fracture.",
-   "src": "exp_mech: the stress-strain curve drawn as the bar pulls (twin/instruments/tensile.py, full fidelity)"},
-  {"id": "mec3", "mark": "mech.marks", "offset": 0.4,
+   "src": "exp_mech: the stress-strain curve drawn as the bar pulls (twin/instruments/tensile.py, full fidelity)"
+  },
+  {
+   "id": "mec3",
+   "mark": "mech.marks",
+   "offset": 0.4,
    "text": "Yield strength, 349 megapascals, and elongation, 10.1 percent, are the two numbers the network keeps.",
    "src": "exp_mech: the read-outs (mean of three bars) and the two highlighted",
-   "nums": [["349", "al.tensile.ys_MPa", ".0f"], ["10.1", "al.tensile.el_pct", ".1f"]]},
-  {"id": "dag3", "seg": "corrosion", "at": 0.6,
+   "nums": [
+    [
+     "349",
+     "al.tensile.ys_MPa",
+     ".0f"
+    ],
+    [
+     "10.1",
+     "al.tensile.el_pct",
+     ".1f"
+    ]
+   ]
+  },
+  {
+   "id": "dag3",
+   "seg": "corrosion",
+   "at": 0.6,
    "text": "For copper, a one-hour corrosion screen ranks the DED deposits, and thirty days in seawater come before a utility is known.",
-   "src": "exp_corrosion (the old chapter's line, at the screen node)"},
-  {"id": "cor1", "mark": "corrosion.scans", "offset": 0.3,
+   "src": "exp_corrosion (the old chapter's line, at the screen node)"
+  },
+  {
+   "id": "cor1",
+   "mark": "corrosion.scans",
+   "offset": 0.3,
    "text": "In the screen, the potential settles over the hour. Then two quick scans give an early corrosion rate and a breakdown potential.",
-   "src": "exp_corrosion: the open-circuit potential, then the polarization scans (twin/instruments/corrosion.py)"},
-  {"id": "cor2", "mark": "corrosion.immersion", "offset": 0.4,
+   "src": "exp_corrosion: the open-circuit potential, then the polarization scans (twin/instruments/corrosion.py)"
+  },
+  {
+   "id": "cor2",
+   "mark": "corrosion.immersion",
+   "offset": 0.4,
    "text": "In immersion, the coupon is weighed on days 1, 3, 7 and 14, and after any reading the policy may stop it. Day 30 gives the rate: 16.6 micrometres a year.",
    "src": "exp_corrosion: mass change against days (Campaign._interim; measure_immersion, full fidelity)",
-   "nums": [["1", "cu.immersion.read_days.first", "d"], ["3", "cu.immersion.read_days.second", "d"], ["7", "cu.immersion.read_days.third", "d"], ["14", "cu.immersion.read_days.fourth", "d"], ["30", "cu.immersion.days", "d"], ["16.6", "cu.immersion.rate30_um_yr", ".1f"]]},
-  {"id": "dag4", "mark": "outro.collapse", "offset": 0.4,
+   "nums": [
+    [
+     "1",
+     "cu.immersion.read_days.first",
+     "d"
+    ],
+    [
+     "3",
+     "cu.immersion.read_days.second",
+     "d"
+    ],
+    [
+     "7",
+     "cu.immersion.read_days.third",
+     "d"
+    ],
+    [
+     "14",
+     "cu.immersion.read_days.fourth",
+     "d"
+    ],
+    [
+     "30",
+     "cu.immersion.days",
+     "d"
+    ],
+    [
+     "16.6",
+     "cu.immersion.rate30_um_yr",
+     ".1f"
+    ]
+   ]
+  },
+  {
+   "id": "dag4",
+   "mark": "outro.collapse",
+   "offset": 0.4,
    "text": "Both campaigns share one lab. From here on, each step is an icon that lights up while it runs.",
-   "src": "experiments.Outro: dag_anim's collapse to icons (the old chapter's line)"}
+   "src": "experiments.Outro: dag_anim's collapse to icons (the old chapter's line)"
+  }
  ]
 }
