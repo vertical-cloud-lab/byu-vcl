@@ -359,12 +359,12 @@ def labs_caps() -> list:
     return [
         (T[0], T[1], "Like for like: both labs order their metal as they go. Automated lab: one-year runs at one "
                      "year's money. Conventional lab: three-year runs at three years' money. Simulated."),
-        (T[1], T[2], "What the stock buys: the automated lab against itself, stocked on day 0 or ordering its metal "
-                     "as it goes. Stocking is its own effect, not the lab's."),
+        (T[1], T[2], "What the stock buys: the simulated automated lab against itself, stocked on day 0 or ordering "
+                     "its metal as it goes. Stocking is its own effect, not the lab's."),
         (T[2], T[3], "Where the automated lab doesn't win: the same optimizer in both labs, both ordering metal as "
                      "they go. 4 seeds; the conventional lab's runs are three simulated years."),
-        (T[3], T[4], "Cost on one basis: campaign spend to the target (metal, consumables, outside services). Fixed "
-                     "costs are left out: staff, equipment and the building."),
+        (T[3], T[4], "Cost on one basis: simulated campaign spend to the target (metal, consumables, outside "
+                     "services). Fixed costs are left out: staff, equipment and the building."),
     ]
 
 
@@ -640,8 +640,9 @@ def _lab_tie(d, lay, t, ctx=None):
     F.swatch(d, X0 + px(24), px(562), St.mix(surf, St.CAMP[CU], k2), s=20)
     d.text((X0 + px(56), px(554)), "Copper's best existing alloy, in those seeds", font=St.font(24, bold=True),
            fill=ink)
-    d.text((X0 + px(24), px(594)), "seeds that got there: the automated lab's year against the conventional lab's "
-           "three years", font=St.font(16), fill=ink2)
+    d.text((X0 + px(24), px(592)), "the best existing alloy on this synthetic benchmark; seeds that got there, the "
+           "automated lab's", font=St.font(16), fill=ink2)
+    d.text((X0 + px(24), px(613)), "year against the conventional lab's three years", font=St.font(16), fill=ink2)
     for j, (nm, key) in enumerate((("BOFN in both labs", "bofn_same"), ("pKGFN in both labs", "pkgfn_same"))):
         c = like[CU]["T1"][key]["days"]
         x = X0 + px(40) + j * px(430)
@@ -668,8 +669,8 @@ def _lab_tie(d, lay, t, ctx=None):
     d.text((xx, px(638)), f"run by rule of thumb ({ch['hit']} of {ch['n']} runs)", font=St.font(18), fill=ink)
     _para(d, px(994), px(686), "Sooner than the automated lab ordering metal as it goes with any policy: "
           f"{_day(lean['heuristic']['day'])} for the heuristic, {_day(lean['bofn3']['day'])} for BOFN, "
-          f"{_day(lean['pkgfn3']['day'])} for pKGFN. This first target is a low bar: a lab with metal on the shelf "
-          "reaches it at once.", St.font(17), ink2, px(820), px(25), max_lines=4)
+          f"{_day(lean['pkgfn3']['day'])} for pKGFN. The best existing alloy on this synthetic benchmark is a low "
+          "bar: a lab with metal on the shelf reaches it soon.", St.font(17), ink2, px(820), px(25), max_lines=4)
     kf = St.ramp(t, 21.5, 22.3)
     _para(d, X0, px(840), "BOFN and pKGFN ran in the conventional lab on 4 seeds, three simulated years each, so these "
           "comparisons rest on 4 pairs. Three years' money also gives the conventional lab a first-day release "

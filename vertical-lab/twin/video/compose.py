@@ -949,15 +949,18 @@ def switch_card() -> Image.Image:
         rep_ = replay3b()
         a, b = rep_["parts"]
         camp = {"flaime_al": "aluminium", "onr_cu": "copper"}
-        w, h = px(940), px(250)
+        w, h = px(940), px(282)
         im, d = St.layer(w, h)
         d.rounded_rectangle((0, 0, w - 1, h - 1), radius=px(16), fill=St.SURF + (244,), outline=St.RULE + (255,),
                             width=px(2))
         d.text((px(32), px(22)), f"From here: seed {b['seed']} of {rep_['n']}", font=St.font(40, bold=True),
                fill=St.INK)
-        d.text((px(32), px(80)), f"the median seed for {camp[b['campaign']]}'s best existing alloy on this synthetic "
-               f"benchmark: day {b['day']:.0f}", font=St.font(22, bold=True), fill=St.INK)
-        y = px(124)
+        y = px(80)
+        for ln in St.wrap(f"the median seed for {camp[b['campaign']]}'s best existing alloy on this synthetic "
+                          f"benchmark, which it reaches on day {b['day']:.0f}", St.font(22, bold=True), w - px(64))[:2]:
+            d.text((px(32), y), ln, font=St.font(22, bold=True), fill=St.INK)
+            y += px(31)
+        y += px(12)
         for ln in St.wrap(f"The same simulated lab and policy (time-aware BOFN), another seed's year. Days 1 to "
                           f"{rep_['switch_day']} were seed {a['seed']}, the median seed for {camp[a['campaign']]}'s "
                           f"halfway target (day {a['day']:.0f}). The plots now draw seed {b['seed']}'s own year so "
