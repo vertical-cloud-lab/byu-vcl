@@ -746,6 +746,50 @@ class Campaign5(R4.Campaign4):
                         return "capacity"
         return super().submit3(a, now_h)
 
+    # ---------------------------------------------------------------------------------------- slot admission
+    def gate_ok(self, a, now_h) -> bool:
+        """Round 4's admission rule, with one change for an action that has steps before a standing slot (copper's
+        blend screens: the doser, then Utah's MX-Lab). Round 4 admitted a slot action only once the slot started within
+        its shipping time plus a day of *now*. With a doser on day shifts and the MX-Lab's slot on Tuesday at 08:00,
+        no moment satisfies that: dosed on Monday the material leaves too late, dosed on Friday the slot is more than
+        two days off. So copper's BOFN and pKGFN could never start a blend screen (their only way to try a new design),
+        and in the first runs made three lots in two years. Round 5 counts the window in working hours from the end of
+        the steps before the slot to the material's departure, so a weekend doesn't shut it out. Actions with no steps
+        before the slot (every slot action of the heuristic and the funnel) keep round 4's rule exactly."""
+        self.now_h = now_h
+        g = self.gate(a)
+        if g is None:
+            return True
+        pre, role, h = g
+        F = self.fac
+        t = now_h
+        for s_, hh in pre:
+            k = F.pick(s_, t, hh, self.key, a.get("kind", ""))
+            R = F.res[k]
+            cal = R.st
+            chunk = 8.0 if (cal.hours != "24/7" and cal.attended_h is None) else max(hh, 0.01)
+            left = max(hh * R.factor(), 0.01)
+            while left > 1e-9:
+                s0, d0, _ = R.find(t, min(left, chunk), self.key)
+                t, left = s0 + d0, left - min(left, chunk)
+        for k in F.cands(role, now_h, self.GATE_W):
+            R = F.res[k]
+            hh = h * R.factor()
+            if F.queue_wait(k, t, hh, self.key) > self.GATE_W:
+                continue
+            if k in F.ship:
+                s, _, _ = R.find(t + F.ship[k][0], hh, self.key)
+                if not pre:
+                    if s - now_h > F.ship[k][1] + self.GATE_W:
+                        continue
+                else:
+                    dep = s - F.ship[k][0]
+                    gap = R4._cal_hours("day", t, dep) if dep > t else 0.0
+                    if gap > (F.ship[k][1] - F.ship[k][0]) + self.GATE_W:
+                        continue
+            return True
+        return False
+
     # ---------------------------------------------------------------------------------------- estimates
     def estimate(self, action) -> float:
         k = action.get("kind")
