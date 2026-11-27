@@ -158,7 +158,25 @@ def simulate(cfg: dict):
     out["r5"] = tw.report5()
     out["torch_rng_used"] = R.torch_rng_used(rng0)
     out["env"] = R.fingerprint()
+    out["code"] = _code()
     return out, tw
+
+
+_CODE = {}
+
+
+def _code():
+    """The commit the row was made from, and whether twin/ differed from it."""
+    if not _CODE:
+        import subprocess
+        try:
+            c = subprocess.run(["git", "rev-parse", "HEAD"], cwd=HERE, capture_output=True, text=True).stdout.strip()
+            d = subprocess.run(["git", "status", "--porcelain", "--", "."], cwd=HERE, capture_output=True,
+                               text=True).stdout
+            _CODE.update(commit=c, twin_dirty=any(l[3:].endswith(".py") for l in d.splitlines()))
+        except Exception:
+            _CODE.update(commit=None, twin_dirty=None)
+    return dict(_CODE)
 
 
 def run_one(cfg: dict) -> dict:

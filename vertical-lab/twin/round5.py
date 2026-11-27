@@ -368,7 +368,7 @@ STEPS_ADDED = {
 }
 
 # ------------------------------------------------------------------------------------------------- stock
-REORDER = dict(z=1.65, cv=1.0, cover_d=30.0, prior_w_d=30.0, window_d=60.0,
+REORDER = dict(z=1.65, cv=1.0, cover_d=30.0, prior_w_d=30.0, window_d=60.0, cap_frac=0.2, burn_window_d=30.0,
                prior_scale={"vertical": 1.0, "conventional": 0.7},
                source="a reorder point with safety stock (Silver, Pyke & Thomas 2017, ch. 6): s = dL + z "
                       "sqrt(L sd(d)^2 + d^2 sd(L)^2), z = 1.65 (a 95 % cycle service level), sd(d) = d (lumpy demand: "
@@ -376,7 +376,12 @@ REORDER = dict(z=1.65, cv=1.0, cover_d=30.0, prior_w_d=30.0, window_d=60.0,
                       "of use; L the item's median lead plus the office's 3 days; d "
                       "from round 2's standing stock (about a month's use at the vertical lab's pace; 0.7 of it "
                       "for the conventional lab's 8 runs a week), blended with the last 60 days' use as the "
-                      "campaign runs; checked at every charge and once a day")
+                      "campaign runs, or the last 30 days' if higher; checked at every charge and once a day. Three money "
+                      "rules, without which the first runs ended with $110k of aluminium's stock unused, and copper's "
+                      "stocked arm spent its money on plates and nozzles by day 231 and reached its targets in fewer "
+                      "seeds than its lean arm: no item is stocked beyond the days the money left lasts at the last 30 "
+                      "days' rate of spending, or beyond the campaign's end; stock never spends the money kept for the work "
+                      "in progress; and the stock on hand and on order is worth at most 20 % of the money left")
 
 
 # ------------------------------------------------------------------------------------------------- facility
@@ -415,6 +420,26 @@ class Facility5(R4.Facility4):
                 return cyc * hours / ATOM_RUN_H[campaign]
             return hours
         return super().adjust(station, hours, what, campaign)
+
+    def expected_result(self, k, t, hours, campaign, what):
+        """Round 4's estimate, but a long job on a day calendar is found in days of at most 8 h, as ``_route``
+        books it (round 4 searched for it in one piece, which a day calendar can never fit: 'could not book')."""
+        r = self.res[k]
+        st = r.st
+        h = self.adjust(k, hours, what, campaign) * r.factor()
+        if st.hours == "24/7" or st.attended_h is not None or h <= 8.0:
+            return super().expected_result(k, t, hours, campaign, what)
+        t0 = t + self.ship.get(k, (0.0, 0.0))[0]
+        if st.external and st.booking_days:
+            t0 += st.booking_days * H
+        left, tt, s0 = h, t0, None
+        while left > 1e-9:
+            s, d, _ = r.find(tt, min(left, 8.0), campaign)
+            s0 = s if s0 is None else s0
+            tt, left = s + d, left - min(left, 8.0)
+        p = min(r.p_fail(), 0.9)
+        back = st.turnaround_days * H + self.ship.get(k, (0.0, 0.0))[0] * (0.5 if st.external else 0.0)
+        return tt + p / (1 - p) * h + back, s0
 
     def helpers(self, station: str, dur: float, t: float = 0.0) -> list:
         if station == "atomizer":
@@ -466,9 +491,14 @@ class Campaign5(R4.Campaign4):
         pr = self.prior_d.get(key, 0.0)
         win = REORDER["window_d"]
         W = REORDER["prior_w_d"] * math.exp(-day / win)
-        used = sum(q for d, q in self.use_log.get(key, ()) if d >= day - win)
+        L = self.use_log.get(key, ())
+        used = sum(q for d, q in L if d >= day - win)
         span = min(day, win)
-        return (pr * W + used) / (W + span) if W + span > 1e-9 else pr
+        r60 = (pr * W + used) / (W + span) if W + span > 1e-9 else pr
+        if day >= 30.0:                          # react to a surge (the cell's 24/7 atomizer) within a month
+            r30 = sum(q for d, q in L if d >= day - 30.0) / 30.0
+            return max(r60, r30)
+        return r60
 
     def _levels(self, key, day):
         d = self._rate(key, day)
@@ -497,17 +527,53 @@ class Campaign5(R4.Campaign4):
         self.stock_orders.append((round(day, 2), key, round(q, 4), round(o.cost, 2), why, round(day + lt, 2)))
         return o
 
+    def _stock_value(self, day):
+        v = 0.0
+        for k in set(self.prior_d) | set(self.use_log):
+            if k in supply.ITEMS:
+                q = max(self.stores.on_hand(k, day), 0.0) + self.stores.due(k, day)
+                if q > 0:
+                    v += q * self.market.price(supply.ITEMS[k], day)
+        return v
+
+    def _money_days(self, day):
+        """Days the money left lasts at the last 30 days' rate of spending (no limit at the start)."""
+        if day < REORDER["burn_window_d"]:
+            return 1e9
+        w = REORDER["burn_window_d"]
+        burn = sum(u for t, u, _ in self.ledger if t >= (day - w) * H) / w
+        return self.budget_left / burn if burn > 1e-6 else 1e9
+
     def _reorder(self, day, keys=None, initial=False):
         keys = sorted(set(keys) if keys is not None else (set(self.prior_d) | set(self.use_log)))
+        cap = REORDER["cap_frac"] * max(self.budget_left, 0.0) if REORDER["cap_frac"] else float("inf")
+        # never spend on stock the money kept for the work in progress (the WIP rule's reserve)
+        room_wip = self.budget_left - self.wip_reserve(day * H)
+        val = None
+        mdays = self._money_days(day)
         for key in keys:
             if key not in supply.ITEMS:
                 continue
             d, s, S = self._levels(key, day)
             if d <= 0:
                 continue
+            S = min(S, d * min(mdays, max(self.horizon_h / H - day, 0.0)))
             pos = self.stores.on_hand(key, day) + self.stores.due(key, day)
-            if pos <= s + 1e-12:
-                self._place(key, max(S - pos, supply.ITEMS[key].moq), day, "initial" if initial else "reorder")
+            if pos <= s + 1e-12 and S > pos + 1e-9:
+                it = supply.ITEMS[key]
+                q = max(S - pos, it.moq)
+                if val is None:
+                    val = self._stock_value(day)
+                price = self.market.price(it, day)
+                room = min(cap - val, room_wip)
+                if q * price > room:
+                    q = room / price if price > 0 else 0.0
+                    if q < it.moq - 1e-12:
+                        self.stock_capped = getattr(self, "stock_capped", 0) + 1
+                        continue
+                o = self._place(key, q, day, "initial" if initial else "reorder")
+                val += o.cost
+                room_wip -= o.cost
 
     def _materials(self, bill, now_h):
         day = now_h / H
@@ -549,6 +615,7 @@ class Campaign5(R4.Campaign4):
                 arr[min(int(d // 7), weeks - 1)] += q
             use_w[k] = [round(x, 5) for x in arr]
         return dict(mode=self.stock_mode, n_charges=self.n_charges, n_stockouts=len(self.stockouts),
+                    n_capped=getattr(self, "stock_capped", 0),
                     n_stockouts_wait_gt1d=sum(1 for w in waits if w > 1.0), days_waited=round(sum(waits), 2),
                     wait_mean_d=round(float(np.mean(waits)), 2) if waits else 0.0,
                     wait_p90_d=round(float(np.percentile(waits, 90)), 2) if waits else 0.0,
@@ -560,6 +627,30 @@ class Campaign5(R4.Campaign4):
                     n_orders=sum(1 for o in self.stores.orders if o.placed_day >= 0),
                     stock_orders=self.stock_orders[:400], stockouts=self.stockouts[:400], use_weekly=use_w,
                     prior_d={k: round(v, 5) for k, v in self.prior_d.items()})
+
+    # ---------------------------------------------------------------------------------------- money for the WIP
+    WIP_WINDOW_D = 60.0
+
+    def wip_reserve(self, now_h) -> float:
+        """Round 5's engine rule for every policy in both labs: a new composition starts only if the money left after
+        it still pays for the next steps of the lots already made (or in the making) in the last 60 days whose alloy
+        has no tested result yet: aluminium a build and a test each; copper a small deposit each and, for half of
+        them, a large deposit, its tensile, screen and immersion. Without it, the first runs (no spending plan, a
+        24/7 atomizer) spent copper's two-year money on powders by day 330, 56 of 72 charges waiting months for
+        plates and nozzles, and could not pay to test them."""
+        t0 = now_h - self.WIP_WINDOW_D * H
+        scored = {d["design"] for d in self.demonstrated}
+        n = sum(1 for L in self.lots.values() if L.get("t", 0.0) >= t0 and L["design"] not in scored and
+                L["remaining_g"] >= 30.0)
+        n += sum(1 for p in self.pending.values() if p["kind"] in ("powder", "blend_ded"))
+        if n == 0:
+            return 0.0
+        est = lambda k: self.estimate(dict(kind=k))
+        if self.key == "flaime_al":
+            per = est("print") + est("test")
+        else:
+            per = est("small_ded") + 0.5 * (est("large_ded") + est("tensile") + est("screen") + est("immersion"))
+        return n * per
 
     # ---------------------------------------------------------------------------------------- sign-off
     def _so_key(self, a):
@@ -573,6 +664,12 @@ class Campaign5(R4.Campaign4):
         return (k, None)
 
     def submit3(self, a: dict, now_h: float) -> str:
+        k = a.get("kind")
+        if (k == "powder" and not a.get("into")) or k == "blend_ded":
+            self.now_h = now_h
+            if self.budget_left - self.estimate(a) < self.wip_reserve(now_h):
+                self.status_log["money_wip"] = self.status_log.get("money_wip", 0) + 1
+                return "money"
         if self.dec is not None and a.get("kind") != "stop":
             lim = self.dec.signoff_usd(self.key)
             if lim is not None:
