@@ -1,7 +1,7 @@
 """The floor-space segment, cut: the 3-D renders (floorspace3d.py) with their overlays, the footprints side by side
-(2-D, at one scale: the four layouts of today's equipment, then the Shuttles' capacity laid out flat, with the floor
-machines' block apart), the narration (floorspace_voice.py), and the preview's record, contact sheet, subtitles and
-YouTube metadata.
+(2-D, at one scale: the four layouts of today's equipment as context, then the result, the Shuttles' capacity laid out
+flat against the vertical lab, with the floor machines' block apart), the narration (floorspace_voice.py), and the
+preview's record, contact sheet, subtitles and YouTube metadata.
 
     cd vertical-lab
     python -m twin.video.floorspace_cut stills 3 27 40 48 58 70 80 90 100 112    # overlay stills -> /tmp/fscut/
@@ -9,8 +9,17 @@ YouTube metadata.
     python -m twin.video.floorspace_cut sheet       # out/floorspace/sheet.png
     python -m twin.video.floorspace_cut meta        # out/floorspace/youtube_meta.json
 
-Reusable in a longer cut: Cut().frame(t, base) draws any moment of the segment onto a 1920 x 1080 frame (base: the 3-D
-render at t, or None in the plans phase); Cut.T is its length in seconds and Cut.lines its narration with their times.
+FSCUT_OUT=<dir> sends what final, sheet and meta write somewhere else (a trial build that leaves the committed record
+of the uploaded preview alone).
+
+The result the segment states is the capacity-matched comparison (issue 425, "use the capacity-matched comparison"):
+the Shuttles' 45 trays laid out flat as bench positions robots can serve, against the vertical lab. Today's 43
+instruments (the first row) and Emerald Cloud Lab are context before it, labelled so.
+
+Reusable in a longer cut (twin/video/cut5.py): segment_frame(t) is the finished 1920 x 1080 frame at t seconds into
+the segment (it reads the 3-D track itself) and narration_lines() its lines with their times and recordings.
+Cut().frame(t, base) draws any moment onto a frame (base: the 3-D render at t, or None in the plans phase); Cut.T is
+its length in seconds and Cut.lines its narration with their times.
 """
 from __future__ import annotations
 
@@ -29,7 +38,8 @@ from . import floorspace_story as FSS
 from . import style as ST
 
 HERE = Path(__file__).resolve().parents[2]
-OUTD = HERE / "out" / "floorspace"
+OUTD = HERE / "out" / "floorspace"                    # the committed inputs: layouts.json, narration/
+WRITE = Path(os.environ.get("FSCUT_OUT", OUTD))       # where final, sheet and meta write
 FPS = 30
 F3D = Path(os.environ.get("FS3D_DIR", "/tmp/fs3d")) / "lab3d.mp4"
 PH = FSS.PH
@@ -68,6 +78,7 @@ class Cut:
         rec = json.loads((OUTD / "narration" / "lines.json").read_text())["lines"]
         self.lines = [dict(ln, t0=PH[ln["phase"]] + ln["at"], t1=PH[ln["phase"]] + ln["at"] + rec[ln["id"]]["seconds"])
                       for ln in sc["lines"]]
+        self.lines.sort(key=lambda ln: ln["t0"])
         for a, b in zip(self.lines[:-1], self.lines[1:]):
             if b["t0"] < a["t1"] + 0.3:
                 print(f"floorspace_cut: line {b['id']} starts {a['t1'] - b['t0']:.2f} s before {a['id']} ends",
@@ -160,15 +171,8 @@ class Cut:
                     d.rounded_rectangle((ST.px(1896) - tw - ST.px(44), oy + ST.px(18), ST.px(1896) - ST.px(16),
                                          oy + ST.px(50)), ST.px(8), fill=(10, 172, 35, int(230 * a2)))
                     self.text(d, (ST.px(1896) - tw - ST.px(30), oy + ST.px(22)), tag, fw, a=a2)
-            if ph == "vert" and g >= 1:
-                c = self.rows["conventional"]["area_sqft"]
-                v = self.rows["vertical"]["area_sqft"]
-                tag = f"−{(1 - v / c) * 100:.0f} %"
-                fw = ST.font(24, bold=True)
-                tw = d.textlength(tag, font=fw)
-                d.rounded_rectangle((ST.px(1896) - tw - ST.px(44), oy + ST.px(16), ST.px(1896) - ST.px(16),
-                                     oy + ST.px(52)), ST.px(8), fill=(10, 172, 35, 235))
-                self.text(d, (ST.px(1896) - tw - ST.px(30), oy + ST.px(20)), tag, fw)
+            # no percentage here: for today's 43 instruments it is context (the plans' first row says it, labelled),
+            # and the segment's result is the comparison at the same capacity (the plans' second row)
         # the rules: the conventional plan's from f3, the vertical lab's from f7
         f3 = next(ln for ln in self.lines if ln["id"] == "f3")["t0"]
         f7 = next(ln for ln in self.lines if ln["id"] == "f7")["t0"]
@@ -381,33 +385,72 @@ class Cut:
         self.text(d, (x + 12, y + 5), s, fw, fill=(255, 255, 255), a=a)
         return x + w + 24
 
+    def cue(self, lid: str, name: str) -> float:
+        """A moment inside a line, in seconds from the segment's start: the line's start plus its cues[name], the
+        second into its recording at which that word is said (narration_floorspace.json; floorspace_voice words)."""
+        ln = next(l_ for l_ in self.lines if l_["id"] == lid)
+        return ln["t0"] + float(ln.get("cues", {}).get(name, 0.0))
+
     def plans(self, t: float) -> np.ndarray:
-        S = self.S
+        """The plans at one scale. The first row is context (today's 43 instruments, four ways) and is labelled so,
+        with Emerald Cloud Lab for scale; the second row is the result: the same capacity, the Shuttles' 45 trays as
+        bench positions robots can serve against the vertical lab. The title becomes that result when f12 says it."""
         img = Image.new("RGBA", (1920, 1080), (*PLAN_BG, 255))
         k1, pos, hA, hB = self.plans_geometry()
-        u = ST.ramp(t, PH["plans"] + 2.6, PH["plans"] + 5.4)
+        P = PH["plans"]
+        u = ST.ramp(t, P + 2.6, P + 5.4)
         # the vertical lab: from the top view's scale and place to its slot in the first row
         kv = self.k_top + (k1 - self.k_top) * u
         ox = self.o_top[0] + (pos["vertical"][0] - self.o_top[0]) * u
         oy = self.o_top[1] + (pos["vertical"][1] - self.o_top[1]) * u
         img.alpha_composite(self.plan_layer("vertical", kv), (int(round(ox)), int(round(oy))))
         for i, n in enumerate(("conventional", "flat", "robots")):
-            self._fade_in(img, n, k1, pos[n], ST.ramp(t, PH["plans"] + 3.8 + 0.4 * i, PH["plans"] + 5.6 + 0.4 * i))
-        f8, f11, f9, f10 = (self.t0(x) for x in ("f8", "f11", "f9", "f10"))
-        f11b = f11 + 7.6                                   # "And by capacity, ..."
-        aB = ST.ramp(t, f11b - 1.2, f11b)
-        self._fade_in(img, "capacity", k1, pos["capacity"], aB)
-        self._fade_in(img, "vertical", k1, pos["vertical2"], aB)
+            self._fade_in(img, n, k1, pos[n], ST.ramp(t, P + 3.8 + 0.4 * i, P + 5.6 + 0.4 * i))
+        f10, f11, f12, f9 = (self.t0(x) for x in ("f10", "f11", "f12", "f9"))
+        # the second row: its heading as f11 starts ("18 of the Shuttles' 45 trays"), the 45 positions laid out flat as
+        # f11 says "laid out flat", the vertical lab beside them as f12 starts
+        aBh = ST.ramp(t, f11 - 0.1, f11 + 0.8)
+        t_flat = self.cue("f11", "flat")
+        aBf = ST.ramp(t, t_flat - 1.0, t_flat)
+        aBv = ST.ramp(t, f12 - 0.3, f12 + 0.7)
+        self._fade_in(img, "capacity", k1, pos["capacity"], aBf)
+        self._fade_in(img, "vertical", k1, pos["vertical2"], aBv)
         d = ImageDraw.Draw(img)
         rows, cp = self.rows, self.cap
-        a_txt = ST.ramp(t, PH["plans"] + 5.2, PH["plans"] + 6.2)
+        pc, tr = cp["percent"], cp["trays"]
+        fl_, vv = cp["same_capacity"]["flat"], cp["same_capacity"]["vertical"]
+        c, v, rb = rows["conventional"], rows["vertical"], rows["robots"]
         green = (10, 110, 30)
-        if a_txt > 0:
-            self.text(d, (46, 24), "Floor space, compared two ways", ST.font(34, bold=True), fill=DARK, a=a_txt)
+        less = pc["vertical_vs_flat_capacity"]
+        # the title: side by side, then the result once f12 says "51 percent less floor"
+        t_res = self.cue("f12", "result")
+        aR = ST.ramp(t, t_res - 0.2, t_res + 0.6)
+        a_hdr = ST.ramp(t, P + 2.4, P + 3.2)
+        a_txt = ST.ramp(t, P + 5.0, P + 6.0)
+        if a_hdr > 0:
+            ft = ST.font(34, bold=True)
+            a_old = a_hdr * (1.0 - ST.ramp(t, t_res - 0.6, t_res - 0.2))     # out before the result comes in
+            if a_old > 0:
+                self.text(d, (46, 24), "Floor space, side by side", ft, fill=DARK, a=a_old)
+            if aR > 0:
+                self.text(d, (46, 24), f"At the same capacity, the vertical lab needs {less} % less floor", ft,
+                          fill=green, a=aR)
             self.text(d, (46, 72), "At one scale, north up. Design layouts, not built labs.", ST.font(20), fill=DARK2,
+                      a=a_hdr)
+            # the first row is context, and says so
+            fh = ST.font(22, bold=True)
+            head = f"Context: today's {self.counts['instruments']} instruments"
+            self.text(d, (46, 119), head, fh, fill=DARK, a=a_hdr)
+            xh = 46 + d.textlength(head, font=fh) + 26
+        if a_txt > 0:
+            fn = ST.font(16)
+            self.text(d, (xh, 113), f"For today's equipment alone, the vertical lab takes "
+                                    f"{pc['vertical_vs_conventional']} % less floor than the conventional lab and "
+                                    f"{pc['vertical_vs_robots']} % less than the layout for robots.", fn, fill=DARK2,
                       a=a_txt)
-            self.text(d, (46, 116), "Same equipment: today's 43 instruments", ST.font(24, bold=True), fill=DARK,
-                      a=a_txt)
+            self.text(d, (xh, 135), f"That leaves out what the Shuttles add: {tr['added']} of their {tr['trays']} tray "
+                                    "positions are still free. The comparison at the same capacity is below.", fn,
+                      fill=DARK2, a=a_txt)
             extra = {"flat": (f"+ {FS.FLAT_UNITS} robots, {rows['flat']['arms']} fixed arms, {rows['flat']['docks']} "
                               "docks", "a docked robot leaves 0.94 m of a 5 ft aisle", False),
                      "robots": (f"{rows['robots']['positions']} tray-sized positions, a dock lane each",
@@ -418,13 +461,13 @@ class Cut:
                 r = rows[n]
                 x, y = pos[n]
                 self.text(d, (x, 162), TITLES[n], ST.font(19, bold=True), fill=DARK, a=a_txt)
-                self.text(d, (x, yl), f"{fmt(r['area_sqft'])} sq ft", ST.font(27, bold=True), fill=DARK, a=a_txt)
-                self.text(d, (x, yl + 36), f"{r['length_m']:.1f} × {r['width_m']:.1f} m · {r['area_m2']:.0f} m² · "
+                self.text(d, (x, yl), f"{fmt(r['area_sqft'])} sq ft", ST.font(23, bold=True), fill=DARK, a=a_txt)
+                self.text(d, (x, yl + 32), f"{r['length_m']:.1f} × {r['width_m']:.1f} m · {r['area_m2']:.0f} m² · "
                                            f"{r['per_1000_sqft']:.1f} instruments / 1,000 sq ft", ST.font(14),
                           fill=DARK2, a=a_txt)
                 e1, e2, bold = extra[n]
-                self.text(d, (x, yl + 56), e1, ST.font(14, bold=bold), fill=(150, 60, 20) if bold else DARK2, a=a_txt)
-                self.text(d, (x, yl + 74), e2, ST.font(14), fill=DARK2, a=a_txt)
+                self.text(d, (x, yl + 52), e1, ST.font(14, bold=bold), fill=(150, 60, 20) if bold else DARK2, a=a_txt)
+                self.text(d, (x, yl + 70), e2, ST.font(14), fill=DARK2, a=a_txt)
             # what the plans' marks are
             lx, ly = 46, 872
             marks = [("floor machine", "rect", COL["machine"]), ("benchtop instrument", "rect", COL["inst"]),
@@ -443,107 +486,16 @@ class Cut:
                     d.ellipse((lx + 1, ly + 3, lx + 15, ly + 18), fill=(*col, int(255 * a_txt)))
                 self.text(d, (lx + 21, ly), lab_, fl, fill=DARK2, a=a_txt)
                 lx += 21 + d.textlength(lab_, font=fl) + 18
-        # the first comparison (f8), and the layout for robots (f11's first sentence)
-        a8 = min(ST.ramp(t, f8, f8 + 0.8), a_txt)          # with the labels it sits by
-        xv = pos["vertical"][0]
+        # f8: the layout for robots' area picked out as it is said, then the conventional lab's it is compared with
         yl = 192 + hA + 8
-        fh = ST.font(24, bold=True)
-        xh = 46 + d.textlength("Same equipment: today's 43 instruments", font=fh) + 28
-        c, v, rb = rows["conventional"], rows["vertical"], rows["robots"]
-        pc = cp["percent"]
-        if a8 > 0:
-            wv = d.textlength(f"{fmt(v['area_sqft'])} sq ft", font=ST.font(27, bold=True))
-            xb = self._badge(d, xv + wv + 14, yl - 2, f"−{pc['vertical_vs_conventional']} %", a8, 22)
-            self.text(d, (xh, 120), f"The vertical lab: {pc['vertical_vs_conventional']} % less floor than the "
-                                    f"conventional lab ({v['per_1000_sqft']:.1f} against {c['per_1000_sqft']:.1f} "
-                                    "instruments per 1,000 sq ft)", ST.font(18, bold=True), fill=green, a=a8)
-        a11 = ST.ramp(t, f11, f11 + 0.8)
-        if a11 > 0:
-            xr = pos["robots"][0]
-            wr = d.textlength(f"{fmt(rb['area_sqft'])} sq ft", font=ST.font(27, bold=True))
-            d.rounded_rectangle((xr - 8, yl - 4, xr + wr + 10, yl + 34), 8, outline=(*green, int(255 * a11)),
-                                width=3)
-            self.text(d, (xh, 143), f"and {pc['vertical_vs_robots']} % less than the flat lab laid out for robots "
-                                    f"({fmt(v['area_sqft'])} against {fmt(rb['area_sqft'])} sq ft)",
-                      ST.font(18, bold=True), fill=green, a=a11)
-        # the second row: the same capacity
-        if aB > 0:
-            tr = cp["trays"]
-            fl_, vv = cp["same_capacity"]["flat"], cp["same_capacity"]["vertical"]
-            self.text(d, (46, 508), f"Same capacity: the Shuttles' {tr['trays']} trays as bench positions",
-                      ST.font(24, bold=True), fill=DARK, a=aB)
-            self.text(d, (46, 540), f"{tr['in_use']} trays in use today, {tr['added']} more at the tray plan's "
-                                    f"{tr['span_mm']:.0f} mm; each 2.45 × 0.86 m ({tr['tray_m2']:.1f} m²): "
-                                    f"{fmt(tr['surface_m2'])} m² of tray surface in all", ST.font(16), fill=DARK2, a=aB)
-            yb = 584 + hB + 8
-            labs = {"capacity": (f"Automated, {fl_['positions']} tray positions laid out flat",
-                                 f"{fl_['length_m']:.1f} × {fl_['width_m']:.1f} m  ·  {fl_['area_m2']:.0f} m²  ·  "
-                                 f"{fl_['positions_per_1000_sqft']:.1f} positions / 1,000 sq ft",
-                                 f"{tr['added']} free positions, light; the same rules as the layout for robots",
-                                 fl_["area_sqft"]),
-                    "vertical2": (f"Vertical lab: {vv['positions']} trays in two Shuttles",
-                                  f"{v['length_m']:.1f} × {v['width_m']:.1f} m  ·  {v['area_m2']:.0f} m²  ·  "
-                                  f"{vv['positions_per_1000_sqft']:.1f} positions / 1,000 sq ft",
-                                  "", vv["area_sqft"])}
-            for n, (ti, l2, l3, sq) in labs.items():
-                x, _ = pos[n]
-                self.text(d, (x, yb), f"{fmt(sq)} sq ft", ST.font(27, bold=True), fill=DARK, a=aB)
-                self.text(d, (x, yb + 36), l2, ST.font(14), fill=DARK2, a=aB)
-                self.text(d, (x, yb + 56), l3, ST.font(14), fill=DARK2, a=aB)
-            # plan titles for the second row sit over the plans, in the plans' own gap
-            for n, (ti, _, _, _) in labs.items():
-                x, _ = pos[n]
-                self.text(d, (x, 584 - 24), ti, ST.font(17, bold=True), fill=DARK, a=aB)
-        aB2 = ST.ramp(t, f11b + 2.0, f11b + 2.8)
-        if aB2 > 0:
-            vv = cp["same_capacity"]["vertical"]
-            fl_ = cp["same_capacity"]["flat"]
-            wv = d.textlength(f"{fmt(vv['area_sqft'])} sq ft", font=ST.font(27, bold=True))
-            yb = 584 + hB + 8
-            self._badge(d, pos["vertical2"][0] + wv + 14, yb - 2, f"−{pc['vertical_vs_flat_capacity']} %", aB2, 22)
-            fh2 = ST.font(24, bold=True)
-            xh2 = 46 + d.textlength(f"Same capacity: the Shuttles' {cp['trays']['trays']} trays as bench positions",
-                                    font=fh2) + 28
-            self.text(d, (xh2, 512), f"{vv['positions_per_1000_sqft']:.1f} against {fl_['positions_per_1000_sqft']:.1f}"
-                                     " tray positions per 1,000 sq ft", ST.font(18, bold=True), fill=green, a=aB2)
-        # where the floor goes, the floor machines apart (f9)
-        a9 = ST.ramp(t, f9, f9 + 0.8)
-        if a9 > 0:
-            ve = self.lays["vertical"].envelope
-            x0 = pos["vertical2"][0] + (ve[2] - ve[0]) * k1 + 64
-            y0 = 552
-            mbm = cp["machine_block"]["area_m2"]
-            self.text(d, (x0, y0), "Where the floor goes (m²)", ST.font(19, bold=True), fill=DARK, a=a9)
-            bars = [("Conventional lab: rooms mix machines and benches", None, c["area_m2"]),
-                    ("Vertical lab: + the two Shuttles", mbm, v["area_m2"] - mbm),
-                    ("Laid out for robots: + 18 tray positions", mbm, rb["area_m2"] - mbm),
-                    (f"{cp['same_capacity']['flat']['positions']} tray positions, flat", mbm,
-                     cp["same_capacity"]["flat"]["area_m2"] - mbm)]
-            sc = (1880 - x0) / 600.0
-            yy = y0 + 34
-            for lab_, m_, rest in bars:
-                self.text(d, (x0, yy), lab_, ST.font(14), fill=DARK2, a=a9)
-                yy += 19
-                xx = x0
-                if m_ is not None:
-                    w = m_ * sc
-                    d.rectangle((xx, yy, xx + w, yy + 24), fill=(*COL["machine"], int(255 * a9)))
-                    self.text(d, (xx + w / 2, yy + 4), f"{m_:.0f}", ST.font(14, bold=True), fill=(255, 255, 255),
-                              a=a9, anchor="ma")
-                    xx += w
-                    w = rest * sc
-                    d.rectangle((xx, yy, xx + w, yy + 24), fill=(*BAR["benches, shelves and Shuttles"], int(255 * a9)))
-                    self.text(d, (xx + w + 6, yy + 4), f"+ {rest:.0f}", ST.font(14, bold=True), fill=DARK, a=a9)
-                else:
-                    w = rest * sc
-                    d.rectangle((xx, yy, xx + w, yy + 24), fill=(*BAR["other floor"], int(255 * a9)))
-                    self.text(d, (xx + w + 6, yy + 4), f"{rest:.0f}", ST.font(14, bold=True), fill=DARK, a=a9)
-                yy += 34
-            self.text(d, (x0, yy + 2), f"Blue: the floor machines' block ({mbm:.0f} m²): the 12 machines, their 0.6 m",
-                      ST.font(14), fill=DARK2, a=a9)
-            self.text(d, (x0, yy + 20), "service space and the 3.0 m robot aisle, the same in all three",
-                      ST.font(14), fill=DARK2, a=a9)
-        # Emerald Cloud Lab (f10)
+        fa = ST.font(23, bold=True)
+        for n, tc in (("robots", self.cue("f8", "robots")), ("conventional", self.cue("f8", "conventional"))):
+            a = min(ST.ramp(t, tc - 0.3, tc + 0.5), a_txt, 1.0 - ST.ramp(t, f11 - 0.6, f11 + 0.2))   # gone by row 2
+            if a > 0:
+                x = pos[n][0]
+                w = d.textlength(f"{fmt(rows[n]['area_sqft'])} sq ft", font=fa)
+                d.rounded_rectangle((x - 8, yl - 5, x + w + 10, yl + 31), 8, outline=(*DARK, int(255 * a)), width=3)
+        # Emerald Cloud Lab, for scale (f10): it stands with the first row, whose instruments per area it compares to
         a10 = ST.ramp(t, f10, f10 + 0.8)
         if a10 > 0:
             e = FS.ECL
@@ -561,6 +513,82 @@ class Cut:
                       fill=DARK2, a=a10)
             self.text(d, (56, y + 108), "Life-science instruments on benches with people loading them: a scale "
                                         "reference, not like for like.", ST.font(17), fill=DARK2, a=a10)
+        # the second row, the result: the same capacity
+        fh2 = ST.font(26, bold=True)
+        head2 = f"Same capacity: the Shuttles' {tr['trays']} trays as bench positions"
+        if aBh > 0:
+            self.text(d, (46, 505), head2, fh2, fill=DARK, a=aBh)
+            self.text(d, (46, 541), f"{tr['in_use']} trays in use today, {tr['added']} more at the tray plan's "
+                                    f"{tr['span_mm']:.0f} mm; each 2.45 × 0.86 m ({tr['tray_m2']:.1f} m²): "
+                                    f"{fmt(tr['surface_m2'])} m² of tray surface in all", ST.font(16), fill=DARK2, a=aBh)
+        yb = 584 + hB + 8
+        big = ST.font(34, bold=True)
+        labs = {"capacity": (aBf, f"Automated, {fl_['positions']} tray positions laid out flat",
+                             f"{fl_['length_m']:.1f} × {fl_['width_m']:.1f} m  ·  {fl_['area_m2']:.0f} m²  ·  "
+                             f"{fl_['positions_per_1000_sqft']:.1f} positions / 1,000 sq ft",
+                             f"{tr['added']} free positions, light; the same rules as the layout for robots",
+                             fl_["area_sqft"], False),
+                "vertical2": (aBv, f"Vertical lab: {vv['positions']} trays in two Shuttles",
+                              f"{v['length_m']:.1f} × {v['width_m']:.1f} m  ·  {v['area_m2']:.0f} m²  ·  "
+                              f"{vv['positions_per_1000_sqft']:.1f} positions / 1,000 sq ft",
+                              "Shuttles 9.15 m tall: it needs a high bay", vv["area_sqft"], True)}
+        for n, (a, ti, l2, l3, sq, warn) in labs.items():
+            if a <= 0:
+                continue
+            x, _ = pos[n]
+            self.text(d, (x, 584 - 24), ti, ST.font(17, bold=True), fill=DARK, a=a)   # over the plan, in the row's gap
+            self.text(d, (x, yb), f"{fmt(sq)} sq ft", big, fill=DARK, a=a)
+            self.text(d, (x, yb + 45), l2, ST.font(14), fill=DARK2, a=a)
+            self.text(d, (x, yb + 64), l3, ST.font(14, bold=warn), fill=(150, 60, 20) if warn else DARK2, a=a)
+        if aR > 0:
+            wv = d.textlength(f"{fmt(vv['area_sqft'])} sq ft", font=big)
+            self._badge(d, pos["vertical2"][0] + wv + 16, yb + 1, f"−{less} %", aR, 26)
+            f1 = ST.font(22, bold=True)
+            xh2 = 46 + d.textlength(head2, font=fh2) + 26
+            s1 = f"{less} % less floor"
+            self.text(d, (xh2, 509), s1, f1, fill=green, a=aR)
+            t_pos = self.cue("f12", "positions")
+            aR2 = ST.ramp(t, t_pos - 0.3, t_pos + 0.5)
+            if aR2 > 0:
+                self.text(d, (xh2 + d.textlength(s1, font=f1) + 14, 512),
+                          f"·  {vv['positions_per_1000_sqft']:.1f} against {fl_['positions_per_1000_sqft']:.1f} tray "
+                          "positions per 1,000 sq ft", ST.font(19, bold=True), fill=green, a=aR2)
+        # where the floor goes, the floor machines apart (f9)
+        a9 = ST.ramp(t, f9, f9 + 0.8)
+        if a9 > 0:
+            ve = self.lays["vertical"].envelope
+            x0 = pos["vertical2"][0] + (ve[2] - ve[0]) * k1 + 64
+            y0 = 566
+            mbm = cp["machine_block"]["area_m2"]
+            self.text(d, (x0, y0), "Where the floor goes (m²)", ST.font(19, bold=True), fill=DARK, a=a9)
+            bars = [("Conventional lab: rooms mix machines and benches", None, c["area_m2"]),
+                    ("Vertical lab: + the two Shuttles", mbm, v["area_m2"] - mbm),
+                    (f"Laid out for robots: + {rb['positions']} tray positions", mbm, rb["area_m2"] - mbm),
+                    (f"{fl_['positions']} tray positions, flat", mbm, fl_["area_m2"] - mbm)]
+            sc = (1856 - x0) / 600.0
+            yy = y0 + 32
+            for lab_, m_, rest in bars:
+                self.text(d, (x0, yy), lab_, ST.font(14), fill=DARK2, a=a9)
+                yy += 19
+                xx = x0
+                if m_ is not None:
+                    w = m_ * sc
+                    d.rectangle((xx, yy, xx + w, yy + 24), fill=(*COL["machine"], int(255 * a9)))
+                    self.text(d, (xx + w / 2, yy + 4), f"{m_:.0f}", ST.font(14, bold=True), fill=(255, 255, 255),
+                              a=a9, anchor="ma")
+                    xx += w
+                    w = rest * sc
+                    d.rectangle((xx, yy, xx + w, yy + 24), fill=(*BAR["benches, shelves and Shuttles"], int(255 * a9)))
+                    self.text(d, (xx + w + 6, yy + 4), f"+ {rest:.0f}", ST.font(14, bold=True), fill=DARK, a=a9)
+                else:
+                    w = rest * sc
+                    d.rectangle((xx, yy, xx + w, yy + 24), fill=(*BAR["other floor"], int(255 * a9)))
+                    self.text(d, (xx + w + 6, yy + 4), f"{rest:.0f}", ST.font(14, bold=True), fill=DARK, a=a9)
+                yy += 33
+            self.text(d, (x0, yy + 2), f"Blue: the floor machines' block ({mbm:.0f} m²): the 12 machines, their 0.6 m",
+                      ST.font(14), fill=DARK2, a=a9)
+            self.text(d, (x0, yy + 20), "service space and the 3.0 m robot aisle, the same in all three",
+                      ST.font(14), fill=DARK2, a=a9)
         return np.asarray(img.convert("RGB"))
 
     # ------------------------------------------------------------------------------------------------ a frame
@@ -576,6 +604,95 @@ class Cut:
         if over is None or a >= 1:
             return p
         return (over.astype(np.float32) * (1 - a) + p.astype(np.float32) * a).astype(np.uint8)
+
+
+# ============================================================================================ for a longer cut
+class Track:
+    """The 3-D track (FS3D_DIR/lab3d.mp4, floorspace3d's renders at 15 fps) read at any frame: reads that go forward
+    keep one decoder running; a jump (a piece of a cut that starts in the middle, or a step back) starts another at
+    that frame. Past the last frame it holds the last one."""
+
+    N = 1920 * 1080 * 3
+
+    def __init__(self, path: Path | None = None):
+        self.path = Path(path or F3D)
+        if not self.path.exists():
+            raise FileNotFoundError(f"{self.path}: the floor-space 3-D track is not rendered; make it with "
+                                    "TWIN_VIDEO_WORKERS=3 python -m twin.video.floorspace3d all")
+        self.proc, self.i, self.img, self.eof = None, -1, None, False
+
+    def close(self):
+        if self.proc is not None:
+            try:
+                self.proc.stdout.close()
+                self.proc.kill()
+                self.proc.wait()
+            except Exception:                           # noqa: BLE001
+                pass
+        self.proc = None
+
+    def _open(self, i: int):
+        self.close()
+        cmd = ["ffmpeg", "-v", "error"]
+        if i > 0:                                       # half a frame early: the first frame out is frame i
+            cmd += ["-ss", f"{(i - 0.5) / 15:.5f}"]
+        cmd += ["-i", str(self.path), "-f", "rawvideo", "-pix_fmt", "rgb24", "-"]
+        self.proc = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+        self.i, self.eof = i - 1, False
+
+    def get(self, i: int) -> np.ndarray:
+        """Frame i (i / 15 s into the segment)."""
+        i = max(0, int(i))
+        if self.img is not None and (i == self.i or (self.eof and i > self.i)):
+            return self.img
+        if self.proc is None or i < self.i or i > self.i + 120:
+            self._open(i)
+        while self.i < i:
+            b = self.proc.stdout.read(self.N)
+            if len(b) < self.N:
+                self.eof = True
+                break
+            self.img = np.frombuffer(b, np.uint8).reshape(1080, 1920, 3)
+            self.i += 1
+        if self.img is None:
+            raise RuntimeError(f"{self.path}: no frame {i}")
+        return self.img
+
+    def __del__(self):
+        self.close()
+
+
+_SEG: dict = {}
+
+
+def _cut() -> "Cut":
+    if "cut" not in _SEG:
+        _SEG["cut"] = Cut()
+    return _SEG["cut"]
+
+
+def segment_frame(t: float) -> np.ndarray:
+    """The finished frame (1080 x 1920 x 3, uint8) at t seconds into the segment, for a longer cut: the 3-D render at t
+    with its overlays until the cross-fade (read from FS3D_DIR/lab3d.mp4, one decoder per process, a new one on a
+    jump), then the plans. Cut.T is the segment's length."""
+    cut = _cut()
+    t = min(max(float(t), 0.0), cut.T - 1e-6)
+    base = None
+    if t < FSS.T3D_END:
+        if _SEG.get("track") is None:
+            _SEG["track"] = Track()
+        base = _SEG["track"].get(int(t * 15 + 1e-6))
+    return np.ascontiguousarray(cut.frame(t, base))
+
+
+def narration_lines() -> list:
+    """The segment's narration for a longer cut, in the order it is said: [{id, t (seconds into the segment), text,
+    flac (the committed recording, 24 kHz), seconds (its length), spoken (the text as the voice was given it), shows
+    (what on screen it says)}]."""
+    rec = json.loads((OUTD / "narration" / "lines.json").read_text())["lines"]
+    return [dict(id=ln["id"], t=round(ln["t0"], 2), text=ln["text"], flac=OUTD / "narration" / f"{ln['id']}.flac",
+                 seconds=rec[ln["id"]]["seconds"], spoken=rec[ln["id"]]["spoken"], shows=ln.get("shows", ""))
+            for ln in _cut().lines]
 
 
 # ============================================================================================ build
@@ -632,7 +749,8 @@ def remux():
     cut = Cut()
     tmp = Path("/tmp/fscut")
     wav = audio(cut, tmp / "narration.wav")
-    out = OUTD / "floorspace_preview.mp4"
+    WRITE.mkdir(parents=True, exist_ok=True)
+    out = WRITE / "floorspace_preview.mp4"
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(tmp / "video.mp4"), "-i", str(wav), "-c:v", "copy",
                     "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", str(out)], check=True)
     print("wrote", out, flush=True)
@@ -651,7 +769,7 @@ def srt(cut: Cut, path: Path):
 
 def final():
     cut = Cut()
-    OUTD.mkdir(parents=True, exist_ok=True)
+    WRITE.mkdir(parents=True, exist_ok=True)
     tmp = Path("/tmp/fscut")
     tmp.mkdir(parents=True, exist_ok=True)
     vid = tmp / "video.mp4"
@@ -682,10 +800,10 @@ def final():
     enc.stdin.close()
     enc.wait()
     wav = audio(cut, tmp / "narration.wav")
-    out = OUTD / "floorspace_preview.mp4"
+    out = WRITE / "floorspace_preview.mp4"
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(vid), "-i", str(wav), "-c:v", "copy", "-c:a", "aac",
                     "-b:a", "192k", "-shortest", "-movflags", "+faststart", str(out)], check=True)
-    srt(cut, OUTD / "floorspace_preview.srt")
+    srt(cut, WRITE / "floorspace_preview.srt")
     rec = dict(file=out.name, seconds=cut.T, fps=FPS, size=[1920, 1080], render_fps_3d=15,
                lines=[dict(id=ln["id"], t0=round(ln["t0"], 2), t1=round(ln["t1"], 2), text=ln["text"])
                       for ln in cut.lines], phases=PH, rows=cut.rows,
@@ -695,7 +813,7 @@ def final():
                                                                      "positions_per_1000_sqft")}
                                             for k, v in cut.cap["same_capacity"].items()},
                              percent=cut.cap["percent"]))
-    (OUTD / "floorspace_preview.json").write_text(json.dumps(rec, indent=1) + "\n")
+    (WRITE / "floorspace_preview.json").write_text(json.dumps(rec, indent=1) + "\n")
     print("wrote", out, flush=True)
 
 
@@ -720,12 +838,12 @@ def stills(ts):
         print("still", t, flush=True)
 
 
-SHEET_T = (2.0, 10.0, 24.0, 33.0, 40.0, 47.0, 53.0, 57.0, 61.0, 64.5, 68.0, 73.0, 79.0, 92.0, 108.0, 125.0)
+SHEET_T = (2.0, 10.0, 24.0, 33.0, 40.0, 47.0, 53.0, 61.0, 68.0, 73.0, 79.0, 93.0, 104.0, 114.0, 125.0, 144.0)
 
 
 def sheet():
     """Sixteen moments of the preview in a 4 x 4 grid, each with its time."""
-    out = OUTD / "floorspace_preview.mp4"
+    out = WRITE / "floorspace_preview.mp4"
     tiles = []
     for t in SHEET_T:
         b = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{t:.2f}", "-i", str(out), "-frames:v", "1", "-f",
@@ -739,8 +857,8 @@ def sheet():
     sh = Image.new("RGB", (1920, 1080), (0, 0, 0))
     for i, im in enumerate(tiles):
         sh.paste(im, ((i % 4) * 480, (i // 4) * 270))
-    sh.save(OUTD / "sheet.png")
-    print("wrote", OUTD / "sheet.png")
+    sh.save(WRITE / "sheet.png")
+    print("wrote", WRITE / "sheet.png")
 
 
 def meta(commit: str):
@@ -750,24 +868,26 @@ def meta(commit: str):
     tr, fl, vv, pc = cp["trays"], cp["same_capacity"]["flat"], cp["same_capacity"]["vertical"], cp["percent"]
     desc = f"""A preview segment for review (unlisted): the vertical lab's equipment laid out four ways, the floor area each layout takes, and the Shuttles' tray capacity laid out flat. Design layouts, not built labs.
 
-Same equipment: today's 43 instruments (31 benchtop, 12 floor machines), from the 3-D lab of PR 318:
+The result, at the same capacity: the two Shuttles hold {tr['trays']} trays at 9.15 m with the tray plan's slot spans ({tr['in_use']} in use, {tr['added']} more at {tr['span_mm']:.0f} mm), {tr['surface_m2']:.0f} m2 of tray. Laid out flat as bench positions robots can serve, by the same rules as layout 3 below, they need {fl['area_m2']:.0f} m2 ({fl['area_sqft']:,} sq ft) against the vertical lab's {vv['area_m2']:.0f} m2 ({vv['area_sqft']:,} sq ft): {pc['vertical_vs_flat_capacity']} % less floor, {vv['positions_per_1000_sqft']:.1f} tray positions per 1,000 sq ft against {fl['positions_per_1000_sqft']:.1f}. The floor machines' block ({cp['machine_block']['area_m2']:.0f} m2) is the same in the vertical lab and both layouts for robots. The vertical lab needs a high bay.
+
+Context, the same equipment: today's 43 instruments (31 benchtop, 12 floor machines), from the 3-D lab of PR 318:
 1. Conventional materials lab, grouped by workflow: {c['length_m']:.1f} x {c['width_m']:.1f} m, {c['area_m2']:.0f} m2 ({c['area_sqft']:,} sq ft), {c['per_1000_sqft']:.1f} instruments per 1,000 sq ft.
 2. The same plan automated ({FS.FLAT_UNITS} MiR250 + UR12e mobile manipulators, {f['docks']} docking targets, {f['arms']} fixed arms with sample racks, {f['chargers']} chargers): the same {f['area_sqft']:,} sq ft, but a docked robot leaves 0.94 m of a 5 ft aisle, under the 1.45 m another needs to pass.
 3. Automated, laid out for robots: the {r['positions']} trays in use as tray-sized bench positions (864 mm benches, a dock lane in front of each row, one-way 1.45 m MiR aisles in loops), the floor machines as in the vertical lab: {r['length_m']:.1f} x {r['width_m']:.1f} m, {r['area_m2']:.0f} m2 ({r['area_sqft']:,} sq ft).
-4. Vertical lab (two Kardex Shuttle XP 500s, 9.15 m tall, with the benchtop instruments on their trays; the floor machines along one 3.0 m MiR aisle): {v['length_m']:.1f} x {v['width_m']:.1f} m, {v['area_m2']:.0f} m2 ({v['area_sqft']:,} sq ft), {v['per_1000_sqft']:.1f} instruments per 1,000 sq ft: {pc['vertical_vs_conventional']} % less floor than the conventional lab and {pc['vertical_vs_robots']} % less than the layout for robots, but it needs a high bay.
-
-Same capacity: the two Shuttles hold {tr['trays']} trays at 9.15 m with the tray plan's slot spans ({tr['in_use']} in use, {tr['added']} more at {tr['span_mm']:.0f} mm), {tr['surface_m2']:.0f} m2 of tray. Laid out flat by the same rules, they need {fl['area_m2']:.0f} m2 ({fl['area_sqft']:,} sq ft) against the vertical lab's {vv['area_m2']:.0f} m2: {vv['positions_per_1000_sqft']:.1f} tray positions per 1,000 sq ft against {fl['positions_per_1000_sqft']:.1f}. The floor machines' block ({cp['machine_block']['area_m2']:.0f} m2) is the same in the vertical lab and both layouts for robots.
+4. Vertical lab (two Kardex Shuttle XP 500s, 9.15 m tall, with the benchtop instruments on their trays; the floor machines along one 3.0 m MiR aisle): {v['length_m']:.1f} x {v['width_m']:.1f} m, {v['area_m2']:.0f} m2 ({v['area_sqft']:,} sq ft), {v['per_1000_sqft']:.1f} instruments per 1,000 sq ft. For today's equipment alone that is {pc['vertical_vs_conventional']} % less floor than the conventional lab and {pc['vertical_vs_robots']} % less than the layout for robots, which leaves out the {tr['added']} tray positions still free in the Shuttles.
 
 Rules: benches 30 in deep (36 in for deeper instruments), aisles 5 ft (NIH Office of Research Facilities, Lab Module Design Considerations, 2013), a 6 ft corridor, 0.6 m service space beside and behind every floor machine, 150 mm walls, no room narrower than one 11 ft module; for robots, the trays' own 2,450 x 864 mm per position, an 838 mm dock lane, MiR aisles of 1.45 m one way and 3.0 m to pass (MiR250 spec sheet); area to the walls' outer faces.
 
 For scale: Emerald Cloud Lab's South San Francisco lab, about 15,000 sq ft with more than 100 items of equipment (The Guardian, 11 September 2022); its Austin facility, 105,000 sq ft for over 230 instrument types (Emerald Cloud Lab press release, 28 February 2023).
 
 Narration: Kokoro v1.0 (open weights), voice af_heart. Code and notes: https://github.com/vertical-cloud-lab/byu-vcl/tree/{commit}/vertical-lab (twin/video/floorspace*.py, notes/twin_floorspace.md)."""
-    js = dict(title="Floor space: four labs, the same equipment, and the same capacity (preview)", description=desc,
+    js = dict(title="Floor space at the same capacity: a vertical lab against the same trays laid out flat (preview)",
+              description=desc,
               tags=["vertical lab", "self-driving lab", "lab automation", "floor space", "Kardex", "MiR250"],
               categoryId="28", privacy="unlisted", commit=commit)
-    (OUTD / "youtube_meta.json").write_text(json.dumps(js, indent=1) + "\n")
-    print("wrote", OUTD / "youtube_meta.json")
+    WRITE.mkdir(parents=True, exist_ok=True)
+    (WRITE / "youtube_meta.json").write_text(json.dumps(js, indent=1) + "\n")
+    print("wrote", WRITE / "youtube_meta.json")
 
 
 if __name__ == "__main__":

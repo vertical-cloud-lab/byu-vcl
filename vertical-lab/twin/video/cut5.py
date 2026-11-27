@@ -143,69 +143,79 @@ def _mod(name: str):
         return None, f"{type(e).__name__}: {e}"
 
 
-def segments() -> list:
-    """[dict(name, dur, fn, title, lines (a function returning the segment's placed lines), missing)] in order."""
-    if "segs" in _S:
-        return _S["segs"]
+ORDER = ("title", "simulated", "changes", "experiments", "counters", "atomizer", "replay", "labs", "floorspace",
+         "takeaway", "notes")
+CARDS = {"changes": ("figs5_intro", "What changed in the twin"),
+         "counters": ("figs5_intro", "Counters, early stopping, and how to read the replay"),
+         "atomizer": ("figs5_intro", "The atomizer: design targets next to the lab's record"),
+         "notes": ("figs5_intro", "Notes: real, assumed, simulated"),
+         "labs": ("figs5_labs", "The lab comparison, like for like"), "takeaway": ("figs5_labs", "The takeaway")}
+
+
+def segment(name: str) -> dict:
+    """One segment: dict(name, dur, fn, title, lines (a function returning its placed lines), caps, missing). Only its
+    own module is loaded, so a worker encoding one segment doesn't build the others."""
+    key = ("seg", name)
+    if key in _S:
+        return _S[key]
     I = D5.info()
-    out = []
 
-    def add(name, dur, fn, title, lines=None, caps=None, missing=""):
-        out.append(dict(name=name, dur=float(dur), fn=fn, title=title, lines=lines or (lambda: []),
-                        caps=caps or (lambda: []), missing=missing))
+    def seg(dur, fn, title, lines=None, caps=None, missing=""):
+        return dict(name=name, dur=float(dur), fn=fn, title=title, lines=lines or (lambda: []),
+                    caps=caps or (lambda: []), missing=missing)
 
-    add("title", TITLE_DUR, title_frame, f"{_years()} of alloy discovery: round {I['round']}", lines=lambda: own_lines("title"))
-    add("simulated", C.SIM_DUR, simulated_frame, "What is simulated: the lab and two search spaces",
-        lines=lambda: own_lines("simulated"), caps=lambda: C.SIM_CAPS)
-    hold: dict = {}
-
-    def cards(mod_name, nm, default_title):
-        if mod_name not in hold:
-            m, why = _mod(mod_name)
-            hold[mod_name] = (m, why, {s[0]: s for s in m.SEGMENTS} if m is not None else {})
-        m, why, got = hold[mod_name]
-        if nm in got:
-            _, dur, fn, ttl = got[nm]
-            add(nm, dur, fn, ttl, lines=lambda: m.narration_lines(nm), caps=lambda: m.captions(nm))
+    def lost(why, title):
+        return seg(6.0, _missing_frame(name, why), title, missing=why)
+    if name == "title":
+        out = seg(TITLE_DUR, title_frame, f"{_years()} of alloy discovery: round {I['round']}",
+                  lines=lambda: own_lines("title"))
+    elif name == "simulated":
+        out = seg(C.SIM_DUR, simulated_frame, "What is simulated: the lab and two search spaces",
+                  lines=lambda: own_lines("simulated"), caps=lambda: C.SIM_CAPS)
+    elif name == "replay":
+        out = seg(R5.tl().dur, replay_frame, f"The replay: {facts()['years']} on one seed",
+                  lines=lambda: own_lines("replay"), caps=R5.captions)
+    elif name in CARDS:
+        mod_name, title = CARDS[name]
+        m, why = _mod(mod_name)
+        got = {x[0]: x for x in m.SEGMENTS} if m is not None else {}
+        if name in got:
+            _, dur, fn, ttl = got[name]
+            out = seg(dur, fn, ttl, lines=lambda: m.narration_lines(name), caps=lambda: m.captions(name))
         else:
-            add(nm, 6.0, _missing_frame(nm, why or f"{mod_name} has no segment '{nm}'"), default_title,
-                missing=why or "no such segment")
-
-    cards("figs5_intro", "changes", f"Round {I['round']}: what changed in the twin")
-    ex, why = _mod("experiments")
-    try:
-        ch = ex.Chapter() if ex is not None else None
-        if ch is not None and not hasattr(ex, "narration_lines"):
-            raise AttributeError("experiments.narration_lines is missing")
-    except Exception as e:                                  # noqa: BLE001
-        ch, why = None, f"{type(e).__name__}: {e}"
-    if ch is not None:
-        add("experiments", float(ch.DURATION), ch.frame, "The function networks: each experiment beside its data",
-            lines=lambda: ex.narration_lines(), caps=lambda: list(getattr(ch, "captions", [])))
-        _S["chapter"] = ch
+            out = lost(why or f"{mod_name} has no segment '{name}'", title)
+    elif name == "experiments":
+        title = "The function networks: each experiment beside its data"
+        ex, why = _mod("experiments")
+        try:
+            if ex is None:
+                raise ImportError(why)
+            if not hasattr(ex, "narration_lines"):
+                raise AttributeError("experiments.narration_lines is missing")
+            ch = ex.Chapter()
+            out = seg(float(ch.DURATION), ch.frame, title, lines=lambda: ex.narration_lines(),
+                      caps=lambda: list(getattr(ch, "captions", [])))
+        except Exception as e:                              # noqa: BLE001
+            out = lost(f"{type(e).__name__}: {e}", title)
+    elif name == "floorspace":
+        title = "Floor space: three labs, capacity matched"
+        fc, why = _mod("floorspace_cut")
+        try:
+            if fc is None:
+                raise ImportError(why)
+            if not (hasattr(fc, "segment_frame") and hasattr(fc, "narration_lines")):
+                raise AttributeError("floorspace_cut.segment_frame / narration_lines are missing")
+            out = seg(float(fc.Cut().T), fc.segment_frame, title, lines=lambda: fc.narration_lines())
+        except Exception as e:                              # noqa: BLE001
+            out = lost(f"{type(e).__name__}: {e}", title)
     else:
-        add("experiments", 6.0, _missing_frame("experiments", why), "The function networks", missing=why)
-    cards("figs5_intro", "counters", "Counters, early stopping, and how to read the replay")
-    cards("figs5_intro", "atomizer", "The atomizer: design targets next to the lab's record")
-    add("replay", R5.tl().dur, replay_frame, "The replay: two years on one seed", lines=lambda: own_lines("replay"),
-        caps=R5.captions)
-    cards("figs5_labs", "labs", "The lab comparison, like for like")
-    fc, why = _mod("floorspace_cut")
-    try:
-        if fc is not None and not (hasattr(fc, "segment_frame") and hasattr(fc, "narration_lines")):
-            raise AttributeError("floorspace_cut.segment_frame / narration_lines are missing")
-        T_fs = float(fc.Cut().T) if fc is not None else None
-    except Exception as e:                                  # noqa: BLE001
-        fc, why, T_fs = None, f"{type(e).__name__}: {e}", None
-    if fc is not None:
-        add("floorspace", T_fs, fc.segment_frame, "Floor space: three labs, capacity matched",
-            lines=lambda: fc.narration_lines())
-    else:
-        add("floorspace", 6.0, _missing_frame("floorspace", why), "Floor space", missing=why)
-    cards("figs5_labs", "takeaway", "The takeaway")
-    cards("figs5_intro", "notes", "Notes: real, assumed, simulated")
-    _S["segs"] = out
+        raise KeyError(name)
+    _S[key] = out
     return out
+
+
+def segments() -> list:
+    return [segment(n) for n in ORDER]
 
 
 def missing() -> list:
@@ -468,7 +478,7 @@ FADE = 0.35
 
 
 def render_piece(name: str, a: float, b: float, out: Path, preset: str) -> dict:
-    seg = next(s for s in segments() if s["name"] == name)
+    seg = segment(name)
     fn, dur = seg["fn"], seg["dur"]
     enc = C.encoder(out, preset)
     n = int(round((b - a) * FPS))

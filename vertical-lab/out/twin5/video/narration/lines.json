@@ -1,0 +1,134 @@
+{
+ "voice": "Kokoro v1.0 af_heart (kokoro-onnx, open weights), speed 0.96",
+ "lines": {
+  "open1": {
+   "key": "6e32be039ae9c82b",
+   "text": "This is a simulated benchmark, in round 5: two alloy discovery campaigns, replayed for two years in a digital twin of our planned automated lab, from the day the money arrives.",
+   "spoken": "This is a simulated benchmark, in round 5: two alloy discovery campaigns, replayed for two years in a digital twin of our planned automated lab, from the day the money arrives.",
+   "phonemes": "ðɪs ɪz ɐ sˈɪmjʊlˌeɪɾᵻd bˈɛntʃmɑːɹk, ɪn ɹˈaʊnd fˈaɪv: tˈuː ˈælɔɪ dɪskˈʌvɚɹi kæmpˈeɪnz, ɹˈiːpleɪd fɔːɹ tˈuː jˈɪɹz ɪn ɐ dˈɪdʒɪɾəl twˈɪn ʌv ˌaʊɚ plˈænd ˈɔːɾəmˌeɪɾᵻd lˈæb, fɹʌmðə dˈeɪ ðə mˈʌni ɚɹˈaɪvz.",
+   "seconds": 11.41,
+   "sha256": "ad0671fd7508dca41788d5a3505d4a0b69ce115a2ddce0f70b560340fa675ab7"
+  },
+  "open2": {
+   "key": "c0e4c932dbbcf64f",
+   "text": "Some of it comes from real sources: the lab's design and its 3-D model, footage from our own atomizer, the search spaces in the two proposals, and published prices. Everything else is simulated: every alloy, every measurement, and every result.",
+   "spoken": "Some of it comes from real sources: the lab's design and its three D model, footage from our own atomizer, the search spaces in the two proposals, and published prices. Everything else is simulated: every alloy, every measurement, and every result.",
+   "phonemes": "sˌʌm ʌv ɪt kˈʌmz fɹʌm ɹˈiːəl sˈɔːɹsᵻz: ðə lˈæbz dɪzˈaɪn ænd ɪts θɹˈiː dˈiː mˈɑːdəl, fˈʊɾɪdʒ fɹʌm ˌaʊɚɹ ˈoʊn ˈæɾəmˌaɪzɚ, ðə sˈɜːtʃ spˈeɪsᵻz ɪnðə tˈuː pɹəpˈoʊzəlz, ænd pˈʌblɪʃt pɹˈaɪsᵻz. ˈɛvɹɪθˌɪŋ ˈɛls ɪz sˈɪmjʊlˌeɪɾᵻd: ˈɛvɹi ˈælɔɪ, ˈɛvɹi mˈɛʒɚmənt, ænd ˈɛvɹi ɹɪzˈʌlt.",
+   "seconds": 16.0,
+   "sha256": "b8e31ad0672b7df26ae433667a0559c586c37c629c96af95282b461b07ae6707"
+  },
+  "rep1": {
+   "key": "0267d4ceb60e1030",
+   "text": "The replay starts on the day the money arrives. All of it is there, for both campaigns, and every station is ordered. There is no lab yet.",
+   "spoken": "The replay starts on the day the money arrives. All of it is there, for both campaigns, and every station is ordered. There is no lab yet.",
+   "phonemes": "ðə ɹˈiːpleɪ stˈɑːɹts ɔnðə dˈeɪ ðə mˈʌni ɚɹˈaɪvz. ˈɔːl ʌv ɪɾ ɪz ðˈɛɹ, fɔːɹ bˈoʊθ kæmpˈeɪnz, ænd ˈɛvɹi stˈeɪʃən ɪz ˈɔːɹdɚd. ðɛɹ ɪz nˈoʊ lˈæb jˈɛt.",
+   "seconds": 8.58,
+   "sha256": "2aadba0d7e976fa66c051ede4b88d8fa17c39058e9e8ad7d427bd64e1ca168f6"
+  },
+  "rep2": {
+   "key": "eb87e5700228abff",
+   "text": "This is seed 1 of 16, with time-aware BOFN in the stocked automated lab: the median seed for both campaigns together. It stays the same seed to the end.",
+   "spoken": "This is seed 1 of 16, with time-aware B O F N in the stocked automated lab: the median seed for both campaigns together. It stays the same seed to the end.",
+   "phonemes": "ðɪs ɪz sˈiːd wˈʌn ʌv sˈɪkstiːn, wɪð tˈaɪmɐwˈɛɹ bˈiː ˈoʊ ˈɛf ˈɛn ɪnðə stˈɑːkt ˈɔːɾəmˌeɪɾᵻd lˈæb: ðə mˈiːdiːən sˈiːd fɔːɹ bˈoʊθ kæmpˈeɪnz təɡˈɛðɚ. ɪt stˈeɪz ðə sˈeɪm sˈiːd tə ðɪ ˈɛnd.",
+   "seconds": 10.88,
+   "sha256": "3dd991b50d99b8785a71d1f21ead1686a3b40afe55a30d9e91c154a25f25e5b7"
+  },
+  "rep3": {
+   "key": "f3530cfdacb9db00",
+   "text": "Day 67. The space is ready, and equipment comes in. A station is see-through until it is online, and until the cell is integrated, people run each of them.",
+   "spoken": "Day 67. The space is ready, and equipment comes in. A station is see-through until it is online, and until the cell is integrated, people run each of them.",
+   "phonemes": "dˈeɪ sˈɪksti sˈɛvən. ðə spˈeɪs ɪz ɹˈɛdi, ænd ɪkwˈɪpmənt kˈʌmz ˈɪn. ɐ stˈeɪʃən ɪz sˈiːθɹuː ʌntˈɪl ɪɾ ɪz ˈɑːnlaɪn, ænd ʌntˈɪl ðə sˈɛl ɪz ˈɪntᵻɡɹˌeɪɾᵻd, pˈiːpəl ɹˈʌn ˈiːtʃ əv ðˌɛm.",
+   "seconds": 10.47,
+   "sha256": "90860060ca5d4be9e7fb768c224892780ea4c03fefbb3d3e8b0f817461ac7bf4"
+  },
+  "rep3b": {
+   "key": "3cad0a92aea848d9",
+   "text": "Meanwhile the first alloys are made on the existing atomizer and printed at the partners: the panel on the left lists what runs outside the new lab. Under each plot, a line says why its curve is not moving yet.",
+   "spoken": "Meanwhile the first alloys are made on the existing atomizer and printed at the partners: the panel on the left lists what runs outside the new lab. Under each plot, a line says why its curve is not moving yet.",
+   "phonemes": "mˈiːnwaɪl ðə fˈɜːst ˈælɔɪz ɑːɹ mˌeɪd ɔnðɪ ɛɡzˈɪstɪŋ ˈæɾəmˌaɪzɚ ænd pɹˈɪntᵻd æt ðə pˈɑːɹtnɚz: ðə pˈænəl ɔnðə lˈɛft lˈɪsts wʌt ɹˈʌnz aʊtsˈaɪd ðə nˈuː lˈæb. ˌʌndɚɹ ˈiːtʃ plˈɑːt, ɐ lˈaɪn sˈɛz wˌaɪ ɪts kˈɜːv ɪz nˌɑːt mˈuːvɪŋ jˈɛt.",
+   "seconds": 13.42,
+   "sha256": "412b52f0961ea15d15d2128e0832b8f180a2a2f74af34f386ffd53de48b22c2d"
+  },
+  "rep4": {
+   "key": "302422c63cdc53d4",
+   "text": "Day 161. The Shuttles and the mobile units are integrated. From here, the run's own bookings move the 3-D model: trays to the openings and units to the docks, round the clock.",
+   "spoken": "Day 161. The Shuttles and the mobile units are integrated. From here, the run's own bookings move the three D model: trays to the openings and units to the docks, round the clock.",
+   "phonemes": "dˈeɪ wˈʌnhˈʌndɹɪd sˈɪksti wˈʌn. ðə ʃˈʌɾəlz ænd ðə mˈoʊbəl jˈuːnɪts ɑːɹ ˈɪntᵻɡɹˌeɪɾᵻd. fɹʌm hˈɪɹ, ðə ɹˈʌnz ˈoʊn bˈʊkɪŋz mˈuːv ðə θɹˈiː dˈiː mˈɑːdəl: tɹˈeɪz tə ðɪ ˈoʊpənɪŋz ænd jˈuːnɪts tə ðə dˈɑːks, ɹˈaʊnd ðə klˈɑːk.",
+   "seconds": 12.33,
+   "sha256": "5b20bc115ab4aee00e20074b706314a31f5dea0b8cb69d11fa84990d50c5d6fd"
+  },
+  "rep5": {
+   "key": "3a9f621a0771503f",
+   "text": "Day 176: aluminium's best new alloy passes the best existing alloy on this synthetic benchmark, and on day 182, the halfway target. In the conventional lab, the same seed gets there on days 196 and 378.",
+   "spoken": "Day 176: aluminum's best new alloy passes the best existing alloy on this synthetic benchmark, and on day 182, the halfway target. In the conventional lab, the same seed gets there on days 196 and 378.",
+   "phonemes": "dˈeɪ wˈʌnhˈʌndɹɪd sˈɛvənti sˈɪks: ɐlˈuːmɪnəmz bˈɛst nˈuː ˈælɔɪ pˈæsᵻz ðə bˈɛst ɛɡzˈɪstɪŋ ˈælɔɪ ˌɔn ðɪs sɪnθˈɛɾɪk bˈɛntʃmɑːɹk, ænd ˌɔn dˈeɪ wˈʌnhˈʌndɹɪd ˈeɪɾi tˈuː, ðə hˈæfweɪ tˈɑːɹɡɪt. ɪnðə kənvˈɛnʃənəl lˈæb, ðə sˈeɪm sˈiːd ɡˈɛts ðɛɹ ˌɔn dˈeɪz wˈʌnhˈʌndɹɪd nˈaɪnti sˈɪks ænd θɹˈiːhˈʌndɹɪd sˈɛvənti ˈeɪt.",
+   "seconds": 17.19,
+   "sha256": "fed07d0bdeec0fa6c8ca2c7b166711bcf7067ca8772192861a6884ddd5227ccd"
+  },
+  "rep6": {
+   "key": "18022aae8e68d887",
+   "text": "Day 291: copper's best new alloy passes both targets at once. In the conventional lab, this seed's copper reaches neither within two years.",
+   "spoken": "Day 291: copper's best new alloy passes both targets at once. In the conventional lab, this seed's copper reaches neither within two years.",
+   "phonemes": "dˈeɪ tˈuːhˈʌndɹɪd nˈaɪnti wˈʌn: kˈɑːpɚz bˈɛst nˈuː ˈælɔɪ pˈæsᵻz bˈoʊθ tˈɑːɹɡɪts ɐtwˈʌns. ɪnðə kənvˈɛnʃənəl lˈæb, ðɪs sˈiːdz kˈɑːpɚ ɹˈiːtʃᵻz nˈiːðɚ wɪðˌɪn tˈuː jˈɪɹz.",
+   "seconds": 9.88,
+   "sha256": "86bb157dd7573c113ce494bf5aeed8b5b76232ffc55e48e8ef6d5b11ab46cc3a"
+  },
+  "rep7": {
+   "key": "13f4b5bbea9f7112",
+   "text": "Now both curves are flat, and each plot says why: the money is spent. With all of it there from the start, this lab has spent 90 percent of its two years of money by day 337, and from here it mostly waits. The conventional lab is still spending.",
+   "spoken": "Now both curves are flat, and each plot says why: the money is spent. With all of it there from the start, this lab has spent 90 percent of its two years of money by day 337, and from here it mostly waits. The conventional lab is still spending.",
+   "phonemes": "nˈaʊ bˈoʊθ kˈɜːvz ɑːɹ flˈæt, ænd ˈiːtʃ plˈɑːt sˈɛz wˈaɪ: ðə mˈʌni ɪz spˈɛnt. wɪð ˈɔːl ʌv ɪt ðɛɹ fɹʌmðə stˈɑːɹt, ðɪs lˈæb hɐz spˈɛnt nˈaɪnti pɚsˈɛnt ʌv ɪts tˈuː jˈɪɹz ʌv mˈʌni baɪ dˈeɪ θɹˈiːhˈʌndɹɪd θˈɜːɾi sˈɛvən, ænd fɹʌm hˈɪɹ ɪt mˈoʊstli wˈeɪts. ðə kənvˈɛnʃənəl lˈæb ɪz stˈɪl spˈɛndɪŋ.",
+   "seconds": 16.45,
+   "sha256": "d750a4bc3dd0f1ab6e9a1594a6228814cc52c11c71ec26a8c38e252dd144e17f"
+  },
+  "rep8": {
+   "key": "062e6a07f23e6ef1",
+   "text": "Day 730. In this seed, the automated lab's best new alloys end at 0.79 for aluminium and 0.70 for copper, and the conventional lab's at 0.77 and 0.53. One seed is an example, not a result. The comparison over all 16 seeds comes next.",
+   "spoken": "Day 730. In this seed, the automated lab's best new alloys end at 0.79 for aluminum and 0.70 for copper, and the conventional lab's at 0.77 and 0.53. One seed is an example, not a result. The comparison over all 16 seeds comes next.",
+   "phonemes": "dˈeɪ sˈɛvənhˈʌndɹɪd θˈɜːɾi. ɪn ðɪs sˈiːd, ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæbz bˈɛst nˈuː ˈælɔɪz ˈɛnd æt zˈiəɹoʊ pɔɪnt sˈɛvən nˈaɪn fɔːɹ ɐlˈuːmɪnəm ænd zˈiəɹoʊ pɔɪnt sˈɛvən zˈiəɹoʊ fɔːɹ kˈɑːpɚ, ænd ðə kənvˈɛnʃənəl lˈæbz æt zˈiəɹoʊ pɔɪnt sˈɛvən sˈɛvən ænd zˈiəɹoʊ pɔɪnt fˈaɪv θɹˈiː. wˈʌn sˈiːd ɪz ɐn ɛɡzˈæmpəl, nˌɑːɾɚ ɹɪzˈʌlt. ðə kəmpˈæɹɪsən ˌoʊvɚɹ ˈɔːl sˈɪkstiːn sˈiːdz kˈʌmz nˈɛkst.",
+   "seconds": 21.72,
+   "sha256": "5dc04717131f9d603eb8057dba971418eec7c888ba007e07eb421da7246f2fb6"
+  }
+ },
+ "voice_id": "af_heart",
+ "speed": 0.96,
+ "rate": 24000,
+ "model_sha256": {
+  "kokoro-v1.0.onnx": "7d5df8ecf7d4b1878015a32686053fd0eebe2bc377234608764cc0ef3636a6c5",
+  "voices-v1.0.bin": "bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d"
+ },
+ "say": {
+  "MiR250": "MiR two-fifty",
+  "OT-2": "O T two",
+  "UPS": "U P S",
+  "SEM": "S E M",
+  "BYU": "B Y U",
+  "EDM": "E D M",
+  "ICP-MS": "I C P M S",
+  "UR12e": "U R twelve E",
+  "aluminium": "aluminum",
+  "AlSi10Mg": "A L S I ten M G",
+  "FLAIME": "flame",
+  "ONR": "O N R",
+  "BOFN": "B O F N",
+  "GP-BO": "G P B O",
+  "LPBF": "L P B F",
+  "DED": "D E D",
+  "HPC": "H P C",
+  "EDS": "E D S",
+  "XRD": "X R D",
+  "3-D": "three D",
+  "VHX": "V H X",
+  "labour": "labor",
+  "pKGFN": "P K G F N"
+ },
+ "ipa": {
+  "MiR": "mˈiːɹ",
+  "CALPHAD": "kˈælfæd",
+  "Kardex": "kˈɑːɹdɛks",
+  "Sobol": "sˈoʊbɑːl",
+  "doser": "dˈoʊsɚ",
+  "dosed": "dˈoʊsd",
+  "pycalphad": "pˈaɪkælfæd"
+ }
+}

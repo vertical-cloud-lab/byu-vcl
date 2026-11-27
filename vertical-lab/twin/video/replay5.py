@@ -48,7 +48,7 @@ TMP = D.VID / "parts" / "lab3d"
 L3FPS = 10                      # 3-D renders a second (each held for three frames of the cut)
 XF = 0.6                        # seconds of crossfade into a phase: its track starts this much early
 CHUNK = 24.0                    # seconds of track per render job
-PIP = dict(box=(486, 132, 384, 216), size=(960, 540), view="towers_c")
+PIP = dict(box=(440, 132, 384, 216), size=(960, 540), view="towers_c")
 _S: dict = {}
 
 
@@ -144,12 +144,13 @@ class Timeline5:
     def _phases(self) -> list:
         """[(start s, view, inset view or None, words)]: the ghost lab from above; the space ready and the stations
         coming in; the cell's first weeks at the Shuttles' openings; then the whole lab from several sides."""
-        out = [(0.0, "high", None, "Before the space is ready")]
+        out = [(0.0, "high5", None, "Before the space is ready")]
         if self.room_v > 2.0:
-            out.append((self.room_v, "sw", None, "The space is ready: equipment comes in"))
+            out.append((self.room_v, "sw5", None, "The space is ready: equipment comes in"))
         if self.cell_v > out[-1][0] + 6.0:
             out.append((self.cell_v, "towers_c", None, "The cell is integrated: robots run the stations"))
-        cyc = [("high", "towers_c"), ("plan", None), ("se", None), ("high", "towers_c"), ("sw", None), ("high", None)]
+        cyc = [("high5", "towers_c"), ("plan5", None), ("se5", None), ("high5", "towers_c"), ("sw5", None),
+               ("high5", None)]
         t = max(self.cell_v, out[-1][0]) + 26.0
         i = 0
         while t < self.dur - 20.0:
@@ -195,6 +196,67 @@ def tl() -> Timeline5:
     if "tl" not in _S:
         _S["tl"] = Timeline5(R())
     return _S["tl"]
+
+
+# ============================================================================================ the cameras
+def _project(cam, va, pts, size=(W, H)) -> np.ndarray:
+    """World points -> pixels for a camera (position, focal point, view up) with a vertical view angle (VTK's)."""
+    pos, foc, up = (np.asarray(v, float) for v in cam)
+    f = foc - pos
+    f /= np.linalg.norm(f)
+    r_ = np.cross(f, up)
+    r_ /= np.linalg.norm(r_)
+    u = np.cross(r_, f)
+    d = np.atleast_2d(np.asarray(pts, float)) - pos
+    xc, yc, zc = d @ r_, d @ u, d @ f
+    t = math.tan(math.radians(va) / 2.0)
+    return np.stack([(xc / (zc * t * size[0] / size[1]) + 1.0) * 0.5 * size[0], (1.0 - yc / (zc * t)) * 0.5 * size[1]], 1)
+
+
+def fit_view(name: str, free=None) -> tuple:
+    """lab3d's camera `name`, pulled back (a wider angle) and moved sideways until every station the twin books, both
+    Shuttles' openings and the chargers lie inside the part of the frame the replay's panels leave free."""
+    from . import lab3d as L3
+    free = free or FREE
+    kin = LS.load_kin()
+    keys = [k for k in kin["world"] if k in set(LS.DOCK_OF.values()) | {"open1", "open2", "charger1", "charger2"}]
+    pts = np.array([kin["world"][k] for k in keys], float)
+    cam, va = L3.VIEWS[name]
+    cam = [np.array(v, float) for v in cam]
+    x0, y0, x1, y1 = (px(v) for v in free)
+    pad = px(70)
+    for _ in range(6):
+        xy = _project(cam, va, pts)
+        bx0, by0, bx1, by1 = xy[:, 0].min() - pad, xy[:, 1].min() - pad, xy[:, 0].max() + pad, xy[:, 1].max() + pad
+        sc = min(1.0, (x1 - x0) / (bx1 - bx0), (y1 - y0) / (by1 - by0))
+        va = math.degrees(2.0 * math.atan(math.tan(math.radians(va) / 2.0) / sc))
+        xy = _project(cam, va, pts)
+        cx, cy = (xy[:, 0].min() + xy[:, 0].max()) / 2, (xy[:, 1].min() + xy[:, 1].max()) / 2
+        dx, dy = cx - (x0 + x1) / 2, cy - (y0 + y1) / 2
+        pos, foc, up = cam
+        f = foc - pos
+        dist = float(np.linalg.norm(f))
+        f /= dist
+        r_ = np.cross(f, up)
+        r_ /= np.linalg.norm(r_)
+        u = np.cross(r_, f)
+        wpp = 2.0 * dist * math.tan(math.radians(va) / 2.0) / H       # world mm per pixel at the focal distance
+        shift = r_ * dx * wpp - u * dy * wpp
+        cam = [pos + shift, foc + shift, up]
+    return [tuple(float(x) for x in v) for v in cam], float(va)
+
+
+def register_views() -> dict:
+    """The replay's whole-lab cameras, 'high5', 'sw5', 'se5' and 'plan5', added to lab3d.VIEWS (lab3d_cut projects with
+    it, lab3d5 renders with it)."""
+    from . import lab3d as L3
+    for nm in ("high", "sw", "se", "plan"):
+        if nm + "5" not in L3.VIEWS:
+            L3.VIEWS[nm + "5"] = fit_view(nm)
+    return L3.VIEWS
+
+
+VIEW5 = {"high": "high5", "sw": "sw5", "se": "se5", "plan": "plan5"}
 
 
 # ============================================================================================ the build-out in 3-D
@@ -249,8 +311,9 @@ def build_key(t_h: float) -> tuple:
 
 # ============================================================================================ the 3-D jobs
 def jobs() -> list:
-    """The replay's 3-D jobs: each phase's camera over its span (from XF before it), in chunks, and the inset's camera
+    """(registers the replay's cameras first) The replay's 3-D jobs: each phase's camera over its span (from XF before it), in chunks, and the inset's camera
     where the phase has one. Each job names the clock's span, so the workers' plans are the cut's."""
+    register_views()
     T = tl()
     out = []
     for i, (a, view, pip, _) in enumerate(T.phases):
@@ -288,12 +351,13 @@ def plan():
 
 
 # ================================================================================================== the panels
-COL_X, COL_W = 1304, 592        # the right-hand column (1920 x 1080 px)
-LEFT_X, LEFT_W = 24, 446
+COL_X, COL_W = 1376, 520        # the right-hand column (1920 x 1080 px)
+LEFT_X, LEFT_W = 24, 400
 BOX = dict(clock=(LEFT_X, 20, LEFT_W, 104), build=(LEFT_X, 132, LEFT_W, 250), outside=(LEFT_X, 390, LEFT_W, 210),
            counters=(COL_X, 20, COL_W, 158), flaime_al=(COL_X, 186, COL_W, 236), onr_cu=(COL_X, 430, COL_W, 236),
            spend=(COL_X, 674, COL_W, 214), seed=(COL_X, 896, COL_W, 164), moves=(870, 956, 420, 104),
-           pill=(486, 20, 804, 66))
+           pill=(440, 20, 920, 66))
+FREE = (452, 110, 1352, 850)    # where the lab's picture is clear of the panels (x0, y0, x1, y1)
 CAMP_WORD = {"flaime_al": "Aluminium (FLAIME)", "onr_cu": "Copper (ONR)"}
 CAMP_METAL = {"flaime_al": "aluminium", "onr_cu": "copper"}
 TARGET_WORDS = {"T1": "the best existing alloy on this synthetic benchmark", "T2": "the halfway target"}
@@ -408,7 +472,7 @@ def build_rows() -> list:
     if "shuttle" in b:
         rows.append((float(b["shuttle"]["online_h"]), "Both Kardex Shuttles in"))
     if r.cell_h is not None:
-        rows.append((float(r.cell_h), "The cell integrated: robots run it"))
+        rows.append((float(r.cell_h), "Cell integrated: robots run it"))
     for st, words in (("utah_midi", "LPBF in house (Aconity MIDI)"), ("utah_mxlab", "DED in house (MX-Lab)")):
         if st in r.station_online:
             rows.append((float(r.station_online[st]), words))
@@ -423,7 +487,7 @@ def build_panel(t_h: float) -> Image.Image:
     def make():
         x_, y_, w, h = BOX["build"]
         im, d = _panel(w, h, 0.90)
-        d.text((px(16), px(10)), "The build-out (simulated; every lead is a stand-in)", font=St.font(15, bold=True),
+        d.text((px(16), px(10)), "The build-out (simulated; leads are stand-ins)", font=St.font(14, bold=True),
                fill=St.INK2)
         y = px(38)
         for i, (hh, words) in enumerate(rows):
@@ -433,8 +497,8 @@ def build_panel(t_h: float) -> Image.Image:
                 d.ellipse((px(18), cy - px(6), px(30), cy + px(6)), fill=St.GOOD + (255,))
             else:
                 d.ellipse((px(18), cy - px(6), px(30), cy + px(6)), outline=St.INK3 + (255,), width=px(2))
-            d.text((px(40), y), f"day {hh / HPD:.0f}", font=St.font(16, bold=True), fill=St.INK if ok else St.INK3)
-            d.text((px(124), y), words, font=St.font(16), fill=St.INK if ok else St.INK3)
+            d.text((px(38), y), f"day {hh / HPD:.0f}", font=St.font(15, bold=True), fill=St.INK if ok else St.INK3)
+            d.text((px(112), y), words, font=St.font(15), fill=St.INK if ok else St.INK3)
             y += px(27)
         d.text((px(16), px(BOX['build'][3] - 26)), f"stations online: {on} of {len(r.station_online)}",
                font=St.font(15), fill=St.INK2)
@@ -496,10 +560,10 @@ def counters_panel(t_h: float) -> Image.Image:
     def make():
         x_, y_, w, h = BOX["counters"]
         im, d = _panel(w, h, 0.93)
-        d.text((px(16), px(9)), "Counters, simulated: this seed, the automated lab", font=St.font(15, bold=True),
+        d.text((px(16), px(9)), "Counters, simulated: this seed, the automated lab", font=St.font(14, bold=True),
                fill=St.INK2)
-        cols = [("designed", "designed", 128), ("lots", "powder lots", 238), ("made", "alloys made", 340),
-                ("built", "printed", 442), ("tested", "tested", 540)]
+        cols = [("designed", "designed", 112), ("lots", "powder lots", 210), ("made", "alloys made", 310),
+                ("built", "printed", 400), ("tested", "tested", 474)]
         sub = {"designed": "(on the HPC)", "built": "or deposited", "tested": "(full chain)"}
         for k, name, cx in cols:
             d.text((px(cx), px(40)), name, font=St.font(14, bold=True), fill=St.INK2, anchor="ma")
@@ -604,7 +668,7 @@ def best_panel(c: str, t_h: float) -> Image.Image:
         ys = px(h - 44)
         d.line([(px(12), ys), (px(w - 12), ys)], fill=St.GRID + (255,), width=1)
         if fl is None:
-            d.text((px(16), ys + px(8)), "automated lab, this seed (solid); conventional lab, same seed (dashed)",
+            d.text((px(16), ys + px(8)), "automated lab, this seed (solid); conventional, same seed (dashed)",
                    font=St.font(13), fill=St.INK2)
         else:
             n_new = int((ra.curves[c][:, 0] <= d_now).sum())
@@ -651,7 +715,7 @@ def spend_panel(t_h: float) -> Image.Image:
         has_limit = budget > 0 and budget < 1e12
         ymax = max(max(tot.values()), budget if has_limit else 0.0) * 1.1 or 1.0
         P = Plot(w, h, ra.horizon_days, ymax, top=62)
-        d.text((px(16), px(8)), "Cumulative spend per lab, both campaigns (simulated)", font=St.font(16, bold=True),
+        d.text((px(16), px(8)), "Cumulative spend per lab, both campaigns (simulated)", font=St.font(15, bold=True),
                fill=St.INK)
 
         step = 100e3 if ymax <= 600e3 else 250e3 if ymax <= 1.6e6 else 1e6
@@ -680,15 +744,15 @@ def spend_panel(t_h: float) -> Image.Image:
             d.text((cx + px(10), cy + px(12)), f"{PCT_SPENT * 100:.0f} % spent by day {d9:.0f}", font=St.font(13, bold=True),
                    fill=St.WARN, anchor="la")
         x, yl = px(16), px(40)                              # the legend, with each line's value now
-        f = St.font(14, bold=True)
-        d.line([(x, yl), (x + px(26), yl)], fill=St.INK + (255,), width=px(4))
-        txt = f"automated lab {D5._usd(ya[-1])}"
-        d.text((x + px(32), yl), txt, font=f, fill=St.INK, anchor="lm")
-        x += px(44) + St.text_w(f, txt)
-        St.dashed_line(d, [(x, yl), (x + px(30), yl)], fill=St.BASE + (255,), width=px(3), dash=px(8), gap=px(5))
-        txt = f"conventional lab {D5._usd(yc[-1])}"
-        d.text((x + px(36), yl), txt, font=f, fill=St.BASE, anchor="lm")
-        x += px(48) + St.text_w(f, txt)
+        f = St.font(13, bold=True)
+        d.line([(x, yl), (x + px(22), yl)], fill=St.INK + (255,), width=px(4))
+        txt = f"automated {D5._usd(ya[-1])}"
+        d.text((x + px(27), yl), txt, font=f, fill=St.INK, anchor="lm")
+        x += px(37) + St.text_w(f, txt)
+        St.dashed_line(d, [(x, yl), (x + px(26), yl)], fill=St.BASE + (255,), width=px(3), dash=px(8), gap=px(5))
+        txt = f"conventional {D5._usd(yc[-1])}"
+        d.text((x + px(31), yl), txt, font=f, fill=St.BASE, anchor="lm")
+        x += px(41) + St.text_w(f, txt)
         for c in CAMPS:
             d.line([(x, yl), (x + px(16), yl)], fill=St.CAMP[c] + (255,), width=px(2))
             d.text((x + px(20), yl), "Al" if c == "flaime_al" else "Cu", font=St.font(13), fill=St.INK2, anchor="lm")
@@ -716,17 +780,17 @@ def seed_badge() -> Image.Image:
                fill=St.INK)
         lines = [
             f"The automated lab, {I['stock_words']}, {I['policy_words']} on both campaigns.",
-            (f"The arm's median seed for both campaigns together (round {I['round']}'s notes)."
+            (f"The arm's median seed for both campaigns (round {I['round']}'s notes)."
              if I["is_median_seed"] else "Not the arm's median seed: chosen by hand for a look."),
-            f"Days to the two targets, this seed: Al {dd(a['flaime_al']['days']['T1'])}, "
+            f"Days to the targets, this seed: Al {dd(a['flaime_al']['days']['T1'])}, "
             f"{dd(a['flaime_al']['days']['T2'])}; Cu {dd(a['onr_cu']['days']['T1'])}, {dd(a['onr_cu']['days']['T2'])}.",
-            f"The arm's medians over {I['n_seeds']} seeds: Al {md('flaime_al|T1')}, {md('flaime_al|T2')}; "
+            f"The arm's medians, {I['n_seeds']} seeds: Al {md('flaime_al|T1')}, {md('flaime_al|T2')}; "
             f"Cu {md('onr_cu|T1')}, {md('onr_cu|T2')}.",
-            f"Dashed: the conventional lab's seed {I['seed']}, same policy and stock rule.",
+            f"Dashed: the conventional lab's seed {I['seed']}, same policy and stock.",
         ]
         y = px(44)
         for ln in lines:
-            d.text((px(16), y), ln, font=St.font(15), fill=St.INK2 if "Dashed" in ln else St.INK)
+            d.text((px(16), y), ln, font=St.font(14), fill=St.INK2 if "Dashed" in ln else St.INK)
             y += px(23)
         return im
     return _cached(("seed",), make)
@@ -784,7 +848,7 @@ def target_tags(t: float) -> list:
 # ================================================================================================== the picture
 def _state() -> dict:
     if "st" not in _S:
-        from . import lab3d5  # noqa: F401  (registers the cameras)
+        register_views()
         from . import lab3d_cut as LC
         from .birdseye import Birdseye
         kin = LS.load_kin()
@@ -821,8 +885,9 @@ def picture(i: int, t: float, t_h: float, sp: float) -> np.ndarray:
     be.R.stations = {k: v for k, v in st["all_st"].items()
                      if (r.online(k) <= t_h) or (k == "atomizer" and r.cell_h is not None and t_h >= r.cell_h)}
     sh_on = "shuttle" not in r.build or t_h >= float(r.build["shuttle"]["online_h"])
-    be.show_chips = sh_on and view in LC.CHIPS
-    be.chip_dx = LC.CHIPS.get(view, {1: 0.0, 2: 0.0})
+    base = view[:-1] if view.endswith("5") else view
+    be.show_chips = sh_on and base in LC.CHIPS
+    be.chip_dx = LC.CHIPS.get(base, {1: 0.0, 2: 0.0})
     be.chip_avoid = True
     fr = be.frame_live(img, st["anc"][view], t_h, max(1.0, sp * 0.8), offsite=False, legend=False)
     placed = [(px(x), px(y), px(x + w), px(y + h)) for x, y, w, h in BOX.values()]
@@ -891,7 +956,7 @@ def replay_frame(t: float) -> np.ndarray:
         St.paste(fr, mp, px(BOX["moves"][0]), px(BOX["moves"][1]))
     gl = ghost_legend(t_h)
     if gl is not None:
-        St.paste(fr, gl, px(486), px(92))
+        St.paste(fr, gl, px(440), px(92))
     from . import compose as C
     dag = C.S("dag")
     lit = {k: dag.intensity(v) for k, v in r.lit(t_h, span).items()}

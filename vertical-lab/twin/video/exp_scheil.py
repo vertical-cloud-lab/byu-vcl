@@ -38,7 +38,10 @@ from .style import CAMP, INK, INK2, mix
 CALC = G.KIND["calc"][0]                 # the pycalphad run's line: the colour of the "computed" tag
 TRUTH = (226, 228, 234)                  # the hidden truth's line
 PHASE_NAME = {"FCC_A1": "fcc Al", "AL4CR": "Al₄Cr", "AL3TI_H": "Al₃Ti", "AL6MN": "Al₆Mn", "AL3ZR": "Al₃Zr",
-              "AL3NI": "Al₃Ni"}
+              "AL3NI": "Al₃Ni",
+              # COST 507's names (CEND: the sublattice Ce and Nd share; H and L: its high- and low-temperature forms)
+              "AL11_CEND3L": "Al₁₁Ce₃", "AL11_CEND3H": "Al₁₁Ce₃ (high-T)", "AL3_CEND": "Al₃Ce", "AL2_CEND": "Al₂Ce",
+              "AL_CEND": "AlCe", "ALLI": "AlLi", "AL2LI3": "Al₂Li₃", "AL4LI9": "Al₄Li₉", "BCT_A5": "Sn"}
 SUB = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
 TIGHT, WIDE = (612.0, 682.0), (596.0, 806.0)
 
@@ -124,6 +127,7 @@ class Scheil(Segment):
     T_NET = 26.8                 # what the network takes
     BOX = (1052, 246, 1820, 598)
     MELT = (80, 206, 540)        # x, y, side of the picture of the melt
+    TIGHT, WIDE = TIGHT, WIDE    # the plot's temperature limits: round 3b's alloy's; from round 5 the alloy's own
 
     def __init__(self):
         super().__init__()
@@ -156,6 +160,16 @@ class Scheil(Segment):
                               fs=np.concatenate([np.zeros(n0), t["fs"]]),
                               grow=np.concatenate([lead_p, np.ones(len(t["fs"]))]), part=self.part_truth, lead=n0)
         self.has_calc = self.calc is not None
+        self.db_name = X.OPEN_DB_NAME[(self.calc or {}).get("db", X.OPEN_DB)][1]
+        if X.R5:                                               # the limits from this alloy's own curves
+            lo_o, hi_o = float(np.min(o["T_C"])), float(o["T_alpha_liquidus_C"])
+            self.TIGHT = (5.0 * math.floor((lo_o - 6.0) / 5.0), 5.0 * math.ceil((hi_o + 10.0) / 5.0))
+            lows = [float(np.min(t["T_C"])), lo_o] + ([float(np.min(self.calc["T_C"]))] if self.has_calc else [])
+            highs = [hi_o, Tp] + ([float(self.calc["T_C"][int(np.argmax(np.asarray(self.calc["fraction_solid"])
+                                                                     > 1e-4))])] if self.has_calc else [])
+            self.WIDE = (min(self.TIGHT[0], 5.0 * math.floor((min(lows) - 6.0) / 5.0)),
+                         max(self.TIGHT[1], 5.0 * math.ceil((max(highs) + 10.0) / 5.0)))
+        TIGHT, WIDE = self.TIGHT, self.WIDE
         if self.has_calc:
             c = self.calc
             T, fs = np.asarray(c["T_C"], float), np.asarray(c["fraction_solid"], float)
@@ -171,15 +185,18 @@ class Scheil(Segment):
                                end=float(np.asarray(arr)[-1])))
             self.phases = sorted(ph, key=lambda p: -p["T"])
             self.left_out = ", ".join(c["left_out"])
-        for cur, lim in ((self.cur_open, TIGHT), (self.cur_truth, WIDE)) + \
-                (((self.cur_calc, WIDE),) if self.has_calc else ()):
+        for cur, lim in ((self.cur_open, self.TIGHT), (self.cur_truth, self.WIDE)) + \
+                (((self.cur_calc, self.WIDE),) if self.has_calc else ()):
             cur["arc"] = self._arc(cur["x"], cur["y"], lim)
         self._order = {}
         self.captions = [
             (0.6, 8.4, "CALPHAD runs on the BYU HPC: pycalphad on open databases, Thermo-Calc as an interface. "
                        "This curve is the open-database node's, the one the optimizer sees."),
             (8.6, 19.5, "The same alloy three ways: the node's fast model, a full Scheil run on an open database, "
-                        "and the twin's hidden truth. They differ, as a simulator differs from a real alloy."),
+                        "and the twin's hidden truth. They differ, as a simulator differs from a real alloy.")
+            if self.has_calc else
+            (8.6, 19.5, "The same alloy two ways: the node's fast model and the twin's hidden truth. They differ, "
+                        "as a simulator differs from a real alloy."),
             (19.8, 26.6, "From its curve the node reads the liquidus, the freezing range, a hot-cracking index and "
                          "a growth-restriction factor."),
             (26.8, 33.2, "The network's print node takes two of them, the liquidus and the cracking index. The "
@@ -191,8 +208,8 @@ class Scheil(Segment):
         self.sources = [
             ("sim", "the open-database node's curve and its four numbers: twin/thermo.py AlSolidification('open') and "
                     "AlTruth.sim_open, for the alloy followed"),
-            ("calc", "pycalphad + scheil on MatCalc mc_al (open database), for the elements it has "
-                     "(out/twin3b/video/experiments/scheil_open.json)"),
+            ("calc", f"pycalphad + scheil on {self.db_name} (open database), for the elements it has "
+                     f"({X.SCHEIL_JSON.relative_to(X.D.HERE)})"),
             ("sim", "the hidden truth's curve and primary intermetallics: AlSolidification('truth')"),
             ("illus", "the picture of the melt: grains and particles drawn so that the solid share equals the curve's "
                       "fraction solid"),
@@ -225,6 +242,7 @@ class Scheil(Segment):
 
     def _ylim(self, t: float) -> tuple:
         z = self._zoom(t)
+        TIGHT, WIDE = self.TIGHT, self.WIDE
         return TIGHT[0] + (WIDE[0] - TIGHT[0]) * z, TIGHT[1] + (WIDE[1] - TIGHT[1]) * z
 
     def _curve(self, cv: Canvas, ax: Axes, cur: dict, upto: float, fill, width: float, a: float):
@@ -375,12 +393,19 @@ class Scheil(Segment):
             k = self.kinds
             calls = sum(k["calls"].values())
             only = set(k["calls"]) == {"sim_open"}
-            lead = (f"Round 3b: all {fmt(k['logs'])} runs called this open-database node and no other "
+            rn = X.ROUND_NAME.capitalize()
+            lead = (f"{rn}: all {fmt(k['logs'])} runs called this open-database node and no other "
                     f"({calls:,} calls)." if only else
-                    f"Round 3b: {fmt(k['logs'])} runs, {calls:,} simulation calls.")
+                    f"{rn}: {fmt(k['logs'])} runs, {calls:,} simulation calls.")
+            if X.R5 and only:                                  # the HPC stream's candidates are not in the logs
+                lead = (f"{rn}: all {calls:,} simulations booked in its {fmt(k['logs'])} runs used this "
+                        f"open-database node. Its HPC stream uses it too.")
             y2 = cv.para(x, 808, lead, 20, 800, fill=INK, a=kn, bold=True)
-            cv.para(x, y2 + 4, "The twin also has a Thermo-Calc stand-in: the truth with a few percent error. No "
-                               "run bought it, and nothing here is Thermo-Calc output.", 19, 800, fill=INK2, a=kn)
+            tc = ("The twin also has a Thermo-Calc stand-in: the truth with a few percent error. No run bought it, "
+                  "and nothing here is Thermo-Calc output." if "sim_tc" not in k["calls"] else
+                  "The twin also has a Thermo-Calc stand-in: the truth with a few percent error "
+                  f"({k['calls']['sim_tc']:,} calls). Nothing here is Thermo-Calc output.")
+            cv.para(x, y2 + 4, tc, 19, 800, fill=INK2, a=kn)
 
     def _right(self, cv: Canvas, t: float):
         o, col = self.op, self.col
@@ -489,8 +514,9 @@ class Scheil(Segment):
         rows = [(self.T_OPEN[0], col, "sim", "the open-database node: the twin's fast Scheil model, fitted to "
                                               "pycalphad")]
         if self.has_calc:
-            rows.append((self.T_CALC[0], CALC, "calc", f"pycalphad + scheil on MatCalc mc_al (open database); "
-                                                       f"{self.left_out} are not in it"))
+            rows.append((self.T_CALC[0], CALC, "calc", f"pycalphad + scheil on {self.db_name} (open database); "
+                         + (f"{self.left_out} are not in it" if self.left_out else
+                            "it has every addition")))
         rows.append((self.T_TRUTH[0], TRUTH, "sim", "the twin's hidden truth (assessed diagrams); no policy sees it"))
         for j, (t0, colr, kind, words) in enumerate(rows):
             k = ramp(t, t0 - 0.1, t0 + 0.5)

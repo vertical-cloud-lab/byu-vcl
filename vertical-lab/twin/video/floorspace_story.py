@@ -24,7 +24,9 @@ import numpy as np
 from . import floorspace as FS
 
 HERE = Path(__file__).resolve().parents[2]
-PH = dict(conv=0.0, flat=31.0, vert=51.0, plans=83.0, end=138.5)
+# end: the plans phase is 63.5 s since the capacity-matched comparison became its result (issue 425): the context row
+# and Emerald Cloud Lab first, then the same capacity laid out flat. Nothing before T3D_END depends on it.
+PH = dict(conv=0.0, flat=31.0, vert=51.0, plans=83.0, end=146.5)
 T3D_END = PH["plans"] + 2.6            # the 3-D renders run into the cross-fade
 WALK = 1150.0                          # mm/s, a person
 DRIVE = 900.0                          # mm/s, a MiR250 among people (the spec sheet allows 2000)

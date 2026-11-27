@@ -10,9 +10,15 @@ What is what on screen:
   run's charge weighed, the usable powder weighed, the lot sieved into the campaign's cut), at full fidelity. The thin
   dashed line is the lot's true distribution, which only the twin knows. The bars filling in is the picture's way
   of showing the powder arriving: laser diffraction measures an aliquot at once.
-* **The footage is real, and of another alloy**: the lab's own ultrasonic atomizer melting and pouring 630 bronze
-  on 27 October 2026 (run k7m2q9, DAL #219; out/footage/manifest.json), and that run's powder after sieving. The
-  frame over the footage says so. No footage of the alloy followed exists: it is a simulated alloy.
+* **The footage is real, and of another alloy**: the lab's own ultrasonic atomizer. No footage of the alloy
+  followed exists: it is a simulated alloy, and the frame over the footage says which real alloy and run it is.
+  * Round 3b's preview: 630 bronze melting and pouring on 27 October 2026 (run k7m2q9, DAL #219;
+    out/footage/manifest.json), and that run's powder after sieving.
+  * From round 5: **aluminium is the subject here, so only the lab's aluminium runs are shown** (``al_footage``):
+    the manifest's entries with ``subject: "al"`` and ``beat: "melt"`` or ``"pour"``, each labelled on the picture
+    with its run, alloy and date as the manifest gives them; the powder photo is the lab's own atomized aluminium
+    (``AL_JAR``). If the manifest has no aluminium clip, the jar photo stands in the footage's place and says that
+    it is a photograph. The bronze clips are never used in this part then.
 * **The crucible and the plate with its droplets** are the lab's 3-D model (PR 318's render of the atomizer).
 * **The settings** are example settings (twin/instruments/micro.py ``AL_PROC``), not the ones the campaign's policy
   chose; the atomizer's throughput and failure rate in the twin are design targets, not the lab's record.
@@ -42,6 +48,9 @@ RENDER = "alloy_atomize"                           # PR 318's chapter 2 (out/mp4
 MODEL_MELT = (211.6, 219.6, (96, 150, 560, 316))   # the crucible in its coil, cut open
 MODEL_POUR = (236.7, 243.3, (110, 104, 572, 322))  # the jet, the plate and the droplets
 LOSS = (112, 118, 130)                             # what did not become powder: a neutral tone
+AL_JAR = "al_4yghtr_oct06_jar.jpg"                 # the lab's own atomized aluminium powder (DAL #159), a photograph
+AL_ONLY = X.R5                                     # rounds 5 and later: aluminium footage only in this part
+BEAT_LABEL = {"melt": "the charge melts", "pour": "the pour: melt onto the plate"}
 
 
 def _alpha_text(cv: Canvas):
@@ -70,6 +79,57 @@ def _issue(run: str) -> str:
 def _day(iso: str) -> str:
     d = dt.date.fromisoformat(iso)
     return f"{d.day} {d:%B} {d.year}"
+
+
+def _credit(entry: dict) -> dict:
+    """What the picture says about a manifest entry: its run, its alloy, its day, and the thread it is credited to."""
+    import re
+    run = str(entry.get("run", "")).split(" ")[0]
+    alloy = str(entry.get("alloy", "aluminium")).split(" (")[0].split(":")[0].strip()
+    hit = re.search(r"DAL #\d+", str(entry.get("run", "")) + " " + str(entry.get("source", "")))
+    issue = hit.group(0) if hit else (_issue(run) if run else "DAL")
+    if issue == "DAL" and entry.get("credit"):
+        issue = str(entry["credit"])
+    return dict(run=run, alloy=alloy, day=_day(entry["date"]) if entry.get("date") else "", issue=issue,
+                file=entry["file"])
+
+
+def al_footage() -> dict:
+    """The lab's own pictures of an aluminium run, from out/footage/manifest.json: {'melt': entry, 'pour': entry}
+    for the entries with ``subject: "al"`` and that ``beat`` whose clip is in out/footage (the first of each), and
+    'jar': the aluminium powder photo (an entry with ``subject: "al"`` and ``beat: "powder"``, else AL_JAR). An
+    entry may give ``window_s`` ([t0, t1] in its file) and ``crop`` ([x, y, w, h] in its pixels); without them the
+    whole clip plays, cropped about its middle to the frame's shape. Each entry gains ``credit`` (``_credit``)."""
+    m = json.loads((FOOT / "manifest.json").read_text())
+    out = {}
+    for f in m["files"]:
+        if f.get("subject") != "al" or not (FOOT / f["file"]).exists():
+            continue
+        beat = f.get("beat")
+        if beat in ("melt", "pour") and f["file"].lower().endswith((".mp4", ".mov", ".webm", ".mkv")):
+            out.setdefault(beat, dict(f, credit=_credit(f)))
+        elif beat == "powder" and f["file"].lower().endswith((".jpg", ".jpeg", ".png")):
+            out.setdefault("jar", dict(f, credit=_credit(f)))
+    if "jar" not in out and (FOOT / AL_JAR).exists():
+        f = _manifest(AL_JAR)
+        out["jar"] = dict(f, credit=_credit(f))
+    return out
+
+
+def al_words() -> dict:
+    """How the narration may speak of what this part shows from round 5 on (experiments.script fills the line with
+    it): ``line`` is true of whatever al_footage() finds at build time."""
+    ft = al_footage()
+    clips = [b for b in ("melt", "pour") if b in ft]
+    if clips:
+        return dict(kind="footage", beats=clips, line="This footage is real: our own atomizer, on one of its "
+                                                      "aluminium runs.",
+                    runs=sorted({ft[b]["credit"]["run"] for b in clips}))
+    if "jar" in ft:
+        return dict(kind="photo", beats=[], line="This photograph is real: aluminium powder from our own atomizer.",
+                    runs=[ft["jar"]["credit"]["run"]])
+    raise SystemExit("out/footage has no aluminium clip and no aluminium powder photo: the atomizing part has "
+                     "nothing real to show (it never falls back to the bronze footage)")
 
 
 def run_days(alloy) -> dict:
@@ -125,12 +185,21 @@ class Atomize(Segment):
         self.proc = a.proc
         self.T_melt = float(np.mean([rr["T_melt_C"] for rr in a.lot["runs"]]))
         self.days = run_days(a)
-        mf, pf, jf = _manifest(MELT[0]), _manifest(POUR[0]), _manifest(JARS[0])
-        run = pf["run"].split(" ")[0]
-        self.foot = dict(alloy=pf["alloy"].split(" (")[0], day=_day(pf["date"]), run=run, issue=_issue(run),
-                         jars_day=_day(jf["date"]), melt_day=_day(mf["date"]))
         self._readers: dict = {}
         self._jars = None
+        self.al = None
+        if AL_ONLY:                                        # aluminium is the subject: the lab's aluminium runs only
+            self.al = al_footage()
+            self.al_words = al_words()
+            first = self.al.get("pour") or self.al.get("melt") or self.al["jar"]
+            c = first["credit"]
+            self.foot = dict(alloy=c["alloy"], day=c["day"], run=c["run"], issue=c["issue"],
+                             jars_day=self.al["jar"]["credit"]["day"] if "jar" in self.al else "", melt_day=c["day"])
+        else:
+            mf, pf, jf = _manifest(MELT[0]), _manifest(POUR[0]), _manifest(JARS[0])
+            run = pf["run"].split(" ")[0]
+            self.foot = dict(alloy=pf["alloy"].split(" (")[0], day=_day(pf["date"]), run=run, issue=_issue(run),
+                             jars_day=_day(jf["date"]), melt_day=_day(mf["date"]))
         nf, nr = F["failed"], F["runs"]
         words = {1: "One", 2: "Two", 3: "Three"}
         self.captions = [
@@ -150,7 +219,12 @@ class Atomize(Segment):
                     "on the alloy followed; the dashed line is the lot's true distribution"),
             ("sim", "mass balance and in-cut yield: twin/instruments/atomize_yield.py (full fidelity)"),
             ("real", f"melt, pour and sieved powder: the lab's own atomizer, {self.foot['alloy']}, "
-                     f"{self.foot['day']} (run {self.foot['run']}, {self.foot['issue']}): another alloy"),
+                     f"{self.foot['day']} (run {self.foot['run']}, {self.foot['issue']}): another alloy")
+            if not AL_ONLY else
+            ("real", "; ".join(
+                f"{'the powder photo' if b == 'jar' else 'the ' + b}: {e['credit']['alloy']}, {e['credit']['day']} "
+                f"(run {e['credit']['run']}, {e['credit']['issue']}; out/footage/{e['file']})"
+                for b, e in self.al.items()) + ": the lab's own aluminium runs, not the simulated alloy followed"),
             ("render", "the crucible and the plate with its droplets: PR 318's render (out/mp4/alloy_atomize.mp4)"),
             ("illus", "the bars filling in as the powder arrives (laser diffraction measures an aliquot at once)"),
         ]
@@ -159,7 +233,18 @@ class Atomize(Segment):
     def _reader(self, which: str):
         if which not in self._readers:
             from . import assets as A
-            if which == "melt":
+            if which.startswith("al:"):                    # an aluminium clip of the manifest, by its beat
+                e = self.al[which[3:]]
+                w, h, _, dur = A.probe(FOOT / e["file"])
+                t0, t1 = e.get("window_s") or (0.15, max(0.6, dur - 0.15))
+                crop = e.get("crop")
+                if not crop:                               # about its middle, to the frame's shape (316 x 560)
+                    cw = min(w, int(round(h * 316.0 / 560.0)) // 2 * 2)
+                    ch = min(h, int(round(cw * 560.0 / 316.0)) // 2 * 2)
+                    crop = ((w - cw) // 2 // 2 * 2, (h - ch) // 2 // 2 * 2, cw, ch)
+                self._readers[which] = G.Footage(FOOT / e["file"], float(t0), float(t1), 316, 560, tuple(crop),
+                                                 float(e.get("speed", 1.0)))
+            elif which == "melt":
                 self._readers[which] = G.Footage(FOOT / MELT[0], MELT[1], MELT[2], 316, 560, None, 1.35)
             elif which == "pour":
                 self._readers[which] = G.Footage(FOOT / POUR[0], POUR[1], POUR[2], 316, 560, POUR_CROP, 1.0)
@@ -178,10 +263,29 @@ class Atomize(Segment):
             self._jars = im.resize((max(2, int(round(466 * G.S))), max(2, int(round(233 * G.S)))), Image.LANCZOS)
         return self._jars
 
+    def _al_jar(self, w: float, h: float, low: float = 0.5) -> Image.Image:
+        """The aluminium powder photo cropped to w x h design units: its full width (or height), the band chosen
+        so that the jar's label and powder show (``low``: where the band's middle sits, 0 top .. 1 bottom)."""
+        key = ("aljar", w, h)
+        if key not in self._readers:
+            im = Image.open(FOOT / self.al["jar"]["file"]).convert("RGB")
+            W_, H_ = im.size
+            if W_ / H_ > w / h:                            # too wide: a middle column
+                cw = int(round(H_ * w / h))
+                box = ((W_ - cw) // 2, 0, (W_ - cw) // 2 + cw, H_)
+            else:                                          # too tall: a band
+                ch = int(round(W_ * h / w))
+                y0 = int(round((H_ - ch) * low))
+                box = (0, y0, W_, y0 + ch)
+            self._readers[key] = im.crop(box).resize((max(2, int(round(w * G.S))), max(2, int(round(h * G.S)))),
+                                                     Image.LANCZOS)
+        return self._readers[key]
+
     def close(self):
         for r in self._readers.values():
-            r.close()
-        self._readers.clear()
+            if hasattr(r, "close") and not isinstance(r, Image.Image):
+                r.close()
+        self._readers = {k: v for k, v in self._readers.items() if isinstance(v, Image.Image)}
 
     # ------------------------------------------------------------------------------------------ the frame
     def static_extra(self, cv: Canvas):
@@ -197,17 +301,104 @@ class Atomize(Segment):
         cv.text((x0 + x1) / 2, y0 + 8, f"the cut for the printer", 17, cond=True, fill=INK, anchor="ma")
         cv.text((x0 + x1) / 2, y0 + 30, f"{self.cut[0]:g} to {self.cut[1]:g} µm", 17, bold=True, cond=True,
                 fill=INK, anchor="ma")
-        # under the footage: what it is
+        # under the footage: what it is (from round 5 it can change with the beat: drawn in _left5)
         ft = self.foot
-        cv.tag(78, 768, "real", f"the lab's own atomizer, {ft['day']} (run {ft['run']}, {ft['issue']})")
-        cv.text(78, 808, f"{ft['alloy'].capitalize()}: a different alloy from the one followed.", 20, bold=True,
-                fill=INK)
+        if not AL_ONLY:
+            cv.tag(78, 768, "real", f"the lab's own atomizer, {ft['day']} (run {ft['run']}, {ft['issue']})")
+            cv.text(78, 808, f"{ft['alloy'].capitalize()}: a different alloy from the one followed.", 20, bold=True,
+                    fill=INK)
         nf, nr = self.F["failed"], self.F["runs"]
         cv.para(78, 846, "In the twin, the atomizer's throughput and failure rate are design targets, not the "
                          f"lab's record. This lot is the twin's model: {nf} of its {nr} runs failed.", 18, 800,
                 fill=INK2, cond=True)
 
+    def _al_beat(self, stage: str) -> str:
+        """What stands in the footage's frame at a stage ('melt' or 'pour'): that beat's aluminium clip, else the
+        other beat's, else the powder photo ('jar')."""
+        other = "pour" if stage == "melt" else "melt"
+        return stage if stage in self.al else other if other in self.al else "jar"
+
+    def _left5(self, cv: Canvas, t: float):
+        """The left card from round 5 on: the lab's aluminium runs only (al_footage), each labelled on the picture."""
+        box = (78, 196, 394, 756)
+        kp = ramp(t, self.T_POUR - 0.25, self.T_POUR + 0.25)
+        b0, b1 = self._al_beat("melt"), self._al_beat("pour")
+        for beat, a, tl in ((b0, 1.0 if kp < 1.0 else 0.0, max(0.0, t - 0.1)),
+                            (b1, kp, max(0.0, t - (self.T_POUR if b1 != b0 else 0.1)))):
+            if a <= 0.0 or (beat == b0 and beat == b1 and a < 1.0 and tl != max(0.0, t - 0.1)):
+                continue
+            if beat == "jar":
+                cv.paste(self._al_jar(316, 560, 0.6), box[0], box[1], a=a)
+            else:
+                rd = self._reader("al:" + beat)
+                fr = rd.frame(tl)
+                ph = tl % rd.span
+                if tl >= rd.span * 0.5:                    # looped, with a dip at each wrap
+                    dip = min(1.0, ph / 0.3, (rd.span - ph) / 0.3)
+                    if dip < 1.0:
+                        fr = (fr.astype(np.float32) * (0.25 + 0.75 * max(0.0, dip))).astype(np.uint8)
+                cv.paste(fr, box[0], box[1], a=a)
+        beat = b0 if kp < 0.5 else b1
+        e = self.al[beat]
+        c = e["credit"]
+        lab = BEAT_LABEL.get(beat, "the lab's own aluminium powder")
+        G.framed(cv, box, lab)
+        cv.rect((box[0], box[3] - 40, box[2], box[3]), fill=(10, 12, 16, 225))
+        words = f"{c['alloy']}, run {c['run']}: not this alloy"
+        size = 19.0
+        while size > 14 and cv.text_w(words, size, bold=True, cond=True) > box[2] - box[0] - 14:
+            size -= 0.5
+        cv.text((box[0] + box[2]) / 2, box[3] - 20, words, size, bold=True, cond=True, fill=INK, anchor="mm")
+        what = "a photograph from the lab" if beat == "jar" else "the lab's own atomizer"
+        cv.tag(78, 768, "real", f"{what}, {c['day']} (run {c['run']}, {c['issue']})")
+        words = f"{c['alloy'][:1].upper() + c['alloy'][1:]}: aluminium, but not the simulated alloy followed."
+        if c["alloy"].lower() in ("aluminium", "aluminum"):
+            words = "Aluminium, but not the simulated alloy followed."
+        if beat == "jar" and not self.al_words["beats"]:
+            words = "The lab's own aluminium powder. No aluminium melt or pour is on film here."
+        size = 20.0
+        while size > 15 and cv.text_w(words, size, bold=True) > 800:
+            size -= 0.5
+        cv.text(78, 808, words, size, bold=True, fill=INK)
+        # ---- the lab's 3-D model: the crucible while it melts, the plate while it pours
+        mb = (412, 196, 878, 458)
+        if kp < 1.0:
+            cv.paste(self._reader("model_melt").frame(max(0.0, t - 0.1)), mb[0], mb[1])
+        if kp > 0.0:
+            cv.paste(self._reader("model_pour").frame(max(0.0, t - self.T_POUR)), mb[0], mb[1], a=kp)
+        G.framed(cv, mb, "the crucible in its coil, cut open" if kp < 0.5 else "the plate, the jet and the droplets")
+        cv.tag(mb[0] + 10, mb[3] - 40, "render", "the lab's 3-D model (PR 318)")
+        # ---- below it: the example settings, then the lab's own aluminium powder (unless it is already the picture)
+        jb = (412, 478, 878, 711)
+        jar_free = "jar" in self.al and "jar" not in (b0, b1)
+        kj = ramp(t, self.T_JARS, self.T_JARS + 0.7) if jar_free else 0.0
+        if kj < 1.0:
+            a = 1.0 - kj
+            cv.rect(jb, fill=G.PLOT_FILL, outline=G.CARD_EDGE, width=2, radius=10, a=a)
+            cv.text(jb[0] + 18, jb[1] + 14, "Example settings", 19, bold=True, fill=INK, a=a)
+            cv.text(jb[2] - 18, jb[1] + 16, "not the campaign's own", 17, cond=True, fill=INK2, anchor="ra", a=a)
+            p = self.proc
+            rows = [("melt", f"{fmt(p['superheat_K'])} K above the liquidus ({fmt(self.T_melt)} °C)"),
+                    ("pour pressure", f"{fmt(p['pour_mbar'])} mbar of argon"),
+                    ("plate amplitude", f"{p['amplitude']:g} of the maximum")]
+            for i, (k, v) in enumerate(rows):
+                y = jb[1] + 52 + i * 34
+                cv.text(jb[0] + 18, y, k, 18, cond=True, fill=INK2, a=a)
+                cv.text(jb[0] + 168, y, v, 18, cond=True, fill=INK, a=a)
+            dd = self.days
+            if "charge" in dd and "atomize" in dd:
+                cv.para(jb[0] + 18, jb[1] + 162, f"In the replayed run (seed {self.alloy.seed}) this alloy's charge "
+                        f"was made on day {fmt(dd['charge'])} and atomized on day {fmt(dd['atomize'])}.", 17,
+                        jb[2] - jb[0] - 36, fill=INK2, cond=True, a=a)
+        if kj > 0.0:
+            j = self.al["jar"]["credit"]
+            cv.paste(self._al_jar(466, 233, 0.78), jb[0], jb[1], a=kj)
+            G.framed(cv, jb, "powder from one of the lab's aluminium runs", a=kj)
+            cv.tag(jb[0], jb[3] + 10, "real", f"{j['alloy']}, {j['day']} (lot {j['run']}, {j['issue']})", a=kj)
+
     def _left(self, cv: Canvas, t: float):
+        if AL_ONLY:
+            return self._left5(cv, t)
         ft = self.foot
         # ---- the real footage: the melt, then the pour (looped, with a dip at each wrap)
         box = (78, 196, 394, 756)

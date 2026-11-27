@@ -42,7 +42,9 @@ import numpy as np
 
 from . import data as D
 
-OUT = D.OUT3B / "video" / "experiments"          # the chapter's own files (its records are committed)
+R5 = D.R5                                        # rounds 5 and later: one replayed run, both campaigns (follow())
+# the chapter's own files (its records are committed): round 3b's preview, or the round's own cut (out/twin<N>/video)
+OUT = (D.VID if R5 else D.OUT3B / "video") / "experiments"
 SCHEIL_JSON = OUT / "scheil_open.json"
 FACTS_JSON = OUT / "facts.json"
 CAMP_WORD = {"flaime_al": "aluminium", "onr_cu": "copper"}
@@ -66,9 +68,76 @@ def _events(path: str) -> dict:
     return D._load_json(Path(path))
 
 
+# Rounds 5 and later replay ONE run for both campaigns: the stocked automated lab with time-aware BOFN on both, on the
+# arm's median seed for both campaigns together (twin.like<N>.median_seed, the rule the round's notes name the seed
+# by). The chapter follows the design that took that run past aluminium's halfway target and the one that took it
+# past copper's best existing alloy.
+REPLAY_ARM5 = ("vertical", "parallel", "bofn3", "reorder")       # lab, plan, policy, stock (twin.like5.gk)
+FOLLOW5 = (("flaime_al", "T2"), ("onr_cu", "T1"))
+
+
+@lru_cache(maxsize=1)
+def replay5() -> dict:
+    """The run a round-5 (or later) cut replays, from the round's own rows: {seed, events, run, row, of, targets,
+    days, medians, parts: [{campaign, target, seed, day, reached, hit, of, events}]}. Nothing is typed in: if the
+    round's medians move, so does the run."""
+    _twin()
+    import importlib
+    L = importlib.import_module(f"twin.like{D.ROUND}")
+    A = L.load_all()
+    T = json.loads((D.RES / f"like{D.ROUND}.json").read_text())["targets"]
+    arm = A[L.gk(*REPLAY_ARM5)]
+    ms = L.median_seed(arm, T)
+    if ms is None:
+        raise SystemExit(f"round {D.ROUND}: the replay arm {REPLAY_ARM5} has too few seeds for a median seed")
+    seed = int(ms["seed"])
+    row = arm[seed]
+    horizon = float(row["cfg"].get("days", 730))
+    parts = []
+    for camp, tn in FOLLOW5:
+        st = L.arm_stats(arm, camp, T[tn][camp])
+        day = float(ms["days"][f"{camp}|{tn}"])
+        parts.append(dict(campaign=camp, target=tn, seed=seed, day=day, reached=bool(day < horizon - 1e-9),
+                          hit=int(st["hit"]), of=int(st["n"]), events=D.HERE / ms["events"]))
+    return dict(seed=seed, events=D.HERE / ms["events"], run=Path(ms["events"]).name.split(".json")[0], row=row,
+                of=len(arm), targets=T, days={k: float(v) for k, v in ms["days"].items()},
+                medians={k: float(v) for k, v in ms["medians"].items()}, horizon=horizon, parts=parts,
+                arm=dict(zip(("lab", "plan", "policy", "stock"), REPLAY_ARM5)))
+
+
+def _follow5() -> dict:
+    """follow() for rounds 5 and later: per campaign, the new alloy whose demonstrated result took the replayed run
+    past the target (reference alloys the lab also makes don't count toward a target). If the run never got there,
+    the run's best new alloy, with ``reached`` false: the chapter's words then say so."""
+    rp = replay5()
+    ev = _events(str(rp["events"]))
+    out = {}
+    for part in rp["parts"]:
+        camp, tn = part["campaign"], part["target"]
+        tv = float(rp["targets"][tn][camp])
+        rows = [r for r in rp["row"]["campaigns"][camp]["demonstrated"] if not r.get("ref")]
+        if not rows:
+            raise SystemExit(f"round {D.ROUND}: the replayed run demonstrated no new {CAMP_WORD[camp]} alloy")
+        if part["reached"]:
+            row = min((r for r in rows if r["u"] >= tv - 1e-9), key=lambda r: abs(r["t_h"] / D.HPD - part["day"]))
+            if abs(row["t_h"] / D.HPD - part["day"]) > 0.5:
+                raise SystemExit(f"{camp}: no demonstrated alloy at the day the run passed {tn} ({part['day']:.1f})")
+        else:
+            row = max(rows, key=lambda r: r["u"])
+        comp = ev["designs"][camp][str(row["design"])]
+        out[camp] = dict(run=ev["meta"]["run_id"], seed=int(part["seed"]), design=int(row["design"]),
+                         day=row["t_h"] / D.HPD, target=tn, reached=bool(part["reached"]), events=str(part["events"]),
+                         composition=dict(comp), u_true=float(row["u"]), ys=float(row["ys"]), el=float(row["el"]),
+                         policy=ev["meta"]["cfg"]["policy"], hit=int(part["hit"]), of=int(part["of"]),
+                         route_fab=row.get("route_fab"), route_test=row.get("route_test"), target_u=tv)
+    return out
+
+
 def follow() -> dict:
     """{campaign: {run, seed, design, day, target, events, composition, u_true, ys, el}}: the design that took each
     replayed run's best-so-far past the target that run is the median seed for (nothing typed in)."""
+    if R5:
+        return _follow5()
     out = {}
     for part in D.replay3b_parts():
         ev = _events(str(part["events"]))
@@ -339,12 +408,37 @@ def scheil_twin(kind: str, wt: dict) -> dict:
 # ------------------------------------------------------------------------------------------------ Scheil (open CALPHAD)
 OPEN_DB = "mc_al"                               # MatCalc mc_al v2.037 (TU Wien, ODbL 1.0): twin/calphad.py TDBS
 OPEN_HAS = ("Cr", "Cu", "Fe", "Mg", "Mn", "Ni", "Sc", "Si", "Ti", "Zn", "Zr")
+# the open databases a run can be made on, as twin/calphad.py names them: (how it is written in the record, how on
+# screen). COST 507 is the one the twin's own dilute parameters for Ce, Li and Sn come from (calphad.AL_SOLUTES).
+OPEN_DB_NAME = {"mc_al": ("MatCalc mc_al v2.037 (TU Wien; ODbL 1.0)", "MatCalc mc_al"),
+                "cost507": ("COST 507 Round II (1999; the copy bundled with pycalphad; \"may be used freely\")",
+                            "COST 507")}
+
+
+def open_db_for(wt: dict) -> tuple:
+    """(database key, the additions it has, the additions it lacks) for an aluminium alloy: the open database that
+    twin/calphad.py takes each solute's parameters from (``AL_SOLUTES``), the one holding the larger share of the
+    alloy's additions by weight. MatCalc's mc_al wins a tie, as round 3b's run used it."""
+    _twin()
+    from twin import calphad as CP
+    adds = {e: float(c) for e, c in wt.items() if e != "Al" and c > 0}
+    by = {}
+    for e, c in adds.items():
+        key = CP.AL_SOLUTES.get(e.upper(), (None,))[0]
+        if key:
+            by[key] = by.get(key, 0.0) + c
+    if not by:
+        return None, {}, adds
+    key = max(by, key=lambda k: (by[k], k == OPEN_DB))
+    has = {e: c for e, c in adds.items() if CP.AL_SOLUTES.get(e.upper(), (None,))[0] == key}
+    return key, has, {e: c for e, c in adds.items() if e not in has}
 
 
 def scheil_open_compute(wt: dict, step: float = 1.0) -> dict:
-    """A Scheil-Gulliver solidification of the alloy with pycalphad and scheil on MatCalc's open aluminium database,
-    for the elements that database has (the others are left out and named). Minutes on one core; its result is
-    committed (scheil_open.json), so the chapter rebuilds without it."""
+    """A Scheil-Gulliver solidification of the alloy with pycalphad and scheil on an open aluminium database
+    (``open_db_for``: MatCalc's mc_al, or COST 507 for Ce, Li and Sn), for the elements that database has (the others
+    are left out and named). Under a minute on one core; its result is committed (scheil_open.json), so the chapter
+    rebuilds without it."""
     _twin()
     import time
     import pycalphad
@@ -353,14 +447,19 @@ def scheil_open_compute(wt: dict, step: float = 1.0) -> dict:
     from pycalphad.core.utils import filter_phases, unpack_species
     from scheil import simulate_scheil_solidification
     from twin import calphad as CP
-    keep = {e.upper(): float(c) for e, c in wt.items() if e in OPEN_HAS and c > 0}
-    left = {e: float(c) for e, c in wt.items() if e != "Al" and c > 0 and e not in OPEN_HAS}
-    db = CP.load_db(OPEN_DB, ["AL"] + list(keep))
+    key, has, left = open_db_for(wt)
+    if key is None:
+        raise SystemExit(f"no open database has any of this alloy's additions: {sorted(left)}")
+    keep = {e.upper(): float(c) for e, c in has.items()}
+    db = CP.load_db(key, ["AL"] + list(keep))
     comp = dict(keep)
     comp["AL"] = 100.0 - sum(keep.values())
     x = CP.wt_to_x(comp)
     comps = sorted(x) + ["VA"]
-    phases = filter_phases(db, unpack_species(db, comps), [p for p in CP.AL_PHASES if p in db.phases])
+    # mc_al: the phases twin/calphad.py lists for aluminium alloys; COST 507: every condensed phase it has for these
+    # elements (filter_phases drops the ones another element would be needed for)
+    cand = [p for p in CP.AL_PHASES if p in db.phases] if key == OPEN_DB else sorted(p for p in db.phases if p != "GAS")
+    phases = filter_phases(db, unpack_species(db, comps), cand)
     t0 = time.time()
     res = simulate_scheil_solidification(db, comps, phases, {v.X(e): x[e] for e in x if e != "AL"},
                                          CP.AL_TM + 200.0, step_temperature=step)
@@ -368,7 +467,8 @@ def scheil_open_compute(wt: dict, step: float = 1.0) -> dict:
     fl = np.array(res.fraction_liquid)
     cum = {ph: np.array(a) for ph, a in res.cum_phase_amounts.items() if np.max(a) > 1e-6}
     first = {ph: float(T[int(np.argmax(a > 1e-6))]) for ph, a in cum.items()}
-    return dict(database="MatCalc mc_al v2.037 (TU Wien; ODbL 1.0)", sha256=CP.TDBS[OPEN_DB]["sha256"],
+    sha = CP.TDBS[key]["sha256"] if key in CP.TDBS else CP._sha(CP.tdb_path(key))
+    return dict(database=OPEN_DB_NAME[key][0], db=key, sha256=sha, phases_offered=len(phases),
                 tools=f"pycalphad {pycalphad.__version__}, scheil {scheil.__version__}",
                 wt={e.capitalize(): c for e, c in keep.items()}, left_out=left, step_K=step,
                 converged=bool(res.converged), seconds=round(time.time() - t0, 1),
@@ -432,6 +532,64 @@ def melt_pool(truth, comp: dict, proc: dict, probe_um: float | None = None) -> d
                 twin=dict(W_um=mp["W_um"], D_um=mp["D_um"], cool_K_s=mp["cool"], kh=mp["kh"], lof=mp["lof"],
                           Ev_J_mm3=mp["Ev"]),
                 props=dict(k_W_mK=k, rho_kg_m3=rho, cp_J_kgK=cp, absorptivity=A), proc=dict(proc))
+
+
+# ------------------------------------------------------------------------------------------------ heat treatment
+ROUND_NAME = f"round {D.ROUND}" if R5 else "round 3b"       # the round whose runs the chapter's words are about
+# The direct age drawn for the aluminium alloy (rounds 5 and later): the hold temperature is an example for the
+# precipitates the twin's strength model credits in the alloy (truth_al.AlTruth.strength, its ``parts``). Assumed
+# example values, not the twin's and not a lab recipe: L1_2 Al3(Sc,Zr,Er) forms near 300-400 C (Scalmalloy's
+# datasheet ages at 325 C; Al-Mn-Cr-Zr and Al-Mg-Zr reports peak at 350-400 C), the low-temperature precipitates
+# (Al3Li, Mg2Si, Al2Cu, MgZn2) near 150-200 C; where the model credits neither, a 300 C stress relief.
+AGE_HOLD_C = dict(l12=350.0, age=175.0, none=300.0)
+AGE_WORDS = dict(l12="Al₃(Sc,Zr,Er) precipitates", age="low-temperature precipitates", none="a stress relief")
+AGE_RAMP_K_MIN = 10.0                            # the heating rate drawn (an example)
+AGE_COOL_H = 0.5                                 # the air cool drawn after the furnace hours
+
+
+def furnace_hours() -> float:
+    """The furnace hours the twin books for the bars before the tensile test: the ("furnace", h) step of the test
+    route in the engine's own source (twin/campaign.py ``_do_test``; round 4's override must agree)."""
+    _twin()
+    import inspect
+    import re
+    from twin import campaign as C
+    found = set()
+    srcs = [inspect.getsource(C.Campaign._do_test)]
+    try:
+        from twin import round4 as R4
+        srcs += [inspect.getsource(getattr(c, "_do_test")) for c in vars(R4).values()
+                 if inspect.isclass(c) and "_do_test" in vars(c)]
+    except ImportError:
+        pass
+    for src in srcs:
+        found |= {float(v) for v in re.findall(r'\("furnace",\s*([\d.]+)\)', src)}
+    if len(found) != 1:
+        raise SystemExit(f"the test route's furnace step is not one number in the engine's source: {sorted(found)}")
+    return found.pop()
+
+
+def heat_treatment(al: "Alloy") -> dict:
+    """The furnace profile the chapter draws for the aluminium alloy from round 5 on, and what of it is the twin's.
+
+    **The twin models no profile.** ``truth_al.AlTruth.strength`` returns the strength "after the alloy family's
+    standard heat treatment", and the campaign books the furnace for ``furnace_hours()``. So the profile is
+    illustrative and labelled so. It is a direct age: from the as-built state up to an ageing temperature, a hold,
+    and a cool in air, with no solution treatment and no quench (an LPBF part is already a supersaturated solid
+    solution). The ramp and the hold fill the furnace hours the twin books; the hold temperature is an example for
+    the precipitates the twin's strength model credits most in this alloy (AGE_HOLD_C)."""
+    parts = dict(al.part["strength"]["parts"])
+    kind = "l12" if parts["l12"] > 0 and parts["l12"] >= parts["age"] else "age" if parts["age"] > 0 else "none"
+    hold = AGE_HOLD_C[kind]
+    hours = furnace_hours()
+    t_ramp = (hold - 25.0) / AGE_RAMP_K_MIN / 60.0
+    pts = [(0.0, 25.0), (round(t_ramp, 3), hold), (hours, hold)]
+    for u in np.linspace(0.1, 1.0, 10):                               # out of the furnace: cooling in still air
+        pts.append((round(hours + AGE_COOL_H * float(u), 3), round(25.0 + (hold - 25.0) * math.exp(-4.0 * u), 1)))
+    return dict(kind="direct age", modelled=False, hold_C=hold, hold_for=kind, hold_words=AGE_WORDS[kind],
+                furnace_h=hours, ramp_h=round(t_ramp, 3), hold_h=round(hours - t_ramp, 2), cool_h=AGE_COOL_H,
+                ramp_K_min=AGE_RAMP_K_MIN, profile=pts,
+                strength_parts_MPa={k: round(float(v), 1) for k, v in parts.items()})
 
 
 # ------------------------------------------------------------------------------------------------ the numbers
@@ -535,29 +693,150 @@ def facts() -> dict:
                                 for d, m in imm["interim"].items()},
                        read_days=dict(zip(("first", "second", "third", "fourth"), sorted(imm["interim"]))),
                        true_rate_um_yr=_r(cu.part["corrosion"]["rate_um_yr"], 1)))
-    # what round 3b's runs bought from the simulation nodes
+    # what the round's runs bought from the simulation nodes
     out["sim_kinds"] = sim_kinds()
+    if R5:
+        out.update(_facts5(al, cu, out))
     return out
 
 
+# ------------------------------------------------------------------------------------------------ round 5 and later
+EL_NAME = dict(Al="aluminium", Ce="cerium", Cr="chromium", Cu="copper", Er="erbium", Fe="iron", Li="lithium",
+               Mg="magnesium", Mn="manganese", Nb="niobium", Ni="nickel", Sc="scandium", Si="silicon", Sn="tin",
+               Ti="titanium", Zn="zinc", Zr="zirconium")
+_WORDS = ("zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen "
+          "seventeen eighteen nineteen twenty").split()
+
+
+def count_word(n: int, none: bool = False) -> str:
+    """A small count as the voice says it ('three'); ``none``: 0 as 'none'."""
+    n = int(n)
+    if not 0 <= n < len(_WORDS):
+        raise SystemExit(f"no word for the count {n}: reword the line that speaks it")
+    return "none" if (none and n == 0) else _WORDS[n]
+
+
+def _el(e: str) -> str:
+    if e not in EL_NAME:
+        raise SystemExit(f"no name for the element {e}: add it to exp_data.EL_NAME")
+    return EL_NAME[e]
+
+
+def describe_al(design: dict) -> str:
+    """'aluminium with three additions, cerium the largest': the aluminium design in words, from its additions."""
+    adds = sorted(design.items(), key=lambda kv: -kv[1])
+    if not adds:
+        raise SystemExit("the aluminium design followed has no additions: reword the line that describes it")
+    n = len(adds)
+    if n == 1:
+        return f"aluminium with one addition, {_el(adds[0][0])}"
+    if n > 2 and adds[1][1] > 0.5 * adds[0][1]:              # two of a size: name both
+        return f"aluminium with {count_word(n)} additions, {_el(adds[0][0])} and {_el(adds[1][0])} the largest"
+    return f"aluminium with {count_word(n)} additions, {_el(adds[0][0])} the largest"
+
+
+def describe_cu(design: dict) -> str:
+    """'a nickel aluminium bronze, with a little titanium': the copper design in words. The family is named from
+    its main additions by plain rules (aluminium at 5 wt% or more makes an aluminium bronze, with 3 wt% or more of
+    nickel a nickel aluminium bronze; nickel at 5 wt% or more without that aluminium a copper-nickel); the
+    additions the name does not carry are listed, under 1 wt% as 'a little'."""
+    d = {e: float(v) for e, v in design.items() if v > 0}
+    al_, ni = d.get("Al", 0.0), d.get("Ni", 0.0)
+    named = set()
+    if al_ >= 5.0 and ni >= 3.0:
+        fam, named = "a nickel aluminium bronze", {"Al", "Ni", "Fe"}      # NAB: Cu-Al-Ni-Fe
+    elif al_ >= 5.0:
+        fam, named = "an aluminium bronze", {"Al"}
+    elif ni >= 5.0:
+        fam, named = "a copper-nickel", {"Ni"}
+    else:
+        raise SystemExit(f"no family name for the copper design {d}: reword the line that describes it")
+    rest = sorted(((v, e) for e, v in d.items() if e not in named), reverse=True)
+    if not rest:
+        return fam
+    big = [_el(e) for v, e in rest if v >= 1.0]
+    small = [_el(e) for v, e in rest if v < 1.0]
+
+    def join(xs):
+        return xs[0] if len(xs) == 1 else ", ".join(xs[:-1]) + " and " + xs[-1]
+    tail = []
+    if big:
+        tail.append(join(big))
+    if small:
+        tail.append("a little " + join(small))
+    return f"{fam}, with {' and '.join(tail)}"
+
+
+def _facts5(al: "Alloy", cu: "Alloy", base: dict) -> dict:
+    """What a round-5 (or later) cut adds to the facts: the replayed run, the HPC stream's counts for it (the row's
+    own, which the round's tables print as the arm's mean), the heat treatment drawn, which open database the
+    independent Scheil run can use, and the words the lines are filled with (``say``)."""
+    rp = replay5()
+    row = rp["row"]
+    rk = next(k for k in sorted(row, reverse=True) if k.startswith("r") and isinstance(row[k], dict)
+              and "hpc" in row[k])                                   # the round's block of the row: r5 (later r6)
+    hp = row[rk]["hpc"]
+    hpc = dict(cores=hp["cores"], per_day=hp["per_day"], seen_per_day=hp["add_per_day"], kept=hp["keep"])
+    for c in D.CAMPAIGNS:
+        h = hp["campaigns"][c]
+        hpc[c] = dict(evaluated=int(h["evaluated"]), evaluated_millions=round(h["evaluated"] / 1e6, 1),
+                      seen=int(h["materialized"]), own_sims=int(h["own_sims"]))
+    key, has, left = open_db_for(al.comp)
+    ev = _events(al.events)
+    lab_only = {}
+    for a in (al, cu):                                               # the map's first class, exactly
+        rd = a.run_designs()
+        ids = set(rd["designs"])
+        rest = ids - set(rd["made"]) - set(rd["built"]) - set(rd["shown"])
+        booked = {e["design"] for e in ev["events"] if e["campaign"] == a.campaign and e["station"] != "hpc"
+                  and e.get("design") is not None}
+        lab_only[a.campaign] = dict(no_lot=len(rest), no_lot_but_booked=len(rest & booked))
+    powder = base["al"]["powder"]
+    say = dict(al_describe=describe_al(al.design), cu_describe=describe_cu(cu.design),
+               al_additions=count_word(len(al.design)), atm_failed=count_word(powder["failed"], none=True),
+               atm_runs=count_word(powder["runs"]), cubes=count_word(base["al"]["n_cubes"]),
+               round=ROUND_NAME, round_spoken=f"round {count_word(D.ROUND)}")
+    return dict(round=D.ROUND,
+                replay=dict(run=rp["run"], seed=rp["seed"], of=rp["of"], arm=rp["arm"], horizon_days=rp["horizon"],
+                            days={k: round(v, 3) for k, v in rp["days"].items()},
+                            medians={k: round(v, 3) for k, v in rp["medians"].items()}),
+                hpc=hpc, heat=heat_treatment(al), map=lab_only,
+                open_db=dict(key=key, has=sorted(has), left_out=sorted(left)), say=say)
+
+
+SIM_KINDS_JSON = OUT / "sim_kinds.json"          # rounds 5 and later: the scan of every event log, kept on its own
+
+
 def sim_kinds() -> dict:
-    """How often each simulation node ran in round 3b's committed event logs, and how many hot tensile tests were
-    booked (kept in facts.json: reading all 436 logs takes a minute). Every call is the open-database node; no run
-    bought the Thermo-Calc or AM-Module nodes."""
+    """How often each simulation node ran in the round's committed event logs, and how many hot tensile tests were
+    booked (kept in facts.json, and from round 5 in sim_kinds.json: reading every log takes minutes). In round 3b
+    every call is the open-database node, and no run bought the Thermo-Calc or AM-Module nodes; the chapter reads
+    what it says about that from here, so another round's logs change its words (exp_scheil, exp_am).
+    From round 5 the HPC stream evaluates candidates outside the event log (counted, facts()["hpc"]); the calls
+    counted here are the policies' own bookings of the HPC station."""
     if FACTS_JSON.exists():
         have = json.loads(FACTS_JSON.read_text()).get("sim_kinds")
         if have and "hot_tests" in have:
             return have
+    logs = sorted(D.EVENTS_DIR.glob("*.json*"))
+    if R5 and SIM_KINDS_JSON.exists():
+        have = json.loads(SIM_KINDS_JSON.read_text())
+        if have.get("logs") == len(logs):
+            return have
     n, kinds, hot = 0, {}, 0
-    for p in sorted(D.EVENTS_DIR.glob("*.json*")):
+    for p in logs:
         ev = D._load_json(p)
         n += 1
         for e in ev["events"]:
             if e["station"] == "hpc":
                 kinds[e["what"]] = kinds.get(e["what"], 0) + 1
-            elif e["station"] == "tensile_hot":
+            elif e["station"].split("@")[0] == "tensile_hot":
                 hot += 1
-    return dict(logs=n, calls=kinds, hot_tests=hot)
+    out = dict(logs=n, calls=kinds, hot_tests=hot)
+    if R5:
+        OUT.mkdir(parents=True, exist_ok=True)
+        SIM_KINDS_JSON.write_text(json.dumps(out, indent=1) + "\n")
+    return out
 
 
 _FACTS: dict = {}

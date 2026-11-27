@@ -12,7 +12,11 @@ the data it makes, for one alloy of each campaign (twin/video/experiments.py; no
     python -m twin.video.experiments finish           # nothing encoded again: the join, the narration, the records
     python -m twin.video.experiments segment KEY      # one segment alone -> experiments/segment_KEY.mp4 (no sound)
 
-Run with TWIN_VIDEO_ROUND=3b (the alloys followed come from round 3b's replay; twin/video/exp_data.py).
+Run with TWIN_VIDEO_ROUND=3b (the alloys followed come from round 3b's replay; twin/video/exp_data.py), or with
+TWIN_VIDEO_ROUND=5 (or a later round) for the two-year cut (twin/video/cut5.py): the chapter then follows two alloys
+of the one run that cut replays, its files live in out/twin<N>/video/experiments/, its lines come from
+narration_exp5.json filled with that round's facts (``script()``), and the cut takes the chapter through
+``Chapter()``, ``narration_lines()`` and ``check_numbers()``.
 
 The chapter replaces the build of the two networks in ``dag_anim.Dag.intro_frame`` (about 1:40 to 3:17 of round 3b's
 cut) and keeps its points. Its parts, each a module of its own that another cut can use alone:
@@ -56,8 +60,11 @@ from .style import CAMP, INK, INK2, H, W
 FPS = 30
 OUT = X.OUT
 TMP = OUT / "parts"
-SCRIPT = Path(__file__).with_name("narration_exp.json")
 NDIR = OUT / "narration"
+# round 3b's preview: the script as written. From round 5: a template (narration_exp5.json) whose numbers and alloy
+# words are filled from that round's facts.json, written out as the script that was spoken (script()).
+TEMPLATE5 = Path(__file__).with_name("narration_exp5.json")
+SCRIPT = (NDIR / "script.json") if X.R5 else Path(__file__).with_name("narration_exp.json")
 PREVIEW = OUT / "experiments_preview.mp4"
 FADE = 0.35
 # (key, module, class): the chapter's parts in order
@@ -71,7 +78,8 @@ SAY_MORE = {"EBSD": "E B S D", "UTS": "U T S", "micrometres": "micrometers"}
 # "a Scheil": a lone article before a respelled word is read as the letter ("ay Scheil"); "AM" as letters came
 # out "uh em" after "the" (both found by reading the phonemes back)
 IPA_MORE = {"a Scheil": "ɐ ʃˈaɪl", "Scheil": "ʃˈaɪl", "AM": "ˌeɪ ˈɛm"}
-MORE_WORDS = {"thirty": 30, "sixty": 60, "fifteen": 15, "fourteen": 14, "hundred": 100}
+MORE_WORDS = {"thirty": 30, "sixty": 60, "fifteen": 15, "fourteen": 14, "hundred": 100, "none": 0, "thirteen": 13,
+              "seventeen": 17, "eighteen": 18, "nineteen": 19, "twenty": 20}
 
 
 def alloy_name(comp: dict, base: str, n: int | None = None) -> str:
@@ -144,6 +152,9 @@ class Intro(Segment):
                     "the best existing alloy on this synthetic benchmark"
                 line = f"design {a['design']} of seed {a['seed']}: it took this replayed run past {what} on day " \
                        f"{a['day']:.0f}"
+                if not a.get("reached", True):             # a later round's run that never got there
+                    line = f"design {a['design']} of seed {a['seed']}: this replayed run's best new alloy, tested " \
+                           f"on day {a['day']:.0f}"
                 size = 19
                 while size > 16 and cv.text_w(line, size, cond=True) > xr - 60 - x:
                     size -= 1
@@ -366,12 +377,135 @@ def _concat(parts: list, dst: Path):
 
 
 # ================================================================================================ narration
+# What a round's facts must show for a line to be said (script()): a line names the ones it needs ("require": the
+# build stops if one fails, so a stale claim is never spoken) or picks between two wordings ("if" / "unless").
+CONDITIONS = {
+    "calc": lambda F: F["al"].get("scheil_open") is not None,                 # an independent open-database run
+    "only_open": lambda F: set(F["sim_kinds"]["calls"]) == {"sim_open"},      # every booked simulation: the open node
+    "no_am": lambda F: F["sim_kinds"]["calls"].get("sim_am", 0) == 0,
+    "no_tc": lambda F: F["sim_kinds"]["calls"].get("sim_tc", 0) == 0,
+    "profile_illustrative": lambda F: F["heat"]["kind"] == "direct age" and not F["heat"]["modelled"],
+    "footage": lambda F: F["footage"]["kind"] == "footage",                   # an aluminium clip, not only the photo
+}
+
+
+def _lookup(path: str, F: dict):
+    cur = F
+    for k in path.split("."):
+        if not isinstance(cur, dict) or k not in cur:
+            raise SystemExit(f"narration_exp5.json: no fact at '{path}' (at '{k}')")
+        cur = cur[k]
+    return cur
+
+
+def script(write: bool = True) -> list:
+    """Rounds 5 and later: the chapter's lines for this round. narration_exp5.json's templates are filled from the
+    round's facts.json (and what out/footage holds for aluminium, exp_atomize.al_words): ``{path|fmt}`` puts a
+    number in and records it in the line's ``nums`` (so check_numbers() compares it with the facts again);
+    ``{path}`` puts in words the facts carry (``say``: the alloys described from their compositions, counts as
+    words). A line with ``require`` stops the build when the facts no longer support what it says; ``if`` /
+    ``unless`` choose between wordings. The result is written as the script that is spoken (SCRIPT)."""
+    import re
+    from . import exp_atomize as EA
+    F = dict(X.load_facts())
+    F["footage"] = EA.al_words()
+    src = json.loads(TEMPLATE5.read_text())
+    out, seen = [], set()
+    for ln in src["lines"]:
+        if "if" in ln and not CONDITIONS[ln["if"]](F):
+            continue
+        if "unless" in ln and CONDITIONS[ln["unless"]](F):
+            continue
+        for c in ln.get("require", []):
+            if not CONDITIONS[c](F):
+                raise SystemExit(f"narration_exp5.json, line {ln['id']}: round {D.ROUND}'s facts no longer support "
+                                 f"it ('{c}' fails). Reword the line; nothing stale is spoken.")
+        if ln["id"] in seen:
+            raise SystemExit(f"narration_exp5.json: two wordings of {ln['id']} are both on")
+        seen.add(ln["id"])
+        nums = []
+
+        def fill(m, nums=nums):
+            path, f_ = m.group(1), m.group(2)
+            v = _lookup(path, F)
+            if f_ is None:
+                return str(v)
+            tok = f"{round(float(v)):d}" if f_ == "d" else format(float(v), f_)
+            nums.append([tok, path, f_])
+            return tok
+        pat = re.compile(r"\{([^{}|]+)(?:\|([^{}]+))?\}")
+        text = pat.sub(fill, ln["text"])
+        for tok, path, f_ in ln.get("nums", []):               # counts said as words: [the word, its fact, format]
+            nums.append([pat.sub(lambda m: str(_lookup(m.group(1), F)), tok), path, f_])
+        row = {k: v for k, v in ln.items() if k not in ("if", "unless", "require", "text", "nums")}
+        row["text"] = text
+        if nums:
+            row["nums"] = nums
+        out.append(row)
+    want = {ln["id"] for ln in src["lines"]}
+    if want - seen:
+        raise SystemExit(f"narration_exp5.json: no wording of {sorted(want - seen)} is on for round {D.ROUND}")
+    if write:
+        doc = dict(about=f"The experiments chapter's lines as spoken for round {D.ROUND}: twin/video/"
+                         f"narration_exp5.json filled from {X.FACTS_JSON.relative_to(D.HERE)} by "
+                         f"twin/video/experiments.py script(). Written by the build; edit the template, not this.",
+                   round=D.ROUND, footage=F["footage"], lines=out)
+        txt = json.dumps(doc, indent=1, ensure_ascii=False) + "\n"
+        NDIR.mkdir(parents=True, exist_ok=True)
+        if not SCRIPT.exists() or SCRIPT.read_text() != txt:
+            SCRIPT.write_text(txt)
+    return out
+
+
+_SCRIPT_DONE = []
+
+
 def narration():
     """twin/video/narration.py on this chapter's script and audio (see narration.configure)."""
     from . import narration as N
+    if X.R5 and not _SCRIPT_DONE:                           # this round's lines, from the template and the facts
+        script()
+        _SCRIPT_DONE.append(1)
     if N.SCRIPT != SCRIPT:
         N.configure(SCRIPT, NDIR, SAY_MORE, IPA_MORE)
     return N
+
+
+def narration_lines(speak: bool = True) -> list:
+    """For a cut that takes the chapter in (twin/video/cut5.py): the chapter's lines for this round as
+    [{id, t, end, seconds, text, flac, part}], t in seconds from the chapter's start where the line is spoken (its
+    anchor in the script, pushed later if the line before is still going, as narration.track does), flac its
+    recording in out/twin<N>/video/experiments/narration/. ``speak``: lines whose text changed are spoken now
+    (Kokoro at /tmp/kokoro); otherwise a line without a current recording raises. narration.py's own script, audio
+    folder and respellings are left as they were found, so the cut's narration is not disturbed."""
+    import soundfile as sf
+    from . import narration as N
+    keep = (N.SCRIPT, N.NDIR, dict(N.SAY), dict(N.IPA))
+    try:
+        if X.R5:
+            script()
+        N.configure(SCRIPT, NDIR, SAY_MORE, IPA_MORE)
+        rec = N._record()
+        stale = [ln["id"] for ln in N.lines() if not N._reusable(ln, rec)]
+        if stale and not speak:
+            raise SystemExit(f"the experiments chapter's lines {stale} have no current recording: run "
+                             f"`python -m twin.video.experiments tts`")
+        if stale:
+            N.speak_all()
+        rows = N.place(record_plan(), marks())
+        out, free = [], 0.0
+        for r in rows:
+            if r.get("t") is None:
+                raise SystemExit(f"the experiments chapter's line {r['id']}: {r.get('warn')}")
+            p = NDIR / f"{r['id']}.flac"
+            sec = sf.info(str(p)).duration
+            t = max(float(r["t"]), free + N.GAP_MIN) if out else float(r["t"])
+            free = t + sec
+            out.append(dict(id=r["id"], t=round(t, 2), end=round(t + sec, 2), seconds=round(sec, 2), text=r["text"],
+                            flac=p, part=r.get("seg") or r["mark"].split(".")[0]))
+        return out
+    finally:
+        N.SCRIPT, N.NDIR, N.SAY, N.IPA = keep
 
 
 def record_plan() -> dict:
@@ -453,11 +587,13 @@ def meta(rec: dict) -> dict:
         "show each step as the experiment and the data it makes.",
         "",
         "Everything is simulated unless a label on screen says otherwise. The curves, micrographs and maps are the "
-        "digital twin's own models and instrument simulators run for two alloys of round 3b's replay: aluminium "
+        f"digital twin's own models and instrument simulators run for two alloys of {X.ROUND_NAME}'s replay: aluminium "
         f"design {al['design']} of seed {al['seed']} ({alloy_name(al['composition'], 'Al', 5)}) and copper design "
         f"{cu['design']} of seed {cu['seed']} ({alloy_name(cu['composition'], 'Cu')}). They are those alloys' simulated "
         "data, not the replayed runs' own draws, at stated example settings. Schematics are labelled illustrative; "
-        "the atomizer footage is the lab's own (630 bronze, 27 Oct 2026: another alloy); the pictures of stations are "
+        + ("the atomizer footage is the lab's own (630 bronze, 27 Oct 2026: another alloy); " if not X.R5 else
+           "the atomizer pictures are the lab's own aluminium runs (another alloy; each is labelled with its run); ")
+        + "the pictures of stations are "
         "the lab's 3-D model. Nothing here is Thermo-Calc output or real SEM data.",
         "",
     ]

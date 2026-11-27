@@ -1,0 +1,284 @@
+{
+ "voice": "Kokoro v1.0 af_heart (kokoro-onnx, open weights), speed 0.96",
+ "lines": {
+  "dag1": {
+   "key": "a812d07f5c849d51",
+   "text": "Each campaign is a function network: a chain of steps, where each step's results feed the next. BOFN, Bayesian optimization over function networks, models every step, not just the final score.",
+   "spoken": "Each campaign is a function network: a chain of steps, where each step's results feed the next. B O F N, Bayesian optimization over function networks, models every step, not just the final score.",
+   "phonemes": "ˈiːtʃ kæmpˈeɪn ɪz ɐ fˈʌŋkʃən nˈɛtwɜːk: ɐ tʃˈeɪn ʌv stˈɛps, wˌɛɹ ˈiːtʃ stˈɛps ɹɪzˈʌlts fˈiːd ðə nˈɛkst. bˈiː ˈoʊ ˈɛf ˈɛn, beɪˈiːʒən ˌɑːptɪmᵻzˈeɪʃən ˌoʊvɚ fˈʌŋkʃən nˈɛtwɜːks, mˈɑːdəlz ˈɛvɹi stˈɛp, nˌɑːt dʒˈʌst ðə fˈaɪnəl skˈɔːɹ.",
+   "seconds": 13.33,
+   "sha256": "77bab12b38ec3a4eb3888b737f970891c194226bac9fc7571dd54e4dbd1a25a8"
+  },
+  "exp1": {
+   "key": "98b6542220740865",
+   "text": "Here is each step itself, for one alloy from each campaign: the experiment, and the data it makes. Everything is simulated by the twin, unless a label says otherwise.",
+   "spoken": "Here is each step itself, for one alloy from each campaign: the experiment, and the data it makes. Everything is simulated by the twin, unless a label says otherwise.",
+   "phonemes": "hˈɪɹ ɪz ˈiːtʃ stˈɛp ɪtsˈɛlf, fɔːɹ wˈʌn ˈælɔɪ fɹʌm ˈiːtʃ kæmpˈeɪn: ðɪ ɛkspˈɛɹɪmənt, ænd ðə dˈeɪɾə ɪt mˈeɪks. ˈɛvɹɪθˌɪŋ ɪz sˈɪmjʊlˌeɪɾᵻd baɪ ðə twˈɪn, ʌnlˈɛs ɐ lˈeɪbəl sˈɛz ˈʌðɚwˌaɪz.",
+   "seconds": 10.52,
+   "sha256": "7f62bee5bfa18e979557fb68c3d09e873b24ab540b2866afd4b603b55d72f26b"
+  },
+  "comp1": {
+   "key": "bbabce475cc16f54",
+   "text": "The aluminium alloy is design number 11042: aluminium with three additions, cerium the largest.",
+   "spoken": "The aluminum alloy is design number 11042: aluminum with three additions, cerium the largest.",
+   "phonemes": "ðɪ ɐlˈuːmɪnəm ˈælɔɪ ɪz dɪzˈaɪn nˈʌmbɚɹ ɪlˈɛvən θˈaʊzənd fˈɔːɹɾi tˈuː: ɐlˈuːmɪnəm wɪð θɹˈiː ɐdˈɪʃənz, sˈɪɹiəm ðə lˈɑːɹdʒɪst.",
+   "seconds": 7.27,
+   "sha256": "9314617511555d5421342270783713ba8df28ee6f6029b87f0bca4dbada28fcd"
+  },
+  "comp2": {
+   "key": "ac7099bebcdddce9",
+   "text": "On this map, it is one of 635 designs in this run's log. The HPC stream's 89.7 million candidates are counted, not drawn.",
+   "spoken": "On this map, it is one of 635 designs in this run's log. The H P C stream's 89.7 million candidates are counted, not drawn.",
+   "phonemes": "ˌɔn ðɪs mˈæp, ɪɾ ɪz wˈʌn ʌv sˈɪkshˈʌndɹɪd θˈɜːɾi fˈaɪv dɪzˈaɪnz ɪn ðɪs ɹˈʌnz lˈɔɡ. ðɪ ˈeɪtʃ pˈiː sˈiː stɹˈiːmz ˈeɪɾi nˈaɪn pɔɪnt sˈɛvən mˈɪliən kˈændᵻdˌeɪts ɑːɹ kˈaʊntᵻd, nˌɑːt dɹˈɔːn.",
+   "seconds": 10.35,
+   "sha256": "5c2a5eff69e07b741f1c4962b6b03e89660d198124184b941615b0e5f217b545"
+  },
+  "comp3": {
+   "key": "f6ccee433e01f19b",
+   "text": "The copper alloy is design number 91: a nickel aluminium bronze, with a little titanium.",
+   "spoken": "The copper alloy is design number 91: a nickel aluminum bronze, with a little titanium.",
+   "phonemes": "ðə kˈɑːpɚɹ ˈælɔɪ ɪz dɪzˈaɪn nˈʌmbɚ nˈaɪnti wˈʌn: ɐ nˈɪkəl ɐlˈuːmɪnəm bɹˈɑːnz, wɪð ɐ lˈɪɾəl taɪtˈeɪniəm.",
+   "seconds": 6.23,
+   "sha256": "d4433e9bcff02a930a12cba675b767c0c73a31eb6cd748f3c5f592cf35bae741"
+  },
+  "sch1": {
+   "key": "6c2ed5b52b422042",
+   "text": "CALPHAD comes first. As the melt cools, a Scheil model follows how much of it has frozen. This curve is the one the optimizer sees.",
+   "spoken": "CALPHAD comes first. As the melt cools, a Scheil model follows how much of it has frozen. This curve is the one the optimizer sees.",
+   "phonemes": "kˈælfæd kˈʌmz fˈɜːst. æz ðə mˈɛlt kˈuːlz, ɐ ʃˈaɪl mˈɑːdəl fˈɑːloʊz hˌaʊ mˈʌtʃ ʌv ɪt hɐz fɹˈoʊzən. ðɪs kˈɜːv ɪz ðə wˈʌn ðɪ ˈɑːptɪmˌaɪzɚ sˈiːz.",
+   "seconds": 8.83,
+   "sha256": "20e2209fed2325993c94eea2104843a0065affbfa9d057895d4a028df2a5a9ee"
+  },
+  "sch2": {
+   "key": "b387eeeeed87a00f",
+   "text": "A full Scheil run on an open database adds the phases as they form. The twin's hidden truth differs again, as a real alloy would.",
+   "spoken": "A full Scheil run on an open database adds the phases as they form. The twin's hidden truth differs again, as a real alloy would.",
+   "phonemes": "ɐ fˈʊl ʃˈaɪl ɹˈʌn ˌɔn ɐn ˈoʊpən dˈeɪɾəbˌeɪs ˈædz ðə fˈeɪzᵻz æz ðeɪ fˈɔːɹm. ðə twˈɪnz hˈɪdən tɹˈuːθ dˈɪfɚz ɐɡˈɛn, æz ɐ ɹˈiːəl ˈælɔɪ wˈʊd.",
+   "seconds": 8.81,
+   "sha256": "38bf582c23bf66d0abc473db54c781b6e2f29308487b1cfcaad6424b5b131c9b"
+  },
+  "sch3": {
+   "key": "75964447399460b4",
+   "text": "From its curve, the network takes two numbers: the liquidus, and a hot-cracking index.",
+   "spoken": "From its curve, the network takes two numbers: the liquidus, and a hot-cracking index.",
+   "phonemes": "fɹʌm ɪts kˈɜːv, ðə nˈɛtwɜːk tˈeɪks tˈuː nˈʌmbɚz: ðə lˈɪkwɪdəs, ænd ɐ hˈɑːtkɹˈækɪŋ ˈɪndɛks.",
+   "seconds": 4.76,
+   "sha256": "9cd61f0ff64dc68b72db2b501fd00ab8977b3c269bbf1f7a4be69d1315176a24"
+  },
+  "sch4": {
+   "key": "06d67ab88c96bfea",
+   "text": "Every run in round five used this open node. The Thermo-Calc stand-in was never bought.",
+   "spoken": "Every run in round five used this open node. The Thermo-Calc stand-in was never bought.",
+   "phonemes": "ˈɛvɹi ɹˈʌn ɪn ɹˈaʊnd fˈaɪv jˈuːzd ðɪs ˈoʊpən nˈoʊd. ðə θˈɜːməkˈælk stˈændɪn wʌz nˈɛvɚ bˈɔːt.",
+   "seconds": 5.5,
+   "sha256": "2f2b14670468f721c9f35336c1fd23b83a2eb80d9b4fc8333fad9a53ee37fa83"
+  },
+  "am1": {
+   "key": "c1548df5cdb0e2b6",
+   "text": "The twin stands in for the AM module with a moving point source of heat. It gives the melt pool's width and depth, and how fast the metal cools.",
+   "spoken": "The twin stands in for the AM module with a moving point source of heat. It gives the melt pool's width and depth, and how fast the metal cools.",
+   "phonemes": "ðə twˈɪn stˈændz ɪn fɚðə ˌeɪ ˈɛm mˈɑːdʒuːl wɪð ɐ mˈuːvɪŋ pˈɔɪnt sˈɔːɹs ʌv hˈiːt. ɪt ɡˈɪvz ðə mˈɛlt pˈuːlz wˈɪtθ ænd dˈɛpθ, ænd hˌaʊ fˈæst ðə mˈɛɾəl kˈuːlz.",
+   "seconds": 8.98,
+   "sha256": "b54b5a3c3fd6104ffc689e59122dc09c00b495da8386cd6341c450c05af199d3"
+  },
+  "am2": {
+   "key": "8da860d7a100f24e",
+   "text": "This is not Thermo-Calc output, and no run bought this node. But the same model decides the porosity of every simulated build.",
+   "spoken": "This is not Thermo-Calc output, and no run bought this node. But the same model decides the porosity of every simulated build.",
+   "phonemes": "ðɪs ɪz nˌɑːt θˈɜːməkˈælk ˈaʊtpʊt, ænd nˈoʊ ɹˈʌn bˈɔːt ðɪs nˈoʊd. bˌʌt ðə sˈeɪm mˈɑːdəl dᵻsˈaɪdz ðə pɔːɹˈɔsᵻɾi ʌv ˈɛvɹi sˈɪmjʊlˌeɪɾᵻd bˈɪld.",
+   "seconds": 8.13,
+   "sha256": "bef24a4aafa65b1d301035a515063f42952be53b37c60951d0959479df82097d"
+  },
+  "dag2": {
+   "key": "915d5a75096e4c4e",
+   "text": "For aluminium, the lab makes each alloy's powder itself. Then each alloy is printed, and every build is checked.",
+   "spoken": "For aluminum, the lab makes each alloy's powder itself. Then each alloy is printed, and every build is checked.",
+   "phonemes": "fɔːɹ ɐlˈuːmɪnəm, ðə lˈæb mˌeɪks ˈiːtʃ ˈælɔɪz pˈaʊdɚɹ ɪtsˈɛlf. ðˈɛn ˈiːtʃ ˈælɔɪ ɪz pɹˈɪntᵻd, ænd ˈɛvɹi bˈɪld ɪz tʃˈɛkt.",
+   "seconds": 6.85,
+   "sha256": "cd11dada4ce5454199d1cd3f336a7c3fd3819587cbca8bec912ff523c2526966"
+  },
+  "atm1": {
+   "key": "873137edf1977bed",
+   "text": "This photograph is real: aluminium powder from our own atomizer. The size distribution beside it is the twin's, for this alloy.",
+   "spoken": "This photograph is real: aluminum powder from our own atomizer. The size distribution beside it is the twin's, for this alloy.",
+   "phonemes": "ðɪs fˈoʊɾəɡɹˌæf ɪz ɹˈiːəl: ɐlˈuːmɪnəm pˈaʊdɚ fɹʌm ˌaʊɚɹ ˈoʊn ˈæɾəmˌaɪzɚ. ðə sˈaɪz dˌɪstɹɪbjˈuːʃən bᵻsˌaɪd ɪɾ ɪz ðə twˈɪnz, fɔːɹ ðɪs ˈælɔɪ.",
+   "seconds": 8.47,
+   "sha256": "2818cf876264ad0f0ead5fc3e42fff1e077361b8ca2e72adf08139cf70e75c6d"
+  },
+  "atm2": {
+   "key": "b7008b5bb6e7406e",
+   "text": "Here, one of three runs failed, and 13 percent of the charge ended up in the printer's size range.",
+   "spoken": "Here, one of three runs failed, and 13 percent of the charge ended up in the printer's size range.",
+   "phonemes": "hˈɪɹ, wˈʌn ʌv θɹˈiː ɹˈʌnz fˈeɪld, ænd θˈɜːtiːn pɚsˈɛnt ʌvðə tʃˈɑːɹdʒ ˈɛndᵻd ˌʌp ɪnðə pɹˈɪntɚz sˈaɪz ɹˈeɪndʒ.",
+   "seconds": 5.82,
+   "sha256": "b59e0d52b0671115539d40ee16a9337d59b4a839947f0b9e5461e0f20d0d5fc3"
+  },
+  "prt1": {
+   "key": "3f7f8e5682881fa3",
+   "text": "One build is nine cubes, each at its own laser power and speed.",
+   "spoken": "One build is nine cubes, each at its own laser power and speed.",
+   "phonemes": "wˈʌn bˈɪld ɪz nˈaɪn kjˈuːbz, ˈiːtʃ æɾ ɪts ˈoʊn lˈeɪzɚ pˈaʊɚ ænd spˈiːd.",
+   "seconds": 4.07,
+   "sha256": "0b2ee705e596be66ea2425badf248c5c217d7a459dd12e07a8e456ccb5e9c7c6"
+  },
+  "prt2": {
+   "key": "411dd2af8914c661",
+   "text": "Each cube's density and crack reading goes on the map. Too little energy leaves lack of fusion. Too much makes keyhole pores.",
+   "spoken": "Each cube's density and crack reading goes on the map. Too little energy leaves lack of fusion. Too much makes keyhole pores.",
+   "phonemes": "ˈiːtʃ kjˈuːbz dˈɛnsᵻɾi ænd kɹˈæk ɹˈiːdɪŋ ɡoʊz ɔnðə mˈæp. tˈuː lˈɪɾəl ˈɛnɚdʒi lˈiːvz lˈæk ʌv fjˈuːʒən. tˈuː mʌtʃ mˌeɪks kˈiːhoʊl pˈɔːɹz.",
+   "seconds": 7.36,
+   "sha256": "cffd76a6b5cabc8fb0ad58e3cc571eec92cc31481749caab4db289ccb9d1ba8f"
+  },
+  "prt3": {
+   "key": "1aea9a7da9614481",
+   "text": "One build gives the network's print node nine data points.",
+   "spoken": "One build gives the network's print node nine data points.",
+   "phonemes": "wˈʌn bˈɪld ɡˈɪvz ðə nˈɛtwɜːks pɹˈɪnt nˈoʊd nˈaɪn dˈeɪɾə pˈɔɪnts.",
+   "seconds": 3.46,
+   "sha256": "4340bb90c3b04013e207a1c617339734e065a099821b7a54279a5077a4ef0510"
+  },
+  "sem1": {
+   "key": "a5cad70bd1264d30",
+   "text": "In the SEM, one electron beam scans the sample line by line, and four detectors each catch a different signal.",
+   "spoken": "In the S E M, one electron beam scans the sample line by line, and four detectors each catch a different signal.",
+   "phonemes": "ɪnðɪ ˈɛs ˈiː ˈɛm, wˈʌn ᵻlˈɛktɹɑːn bˈiːm skˈænz ðə sˈæmpəl lˈaɪn baɪ lˈaɪn, ænd fˈɔːɹ dɪtˈɛktɚz ˈiːtʃ kˈætʃ ɐ dˈɪfɹənt sˈɪɡnəl.",
+   "seconds": 7.4,
+   "sha256": "af0c0bfb62d887047c708f860d16336ba0decd51c9cde4953972e1da12e14ecc"
+  },
+  "sem2": {
+   "key": "38977ac34d62d36a",
+   "text": "Secondary electrons show the powder's surface. Backscattered electrons show the section's pores and cracks. X-rays give the elements, and diffraction gives each grain's orientation.",
+   "spoken": "Secondary electrons show the powder's surface. Backscattered electrons show the section's pores and cracks. X-rays give the elements, and diffraction gives each grain's orientation.",
+   "phonemes": "sˈɛkəndɚɹi ᵻlˈɛktɹɑːnz ʃˈoʊ ðə pˈaʊdɚz sˈɜːfɪs. bˈækskæɾɚd ᵻlˈɛktɹɑːnz ʃˈoʊ ðə sˈɛkʃənz pˈɔːɹz ænd kɹˈæks. ˈɛksɹˈeɪz ɡˈɪv ðɪ ˈɛlɪmənts, ænd dᵻfɹˈækʃən ɡˈɪvz ˈiːtʃ ɡɹˈeɪnz ˌɔːɹiəntˈeɪʃən.",
+   "seconds": 11.58,
+   "sha256": "fa3ec84efdac94574d30a803d5ba1b8650e1671434275f586b1d11d45026436b"
+  },
+  "sem3": {
+   "key": "7c4b23fefd641de4",
+   "text": "Every image here is simulated by the twin, for this alloy.",
+   "spoken": "Every image here is simulated by the twin, for this alloy.",
+   "phonemes": "ˈɛvɹi ˈɪmɪdʒ hˈɪɹ ɪz sˈɪmjʊlˌeɪɾᵻd baɪ ðə twˈɪn, fɔːɹ ðɪs ˈælɔɪ.",
+   "seconds": 3.43,
+   "sha256": "538abf7f898a74a74e4dd39d6a4c2aa57f8d706cdfc807f2a335a257f4cd0011"
+  },
+  "sem4": {
+   "key": "9570b7b4a5ba4548",
+   "text": "The network uses three of them: satellites on the powder, the section's pores and cracks, and the grain size. EDS only checks the composition.",
+   "spoken": "The network uses three of them: satellites on the powder, the section's pores and cracks, and the grain size. E D S only checks the composition.",
+   "phonemes": "ðə nˈɛtwɜːk jˈuːsᵻz θɹˈiː ʌv ðˌɛm: sˈæɾəlˌaɪts ɔnðə pˈaʊdɚ, ðə sˈɛkʃənz pˈɔːɹz ænd kɹˈæks, ænd ðə ɡɹˈeɪn sˈaɪz. ˈiː dˈiː ˈɛs ˈoʊnli tʃˈɛks ðə kˌɑːmpəzˈɪʃən.",
+   "seconds": 9.32,
+   "sha256": "b5e84ac011671063957db280f7ee078551ef811ae96ce8e7d00e2792c152a317"
+  },
+  "mec1": {
+   "key": "d016addfd0136e79",
+   "text": "Bars are aged straight from the as-built state, then pulled. The furnace profile here is only illustrative: the twin models the strength it leaves.",
+   "spoken": "Bars are aged straight from the as-built state, then pulled. The furnace profile here is only illustrative: the twin models the strength it leaves.",
+   "phonemes": "bˈɑːɹz ɑːɹ ˈeɪdʒd stɹˈeɪt fɹʌmðɪ æzbˈɪlt stˈeɪt, ðˈɛn pˈʊld. ðə fˈɜːnɪs pɹˈoʊfaɪl hˈɪɹ ɪz ˈoʊnli ˈɪləstɹətˌɪv: ðə twˈɪn mˈɑːdəlz ðə stɹˈɛŋθ ɪt lˈiːvz.",
+   "seconds": 9.07,
+   "sha256": "99c4432767f857b45ccb1cc360af55aad4efde5d9fbacaa2e66415197ce6b355"
+  },
+  "mec2": {
+   "key": "053efff2e8e04dd9",
+   "text": "The curve is the twin's simulated record of the test, up to fracture.",
+   "spoken": "The curve is the twin's simulated record of the test, up to fracture.",
+   "phonemes": "ðə kˈɜːv ɪz ðə twˈɪnz sˈɪmjʊlˌeɪɾᵻd ɹˈɛkɚd ʌvðə tˈɛst, ˌʌp tə fɹˈæktʃɚ.",
+   "seconds": 4.25,
+   "sha256": "e09041a41f991a4ee900fab61f1bac7e620833b0a47c2f3c33bc6130c2bc2a24"
+  },
+  "mec3": {
+   "key": "a4979fed4dc10927",
+   "text": "Yield strength, 244 megapascals, and elongation, 11.8 percent, are the two numbers the network keeps.",
+   "spoken": "Yield strength, 244 megapascals, and elongation, 11.8 percent, are the two numbers the network keeps.",
+   "phonemes": "jˈiːld stɹˈɛŋθ, tˈuːhˈʌndɹɪd fˈɔːɹɾi fˈɔːɹ mˈɛɡəpˌæskəlz, ænd iːlˌɑːŋɡˈeɪʃən, ɪlˈɛvən pɔɪnt ˈeɪt pɚsˈɛnt, ɑːɹ ðə tˈuː nˈʌmbɚz ðə nˈɛtwɜːk kˈiːps.",
+   "seconds": 8.36,
+   "sha256": "e88bd687a0c8481ccb33199fb0992c0808b844f4b9515ae6b9c5f9d623cc17fb"
+  },
+  "dag3": {
+   "key": "adbc97c5b2a8c776",
+   "text": "For copper, a one-hour corrosion screen ranks the DED deposits, and thirty days in seawater come before a utility is known.",
+   "spoken": "For copper, a one-hour corrosion screen ranks the D E D deposits, and thirty days in seawater come before a utility is known.",
+   "phonemes": "fɔːɹ kˈɑːpɚ, ɐ wˈʌnˈaʊɚ kɚɹˈoʊʒən skɹˈiːn ɹˈæŋks ðə dˈiː ˈiː dˈiː dᵻpˈɑːzɪts, ænd θˈɜːɾi dˈeɪz ɪn sˈiːwɔːɾɚ kˈʌm bᵻfˌɔːɹ ɐ juːtˈɪlᵻɾi ɪz nˈoʊn.",
+   "seconds": 7.96,
+   "sha256": "49937603ed13eb7b9c3b166772854351f1e66ff1c0c0cdfb20b49c8f415acd7c"
+  },
+  "cor1": {
+   "key": "424bc3774989dd08",
+   "text": "After an hour at rest, two quick scans give an early corrosion rate and a breakdown potential.",
+   "spoken": "After an hour at rest, two quick scans give an early corrosion rate and a breakdown potential.",
+   "phonemes": "ˈæftɚɹ ɐn ˈaʊɚɹ æt ɹˈɛst, tˈuː kwˈɪk skˈænz ɡˈɪv ɐn ˈɜːli kɚɹˈoʊʒən ɹˈeɪt ænd ɐ bɹˈeɪkdaʊn pətˈɛnʃəl.",
+   "seconds": 5.7,
+   "sha256": "bb13f56f3a4c70dd035344f990de1347980575322a62bed6891b4fc8d6966697"
+  },
+  "cor2": {
+   "key": "0666ec9b7ed0f917",
+   "text": "In immersion, the coupon is weighed on days 1, 3, 7 and 14. After any reading, the policy may stop it.",
+   "spoken": "In immersion, the coupon is weighed on days 1, 3, 7 and 14. After any reading, the policy may stop it.",
+   "phonemes": "ɪn ɪmˈɜːʒən, ðə kˈuːpɑːn ɪz wˈeɪd ˌɔn dˈeɪz wˈʌn, θɹˈiː, sˈɛvən ænd fˈɔːɹtiːn. ˈæftɚɹ ˌɛni ɹˈiːdɪŋ, ðə pˈɑːlɪsi mˈeɪ stˈɑːp ɪt.",
+   "seconds": 7.3,
+   "sha256": "c84b57f2d383c34b484c6761dd28e79d2dca515fb3cd9e34c6b7a71861e5506c"
+  },
+  "cor3": {
+   "key": "91e46cb232fddf5c",
+   "text": "On day 30 it is cleaned and weighed: 13.2 micrometres a year.",
+   "spoken": "On day 30 it is cleaned and weighed: 13.2 micrometers a year.",
+   "phonemes": "ˌɔn dˈeɪ θˈɜːɾi ɪɾ ɪz klˈiːnd ænd wˈeɪd: θˈɜːtiːn pɔɪnt tˈuː mˈaɪkɹoʊmˌiːɾɚz ɐ jˈɪɹ.",
+   "seconds": 4.76,
+   "sha256": "482ac16089e4b6b5bfa5648425174d5d2417b335a3474df0b1cffb89694ef41e"
+  },
+  "dag4": {
+   "key": "af53785b0bde9553",
+   "text": "Both campaigns share one lab. From here on, each step is an icon that lights up while it runs.",
+   "spoken": "Both campaigns share one lab. From here on, each step is an icon that lights up while it runs.",
+   "phonemes": "bˈoʊθ kæmpˈeɪnz ʃˈɛɹ wˈʌn lˈæb. fɹʌm hˈɪɹ ˈɔn, ˈiːtʃ stˈɛp ɪz ɐn ˈaɪkɑːn ðæt lˈaɪts ˌʌp wˌaɪl ɪt ɹˈʌnz.",
+   "seconds": 5.91,
+   "sha256": "ef0caee7a8415627b9bf241ba12abd169d7f02e5d98af0986cc93c0791b65557"
+  }
+ },
+ "voice_id": "af_heart",
+ "speed": 0.96,
+ "rate": 24000,
+ "model_sha256": {
+  "kokoro-v1.0.onnx": "7d5df8ecf7d4b1878015a32686053fd0eebe2bc377234608764cc0ef3636a6c5",
+  "voices-v1.0.bin": "bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d"
+ },
+ "say": {
+  "MiR250": "MiR two-fifty",
+  "OT-2": "O T two",
+  "UPS": "U P S",
+  "SEM": "S E M",
+  "BYU": "B Y U",
+  "EDM": "E D M",
+  "ICP-MS": "I C P M S",
+  "UR12e": "U R twelve E",
+  "aluminium": "aluminum",
+  "AlSi10Mg": "A L S I ten M G",
+  "FLAIME": "flame",
+  "ONR": "O N R",
+  "BOFN": "B O F N",
+  "GP-BO": "G P B O",
+  "LPBF": "L P B F",
+  "DED": "D E D",
+  "HPC": "H P C",
+  "EDS": "E D S",
+  "XRD": "X R D",
+  "3-D": "three D",
+  "VHX": "V H X",
+  "labour": "labor",
+  "pKGFN": "P K G F N",
+  "EBSD": "E B S D",
+  "UTS": "U T S",
+  "micrometres": "micrometers"
+ },
+ "ipa": {
+  "MiR": "mˈiːɹ",
+  "CALPHAD": "kˈælfæd",
+  "Kardex": "kˈɑːɹdɛks",
+  "Sobol": "sˈoʊbɑːl",
+  "doser": "dˈoʊsɚ",
+  "dosed": "dˈoʊsd",
+  "pycalphad": "pˈaɪkælfæd",
+  "a Scheil": "ɐ ʃˈaɪl",
+  "Scheil": "ʃˈaɪl",
+  "AM": "ˌeɪ ˈɛm"
+ }
+}

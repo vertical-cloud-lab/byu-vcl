@@ -9,9 +9,13 @@ What is what on screen:
   tensile.py at full fidelity: three sub-size bars, a clip-on extensometer and a load cell with their noise), and the
   yield strength, tensile strength and elongation are that module's own analysis of them (ASTM E8).
 * **The furnace profile is illustrative.** The twin books the furnace for three hours and applies "the alloy
-  family's standard heat treatment" to the strength (twin/truth_al.py ``strength``); it does not model a profile. The
-  one drawn is the T6 the lab's 3-D model shows on that tray (PR 318, notes/alloy_workflow.md: solution treatment at
-  530 C, a water quench, ageing at 160 C), with times chosen to fill the three hours.
+  family's standard heat treatment" to the strength (twin/truth_al.py ``strength``); it does not model a profile.
+  Round 3b's preview draws the T6 the lab's 3-D model shows on that tray (PR 318, notes/alloy_workflow.md: solution
+  treatment at 530 C, a water quench, ageing at 160 C), with times chosen to fill the three hours. From round 5 the
+  cut draws a **direct age** instead (``exp_data.heat_treatment``): from the as-built state up to an ageing
+  temperature, a hold that fills the furnace hours the twin books, and a cool in air, with no solution treatment
+  and no quench. It is labelled illustrative for the same reason, and the picture of the furnace stops before the
+  3-D model's clip lowers the bars into the quench tank.
 * **The specimen** is a schematic: its extension follows the record's strain (drawn twice life size), the neck and
   the break are drawn. **The pictures of the furnace and the load frame** are the lab's 3-D model (PR 318's renders).
 """
@@ -26,17 +30,23 @@ from . import exp_draw as G
 from .exp_draw import Axes, Canvas, Segment, fmt, lin, ramp
 from .style import CAMP, INK, INK2, mix
 
-# the illustrative T6: (hours, degC) corner points; the quench is the vertical drop
+# the illustrative T6 (round 3b's preview): (hours, degC) corner points; the quench is the vertical drop
 PROFILE = [(0.0, 25.0), (0.30, 530.0), (1.30, 530.0), (1.32, 25.0), (1.45, 25.0), (1.62, 160.0), (3.20, 160.0),
            (3.50, 40.0)]
+DIRECT = X.R5                    # rounds 5 and later: a direct age (exp_data.heat_treatment), not the T6
+FURNACE_CLIP = (1418 / 6, 1535 / 6, 2.4)         # PR 318's clip of the furnace: seconds in it, and its speed here
+# the same clip up to the bars leaving the furnace: after 247 s the arm lowers them into the quench tank, which a
+# direct age has no use for
+FURNACE_CLIP_AGE = (1418 / 6, 247.0, 1.15)
 STRETCH = 2.0                    # the schematic's extension, times life size
 SRC_CLIP = "alloy_workflow"      # PR 318's chapter 5: from the printer to the tensile test (out/mp4, 1280 x 720)
 CROP_FURNACE = (384, 196, 775, 436)      # clear of the render's gauge table, title and caption band
 CROP_FRAME = (396, 160, 424, 474)        # the load frame's column and grips, clear of the render's own inset plot
 
 
-def profile_T(h: float) -> float:
-    return float(np.interp(h, [p[0] for p in PROFILE], [p[1] for p in PROFILE]))
+def profile_T(h: float, profile=None) -> float:
+    pr = PROFILE if profile is None else profile
+    return float(np.interp(h, [p[0] for p in pr], [p[1] for p in pr]))
 
 
 class Mech(Segment):
@@ -79,6 +89,17 @@ class Mech(Segment):
         self.axT = Axes((1068, 262, 1816, 632), (0.0, 3.5), (0.0, 600.0), "time in the furnace, h",
                         "temperature, °C", xticks=[0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5], yticks=[0, 100, 200, 300, 400,
                                                                                          500, 600])
+        self.profile, self.hours_end, self.ht = PROFILE, 3.5, None
+        if DIRECT:                                         # the direct age: its own profile and axes
+            ht = X.heat_treatment(a)
+            self.ht = ht
+            self.profile = [tuple(p) for p in ht["profile"]]
+            self.hours_end = float(self.profile[-1][0])
+            top = math.ceil(ht["hold_C"] * 1.3 / 50.0) * 50.0
+            step = 50 if top <= 300 else 100
+            self.axT = Axes((1068, 262, 1816, 632), (0.0, self.hours_end), (0.0, top), "hours",
+                            "temperature, °C", xticks=[v / 2 for v in range(int(self.hours_end * 2) + 1)],
+                            yticks=list(range(0, int(top) + 1, step)))
         b0 = self.bars[0]                                  # the pen moves along the first bar's curve at even speed
         px_, py_ = self.ax.X(b0["e"]), self.ax.Y(b0["s"])
         seg = np.hypot(np.diff(px_), np.diff(py_))
@@ -86,9 +107,13 @@ class Mech(Segment):
         self._clips = {}
         f = X.load_facts()["al"]["tensile"]
         self.f = f
+        hours_words = {1.0: "one hour", 2.0: "two hours", 3.0: "three hours", 4.0: "four hours"}
         self.captions = [
             (0.6, 8.9, "Bars are cut by wire EDM, then heat treated. The twin books the furnace for three hours and "
-                       "models the strength it leaves, not the profile: this one is illustrative."),
+                       "models the strength it leaves, not the profile: this one is illustrative.") if not DIRECT else
+            (0.6, 8.9, "Bars are cut by wire EDM, then aged straight from the as-built state. The twin books the "
+                       f"furnace for {hours_words.get(self.ht['furnace_h'], fmt(self.ht['furnace_h'], 1) + ' hours')} "
+                       "and models the strength it leaves, not the profile: this one is illustrative."),
             (9.8, 22.4, "Then three bars are pulled to fracture. Each curve is the twin's simulated load record for "
                         "this alloy."),
             (22.8, 30.6, "Yield strength and elongation feed the tensile node. The utility scores them against the "
@@ -99,7 +124,10 @@ class Mech(Segment):
         self.sources = [
             ("sim", "stress-strain curves, yield, UTS, elongation: twin/instruments/tensile.py (full fidelity, three "
                     "bars) on the alloy followed"),
-            ("illus", "furnace profile: the lab model's T6 (PR 318), not modelled by the twin"),
+            ("illus", "furnace profile: the lab model's T6 (PR 318), not modelled by the twin") if not DIRECT else
+            ("illus", f"furnace profile: a direct age (no solution treatment, no quench; hold {self.ht['hold_C']:.0f} "
+                      f"°C, an example for {self.ht['hold_words']}), not modelled by the twin: it books "
+                      f"{self.ht['furnace_h']:g} furnace hours and models the strength after heat treatment"),
             ("illus", "the specimen: extension follows the record, drawn twice life size"),
             ("render", "furnace and load frame: PR 318's renders (out/mp4/alloy_workflow.mp4)"),
         ]
@@ -109,7 +137,8 @@ class Mech(Segment):
         if which not in self._clips:
             from . import assets as A
             if which == "furnace":
-                self._clips[which] = G.Footage(A.src(SRC_CLIP), 1418 / 6, 1535 / 6, 800, 450, CROP_FURNACE, 2.4)
+                c0, c1, sp = FURNACE_CLIP_AGE if DIRECT else FURNACE_CLIP
+                self._clips[which] = G.Footage(A.src(SRC_CLIP), c0, c1, 800, 450, CROP_FURNACE, sp)
             else:
                 self._clips[which] = G.Footage(A.src(SRC_CLIP), 1942 / 6, 2011 / 6, 404, 452, CROP_FRAME, 1.0)
         return self._clips[which]
@@ -206,12 +235,13 @@ class Mech(Segment):
         a1 = 1.0 - ramp(t, self.T_SWAP[0], self.T_SWAP[0] + 0.55)     # the furnace's picture and plot
         a2 = ramp(t, self.T_SWAP[1] - 0.55, self.T_SWAP[1])           # the frame's
         # ------------------------------------------------ left: the experiment
-        hours = 3.5 * lin(t, *self.T_FURNACE)
-        temp = profile_T(hours)
+        hours = self.hours_end * lin(t, *self.T_FURNACE)
+        temp = profile_T(hours, self.profile)
         if not stage2:
             fr = self._clip("furnace").frame(max(0.0, t - 0.2))
             cv.paste(fr, 78, 196, a=a1)
-            G.framed(cv, (78, 196, 878, 646), "the furnace and its quench tank (tray F)", a=a1)
+            G.framed(cv, (78, 196, 878, 646), "the furnace and its quench tank (tray F)" if not DIRECT else
+                     "the furnace (tray F); the quench tank beside it is not used in a direct age", a=a1)
             cv.tag(88, 606, "render", "the lab's 3-D model (PR 318)", a=a1)
             self._specimen(cv, t, 0.0, "wait", temp if t >= self.T_FURNACE[0] else 25.0)
         else:
@@ -241,20 +271,42 @@ class Mech(Segment):
             ax = self.axT
             ax.draw(cv, a1)
             cv.text(1068, 206, "Furnace temperature against time", 24, bold=True, fill=INK, a=a1)
-            hs = np.linspace(0.0, 3.5, 701)
-            Ts = np.array([profile_T(h) for h in hs])
+            he = self.hours_end
+            hs = np.linspace(0.0, he, 701)
+            Ts = np.array([profile_T(h, self.profile) for h in hs])
             ax.line(cv, hs, Ts, (150, 156, 168), 2.0, 1.0, a1 * 0.5, dashed=True)
-            pen = ax.line(cv, hs, Ts, G.HOT, 4.0, hours / 3.5, a1)
-            if pen and 0 < hours < 3.5:
+            pen = ax.line(cv, hs, Ts, G.HOT, 4.0, hours / he, a1)
+            if pen and 0 < hours < he:
                 cv.circle(pen[0], pen[1], 8, fill=G.HOT, outline=INK, width=2, a=a1)
-            for h_, T_, s_ in ((0.80, 548, "solution treatment, 530 °C"), (2.42, 178, "ageing, 160 °C")):
-                cv.text(float(ax.X(h_)), float(ax.Y(T_)) - 10, s_, 19, fill=INK, anchor="ms",
-                        a=a1 * ramp(hours, h_ - 0.45, h_ - 0.2))
-            cv.text(float(ax.X(1.36)), float(ax.Y(300)), "water quench", 19, fill=INK, anchor="lm",
-                    a=a1 * ramp(hours, 1.3, 1.45))
-            cv.tag(1068, 716, "illus", "the T6 in the lab's 3-D model (PR 318)", a=a1)
-            cv.para(1068, 772, "The twin books three furnace hours and applies the strength after heat treatment. "
-                               "It does not model the profile.", 20, 760, fill=INK2, a=a1, cond=True)
+            if not DIRECT:
+                for h_, T_, s_ in ((0.80, 548, "solution treatment, 530 °C"), (2.42, 178, "ageing, 160 °C")):
+                    cv.text(float(ax.X(h_)), float(ax.Y(T_)) - 10, s_, 19, fill=INK, anchor="ms",
+                            a=a1 * ramp(hours, h_ - 0.45, h_ - 0.2))
+                cv.text(float(ax.X(1.36)), float(ax.Y(300)), "water quench", 19, fill=INK, anchor="lm",
+                        a=a1 * ramp(hours, 1.3, 1.45))
+                cv.tag(1068, 716, "illus", "the T6 in the lab's 3-D model (PR 318)", a=a1)
+                cv.para(1068, 772, "The twin books three furnace hours and applies the strength after heat "
+                                   "treatment. It does not model the profile.", 20, 760, fill=INK2, a=a1, cond=True)
+            else:                                          # the direct age: straight up, a hold, air
+                ht = self.ht
+                hold, fh, tr = ht["hold_C"], ht["furnace_h"], ht["ramp_h"]
+                cv.text(float(ax.X(tr + 0.12)), float(ax.Y(hold * 0.42)), "from as built: no solution treatment",
+                        19, fill=INK, anchor="lm", a=a1 * ramp(hours, 0.05, 0.3))
+                cv.text(float(ax.X((tr + fh) / 2)), float(ax.Y(hold)) - 14, f"ageing hold, {fmt(hold)} °C", 19,
+                        fill=INK, anchor="ms", a=a1 * ramp(hours, tr + 0.2, tr + 0.5))
+                cv.dashed([(float(ax.X(fh)), float(ax.Y(0))), (float(ax.X(fh)), float(ax.Y(hold)))], INK2, 2, 7, 5,
+                          a1 * ramp(hours, fh - 0.3, fh - 0.05))
+                cv.text(float(ax.X(fh)) - 10, float(ax.Y(hold * 0.42)), "out of the furnace:", 19, fill=INK,
+                        anchor="rm", a=a1 * ramp(hours, fh - 0.2, fh))
+                cv.text(float(ax.X(fh)) - 10, float(ax.Y(hold * 0.42)) + 26, "air cool, no quench", 19, fill=INK,
+                        anchor="rm", a=a1 * ramp(hours, fh - 0.2, fh))
+                cv.tag(1068, 716, "illus", "a direct age: an example profile, not modelled by the twin", a=a1)
+                hw = {1.0: "one furnace hour", 2.0: "two furnace hours", 3.0: "three furnace hours"}.get(
+                    fh, f"{fh:g} furnace hours")
+                cv.para(1068, 762, f"The twin books {hw} and applies the strength after heat treatment. It does "
+                                   f"not model the profile. The hold temperature is an example for the precipitates "
+                                   f"its strength model credits in this alloy.", 20, 760, fill=INK2, a=a1,
+                        cond=True)
         if a2 > 0.004:                                     # the stress-strain curves
             ax = self.ax
             ax.draw(cv, a2)

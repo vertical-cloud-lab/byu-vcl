@@ -58,25 +58,11 @@
    "sha256": "278f43ec05f0ed7f6db3700fbf54ff76fc19befae492376eeb6ce998a7dec37c"
   },
   "f8": {
-   "text": "Side by side, the vertical lab needs 29 percent less floor: 14.2 instruments per thousand square feet, against 10.0.",
-   "spoken": "Side by side, the vertical lab needs 29 percent less floor: fourteen point two instruments per thousand square feet, against ten point oh.",
-   "phonemes": "sˈaɪd baɪ sˈaɪd, ðə vˈɜːɾɪkəl lˈæb nˈiːdz twˈɛnti nˈaɪn pɚsˈɛnt lˈɛs flˈɔːɹ: fˈɔːɹtiːn pˈɔɪnt tˈuː ˈɪnstɹəmənts pɜː θˈaʊzənd skwˈɛɹ fˈiːt, ɐɡˈɛnst tˈɛn pˈɔɪnt ˈoʊ.",
-   "seconds": 9.13,
-   "sha256": "d07f50162c3e27e2a6fc093339983350c73d395a7cecf28de1213543709bd529"
-  },
-  "f11": {
-   "text": "Laid out so robots can dock and pass, a flat lab needs 4,128 square feet. And by capacity, the Shuttles hold 45 trays: 14.9 tray positions per thousand square feet, against 7.3 laid out flat.",
-   "spoken": "Laid out so robots can dock and pass, a flat lab needs four thousand one hundred twenty-eight square feet. And by capacity, the Shuttles hold 45 trays: fourteen point nine tray positions per thousand square feet, against seven point three laid out flat.",
-   "phonemes": "lˈeɪd ˈaʊt sˌoʊ ɹˈoʊbɑːts kæn dˈɑːk ænd pˈæs, ɐ flˈæt lˈæb nˈiːdz fˈɔːɹ θˈaʊzənd wˈʌn hˈʌndɹɪd twˈɛntiˈeɪt skwˈɛɹ fˈiːt. ænd baɪ kəpˈæsᵻɾi, ðə ʃˈʌɾəlz hˈoʊld fˈɔːɹɾi fˈaɪv tɹˈeɪz: fˈɔːɹtiːn pˈɔɪnt nˈaɪn tɹˈeɪ pəzˈɪʃənz pɜː θˈaʊzənd skwˈɛɹ fˈiːt, ɐɡˈɛnst sˈɛvən pˈɔɪnt θɹˈiː lˈeɪd ˈaʊt flˈæt.",
-   "seconds": 16.6,
-   "sha256": "991ad5b39425eb307b79d237f92b66e204b61c5c4d302a0f10c2a3dfa6754a25"
-  },
-  "f9": {
-   "text": "In the vertical lab, most of the floor goes to the floor machines, their clearances and the robot aisle, the same as in the flat layouts for robots. And the Shuttles stand 9.15 meters tall, so it needs a high bay.",
-   "spoken": "In the vertical lab, most of the floor goes to the floor machines, their clearances and the robot aisle, the same as in the flat layouts for robots. And the Shuttles stand nine point one five meters tall, so it needs a high bay.",
-   "phonemes": "ɪnðə vˈɜːɾɪkəl lˈæb, mˈoʊst əv ðə flˈɔːɹ ɡoʊz tə ðə flˈɔːɹ məʃˈiːnz, ðɛɹ klˈɪɹənsᵻz ænd ðə ɹˈoʊbɑːt ˈaɪəl, ðə sˈeɪm æz ɪnðə flˈæt lˈeɪaʊts fɔːɹ ɹˈoʊbɑːts. ænd ðə ʃˈʌɾəlz stˈænd nˈaɪn pˈɔɪnt wˈʌn fˈaɪv mˈiːɾɚz tˈɔːl, sˌoʊ ɪt nˈiːdz ɐ hˈaɪ bˈeɪ.",
-   "seconds": 13.95,
-   "sha256": "2072a0d9677284edee1fc7f9c63e7a36df9e058d82b5ff8d1aac1474c446b00f"
+   "text": "Side by side. For today's 43 instruments, a flat lab laid out so robots can dock and pass needs 4,128 square feet, about what the conventional lab does.",
+   "spoken": "Side by side. For today's 43 instruments, a flat lab laid out so robots can dock and pass needs four thousand one hundred twenty-eight square feet, about what the conventional lab does.",
+   "phonemes": "sˈaɪd baɪ sˈaɪd. fɔːɹ tədˈeɪz fˈɔːɹɾi θɹˈiː ˈɪnstɹəmənts, ɐ flˈæt lˈæb lˈeɪd ˈaʊt sˌoʊ ɹˈoʊbɑːts kæn dˈɑːk ænd pˈæs nˈiːdz fˈɔːɹ θˈaʊzənd wˈʌn hˈʌndɹɪd twˈɛntiˈeɪt skwˈɛɹ fˈiːt, ɐbˌaʊt wʌt ðə kənvˈɛnʃənəl lˈæb dˈʌz.",
+   "seconds": 12.01,
+   "sha256": "7e00c0260ed3ea195b4930d54b127f51891ccd604306896c5cb8c80b71b5a094"
   },
   "f10": {
    "text": "For scale, Emerald Cloud Lab in South San Francisco held more than a hundred items of equipment in about 15,000 square feet.",
@@ -84,6 +70,27 @@
    "phonemes": "fɔːɹ skˈeɪl, ˈɛmɚɹəld klˈaʊd lˈæb ɪn sˈaʊθ sˌæn fɹænsˈɪskoʊ hˈɛld mˈɔːɹ ðˌænə hˈʌndɹɪd ˈaɪɾəmz ʌv ɪkwˈɪpmənt ɪn ɐbˌaʊt fˈɪftiːn θˈaʊzənd skwˈɛɹ fˈiːt.",
    "seconds": 8.47,
    "sha256": "4588a57d0afc4d030b41fc2953114e47f0017cc0a7b3b89a3dfd0c274340bc11"
+  },
+  "f11": {
+   "text": "But today's equipment uses only 18 of the Shuttles' 45 trays. Laid out flat, as bench positions robots can serve, all 45 need 6,192 square feet.",
+   "spoken": "But today's equipment uses only 18 of the Shuttles' 45 trays. Laid out flat, as bench positions robots can serve, all 45 need six thousand one hundred ninety-two square feet.",
+   "phonemes": "bˌʌt tədˈeɪz ɪkwˈɪpmənt jˈuːsᵻz ˈoʊnli ˈeɪtiːn ʌvðə ʃˈʌɾəlz fˈɔːɹɾi fˈaɪv tɹˈeɪz. lˈeɪd ˈaʊt flˈæt, æz bˈɛntʃ pəzˈɪʃənz ɹˈoʊbɑːts kæn sˈɜːv, ˈɔːl fˈɔːɹɾi fˈaɪv nˈiːd sˈɪks θˈaʊzənd wˈʌn hˈʌndɹɪd nˈaɪntitˈuː skwˈɛɹ fˈiːt.",
+   "seconds": 12.69,
+   "sha256": "3d6e30bfcdb296379bc278560582b64f77769463ca6267d8188d1e71f3f7d569"
+  },
+  "f12": {
+   "text": "The vertical lab holds them in 3,029: 51 percent less floor, at 14.9 tray positions per thousand square feet, against 7.3.",
+   "spoken": "The vertical lab holds them in three thousand twenty-nine: 51 percent less floor, at fourteen point nine tray positions per thousand square feet, against seven point three.",
+   "phonemes": "ðə vˈɜːɾɪkəl lˈæb hˈoʊldz ðˌɛm ɪn θɹˈiː θˈaʊzənd twˈɛntinˈaɪn: fˈɪfti wˈʌn pɚsˈɛnt lˈɛs flˈɔːɹ, æt fˈɔːɹtiːn pˈɔɪnt nˈaɪn tɹˈeɪ pəzˈɪʃənz pɜː θˈaʊzənd skwˈɛɹ fˈiːt, ɐɡˈɛnst sˈɛvən pˈɔɪnt θɹˈiː.",
+   "seconds": 11.22,
+   "sha256": "e03f6e73ec452380e83f02bd216b2f76b266dace94dd9467948a8b636d44759a"
+  },
+  "f9": {
+   "text": "In the vertical lab, most of the floor goes to the floor machines, their clearances and the robot aisle, the same as in the flat layouts for robots. And the Shuttles stand 9.15 meters tall, so it needs a high bay.",
+   "spoken": "In the vertical lab, most of the floor goes to the floor machines, their clearances and the robot aisle, the same as in the flat layouts for robots. And the Shuttles stand nine point one five meters tall, so it needs a high bay.",
+   "phonemes": "ɪnðə vˈɜːɾɪkəl lˈæb, mˈoʊst əv ðə flˈɔːɹ ɡoʊz tə ðə flˈɔːɹ məʃˈiːnz, ðɛɹ klˈɪɹənsᵻz ænd ðə ɹˈoʊbɑːt ˈaɪəl, ðə sˈeɪm æz ɪnðə flˈæt lˈeɪaʊts fɔːɹ ɹˈoʊbɑːts. ænd ðə ʃˈʌɾəlz stˈænd nˈaɪn pˈɔɪnt wˈʌn fˈaɪv mˈiːɾɚz tˈɔːl, sˌoʊ ɪt nˈiːdz ɐ hˈaɪ bˈeɪ.",
+   "seconds": 13.95,
+   "sha256": "2072a0d9677284edee1fc7f9c63e7a36df9e058d82b5ff8d1aac1474c446b00f"
   }
  }
 }

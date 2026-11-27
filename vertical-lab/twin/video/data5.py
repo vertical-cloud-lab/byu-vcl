@@ -212,7 +212,9 @@ class Replay5(D.Replay):
         for c in CAMPS:
             cc = P["campaigns"][c]
             self.curves[c] = np.array(cc["curve_new"] or [], float).reshape(-1, 3)      # (day, spent, best new)
-            self.spend[c] = np.array(cc["spend_curve"] or [[0.0, 0.0]], float).reshape(-1, 2)
+            sc = np.array(cc["spend_curve"] or [[0.0, 0.0]], float).reshape(-1, 2)
+            sc[:, 0] = np.minimum(sc[:, 0], self.horizon_days)     # the ledger's last week ends past the horizon:
+            self.spend[c] = sc                                      # its figure is the run's total, at the horizon
             self.budget[c] = float(cc["budget"] or 0.0)
         self.curves_all = {c: np.array(v, float).reshape(-1, 3) for c, v in js.get("curves", {}).items()}
         rs = self.results

@@ -4,6 +4,7 @@
     cd vertical-lab
     python -m twin.video.floorspace_voice tts       # speak the lines whose text changed -> out/floorspace/narration/
     python -m twin.video.floorspace_voice check     # heard back by faster-whisper (small.en): check.json
+    python -m twin.video.floorspace_voice words f8 f11 f12   # when each word of a line is said (for its cues)
 
 Each line's FLAC (24 kHz, 16-bit) and lines.json (text, spoken form, phonemes, seconds, sha256) are committed, so the
 segment rebuilds without the speech model. A line is spoken again only when its text changes.
@@ -130,6 +131,19 @@ def check(model="small.en") -> dict:
     return out
 
 
+def words(ids, model="small.en") -> dict:
+    """When each word of a line is said, in seconds into its recording (faster-whisper's word timestamps): the
+    `cues` of narration_floorspace.json are read off this, so that floorspace_cut brings a number in as it is said."""
+    from faster_whisper import WhisperModel
+    wm = WhisperModel(model, device="cpu", compute_type="int8", cpu_threads=int(os.environ.get("WHISPER_THREADS", "1")))
+    out = {}
+    for lid in ids:
+        segs, _ = wm.transcribe(_audio16k(NDIR / f"{lid}.flac"), language="en", beam_size=5, word_timestamps=True)
+        out[lid] = [(round(w.start, 2), w.word.strip()) for s in segs for w in s.words]
+        print(lid, " ".join(f"{t}:{w}" for t, w in out[lid]), flush=True)
+    return out
+
+
 def check_encoded(mp4: Path, model="small.en") -> dict:
     """The encoded file's own audio, transcribed whole and compared word by word with the whole script."""
     import subprocess
@@ -169,5 +183,7 @@ if __name__ == "__main__":
         check(sys.argv[2] if sys.argv[2:] else "small.en")
     elif cmd == "check_encoded":
         check_encoded(Path(sys.argv[2]))
+    elif cmd == "words":
+        words(sys.argv[2:] or [ln["id"] for ln in script()["lines"]])
     else:
         raise SystemExit(__doc__)

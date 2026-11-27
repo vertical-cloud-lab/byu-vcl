@@ -222,7 +222,16 @@ class Corrosion(Segment):
         sp = self.span
         small = next((k for k in ("blend_ded", "blown_small", "preplaced") if k in sp), None)
         chips = []
-        if small and "screen" in sp:
+        if small and "screen" in sp and X.R5:
+            # from round 5 a blend is dosed long before its deposition slot: the chip gives the days from the
+            # deposit itself (the first booking at a DED machine) to the screen's last booking
+            ev = X._events(self.alloy.events)
+            dep = [e["t0_h"] / D.HPD for e in ev["events"] if e["campaign"] == self.alloy.campaign
+                   and e.get("design") == self.alloy.design_id and e["what"] == small
+                   and e["station"].split("@")[0] in ("utah_mxlab", "mines_x2")]
+            chips.append((_days(min(dep) if dep else sp[small][0], sp["screen"][1]),
+                          ["DED blocks, PIP,", "the one-hour screen"], 0))
+        elif small and "screen" in sp:
             chips.append((_days(sp[small][0]), ["DED blocks, PIP,", "the one-hour screen"], 0))
         if "charge" in sp and "atomize" in sp:
             chips.append((_days(sp["charge"][0], sp.get("powder QC", sp["atomize"])[1]), ["its powder", "atomized"],

@@ -1,0 +1,190 @@
+{
+ "voice": "Kokoro v1.0 af_heart, speed 0.96",
+ "recognizers": [
+  "faster-whisper small.en"
+ ],
+ "word_error_rate": {
+  "small.en": 0.0217
+ },
+ "words": 414,
+ "lines": [
+  {
+   "id": "chg1",
+   "text": "Round five starts the clock on the day the money arrives, and runs for two years. Each campaign has all of its money on day zero. The facility is ready between day 60 and day 100, and the equipment is ordered on day zero: some of it used, chosen by a rule.",
+   "spoken": "Round five starts the clock on the day the money arrives, and runs for two years. Each campaign has all of its money on day zero. The facility is ready between day 60 and day 100, and the equipment is ordered on day zero: some of it used, chosen by a rule.",
+   "seconds": 17.11,
+   "small.en": {
+    "heard": "Round five starts the clock on the day the money arrives and runs for two years. Each campaign has all of its money on day zero. The facility is ready between day 60 and day 100, and the equipment is ordered on day zero. Some of it used, chosen by a rule.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "five",
+      0.43
+     ]
+    ]
+   }
+  },
+  {
+   "id": "chg2",
+   "text": "Experiments also start on day zero, through partners, while the lab is built. Decisions made by people take time. The conventional lab's atomizer runs at most 8 times a week; the automated lab's runs around the clock once its cell is integrated. And the HPC computes candidates continuously. Every lead time, price and decision window here is a stand-in.",
+   "spoken": "Experiments also start on day zero, through partners, while the lab is built. Decisions made by people take time. The conventional lab's atomizer runs at most 8 times a week; the automated lab's runs around the clock once its cell is integrated. And the H P C computes candidates continuously. Every lead time, price and decision window here is a stand-in.",
+   "seconds": 23.25,
+   "small.en": {
+    "heard": "Experiments also start on day zero, through partners, while the lab is built. Decisions made by people take time. The conventional labs atomizer runs at most eight times a week. The automated labs runs around the clock once its cell is integrated. And the HPC computes candidates continuously. Every lead time, price and decision window here is a stand-in. The HPC computes candidates continuously.",
+    "wer": 0.083,
+    "diffs": [
+     [
+      "insert",
+      "",
+      "the hpc computes candidates continuously"
+     ]
+    ],
+    "unsure": []
+   }
+  },
+  {
+   "id": "cnt1",
+   "text": "Three counters run through the replay. Designed means computed candidates: a stream on the HPC evaluates 122,880 a day, at full capacity and outside the experiments' cost. The policy sees 64 new ones a day.",
+   "spoken": "Three counters run through the replay. Designed means computed candidates: a stream on the H P C evaluates one hundred twenty-two thousand eight hundred eighty a day, at full capacity and outside the experiments' cost. The policy sees 64 new ones a day.",
+   "seconds": 17.6,
+   "small.en": {
+    "heard": "Three counters run through the replay. Designed means computed candidates. A stream on the HPC evaluates 122,880 a day at full capacity and outside the experiment's cost. The policy sees 64 new ones a day.",
+    "wer": 0.047,
+    "diffs": [
+     [
+      "insert",
+      "",
+      "and"
+     ],
+     [
+      "insert",
+      "",
+      "and"
+     ]
+    ],
+    "unsure": [
+     [
+      "122",
+      0.39
+     ]
+    ]
+   }
+  },
+  {
+   "id": "cnt2",
+   "text": "Made means powder lots, or alloys made. Tested means alloys through the full chain: in the replayed run, 104 aluminium alloys and 6 copper alloys.",
+   "spoken": "Made means powder lots, or alloys made. Tested means alloys through the full chain: in the replayed run, 104 aluminum alloys and 6 copper alloys.",
+   "seconds": 10.77,
+   "small.en": {
+    "heard": "Made means powder lots or alloys made. Tested means alloys through the full chain. In the replayed run, 104 aluminum alloys and six copper alloys.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "six",
+      0.3
+     ]
+    ]
+   }
+  },
+  {
+   "id": "cnt3",
+   "text": "Early stopping means only promising alloys finish every step.",
+   "spoken": "Early stopping means only promising alloys finish every step.",
+   "seconds": 3.8,
+   "small.en": {
+    "heard": "Early stopping means only promising alloys finish every step.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "cnt4",
+   "text": "In the replay's plots, the solid curve is the best new alloy tested so far in the automated lab, and the dashed curve is the conventional lab, on the same seed and policy. The dotted lines are the two targets.",
+   "spoken": "In the replay's plots, the solid curve is the best new alloy tested so far in the automated lab, and the dashed curve is the conventional lab, on the same seed and policy. The dotted lines are the two targets.",
+   "seconds": 13.55,
+   "small.en": {
+    "heard": "In the replays plots, the solid curve is the best new alloy tested so far in the automated lab, and the dashed curve is the conventional lab, on the same seed and policy. The dotted lines are the two targets.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "cnt5",
+   "text": "Money is shown as cumulative spend in each lab, not as a budget bar. And when best so far goes flat, the replay says why.",
+   "spoken": "Money is shown as cumulative spend in each lab, not as a budget bar. And when best so far goes flat, the replay says why.",
+   "seconds": 8.02,
+   "small.en": {
+    "heard": "Money is shown as cumulative spend in each lab, not as a budget bar. And when best so far goes flat, the replay says why.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "atm1",
+   "text": "Once its cell is integrated, the automated lab's atomizer runs around the clock at a derived cycle: about 2.2 hours per aluminium composition, or 76 a week. That is a design target, not a demonstrated rate.",
+   "spoken": "Once its cell is integrated, the automated lab's atomizer runs around the clock at a derived cycle: about 2.2 hours per aluminum composition, or 76 a week. That is a design target, not a demonstrated rate.",
+   "seconds": 14.78,
+   "small.en": {
+    "heard": "Once its cell is integrated, the automated lab's atomizer runs around the clock at a derived cycle—about 2.2 hours per aluminum composition, or 76 a week. That is a design target, not a demonstrated rate.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "id": "atm2",
+   "text": "It needs 6 to 8 pre-coated crucibles per alloy family in rotation, and the lab has one. The lab's record so far is 10 runs in 43 days, about 1.6 a week. Before the cell, and in the conventional lab, the twin assumes 8 a week.",
+   "spoken": "It needs 6 to 8 pre-coated crucibles per alloy family in rotation, and the lab has one. The lab's record so far is 10 runs in 43 days, about 1.6 a week. Before the cell, and in the conventional lab, the twin assumes 8 a week.",
+   "seconds": 16.62,
+   "small.en": {
+    "heard": "It needs six to eight pre-coded crucibles per alloy family and rotation, and the lab has one. The lab's record so far is 10 runs in 43 days, about 1.6 a week. Before the cell, and in the conventional lab, the twin assumes eight a week.",
+    "wer": 0.04,
+    "diffs": [
+     [
+      "substitute",
+      "coated",
+      "coded"
+     ],
+     [
+      "substitute",
+      "in",
+      "and"
+     ]
+    ],
+    "unsure": [
+     [
+      "pre",
+      0.33
+     ],
+     [
+      "and",
+      0.46
+     ]
+    ]
+   }
+  },
+  {
+   "id": "note1",
+   "text": "Everything here is simulated: the alloys, the results, and every measurement, with modelled noise not yet calibrated on the lab's instruments. The facility window, every lead time, the used-equipment prices, the decision windows, the HPC allocation, and the atomizer's design cycle are assumptions and stand-ins. It shows how two lab designs and their policies interact in a model, not what the real lab will find.",
+   "spoken": "Everything here is simulated: the alloys, the results, and every measurement, with modelled noise not yet calibrated on the lab's instruments. The facility window, every lead time, the used-equipment prices, the decision windows, the H P C allocation, and the atomizer's design cycle are assumptions and stand-ins. It shows how two lab designs and their policies interact in a model, not what the real lab will find.",
+   "seconds": 25.75,
+   "small.en": {
+    "heard": "Everything here is simulated. The alloys, the results, and every measurement with modeled noise not yet calibrated on the lab's instruments. The facility window, every lead time, the used equipment prices, the decision windows, the HPC allocation, and the atomizer's design cycle are assumptions and stand-ins. It shows how two lab designs and their policies interact in a model, not what the real lab will find.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "with",
+      0.47
+     ]
+    ]
+   }
+  }
+ ],
+ "note": "chg2 was reworded after the first pass ('day zero too' came back as 'day two') and heard back again on its own; lines.ogg is of the first pass"
+}

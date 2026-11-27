@@ -1,9 +1,9 @@
 {
- "note": "The floor-space segment's narration (twin/video/floorspace_cut.py): Kokoro v1.0, voice af_heart, as the campaign video. Each line names the phase it is spoken in (at: seconds into that phase) and what on screen it says (shows). Numbers are as layouts.json has them.",
+ "note": "The floor-space segment's narration (twin/video/floorspace_cut.py): Kokoro v1.0, voice af_heart, as the campaign video. Each line names the phase it is spoken in (at: seconds into that phase) and what on screen it says (shows). Numbers are as layouts.json has them. The plans phase leads to the capacity-matched comparison (f11, f12: the Shuttles' 45 trays laid out flat against the vertical lab), which is the segment's result; today's 43 instruments (f8) and Emerald Cloud Lab (f10) are context before it. cues: seconds into a line's recording at which a word is said (`python -m twin.video.floorspace_voice words f8 f11 f12`), where floorspace_cut brings in what the word names.",
  "say": {"4,280": "four thousand two hundred eighty", "3,029": "three thousand twenty-nine",
          "15,000": "fifteen thousand", "9.15": "nine point one five", "14.2": "fourteen point two",
          "10.0": "ten point oh", "4,128": "four thousand one hundred twenty-eight", "14.9": "fourteen point nine",
-         "7.3": "seven point three"},
+         "7.3": "seven point three", "6,192": "six thousand one hundred ninety-two"},
  "lines": [
   {"id": "f1", "phase": "conv", "at": 0.8,
    "text": "Forty-three instruments, laid out three ways. These are design layouts, not built labs.",
@@ -26,17 +26,20 @@
   {"id": "f7", "phase": "vert", "at": 14.5,
    "text": "The floor machines rearrange along one robot aisle, and the floor area falls to 3,029 square feet.",
    "shows": "area panel: 3,029 sq ft"},
-  {"id": "f8", "phase": "plans", "at": 3.0,
-   "text": "Side by side, the vertical lab needs 29 percent less floor: 14.2 instruments per thousand square feet, against 10.0.",
-   "shows": "row 1, the four plans for today's equipment; -29 %; 14.2 and 10.0 per 1,000 sq ft"},
-  {"id": "f11", "phase": "plans", "at": 12.8,
-   "text": "Laid out so robots can dock and pass, a flat lab needs 4,128 square feet. And by capacity, the Shuttles hold 45 trays: 14.9 tray positions per thousand square feet, against 7.3 laid out flat.",
-   "shows": "row 1: the layout for robots, 4,128 sq ft; row 2: the Shuttles' 45 trays laid out flat, 6,192 against 3,029 sq ft; 14.9 and 7.3 positions per 1,000 sq ft"},
-  {"id": "f9", "phase": "plans", "at": 30.1,
-   "text": "In the vertical lab, most of the floor goes to the floor machines, their clearances and the robot aisle, the same as in the flat layouts for robots. And the Shuttles stand 9.15 meters tall, so it needs a high bay.",
-   "shows": "the bars: the floor machines' block, the same in the vertical lab and both layouts for robots, and the benchtop part; 'Shuttles 9.15 m tall: a high bay'"},
-  {"id": "f10", "phase": "plans", "at": 44.7,
+  {"id": "f8", "phase": "plans", "at": 1.8, "cues": {"robots": 7.18, "conventional": 9.86},
+   "text": "Side by side. For today's 43 instruments, a flat lab laid out so robots can dock and pass needs 4,128 square feet, about what the conventional lab does.",
+   "shows": "row 1, labelled as context: the four plans for today's 43 instruments at one scale; the layout for robots picked out, 4,128 sq ft, beside the conventional lab's 4,280"},
+  {"id": "f10", "phase": "plans", "at": 14.3,
    "text": "For scale, Emerald Cloud Lab in South San Francisco held more than a hundred items of equipment in about 15,000 square feet.",
-   "shows": "the Emerald Cloud Lab line"}
+   "shows": "the Emerald Cloud Lab panel"},
+  {"id": "f11", "phase": "plans", "at": 23.3, "cues": {"trays": 1.98, "flat": 5.26},
+   "text": "But today's equipment uses only 18 of the Shuttles' 45 trays. Laid out flat, as bench positions robots can serve, all 45 need 6,192 square feet.",
+   "shows": "row 2, the result: 'Same capacity: the Shuttles' 45 trays as bench positions', '18 trays in use today, 27 more'; the 45 positions laid out flat, 6,192 sq ft"},
+  {"id": "f12", "phase": "plans", "at": 36.5, "cues": {"result": 3.78, "positions": 5.82},
+   "text": "The vertical lab holds them in 3,029: 51 percent less floor, at 14.9 tray positions per thousand square feet, against 7.3.",
+   "shows": "row 2: the vertical lab, 3,029 sq ft, the badge 'minus 51 %', '14.9 against 7.3 tray positions per 1,000 sq ft'; the title becomes the result"},
+  {"id": "f9", "phase": "plans", "at": 48.2,
+   "text": "In the vertical lab, most of the floor goes to the floor machines, their clearances and the robot aisle, the same as in the flat layouts for robots. And the Shuttles stand 9.15 meters tall, so it needs a high bay.",
+   "shows": "the bars: the floor machines' block, the same in the vertical lab and both layouts for robots, and the benchtop part; 'Shuttles 9.15 m tall: a high bay'"}
  ]
 }

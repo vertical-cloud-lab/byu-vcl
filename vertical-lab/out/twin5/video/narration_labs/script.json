@@ -1,0 +1,65 @@
+{
+ "about": "narration5_labs.json with its numbers filled in from numbers5.numbers(): what was spoken",
+ "lines": [
+  {
+   "id": "lab1",
+   "text": "Now the two labs, like for like: the same policy and the same stock rule in both, over 16 seeds each. All of it is simulated."
+  },
+  {
+   "id": "lab2",
+   "text": "Aluminium's first target, the best existing alloy, is a tie with the heuristic. With BOFN or pKGFN in both labs it comes 1.2 times sooner, and every interval includes one."
+  },
+  {
+   "id": "lab3",
+   "text": "Aluminium's halfway target comes 1.3 to 1.4 times sooner with an optimizer in both labs. With the heuristic, about half the seeds get there in either lab."
+  },
+  {
+   "id": "lab4",
+   "text": "Copper is where the automated lab leads: 1.5 to 2.1 times sooner with the funnel, and at least 2.0 to 2.5 times with BOFN or pKGFN."
+  },
+  {
+   "id": "nw1",
+   "text": "Where the automated lab does not win. Aluminium's first target is a tie: with the heuristic, the automated lab prints most of its first alloys at the same partners, before its own printer comes online around day 180."
+  },
+  {
+   "id": "nw2",
+   "text": "The optimizers reach that first target later than the heuristic: in the stocked automated lab, on day 176 with BOFN, against day 81."
+  },
+  {
+   "id": "nw3",
+   "text": "A stocked conventional lab keeps up with an automated lab that orders its metal as it goes: 0.7 to 0.9 times on aluminium's first target."
+  },
+  {
+   "id": "nw4",
+   "text": "And reaching a target costs the campaigns no less: about the same money with both labs stocked, and more with an optimizer when both order as they go."
+  },
+  {
+   "id": "lab5",
+   "text": "Where it does win: copper, with every policy and in every pairing, mostly through its own DED machine, in house from around day 228. And aluminium's halfway target, when both labs run an optimizer."
+  },
+  {
+   "id": "mon1",
+   "text": "Money, as spending over time. With all of it available on day zero, the automated lab has spent 90 percent of aluminium's two-year money by day 402, and of copper's by day 371. Then it idles."
+  },
+  {
+   "id": "mon2",
+   "text": "The conventional lab, with the same policy, spreads its spending over both years: by the end it has spent 75 percent of aluminium's money and 78 percent of copper's."
+  },
+  {
+   "id": "mon3",
+   "text": "Counting fixed costs, an aluminium alloy costs about 25 thousand dollars with BOFN in the automated lab, against 10 thousand in the conventional lab."
+  },
+  {
+   "id": "take1",
+   "text": "So, in this simulated benchmark, like for like. Copper comes sooner in the automated lab with every policy: 1.5 to 2.1 times with the funnel, and at least 2.0 times with an optimizer."
+  },
+  {
+   "id": "take2",
+   "text": "Aluminium's first target is a tie. Its halfway target comes 1.3 to 1.4 times sooner, and only with an optimizer in both labs. There, the policy does more than the lab."
+  },
+  {
+   "id": "take3",
+   "text": "And the automated lab is not cheaper. Its two-year money is spent in about 12 to 13 months, and with fixed costs each aluminium alloy costs about twice as much."
+  }
+ ]
+}

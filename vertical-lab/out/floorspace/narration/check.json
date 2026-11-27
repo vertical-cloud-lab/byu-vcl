@@ -1,6 +1,6 @@
 {
  "model": "small.en",
- "wer": 0.0102,
+ "wer": 0.0217,
  "lines": {
   "f1": {
    "text": "Forty-three instruments, laid out three ways. These are design layouts, not built labs.",
@@ -38,24 +38,29 @@
    "wer": 0.0
   },
   "f8": {
-   "text": "Side by side, the vertical lab needs 29 percent less floor: 14.2 instruments per thousand square feet, against 10.0.",
-   "heard": "Side by side, the vertical lab needs 29% less floor, 14.2 instruments per thousand square  feet against 10.0.",
-   "wer": 0.0417
-  },
-  "f11": {
-   "text": "Laid out so robots can dock and pass, a flat lab needs 4,128 square feet. And by capacity, the Shuttles hold 45 trays: 14.9 tray positions per thousand square feet, against 7.3 laid out flat.",
-   "heard": "Laid out so robots can dock and pass, a flat lab needs 4,128 square feet.  And by capacity, the shuttles hold 45 trays, 14.9 tray positions per thousand square feet,  against 7.3 laid out flat.",
-   "wer": 0.0
-  },
-  "f9": {
-   "text": "In the vertical lab, most of the floor goes to the floor machines, their clearances and the robot aisle, the same as in the flat layouts for robots. And the Shuttles stand 9.15 meters tall, so it needs a high bay.",
-   "heard": "In the vertical lab, most of the floor goes to the floor machines, their clearances and  the robot aisle, the same as in the flat layouts for robots.  And the shuttles stand 9.15 meters tall, so it needs a high bay.",
+   "text": "Side by side. For today's 43 instruments, a flat lab laid out so robots can dock and pass needs 4,128 square feet, about what the conventional lab does.",
+   "heard": "side by side. For today's 43 instruments, a flat lab laid out so robots can dock and  pass needs 4,128 square feet, about what the conventional lab does.",
    "wer": 0.0
   },
   "f10": {
    "text": "For scale, Emerald Cloud Lab in South San Francisco held more than a hundred items of equipment in about 15,000 square feet.",
    "heard": "For scale, Emerald Cloud Lab in South, San Francisco held more than 100 items of equipment  in about 15,000 square feet.",
    "wer": 0.0435
+  },
+  "f11": {
+   "text": "But today's equipment uses only 18 of the Shuttles' 45 trays. Laid out flat, as bench positions robots can serve, all 45 need 6,192 square feet.",
+   "heard": "But today's equipment uses only 18 of the shuttle's 45 trays.  Laid out flat, as bench positions robots can serve, all 45 needs 6,192 square feet.",
+   "wer": 0.0882
+  },
+  "f12": {
+   "text": "The vertical lab holds them in 3,029: 51 percent less floor, at 14.9 tray positions per thousand square feet, against 7.3.",
+   "heard": "the vertical lab holds them in 3,029, 51% less floor,  at 14.9 tray positions per thousand square feet against 7.3.",
+   "wer": 0.069
+  },
+  "f9": {
+   "text": "In the vertical lab, most of the floor goes to the floor machines, their clearances and the robot aisle, the same as in the flat layouts for robots. And the Shuttles stand 9.15 meters tall, so it needs a high bay.",
+   "heard": "In the vertical lab, most of the floor goes to the floor machines, their clearances and  the robot aisle, the same as in the flat layouts for robots.  And the shuttles stand 9.15 meters tall, so it needs a high bay.",
+   "wer": 0.0
   }
  }
 }

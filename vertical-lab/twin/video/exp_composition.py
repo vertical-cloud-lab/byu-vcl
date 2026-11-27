@@ -96,6 +96,12 @@ class _Half(Segment):
         worked = ((set(rd["made"]) | set(rd["built"])) & ids) - shown
         self.groups = dict(sim=sorted(ids - worked - shown), made=sorted(worked), shown=sorted(shown))
         self.counts = {k: len(v) for k, v in self.groups.items()}
+        # rounds 5 and later: the log holds the designs with a booking or a result; the HPC stream's other
+        # candidates are counted (facts.json hpc), and a design may have been charged without a lot coming back
+        self.r5 = None
+        if X.R5:
+            F = X.load_facts()
+            self.r5 = dict(hpc=F["hpc"][campaign], booked=F["map"][campaign]["no_lot_but_booked"])
         self.xy, self.share = pca2(rd["designs"], self.bounds)
         xs = np.array([p[0] for p in self.xy.values()])
         ys = np.array([p[1] for p in self.xy.values()])
@@ -115,8 +121,14 @@ class _Half(Segment):
             (0.4, t_map[0] - 0.2, f"{LEAD[campaign]} A design is {NAME[campaign]} plus up to {self.kmax} of "
                                   f"{n_space} {'alloying ' if campaign == 'flaime_al' else ''}elements."),
             (t_map[0], duration - 0.3, f"This is design {a.design_id} of the replayed run, seed {a.seed}: the alloy "
-                                       f"that took it past {TARGET_WORDS[self.f['target']]}, on day {day}."),
+                                       f"that took it past {TARGET_WORDS[self.f['target']]}, on day {day}.")
+            if self.f.get("reached", True) else
+            (t_map[0], duration - 0.3, f"This is design {a.design_id} of the replayed run, seed {a.seed}: its best "
+                                       f"new alloy, tested on day {day}. The run did not reach "
+                                       f"{TARGET_WORDS[self.f['target']]}."),
         ]
+        if not self.f.get("reached", True):
+            self.words = (self.words[0], f"day {day}: the run's best new alloy")
         self.sources = [
             ("sim", f"the design and the run's other designs: the committed event log of seed {a.seed} "
                     f"({self.f['run']})"),
@@ -177,7 +189,9 @@ class _Half(Segment):
         a = self.alloy
         cv.card(self.CARD_L, f"The design: {NAME[self.campaign]} plus {self.n_in} of the search space's "
                              f"{self.n_space} elements")
-        cv.card(self.CARD_R, f"Where it sits among this run's {len(a.run_designs()['designs'])} designs")
+        cv.card(self.CARD_R, f"Where it sits among this run's {len(a.run_designs()['designs'])} designs"
+                if self.r5 is None else
+                f"Its place among the {len(a.run_designs()['designs'])} designs in this run's log")
         for el in PT.PTABLE_RC:
             if el != self.base and el not in self.bounds:
                 self._tile_empty(cv, el)
@@ -216,7 +230,16 @@ class _Half(Segment):
                            f"first two principal components. The two carry {100 * self.share:.0f} % of the spread, "
                            f"so near on the map is only roughly near in composition.", 17, 630, fill=INK2,
                 cond=True)
-        cv.tag(1210, 896, "sim", f"every design in the log of seed {a.seed}")
+        if self.r5 is None:
+            cv.tag(1210, 896, "sim", f"every design in the log of seed {a.seed}")
+        else:                                              # what is drawn, and what is only counted
+            words = (f"seed {a.seed}'s log; the HPC stream's {self.r5['hpc']['evaluated_millions']:.1f} million "
+                     f"candidates are counted, not drawn")
+            size = 17.0                                    # the chip's own width (exp_draw.Canvas.tag), to fit the card
+            while size > 13 and (cv.text_w("simulated", size, bold=True, cond=True)
+                                 + cv.text_w(": " + words, size, cond=True) + 38) > 640:
+                size -= 0.5
+            cv.tag(1210, 896, "sim", words, size=size)
 
     def _bar_xy(self, i: int) -> tuple:
         """(x of the symbol, y of the row's middle, the track's width) of row i of the fractions."""
@@ -257,7 +280,11 @@ class _Half(Segment):
         x0, y0, x1, y1 = self.PLOT
         lay = self._point_layers()
         when = (self.T_SPACE[0] + 0.8, self.T_LIGHT + 0.5 * (self.T_LIT - self.T_LIGHT), m0)
-        keys = (("sim", "simulated only (the CALPHAD node)"),
+        sim_words = "simulated only (the CALPHAD node)"
+        if self.r5 is not None and self.r5["booked"]:
+            nb = self.r5["booked"]
+            sim_words = f"simulated; no powder lot ({nb} {'was' if nb == 1 else 'were'} charged)"
+        keys = (("sim", sim_words),
                 ("made", "made into powder" if self.campaign == "flaime_al" else "made into powder or deposited"),
                 ("shown", "demonstrated: tested to the end of the chain"))
         for j, (key, lab) in enumerate(keys):
@@ -368,7 +395,16 @@ class Composition(Segment):
 
     def __init__(self):
         super().__init__()
-        self.al = _Half("flaime_al", self.T_AL, (0.5, 2.3), 2.5, 0.74, (9.0, 10.4))
+        t_map = (9.0, 10.4)
+        if X.R5:
+            # the aluminium half is as long as its two lines need (the second one now also says what the HPC
+            # stream adds), and its map comes in a second after the design's last element has lit
+            self.T_AL = 20.0
+            self.DURATION = self.T_AL + self.T_CU
+            n = len(X.alloy("flaime_al").design)
+            m0 = min(9.0, max(8.0, 2.5 + 0.74 * n + 1.0))
+            t_map = (m0, m0 + 1.4)
+        self.al = _Half("flaime_al", self.T_AL, (0.5, 2.3), 2.5, 0.74, t_map)
         self.cu = _Half("onr_cu", self.T_CU, (0.5, 1.9), 2.1, 0.85, (5.2, 6.6))
         off = self.T_AL
         self.captions = list(self.al.captions) + [(a + off, b + off, s) for a, b, s in self.cu.captions]

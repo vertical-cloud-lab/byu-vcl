@@ -242,7 +242,9 @@ class AMModule(Segment):
             (self.T_TAKES, 20.2, "The twin takes five numbers from this model: the pool's width and depth, a "
                                  "lack-of-fusion index, a keyhole index and the cooling rate."),
             (self.T_NOT_TC, 27.6, "This is the twin's stand-in for Thermo-Calc's AM Module, not Thermo-Calc output. "
-                                  "No run in round 3b bought this node."),
+                                  + (f"No run in {X.ROUND_NAME} bought this node."
+                                     if self.f["sim_kinds"]["calls"].get("sim_am", 0) == 0 else
+                                     f"Few runs in {X.ROUND_NAME} bought this node.")),
         ]
         self.marks = {"am.track": self.T_PROBE - (self.XPV + 40.0) / self.vs, "am.section": 3.0,
                       "am.history": self.T_PROBE, "am.takes": self.T_TAKES, "am.not_tc": self.T_NOT_TC}
@@ -473,10 +475,17 @@ class AMModule(Segment):
             cv.circle(pen[0], pen[1], 8, fill=G.HOT, outline=INK, width=2, a=a)
         tp = float(self.ht[self.i_peak])
         kp = ramp(th, tp + 0.01, tp + 0.05)
+        # from round 5: where the peak sits close over the liquidus (a low peak for this alloy), its label goes to
+        # the left of the point and the provenance chip under the plot, so neither covers the cooling rate's label
+        crowded = X.R5 and (float(ax.Y(liq)) - float(ax.Y(self.hh[self.i_peak]))) < 60.0
         if kp > 0:
             ax.dot(cv, tp, self.hh[self.i_peak], G.HOT, 6, a=a * kp)
-            cv.text(float(ax.X(tp)) + 16, float(ax.Y(self.hh[self.i_peak])) + 2,
-                    f"peak {fmt(mp['hist_peak_C'])} °C", 18, bold=True, fill=INK, anchor="lm", a=a * kp)
+            if crowded:
+                cv.text(float(ax.X(tp)) - 16, float(ax.Y(self.hh[self.i_peak])) - 2,
+                        f"peak {fmt(mp['hist_peak_C'])} °C", 18, bold=True, fill=INK, anchor="rm", a=a * kp)
+            else:
+                cv.text(float(ax.X(tp)) + 16, float(ax.Y(self.hh[self.i_peak])) + 2,
+                        f"peak {fmt(mp['hist_peak_C'])} °C", 18, bold=True, fill=INK, anchor="lm", a=a * kp)
         if self.i_liq is not None:
             tl = float(self.ht[self.i_liq])
             kl = ramp(th, tl + 0.01, tl + 0.06)
@@ -493,9 +502,16 @@ class AMModule(Segment):
                     tu = float(self.ht[self.i_up])
                     yb = float(ax.Y(liq)) + 12
                     _dim(cv, (float(ax.X(tu)), yb), (float(ax.X(tl)), yb), a * kl, fill=INK2, tick=5)
-                    cv.text(float(ax.X(tu)) + 6, yb + 9, f"molten for {self.molten_ms:.2f} ms", 16, fill=INK,
-                            anchor="la", a=a * kl)
-        cv.tag(x1 - 8, y0 + 8, "sim", "the model, at the probe", a=a, anchor="r")
+                    if crowded:                             # clear of the falling curve: under the rising one
+                        cv.text(float(ax.X(tu)) - 34, yb + 26, f"molten for {self.molten_ms:.2f} ms", 16, fill=INK,
+                                anchor="ra", a=a * kl)
+                    else:
+                        cv.text(float(ax.X(tu)) + 6, yb + 9, f"molten for {self.molten_ms:.2f} ms", 16, fill=INK,
+                                anchor="la", a=a * kl)
+        if crowded:
+            cv.tag(x1 - 8, y1 + 22, "sim", "", a=a, anchor="r")
+        else:
+            cv.tag(x1 - 8, y0 + 8, "sim", "the model, at the probe", a=a, anchor="r")
 
     def _takes(self, cv: Canvas, t: float):
         """What the twin takes from the model, and what its truth does with each."""
@@ -544,11 +560,13 @@ class AMModule(Segment):
         y = cv.para(96, 800, "Rosenthal's moving point source (1946), with this alloy's conductivity, density, "
                              "liquidus and absorptivity.", 18, 764, fill=INK, lh=1.3)
         if calls.get("sim_am", 0) == 0 and set(calls) == {"sim_open"}:
-            s2 = (f"No run in round 3b bought this node: all {fmt(total)} simulation calls in its {fmt(sk['logs'])} "
+            s2 = (f"No run in {X.ROUND_NAME} bought this node: all {fmt(total)} simulation calls "
+                  f"{'in' if not X.R5 else 'booked in'} its {fmt(sk['logs'])} "
                   f"runs were the open-database CALPHAD node. The same model sits inside the twin's truth, where it "
                   f"sets every simulated build's porosity and cell size.")
         else:
-            s2 = (f"In round 3b's {fmt(sk['logs'])} runs this node was called {fmt(calls.get('sim_am', 0))} times, of "
+            s2 = (f"In {X.ROUND_NAME}'s {fmt(sk['logs'])} runs this node was called {fmt(calls.get('sim_am', 0))} "
+                  f"times, of "
                   f"{fmt(total)} simulation calls. The same model sits inside the twin's truth, where it sets every "
                   f"simulated build's porosity and cell size.")
         cv.para(96, y + 4, s2, 18, 764, fill=INK, lh=1.3)

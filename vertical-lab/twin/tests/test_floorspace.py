@@ -110,20 +110,31 @@ def test_narration_numbers_match_the_layouts():
     js = json.loads((HERE / "out" / "floorspace" / "layouts.json").read_text())
     rows = {r["name"]: r for r in js["summary"]["rows"]}
     sc = json.loads((HERE / "twin" / "video" / "narration_floorspace.json").read_text())
-    text = " ".join(ln["text"] for ln in sc["lines"])
-    c, v = rows["conventional"], rows["vertical"]
+    lines = {ln["id"]: ln["text"] for ln in sc["lines"]}
+    text = " ".join(lines.values())
+    c, v, rb = rows["conventional"], rows["vertical"], rows["robots"]
+    n_inst = js["summary"]["counts"]["instruments"]
     assert f"{c['area_sqft']:,}" in text and f"{v['area_sqft']:,}" in text
-    assert f"{(1 - v['area_sqft'] / c['area_sqft']) * 100:.0f} percent" in text
-    assert f"{v['per_1000_sqft']:.1f}" in text and f"{c['per_1000_sqft']:.1f}" in text
-    assert "Forty-three instruments" in text and js["summary"]["counts"]["instruments"] == 43
+    assert "Forty-three instruments" in lines["f1"] and n_inst == 43
+    assert "design layouts, not built labs" in lines["f1"]
     assert "9.15 meters" in text
-    # the capacity line (f11): the layout for robots, the Shuttles' trays, positions per 1,000 sq ft both ways
+    # the context line (f8): today's instruments, the layout for robots beside the conventional lab
+    assert f"today's {n_inst} instruments" in lines["f8"]
+    assert f"{rb['area_sqft']:,} square feet" in lines["f8"]
+    assert abs(rb["area_sqft"] / c["area_sqft"] - 1) < 0.05              # "about what the conventional lab does"
+    # the result (f11, f12): the same capacity, the Shuttles' trays laid out flat against the vertical lab
     cp = js["capacity"]
-    assert f"{rows['robots']['area_sqft']:,} square feet" in text
-    assert f"hold {cp['trays']['trays']} trays" in text
-    sc_ = cp["same_capacity"]
+    tr, sc_, pc = cp["trays"], cp["same_capacity"], cp["percent"]
+    assert f"only {tr['in_use']} of the Shuttles' {tr['trays']} trays" in lines["f11"]
+    assert f"all {tr['trays']} need {sc_['flat']['area_sqft']:,} square feet" in lines["f11"]
+    assert (f"holds them in {sc_['vertical']['area_sqft']:,}: {pc['vertical_vs_flat_capacity']} percent less floor"
+            in lines["f12"])
+    assert pc["vertical_vs_flat_capacity"] == round((1 - sc_["vertical"]["area_sqft"] / sc_["flat"]["area_sqft"]) * 100)
     assert (f"{sc_['vertical']['positions_per_1000_sqft']:.1f} tray positions per thousand square feet, against "
-            f"{sc_['flat']['positions_per_1000_sqft']:.1f}") in text
+            f"{sc_['flat']['positions_per_1000_sqft']:.1f}") in lines["f12"]
+    # the same-equipment percentages are context on screen (the plans' first row), never spoken
+    for k in ("vertical_vs_conventional", "vertical_vs_robots"):
+        assert f"{pc[k]} percent" not in text
     assert cp["machine_block"]["area_m2"] / rows["vertical"]["area_m2"] > 0.5      # f9: "most of the floor"
     say = sc["say"]
     for n in re.findall(r"\d[\d,]*\.\d+|\d{1,3}(?:,\d{3})+", text):              # every decimal and thousands respelled
@@ -133,6 +144,31 @@ def test_narration_numbers_match_the_layouts():
     for (a, da, ia), (b, _, ib) in zip(times[:-1], times[1:]):
         assert a + da + 0.3 <= b, (ia, ib)
     assert times[-1][0] + times[-1][1] <= FSS.PH["end"]
+    # context and the scale reference come before the result; what the result costs (a high bay) is said last
+    order = [i for _, _, i in times]
+    assert [i for i in order if i in ("f8", "f10", "f11", "f12", "f9")] == ["f8", "f10", "f11", "f12", "f9"]
+    for ln in sc["lines"]:                               # a cue is a moment inside its line's recording
+        assert rec[ln["id"]]["text"] == ln["text"], ln["id"]
+        for k, at in ln.get("cues", {}).items():
+            assert 0.0 <= at <= rec[ln["id"]]["seconds"], (ln["id"], k)
+
+
+def test_segment_for_a_longer_cut():
+    """What twin/video/cut5.py calls: the segment's length, its lines with their recordings, and a finished frame
+    (a plans frame here: it needs no 3-D track)."""
+    pytest.importorskip("PIL")
+    from twin.video import floorspace_cut as FC
+    assert FC.Cut.T == FSS.PH["end"] > FSS.T3D_END
+    ls = FC.narration_lines()
+    assert [ln["t"] for ln in ls] == sorted(ln["t"] for ln in ls) and len({ln["id"] for ln in ls}) == len(ls)
+    assert all(ln["flac"].exists() and 0.0 <= ln["t"] and ln["t"] + ln["seconds"] <= FC.Cut.T for ln in ls)
+    cut = FC.Cut()
+    assert FSS.PH["plans"] < cut.cue("f12", "result") < cut.cue("f12", "positions") < cut.t0("f9")
+    try:
+        fr = FC.segment_frame(FC.Cut.T - 0.5)
+    except OSError as e:                                 # no DejaVu fonts on this machine
+        pytest.skip(str(e))
+    assert fr.shape == (1080, 1920, 3) and fr.dtype.name == "uint8"
 
 
 # ============================================================================================ the capacity comparison
