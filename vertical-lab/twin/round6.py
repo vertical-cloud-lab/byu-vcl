@@ -122,12 +122,28 @@ def _flag(row, *names, default=None):
     return default
 
 
+def market_file(path=None) -> Path:
+    return Path(path) if path is not None else MARKET_CSV
+
+
+def market_sha256(path=None) -> str | None:
+    """The sha256 of the market summary a run read (None: there was none), recorded in every row."""
+    import hashlib
+    p = market_file(path)
+    return hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None
+
+
 def load_market(path=None) -> dict:
-    """The per-station summary of the used-equipment survey (issue 424), as ``{item key: parameters}`` in the units
-    ``build_schedule6`` uses, with ``source`` saying where the numbers came from. Missing file: ``{}`` (round 5's
-    stand-ins apply to every station). A station the survey lists replaces round 5's numbers for it field by field;
-    a field the survey leaves empty keeps round 5's."""
-    p = Path(path) if path is not None else MARKET_CSV
+    """The per-station summary of the used-equipment survey (issue 424, ``twin/market6.py`` on its branch), as
+    ``{item key: parameters}`` in the units ``build_schedule6`` uses, with ``source`` saying where the numbers came
+    from. Missing file: ``{}`` (round 5's stand-ins apply to every station).
+
+    The survey writes one row per station (``station``; ``component`` empty or ``(station)``) and, for a station that
+    is several machines, one row per machine as well (``component`` named): only the station's own row is read, since
+    it already combines its machines. A station the survey lists replaces round 5's numbers for it field by field; a
+    field the survey leaves empty keeps round 5's, and ``used_ok`` (whether a real used market exists and is cheaper
+    than new) replaces round 5's ``USED_OK``."""
+    p = market_file(path)
     if not p.exists():
         return {}
     out = {}
@@ -135,11 +151,14 @@ def load_market(path=None) -> dict:
         for row in csv.DictReader(fh):
             row = {(k or "").strip(): (v or "").strip() for k, v in row.items()}
             k = row.get("station_key") or row.get("station") or row.get("key") or row.get("item")
-            if not k:
+            if not k or row.get("component", "") not in ("", "(station)"):
                 continue
-            m = dict(source=f"out/twin6/market/summary.csv ({row.get('n_listings') or row.get('listings') or '?'} "
-                            f"listings)")
-            ok = _flag(row, "used_ok", "used_market", "market_exists", "has_market")
+            n_l = row.get("n_listings") or row.get("listings") or "?"
+            m = dict(source=f"out/twin6/market/summary.csv ({n_l} listings"
+                            + (f"; market: {row['market']}" if row.get("market") else "") + ")")
+            if row.get("market"):
+                m["market_text"] = row["market"]
+            ok = _flag(row, "used_ok", "market_exists", "has_market")
             if ok is not None:
                 m["ok"] = ok
             for f, names in (("price_frac", ("price_frac", "used_price_frac", "used_frac_of_new")),
@@ -147,11 +166,12 @@ def load_market(path=None) -> dict:
                              ("lead_sigma", ("lead_sigma", "used_lead_sigma")),
                              ("p_fault", ("p_fault", "fault_risk", "p_refurb")),
                              ("refurb_w", ("refurb_w", "refurb_weeks")),
+                             ("refurb_sigma", ("refurb_sigma",)),
                              ("refurb_frac", ("refurb_frac", "refurb_frac_of_new")),
                              ("extra_com_w", ("extra_com_w", "checkout_w")),
                              ("n_listings", ("n_listings", "listings")),
-                             ("used_price_usd", ("used_price_usd", "median_used_usd", "used_median_usd")),
-                             ("new_price_usd", ("new_price_usd", "new_usd"))):
+                             ("used_price_usd", ("median_delivered_usd", "used_price_usd", "median_used_usd")),
+                             ("new_price_usd", ("new_usd_each", "new_price_usd", "new_usd"))):
                 v = _num(row, *names)
                 if v is not None:
                     m[f] = v
@@ -171,8 +191,8 @@ def used_params(k: str, market: dict | None) -> dict:
              market=R5.USED_OK.get(k, ""), source="round 5's stand-ins (twin/round5.py USED, USED_OK)")
     m = (market or {}).get(k)
     if m:
-        p.update({f: v for f, v in m.items() if v is not None})
-        p["market"] = m.get("source", p["market"])
+        p.update({f: v for f, v in m.items() if v is not None and f != "market_text"})
+        p["market"] = m.get("market_text", m.get("source", p["market"]))
     return p
 
 
@@ -401,6 +421,7 @@ class Facility6(R5.Facility5):
     def __init__(self, plan: str, seed: int, horizon_h: float, opts: dict | None = None):
         opts = dict(opts or {})
         self.market_used = load_market(opts.get("market_csv")) if opts.get("market", True) else {}
+        self.market_sha = market_sha256(opts.get("market_csv")) if opts.get("market", True) else None
         super().__init__(plan, seed, horizon_h, opts)
         self.kind = f"r6_{self.lab}_{plan}"
         cr = dict(CRUCIBLES, **(opts.get("crucibles") or {}))
@@ -1030,7 +1051,8 @@ class Twin6(R5.Twin5):
         hp = self.hpc
         return dict(lab=self.lab, plan=self.plan, notes=list(NOTES_APPLIED), room_h=sch.get("room_h"),
                     money=dict(limited=False, gates_removed=sorted(GATES_REMOVED), gates_kept=sorted(GATES_KEPT)),
-                    used=dict(source=sch.get("used_source"), n_market=len(F.market_used), items=sch.get("used", {})),
+                    used=dict(source=sch.get("used_source"), n_market=len(F.market_used), file_sha256=F.market_sha,
+                              items=sch.get("used", {})),
                     atom=dict(switch_h=F.atom_switch_h, cycle=F.atom_cycle,
                               runs=sum(1 for j in jobs if j[3] == "atomize"), runs_by=R5._count_by(jobs, "atomize")),
                     crucibles=dict(families=cr, cell_d=None if F.atom_switch_h is None else

@@ -148,6 +148,7 @@ def simulate(cfg: dict):
     import torch
     torch.set_num_threads(1)
     from twin import repro as R
+    code0 = _code()
     R.seed_globals(cfg["seed"])
     rng0 = R.torch_rng_state()
     from twin import campaign as C
@@ -217,7 +218,14 @@ def simulate(cfg: dict):
     out["r6"] = r6
     out["torch_rng_used"] = R.torch_rng_used(rng0)
     out["env"] = R.fingerprint()
-    out["code"] = _code()
+    code1 = _code()
+    # twin/ must be the same committed tree from the run's start to its end: a file edited, or a commit that changed
+    # twin/, while the run was going marks the row dirty
+    code1["twin_tree_start"] = code0.get("twin_tree")
+    code1["twin_dirty"] = bool(code0.get("twin_dirty") or code1.get("twin_dirty")
+                               or code0.get("twin_tree") != code1.get("twin_tree")) \
+        if code1.get("twin_dirty") is not None else None
+    out["code"] = code1
     return out, tw
 
 
@@ -230,7 +238,9 @@ def _code():
         c = g("rev-parse", "HEAD").strip()
         tree = g("rev-parse", "HEAD:vertical-lab/twin").strip()
         d = g("status", "--porcelain", "--", ".")
-        return dict(commit=c, twin_tree=tree, twin_dirty=any(l[3:].strip().endswith(".py") for l in d.splitlines()))
+        # any file under twin/ that differs from the commit (code or data), apart from documentation
+        dirty = [l[3:].strip() for l in d.splitlines() if l.strip() and not l[3:].strip().endswith(".md")]
+        return dict(commit=c, twin_tree=tree, twin_dirty=bool(dirty))
     except Exception:
         return dict(commit=None, twin_tree=None, twin_dirty=None)
 
@@ -559,6 +569,9 @@ def main(argv):
         os.execv(sys.executable, [sys.executable, "-m", "twin.bench6"] + argv)
     from twin import repro as R
     R.reexec_pinned("twin.bench6")
+    if argv[:1] and argv[0] in ("ids", "run") and R.STATE["pin"] != PIN and not os.environ.get("TWIN6_ANY_PIN"):
+        raise SystemExit(f"rows that will be kept are made under TWIN_PIN={PIN}; this process runs under "
+                         f"{R.STATE['pin']!r} (unset TWIN_PIN, or set it to {PIN})")
     workers = int(os.environ.get("TWIN_WORKERS", "4"))
     if "--workers" in argv:
         i = argv.index("--workers")

@@ -14,6 +14,12 @@
   confined to the proxy's taste. With ``N_NET`` free candidates or fewer (round 5's pool) nothing is cut, and the
   policy is round 3's.
 * The simulation feature of a design is looked up in an index (round 3 scanned the whole list per design).
+* **Speed, the same policy.** A profile of an automated-lab BOFN run (300 days) put 66 % of its time in valuing new
+  designs, and most of that in the atomize node's search over 64 settings per candidate (``atomizer_settings``):
+  rebuilding each trial's features from the whole design, and one GP prediction per candidate. Round 6 builds a
+  composition's features once and encodes only the three settings that change (the same numbers as
+  ``Space.encode``: a test checks it), and ``_p_powder`` predicts the trials of ``PP_CHUNK`` candidates in one call
+  (the same draws in the same order; a batched prediction can differ from 64 single ones in the last bit).
 """
 from __future__ import annotations
 
@@ -21,6 +27,7 @@ import numpy as np
 
 from twin import policies as P1
 from twin.opt import net3 as N3
+from twin.opt import policies2 as P2
 from twin.opt import policies3 as P3
 
 
@@ -43,6 +50,60 @@ class _Six:
 
     def _screen_share_ok(self, v):
         return True
+
+    # ------------------------------------------------------------------------------------------ speed
+    PP_CHUNK = 16                                    # candidates whose 64 trial settings are predicted in one call
+
+    def _trials(self, design):
+        """policies2's 64 trial settings for a design (itself, then 63 random draws of the atomizer's three settings,
+        drawn in the same order), and their encodings as ``Space.encode`` makes them."""
+        pv = self.space.process[:3]
+        trial = [dict(design)]
+        for _ in range(63):
+            d = dict(design)
+            for var in pv:
+                d[var.name] = float(var.from_unit(self.gen.random()))
+            trial.append(d)
+        U = np.clip(np.array([[var.to_unit(d[var.name]) for var in pv] for d in trial], float), 0, 1)
+        return trial, U
+
+    def _atom_rows(self, v, did, U):
+        """``atom_x`` for one composition at several settings: the composition's and the simulation's features
+        (the same for every trial) beside each trial's three settings."""
+        base = np.concatenate([P2._feat_comp(self.space, v["designs"][did]), self.sim_of(v, did)])
+        return np.hstack([np.broadcast_to(base, (len(U), len(base))), U])
+
+    def atomizer_settings(self, v, did, design):
+        """policies2's search: the atomize node's best of 64 settings for this composition (mean + half a standard
+        deviation), with the features built once."""
+        if not self.ready("atomize") or self.sim_of(v, did) is None:
+            return design
+        trial, U = self._trials(design)
+        mu, sd = self.nodes["atomize"][0].predict(self._atom_rows(v, did, U))
+        return trial[int(np.argmax(mu + 0.5 * sd))]
+
+    def _p_powder(self, v, dids):
+        """net3's chance of usable powder, with the 64 trial settings of ``PP_CHUNK`` candidates predicted at once."""
+        if not self.ready("atomize"):
+            return np.ones(len(dids))
+        if any(self.sim_of(v, d) is None for d in dids):
+            return super()._p_powder(v, dids)
+        from scipy.stats import norm
+        node = self.nodes["atomize"][0]
+        X = []
+        for i0 in range(0, len(dids), self.PP_CHUNK):
+            part = dids[i0:i0 + self.PP_CHUNK]
+            trials, rows = [], []
+            for d in part:
+                trial, U = self._trials(dict(v["design_inputs"][d]))
+                trials.append(trial)
+                rows.append(self._atom_rows(v, d, U))
+            mu, sd = node.predict(np.vstack(rows))
+            sc = (mu + 0.5 * sd).reshape(len(part), 64)
+            for d, trial, j in zip(part, trials, np.argmax(sc, axis=1)):
+                X.append(self.atom_x(v, d, trial[int(j)]))
+        m, sd = node.predict(np.array(X))
+        return norm.cdf((m - 0.03) / np.maximum(sd, 1e-6))
 
     # ------------------------------------------------------------------------------------------ a large pool
     def sim_of(self, v, did):
@@ -121,8 +182,26 @@ class PKGFN6(_Six, N3.PKGFN3):
     acq = "kg"
 
 
+class _Cap:
+    """For a check only (out/twin6/checks/copper_idle.py), never the grid: round 6's policy with round 5's cap on
+    copper's blend screens put back, so that what the cap does can be told apart from what the rest of round 6 does."""
+
+    def _screen_share_ok(self, v):
+        return N3.Net3._screen_share_ok(self, v)
+
+
+class Net6Cap(_Cap, Net6):
+    name = "bofn3cap"
+
+
+class PKGFN6Cap(_Cap, PKGFN6):
+    name = "pkgfn3cap"
+    acq = "kg"
+
+
 VARIANTS = {"bofn3": (Net6, "ei", "time"), "bofn3_usd": (Net6, "ei", "usd"),
-            "pkgfn3": (PKGFN6, "kg", "time"), "pkgfn3_usd": (PKGFN6, "kg", "usd")}
+            "pkgfn3": (PKGFN6, "kg", "time"), "pkgfn3_usd": (PKGFN6, "kg", "usd"),
+            "bofn3cap": (Net6Cap, "ei", "time"), "pkgfn3cap": (PKGFN6Cap, "kg", "time")}
 
 
 def make6(name, key, seed, crucible=None):

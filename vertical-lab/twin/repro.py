@@ -42,6 +42,36 @@ in the same worker and BoTorch's fit retries were ruled out (notes/twin_round3b.
 the libraries and the interpreter choose). A machine
 without AVX-512 can't run the default pin (OpenBLAS would fault on the first AVX-512 instruction), so ``apply()`` then
 leaves the kernels alone and ``check`` reports that this machine can't reproduce the committed rows.
+
+**Round 6: what ``avx2`` misses, and ``TWIN_PIN=portable``.** Round 5's BOFN and pKGFN rows, made under ``avx2``,
+reran bit for bit between AMD EPYC 9V45 and 9V74 runners and not on an EPYC 7763 or an Intel Xeon 6975P-C. Two
+libraries still chose their code by the CPU (measured on an EPYC 9V74 and, for Intel CPUs, under Intel SDE's emulated
+CPUIDs; out/twin6/checks/pin_search/README.md has the numbers):
+
+* **numpy's own kernels.** numpy dispatches its float64 ``exp``, ``log``, ``power``, ``expm1``, ``log1p`` and others by
+  CPU feature, apart from BLAS: AVX-512 kernels on a CPU that has them, libm on one that has only AVX2. They differ in
+  the last bit (``exp`` on 4.6 % of inputs, ``power`` on 5.3 %). The network policies compute their utilities with them;
+  the truth, the instruments, the heuristic and the funnel use Python's ``math`` (libm), which is why their rows never
+  differed. ``NPY_DISABLE_CPU_FEATURES`` caps numpy at its AVX2 kernels (``X86_V3``).
+* **MKL, inside torch.** ``MKL_ENABLE_INSTRUCTIONS=AVX2`` caps the instruction set on an Intel CPU, but MKL takes a
+  different code branch on a non-Intel CPU whatever it is set to (its verbose header says "Intel(R) Architecture
+  processors" on the EPYC and "Intel(R) AVX2 enabled processors" on an Intel CPUID), and the two branches differ in
+  ``matmul``, ``cholesky``, the triangular solves and the vector math behind ``torch.exp``, ``erf`` and ``tanh``.
+  MKL's conditional numerical reproducibility closes it: ``MKL_CBWR=COMPATIBLE`` is the one branch Intel documents for
+  "all Intel or Intel compatible CPUs" (any other value falls back to ``AUTO`` on a non-Intel CPU, without a warning).
+
+* **OpenBLAS's blocking, by the L2 cache it finds.** ``OPENBLAS_CORETYPE=Haswell`` fixes OpenBLAS's kernels but not
+  its blocking: OpenBLAS reads the L2 cache's size from the CPU and, at exactly 1,024 KB (the EPYC 9V45 and 9V74),
+  blocks its matrix products differently from every other size tried (128 KB to 4 MB, and the emulated Haswell and
+  Granite Rapids). numpy's and scipy's products, Cholesky factors and solves then differ from size 257 or so on
+  (measured at 300), and a (64 x 384) by (384 x 64) product crashes numpy's OpenBLAS outright on the EPYC 9V74
+  under the Haswell kernels. ``OPENBLAS_L2_SIZE=256`` (Haswell's own L2) sets the size OpenBLAS uses on every CPU.
+
+``portable`` is ``avx2`` plus those three, ``MKL_DYNAMIC`` and ``OMP_DYNAMIC`` off (Intel's conditions for
+reproducibility) and oneDNN capped at AVX2 (a precaution; no float64 result here depends on it). It gives rows of
+its own: not round 5's, and not round 3's. ``fingerprint()`` records what is in force (numpy's enabled kernels, MKL's
+branch and CNR state as MKL itself reports them), ``problems6()`` lists what isn't, and ``python -m twin.gpcheck6``
+(twin/gpcheck6.py) is the check a new runner runs first.
 """
 from __future__ import annotations
 
@@ -55,6 +85,15 @@ PINS = {
     "avx2": {"OPENBLAS_CORETYPE": "Haswell", "ATEN_CPU_CAPABILITY": "avx2", "MKL_ENABLE_INSTRUCTIONS": "AVX2"},
     "off": {},
 }
+# Round 6: the AVX2 kernels as "avx2", numpy's own kernels capped at AVX2, and MKL's CPU-independent branch. The names
+# in NPY_DISABLE_CPU_FEATURES are numpy 2.5's dispatch groups (out/twin5/requirements.txt pins numpy 2.5.5); a name
+# that isn't one is ignored with an ImportWarning, so ``fingerprint()['numpy_simd']`` records what numpy really enabled.
+NPY_AVX512_GROUPS = ("X86_V4", "AVX512_ICL", "AVX512_SPR")
+PINS["portable"] = dict(PINS["avx2"], MKL_CBWR="COMPATIBLE", MKL_DYNAMIC="FALSE", OMP_DYNAMIC="FALSE",
+                        NPY_DISABLE_CPU_FEATURES=",".join(NPY_AVX512_GROUPS), ONEDNN_MAX_CPU_ISA="AVX2",
+                        OPENBLAS_L2_SIZE="256")
+# variables a pin removes: numpy refuses to start with both NPY_ENABLE_ and NPY_DISABLE_CPU_FEATURES set
+UNSET = {"portable": ("NPY_ENABLE_CPU_FEATURES",)}
 THREADS = ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS")
 STATE = {"pin": None, "late": False, "applied": {}}
 
@@ -105,6 +144,8 @@ def apply() -> dict:
     STATE["late"] = any(m in sys.modules for m in ("numpy", "torch", "scipy"))
     for k, v in env.items():
         os.environ[k] = v
+    for k in UNSET.get(want, ()):
+        os.environ.pop(k, None)
     STATE.update(pin=want, applied=env)
     return STATE
 
@@ -177,6 +218,123 @@ def fingerprint() -> dict:
         out["torch_threads"] = torch.get_num_threads()
     except Exception:
         pass
+    # round 6: what the "portable" pin adds, as the libraries themselves report it
+    out["cpu_vendor"] = cpu_vendor()
+    out["glibc"] = "-".join(platform.libc_ver())
+    out["numpy_simd"] = numpy_simd()
+    out["pin_env"] = {k: os.environ.get(k) for k in sorted(set(PINS["portable"]) | set(THREADS) |
+                                                           {"PYTHONHASHSEED", "NPY_ENABLE_CPU_FEATURES"})}
+    out["mkl"] = mkl_state() if STATE["pin"] == "portable" else None
+    return out
+
+
+def cpu_vendor() -> str:
+    try:
+        with open("/proc/cpuinfo") as fh:
+            for line in fh:
+                if line.startswith("vendor_id"):
+                    return line.split(":", 1)[1].strip()
+    except OSError:
+        pass
+    return ""
+
+
+def numpy_simd() -> dict | None:
+    """The kernels numpy dispatches to in this process: its baseline, and the dispatch groups it enabled and left
+    off (``NPY_DISABLE_CPU_FEATURES``, or a CPU without them)."""
+    try:
+        from numpy._core import _multiarray_umath as U
+        feats = U.__cpu_features__
+        return dict(baseline=list(U.__cpu_baseline__), enabled=[k for k in U.__cpu_dispatch__ if feats.get(k)],
+                    off=[k for k in U.__cpu_dispatch__ if not feats.get(k)])
+    except Exception:
+        return None
+
+
+def mkl_state() -> dict | None:
+    """MKL's own account of itself inside torch: its version, the code branch its verbose header names (on an Intel
+    CPU the instruction set, "Intel(R) Architecture processors" on any other) and its CNR state. Read once per
+    process, by switching MKL's verbose mode on for one 4 x 4 product with the process's standard output pointed at
+    a temporary file. Only called under the "portable" pin: without CNR an extra MKL call could, in principle, move
+    a later result through its buffers' alignment."""
+    if "mkl" in STATE:
+        return STATE["mkl"]
+    out = None
+    try:
+        import ctypes
+        import re
+        import tempfile
+
+        import torch
+        if torch.backends.mkl.is_available():
+            libc = ctypes.CDLL(None)
+            sys.stdout.flush()
+            libc.fflush(None)
+            saved = os.dup(1)
+            text = ""
+            with tempfile.TemporaryFile() as tmp:
+                try:
+                    os.dup2(tmp.fileno(), 1)
+                    with torch.backends.mkl.verbose(torch.backends.mkl.VERBOSE_ON):
+                        a = torch.ones(4, 4, dtype=torch.double)
+                        torch.mm(a, a)
+                    libc.fflush(None)
+                finally:
+                    os.dup2(saved, 1)
+                    os.close(saved)
+                tmp.seek(0)
+                text = tmp.read().decode(errors="replace")
+            head = re.search(r"MKL_VERBOSE (oneMKL .*?) for Intel\(R\) 64 architecture (.*?), Lnx", text)
+            cnr = re.search(r"CNR:([A-Z0-9_,]+)", text)
+            nthr = re.search(r"NThr:(\d+)", text)
+            out = dict(version=head.group(1) if head else None, branch=head.group(2) if head else None,
+                       cnr=cnr.group(1) if cnr else None, threads=int(nthr.group(1)) if nthr else None)
+    except Exception as e:                                  # never let the record break a run
+        out = dict(error=repr(e)[:200])
+    STATE["mkl"] = out
+    return out
+
+
+def problems6(fp: dict | None = None) -> list:
+    """Why this process is not under round 6's "portable" pin (empty if it is, as far as the set-up goes)."""
+    fp = fp or fingerprint()
+    out = []
+    if fp["pin"] != "portable":
+        out.append(f"the pin is {fp['pin']!r}, not 'portable'")
+    if not fp.get("hash_pinned"):
+        out.append("this interpreter hashes strings with a random key (start it with PYTHONHASHSEED=0)")
+    if fp["pin_late"]:
+        out.append("numpy, scipy or torch was imported before the twin package, so the pins may not have applied")
+    ns = fp.get("numpy_simd")
+    if ns is None:
+        out.append("numpy's enabled kernels can't be read")
+    else:
+        on = [k for k in ns["enabled"] if k != "X86_V3"]
+        if on:
+            out.append(f"numpy dispatches to {', '.join(on)} kernels (NPY_DISABLE_CPU_FEATURES did not take)")
+        if "X86_V3" not in ns["enabled"]:
+            out.append("numpy's AVX2 kernels (X86_V3) are off: this CPU has no AVX2, or this numpy names them otherwise")
+    mk = fp.get("mkl")
+    if mk is None or mk.get("error"):
+        out.append("MKL's state inside torch can't be read")
+    else:
+        if mk.get("cnr") != "COMPATIBLE":
+            out.append(f"MKL's CNR state is {mk.get('cnr')!r}, not 'COMPATIBLE'")
+        if mk.get("threads") not in (1, None):
+            out.append(f"MKL runs {mk['threads']} threads, not 1")
+    pe = fp.get("pin_env") or {}
+    for k, v in PINS["portable"].items():
+        if pe.get(k) != v:
+            out.append(f"{k} is {pe.get(k)!r}, not {v!r}")
+    for d in fp.get("blas") or []:
+        if d["api"] == "openblas" and d["arch"] != "Haswell":
+            out.append(f"OpenBLAS runs its {d['arch']} kernels, not Haswell")
+        if d["api"] in ("openblas", "mkl", "openmp") and d["threads"] not in (1, None):
+            out.append(f"{d['api']} runs {d['threads']} threads, not 1")
+    if fp.get("torch_cpu") not in (None, "AVX2"):
+        out.append(f"torch dispatches its {fp['torch_cpu']} kernels, not AVX2")
+    if fp.get("torch_threads") not in (None, 1):
+        out.append(f"torch runs {fp['torch_threads']} threads, not 1")
     return out
 
 
@@ -264,7 +422,7 @@ def main(argv):
     R.apply()
     if not argv or argv[0] == "env":
         fp = R.fingerprint()
-        print(json.dumps(dict(fp, problems=R.problems(fp)), indent=1))
+        print(json.dumps(dict(fp, problems=R.problems(fp), problems6=R.problems6(fp)), indent=1))
         return 0
     if argv[0] == "check":
         days = float(argv[1]) if len(argv) > 1 else 30.0

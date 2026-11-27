@@ -5,6 +5,7 @@ import json
 import math
 import os
 
+import numpy as np
 import pytest
 
 os.environ.setdefault("TWIN6_OUT", "/tmp/twin6_test")
@@ -188,3 +189,92 @@ def test_grid():
     assert B6.run_id(c) == "r6_vertical_parallel_fast_reorder_s3_dec-slow_hpc16_late240"
     order = [B6.run_id(c) for _, c in B6.order([(n, c) for n, cs in B6.EXPERIMENTS.items() for c in cs])]
     assert order[0].startswith("r6_") and "_s0" in order[0] and len(set(order)) == len(order)
+
+
+# ------------------------------------------------------------------------------------------------- round 6 additions
+SURVEY_COLS = ["lab", "station", "component", "item", "qty", "new_usd_each", "new_lead_w_vendor", "new_lead_text",
+               "twin_lead_w", "market", "used_ok", "n_listings", "n_north_america", "n_priced", "n_current_bids",
+               "n_exact", "n_family", "n_substitute", "median_used_usd", "median_exact_family_usd",
+               "n_priced_exact_family", "p25_used_usd", "p75_used_usd", "min_used_usd", "max_used_usd",
+               "median_bid_usd", "discount_vs_new", "freight_rigging_usd", "median_delivered_usd", "price_frac",
+               "lead_w", "lead_sigma", "p_fault", "p_fault_best", "refurb_w", "refurb_sigma", "refurb_frac",
+               "refurb_source", "extra_com_w", "share_as_is", "share_used", "share_tested", "share_refurb_or_warranty",
+               "share_new_surplus", "share_of_new_bought_used", "wt", "new_source", "note"]
+
+
+def test_market_file_in_the_surveys_own_format(tmp_path):
+    """twin/market6.py (issue 424) writes one row per station and, for a station that is several machines, one per
+    machine as well: only the station's own row counts."""
+    import csv
+    rows = [dict(station="sem", component="", market="yes", used_ok="True", n_listings="12", price_frac="0.31",
+                 lead_w="3.5", lead_sigma="0.4", p_fault="0.18", refurb_w="5", refurb_sigma="0.4", refurb_frac="0.12",
+                 extra_com_w="1.5", median_delivered_usd="61000", new_usd_each="196000"),
+            dict(station="machining", component="lathe", market="yes", used_ok="", n_listings="30",
+                 price_frac="0.2", lead_w="2"),                                  # a component: not read
+            dict(station="machining", component="(station)", market="yes (lathe)", used_ok="True", n_listings="31",
+                 price_frac="0.7", lead_w="2.5", p_fault="0.2"),
+            dict(station="pip", component="", market="none", used_ok="False", n_listings="0")]
+    p = tmp_path / "summary.csv"
+    with p.open("w", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=SURVEY_COLS)
+        w.writeheader()
+        for r in rows:
+            w.writerow({c: r.get(c, "") for c in SURVEY_COLS})
+    m = R6.load_market(p)
+    assert set(m) == {"sem", "machining", "pip"}
+    assert m["machining"]["price_frac"] == 0.7 and m["machining"]["market_text"] == "yes (lathe)"
+    assert m["pip"]["ok"] is False and "price_frac" not in m["pip"]
+    ps = R6.used_params("sem", m)
+    assert (ps["ok"], ps["price_frac"], ps["lead_w"], ps["p_fault"], ps["refurb_w"]) == (True, 0.31, 3.5, 0.18, 5.0)
+    assert ps["market"] == "yes" and "summary.csv" in ps["source"]
+    assert R6.market_sha256(p) is not None and R6.market_sha256(tmp_path / "none.csv") is None
+    f = R6.Facility6("parallel", 0, 1000 * H, dict(lab="vertical", market_csv=str(p)))
+    assert f.market_sha == R6.market_sha256(p) and f.sched["used_source"] == "out/twin6/market/summary.csv"
+
+
+class _RowWise:
+    """A stand-in for a fitted GP node whose prediction for a row depends on that row alone (sums along the row),
+    so that batched and one-at-a-time predictions must agree exactly."""
+
+    def __init__(self, d, seed=5):
+        r = np.random.default_rng(seed)
+        self.w1, self.w2 = r.normal(size=d), r.normal(size=d)
+
+    def ready(self):
+        return True
+
+    def predict(self, X):
+        X = np.asarray(X, float)
+        return (X * self.w1).sum(axis=1), np.abs((X * self.w2).sum(axis=1)) + 0.01
+
+
+def test_faster_atomizer_search_is_the_same_search():
+    import copy
+
+    from twin.opt import policies2 as P2
+    out, tw = _short(B6._cfg("conventional", "external", "bofn3", "lean", 0), 4)
+    for k, c in tw.campaigns.items():
+        pol = c.policy
+        v = c.view(tw.h)
+        dids = [s["design"] for s in v["sims"] if s["kind"] == pol.sim_kind][:40]
+        assert len(dids) >= 20
+        d = len(pol.atom_x(v, dids[0], v["design_inputs"][dids[0]]))
+        pol.nodes["atomize"] = [_RowWise(d)]
+        g0 = copy.deepcopy(pol.gen.bit_generator.state)
+        for did in dids[:6]:
+            pol.gen.bit_generator.state = copy.deepcopy(g0)
+            a = P2.BOFN.atomizer_settings(pol, v, did, dict(v["design_inputs"][did]))
+            ga = copy.deepcopy(pol.gen.bit_generator.state)
+            pol.gen.bit_generator.state = copy.deepcopy(g0)
+            b = pol.atomizer_settings(v, did, dict(v["design_inputs"][did]))
+            assert a == b and pol.gen.bit_generator.state == ga       # the same choice, the same draws used
+        pol.gen.bit_generator.state = copy.deepcopy(g0)
+        p_one = N3_p_powder(pol, v, dids)
+        pol.gen.bit_generator.state = copy.deepcopy(g0)
+        p_batch = pol._p_powder(v, dids)
+        assert np.array_equal(p_one, p_batch)
+
+
+def N3_p_powder(pol, v, dids):
+    from twin.opt import net3 as N3
+    return N3.Net3._p_powder(pol, v, dids)
