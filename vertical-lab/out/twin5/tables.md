@@ -312,30 +312,30 @@ Fixed costs a year: vertical $1,184,047 (depreciation $599,907); conventional $1
 
 | Arm | Campaign | spend + fixed, 2 years | new alloys tested | per alloy (with fixed) | per alloy (campaign only) | to T1 with equipment (seeds) | to T2 with equipment (seeds) |
 |---|---|---|---|---|---|---|---|
-| `vertical|fast|reorder` | Aluminium | $1,816,274 | 150.2 | $11,994 | $1,570 | $2,097,821 (16/16) | $3,460,365 (7/16) |
-| `vertical|fast|reorder` | Copper | $909,529 | 19.4 | $41,449 | $5,495 | $1,804,969 (15/16) | $1,837,325 (15/16) |
-| `vertical|fast|lean` | Aluminium | $1,815,839 | 163.1 | $11,005 | $1,441 | $2,727,352 (16/16) | $3,500,547 (9/16) |
-| `vertical|fast|lean` | Copper | $909,557 | 20.8 | $40,455 | $5,355 | $1,802,028 (15/16) | $1,808,691 (14/16) |
-| `vertical|bofn3|reorder` | Aluminium | $1,816,716 | 75.1 | $24,747 | $3,243 | $3,348,677 (16/16) | $3,358,634 (16/16) |
-| `vertical|bofn3|reorder` | Copper | $908,438 | 9.3 | $100,871 | $13,164 | $1,806,817 (16/16) | $1,805,447 (12/16) |
-| `vertical|bofn3|lean` | Aluminium | $1,816,895 | 70.1 | $26,532 | $3,474 | $3,475,548 (16/16) | $3,522,767 (16/16) |
-| `vertical|bofn3|lean` | Copper | $907,982 | 7.6 | $121,621 | $15,903 | $1,824,332 (16/16) | $1,829,790 (14/16) |
-| `vertical|pkgfn3|reorder` | Aluminium | $1,816,833 | 85.7 | $20,306 | $2,666 | $3,353,260 (16/16) | $3,434,061 (16/16) |
-| `vertical|pkgfn3|reorder` | Copper | $908,269 | 9.5 | $95,857 | $12,535 | $1,809,043 (16/16) | $1,825,660 (14/16) |
-| `vertical|pkgfn3|lean` | Aluminium | $1,816,470 | 87.0 | $22,708 | $2,970 | $3,473,773 (16/16) | $3,518,372 (16/16) |
-| `vertical|pkgfn3|lean` | Copper | $908,366 | 10.0 | $102,255 | $13,451 | $1,807,749 (15/16) | $1,828,198 (12/16) |
-| `conventional|fast|reorder` | Aluminium | $392,785 | 74.1 | $5,352 | $3,178 | $48,842 (16/16) | $180,029 (8/16) |
-| `conventional|fast|reorder` | Copper | $196,212 | 5.4 | $39,023 | $22,827 | $97,720 (11/16) | $110,151 (9/16) |
-| `conventional|fast|lean` | Aluminium | $366,195 | 64.3 | $5,515 | $3,149 | $37,816 (16/16) | $77,696 (8/16) |
-| `conventional|fast|lean` | Copper | $195,418 | 5.0 | $39,375 | $23,179 | $104,654 (14/16) | $104,381 (11/16) |
-| `conventional|bofn3|reorder` | Aluminium | $341,628 | 33.1 | $10,469 | $5,403 | $98,293 (16/16) | $108,926 (15/16) |
-| `conventional|bofn3|reorder` | Copper | $174,021 | 3.4 | $58,580 | $31,587 | $101,655 (7/16) | $118,024 (4/16) |
-| `conventional|bofn3|lean` | Aluminium | $307,437 | 21.2 | $13,933 | $6,918 | $102,101 (16/16) | $117,018 (15/16) |
-| `conventional|bofn3|lean` | Copper | $167,355 | 3.2 | $54,987 | $27,994 | $73,076 (5/16) | $78,859 (3/16) |
-| `conventional|pkgfn3|reorder` | Aluminium | $345,470 | 37.0 | $10,113 | $5,352 | $100,096 (16/16) | $129,800 (15/16) |
-| `conventional|pkgfn3|reorder` | Copper | $173,700 | 3.5 | $52,197 | $27,595 | $82,319 (6/16) | $106,751 (4/16) |
-| `conventional|pkgfn3|lean` | Aluminium | $310,877 | 27.4 | $13,140 | $6,209 | $99,563 (15/16) | $112,477 (15/16) |
-| `conventional|pkgfn3|lean` | Copper | $164,861 | 3.0 | $55,191 | $28,197 | $83,290 (8/16) | $85,351 (3/16) |
+| automated, heuristic, stocked | Aluminium | $1,816,274 | 150.2 | $11,994 | $1,570 | $2,097,821 (16/16) | $3,460,365 (7/16) |
+| automated, funnel, stocked | Copper | $909,529 | 19.4 | $41,449 | $5,495 | $1,804,969 (15/16) | $1,837,325 (15/16) |
+| automated, heuristic, lean | Aluminium | $1,815,839 | 163.1 | $11,005 | $1,441 | $2,727,352 (16/16) | $3,500,547 (9/16) |
+| automated, funnel, lean | Copper | $909,557 | 20.8 | $40,455 | $5,355 | $1,802,028 (15/16) | $1,808,691 (14/16) |
+| automated, BOFN, stocked | Aluminium | $1,816,716 | 75.1 | $24,747 | $3,243 | $3,348,677 (16/16) | $3,358,634 (16/16) |
+| automated, BOFN, stocked | Copper | $908,438 | 9.3 | $100,871 | $13,164 | $1,806,817 (16/16) | $1,805,447 (12/16) |
+| automated, BOFN, lean | Aluminium | $1,816,895 | 70.1 | $26,532 | $3,474 | $3,475,548 (16/16) | $3,522,767 (16/16) |
+| automated, BOFN, lean | Copper | $907,982 | 7.6 | $121,621 | $15,903 | $1,824,332 (16/16) | $1,829,790 (14/16) |
+| automated, pKGFN, stocked | Aluminium | $1,816,833 | 85.7 | $20,306 | $2,666 | $3,353,260 (16/16) | $3,434,061 (16/16) |
+| automated, pKGFN, stocked | Copper | $908,269 | 9.5 | $95,857 | $12,535 | $1,809,043 (16/16) | $1,825,660 (14/16) |
+| automated, pKGFN, lean | Aluminium | $1,816,470 | 87.0 | $22,708 | $2,970 | $3,473,773 (16/16) | $3,518,372 (16/16) |
+| automated, pKGFN, lean | Copper | $908,366 | 10.0 | $102,255 | $13,451 | $1,807,749 (15/16) | $1,828,198 (12/16) |
+| conventional, heuristic, stocked | Aluminium | $392,785 | 74.1 | $5,352 | $3,178 | $48,842 (16/16) | $180,029 (8/16) |
+| conventional, funnel, stocked | Copper | $196,212 | 5.4 | $39,023 | $22,827 | $97,720 (11/16) | $110,151 (9/16) |
+| conventional, heuristic, lean | Aluminium | $366,195 | 64.3 | $5,515 | $3,149 | $37,816 (16/16) | $77,696 (8/16) |
+| conventional, funnel, lean | Copper | $195,418 | 5.0 | $39,375 | $23,179 | $104,654 (14/16) | $104,381 (11/16) |
+| conventional, BOFN, stocked | Aluminium | $341,628 | 33.1 | $10,469 | $5,403 | $98,293 (16/16) | $108,926 (15/16) |
+| conventional, BOFN, stocked | Copper | $174,021 | 3.4 | $58,580 | $31,587 | $101,655 (7/16) | $118,024 (4/16) |
+| conventional, BOFN, lean | Aluminium | $307,437 | 21.2 | $13,933 | $6,918 | $102,101 (16/16) | $117,018 (15/16) |
+| conventional, BOFN, lean | Copper | $167,355 | 3.2 | $54,987 | $27,994 | $73,076 (5/16) | $78,859 (3/16) |
+| conventional, pKGFN, stocked | Aluminium | $345,470 | 37.0 | $10,113 | $5,352 | $100,096 (16/16) | $129,800 (15/16) |
+| conventional, pKGFN, stocked | Copper | $173,700 | 3.5 | $52,197 | $27,595 | $82,319 (6/16) | $106,751 (4/16) |
+| conventional, pKGFN, lean | Aluminium | $310,877 | 27.4 | $13,140 | $6,209 | $99,563 (15/16) | $112,477 (15/16) |
+| conventional, pKGFN, lean | Copper | $164,861 | 3.0 | $55,191 | $28,197 | $83,290 (8/16) | $85,351 (3/16) |
 
 ## Stock (mean over seeds)
 

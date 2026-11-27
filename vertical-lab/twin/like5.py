@@ -879,7 +879,10 @@ def tables(S) -> str:
         for camp in CAMPS:
             x = d[camp]
             f = lambda v: "-" if v is None else f"${v:,.0f}"
-            L.append(f"| `{k}` | {CAMPS[camp]} | {f(x['total_2y_mean'])} | {x['new_alloys_mean']:.1f} | "
+            lab_, pol_, st_ = k.split("|")           # a "|" inside a code span would still split a table cell
+            arm_ = (f"{'automated' if lab_ == 'vertical' else 'conventional'}, {POL[pol_][camp]}, "
+                    f"{'stocked' if st_ == 'reorder' else 'lean'}")
+            L.append(f"| {arm_} | {CAMPS[camp]} | {f(x['total_2y_mean'])} | {x['new_alloys_mean']:.1f} | "
                      f"{f(x['per_alloy_median'])} | {f(x['per_alloy_campaign_only_median'])} | "
                      f"{f(x['T1']['median'])} ({x['T1']['n']}/{x['T1']['of']}) | "
                      f"{f(x['T2']['median'])} ({x['T2']['n']}/{x['T2']['of']}) |")

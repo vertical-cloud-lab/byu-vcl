@@ -987,7 +987,8 @@ Economics, stock waits, shared stations, idle causes, counters and median seeds 
   were left, each in exactly one slice, none already packed, and they are in the packed files byte for byte.
 * **Every slice row is clean and pinned as this PR's own rows:** `twin_dirty` is false, the pin is `avx2`, hashing is
   pinned, nothing was drawn from torch's global generator, notes 1-4 are in, and its `env` equals ours in everything
-  but the CPU. Its event log is there and names the same run. No slice has an errors file.
+  but the CPU (its model, and whether it has AVX-512). Its event log is there and names the same run. No slice has an
+  errors file.
 * **`twin/` at each recorded commit is identical to `b410477`'s:** the slice rows record six commits (`b410477`,
   `21d9b1a`, `88d5161`, `6ee4cd5`, `662621d`, `c7767b2`), because each worker reads its commit once and the slices
   pushed while running.
