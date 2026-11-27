@@ -16,18 +16,36 @@ The grid is run in compute slices, not by the job that built the engine.
 
 ## Running a compute slice
 
-On a 4-core GitHub-hosted runner, from a checkout of this branch:
+On a 4-vCPU GitHub-hosted runner (Ubuntu, x86-64) with **Python 3.14.4** (`actions/setup-python`; the wheels the
+requirements pin are 3.14's), from a checkout of this branch. Everything a row depends on is pinned: the engine (the
+tree hash of `twin/`), the packages (exact versions), the numerical libraries' kernels and threads (`TWIN_PIN=portable`,
+which the commands set themselves) and the hash seed.
 
 ```bash
+set -e
 cd vertical-lab
+test "$(git rev-parse HEAD:vertical-lab/twin)" = 469478fe0ee785ef82279ac84b186f656ac4a5de   # the engine the grid was
+                                                          # built, timed and checked with (stop if it isn't)
 export PIP_TIMEOUT=600 PIP_RETRIES=2
 pip install --index-url https://download.pytorch.org/whl/cpu torch==2.15.0 && pip install -r out/twin6/requirements.txt
 K=1                                                       # this slice's number
 python -m twin.gpcheck6 --out out/twin6/slices/gpcheck-slice-$K.json      # first: exit 0 if this CPU computes what
-                                                                          # the reference CPU did (about 2-5 minutes)
-python -m twin.bench6 ids out/twin6/slices/slice-$K.txt --slice $K --workers 4
+                                                                          # the reference CPU did (5-15 minutes)
+python -m twin.bench6 ids out/twin6/slices/slice-$K.txt --slice $K --workers 4   # a file of run ids, one a line,
+                                                          # or the ids themselves: ids r6_vertical_parallel_bofn3_reorder_s0 ...
 git add -f out/twin6/runs/*.slice-$K.jsonl out/twin6/events out/twin6/slices/gpcheck-slice-$K.json
 ```
+
+The `twin/` tree above differs from the one the GP check's reference was made with (`aa296e7`, commit `568ab5f`) only
+in the grid's planning code (`bench6.timings`, `variant_ratios`, CPU seconds in each row's `timing`), its tests and
+its README: no simulation code. Change anything in `twin/` and the reference, the timings and this hash all have to be
+made again.
+
+**How long a slice takes.** A run of the automated lab with BOFN or pKGFN costs several CPU-hours (`left.md`,
+`checks/timing6.md`); with four at a time on four vCPUs, a slice's longest run sets its length. `slices 0` keeps each
+slice at or under 16 core-hours. Each row is written to the slice's file when its run ends; commit and push that file
+as the slice goes, not only at the end, so a job stopped by its time limit loses only the runs still going. `ids`
+skips every run whose row is already in `runs/` (slice files included), so the same list can be run again.
 
 * `python -m twin.bench6` and `python -m twin.gpcheck6` pin themselves: with `TWIN_PIN` unset they re-execute under
   `TWIN_PIN=portable` and `PYTHONHASHSEED=0` (twin/repro.py). `ids` and `run` refuse any other pin. Don't set
