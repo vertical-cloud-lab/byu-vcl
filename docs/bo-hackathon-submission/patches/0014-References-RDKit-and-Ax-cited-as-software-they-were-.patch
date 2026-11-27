@@ -1,0 +1,54 @@
+From f112898b8955425b0c352fdf6e1f2cd5a8e1dfde Mon Sep 17 00:00:00 2001
+From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
+Date: Fri, 27 Nov 2026 19:44:52 +0000
+Subject: [PATCH 14/14] References: RDKit and Ax cited as software (they were
+ typed as journal articles)
+
+---
+ latex/summaries-ref.bib | 20 +++++++++-----------
+ 1 file changed, 9 insertions(+), 11 deletions(-)
+
+diff --git a/latex/summaries-ref.bib b/latex/summaries-ref.bib
+index e909113..429b311 100644
+--- a/latex/summaries-ref.bib
++++ b/latex/summaries-ref.bib
+@@ -129,14 +129,12 @@
+   publisher={Springer},
+   doi={10.1186/s13321-018-0258-y}
+ }
+-@article{landrum2013rdkit,
+-  title={Rdkit documentation},
++@misc{landrum2013rdkit,
++  title={{RDKit}: Open-source cheminformatics},
+   author={Landrum, Greg},
+-  journal={Release},
+-  volume={1},
+-  number={1-79},
+-  pages={4},
+-  year={2013}
++  year={2024},
++  howpublished={\url{https://www.rdkit.org}},
++  note={Accessed: 2026-11-27}
+ }
+ @article{zhou2019optimization,
+   title={Optimization of molecules via deep reinforcement learning},
+@@ -331,12 +329,12 @@
+   year    = {2014},
+   doi     = {10.1038/sdata.2014.22}
+ }
+-@article{bakshy2018ax,
+-  title={Ax: A platform for adaptive experimentation},
++@misc{bakshy2018ax,
++  title={{Ax}: A platform for adaptive experimentation},
+   author={Bakshy, Eytan},
+-  journal={GitHub repository},
+   year={2018},
+-  howpublished={\url{https://github.com/facebook/Ax}}
++  howpublished={\url{https://github.com/facebook/Ax}},
++  note={Accessed: 2026-11-27}
+ }
+ @misc{scikit-optimize_2021,
+   author       = {Head, Tim and Kumar, Manoj and Nahrstaedt, Holger and Louppe, Gilles and Shcherbatyi, Iaroslav},
+-- 
+2.56.1
+

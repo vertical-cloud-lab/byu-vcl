@@ -39,6 +39,9 @@ The main changes are:
 - **Figures and presentation:** participant display names are pixelated in Figures 4 and
   5, the Figure 2 labels are outlined for legibility, the project table no longer ends on
   an empty page, and the PDF text now extracts correctly.
+- **References** were checked against Crossref: incorrect DOIs and author lists were
+  corrected, missing DOIs added, and preprints that have since been published are cited in
+  their published form.
 
 **Authorship.** At their own request, Jiale Shi and Dandan Tang have been removed from the
 author list, which now has 124 authors. No authors have been added. [Confirm and adjust:

@@ -1,0 +1,75 @@
+From 1952215c8ba3c67e1a8edaff9176293e6f0fb90e Mon Sep 17 00:00:00 2001
+From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
+Date: Fri, 27 Nov 2026 19:43:45 +0000
+Subject: [PATCH 13/14] References: arXiv numbers printed for arXiv-only
+ entries (RSC style); Kristiadi 2024 is ICML 2024
+
+---
+ latex/references.bib | 16 ++++++++++++++--
+ 1 file changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/latex/references.bib b/latex/references.bib
+index e018dee..733c6a7 100644
+--- a/latex/references.bib
++++ b/latex/references.bib
+@@ -252,6 +252,8 @@
+ 	author = {Frazier, Peter I.},
+ 	year = {2018},
+ 	doi = {10.48550/arXiv.1807.02811},
++	eprint = {1807.02811},
++	archivePrefix = {arXiv}
+ }
+ 
+ @article{shahriari_taking_2016,
+@@ -660,6 +662,8 @@
+ 	year = {2024},
+ 	doi = {10.48550/arXiv.2411.15221},
+ 	url = {https://doi.org/10.48550/arXiv.2411.15221},
++	eprint = {2411.15221},
++	archivePrefix = {arXiv}
+ }
+ 
+ @article{nolte_what_2020,
+@@ -766,6 +770,8 @@
+ 	year = {2024},
+ 	doi = {10.48550/arXiv.2408.05040},
+ 	url = {https://doi.org/10.48550/arXiv.2408.05040},
++	eprint = {2408.05040},
++	archivePrefix = {arXiv}
+ }
+ 
+ @article{sabanza-gil_best_2025,
+@@ -802,10 +808,12 @@
+ 	url = {https://doi.org/10.1038/s44160-022-00231-0},
+ }
+ 
+-@article{kristiadi_sober_2024,
++@inproceedings{kristiadi_sober_2024,
+ 	title = {A {Sober} {Look} at {LLMs} for {Material} {Discovery}: {Are} {They} {Actually} {Good} for {Bayesian} {Optimization} over {Molecules}?},
+ 	author = {Kristiadi, Agustinus and Strieth-Kalthoff, Felix and Skreta, Marta and Poupart, Pascal and Aspuru-Guzik, Alán and Pleiss, Geoff},
+-	journal = {arXiv},
++	booktitle = {Proceedings of the 41st International Conference on Machine Learning (ICML)},
++	series = {Proceedings of Machine Learning Research},
++	volume = {235},
+ 	year = {2024},
+ 	doi = {10.48550/arXiv.2402.05015},
+ 	url = {https://doi.org/10.48550/arXiv.2402.05015},
+@@ -876,6 +884,8 @@
+ 	year = {2024},
+ 	doi = {10.48550/arXiv.2409.07190},
+ 	url = {https://doi.org/10.48550/arXiv.2409.07190},
++	eprint = {2409.07190},
++	archivePrefix = {arXiv}
+ }
+ 
+ @article{ishii_boxvia_2022,
+@@ -917,4 +927,6 @@
+ 	year = {2026},
+ 	doi = {10.48550/arXiv.2609.04564},
+ 	url = {https://doi.org/10.48550/arXiv.2609.04564},
++	eprint = {2609.04564},
++	archivePrefix = {arXiv}
+ }
+-- 
+2.56.1
+
