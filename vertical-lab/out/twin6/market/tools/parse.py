@@ -86,7 +86,9 @@ def condition(text, site):
 SELLER = {"govdeals": "government or university surplus auction", "publicsurplus": "government or university surplus auction",
           "allsurplus": "commercial surplus auction", "labx": "dealer or lab (LabX)", "machinio": "dealer (Machinio)",
           "machineseeker": "dealer (Machineseeker)", "exapro": "broker (Exapro)", "fedequip": "dealer (Federal Equipment)",
-          "marshall": "dealer and refurbisher (Marshall Scientific)", "dotmed": "dealer or auction (DOTmed)"}
+          "marshall": "dealer and refurbisher (Marshall Scientific)", "dotmed": "dealer or auction (DOTmed)",
+          "conquer": "dealer and refurbisher (Conquer Scientific)", "gmi": "refurbisher (GMI, re-certified)",
+          "rdr": "dealer (Robots Done Right)", "semtech": "refurbisher (SEMTech Solutions)"}
 
 
 def location(text, site):
@@ -156,6 +158,12 @@ def main():
                     break
         if not st:
             continue
+        if station in ("instron", "zwick"):
+            kn = STN.tensile_kn(title + " " + model)
+            if kn is not None and kn >= 50 and station == "zwick":
+                station, st = "instron", "sub" if st != "exact" else st
+            elif kn is not None and kn <= 30 and station == "instron":
+                station, st = "zwick", "family" if re.search(r"zwick", title, re.I) else "sub"
         amt, cur = money(r["text"])
         if re.search(NOPRICE, r["text"], re.I) and amt is None:
             amt = None

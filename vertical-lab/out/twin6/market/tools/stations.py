@@ -24,12 +24,15 @@ PARTS = (r"\b(parts? only|for parts|spare parts?|part no\b|p/n\b|pcb|board\b|cir
          r"knob|fuse|fan\b|bulb|lamp\b|bracket|cover only|panel only|power supply\b|psu\b|adapter|adaptor|"
          r"replacement|repair kit|kit for|consumables?|toner|wire spool|spools?|stubs?\b|sample holder|"
          r"holder\b|grips? only|jaw faces|chuck jaws?|collets?\b|insert\b|inserts\b|tooling only|"
-         r"lot of (?!\d+ ?(?:sem|edm))|assorted|miscellaneous|misc\.?\b)")
+         r"lot of (?!\d+ ?(?:sem|edm))|assorted|miscellaneous|misc\.?\b|service request|internal standard|"
+         r"maintenance|service\b|\bsems$|^(zeiss/leo|jeol|hitachi|fei/philips|amray|tescan) sems?$|resource|blog|"
+         r"\bparts$|why buy)")
 
 # ---------------------------------------------------------------------------------------------- tray instruments
 st("sem", "Hitachi TM4000PlusII benchtop SEM", 1, 100_000, "vertical", "bench_sens",
    r"\bTM\s?-?4000\s?plus\s?(ii|2)\b|\bTM\s?-?4000\s?(ii|2)\b",
-   r"\bTM\s?-?(4000|3030|3000|1000)\b|hitachi.*(table\s?top|bench\s?top|desktop).*(sem|electron)",
+   r"\bTM\s?-?(4000|3030|3000)",
+   r"\bTM\s?-?1000\b|hitachi.*(table\s?top|bench\s?top|desktop).*(sem|electron)|"
    r"phenom.*(sem|electron|microscope|pro\s?x?\b|\bxl\b|pure|\bg[1-6]\b|desktop)|(sem|electron).*phenom|neoscope|\bJCM-?\d{4}|coxem|\bEM-30|\bSNE-?\d{4}|(table\s?top|bench\s?top|desktop|compact)\s+(sem\b|scanning electron)",
    PARTS + r"|\bstub|carbon tape|sputter|coater|\btem\b|transmission electron|filament|cathode|turbo|"
            r"detector only|bse detector|stage only|chiller only|\bpump\b(?!.*(sem|microscope))|catheter|medtronic|"
@@ -91,7 +94,8 @@ st("xrf", "Bruker S2 PUMA Series 2 EDXRF with XY autochanger", 1, 120_000, "vert
    note="handheld analysers are left out: they don't do the station's job (lab EDXRF with an autochanger)")
 st("mastersizer", "Malvern Mastersizer 3000 with Aero S", 1, 110_000, "vertical", "bench_sens",
    r"mastersizer\s?3000",
-   r"mastersizer|malvern.*(laser diffraction|particle size)",
+   r"mastersizer\s?-?(2000|3000)|\b(MAZ|APA|EPA|ADA)\s?(2000|3000)\b",
+   r"mastersizer|malvern.*(laser diffraction|particle size)|"
    r"\bLA-?(9[0-9]0|300|350|920)\b|horiba.*(laser|particle size)|\bLS\s?13\s?320|\bLS\s?230|beckman.*particle size|"
    r"microtrac|\bS3500\b|sympatec|\bHELOS\b|cilas|\bSALD-?\d{3,4}|analysette\s?22|"
    r"(laser diffraction|laser particle size|particle size analy[sz]er)",
@@ -145,7 +149,9 @@ st("polish", "LECO PX500 grinder/polisher, MX400 mounting press and a sectioning
    r"abrasive (cut-?off|cutter|saw)|precision (saw|cutter)|sectioning saw|lapping",
    PARTS + r"|polishing cloth|pads?\b|abrasive (discs?|paper|wheels?)\b(?!.*(saw|cutter))|blades?\b(?!.*saw)|"
            r"polishing (suspension|compound)|resin|epoxy|bakelite|floor (polisher|buffer|burnisher)|car |auto |"
-           r"concrete|stone|jewelry|rock|lapidary|tumbler|bench grinder|angle grinder|belt sander|knife",
+           r"concrete|stone|jewelry|rock|lapidary|tumbler|bench grinder|angle grinder|belt sander|knife|"
+           r"pedestal grinder|tablet press|strasbaugh|speedfam|lapping|wafer|vise\b|klamp|clamp|heater for|"
+           r"\bfor (earlier|samplmet|discotom|abrasimet|isomet)",
    comp=dict(polisher=r"px\s?-?500|polisher|grinder|automet|ecomet|tegramin|tegrapol|labopol|rotopol|metprep|vector|"
                       r"spectrum system|lapping",
              press=r"mx\s?-?400|press|simplimet|citopress|prontopress|techpress",
@@ -215,22 +221,28 @@ st("density", "Density balance kit and a stereo microscope", 1, 12_000, "convent
 st("glovebox", "Inert PureLab HE glovebox with purifier, O2 and dew-point sensors", 1, 55_000, "both", "floor",
    r"purelab\s?he|inert.*purelab",
    r"\binert\b.*(glove\s?box|i-?lab|purelab)|innovative technology.*glove",
-   r"mbraun|m\.? braun|labstar|unilab|labmaster|vacuum atmospheres|\bVAC\b.*(glove|nexus|omni|genesis)|omni-?lab|"
-   r"nexus (ii|one)|jacomex|lc technology|glovebox technology|\bGS (glove|mega)|etelux|vigor|mikrouna|"
-   r"(inert|argon|nitrogen).*(glove\s?box|glovebox)|(glove\s?box|glovebox).*(purifier|inert|argon|recirculat)|"
-   r"glove\s?box|glovebox",
+   r"mbraun|m\.? braun|labstar|unilab|labmaster|\bMB\s?-?(20|150|200)\b.*glove|vacuum atmospheres|omni-?lab|nexus|nexgen|"
+   r"jacomex|lc technology|glovebox systemtechnik|gs glovebox|\bGS\b.*mega|\bmega\s?[23]\b.*glove|etelux|vigor|mikrouna|"
+   r"miwa.*glove|(glove\s?box|glovebox).*(purifier|inert|argon|nitrogen|\bo2\b|ppm|moisture)|"
+   r"(inert|argon|nitrogen).*(glove\s?box|glovebox)",
    PARTS + r"|gloves?\b(?!\s?box)|glove ports?|o-?rings?|regeneration gas|catalyst|molecular sieve|sensor only|"
-           r"acrylic|plas-?labs|isolator|anaerobic|coy\b|biological|pcr|sandblast|blast cabinet|bead blast|"
-           r"abrasive blast|cleanroom|clean bench|\bbsc\b|laminar|hood\b",
-   note="acrylic boxes without a purifier are left out; they can't hold ppm-level O2 and H2O")
+           r"acrylic|plas-?labs|isolat|anaerobic|coy\b|biological|pcr|sandblast|blast cabinet|bead blast|"
+           r"abrasive blast|cleanroom|clean bench|\bbsc\b|laminar|hood\b|spray coating|static dissipative|plastic|"
+           r"germfree|weigh box|multi-?hazard|solvent purification|\bsps\b|freezer|^(?!.*glove).*purifier|"
+           r"vacuum oven|oxygen monitor|analy[sz]er|scrap|isoguard|negative pressure|cabinet|desiccator|"
+           r"^(?!.*(purifier|inert|argon|nitrogen|mbraun|vacuum atmospheres|jacomex|glovebox systemtechnik|\bgs\b|"
+           r"omni|nexus|nexgen|labmaster|unilab|labstar|etelux|vigor|mikrouna)).*",
+   note="inert-atmosphere gloveboxes with a regenerating purifier; acrylic, isolator and weighing boxes are left out")
 st("hoods", "Ducted 6 ft fume hood, installed", 2, 35_000, "both", "floor",
-   r"\b6\s?(ft|')\b.*fume hood|fume hood.*\b6\s?(ft|')|72\s?(\"|in|inch).*fume hood|fume hood.*72\s?(\"|in)",
-   r"\b[4-8]\s?(ft|')\b.*fume hood|fume hood.*\b[4-8]\s?(ft|')|fume hood.*(48|60|72|96)\s?(\"|in)",
+   r"\b6\s?(ft|'|-?foot)(?!\w).*fume hood|fume hood.*\b6\s?(ft|'|-?foot)(?!\w)|72\s?(\"|in|inch).*fume hood|fume hood.*72\s?(\"|in)",
+   r"\b[4-8]\s?(ft|'|-?foot)(?!\w).*fume hood|fume hood.*\b[4-8]\s?(ft|'|-?foot)(?!\w)|(48|60|72|96)\s?(\"|in).*fume hood|fume hood.*(48|60|72|96)\s?(\"|in)",
    r"fume hood|chemical hood|labconco.*(protector|xstream|premier|hood)|kewaunee.*hood|hamilton.*(safeaire|hood)|"
    r"hemco|mott.*hood|jamestown.*hood|\bfisher hamilton\b",
    PARTS + r"|ductless|filter|carbon|biological safety|\bbsc\b|biosafety|laminar|clean bench|pcr|"
            r"range hood|kitchen|hood vent|car hood|truck hood|exhaust fan only|sash only|base cabinet only|"
-           r"weighing|powder hood|balance enclosure|downdraft table",
+           r"weighing|powder hood|balance enclosure|downdraft table|enclosure|walk[- ]in|captair|mobile fume|air science|"
+           r"airclean|\bnu-?4\d\d|\bnu-?5\d\d|labgard|class ii|germfree|enviroco|\b36\s?\"?\s?x|benchtop|bench top|"
+           r"portable|recirculat",
    comp=dict(hood=r"."),
    note="installation, ducting and the exhaust fan are most of a ducted hood's installed cost, used or new")
 st("icpms", "Agilent 7850 ICP-MS with SPS 4, chiller, trace-metals hood, hot block and dilutor", 1, 260_000,
@@ -257,25 +269,31 @@ st("instron", "Instron 68FM-100 floor frame (100 kN) with grips and extensometer
            r"grips?\b(?!.*(frame|tester|machine))|wedge|fixture|platens?|controller only|\b8800 controller\b|"
            r"hardness|impact|charpy|izod|torsion|compression only|concrete|cement|asphalt|soil|"
            r"\b34SC|\b33(42|43|44|45)\b|\b59(42|43|44)\b|\b55(42|43|44)\b|\b34TM|single column|table\s?top|"
-           r"tensile strength tester for|paper|textile|bottle|cap torque|peel|seal strength",
+           r"tensile strength tester for|paper|textile|bottle|cap torque|peel|seal strength|sheet line|edgebander|"
+           r"endurance test bench|test stand|test cylinder|temperature chamber|climate chamber",
    note="floor frames of 50 kN and up; single-column and table-top frames are the zwick station's")
 st("chamber", "Instron 3119-608 environmental chamber (to 600 C)", 1, 50_000, "vertical", "bench_heavy",
    r"\b3119-?6\d\d\b",
    r"\b3119-?\d{3}\b|instron.*(environmental chamber|furnace|temperature chamber|heating chamber)",
    r"(environmental|temperature|thermal|heating) chamber.*(instron|mts|zwick|tensile|testing machine|load frame|utm)|"
    r"(instron|mts|zwick|tensile|testing machine|load frame|utm).*(environmental|temperature|thermal|heating) chamber|"
-   r"(split|high temperature).*furnace.*(tensile|creep|instron|mts|testing)|\bMTS 651\b|\b653\b.*mts",
+   r"(split|high temperature).*furnace.*(tensile|creep|instron|mts|testing)|\bMTS 651\b|\b653\b.*mts|"
+   r"(temperature|climate|environmental|thermal) chamber.*(allround|zwick|instron|testing machine|tensile)|"
+   r"(zwick|instron|allround).*(temperature|climate|environmental) chamber",
    PARTS, note="only chambers made for a load frame; product-test chambers (Thermotron, ESPEC) are left out")
 st("zwick", "ZwickRoell zwickiLine Z5.0 TN with testControl II", 1, 35_000, "vertical", "bench",
    r"zwickiline\s?Z?\s?5|\bZ\s?5\.0\s?TN\b",
-   r"zwickiline|zwick.*\bZ\s?(0\.5|1\.0|2\.5|5\.0|005|010|2\.5)\b|\bZ\s?(005|010|2\.5)\b|zwick",
+   r"zwickiline|zwick.*\bZ\s?(0\.5|1\.0|2\.5|5\.0|005|010|020|030|2[.,]5)\b|\bZ\s?(005|010|2[.,]5)\b|"
+   r"zwick.*(tensile|universal test|testing machine|materials test|allround|proline|table-?top|zwicki|test system|kN)",
    r"instron.*\b(34SC|33(42|43|44|45)|59(42|43|44)|55(42|43|44)|34TM)\b|\b(34SC|33(42|43|45)|59(42|43|44)|55(42|43|44))\b|"
    r"criterion\s?42|\bEZ-?(LX|SX|S|L|test)\b|shimadzu.*(ez|table)|mark-?10.*(esm|test stand)|\bESM\s?\d{3,4}\b|"
    r"tinius olsen.*\bH\d{1,2}KS|single column|table\s?top (tensile|testing|universal)|lloyd|ametek.*(ls\d|lr\d)|"
    r"testometric|tensile tester|universal test\w*",
    PARTS + r"|load cell only|load cell\b(?!.*(frame|tester|machine))|extensometer\b(?!.*(frame|tester|machine))|"
            r"grips?\b(?!.*(frame|tester|machine))|wedge|fixture|controller only|hardness|impact|charpy|izod|"
-           r"concrete|cement|asphalt|soil|paper|textile|bottle|cap torque|\bforce gauge\b",
+           r"concrete|cement|asphalt|soil|paper|textile|bottle|cap torque|\bforce gauge\b|sheet line|edgebander|"
+           r"endurance test bench|test stand|test cylinder|temperature chamber|climate chamber|plastic|valve|butterfly|"
+           r"hardness|gardness|durometer|shore|pendulum|melt (flow|index)|\bmfi\b|extrusion|^zwick( and co\.?)?$",
    note="table-top frames up to about 10 kN")
 # ---------------------------------------------------------------------------------------------- floor machines
 st("edm", "FANUC ROBOCUT wire EDM", 1, 230_000, "vertical", "machine",
@@ -321,6 +339,7 @@ st("units", "MiR250 + UR12e + Robotiq 2F-85 mobile manipulator, with cabinet, ca
    PARTS + r"|teach pendant only|pendant only|controller only|control box only|robot cable|battery only|"
            r"charger only|top module only|shelf carrier only|cart only|hook only|gripper fingers?|finger tips|"
            r"pads only|\bfor ur\b|ur (compatible|mount|flange)|adapter plate|weld|palletiz|screwdriv|sanding|"
+           r"injection|moulding|molding|\bton\b|"
            r"dispens|cell\b|cart\b|\bon (a )?(cart|amr)\b",
    comp=dict(mir=r"mir|mobile industrial|otto|omron|ld-|amr|autonomous mobile|fetch",
              arm=r"\bur\s?\d|universal robots|crx|gofa|cobot|collaborative|techman|doosan|kinova|aubo",
@@ -333,7 +352,7 @@ st("floor_unit", "Third MiR250 unit for the floor, with a Nilfisk CFM 118EXP exp
    r"(explosion[- ]proof|atex|combustible dust|class ii.*div|haz\w*[- ]location).*(vacuum|vac\b)|"
    r"(vacuum|vac\b).*(explosion[- ]proof|atex|combustible dust)|ruwac|tiger-?vac|goodway.*ex",
    PARTS + r"|filter|hose only|bags?\b|wand|nozzle|attachment|floor scrubber|carpet|wet/dry(?!.*(explosion|atex))|"
-           r"shop-?vac|backpack|robot vacuum|roomba|pool",
+           r"shop-?vac|backpack|robot vacuum|roomba|pool|conveyor|transfer system|loader|vacuum lifter",
    comp=dict(vacuum=r"vac|nilfisk|ruwac|cfm", mir=r"mir|mobile"),
    note="the MiR is priced with the units; this key adds the explosion-proof vacuum")
 st("shuttle", "Kardex Shuttle XP 500, 9.15 m (30 ft), 2450 x 864 mm trays", 2, 210_000, "vertical", "vlm",
@@ -355,7 +374,8 @@ st("repowder", "AMAZEMET rePowder ultrasonic atomizer, with its optimizer and ch
    r"hermiga|blue power|\bAUG\s?\d{3,4}|arcast|atomizing systems|\bVIGA\b|\bEIGA\b|powder production (plant|system)|"
    r"metal powder (plant|system|machine)",
    PARTS + r"|paint|spray gun|humidifier|mist|fogger|nebuli[sz]er|perfume|airbrush|agricultur|pesticide|"
-           r"atomizer nozzle|ultrasonic cleaner|vape|e-?cig|coating|medical",
+           r"atomizer nozzle|ultrasonic cleaner|vape|e-?cig|coating|medical|niro|spray dr|rotary atomizer|blender|"
+           r"homogeni[sz]er|liquid processor|\bagro\b",
    note="lab-scale gas and ultrasonic atomizers; the twin's is ultrasonic")
 st("midi", "Aconity3D AconityMIDI+ laser powder-bed fusion", 1, 700_000, "vertical", "machine",
    r"aconity\s?midi", r"aconity",
@@ -422,3 +442,23 @@ def component(key, title):
         if re.search(pat, title, re.I):
             return name
     return ""
+
+
+def tensile_kn(title):
+    """A testing frame's capacity in kN from its title, or None."""
+    t = norm(title)
+    m = re.search(r"(\d+(?:[.,]\d+)?)\s?kN", t, re.I)
+    if m:
+        return float(m.group(1).replace(",", "."))
+    m = re.search(r"\bZ\s?(\d{3})\b", t)
+    if m:
+        return float(m.group(1))
+    if re.search(r"\bZ\s?2[,.]5\b|zwicki", t, re.I):
+        return 2.5
+    known = {r"59(42|43)": 1, r"5944": 2, r"3342|3343": 1, r"3345|5965|5966|5565|5566": 5, r"5567|5967|5867|3367": 30,
+             r"3369|5569|5969|4204|4502": 50, r"5982|3382|4482|4505|1125|8801|68FM-?100|4206": 100,
+             r"5585|4485|3384|5584": 150, r"5985|3386|8802|4486": 250, r"5989|1195": 600}
+    for pat, kn in known.items():
+        if re.search(r"\b(" + pat + r")(?!\d)", t):
+            return float(kn)
+    return None

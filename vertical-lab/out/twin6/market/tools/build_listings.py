@@ -134,6 +134,24 @@ def detail_fields(site, t):
         f["listed"] = g(r"^Date :\s*\n(.+)", t)
         f["availability"] = ("in stock" if re.search(r"^In Stock :\s*\nYes", t, re.M) else "")
         f["desc"] = g(r"Description([\s\S]{0,1200}?)\nReturn Policy", t)
+    elif site == "gmi":
+        m = re.search(r"\$([\d,]+(?:\.\d\d)?)", t)
+        if m:
+            f["price"] = (float(m.group(1).replace(",", "")), "USD")
+        f["warranty"] = g(r"([^\n]{0,40}GMI.s warranty[^\n]{0,80})", t)
+        f["location"] = "US (GMI)"
+    elif site == "conquer":
+        head = t.split("Related products")[0]
+        m = re.search(r"\n\$([\d,]+(?:\.\d\d)?)\n", head)
+        if m:
+            f["price"] = (float(m.group(1).replace(",", "")), "USD")
+        f["cond_label"] = g(r"Condition:?\s*\n?\s*(Refurbished|Used|New|As[- ]Is|Certified[^\n]{0,30})", head)
+        f["warranty"] = g(r"([^\n]{0,60}warranty[^\n]{0,80})", head)
+        f["availability"] = g(r"((?:In stock|Ready to ship|Out of stock|Available)[^\n]{0,80})", head)
+        f["location"] = "US (Conquer Scientific)"
+    elif site == "semtech":
+        f["warranty"] = "1-year warranty with installation (SEMTech's Hitachi page)" if re.search(r"1-year warranty", t) else ""
+        f["location"] = "US (SEMTech Solutions)"
     elif site == "fedequip":
         f["location"] = g(r"Location:?\s*\n?(.+)", t)
         f["desc"] = g(r"(Used [^\n]{0,600})", t)
@@ -160,7 +178,15 @@ COUNTRY_US = r"\b(USA|US|United States|[A-Z]{2}, USA|Alabama|Alaska|Arizona|Arka
              r"NY|NC|ND|OH|OK|OR|PA|RI|SC|SD|TN|TX|UT|VT|VA|WA|WV|WI|WY)\b)"
 
 
-def region(loc, dist_km):
+def region(loc, dist_km, cur=None, site=None):
+    """US, CA or overseas from the location; for a LabX listing not opened, from its currency (EUR or GBP: overseas)."""
+    r = _region(loc, dist_km)
+    if not r and site == "labx" and cur in ("EUR", "GBP", "CHF", "SEK"):
+        return "overseas"
+    return r
+
+
+def _region(loc, dist_km):
     if re.search(COUNTRY_US, loc or ""):
         return "US"
     if re.search(r"Canada|, (ON|QC|BC|AB|MB|SK|NS|NB)\b", loc or ""):
@@ -187,7 +213,8 @@ def main(out_dir):
         d = det.get(c["url"])
         f = detail_fields(c["site"], d["text"]) if d else {}
         amt, cur = (f["price"] if f.get("price") else (c["amount"], c["currency"]))
-        kind = f.get("price_kind") or (c["price_kind"] if amt else "on request")
+        kind = f.get("price_kind") or (c["price_kind"] if (amt and c["price_kind"] != "on request") else
+                                         "asking" if amt else "on request")
         if c["site"] in ("govdeals", "allsurplus", "publicsurplus") and amt:
             kind = "current bid"
         if c["site"] == "machineseeker" and f.get("auction") and amt:
@@ -209,7 +236,7 @@ def main(out_dir):
             source=c["site"], url=c["url"], price=amt, currency=cur or "", price_usd=usd(amt, cur), price_kind=kind,
             condition=cond, condition_evidence="; ".join(sorted(set(h for h in hits)))[:120],
             cond_label=(f.get("cond_label") or "")[:60], warranty=(f.get("warranty") or "")[:60],
-            year=f.get("year", ""), location=(loc or "")[:80], region=region(loc, dkm),
+            year=f.get("year", ""), location=(loc or "")[:80], region=region(loc, dkm, cur, c["site"]),
             dist_km=round(dkm) if dkm else "", seller_type=c["seller_type"], seller=(f.get("seller") or "")[:60],
             availability=(f.get("availability") or f.get("ship_txt") or "")[:160],
             delivery_terms="; ".join(x for x in [f.get("delivery", ""), ("dismantling & loading: " + f["dismantling"])
@@ -243,7 +270,7 @@ def main(out_dir):
             seen[k] = r["url"]
     for r in rows:
         r.setdefault("reason", "")
-        if r["source"] == "labx" and r["condition"] == "new_surplus":
+        if r["source"] == "labx" and (r["condition"] == "new_surplus" or re.search(r"\bNEW\b", r["title"])):
             r["keep"], r["reason"] = 0, "new equipment advertised on LabX, not a used unit"
         elif r["keep"] == 0 and r["dup_of"]:
             r["reason"] = "the same unit as dup_of"

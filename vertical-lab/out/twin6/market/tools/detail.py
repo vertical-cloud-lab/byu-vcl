@@ -35,7 +35,7 @@ def main():
         cands = [c for c in cands if c["station"] in stations]
     if sites:
         cands = [c for c in cands if c["site"] in sites]
-    cands.sort(key=lambda c: (ORDER[c["match"]], c["station"]))
+    cands.sort(key=lambda c: (ORDER[c["match"]], c["amount"] is None, c["station"]))
     per = {}
     todo = []
     for c in cands:
@@ -52,7 +52,7 @@ def main():
     for i, c in enumerate(todo):
         if blocked.get(c["site"], 0) >= 2:
             continue
-        r = B.visit(page, c["url"], gap=(6.0, 12.0), scrolls=(2, 4), label=f"detail|{c['site']}|{c['station']}")
+        r = B.visit(page, c["url"], gap=(5.0, 10.0), scrolls=(1, 3), label=f"detail|{c['site']}|{c['station']}")
         if r["blocked"] or (r["status"] and r["status"] >= 400 and r["status"] != 404):
             blocked[c["site"]] = blocked.get(c["site"], 0) + 1
         try:

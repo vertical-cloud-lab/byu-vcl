@@ -1,12 +1,23 @@
-source,url,kind,access,checked_utc,note
-eBay,https://www.ebay.com/,marketplace (active and sold),blocked,2026-11-27T17:52Z,"HTTP 403 'Error Page | eBay' (""SORRY Something went wrong on our end"") on the home page and on a search, from the first request; not retried around"
-BidSpotter,https://www.bidspotter.com/,auction aggregator,challenged,2026-11-27T17:55Z,"HTTP 405 'Let's confirm you are human' on a search page; not solved"
-EquipNet,https://www.equipnet.com/,auction and dealer,challenged,2026-11-27T17:58Z,"a search page loaded once (HTTP 200, no results parsed); the home page then answered with Cloudflare 'Just a moment...' (HTTP 403); not solved"
-Surplus Record,https://www.surplusrecord.com/,machinery listings,challenged,2026-11-27T17:56Z,"Cloudflare 'Just a moment...' (HTTP 403) on a search page; not solved"
-LabX,https://www.labx.com/,lab-equipment marketplace (dealers),ok,2026-11-27T17:59Z,search-a?sw=<query>
-Machinio,https://www.machinio.com/,machinery and equipment aggregator (dealers),ok,2026-11-27T17:59Z,listings?search=<query>; shows each listing's distance from the browser's location
-GovDeals,https://www.govdeals.com/,government and university surplus auctions,ok,2026-11-27T17:55Z,search?kWord=<query>
-AllSurplus,https://www.allsurplus.com/,commercial surplus auctions (same platform as GovDeals),ok,2026-11-27T18:00Z,search?kWord=<query>
-Public Surplus,https://www.publicsurplus.com/,government and university surplus auctions,ok,2026-11-27T17:56Z,browse/search?posting=y&keyWord=<query>
-Federal Equipment Company,https://www.fedequip.com/,used-equipment dealer,ok,2026-11-27T17:59Z,ssearch?search=<query>
-BioSurplus,https://www.biosurplus.com/,used lab-equipment dealer,ok,2026-11-27T17:59Z,"?s=<query>; pages load, no listing cards parsed yet"
+source,key,url,kind,access,checked_utc,pages_read,note
+eBay,ebay,https://www.ebay.com/,marketplace (active and sold),blocked,2026-11-27T17:52Z,2,"HTTP 403 'Error Page | eBay' (""SORRY Something went wrong on our end"") on the home page and on a search, from the first request; not retried around"
+BidSpotter,bidspotter,https://www.bidspotter.com/,auction aggregator,challenged,2026-11-27T17:55Z,1,HTTP 405 'Let's confirm you are human' on a search page; not solved
+EquipNet,equipnet,https://www.equipnet.com/,auction and dealer,challenged,2026-11-27T17:58Z,2,"a search page loaded once (HTTP 200, no results parsed); the home page then answered with Cloudflare 'Just a moment...' (HTTP 403); not solved"
+Surplus Record,surplusrecord,https://www.surplusrecord.com/,machinery listings,challenged,2026-11-27T17:56Z,1,Cloudflare 'Just a moment...' (HTTP 403) on a search page; not solved
+LabX,labx,https://www.labx.com/,lab-equipment marketplace (dealers),ok,2026-11-27T17:59Z,110,search-a?sw=<query>
+Machinio,machinio,https://www.machinio.com/,machinery and equipment aggregator (dealers),ok,2026-11-27T17:59Z,88,listings?search=<query>; shows each listing's distance from the browser's location
+GovDeals,govdeals,https://www.govdeals.com/,government and university surplus auctions,ok,2026-11-27T17:55Z,54,search?kWord=<query>
+AllSurplus,allsurplus,https://www.allsurplus.com/,commercial surplus auctions (same platform as GovDeals),ok,2026-11-27T18:00Z,69,search?kWord=<query>
+Public Surplus,publicsurplus,https://www.publicsurplus.com/,government and university surplus auctions,ok,2026-11-27T17:56Z,42,browse/search?posting=y&keyWord=<query>
+Federal Equipment Company,fedequip,https://www.fedequip.com/,used-equipment dealer,ok,2026-11-27T17:59Z,8,ssearch?search=<query>
+BioSurplus,biosurplus,https://www.biosurplus.com/,used lab-equipment dealer,ok,2026-11-27T17:59Z,3,"?s=<query>; pages load, no listing cards parsed yet"
+Machineseeker,machineseeker,https://www.machineseeker.com/,"machinery marketplace (dealers and auctions, mostly Europe)",ok,2026-11-27T18:08Z,116,"main/search/index?search-word=<query>; shows condition, functionality, distance in km"
+Exapro,exapro,https://www.exapro.com/,used-machinery broker (Europe),ok,2026-11-27T18:08Z,74,product-search/?text=<query>; most prices on request
+DOTmed,dotmed,https://www.dotmed.com/,medical and lab equipment marketplace,ok,2026-11-27T18:08Z,34,"listings/search_equipment.html?key=<query>; mostly medical, searched for lab instruments only"
+Marshall Scientific,marshall,https://www.marshallscientific.com/,used lab-equipment dealer and refurbisher,ok,2026-11-27T18:08Z,36,search?q=<query>
+Conquer Scientific,conquer,https://conquerscientific.com/,used and refurbished analytical instruments dealer,ok,2026-11-27T18:47Z,15,?s=<query>&post_type=product
+GMI (re-certified equipment),gmi,https://www.gmi-inc.com/,refurbisher of analytical instruments,ok,2026-11-27T18:46Z,7,ICP-MS category page lists re-certified Agilent ICP-MS with prices
+Robots Done Right,rdr,https://robotsdoneright.com/,used industrial robot dealer,ok,2026-11-27T18:46Z,8,Universal Robots inventory page
+SEMTech Solutions,semtech,https://www.semtechsolutions.com/,SEM refurbisher,ok,2026-11-27T18:46Z,9,"refurbished floor-standing Hitachi, JEOL and Zeiss SEMs; prices on request; each with installation and a 1-year warranty"
+Haas Automation,haas,https://www.haascnc.com/,maker (new price and stated lead),ok,2026-11-27T18:25Z,1,"ST-10 page: 'starting at $64,995', '16 available, 1 week, built to order'"
+Makera,makera,https://www.makera.com/,maker (new price and stated lead),ok,2026-11-27T18:26Z,1,"Carvera: 'in stock in the US warehouse, ships within 7 business days'"
+GSA Advantage,gsa,https://www.gsaadvantage.gov/,federal catalogue (looked for stated delivery days),ok,2026-11-27T18:04Z,3,no listing for the twin's instruments under the names tried

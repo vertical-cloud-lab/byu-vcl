@@ -93,6 +93,9 @@ REFURB_SRC = ("assumed by class: 3 weeks and 10 % of new for bench tools, 6-8 we
 # A real used market: at least MARKET_MIN listings that fit the role, at least MARKET_NA_MIN of them in North
 # America, and at least one with a price.
 MARKET_MIN, MARKET_NA_MIN = 5, 2
+PO_W = 2.0                    # BYU's purchase order, round4.PO_W: before the lead, used or new
+LFL_MIN = 3                   # priced like-for-like listings (the twin's model or its maker's line) needed to price on
+                              # those alone; otherwise every listing that fits the role is used
 LEAD_SIGMA_MIN = 0.25         # round 4's new-item spread, the floor for a used one
 
 
@@ -166,14 +169,30 @@ def summarize(listings, new):
         px = [_f(r["price_usd"]) for r in priced]
         pxf = [_f(r["price_usd"]) for r in priced if r["match"] in ("exact", "family")]
         med = _q(px, 0.5)
-        delivered = [_f(r["price_usd"]) + freight(wt, r.get("region"), _f(r.get("dist_km"))) for r in priced]
+        lfl = [r for r in priced if r["match"] in ("exact", "family")]
+        price_basis, basis_rows = "", []
+        if priced:
+            price_basis, basis_rows = "all that fit", priced
+            for name, cand in (("like-for-like in North America", [r for r in lfl if r.get("region") in ("US", "CA")]),
+                               ("like-for-like", lfl),
+                               ("North America", [r for r in priced if r.get("region") in ("US", "CA")])):
+                if len(cand) >= LFL_MIN:
+                    price_basis, basis_rows = name, cand
+                    break
+            price_basis = f"{price_basis} ({len(basis_rows)} priced)"
+        med_basis = _q([_f(r["price_usd"]) for r in basis_rows], 0.5) if basis_rows else None
+        delivered = [_f(r["price_usd"]) + freight(wt, r.get("region"), _f(r.get("dist_km"))) for r in basis_rows]
         cond = Counter(r["condition"] for r in rows)
         nfit = len(rows)
-        pf = (sum(P_FAULT.get(r["condition"], 0.3) for r in rows) / nfit) if nfit else None
+        buy = na if len(na) >= MARKET_NA_MIN else rows      # where the lab would buy: at home if it can
+        pf = (sum(P_FAULT.get(r["condition"], 0.3) for r in buy) / len(buy)) if buy else None
         # best: the lowest-risk listing in North America at no more than 1.5 x the median price (or any, if unpriced)
-        best = [r for r in na if not med or not _f(r.get("price_usd")) or _f(r["price_usd"]) <= 1.5 * med]
+        best = [r for r in (na if len(na) >= MARKET_NA_MIN else rows)
+                if not med or not _f(r.get("price_usd")) or _f(r["price_usd"]) <= 1.5 * med]
         pf_best = min((P_FAULT.get(r["condition"], 0.3) for r in best), default=None)
-        leads = [lead_of(r, wt) for r in rows]
+        leads = [lead_of(r, wt) for r in buy]
+        ships = [LEAD["handling"][seller_kind(r)] + LEAD["transit"]["overseas" if r.get("region") == "overseas" else "NA"]
+                 for r in buy]
         lead_w = _q(leads, 0.5) if leads else None
         lead_sigma = None
         if len(leads) >= 3:
@@ -190,9 +209,16 @@ def summarize(listings, new):
         extra = EXTRA_COM[wt] + (EXTRA_COM_LPBF_DED - EXTRA_COM[wt] if key in ("midi", "mxlab") else 0.0)
         market = ("yes" if nfit >= MARKET_MIN and len(na) >= MARKET_NA_MIN and priced else
                   "thin" if nfit >= 1 else "none")
+        lrows = [r for r in rows if r["match"] in ("exact", "family")]
+        lna = [r for r in lrows if r.get("region") in ("US", "CA")]
+        market_lfl = ("yes" if len(lrows) >= MARKET_MIN and len(lna) >= MARKET_NA_MIN and lfl else
+                      "thin" if lrows else "none")
         if n.get("used_market") == "no":
             market = "n/a (new only)"
         dmed = _q(delivered, 0.5)
+        tl, ti, tc = _f(n.get("twin_lead_w")), _f(n.get("twin_install_w")) or 0.0, _f(n.get("twin_com_w")) or 0.0
+        otw = (PO_W + lead_w + (pf or 0) * rw + ti + tc + extra) if lead_w is not None else None
+        otw_new = (tl + ti + tc) if tl else None
         rec = dict(
             lab=n.get("lab", ""), station=key, component=comp, item=n["item"], qty=int(n["qty"]), wt=wt,
             new_usd_each=new_usd,
@@ -201,19 +227,26 @@ def summarize(listings, new):
             n_listings=nfit, n_north_america=len(na), n_priced=len(priced), n_current_bids=len(bids),
             n_exact=sum(r["match"] == "exact" for r in rows), n_family=sum(r["match"] == "family" for r in rows),
             n_substitute=sum(r["match"] == "sub" for r in rows),
-            median_used_usd=round(med) if med else None,
+            median_used_usd=round(med) if med else None, median_basis_usd=round(med_basis) if med_basis else None,
+            bought_from=("North America" if buy is na and na else "anywhere") if buy else "",
             median_exact_family_usd=round(_q(pxf, 0.5)) if pxf else None, n_priced_exact_family=len(pxf),
             p25_used_usd=round(_q(px, 0.25)) if px else None,
             p75_used_usd=round(_q(px, 0.75)) if px else None, min_used_usd=round(min(px)) if px else None,
             max_used_usd=round(max(px)) if px else None,
             median_bid_usd=round(_q([_f(r["price_usd"]) for r in bids], 0.5)) if bids else None,
-            discount_vs_new=round(1 - med / new_usd, 3) if (med and new_usd) else None,
+            discount_vs_new=round(1 - med_basis / new_usd, 3) if (med_basis and new_usd) else None,
+            discount_vs_new_all=round(1 - med / new_usd, 3) if (med and new_usd) else None,
             freight_rigging_usd=freight(wt, "NA", None), median_delivered_usd=round(dmed) if dmed else None,
-            price_frac=round(dmed / new_usd, 3) if (dmed and new_usd) else None,
+            price_frac=round(dmed / new_usd, 3) if (dmed and new_usd) else None, price_basis=price_basis,
+            market_like_for_like=market_lfl if n.get("used_market") != "no" else "n/a (new only)",
             lead_w=round(lead_w, 2) if lead_w is not None else None,
             lead_sigma=round(lead_sigma, 3) if lead_sigma is not None else None,
             p_fault=round(pf, 3) if pf is not None else None, p_fault_best=pf_best,
             refurb_w=rw, refurb_sigma=REFURB_SIGMA, refurb_frac=rf, refurb_source=rf_src, extra_com_w=extra,
+            ship_w=round(_q(ships, 0.5), 2) if ships else None, rigging_w=LEAD["rigging"][wt],
+            refurb_expected_w=round((pf or 0) * rw, 2) if pf is not None else None, checkout_w=extra,
+            order_to_working_used_w=round(otw, 1) if otw is not None else None,
+            order_to_working_new_w=round(otw_new, 1) if otw_new is not None else None,
             share_as_is=round((cond["as_is"] + cond["as_is_tested"]) / nfit, 3) if nfit else None,
             share_used=round(cond["used"] / nfit, 3) if nfit else None,
             share_tested=round(cond["tested"] / nfit, 3) if nfit else None,
@@ -259,6 +292,9 @@ def station_rows(comp_rows, new):
                   market=("yes (" + ", ".join(r["component"] for r in used) + ")") if used else
                   ("thin" if any(r["n_listings"] for r in rs) else "none"),
                   used_ok=bool(used), share_of_new_bought_used=round(wsum / tot_new, 3) if used else 0.0,
+                  order_to_working_used_w=max((r["order_to_working_used_w"] for r in used
+                                               if r.get("order_to_working_used_w") is not None), default=None),
+                  order_to_working_new_w=rs[0].get("order_to_working_new_w"),
                   note=("components: " + "; ".join(f"{r['component']} {r['market']}" for r in rs) +
                         ("; the parts bought new still set the station's lead" if used and slow_new else "")))
         res[k] = r0
@@ -266,11 +302,11 @@ def station_rows(comp_rows, new):
 
 
 COLS = ["lab", "station", "component", "item", "qty", "new_usd_each", "new_lead_w_vendor", "new_lead_text", "twin_lead_w",
-        "market", "used_ok", "n_listings", "n_north_america", "n_priced", "n_current_bids", "n_exact", "n_family",
-        "n_substitute", "median_used_usd", "median_exact_family_usd", "n_priced_exact_family", "p25_used_usd", "p75_used_usd", "min_used_usd", "max_used_usd",
-        "median_bid_usd", "discount_vs_new", "freight_rigging_usd", "median_delivered_usd", "price_frac", "lead_w",
-        "lead_sigma", "p_fault", "p_fault_best", "refurb_w", "refurb_sigma", "refurb_frac", "refurb_source",
-        "extra_com_w", "share_as_is", "share_used", "share_tested", "share_refurb_or_warranty", "share_new_surplus",
+        "market", "market_like_for_like", "used_ok", "n_listings", "n_north_america", "n_priced", "n_current_bids", "n_exact", "n_family",
+        "n_substitute", "median_used_usd", "median_exact_family_usd", "n_priced_exact_family", "price_basis", "median_basis_usd", "bought_from", "p25_used_usd", "p75_used_usd", "min_used_usd", "max_used_usd",
+        "median_bid_usd", "discount_vs_new", "discount_vs_new_all", "freight_rigging_usd", "median_delivered_usd", "price_frac", "lead_w",
+        "lead_sigma", "ship_w", "rigging_w", "refurb_expected_w", "checkout_w", "p_fault", "p_fault_best", "refurb_w", "refurb_sigma", "refurb_frac", "refurb_source",
+        "extra_com_w", "order_to_working_used_w", "order_to_working_new_w", "share_as_is", "share_used", "share_tested", "share_refurb_or_warranty", "share_new_surplus",
         "share_of_new_bought_used", "wt", "new_source", "note"]
 
 

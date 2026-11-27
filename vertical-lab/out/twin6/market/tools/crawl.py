@@ -20,6 +20,10 @@ SITES = {
     "exapro": ("https://www.exapro.com/product-search/?text={q}", 'a[href*="-p"][href*="exapro.com/"]'),
     "dotmed": ("https://www.dotmed.com/listings/search_equipment.html?key={q}", 'a[href*="/listing/"]'),
     "marshall": ("https://www.marshallscientific.com/search?q={q}", 'a[href*="/products/"]'),
+    "conquer": ("https://conquerscientific.com/?s={q}&post_type=product", 'a[href*="/product/"]'),
+    "gmi": ("{url}", 'a[href*="gmi-inc.com/product/"]'),
+    "rdr": ("{url}", 'a[href*="/inventory/universal-robots/"]'),
+    "semtech": ("{url}", 'a[href*="semtechsolutions.com/"][href*="/sem"], a[href*="semtechsolutions.com/"][href*="refurbished"]'),
 }
 
 def main():
@@ -61,7 +65,7 @@ def main():
                 continue
             st, q, lab = queues[s].popleft()
             tmpl, sel = SITES[s]
-            url = tmpl.format(q=quote_plus(q))
+            url = q if tmpl == "{url}" else tmpl.format(q=quote_plus(q))
             r = B.visit(page, url, label=lab, gap=(4.0, 9.0))
             if r["blocked"] or (r["status"] and r["status"] >= 400):
                 strikes[s] += 1

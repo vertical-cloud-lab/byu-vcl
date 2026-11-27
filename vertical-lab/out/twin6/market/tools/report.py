@@ -55,20 +55,24 @@ def main(d):
                "North America, one priced; *thin* = fewer; *none* = nothing found. Prices are asking prices in USD; "
                "*like-for-like* is the median over the twin's own model and its maker's line only. `price_frac` "
                "is the median used price plus freight and rigging, over the twin's new price.\n")
-    out.append("| Key | Lab | In `USED_OK` | Market | Listings (N. America) | Priced | Median used (like-for-like) "
-               "| Discount vs new | `price_frac` | `lead_w` | `p_fault` (best) | `extra_com_w` |")
-    out.append("| --- | --- | :-: | --- | --: | --: | --: | --: | --: | --: | --: | --: |")
+    out.append("| Key | Lab | In `USED_OK` | Market | Listings (N. America) | Priced | Median used, all | Priced on "
+               "| Discount vs new | `price_frac` | `lead_w` | `p_fault` (best) | `extra_com_w` | Order to working, used / new (weeks) |")
+    out.append("| --- | --- | :-: | --- | --: | --: | --: | --- | --: | --: | --: | --: | --: | --: |")
     order = {r["station"]: i for i, r in enumerate(N)}
     for r in sorted(st_rows, key=lambda r: order.get(r["station"], 999)):
         k = r["station"]
         med = money(r["median_used_usd"])
-        mef = money(r.get("median_exact_family_usd"))
-        medtxt = (med + (f" ({mef})" if mef and mef != med else "")) if med else (f"({mef})" if mef else "")
+        basis = r.get("price_basis") or ""
+        btxt = (f"{basis}: {money(r.get('median_basis_usd'))}" if r.get("median_basis_usd") else
+                ("components (below)" if r["component"] == "(station)" and r.get("price_frac") else ""))
+        otw = (f"{num(r.get('order_to_working_used_w'), 1)} / {num(r.get('order_to_working_new_w'), 1)}"
+               if r.get("order_to_working_used_w") else (f"– / {num(r.get('order_to_working_new_w'), 1)}"
+                                                          if r.get("order_to_working_new_w") else ""))
         out.append(f"| `{k}` | {r['lab']} | {'yes' if k in USED_OK else ''} | {r['market']} | "
-                   f"{r['n_listings'] or 0} ({r['n_north_america'] or 0}) | {r['n_priced'] or 0} | {medtxt} | "
+                   f"{r['n_listings'] or 0} ({r['n_north_america'] or 0}) | {r['n_priced'] or 0} | {med} | {btxt} | "
                    f"{pct(r['discount_vs_new'])} | {num(r['price_frac'])} | {num(r['lead_w'], 1)} | "
                    f"{num(r['p_fault'])}{(' (' + num(r['p_fault_best']) + ')') if r.get('p_fault_best') else ''} | "
-                   f"{num(r['extra_com_w'], 1)} |")
+                   f"{num(r['extra_com_w'], 1)} | {otw} |")
     out.append("")
     if comp_rows:
         out.append("### Stations that are several machines\n")
@@ -78,7 +82,8 @@ def main(d):
             for r in comp_rows[k]:
                 out.append(f"| `{k}` | {r['component']} | {money(r['new_usd_each'])} | {r['market']} | "
                            f"{r['n_listings'] or 0} ({r['n_north_america'] or 0}) | {r['n_priced'] or 0} | "
-                           f"{money(r['median_used_usd'])} | {num(r['price_frac'])} |")
+                           f"{(r.get('price_basis') or '') + (': ' + money(r.get('median_basis_usd')) if r.get('median_basis_usd') else '')} | "
+                           f"{num(r['price_frac'])} | {num(r['lead_w'], 1)} |")
         out.append("")
     out.append("## New price and the vendor's stated lead time\n")
     out.append("Most instrument makers quote lead times only on request; the leads below are the ones a vendor or "

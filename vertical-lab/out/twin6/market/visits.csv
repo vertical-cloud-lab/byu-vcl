@@ -1,0 +1,687 @@
+t_utc,kind,site,url,status,blocked,error,title
+2026-11-27T17:52:38Z,probe or vendor page,ebay,https://www.ebay.com/,403,,,Error Page | eBay
+2026-11-27T17:52:50Z,probe or vendor page,ebay,https://www.ebay.com/sch/i.html?_nkw=hitachi+tm3030&_sacat=0&_ipg=60,403,,,Error Page | eBay
+2026-11-27T17:53:33Z,probe or vendor page,labx,https://www.labx.com/search?q=tabletop+sem,200,,,"Search for null on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX.com"
+2026-11-27T17:53:49Z,probe or vendor page,machinio,https://www.machinio.com/search?q=wire+edm,404,,,The page you were looking for doesn't exist (404)
+2026-11-27T17:54:06Z,probe or vendor page,equipnet,https://www.equipnet.com/search/?q=scanning+electron+microscope,200,,,Search Result For scanning electron microscope
+2026-11-27T17:54:25Z,probe or vendor page,bidspotter,https://www.bidspotter.com/en-us/search?searchTerm=instron,405,,,Let's confirm you are human
+2026-11-27T17:54:51Z,probe or vendor page,govdeals,https://www.govdeals.com/en/search?kWord=microscope,200,,,microscope | GovDeals
+2026-11-27T17:55:10Z,probe or vendor page,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=furnace,200,,,Public Surplus: Search an auction
+2026-11-27T17:55:26Z,probe or vendor page,fedequip,https://www.fedequip.com/search?q=hardness+tester,404,,,Page Not Found | Federal Equipment Company
+2026-11-27T17:55:48Z,probe or vendor page,biosurplus,https://www.biosurplus.com/?s=mastersizer&post_type=product,200,,,Search Results for “mastersizer” – BioSurplus
+2026-11-27T17:56:14Z,probe or vendor page,surplusrecord,https://www.surplusrecord.com/search/?q=wire+edm,403,,,Just a moment...
+2026-11-27T17:56:44Z,probe or vendor page,labx,https://www.labx.com/,200,,,"LabX.com Shop for New, Used and Refurbished Lab Equipment, Supplies and Services"
+2026-11-27T17:57:02Z,probe or vendor page,machinio,https://www.machinio.com/,200,,,"Used construction equipment, agricultural equipment and more | Machinio"
+2026-11-27T17:57:14Z,probe or vendor page,equipnet,https://www.equipnet.com/,403,cloudflare,,Just a moment...
+2026-11-27T17:57:30Z,probe or vendor page,fedequip,https://www.fedequip.com/,200,,,Used Process & Packaging Equipment | Federal Equipment Company
+2026-11-27T17:57:51Z,probe or vendor page,biosurplus,https://www.biosurplus.com/,200,,,"BioSurplus – Buy, Sell and Auction Used Life Sciences Equipment"
+2026-11-27T17:59:05Z,probe or vendor page,labx,https://www.labx.com/search-a?sw=hitachi+tm3030,200,challenge_iframe,,"Search for hitachi tm3030 on LabX.com | New, Used and Refurbished Laboratory Equipment | L"
+2026-11-27T17:59:25Z,probe or vendor page,machinio,https://www.machinio.com/listings?search=fanuc+robocut,200,,,New & Used Fanuc Robocut for sale. Fanuc equipment & more | Machinio
+2026-11-27T17:59:42Z,probe or vendor page,fedequip,https://fedequip.com/ssearch?search=hardness+tester,200,,,Search Used Industrial Equipment | Federal Equipment Company
+2026-11-27T17:59:57Z,probe or vendor page,biosurplus,https://www.biosurplus.com/?s=mastersizer,200,,,Search Results for “mastersizer” – BioSurplus
+2026-11-27T18:00:16Z,probe or vendor page,allsurplus,https://www.allsurplus.com/en/search?kWord=instron,200,,,instron | AllSurplus
+2026-11-27T18:01:37Z,excluded (two crawlers on one tab),labx,https://www.labx.com/search-a?sw=hitachi+tm4000,200,,,"Search for hitachi tm4000 on LabX.com | New, Used and Refurbished Laboratory Equipment | L"
+2026-11-27T18:01:59Z,excluded (two crawlers on one tab),publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=scanning+electron+microscope,200,,,New & Used Hitachi TM4000 for sale. Deutz-Fahr equipment & more | Machinio
+2026-11-27T18:01:59Z,excluded (two crawlers on one tab),machinio,https://www.machinio.com/listings?search=hitachi+tm4000,200,,,New & Used Hitachi TM4000 for sale. Deutz-Fahr equipment & more | Machinio
+2026-11-27T18:02:17Z,excluded (two crawlers on one tab),fedequip,https://fedequip.com/ssearch?search=mastersizer+3000,200,,,Search Used Industrial Equipment | Federal Equipment Company
+2026-11-27T18:02:20Z,excluded (two crawlers on one tab),allsurplus,https://www.allsurplus.com/en/search?kWord=scanning+electron+microscope,200,,,Search Used Industrial Equipment | Federal Equipment Company
+2026-11-27T18:02:44Z,excluded (two crawlers on one tab),machinio,https://www.machinio.com/listings?search=hitachi+tm4000,200,,,scanning electron microscope | GovDeals
+2026-11-27T18:02:48Z,excluded (two crawlers on one tab),govdeals,https://www.govdeals.com/en/search?kWord=scanning+electron+microscope,200,,,scanning electron microscope | GovDeals
+2026-11-27T18:03:07Z,excluded (two crawlers on one tab),allsurplus,https://www.allsurplus.com/en/search?kWord=scanning+electron+microscope,200,,,eds detector | AllSurplus
+2026-11-27T18:03:24Z,excluded (two crawlers on one tab),govdeals,https://www.govdeals.com/en/search?kWord=scanning+electron+microscope,200,,,scanning electron microscope | GovDeals
+2026-11-27T18:03:38Z,excluded (two crawlers on one tab),publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=ebsd,200,,,Public Surplus: Search an auction
+2026-11-27T18:03:52Z,search,machinio,https://www.machinio.com/listings?search=hitachi+tm3030,200,,,New & Used Hitachi TM3030 for sale. Hitachi equipment & more | Machinio
+2026-11-27T18:04:11Z,probe or vendor page,gsa,https://www.gsaadvantage.gov/advantage/ws/search/advantage_search?q=0:8tm4000plus&db=0&searchType=0,404,,,Search Results
+2026-11-27T18:04:31Z,probe or vendor page,gsa,https://www.gsaadvantage.gov/advantage/ws/search/advantage_search?q=0:8miniflex&db=0&searchType=0,404,,,Search Results
+2026-11-27T18:04:42Z,probe or vendor page,gsa,https://www.gsaadvantage.gov/advantage/ws/search/advantage_search?q=0:8mastersizer%203000&db=0&searchType=0,404,,,Search Results
+2026-11-27T18:04:49Z,search,labx,https://www.labx.com/search-a?sw=hitachi+tm3030,200,,,"Search for hitachi tm3030 on LabX.com | New, Used and Refurbished Laboratory Equipment | L"
+2026-11-27T18:05:05Z,search,fedequip,https://fedequip.com/ssearch?search=mastersizer+2000,200,,,Search Used Industrial Equipment | Federal Equipment Company
+2026-11-27T18:05:20Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=eds+detector,200,,,eds detector | AllSurplus
+2026-11-27T18:05:42Z,search,govdeals,https://www.govdeals.com/en/search?kWord=eds+detector,200,,,eds detector | GovDeals
+2026-11-27T18:06:22Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=scanning+electron+microscope,200,,,Public Surplus: Search an auction
+2026-11-27T18:06:39Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=scanning+electron+microscope,200,,,scanning electron microscope | AllSurplus
+2026-11-27T18:06:58Z,probe or vendor page,machineseeker,https://www.machineseeker.com/,200,,,"Machineseeker - 200,000 new and used machines online"
+2026-11-27T18:07:01Z,search,machinio,https://www.machinio.com/listings?search=hitachi+tm4000,200,,,New & Used Hitachi TM4000 for sale. Deutz-Fahr equipment & more | Machinio
+2026-11-27T18:07:17Z,probe or vendor page,exapro,https://www.exapro.com/,200,,,"Used machinery for sale, buy and sell industrial equipment - Exapro"
+2026-11-27T18:07:33Z,probe or vendor page,equipt,https://www.equipt.com/,200,,,"Equipt Marketplace | 1.1M+ Listings | Industrial, Commercial & Heavy Equipment"
+2026-11-27T18:07:52Z,probe or vendor page,cae,https://caeonline.com/,200,,,Marketplace of Used Industrial Equipment and Machinery for Sale > CAE
+2026-11-27T18:08:08Z,probe or vendor page,dotmed,https://www.dotmed.com/,200,,,"New and Used Medical Equipment, Hospital Equipment, Medical Instrument Auctions, For Sale,"
+2026-11-27T18:08:11Z,search,govdeals,https://www.govdeals.com/en/search?kWord=scanning+electron+microscope,200,,,scanning electron microscope | GovDeals
+2026-11-27T18:08:28Z,probe or vendor page,rdr,https://robotsdoneright.com/,200,,,Robots Done Right - Used Robot Sales
+2026-11-27T18:08:45Z,probe or vendor page,marshall,https://www.marshallscientific.com/,200,,,Marshall Scientific | Your Partner for Quality Laboratory Equipment
+2026-11-27T18:08:52Z,search,labx,https://www.labx.com/search-a?sw=hitachi+tm4000,200,,,"Search for hitachi tm4000 on LabX.com | New, Used and Refurbished Laboratory Equipment | L"
+2026-11-27T18:08:53Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=ebsd,200,,,ebsd | AllSurplus
+2026-11-27T18:09:11Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=ebsd,200,,,Public Surplus: Search an auction
+2026-11-27T18:09:37Z,probe or vendor page,machineseeker,https://www.machineseeker.com/main/search/index?search-word=kardex+shuttle+xp,200,,,Buy used Kardex Shuttle Xp on Machineseeker
+2026-11-27T18:09:57Z,probe or vendor page,exapro,https://www.exapro.com/product-search/?text=eos+m+290,200,,,Best used machines for eos m 290 (1)
+2026-11-27T18:10:18Z,probe or vendor page,dotmed,https://www.dotmed.com/listings/search_equipment.html?key=phenom,200,,,phenom Search - Listings
+2026-11-27T18:10:27Z,search,govdeals,https://www.govdeals.com/en/search?kWord=ebsd,200,,,ebsd | GovDeals
+2026-11-27T18:10:38Z,probe or vendor page,marshall,https://www.marshallscientific.com/search?q=mastersizer,200,,,"Search: 2 results found for ""mastersizer"" – Marshall Scientific"
+2026-11-27T18:10:40Z,search,fedequip,https://fedequip.com/ssearch?search=mastersizer+3000,200,,,Search Used Industrial Equipment | Federal Equipment Company
+2026-11-27T18:10:50Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=rigaku+miniflex,200,,,rigaku miniflex | AllSurplus
+2026-11-27T18:11:04Z,search,dotmed,https://www.dotmed.com/listings/search_equipment.html?key=hitachi+tm3030,200,,,hitachi tm3030 Search - Listings
+2026-11-27T18:11:25Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=fanuc+robocut,200,,,Buy used Fanuc Robocut on Machineseeker
+2026-11-27T18:11:39Z,search,marshall,https://www.marshallscientific.com/search?q=instron,200,,,"Search: 2 results found for ""instron"" – Marshall Scientific"
+2026-11-27T18:11:55Z,search,exapro,https://www.exapro.com/product-search/?text=fanuc+robocut,200,,,Best used machines for fanuc robocut (15)
+2026-11-27T18:12:15Z,search,marshall,https://www.marshallscientific.com/search?q=nabertherm,200,,,"Search: 5 results found for ""nabertherm"" – Marshall Scientific"
+2026-11-27T18:12:32Z,search,dotmed,https://www.dotmed.com/listings/search_equipment.html?key=phenom,200,,,phenom Search - Listings
+2026-11-27T18:12:47Z,search,labx,https://www.labx.com/search-a?sw=phenom+prox,200,,,"Search for phenom prox on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX"
+2026-11-27T18:12:52Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=wire+edm,200,,,Buy used Wire Edm on Machineseeker
+2026-11-27T18:13:12Z,search,exapro,https://www.exapro.com/product-search/?text=wire+edm,200,,,Best used machines for wire edm (263)
+2026-11-27T18:13:33Z,search,dotmed,https://www.dotmed.com/listings/search_equipment.html?key=scanning+electron+microscope,200,,,scanning electron microscope Search - Listings
+2026-11-27T18:13:48Z,search,exapro,https://www.exapro.com/product-search/?text=haas+st-10,200,,,Best used machines for haas st-10 (11)
+2026-11-27T18:13:54Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=rigaku+miniflex,200,,,Public Surplus: Search an auction
+2026-11-27T18:14:06Z,search,marshall,https://www.marshallscientific.com/search?q=box+furnace,200,,,"Search: 1 result found for ""box furnace"" – Marshall Scientific"
+2026-11-27T18:14:21Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=haas+st-10,200,,,Buy used Haas St-10 on Machineseeker
+2026-11-27T18:14:40Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=universal+robots+ur10e,200,,,Buy used Universal Robots Ur10E on Machineseeker
+2026-11-27T18:14:55Z,search,exapro,https://www.exapro.com/product-search/?text=universal+robots+ur10e,200,,,Best used machines for universal robots ur10e (5)
+2026-11-27T18:15:05Z,search,fedequip,https://fedequip.com/ssearch?search=agilent+7900,200,,,Search Used Industrial Equipment | Federal Equipment Company
+2026-11-27T18:15:11Z,search,dotmed,https://www.dotmed.com/listings/search_equipment.html?key=x-ray+diffractometer,200,,,x-ray diffractometer Search - Listings
+2026-11-27T18:15:28Z,search,marshall,https://www.marshallscientific.com/search?q=hitachi+tm3030,200,,,"Search: 0 results found for ""hitachi tm3030"" – Marshall Scientific"
+2026-11-27T18:15:32Z,search,govdeals,https://www.govdeals.com/en/search?kWord=rigaku+miniflex,200,,,rigaku miniflex | GovDeals
+2026-11-27T18:15:45Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=mir250,200,,,Buy used Mir250 on Machineseeker
+2026-11-27T18:16:03Z,search,exapro,https://www.exapro.com/product-search/?text=mir250,200,,,Best used machines for mir (114)
+2026-11-27T18:16:20Z,search,dotmed,https://www.dotmed.com/listings/search_equipment.html?key=miniflex,200,,,miniflex Search - Listings
+2026-11-27T18:16:35Z,search,marshall,https://www.marshallscientific.com/search?q=phenom,200,,,"Search: 0 results found for ""phenom"" – Marshall Scientific"
+2026-11-27T18:16:54Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=ur12e,200,,,Buy used Ur12E on Machineseeker
+2026-11-27T18:17:46Z,search,dotmed,https://www.dotmed.com/listings/search_equipment.html?key=xrf+spectrometer,200,,,xrf spectrometer Search - Listings
+2026-11-27T18:18:07Z,probe or vendor page,labx,https://www.labx.com/item/hitachi-tm1000-tabletop-sem/12345,404,,,404 - Whoops We Can't Find That Page | LabX.com
+2026-11-27T18:18:08Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=mir100,200,,,Buy used Mir100 on Machineseeker
+2026-11-27T18:18:22Z,probe or vendor page,labx,https://www.labx.com/item/hitachi-tm1000-tabletop-sem-with-oxford-eds-and-motorized-stage/12697137,404,,,404 - Whoops We Can't Find That Page | LabX.com
+2026-11-27T18:18:36Z,probe or vendor page,machinio,https://www.machinio.com/listings/113796562-hitachi-tm3030plus-tabletop-sem-l212-in-detroit-mi,200,,,"Hitachi TM3030PLUS Tabletop SEM #L212 in Detroit, MI, USA"
+2026-11-27T18:18:39Z,search,exapro,https://www.exapro.com/product-search/?text=kardex+shuttle+xp,200,,,Best used machines for kardex shuttle xp (3)
+2026-11-27T18:18:53Z,search,marshall,https://www.marshallscientific.com/search?q=scanning+electron+microscope,200,,,"Search: 22 results found for ""scanning electron microscope"" – Marshall Scientific"
+2026-11-27T18:19:13Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=robotiq+2f-85,200,,,Buy used Robotiq 2F-85 on Machineseeker
+2026-11-27T18:19:31Z,search,labx,https://www.labx.com/search-a?sw=phenom+xl,200,,,"Search for phenom xl on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX.c"
+2026-11-27T18:19:31Z,search,dotmed,https://www.dotmed.com/listings/search_equipment.html?key=icp-ms,200,,,icp-ms Search - Listings
+2026-11-27T18:19:48Z,search,exapro,https://www.exapro.com/product-search/?text=vertical+lift+module,200,,,Best used machines for vertical lift module (5)
+2026-11-27T18:20:07Z,search,marshall,https://www.marshallscientific.com/search?q=eds+detector,200,,,"Search: 33 results found for ""eds detector"" – Marshall Scientific"
+2026-11-27T18:20:30Z,search,exapro,https://www.exapro.com/product-search/?text=eos+m+290,200,,,Best used machines for eos m 290 (1)
+2026-11-27T18:20:53Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=x-ray+diffractometer,200,,,Home
+2026-11-27T18:20:56Z,search,dotmed,https://www.dotmed.com/listings/search_equipment.html?key=agilent+7900,200,,,agilent 7900 Search - Listings
+2026-11-27T18:20:59Z,search,labx,https://www.labx.com/search-a?sw=tabletop+sem,200,,,"Search for tabletop sem on LabX.com | New, Used and Refurbished Laboratory Equipment | Lab"
+2026-11-27T18:21:21Z,probe or vendor page,labx,https://www.labx.com/item/hitachi-tm3030-tabletop-sem/222484-4958150,200,,,Hitachi TM3030 Tabletop SEM | LabX.com
+2026-11-27T18:21:22Z,search,govdeals,https://www.govdeals.com/en/search?kWord=x-ray+diffractometer,200,,,x-ray diffractometer | GovDeals
+2026-11-27T18:21:23Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=kardex+shuttle+xp,200,,,Buy used Kardex Shuttle Xp on Machineseeker
+2026-11-27T18:21:45Z,search,machinio,https://www.machinio.com/listings?search=phenom+prox,200,,,New & Used Phenom Prox for sale. Top quality machinery listings. | Machinio
+2026-11-27T18:21:49Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=x-ray+diffractometer,200,,,Public Surplus: Search an auction
+2026-11-27T18:21:52Z,probe or vendor page,machineseeker,https://www.machineseeker.com/matra+fanuc-w2/i-23357756,200,,,▷ Used Wire eroding machine Matra Fanuc W2 for sale - Machineseeker.com
+2026-11-27T18:21:57Z,search,marshall,https://www.marshallscientific.com/search?q=x-ray+diffractometer,200,,,"Search: 10 results found for ""x-ray diffractometer"" – Marshall Scientific"
+2026-11-27T18:22:02Z,search,fedequip,https://fedequip.com/ssearch?search=icp-ms,200,,,Search Used Industrial Equipment | Federal Equipment Company
+2026-11-27T18:22:04Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=xrf+spectrometer,200,,,Public Surplus: Search an auction
+2026-11-27T18:22:17Z,search,exapro,https://www.exapro.com/product-search/?text=slm+125,200,,,Best used machines for slm 125 (1)
+2026-11-27T18:22:27Z,search,govdeals,https://www.govdeals.com/en/search?kWord=xrf+spectrometer,200,,,xrf spectrometer | GovDeals
+2026-11-27T18:22:27Z,search,labx,https://www.labx.com/search-a?sw=jeol+neoscope,200,,,"Search for jeol neoscope on LabX.com | New, Used and Refurbished Laboratory Equipment | La"
+2026-11-27T18:22:38Z,search,marshall,https://www.marshallscientific.com/search?q=miniflex,200,,,"Search: 3 results found for ""miniflex"" – Marshall Scientific"
+2026-11-27T18:22:43Z,listing,machineseeker,https://www.machineseeker.com/kardex+remstar-shuttle+xp+500/i-18793386,200,,,▷ Used Kardex Shuttle XP 500 KARDEX REMSTAR SHUTTLE XP 500 for sale - Machineseeker.com
+2026-11-27T18:22:54Z,search,machinio,https://www.machinio.com/listings?search=tabletop+sem,200,,,New & Used Tabletop Sem for sale. Hitachi equipment & more | Machinio
+2026-11-27T18:22:59Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=eos+m+290,200,,,Buy used Eos M 290 on Machineseeker
+2026-11-27T18:23:00Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=xrf+spectrometer,200,,,xrf spectrometer | AllSurplus
+2026-11-27T18:23:06Z,listing,exapro,https://www.exapro.com/haas-st-10-p2610061175/,200,,,HAAS ST-10 CNC lathe Used machines - Exapro
+2026-11-27T18:23:16Z,search,machinio,https://www.machinio.com/listings?search=scanning+electron+microscope,200,,,New & Used Scanning Electron Microscope for sale. Jeol equipment & more | Machinio
+2026-11-27T18:23:16Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=particle+size+analyzer,200,,,Public Surplus: Search an auction
+2026-11-27T18:23:18Z,search,dotmed,https://www.dotmed.com/listings/search_equipment.html?key=mastersizer,200,,,mastersizer Search - Listings
+2026-11-27T18:23:22Z,listing,machineseeker,https://www.machineseeker.com/haas-st-10/i-21433077,200,,,▷ Used Machining center HAAS ST-10 for sale - Machineseeker.com
+2026-11-27T18:23:40Z,search,marshall,https://www.marshallscientific.com/search?q=xrf+spectrometer,200,,,"Search: 54 results found for ""xrf spectrometer"" – Marshall Scientific"
+2026-11-27T18:23:44Z,search,govdeals,https://www.govdeals.com/en/search?kWord=particle+size+analyzer,200,,,particle size analyzer | GovDeals
+2026-11-27T18:23:45Z,listing,exapro,https://www.exapro.com/haas-st-10-p260129499/,200,,,Haas ST-10 cnc lathe Used machines - Exapro
+2026-11-27T18:23:46Z,search,labx,https://www.labx.com/search-a?sw=eds+detector,200,,,"Search for eds detector on LabX.com | New, Used and Refurbished Laboratory Equipment | Lab"
+2026-11-27T18:23:54Z,search,exapro,https://www.exapro.com/product-search/?text=slm+280,200,,,Best used machines for slm 280 (3)
+2026-11-27T18:24:05Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=particle+size+analyzer,200,,,particle size analyzer | AllSurplus
+2026-11-27T18:24:05Z,listing,exapro,https://www.exapro.com/haas-st-10y-p261010035/,200,,,HAAS ST-10Y CNC lathe Used machines - Exapro
+2026-11-27T18:24:07Z,search,labx,https://www.labx.com/search-a?sw=oxford+x-max,200,,,"Search for oxford x-max on LabX.com | New, Used and Refurbished Laboratory Equipment | Lab"
+2026-11-27T18:24:16Z,search,dotmed,https://www.dotmed.com/listings/search_equipment.html?key=micro+vickers,200,,,micro vickers Search - Listings
+2026-11-27T18:24:26Z,listing,exapro,https://www.exapro.com/haas-st-10y-p230728021/,200,,,HAAS ST-10Y cnc lathe Used machines - Exapro
+2026-11-27T18:24:28Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=micro+vickers,200,,,micro vickers | AllSurplus
+2026-11-27T18:24:28Z,search,machinio,https://www.machinio.com/listings?search=eds+detector,200,,,New & Used Eds Detector for sale. Thermo Fisher Scientific equipment & more | Machinio
+2026-11-27T18:24:32Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=eos+m+100,200,,,Buy used Eos M 100 on Machineseeker
+2026-11-27T18:24:44Z,search,labx,https://www.labx.com/search-a?sw=bruker+quantax,200,,,"Search for bruker quantax on LabX.com | New, Used and Refurbished Laboratory Equipment | L"
+2026-11-27T18:24:45Z,listing,exapro,https://www.exapro.com/haas-st-10-p260801193/,200,,,Haas ST-10 CNC lathe Used machines - Exapro
+2026-11-27T18:24:48Z,search,govdeals,https://www.govdeals.com/en/search?kWord=micro+vickers,200,,,micro vickers | GovDeals
+2026-11-27T18:24:51Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=slm+125,200,,,Buy used Slm 125 on Machineseeker
+2026-11-27T18:25:05Z,search,machinio,https://www.machinio.com/listings?search=ebsd,200,,,New & Used Ebsd for sale. FEI equipment & more | Machinio
+2026-11-27T18:25:07Z,search,dotmed,https://www.dotmed.com/listings/search_equipment.html?key=microhardness,200,,,microhardness Search - Listings
+2026-11-27T18:25:10Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=microhardness+tester,200,,,Public Surplus: Search an auction
+2026-11-27T18:25:11Z,listing,machineseeker,https://www.machineseeker.com/kardex-kardex+shuttle+xp-500-2450x813/i-22507322,200,,,▷ Used Storage lift Kardex KARDEX SHUTTLE XP-500-2450X813 for sale - Machineseeker.com
+2026-11-27T18:25:28Z,search,exapro,https://www.exapro.com/product-search/?text=concept+laser,200,,,Best used machines for concept laser (14)
+2026-11-27T18:25:30Z,search,labx,https://www.labx.com/search-a?sw=ebsd,200,,,"Search for ebsd on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX.com"
+2026-11-27T18:25:33Z,probe or vendor page,haas,https://www.haascnc.com/machines/lathes/st/models/standard/st-10.html,200,,,"ST-10 | 6"" Chuck | High-Performance Turning | Lathes – Haas CNC Machines"
+2026-11-27T18:25:36Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=microhardness+tester,200,,,microhardness tester | AllSurplus
+2026-11-27T18:25:39Z,listing,exapro,https://www.exapro.com/haas-st-10-p261015145/,200,,,HAAS ST-10 CNC lathe Used machines - Exapro
+2026-11-27T18:25:53Z,search,marshall,https://www.marshallscientific.com/search?q=icp-ms,200,,,"Search: 1 result found for ""icp-ms"" – Marshall Scientific"
+2026-11-27T18:25:55Z,search,govdeals,https://www.govdeals.com/en/search?kWord=microhardness+tester,200,,,microhardness tester | GovDeals
+2026-11-27T18:26:02Z,listing,exapro,https://www.exapro.com/haas-st-10-p240417162/,200,,,HAAS ST-10 cnc lathe Used machines - Exapro
+2026-11-27T18:26:05Z,search,machinio,https://www.machinio.com/listings?search=rigaku+miniflex,200,,,New & Used Rigaku Miniflex for sale. Rigaku equipment & more | Machinio
+2026-11-27T18:26:09Z,probe or vendor page,makera,https://www.makera.com/products/carvera,200,,,Carvera: The Smartest Desktop CNC Machine – Makera
+2026-11-27T18:26:14Z,search,exapro,https://www.exapro.com/product-search/?text=trumpf+truprint,200,,,Best used machines for trumpf truprint (5)
+2026-11-27T18:26:16Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=nanoindenter,200,,,Public Surplus: Search an auction
+2026-11-27T18:26:24Z,listing,exapro,https://www.exapro.com/haas-st-10-p260504076/,200,,,Haas st 10 CNC lathe Used machines - Exapro
+2026-11-27T18:26:26Z,search,labx,https://www.labx.com/search-a?sw=rigaku+miniflex,200,,,"Search for rigaku miniflex on LabX.com | New, Used and Refurbished Laboratory Equipment | "
+2026-11-27T18:26:31Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=slm+280,200,,,Buy used Slm 280 on Machineseeker
+2026-11-27T18:26:35Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=nanoindenter,200,,,nanoindenter | AllSurplus
+2026-11-27T18:26:44Z,listing,machineseeker,https://www.machineseeker.com/haas-st-10y/i-22927321,200,,,▷ Used HAAS ST-10Y HAAS ST-10Y for sale - Machineseeker.com
+2026-11-27T18:26:46Z,search,dotmed,https://www.dotmed.com/listings/search_equipment.html?key=nanoindenter,200,,,nanoindenter Search - Listings
+2026-11-27T18:26:47Z,search,machinio,https://www.machinio.com/listings?search=bruker+d2+phaser,200,,,New & Used Bruker D2 Phaser for sale. Bruker equipment & more | Machinio
+2026-11-27T18:26:53Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=keyence+vhx,200,,,Public Surplus: Search an auction
+2026-11-27T18:27:06Z,search,marshall,https://www.marshallscientific.com/search?q=agilent+7900,200,,,"Search: 80 results found for ""agilent 7900"" – Marshall Scientific"
+2026-11-27T18:27:06Z,listing,machineseeker,https://www.machineseeker.com/fanuc-robocut+%CE%B1-c400ic/i-22858530,200,,,▷ Used Wire EDM (Electrical Discharge Machining) FANUC ROBOCUT α-C400iC for sale - Machine
+2026-11-27T18:27:16Z,search,govdeals,https://www.govdeals.com/en/search?kWord=nanoindenter,200,,,nanoindenter | GovDeals
+2026-11-27T18:27:32Z,search,dotmed,https://www.dotmed.com/listings/search_equipment.html?key=glovebox,200,,,glovebox Search - Listings
+2026-11-27T18:27:33Z,listing,machineseeker,https://www.machineseeker.com/mir-mir250/i-23301717,200,,,▷ Used AMR/AGV (Autonomous Mobile Robot / Automated Guided Vehicle) MiR MiR250 for sale - 
+2026-11-27T18:27:36Z,search,labx,https://www.labx.com/search-a?sw=bruker+d2+phaser,200,,,"Search for bruker d2 phaser on LabX.com | New, Used and Refurbished Laboratory Equipment |"
+2026-11-27T18:27:36Z,search,machinio,https://www.machinio.com/listings?search=x-ray+diffractometer,200,,,New & Used X Ray Diffractometer for sale. Bruker equipment & more | Machinio
+2026-11-27T18:27:41Z,search,govdeals,https://www.govdeals.com/en/search?kWord=plastometrex,200,,,plastometrex | GovDeals
+2026-11-27T18:27:55Z,listing,machineseeker,https://www.machineseeker.com/haas-st-10/i-22894215,200,,,▷ Used HAAS ST-10 HAAS ST-10 for sale - Machineseeker.com
+2026-11-27T18:27:57Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=concept+laser,200,,,Buy used Concept Laser on Machineseeker
+2026-11-27T18:28:05Z,search,labx,https://www.labx.com/search-a?sw=x-ray+diffractometer,200,,,"Search for x-ray diffractometer on LabX.com | New, Used and Refurbished Laboratory Equipme"
+2026-11-27T18:28:05Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=plastometrex,200,,,plastometrex | AllSurplus
+2026-11-27T18:28:07Z,search,machinio,https://www.machinio.com/listings?search=bruker+s2+puma,200,,,No results for bruker s2 puma
+2026-11-27T18:28:21Z,search,marshall,https://www.marshallscientific.com/search?q=mastersizer,200,,,"Search: 2 results found for ""mastersizer"" – Marshall Scientific"
+2026-11-27T18:28:21Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=grinder+polisher,200,,,Public Surplus: Search an auction
+2026-11-27T18:28:22Z,listing,machineseeker,https://www.machineseeker.com/haas-st10y/i-19436486,200,,,▷ Used Cnc lathe with C and Y axis HAAS ST10Y for sale - Machineseeker.com
+2026-11-27T18:28:24Z,search,labx,https://www.labx.com/search-a?sw=bruker+s2+puma,200,,,"Search for bruker s2 puma on LabX.com | New, Used and Refurbished Laboratory Equipment | L"
+2026-11-27T18:28:36Z,search,machinio,https://www.machinio.com/listings?search=panalytical+epsilon,200,,,New & Used Panalytical Epsilon for sale. Epsilon equipment & more | Machinio
+2026-11-27T18:28:40Z,search,exapro,https://www.exapro.com/product-search/?text=aconity,200,,,Best used machines for aconity (0)
+2026-11-27T18:28:42Z,search,labx,https://www.labx.com/search-a?sw=rigaku+nex+cg,200,,,"Search for rigaku nex cg on LabX.com | New, Used and Refurbished Laboratory Equipment | La"
+2026-11-27T18:28:43Z,listing,dotmed,https://www.dotmed.com/listing/mass-spectrometer/agilent/7800-icp-ms/4699372,200,,,Refurbished AGILENT 7800 ICP/MS Mass Spectrometer For Sale - DOTmed Listing #4699372:
+2026-11-27T18:28:46Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=keyence+vhx,200,,,keyence vhx | AllSurplus
+2026-11-27T18:29:00Z,search,machinio,https://www.machinio.com/listings?search=xrf+spectrometer,200,,,New & Used Xrf Spectrometer for sale. Thermo Fisher Scientific equipment & more | Machinio
+2026-11-27T18:29:01Z,search,dotmed,https://www.dotmed.com/listings/search_equipment.html?key=mbraun,200,,,mbraun Search - Listings
+2026-11-27T18:29:06Z,listing,exapro,https://www.exapro.com/haas-st10-p261015011/,200,,,HAAS ST10 CNC lathe Used machines - Exapro
+2026-11-27T18:29:06Z,search,labx,https://www.labx.com/search-a?sw=panalytical+epsilon,200,,,"Search for panalytical epsilon on LabX.com | New, Used and Refurbished Laboratory Equipmen"
+2026-11-27T18:29:09Z,search,govdeals,https://www.govdeals.com/en/search?kWord=keyence+vhx,200,,,keyence vhx | GovDeals
+2026-11-27T18:29:22Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=renishaw+am,200,,,Buy used Renishaw Am on Machineseeker
+2026-11-27T18:29:26Z,search,machinio,https://www.machinio.com/listings?search=mastersizer+3000,200,,,New & Used Mastersizer 3000 for sale. Malvern equipment & more | Machinio
+2026-11-27T18:29:33Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=mounting+press,200,,,Public Surplus: Search an auction
+2026-11-27T18:29:33Z,listing,machineseeker,https://www.machineseeker.com/kardex-shuttle+xp500/i-19235156,200,,,▷ Used Storage elevator Kardex Shuttle XP500 for sale - Machineseeker.com
+2026-11-27T18:29:40Z,search,labx,https://www.labx.com/search-a?sw=xrf+spectrometer,200,,,"Search for xrf spectrometer on LabX.com | New, Used and Refurbished Laboratory Equipment |"
+2026-11-27T18:29:42Z,search,exapro,https://www.exapro.com/product-search/?text=metal+3d+printer,200,,,Best used machines for metal 3d printer (39)
+2026-11-27T18:29:50Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=buehler,200,,,Public Surplus: Search an auction
+2026-11-27T18:29:53Z,listing,exapro,https://www.exapro.com/kardex-shuttle-xp500-p221118269/,200,,,Kardex Shuttle XP500 Pallets racks Used machines - Exapro
+2026-11-27T18:29:55Z,search,machinio,https://www.machinio.com/listings?search=mastersizer+2000,200,,,New & Used Mastersizer 2000 for sale. Malvern equipment & more | Machinio
+2026-11-27T18:30:06Z,search,labx,https://www.labx.com/search-a?sw=mastersizer+3000,200,,,"Search for mastersizer 3000 on LabX.com | New, Used and Refurbished Laboratory Equipment |"
+2026-11-27T18:30:07Z,search,marshall,https://www.marshallscientific.com/search?q=micro+vickers,200,,,"Search: 12 results found for ""micro vickers"" – Marshall Scientific"
+2026-11-27T18:30:11Z,search,govdeals,https://www.govdeals.com/en/search?kWord=grinder+polisher,200,,,grinder polisher | GovDeals
+2026-11-27T18:30:14Z,listing,dotmed,https://www.dotmed.com/listing/mass-spectrometer/agilent/7850-icp-ms/5845264,200,,,Used AGILENT 7850 ICP-MS Mass Spectrometer For Sale - DOTmed Listing #5845264:
+2026-11-27T18:30:24Z,search,machinio,https://www.machinio.com/listings?search=laser+diffraction+particle+size,200,,,New & Used Laser Diffraction Particle Size for sale. Beckman - Coulter equipment & more | 
+2026-11-27T18:30:26Z,search,exapro,https://www.exapro.com/product-search/?text=selective+laser+melting,200,,,Best used machines for selective laser melting (2)
+2026-11-27T18:30:36Z,listing,exapro,https://www.exapro.com/haas-st-10-p260626171/,200,,,HAAS ST-10 CNC lathe Used machines - Exapro
+2026-11-27T18:30:38Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=grinder+polisher,200,,,grinder polisher | AllSurplus
+2026-11-27T18:30:42Z,search,marshall,https://www.marshallscientific.com/search?q=microhardness,200,,,"Search: 0 results found for ""microhardness"" – Marshall Scientific"
+2026-11-27T18:30:43Z,search,labx,https://www.labx.com/search-a?sw=mastersizer+2000,200,,,"Search for mastersizer 2000 on LabX.com | New, Used and Refurbished Laboratory Equipment |"
+2026-11-27T18:30:54Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=box+furnace,200,,,Public Surplus: Search an auction
+2026-11-27T18:30:57Z,search,machinio,https://www.machinio.com/listings?search=micro+vickers,200,,,New & Used Micro Vickers for sale. Sklar equipment & more | Machinio
+2026-11-27T18:31:00Z,listing,machineseeker,https://www.machineseeker.com/haas-st10/i-19436596,200,,,▷ Used Cnc lathe without tailstock HAAS ST10 for sale - Machineseeker.com
+2026-11-27T18:31:08Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=trumpf+truprint,200,,,Buy used Trumpf Truprint on Machineseeker
+2026-11-27T18:31:08Z,search,labx,https://www.labx.com/search-a?sw=laser+diffraction+particle+size,200,,,"Search for laser diffraction particle size on LabX.com | New, Used and Refurbished Laborat"
+2026-11-27T18:31:19Z,search,govdeals,https://www.govdeals.com/en/search?kWord=mounting+press,200,,,mounting press | GovDeals
+2026-11-27T18:31:23Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=aconity,200,,,Buy used Aconity on Machineseeker
+2026-11-27T18:31:26Z,listing,machineseeker,https://www.machineseeker.com/kardex+remstar-shuttle+xp+500+3650x813/i-23075996,200,,,▷ Used Storage lift Kardex Remstar Shuttle XP 500 3650x813 for sale - Machineseeker.com
+2026-11-27T18:31:26Z,search,machinio,https://www.machinio.com/listings?search=microhardness+tester,200,,,New & Used Microhardness Tester for sale. Shimadzu equipment & more | Machinio
+2026-11-27T18:31:32Z,search,labx,https://www.labx.com/search-a?sw=micro+vickers,200,,,"Search for micro vickers on LabX.com | New, Used and Refurbished Laboratory Equipment | La"
+2026-11-27T18:31:41Z,search,exapro,https://www.exapro.com/product-search/?text=insstek,200,,,Best used machines for insstek (0)
+2026-11-27T18:31:44Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=mounting+press,200,,,mounting press | AllSurplus
+2026-11-27T18:31:51Z,search,labx,https://www.labx.com/search-a?sw=microhardness+tester,200,,,"Search for microhardness tester on LabX.com | New, Used and Refurbished Laboratory Equipme"
+2026-11-27T18:31:52Z,listing,machineseeker,https://www.machineseeker.com/fanuc-robocut+%CE%B1-c400ic/i-23271802,200,,,▷ Used Wire eroding machine Fanuc ROBOCUT α-C400iC for sale - Machineseeker.com
+2026-11-27T18:31:54Z,search,machinio,https://www.machinio.com/listings?search=mitutoyo+hm-200,200,,,New & Used Mitutoyo Hm 200 for sale. Vickers equipment & more | Machinio
+2026-11-27T18:31:55Z,search,marshall,https://www.marshallscientific.com/search?q=nanoindenter,200,,,"Search: 0 results found for ""nanoindenter"" – Marshall Scientific"
+2026-11-27T18:32:06Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=buehler,200,,,buehler | AllSurplus
+2026-11-27T18:32:12Z,search,labx,https://www.labx.com/search-a?sw=mitutoyo+hm-200,200,,,"Search for mitutoyo hm-200 on LabX.com | New, Used and Refurbished Laboratory Equipment | "
+2026-11-27T18:32:15Z,listing,machineseeker,https://www.machineseeker.com/kardex-shuttle+xp500/i-19059311,200,,,▷ Used Storage elevator Kardex Shuttle XP500 for sale - Machineseeker.com
+2026-11-27T18:32:15Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=metal+3d+printer,200,,,Buy used Metal 3D Printer on Machineseeker
+2026-11-27T18:32:17Z,search,machinio,https://www.machinio.com/listings?search=wilson+tukon,200,,,New & Used Wilson Tukon for sale. Wilson Rockwell equipment & more | Machinio
+2026-11-27T18:32:19Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=muffle+furnace,200,,,Public Surplus: Search an auction
+2026-11-27T18:32:28Z,search,labx,https://www.labx.com/search-a?sw=wilson+tukon,200,,,"Search for wilson tukon on LabX.com | New, Used and Refurbished Laboratory Equipment | Lab"
+2026-11-27T18:32:34Z,search,exapro,https://www.exapro.com/product-search/?text=optomec,200,,,Best used machines for optomec (1)
+2026-11-27T18:32:39Z,listing,machineseeker,https://www.machineseeker.com/kardex+remstar-shuttle+xp+500+3050x813/i-22676627,200,,,▷ Used Storage lift Kardex Remstar Shuttle XP 500 3050x813 for sale - Machineseeker.com
+2026-11-27T18:32:42Z,search,machinio,https://www.machinio.com/listings?search=nanoindenter,200,,,New & Used Nanoindenter for sale. Top quality machinery listings. | Machinio
+2026-11-27T18:32:43Z,search,labx,https://www.labx.com/search-a?sw=nanoindenter,200,,,"Search for nanoindenter on LabX.com | New, Used and Refurbished Laboratory Equipment | Lab"
+2026-11-27T18:32:44Z,search,govdeals,https://www.govdeals.com/en/search?kWord=buehler,200,,,buehler | GovDeals
+2026-11-27T18:32:57Z,listing,machineseeker,https://www.machineseeker.com/kardex-shuttle+xp+500/i-22432572,200,,,▷ Used Storage lift KARDEX SHUTTLE XP 500 for sale - Machineseeker.com
+2026-11-27T18:32:59Z,search,marshall,https://www.marshallscientific.com/search?q=keyence+vhx,200,,,"Search: 0 results found for ""keyence vhx"" – Marshall Scientific"
+2026-11-27T18:33:00Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=retsch+as+200,200,,,Public Surplus: Search an auction
+2026-11-27T18:33:03Z,search,machinio,https://www.machinio.com/listings?search=hysitron,200,,,New & Used Hysitron for sale. Top quality machinery listings. | Machinio
+2026-11-27T18:33:03Z,probe or vendor page,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=tensile,200,,,Public Surplus: Search an auction
+2026-11-27T18:33:05Z,search,labx,https://www.labx.com/search-a?sw=hysitron,200,,,"Search for hysitron on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX.co"
+2026-11-27T18:33:24Z,listing,machineseeker,https://www.machineseeker.com/haas-st-10/i-20963087,200,,,▷ Used CNC lathe HAAS ST-10 for sale - Machineseeker.com
+2026-11-27T18:33:24Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=selective+laser+melting,200,,,Buy used Selective Laser Melting on Machineseeker
+2026-11-27T18:33:24Z,search,machinio,https://www.machinio.com/listings?search=nano+indenter+g200,200,,,No results for nano indenter g200
+2026-11-27T18:33:26Z,search,govdeals,https://www.govdeals.com/en/search?kWord=struers,200,,,struers | GovDeals
+2026-11-27T18:33:26Z,search,labx,https://www.labx.com/search-a?sw=nano+indenter+g200,200,,,"Search for nano indenter g200 on LabX.com | New, Used and Refurbished Laboratory Equipment"
+2026-11-27T18:33:41Z,search,exapro,https://www.exapro.com/product-search/?text=lasertec+65+3d,200,,,Best used machines for lasertec 65 (4)
+2026-11-27T18:33:42Z,search,machinio,https://www.machinio.com/listings?search=plastometrex,200,,,No results for plastometrex
+2026-11-27T18:33:46Z,listing,dotmed,https://www.dotmed.com/listing/mass-spectrometer/agilent/7850-icp-ms/5487491,200,,,Used AGILENT 7850 ICP-MS Mass Spectrometer For Sale - DOTmed Listing #5487491:
+2026-11-27T18:33:47Z,search,labx,https://www.labx.com/search-a?sw=plastometrex,200,,,"Search for plastometrex on LabX.com | New, Used and Refurbished Laboratory Equipment | Lab"
+2026-11-27T18:33:48Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=struers,200,,,struers | AllSurplus
+2026-11-27T18:34:03Z,search,labx,https://www.labx.com/search-a?sw=indentation+plastometry,200,,,"Search for indentation plastometry on LabX.com | New, Used and Refurbished Laboratory Equi"
+2026-11-27T18:34:05Z,listing,machineseeker,https://www.machineseeker.com/kardex+remstar-shuttle+xp+500+4050x813/i-23363749,200,,,▷ Used Storage lift Kardex Remstar Shuttle XP 500 4050x813 for sale - Machineseeker.com
+2026-11-27T18:34:07Z,search,marshall,https://www.marshallscientific.com/search?q=grinder+polisher,200,,,"Search: 0 results found for ""grinder polisher"" – Marshall Scientific"
+2026-11-27T18:34:07Z,search,govdeals,https://www.govdeals.com/en/search?kWord=nabertherm,200,,,nabertherm | GovDeals
+2026-11-27T18:34:08Z,search,machinio,https://www.machinio.com/listings?search=keyence+vhx,200,,,New & Used Keyence Vhx for sale. Keyence equipment & more | Machinio
+2026-11-27T18:34:20Z,search,marshall,https://www.marshallscientific.com/search?q=mounting+press,200,,,"Search: 0 results found for ""mounting press"" – Marshall Scientific"
+2026-11-27T18:34:25Z,listing,machineseeker,https://www.machineseeker.com/mir-mir250+shelf+carrier+esd+und+zubeh%C3%B6r/i-21127667,200,,,▷ Used Industrial robot MiR MiR250 Shelf Carrier ESD und Zubehör for sale - Machineseeker.
+2026-11-27T18:34:26Z,search,labx,https://www.labx.com/search-a?sw=keyence+vhx,200,,,"Search for keyence vhx on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX"
+2026-11-27T18:34:29Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=sieve+shaker,200,,,Public Surplus: Search an auction
+2026-11-27T18:34:38Z,search,machinio,https://www.machinio.com/listings?search=keyence+vhx-7000,200,,,New & Used Keyence Vhx 7000 for sale. Keyence equipment & more | Machinio
+2026-11-27T18:34:39Z,search,exapro,https://www.exapro.com/product-search/?text=laser+metal+deposition,200,,,Best used machines for laser metal deposition (4)
+2026-11-27T18:34:45Z,listing,machineseeker,https://www.machineseeker.com/kardex+remstar-shuttle+xp+500+2650%C3%97864/i-19196266,200,,,▷ Used Storage elevator Kardex Remstar Shuttle XP 500 2650×864 for sale - Machineseeker.co
+2026-11-27T18:34:47Z,search,labx,https://www.labx.com/search-a?sw=keyence+vhx-7000,200,,,"Search for keyence vhx-7000 on LabX.com | New, Used and Refurbished Laboratory Equipment |"
+2026-11-27T18:34:51Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=nabertherm,200,,,nabertherm | AllSurplus
+2026-11-27T18:34:55Z,search,machinio,https://www.machinio.com/listings?search=keyence+ea-300,200,,,No results for keyence ea 300
+2026-11-27T18:35:00Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=insstek,200,,,Buy used Insstek on Machineseeker
+2026-11-27T18:35:01Z,search,labx,https://www.labx.com/search-a?sw=keyence+ea-300,200,,,"Search for keyence ea-300 on LabX.com | New, Used and Refurbished Laboratory Equipment | L"
+2026-11-27T18:35:07Z,listing,exapro,https://www.exapro.com/fanuc-alpha-1id-p250206291/,200,,,Fanuc Alpha 1ID Wire cutting edm machine Used machines - Exapro
+2026-11-27T18:35:12Z,search,govdeals,https://www.govdeals.com/en/search?kWord=box+furnace,200,,,box furnace | GovDeals
+2026-11-27T18:35:13Z,search,labx,https://www.labx.com/search-a?sw=leco+px500,200,,,"Search for leco px500 on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX."
+2026-11-27T18:35:13Z,search,machinio,https://www.machinio.com/listings?search=leco+px500,200,,,No results for leco px500
+2026-11-27T18:35:17Z,search,marshall,https://www.marshallscientific.com/search?q=buehler,200,,,"Search: 0 results found for ""buehler"" – Marshall Scientific"
+2026-11-27T18:35:25Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=hydraulic+press+laboratory,200,,,Public Surplus: Search an auction
+2026-11-27T18:35:28Z,listing,exapro,https://www.exapro.com/fanuc-robocut-alfa-1ic-p261105051/,200,,,FANUC ROBOCUT Alfa 1iC Wire cutting EDM machine Used machines - Exapro
+2026-11-27T18:35:34Z,search,labx,https://www.labx.com/search-a?sw=grinder+polisher,200,,,"Search for grinder polisher on LabX.com | New, Used and Refurbished Laboratory Equipment |"
+2026-11-27T18:35:39Z,search,exapro,https://www.exapro.com/product-search/?text=atomizer,200,,,Best used machines for atomizer (14)
+2026-11-27T18:35:47Z,listing,exapro,https://www.exapro.com/universal-robots-ur10e-cell-p260112224/,200,,,Universal Robots UR10e cell Industrial Robot Used machines - Exapro
+2026-11-27T18:35:47Z,search,machinio,https://www.machinio.com/listings?search=grinder+polisher,200,,,New & Used Grinder Polisher for sale. Husqvarna equipment & more | Machinio
+2026-11-27T18:35:48Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=box+furnace,200,,,box furnace | AllSurplus
+2026-11-27T18:35:54Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=optomec,200,,,Buy used Optomec on Machineseeker
+2026-11-27T18:35:56Z,search,labx,https://www.labx.com/search-a?sw=mounting+press,200,,,"Search for mounting press on LabX.com | New, Used and Refurbished Laboratory Equipment | L"
+2026-11-27T18:36:06Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=glovebox,200,,,Public Surplus: Search an auction
+2026-11-27T18:36:10Z,listing,labx,https://www.labx.com/item/hitachi-tm4000plus-series-iii-tabletop-sem-with-motorized/222484-4958061,200,,,Hitachi TM4000Plus Series III - Tabletop SEM with Motorized XY Stage | LabX.com
+2026-11-27T18:36:12Z,search,labx,https://www.labx.com/search-a?sw=buehler+abrasive+saw,200,,,"Search for buehler abrasive saw on LabX.com | New, Used and Refurbished Laboratory Equipme"
+2026-11-27T18:36:12Z,search,exapro,https://www.exapro.com/product-search/?text=amazemet,200,,,Best used machines for amazemet (0)
+2026-11-27T18:36:16Z,search,machinio,https://www.machinio.com/listings?search=mounting+press,200,,,New & Used Mounting Press for sale. Minster equipment & more | Machinio
+2026-11-27T18:36:21Z,search,govdeals,https://www.govdeals.com/en/search?kWord=muffle+furnace,200,,,muffle furnace | GovDeals
+2026-11-27T18:36:32Z,listing,machineseeker,https://www.machineseeker.com/fanuc+robocut-%CE%B1-oib+a04b/i-23315346,200,,,▷ Used Wire eroding machine FANUC ROBOCUT α-OiB A04B for sale - Machineseeker.com
+2026-11-27T18:36:38Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=lasertec+65+3d,200,,,Buy used Lasertec 65 3D on Machineseeker
+2026-11-27T18:36:42Z,search,labx,https://www.labx.com/search-a?sw=struers,200,,,"Search for struers on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX.com"
+2026-11-27T18:36:50Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=muffle+furnace,200,,,muffle furnace | AllSurplus
+2026-11-27T18:36:53Z,listing,exapro,https://www.exapro.com/universal-robots-ur10e-p240708208/,200,,,Universal Robots UR10e Industrial Robot Used machines - Exapro
+2026-11-27T18:36:56Z,search,machinio,https://www.machinio.com/listings?search=buehler+abrasive+saw,200,,,New & Used Buehler Abrasive Saw for sale. Buehler equipment & more | Machinio
+2026-11-27T18:36:56Z,search,marshall,https://www.marshallscientific.com/search?q=struers,200,,,"Search: 0 results found for ""struers"" – Marshall Scientific"
+2026-11-27T18:37:07Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=retsch+as+200,200,,,retsch as 200 | AllSurplus
+2026-11-27T18:37:13Z,listing,machineseeker,https://www.machineseeker.com/fanuc-robocut+%CE%B1-oc/i-16975906,200,,,▷ Used Wire erosion FANUC ROBOCUT α-OC for sale - Machineseeker.com
+2026-11-27T18:37:15Z,search,labx,https://www.labx.com/search-a?sw=nabertherm,200,,,"Search for nabertherm on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX."
+2026-11-27T18:37:21Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=laser+metal+deposition,200,,,Buy used Laser Metal Deposition on Machineseeker
+2026-11-27T18:37:32Z,search,govdeals,https://www.govdeals.com/en/search?kWord=retsch+as+200,200,,,retsch as 200 | GovDeals
+2026-11-27T18:37:36Z,search,machinio,https://www.machinio.com/listings?search=struers,200,,,New & Used Struers for sale. Leco equipment & more | Machinio
+2026-11-27T18:37:36Z,search,exapro,https://www.exapro.com/product-search/?text=instron,200,,,Best used machines for instron (4)
+2026-11-27T18:37:37Z,listing,machineseeker,https://www.machineseeker.com/kardex-shuttle+250-1250x825-nt/i-19379896,200,,,▷ Used Storage lift KARDEX SHUTTLE 250-1250X825-NT for sale - Machineseeker.com
+2026-11-27T18:37:43Z,search,labx,https://www.labx.com/search-a?sw=forced+convection+oven,200,,,"Search for forced convection oven on LabX.com | New, Used and Refurbished Laboratory Equip"
+2026-11-27T18:37:51Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=glove+box,200,,,Public Surplus: Search an auction
+2026-11-27T18:37:58Z,search,marshall,https://www.marshallscientific.com/search?q=retsch+as+200,200,,,"Search: 0 results found for ""retsch as 200"" – Marshall Scientific"
+2026-11-27T18:38:01Z,listing,machinio,https://www.machinio.com/listings/112379422-2014-hitachi-tm3030-desktop-scanning-electron-microscope-in-tokyo-japan,200,,,"2014 Hitachi TM3030 desktop Scanning Electron Microscope in Tokyo, Japan"
+2026-11-27T18:38:08Z,search,labx,https://www.labx.com/search-a?sw=box+furnace,200,,,"Search for box furnace on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX"
+2026-11-27T18:38:13Z,search,govdeals,https://www.govdeals.com/en/search?kWord=sieve+shaker,200,,,sieve shaker | GovDeals
+2026-11-27T18:38:22Z,search,marshall,https://www.marshallscientific.com/search?q=sieve+shaker,200,,,"Search: 79 results found for ""sieve shaker"" – Marshall Scientific"
+2026-11-27T18:38:24Z,search,machinio,https://www.machinio.com/listings?search=nabertherm,200,,,New & Used Nabertherm for sale. 3D Systems - Z Corp equipment & more | Machinio
+2026-11-27T18:38:28Z,listing,machineseeker,https://www.machineseeker.com/fanuc-robocut+%CE%B1-c600ia/i-21976158,200,,,▷ Used Wire erosion FANUC ROBOCUT α-C600iA for sale - Machineseeker.com
+2026-11-27T18:38:33Z,search,labx,https://www.labx.com/search-a?sw=retsch+as+200,200,,,"Search for retsch as 200 on LabX.com | New, Used and Refurbished Laboratory Equipment | La"
+2026-11-27T18:38:34Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=sieve+shaker,200,,,sieve shaker | AllSurplus
+2026-11-27T18:38:40Z,search,exapro,https://www.exapro.com/product-search/?text=universal+testing+machine,200,,,Best used machines for universal testing machine (36)
+2026-11-27T18:38:46Z,listing,exapro,https://www.exapro.com/fanuc-robocut-c-600-ia-p260327032/,200,,,FANUC Robocut C 600 iA Wire cutting EDM machine Used machines - Exapro
+2026-11-27T18:38:49Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=fume+hood,200,,,Public Surplus: Search an auction
+2026-11-27T18:38:50Z,search,labx,https://www.labx.com/search-a?sw=sieve+shaker,200,,,"Search for sieve shaker on LabX.com | New, Used and Refurbished Laboratory Equipment | Lab"
+2026-11-27T18:38:51Z,search,machinio,https://www.machinio.com/listings?search=forced+convection+oven,200,,,New & Used Forced Convection Oven for sale. Yamato equipment & more | Machinio
+2026-11-27T18:38:57Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=atomizer,200,,,Buy used Atomizer on Machineseeker
+2026-11-27T18:39:11Z,listing,machineseeker,https://www.machineseeker.com/kardex-xp500/i-19235176,200,,,▷ Used Storage elevator Kardex XP500 for sale - Machineseeker.com
+2026-11-27T18:39:16Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=amazemet,200,,,Buy used Amazemet on Machineseeker
+2026-11-27T18:39:16Z,listing,govdeals,https://www.govdeals.com/en/asset/131/23139,200,,,Agilent 7700 ICP-MS | GovDeals
+2026-11-27T18:39:20Z,search,govdeals,https://www.govdeals.com/en/search?kWord=specac+press,200,,,specac press | GovDeals
+2026-11-27T18:39:25Z,search,machinio,https://www.machinio.com/listings?search=box+furnace,200,,,New & Used Box Furnace for sale. Lindberg/Blue M equipment & more | Machinio
+2026-11-27T18:39:25Z,search,labx,https://www.labx.com/search-a?sw=specac+press,200,,,"Search for specac press on LabX.com | New, Used and Refurbished Laboratory Equipment | Lab"
+2026-11-27T18:39:35Z,search,marshall,https://www.marshallscientific.com/search?q=glovebox,200,,,"Search: 0 results found for ""glovebox"" – Marshall Scientific"
+2026-11-27T18:39:38Z,listing,labx,https://www.labx.com/item/hitachi-tm3030-tabletop-sem/222484-4958150,200,,,Hitachi TM3030 Tabletop SEM | LabX.com
+2026-11-27T18:39:41Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=icp-ms,200,,,Public Surplus: Search an auction
+2026-11-27T18:39:41Z,search,labx,https://www.labx.com/search-a?sw=hydraulic+press+laboratory,200,,,"Search for hydraulic press laboratory on LabX.com | New, Used and Refurbished Laboratory E"
+2026-11-27T18:39:50Z,search,machinio,https://www.machinio.com/listings?search=retsch+as+200,200,,,New & Used Retsch As 200 for sale. Retsch equipment & more | Machinio
+2026-11-27T18:39:54Z,search,exapro,https://www.exapro.com/product-search/?text=zwick,200,,,Best used machines for zwick (3)
+2026-11-27T18:39:57Z,listing,allsurplus,https://www.allsurplus.com/en/asset/6650/14233,200,,,Carbolite Furnace | AllSurplus
+2026-11-27T18:40:02Z,listing,machineseeker,https://www.machineseeker.com/kardex-xp+250+c3000/i-17243717,200,,,▷ Used Warehouse lift Kardex XP 250 C3000 for sale - Machineseeker.com
+2026-11-27T18:40:04Z,search,labx,https://www.labx.com/search-a?sw=edwards+rv3,200,,,"Search for edwards rv3 on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX"
+2026-11-27T18:40:08Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=hydraulic+press+laboratory,200,,,hydraulic press laboratory | AllSurplus
+2026-11-27T18:40:15Z,search,marshall,https://www.marshallscientific.com/search?q=mbraun,200,,,"Search: 1 result found for ""mbraun"" – Marshall Scientific"
+2026-11-27T18:40:18Z,search,machinio,https://www.machinio.com/listings?search=sieve+shaker,200,,,New & Used Sieve Shaker for sale. Retsch equipment & more | Machinio
+2026-11-27T18:40:24Z,listing,exapro,https://www.exapro.com/universal-robots-ur010e-p260610117/,200,,,Universal Robots UR010e Industrial Robot Used machines - Exapro
+2026-11-27T18:40:29Z,search,labx,https://www.labx.com/search-a?sw=analytical+balance,200,,,"Search for analytical balance on LabX.com | New, Used and Refurbished Laboratory Equipment"
+2026-11-27T18:40:31Z,listing,govdeals,https://www.govdeals.com/en/asset/32/31056,200,,,Pedestal grinder polisher | GovDeals
+2026-11-27T18:40:33Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=glovebox,200,,,glovebox | AllSurplus
+2026-11-27T18:40:35Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=instron,200,,,Buy used Instron on Machineseeker
+2026-11-27T18:40:43Z,search,machinio,https://www.machinio.com/listings?search=specac+press,200,,,New & Used Specac Press for sale. Atlas equipment & more | Machinio
+2026-11-27T18:40:45Z,listing,machineseeker,https://www.machineseeker.com/universal+robots-ur10e/i-21836768,200,,,▷ Used Industrial robot Universal Robots UR10e for sale - Machineseeker.com
+2026-11-27T18:40:53Z,search,labx,https://www.labx.com/search-a?sw=glovebox,200,,,"Search for glovebox on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX.co"
+2026-11-27T18:40:53Z,search,exapro,https://www.exapro.com/product-search/?text=nabertherm,200,,,Best used machines for nabertherm (12)
+2026-11-27T18:40:54Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=icpms,200,,,Public Surplus: Search an auction
+2026-11-27T18:40:58Z,listing,allsurplus,https://www.allsurplus.com/en/asset/1684/23288,200,,,PANalytical PW2830 WDXRF Wafer Analyzer | AllSurplus
+2026-11-27T18:41:09Z,listing,machineseeker,https://www.machineseeker.com/fanuc-robocut+0id/i-23372782,200,,,▷ Used Wire eroding machine Fanuc Robocut 0iD for sale - Machineseeker.com
+2026-11-27T18:41:15Z,search,machinio,https://www.machinio.com/listings?search=hydraulic+press+laboratory,200,,,New & Used Hydraulic Press Laboratory for sale. Carver equipment & more | Machinio
+2026-11-27T18:41:20Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=universal+testing+machine,200,,,Buy used Universal Testing Machine on Machineseeker
+2026-11-27T18:41:27Z,search,labx,https://www.labx.com/search-a?sw=glove+box,200,,,"Search for glove box on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX.c"
+2026-11-27T18:41:27Z,listing,allsurplus,https://www.allsurplus.com/en/asset/39017/685,200,,,Thermcraft Furnace | AllSurplus
+2026-11-27T18:41:33Z,search,govdeals,https://www.govdeals.com/en/search?kWord=hydraulic+press+laboratory,200,,,hydraulic press laboratory | GovDeals
+2026-11-27T18:41:39Z,probe or vendor page,rdr,https://robotsdoneright.com/,200,,,Robots Done Right - Used Robot Sales
+2026-11-27T18:41:50Z,listing,machineseeker,https://www.machineseeker.com/universal+robots-ur10+cobot/i-22075388,200,,,▷ Used Robots Universal Robots UR10 Cobot for sale - Machineseeker.com
+2026-11-27T18:42:00Z,search,machinio,https://www.machinio.com/listings?search=edwards+rv3,200,,,New & Used Edwards RV3 for sale. Edwards equipment & more | Machinio
+2026-11-27T18:42:02Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=instron,200,,,Public Surplus: Search an auction
+2026-11-27T18:42:05Z,search,marshall,https://www.marshallscientific.com/search?q=fume+hood,200,,,"Search: 1 result found for ""fume hood"" – Marshall Scientific"
+2026-11-27T18:42:05Z,listing,allsurplus,https://www.allsurplus.com/en/asset/4136/13286,200,,,Bruker AXS X-Ray Diffractometer (XRD) | AllSurplus
+2026-11-27T18:42:15Z,listing,machineseeker,https://www.machineseeker.com/cobot+universal+robots-ur10/i-22361492,200,,,▷ Used Industrial robot Cobot Universal Robots UR10 for sale - Machineseeker.com
+2026-11-27T18:42:18Z,probe or vendor page,semtech,https://www.semtechsolutions.com/,200,,,Used SEM | Used Scanning Electron Microscope | SEMTech Solutions
+2026-11-27T18:42:24Z,search,exapro,https://www.exapro.com/product-search/?text=scanning+electron+microscope,200,,,Best used machines for scanning electron microscope (2)
+2026-11-27T18:42:27Z,search,labx,https://www.labx.com/search-a?sw=mbraun,200,,,"Search for mbraun on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX.com"
+2026-11-27T18:42:34Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=glove+box,200,,,glove box | AllSurplus
+2026-11-27T18:42:55Z,search,machinio,https://www.machinio.com/listings?search=glovebox,200,,,New & Used Glovebox for sale. Mbraun equipment & more | Machinio
+2026-11-27T18:42:55Z,listing,machineseeker,https://www.machineseeker.com/fanuc-robocut+%CE%B1-c800ib/i-22933011,200,,,▷ Used FANUC ROBOCUT α-C800iB Wire EDM Machine FANUC ROBOCUT α-C800iB for sale - Machinese
+2026-11-27T18:42:59Z,listing,allsurplus,https://www.allsurplus.com/en/asset/5/32458,200,,,Rautomead Furnace F1 | AllSurplus
+2026-11-27T18:43:00Z,probe or vendor page,conquer,https://www.conquerscientific.com/,200,,,High-Quality Used Lab Equipment | Conquer Scientific
+2026-11-27T18:43:07Z,search,marshall,https://www.marshallscientific.com/search?q=specac,200,,,"Search: 84 results found for ""specac"" – Marshall Scientific"
+2026-11-27T18:43:20Z,listing,exapro,https://www.exapro.com/fanuc-robocut-alpha-1id-p260915730/,200,,,FANUC ROBOCUT alpha-1iD Wire cutting EDM machine Used machines - Exapro
+2026-11-27T18:43:21Z,search,govdeals,https://www.govdeals.com/en/search?kWord=analytical+balance,200,,,analytical balance | GovDeals
+2026-11-27T18:43:22Z,search,labx,https://www.labx.com/search-a?sw=vacuum+atmospheres,200,,,"Search for vacuum atmospheres on LabX.com | New, Used and Refurbished Laboratory Equipment"
+2026-11-27T18:43:25Z,probe or vendor page,gmi,https://www.gmi-inc.com/icp-ms/,200,,,ICP-MS | GMI - Trusted Laboratory Solutions
+2026-11-27T18:43:26Z,search,exapro,https://www.exapro.com/product-search/?text=x-ray+diffractometer,200,,,Best used machines for x-ray diffractometer (1)
+2026-11-27T18:43:34Z,listing,allsurplus,https://www.allsurplus.com/en/asset/26609/20379,200,,,CM Furnaces Rapid-Temp 1700 Series Control Console | AllSurplus
+2026-11-27T18:43:35Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=universal+testing+machine,200,,,Public Surplus: Search an auction
+2026-11-27T18:43:42Z,search,machinio,https://www.machinio.com/listings?search=glove+box,200,,,New & Used Glove Box for sale. Polaris equipment & more | Machinio
+2026-11-27T18:43:43Z,listing,machineseeker,https://www.machineseeker.com/universal+robots-ur10e+cell/i-20914212,200,,,▷ Used Universal Robots UR10e cell Universal Robots UR10e cell for sale - Machineseeker.co
+2026-11-27T18:43:48Z,search,labx,https://www.labx.com/search-a?sw=fume+hood,200,,,"Search for fume hood on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX.c"
+2026-11-27T18:43:49Z,probe or vendor page,rdr,https://robotsdoneright.com/,200,,,Robots Done Right - Used Robot Sales
+2026-11-27T18:43:51Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=zwick,200,,,Buy used Zwick on Machineseeker
+2026-11-27T18:43:54Z,search,govdeals,https://www.govdeals.com/en/search?kWord=glovebox,200,,,glovebox | GovDeals
+2026-11-27T18:44:03Z,listing,allsurplus,https://www.allsurplus.com/en/asset/10/32458,200,,,Rautomead Furnace (NEW) | AllSurplus
+2026-11-27T18:44:08Z,listing,machineseeker,https://www.machineseeker.com/universal+robots-ur5/i-21653988,200,,,▷ Used Industrial robot Universal Robots UR5 for sale - Machineseeker.com
+2026-11-27T18:44:13Z,search,labx,https://www.labx.com/search-a?sw=agilent+7900,200,,,"Search for agilent 7900 on LabX.com | New, Used and Refurbished Laboratory Equipment | Lab"
+2026-11-27T18:44:14Z,probe or vendor page,semtech,https://www.semtechsolutions.com/,200,,,Used SEM | Used Scanning Electron Microscope | SEMTech Solutions
+2026-11-27T18:44:24Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=fume+hood,200,,,fume hood | AllSurplus
+2026-11-27T18:44:26Z,search,marshall,https://www.marshallscientific.com/search?q=hydraulic+press+laboratory,200,,,"Search: 781 results found for ""hydraulic press laboratory"" – Marshall Scientific"
+2026-11-27T18:44:31Z,listing,machineseeker,https://www.machineseeker.com/universal+robots-ur+7e+%28oem+controller%29/i-23269735,200,,,▷ Used Industrial robot Universal Robots UR 7e (OEM Controller) for sale - Machineseeker.c
+2026-11-27T18:44:37Z,listing,govdeals,https://www.govdeals.com/en/asset/39017/685,200,,,Thermcraft Furnace | GovDeals
+2026-11-27T18:44:38Z,search,machinio,https://www.machinio.com/listings?search=mbraun,200,,,New & Used Mbraun for sale. Braun equipment & more | Machinio
+2026-11-27T18:44:41Z,probe or vendor page,rdr,https://robotsdoneright.com/Inventory.html,200,,,Robot Inventory - Robots Done Right
+2026-11-27T18:44:43Z,search,labx,https://www.labx.com/search-a?sw=agilent+7800,200,,,"Search for agilent 7800 on LabX.com | New, Used and Refurbished Laboratory Equipment | Lab"
+2026-11-27T18:44:46Z,search,govdeals,https://www.govdeals.com/en/search?kWord=glove+box,200,,,glove box | GovDeals
+2026-11-27T18:44:49Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=instron+3119,200,,,Buy used Instron 3119 on Machineseeker
+2026-11-27T18:44:55Z,listing,machineseeker,https://www.machineseeker.com/cobot+universal+robots-ur5/i-22900745,200,,,▷ Used Industrial robot Cobot Universal Robots UR5 for sale - Machineseeker.com
+2026-11-27T18:45:02Z,probe or vendor page,semtech,https://www.semtechsolutions.com/sem-services/hitachi-sem/,200,,,Refurbished Hitachi SEM Systems for Sale | SEMTech Solutions
+2026-11-27T18:45:03Z,search,machinio,https://www.machinio.com/listings?search=vacuum+atmospheres,200,,,New & Used Vacuum Atmospheres for sale. Edwards equipment & more | Machinio
+2026-11-27T18:45:04Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=tensile+tester,200,,,Public Surplus: Search an auction
+2026-11-27T18:45:04Z,listing,govdeals,https://www.govdeals.com/en/asset/1684/23288,200,,,PANalytical PW2830 WDXRF Wafer Analyzer | GovDeals
+2026-11-27T18:45:10Z,search,labx,https://www.labx.com/search-a?sw=agilent+7700,200,,,"Search for agilent 7700 on LabX.com | New, Used and Refurbished Laboratory Equipment | Lab"
+2026-11-27T18:45:11Z,search,exapro,https://www.exapro.com/product-search/?text=xrf+spectrometer,200,,,Best used machines for xrf spectrometer (2)
+2026-11-27T18:45:13Z,listing,machineseeker,https://www.machineseeker.com/universal+robots-ur10e/i-23245228,200,,,▷ Used Cobot Universal Robots UR10e for sale - Machineseeker.com
+2026-11-27T18:45:29Z,probe or vendor page,gmi,https://www.gmi-inc.com/product-category/gmi-re-certified-equipment/icp-ms/,200,,,ICP-MS Archives | GMI - Trusted Laboratory Solutions
+2026-11-27T18:45:36Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=nabertherm,200,,,Buy used Nabertherm on Machineseeker
+2026-11-27T18:45:37Z,listing,allsurplus,https://www.allsurplus.com/en/asset/26791/20379,200,,,Lindberg / Blue M MO1490A-1 Mechanical Oven | AllSurplus
+2026-11-27T18:45:37Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=icp-ms,200,,,icp-ms | AllSurplus
+2026-11-27T18:45:42Z,search,machinio,https://www.machinio.com/listings?search=fume+hood,200,,,New & Used Fume Hood for sale. Labconco equipment & more | Machinio
+2026-11-27T18:45:42Z,listing,machineseeker,https://www.machineseeker.com/universal+robots-ur5e/i-23127461,200,,,▷ Used Industrial robot UNIVERSAL ROBOTS UR5e for sale - Machineseeker.com
+2026-11-27T18:45:47Z,search,labx,https://www.labx.com/search-a?sw=icp-ms,200,,,"Search for icp-ms on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX.com"
+2026-11-27T18:46:01Z,search,marshall,https://www.marshallscientific.com/search?q=edwards+rv3,200,,,"Search: 3 results found for ""edwards rv3"" – Marshall Scientific"
+2026-11-27T18:46:02Z,probe or vendor page,rdr,https://robotsdoneright.com/Inventory.html,200,,,Robot Inventory - Robots Done Right
+2026-11-27T18:46:07Z,listing,exapro,https://www.exapro.com/fanuc-robocut-alpha-c-p260828340/,200,,,Robocut Alpha - C Fanuc Wire EDM Robocut Alpha 0C Used machines - Exapro
+2026-11-27T18:46:09Z,search,govdeals,https://www.govdeals.com/en/search?kWord=fume+hood,200,,,fume hood | GovDeals
+2026-11-27T18:46:12Z,search,labx,https://www.labx.com/search-a?sw=instron+5982,200,,,"Search for instron 5982 on LabX.com | New, Used and Refurbished Laboratory Equipment | Lab"
+2026-11-27T18:46:12Z,listing,govdeals,https://www.govdeals.com/en/asset/2473/23288,200,,,Blue M Industrial Laboratory Oven - 600°F - 208V 3 Phase | GovDeals
+2026-11-27T18:46:20Z,search,exapro,https://www.exapro.com/product-search/?text=icp-ms,200,,,Best used machines for icp-ms (31)
+2026-11-27T18:46:26Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=zwick,200,,,Public Surplus: Search an auction
+2026-11-27T18:46:28Z,probe or vendor page,conquer,https://conquerscientific.com/?s=icp-ms&post_type=product,200,,,You searched for icp-ms - Conquer Scientific
+2026-11-27T18:46:30Z,listing,exapro,https://www.exapro.com/fanuc-robocut-alpha-1b-p250620066/,200,,,FANUC ROBOCUT ALPHA 1B Wire cutting edm machine Used machines - Exapro
+2026-11-27T18:46:35Z,search,labx,https://www.labx.com/search-a?sw=instron+5985,200,,,"Search for instron 5985 on LabX.com | New, Used and Refurbished Laboratory Equipment | Lab"
+2026-11-27T18:46:36Z,search,machinio,https://www.machinio.com/listings?search=agilent+7900,200,,,New & Used Agilent 7900 for sale. Agilent - Keysight equipment & more | Machinio
+2026-11-27T18:46:42Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=icpms,200,,,icpms | AllSurplus
+2026-11-27T18:46:44Z,listing,govdeals,https://www.govdeals.com/en/asset/26609/20379,200,,,CM Furnaces Rapid-Temp 1700 Series Control Console | GovDeals
+2026-11-27T18:46:44Z,search,marshall,https://www.marshallscientific.com/search?q=plastometrex,200,,,"Search: 0 results found for ""plastometrex"" – Marshall Scientific"
+2026-11-27T18:46:54Z,listing,exapro,https://www.exapro.com/mobile-industrial-robots-mir100-p250310103/,200,,,mobile-industrial-robots MiR100 Industrial Robot Used machines - Exapro
+2026-11-27T18:47:11Z,search,rdr,https://robotsdoneright.com/inventory/universal-robots.html,200,,,Universal Robots Inventory - Robots Done Right
+2026-11-27T18:47:13Z,listing,exapro,https://www.exapro.com/fanuc-robocut-alpha-1-ic-p260624051/,200,,,FANUC Robocut Alfa 1-iC Wire cutting EDM machine Used machines - Exapro
+2026-11-27T18:47:13Z,search,machinio,https://www.machinio.com/listings?search=agilent+7800,200,,,New & Used Agilent 7800 for sale. Agilent - Keysight equipment & more | Machinio
+2026-11-27T18:47:13Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=hitachi+tm3030,200,,,Buy used Hitachi Tm3030 on Machineseeker
+2026-11-27T18:47:14Z,search,labx,https://www.labx.com/search-a?sw=instron,200,,,"Search for instron on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX.com"
+2026-11-27T18:47:17Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=instron,200,,,instron | AllSurplus
+2026-11-27T18:47:17Z,listing,allsurplus,https://www.allsurplus.com/en/asset/8/32458,200,,,Rautomead Furnace F4 | AllSurplus
+2026-11-27T18:47:27Z,search,semtech,https://www.semtechsolutions.com/sem-services/hitachi-sem/,200,,,Refurbished Hitachi SEM Systems for Sale | SEMTech Solutions
+2026-11-27T18:47:32Z,search,exapro,https://www.exapro.com/product-search/?text=mastersizer,200,,,Best used machines for mastersizer (1)
+2026-11-27T18:47:36Z,listing,dotmed,https://www.dotmed.com/listing/mass-spectrometer/agilent/7700-icp-ms/5845306,200,,,Used AGILENT 7700 ICP-MS Mass Spectrometer For Sale - DOTmed Listing #5845306:
+2026-11-27T18:47:41Z,search,machinio,https://www.machinio.com/listings?search=agilent+7700,200,,,New & Used Agilent 7700 for sale. Agilent - Keysight equipment & more | Machinio
+2026-11-27T18:47:45Z,search,govdeals,https://www.govdeals.com/en/search?kWord=icp-ms,200,,,icp-ms | GovDeals
+2026-11-27T18:47:46Z,search,gmi,https://www.gmi-inc.com/product-category/gmi-re-certified-equipment/icp-ms/,200,,,ICP-MS Archives | GMI - Trusted Laboratory Solutions
+2026-11-27T18:47:47Z,search,labx,https://www.labx.com/search-a?sw=universal+testing+machine,200,,,"Search for universal testing machine on LabX.com | New, Used and Refurbished Laboratory Eq"
+2026-11-27T18:47:47Z,listing,allsurplus,https://www.allsurplus.com/en/asset/11/32458,200,,,Rautomead Furnace (REBUILD) | AllSurplus
+2026-11-27T18:47:48Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=phenom,200,,,Buy used Phenom on Machineseeker
+2026-11-27T18:47:58Z,listing,machineseeker,https://www.machineseeker.com/kardex-shuttle+xp250/i-5279475,200,,,▷ Used Kardex Shuttle XP250 Kardex Shuttle XP250 for sale - Machineseeker.com
+2026-11-27T18:48:04Z,search,labx,https://www.labx.com/search-a?sw=tensile+tester,200,,,"Search for tensile tester on LabX.com | New, Used and Refurbished Laboratory Equipment | L"
+2026-11-27T18:48:07Z,search,exapro,https://www.exapro.com/product-search/?text=micro+vickers,200,,,Best used machines for micro (995)
+2026-11-27T18:48:07Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=stereo+microscope,200,,,Public Surplus: Search an auction
+2026-11-27T18:48:08Z,search,machinio,https://www.machinio.com/listings?search=icp-ms,200,,,New & Used Icp Ms for sale. Agilent - Keysight equipment & more | Machinio
+2026-11-27T18:48:12Z,listing,allsurplus,https://www.allsurplus.com/en/asset/12/32458,200,,,Rautomead Furnace (RT1200) | AllSurplus
+2026-11-27T18:48:18Z,listing,exapro,https://www.exapro.com/fanuc-robocut-a-1ia-p260107110/,200,,,FANUC ROBOCUT a-1ia machining center Used machines - Exapro
+2026-11-27T18:48:20Z,search,conquer,https://conquerscientific.com/?s=icp-ms&post_type=product,200,,,You searched for icp-ms - Conquer Scientific
+2026-11-27T18:48:27Z,search,labx,https://www.labx.com/search-a?sw=mts+criterion,200,,,"Search for mts criterion on LabX.com | New, Used and Refurbished Laboratory Equipment | La"
+2026-11-27T18:48:33Z,search,marshall,https://www.marshallscientific.com/search?q=stereo+microscope,200,,,"Search: 22 results found for ""stereo microscope"" – Marshall Scientific"
+2026-11-27T18:48:35Z,search,machinio,https://www.machinio.com/listings?search=instron+5982,200,,,New & Used Instron 5982 for sale. Top quality machinery listings. | Machinio
+2026-11-27T18:48:38Z,search,conquer,https://conquerscientific.com/?s=electron+microscope&post_type=product,200,,,LabTech H50-500 Series Water Chillers 115V - Conquer Scientific
+2026-11-27T18:48:42Z,search,govdeals,https://www.govdeals.com/en/search?kWord=icpms,200,,,icpms | GovDeals
+2026-11-27T18:48:46Z,listing,allsurplus,https://www.allsurplus.com/en/asset/9/32458,200,,,Rautomead Furnace F5 | AllSurplus
+2026-11-27T18:48:49Z,listing,machinio,https://www.machinio.com/listings/173076-hitachi-tm3030-plus-microscope,200,,,Hitachi TM3030 PLUS Microscope
+2026-11-27T18:48:50Z,search,labx,https://www.labx.com/search-a?sw=instron+3119,200,,,"Search for instron 3119 on LabX.com | New, Used and Refurbished Laboratory Equipment | Lab"
+2026-11-27T18:48:52Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=scanning+electron+microscope,200,,,Buy used Scanning Electron Microscope on Machineseeker
+2026-11-27T18:48:53Z,search,semtech,https://www.semtechsolutions.com/sem-services/refurbished-jeol-scanning-electron-microscopes/,200,,,Refurbished JEOL SEM Systems for Sale | SEMTech Solution
+2026-11-27T18:48:57Z,search,machinio,https://www.machinio.com/listings?search=instron+5985,200,,,New & Used Instron 5985 for sale. Top quality machinery listings. | Machinio
+2026-11-27T18:48:58Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=wire+edm,200,,,Public Surplus: Search an auction
+2026-11-27T18:49:10Z,search,labx,https://www.labx.com/search-a?sw=environmental+chamber+instron,200,,,"Search for environmental chamber instron on LabX.com | New, Used and Refurbished Laborator"
+2026-11-27T18:49:11Z,listing,publicsurplus,https://www.publicsurplus.com/sms/auction/view?auc=4131158,200,,,Public Surplus: Auction #4131158
+2026-11-27T18:49:13Z,search,semtech,https://www.semtechsolutions.com/sem-services/refurbished-zeiss-scanning-electron-microscope/,200,,,Refurbished ZEISS/LEO SEM Systems for Sale | SEMTech Solutions
+2026-11-27T18:49:15Z,search,exapro,https://www.exapro.com/product-search/?text=nanoindenter,200,,,Best used machines for nanoindenter (0)
+2026-11-27T18:49:17Z,listing,machinio,https://www.machinio.com/listings/116504969-hitachi-hitachi-electron-microscope-tm4000plus-in-guangzhou-china,200,,,"Hitachi Hitachi Electron Microscope TM4000Plus in Guangzhou, Guangdong, China"
+2026-11-27T18:49:21Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=universal+testing+machine,200,,,universal testing machine | AllSurplus
+2026-11-27T18:49:24Z,search,machinio,https://www.machinio.com/listings?search=instron,200,,,New & Used Instron for sale. Dynamic equipment & more | Machinio
+2026-11-27T18:49:32Z,search,conquer,https://conquerscientific.com/?s=diffractometer&post_type=product,200,,,You searched for diffractometer - Conquer Scientific
+2026-11-27T18:49:34Z,search,labx,https://www.labx.com/search-a?sw=zwick,200,,,"Search for zwick on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX.com"
+2026-11-27T18:49:34Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=ebsd,200,,,Buy used Ebsd on Machineseeker
+2026-11-27T18:49:36Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=haas+st-10,200,,,Public Surplus: Search an auction
+2026-11-27T18:49:39Z,listing,allsurplus,https://www.allsurplus.com/en/asset/6/32458,200,,,Rautomead Furnace F2 | AllSurplus
+2026-11-27T18:49:44Z,listing,machineseeker,https://www.machineseeker.com/universal+robots-ur10/i-22208407,200,,,▷ Used Universal Robots UR10 Universal Robots UR10 for sale - Machineseeker.com
+2026-11-27T18:49:49Z,search,conquer,https://conquerscientific.com/?s=xrf&post_type=product,200,,,You searched for xrf - Conquer Scientific
+2026-11-27T18:49:53Z,search,exapro,https://www.exapro.com/product-search/?text=keyence+vhx,200,,,Best used machines for keyence vhx (4)
+2026-11-27T18:49:55Z,search,labx,https://www.labx.com/search-a?sw=zwickroell,200,,,"Search for zwickroell on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX."
+2026-11-27T18:49:59Z,search,machinio,https://www.machinio.com/listings?search=universal+testing+machine,200,,,New & Used Universal Testing Machine for sale. Instron equipment & more | Machinio
+2026-11-27T18:50:00Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=tensile+tester,200,,,tensile tester | AllSurplus
+2026-11-27T18:50:04Z,listing,govdeals,https://www.govdeals.com/en/asset/26877/20379,200,,,Hevi-Duty Electric Multiple Unit Furnace (Type 56) | GovDeals
+2026-11-27T18:50:08Z,search,exapro,https://www.exapro.com/product-search/?text=grinder+polisher,200,,,Best used machines for grinder polisher (2)
+2026-11-27T18:50:08Z,listing,exapro,https://www.exapro.com/fanuc-robocut-alpha-1-i-a-p251030052/,200,,,FANUC ROBOCUT ALPHA 1 i A Wire cutting edm machine Used machines - Exapro
+2026-11-27T18:50:12Z,search,conquer,https://conquerscientific.com/?s=particle+size&post_type=product,200,,,You searched for particle size - Conquer Scientific
+2026-11-27T18:50:24Z,search,labx,https://www.labx.com/search-a?sw=density+kit,200,,,"Search for density kit on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX"
+2026-11-27T18:50:31Z,search,govdeals,https://www.govdeals.com/en/search?kWord=instron,200,,,instron | GovDeals
+2026-11-27T18:50:34Z,listing,exapro,https://www.exapro.com/fanuc-robocut-alpha-1ia-p250226071/,200,,,FANUC Robocut ALPHA -1iA Wire cutting edm machine Used machines - Exapro
+2026-11-27T18:50:35Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=x-ray+diffractometer,200,,,Buy used X-Ray Diffractometer on Machineseeker
+2026-11-27T18:50:35Z,search,conquer,https://conquerscientific.com/?s=hardness+tester&post_type=product,200,,,You searched for hardness tester - Conquer Scientific
+2026-11-27T18:50:37Z,search,machinio,https://www.machinio.com/listings?search=tensile+tester,200,,,New & Used Tensile Tester for sale. Instron equipment & more | Machinio
+2026-11-27T18:50:37Z,listing,allsurplus,https://www.allsurplus.com/en/asset/26877/20379,200,,,Hevi-Duty Electric Multiple Unit Furnace (Type 56) | AllSurplus
+2026-11-27T18:50:51Z,search,labx,https://www.labx.com/search-a?sw=stereo+microscope,200,,,"Search for stereo microscope on LabX.com | New, Used and Refurbished Laboratory Equipment "
+2026-11-27T18:50:52Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=xrf+spectrometer,200,,,Buy used Xrf Spectrometer on Machineseeker
+2026-11-27T18:50:54Z,search,govdeals,https://www.govdeals.com/en/search?kWord=universal+testing+machine,200,,,universal testing machine | GovDeals
+2026-11-27T18:50:57Z,listing,machineseeker,https://www.machineseeker.com/kardex-shuttle+250-1650x825-nt/i-22507367,200,,,▷ Used Storage lift / shuttle Kardex SHUTTLE 250-1650x825-NT for sale - Machineseeker.com
+2026-11-27T18:51:01Z,search,conquer,https://conquerscientific.com/?s=glove+box&post_type=product,200,,,You searched for glove box - Conquer Scientific
+2026-11-27T18:51:05Z,listing,allsurplus,https://www.allsurplus.com/en/asset/573/23288,200,,,JEOL JXA 8600 SUPERPROBE Scanning Electron Microscope | AllSurplus
+2026-11-27T18:51:08Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=cnc+lathe,200,,,Public Surplus: Search an auction
+2026-11-27T18:51:09Z,search,machinio,https://www.machinio.com/listings?search=mts+criterion,200,,,New & Used Mts Criterion for sale. Top quality machinery listings. | Machinio
+2026-11-27T18:51:11Z,search,exapro,https://www.exapro.com/product-search/?text=struers,200,,,Best used machines for streuers (1)
+2026-11-27T18:51:12Z,search,labx,https://www.labx.com/search-a?sw=universal+robots+ur10e,200,,,"Search for universal robots ur10e on LabX.com | New, Used and Refurbished Laboratory Equip"
+2026-11-27T18:51:17Z,listing,dotmed,https://www.dotmed.com/listing/mass-spectrometer/agilent/8800-icp-ms-ms/4959394,200,,,Refurbished AGILENT 8800 ICP/MS/MS Mass Spectrometer For Sale - DOTmed Listing #4959394:
+2026-11-27T18:51:20Z,search,conquer,https://conquerscientific.com/?s=furnace&post_type=product,200,,,You searched for furnace - Conquer Scientific
+2026-11-27T18:51:32Z,search,machinio,https://www.machinio.com/listings?search=instron+3119,200,,,New & Used Instron 3119 for sale. Instron equipment & more | Machinio
+2026-11-27T18:51:33Z,search,exapro,https://www.exapro.com/product-search/?text=retsch+as+200,200,,,Best used machines for retsch as 200 (1)
+2026-11-27T18:51:35Z,search,labx,https://www.labx.com/search-a?sw=robotiq+2f-85,200,,,"Search for robotiq 2f-85 on LabX.com | New, Used and Refurbished Laboratory Equipment | La"
+2026-11-27T18:51:37Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=zwick,200,,,zwick | AllSurplus
+2026-11-27T18:51:38Z,listing,govdeals,https://www.govdeals.com/en/asset/26791/20379,200,,,Lindberg / Blue M MO1490A-1 Mechanical Oven | GovDeals
+2026-11-27T18:51:39Z,listing,machineseeker,https://www.machineseeker.com/kardex-shuttle+500nt/i-23220851,200,,,▷ Used Storage lift KARDEX SHUTTLE 500NT for sale - Machineseeker.com
+2026-11-27T18:51:41Z,search,conquer,https://conquerscientific.com/?s=keyence&post_type=product,200,,,You searched for keyence - Conquer Scientific
+2026-11-27T18:51:56Z,search,labx,https://www.labx.com/search-a?sw=amazemet,200,,,"Search for amazemet on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX.co"
+2026-11-27T18:51:59Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=icp-ms,200,,,Buy used Icp-Ms on Machineseeker
+2026-11-27T18:52:00Z,listing,exapro,https://www.exapro.com/mobile-industrial-robots-mir-mir500-p261127142/,200,,,Mobile Industrial Robots (MiR) MiR500 Used machines - Exapro
+2026-11-27T18:52:01Z,search,machinio,https://www.machinio.com/listings?search=environmental+chamber+instron,200,,,New & Used Environmental Chamber Instron for sale. Instron equipment & more | Machinio
+2026-11-27T18:52:03Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=wire+edm,200,,,wire edm | AllSurplus
+2026-11-27T18:52:07Z,search,labx,https://www.labx.com/search-a?sw=atomizer+metal+powder,200,,,"Search for atomizer metal powder on LabX.com | New, Used and Refurbished Laboratory Equipm"
+2026-11-27T18:52:10Z,listing,allsurplus,https://www.allsurplus.com/en/asset/17/32458,200,,,Additional Furnace Assets | AllSurplus
+2026-11-27T18:52:15Z,probe or vendor page,rdr,https://robotsdoneright.com/inventory/universal-robots.html,200,,,Universal Robots Inventory - Robots Done Right
+2026-11-27T18:52:18Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=mastersizer,200,,,Buy used Mastersizer on Machineseeker
+2026-11-27T18:52:21Z,listing,machineseeker,https://www.machineseeker.com/universal+robots-ur+10+cobot/i-22883255,200,,,▷ Used Collaborative robot Universal Robots UR 10 Cobot for sale - Machineseeker.com
+2026-11-27T18:52:28Z,search,labx,https://www.labx.com/search-a?sw=gas+atomizer,200,,,"Search for gas atomizer on LabX.com | New, Used and Refurbished Laboratory Equipment | Lab"
+2026-11-27T18:52:33Z,search,govdeals,https://www.govdeals.com/en/search?kWord=tensile+tester,200,,,tensile tester | GovDeals
+2026-11-27T18:52:38Z,search,exapro,https://www.exapro.com/product-search/?text=sieve+shaker,200,,,Best used machines for sieve shaker (4)
+2026-11-27T18:52:43Z,listing,exapro,https://www.exapro.com/kardex-shuttle-xp-250-1250x610-p221118276/,200,,,Kardex SHUTTLE-XP-250-1250x610 Pallets racks Used machines - Exapro
+2026-11-27T18:52:43Z,probe or vendor page,gmi,https://www.gmi-inc.com/product/agilent-7800-icp-ms/,200,,,Agilent 7800 ICP-MS | GMI - Trusted Laboratory Solutions
+2026-11-27T18:52:45Z,search,labx,https://www.labx.com/search-a?sw=eos+m+290,200,,,"Search for eos m 290 on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX.c"
+2026-11-27T18:52:45Z,search,machinio,https://www.machinio.com/listings?search=zwick,200,,,New & Used Zwick for sale. Zwick - Roell equipment & more | Machinio
+2026-11-27T18:52:46Z,listing,allsurplus,https://www.allsurplus.com/en/asset/208/29807,200,,,Polisher Grinders | AllSurplus
+2026-11-27T18:52:48Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=carvera,200,,,Public Surplus: Search an auction
+2026-11-27T18:52:52Z,search,exapro,https://www.exapro.com/product-search/?text=glovebox,200,,,Best used machines for glovebox (10)
+2026-11-27T18:53:03Z,search,labx,https://www.labx.com/search-a?sw=metal+3d+printer,200,,,"Search for metal 3d printer on LabX.com | New, Used and Refurbished Laboratory Equipment |"
+2026-11-27T18:53:04Z,probe or vendor page,rdr,https://robotsdoneright.com/inventory/universal-robots-sold.html,200,,,Sold Universal Robots Inventory - Robots Done Right
+2026-11-27T18:53:04Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=universal+robots+ur10e,200,,,Public Surplus: Search an auction
+2026-11-27T18:53:06Z,listing,machineseeker,https://www.machineseeker.com/haas-st-15/i-23012356,200,,,▷ Used CNC lathe HAAS ST-15 for sale - Machineseeker.com
+2026-11-27T18:53:11Z,listing,govdeals,https://www.govdeals.com/en/asset/573/23288,200,,,JEOL JXA 8600 SUPERPROBE Scanning Electron Microscope | GovDeals
+2026-11-27T18:53:20Z,search,machinio,https://www.machinio.com/listings?search=zwickroell,200,,,New & Used Zwickroell for sale. Zwick - Roell equipment & more | Machinio
+2026-11-27T18:53:21Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=micro+vickers,200,,,Buy used Micro Vickers on Machineseeker
+2026-11-27T18:53:23Z,search,labx,https://www.labx.com/search-a?sw=aconity,200,,,"Search for aconity on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX.com"
+2026-11-27T18:53:25Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=haas+st-10,200,,,haas st-10 | AllSurplus
+2026-11-27T18:53:31Z,listing,machineseeker,https://www.machineseeker.com/universal+robots-ur10e/i-23232022,200,,,▷ Used Universal Robots UR10e Universal Robots UR10e for sale - Machineseeker.com
+2026-11-27T18:53:38Z,listing,allsurplus,https://www.allsurplus.com/en/asset/36349/7896,200,,,Box Furnace & Controller | AllSurplus
+2026-11-27T18:53:44Z,search,labx,https://www.labx.com/search-a?sw=insstek,200,,,"Search for insstek on LabX.com | New, Used and Refurbished Laboratory Equipment | LabX.com"
+2026-11-27T18:53:46Z,search,machinio,https://www.machinio.com/listings?search=wire+edm,200,,,New & Used Wire EDM for sale. Fanuc equipment & more | Machinio
+2026-11-27T18:53:47Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=nanoindenter,200,,,Buy used Nanoindenter on Machineseeker
+2026-11-27T18:53:47Z,search,govdeals,https://www.govdeals.com/en/search?kWord=zwick,200,,,zwick | GovDeals
+2026-11-27T18:53:56Z,listing,machineseeker,https://www.machineseeker.com/fanuc-robocut+alpha-1id/i-22748337,200,,,▷ Used FANUC ROBOCUT alpha-1iD FANUC ROBOCUT alpha-1iD for sale - Machineseeker.com
+2026-11-27T18:54:07Z,listing,govdeals,https://www.govdeals.com/en/asset/36349/7896,200,,,Box Furnace & Controller | GovDeals
+2026-11-27T18:54:07Z,search,exapro,https://www.exapro.com/product-search/?text=nilfisk+cfm,200,,,Best used machines for nilfisk cfm (3)
+2026-11-27T18:54:11Z,search,labx,https://www.labx.com/search-a?sw=optomec+lens,200,,,"Search for optomec lens on LabX.com | New, Used and Refurbished Laboratory Equipment | Lab"
+2026-11-27T18:54:15Z,listing,conquer,https://conquerscientific.com/product/agilent-7800-icp-ms/,200,,,Agilent 7800 ICP-MS - Conquer Scientific
+2026-11-27T18:54:15Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=cnc+lathe,200,,,cnc lathe | AllSurplus
+2026-11-27T18:54:18Z,search,machinio,https://www.machinio.com/listings?search=fanuc+robocut,200,,,New & Used Fanuc Robocut for sale. Fanuc equipment & more | Machinio
+2026-11-27T18:54:20Z,listing,exapro,https://www.exapro.com/fanuc-robocut-0ia-p230803101/,200,,,FANUC Robocut 0iA Wire cutting edm machine Used machines - Exapro
+2026-11-27T18:54:25Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=keyence+vhx,200,,,Buy used Keyence Vhx on Machineseeker
+2026-11-27T18:54:38Z,listing,allsurplus,https://www.allsurplus.com/en/asset/219/20948,200,,,"Hitachi S-4500 , Scanning electron microscope with EDX detector , S 4500 , | AllSurplus"
+2026-11-27T18:54:39Z,listing,dotmed,https://www.dotmed.com/listing/lab-general/lab-systems/malvern-mastersizer-3000e/particle-size-analyzer/5106676,200,,,Used LAB SYSTEMS Malvern Mastersizer 3000E Particle Size Analyzer Lab - General For Sale -
+2026-11-27T18:54:44Z,search,govdeals,https://www.govdeals.com/en/search?kWord=stereo+microscope,200,,,stereo microscope | GovDeals
+2026-11-27T18:54:44Z,search,exapro,https://www.exapro.com/product-search/?text=staubli+combitac,200,,,Best used machines for staubli (72)
+2026-11-27T18:54:45Z,listing,dotmed,https://www.dotmed.com/listing/mass-spectrometer/agilent/7700x-icp-ms/5182331,200,,,Used AGILENT 7700x ICP-MS Mass Spectrometer For Sale - DOTmed Listing #5182331:
+2026-11-27T18:54:48Z,search,machinio,https://www.machinio.com/listings?search=sodick+wire+edm,200,,,New & Used Sodick Wire EDM for sale. Sodick equipment & more | Machinio
+2026-11-27T18:55:10Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=grinder+polisher,200,,,Buy used Grinder Polisher on Machineseeker
+2026-11-27T18:55:10Z,listing,gmi,https://www.gmi-inc.com/product/agilent-7800-icp-ms/,200,,,Agilent 7800 ICP-MS | GMI - Trusted Laboratory Solutions
+2026-11-27T18:55:11Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=mir250,200,,,Public Surplus: Search an auction
+2026-11-27T18:55:18Z,listing,machineseeker,https://www.machineseeker.com/matra+fanuc-w2/i-23357756,200,,,▷ Used Wire eroding machine Matra Fanuc W2 for sale - Machineseeker.com
+2026-11-27T18:55:20Z,listing,allsurplus,https://www.allsurplus.com/en/asset/34/32458,200,,,AXIOS X-Ray Analysis Unit | AllSurplus
+2026-11-27T18:55:28Z,search,exapro,https://www.exapro.com/product-search/?text=makera+carvera,200,,,Best used machines for makers carrera (3)
+2026-11-27T18:55:39Z,listing,dotmed,https://www.dotmed.com/listing/lab-general/malvern-panalytical/mastersizer-3000-particle-size-analyzer/malvern-mastersizer-3000-laser-diffraction-particle-size-distribution-analyzer/5784811,200,,,Used MALVERN PANALYTICAL Mastersizer 3000 Particle Size Analyzer Malvern Mastersizer 3000 
+2026-11-27T18:55:40Z,search,govdeals,https://www.govdeals.com/en/search?kWord=wire+edm,200,,,wire edm | GovDeals
+2026-11-27T18:55:40Z,search,machinio,https://www.machinio.com/listings?search=mitsubishi+wire+edm,200,,,New & Used Mitsubishi Wire EDM for sale. Mitsubishi equipment & more | Machinio
+2026-11-27T18:55:44Z,listing,machineseeker,https://www.machineseeker.com/fanuc+robocut-%CE%B1-oib+a04b/i-22581152,200,,,▷ Used Wire eroding machine FANUC ROBOCUT α-OiB A04B for sale - Machineseeker.com
+2026-11-27T18:55:44Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=mounting+press,200,,,Buy used Mounting Press on Machineseeker
+2026-11-27T18:55:50Z,listing,allsurplus,https://www.allsurplus.com/en/asset/35/32458,200,,,Furnace Die Cooler Assemblies | AllSurplus
+2026-11-27T18:55:59Z,listing,labx,https://www.labx.com/item/retsch-as-200-jet-sieve-shaker-with-18-sieves/DIS-59250-70291,200,,,Retsch AS 200 Jet Sieve Shaker with 18 Sieves | LabX.com
+2026-11-27T18:56:02Z,listing,dotmed,https://www.dotmed.com/listing/mass-spectrometer/agilent/7900/5721902,200,,,Used AGILENT 7900 Mass Spectrometer For Sale - DOTmed Listing #5721902:
+2026-11-27T18:56:02Z,listing,machineseeker,https://www.machineseeker.com/fanuc-robocut+%CE%B1-0ie/i-20363680,200,,,▷ Used Wire erosion FANUC ROBOCUT α-0iE for sale - Machineseeker.com
+2026-11-27T18:56:06Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=buehler,200,,,Buy used Buehler on Machineseeker
+2026-11-27T18:56:07Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=makera+carvera,200,,,makera carvera | AllSurplus
+2026-11-27T18:56:18Z,listing,allsurplus,https://www.allsurplus.com/en/asset/32/31056,200,,,Pedestal grinder polisher | AllSurplus
+2026-11-27T18:56:24Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=struers,200,,,Buy used Struers on Machineseeker
+2026-11-27T18:56:27Z,listing,conquer,https://conquerscientific.com/product/agilent-7700-icp-ms/,200,,,Agilent 7700 ICP-MS - Conquer Scientific
+2026-11-27T18:56:28Z,listing,labx,https://www.labx.com/item/agilent-7850-icp-ms-w-chiller-sps-4-he-collision-software/scp-96125-5792780,200,,,"Agilent 7850 ICP-MS w/ Chiller, SPS 4, He Collision, Software & PC | LabX.com"
+2026-11-27T18:56:29Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=nilfisk+cfm,200,,,Public Surplus: Search an auction
+2026-11-27T18:56:30Z,search,machinio,https://www.machinio.com/listings?search=makino+wire+edm,200,,,New & Used Makino Wire EDM for sale. Makino equipment & more | Machinio
+2026-11-27T18:56:31Z,listing,machineseeker,https://www.machineseeker.com/universal+robots-ur10/i-22331067,200,,,▷ Used Universal Robots UR10 Universal Robots UR10 for sale - Machineseeker.com
+2026-11-27T18:56:50Z,listing,dotmed,https://www.dotmed.com/listing/mass-spectrometer/agilent/8800-icp-ms/5845305,200,,,Used AGILENT 8800 ICP-MS Mass Spectrometer For Sale - DOTmed Listing #5845305:
+2026-11-27T18:56:54Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=kardex+shuttle,200,,,Public Surplus: Search an auction
+2026-11-27T18:56:54Z,listing,labx,https://www.labx.com/item/hitachi-tm1000-tabletop-sem/222484-4958062,200,,,Hitachi TM1000 Tabletop SEM | LabX.com
+2026-11-27T18:56:55Z,listing,allsurplus,https://www.allsurplus.com/en/asset/7/32458,200,,,Rautomead Furnace F3 | AllSurplus
+2026-11-27T18:56:56Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=retsch+as+200,200,,,Buy used Retsch As 200 on Machineseeker
+2026-11-27T18:56:59Z,listing,labx,https://www.labx.com/item/agilent-g8421a-7800-icp-ms-with-g8410a-sps-4-autosampler/63231-34507,200,,,Agilent G8421A 7800 ICP-MS With G8410A SPS 4 Autosampler | LabX.com
+2026-11-27T18:56:59Z,search,machinio,https://www.machinio.com/listings?search=haas+st-10,200,,,New & Used Haas St 10 for sale. Haas equipment & more | Machinio
+2026-11-27T18:57:13Z,listing,dotmed,https://www.dotmed.com/listing/mass-spectrometer/agilent/7700x-icp-ms/5182331,200,,,Used AGILENT 7700x ICP-MS Mass Spectrometer For Sale - DOTmed Listing #5182331:
+2026-11-27T18:57:15Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=sieve+shaker,200,,,Buy used Sieve Shaker on Machineseeker
+2026-11-27T18:57:16Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=universal+robots+ur10e,200,,,universal robots ur10e | AllSurplus
+2026-11-27T18:57:17Z,listing,machineseeker,https://www.machineseeker.com/fanuc-robocut+alpha-0ie/i-22820125,200,,,▷ Used Wire erosion / EDM Fanuc Robocut alpha-0iE for sale - Machineseeker.com
+2026-11-27T18:57:18Z,listing,labx,https://www.labx.com/item/agilent-7800-icp-ms/DIS-4917-53bd2591222cae7d2e1449fb689242ef,200,,,Agilent 7800 ICP-MS | LabX.com
+2026-11-27T18:57:29Z,search,machinio,https://www.machinio.com/listings?search=haas+st10,200,,,New & Used Haas ST10 for sale. Haas equipment & more | Machinio
+2026-11-27T18:57:37Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=glovebox,200,,,Buy used Glovebox on Machineseeker
+2026-11-27T18:57:39Z,listing,conquer,https://conquerscientific.com/product/agilent-7700x-icp-ms/,200,,,Agilent 7700X ICP-MS - Conquer Scientific
+2026-11-27T18:57:40Z,listing,labx,https://www.labx.com/item/retsch-as-200-jet-air-jet-sieving-machine/63231-34637,200,,,Retsch AS 200 Jet Air Jet Sieving Machine | LabX.com
+2026-11-27T18:57:42Z,listing,dotmed,https://www.dotmed.com/listing/mass-spectrometer/agilent/7900/5721902,200,,,Used AGILENT 7900 Mass Spectrometer For Sale - DOTmed Listing #5721902:
+2026-11-27T18:57:43Z,search,govdeals,https://www.govdeals.com/en/search?kWord=haas+st-10,200,,,haas st-10 | GovDeals
+2026-11-27T18:57:53Z,search,machinio,https://www.machinio.com/listings?search=haas+bar+feeder,200,,,New & Used Haas Bar Feeder for sale. Haas equipment & more | Machinio
+2026-11-27T18:57:56Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=mbraun,200,,,Buy used Mbraun on Machineseeker
+2026-11-27T18:57:58Z,listing,gmi,https://www.gmi-inc.com/product/agilent-7700-icp-ms/,200,,,Agilent 7700 ICP-MS | GMI - Trusted Laboratory Solutions
+2026-11-27T18:58:00Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=vertical+lift+module,200,,,Public Surplus: Search an auction
+2026-11-27T18:58:05Z,listing,dotmed,https://www.dotmed.com/listing/mass-spectrometer/agilent/8800-icp-ms/5845305,200,,,Used AGILENT 8800 ICP-MS Mass Spectrometer For Sale - DOTmed Listing #5845305:
+2026-11-27T18:58:07Z,listing,labx,https://www.labx.com/item/agilent-7800-icpms/13496024,200,,,Agilent 7800 ICPMS | LabX.com
+2026-11-27T18:58:12Z,search,machinio,https://www.machinio.com/listings?search=makera+carvera,200,,,No results for makera carvera
+2026-11-27T18:58:22Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=fume+hood,200,,,Buy used Fume Hood on Machineseeker
+2026-11-27T18:58:23Z,listing,exapro,https://www.exapro.com/mir-200-ton-ecologica-p251107099/,200,,,MIR 200 TON ECOLOGICA Injection moulding machine Used machines - Exapro
+2026-11-27T18:58:24Z,search,govdeals,https://www.govdeals.com/en/search?kWord=cnc+lathe,200,,,cnc lathe | GovDeals
+2026-11-27T18:58:27Z,listing,labx,https://www.labx.com/item/retsch-air-jet-sieving-machine-as-200-jet-retsch-sieve-used/DIS-87025-261789,200,,,Retsch Air Jet Sieving Machine AS 200 Jet Retsch Sieve USED RETSCH AS200 | LabX.com
+2026-11-27T18:58:28Z,listing,gmi,https://www.gmi-inc.com/product/agilent-7900-icp-ms/,200,,,Agilent 7900 ICP-MS | GMI - Trusted Laboratory Solutions
+2026-11-27T18:58:37Z,search,machinio,https://www.machinio.com/listings?search=universal+robots+ur10e,200,,,New & Used Universal Robots UR10E for sale. Universal Robots equipment & more | Machinio
+2026-11-27T18:58:41Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=specac,200,,,Buy used Specac on Machineseeker
+2026-11-27T18:58:51Z,listing,dotmed,https://www.dotmed.com/listing/lab-general/fritsch/malvern-mastersizer-quantachrome/laboratory-set/5106683,200,,,"Used FRITSCH Malvern Mastersizer, Quantachrome, Laboratory Set Lab - General For Sale - DO"
+2026-11-27T18:59:03Z,listing,allsurplus,https://www.allsurplus.com/en/asset/92/20948,200,,,"Bruker S2 PICOFOX , TXRF spectrometer | AllSurplus"
+2026-11-27T18:59:17Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=hydraulic+press+laboratory,200,,,Buy used Hydraulic Press Laboratory on Machineseeker
+2026-11-27T18:59:21Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=mir250,200,,,mir250 | AllSurplus
+2026-11-27T18:59:25Z,listing,conquer,https://conquerscientific.com/product/agilent-7500ce-icp-ms-octopole-reaction-system/,200,,,Agilent 7500ce ICP-MS Octopole Reaction - Conquer Scientific
+2026-11-27T18:59:25Z,listing,labx,https://www.labx.com/item/mastersizer-3000-the-market-leading-particle-size-analyzer/447496,200,,,Mastersizer 3000+ - The Market-leading Particle Size Analyzer - Malvern Panalytical | LabX
+2026-11-27T18:59:38Z,search,machinio,https://www.machinio.com/listings?search=ur12e,200,,,New & Used UR12E for sale. JMA equipment & more | Machinio
+2026-11-27T18:59:42Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=nilfisk+cfm,200,,,Buy used Nilfisk Cfm on Machineseeker
+2026-11-27T18:59:42Z,search,govdeals,https://www.govdeals.com/en/search?kWord=makera+carvera,200,,,makera carvera | GovDeals
+2026-11-27T18:59:45Z,listing,dotmed,https://www.dotmed.com/listing/icp-ms/agilent/7700-icp-ms/4896258,200,,,Refurbished AGILENT 7700 ICP/MS ICP/MS For Sale - DOTmed Listing #4896258:
+2026-11-27T18:59:45Z,listing,machinio,https://www.machinio.com/listings/173077-hitachi-tm3030-microscope,200,,,Hitachi TM3030 Microscope
+2026-11-27T18:59:47Z,listing,labx,https://www.labx.com/item/mx400-mounting-press/11419069,200,,,MX400 Mounting Press | LabX.com
+2026-11-27T18:59:58Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=staubli+combitac,200,,,Buy used Staubli Combitac on Machineseeker
+2026-11-27T19:00:00Z,search,publicsurplus,https://www.publicsurplus.com/sms/browse/search?posting=y&keyWord=metal+3d+printer,200,,,Public Surplus: Search an auction
+2026-11-27T19:00:00Z,listing,dotmed,https://www.dotmed.com/listing/other/wilson-mechanical-instrument-bausch-lomb-bl/wilson-bl-bausch-lomb-optical-microhardness-tukon-hardness-tester-microton/5551541,200,,,Used WILSON MECHANICAL INSTRUMENT BAUSCH LOMB BL Wilson B&L Bausch & Lomb Optical Microhar
+2026-11-27T19:00:01Z,listing,labx,https://www.labx.com/item/retsch-as-200-control-vibratory-sieve-shaker-digital/DIS-50372-A222980,200,,,Retsch AS 200 control Vibratory Sieve Shaker Digital | LabX.com
+2026-11-27T19:00:02Z,search,machinio,https://www.machinio.com/listings?search=ur5e,200,,,New & Used UR5E for sale. Kobelco equipment & more | Machinio
+2026-11-27T19:00:07Z,listing,machineseeker,https://www.machineseeker.com/cobot-cobot+universal+robots+ur10e/i-23344730,200,,,▷ Used Industrial robot Cobot Cobot Universal Robots UR10e for sale - Machineseeker.com
+2026-11-27T19:00:15Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=makera+carvera,200,,,Buy used Makera Carvera on Machineseeker
+2026-11-27T19:00:16Z,listing,labx,https://www.labx.com/item/retsch-vibratory-sieve-shaker-retsch-as-200-basic-retsch/DIS-87025-260254,200,,,Retsch Vibratory Sieve Shaker Retsch AS 200 basic Retsch Sieve NEW | LabX.com
+2026-11-27T19:00:20Z,listing,dotmed,https://www.dotmed.com/listing/electron-microscope/jeol/ckd-molecular-vacuum-pump-system-assembly-for-jsm-5900lv-sem-microscope/5438637,200,,,Used JEOL CKD Molecular Vacuum Pump System Assembly for JSM-5900LV SEM Microscope Electron
+2026-11-27T19:00:25Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=mobile+industrial+robots,200,,,mobile industrial robots | AllSurplus
+2026-11-27T19:00:30Z,search,machineseeker,https://www.machineseeker.com/main/search/index?search-word=plastometrex,200,,,Buy used Plastometrex on Machineseeker
+2026-11-27T19:00:31Z,search,machinio,https://www.machinio.com/listings?search=mir250,200,,,New & Used MIR250 for sale. Sanyo equipment & more | Machinio
+2026-11-27T19:00:32Z,listing,labx,https://www.labx.com/item/agilent-technologies-7800-icp-ms-mass-spectrometer/DIS-101429-936109,200,,,Agilent Technologies 7800 ICP MS Mass Spectrometer | LabX.com
+2026-11-27T19:00:33Z,listing,labx,https://www.labx.com/item/hitachi-high-tech-tm1000-tabletop-miscroscope/ESS-218916-135581066025,200,,,Hitachi High Tech TM1000 Tabletop Miscroscope | LabX.com
+2026-11-27T19:00:40Z,listing,dotmed,https://www.dotmed.com/listing/electron-microscope/carl-zeiss/zeiss-leo-1430-sem-scanning-electron-microscope/5260104,200,,,Used CARL ZEISS Zeiss LEO 1430 SEM Scanning Electron Microscope Electron Microscope For Sa
+2026-11-27T19:00:45Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=nilfisk+explosion+proof+vacuum,200,,,nilfisk explosion proof vacuum | AllSurplus
+2026-11-27T19:00:48Z,listing,labx,https://www.labx.com/item/malvern-panalytical-mastersizer-3000-chocosizer/1104810,200,,,Malvern Panalytical- Mastersizer 3000 Chocosizer | LabX.com
+2026-11-27T19:01:00Z,listing,machineseeker,https://www.machineseeker.com/fanuc-robocut+c+600+ia/i-21606863,200,,,▷ Used Wire cutting machine EDM FANUC Robocut C 600 iA for sale - Machineseeker.com
+2026-11-27T19:01:06Z,search,machinio,https://www.machinio.com/listings?search=mir100,200,,,New & Used MIR100 for sale. Siemens equipment & more | Machinio
+2026-11-27T19:01:07Z,listing,marshall,https://marshallscientific.com/products/nikon-smz800-stereo-microscope,200,,,Nikon SMZ800 Stereo Microscope – Marshall Scientific
+2026-11-27T19:01:10Z,search,govdeals,https://www.govdeals.com/en/search?kWord=universal+robots+ur10e,200,,,universal robots ur10e | GovDeals
+2026-11-27T19:01:18Z,listing,labx,https://www.labx.com/item/malvern-mastersizer-3000-particle-analyzer/scp-54817-5782150,200,,,Malvern Mastersizer 3000 Particle Analyzer | LabX.com
+2026-11-27T19:01:18Z,listing,machineseeker,https://www.machineseeker.com/kardex+shuttle+nt2000-shuttle+nt2000/i-14857834,200,,,▷ Used Storage lift Kardex Shuttle NT2000 Shuttle NT2000 for sale - Machineseeker.com
+2026-11-27T19:01:34Z,listing,labx,https://www.labx.com/item/agilent-technologies-7800-icp-ms-mass-spectrometer/DIS-101429-1051506,200,,,Agilent Technologies 7800 ICP MS Mass Spectrometer | LabX.com
+2026-11-27T19:01:36Z,listing,marshall,https://marshallscientific.com/products/carton-spzv-50-stereo-microscope,200,,,Carton SPZV-50 Stereo Microscope – Marshall Scientific
+2026-11-27T19:01:39Z,search,govdeals,https://www.govdeals.com/en/search?kWord=mir250,200,,,mir250 | GovDeals
+2026-11-27T19:01:39Z,search,machinio,https://www.machinio.com/listings?search=mobile+industrial+robots,200,,,New & Used Mobile Industrial Robots for sale. Kuka equipment & more | Machinio
+2026-11-27T19:01:40Z,listing,labx,https://www.labx.com/item/hitachi-tm1000-tabletop-sem-with-oxford-eds-and-motorized/DIS-86979-4476,200,,,Hitachi TM1000 tabletop SEM with Oxford EDS and motorized stage | LabX.com
+2026-11-27T19:01:42Z,listing,machineseeker,https://www.machineseeker.com/retsch-sm+300+%2F+mill+as+200/i-23387758,200,,,"▷ Used RETSCH SM 300 food-grade cutting mill, AS 200 control B sieve shaker, accessories, "
+2026-11-27T19:02:00Z,listing,labx,https://www.labx.com/item/mastersizer-3000-ultra-class-leading-particle-size/45856-4994728,200,,,Mastersizer 3000+ Ultra - Class leading particle size performance with innovative software
+2026-11-27T19:02:02Z,listing,semtech,https://www.semtechsolutions.com/product/win11-hitachi-s3200h-refurbished-sem/,200,,,Hitachi SEM Microscope S-3200H | SEMTech Solutions
+2026-11-27T19:02:06Z,listing,machineseeker,https://www.machineseeker.com/keyence-vhx-x1/i-22077683,200,,,▷ Used Digital microscope Keyence VHX-X1 for sale - Machineseeker.com
+2026-11-27T19:02:09Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=nilfisk+cfm,200,,,nilfisk cfm | AllSurplus
+2026-11-27T19:02:13Z,listing,labx,https://www.labx.com/item/hitachi-tm3000-tabletop-sem/222484-4958063,200,,,Hitachi TM3000 Tabletop SEM | LabX.com
+2026-11-27T19:02:13Z,search,machinio,https://www.machinio.com/listings?search=robotiq+2f-85,200,,,New & Used Robotiq 2F 85 for sale. Universal Robots equipment & more | Machinio
+2026-11-27T19:02:22Z,listing,labx,https://www.labx.com/item/agilent-7800-icp-ms-w-he-cell-gas-line-chiller-sps-4/scp-96125-5359279,200,,,"Agilent 7800 ICP-MS w/ He Cell Gas Line, Chiller, SPS 4, Software & PC | LabX.com"
+2026-11-27T19:02:26Z,listing,marshall,https://marshallscientific.com/products/olympus-sz51-stereo-microscope,200,,,Olympus SZ51 Stereo Microscope | Marshall Scientific
+2026-11-27T19:02:30Z,listing,machineseeker,https://www.machineseeker.com/retsch-sm+300+%2F+mill+as+200/i-23387749,200,,,"▷ Used Retsch SM 300 FoodGrade Cutting Mill, AS 200 control B Sieve Shaker, Laboratory Equ"
+2026-11-27T19:02:35Z,listing,machinio,https://www.machinio.com/listings/113796562-hitachi-tm3030plus-tabletop-sem-l212-in-detroit-mi,200,,,"Hitachi TM3030PLUS Tabletop SEM #L212 in Detroit, MI, USA"
+2026-11-27T19:02:36Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=kardex+shuttle,200,,,kardex shuttle | AllSurplus
+2026-11-27T19:02:38Z,listing,labx,https://www.labx.com/item/malvern-panalytical-maz3000-mastersizer-3000-particle-size/DIS-50372-A222216,200,,,Malvern Panalytical MAZ3000 Mastersizer 3000 Particle Size Analyzer | LabX.com
+2026-11-27T19:02:47Z,search,machinio,https://www.machinio.com/listings?search=nilfisk+explosion+proof+vacuum,200,,,New & Used Nilfisk Explosion Proof Vacuum for sale. Nilfisk equipment & more | Machinio
+2026-11-27T19:02:51Z,listing,machineseeker,https://www.machineseeker.com/keyence-vhx-7000/i-22910831,200,,,▷ Used KEYENCE VHX-7000 Digital Microscope KEYENCE VHX-7000 for sale - Machineseeker.com
+2026-11-27T19:02:53Z,listing,machineseeker,https://www.machineseeker.com/fanuc-robocut+%CE%B1-c400ib/i-23296914,200,,,▷ Used Wire eroding machine FANUC ROBOCUT α-C400iB for sale - Machineseeker.com
+2026-11-27T19:02:57Z,listing,labx,https://www.labx.com/item/px400-px500-grinder-polisher-series/12944710,200,,,PX400/PX500 Grinder/Polisher Series | LabX.com
+2026-11-27T19:03:00Z,search,govdeals,https://www.govdeals.com/en/search?kWord=mobile+industrial+robots,200,,,mobile industrial robots | GovDeals
+2026-11-27T19:03:01Z,listing,semtech,https://www.semtechsolutions.com/blog/refurbished-vs-new-sem/,200,,,Refurbished vs New SEM: Cost & Performance | SEMTech
+2026-11-27T19:03:10Z,listing,exapro,https://www.exapro.com/keyence-vhx-70007000n-p260727049/,200,,,KEYENCE VHX-7000 Digital Microscope Used machines - Exapro
+2026-11-27T19:03:11Z,listing,labx,https://www.labx.com/item/agilent-7800-icp-ms-system/DIS-84613-40295,200,,,Agilent 7800 ICP-MS System | LabX.com
+2026-11-27T19:03:16Z,listing,exapro,https://www.exapro.com/fanuc-robocut-alpha-0c-p211105202/,200,,,Used FANUC Robocut Alpha 0C Wire cutting edm machine Used machines - Exapro
+2026-11-27T19:03:19Z,listing,semtech,https://www.semtechsolutions.com/product/win11-jeol-jsm-6490lv-refurbished-sem/,200,,,Buy JEOL JSM-6490LV Refurbished SEM | SEMTech Solutions
+2026-11-27T19:03:20Z,search,machinio,https://www.machinio.com/listings?search=nilfisk+cfm,200,,,New & Used Nilfisk Cfm for sale. Nilfisk equipment & more | Machinio
+2026-11-27T19:03:21Z,search,allsurplus,https://www.allsurplus.com/en/search?kWord=vertical+lift+module,200,,,vertical lift module | AllSurplus
