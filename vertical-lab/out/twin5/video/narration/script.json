@@ -100,10 +100,10 @@
    "id": "rep8",
    "seg": "replay",
    "mark": "end",
-   "offset": -19.5,
-   "text": "Day 730. In this seed, the automated lab's best new alloys end at 0.79 for aluminium and 0.70 for copper, and the conventional lab's at 0.77 and 0.53. One seed is an example, not a result. The comparison over all 16 seeds comes next.",
-   "src": "replay5.best_panel: each curve's last value, both labs, both campaigns; the seed badge",
-   "template": "Day {horizon}. In this seed, the automated lab's best new alloys end at {auto_al_best} for aluminium and {auto_cu_best} for copper, and the conventional lab's at {conv_al_best} and {conv_cu_best}. One seed is an example, not a result. The comparison over all {n_seeds} seeds comes next."
+   "offset": -23.0,
+   "text": "In this seed, the automated lab's best new alloys end at 0.79 for aluminium and 0.70 for copper, and the conventional lab's at 0.77 and 0.53. One seed is an example, not a result. The comparison over all 16 seeds comes next.",
+   "src": "replay5.best_panel: each curve's last value, both labs, both campaigns; the seed badge. Said as the clock runs to the end, every last value already on screen (no day number before the clock shows it)",
+   "template": "In this seed, the automated lab's best new alloys end at {auto_al_best} for aluminium and {auto_cu_best} for copper, and the conventional lab's at {conv_al_best} and {conv_cu_best}. One seed is an example, not a result. The comparison over all {n_seeds} seeds comes next."
   }
  ]
 }

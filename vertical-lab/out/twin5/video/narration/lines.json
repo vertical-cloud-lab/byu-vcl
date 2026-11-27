@@ -82,12 +82,12 @@
    "sha256": "d750a4bc3dd0f1ab6e9a1594a6228814cc52c11c71ec26a8c38e252dd144e17f"
   },
   "rep8": {
-   "key": "062e6a07f23e6ef1",
-   "text": "Day 730. In this seed, the automated lab's best new alloys end at 0.79 for aluminium and 0.70 for copper, and the conventional lab's at 0.77 and 0.53. One seed is an example, not a result. The comparison over all 16 seeds comes next.",
-   "spoken": "Day 730. In this seed, the automated lab's best new alloys end at 0.79 for aluminum and 0.70 for copper, and the conventional lab's at 0.77 and 0.53. One seed is an example, not a result. The comparison over all 16 seeds comes next.",
-   "phonemes": "dˈeɪ sˈɛvənhˈʌndɹɪd θˈɜːɾi. ɪn ðɪs sˈiːd, ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæbz bˈɛst nˈuː ˈælɔɪz ˈɛnd æt zˈiəɹoʊ pɔɪnt sˈɛvən nˈaɪn fɔːɹ ɐlˈuːmɪnəm ænd zˈiəɹoʊ pɔɪnt sˈɛvən zˈiəɹoʊ fɔːɹ kˈɑːpɚ, ænd ðə kənvˈɛnʃənəl lˈæbz æt zˈiəɹoʊ pɔɪnt sˈɛvən sˈɛvən ænd zˈiəɹoʊ pɔɪnt fˈaɪv θɹˈiː. wˈʌn sˈiːd ɪz ɐn ɛɡzˈæmpəl, nˌɑːɾɚ ɹɪzˈʌlt. ðə kəmpˈæɹɪsən ˌoʊvɚɹ ˈɔːl sˈɪkstiːn sˈiːdz kˈʌmz nˈɛkst.",
-   "seconds": 21.72,
-   "sha256": "5dc04717131f9d603eb8057dba971418eec7c888ba007e07eb421da7246f2fb6"
+   "key": "f67334d49c01b840",
+   "text": "In this seed, the automated lab's best new alloys end at 0.79 for aluminium and 0.70 for copper, and the conventional lab's at 0.77 and 0.53. One seed is an example, not a result. The comparison over all 16 seeds comes next.",
+   "spoken": "In this seed, the automated lab's best new alloys end at 0.79 for aluminum and 0.70 for copper, and the conventional lab's at 0.77 and 0.53. One seed is an example, not a result. The comparison over all 16 seeds comes next.",
+   "phonemes": "ɪn ðɪs sˈiːd, ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæbz bˈɛst nˈuː ˈælɔɪz ˈɛnd æt zˈiəɹoʊ pɔɪnt sˈɛvən nˈaɪn fɔːɹ ɐlˈuːmɪnəm ænd zˈiəɹoʊ pɔɪnt sˈɛvən zˈiəɹoʊ fɔːɹ kˈɑːpɚ, ænd ðə kənvˈɛnʃənəl lˈæbz æt zˈiəɹoʊ pɔɪnt sˈɛvən sˈɛvən ænd zˈiəɹoʊ pɔɪnt fˈaɪv θɹˈiː. wˈʌn sˈiːd ɪz ɐn ɛɡzˈæmpəl, nˌɑːɾɚ ɹɪzˈʌlt. ðə kəmpˈæɹɪsən ˌoʊvɚɹ ˈɔːl sˈɪkstiːn sˈiːdz kˈʌmz nˈɛkst.",
+   "seconds": 20.33,
+   "sha256": "ff07a780acbde3718fb422c2ea8ceeb834819580255c040fe51624109e944627"
   }
  },
  "voice_id": "af_heart",

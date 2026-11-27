@@ -6,6 +6,7 @@
     python -m twin.video.cut5 check      # every spoken number and worded claim against the round's tables
     python -m twin.video.cut5 stills 30 400 ...      # frames of the cut at those seconds -> /tmp/vid/cut5_<t>.png
     python -m twin.video.cut5 finish [segment ...]   # encode only those segments again, then the join and the sound
+    python -m twin.video.cut5 script     # the narration in order with its times -> out/twin<R>/video/twoyears_script.md
 
 The segments, in order, and the module each comes from:
 
@@ -679,6 +680,38 @@ def sheet(video: Path, dst: Path, rec: dict, cols: int = 5):
     return dst
 
 
+# ================================================================================================== the script
+def write_script(rec: dict) -> Path:
+    """The cut's narration in order, as spoken, each line at its time: out/twin<R>/video/twoyears_script.md. Where
+    each line's template lives is listed at the top (the templates are what to edit; this file is written)."""
+    from . import meta as M
+    rows = [r for r in placed_lines(rec) if r["t"] is not None]
+    titles = {s["name"]: s["title"] for s in rec["segments"]}
+    src = {"title": "twin/video/narration5.json", "simulated": "twin/video/narration5.json",
+           "replay": "twin/video/narration5.json", "changes": "twin/video/narration5_intro.json",
+           "counters": "twin/video/narration5_intro.json", "atomizer": "twin/video/narration5_intro.json",
+           "notes": "twin/video/narration5_intro.json", "labs": "twin/video/narration5_labs.json",
+           "takeaway": "twin/video/narration5_labs.json", "experiments": "twin/video/narration_exp5.json",
+           "floorspace": "twin/video/narration_floorspace.json"}
+    out = [f"# The two-year cut's script, round {ROUND}", "",
+           f"Every line as spoken in `{NAME}.mp4`, at its time ({len(rows)} lines). Written by "
+           "`python -m twin.video.cut5 script` from the templates, filled from the round's tables; edit the templates, "
+           "not this file. Templates by part:", ""]
+    for seg in [s["name"] for s in rec["segments"]]:
+        if seg in src:
+            out.append(f"- {titles[seg]}: `{src[seg]}`")
+    cur = None
+    for r in rows:
+        if r["seg"] != cur:
+            cur = r["seg"]
+            out += ["", f"## {M.stamp(next(s['start_s'] for s in rec['segments'] if s['name'] == cur))} "
+                        f"{titles.get(cur, cur)}", ""]
+        out.append(f"- **{M.stamp(r['t'])}** ({r['id']}) {r['text']}")
+    dst = VID / f"{NAME}_script.md"
+    dst.write_text("\n".join(out) + "\n")
+    return dst
+
+
 # ================================================================================================== metadata
 def meta(rec: dict) -> dict:
     from . import meta5
@@ -695,6 +728,7 @@ def everything():
     from . import lab3d5
     lab3d5.run_jobs(R5.jobs(), int(os.environ.get("TWIN_VIDEO_WORKERS", "3")))
     rec = build()
+    write_script(rec)
     meta(rec)
     sheet(VID / f"{NAME}.mp4", VID / f"{NAME}_sheet.png", rec)
     print(f"all: {time.time() - t0:.0f} s", flush=True)
@@ -732,10 +766,14 @@ if __name__ == "__main__":
         build()
     elif cmd == "finish":
         rec = build(a[1:] or None)
+        write_script(rec)
         meta(rec)
         sheet(VID / f"{NAME}.mp4", VID / f"{NAME}_sheet.png", rec)
     elif cmd == "meta":
         meta(json.loads((VID / f"{NAME}_record.json").read_text()))
+    elif cmd == "script":
+        p = VID / f"{NAME}_record.json"
+        print(write_script(json.loads(p.read_text()) if p.exists() else plan_record()))
     elif cmd == "sheet":
         sheet(VID / f"{NAME}.mp4", VID / f"{NAME}_sheet.png", json.loads((VID / f"{NAME}_record.json").read_text()))
     elif cmd == "all":

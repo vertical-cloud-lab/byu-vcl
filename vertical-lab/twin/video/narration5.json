@@ -33,8 +33,8 @@
   {"id": "rep7", "seg": "replay", "mark": "spent", "offset": 4.0, "when": "money_story",
    "text": "Now both curves are flat, and each plot says why: the money is spent. With all of it there from the start, this lab has spent {pct_spent} percent of its {years} of money by day {d90}, and from here it mostly waits. The conventional lab is still spending.",
    "src": "replay5.spend_panel: the mark '90 % spent by day N' on the automated lab's line, the conventional lab's dashed line still rising; the strips 'flat since day N. Why: the money is spent'"},
-  {"id": "rep8", "seg": "replay", "mark": "end", "offset": -19.5,
-   "text": "Day {horizon}. In this seed, the automated lab's best new alloys end at {auto_al_best} for aluminium and {auto_cu_best} for copper, and the conventional lab's at {conv_al_best} and {conv_cu_best}. One seed is an example, not a result. The comparison over all {n_seeds} seeds comes next.",
-   "src": "replay5.best_panel: each curve's last value, both labs, both campaigns; the seed badge"}
+  {"id": "rep8", "seg": "replay", "mark": "end", "offset": -23.0,
+   "text": "In this seed, the automated lab's best new alloys end at {auto_al_best} for aluminium and {auto_cu_best} for copper, and the conventional lab's at {conv_al_best} and {conv_cu_best}. One seed is an example, not a result. The comparison over all {n_seeds} seeds comes next.",
+   "src": "replay5.best_panel: each curve's last value, both labs, both campaigns; the seed badge. Said as the clock runs to the end, every last value already on screen (no day number before the clock shows it)"}
  ]
 }
