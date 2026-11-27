@@ -212,3 +212,36 @@ All 34 v2 references were re-checked against Crossref on 2026-10-10.
 - **Does not add Basita Das or Ilya Yakavets** to the author list, or move anyone in it beyond inserting Seth alphabetically.
 - **Does not soften Table 5.** Where the evidence changed a score, it changed in whichever direction the evidence pointed, and each change is listed in §4.
 - **Does not choose the title for the group.** v2's first choice is kept; the alternatives are in `revision-notes-v2.md` §2.
+
+## 9. Re-check and changes of 2026-11-27
+
+Sterling asked for every blocker to be re-checked against the live repositories and this thread, for the manuscript and response letter to be brought up to date, and for a sign-off package. Reports: [`audit/2026-11-27-projects-p1-p5.md`](audit/2026-11-27-projects-p1-p5.md), [`audit/2026-11-27-projects-p6-p10.md`](audit/2026-11-27-projects-p6-p10.md), [`audit/2026-11-27-references.md`](audit/2026-11-27-references.md), [`audit/2026-11-27-journal-policy.md`](audit/2026-11-27-journal-policy.md) and [`audit/llm-provenance.md`](audit/llm-provenance.md).
+
+**The thread.** No co-author has commented on PR #193, #190 or #188 since 2026-10-10. No confirmation of any sign-off ID is on record.
+
+### 9.1 What the journal-policy re-check changed
+
+| Finding | Change |
+| --- | --- |
+| RSC: "GenAI or AI-assisted tools must not be used to alter images in submitted manuscripts. This includes adding, removing, moving, or obscuring features." In force before 2026-10-10 but missed then | **Figure 8 restored to the unaltered original**; the AI-assisted crop is withdrawn. P7-2 now asks the team for a clean export, which is needed before submission. The AI disclosure in the Acknowledgements and cover letter no longer mentions image editing and states that no figure was edited with an AI tool |
+| AI4X – Accelerate 2026 closed on 31 October with no extension; no other DD call open | Submit as a regular Perspective (SGB-13) |
+| Lilo D. Pozzo is on the DD Editorial Board; Milad Abolhasani, thanked as a workshop co-organizer, is an Associate Editor | Cover letter says so, for routing under RSC's editor-as-author rule. Abolhasani is not to be proposed as a reviewer (SGB-12) |
+| "Adding authors from new institutions … will not be considered unless fully justified to the editor" | Cover letter now explains why BYU is new |
+| TOC graphic: "original, unpublished artwork created by one of the co-authors", preferably not reused from the article; due at revision | The draft made on the same day was demoted to a layout sketch (`figures/source/toc-layout-sketch.png`); SGB-15 moved to the revision stage |
+| DD's code template: "The version of the code employed for this study is …"; DOIs for "both the most recent and archived versions" at acceptance | Data availability gains the version sentence (a tag to fill at submission) and promises both DOIs |
+| Human-subjects ethics statement belongs "in the 'methods/experimental' section" | §2 gains a `[TO SUPPLY]` for it (BP-3, LDP-1) |
+| LLM results: "Specify the model identifier and generation date" | ESI Note S3 names the models and dates behind the Table 5 scores; `audit/llm-provenance.md` lists every session |
+| Affiliation is where the work was done; a later address is a footnote | ALL-2 says so; flagged for Maria Politi (v3 lists UBC for P6 work) |
+| Reference style: RSC reformats; "Vancouver style (not Harvard style)" | No change needed (the October note overstated this) |
+| Figures at revision: separate TIFFs at 600 dpi or more | Figure 4 (1532 px) and Figure 8 (1842 px) are below 600 dpi even at single-column width; TV-2 and P7-2 ask for originals |
+
+### 9.2 Other corrections made today
+
+- **ESI Note S4 rounding.** Note S4 gave 46% for P1, P3 and P4 at $25/h and for the $25/h median. The exact value is 45.45%, as Table 4 already says; the ESI had rounded the three-decimal CSV a second time. Note S4 now states the rounding rule (half to even, so the 62.5% at $50/h is reported as 62%).
+- **"Ten teams" → eight.** §10 and the TOC text said ten teams built the ten projects; the DTU team built three. The Outlook's "eleventh team … twelfth copy" sentence relied on the wrong count and was rewritten.
+- **AI disclosure, model list.** The Actions logs' `modelUsage` records show that Claude Code also used Claude Haiku 4.5 (September) and Haiku 5.5 (October) for auxiliary steps. The Acknowledgements and cover letter now name them, and the period runs to November 2026.
+- **Timing of the P1 and P7 files** (response letter, Point 3). P7's files were public before the original submission; P1's release came after it, before the preprint. "Had in fact put files in public" did not say when.
+- **P3 in the response letter.** "Its developers are creating a work-in-progress repository" asserted something nobody has confirmed. It is now a placeholder with the two sentences to choose from at submission.
+- **No-P3 fallback numbers** computed and written into §5(b) above: the median rebuild time would move from 17 h to 24 h; the break-even median and maximum would not change.
+- **Pronouns.** Several notes and one sentence of §6 used pronouns inferred from names. They now use names or neutral wording.
+- **Review copies.** Table column widths are set in the markdown separators so that the Word and PDF copies are readable; GitHub ignores them.
