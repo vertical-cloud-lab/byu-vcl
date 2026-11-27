@@ -152,7 +152,36 @@ simulated with this stream.** What would make it possible: a vectorized sampler 
 (both are per-candidate Python today), or a library of candidates simulated once and shared by every run, with each
 day's visible pool drawn as the top of a random draw of the day's size (a sketch, not built).
 
-<!-- HPC_PILOT -->
+**The pilot** ([`out/twin6/checks/hpc_pilot.md`](../out/twin6/checks/hpc_pilot.md), `hpc_pilot.jsonl`, made by
+`out/twin6/checks/hpc_pilot.py`): the stocked arm of each lab, the same seeds at each scale, 365 days for the
+heuristic and the funnel and 300 days for BOFN in the automated lab. A few seeds can show only large changes: a run's
+path parts from the same seed's at another scale as soon as one decision differs.
+
+<!-- PILOT_TABLE -->
+
+**What it shows.**
+
+* **The heuristic on aluminium doesn't change with scale** beyond the seed-to-seed spread, as expected: it never
+  looks at the stream.
+* **The conventional lab's copper does.** With the funnel it reached copper's first target within the year in 0 of 4
+  seeds at 1× and 4×, 1 of 4 at 16× and 2 of 2 at 64×, and its best new copper alloy rose from 0.38 to 0.67 (medians).
+  That lab tests about two copper alloys a year (Utah's monthly MX-Lab session), so which two it picks matters most,
+  and a larger pool gives its proxy better ones to pick. The automated lab tests about 20 a year, and its copper
+  outcomes don't move with scale in four seeds.
+* **So outcomes have not stopped changing at 64×**, and the effect is larger in the conventional lab than in the
+  automated one: a comparison at a smaller scale would favour the automated lab.
+* **The stream's cost is linear in scale:** about 0.035 s of runtime per simulated day per unit of scale with the
+  heuristic and the funnel, and about 0.05 with BOFN (`smoke.json` `stream_cost`, the median over the pilot's pairs
+  of runs that differ only in scale). Over two years that is about +80 s at 4×, +400 s at 16×, +1,650 s at 64× and
+  +6,500 s at 256× with the cheap policies; +580, +2,300 and +9,300 s at 16×, 64× and 256× with BOFN or pKGFN.
+
+**The main arms run at 64×** (`bench6.HPC_SCALE`): 4,096 new candidates a day for each campaign, the newest 8,192
+visible. It is the largest scale at which a two-year run stays workable: about 30 minutes with the heuristic and the
+funnel and 1-1.5 hours with BOFN or pKGFN in the automated lab. At 256× the stream alone takes about two hours a
+run, and the grid would take about three times as long. The grid's `hpc` experiment runs the stocked arms at 1×, 4×
+and 16× (tier 2), and `hpc256` at 256× (tier 5, last), each with all three policies and 16 seeds, so where outcomes
+stop changing is measured on the grid's own seeds. A one-line change (`HPC_SCALE = 16`) gives a grid about a third
+cheaper, at the cost of the conventional lab's copper.
 
 ## 5. BOFN and pKGFN rows that reproduce on any CPU
 
@@ -230,7 +259,23 @@ check fails, its record names the group that differs.
 
 ## 6. Copper's optimizers without the cap on blend screens
 
-<!-- COPPER -->
+Round 5 named the optimizers' cap on copper's blend screens (a quarter of the money spent so far plus $2,500;
+`net3.Net3._screen_share_ok`) as the likely cause of copper's stretches with free capacity and nothing started, and
+didn't confirm it. Round 6 removes the cap with the other money rules (section 1).
+
+**The check** ([`out/twin6/checks/copper_idle.md`](../out/twin6/checks/copper_idle.md), made by
+`out/twin6/checks/copper_idle.py`): the arms and seeds in which round 5 flagged a copper stretch, rerun on round 6's
+engine for the days that cover them, each twice: with round 6's policy (no cap), and with the cap put back and
+nothing else changed (`bofn3cap`, `pkgfn3cap` in `twin/opt/net6.py`, check-only variants that the grid never runs).
+Round 6 also changed the rule that flags a stretch. Round 5 called the first fabrication step free when it was busy
+less than half of every hour of the stretch, which counts the weeks between a partner's monthly sessions as free
+capacity; round 6 counts the sessions offered and not used (`round6._could_start`). So both rules are applied to the
+same stretches, to keep a change of rule from passing as a change of policy. The check ran at 16× round 5's
+candidates (the main scale when it started), for 260 days in the conventional lab and 170 in the automated one.
+
+<!-- COPPER_TABLE -->
+
+<!-- COPPER_FINDINGS -->
 
 ## 7. Speed
 
@@ -246,6 +291,13 @@ trials of 16 candidates in one call, with the same random draws in the same orde
 search makes the same choices from the same draws and leaves the generator in the same state
 (`test_faster_atomizer_search_is_the_same_search`). A batched prediction can differ from 64 single ones in the last
 bit, which is why round 6's BOFN rows are not round 5's even apart from the engine.
+
+**Measured** ([`out/twin6/checks/speed/`](../out/twin6/checks/speed/README.md), runs side by side on this runner):
+the faster search made the same automated-lab BOFN run (200 days) 6 % faster, 219 s against 234 s, with identical
+results run for run. It is a modest gain: early in a run the atomize node has little data and the search is a
+smaller share. MKL's reproducible mode (`MKL_CBWR=COMPATIBLE`, section 5) costs about as much the other way: a
+conventional-lab BOFN run over 220 days took 90.5 s with it and 85.5 s without, with the same results; MKL's
+GP-sized factorizations alone take 2-4 times as long under it, but they are a small part of a run.
 
 <!-- SPEED_NUMBERS -->
 
@@ -299,4 +351,19 @@ under 16 core-hours, the longest runs first; `fold` brings the slices' rows in; 
 
 ## 9. What this job did not do
 
-<!-- NOTDONE -->
+* **The grid itself**, as asked: no row of it was made. `python -m twin.bench6 status` lists every run as left.
+* **The used-equipment survey** hadn't landed (section 2). The slices should wait for it: merge it, rewrite the GP
+  check's reference (`python -m twin.gpcheck6 write`), commit, then start.
+* **The HPC at its full capacity** (about 123,000 candidates a day for each campaign, 1,920× round 5's) can't be
+  simulated with this stream: about 12 hours of stream per two-year run (section 4). The grid goes to 256×.
+* **Real Intel and EPYC 7763 runners.** The pin was shown on this AMD EPYC 9V74 and under an emulated Granite Rapids
+  and Haswell, not on those CPUs themselves; the slices' GP checks will be the test (section 5).
+* **pKGFN in the HPC pilot**, and BOFN in the conventional lab's pilot beyond the stream's cost: BOFN in the automated
+  lab stood for the network policies. The grid's `hpc` and `hpc256` experiments run all three policies in both labs.
+* **The copper check at the main scale.** It ran at 16× (and two cases at 1×), not 64×.
+* **The analysis module** for round 6's rows (round 5's `like5.py` reads round 5's record, `r5`; round 6's rows carry
+  `r6`, with money by category instead of a budget, and the crucible item renamed `crucible_coated`). It belongs with
+  the grid's results.
+* **Fixed costs.** Round 5's economics charged the automated lab's fixed costs in full from day 0. Round 6's spend
+  tracking books each item's service, utilities and space from the day it is online, and the space's own from the day
+  it is ready, so that limit is gone from the rows; the analysis still has to use it.
