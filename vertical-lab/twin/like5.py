@@ -664,6 +664,29 @@ def cpu_effect(A, T) -> dict:
                                      mean_other=float(np.mean(raw["other"])), mean_ours=float(np.mean(raw["ours"])),
                                      z_other=float(np.mean(z["other"])), z_ours=float(np.mean(z["ours"])),
                                      p=float(u.pvalue))
+    # a control: the same split of seeds in arms made wholly on one CPU model. For each of the automated lab's four
+    # like-for-like optimizer arms, its seeds made on "other" CPUs against its seeds made on "ours": the gap in mean
+    # days to each target in that arm, in the conventional lab's arm with the same optimizer and stock, and in the
+    # automated lab's arm with the cheap policies and the same stock (both made wholly on the EPYC 9V45).
+    out["control"] = []
+    for pol in ("bofn3", "pkgfn3"):
+        for st in ("reorder", "lean"):
+            V = A.get(gk("vertical", "parallel", pol, st), {})
+            so = sorted(s_ for s_, r in V.items() if not any(c in r["env"]["cpu"] for c in SAME_AS_OURS))
+            su = sorted(s_ for s_ in V if s_ not in so)
+            if not so or not su:
+                continue
+            row = dict(policy=pol, stock=st, seeds_other=so, seeds_ours=su, gaps={})
+            for nm, arm in (("mixed", V), ("conventional", A.get(gk("conventional", "external", pol, st), {})),
+                            ("cheap", A.get(gk("vertical", "parallel", "fast", st), {}))):
+                if any(s_ not in arm for s_ in so + su) or len({r["env"]["cpu"] for r in arm.values()}) != \
+                        (1 if nm != "mixed" else len({r["env"]["cpu"] for r in arm.values()})):
+                    continue
+                row["gaps"][nm] = {f"{camp}|{tn}": float(
+                    np.mean([to_target(arm[s_], camp, T[tn][camp])[0] for s_ in so])
+                    - np.mean([to_target(arm[s_], camp, T[tn][camp])[0] for s_ in su]))
+                    for camp in CAMPS for tn in ("T1", "T2")}
+            out["control"].append(row)
     return out
 
 
@@ -1038,6 +1061,20 @@ def tables(S) -> str:
             fm = (lambda v: f"{v:.3f}") if "best" in name else (lambda v: f"{v:.0f}")
             L.append(f"| {name} | {d['n_other']} | {d['n_ours']} | {fm(d['mean_other'])}, {fm(d['mean_ours'])} | "
                      f"{d['z_other']:+.2f}, {d['z_ours']:+.2f} | {d['p']:.2f} |")
+        if CE.get("control"):
+            L += ["", "A control: the same split of seeds in arms made wholly on the EPYC 9V45. For each of the automated "
+                  "lab's four like-for-like optimizer arms, the gap in mean days to each target (730 if never) between "
+                  "its seeds made on other CPUs and its seeds made on ours: in that arm, in the conventional lab's arm "
+                  "with the same optimizer and stock, and in the automated lab's arm with the heuristic and the funnel "
+                  "and the same stock.", "",
+                  "| Optimizer, stock | arm | Al T1 | Al T2 | Cu T1 | Cu T2 |", "|---|---|---|---|---|---|"]
+            nm_ = {"mixed": "the automated lab's (made on both groups)", "conventional": "the conventional lab's (all on "
+                   "the EPYC 9V45)", "cheap": "the automated lab's, heuristic and funnel (all on the EPYC 9V45)"}
+            for row in CE["control"]:
+                for k_, g in row["gaps"].items():
+                    L.append(f"| {POL[row['policy']]['flaime_al']}, {'stocked' if row['stock'] == 'reorder' else 'lean'} "
+                             f"| {nm_[k_]} | " + " | ".join(f"{g[f'{c}|{t}']:+.0f}" for c in CAMPS for t in ("T1", "T2"))
+                             + " |")
     return "\n".join(L) + "\n"
 
 

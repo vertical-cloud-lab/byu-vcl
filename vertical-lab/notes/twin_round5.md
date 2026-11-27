@@ -143,6 +143,10 @@ the notes it includes. `twin/tests/test_round5.py` reruns a short run and checks
     seed-to-seed spread (final alloys, days to each target: p = 0.09-0.98). The largest gap is days to aluminium's
     first target, 243 against 221 on average (p = 0.09, six outcomes tested). The two groups hold different seeds, so
     this would only show a large shift.
+  * **A control says that gap is the seeds, not the CPU.** Split the same way, arm by arm, the automated lab's four
+    like-for-like optimizer arms show +7 to +21 days on aluminium's first target. The same split in arms made wholly on
+    the EPYC 9V45 (the conventional lab's with the same optimizer, the automated lab's with the heuristic) shows -77
+    to +79 days. `tables.md` has every target.
 
 ## 1. The facility window and used equipment
 

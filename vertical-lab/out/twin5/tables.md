@@ -1084,3 +1084,20 @@ Rows made on the EPYC 7763 or the Xeon 6975P-C ("other") against rows made on th
 | Aluminium T2, days (730 if never) | 46 | 42 | 263, 269 | -0.01, +0.01 | 0.84 |
 | Copper T1, days (730 if never) | 46 | 42 | 377, 363 | +0.06, -0.07 | 0.57 |
 | Copper T2, days (730 if never) | 46 | 42 | 462, 447 | +0.04, -0.04 | 0.60 |
+
+A control: the same split of seeds in arms made wholly on the EPYC 9V45. For each of the automated lab's four like-for-like optimizer arms, the gap in mean days to each target (730 if never) between its seeds made on other CPUs and its seeds made on ours: in that arm, in the conventional lab's arm with the same optimizer and stock, and in the automated lab's arm with the heuristic and the funnel and the same stock.
+
+| Optimizer, stock | arm | Al T1 | Al T2 | Cu T1 | Cu T2 |
+|---|---|---|---|---|---|
+| BOFN, stocked | the automated lab's (made on both groups) | +7 | +5 | +8 | +65 |
+| BOFN, stocked | the conventional lab's (all on the EPYC 9V45) | -39 | -119 | +74 | -20 |
+| BOFN, stocked | the automated lab's, heuristic and funnel (all on the EPYC 9V45) | +16 | +98 | +47 | +70 |
+| BOFN, lean | the automated lab's (made on both groups) | +21 | -38 | +24 | +4 |
+| BOFN, lean | the conventional lab's (all on the EPYC 9V45) | -77 | -113 | +35 | +41 |
+| BOFN, lean | the automated lab's, heuristic and funnel (all on the EPYC 9V45) | -11 | -8 | -8 | +53 |
+| pKGFN, stocked | the automated lab's (made on both groups) | +13 | -21 | +20 | +56 |
+| pKGFN, stocked | the conventional lab's (all on the EPYC 9V45) | -19 | +57 | +54 | -35 |
+| pKGFN, stocked | the automated lab's, heuristic and funnel (all on the EPYC 9V45) | +2 | -21 | +45 | +66 |
+| pKGFN, lean | the automated lab's (made on both groups) | +17 | +48 | -62 | -134 |
+| pKGFN, lean | the conventional lab's (all on the EPYC 9V45) | +79 | +45 | -113 | -65 |
+| pKGFN, lean | the automated lab's, heuristic and funnel (all on the EPYC 9V45) | -54 | -105 | -99 | -140 |
