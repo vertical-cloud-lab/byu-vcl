@@ -1,0 +1,40 @@
+{
+ "run_id": "r5_conventional_external_bofn3_lean_s0",
+ "identical_apart_from_timing_and_provenance": true,
+ "n_differences": 0,
+ "differences": [],
+ "event_log_identical": true,
+ "gp": {
+  "rerun": {
+   "fits": 85,
+   "fit_s": 39.390982151031494,
+   "nuts": 0,
+   "nuts_s": 0.0
+  },
+  "committed": {
+   "fits": 85,
+   "fit_s": 37.93838596343994,
+   "nuts": 0,
+   "nuts_s": 0.0
+  }
+ },
+ "torch_rng_used": {
+  "rerun": false,
+  "committed": false
+ },
+ "seconds": {
+  "rerun": 182.1,
+  "committed": 183.2
+ },
+ "code": {
+  "rerun": {
+   "commit": "b410477a3e41dd8d6eb40cb566c8eb11deed70d7",
+   "twin_dirty": false
+  },
+  "committed": {
+   "commit": "9ecef6f0a448a77ef287f98152a6b422d71be73d",
+   "twin_dirty": false
+  }
+ },
+ "env_same": true
+}
