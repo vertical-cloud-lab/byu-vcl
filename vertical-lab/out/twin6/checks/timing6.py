@@ -54,6 +54,11 @@ SETS = {
     "pilot1x": [("pilot conventional bofn3 s0 1x", "conventional", "bofn3", 0, 1, 300),
                 ("pilot vertical fast s0 1x", "vertical", "fast", 0, 1, 300),
                 ("pilot conventional fast s0 1x", "conventional", "fast", 0, 1, 300)],
+    # the same at 1x for 160 days: enough for the stream's cost, read before the cell (smoke_merge.py), early
+    "pre1x": [("pre conventional bofn3 s0 1x", "conventional", "bofn3", 0, 1, 160),
+              ("pre conventional pkgfn3 s0 1x", "conventional", "pkgfn3", 0, 1, 160),
+              ("pre vertical fast s0 1x", "vertical", "fast", 0, 1, 160),
+              ("pre conventional fast s0 1x", "conventional", "fast", 0, 1, 160)],
     # the grid prices a lean-stock group, and the automated lab's other plans, from the stocked parallel arm's run;
     # BOFN two years at 64x in each, to measure those ratios rather than assume them (plan, stock after the days)
     "variants": [("vertical bofn3 64x lean", "vertical", "bofn3", 0, 64, 730, "parallel", "lean"),

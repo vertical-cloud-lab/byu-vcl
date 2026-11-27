@@ -130,6 +130,36 @@
       "T2": null
      }
     }
+   },
+   "full": {
+    "seconds": 5377.2,
+    "cpu_seconds": 1754.9,
+    "loadavg_end": [
+     10.5,
+     10.88,
+     11.49
+    ],
+    "days": 730,
+    "scale": 64,
+    "gp_fits": 65,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "source": "checks/timing6.jsonl",
+    "targets": {
+     "flaime_al": {
+      "T1": 234.4,
+      "T2": 273.4
+     },
+     "onr_cu": {
+      "T1": 250.004,
+      "T2": 250.004
+     }
+    },
+    "best_new": {
+     "flaime_al": 0.7228,
+     "onr_cu": 0.682
+    }
    }
   },
   "r6_conventional_external_bofn3_reorder_dec-none": {
@@ -460,6 +490,36 @@
       "T2": null
      }
     }
+   },
+   "full": {
+    "seconds": 4211.0,
+    "cpu_seconds": 1187.2,
+    "loadavg_end": [
+     12.63,
+     12.21,
+     11.98
+    ],
+    "days": 730,
+    "scale": 64,
+    "gp_fits": 0,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "source": "checks/timing6.jsonl",
+    "targets": {
+     "flaime_al": {
+      "T1": 85.358,
+      "T2": 134.4
+     },
+     "onr_cu": {
+      "T1": 249.1,
+      "T2": 499.548
+     }
+    },
+    "best_new": {
+     "flaime_al": 0.7028,
+     "onr_cu": 0.6915
+    }
    }
   },
   "r6_conventional_external_fast_reorder_dec-none": {
@@ -789,6 +849,36 @@
       "T1": null,
       "T2": null
      }
+    }
+   },
+   "full": {
+    "seconds": 5581.5,
+    "cpu_seconds": 1881.7,
+    "loadavg_end": [
+     10.28,
+     10.46,
+     11.18
+    ],
+    "days": 730,
+    "scale": 64,
+    "gp_fits": 71,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "source": "checks/timing6.jsonl",
+    "targets": {
+     "flaime_al": {
+      "T1": 213.525,
+      "T2": 213.525
+     },
+     "onr_cu": {
+      "T1": 251.033,
+      "T2": 251.033
+     }
+    },
+    "best_new": {
+     "flaime_al": 0.7726,
+     "onr_cu": 0.682
     }
    }
   },
@@ -1318,6 +1408,22 @@
       "T2": null
      }
     }
+   },
+   "full": {
+    "seconds": null,
+    "cpu_seconds": 18829,
+    "days": 730,
+    "scale": 64,
+    "source": "checks/timing6_progress.jsonl",
+    "extrapolated": {
+     "from_day": 390,
+     "cpu_at_day": 2986.6,
+     "rate": 22.22,
+     "slope": 0.1434,
+     "low": 10543,
+     "high": 18829
+    },
+    "how": "extrapolated from day 390 of a two-year run (seed 0): the cautious end, 10,543-18,829 s"
    }
   },
   "r6_vertical_parallel_bofn3_reorder_atom-3h": {
@@ -1516,6 +1622,22 @@
       "T2": null
      }
     }
+   },
+   "full": {
+    "seconds": null,
+    "cpu_seconds": 25003,
+    "days": 730,
+    "scale": 16,
+    "source": "checks/timing6_progress.jsonl",
+    "extrapolated": {
+     "from_day": 400,
+     "cpu_at_day": 2945.9,
+     "rate": 28.28,
+     "slope": 0.2337,
+     "low": 12277,
+     "high": 25003
+    },
+    "how": "extrapolated from day 400 of a two-year run (seed 0): the cautious end, 12,277-25,003 s"
    }
   },
   "r6_vertical_parallel_bofn3_reorder_hpc256": {
@@ -1878,6 +2000,36 @@
       "T1": null,
       "T2": null
      }
+    }
+   },
+   "full": {
+    "seconds": 4502.4,
+    "cpu_seconds": 1298.7,
+    "loadavg_end": [
+     12.25,
+     12.39,
+     12.14
+    ],
+    "days": 730,
+    "scale": 64,
+    "gp_fits": 0,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "source": "checks/timing6.jsonl",
+    "targets": {
+     "flaime_al": {
+      "T1": 56.65,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": 330.133,
+      "T2": 379.441
+     }
+    },
+    "best_new": {
+     "flaime_al": 0.63,
+     "onr_cu": 0.7346
     }
    }
   },
@@ -2440,6 +2592,22 @@
       "T2": null
      }
     }
+   },
+   "full": {
+    "seconds": null,
+    "cpu_seconds": 19380,
+    "days": 730,
+    "scale": 64,
+    "source": "checks/timing6_progress.jsonl",
+    "extrapolated": {
+     "from_day": 390,
+     "cpu_at_day": 2995.5,
+     "rate": 23.69,
+     "slope": 0.1441,
+     "low": 11049,
+     "high": 19380
+    },
+    "how": "extrapolated from day 390 of a two-year run (seed 0): the cautious end, 11,049-19,380 s"
    }
   },
   "r6_vertical_parallel_pkgfn3_reorder_atom-3h": {
@@ -2638,6 +2806,22 @@
       "T2": null
      }
     }
+   },
+   "full": {
+    "seconds": null,
+    "cpu_seconds": 25347,
+    "days": 730,
+    "scale": 16,
+    "source": "checks/timing6_progress.jsonl",
+    "extrapolated": {
+     "from_day": 400,
+     "cpu_at_day": 2992.7,
+     "rate": 28.17,
+     "slope": 0.2398,
+     "low": 12289,
+     "high": 25347
+    },
+    "how": "extrapolated from day 400 of a two-year run (seed 0): the cautious end, 12,289-25,347 s"
    }
   },
   "r6_vertical_parallel_pkgfn3_reorder_hpc256": {
@@ -2872,5 +3056,39 @@
    }
   }
  },
- "what": "seed 0 of each group of the grid, timed on the runner that built it (twin/bench6.py smoke); 'short' is a shortened run (it shows the group runs and what it costs a day), 'full' a two-year run; twin/bench6.py timings() turns them into seconds for two years"
+ "what": "seed 0 of each group of the grid, timed on the runner that built it (twin/bench6.py smoke); 'short' is a shortened run (it shows the group runs and what it costs a day), 'full' a two-year run; twin/bench6.py timings() turns them into seconds for two years",
+ "stream_cost": {
+  "gp": {
+   "vertical": 0.02679
+  }
+ },
+ "stream_cost_pairs": {
+  "gp/vertical": [
+   {
+    "k": 0.02606,
+    "how": "pkgfn3 s0: day 150 at 16x (vertical pkgfn3 16x) and 64x (vertical pkgfn3 64x)"
+   },
+   {
+    "k": 0.0261,
+    "how": "bofn3 s0: day 150 at 16x (vertical bofn3 16x) and 64x (vertical bofn3 64x)"
+   },
+   {
+    "k": 0.02904,
+    "how": "bofn3 s0: day 150 at 16x (vertical bofn3 16x) and 64x (pilot vertical bofn3 s0 64x)"
+   },
+   {
+    "k": 0.02471,
+    "how": "bofn3 s0: day 150 at 16x (pilot vertical bofn3 s0 16x) and 64x (vertical bofn3 64x)"
+   },
+   {
+    "k": 0.02765,
+    "how": "bofn3 s0: day 150 at 16x (pilot vertical bofn3 s0 16x) and 64x (pilot vertical bofn3 s0 64x)"
+   },
+   {
+    "k": 0.02749,
+    "how": "bofn3 s1: day 150 at 16x (pilot vertical bofn3 s1 16x) and 64x (pilot vertical bofn3 s1 64x)"
+   }
+  ]
+ },
+ "stream_cost_note": "CPU seconds per simulated day per unit of HPC scale, the median over pairs of runs that differ only in scale (the larger at least 16x), from checks/timing6.jsonl and timing6_progress.jsonl (out/twin6/checks/smoke_merge.py)"
 }

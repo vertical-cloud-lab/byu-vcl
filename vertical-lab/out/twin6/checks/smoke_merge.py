@@ -8,15 +8,9 @@
   those groups' measured two-year times (``full``), in CPU seconds (``bench6._secs``).
 * **The stream's cost** (``stream_cost``): CPU seconds per simulated day per unit of HPC scale, by policy class
   (``fast``: the heuristic and the funnel; ``gp``: BOFN and pKGFN) and lab, from pairs of runs that differ only in
-  scale (the same policy, lab and seed), the larger scale at least 16x: (CPU at the larger scale - CPU at 1x) over
-  (the scale difference x the days). Two kinds of pair, both read at the same simulated day:
-
-  - the pilot's runs of the same length (``pilot ...`` lines of ``timing6.jsonl``: BOFN in the automated lab, 300
-    days, at 1x, 4x, 16x and 64x);
-  - a 300-day run at 1x (``pilot ... 1x``) against the same seed's two-year run at 16x or 64x, both read off their
-    cost curves (``timing6_progress.jsonl``) at the last day both reached.
-
-  The median over a class and lab's pairs. ``bench6.timings`` moves a run's stream cost from the scale it was measured
+  scale (the same policy, lab and seed, the larger at least 16x), read off their cost curves at day 150, before the
+  cell: the two-year runs, BOFN's pilot (1x, 4x, 16x, 64x) and the 1x runs of the other policies. The median over a
+  class and lab's pairs. ``bench6.timings`` moves a run's stream cost from the scale it was measured
   at to another with it.
 """
 import json
@@ -43,43 +37,36 @@ def _cls(policy):
     return "fast" if policy == "fast" else "gp"
 
 
+PRE_CELL_D = 150    # the earliest the cell is integrated in any seed is day 161 (checks/used_market.md)
+
+
 def stream_cost(rows, prog):
-    """{class: {lab: k}}, and the pairs each came from."""
-    pairs = {}
-    # pairs of runs of the same length
-    by = {}
-    for r in rows:
-        by.setdefault((r["policy"], r["lab"], r["seed"], r["days"]), {})[r["scale"]] = r
-    for (pol, lab, seed, days), d in by.items():
-        if 1 not in d:
-            continue
-        for sc, r in d.items():
-            if sc >= 16:
-                k = (B6._secs(r) - B6._secs(d[1])) / ((sc - 1) * days)
-                pairs.setdefault((_cls(pol), lab), []).append(
-                    dict(k=round(k, 5), how=f"{pol} s{seed}: {days} days at 1x and {sc:g}x"))
-    # a 1x run against a longer run's cost curve, at the last day both reached
-    curves = {}
+    """{class: {lab: k}}, and the pairs each came from: two runs that differ only in scale (the same policy, lab and
+    seed; the larger scale at least 16x), read off their cost curves (``timing6_progress.jsonl``) at day 150 or the
+    last day both reached before it: (CPU at the larger scale - CPU at the smaller) over (the scale difference x the
+    days). Before the cell the policies' own work is small and the same at every scale, so the difference is the
+    stream's; after it, two runs' paths part and their work differs by more than the stream does."""
+    curves, meta = {}, {r["label"]: r for r in rows}
     for p in prog:
         curves.setdefault(p["label"], {})[p["day"]] = p["cpu"]
-    meta = {r["label"]: r for r in rows}
-    for lab1, c1 in curves.items():
-        r1 = meta.get(lab1)
-        if r1 is None or r1["scale"] != 1:
-            continue
-        for lab2, c2 in curves.items():
-            r2 = meta.get(lab2) or _label_meta(lab2)
-            if (r2 is None or r2["scale"] < 16 or r2["days"] <= r1["days"] or
-                    (r2["policy"], r2["lab"], r2["seed"]) != (r1["policy"], r1["lab"], r1["seed"])):
+    info = {lb: (meta.get(lb) or _label_meta(lb)) for lb in curves}
+    pairs = {}
+    for l1, c1 in curves.items():
+        for l2, c2 in curves.items():
+            r1, r2 = info[l1], info[l2]
+            if r1 is None or r2 is None or not (r1["scale"] < r2["scale"] and r2["scale"] >= 16):
                 continue
-            both = sorted(set(c1) & set(c2))
-            if not both or both[-1] < 100:
+            if (r1["policy"], r1["lab"], r1["seed"], r1.get("plan"), r1.get("stock")) != \
+                    (r2["policy"], r2["lab"], r2["seed"], r2.get("plan"), r2.get("stock")):
                 continue
-            D = both[-1]
-            k = (c2[D] - c1[D]) / ((r2["scale"] - 1) * D)
+            both = [d for d in set(c1) & set(c2) if 0 < d <= PRE_CELL_D]
+            if not both or max(both) < 100:
+                continue
+            D = max(both)
+            k = (c2[D] - c1[D]) / ((r2["scale"] - r1["scale"]) * D)
             pairs.setdefault((_cls(r1["policy"]), r1["lab"]), []).append(
-                dict(k=round(k, 5), how=f"{r1['policy']} s{r1['seed']}: day {D} of the 1x run and of the "
-                                         f"{r2['scale']:g}x two-year run"))
+                dict(k=round(k, 5), how=f"{r1['policy']} s{r1['seed']}: day {D} at {r1['scale']:g}x ({l1}) and "
+                                         f"{r2['scale']:g}x ({l2})"))
     out = {}
     for (cls, lab), v in sorted(pairs.items()):
         out.setdefault(cls, {})[lab] = round(st.median(x["k"] for x in v), 5)

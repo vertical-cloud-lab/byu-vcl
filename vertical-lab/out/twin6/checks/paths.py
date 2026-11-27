@@ -96,6 +96,12 @@ def table():
                  f"{r['capital_new'] / 1e6:.2f} / {r['capital_used'] / 1e6:.2f} | {hn('flaime_al')} / {hn('onr_cu')} | "
                  f"{t['flaime_al']['T1']} / {t['flaime_al']['T2']} | {t['onr_cu']['T1']} / {t['onr_cu']['T2']} | "
                  f"{r['seconds']} |")
+    dirty = [r for r in rows if (r.get("code") or {}).get("twin_dirty")]
+    if dirty:
+        L += ["", "Marked `twin_dirty` (twin/ changed while the run went): "
+              + "; ".join(f"{r['label']} (ended at {(r['code'].get('commit') or '')[:7]}, started at twin/ tree "
+                          f"{(r['code'].get('twin_tree_start') or '')[:7]})" for r in dirty)
+              + ". `git diff` between the run's start and end shows what changed under twin/."]
     (HERE / "paths.md").write_text("\n".join(L) + "\n")
     print("\n".join(L))
 

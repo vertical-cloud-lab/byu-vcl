@@ -13,5 +13,8 @@ Made by `python out/twin6/checks/paths.py table` from `paths.jsonl`: seed 0, the
 | atomizer: 3 h | 330 | 0.0 | 211.5 | {'flaime_al': 3.0, 'onr_cu': 3.0, 'changeover_h': 1.5} | 5.15 | 211.52 | 1 / 1 | 2 | 4.16 / 0.07 | 249 / 0 | 56.6 / None | None / None | 67.8 |
 | atomizer: slow | 330 | 0.0 | 211.5 | {'flaime_al': 5.5, 'onr_cu': 6.5, 'changeover_h': 2.0} | 4.01 | 211.52 | 1 / 0 | 2 | 4.16 / 0.07 | 146 / 0 | 56.6 / None | None / None | 53.7 |
 | crucibles: late | 400 | 0.0 | 211.5 | {'flaime_al': None, 'onr_cu': None, 'changeover_h': 1.5} | 5.73 | 282.86 | 107 / 44 | 2 | 4.16 / 0.07 | 215 / 0 | 267.4 / None | 368.9 / 397.7 | 83.4 |
+| crucibles: late, BOFN | 400 | 0.0 | 211.5 | {'flaime_al': None, 'onr_cu': None, 'changeover_h': 1.5} | 6.02 | 282.86 | 118 / 15 | 2 | 4.16 / 0.07 | 0 / 0 | 316.7 / 323.4 | 311.2 / 374.4 | 3673.3 |
 | all-new equipment | 330 | 0.0 | 211.5 | {'flaime_al': None, 'onr_cu': None, 'changeover_h': 1.5} | 7.6 | 211.52 | 1 / 0 | 0 | 4.56 / 0.00 | 238 / 0 | 56.6 / None | None / None | 56.2 |
 | conventional lab | 330 | 0.0 | None | {'flaime_al': None, 'onr_cu': None, 'changeover_h': 1.5} | None | None | 2 / 0 | 0 | 0.00 / 0.00 | 216 / 316 | 81.7 / 130.4 | None / None | 27.6 |
+
+Marked `twin_dirty` (twin/ changed while the run went): crucibles: late, BOFN (ended at 4ee6b1b, started at twin/ tree aa296e7). `git diff` between the run's start and end shows what changed under twin/.
