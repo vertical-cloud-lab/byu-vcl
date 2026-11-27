@@ -687,14 +687,69 @@ jobs:
           # setup then can't check out its base ("Your local changes ... would be
           # overwritten by checkout"; byu-finances issue 131, run 45967038494).
           # Keep them in a local commit on a claude/ branch, where the retry's
-          # prompt tells it to look, so the tree is clean and nothing is lost.
+          # prompt tells it to look, so the tree is clean.
+          # - Changes to tracked files are committed.
+          # - Ignored files are never added (git honours .gitignore).
+          # - Each untracked file is checked first. Names that look like
+          #   credentials, caches and virtualenvs, nested git repositories, files
+          #   over 5 MB and anything past the 300th new file are moved to
+          #   $RUNNER_TEMP/first-attempt-set-aside instead (same job, so the
+          #   retry can still reach them). Only their paths are logged, and the
+          #   commit message lists them. Nothing is pushed here.
           if [ -n "$(git status --porcelain)" ]; then
             wip="claude/first-attempt-wip-${GITHUB_RUN_ID}"
+            aside="${RUNNER_TEMP}/first-attempt-set-aside"
             git switch -q -c "$wip"
-            git add -A
-            git -c user.name="claude[bot]" -c user.email="41898282+claude[bot]@users.noreply.github.com" \
-              commit -q --no-verify -m "First attempt's uncommitted changes (run ${GITHUB_RUN_ID}), kept for the retry"
-            echo "Kept the first attempt's uncommitted changes on local branch $wip ($(git rev-parse --short HEAD))"
+            git add -u
+            kept=0
+            notes="$(mktemp)"
+            while IFS= read -r -d '' f; do
+              reason=""
+              case "/$f" in
+                */) reason="a nested git repository" ;;
+                */.env|*/.env.*|*.pem|*.key|*.p12|*.pfx|*/id_rsa*|*/id_ed25519*|*/.netrc|*/.npmrc|*/.pypirc|*credential*|*secret*|*token*|*cookie*|*storage_state*|*storage-state*|*/state.json|*.pickle|*.pkl|*/settings.local.json|*.har)
+                  reason="the name looks like a credential" ;;
+                */.venv/*|*/venv/*|*/node_modules/*|*/__pycache__/*|*.pyc|*/.cache/*|*/.pytest_cache/*|*/.mypy_cache/*|*/.ruff_cache/*|*/.ipynb_checkpoints/*|*.egg-info/*|*/.tox/*)
+                  reason="a cache or virtualenv" ;;
+              esac
+              if [ -z "$reason" ] && [ -f "$f" ] && [ "$(stat -c %s "$f")" -gt 5242880 ]; then
+                reason="over 5 MB"
+              fi
+              if [ -z "$reason" ] && [ "$kept" -ge 300 ]; then
+                reason="past the 300th new file"
+              fi
+              if [ -n "$reason" ]; then
+                mkdir -p "$aside/$(dirname "$f")"
+                mv "$f" "$aside/${f%/}"
+                echo "- ${f} (${reason})" >> "$notes"
+              else
+                git add -- "$f"
+                kept=$((kept + 1))
+              fi
+            done < <(git ls-files -z --others --exclude-standard)
+            if [ -s "$notes" ]; then
+              echo "Set aside in $aside, not committed:"
+              cat "$notes"
+            fi
+            if git diff --cached --quiet; then
+              echo "Nothing left to commit after setting files aside"
+            else
+              {
+                echo "First attempt's uncommitted changes (run ${GITHUB_RUN_ID}), kept for the retry"
+                if [ -s "$notes" ]; then
+                  echo
+                  echo "Set aside in $aside, not committed:"
+                  cat "$notes"
+                fi
+              } > "${notes}.msg"
+              git -c user.name="claude[bot]" -c user.email="41898282+claude[bot]@users.noreply.github.com" \
+                commit -q --no-verify -F "${notes}.msg"
+              echo "Kept the first attempt's changes on local branch $wip ($(git rev-parse --short HEAD)): tracked changes and $kept new files"
+            fi
+            if [ -n "$(git status --porcelain)" ]; then
+              echo "::warning::The tree still isn't clean after keeping the first attempt's changes"
+              git status --short | head -20
+            fi
           else
             echo "The first attempt left no uncommitted changes"
           fi
