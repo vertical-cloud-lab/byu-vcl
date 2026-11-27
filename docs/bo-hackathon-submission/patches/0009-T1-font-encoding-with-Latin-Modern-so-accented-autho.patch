@@ -1,7 +1,7 @@
-From 45b70ba34badd4b1be12adc4eb07bdf680dcb067 Mon Sep 17 00:00:00 2001
+From 187ae33937ae6556f171edf5be883077e46fff73 Mon Sep 17 00:00:00 2001
 From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
 Date: Fri, 27 Nov 2026 19:35:19 +0000
-Subject: [PATCH 09/16] T1 font encoding with Latin Modern so accented author
+Subject: [PATCH 09/19] T1 font encoding with Latin Modern so accented author
  names extract and copy as single characters
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

@@ -1,7 +1,7 @@
-From 8f06bf6df6902fbda39a7f3c1646bcca2946c709 Mon Sep 17 00:00:00 2001
+From 51ae5ed0717b158128c5a2989ed39aadb09bfd27 Mon Sep 17 00:00:00 2001
 From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
 Date: Fri, 27 Nov 2026 19:44:52 +0000
-Subject: [PATCH 14/16] References: RDKit and Ax cited as software (they were
+Subject: [PATCH 14/19] References: RDKit and Ax cited as software (they were
  typed as journal articles)
 
 ---

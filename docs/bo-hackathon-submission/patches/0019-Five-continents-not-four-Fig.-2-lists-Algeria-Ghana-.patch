@@ -1,0 +1,56 @@
+From d71e6756cc943d4d378b23d4c2d5e50b6ccd9256 Mon Sep 17 00:00:00 2001
+From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
+Date: Fri, 27 Nov 2026 20:22:23 +0000
+Subject: [PATCH 19/19] Five continents, not four (Fig. 2 lists Algeria, Ghana
+ and Australia)
+
+---
+ RESPONSE_TO_REVIEWERS.md | 1 +
+ main.tex                 | 6 +++---
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/RESPONSE_TO_REVIEWERS.md b/RESPONSE_TO_REVIEWERS.md
+index d1ddcdd..a6958bd 100644
+--- a/RESPONSE_TO_REVIEWERS.md
++++ b/RESPONSE_TO_REVIEWERS.md
+@@ -269,5 +269,6 @@ the raw AI-drafted summaries, are in the repository listed under Data availabili
+   and Table III's link for project 15 now points to its own repository.
+ - Project 43 also had no video, so Section III now counts seven such projects, and each of their
+   summaries says so.
++- Participants came from five continents, not four: Fig. 2 includes Algeria, Ghana and Australia.
+ - Data availability follows Conflicts of interest and lists the material behind each analysis
+   (page 21).
+diff --git a/main.tex b/main.tex
+index 5b2c305..6ad8ae4 100644
+--- a/main.tex
++++ b/main.tex
+@@ -264,7 +264,7 @@
+ 
+ 
+ \begin{abstract}
+-The Acceleration Consortium and Merck KGaA hosted a 2-day virtual hackathon on March 27-28, 2024, bringing together scientists to explore, collaborate, and innovate in the field of Bayesian optimization for the physical sciences. Participants were encouraged to select or develop Bayesian optimization algorithms, apply them to benchmarking tasks, design new benchmarks, create instructional tutorials, and describe real-world applications. With 139 participants across 69 academic, industry, and government organizations located in 59 cities, 19 countries, and 4 continents, this was a global event. % https://chatgpt.com/share/f6cd733f-1126-4151-86c5-d4b59d158dc3
++The Acceleration Consortium and Merck KGaA hosted a 2-day virtual hackathon on March 27-28, 2024, bringing together scientists to explore, collaborate, and innovate in the field of Bayesian optimization for the physical sciences. Participants were encouraged to select or develop Bayesian optimization algorithms, apply them to benchmarking tasks, design new benchmarks, create instructional tutorials, and describe real-world applications. With 139 participants across 69 academic, industry, and government organizations located in 59 cities, 19 countries, and 5 continents, this was a global event. % https://chatgpt.com/share/f6cd733f-1126-4151-86c5-d4b59d158dc3
+ We summarize all 45 projects, assess how reusable their code is, and synthesize what they reveal about the strengths and limitations of Bayesian optimization, together with lessons for organizing such events, post-event outcomes, and future opportunities. The outputs from this event, including developed algorithms, benchmarks, and tutorials, will serve as valuable resources for the research community, in addition to the new skills learned and connections formed. Released projects and general information are available at \url{https://ac-bo-hackathon.github.io/} and other locations linked from individual project pages. This event demonstrates the potential of community-driven research efforts to accelerate advances in Bayesian optimization in chemistry and materials science.
+ \end{abstract}
+ 
+@@ -294,7 +294,7 @@ A hackathon is a short competition where people work together in teams to solve
+     \label{fig:intro-bo}
+ \end{figure}
+ 
+-The goal of the AC BO Hackathon was to leverage the expertise of a diverse, global community to advance the development and application of \gls{bo} techniques for solving critical challenges in the physical sciences. The hackathon also aimed to foster collaboration and knowledge sharing among participants from different backgrounds, including academia, national laboratories, government agencies, and private industry. The event attracted 139 active participants from 39 teams, representing 52 academic institutions, 3 national labs, and 14 companies. Likewise, the participants were located in 59 cities, 19 countries, and 4 continents (\cref{fig:map}). A full list of projects, including links to the corresponding GitHub repositories, submission video, and social media post are provided in \cref{tab:projects}.
++The goal of the AC BO Hackathon was to leverage the expertise of a diverse, global community to advance the development and application of \gls{bo} techniques for solving critical challenges in the physical sciences. The hackathon also aimed to foster collaboration and knowledge sharing among participants from different backgrounds, including academia, national laboratories, government agencies, and private industry. The event attracted 139 active participants from 39 teams, representing 52 academic institutions, 3 national labs, and 14 companies. Likewise, the participants were located in 59 cities, 19 countries, and 5 continents (\cref{fig:map}). A full list of projects, including links to the corresponding GitHub repositories, submission video, and social media post are provided in \cref{tab:projects}.
+ 
+ % \onecolumngrid % (https://tex.stackexchange.com/a/214834/224861)
+ % % don't remove this linebreak 
+@@ -381,7 +381,7 @@ The corresponding Gavel web app was hosted on Heroku according to directions in
+     \centering
+     % \captionsetup{justification=centering}
+     \includegraphics[width=0.95\linewidth]{latex/figures/world_map_readable.png}
+-    \caption{Demographic distributions of the hackathon participants and their affiliations. The hackathon supported 139 participants across 69 academic, industry, and government organizations located in 59 cities, 19 countries, and 4 continents. \label{fig:map} }
++    \caption{Demographic distributions of the hackathon participants and their affiliations. The hackathon supported 139 participants across 69 academic, industry, and government organizations located in 59 cities, 19 countries, and 5 continents. \label{fig:map} }
+ \end{figure*}
+ 
+ \begin{figure*}[tp]
+-- 
+2.56.1
+

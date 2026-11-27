@@ -1,0 +1,52 @@
+From d15ebe8c1793fd37b916e7788712b2caad5726a3 Mon Sep 17 00:00:00 2001
+From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
+Date: Fri, 27 Nov 2026 20:22:01 +0000
+Subject: [PATCH 18/19] Cite the source of the hackathon definition quote
+ (GitHub's hackathon guide); V.B no longer claims DoE baselines no project ran
+
+---
+ latex/revision-refs.bib | 8 ++++++++
+ main.tex                | 4 ++--
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/latex/revision-refs.bib b/latex/revision-refs.bib
+index faaa131..25d6762 100644
+--- a/latex/revision-refs.bib
++++ b/latex/revision-refs.bib
+@@ -101,3 +101,11 @@
+ 	year = {2023},
+ 	doi = {10.52202/075280-0904},
+ }
++
++@misc{mannering_hackathon_2021,
++	title = {Hackathon tips and tricks},
++	author = {Mannering, Michelle},
++	year = {2021},
++	howpublished = {\url{https://github.com/github/hackathons/blob/main/TipsandTricks.md}},
++	note = {GitHub hackathons guide; the author now publishes as Michelle Duke. Accessed: 2026-11-27},
++}
+diff --git a/main.tex b/main.tex
+index 5125b63..5b2c305 100644
+--- a/main.tex
++++ b/main.tex
+@@ -281,7 +281,7 @@ We summarize all 45 projects, assess how reusable their code is, and synthesize
+ 
+ \section{Introduction}
+ 
+-\Gls{bo} has emerged as a powerful tool in optimizing complex and expensive-to-evaluate functions, often outperforming traditional search methods in a variety of scientific domains such as optimizing composition and processing parameters to maximize alloy yield strength or identifying synthesis pathways that maximize efficacy of HIV drugs (\cref{fig:intro-bo}). Hackathons help people to connect, gain skills, and flesh out new ideas. In the words of Michelle Duke, the "Hackathon Queen":
++\Gls{bo} has emerged as a powerful tool in optimizing complex and expensive-to-evaluate functions, often outperforming traditional search methods in a variety of scientific domains such as optimizing composition and processing parameters to maximize alloy yield strength or identifying synthesis pathways that maximize efficacy of HIV drugs (\cref{fig:intro-bo}). Hackathons help people to connect, gain skills, and flesh out new ideas. In the words of Michelle Duke, the "Hackathon Queen", in GitHub's hackathon guide~\cite{mannering_hackathon_2021}:
+ 
+ \begin{quote}
+ A hackathon is a short competition where people work together in teams to solve problems and challenges by coming up with solutions and ideas.
+@@ -537,7 +537,7 @@ Other aspects proved more difficult. Some registered teams did not converge into
+ \subsection{Scientific lessons: strengths and limitations of Bayesian optimization}
+ \label{sec:sci-lessons}
+ 
+-On the strengths side, teams repeatedly exploited BO's sample efficiency in low-data regimes, recovering strong candidates within a handful of iterations relative to design-of-experiments or random baselines~\cite{frazier_tutorial_2018, shahriari_taking_2016}. The submissions collectively demonstrated flexibility in handling continuous, categorical, mixed, and molecular inputs (for example, projects 8, 21, and 27) and multi-objective (projects 1, 18, and 37), multi-fidelity (project 2), contextual (project 26), batched (project 15), and cost-aware (project 36) problems, including a prototype preference-based, human-in-the-loop workflow (project 16)~\cite{lin_preference_2022}. Specialized kernels and representations (e.g., for molecules) further extended BO to structured inputs~\cite{griffiths_gauche_2024}.
++On the strengths side, teams repeatedly exploited BO's sample efficiency in low-data regimes, in some projects recovering strong candidates in fewer iterations than random search (for example, project 1)~\cite{frazier_tutorial_2018, shahriari_taking_2016}. The submissions collectively demonstrated flexibility in handling continuous, categorical, mixed, and molecular inputs (for example, projects 8, 21, and 27) and multi-objective (projects 1, 18, and 37), multi-fidelity (project 2), contextual (project 26), batched (project 15), and cost-aware (project 36) problems, including a prototype preference-based, human-in-the-loop workflow (project 16)~\cite{lin_preference_2022}. Specialized kernels and representations (e.g., for molecules) further extended BO to structured inputs~\cite{griffiths_gauche_2024}.
+ 
+ The projects also surfaced well-known limitations. Default BO was not always superior to simple baselines: two teams reported little advantage over random search on their tasks (projects 33 and 23), and while these two-day comparisons were not run at benchmark rigor, they underscore the value of always including a simple baseline~\cite{liang_benchmarking_2021}. Results were sensitive to molecular representation, featurization, and kernel choice; warm-start data quality, observation noise, and high-dimensional search spaces were recurring pain points, for which noise-robust and heteroscedastic-aware methods are relevant remedies~\cite{aldeghi_golem_2021, altamirano_robust_2023}. The one direct test of noise handling, in project 23, found that a Gaussian process that infers the noise level beat one with the noise fixed near zero in 15 of 16 combinations of noise level and initial design size, with the margin growing as the data became noisier. Acquisition-function optimization itself mattered: one of the top-ranked projects (project 3) showed that investing more computation in the acquisition optimizer changed observed performance, connecting to ongoing work on scalable and high-dimensional acquisition strategies~\cite{ament_unexpected_2023, maus_local_2023}. Batch size and computational overhead also mattered in practice: project 15 found that the best batch size balances model retraining time against experimental overhead, and project 37 cut fitting time by modeling yield alone and computing the objectives from the predicted yield afterwards. Finally, retrospective benchmark gains do not guarantee wet-laboratory success, and reproducing comparisons across studies remains difficult~\cite{liang_benchmarking_2021}. Where teams integrated LLMs, the models lowered access barriers and helped specify spaces or retrieve priors, but they added another uncertain component that can degrade on complex objectives and requires validation against non-LLM baselines~\cite{kristiadi_sober_2024}.
+ 
+-- 
+2.56.1
+

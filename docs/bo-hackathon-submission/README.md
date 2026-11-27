@@ -29,7 +29,7 @@ submission as listed in the portal on 8 October (screenshot in issue 185).
 | --- | --- | --- | --- |
 | [`cover-letter/cover-letter.docx`](cover-letter/cover-letter.docx) ([PDF](cover-letter/cover-letter.pdf)) | Cover letter field, or a file | Letter_to_Referees_BYU_letterhead_signed_fullpage.docx | **Draft.** Put it on letterhead, fill in the editor's name and the date, sign. Declares the AI use and the authorship change, as RSC requires. |
 | [`response/Response_to_Referees.pdf`](response/Response_to_Referees.pdf) | Response to Referees | (new for the revision) | Every page pointer checked against the PDF below. Also paste or attach in the "Response to Decision Letter" step. |
-| [`manuscript/BO_Hackathon_Manuscript_Revised.pdf`](manuscript/BO_Hackathon_Manuscript_Revised.pdf) | Main Article | BO_Hackathon_Manuscript_Final.pdf | 27 pages, 0 unresolved references or citations. |
+| [`manuscript/BO_Hackathon_Manuscript_Revised.pdf`](manuscript/BO_Hackathon_Manuscript_Revised.pdf) | Main Article | BO_Hackathon_Manuscript_Final.pdf | 26 pages, 0 unresolved references or citations. |
 | [`manuscript/BO_Hackathon_Manuscript_Revised_marked_changes.pdf`](manuscript/BO_Hackathon_Manuscript_Revised_marked_changes.pdf) | Revised manuscript with changes marked | (new) | latexdiff against the submitted source (`6d2c616`). |
 | [`manuscript/BO_Hackathon_Manuscript_Revised_LaTeX_source.zip`](manuscript/BO_Hackathon_Manuscript_Revised_LaTeX_source.zip) | LaTeX source files | (new) | Compiles without shell-escape: tested by unzipping into an empty folder. Needs TeX Live 2023 (see below). |
 | [`figures/Fig1.tif`](figures/) to `Fig5.tif` | Figure | (new) | TIFF at 600 dpi or more at print width (8.3 cm for Fig. 1, 17.1 cm for the rest), transparency flattened onto white. Figs. 3 to 5 were upsampled to reach 600 dpi; Fig. 5's source screenshot is only 1660 px wide. |
@@ -41,8 +41,8 @@ submission as listed in the portal on 8 October (screenshot in issue 185).
 ## What changed since the 8 October set
 
 The 8 October set was `8321260` as it stood. These changes are in [`patches/`](patches/)
-(apply on PR 171 with `git am --keep-cr`; `--keep-cr` because `process_spreadsheet.py` has
-CRLF line endings), and every PDF above was rebuilt from them.
+(apply on PR 171 with `git am --keep-cr`, since `process_spreadsheet.py` has CRLF line endings;
+see step 5 below), and every PDF above was rebuilt from them.
 
 1. **Referee 4, point 3 (datasets).** The fix written for AC-BO issue 176 (`0258d7a`) sat on an
    unmerged branch, so the 8 October set still had the stopgap reply, which pointed to a
@@ -74,6 +74,21 @@ CRLF line endings), and every PDF above was rebuilt from them.
    not done; Scientific lessons covers batch size and overhead, the two items on Referee 1's
    list it had skipped.
 
+8. **Found by an independent second-round read** (a fresh agent reading the revision cold, as
+   the four referees and the editor), and fixed: Table I gave the ninth-place project as 43
+   (it is 45, as everywhere else, and this was already wrong in the submitted version); the
+   participants came from **five** continents, not four (Fig. 2 includes Algeria, Ghana and
+   Australia); project 43 also had no video, so seven projects, not six, and four summaries
+   lacked the no-video note Section III promises; Scientific lessons cited project 1 for "little
+   advantage over random search" although its BoTorch arm beat random (project 23 is the
+   case), and now ties each strength to a project and states the one direct noise test, which
+   the reply to Referee 3 points to; Section IV claimed mixed teams "appeared to be an asset",
+   which the reply to Referee 2 says was not measured; chemical formulas printed as
+   "Al_2O_3"; three summaries still had model phrasing ("not provided in the given context");
+   the hackathon definition quoted in the introduction had no source (it is GitHub's
+   hackathon guide); LinkedIn links in Table III carried a member tracking token; the reply to
+   Referee 4's consent question (point 13) did not answer it.
+
 The full mapping from each referee point to the revision is in
 [`point-by-point-check.md`](point-by-point-check.md).
 
@@ -101,10 +116,13 @@ In this order:
    so, add "and checked by the authors" to the Section IV and ESI wording), and what the
    ChatGPT share link in the abstract's source comment was for (the link is dead; if ChatGPT
    wrote text, add it to the statement).
-5. **Apply the patches to PR 171 (Sterling)**, so the repository matches what is uploaded:
-   `git am --keep-cr docs/bo-hackathon-submission/patches/*.patch` on
-   `copilot/address-dd-reviewer-feedback` (tested: the 16 patches apply cleanly to `8321260`),
-   or ask `@claude` on PR 171 to do it.
+5. **Apply the patches to PR 171 (Sterling)**, so the repository matches what is uploaded. On
+   `copilot/address-dd-reviewer-feedback`:
+   `git am --keep-cr docs/bo-hackathon-submission/patches/*.patch`, then
+   `sed -i 's/Los Angles/Los Angeles/g; s/Departmentt/Department/' latex/authors-hardcoded.tex`
+   (two affiliation typos, kept out of the patches because that file's context lines carry
+   co-authors' personal e-mail addresses). Tested: the 19 patches plus that command reproduce
+   the tree the PDFs were built from, exactly. Or ask `@claude` on PR 171 to do it.
 6. **Fix the participant spreadsheet before reviewers follow the new link (Sterling).**
    `AC-bo-hackathon-2024.csv` in the public AC-BO repository holds 131 participants' e-mail
    addresses and postal addresses, and the Data availability statement now sends reviewers
@@ -134,6 +152,31 @@ In this order:
 | Zenodo snapshot of the AC-BO repository, DOI into Data availability | Sterling, at acceptance | no (journal requires it at acceptance) |
 | Competing interests: authors employed by Merck KGaA, which develops BayBE (discussed in the paper). The submission declared none; RSC may ask | Sterling | no |
 
+## What referees may still come back on
+
+From the same independent read, not fixed because they need a decision or material only the
+authors have:
+
+1. **The summarization prompt and inputs.** Digital Discovery's LLM policy asks for input and
+   output logs. The outputs are archived; the prompt and transcripts are not (Mehrad).
+2. **Classification criteria.** Table IV's categories were proposed by an AI agent and are not
+   defined beyond "mature software"; the first-place project (23) and two projects that became
+   papers (15, 36) are "preliminary concept". Referee 1 may ask for definitions and who checked.
+3. **Table III's icon links** (about 110, plus links behind text on pp. 3 to 6). Referee 4
+   objected to opaque links in the headings; the same applies here. Printing short URLs in an
+   ESI table would settle it.
+4. **Consent and ethics beyond Figs. 4 and 5:** the per-person review in Section VI lives in a
+   public GitHub comment; Fig. 3 contains third-party thumbnails and logos; Table III uses brand
+   icons; RSC figures should not carry logos.
+5. **Confidentiality:** the referee reports are quoted in full in public AC-BO issue 170, and
+   the AI statement says the prompts are those threads. Worth deciding whether that issue
+   should stay public before the editor reads the statement.
+6. **Counts that need a list:** "roughly 19 of the 45 projects" continued, and "6 of 45 (8 under
+   a broader definition)" used LLMs. Listing them in the ESI would close the question.
+7. **Affiliations:** a few duplicate institution names, ETH Zurich and EPFL merged in one, and a
+   DTU affiliation with an Athens address. Production will query them; Gage can fix them in
+   `latex/authors-hardcoded.tex`.
+
 ## Realistic submission date
 
 **Friday 4 December 2026**, if ScholarOne still has the revision open and the editorial office
@@ -154,8 +197,9 @@ add the office's turnaround: about **11 December**. If the office wants a signed
   `language = {en}`; the patches fix the entries, so the build now exits cleanly.
 - Source zip: the two shell-escape pipes are replaced with their output; only the files the
   build reads are included, so no participant spreadsheet, no `edison_output/` and no unused
-  `latex/authors.tex`. Unzipped into an empty folder and compiled with plain
-  `pdflatex`/`bibtex`: same 27 pages and the same text as the manuscript PDF (one word breaks
+  `latex/authors.tex`, and the commented-out personal e-mail addresses in the author file are
+  dropped (only the two printed corresponding-author addresses remain). Unzipped into an empty folder and compiled with plain
+  `pdflatex`/`bibtex`: same 26 pages and the same text as the manuscript PDF (one word breaks
   differently at a line end).
 - Figures: lossless TIFF (Deflate), RGB, white background, resolution tag set to the print width.
 - Response letter: `scripts/make_response_letter.sh` (pandoc), as before.

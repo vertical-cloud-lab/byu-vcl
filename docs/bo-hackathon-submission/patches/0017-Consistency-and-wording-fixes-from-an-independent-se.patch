@@ -1,0 +1,740 @@
+From 305741313a812ce10a6b57bba8410db11b49cae3 Mon Sep 17 00:00:00 2001
+From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
+Date: Fri, 27 Nov 2026 20:20:02 +0000
+Subject: [PATCH 17/19] Consistency and wording fixes from an independent
+ second-round read
+
+- Table I: ninth place is project 45 (General Optimizers), not 43 (the
+  awesome list); sixth place uses project 9's title as in Table III.
+- Abstract: 139 participants, as in the introduction and Fig. 2.
+- Project 43 also had no video: Section III and V.A count seven, and the
+  summaries of 19, 29, 42 and 43 now carry the no-video note Section III
+  promises.
+- Scientific lessons: the strengths are tied to projects; project 1's
+  BoTorch arm beat random search, so the 'little advantage over random'
+  example is project 23; the one direct noise test (project 23, 15 of 16)
+  is stated, which the reply to Referee 3 points to.
+- Section IV no longer claims mixed-expertise teams were an asset here;
+  it cites other hackathons and says this was not measured.
+- Future Opportunities: BayBE and BoFire are libraries, cited apart from
+  the graphical interfaces.
+- Summaries: chemical formulas print as subscripts (underscores were
+  escaped inside math), leftover model phrasing removed (36, 31, 27),
+  Aldeghi not 'Ali', Suzuki-Miyaura, ten missing spaces, 'Mutagenesis';
+  the carbon-capture claim no longer cites a perovskite solar-cell paper.
+- Table III: tracking parameters stripped from LinkedIn, X and YouTube
+  links (one LinkedIn link carried the sharer's member token).
+- AI statement: model identifiers and dates; the no-video summaries.
+- Fig. 1 caption, Acknowledgements grammar, two affiliation typos.
+- Response letter: R1.4 wording, R3 question 1 and R4 point 13 (consent)
+  answered directly; pointers for the 26-page build.
+---
+ RESPONSE_TO_REVIEWERS.md                 | 93 +++++++++++++-----------
+ _projects/json_summaries/project_11.json |  2 +-
+ _projects/json_summaries/project_13.json |  2 +-
+ _projects/json_summaries/project_19.json |  2 +-
+ _projects/json_summaries/project_2.json  |  2 +-
+ _projects/json_summaries/project_27.json |  2 +-
+ _projects/json_summaries/project_29.json |  2 +-
+ _projects/json_summaries/project_31.json |  2 +-
+ _projects/json_summaries/project_32.json |  4 +-
+ _projects/json_summaries/project_33.json |  2 +-
+ _projects/json_summaries/project_36.json |  2 +-
+ _projects/json_summaries/project_38.json |  2 +-
+ _projects/json_summaries/project_40.json |  2 +-
+ _projects/json_summaries/project_41.json |  2 +-
+ _projects/json_summaries/project_42.json |  2 +-
+ _projects/json_summaries/project_43.json |  3 +-
+ _projects/json_summaries/project_44.json |  2 +-
+ _projects/json_summaries/project_45.json |  2 +-
+ _projects/json_summaries/project_8.json  |  2 +-
+ _projects/json_summaries/project_9.json  |  2 +-
+ latex/summaries-ref.bib                  |  2 +-
+ main.tex                                 | 24 +++---
+ python_scripts/process_spreadsheet.py    | 24 +++++-
+ python_scripts/process_summaries.py      |  8 +-
+ 24 files changed, 108 insertions(+), 84 deletions(-)
+
+diff --git a/RESPONSE_TO_REVIEWERS.md b/RESPONSE_TO_REVIEWERS.md
+index 49dde0d..d1ddcdd 100644
+--- a/RESPONSE_TO_REVIEWERS.md
++++ b/RESPONSE_TO_REVIEWERS.md
+@@ -21,7 +21,7 @@ Thank you!
+ > project scoping, judging, mentoring, and post-event archiving? What did not work well? What would
+ > the organizers change in a future event?
+ 
+-Added as Lessons Learned, Organizational lessons (Section V.A, pages 20 and 21).
++Added as Lessons Learned, Organizational lessons (Section V.A, pages 19 and 20).
+ 
+ > Second, the authors should synthesize the scientific lessons from the project outcomes. [...] I
+ > encourage the authors to add a section summarizing the observed pros and cons of BO across the
+@@ -31,7 +31,8 @@ Added as Lessons Learned, Organizational lessons (Section V.A, pages 20 and 21).
+ > selection, acquisition-function optimization, computational overhead, and reproducibility of
+ > benchmark comparisons.
+ 
+-Added as Lessons Learned, Scientific lessons (Section V.B, page 21), covering both identified strengths and limitations.
++Added as Lessons Learned, Scientific lessons (Section V.B, page 20), covering both identified strengths and limitations,
++each tied to the projects that showed it.
+ 
+ > Third, the authors should add a forward-looking section on future opportunities for Bayesian
+ > optimization in materials discovery. [...] Possible topics include BO for autonomous laboratories,
+@@ -39,7 +40,7 @@ Added as Lessons Learned, Scientific lessons (Section V.B, page 21), covering bo
+ > preference-based BO, multi-objective materials design, robust BO under noisy experimental data,
+ > benchmark development, and domain-specific BO tools for synthesis and processing optimization.
+ 
+-Added as Future Opportunities (Section VII, page 22); its two paragraphs cover each direction
++Added as Future Opportunities (Section VII, page 21); its two paragraphs cover each direction
+ listed.
+ 
+ > I also recommend that the authors provide a more systematic evaluation of the 45 project outputs.
+@@ -48,17 +49,17 @@ listed.
+ > availability, licensing, documentation, reproducibility, dependency status, and maintenance plans
+ > would strengthen the resource value of the paper.
+ 
+-Added as Cross-Project Synthesis (Section IV, pages 19 and 20): the classification in Table IV
+-(page 20), discussed in the section's second paragraph; per-project license status in Table V (page
+-20), discussed in the fourth paragraph; per-project categories in ESI Table S1 and repository
+-status (README, dependency files, last update) in ESI Table S2.
++Added as Cross-Project Synthesis (Section IV, pages 18 and 19): the classification in Table IV
++(page 19), discussed in the section's second paragraph; license counts in Table V (page 19), discussed
++in the fourth paragraph; per-project categories in ESI Table S1, and each project's license, README,
++dependency files and last update in ESI Table S2.
+ 
+ > Overall, I find the manuscript valuable as a community-resource and open-science contribution. [...]
+ > I recommend major revision to add a stronger synthesis of organizational lessons, scientific
+ > lessons from the BO applications, limitations revealed by the project outcomes, and future
+ > opportunities for Bayesian optimization in chemistry and materials.
+ 
+-Addressed by the new sections (Sections IV to VII, pages 19 to 22): Cross-Project Synthesis,
++Addressed by the new sections (Sections IV to VII, pages 18 to 21): Cross-Project Synthesis,
+ Lessons Learned, Post-hackathon Outcomes, and Future Opportunities.
+ 
+ ---
+@@ -77,24 +78,24 @@ Thank you!
+ > beyond summary listings of the project titles and the description of the individual projects. For
+ > example, were there commonalities/differences in the way different teams approach their problems?
+ 
+-Added as Cross-Project Synthesis (Section IV, pages 19 and 20). Commonalities and differences in how
+-teams approached their problems are in its last paragraph (page 20).
++Added as Cross-Project Synthesis (Section IV, pages 18 and 19). Commonalities and differences in how
++teams approached their problems are in its last paragraph (page 19).
+ 
+ > Does the level of prior expertise impact the outcomes?
+ 
+ We did not explore this; however, the mix of participant backgrounds is noted in the last paragraph of Cross-Project Synthesis
+-(Section IV, page 20).
++(Section IV, page 19).
+ 
+ > Are there follow up studies to see whether participants are applying BO methods in their own
+ > research? What was the ultimate gain from the hackaton? increased awareness? increased
+ > understanding of the methods? more interactions across many groups?
+ 
+-This was very interesting for us. We looked at this and found a number of examples. These are now described in Post-hackathon Outcomes (Section VI, pages 21 and 22).
++This was very interesting for us. We looked at this and found a number of examples. These are now described in Post-hackathon Outcomes (Section VI, pages 20 and 21).
+ 
+ > While I would not expect the authors to address all the items presented above, it would be very
+ > useful to have a reflective component to the paper and at least some discussion on lessons learned.
+ 
+-Added as Lessons Learned (Section V, pages 20 and 21).
++Added as Lessons Learned (Section V, pages 19 and 20).
+ 
+ ---
+ 
+@@ -111,26 +112,27 @@ Thank you!
+ > It would be nice if some takeaways from the hackathon are produced at the end:
+ 
+ The manuscript no longer ends with the project listing: Cross-Project Synthesis (Section IV, pages
+-19 and 20), Lessons Learned (Section V, pages 20 and 21), Post-hackathon Outcomes (Section VI, pages
+-21 and 22), and Future Opportunities (Section VII, page 22) follow it.
++18 and 19), Lessons Learned (Section V, pages 19 and 20), Post-hackathon Outcomes (Section VI, pages
++20 and 21), and Future Opportunities (Section VII, page 21) follow it.
+ 
+ > 1. are there agreed upon frameworks that work better for specific tasks (i.e. with noisy data or
+ > less noisy data)?
+ 
+-The projects support only a narrow observation here; see Lessons Learned,
+-Scientific lessons (Section V.B, page 21).
++The projects support only a narrow observation: in the one direct test (project 23), a noise-aware
++Gaussian process beat a fixed-noise one in 15 of 16 settings, more clearly as noise grew (Section V.B,
++second paragraph, page 20).
+ 
+ > 2. Are BO tools going to be easily deployable in experimental data settings (the hackathon seems to
+ > imply that it will!).
+ 
+-Addressed in the last paragraph of Lessons Learned, Scientific lessons (Section V.B, page 21) and
+-in the second paragraph of Future Opportunities (Section VII, page 22), which cites graphical and
++Addressed in the last paragraph of Lessons Learned, Scientific lessons (Section V.B, page 20) and
++in the second paragraph of Future Opportunities (Section VII, page 21), which cites graphical and
+ web-based BO interfaces.
+ 
+ > 3. Where is it useful to use Bayesian Optimization vs. where did end users find little utility?
+ 
+ Project-anchored examples are in the first two paragraphs of Lessons Learned, Scientific lessons
+-(Section V.B, page 21); without a participant survey we do not generalize beyond them, but we also added a note stating that we would like to do a survey for similar events in the future.
++(Section V.B, page 20); without a participant survey we do not generalize beyond them, but we also added a note stating that we would like to do a survey for similar events in the future.
+ 
+ > However, this reviewer also commends the fantastic effort in making everyone's data and code
+ > publicly available.
+@@ -156,13 +158,13 @@ The items are addressed below.
+ 
+ Not withheld: these six teams did not submit the closing video the summarization pipeline ran on.
+ Their summaries were written from the teams' project pages and public project outputs and added back
+-for completeness; see the opening paragraph of Projects' Key Findings (Section III, page 9). All 45
+-projects now appear in the text (pages 9 to 19) and in Table III (pages 8 and 9).
++for completeness; see the opening paragraph of Projects' Key Findings (Section III, page 8). All 45
++projects now appear in the text (pages 8 to 18) and in Table III (pages 7 and 8).
+ 
+ > 1a. For example, a reader would likely want to know more about the first- and second-place winners
+ > (projects 23 and 34).
+ 
+-Projects 23 and 34 now have full summaries in Projects' Key Findings (pages 14 and 17), each
++Projects 23 and 34 now have full summaries in Projects' Key Findings (pages 13 and 16), each
+ noting its award.
+ 
+ > 2. Many of the code repositories do not provide adequate module requirement. (Projects 2–8, 10–16,
+@@ -171,7 +173,7 @@ noting its award.
+ > metadata may not apply.
+ 
+ Noted. The aggregate finding is reported in the fourth paragraph of Cross-Project Synthesis
+-(Section IV, page 20), and each repository's dependency files are listed in ESI Table S2.
++(Section IV, page 19), and each repository's dependency files are listed in ESI Table S2.
+ 
+ > 3. There are some projects for which the dataset used is not clear. (Projects 6, 19–21, 29, 30, 31,
+ > 36, 37, 40, 42, & 45; project 15 provides the dataset, but it is buried within the code
+@@ -179,8 +181,8 @@ Noted. The aggregate finding is reported in the fourth paragraph of Cross-Projec
+ 
+ Each flagged summary now names its data source with a citation, or states that the data came from a
+ simulator, synthetic test functions or the team's own measurements, or that none were used (Section
+-III, pages 10 to 19). A data-provenance paragraph summarizes the patterns (Section IV, fifth
+-paragraph, page 20).
++III, pages 9 to 18). A data-provenance paragraph summarizes the patterns (Section IV, fifth
++paragraph, page 19).
+ 
+ > 4. Can the rubric used for evaluating projects be included in the supplemental materials?
+ 
+@@ -192,36 +194,37 @@ and Setup (Section II, page 3).
+ > level of detail. Furthermore, the claim that this approach provides a structured and objective
+ > assessment of the submissions is not supported by any evidence or reference to prior works.
+ 
+-Addressed in the opening paragraph of Projects' Key Findings (Section III, page 9), which now gives
++Addressed in the opening paragraph of Projects' Key Findings (Section III, page 8), which now gives
+ the model, its temperature and the generation date; the raw and edited summaries are archived (Data
+-availability, page 22). The objective-assessment claim has been withdrawn.
++availability, page 21). The objective-assessment claim has been withdrawn.
+ 
+ ### Tables and figures
+ 
+ > 6. Figure 2: The black text which falls above the map can be difficult to read.
+ 
+-Fixed: a thin white outline now surrounds the histogram labels and titles. See Figure 2 (page 6).
++Fixed: a thin white outline now surrounds the histogram labels and titles. See Figure 2 (page 5).
+ 
+ > 7. Table 1 spans two pages but contains no entries on the second page.
+ 
+-Fixed: the project table (now Table III, pages 8 and 9) breaks cleanly with entries on every page.
++Fixed: the project table (now Table III, pages 7 and 8) breaks cleanly with entries on every page.
+ 
+ > 9. Figure 3: The caption contains a statement on preprint server policies which should be updated to
+ > adhere to Digital Discovery's polices.
+ 
+-Fixed: the caption now states the actual reason for the blurring. See Figure 3 (page 6).
++Fixed: the caption now states the actual reason for the blurring. See Figure 3 (page 5).
+ 
+ > 11. Table 2: The "Prize" header is marked for a footnote that is not present.
+ 
+ Fixed: the explanation is folded into the caption and the header carries no marker. The rankings
+ table is now referenced from the community-judging paragraph in Hackathon Details and Setup
+-(Section II, fifth paragraph, page 3) and appears as Table I (page 5).
++(Section II, fifth paragraph, page 3) and appears as Table I (page 4).
+ 
+ > 13. Figures 4 & 5: Were participants informed that their names and commentary may be made public
+ > prior to joining the event?
+ 
+-Participant display names are now pixelated throughout the keynote room panel in Figure 4, and likewise
+-in Figure 5 (both on page 7); each caption states this.
++Participants were not asked in advance about publishing their display names, so the names are now
++pixelated throughout the keynote room panel in Figure 4 and in Figure 5 (both on page 6), and each
++caption states this. The names still legible in Figure 4's other panels are those of co-authors.
+ 
+ ### Minor comments
+ 
+@@ -229,16 +232,16 @@ in Figure 5 (both on page 7); each caption states this.
+ > transparent hyperlink standards and is inaccessible on paper copies. In addition, these hyperlinks
+ > are redundant with the links already provided in Table 1.
+ 
+-Changed to plain text throughout the summary headings (Section III, pages 9 to 19); the links
+-remain in Table III (pages 8 and 9). Papers named in Post-hackathon Outcomes are now numbered
+-references rather than links (Section VI, page 21).
++Changed to plain text throughout the summary headings (Section III, pages 8 to 18); the links
++remain in Table III (pages 7 and 8). Papers named in Post-hackathon Outcomes are now numbered
++references rather than links (Section VI, second paragraph, page 21).
+ 
+ > 13a. Project 40 has been migrated from the github listed on its project page to the repo listed in
+ > the Zenodo metadata file.
+ > 13b. Projects 33 and 34 do not have github links on their project pages despite having links in the
+ > Zenodo metadata file.
+ 
+-Fixed on the project pages and in Table III (pages 8 and 9).
++Fixed on the project pages and in Table III (pages 7 and 8).
+ 
+ > 13. Typographical errors in the Acknowledgement section, around the header for Project 3, and in the
+ > Author Contributions section. ("Ryan-Rhys Gri ths", "Jakub LÆla", "Can zkan", "Adrian o†i¢",
+@@ -246,23 +249,25 @@ Fixed on the project pages and in Table III (pages 8 and 9).
+ > "ff", etc.).
+ 
+ Fixed: the PDF now maps every glyph to Unicode and sets accented letters as single characters, so
+-these names extract and copy correctly (Acknowledgements, page 22; the Project 3 heading, page 9).
++these names extract and copy correctly (Acknowledgements, page 21; the Project 3 heading, page 8).
+ The separate author contributions statement was regenerated and checked the same way.
+ 
+ ### Data reviewer checklist
+ 
+ Noted. The scripts behind Tables III and V, the project summaries and the figure preparation, and
+-the raw AI-drafted summaries, are in the repository listed under Data availability (page 22).
++the raw AI-drafted summaries, are in the repository listed under Data availability (page 21).
+ 
+ ---
+ 
+ ## Other changes
+ 
+ - At their request, Jiale Shi and Dandan Tang are no longer authors.
+-- The Acknowledgements declare the generative AI tools used, with model names (page 23).
++- The Acknowledgements declare the generative AI tools used, with model names and dates (page 22).
+ - References were checked against Crossref: wrong DOIs and author lists corrected, missing DOIs
+   added, duplicate entries merged, and preprints since published cited in their published form.
+-- Table V was rechecked in November 2026, and Table III's link for project 15 now points to its
+-  own repository.
++- Table I's ninth-place entry is project 45 (it said 43); Table V was rechecked in November 2026;
++  and Table III's link for project 15 now points to its own repository.
++- Project 43 also had no video, so Section III now counts seven such projects, and each of their
++  summaries says so.
+ - Data availability follows Conflicts of interest and lists the material behind each analysis
+-  (page 22).
++  (page 21).
+diff --git a/_projects/json_summaries/project_11.json b/_projects/json_summaries/project_11.json
+index f84f9ff..7050ec4 100644
+--- a/_projects/json_summaries/project_11.json
++++ b/_projects/json_summaries/project_11.json
+@@ -2,6 +2,6 @@
+     "project_number": 11,
+     "project_name": "BlendDS - An intuitive specification of the design space for blends of components",
+     "video_url": "https://www.youtube.com/watch?v=HASa3tFLZoI",
+-    "summary": "This project focuses on developing an interface for BO that bridges the gap between domain experts (i.e. chemists and materials scientists) and machine learning algorithms. The system allows scientists to specify experimental parameters and constraints in natural language, which is then translated into a structured dictionary format by a large language model. This dictionary is subsequently converted into a Python object that can be used for design of experiments and optimization tasks.The key feature of this interface is its ability to generate diverse trial designs for efficient sampling of the experimental space. It incorporates dimensionality reduction techniques to visualize the design space, enabling users to select the most diverse and informative trials. This approach aims to maximize the information gained from each experiment, potentially reducing the number of trials needed to reach optimal results. The project is open-source, inviting contributions and integration with existing BO frameworks.",
++    "summary": "This project focuses on developing an interface for BO that bridges the gap between domain experts (i.e. chemists and materials scientists) and machine learning algorithms. The system allows scientists to specify experimental parameters and constraints in natural language, which is then translated into a structured dictionary format by a large language model. This dictionary is subsequently converted into a Python object that can be used for design of experiments and optimization tasks. The key feature of this interface is its ability to generate diverse trial designs for efficient sampling of the experimental space. It incorporates dimensionality reduction techniques to visualize the design space, enabling users to select the most diverse and informative trials. This approach aims to maximize the information gained from each experiment, potentially reducing the number of trials needed to reach optimal results. The project is open-source, inviting contributions and integration with existing BO frameworks.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_13.json b/_projects/json_summaries/project_13.json
+index 7e5ec19..ac357e1 100644
+--- a/_projects/json_summaries/project_13.json
++++ b/_projects/json_summaries/project_13.json
+@@ -2,6 +2,6 @@
+     "project_number": 13,
+     "project_name": "Interpretability of Bayesian Optimisation Campaigns",
+     "video_url": "https://www.youtube.com/watch?v=Cyyj9ySybZE",
+-    "summary": "This research project focused on developing novel methods for interpreting Bayesian Optimization campaigns by incorporating the temporal component often neglected in end-of-campaign analyses. The study utilized data from a self-driving lab experiment aimed at optimizing the conductivity of a coating. The researchers recreated the Gaussian Process (GP) model employed in the original experiment, training it on subsets of data to simulate mid-campaign conditions. Two primary methods were investigated: First, cross-sections of the GP model were taken at various stages of the campaign, holding all but one feature constant. This approach revealed that closer nozzle distances produced better results, aligning with prior beliefs and serving as a potential mid-campaign sense check to validate model alignment with previous experimentation. The second method involved predicting the error of the next sample based on the model trained on data collected up to that point. This analysis showed that performance improvement plateaued around the time the optimal sample was produced, suggesting its potential use as an early stopping criterion if error is monitored throughout the campaign.The research demonstrates the value of incorporating temporal analysis in Bayesian Optimization campaigns, offering insights that could enhance decision-making during experiments. The cross-sectional approach provides a means to validate model behavior against prior knowledge, while the error prediction method could inform stopping criteria, potentially improving efficiency in optimization processes. These techniques offer promising avenues for real-time interpretation and guidance in Bayesian Optimization experiments, particularly in self-driving lab contexts.",
++    "summary": "This research project focused on developing novel methods for interpreting Bayesian Optimization campaigns by incorporating the temporal component often neglected in end-of-campaign analyses. The study utilized data from a self-driving lab experiment aimed at optimizing the conductivity of a coating. The researchers recreated the Gaussian Process (GP) model employed in the original experiment, training it on subsets of data to simulate mid-campaign conditions. Two primary methods were investigated: First, cross-sections of the GP model were taken at various stages of the campaign, holding all but one feature constant. This approach revealed that closer nozzle distances produced better results, aligning with prior beliefs and serving as a potential mid-campaign sense check to validate model alignment with previous experimentation. The second method involved predicting the error of the next sample based on the model trained on data collected up to that point. This analysis showed that performance improvement plateaued around the time the optimal sample was produced, suggesting its potential use as an early stopping criterion if error is monitored throughout the campaign. The research demonstrates the value of incorporating temporal analysis in Bayesian Optimization campaigns, offering insights that could enhance decision-making during experiments. The cross-sectional approach provides a means to validate model behavior against prior knowledge, while the error prediction method could inform stopping criteria, potentially improving efficiency in optimization processes. These techniques offer promising avenues for real-time interpretation and guidance in Bayesian Optimization experiments, particularly in self-driving lab contexts.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_19.json b/_projects/json_summaries/project_19.json
+index 149bcb8..1cd9aa3 100644
+--- a/_projects/json_summaries/project_19.json
++++ b/_projects/json_summaries/project_19.json
+@@ -2,6 +2,6 @@
+     "project_number": 19,
+     "project_name": "Quantum Bayesian Optimization for Automatic Chemical Design",
+     "video_url": "",
+-    "summary": "This project proposed a quantum-computing route to BO for molecular design, with quantum Gaussian-process regression\\cite{rapp_quantum_2024} in place of the classical surrogate. The submission was never carried out, so no dataset was used.",
++    "summary": "This project proposed a quantum-computing route to BO for molecular design, with quantum Gaussian-process regression\\cite{rapp_quantum_2024} in place of the classical surrogate. The submission was never carried out, so no dataset was used. (No video was submitted; summary prepared from the team's project page.)",
+     "status": "manual"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_2.json b/_projects/json_summaries/project_2.json
+index e03fe65..c060cee 100644
+--- a/_projects/json_summaries/project_2.json
++++ b/_projects/json_summaries/project_2.json
+@@ -2,6 +2,6 @@
+     "project_number": 2,
+     "project_name": "Long-run Behaviour of Multi-fidelity Bayesian Optimisation",
+     "video_url": "https://www.youtube.com/watch?v=pegJumJEOsE",
+-    "summary": "This research project investigates the long-term performance of multifidelity Bayesian optimization (MFBO) methods\\cite{poloczek2017multi} compared to single-fidelity Bayesian optimization (SFBO) methods. The study focuses on scenarios where two fidelities are available: an accurate but expensive target fidelity that fully represents the objective, and a less accurate but cheaper low fidelity. The researchers observed that while MFBO methods initially outperform SFBO up to a budget of approximately 20, they begin to underperform beyond this point. This behavior is particularly evident with linear kernel MFBO methods, where the performance gap becomes more pronounced after a cost of around 60.The project aims to evaluate the factors contributing to the long-term issues of MFBO methods. Specifically, the researchers plan to investigate the impact of kernel choice, frequency of low fidelity queries, and acquisition function selection on MFBO performance. By analyzing these aspects, the study seeks to identify potential improvements for MFBO methods to enhance their applicability in real-life optimization tasks. The ultimate goal is to develop MFBO approaches that can maintain their performance advantage over SFBO methods in the long run, leveraging the cost-effectiveness of low fidelity queries while achieving superior optimization results.",
++    "summary": "This research project investigates the long-term performance of multifidelity Bayesian optimization (MFBO) methods\\cite{poloczek2017multi} compared to single-fidelity Bayesian optimization (SFBO) methods. The study focuses on scenarios where two fidelities are available: an accurate but expensive target fidelity that fully represents the objective, and a less accurate but cheaper low fidelity. The researchers observed that while MFBO methods initially outperform SFBO up to a budget of approximately 20, they begin to underperform beyond this point. This behavior is particularly evident with linear kernel MFBO methods, where the performance gap becomes more pronounced after a cost of around 60. The project aims to evaluate the factors contributing to the long-term issues of MFBO methods. Specifically, the researchers plan to investigate the impact of kernel choice, frequency of low fidelity queries, and acquisition function selection on MFBO performance. By analyzing these aspects, the study seeks to identify potential improvements for MFBO methods to enhance their applicability in real-life optimization tasks. The ultimate goal is to develop MFBO approaches that can maintain their performance advantage over SFBO methods in the long run, leveraging the cost-effectiveness of low fidelity queries while achieving superior optimization results.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_27.json b/_projects/json_summaries/project_27.json
+index 05d0543..4e53fe3 100644
+--- a/_projects/json_summaries/project_27.json
++++ b/_projects/json_summaries/project_27.json
+@@ -2,6 +2,6 @@
+     "project_number": 27,
+     "project_name": "How does initial warm-up data influence Bayesian optimization in low-data experimental settings?",
+     "video_url": "https://www.youtube.com/watch?v=4gPTMaarQt0",
+-    "summary": "This research project investigated the influence of warm-up sampling methods and dataset sizes on property optimization in low data regimes, specifically focusing on molecular property prediction. The team used the QM9 dataset\\cite{ramakrishnan_quantum_2014} and selected band gap as the optimization target. They compared two chemically-inspired sampling methods for the warm-up dataset: Morgan fingerprints and MolFormer language model fingerprints. The researchers also referenced the GDB-17 chemical universe database\\cite{ruddigkeit_enumeration_2012} in their background work. The researchers performed dimensionality reduction on the fingerprints using PCA, projecting them into a 2D space for sampling. They conducted experiments to analyze how the warm-up dataset size affects optimization results. The most significant finding was the comparison between Morgan fingerprints and MolFormer fingerprints at a constant data regime of 50 data points. The results showed that MolFormer fingerprints substantially outperformed Morgan fingerprints, suggesting that pre-trained models on large chemical spaces can potentially improve model optimization rates. This study aims to initiate broader discussions on how dataset sizes and sampling methodologies impact final optimization tasks in molecular property prediction.",
++    "summary": "This research project investigated the influence of warm-up sampling methods and dataset sizes on property optimization in low data regimes, specifically focusing on molecular property prediction. The team used the QM9 dataset\\cite{ramakrishnan_quantum_2014} and selected band gap as the optimization target. They compared two chemically-inspired sampling methods for the warm-up dataset: Morgan fingerprints and MolFormer language model fingerprints. The researchers also drew on the GDB-17 chemical universe database\\cite{ruddigkeit_enumeration_2012}. The researchers performed dimensionality reduction on the fingerprints using PCA, projecting them into a 2D space for sampling. They conducted experiments to analyze how the warm-up dataset size affects optimization results. The most significant finding was the comparison between Morgan fingerprints and MolFormer fingerprints at a constant data regime of 50 data points. The results showed that MolFormer fingerprints substantially outperformed Morgan fingerprints, suggesting that pre-trained models on large chemical spaces can potentially improve model optimization rates. This study aims to initiate broader discussions on how dataset sizes and sampling methodologies impact final optimization tasks in molecular property prediction.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_29.json b/_projects/json_summaries/project_29.json
+index d83fecd..b73ed01 100644
+--- a/_projects/json_summaries/project_29.json
++++ b/_projects/json_summaries/project_29.json
+@@ -2,6 +2,6 @@
+     "project_number": 29,
+     "project_name": "A Bayesian Approach to Predict Solubility Parameters",
+     "video_url": "",
+-    "summary": "This project proposed modeling Hansen solubility parameters with Gaussian-process regression on chemical descriptors and sigma profiles, comparing molecular kernels from the GAUCHE framework\\cite{griffiths_gauche_2024} against an existing Bayesian treatment whose published solubility-parameter compilation was to serve as both benchmark and dataset\\cite{sanchez-lengeling_bayesian_2018}. The submission stayed at the proposal stage: no dataset was ultimately used and no code or results were published.",
++    "summary": "This project proposed modeling Hansen solubility parameters with Gaussian-process regression on chemical descriptors and sigma profiles, comparing molecular kernels from the GAUCHE framework\\cite{griffiths_gauche_2024} against an existing Bayesian treatment whose published solubility-parameter compilation was to serve as both benchmark and dataset\\cite{sanchez-lengeling_bayesian_2018}. The submission stayed at the proposal stage: no dataset was ultimately used and no code or results were published. (No video was submitted; summary prepared from the team's project page.)",
+     "status": "manual"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_31.json b/_projects/json_summaries/project_31.json
+index d11d5ef..d6c480d 100644
+--- a/_projects/json_summaries/project_31.json
++++ b/_projects/json_summaries/project_31.json
+@@ -2,6 +2,6 @@
+     "project_number": 31,
+     "project_name": "A tutorial on ask/tell mode for Ax",
+     "video_url": "https://www.youtube.com/watch?v=X5PDvdXoBdA",
+-    "summary": "This project focuses on utilizing the open-source package AX\\cite{bakshy2018ax} for Bayesian optimization in an asynchronous, human-in-the-loop experimental setting, particularly applied to voltammetry. The researchers developed custom figures and explanations to elucidate the complex interactions within the AX package, emphasizing its user-friendly nature while acknowledging its potential complexity. The study explores various aspects of the optimization process, including strategy selection, surrogate model choice, and search space definition. It demonstrates two primary approaches: a \"cold start\" scenario, where optimization begins with no prior data, and a \"warm start\" scenario for situations with existing experimental data. The demonstration data are the team's own in vitro voltammetry measurements, the same in-house dataset used in project 30\\cite{movassaghi2021simultaneous}; no external dataset is involved. For the cold start, the researchers showcase the use of sequence generators like Sobol sequences and random generators to initialize the optimization campaign. The project also highlights the package's ability to handle real-world experimental constraints, such as marking broken electrodes to exclude them from future suggestions. In the warm start scenario, the researchers detail the process of translating existing experimental workflows into the AX framework, emphasizing the package's automatic tracking of experiments, results, and parameters. The study also notes the inclusion of visualization tools within AX, though these are not described in detail.",
++    "summary": "This project focuses on utilizing the open-source package AX\\cite{bakshy2018ax} for Bayesian optimization in an asynchronous, human-in-the-loop experimental setting, particularly applied to voltammetry. The researchers developed custom figures and explanations to elucidate the complex interactions within the AX package, emphasizing its user-friendly nature while acknowledging its potential complexity. The study explores various aspects of the optimization process, including strategy selection, surrogate model choice, and search space definition. It demonstrates two primary approaches: a \"cold start\" scenario, where optimization begins with no prior data, and a \"warm start\" scenario for situations with existing experimental data. The demonstration data are the team's own in vitro voltammetry measurements, the same in-house dataset used in project 30\\cite{movassaghi2021simultaneous}; no external dataset is involved. For the cold start, the researchers showcase the use of sequence generators like Sobol sequences and random generators to initialize the optimization campaign. The project also highlights the package's ability to handle real-world experimental constraints, such as marking broken electrodes to exclude them from future suggestions. In the warm start scenario, the researchers detail the process of translating existing experimental workflows into the AX framework, emphasizing the package's automatic tracking of experiments, results, and parameters. The tutorial also points to the visualization tools built into AX.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_32.json b/_projects/json_summaries/project_32.json
+index 476e11f..0f3e3f4 100644
+--- a/_projects/json_summaries/project_32.json
++++ b/_projects/json_summaries/project_32.json
+@@ -1,7 +1,7 @@
+ {
+     "project_number": 32,
+-    "project_name": "Efficient Protein Mutagenisis using Bayesian Optimization",
++    "project_name": "Efficient Protein Mutagenesis using Bayesian Optimization",
+     "video_url": "https://www.youtube.com/watch?v=fxpDX7Wmdc0",
+-    "summary": "This research project explored the application of Bayesian optimization to protein mutagenesis, specifically aiming to optimize protein binding affinity to fentanyl for potential use in biosensors. The team utilized a pre-trained BERT language model\\cite{blanchard2022language}, which predicts ligand binding to proteins based on amino acid sequences and SMILES strings. The methodology involved using Bayesian optimization to iteratively select positions and amino acids for mutation, starting with a protein that already had affinity to fentanyl\\cite{bick2017computational}. The researchers focused on residues within 5 angstroms of the ligand as potential mutation sites.The team compared their Bayesian optimization approach to a baseline using random mutations. They analyzed the resulting mutations using PyRosetta's mutagenesis tool to identify potential new positive interactions and clashes that could alter protein conformation. The structural changes were further investigated using AlphaFold\\cite{jumper2021highly}.",
++    "summary": "This research project explored the application of Bayesian optimization to protein mutagenesis, specifically aiming to optimize protein binding affinity to fentanyl for potential use in biosensors. The team utilized a pre-trained BERT language model\\cite{blanchard2022language}, which predicts ligand binding to proteins based on amino acid sequences and SMILES strings. The methodology involved using Bayesian optimization to iteratively select positions and amino acids for mutation, starting with a protein that already had affinity to fentanyl\\cite{bick2017computational}. The researchers focused on residues within 5 angstroms of the ligand as potential mutation sites. The team compared their Bayesian optimization approach to a baseline using random mutations. They analyzed the resulting mutations using PyRosetta's mutagenesis tool to identify potential new positive interactions and clashes that could alter protein conformation. The structural changes were further investigated using AlphaFold\\cite{jumper2021highly}.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_33.json b/_projects/json_summaries/project_33.json
+index c24e231..e18dbbb 100644
+--- a/_projects/json_summaries/project_33.json
++++ b/_projects/json_summaries/project_33.json
+@@ -2,6 +2,6 @@
+     "project_number": 33,
+     "project_name": "Bayesian Optimization for Hyperspectral Co-heritability Search",
+     "video_url": "https://www.youtube.com/watch?v=mY6Empkb8L4",
+-    "summary": "This research project focuses on applying Bayesian Optimization (BO) to the field of crop genetics, specifically for selecting optimal proxy data to train genomic prediction models. The goal is to identify resilient crops that can withstand factors like pests and climate change. The study uses coheritability as a measure to determine the best proxy traits for desired traits, treating it as a black-box optimization problem.The researchers compared various BO methods using Gaussian Processes (GPs) against random search for four different desired traits. Surprisingly, they found that all BO methods performed similarly to random search. However, a pre-trained probabilistic model with a mixed multitask kernel outperformed standard BO approaches, identifying better proxy data more quickly. The study concludes that Gaussian Processes may not be the optimal choice for this particular problem, challenging the common use of Matérn kernels and GPs as the default in Bayesian Optimization. The researchers also criticize the widespread use of these methods without proper justification. As part of their contribution, the team has released their dataset\\cite{stair-lab_coh2} for further research in this area.",
++    "summary": "This research project focuses on applying Bayesian Optimization (BO) to the field of crop genetics, specifically for selecting optimal proxy data to train genomic prediction models. The goal is to identify resilient crops that can withstand factors like pests and climate change. The study uses coheritability as a measure to determine the best proxy traits for desired traits, treating it as a black-box optimization problem. The researchers compared various BO methods using Gaussian Processes (GPs) against random search for four different desired traits. Surprisingly, they found that all BO methods performed similarly to random search. However, a pre-trained probabilistic model with a mixed multitask kernel outperformed standard BO approaches, identifying better proxy data more quickly. The study concludes that Gaussian Processes may not be the optimal choice for this particular problem, challenging the common use of Matérn kernels and GPs as the default in Bayesian Optimization. The researchers also criticize the widespread use of these methods without proper justification. As part of their contribution, the team has released their dataset\\cite{stair-lab_coh2} for further research in this area.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_36.json b/_projects/json_summaries/project_36.json
+index 9f52288..890a6e2 100644
+--- a/_projects/json_summaries/project_36.json
++++ b/_projects/json_summaries/project_36.json
+@@ -2,6 +2,6 @@
+     "project_number": 36,
+     "project_name": "Scalable Nonmyopic Bayesian Optimization in Dynamic Cost Settings",
+     "video_url": "https://youtu.be/CXweDiS_wbI",
+-    "summary": "This research project focuses on scalable Bayesian optimization in dynamic settings, addressing limitations of previous approaches that rely on myopic acquisition functions and assume fixed cost structures. The researchers introduce a novel method using non-myopic acquisition functions\\cite{jiang_efficient_2020} that incorporate a look-ahead mechanism and dynamic cost functions. The project evaluates the proposed algorithm, named HBE, through two main experimental setups. First, they use synthetic functions across 14 different environments with varying dimensions to test scalability. Second, they apply the method to a real-world protein sequence design problem, aiming to maximize a protein fitness score; in the published version of this work, the scoring oracle is fitted to the ProteinEA fluorescence dataset\\cite{truong2026neural}. The researchers compare their HBE algorithm against six other acquisition functions, including state-of-the-art methods. To enhance practicality, they integrate automatic hyperparameter tuning to reduce the number of optimization parameters. While specific results are not provided in the given context, the approach aims to overcome suboptimal resource allocation in dynamic cost experiments and improve upon existing Bayesian optimization techniques.",
++    "summary": "This research project focuses on scalable Bayesian optimization in dynamic settings, addressing limitations of previous approaches that rely on myopic acquisition functions and assume fixed cost structures. The researchers introduce a novel method using non-myopic acquisition functions\\cite{jiang_efficient_2020} that incorporate a look-ahead mechanism and dynamic cost functions. The project evaluates the proposed algorithm, named HBE, through two main experimental setups. First, they use synthetic functions across 14 different environments with varying dimensions to test scalability. Second, they apply the method to a real-world protein sequence design problem, aiming to maximize a protein fitness score; in the published version of this work, the scoring oracle is fitted to the ProteinEA fluorescence dataset\\cite{truong2026neural}. The researchers compare their HBE algorithm against six other acquisition functions, including state-of-the-art methods. To enhance practicality, they integrate automatic hyperparameter tuning to reduce the number of optimization parameters. The approach aims to overcome suboptimal resource allocation in dynamic cost experiments and improve upon existing Bayesian optimization techniques.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_38.json b/_projects/json_summaries/project_38.json
+index a62a7c7..d352f55 100644
+--- a/_projects/json_summaries/project_38.json
++++ b/_projects/json_summaries/project_38.json
+@@ -2,6 +2,6 @@
+     "project_number": 38,
+     "project_name": "Bayesian methods in symbolic regression",
+     "video_url": "https://www.youtube.com/watch?v=KKxlqo15wVY",
+-    "summary": "This research project focused on enhancing symbolic regression methods for physical science data sets using Bayesian optimization techniques. The researchers explored two main approaches to improve the performance of symbolic regression algorithms.First, they investigated the impact of assigning varying importance to individual data points under data-limited conditions. Using the Optuna framework, they implemented a tuning process for data point importance, which resulted in improved predictive performance on a benchmark set compared to treating all points equally. This approach could be particularly useful when dealing with experimental data of uncertain quality. Second, they integrated prior knowledge from Wikipedia's known mathematical equations into the loss function, combining it with the Bayesian Information Criterion to statistically favor established symbolic structures. This method was implemented as a fitness function in the Symbolic Regression Julia library. While the researchers faced challenges in evaluating results due to numerical instability, both approaches showed promise in improving symbolic regression performance by incorporating uncertainty and prior information. The team suggests that future work should adhere more closely to the original paper's methodology, using the Bayesian information prior differences between equations as a probability metric for accepting mutational operations in the symbolic regression process.",
++    "summary": "This research project focused on enhancing symbolic regression methods for physical science data sets using Bayesian optimization techniques. The researchers explored two main approaches to improve the performance of symbolic regression algorithms. First, they investigated the impact of assigning varying importance to individual data points under data-limited conditions. Using the Optuna framework, they implemented a tuning process for data point importance, which resulted in improved predictive performance on a benchmark set compared to treating all points equally. This approach could be particularly useful when dealing with experimental data of uncertain quality. Second, they integrated prior knowledge from Wikipedia's known mathematical equations into the loss function, combining it with the Bayesian Information Criterion to statistically favor established symbolic structures. This method was implemented as a fitness function in the Symbolic Regression Julia library. While the researchers faced challenges in evaluating results due to numerical instability, both approaches showed promise in improving symbolic regression performance by incorporating uncertainty and prior information. The team suggests that future work should adhere more closely to the original paper's methodology, using the Bayesian information prior differences between equations as a probability metric for accepting mutational operations in the symbolic regression process.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_40.json b/_projects/json_summaries/project_40.json
+index bbd0fc5..dcf8514 100644
+--- a/_projects/json_summaries/project_40.json
++++ b/_projects/json_summaries/project_40.json
+@@ -2,6 +2,6 @@
+     "project_number": 40,
+     "project_name": "Optimizing Chemical Reaction Conditions with Multi-Agent Systems Using LLM and BO",
+     "video_url": "https://x.com/Bozhao95501764/status/1777029207857451508",
+-    "summary": "This research project focuses on optimizing Suzuki reaction conditions using Bayesian optimization enhanced by a multi-agent large language model (LLM) system. The target dataset, included in the project repository, is drawn from the nanomole-scale Suzuki-Miyaura coupling screen of Perera et al.\\cite{perera2018platform} and tabulates measured yields for 308 combinations of 11 ligands, 7 bases, and 4 solvents; the goal is to optimize reaction ligands, bases, and solvents. The researchers observed that while the target dataset contains unique combinations of conditions, many of the ligands are similar to those in existing reaction data points, suggesting potential for knowledge transfer.The developed system employs a multi-agent LLM approach comprising three domain expert agents and a reaction optimization agent. The process involves four steps: (1) the reaction optimization agent assigns tags to domain agents, (2) gathers feedback from them, (3) uses this feedback to warm-start initial data point generation and evaluation, and (4) acquires new data points based on existing data. In demo experiments, the multi-agent LLM system demonstrated improved performance, reaching target reaction yields with fewer iterations compared to traditional methods. Additionally, the multi-agent approach showed an ability to avoid local maxima traps, which is particularly valuable given the challenging nature of reaction optimization due to data sparsity. This research highlights the potential of integrating LLM-based multi-agent systems with Bayesian optimization techniques to enhance reaction condition optimization in chemistry.",
++    "summary": "This research project focuses on optimizing Suzuki reaction conditions using Bayesian optimization enhanced by a multi-agent large language model (LLM) system. The target dataset, included in the project repository, is drawn from the nanomole-scale Suzuki-Miyaura coupling screen of Perera et al.\\cite{perera2018platform} and tabulates measured yields for 308 combinations of 11 ligands, 7 bases, and 4 solvents; the goal is to optimize reaction ligands, bases, and solvents. The researchers observed that while the target dataset contains unique combinations of conditions, many of the ligands are similar to those in existing reaction data points, suggesting potential for knowledge transfer. The developed system employs a multi-agent LLM approach comprising three domain expert agents and a reaction optimization agent. The process involves four steps: (1) the reaction optimization agent assigns tags to domain agents, (2) gathers feedback from them, (3) uses this feedback to warm-start initial data point generation and evaluation, and (4) acquires new data points based on existing data. In demo experiments, the multi-agent LLM system demonstrated improved performance, reaching target reaction yields with fewer iterations compared to traditional methods. Additionally, the multi-agent approach showed an ability to avoid local maxima traps, which is particularly valuable given the challenging nature of reaction optimization due to data sparsity. This research highlights the potential of integrating LLM-based multi-agent systems with Bayesian optimization techniques to enhance reaction condition optimization in chemistry.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_41.json b/_projects/json_summaries/project_41.json
+index 5895020..d8de048 100644
+--- a/_projects/json_summaries/project_41.json
++++ b/_projects/json_summaries/project_41.json
+@@ -2,6 +2,6 @@
+     "project_number": 41,
+     "project_name": "Retrieval Augmented Bayesian Optimization",
+     "video_url": "https://x.com/6ojaHa/status/1773734082637095155",
+-    "summary": "This research project, called RAMBO, combines retrieval-augmented generation with Bayesian optimization to enhance the initial point selection for new optimization tasks. The system leverages existing data from literature or internal databases to identify optimal starting points for Bayesian optimization processes, particularly in the context of chemical reactions.The RAMBO pipeline begins by describing the design space of a reaction to be optimized and determining which reaction parameters should be explored first. It then queries available data to extract the most relevant data points and assembles initial suggestions for the user. The system was demonstrated using a Suzuki-Miura coupling reaction as an example, which involves an extensive combinatorial space of different parameters. RAMBO can describe the design space and limit it to available compounds, providing starting parameters to optimize the reaction. The project includes a demo interface where users can input their reaction of interest, and the React system in the backend queries and extracts relevant data to form a reply containing necessary conditions to initiate the Bayesian optimization process. Users can also explore the reasoning behind the system's suggestions by analyzing the data and reactions used to generate the final answer.",
++    "summary": "This research project, called RAMBO, combines retrieval-augmented generation with Bayesian optimization to enhance the initial point selection for new optimization tasks. The system leverages existing data from literature or internal databases to identify optimal starting points for Bayesian optimization processes, particularly in the context of chemical reactions. The RAMBO pipeline begins by describing the design space of a reaction to be optimized and determining which reaction parameters should be explored first. It then queries available data to extract the most relevant data points and assembles initial suggestions for the user. The system was demonstrated using a Suzuki-Miyaura coupling reaction as an example, which involves an extensive combinatorial space of different parameters. RAMBO can describe the design space and limit it to available compounds, providing starting parameters to optimize the reaction. The project includes a demo interface where users can input their reaction of interest, and the React system in the backend queries and extracts relevant data to form a reply containing necessary conditions to initiate the Bayesian optimization process. Users can also explore the reasoning behind the system's suggestions by analyzing the data and reactions used to generate the final answer.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_42.json b/_projects/json_summaries/project_42.json
+index ed42585..f9d7386 100644
+--- a/_projects/json_summaries/project_42.json
++++ b/_projects/json_summaries/project_42.json
+@@ -2,6 +2,6 @@
+     "project_number": 42,
+     "project_name": "Bayesian Optimization and Design of Experiments for Pharmaceutical Formulation (BODoE)",
+     "video_url": "",
+-    "summary": "This industry-led project proposed coupling BO-driven design of experiments with an automated laboratory for the formulation of pharmaceutical drug compounds as multi-component mixtures, defining the data schemas and interfaces linking laboratory devices, property-prediction services such as COSMO-SAC\\cite{mqs_cosmo_2024}, and the optimization loop. The submission stayed at the proposal stage: no dataset was used and no code or results were published.",
++    "summary": "This industry-led project proposed coupling BO-driven design of experiments with an automated laboratory for the formulation of pharmaceutical drug compounds as multi-component mixtures, defining the data schemas and interfaces linking laboratory devices, property-prediction services such as COSMO-SAC\\cite{mqs_cosmo_2024}, and the optimization loop. The submission stayed at the proposal stage: no dataset was used and no code or results were published. (No video was submitted; summary prepared from the team's project page.)",
+     "status": "manual"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_43.json b/_projects/json_summaries/project_43.json
+index 5399387..276d482 100644
+--- a/_projects/json_summaries/project_43.json
++++ b/_projects/json_summaries/project_43.json
+@@ -2,8 +2,7 @@
+     "project_number": 43,
+     "project_name": "Bayesian Optimization Awesome List",
+     "video_url": "",
+-    "summary": "This awesome list curates a collection of software, tutorials, research papers, and other resources related to Bayesian optimization in materials science and chemistry.",
++    "summary": "This awesome list curates a collection of software, tutorials, research papers, and other resources related to Bayesian optimization in materials science and chemistry. (No video was submitted; summary prepared from the team's project page and repository.)",
+     "status": "success",
+     "error": "No video"
+-    
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_44.json b/_projects/json_summaries/project_44.json
+index c241a98..d0f299b 100644
+--- a/_projects/json_summaries/project_44.json
++++ b/_projects/json_summaries/project_44.json
+@@ -2,6 +2,6 @@
+     "project_number": 44,
+     "project_name": "Rank-based Bayesian Optimization",
+     "video_url": "https://www.youtube.com/watch?v=c84Sd2IwMAQ&ab_channel=GaryTom",
+-    "summary": "This research project focused on using ranking models as surrogates in Bayesian optimization for materials discovery, specifically comparing ranking-based and conventional mean squared error (MSE) loss approaches. The key motivation was that in experimental campaigns, finding the best molecule is more important than accurately predicting absolute property values, inspired by work on molecular pool-based active learning\\cite{graff_accelerating_2021}. The study employed a pairwise ranking loss (margin ranking loss) and a simple fully-connected multi-layer perceptron with three hidden layers and 100 nodes as the model architecture. Experiments were conducted on multiple datasets, including a solubility dataset (Delaney) and two datasets from Ali et al. with varying roughness\\cite{aldeghi_roughness_2022}. Results showed that the ranking loss model consistently outperformed the MSE-based model and random baseline in Bayesian optimization, acquiring more top-performing candidates within fewer evaluations. Interestingly, all models performed better on the smoother dataset, contrary to expectations. The study also found that model performance did not always correlate with its effectiveness as a surrogate in Bayesian optimization, as evidenced by the MSE model performing worse than the random baseline on the rougher dataset. The research highlights the potential of ranking-based models in overcoming overfitting issues common in Bayesian optimization with limited data points, particularly in materials discovery applications.",
++    "summary": "This research project focused on using ranking models as surrogates in Bayesian optimization for materials discovery, specifically comparing ranking-based and conventional mean squared error (MSE) loss approaches. The key motivation was that in experimental campaigns, finding the best molecule is more important than accurately predicting absolute property values, inspired by work on molecular pool-based active learning\\cite{graff_accelerating_2021}. The study employed a pairwise ranking loss (margin ranking loss) and a simple fully-connected multi-layer perceptron with three hidden layers and 100 nodes as the model architecture. Experiments were conducted on multiple datasets, including a solubility dataset (Delaney) and two datasets from Aldeghi et al. with varying roughness\\cite{aldeghi_roughness_2022}. Results showed that the ranking loss model consistently outperformed the MSE-based model and random baseline in Bayesian optimization, acquiring more top-performing candidates within fewer evaluations. Interestingly, all models performed better on the smoother dataset, contrary to expectations. The study also found that model performance did not always correlate with its effectiveness as a surrogate in Bayesian optimization, as evidenced by the MSE model performing worse than the random baseline on the rougher dataset. The research highlights the potential of ranking-based models in overcoming overfitting issues common in Bayesian optimization with limited data points, particularly in materials discovery applications.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_45.json b/_projects/json_summaries/project_45.json
+index fc6e5a9..374f9d5 100644
+--- a/_projects/json_summaries/project_45.json
++++ b/_projects/json_summaries/project_45.json
+@@ -2,6 +2,6 @@
+     "project_number": 45,
+     "project_name": "Bayesian Optimization for generality",
+     "video_url": "https://www.youtube.com/watch?v=wfSyIudptfc",
+-    "summary": "This research introduces a novel approach to Bayesian Optimization (BO) focused on finding general parameters that perform well across multiple related tasks, a common challenge in fields like chemistry where optimal reaction conditions for various substrates are sought. The researchers formulate this problem within the BO framework, aiming to maximize a general response from a set of multiple related objective functions.The proposed algorithm operates in two steps: first selecting a value in the optimization domain X, then choosing an individual objective function to optimize for that value. This approach aims to find the most general values in X without exhaustively evaluating every individual surface, thus minimizing evaluation costs. All objectives were synthetic rather than drawn from a chemical dataset: to support further research in this area, the team adapted popular test surfaces (Dixon-Price, Branin, and Beale) into families of related tasks compatible with their generality problem and made these benchmark problems available on Hugging Face. This contribution allows other researchers to test and develop new algorithms for generalized Bayesian Optimization, potentially advancing the field and its applications in natural sciences.",
++    "summary": "This research introduces a novel approach to Bayesian Optimization (BO) focused on finding general parameters that perform well across multiple related tasks, a common challenge in fields like chemistry where optimal reaction conditions for various substrates are sought. The researchers formulate this problem within the BO framework, aiming to maximize a general response from a set of multiple related objective functions. The proposed algorithm operates in two steps: first selecting a value in the optimization domain X, then choosing an individual objective function to optimize for that value. This approach aims to find the most general values in X without exhaustively evaluating every individual surface, thus minimizing evaluation costs. All objectives were synthetic rather than drawn from a chemical dataset: to support further research in this area, the team adapted popular test surfaces (Dixon-Price, Branin, and Beale) into families of related tasks compatible with their generality problem and made these benchmark problems available on Hugging Face. This contribution allows other researchers to test and develop new algorithms for generalized Bayesian Optimization, potentially advancing the field and its applications in natural sciences.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_8.json b/_projects/json_summaries/project_8.json
+index e3782ba..d4dcc44 100644
+--- a/_projects/json_summaries/project_8.json
++++ b/_projects/json_summaries/project_8.json
+@@ -2,6 +2,6 @@
+     "project_number": 8,
+     "project_name": "BO for Drug Discovery-What is the role of molecular representation?",
+     "video_url": "https://www.youtube.com/watch?v=5f_UwsfYrc8",
+-    "summary": "This research project investigated the impact of molecular featurization methods on BO performance for guiding molecular experiments. The team explored alternatives to the commonly used connectivity-based fingerprints, aiming to determine which featurization techniques yield the best results in BO for molecular discovery.The study found that without modifying the features, MACCS\\cite{durant2002reoptimization} and RDKit\\cite{landrum2013rdkit} featurization methods outperformed the default options presented in previous publications. To address the high dimensionality of molecular features, the researchers employed specialized Gaussian processes and explored random forest surrogates. However, the random forest approach did not improve performance and required more computational resources. Principal Component Analysis (PCA) was successfully used to enable Gaussian processes to handle large molecular featurizations. Notably, physicochemical featurizations like RDKit and Mordred\\cite{moriwaki2018mordred} outperformed the previous benchmark winner, MolDQN\\cite{zhou2019optimization}. The team's findings were consistent with benchmarks in the BO library but suggested that RDKit could produce even better results than Mordred. Overall, the research highlights the importance of careful featurization selection in BO for molecular discovery, with RDKit emerging as a particularly effective option.",
++    "summary": "This research project investigated the impact of molecular featurization methods on BO performance for guiding molecular experiments. The team explored alternatives to the commonly used connectivity-based fingerprints, aiming to determine which featurization techniques yield the best results in BO for molecular discovery. The study found that without modifying the features, MACCS\\cite{durant2002reoptimization} and RDKit\\cite{landrum2013rdkit} featurization methods outperformed the default options presented in previous publications. To address the high dimensionality of molecular features, the researchers employed specialized Gaussian processes and explored random forest surrogates. However, the random forest approach did not improve performance and required more computational resources. Principal Component Analysis (PCA) was successfully used to enable Gaussian processes to handle large molecular featurizations. Notably, physicochemical featurizations like RDKit and Mordred\\cite{moriwaki2018mordred} outperformed the previous benchmark winner, MolDQN\\cite{zhou2019optimization}. The team's findings were consistent with benchmarks in the BO library but suggested that RDKit could produce even better results than Mordred. Overall, the research highlights the importance of careful featurization selection in BO for molecular discovery, with RDKit emerging as a particularly effective option.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_9.json b/_projects/json_summaries/project_9.json
+index da67809..4dbae42 100644
+--- a/_projects/json_summaries/project_9.json
++++ b/_projects/json_summaries/project_9.json
+@@ -2,6 +2,6 @@
+     "project_number": 9,
+     "project_name": "Optimal MOF Selection for CO$_2$ capture using Thompson sampling",
+     "video_url": "https://youtu.be/l0aVZDMwIMU",
+-    "summary": "This research project focuses on optimizing the selection of Metal-Organic Frameworks (MOFs) for carbon capture applications using BO, specifically Thompson Sampling. MOFs are nanoporous materials with high potential for carbon capture\\cite{furukawa2013chemistry, heo2020metal}, but their synthesis and characterization are expensive and time-consuming\\cite{desantis2017techno}. The goal was to develop an efficient method for identifying high-performing MOF candidates using a small dataset. The team employed a Gaussian Process model trained on the CRAFTED dataset\\cite{oliveira2023crafted}, using both RACs features and geometric features of MOFs, with CO$_2$ uptake as the output. Thompson Sampling was used as the acquisition function to select the next best sample based on the posterior distribution, inherently performing a Bayesian update. The results showed that Thompson Sampling was twice as efficient as random sampling in identifying high-performing MOF candidates. This approach is notable for being the first application of Thompson Sampling to MOF candidate selection, and it requires no hyperparameter tuning, making it easily transferable and cost-efficient. The potential impact of this method is significant, as it could accelerate MOF design for direct air capture applications, with a goal of absorbing 30 million tons of CO$_2$, and could also be applied to post-combustion capture scenarios.",
++    "summary": "This research project focuses on optimizing the selection of Metal-Organic Frameworks (MOFs) for carbon capture applications using BO, specifically Thompson Sampling. MOFs are nanoporous materials with high potential for carbon capture\\cite{furukawa2013chemistry}, but their synthesis and characterization are expensive and time-consuming\\cite{desantis2017techno}. The goal was to develop an efficient method for identifying high-performing MOF candidates using a small dataset. The team employed a Gaussian Process model trained on the CRAFTED dataset\\cite{oliveira2023crafted}, using both RACs features and geometric features of MOFs, with CO$_2$ uptake as the output. Thompson Sampling was used as the acquisition function to select the next best sample based on the posterior distribution, inherently performing a Bayesian update. The results showed that Thompson Sampling was twice as efficient as random sampling in identifying high-performing MOF candidates. This approach is notable for being the first application of Thompson Sampling to MOF candidate selection, and it requires no hyperparameter tuning, making it easily transferable and cost-efficient. The potential impact of this method is significant, as it could accelerate MOF design for direct air capture applications, with a goal of absorbing 30 million tons of CO$_2$, and could also be applied to post-combustion capture scenarios.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/latex/summaries-ref.bib b/latex/summaries-ref.bib
+index 429b311..6999b80 100644
+--- a/latex/summaries-ref.bib
++++ b/latex/summaries-ref.bib
+@@ -379,7 +379,7 @@
+   doi={10.1038/s41586-021-03819-2}
+ }
+ @misc{stair-lab_coh2,
+-  title        = {{coh2}: Conversational HF interaction dataset},
++  title        = {{coh2} dataset (Hugging Face)},
+   author       = {{STAIR Lab}},
+   howpublished = {\url{https://huggingface.co/datasets/stair-lab/coh2}},
+   year         = {2025},
+diff --git a/main.tex b/main.tex
+index 545a061..5125b63 100644
+--- a/main.tex
++++ b/main.tex
+@@ -264,7 +264,7 @@
+ 
+ 
+ \begin{abstract}
+-The Acceleration Consortium and Merck KGaA hosted a 2-day virtual hackathon on March 27-28, 2024, bringing together scientists to explore, collaborate, and innovate in the field of Bayesian optimization for the physical sciences. Participants were encouraged to select or develop Bayesian optimization algorithms, apply them to benchmarking tasks, design new benchmarks, create instructional tutorials, and describe real-world applications. With over 100 participants across 69 academic, industry, and government organizations located in 59 cities, 19 countries, and 4 continents, this was a global event. % https://chatgpt.com/share/f6cd733f-1126-4151-86c5-d4b59d158dc3
++The Acceleration Consortium and Merck KGaA hosted a 2-day virtual hackathon on March 27-28, 2024, bringing together scientists to explore, collaborate, and innovate in the field of Bayesian optimization for the physical sciences. Participants were encouraged to select or develop Bayesian optimization algorithms, apply them to benchmarking tasks, design new benchmarks, create instructional tutorials, and describe real-world applications. With 139 participants across 69 academic, industry, and government organizations located in 59 cities, 19 countries, and 4 continents, this was a global event. % https://chatgpt.com/share/f6cd733f-1126-4151-86c5-d4b59d158dc3
+ We summarize all 45 projects, assess how reusable their code is, and synthesize what they reveal about the strengths and limitations of Bayesian optimization, together with lessons for organizing such events, post-event outcomes, and future opportunities. The outputs from this event, including developed algorithms, benchmarks, and tutorials, will serve as valuable resources for the research community, in addition to the new skills learned and connections formed. Released projects and general information are available at \url{https://ac-bo-hackathon.github.io/} and other locations linked from individual project pages. This event demonstrates the potential of community-driven research efforts to accelerate advances in Bayesian optimization in chemistry and materials science.
+ \end{abstract}
+ 
+@@ -290,7 +290,7 @@ A hackathon is a short competition where people work together in teams to solve
+ \begin{figure}
+     \centering
+     \includegraphics[width=1\linewidth]{latex/figures/intro-bo.png}
+-    \caption{Optimization traces for traditional design of experiment (DoE) methods compared with \gls{bo}, typically outperforms. \Gls{bo} uses a smart model to predict where to look next in an experiment to find the best results with few experiments \cite{baird_building_2023}.}
++    \caption{Optimization traces for traditional design of experiments (DoE) methods compared with \gls{bo}, which typically outperforms them. \Gls{bo} uses a smart model to predict where to look next in an experiment to find the best results with few experiments \cite{baird_building_2023}.}
+     \label{fig:intro-bo}
+ \end{figure}
+ 
+@@ -338,10 +338,10 @@ The corresponding Gavel web app was hosted on Heroku according to directions in
+ 3rd  & \#7  & Surface Science Syndicate  & BayBE One More Time - Exploring Corrosion Inhibitors for Materials Design                  & 75 (250 max)            \tabularnewline
+ 4th  & \#5  & KLM                        & Comparing Bayesian Optimization Methods \ldots Against Simulated "Human" Decision-making & 40 (125 max)            \tabularnewline
+ 5th  & \#8  & Molecular Representation   & BO for Drug Discovery - What is the role of molecular representation?                      & 40 (125 max)            \tabularnewline
+-6th  & \#9  & PME No Hikari              & Optimizing The CO2 Adsorption Capacity of Metal-Organic Frameworks Using Thompson Sampling  & 40 (125 max)            \tabularnewline
++6th  & \#9  & PME No Hikari              & Optimal MOF Selection for CO$_2$ capture using Thompson sampling  & 40 (125 max)            \tabularnewline
+ 7th  & \#11 & BlenDS                     & BlendDS - An intuitive specification of the design space for blends of components          & 40 (125 max)            \tabularnewline
+ 8th  & \#30 & SERO Opt                   & Active learning for voltammetry waveform design                                            & 40 (125 max)            \tabularnewline
+-9th  & \#43 & General Optimizers         & Bayesian Optimization for Generality                                                      & 40 (125 max)            \tabularnewline
++9th  & \#45 & General Optimizers         & Bayesian Optimization for Generality                                                      & 40 (125 max)            \tabularnewline
+ 10th & \#3  & Sparks Group               & Take Your Time - Improving Optimization Performance Through Greater Investment in ACQF Optimizer Runtime & 40 (125 max)           \tabularnewline
+ \bottomrule
+ \end{tabularx}
+@@ -462,7 +462,7 @@ The corresponding Gavel web app was hosted on Heroku according to directions in
+ This section provides a summary of the key findings from all 45 project submissions.
+ To streamline the process, the speech transcript of each YouTube video submission was retrieved and condensed into a draft summary by an AI agent powered by Anthropic's \emph{claude-3-5-sonnet-20240620} language model with a temperature of 0.3, applied uniformly across submissions in January 2025.
+ Each draft was then reviewed and edited by the organizers to correct errors and ensure a faithful description; both the raw model outputs and the edited summaries are archived in the hackathon repository (see Data availability).
+-Six projects (14, 19, 23, 29, 34, and 42) had no recorded video submission to transcribe; their summaries were instead prepared from the corresponding project pages and each team's public artifacts, as noted at the end of each such summary.
++Seven projects (14, 19, 23, 29, 34, 42, and 43) had no recorded video submission to transcribe; their summaries were instead prepared from the corresponding project pages and each team's public artifacts, as noted at the end of each such summary.
+ 
+ 
+ \input{|python3 python_scripts/process_summaries.py}
+@@ -518,7 +518,7 @@ No public repository (proposal stage) & 3 \\
+ 
+ Data provenance was similarly uneven: for roughly a quarter of the submissions, the dataset in use was not evident from the project page or repository alone, so the per-project summaries in the preceding section state each project's data source explicitly wherever it is not obvious. The patterns are few. Some projects retrospectively queried published experimental datasets, for example the direct arylation yields of Shields et al.~\cite{shields2021bayesian} in project 15 and the Suzuki-Miyaura screen of Perera et al.~\cite{perera2018platform} in project 40. Others generated objective values on demand from physics-based simulators or synthetic test functions (projects 6, 36, 37, and 45), collected new measurements in-house (projects 30 and 31), or, for proposal-stage submissions, used no data at all (projects 19, 29, and 42). Even where a published dataset was used, it was more often fetched at run time or referenced from within the code than deposited in the repository: project 15, for instance, pulls its benchmark directly from the EDBO+ repository~\cite{torres_multi-objective_2022}. Archiving a copy of the queried dataset alongside the project code, with its provenance stated in the README, would make such outputs considerably easier to audit and reuse.
+ 
+-Many projects framed a chemistry or materials task as sequential optimization of an expensive objective with a Gaussian-process surrogate and an acquisition function, most often built on \textsc{BoTorch}/Ax, sometimes through domain wrappers such as \textsc{BayBE}~\cite{fitzner_baybe_2022} or \textsc{gauche}~\cite{griffiths_gauche_2024}. Teams differed most in input representation, in whether they compared against simple baselines such as random search, and in whether they targeted real experimental data or retrospective benchmarks. Participants ranged from students to senior researchers across academia, industry, and government, and mixed-expertise teams pairing domain scientists with BO practitioners appeared to be an asset~\cite{valentine_hacktive_2025, busby_building_2015}. Roughly one in six projects (6 of 45 under a strict definition, 8 under a broader one) incorporated large language models, mirroring dedicated LLM-for-chemistry hackathons~\cite{jablonka_14_2023, zimmermann_reflections_2024} and motivating the outlook in \cref{sec:future}.
++Many projects framed a chemistry or materials task as sequential optimization of an expensive objective with a Gaussian-process surrogate and an acquisition function, most often built on \textsc{BoTorch}/Ax, sometimes through domain wrappers such as \textsc{BayBE}~\cite{fitzner_baybe_2022} or \textsc{gauche}~\cite{griffiths_gauche_2024}. Teams differed most in input representation, in whether they compared against simple baselines such as random search, and in whether they targeted real experimental data or retrospective benchmarks. Participants ranged from students to senior researchers across academia, industry, and government, and other hackathons report that mixed-expertise teams pairing domain scientists with method specialists are an asset~\cite{valentine_hacktive_2025, busby_building_2015}, although we did not measure this here. Roughly one in six projects (6 of 45 under a strict definition, 8 under a broader one) incorporated large language models, mirroring dedicated LLM-for-chemistry hackathons~\cite{jablonka_14_2023, zimmermann_reflections_2024} and motivating the outlook in \cref{sec:future}.
+ 
+ \section{Lessons Learned}
+ \label{sec:lessons}
+@@ -532,14 +532,14 @@ Several organizational choices worked well and would be retained. The scope was
+ 
+ Social media engagement, particularly on LinkedIn, helped attract participants: an initial post gauged interest and was followed by a ``save the date'' and more detailed announcements. Project formation nevertheless required active seeding. Many prospective leads first wanted to discuss an idea privately with an organizer, and the first ten to fifteen proposals emerged through persistent one-on-one outreach; once that critical mass made the format visible, later teams followed the pattern and filled out the final roster of 45~\cite{baird_introduction_2024}. Direct consultation with organizers of the preceding LLM hackathon also helped anticipate problems~\cite{jablonka_14_2023, baird_introduction_2024}. Much of the event's value came from participants blocking out the same two days, concentrating attention much as travel to a conference does.
+ 
+-Other aspects proved more difficult. Some registered teams did not converge into active projects, and six teams recorded no closing video, making their outputs harder to capture; pre-event team formation and mentor engagement are reportedly among the most fragile parts of virtual hackathons~\cite{diemar_report_2025}. Videos were required for authorship eligibility but not for judging or prizes, and the missing videos did not track project quality: the first- and second-place projects were among the six without one. The compressed two-day window limited validation depth, and the reproducibility of participant code varied widely (\cref{sec:synthesis}). The event was announced only about six weeks in advance; in hindsight, a three-month lead time would better support team formation, including structured virtual meet-and-greets one to two weeks before the event. Single-channel Slack guest invitations also proved cumbersome, despite Slack's value for timely communication and maintaining a persistent record. For future events, we would use a dedicated workspace or channel, provide explicit reproducibility and licensing checklists, request a short recorded or written summary from every team, communicate evaluation expectations more clearly, and run a follow-up survey to assess how participation influenced subsequent use of BO. Judging used holistic pairwise comparison rather than a numeric rubric; the submission and authorship requirements that framed evaluation are documented on the hackathon website and in the Zenodo record.
++Other aspects proved more difficult. Some registered teams did not converge into active projects, and seven projects had no closing video, making their outputs harder to capture; pre-event team formation and mentor engagement are reportedly among the most fragile parts of virtual hackathons~\cite{diemar_report_2025}. Videos were required for authorship eligibility but not for judging or prizes, and the missing videos did not track project quality: the first- and second-place projects were among the seven without one. The compressed two-day window limited validation depth, and the reproducibility of participant code varied widely (\cref{sec:synthesis}). The event was announced only about six weeks in advance; in hindsight, a three-month lead time would better support team formation, including structured virtual meet-and-greets one to two weeks before the event. Single-channel Slack guest invitations also proved cumbersome, despite Slack's value for timely communication and maintaining a persistent record. For future events, we would use a dedicated workspace or channel, provide explicit reproducibility and licensing checklists, request a short recorded or written summary from every team, communicate evaluation expectations more clearly, and run a follow-up survey to assess how participation influenced subsequent use of BO. Judging used holistic pairwise comparison rather than a numeric rubric; the submission and authorship requirements that framed evaluation are documented on the hackathon website and in the Zenodo record.
+ 
+ \subsection{Scientific lessons: strengths and limitations of Bayesian optimization}
+ \label{sec:sci-lessons}
+ 
+-On the strengths side, teams repeatedly exploited BO's sample efficiency in low-data regimes, recovering strong candidates within a handful of iterations relative to design-of-experiments or random baselines~\cite{frazier_tutorial_2018, shahriari_taking_2016}. The submissions collectively demonstrated flexibility in handling continuous, categorical, mixed, molecular, multi-objective, multi-fidelity, contextual, batched, and cost-aware problems, including successful prototypes of multi-objective search and preference-based, human-in-the-loop workflows~\cite{lin_preference_2022}. Specialized kernels and representations (e.g., for molecules) further extended BO to structured inputs~\cite{griffiths_gauche_2024}.
++On the strengths side, teams repeatedly exploited BO's sample efficiency in low-data regimes, recovering strong candidates within a handful of iterations relative to design-of-experiments or random baselines~\cite{frazier_tutorial_2018, shahriari_taking_2016}. The submissions collectively demonstrated flexibility in handling continuous, categorical, mixed, and molecular inputs (for example, projects 8, 21, and 27) and multi-objective (projects 1, 18, and 37), multi-fidelity (project 2), contextual (project 26), batched (project 15), and cost-aware (project 36) problems, including a prototype preference-based, human-in-the-loop workflow (project 16)~\cite{lin_preference_2022}. Specialized kernels and representations (e.g., for molecules) further extended BO to structured inputs~\cite{griffiths_gauche_2024}.
+ 
+-The projects also surfaced well-known limitations. Default BO was not always superior to simple baselines: two teams reported little advantage over random search on their tasks (projects 33 and 1), and while these two-day comparisons were not run at benchmark rigor, they underscore the value of always including a simple baseline~\cite{liang_benchmarking_2021}. Results were sensitive to molecular representation, featurization, and kernel choice; warm-start data quality, observation noise, and high-dimensional search spaces were recurring pain points, for which noise-robust and heteroscedastic-aware methods are relevant remedies~\cite{aldeghi_golem_2021, altamirano_robust_2023}. Acquisition-function optimization itself mattered: one of the top-ranked projects (project 3) showed that investing more computation in the acquisition optimizer changed observed performance, connecting to ongoing work on scalable and high-dimensional acquisition strategies~\cite{ament_unexpected_2023, maus_local_2023}. Batch size and computational overhead also mattered in practice: project 15 found that the best batch size balances model retraining time against experimental overhead, and project 37 cut fitting time by modeling yield alone and computing the objectives from the predicted yield afterwards. Finally, retrospective benchmark gains do not guarantee wet-laboratory success, and reproducing comparisons across studies remains difficult~\cite{liang_benchmarking_2021}. Where teams integrated LLMs, the models lowered access barriers and helped specify spaces or retrieve priors, but they added another uncertain component that can degrade on complex objectives and requires validation against non-LLM baselines~\cite{kristiadi_sober_2024}.
++The projects also surfaced well-known limitations. Default BO was not always superior to simple baselines: two teams reported little advantage over random search on their tasks (projects 33 and 23), and while these two-day comparisons were not run at benchmark rigor, they underscore the value of always including a simple baseline~\cite{liang_benchmarking_2021}. Results were sensitive to molecular representation, featurization, and kernel choice; warm-start data quality, observation noise, and high-dimensional search spaces were recurring pain points, for which noise-robust and heteroscedastic-aware methods are relevant remedies~\cite{aldeghi_golem_2021, altamirano_robust_2023}. The one direct test of noise handling, in project 23, found that a Gaussian process that infers the noise level beat one with the noise fixed near zero in 15 of 16 combinations of noise level and initial design size, with the margin growing as the data became noisier. Acquisition-function optimization itself mattered: one of the top-ranked projects (project 3) showed that investing more computation in the acquisition optimizer changed observed performance, connecting to ongoing work on scalable and high-dimensional acquisition strategies~\cite{ament_unexpected_2023, maus_local_2023}. Batch size and computational overhead also mattered in practice: project 15 found that the best batch size balances model retraining time against experimental overhead, and project 37 cut fitting time by modeling yield alone and computing the objectives from the predicted yield afterwards. Finally, retrospective benchmark gains do not guarantee wet-laboratory success, and reproducing comparisons across studies remains difficult~\cite{liang_benchmarking_2021}. Where teams integrated LLMs, the models lowered access barriers and helped specify spaces or retrieve priors, but they added another uncertain component that can degrade on complex objectives and requires validation against non-LLM baselines~\cite{kristiadi_sober_2024}.
+ 
+ \section{Post-hackathon Outcomes}
+ \label{sec:outcomes}
+@@ -555,7 +555,7 @@ Career outcomes provide a complementary signal: eight co-authors moved into facu
+ 
+ Building on the hackathon outputs and the trends above, we highlight several promising directions for BO in chemistry and materials discovery. \emph{Autonomous and self-driving laboratories} are a natural home for BO, closing the loop between algorithmic suggestion and automated experimentation~\cite{tom_self-driving_2024, abolhasani_rise_2023}. \emph{Multi-fidelity optimization} that fuses cheap simulations or proxy measurements with expensive experiments can substantially reduce cost, provided its assumptions are handled carefully~\cite{sabanza-gil_best_2025, judge_applying_2024}. \emph{Uncertainty-aware experimental planning} and active learning under design constraints can make campaigns more sample-efficient and trustworthy~\cite{low_evolution_2024}.
+ 
+-The large share of hackathon projects that already incorporated language models points to \emph{foundation-model- and LLM-assisted BO} as a particularly active frontier for design-space specification, prior construction, and warm-starting; reported evidence on whether LLM-based surrogates and priors outperform strong classical baselines is mixed, and benchmarking such hybrids fairly (separating genuine generalization from memorized results) is itself an open problem~\cite{kristiadi_sober_2024, rankovic_gollum_2025}. Other opportunities include \emph{preference-based and human-in-the-loop BO} for subjective or hard-to-quantify objectives~\cite{adachi_looping_2024, deneault_preferential_2025}; \emph{multi-objective materials design} with scalable hypervolume-based acquisitions~\cite{ament_unexpected_2023}; \emph{robust BO under noisy experimental data}~\cite{aldeghi_golem_2021, altamirano_robust_2023}; \emph{community benchmark development} to enable reproducible, apples-to-apples comparisons~\cite{liang_benchmarking_2021, felton_summit_2021}; use of agents to redefine search spaces mid-campaign \cite{muller_la_agente_optima_2026}; and \emph{domain-specific, deployment-ready BO tools} for synthesis and processing optimization that meet experimentalists where they work, including a growing set of graphical and web-based BO interfaces that remove coding barriers~\cite{durholt_bofire_2024, fitzner_baybe_2022, ishii_boxvia_2022, torres_multi-objective_2022, tamura_nims-os_2023}. Collectively, these directions echo the broader perspective that Bayesian methods are a core component of the autonomous materials-discovery toolkit~\cite{arroyave_perspective_2022}.
++The large share of hackathon projects that already incorporated language models points to \emph{foundation-model- and LLM-assisted BO} as a particularly active frontier for design-space specification, prior construction, and warm-starting; reported evidence on whether LLM-based surrogates and priors outperform strong classical baselines is mixed, and benchmarking such hybrids fairly (separating genuine generalization from memorized results) is itself an open problem~\cite{kristiadi_sober_2024, rankovic_gollum_2025}. Other opportunities include \emph{preference-based and human-in-the-loop BO} for subjective or hard-to-quantify objectives~\cite{adachi_looping_2024, deneault_preferential_2025}; \emph{multi-objective materials design} with scalable hypervolume-based acquisitions~\cite{ament_unexpected_2023}; \emph{robust BO under noisy experimental data}~\cite{aldeghi_golem_2021, altamirano_robust_2023}; \emph{community benchmark development} to enable reproducible, apples-to-apples comparisons~\cite{liang_benchmarking_2021, felton_summit_2021}; use of agents to redefine search spaces mid-campaign \cite{muller_la_agente_optima_2026}; and \emph{domain-specific, deployment-ready BO tools} for synthesis and processing optimization that meet experimentalists where they work~\cite{durholt_bofire_2024, fitzner_baybe_2022}, including a growing set of graphical and web-based BO interfaces that remove coding barriers~\cite{ishii_boxvia_2022, torres_multi-objective_2022, tamura_nims-os_2023}. Collectively, these directions echo the broader perspective that Bayesian methods are a core component of the autonomous materials-discovery toolkit~\cite{arroyave_perspective_2022}.
+ 
+ 
+ \section*{Conflicts of interest}
+@@ -568,14 +568,14 @@ The code and materials associated with the projects in this hackathon are archiv
+ 
+ \section*{Acknowledgements}
+ 
+-We express a huge thanks to Kevin Jablonka and Ben Blaiszik (latter a co-author of this paper) and others did phenomenal work paving the way with the LLMs for Chemistry and Materials Hackathon (2023). Much of the setup and many of the patterns of the Bayesian optimization hackathon was either directly replicated based off of or inspired by the LLM hackathon.
++We express a huge thanks to Kevin Jablonka, Ben Blaiszik (a co-author of this paper), and others, who did phenomenal work paving the way with the LLMs for Chemistry and Materials Hackathon (2023). Much of the setup and many of the patterns of the Bayesian optimization hackathon were either replicated directly from or inspired by the LLM hackathon.
+ 
+ This work was undertaken thanks in part to funding provided to the University of Toronto’s Acceleration Consortium from the Canada First Research Excellence Fund (CFREF-2022-00042). We kindly acknowledge Tiago L. P. Galvão for providing Al alloy data from the CORDATA database. Can Özkan acknowledges the VIPCOAT project (Virtual Open Innovation Platform for Active Protective Coatings Guided by Modelling and Optimisation) funded by the Horizon 2020 research and innovation programme of the European Union by grant agreement no. 952903. Ankur Kumar Gupta acknowledges support by the U.S. Department of Energy, Office of Science, Basic Energy Sciences, Materials Sciences and Engineering Division under Contract No. DE-AC02-05CH11231, FWP No. DAC-LBL-Long.
+ Andy S. Anker acknowledges support by Novo Nordisk Foundation grant NNF23OC0081359. Alexander Wieczorek acknowledges funding from the Strategic Focus Area Advanced Manufacturing (SFA-AM) through the project Advancing manufacturability of hybrid organic-inorganic semiconductors for large area optoelectronics (AMYS).
+ 
+ Finally, we express thanks to all participants in the hackathon. The hackathon was only possible and meaningful due to the time dedicated by many in the projects themselves.
+ 
+-Generative AI tools were used in preparing this article. Draft project summaries were generated from the video transcripts with Anthropic's claude-3-5-sonnet-20240620 model (temperature 0.3) in January 2025, as described in Section III. During revision, Edison Scientific's literature and analysis agents were used to search the literature for the new sections and to propose the project classification in Table IV and ESI Table S1; the follow-up review in Section VI was compiled with Anthropic's Claude and Edison's literature agent in August 2026; and the interview cited in Section V was transcribed with faster-whisper (small.en). Anthropic's Claude Opus 5, Claude Opus 5.5 and Claude Fable 5, run through Claude Code, and the GitHub Copilot coding agent were used to draft and edit revised text, to check the references against Crossref, the response to referees, the deterministic image-processing scripts that outline the labels in Fig. 2 and pixelate participant names in Figs. 4 and 5 (no generative editing of images), the script that generates the table of contents graphic, and the LaTeX source. The prompts are the public issue and pull request comments of the hackathon repository, where the agents' outputs are also archived. The authors reviewed and edited all AI-generated content and take full responsibility for the content of this article.
++Generative AI tools were used in preparing this article. Draft project summaries were generated from the video transcripts with Anthropic's claude-3-5-sonnet-20240620 (temperature 0.3) in January 2025, as described in Section III; the summaries of six of the projects without a video were drafted from their project pages and repositories with the GitHub Copilot coding agent and Anthropic's Claude in July and August 2026. During the revision (July to November 2026), Edison Scientific's literature (PaperQA) and data-analysis (Finch) agents were used to search the literature for the new sections and to propose the project classification in Table IV and ESI Table S1, and Anthropic's claude-fable-5 with Edison's literature agent compiled the follow-up review in Section VI in August 2026. The interview cited in Section V was transcribed with faster-whisper (small.en model) in September 2026. Anthropic's claude-opus-5, claude-fable-5 and claude-opus-5-5, run through Claude Code, and the GitHub Copilot coding agent were used to draft and edit revised text and the response to referees; to write the deterministic image-processing scripts that outline the labels in Fig. 2 and pixelate participant names in Figs. 4 and 5 (no generative editing of images) and the script that generates the table of contents graphic; to edit the LaTeX source; and to check the references against Crossref. The prompts (issue and pull request comments) and the agents' outputs are archived in the hackathon repository. The authors reviewed and edited all AI-generated content and take full responsibility for the content of this article.
+ 
+ \section*{References}
+ 
+diff --git a/python_scripts/process_spreadsheet.py b/python_scripts/process_spreadsheet.py
+index 9e1fc73..0bfd484 100644
+--- a/python_scripts/process_spreadsheet.py
++++ b/python_scripts/process_spreadsheet.py
+@@ -8,6 +8,24 @@ def clean_url(url):
+     return url.strip() if isinstance(url, str) else ""
+ 
+ 
++def tidy_link(url):
++    """Drop tracking parameters from social and video links.
++
++    LinkedIn share links carry the sharing member's token (rcm=) and utm_*
++    tags, and X/Twitter links carry s=/t= share tags; none are needed to open
++    the post.  For YouTube only the video id (v=) is kept.
++    """
++    from urllib.parse import urlsplit, urlunsplit, parse_qsl, urlencode
++    parts = urlsplit(url)
++    host = parts.netloc.lower()
++    if any(h in host for h in ("linkedin.com", "twitter.com", "x.com")):
++        return urlunsplit((parts.scheme, parts.netloc, parts.path, "", ""))
++    if "youtube.com" in host:
++        keep = [(k, v) for k, v in parse_qsl(parts.query) if k in ("v", "t")]
++        return urlunsplit((parts.scheme, parts.netloc, parts.path, urlencode(keep), ""))
++    return url
++
++
+ def get_social_icon(url):
+     if "linkedin.com" in url:
+         return "\\faLinkedin"
+@@ -83,10 +101,10 @@ try:
+ 
+             unique_projects.add(project_name)
+             project_num = row["Project num"]
+-            project_name_escaped = project_name.replace("&", "\\&")
++            project_name_escaped = project_name.replace("&", "\\&").replace("Mutagenisis", "Mutagenesis")
+             github_repo = page_repos.get(str(project_num).strip()) or clean_url(row["Github Repo"])
+-            social_media = clean_url(row["Link to Social Media Post"])
+-            video_link = clean_url(row["Link to Video (if recorded)"])
++            social_media = tidy_link(clean_url(row["Link to Social Media Post"]))
++            video_link = tidy_link(clean_url(row["Link to Video (if recorded)"]))
+ 
+             links = []
+             if github_repo:
+diff --git a/python_scripts/process_summaries.py b/python_scripts/process_summaries.py
+index 787a3e6..3043b18 100644
+--- a/python_scripts/process_summaries.py
++++ b/python_scripts/process_summaries.py
+@@ -16,10 +16,12 @@ def clean_text(text):
+     def protect_citations(match):
+         return match.group(0)  # Return citation as-is
+     
+-    # Split text by citation blocks and process each part
+-    parts = re.split(r'(\\cite\{[^}]*\})', text)
++    # Split text by citation blocks and inline math ($...$, e.g. CO$_2$) and
++    # escape underscores only in the plain text between them; escaping inside
++    # math printed formulas as "Al_2O_3".
++    parts = re.split(r'(\\cite\{[^}]*\}|\$[^$]*\$)', text)
+     for i in range(len(parts)):
+-        if not parts[i].startswith('\\cite{'):
++        if not (parts[i].startswith('\\cite{') or parts[i].startswith('$')):
+             # This is regular text, escape underscores
+             parts[i] = parts[i].replace("_", "\\_")
+     
+-- 
+2.56.1
+

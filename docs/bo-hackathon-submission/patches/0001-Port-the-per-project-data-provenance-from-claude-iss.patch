@@ -1,7 +1,7 @@
-From e138b4d2bf766ac8528f168ba9af166aa2c615f8 Mon Sep 17 00:00:00 2001
+From e8cf0d5aabf8e3ba0eafeb0990c59370c28731ee Mon Sep 17 00:00:00 2001
 From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
 Date: Fri, 27 Nov 2026 19:07:47 +0000
-Subject: [PATCH 01/16] Port the per-project data provenance from
+Subject: [PATCH 01/19] Port the per-project data provenance from
  claude/issue-176 (0258d7a) onto the revision branch
 
 Referee 4 point 3: each flagged summary (6, 15, 19, 20, 21, 29, 30, 31,

@@ -1,7 +1,7 @@
-From 9ddb9789d15bb9a5f4c4318c42529b501ff81e7d Mon Sep 17 00:00:00 2001
+From 26fb3c8c754f74be6dfb9373ed4b8d64ba99d4a4 Mon Sep 17 00:00:00 2001
 From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
 Date: Fri, 27 Nov 2026 19:26:06 +0000
-Subject: [PATCH 05/16] Table III takes repository links from the project
+Subject: [PATCH 05/19] Table III takes repository links from the project
  pages; V.B notes batch size and overhead
 
 - process_spreadsheet.py now prefers each project page's github field over
