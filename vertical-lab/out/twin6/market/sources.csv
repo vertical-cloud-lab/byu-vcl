@@ -1,0 +1,12 @@
+source,url,kind,access,checked_utc,note
+eBay,https://www.ebay.com/,marketplace (active and sold),blocked,2026-11-27T17:52Z,"HTTP 403 'Error Page | eBay' (""SORRY Something went wrong on our end"") on the home page and on a search, from the first request; not retried around"
+BidSpotter,https://www.bidspotter.com/,auction aggregator,challenged,2026-11-27T17:55Z,"HTTP 405 'Let's confirm you are human' on a search page; not solved"
+EquipNet,https://www.equipnet.com/,auction and dealer,challenged,2026-11-27T17:58Z,"a search page loaded once (HTTP 200, no results parsed); the home page then answered with Cloudflare 'Just a moment...' (HTTP 403); not solved"
+Surplus Record,https://www.surplusrecord.com/,machinery listings,challenged,2026-11-27T17:56Z,"Cloudflare 'Just a moment...' (HTTP 403) on a search page; not solved"
+LabX,https://www.labx.com/,lab-equipment marketplace (dealers),ok,2026-11-27T17:59Z,search-a?sw=<query>
+Machinio,https://www.machinio.com/,machinery and equipment aggregator (dealers),ok,2026-11-27T17:59Z,listings?search=<query>; shows each listing's distance from the browser's location
+GovDeals,https://www.govdeals.com/,government and university surplus auctions,ok,2026-11-27T17:55Z,search?kWord=<query>
+AllSurplus,https://www.allsurplus.com/,commercial surplus auctions (same platform as GovDeals),ok,2026-11-27T18:00Z,search?kWord=<query>
+Public Surplus,https://www.publicsurplus.com/,government and university surplus auctions,ok,2026-11-27T17:56Z,browse/search?posting=y&keyWord=<query>
+Federal Equipment Company,https://www.fedequip.com/,used-equipment dealer,ok,2026-11-27T17:59Z,ssearch?search=<query>
+BioSurplus,https://www.biosurplus.com/,used lab-equipment dealer,ok,2026-11-27T17:59Z,"?s=<query>; pages load, no listing cards parsed yet"
