@@ -33,17 +33,18 @@ at the end names them).
   - It is the same work in less floor, not more work in the same floor. The twin's campaigns use about 7 % of the lab's
     capacity (round 3), so more in the same floor isn't something we need.
 - **With outside users, the VLM is worse, not better** (simulated, 24 logs):
-  - At 60 % outside load, two mobile manipulators on benches serve every request, in 2.0 h on average.
-  - The VLM with one unit turns away 9.5 % and takes 10.5 h; with two units, 6 % and 7.6 h.
+  - At 60 % outside load, two mobile manipulators on benches serve every request, in 2.1 h on average.
+  - The VLM with two units turns away 6 % and takes 7.6 h; with one unit, 19 % and 14.3 h.
   - The limit is the trays, not the robots: instruments that share a tray can't be loaded while any of them is
-    running. Tray D (SEM and XRD) is held 85-89 % of the time. If trays could move while their instruments run, the
-    two plans would tie; for a measurement in progress, they can't.
-  - A second unit at the VLM barely helps. One unit on benches (7.9 h) does about as well as two at the VLM, but one
-    unit is too few on any plan at 60 %: it loses atomizer slots (below).
+    running. With two units, tray D (SEM and XRD) is held 89 % of the time. If trays could move while their
+    instruments run, the two plans would tie; for a measurement in progress, they can't.
+  - One unit is too few on either plan at 60 %: it loses atomizer slots (below).
+  - Round 5's two-year logs give the same picture: 99.9 % served in 2.4 h on benches, against 86-94 % in 8-12 h at
+    the VLM.
 - **If the arm has to stay at the instrument for part of each step,** as PR 332 assumed, the number of units binds
   whatever the layout:
-  - one unit can't carry 30 % outside load (about 60 % of requests served, about 58 h each);
-  - two units carry it on either plan (1.7 h on benches, 2.5 h at the VLM);
+  - one unit can't carry 30 % outside load (about 60 % of requests served, 65-68 h each);
+  - two units carry it on either plan (1.9 h on benches, 2.8 h at the VLM);
   - neither plan carries 60 %.
 
   The remedy is another unit, not a VLM.
@@ -72,7 +73,7 @@ The tables are below.*
 | Gain claimed for VLM trays | What it is for a warehouse | For us | How big |
 |---|---|---|---|
 | **Floor space** | Dense storage up the height of the room; vendors claim "up to 85-92 %" | **Real, and the only big one.** 281 m² against 398 m² for the same 43 instruments ([PR 406](https://github.com/vertical-cloud-lab/byu-vcl/pull/406), [`twin_floorspace.md`](https://github.com/vertical-cloud-lab/byu-vcl/blob/72177f1/vertical-lab/notes/twin_floorspace.md) on its branch). The saving is benches and their aisles: 31 benchtop instruments go into 18 m² of Shuttle footprint | 117 m² less, 29 %. Worth about $51k a year at the twin's space rates ($215/m² a year to run it plus $222/m² a year of building, [`twin/econ.py`](../twin/econ.py) `RATES`), and nothing if the room is already ours. It needs a 9.15 m bay. The vertical lab is not smaller in volume |
-| **Throughput** | Goods-to-person: the picker stops walking | **Not a gain.** The replay never finds the VLM faster for internal work, and with outside users it is slower (section 6) | Driving falls from 51-81 s a task on benches to 29-61 s at the VLM. That doesn't matter while the robots are 1-2 % busy |
+| **Throughput** | Goods-to-person: the picker stops walking | **Not a gain.** The replay never finds the VLM faster for internal work, and with outside users it is slower (section 6) | Driving falls from 52-81 s a task on benches to 29-61 s at the VLM. That doesn't matter while the robots are 1-2 % busy |
 | **Positioning at a fixed bay** | One pick face, known geometry | **Real but small.** For the benchtop instruments the arm calibrates at 2 openings instead of at every bench. A MiR250 docks to a VL-marker to ±3 mm in up to 14 s (MiR250 spec, 2023), and an arm camera takes that to about 1 mm (Enabled Robotics' ER-VISION). Liverpool's touch-off reached ±0.12 mm (Burger et al. 2020). Kardex doesn't publish the extractor's repeatability at the opening; PR 318's coupling needs 4 mm ([`services.md`](services.md)) | Seconds a visit. Vision calibration takes about 5 s, touch-off about 53 s (Edison, mobile manipulators) |
 | **Enclosure** (dust, light, temperature, humidity) | Kardex sells climate-controlled, clean-room and low-humidity units | **Mixed.** It keeps out dust and light, but every watt a stored tray uses stays inside the cladding: 1.3 kW in Shuttle 1 when idle, 3.7 kW with a printer and the furnace running, which needs 1,100-2,200 m³/h of forced air ([`services.md`](services.md)). A room's HVAC does this for benches | Small, and partly a cost |
 | **Safety and access control** | Items released only to an authorized user at one opening | **Real but small.** People never reach into a moving machine, and the opening is the only access. The robots still drive the floor in both layouts. A badge-locked room gives most of the access control | Small. It matters more with outside users |
@@ -80,7 +81,7 @@ The tables are below.*
 
 Two things count against the VLM in the same table:
 
-- **Every visit moves the instrument.** Tray presentations run from 4-6 a day (the twin's own work) to as many as 185
+- **Every visit moves the instrument.** Tray presentations run from 4-6 a day (the twin's own work) to as many as 164
   a day (with outside users).
   - The Acceleration Consortium measured a Kardex tray with a microscope on it ([ac-dev-lab #216](https://github.com/AccelerationConsortium/ac-dev-lab/issues/216)).
     Peaks were 1.0-4.3 m/s², logged once a second, so short peaks are missed. It vibrates "with the most intensity
@@ -189,7 +190,7 @@ capex-weighted capacity (round 3). The same work in less floor matters only if t
 
 **In the model** (handling table in [`tables.md`](../out/worth_it/tables.md)):
 
-- A task's driving is 29-61 s at the VLM and 51-81 s on PR 406's benches.
+- A task's driving is 29-61 s at the VLM and 52-81 s on PR 406's benches.
 - At the VLM the arm waits 10-22 s for its tray after it arrives, even though the Shuttle starts fetching when the unit
   is assigned.
 - Either way it is about a minute, against instrument steps of 0.5-8 h. The VLM saves about half a minute of driving a
@@ -321,10 +322,13 @@ layer, and adds outside jobs. Eighteen tests are in [`twin/tests/test_worth_it.p
   EDM. Each runs for its catalogue hours, at 0 %, 30 % or 60 % of each instrument's clock.
 - **The rules, the same in both layouts:**
   - time-critical work first (the atomizer's start slots, the furnace's cycles and the steps feeding them), then
-    internal loads and every unload, then outside loads;
+    internal loads and every unload, then outside loads, which always come last;
+  - a free slotted station takes the first queued job whose start window is open, so one campaign's late atomizer
+    job doesn't hold up the other campaign's day;
   - outside work takes only the gaps the twin's plan leaves before the next internal step at its station, or anywhere
     on its tray in the VLM;
-  - one unit charges at a time.
+  - one unit charges at a time, and an idle unit tops up its battery only in gaps long enough to drive to a charger
+    and back.
 - **Handling (stand-ins unless marked):**
   - driving at 0.8 m/s, accelerating at 0.3 m/s² (vendor);
   - 60 s to dock and localize, and 60 s plus 20 s to load and pick from a rack;
@@ -343,40 +347,37 @@ Medians over 24 logs (full tables, with 10th-90th percentiles: [`tables.md`](../
 | 0 % | VLM + 1 | 2 % | 1 % | 6 % (B) | - | - | - | 0 |
 | 0 % | flat + 2 | 1 % | - | - | - | - | - | 0 |
 | 0 % | VLM + 2 | 1 % | 1 % | 6 % (B) | - | - | - | 0 |
-| 30 % | VLM + 1 | 41 % | 20 % | 70 % (E) | 100 % | 127 | 1.7, 5.2 | 0 |
+| 30 % | VLM + 1 | 41 % | 20 % | 71 % (E) | 100 % | 127 | 1.7, 5.1 | 0 |
 | 30 % | flat + 2 | 21 % | - | - | 100 % | 127 | 1.3, 3.8 | 0 |
-| 30 % | VLM + 2 | 20 % | 19 % | 70 % (E) | 100 % | 127 | 1.6, 4.9 | 0 |
-| 60 % | VLM + 1 | 68 % | 28 % | 85 % (D) | 90.5 % | 230 | 10.5, 29.5 | 0 |
-| 60 % | flat + 2 | 39 % | - | - | **100 %** | **255** | **2.0, 5.6** | 0 |
-| 60 % | VLM + 2 | 33 % | 28 % | 89 % (D) | 94.0 % | 240 | 7.6, 24.7 | 0 |
-| 60 % | flat + 1 | 74 % | - | - | 90.5 % | 231 | 7.9, 15.6 | **446, in all 24 logs** |
+| 30 % | VLM + 2 | 20 % | 19 % | 71 % (E) | 100 % | 127 | 1.6, 4.9 | 0 |
+| 60 % | VLM + 1 | 62 % | 24 % | 75 % (L) | 80.8 % | 206 | 14.3, 38.2 | **280, in all 24 logs** |
+| 60 % | flat + 2 | 39 % | - | - | **100 %** | **255** | **2.1, 5.7** | 0 |
+| 60 % | VLM + 2 | 33 % | 28 % | 89 % (D) | 94.2 % | 240 | 7.6, 24.5 | 0 |
+| 60 % | flat + 1 | 76 % | - | - | 89.4 % | 228 | 12.3, 19.9 | **396, in all 24 logs** |
 
 **PR 332's attended time:**
 
 | Outside load | Layout | Units busy | Busiest opening busy | Busiest tray held | Outside requests served | Outside jobs a day | Request to sample back (h): mean, 95th pct | Atomizer runs off their slot |
 |---|---|---|---|---|---|---|---|---|
 | 0 % | all four | 1-2 % | 1 % | 2 % | - | - | - | 0 |
-| 30 % | VLM + 1 | 82 % (its ceiling) | 41 % | 44 % (F) | 60.6 % | 77 | 57.0, 78.9 | 24, in 16 of 24 logs |
-| 30 % | flat + 2 | 68 % | - | - | **100 %** | **127** | **1.7, 4.6** | 0 (2 logs any) |
-| 30 % | VLM + 2 | 67 % | 60 % | 53 % (E) | 100 % | 127 | 2.5, 7.8 | 0 (2 logs any) |
-| 30 % | flat + 1 | 82 % (its ceiling) | - | - | 59.3 % | 76 | 59.2, 81.1 | 8, in 19 of 24 logs |
-| 60 % | VLM + 1 | 82 % | 31 % | 62 % (F) | 30.6 % | 78 | 72.6, 141.7 | 109, in 18 of 24 logs |
-| 60 % | flat + 2 | 82 % | - | - | 61.2 % | 156 | 29.8, 39.9 | 0 (8 logs any) |
-| 60 % | VLM + 2 | 82 % | 63 % | 65 % (F) | 62.8 % | 160 | 28.2, 53.7 | 0 (8 logs any) |
-| 60 % | flat + 1 | 82 % | - | - | 29.7 % | 76 | 76.0, 132.5 | 124, in 19 of 24 logs |
+| 30 % | VLM + 1 | 82 % (its ceiling) | 43 % | 45 % (F) | 60.4 % | 77 | 65.2, 74.8 | 5, in 19 of 24 logs |
+| 30 % | flat + 2 | 68 % | - | - | **100 %** | **127** | **1.9, 4.8** | 0 (2 logs any) |
+| 30 % | VLM + 2 | 67 % | 60 % | 53 % (E) | 100 % | 127 | 2.8, 8.7 | 0 |
+| 30 % | flat + 1 | 82 % (its ceiling) | - | - | 58.9 % | 75 | 67.5, 76.9 | 6, in 18 of 24 logs |
+| 60 % | VLM + 1 | 82 % | 43 % | 55 % (F) | 30.4 % | 78 | 79.7, 91.4 | 2, in 16 of 24 logs |
+| 60 % | flat + 2 | 82 % | - | - | 61.0 % | 155 | 33.4, 39.4 | 0 (1 log any) |
+| 60 % | VLM + 2 | 82 % | 67 % | 64 % (F) | 62.2 % | 158 | 32.5, 54.1 | 0 (2 logs any) |
+| 60 % | flat + 1 | 82 % | - | - | 29.5 % | 75 | 82.2, 91.7 | 4, in 18 of 24 logs |
 
 "82 %" is a unit's ceiling: 4.5 h of work, then an hour on the charger.
 
 **Days to the twin's targets.**
 
 - With no outside load, no layout moves any target by more than 0.15 days.
-- With outside load, a layout moves a target only where it loses atomizer slots:
-  - with the twin's timing, flat + 1 at 60 %: the halfway targets come 7 days later for aluminium and 20 for copper
-    (medians over the logs that reach them);
-  - with attended time, one unit at 30 % or 60 % on either plan: 0.04-0.3 days later at the median, and 15-81 days
-    in the worst log.
-- Every layout with two units keeps every target within 0.11 days at the median. At 60 % with attended time, the worst
-  log loses atomizer slots on either plan: up to 75-81 days later on benches, 15-20 days at the VLM.
+- Every layout with two units keeps every target within 0.03 days at the median, and within 0.4 days in the worst
+  log, at any outside load and either timing.
+- One unit moves targets most where it loses atomizer slots: at 60 % with the twin's timing, up to 0.04 days at the
+  median and 2.3-4.9 days in the worst log, on either plan.
 - The replay keeps the twin's order of work. A lost atomizer slot therefore moves every later run, while the twin
   itself would have re-planned. Read those rows as "this many units can't carry this load", not as a forecast of the
   delay.
@@ -386,18 +387,15 @@ Medians over 24 logs (full tables, with 10th-90th percentiles: [`tables.md`](../
 1. **Without outside work, the layout doesn't matter.** Units are 1-2 % busy and openings 1 %. Every target lands
    where the twin put it.
 2. **With outside work and the twin's timing, the trays bind, not the robots.**
-   - At 60 % outside load, tray D (SEM and XRD) is held by a running measurement 85-89 % of the time. Outside jobs at
-     the VLM then take 7.6-10.5 h against 2.0 h on benches, and 6-10 % are turned away.
-   - A second unit at the VLM cuts the turnaround from 10.5 h to 7.6 h but leaves it far above the benches. One
-     unit on benches does about as well (7.9 h), but it loses atomizer slots, so it is not a real option at 60 %.
+   - At 60 % outside load with two units, tray D (SEM and XRD) is held by a running measurement 89 % of the time.
+     Outside jobs at the VLM then take 7.6 h against 2.1 h on benches, and 6 % are turned away.
+   - A second unit at the VLM cuts the turnaround from 14.3 h to 7.6 h, but it stays far above the benches.
+   - One unit loses atomizer slots on either plan at 60 %: 280 runs a year at the VLM and 396 on benches, in every
+     log. With a 4.5 h battery and that much work, it isn't free when a slot opens.
 3. **With attended time, units bind on both plans.** One unit is not enough for 30 % outside load. Two carry 30 %,
    with a little more wait at the VLM: its opening is held 60 % of the time while the arm attends at a presented
-   tray. Neither carries 60 %; both serve about 61-63 %.
-   - At that saturation the VLM's tray locks hold back outside work, which leaves its units a little freer for
-     internal work. VLM + 2 keeps the atomizer's slots in 16 logs of 24, and the benches in 16 too. Its worst-log
-     delays are smaller (90th percentile of internal delay 1.1 h against 260 h).
-   - That is the one place the VLM looks better: it rations outside work by locking trays, which a scheduler could do
-     on benches just as well.
+   tray. Neither carries 60 %; both serve about 61-62 %. Internal work stays within about 0.2 h of the twin's timing
+   on both plans, so neither protects it better.
 4. **"A request waits while another tray is in the bay"** is real, but it is not the main queue. The arm waits 10-22 s
    for a tray after arriving, and the opening is 19-28 % busy at most with the twin's timing. Tray locks, a
    measurement holding the tray for hours, are the main queue.
@@ -461,8 +459,8 @@ only, with no cascade. Internal steps stay within 0.5 h of round 5's own timing 
 |---|---|---|---|
 | **The lab as the twin runs it** (two campaigns, no outside users) | No: nothing to speed up, and every target lands on the same day | Neither is needed: two units are 1-2 % busy. The money is better spent where the twin says it binds (metal, the atomizer, DED) | A twin in which transport binds: none of rounds 3-5 has that |
 | **Floor** | If we must pay for floor by the m² (new build or lease) at about the twin's rate, **and** a 9.2 m+ bay is available or cheap, **and** Kardex's service comes in near the twin's 3 % rather than its own 10-20 % | If the lab goes into space we already have, or into an ordinary-height room | A site decision (PR 344); Kardex's service quote; the cost of a 31.5 ft room against a 14-18 ft one |
-| **Outside users at 30 %** | No: slower (1.6-2.5 h against 1.3-1.7 h) | Yes, if the arm attends steps: one unit can't carry it on either plan, two can | A measured attended share at our instruments (PR 332's are assumptions) |
-| **Outside users at 60 %** | No: trays bind; 6-10 % turned away, 7.6-10.5 h | Yes: two units on benches serve everything in 2 h with the twin's timing; with attended time, a third unit or fixed arms at the busiest instruments | Who the outside users are and what they send; one busy instrument a tray (the two plans tie when no tray is shared); measured handling times (at 150 s to dock and 120 s to load, one unit fails at 30 % on either plan) |
+| **Outside users at 30 %** | No: slower (1.6-2.8 h against 1.3-1.9 h) | Yes, if the arm attends steps: one unit can't carry it on either plan, two can | A measured attended share at our instruments (PR 332's are assumptions) |
+| **Outside users at 60 %** | No: trays bind; 6-19 % turned away, 7.6-14.3 h | Yes: two units on benches serve everything in 2 h with the twin's timing; with attended time, a third unit or fixed arms at the busiest instruments | Who the outside users are and what they send; one busy instrument a tray (the two plans tie when no tray is shared); measured handling times (at 150 s to dock and 120 s to load, one unit fails at 30 % on either plan) |
 | **Sensitive instruments** (balances, the SEM, XRD, the nanoindenter, microscopes) | Only if measurements show tray moves harmless and requalification is unnecessary after a presentation | Yes: benches never move them | A vibration and requalification test with our instruments on a Kardex tray (the AC's microscope test is the only one, at 1 Hz) |
 | **Passive storage** (1,506 powder jars, sample stores) | **Yes: this is what a VLM is for.** A store VLM can be shorter and needs no services | Not on its own: shelves plus an arm also work for this volume | Our own jar and sample counts and how often the robots fetch them (not modelled here; our count from one log is about 1.2 store visits a day for the twin's prints and lots) |
 | **Reliability** | No: a Shuttle down takes 7-8 instruments with it, and recovery needs Kardex | Yes: two units back each other up, and every instrument stays reachable by hand | Kardex's figures for downtime and manual retrieval, which no vendor publishes |
@@ -561,6 +559,31 @@ pharmacies and biobanks, practitioners).
 - the 3 s per coupling;
 - the twin's prices and space rates;
 - that a running instrument holds its tray (the design's rule for unbacked loads, extended here to measurements).
+
+**An independent review of the model** (a separate agent in this session, given the code but not the conclusions)
+found five problems, all fixed before the runs reported here:
+
+- one campaign's late atomizer job could block the other campaign's slot;
+- results depended on Python's hash seed, through the order of a set of stations;
+- idle time anywhere counted as charging;
+- outside loads at time-critical stations jumped ahead of internal work;
+- for the 26 s a tray took to dock, its instruments didn't yet hold it.
+
+None of them changed the comparison with two units. They did change the rows with one unit:
+
+- the replay's cascades shrank from weeks to days;
+- the VLM with one unit had looked able to keep the atomizer's slots at 60 % outside load. Once idle time no longer
+  charged it for free, it can't.
+
+It also found four smaller asymmetries, which remain:
+
+- turnaround counts only the requests served, and the VLM turns away more (this favours the VLM);
+- on benches the furnace's eight positions take outside jobs independently, while on tray F they share a locked tray
+  (about 3 % of outside jobs, about 0.1 h of the gap);
+- an outside job can't share a tray trip with an internal job that is loaded but not yet running (slightly
+  over-strict for the VLM);
+- with attended time, the tray goes back to its slot once the arm's share is done, before the step ends (this bends
+  the lock rule in the VLM's favour).
 
 **Limits.**
 
