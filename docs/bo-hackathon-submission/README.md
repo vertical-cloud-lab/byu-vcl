@@ -102,7 +102,7 @@ In this order:
    wrote text, add it to the statement).
 5. **Apply the patches to PR 171 (Sterling)**, so the repository matches what is uploaded:
    `git am --keep-cr docs/bo-hackathon-submission/patches/*.patch` on
-   `copilot/address-dd-reviewer-feedback` (tested: the 14 patches apply cleanly to `8321260`),
+   `copilot/address-dd-reviewer-feedback` (tested: the 15 patches apply cleanly to `8321260`),
    or ask `@claude` on PR 171 to do it.
 6. **Fix the participant spreadsheet before reviewers follow the new link (Sterling).**
    `AC-bo-hackathon-2024.csv` in the public AC-BO repository holds 131 participants' e-mail

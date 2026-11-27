@@ -26,6 +26,9 @@ All registry-backed. Keys are unchanged, so no citation moved.
   optimization* for acquisition optimization and scalable hypervolume acquisitions; they now
   cite Ament et al., *Unexpected improvements to expected improvement for Bayesian
   optimization* (NeurIPS 2023).
+- **BayBE** is now cited as its paper (Fitzner et al., Digital Discovery 2025,
+  10.1039/D5DD00050E) instead of the GitHub repository. Diemar et al. 2025 gets its full
+  title and the correct given names (Michael G., Julia D.).
 - RDKit and Ax were typed as journal articles ("Release 1, 4", "GitHub repository"); now
   software references. `language = {en}` became `{english}`, so the build no longer errors.
 
@@ -34,7 +37,11 @@ All registry-backed. Keys are unchanged, so no citation moved.
 - Correction notices exist for three cited works (A-Lab 2023, Diemar 2025, Zhou 2019).
   Corrections do not change the citation, but A-Lab's correction retitled the article "...of
   inorganic materials"; the bibliography keeps the original title "...of novel materials".
-- Eight conference papers (NeurIPS, ICML, JMLR) have no Crossref DOI to add.
+- Nine conference papers (NeurIPS 2012 to 2021, ICML 2017, JMLR, AISTATS 2022) have no
+  Crossref DOI to add.
+- Uncited entries are left alone (they do not print), but four have wrong metadata and would
+  be wrong if cited later: `angello_convergent_2022` and `wang_autonomous_2024` (DOIs of other
+  papers), `xu_high-throughput_2020` (authors, pages), `qin_large_2023` (authors).
 - Eight entries truncate their author list with "and others". RSC asks for every author's name;
   the typesetter can expand them from the DOIs (one has 144 authors).
 

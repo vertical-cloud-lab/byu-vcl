@@ -1,7 +1,7 @@
-From a255484fcb9ec0c630d0ea9f2696a157ac0e7e11 Mon Sep 17 00:00:00 2001
+From 7b2fe79709295e17e38c53c9538328cc9d4dbd82 Mon Sep 17 00:00:00 2001
 From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
 Date: Fri, 27 Nov 2026 19:17:06 +0000
-Subject: [PATCH 02/14] Revision fixes: AI-use statement, data availability per
+Subject: [PATCH 02/15] Revision fixes: AI-use statement, data availability per
  RSC, 124-author outcome counts, cited follow-up papers
 
 - Acknowledgements: declare the generative AI tools used (models, purposes,
