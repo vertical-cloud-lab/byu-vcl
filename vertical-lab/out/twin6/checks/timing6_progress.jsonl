@@ -266,3 +266,12 @@
 {"label": "conventional fast 64x", "day": 400, "wall": 2946.9, "cpu": 655.2, "load1": 12.19}
 {"label": "conventional pkgfn3 64x", "day": 290, "wall": 2966.5, "cpu": 656.6, "load1": 11.92}
 {"label": "conventional bofn3 64x", "day": 300, "wall": 2971.6, "cpu": 660.4, "load1": 11.77}
+{"label": "vertical fast 64x", "day": 390, "wall": 2984.4, "cpu": 666.5, "load1": 11.81}
+{"label": "conventional fast 64x", "day": 410, "wall": 2986.9, "cpu": 671.7, "load1": 11.9}
+{"label": "conventional fast 64x", "day": 420, "wall": 3024.4, "cpu": 688.0, "load1": 11.83}
+{"label": "vertical fast 64x", "day": 400, "wall": 3027.7, "cpu": 685.5, "load1": 11.84}
+{"label": "conventional pkgfn3 64x", "day": 300, "wall": 3031.2, "cpu": 683.0, "load1": 11.78}
+{"label": "conventional bofn3 64x", "day": 310, "wall": 3040.4, "cpu": 690.5, "load1": 11.71}
+{"label": "vertical pkgfn3 16x", "day": 350, "wall": 3067.5, "cpu": 1584.2, "load1": 11.88}
+{"label": "conventional fast 64x", "day": 430, "wall": 3058.2, "cpu": 704.4, "load1": 11.81}
+{"label": "vertical fast 64x", "day": 410, "wall": 3071.6, "cpu": 703.4, "load1": 11.77}

@@ -242,19 +242,19 @@ pKGFN rows reproduce on any CPU; and runs copper's optimizers without their cap 
 | Piece | Code |
 |---|---|
 | No money gates (the list), every dollar by category, spend to each target and per alloy | `round6.py` (`GATES_REMOVED`, `GATES_KEPT`, `Campaign6.charge`, `Campaign6._route`, `Twin6.spend_report`, `spend_at`) |
-| Used equipment from `out/twin6/market/summary.csv`, round 5's stand-ins without it | `round6.py` (`load_market`, `used_params`, `used_rule6`, `build_schedule6`) |
+| Used equipment from `out/twin6/market/summary.csv` (issue 424's survey, `market6.py`), round 5's stand-ins without it; a station bought partly used waits for its new parts; the stations with no used market | `round6.py` (`load_market`, `used_params`, `used_rule6`, `build_schedule6`, `no_used_market`), `market6.py` |
 | Crucibles: a pool per alloy family, its lead time, turnaround and wear; the day the derived cycle starts | `round6.py` (`CRUCIBLES`, `ITEM`, `CruciblePool`, `ResourceAtom6`, `Facility6.derived_start_h`) |
 | The HPC stream at scale, without keeping every candidate in memory | `round6.py` (`Twin6._stream_tick`, `_keep_visible`, `Campaign6._forget`, `_restore`) |
 | Idle stretches with causes, counting a partner's sessions offered | `round6.py` (`idle_report6`, `_could_start`) |
 | BOFN and pKGFN without their money rules, with a cut of a large pool before the network values it | `opt/net6.py` |
 | The pin that reproduces on any CPU, and the GP determinism check | `repro.py`, `gpcheck6.py` |
-| The grid, the slice tools (`ids`, `slices`, `fold`), timings (`smoke`), `status` | `bench6.py` |
+| The grid, the slice tools (`ids`, `slices`, `fold`), timings (`smoke`, `timings`, `variant_ratios`; each run's CPU seconds), `status` | `bench6.py` |
 
 ```bash
 cd vertical-lab
 export PIP_TIMEOUT=600 PIP_RETRIES=2
 pip install --index-url https://download.pytorch.org/whl/cpu torch==2.15.0 && pip install -r out/twin6/requirements.txt
-python -m pytest -q twin/tests/test_round6.py
+python -m pytest -q twin/tests/test_round6.py twin/tests/test_market6.py
 python -m twin.gpcheck6                                   # the GP determinism check: exit 0 if this CPU matches
 python -m twin.bench6 status                              # runs and seeds per arm, core-hours left
 python -m twin.bench6 ids out/twin6/slices/slice-1.txt --slice 1   # what a compute slice runs

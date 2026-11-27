@@ -194,14 +194,15 @@ simulated with this stream.** What would make it possible: a vectorized sampler 
 (both are per-candidate Python today), or a library of candidates simulated once and shared by every run, with each
 day's visible pool drawn as the top of a random draw of the day's size (a sketch, not built).
 
-**The pilot** ([`out/twin6/checks/hpc_pilot.md`](../out/twin6/checks/hpc_pilot.md), `hpc_pilot.jsonl`, made by
-`out/twin6/checks/hpc_pilot.py`): the stocked arm of each lab, the same seeds at each scale, 365 days for the
-heuristic and the funnel and 300 days for BOFN in the automated lab. A few seeds can show only large changes: a run's
-path parts from the same seed's at another scale as soon as one decision differs.
+**The first job's pilot** (made by `out/twin6/checks/hpc_pilot.py`: the stocked arm of each lab, the same seeds at
+each scale, 365 days for the heuristic and the funnel). **Its data file, `hpc_pilot.jsonl`, was never committed**: the
+first job's retry ran out of time before pushing it, and with it went the `smoke.json` it fed. The bullets below are
+as that job wrote them and can't be rechecked from the repository. The grid's `hpc` and `hpc256` experiments measure
+the same thing on 16 seeds. The second job reran BOFN's part of the pilot (below), and measured the stream's cost
+again from its own runs. A few seeds can show only large changes: a run's path parts from the same seed's at another
+scale as soon as one decision differs.
 
-<!-- PILOT_TABLE -->
-
-**What it shows.**
+**What the first job's pilot showed** (as it recorded it).
 
 * **The heuristic on aluminium doesn't change with scale** beyond the seed-to-seed spread, as expected: it never
   looks at the stream.
@@ -213,9 +214,13 @@ path parts from the same seed's at another scale as soon as one decision differs
 * **So outcomes have not stopped changing at 64×**, and the effect is larger in the conventional lab than in the
   automated one: a comparison at a smaller scale would favour the automated lab.
 * **The stream's cost is linear in scale:** about 0.035 s of runtime per simulated day per unit of scale with the
-  heuristic and the funnel, and about 0.05 with BOFN (`smoke.json` `stream_cost`, the median over the pilot's pairs
-  of runs that differ only in scale). Over two years that is about +80 s at 4×, +400 s at 16×, +1,650 s at 64× and
-  +6,500 s at 256× with the cheap policies; +580, +2,300 and +9,300 s at 16×, 64× and 256× with BOFN or pKGFN.
+  heuristic and the funnel, and about 0.05 with BOFN (the median over the pilot's pairs of runs that differ only in
+  scale). The second job's measurement, in CPU seconds, is below and in `smoke.json` (`stream_cost`).
+
+**BOFN's pilot, rerun** (the second job; [`out/twin6/checks/timing6.md`](../out/twin6/checks/timing6.md), the `pilot`
+lines of `timing6.jsonl`): the automated lab stocked, 300 days, seeds 0 and 1 at 1×, 16× and 64× and seed 0 at 4×.
+
+<!-- PILOT_TABLE -->
 
 **The main arms run at 64×** (`bench6.HPC_SCALE`): 4,096 new candidates a day for each campaign, the newest 8,192
 visible. It is the largest scale at which a two-year run stays workable: about 30 minutes with the heuristic and the
@@ -379,7 +384,35 @@ smaller share. MKL's reproducible mode (`MKL_CBWR=COMPATIBLE`, section 5) costs 
 conventional-lab BOFN run over 220 days took 90.5 s with it and 85.5 s without, with the same results; MKL's
 GP-sized factorizations alone take 2-4 times as long under it, but they are a small part of a run.
 
-<!-- SPEED_NUMBERS -->
+**What a two-year run costs, and why** (the second job;
+[`out/twin6/checks/timing6.md`](../out/twin6/checks/timing6.md), made by `checks/timing6.py`). Each timing run records
+its own CPU seconds (`time.process_time`), and every 10 simulated days its cost so far. A run's CPU seconds are what it
+costs a slice that runs one run per vCPU, whatever else the runner was doing alongside. This runner, a 4-vCPU EPYC
+9V45 (two cores, two threads each), ran 8-12 runs at once to fit the checks into one job, so wall seconds say little.
+
+* **Before the cell, every policy costs 1.5-2.5 CPU seconds a simulated day at 64×**, most of it the HPC stream.
+* **After the cell (day 211 in seed 0), the automated lab's BOFN and pKGFN climb steeply**: about 2 CPU seconds a day
+  around day 210, 4-10 by day 250-300 and 15-22 by day 320-350. In round 5 the automated lab idled once its money ran out (day
+  371-434), which capped this; in round 6 it works for the full two years.
+* **The conventional lab's BOFN and pKGFN stay at 2.5-3 a day**: it tests a few alloys a year, so its GP nodes stay
+  small. The heuristic and the funnel stay at 1.6-2 a day in both labs.
+
+**Where the time goes** (a sampling profile, `py-spy`, of two live runs, automated BOFN at 16× and pKGFN at 64×, two
+minutes each at day ~340): **GP prediction takes 73 % and 59 %** (`Node.predict`, BoTorch's posterior), proposing new
+designs 94 % and 84 % in all. **The atomize node's search over 64 settings, batched over 16 candidates
+(`_Six._p_powder`), takes about half of all the time.** Each GP node keeps at most 600 points (`gp.Node.max_n`: the
+newest 300 and 300 drawn from the rest), so the cost per prediction stops growing once a node is full. The cost
+per simulated day should then level off at what the lab's throughput asks of it.
+
+**A speed-up that wasn't made.** The batched search asks the GP for a joint posterior over 1,024 points (64 settings
+× 16 candidates) and then uses only its diagonal. gpytorch computes the whole 1,024 × 1,024 predictive covariance to
+get it. Measured on a GP the size of a full node (600 points, 9 inputs, this runner, one thread): 189 ms a call;
+16 calls of 64 points, round 5's way, take 112 ms; a batch of 1,024 one-point posteriors takes 207 ms. With 300 points
+the same calls take 80, 40 and 60 ms. Predicting in 64-point calls would make the search about 1.7× faster at a
+full node, roughly 15-20 % of a whole run. It would also change the predicted means and variances in the last bits
+(up to 5e-14 apart). That would change the rows, the GP check's reference and every timing above, so **it was not
+done here**: it's an option to take before the slices start, not after.
+
 
 ## 8. The grid, and how to run it
 
