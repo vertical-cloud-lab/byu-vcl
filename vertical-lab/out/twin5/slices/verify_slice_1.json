@@ -1,0 +1,127 @@
+{
+ "experiment": "arms",
+ "run_id": "r5_conventional_external_fast_lean_s0",
+ "identical_apart_from_timing_and_provenance": true,
+ "n_differences": 0,
+ "differences": [],
+ "event_log_identical": true,
+ "not_compared": [
+  [
+   "code"
+  ],
+  [
+   "env"
+  ],
+  [
+   "gp",
+   "fit_s"
+  ],
+  [
+   "gp",
+   "nuts_s"
+  ],
+  [
+   "seconds"
+  ]
+ ],
+ "seconds": {
+  "rerun": 16.3,
+  "committed": 24.4
+ },
+ "code": {
+  "rerun": {
+   "commit": "b410477a3e41dd8d6eb40cb566c8eb11deed70d7",
+   "twin_dirty": false
+  },
+  "committed": {
+   "commit": "6895a097c78ea5aadaa6edf2f640c8ab17df6726",
+   "twin_dirty": false
+  }
+ },
+ "env_rerun": {
+  "python": "3.14.4",
+  "cpu": "AMD EPYC 9V45 96-Core Processor",
+  "avx512": true,
+  "pin": "avx2",
+  "pin_late": false,
+  "hash_pinned": true,
+  "numpy": "2.5.5",
+  "scipy": "1.18.1",
+  "torch": "2.15.0+cpu",
+  "botorch": "0.18.1",
+  "gpytorch": "1.15.2",
+  "linear_operator": "0.6.1",
+  "blas": [
+   {
+    "api": "openblas",
+    "version": "0.3.31.dev",
+    "arch": "Haswell",
+    "threads": 1
+   },
+   {
+    "api": "openmp",
+    "version": null,
+    "arch": null,
+    "threads": 1
+   },
+   {
+    "api": "openblas",
+    "version": "0.3.34.237.2",
+    "arch": "Haswell",
+    "threads": 1
+   }
+  ],
+  "torch_cpu": "AVX2",
+  "torch_threads": 1
+ },
+ "env_committed": {
+  "python": "3.14.4",
+  "cpu": "AMD EPYC 9V45 96-Core Processor",
+  "avx512": true,
+  "pin": "avx2",
+  "pin_late": false,
+  "hash_pinned": true,
+  "numpy": "2.5.5",
+  "scipy": "1.18.1",
+  "torch": "2.15.0+cpu",
+  "botorch": "0.18.1",
+  "gpytorch": "1.15.2",
+  "linear_operator": "0.6.1",
+  "blas": [
+   {
+    "api": "openblas",
+    "version": "0.3.31.dev",
+    "arch": "Haswell",
+    "threads": 1
+   },
+   {
+    "api": "openmp",
+    "version": null,
+    "arch": null,
+    "threads": 1
+   },
+   {
+    "api": "openblas",
+    "version": "0.3.34.237.2",
+    "arch": "Haswell",
+    "threads": 1
+   }
+  ],
+  "torch_cpu": "AVX2",
+  "torch_threads": 1
+ },
+ "gp": {
+  "rerun": {
+   "fits": 0,
+   "fit_s": 0.0,
+   "nuts": 0,
+   "nuts_s": 0.0
+  },
+  "committed": {
+   "fits": 0,
+   "fit_s": 0.0,
+   "nuts": 0,
+   "nuts_s": 0.0
+  }
+ }
+}

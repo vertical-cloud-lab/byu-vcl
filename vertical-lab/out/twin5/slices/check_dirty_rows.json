@@ -1,0 +1,126 @@
+{
+ "what": "five of this PR's rows that carry twin_dirty: true, rerun with the engine at b410477 (a detached worktree) on the CPU model they were made on; [rerun, committed] are compared apart from timing and provenance",
+ "pin": "avx2",
+ "reruns": [
+  {
+   "experiment": "hpc_more",
+   "run_id": "r5_conventional_external_fast_reorder_s0_hpc-add_per_day256-keep512",
+   "committed_on": "AMD EPYC 9V45 96-Core Processor",
+   "rerun_on": "AMD EPYC 9V45 96-Core Processor",
+   "row_identical": true,
+   "n_differences": 0,
+   "event_log_identical": true,
+   "first_differences": [],
+   "code": {
+    "rerun": {
+     "commit": "b410477a3e41dd8d6eb40cb566c8eb11deed70d7",
+     "twin_dirty": false
+    },
+    "committed": {
+     "commit": "f2b40fd62e5007bae68ff435a47c792ceaed2f18",
+     "twin_dirty": true
+    }
+   },
+   "seconds": {
+    "rerun": 150.8,
+    "committed": 96.3
+   }
+  },
+  {
+   "experiment": "hpc_more",
+   "run_id": "r5_vertical_parallel_fast_reorder_s0_hpc-add_per_day256-keep512",
+   "committed_on": "AMD EPYC 9V45 96-Core Processor",
+   "rerun_on": "AMD EPYC 9V45 96-Core Processor",
+   "row_identical": true,
+   "n_differences": 0,
+   "event_log_identical": true,
+   "first_differences": [],
+   "code": {
+    "rerun": {
+     "commit": "b410477a3e41dd8d6eb40cb566c8eb11deed70d7",
+     "twin_dirty": false
+    },
+    "committed": {
+     "commit": "f2b40fd62e5007bae68ff435a47c792ceaed2f18",
+     "twin_dirty": true
+    }
+   },
+   "seconds": {
+    "rerun": 166.6,
+    "committed": 108.7
+   }
+  },
+  {
+   "experiment": "net",
+   "run_id": "r5_conventional_external_bofn3_reorder_s1",
+   "committed_on": "AMD EPYC 9V45 96-Core Processor",
+   "rerun_on": "AMD EPYC 9V45 96-Core Processor",
+   "row_identical": true,
+   "n_differences": 0,
+   "event_log_identical": true,
+   "first_differences": [],
+   "code": {
+    "rerun": {
+     "commit": "b410477a3e41dd8d6eb40cb566c8eb11deed70d7",
+     "twin_dirty": false
+    },
+    "committed": {
+     "commit": "3de9012351ae624cb5f661757b27d9ec11cebb1e",
+     "twin_dirty": true
+    }
+   },
+   "seconds": {
+    "rerun": 288.3,
+    "committed": 237.8
+   }
+  },
+  {
+   "experiment": "net",
+   "run_id": "r5_conventional_external_pkgfn3_lean_s5",
+   "committed_on": "AMD EPYC 9V45 96-Core Processor",
+   "rerun_on": "AMD EPYC 9V45 96-Core Processor",
+   "row_identical": true,
+   "n_differences": 0,
+   "event_log_identical": true,
+   "first_differences": [],
+   "code": {
+    "rerun": {
+     "commit": "b410477a3e41dd8d6eb40cb566c8eb11deed70d7",
+     "twin_dirty": false
+    },
+    "committed": {
+     "commit": "3de9012351ae624cb5f661757b27d9ec11cebb1e",
+     "twin_dirty": true
+    }
+   },
+   "seconds": {
+    "rerun": 280.6,
+    "committed": 223.7
+   }
+  },
+  {
+   "experiment": "net",
+   "run_id": "r5_vertical_parallel_bofn3_reorder_s1",
+   "committed_on": "AMD EPYC 9V45 96-Core Processor",
+   "rerun_on": "AMD EPYC 9V45 96-Core Processor",
+   "row_identical": true,
+   "n_differences": 0,
+   "event_log_identical": true,
+   "first_differences": [],
+   "code": {
+    "rerun": {
+     "commit": "b410477a3e41dd8d6eb40cb566c8eb11deed70d7",
+     "twin_dirty": false
+    },
+    "committed": {
+     "commit": "3de9012351ae624cb5f661757b27d9ec11cebb1e",
+     "twin_dirty": true
+    }
+   },
+   "seconds": {
+    "rerun": 814.3,
+    "committed": 1288.4
+   }
+  }
+ ]
+}

@@ -169,3 +169,63 @@ their numbers in `video/numbers3b.py`, the script in `video/narration3b.json`). 
 for like, shows the stock as its own effect, and replays the replay arm's two median seeds. See
 [`../notes/twin_video.md`](../notes/twin_video.md#round-3bs-re-cut). `python -m pytest -q
 twin/tests/test_video_round3b.py` checks every spoken number against `like3b.json` and the cells against `tables.md`.
+
+## Round 4 (2026-11-26): building the lab while running real experiments, every route at once
+
+Round 3 started with the vertical lab built. Round 4 counts from the day the funding arrives. The in-house stations are
+ordered then and come online after their lead times, installation and commissioning, and ramp up on a learning curve
+fitted to the lab's own atomizer runs. Meanwhile the campaigns run on the existing atomizer, BYU's own equipment and
+every partner route, and a router sends each step to whichever route returns its result first. The write-up and
+results are in [`../notes/twin_round4.md`](../notes/twin_round4.md).
+
+| Piece | Code |
+|---|---|
+| Build-out: the stations' lead times (stand-ins), installation once the room is fitted out, commissioning, the cell's integration, capital payments | `round4.py` (`BUILD`, `build_schedule`) |
+| Ramp-up: the learning curve fitted to DAL PR 286's ten atomizer runs (redone jobs, slower jobs, equipment faults) | `round4.py` (`LEARN`, `fit_learning`, `Resource4`, `Facility4.job_done`) |
+| Routes: in house, BYU, Utah's MIDI and MX-Lab, 3D Powder Tech, Mines, Valimet, outside testing; standing slots filled as late as possible; site offsets and provenance visits | `round4.py` (`STANDING`, `EXTRA`, `OFFSETS`, `PROVENANCE`, `Facility4.pick`, `Campaign4`) |
+| Two admission rules for every policy: money kept for the coming week's standing slots, and a WIP limit before the first fabrication step | `round4.py` (`Campaign4.reserve`, `Campaign4.submit3`) |
+| The stages after discovery: a gas lot, a validation network across the sites, a full-part test | `round4.py` (`STAGES`, `Twin4._stage_tick`) |
+| The three plans (wait for the cell, ramp up in parallel, external routes only), the benchmark, tables and figures | `bench4.py`, `figures4.py` |
+
+```bash
+cd vertical-lab
+python -m pytest -q twin/tests/test_round4.py
+TWIN_WORKERS=4 python -m twin.bench4 run plans plans_best plans_3x provenance routes nolearn
+python -m twin.figures4
+```
+
+Round 3's code is unchanged: round 4 subclasses `Facility`, `Campaign` and `Twin`.
+
+## Round 5 (2026-11-27): two years from the day the money arrives, the automated lab against a conventional lab
+
+All money at t = 0; the facility ready between day 60 and day 100; used equipment by a rule; a reorder-point stock
+heuristic (and a look back at what should have been bought); copper's route with the steps the real process needs;
+decision windows for people; Sterling's four notes while it ran (8 atomizations a week in the conventional lab; the
+automated atomizer 24/7 at a cycle derived from the lab's record; idle stretches with causes; a continuous HPC stream
+of simulated candidates). The write-up and results are in [`../notes/twin_round5.md`](../notes/twin_round5.md).
+
+| Piece | Code |
+|---|---|
+| The facility window, used equipment (stand-ins and the rule) | `round5.py` (`ROOM_DAYS`, `USED_OK`, `USED`, `used_rule`, `build_schedule5`) |
+| The atomizer: 8 a week by people, 24/7 at the derived cycle once the cell is integrated | `round5.py` (`ATOM_MANUAL`, `ATOM_CYCLE`, `ResourceAtom`) |
+| Decision windows (review, meeting, sign-off), per lab and per kind of decision | `round5.py` (`DECISIONS`, `Decide`, `Twin5.run_async`) |
+| Copper's and aluminium's added steps on the shared stations | `round5.py` (`CU_STEPS`, `AL_STEPS`, `Campaign5`) |
+| Money at t = 0, money kept for the work in progress, the stock heuristic and its money rules | `round5.py` (`Campaign5.plan`, `wip_reserve`, `REORDER`, `_reorder`) |
+| The HPC stream (note 4) | `round5.py` (`HPC`, `Twin5._stream_tick`) |
+| Reports: shared stations by campaign, idle stretches with causes, counters, stock | `round5.py` (`shared_use`, `idle_report`, `counters`, `Campaign5.stock_report`) |
+| The runs (every row under `TWIN_PIN=avx2`, with its commit, CPU, kernels and notes), comparisons, figures | `bench5.py`, `like5.py`, `figures5.py` |
+
+```bash
+cd vertical-lab
+python -m pytest -q twin/tests/test_round5.py
+TWIN_WORKERS=4 python -m twin.bench5 run arms plans dec_none dec_slow atom noused hpc_more net net_more plans_net
+python -m twin.bench5 pack && python -m twin.like5 && python -m twin.figures5
+```
+
+Every planned run is committed (488 rows; `python -m twin.bench5 status` says 0 left), so `run` has nothing to do. The
+last 69 (the automated lab's BOFN and pKGFN seeds and the plans with BOFN) were made in six compute slices and
+folded in: their drivers, their checks and the fold's check are in `../out/twin5/slices/`. A BOFN or pKGFN row
+reproduces bit for bit only on some CPU models (the notes' "Reproducibility").
+
+Round 4's code is unchanged but for a hook (`Facility4.schedule`): round 5 subclasses `Facility4`, `Campaign4` and
+`Twin4`.
