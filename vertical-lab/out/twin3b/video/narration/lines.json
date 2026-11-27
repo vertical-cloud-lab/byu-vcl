@@ -26,12 +26,12 @@
    "sha256": "9d61a34357a7290ba515ead09f2a38aa5589bf21f5d7f746d3dfa9b464eb5309"
   },
   "chg2": {
-   "key": "e6769bf3201cc679",
-   "text": "Round three b adds the runs that the lab comparison was missing: both labs ordering their metal as they go, both labs stocked, and the same optimizers in the conventional lab. Rerun under a pinned set-up, round three's results reproduce.",
-   "spoken": "Round three b adds the runs that the lab comparison was missing: both labs ordering their metal as they go, both labs stocked, and the same optimizers in the conventional lab. Rerun under a pinned set-up, round three's results reproduce.",
-   "phonemes": "ɹˈaʊnd θɹˈiː bˈiː ˈædz ðə ɹˈʌnz ðætðə lˈæb kəmpˈæɹɪsən wʌz mˈɪsɪŋ: bˈoʊθ lˈæbz ˈɔːɹdɚɹɪŋ ðɛɹ mˈɛɾəl æz ðeɪ ɡˈoʊ, bˈoʊθ lˈæbz stˈɑːkt, ænd ðə sˈeɪm ˈɑːptɪmˌaɪzɚz ɪnðə kənvˈɛnʃənəl lˈæb. ɹᵻɹˈʌn ˌʌndɚɹ ɐ pˈɪnd sˈɛtˈʌp, ɹˈaʊnd θɹˈiːz ɹɪzˈʌlts ɹᵻpɹədˈuːs.",
-   "seconds": 15.74,
-   "sha256": "c6f709e005b4f32745a54b47a46c2cc16546e37299fa9d9b0611c083ee24be2d"
+   "key": "9cf36c1fa42f6568",
+   "text": "Round three b adds the runs that the lab comparison was missing: both labs ordering their metal as they go, both labs stocked, and the same optimizers in the conventional lab. And round three's results reproduce when they are rerun under a pinned set-up.",
+   "spoken": "Round three b adds the runs that the lab comparison was missing: both labs ordering their metal as they go, both labs stocked, and the same optimizers in the conventional lab. And round three's results reproduce when they are rerun under a pinned set-up.",
+   "phonemes": "ɹˈaʊnd θɹˈiː bˈiː ˈædz ðə ɹˈʌnz ðætðə lˈæb kəmpˈæɹɪsən wʌz mˈɪsɪŋ: bˈoʊθ lˈæbz ˈɔːɹdɚɹɪŋ ðɛɹ mˈɛɾəl æz ðeɪ ɡˈoʊ, bˈoʊθ lˈæbz stˈɑːkt, ænd ðə sˈeɪm ˈɑːptɪmˌaɪzɚz ɪnðə kənvˈɛnʃənəl lˈæb. ænd ɹˈaʊnd θɹˈiːz ɹɪzˈʌlts ɹᵻpɹədˈuːs wɛn ðeɪ ɑːɹ ɹᵻɹˈʌn ˌʌndɚɹ ɐ pˈɪnd sˈɛtˈʌp.",
+   "seconds": 16.51,
+   "sha256": "e03427541b66c9f1b6e8d4128aec925b2740ac5f1e5b1dddd128041d41ab956c"
   },
   "dag1": {
    "key": "a812d07f5c849d51",

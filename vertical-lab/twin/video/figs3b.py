@@ -40,7 +40,7 @@ from .figs3 import (ASSUME_DURATION, CAMP_WORD, H, POL, W, _ink, _new, _para, _t
 from .style import px
 
 AL, CU = "flaime_al", "onr_cu"
-CHANGES_DURATION = 38.0
+CHANGES_DURATION = 39.0
 EXPLAIN_DURATION = 78.5
 RESULTS_DURATION = 81.5
 LABS_DURATION = 109.0

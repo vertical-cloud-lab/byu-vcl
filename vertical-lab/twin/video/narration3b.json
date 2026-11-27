@@ -27,7 +27,7 @@
    "id": "chg2",
    "seg": "changes",
    "at": 20.8,
-   "text": "Round three b adds the runs that the lab comparison was missing: both labs ordering their metal as they go, both labs stocked, and the same optimizers in the conventional lab. Rerun under a pinned set-up, round three's results reproduce.",
+   "text": "Round three b adds the runs that the lab comparison was missing: both labs ordering their metal as they go, both labs stocked, and the same optimizers in the conventional lab. And round three's results reproduce when they are rerun under a pinned set-up.",
    "src": "figs3b.changes_frame, its last item: notes/twin_round3b.md sections 1.4 and 2.1 (the arms; the reruns: numbers3b reruns)"
   },
   {
