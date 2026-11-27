@@ -1,0 +1,308 @@
+1
+00:00:00,600 --> 00:00:12,010
+This is a simulated benchmark, in round 5: two alloy discovery campaigns, replayed for two years in a digital twin of our planned automated lab, from the day the money arrives.
+
+2
+00:00:13,800 --> 00:00:29,800
+Some of it comes from real sources: the lab's design and its 3-D model, footage from our own atomizer, the search spaces in the two proposals, and published prices. Everything else is simulated: every alloy, every measurement, and every result.
+
+3
+00:00:59,900 --> 00:01:17,010
+Round five starts the clock on the day the money arrives, and runs for two years. Each campaign has all of its money on day zero. The facility is ready between day 60 and day 100, and the equipment is ordered on day zero: some of it used, chosen by a rule.
+
+4
+00:01:17,710 --> 00:01:40,960
+Experiments also start on day zero, through partners, while the lab is built. Decisions made by people take time. The conventional lab's atomizer runs at most 8 times a week; the automated lab's runs around the clock once its cell is integrated. And the HPC computes candidates continuously. Every lead time, price and decision window here is a stand-in.
+
+5
+00:01:43,400 --> 00:01:56,730
+Each campaign is a function network: a chain of steps, where each step's results feed the next. BOFN, Bayesian optimization over function networks, models every step, not just the final score.
+
+6
+00:01:58,200 --> 00:02:08,720
+Here is each step itself, for one alloy from each campaign: the experiment, and the data it makes. Everything is simulated by the twin, unless a label says otherwise.
+
+7
+00:02:10,600 --> 00:02:17,870
+The aluminium alloy is design number 11042: aluminium with three additions, cerium the largest.
+
+8
+00:02:18,700 --> 00:02:29,050
+On this map, it is one of 635 designs in this run's log. The HPC stream's 89.7 million candidates are counted, not drawn.
+
+9
+00:02:30,900 --> 00:02:37,130
+The copper alloy is design number 91: a nickel aluminium bronze, with a little titanium.
+
+10
+00:02:43,600 --> 00:02:52,430
+CALPHAD comes first. As the melt cools, a Scheil model follows how much of it has frozen. This curve is the one the optimizer sees.
+
+11
+00:02:53,800 --> 00:03:02,610
+A full Scheil run on an open database adds the phases as they form. The twin's hidden truth differs again, as a real alloy would.
+
+12
+00:03:03,500 --> 00:03:08,260
+From its curve, the network takes two numbers: the liquidus, and a hot-cracking index.
+
+13
+00:03:09,600 --> 00:03:15,100
+Every run in round five used this open node. The Thermo-Calc stand-in was never bought.
+
+14
+00:03:17,500 --> 00:03:26,480
+The twin stands in for the AM module with a moving point source of heat. It gives the melt pool's width and depth, and how fast the metal cools.
+
+15
+00:03:33,900 --> 00:03:42,030
+This is not Thermo-Calc output, and no run bought this node. But the same model decides the porosity of every simulated build.
+
+16
+00:03:44,400 --> 00:03:51,250
+For aluminium, the lab makes each alloy's powder itself. Then each alloy is printed, and every build is checked.
+
+17
+00:03:51,800 --> 00:03:59,860
+This footage is real: our own atomizer, running aluminium. The size distribution beside it is the twin's, for this alloy.
+
+18
+00:04:00,800 --> 00:04:06,620
+Here, one of three runs failed, and 13 percent of the charge ended up in the printer's size range.
+
+19
+00:04:09,300 --> 00:04:13,370
+One build is nine cubes, each at its own laser power and speed.
+
+20
+00:04:19,600 --> 00:04:26,960
+Each cube's density and crack reading goes on the map. Too little energy leaves lack of fusion. Too much makes keyhole pores.
+
+21
+00:04:29,700 --> 00:04:33,160
+One build gives the network's print node nine data points.
+
+22
+00:04:35,300 --> 00:04:42,700
+In the SEM, one electron beam scans the sample line by line, and four detectors each catch a different signal.
+
+23
+00:04:43,300 --> 00:04:54,880
+Secondary electrons show the powder's surface. Backscattered electrons show the section's pores and cracks. X-rays give the elements, and diffraction gives each grain's orientation.
+
+24
+00:04:55,500 --> 00:04:58,930
+Every image here is simulated by the twin, for this alloy.
+
+25
+00:05:00,600 --> 00:05:09,920
+The network uses three of them: satellites on the powder, the section's pores and cracks, and the grain size. EDS only checks the composition.
+
+26
+00:05:13,900 --> 00:05:22,970
+Bars are aged straight from the as-built state, then pulled. The furnace profile here is only illustrative: the twin models the strength it leaves.
+
+27
+00:05:23,470 --> 00:05:27,720
+The curve is the twin's simulated record of the test, up to fracture.
+
+28
+00:05:35,100 --> 00:05:43,460
+Yield strength, 244 megapascals, and elongation, 11.8 percent, are the two numbers the network keeps.
+
+29
+00:05:44,400 --> 00:05:52,360
+For copper, a one-hour corrosion screen ranks the DED deposits, and thirty days in seawater come before a utility is known.
+
+30
+00:05:52,900 --> 00:05:58,600
+After an hour at rest, two quick scans give an early corrosion rate and a breakdown potential.
+
+31
+00:06:00,800 --> 00:06:08,100
+In immersion, the coupon is weighed on days 1, 3, 7 and 14. After any reading, the policy may stop it.
+
+32
+00:06:11,300 --> 00:06:16,060
+On day 30 it is cleaned and weighed: 13.2 micrometres a year.
+
+33
+00:06:26,200 --> 00:06:32,110
+Both campaigns share one lab. From here on, each step is an icon that lights up while it runs.
+
+34
+00:06:36,200 --> 00:06:53,800
+Three counters run through the replay. Designed means computed candidates: a stream on the HPC evaluates 122,880 a day, at full capacity and outside the experiments' cost. The policy sees 64 new ones a day.
+
+35
+00:06:54,500 --> 00:07:05,270
+Made means powder lots, or alloys made. Tested means alloys through the full chain: in the replayed run, 104 aluminium alloys and 6 copper alloys.
+
+36
+00:07:05,970 --> 00:07:09,770
+Early stopping means only promising alloys finish every step.
+
+37
+00:07:11,770 --> 00:07:25,320
+In the replay's plots, the solid curve is the best new alloy tested so far in the automated lab, and the dashed curve is the conventional lab, on the same seed and policy. The dotted lines are the two targets.
+
+38
+00:07:26,020 --> 00:07:34,040
+Money is shown as cumulative spend in each lab, not as a budget bar. And when best so far goes flat, the replay says why.
+
+39
+00:07:36,800 --> 00:07:51,580
+Once its cell is integrated, the automated lab's atomizer runs around the clock at a derived cycle: about 2.2 hours per aluminium composition, or 76 a week. That is a design target, not a demonstrated rate.
+
+40
+00:07:52,280 --> 00:08:08,900
+It needs 6 to 8 pre-coated crucibles per alloy family in rotation, and the lab has one. The lab's record so far is 10 runs in 43 days, about 1.6 a week. Before the cell, and in the conventional lab, the twin assumes 8 a week.
+
+41
+00:08:11,500 --> 00:08:20,080
+The replay starts on the day the money arrives. All of it is there, for both campaigns, and every station is ordered. There is no lab yet.
+
+42
+00:08:21,300 --> 00:08:32,180
+This is seed 1 of 16, with time-aware BOFN in the stocked automated lab: the median seed for both campaigns together. It stays the same seed to the end.
+
+43
+00:08:36,510 --> 00:08:46,980
+Day 67. The space is ready, and equipment comes in. A station is see-through until it is online, and until the cell is integrated, people run each of them.
+
+44
+00:08:49,210 --> 00:09:02,630
+Meanwhile the first alloys are made on the existing atomizer and printed at the partners: the panel on the left lists what runs outside the new lab. Under each plot, a line says why its curve is not moving yet.
+
+45
+00:09:15,040 --> 00:09:27,370
+Day 161. The Shuttles and the mobile units are integrated. From here, the run's own bookings move the 3-D model: trays to the openings and units to the docks, round the clock.
+
+46
+00:09:28,000 --> 00:09:45,190
+Day 176: aluminium's best new alloy passes the best existing alloy on this synthetic benchmark, and on day 182, the halfway target. In the conventional lab, the same seed gets there on days 196 and 378.
+
+47
+00:10:56,650 --> 00:11:06,530
+Day 291: copper's best new alloy passes both targets at once. In the conventional lab, this seed's copper reaches neither within two years.
+
+48
+00:11:32,720 --> 00:11:48,930
+Now both curves are flat. With all of its money there from the start, this lab has spent 90 percent of its two years of money by day 337, and from here it mostly waits: the line under each plot says why. The conventional lab is still spending.
+
+49
+00:13:17,700 --> 00:13:38,030
+In this seed, the automated lab's best new alloys end at 0.79 for aluminium and 0.70 for copper, and the conventional lab's at 0.77 and 0.53. One seed is an example, not a result. The comparison over all 16 seeds comes next.
+
+50
+00:13:41,600 --> 00:13:49,810
+Now the two labs, like for like: the same policy and the same stock rule in both, over 16 seeds each. All of it is simulated.
+
+51
+00:13:50,510 --> 00:14:04,480
+Aluminium's first target, the best existing alloy, is a tie with the heuristic. With BOFN or pKGFN in both labs it comes 1.2 times sooner, and every interval includes one.
+
+52
+00:14:05,180 --> 00:14:16,530
+Aluminium's halfway target comes 1.3 to 1.4 times sooner with an optimizer in both labs. With the heuristic, about half the seeds get there in either lab.
+
+53
+00:14:17,230 --> 00:14:30,030
+Copper is where the automated lab leads: 1.5 to 2.1 times sooner with the funnel, and at least 2.0 to 2.5 times with BOFN or pKGFN.
+
+54
+00:14:31,530 --> 00:14:46,290
+Where the automated lab does not win. Aluminium's first target is a tie: with the heuristic, the automated lab prints most of its first alloys at the same partners, before its own printer comes online around day 180.
+
+55
+00:14:46,890 --> 00:14:57,750
+The optimizers reach that first target later than the heuristic: in the stocked automated lab, on day 176 with BOFN, against day 81.
+
+56
+00:14:58,350 --> 00:15:09,460
+A stocked conventional lab keeps up with an automated lab that orders its metal as it goes: 0.7 to 0.9 times on aluminium's first target.
+
+57
+00:15:10,060 --> 00:15:19,550
+And reaching a target costs the campaigns no less: about the same money with both labs stocked, and more with an optimizer when both order as they go.
+
+58
+00:15:21,050 --> 00:15:35,450
+Where it does win: copper, with every policy and in every pairing, mostly through its own DED machine, in house from around day 228. And aluminium's halfway target, when both labs run an optimizer.
+
+59
+00:15:36,950 --> 00:15:51,760
+Money, as spending over time. With all of it available on day zero, the automated lab has spent 90 percent of aluminium's two-year money by day 402, and of copper's by day 371. Then it idles.
+
+60
+00:15:52,360 --> 00:16:03,130
+The conventional lab, with the same policy, spreads its spending over both years: by the end it has spent 75 percent of aluminium's money and 78 percent of copper's.
+
+61
+00:16:03,730 --> 00:16:14,670
+Counting fixed costs, an aluminium alloy costs about 25 thousand dollars with BOFN in the automated lab, against 10 thousand in the conventional lab.
+
+62
+00:16:17,900 --> 00:16:23,080
+Forty-three instruments, laid out three ways. These are design layouts, not built labs.
+
+63
+00:16:24,100 --> 00:16:35,110
+First, a conventional materials lab, grouped by workflow: rooms for powder, the metal printers, the machine shop, the furnace and the SEM, and open benches for the rest.
+
+64
+00:16:35,700 --> 00:16:47,030
+Benches are thirty inches deep and aisles five feet wide, with service space behind every floor machine. Measured to its walls, it comes to 4,280 square feet.
+
+65
+00:16:48,900 --> 00:16:58,950
+Next, the same floor plan, automated. Mobile robots drive the routes people walked, with fixed arms, docking targets and sample racks at the stations.
+
+66
+00:17:00,600 --> 00:17:07,380
+The floor area stays the same. And a robot docked in a five-foot aisle leaves too little room for another to pass.
+
+67
+00:17:08,700 --> 00:17:14,520
+The vertical lab. Two Kardex Shuttles come in, and every benchtop instrument moves onto a tray.
+
+68
+00:17:22,600 --> 00:17:29,510
+The floor machines rearrange along one robot aisle, and the floor area falls to 3,029 square feet.
+
+69
+00:17:41,900 --> 00:17:53,910
+Side by side. For today's 43 instruments, a flat lab laid out so robots can dock and pass needs 4,128 square feet, about what the conventional lab does.
+
+70
+00:17:54,400 --> 00:18:02,870
+For scale, Emerald Cloud Lab in South San Francisco held more than a hundred items of equipment in about 15,000 square feet.
+
+71
+00:18:03,400 --> 00:18:16,090
+But today's equipment uses only 18 of the Shuttles' 45 trays. Laid out flat, as bench positions robots can serve, all 45 need 6,192 square feet.
+
+72
+00:18:16,600 --> 00:18:27,820
+The vertical lab holds them in 3,029: 51 percent less floor, at 14.9 tray positions per thousand square feet, against 7.3.
+
+73
+00:18:28,300 --> 00:18:42,250
+In the vertical lab, most of the floor goes to the floor machines, their clearances and the robot aisle, the same as in the flat layouts for robots. And the Shuttles stand 9.15 meters tall, so it needs a high bay.
+
+74
+00:18:44,500 --> 00:18:58,580
+So, in this simulated benchmark, like for like. Copper comes sooner in the automated lab with every policy: 1.5 to 2.1 times with the funnel, and at least 2.0 times with an optimizer.
+
+75
+00:18:59,180 --> 00:19:11,810
+Aluminium's first target is a tie. Its halfway target comes 1.3 to 1.4 times sooner, and only with an optimizer in both labs. There, the policy does more than the lab.
+
+76
+00:19:12,410 --> 00:19:22,990
+And the automated lab is not cheaper. Its two-year money is spent in about 12 to 13 months, and with fixed costs each aluminium alloy costs about twice as much.
+
+77
+00:19:26,400 --> 00:19:52,150
+Everything here is simulated: the alloys, the results, and every measurement, with modelled noise not yet calibrated on the lab's instruments. The facility window, every lead time, the used-equipment prices, the decision windows, the HPC allocation, and the atomizer's design cycle are assumptions and stand-ins. It shows how two lab designs and their policies interact in a model, not what the real lab will find.
+

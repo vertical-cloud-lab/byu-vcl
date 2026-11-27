@@ -1,0 +1,110 @@
+{
+ "title": "Two simulated years of alloy discovery, from the day the money arrives: round 5 (preview)",
+ "description": "A simulated benchmark, not lab results: two alloy-discovery campaigns replayed for two years in a digital twin of BYU's Vertical Cloud Lab design, from the day the money arrives. FLAIME searches aluminium alloys for laser powder bed fusion, ONR copper alloys for blown-powder DED; they share one lab. Narrated by a synthetic voice: Kokoro v1.0 (open weights), its stock voice af_heart. This is a preview made from round 5's results; the same cut will be re-rendered from round 6's.\n\nThe replay, one seed for its whole length: This is seed 1 of 16, with time-aware BOFN in the stocked automated lab: the median seed for both campaigns together. It stays the same seed to the end. Day 176: aluminium's best new alloy passes the best existing alloy on this synthetic benchmark, and on day 182, the halfway target. In the conventional lab, the same seed gets there on days 196 and 378. Day 291: copper's best new alloy passes both targets at once. In the conventional lab, this seed's copper reaches neither within two years.\n\nThe two labs, like for like: Aluminium's first target, the best existing alloy, is a tie with the heuristic. With BOFN or pKGFN in both labs it comes 1.2 times sooner, and every interval includes one. Aluminium's halfway target comes 1.3 to 1.4 times sooner with an optimizer in both labs. With the heuristic, about half the seeds get there in either lab. Copper is where the automated lab leads: 1.5 to 2.1 times sooner with the funnel, and at least 2.0 to 2.5 times with BOFN or pKGFN.\n\nWhere the automated lab does not win. Aluminium's first target is a tie: with the heuristic, the automated lab prints most of its first alloys at the same partners, before its own printer comes online around day 180. The optimizers reach that first target later than the heuristic: in the stocked automated lab, on day 176 with BOFN, against day 81. A stocked conventional lab keeps up with an automated lab that orders its metal as it goes: 0.7 to 0.9 times on aluminium's first target. And reaching a target costs the campaigns no less: about the same money with both labs stocked, and more with an optimizer when both order as they go.\n\nMoney, as spending over time. With all of it available on day zero, the automated lab has spent 90 percent of aluminium's two-year money by day 402, and of copper's by day 371. Then it idles. The conventional lab, with the same policy, spreads its spending over both years: by the end it has spent 75 percent of aluminium's money and 78 percent of copper's. Counting fixed costs, an aluminium alloy costs about 25 thousand dollars with BOFN in the automated lab, against 10 thousand in the conventional lab.\n\nFloor space (design layouts, not built labs): But today's equipment uses only 18 of the Shuttles' 45 trays. Laid out flat, as bench positions robots can serve, all 45 need 6,192 square feet. The vertical lab holds them in 3,029: 51 percent less floor, at 14.9 tray positions per thousand square feet, against 7.3.\n\nReal: the lab design and its 3-D model; the lab's own atomizer footage and powder photo, from its aluminium runs 4yghtr (Al 6063, 6 October 2026) and c3k0n5 (Al 4047, 22 October 2026), DAL #159; the search spaces in the two proposals; published prices. Simulated: every alloy, every measurement and every result. The atomizer's cycle and its crucibles are design targets, shown next to the lab's record. The heat-treatment profile drawn is illustrative.\n\nWhat changed from round 3b's cut (https://www.youtube.com/watch?v=97BZNOI5V1w, whose replay changed seed partway): one continuous replay of two years on one seed, both campaigns, from day 0 through the build-out; each experiment beside its data; floor space at matched capacity; aluminium footage for aluminium; counters that say what they count, and why a curve is flat; spending over time, not a budget bar.\n\nCode: https://github.com/vertical-cloud-lab/byu-vcl/tree/4bbe0d9/vertical-lab/twin (the cut: twin/video/cut5.py; notes: notes/twin_video.md)\nPR: https://github.com/vertical-cloud-lab/byu-vcl/pull/428\n\nChapters\n0:00 Two simulated years of alloy discovery: round 5\n0:13 What is simulated: the lab and two search spaces\n0:59 Round 5: what changed in the twin\n1:43 The function networks: each experiment beside its data\n6:35 The counters, and how to read the replay's plots\n7:36 The atomizer: a design target, next to the lab's record\n8:11 Day 0: the money arrives (seed 1)\n8:36 Day 67: the space is ready, equipment comes in\n9:14 Day 161: the cell is integrated\n9:28 Day 176: aluminium passes its first target\n10:56 Day 291: copper passes its first target\n13:41 The lab comparison, like for like\n16:17 Floor space: three labs, capacity matched\n18:44 The takeaway\n19:25 Notes: real, assumed, simulated\n",
+ "tags": [
+  "vertical cloud lab",
+  "BYU",
+  "self-driving lab",
+  "laboratory automation",
+  "digital twin",
+  "alloy development",
+  "aluminium alloys",
+  "copper alloys",
+  "laser powder bed fusion",
+  "directed energy deposition",
+  "Bayesian optimization",
+  "function networks",
+  "materials acceleration platform",
+  "simulated benchmark",
+  "Kardex Shuttle",
+  "MiR250",
+  "UR12e",
+  "narrated",
+  "BOFN",
+  "pKGFN",
+  "CALPHAD",
+  "Scheil",
+  "SEM",
+  "floor space",
+  "like for like"
+ ],
+ "categoryId": "28",
+ "privacy": "unlisted",
+ "notifySubscribers": false,
+ "file": "out/twin5/video/twoyears.mp4",
+ "seconds": 1194.0,
+ "chapters": [
+  {
+   "stamp": "0:00",
+   "title": "Two simulated years of alloy discovery: round 5"
+  },
+  {
+   "stamp": "0:13",
+   "title": "What is simulated: the lab and two search spaces"
+  },
+  {
+   "stamp": "0:59",
+   "title": "Round 5: what changed in the twin"
+  },
+  {
+   "stamp": "1:43",
+   "title": "The function networks: each experiment beside its data"
+  },
+  {
+   "stamp": "6:35",
+   "title": "The counters, and how to read the replay's plots"
+  },
+  {
+   "stamp": "7:36",
+   "title": "The atomizer: a design target, next to the lab's record"
+  },
+  {
+   "stamp": "8:11",
+   "title": "Day 0: the money arrives (seed 1)"
+  },
+  {
+   "stamp": "8:36",
+   "title": "Day 67: the space is ready, equipment comes in"
+  },
+  {
+   "stamp": "9:14",
+   "title": "Day 161: the cell is integrated"
+  },
+  {
+   "stamp": "9:28",
+   "title": "Day 176: aluminium passes its first target"
+  },
+  {
+   "stamp": "10:56",
+   "title": "Day 291: copper passes its first target"
+  },
+  {
+   "stamp": "13:41",
+   "title": "The lab comparison, like for like"
+  },
+  {
+   "stamp": "16:17",
+   "title": "Floor space: three labs, capacity matched"
+  },
+  {
+   "stamp": "18:44",
+   "title": "The takeaway"
+  },
+  {
+   "stamp": "19:25",
+   "title": "Notes: real, assumed, simulated"
+  }
+ ],
+ "commit": "4bbe0d9",
+ "round": "5",
+ "preview": true,
+ "replay": {
+  "run": "r5_vertical_parallel_bofn3_reorder_s1",
+  "conventional": "r5_conventional_external_bofn3_reorder_s1",
+  "seed": 1,
+  "n_seeds": 16,
+  "is_median_seed": true
+ },
+ "issue": 425,
+ "pr": 428
+}

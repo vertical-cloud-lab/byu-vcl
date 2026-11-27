@@ -1,7 +1,7 @@
 {
  "own": {
   "lines": 11,
-  "figures": 23
+  "figures": 22
  },
  "replay": {
   "seed": 1,
@@ -15,6 +15,9 @@
   "checked": 28
  },
  "experiments": {
+  "checked": 18
+ },
+ "floorspace_cut": {
   "checked": 18
  }
 }

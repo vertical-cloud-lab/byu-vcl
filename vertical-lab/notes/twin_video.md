@@ -21,6 +21,8 @@ results and notes reworded as DAL's audit of the first cut suggested (digital-al
 
 **The experiments chapter, a private preview** (PR 403, 2026-11-27): the function-network chapter rebuilt so that each step is shown as the experiment and the data it makes, for one alloy of each campaign. Private, 4:48: [4bAAygzrX10](https://www.youtube.com/watch?v=4bAAygzrX10). Not a cut of the whole video, and no public upload. See [The experiments chapter](#the-experiments-chapter-a-preview) below.
 
+**Round 5's two-year cut, an unlisted preview** (PR 428, issue 425, 2026-11-27): one continuous replay from the day the money arrives to day 730 on one seed, both campaigns, with the experiment chapter, the floor-space segment and round 5's results. Unlisted, 19:54: [Ty6njW-GF74](https://www.youtube.com/watch?v=Ty6njW-GF74). Round 6's results will be re-rendered with one switch. See [Round 5's two-year cut](#round-5s-two-year-cut-a-preview) below.
+
 ## What is on screen
 
 | Part | What it shows | Code |
@@ -891,3 +893,125 @@ python -m pytest -q twin/tests/test_video_experiments.py
 - The other eight parts were written in parallel by four forks of the same session, each against the shared code and each checking its own stills: 13 to 22 minutes each. Their frames were then reviewed here, and three shared faults they found were fixed once (faded text that did not fade on this Pillow; a held last frame that re-seeked its clip on every frame; the header's fit).
 - The lines' speech: 2 minutes. The heard-back check: 2 minutes, twice.
 - The encode: 36 pieces on four workers, about 5 minutes for 8655 frames; the join, the narration and the sound mix: 20 seconds (`experiments finish`).
+
+## Round 5's two-year cut (a preview)
+
+Sterling, on [issue 425](https://github.com/vertical-cloud-lab/byu-vcl/issues/425) (2026-11-27): "one continuous
+two-year replay, every new module, and round 5's results for now ... uploads an **unlisted preview** made from round
+5's results. Once round 6 lands, a later ping will re-render it from round 6's results and upload it public without
+notifying subscribers."
+
+**On YouTube:** [Ty6njW-GF74](https://www.youtube.com/watch?v=Ty6njW-GF74) (**unlisted**, subscribers not notified; 19:54; uploaded 2026-11-27 from commit 4bbe0d9). It is the preview made from round 5's results; round 6's re-render will be a new upload. No earlier upload was touched: all 596 videos on the channel were read before and after the upload and are unchanged (`out/twin5/video/earlier_uploads.json`), and the upload token can only add a video. Round 3b's cut, [97BZNOI5V1w](https://www.youtube.com/watch?v=97BZNOI5V1w), is still up as it was; its replay changed seed partway through, so this cut replaces it.
+
+![Contact sheet of round 5's two-year cut](../out/twin5/video/twoyears_sheet.png)
+
+Built on PR 405's head (`4bb91b1`, round 5) with PR 403's branch (the experiment chapter) and PR 406's branch (the
+floor-space segment) merged in; [PR 428](https://github.com/vertical-cloud-lab/byu-vcl/pull/428). Everything in it is simulated, except what the closing notes list as real.
+
+### One switch for the round
+
+```
+cd vertical-lab
+export TWIN_VIDEO_ROUND=5                  # 6 re-renders the same cut from round 6's results
+python -m twin.video.cut5 all              # the checks, the speech, the 3-D track, the encode, the record, the sheet
+python -m twin.video.upload --yes --file out/twin5/video/twoyears.mp4 \
+    --meta out/twin5/video/youtube_meta_twoyears.json --privacy unlisted --key twin5/video/twoyears.mp4
+```
+
+`TWIN_VIDEO_ROUND` picks `out/twin<R>/` (the round's `like<R>.json`, `runs/`, `events/`), its analysis module
+(`twin/like<R>.py`) and writes everything to `out/twin<R>/video/`. Nothing about a round is typed into the cut: the
+replayed seed is the round's own `median_seed()`, and every line is a template filled from the round's tables, which
+says something only while the tables support it (`cut5.facts`, `figs5_labs.lines`, `figs5_intro.lines`,
+`experiments.script`). For round 6 that needs `twin/like6.py` and `out/twin6/like6.json` with `like5.json`'s keys
+(`arms` with `median_seed`, `four_way`, `policy_effect`, `economics`, `used`), and each row's `spend_curve`. Round 6
+has no money limit: the lines about the money running out are switched off by the rows' own budgets
+(`cut5.facts`: `has_limit`, `money_story`), and the spend plots drop the dotted two-years'-money line. `meta5` makes
+round 5 the unlisted preview and any later round public, subscribers not notified, and the upload's privacy is the
+command's `--privacy`.
+
+### What is in it
+
+| Part | What it shows | Code |
+|---|---|---|
+| Title, what is simulated | The title on the 3-D lab; the lab's set-up movie, then both search spaces on the periodic table | `cut5.title_frame`, `compose.simulated_frame` |
+| What changed | Round 5's rules: all the money on day 0, the facility ready between day 60 and day 100, equipment ordered on day 0 (some used), experiments from day 0 through partners, people's decision windows, the atomizer's 8 a week or 24/7, the HPC stream | `figs5_intro` |
+| The experiment chapter (PR 403) | Each step as the experiment beside its data, for one alloy of each campaign from the replayed run's own log: the composition on the periodic table and its place among the run's designs; Scheil on an open database next to the fast node and the hidden truth; Thermo-Calc's AM module (a stand-in, labelled); atomizing with the lab's own aluminium footage; nine cubes; the SEM's four detectors; a direct age (the furnace profile labelled illustrative), then the tensile curve plotted live; copper's one-hour screen and 30-day immersion | `experiments`, `exp_*` |
+| Counters | Designed (computed candidates, at the HPC stream's full capacity, outside the experiments' cost), made (powder lots, alloys made), tested (alloys through the full chain); "early stopping means only promising alloys finish every step"; how to read the replay's plots | `figs5_intro` |
+| The atomizer | Its design targets (2.2 h per aluminium composition, 76 a week, 6 to 8 crucibles per family) next to the lab's record (10 runs in 43 days, 1.6 a week, 1 crucible) and the assumed 8 a week | `figs5_intro` |
+| The replay | Day 0 to day 730 on seed 1 of 16, both campaigns, both labs; below | `replay5`, `lab3d5` |
+| The lab comparison | Like for like first (16 seeds an arm, the same seeds in both labs), then where the automated lab doesn't win, where it does, and money as cumulative spending per lab | `figs5_labs`, `numbers5` |
+| Floor space (PR 406) | Conventional, then flat automated, then vertical with the Shuttles; the result at matched capacity (the Shuttles' 45 trays laid out flat: 6,192 sq ft against 3,029); Emerald Cloud Lab for scale | `floorspace_cut`, `floorspace3d` |
+| Takeaway, notes | Like for like; what is real, assumed and simulated | `figs5_labs`, `figs5_intro` |
+
+### The replay: one seed, two years
+
+**Seed 1 of 16 for its whole length**, time-aware BOFN in the stocked automated lab (`r5_vertical_parallel_bofn3_reorder_s1`),
+with the conventional lab's same seed, policy and stock rule dashed in each plot
+(`r5_conventional_external_bofn3_reorder_s1`). It is the arm's median seed for both campaigns together, as round 5's
+notes name it (`like5.json`, `arms.r5_vertical_parallel_bofn3_reorder.median_seed`): this seed's days to the targets
+are aluminium 176 and 182, copper 291 and 291, against the arm's medians of 176, 189, 298 and 339. A badge names the
+seed on screen throughout, and nothing switches it.
+
+It starts on day 0, when the money arrives and everything is ordered, with no lab: each part of PR 318's 3-D lab is
+see-through until the twin has it online and solid from then on, with a list of the build-out beside it (the space on
+day 67, the first stations on day 74, the Shuttles on day 105, the cell on day 161, the LPBF on day 164, the DED on day
+254). Until the cell is integrated people run each station and nothing moves in 3-D; from day 161 the run's own
+bookings move the trays and the mobile units. A panel lists what runs outside the new lab (BYU's existing equipment
+and the partners).
+
+Under each best-so-far plot a line says why the curve is flat, from the run's own daily log (`data5.Run.flat`): the
+stock it is waiting for and when it is due, a 30-day immersion and its day, the queue for a station, results still in
+flight, and, from day 337 in this seed, the money being spent. The spend panel is cumulative spending per lab, not a
+budget bar.
+
+### The atomizer footage
+
+Aluminium is the subject of the atomizing step, so it shows only the lab's own aluminium runs (`exp_atomize.al_footage`,
+`out/footage/manifest.json`, entries with `subject: "al"`). The bronze clips are used nowhere in this cut. The clip at
+5:32 of 97BZNOI5V1w was 630 bronze (run k7m2q9) at an aluminium alloy's atomize step; it is gone.
+
+| Clip | Shows | Run, alloy | Source |
+|---|---|---|---|
+| `al_4yghtr_melt.mp4` | the charge glowing in the crucible, through the furnace window | 4yghtr, 6 Oct 2026, Al 6063 (logged as "6067"), 180 g; DAL #159 | [DWH1CEygsTI](https://youtu.be/DWH1CEygsTI) 1625.4-1636.4 s |
+| `al_c3k0n5_pour.mp4` | through the view port: the melt stream coming down onto the plate, and the droplets | c3k0n5, 22 Oct 2026, Al 4047, 169 g; DAL #159 | 2gQk-Syj7Yc 1577.8-1587.2 s |
+| `al_4yghtr_oct06_jar.jpg` (photo) | a jar of the run's atomized aluminium powder | lot 4yghtr, 6 Oct 2026; DAL #159 | as before |
+
+Each window was matched frame by frame against its source. Each picture names its run, alloy and day on screen, and
+says the alloy is not the simulated alloy followed.
+
+### The audit rules
+
+- `python -m twin.video.cut5 check`: every spoken and on-screen number against the round's tables (the lab comparison
+  and takeaway: 28 numbers and 28 worded claims against `like5.json`; the opening cards: 18 against round 5's
+  constants and the replayed row; the experiment chapter: 18 against `facts.json`; floor space: 18 against
+  `out/floorspace/layouts.json`; the cut's own lines: 22 figures, all from `cut5.facts`). A line whose claim the
+  tables no longer support is reworded by its template's alternatives or stops the build.
+- "simulated" on every simulated thing; "illustrative" on drawings (the furnace profile, the specimen, the SEM
+  schematic); "design target" on the atomizer's cycle and the crucibles, next to "the lab's record".
+- Narration only of what is on screen: each line is placed at the moment its card, curve or tag appears.
+
+### What changed from 97BZNOI5V1w
+
+| | 97BZNOI5V1w (round 3b) | This cut (round 5) |
+|---|---|---|
+| The replay | One year, seed 0 to day 119, then seed 5 | Two years, day 0 to day 730, seed 1 throughout, named on screen |
+| The start | Day 1, a running lab | Day 0, the money arrives; the space, the equipment and the cell come in as the twin has them |
+| The campaigns | Each seed chosen for one campaign | Both campaigns together on the seed that is median for both |
+| The function networks | The diagram, with data popping out at its nodes | Each step as the experiment beside its data (PR 403), with a direct age instead of T6 |
+| Atomizer footage | A 630 bronze clip at an aluminium alloy's step | The lab's own aluminium runs (4yghtr, c3k0n5); bronze nowhere |
+| The lab comparison | Like for like over round 3b's 12-run arms | Like for like over 16 seeds an arm, both labs from the same day 0, then where the automated lab doesn't win |
+| Floor space | Not in it | Three labs, capacity matched, with Emerald Cloud Lab for scale (PR 406) |
+| Length | 15:42 | 19:54 |
+
+Also new, as the issue asked: the counters say what they count (designed, made, tested) and that early stopping means
+only promising alloys finish every step; a line under each plot says why a flat curve is flat; money is cumulative
+spending per lab over time, not a budget bar.
+
+### What it cost on the runner
+
+On the runner (4 cores, 16 GB), 2026-11-27, with the first attempt's work already done (its narration, numbers and figures, and 894 of the floor-space track's 1,284 frames):
+
+- **The floor-space 3-D track**: the other 390 frames at 1920 x 1080 in three processes, about 5 min each after a 4.5 min scene build, joined to the first attempt's three partial renders (the frame differences across each join match those within a part).
+- **The replay's 3-D track**: 20 jobs (16 at 1920 x 1080, 4 insets at 960 x 540), 4,068 frames from 3,384 renders (a render is reused while nothing in the lab changes), 54 min wall on three to four processes. Slower than it needs to be: it shared the cores with the other segments' encode, and one batch was restarted after the camera fix (`lab3d5.Lab3D5.view`).
+- **The encode**: the 31 pieces of the other ten segments on two workers alongside the 3-D renders, 28 min; then the replay's 11 pieces and the notes card on four workers, the join, the mix and the record, 6.6 min. 1194 s of video, 208 MB, x264 `medium` CRF 20, AAC 160 kb/s, -16.1 LUFS integrated.
+- **The upload**: 10 s.

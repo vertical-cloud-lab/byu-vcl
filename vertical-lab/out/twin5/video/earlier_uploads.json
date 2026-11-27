@@ -1,0 +1,160 @@
+{
+ "note": "Every upload on the lab's channel, read through the YouTube Data API (the uploads playlist, then videos.list: snippet, status, contentDetails; each description as its sha256) before and after round 5's two-year cut was uploaded. The upload token can add a video and read; it cannot edit, unlist or delete one.",
+ "checked_before_utc": "2026-11-27T19:10Z",
+ "checked_after_utc": "2026-11-27T19:50Z",
+ "new_video": {
+  "id": "Ty6njW-GF74",
+  "title": "Two simulated years of alloy discovery, from the day the money arrives: round 5 (preview)",
+  "privacy": "unlisted",
+  "duration": "PT19M55S",
+  "published": "2026-11-27T19:49:36Z",
+  "description_sha256": "c782cbf6d45970073262886a85f2b921f0d7c891a4fe53b792214f04a0d317cc"
+ },
+ "earlier_videos": 596,
+ "unchanged": 596,
+ "changed": [],
+ "paging": "The uploads playlist pages by position, and the new upload shifted every entry by one, so each listing missed a few entries at its page edges. The 4 earlier videos the second listing missed were read by id after the upload and compared, and are in 'unchanged'. The second listing also found 5 older videos the first had missed; with no reading from before, they are listed here and not compared.",
+ "read_by_id_after": [
+  "B5HUWWPqTyI",
+  "HZtU5r6VLzI",
+  "cGxBFZyFmCY",
+  "cOvCadGZmt4"
+ ],
+ "missed_by_first_listing": {
+  "7CrvWa9wuPQ": "TT3_01 1sne81 reprint",
+  "8FelllY-Z4o": "TT3_01 Figuring Out TPU Print Parameters (part 1)",
+  "ZMvNDRSppDE": "Tensegrity T3_01 audrey and specimen 03",
+  "eKH7y4JgJD8": "[superseded] Atomizer tutorial 1, draft 1 (before a run)",
+  "fhCGwv5U5WE": "What does a freezing droplet capture? Particles fed into an atomizer's melt stream (concept)"
+ },
+ "earlier_cuts": {
+  "97BZNOI5V1w": {
+   "before": {
+    "title": "A simulated year of alloy discovery in an automated lab: round 3b, like for like (digital twin)",
+    "privacy": "public",
+    "duration": "PT15M43S",
+    "published": "2026-11-27T04:32:55Z",
+    "description_sha256": "048221e49ef11d176e9dd0f50d9e3e7b4352399163c7f2f65153b53449f2d092"
+   },
+   "after": {
+    "title": "A simulated year of alloy discovery in an automated lab: round 3b, like for like (digital twin)",
+    "privacy": "public",
+    "duration": "PT15M43S",
+    "published": "2026-11-27T04:32:55Z",
+    "description_sha256": "048221e49ef11d176e9dd0f50d9e3e7b4352399163c7f2f65153b53449f2d092"
+   }
+  },
+  "7DjfEBGe4Jw": {
+   "before": {
+    "title": "A simulated year of alloy discovery in an automated lab: round 3 (digital twin benchmark)",
+    "privacy": "public",
+    "duration": "PT14M19S",
+    "published": "2026-11-26T14:01:49Z",
+    "description_sha256": "80d9df39613aa11c12e51e2631a7746f69790f45710f2dd5c02c4dc0b36d88f2"
+   },
+   "after": {
+    "title": "A simulated year of alloy discovery in an automated lab: round 3 (digital twin benchmark)",
+    "privacy": "public",
+    "duration": "PT14M19S",
+    "published": "2026-11-26T14:01:49Z",
+    "description_sha256": "80d9df39613aa11c12e51e2631a7746f69790f45710f2dd5c02c4dc0b36d88f2"
+   }
+  },
+  "Pz7hxqfODmE": {
+   "before": {
+    "title": "A year of alloy discovery in an automated lab: a simulated benchmark (digital twin)",
+    "privacy": "public",
+    "duration": "PT11M41S",
+    "published": "2026-11-26T00:15:42Z",
+    "description_sha256": "6c4fe17ac8b050e44cec015e16ff18c6b4ad6157d0199e87cb256aac78951e2e"
+   },
+   "after": {
+    "title": "A year of alloy discovery in an automated lab: a simulated benchmark (digital twin)",
+    "privacy": "public",
+    "duration": "PT11M41S",
+    "published": "2026-11-26T00:15:42Z",
+    "description_sha256": "6c4fe17ac8b050e44cec015e16ff18c6b4ad6157d0199e87cb256aac78951e2e"
+   }
+  },
+  "tX8Ik8oKnhk": {
+   "before": {
+    "title": "A year of alloy discovery in an automated lab, animated: a simulated benchmark (digital twin)",
+    "privacy": "unlisted",
+    "duration": "PT11M41S",
+    "published": "2026-11-26T04:02:33Z",
+    "description_sha256": "742bdeb542116ba7c9a1be8632408d1fa5415945550fa9240f0c3a701a9cee88"
+   },
+   "after": {
+    "title": "A year of alloy discovery in an automated lab, animated: a simulated benchmark (digital twin)",
+    "privacy": "unlisted",
+    "duration": "PT11M41S",
+    "published": "2026-11-26T04:02:33Z",
+    "description_sha256": "742bdeb542116ba7c9a1be8632408d1fa5415945550fa9240f0c3a701a9cee88"
+   }
+  },
+  "s854ahFNihU": {
+   "before": {
+    "title": "A year of alloy discovery in an automated lab, narrated: a simulated benchmark (digital twin)",
+    "privacy": "unlisted",
+    "duration": "PT12M51S",
+    "published": "2026-11-26T04:28:30Z",
+    "description_sha256": "926e346fcf73ba2d47e6984241a44db6421ff7ab02e861c31c2017c9d2cd30ee"
+   },
+   "after": {
+    "title": "A year of alloy discovery in an automated lab, narrated: a simulated benchmark (digital twin)",
+    "privacy": "unlisted",
+    "duration": "PT12M51S",
+    "published": "2026-11-26T04:28:30Z",
+    "description_sha256": "926e346fcf73ba2d47e6984241a44db6421ff7ab02e861c31c2017c9d2cd30ee"
+   }
+  },
+  "4bAAygzrX10": {
+   "before": {
+    "title": "PREVIEW: the function networks, step by step, with the experiments (simulated; twin video)",
+    "privacy": "unlisted",
+    "duration": "PT4M49S",
+    "published": "2026-11-27T06:20:50Z",
+    "description_sha256": "cecca39027b078cb517cf02f6641ca57ad73517971b18fe33e8e17edf7796505"
+   },
+   "after": {
+    "title": "PREVIEW: the function networks, step by step, with the experiments (simulated; twin video)",
+    "privacy": "unlisted",
+    "duration": "PT4M49S",
+    "published": "2026-11-27T06:20:50Z",
+    "description_sha256": "cecca39027b078cb517cf02f6641ca57ad73517971b18fe33e8e17edf7796505"
+   }
+  },
+  "RUXoZQPodyU": {
+   "before": {
+    "title": "Floor space: three labs, the same equipment (preview)",
+    "privacy": "unlisted",
+    "duration": "PT1M59S",
+    "published": "2026-11-27T06:23:26Z",
+    "description_sha256": "c7f6678633f46a267e3f2090b6cabb32a2425af2f67a17917a8ac354d896e767"
+   },
+   "after": {
+    "title": "Floor space: three labs, the same equipment (preview)",
+    "privacy": "unlisted",
+    "duration": "PT1M59S",
+    "published": "2026-11-27T06:23:26Z",
+    "description_sha256": "c7f6678633f46a267e3f2090b6cabb32a2425af2f67a17917a8ac354d896e767"
+   }
+  },
+  "RCcNL1mthBE": {
+   "before": {
+    "title": "Floor space: four labs, the same equipment, and the same capacity (preview)",
+    "privacy": "unlisted",
+    "duration": "PT2M19S",
+    "published": "2026-11-27T07:48:39Z",
+    "description_sha256": "1ebe19e74f41785cd971a3f351c021a3b58970bc02ef77c8921eeb69a63ee1fc"
+   },
+   "after": {
+    "title": "Floor space: four labs, the same equipment, and the same capacity (preview)",
+    "privacy": "unlisted",
+    "duration": "PT2M19S",
+    "published": "2026-11-27T07:48:39Z",
+    "description_sha256": "1ebe19e74f41785cd971a3f351c021a3b58970bc02ef77c8921eeb69a63ee1fc"
+   }
+  }
+ }
+}
