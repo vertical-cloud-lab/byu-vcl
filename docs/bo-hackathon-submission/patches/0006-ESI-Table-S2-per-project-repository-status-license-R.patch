@@ -1,7 +1,7 @@
-From 531821b362a4ee2764151fbc463043d68cdbd449 Mon Sep 17 00:00:00 2001
+From 45907dd72022970f3b16e1a4f9528dbc47c32c59 Mon Sep 17 00:00:00 2001
 From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
 Date: Fri, 27 Nov 2026 19:30:03 +0000
-Subject: [PATCH 06/20] ESI Table S2: per-project repository status (license,
+Subject: [PATCH 06/21] ESI Table S2: per-project repository status (license,
  README, dependency files, last push), checked 27 Nov 2026
 
 Referee 1 asked for documentation, dependency status and maintenance per

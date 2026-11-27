@@ -1,0 +1,35 @@
+From 6cddb8504168e5615c6162e9c197f185772210d9 Mon Sep 17 00:00:00 2001
+From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
+Date: Fri, 27 Nov 2026 20:27:18 +0000
+Subject: [PATCH 21/21] Future Opportunities: 'about one in six' instead of
+ 'large share'; DAS points to ESI Tables S1 to S3
+
+---
+ main.tex | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/main.tex b/main.tex
+index 6ad8ae4..10b9791 100644
+--- a/main.tex
++++ b/main.tex
+@@ -555,7 +555,7 @@ Career outcomes provide a complementary signal: eight co-authors moved into facu
+ 
+ Building on the hackathon outputs and the trends above, we highlight several promising directions for BO in chemistry and materials discovery. \emph{Autonomous and self-driving laboratories} are a natural home for BO, closing the loop between algorithmic suggestion and automated experimentation~\cite{tom_self-driving_2024, abolhasani_rise_2023}. \emph{Multi-fidelity optimization} that fuses cheap simulations or proxy measurements with expensive experiments can substantially reduce cost, provided its assumptions are handled carefully~\cite{sabanza-gil_best_2025, judge_applying_2024}. \emph{Uncertainty-aware experimental planning} and active learning under design constraints can make campaigns more sample-efficient and trustworthy~\cite{low_evolution_2024}.
+ 
+-The large share of hackathon projects that already incorporated language models points to \emph{foundation-model- and LLM-assisted BO} as a particularly active frontier for design-space specification, prior construction, and warm-starting; reported evidence on whether LLM-based surrogates and priors outperform strong classical baselines is mixed, and benchmarking such hybrids fairly (separating genuine generalization from memorized results) is itself an open problem~\cite{kristiadi_sober_2024, rankovic_gollum_2025}. Other opportunities include \emph{preference-based and human-in-the-loop BO} for subjective or hard-to-quantify objectives~\cite{adachi_looping_2024, deneault_preferential_2025}; \emph{multi-objective materials design} with scalable hypervolume-based acquisitions~\cite{ament_unexpected_2023}; \emph{robust BO under noisy experimental data}~\cite{aldeghi_golem_2021, altamirano_robust_2023}; \emph{community benchmark development} to enable reproducible, apples-to-apples comparisons~\cite{liang_benchmarking_2021, felton_summit_2021}; use of agents to redefine search spaces mid-campaign \cite{muller_la_agente_optima_2026}; and \emph{domain-specific, deployment-ready BO tools} for synthesis and processing optimization that meet experimentalists where they work~\cite{durholt_bofire_2024, fitzner_baybe_2022}, including a growing set of graphical and web-based BO interfaces that remove coding barriers~\cite{ishii_boxvia_2022, torres_multi-objective_2022, tamura_nims-os_2023}. Collectively, these directions echo the broader perspective that Bayesian methods are a core component of the autonomous materials-discovery toolkit~\cite{arroyave_perspective_2022}.
++The number of hackathon projects that already incorporated language models (about one in six) points to \emph{foundation-model- and LLM-assisted BO} as a particularly active frontier for design-space specification, prior construction, and warm-starting; reported evidence on whether LLM-based surrogates and priors outperform strong classical baselines is mixed, and benchmarking such hybrids fairly (separating genuine generalization from memorized results) is itself an open problem~\cite{kristiadi_sober_2024, rankovic_gollum_2025}. Other opportunities include \emph{preference-based and human-in-the-loop BO} for subjective or hard-to-quantify objectives~\cite{adachi_looping_2024, deneault_preferential_2025}; \emph{multi-objective materials design} with scalable hypervolume-based acquisitions~\cite{ament_unexpected_2023}; \emph{robust BO under noisy experimental data}~\cite{aldeghi_golem_2021, altamirano_robust_2023}; \emph{community benchmark development} to enable reproducible, apples-to-apples comparisons~\cite{liang_benchmarking_2021, felton_summit_2021}; use of agents to redefine search spaces mid-campaign \cite{muller_la_agente_optima_2026}; and \emph{domain-specific, deployment-ready BO tools} for synthesis and processing optimization that meet experimentalists where they work~\cite{durholt_bofire_2024, fitzner_baybe_2022}, including a growing set of graphical and web-based BO interfaces that remove coding barriers~\cite{ishii_boxvia_2022, torres_multi-objective_2022, tamura_nims-os_2023}. Collectively, these directions echo the broader perspective that Bayesian methods are a core component of the autonomous materials-discovery toolkit~\cite{arroyave_perspective_2022}.
+ 
+ 
+ \section*{Conflicts of interest}
+@@ -564,7 +564,7 @@ There are no conflicts of interest to declare.
+ 
+ \section*{Data availability}
+ 
+-The code and materials associated with the projects in this hackathon are archived on Zenodo at \url{https://doi.org/10.5281/zenodo.20496810}. The manuscript source and the material behind its analyses are in the hackathon repository at \url{https://github.com/AC-BO-Hackathon/ac-bo-hackathon.github.io}: the project pages, the scripts that generate Table III and the project summaries, the repository status and license tabulation behind Table V and ESI Table S2, the figure redaction script, the raw and edited AI-drafted project summaries, and the archived outputs of the AI analysis and literature queries. A versioned snapshot of this repository will be deposited on Zenodo upon acceptance. Per-project category assignments are given in the ESI. Participant demographics (Fig. 2) are reported only in aggregate.
++The code and materials associated with the projects in this hackathon are archived on Zenodo at \url{https://doi.org/10.5281/zenodo.20496810}. The manuscript source and the material behind its analyses are in the hackathon repository at \url{https://github.com/AC-BO-Hackathon/ac-bo-hackathon.github.io}: the project pages, the scripts that generate Table III and the project summaries, the repository status and license tabulation behind Table V and ESI Table S2, the figure redaction script, the raw and edited AI-drafted project summaries, and the archived outputs of the AI analysis and literature queries. A versioned snapshot of this repository will be deposited on Zenodo upon acceptance. Per-project categories, repository status, and the full URLs behind the links in Table III are given in ESI Tables S1 to S3. Participant demographics (Fig. 2) are reported only in aggregate.
+ 
+ \section*{Acknowledgements}
+ 
+-- 
+2.56.1
+

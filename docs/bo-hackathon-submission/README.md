@@ -63,9 +63,12 @@ see step 5 below), and every PDF above was rebuilt from them.
 5. **Table III and Table V.** Table III linked project 15 to project 13's repository; links now
    come from the project pages. Project 22's repository was deleted after July, so Table V is
    now 19 MIT and 5 inaccessible, checked 27 November.
-6. **ESI Table S2 (new):** license, README, dependency files and last push for every
-   project's repository. This is the documentation, dependency and maintenance part of
-   Referee 1's request that was still open, and it backs Referee 4's point 2.
+6. **ESI Tables S2 and S3 (new).** S2 gives the license, README, dependency files and last push
+   of every project's repository: the documentation, dependency and maintenance part of
+   Referee 1's request that was still open, and the evidence for Referee 4's point 2. S3 prints
+   the full URL behind every link icon in Table III, for printed copies (Referee 4, minor 11).
+   Tracking parameters were stripped from those links; one LinkedIn link carried the sharer's
+   member token.
 7. **Presentation:** Data availability now sits after Conflicts of interest with full URLs
    (RSC's rule); the follow-up papers in Section VI are numbered references instead of opaque
    links (Referee 4, minor 11); Gavel and the Crowd-BT model it implements are cited; the
@@ -121,7 +124,7 @@ In this order:
    `git am --keep-cr docs/bo-hackathon-submission/patches/*.patch`, then
    `sed -i 's/Los Angles/Los Angeles/g; s/Departmentt/Department/' latex/authors-hardcoded.tex`
    (two affiliation typos, kept out of the patches because that file's context lines carry
-   co-authors' personal e-mail addresses). Tested: the 20 patches plus that command reproduce
+   co-authors' personal e-mail addresses). Tested: the 21 patches plus that command reproduce
    the tree the PDFs were built from, exactly. Or ask `@claude` on PR 171 to do it.
 6. **Fix the participant spreadsheet before reviewers follow the new link (Sterling).**
    `AC-bo-hackathon-2024.csv` in the public AC-BO repository holds 131 participants' e-mail

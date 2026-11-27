@@ -1,7 +1,7 @@
-From 442d36639d3999e6769f592824ab74581db65967 Mon Sep 17 00:00:00 2001
+From 5429a4054ed53f0aae3cb6663dd70560e832b033 Mon Sep 17 00:00:00 2001
 From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
 Date: Fri, 27 Nov 2026 19:43:45 +0000
-Subject: [PATCH 13/20] References: arXiv numbers printed for arXiv-only
+Subject: [PATCH 13/21] References: arXiv numbers printed for arXiv-only
  entries (RSC style); Kristiadi 2024 is ICML 2024
 
 ---

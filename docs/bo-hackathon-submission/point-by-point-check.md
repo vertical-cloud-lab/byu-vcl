@@ -52,7 +52,7 @@ Status: **done**; **partly** (answered, but a referee could reasonably ask for m
 | 9. Figure 3 caption preprint policy | Caption states the reason for blurring | Fig. 3, p. 5 | done |
 | 11. Table 2 footnote marker | Folded into the caption (now Table I) | p. 4 | done |
 | 13. Consent for names in Figs 4 and 5 | The reply now answers the question: participants were not asked in advance, so names are pixelated (deterministic pixelation, no generative editing); the names left legible in Fig. 4 are co-authors' | p. 6 | done (Sterling to confirm the wording) |
-| Minor 11. Opaque title hyperlinks | Headings are plain text; links stay in Table III. This revision also turns the Section VI paper links into numbered references | III; VI, p. 20 | done |
+| Minor 11. Opaque title hyperlinks | Headings are plain text; links stay in Table III, and **new ESI Table S3** prints the full URL behind every icon there. The Section VI paper links are now numbered references | III; VI, p. 20; ESI | done |
 | Minor 13a/b. Project 40, 33 and 34 links | Fixed on the project pages and in Table III. This revision also fixes project 15, which Table III linked to project 13's repository | Table III, pp. 7 to 8 | done |
 | Minor 13. Ligature-mangled names | PDF now carries glyph-to-Unicode maps (checked: the names extract correctly). **The separate author contributions PDF has the same problem and has to be regenerated** | Acknowledgements, p. 21 | open: Gage |
 | Checklist 1a. All data listed? | See point 3 | | done |
