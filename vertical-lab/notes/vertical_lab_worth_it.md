@@ -39,7 +39,7 @@ at the end names them).
     running. With two units, tray D (SEM and XRD) is held 89 % of the time. If trays could move while their
     instruments run, the two plans would tie; for a measurement in progress, they can't.
   - One unit is too few on either plan at 60 %: it loses atomizer slots (below).
-  - Round 5's two-year logs give the same picture: 99.9 % served in 2.4 h on benches, against 86-94 % in 8-12 h at
+  - Round 5's two-year logs give the same picture: 99.9 % served in 2.4 h on benches, against 88-94 % in 8-14 h at
     the VLM.
 - **If the arm has to stay at the instrument for part of each step,** as PR 332 assumed, the number of units binds
   whatever the layout:
@@ -417,17 +417,18 @@ targets are its own.
 | Timing, outside load | Layout | Units busy (over two years) | Outside requests served | Request to sample back (h): mean |
 |---|---|---|---|---|
 | Twin's, 0 % | all four | 1-2 % | - | - |
-| Twin's, 60 % | VLM + 1 | 57 % | 86.3 % | 11.9 |
+| Twin's, 60 % | VLM + 1 | 59 % | 87.9 % | 13.8 |
 | Twin's, 60 % | flat + 2 | 34 % | **99.9 %** | **2.4** |
-| Twin's, 60 % | VLM + 2 | 29 % | 93.5 % | 8.2 |
-| Attended, 30 % | flat + 2 | 59 % | 100 % | 2.3 |
-| Attended, 30 % | VLM + 2 | 59 % | 99.6 % | 3.6 |
-| Attended, 60 % | flat + 2 / VLM + 2 | 72 % | 51-53 % | 34-36 |
-| Attended, 30 % | either plan with 1 unit | 72 % | 49-50 % | 70-71 |
+| Twin's, 60 % | VLM + 2 | 29 % | 94.3 % | 8.0 |
+| Twin's, 60 % | flat + 1 | 68 % | 91.2 % | 14.3 |
+| Attended, 30 % | flat + 2 | 60 % | 100 % | 2.4 |
+| Attended, 30 % | VLM + 2 | 59 % | 99.7 % | 4.1 |
+| Attended, 30 % | either plan with 1 unit | 72 % | 58-59 % | 68-70 |
+| Attended, 60 % | flat + 2 / VLM + 2 | 72 % | 60-61 % | 33-34 |
 
 The units are idle for the first three months while the lab is built, which is why their busiest is about 72 % here
 against 82 % in round 3b. Round 5's atomizer runs round the clock without start slots, so a late start costs that run
-only, with no cascade. Internal steps stay within 0.5 h of round 5's own timing in every layout with two units.
+only, with no cascade. Internal steps stay within 0.6 h of round 5's own timing in every layout with two units.
 
 **Sensitivities** (4 logs, 30 % and 60 % outside load; [`sens.md`](../out/worth_it/sens.md)):
 
