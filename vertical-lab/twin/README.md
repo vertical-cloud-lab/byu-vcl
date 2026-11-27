@@ -254,7 +254,7 @@ pKGFN rows reproduce on any CPU; and runs copper's optimizers without their cap 
 cd vertical-lab
 export PIP_TIMEOUT=600 PIP_RETRIES=2
 pip install --index-url https://download.pytorch.org/whl/cpu torch==2.15.0 && pip install -r out/twin6/requirements.txt
-python -m pytest -q twin/tests/test_round6.py twin/tests/test_repro6.py
+python -m pytest -q twin/tests/test_round6.py
 python -m twin.gpcheck6                                   # the GP determinism check: exit 0 if this CPU matches
 python -m twin.bench6 status                              # runs and seeds per arm, core-hours left
 python -m twin.bench6 ids out/twin6/slices/slice-1.txt --slice 1   # what a compute slice runs

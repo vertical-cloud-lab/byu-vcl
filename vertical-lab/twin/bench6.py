@@ -3,9 +3,10 @@ slice needs to run part of it.
 
     python -m twin.bench6 status                    # runs and seeds per arm, done and left, estimated hours (left.md)
     python -m twin.bench6 ids FILE|ID ... [--slice K] [--workers N]   # run a list of run ids (a compute slice)
-    python -m twin.bench6 slices N [GROUP ...]      # split the runs left into N lists of about equal run time
+    python -m twin.bench6 slices N|0 [GROUP ...]    # split the runs left into N lists of about equal run time (0:
+                                                    # as many as keep each under SLICE_CORE_H core-hours)
     python -m twin.bench6 run [experiment ...]      # run whole experiments here (not meant for one job: see status)
-    python -m twin.bench6 smoke [DAYS] [GROUP ...]  # seed 0 of each group for DAYS simulated days, timed, rows not kept
+    python -m twin.bench6 smoke [DAYS|full] [GROUP|EXPERIMENT ...]   # seed 0 of each group, timed, rows not kept
     python -m twin.bench6 fold                      # append the slices' rows to their experiments, then pack
     python -m twin.bench6 pack | snapshot           # merge appended rows into runs/<experiment>.jsonl.xz
     python -m twin.bench6 one LAB PLAN POLICY STOCK [SEED] [opt=value ...]   # one run, printed (TWIN6_DAYS shortens)
@@ -50,7 +51,7 @@ N_SEEDS = int(os.environ.get("TWIN6_SEEDS", "16"))
 FLOOR = 12                             # an arm is reported from 12 seeds
 # The simulated candidates the policies see, as a multiple of round 5's (64 new a day, 128 kept): the main arms'
 # scale, chosen from the pilot (out/twin6/checks/hpc_pilot.json; notes/twin_round6.md, section 4).
-HPC_SCALE = 1
+HPC_SCALE = 16
 HPC_SCALES = (1, 4, 16, 64, 256)
 LATE_D = 240.0                         # "late crucibles": the pool arrives 240 days later than its lead time
 
@@ -377,11 +378,64 @@ def _done_no_slices(name):
 
 
 # ------------------------------------------------------------------------------------------------- timing
-def timings() -> dict:
-    """Seconds a two-year run of each group takes: measured in full where a full run was timed, otherwise scaled
-    from a shortened smoke run (``checks/smoke.json``; each entry says which)."""
-    p = CHECKS / "smoke.json"
-    return json.loads(p.read_text()).get("groups", {}) if p.exists() else {}
+# Round 5's own ratios of a plan's seconds to the parallel plan's (out/twin5/runs: the medians of plans/arms for the
+# heuristic and the funnel, plans_net/net for BOFN), for a plan group with no two-year run of its own.
+R5_PLAN_RATIO = {"fast": {"wait": 56 / 48, "external": 39 / 48}, "gp": {"wait": 648 / 1593, "external": 917 / 1593}}
+
+
+def base_cfg(cfg):
+    """The arms group a group's time is judged against: the same lab and policy, stocked, nominal options, the main
+    scale (the automated lab's plans against its parallel plan)."""
+    plan = "external" if cfg["lab"] == "conventional" else "parallel"
+    return _cfg(cfg["lab"], plan, cfg["policy"], "reorder", cfg["seed"])
+
+
+def timings(groups=None) -> dict:
+    """Seconds a two-year run of each group takes, with how each was found (``checks/smoke.json``):
+
+    * ``measured``: a two-year run of the group's seed 0 on this runner;
+    * otherwise from its arms group's two-year run (``base_cfg``), adjusted by what the group's own shortened run
+      shows: for a group at another HPC scale, plus the stream's extra seconds a day (from shortened runs of both,
+      the stream's cost is the same every day); for one of the automated lab's other plans, times round 5's ratio
+      of that plan's seconds to the parallel plan's (``R5_PLAN_RATIO``); for anything else (lean stock, decision
+      windows, the atomizer's cycle, late crucibles, all-new equipment), as its arms group, whose work it shares;
+    * with no two-year run to go by, the shortened run scaled by days (a lower bound for BOFN and pKGFN).
+    """
+    if groups is None:
+        p = CHECKS / "smoke.json"
+        groups = json.loads(p.read_text()).get("groups", {}) if p.exists() else {}
+    cfgs = {}
+    for name, cs in EXPERIMENTS.items():
+        for c in cs:
+            if c["seed"] == 0:
+                cfgs[group_key(c)] = (name, c)
+    out = {}
+    for g, (name, c) in cfgs.items():
+        e = groups.get(g) or {}
+        if e.get("full"):
+            out[g] = dict(seconds_2y=e["full"]["seconds"], how="measured (two years, seed 0)")
+            continue
+        bk = group_key(base_cfg(c))
+        b = groups.get(bk) or {}
+        sh, bsh = e.get("short"), b.get("short")
+        if b.get("full"):
+            full = b["full"]["seconds"]
+            sc = (c["opts"].get("hpc") or {}).get("scale", HPC_SCALE)
+            if sc != HPC_SCALE and sh and bsh and sh["days"] == bsh["days"]:
+                extra = (sh["seconds"] - bsh["seconds"]) / sh["days"] * DAYS
+                out[g] = dict(seconds_2y=round(max(full + extra, 0.5 * full), 1),
+                              how=f"its arms group's two years plus the stream's extra cost at {sc:g}x "
+                                  f"({sh['days']}-day runs of both)")
+            elif c["plan"] in ("wait",) or (c["lab"] == "vertical" and c["plan"] == "external"):
+                r = R5_PLAN_RATIO["fast" if c["policy"] == "fast" else "gp"][c["plan"]]
+                out[g] = dict(seconds_2y=round(full * r, 1), how=f"its arms group's two years x round 5's {c['plan']} "
+                                                                  f"ratio ({r:.2f})")
+            else:
+                out[g] = dict(seconds_2y=full, how="as its arms group (two years, seed 0)")
+        elif sh:
+            out[g] = dict(seconds_2y=round(sh["seconds"] * DAYS / sh["days"], 1),
+                          how=f"a {sh['days']}-day run scaled by days (a lower bound)")
+    return out
 
 
 def est_seconds(cfg, tm=None) -> float | None:
@@ -449,31 +503,40 @@ def run_ids(ids, workers=4, slice_k=None):
     return _run(todo, workers, f".slice-{slice_k}" if slice_k is not None else "")
 
 
+SLICE_CORE_H = 16.0                    # a slice's core-hours: 4 h on a 4-core runner, inside a 6-h job with set-up
+
+
 def slices(n: int, groups=None):
     """Split the runs left (optionally only some experiments or tiers: ``arms``, ``tier1`` ...) into ``n`` lists of
-    about equal estimated run time, written to ``out/twin6/slices/slice-<k>.txt``."""
+    about equal estimated run time (``n`` = 0: as many as keep each at or under ``SLICE_CORE_H`` core-hours), written
+    to ``out/twin6/slices/slice-<k>.txt``, the longest runs first in each."""
+    import math as _m
     tm = timings()
     todo = order(_left())
     if groups:
         want = set(groups)
         todo = [t for t in todo if t[0] in want or f"tier{TIERS.get(t[0], 9)}" in want]
     est = [(est_seconds(c, tm) or 600.0, name, c) for name, c in todo]
+    if n <= 0:
+        n = max(1, _m.ceil(sum(e[0] for e in est) / 3600.0 / SLICE_CORE_H))
     bins = [[0.0, []] for _ in range(n)]
     for sec, name, c in sorted(est, key=lambda x: -x[0]):
         b = min(bins, key=lambda b: b[0])
         b[0] += sec
-        b[1].append(run_id(c))
+        b[1].append((sec, run_id(c)))
     SLICES.mkdir(parents=True, exist_ok=True)
     for k, (sec, ids) in enumerate(bins, 1):
-        (SLICES / f"slice-{k}.txt").write_text("\n".join(ids) + "\n")
-        print(f"slice-{k}.txt: {len(ids)} runs, about {sec / 3600:.1f} core-hours "
-              f"({sec / 3600 / 4:.1f} h on 4 cores)")
+        (SLICES / f"slice-{k}.txt").write_text("\n".join(i for _, i in ids) + "\n")
+        longest = max((x for x, _ in ids), default=0.0)
+        print(f"slice-{k}.txt: {len(ids)} runs, about {sec / 3600:.1f} core-hours, "
+              f"{max(sec / 4, longest) / 3600:.1f} h on 4 cores (its longest run {longest / 3600:.1f} h)")
 
 
 def smoke(days=None, groups=None, workers=3, seed=0):
-    """Seed 0 of each group, run for ``days`` simulated days (None: the full two years), timed. Rows are not kept:
-    outputs go under /tmp. Writes ``checks/smoke.json``; a shortened run's two-year time is its seconds scaled by
-    days (a lower bound for the policies that fit GPs, whose cost grows with the data)."""
+    """Seed 0 of each group (or of the groups or experiments named), run for ``days`` simulated days (None: the two
+    full years), timed, the rows not kept (outputs under /tmp). Writes ``checks/smoke.json``: each group's
+    shortened run (``short``, the latest) and two-year run (``full``), with the CPU, the commit and how many ran at
+    once. ``timings`` turns them into each group's seconds for two years."""
     from twin import repro as R
     seen, todo = set(), []
     for name, cfgs in EXPERIMENTS.items():
@@ -484,30 +547,38 @@ def smoke(days=None, groups=None, workers=3, seed=0):
                 todo.append((name, c))
     if days is not None:
         os.environ["TWIN6_DAYS"] = str(int(days))
+    else:
+        os.environ.pop("TWIN6_DAYS", None)
+    os.environ.setdefault("TWIN6_OUT", "/tmp/twin6smoke")
     p = CHECKS / "smoke.json"
     rec = json.loads(p.read_text()) if p.exists() else dict(groups={})
-    rec.update(cpu=R.cpu_model(), pin=os.environ.get("TWIN_PIN"), workers=workers)
+    rec["what"] = ("seed 0 of each group of the grid, timed on the runner that built it (twin/bench6.py smoke); "
+                   "'short' is a shortened run (it shows the group runs and what it costs a day), 'full' a two-year "
+                   "run; twin/bench6.py timings() turns them into seconds for two years")
     t0 = time.time()
+    tm = timings()
+    todo.sort(key=lambda t: -(est_seconds(t[1], tm) or 0.0))
     with ProcessPoolExecutor(workers, max_tasks_per_child=1) as ex:
         futs = {ex.submit(_smoke_one, c): (name, c) for name, c in todo}
         for fut in as_completed(futs):
             name, c = futs[fut]
             r = fut.result()
             g = group_key(c)
+            e = rec["groups"].setdefault(g, dict(experiment=name))
             if "error" in r:
                 print(f"  {g}: ERROR {r['error'].splitlines()[-1]}", flush=True)
-                rec["groups"][g] = dict(error=r["error"][-600:])
+                e["error"] = r["error"][-1500:]
                 continue
+            e.pop("error", None)
             full = r["days_run"] >= DAYS
-            old = rec["groups"].get(g) or {}
-            if old.get("full") and not full:
-                continue                             # keep a full run's timing over a shortened one's
-            rec["groups"][g] = dict(experiment=name, seconds=r["seconds"], days=r["days_run"], full=full,
-                                    seconds_2y=round(r["seconds"] * DAYS / r["days_run"], 1), gp_fits=r["gp"]["fits"],
-                                    cpu=R.cpu_model(), concurrent=workers)
+            e["full" if full else "short"] = dict(seconds=r["seconds"], days=r["days_run"], gp_fits=r["gp"].get("fits"),
+                                                  cpu=R.cpu_model(), concurrent=workers, commit=r["code"]["commit"],
+                                                  twin_dirty=r["code"]["twin_dirty"], best_new=r["best_new"],
+                                                  targets=r["targets"])
             print(f"  {g}: {r['seconds']} s for {r['days_run']} days ({time.time() - t0:.0f} s in)", flush=True)
             CHECKS.mkdir(parents=True, exist_ok=True)
-            p.write_text(json.dumps(rec, indent=1, sort_keys=True) + "\n")
+            rec["groups"] = dict(sorted(rec["groups"].items()))
+            p.write_text(json.dumps(rec, indent=1) + "\n")
     return rec
 
 
@@ -515,21 +586,31 @@ def _smoke_one(cfg):
     try:
         out, tw = simulate(cfg)
         json.dumps(event_log(tw, cfg))                # the event log must serialize too
-        return json.loads(json.dumps(B2._jsonable(dict(seconds=out["seconds"], days_run=out["days_run"],
-                                                       gp=out["gp"]))))
+        T = B2.targets()
+        tg = {k: {tn: (lambda h: None if h is None else h[0])(B2.hit(c["curve_new"], T[tn][k], 2))
+                  for tn in ("T1", "T2")} for k, c in out["campaigns"].items()}
+        return json.loads(json.dumps(B2._jsonable(dict(seconds=out["seconds"], days_run=out["days_run"], gp=out["gp"],
+                                                       code=out["code"], targets=tg,
+                                                       best_new={k: c["best_new"]
+                                                                 for k, c in out["campaigns"].items()}))))
     except Exception:
         import traceback
         return dict(error=traceback.format_exc()[-3000:])
+
+
+RUNNER_CORES = 4                       # a GitHub-hosted runner: four runs at a time (bench6 ids --workers 4)
 
 
 def status(write=True):
     tm = timings()
     L = ["# Round 6: runs done and left", "",
          "Made by `python -m twin.bench6 status`. An arm is reported from 12 seeds; the grid has 16 for every arm. "
-         "Hours are core-hours for the runs left, from `checks/smoke.json` (a group timed in full is marked; the "
-         "others are scaled from a shortened run and are a lower bound for BOFN and pKGFN).", "",
-         "| Tier | Experiment | Arm | Seeds done | Seeds left | s per run | Core-hours left |", "|---|---|---|---|---|---|---|"]
-    tot_left, tot_runs, hours, unknown = 0, 0, {}, 0
+         "Seconds are a two-year run's on the runner that built the grid (an AMD EPYC 9V74, four runs at a time); "
+         "how each was found is in the last column (twin/bench6.py `timings`, from `checks/smoke.json`). "
+         "Core-hours are for the runs left; a runner runs four at a time.", "",
+         "| Tier | Experiment | Arm | Seeds done | Seeds left | s per run | Core-hours left | How |",
+         "|---|---|---|---|---|---|---|---|"]
+    tot_left, tot_runs, hours, unknown, exp_h = 0, 0, {}, 0, {}
     for name in sorted(EXPERIMENTS, key=lambda n: (TIERS.get(n, 9), n)):
         cfgs = EXPERIMENTS[name]
         done = _done(name)
@@ -541,19 +622,24 @@ def status(write=True):
             tot_left += len(l)
             tot_runs += len(d) + len(l)
             t = tm.get(g)
-            sec = None if t is None or "seconds_2y" not in t else t["seconds_2y"]
+            sec = None if t is None else t["seconds_2y"]
             h = None if sec is None else sec * len(l) / 3600.0
             if h is None:
                 unknown += len(l)
             else:
                 hours[TIERS.get(name, 9)] = hours.get(TIERS.get(name, 9), 0.0) + h
+                exp_h[name] = exp_h.get(name, 0.0) + h
             L.append(f"| {TIERS.get(name, 9)} | {name} | `{g}` | {len(d)} | {len(l)} | "
-                     + ("?" if sec is None else f"{sec:,.0f}" + ("" if t.get("full") else " (scaled)")) + " | "
-                     + ("?" if h is None else f"{h:.1f}") + " |")
+                     + ("?" if sec is None else f"{sec:,.0f}") + " | " + ("?" if h is None else f"{h:.1f}") + " | "
+                     + ("" if t is None else t["how"]) + " |")
     L += ["", f"Runs: {tot_runs} in the grid, {tot_left} left."]
     if hours:
+        allh = sum(hours.values())
         L.append("Core-hours left by tier: " + "; ".join(f"tier {k}: {v:,.0f}" for k, v in sorted(hours.items()))
-                 + f"; all: {sum(hours.values()):,.0f}" + (f" ({unknown} runs not timed)" if unknown else "") + ".")
+                 + f"; all: {allh:,.0f}, about {allh / RUNNER_CORES:,.0f} runner-hours at {RUNNER_CORES} runs a "
+                   f"runner" + (f" ({unknown} runs not timed)" if unknown else "") + ".")
+        L.append("By experiment: " + "; ".join(f"{k}: {v:,.0f}" for k, v in sorted(exp_h.items(), key=lambda kv: -kv[1]))
+                 + " core-hours.")
     txt = "\n".join(L) + "\n"
     if write:
         (HERE.parent / "out" / "twin6").mkdir(parents=True, exist_ok=True)
@@ -609,6 +695,7 @@ def main(argv):
     if argv[0] == "smoke":
         days = None if len(argv) < 2 or argv[1] in ("full", "730") else int(argv[1])
         smoke(days, argv[2:], workers)
+        status()
         return 0
     if argv[0] == "one":
         lab, pl, pol, stock = argv[1:5]

@@ -185,8 +185,10 @@ def test_grid():
         assert pols == {"fast", "bofn3", "pkgfn3"}, name
     assert len(B6.EXPERIMENTS["arms"]) == 4 * 3 * 16
     assert set(B6.TIERS) == set(B6.EXPERIMENTS)
-    c = B6._cfg("vertical", "parallel", "fast", "reorder", 3, decisions="slow", late=240, hpc=16)
-    assert B6.run_id(c) == "r6_vertical_parallel_fast_reorder_s3_dec-slow_hpc16_late240"
+    c = B6._cfg("vertical", "parallel", "fast", "reorder", 3, decisions="slow", late=240, hpc=64)
+    assert B6.run_id(c) == "r6_vertical_parallel_fast_reorder_s3_dec-slow_hpc64_late240"
+    assert B6.run_id(B6._cfg("vertical", "parallel", "fast", "reorder", 3)) == "r6_vertical_parallel_fast_reorder_s3"
+    assert B6._cfg("vertical", "parallel", "fast", "reorder", 3)["opts"]["hpc"]["scale"] == B6.HPC_SCALE
     order = [B6.run_id(c) for _, c in B6.order([(n, c) for n, cs in B6.EXPERIMENTS.items() for c in cs])]
     assert order[0].startswith("r6_") and "_s0" in order[0] and len(set(order)) == len(order)
 
@@ -278,3 +280,19 @@ def test_faster_atomizer_search_is_the_same_search():
 def N3_p_powder(pol, v, dids):
     from twin.opt import net3 as N3
     return N3.Net3._p_powder(pol, v, dids)
+
+
+def test_the_portable_pin():
+    from twin import repro as R
+    pin = R.PINS["portable"]
+    for k, v in R.PINS["avx2"].items():
+        assert pin[k] == v                                       # round 5's pin, and more
+    assert pin["MKL_CBWR"] == "COMPATIBLE" and pin["OPENBLAS_L2_SIZE"] == "256"
+    assert set(pin["NPY_DISABLE_CPU_FEATURES"].split(",")) >= {"X86_V4", "AVX512_ICL", "AVX512_SPR"}
+    fp = dict(pin="portable", hash_pinned=True, pin_late=False, numpy_simd=dict(enabled=["X86_V3"]),
+              mkl=dict(cnr="COMPATIBLE", threads=1), blas=[], torch_cpu="AVX2", torch_threads=1,
+              pin_env=dict(pin))
+    assert R.problems6(fp) == []
+    bad = dict(fp, pin_env={k: v for k, v in pin.items() if k != "OPENBLAS_L2_SIZE"})
+    assert any("OPENBLAS_L2_SIZE" in x for x in R.problems6(bad))
+    assert B6.PIN == "portable" and B6.timings({}) == {}
