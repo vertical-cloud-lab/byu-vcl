@@ -18,8 +18,8 @@
   {
    "id": "comp1",
    "mark": "composition.al",
-   "offset": 0.6,
-   "text": "The aluminium alloy is design 299: aluminium with eight additions, manganese and chromium the largest.",
+   "offset": 0.3,
+   "text": "The aluminium alloy is design number 299: aluminium with eight additions, manganese and chromium the largest.",
    "src": "exp_composition: the periodic table and the fractions (the committed event log of seed 0; twin/spaces.py)",
    "nums": [
     [
@@ -37,7 +37,7 @@
   {
    "id": "comp2",
    "mark": "composition.al.space",
-   "offset": 0.4,
+   "offset": 0.9,
    "text": "On this map of the search space, it is one of 435 designs the run simulated.",
    "src": "exp_composition: the projection of the run's designs (counts from the event log)",
    "nums": [
@@ -52,7 +52,7 @@
    "id": "comp3",
    "mark": "composition.cu",
    "offset": 0.6,
-   "text": "The copper alloy is design 74: an aluminium bronze, with a little nickel and titanium.",
+   "text": "The copper alloy is design number 74: an aluminium bronze, with a little nickel and titanium.",
    "src": "exp_composition: copper's periodic table and fractions (the committed event log of seed 5)",
    "nums": [
     [
@@ -94,7 +94,7 @@
    "id": "am1",
    "mark": "am.track",
    "offset": 0.5,
-   "text": "The twin's stand-in for the AM module is a moving point source of heat. It gives the melt pool's width and depth, and how fast the metal cools.",
+   "text": "The twin stands in for the AM module with a moving point source of heat. It gives the melt pool's width and depth, and how fast the metal cools.",
    "src": "exp_am: the laser track, the section, the point's thermal history (twin/physics.py rosenthal; truth_al.sim_am)"
   },
   {
@@ -187,22 +187,22 @@
   {
    "id": "sem2",
    "mark": "sem.bse",
-   "offset": 1.6,
+   "offset": 2.1,
    "text": "Secondary electrons show the powder's surface. Backscattered electrons show the section's pores and cracks. X-rays give the elements, and diffraction gives each grain's orientation.",
    "src": "exp_sem: the four panels building from one raster position (twin/instruments/sem.py, eds.py, ebsd.py, full fidelity)"
   },
   {
    "id": "sem3",
    "mark": "sem.read",
-   "offset": 1.3,
-   "text": "Every image here is the twin's simulation of this alloy.",
+   "offset": 2.1,
+   "text": "Every image here is simulated by the twin, for this alloy.",
    "src": "exp_sem: the tag on the data card and the third caption"
   },
   {
    "id": "sem4",
    "mark": "sem.net",
    "offset": 0.6,
-   "text": "The network uses three of them: the powder's satellites, the section's pores and cracks, and the grain size. EDS only checks the composition.",
+   "text": "The network uses three of them: satellites on the powder, the section's pores and cracks, and the grain size. EDS only checks the composition.",
    "src": "exp_sem: the four badges (policies2.powder_feat, campaign._soundness, policies2.section_out; EDS: measured, not an input)"
   },
   {
@@ -222,7 +222,7 @@
   {
    "id": "mec3",
    "mark": "mech.marks",
-   "offset": 0.4,
+   "offset": -0.5,
    "text": "Yield strength, 349 megapascals, and elongation, 10.1 percent, are the two numbers the network keeps.",
    "src": "exp_mech: the read-outs (mean of three bars) and the two highlighted",
    "nums": [

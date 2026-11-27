@@ -474,6 +474,8 @@ class Footage:
 
     def frame(self, t: float) -> np.ndarray:
         k = int((max(0.0, t) % self.span) * self.fps + 1e-6)
+        if self.last is not None and self.pos is not None and k == self.pos - 1:
+            return self.last                            # the same frame again (a held last frame): no new seek
         if self.p is None or self.pos is None or k < self.pos or k > self.pos + 90:
             self._start(k)
         n = self.w * self.h * 3

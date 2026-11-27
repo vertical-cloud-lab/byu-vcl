@@ -8,6 +8,8 @@ the data it makes, for one alloy of each campaign (twin/video/experiments.py; no
     python -m twin.video.experiments check            # the lines heard back by faster-whisper -> narration/check.json
     python -m twin.video.experiments build            # the standalone preview: experiments_preview.mp4, record.json,
                                                       # sheet.png, youtube_meta.json (TWIN_VIDEO_WORKERS, default 4)
+    python -m twin.video.experiments build KEY ...    # only these parts encoded again, then the join and the sound
+    python -m twin.video.experiments finish           # nothing encoded again: the join, the narration, the records
     python -m twin.video.experiments segment KEY      # one segment alone -> experiments/segment_KEY.mp4 (no sound)
 
 Run with TWIN_VIDEO_ROUND=3b (the alloys followed come from round 3b's replay; twin/video/exp_data.py).
@@ -549,5 +551,7 @@ if __name__ == "__main__":
         print(OUT / f"segment_{a[1]}.mp4")
     elif cmd == "build":
         build(a[1:] or None)
+    elif cmd == "finish":                                # no part encoded again: the join, the narration, the records
+        build(["-"])
     else:
         raise SystemExit(__doc__)

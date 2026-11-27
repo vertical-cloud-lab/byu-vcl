@@ -129,6 +129,12 @@
    "cool_K_s": 2177437.0,
    "cool_MK_s": 2.2,
    "probe_um": 60.0,
+   "probe_layers": 2.0,
+   "probe_cool_MK_s": 2.0,
+   "molten_ms": 0.22,
+   "iso_depth_um": 95.0,
+   "Ev_J_mm3": 76.0,
+   "boil_C": 2458.0,
    "probe_peak_C": 1200.0,
    "liquidus_C": 662.0,
    "node": {
@@ -160,7 +166,27 @@
    "sphericity": 0.98,
    "satellite_pct": 2.9,
    "particles": 243,
-   "oxygen_ppm": 727.0
+   "oxygen_ppm": 727.0,
+   "T_melt_C": 881.0,
+   "amplitude": 0.8,
+   "charge_per_run_g": 300.0
+  },
+  "eds": {
+   "comp": {
+    "Mn": 3.28,
+    "Cr": 0.8,
+    "Ti": 0.28
+   },
+   "live_s": 60.0,
+   "below_detection": [
+    "Er",
+    "Ni",
+    "Sn",
+    "Zr"
+   ],
+   "invisible": [
+    "Li"
+   ]
   },
   "cubes": [
    {
@@ -316,13 +342,16 @@
    "icorr_uA_cm2": 2.0,
    "early_um_yr": 23.0,
    "Eb_mV": 201.0,
-   "minutes": 60
+   "minutes": 60,
+   "area_cm2": 0.071
   },
   "immersion": {
    "days": 30,
    "rate30_um_yr": 16.6,
    "mass_loss_mg": 6.0,
    "attack_um": 2.2,
+   "cu_ppb": 16274.0,
+   "ni_ppb": 303.0,
    "interim": {
     "1": {
      "mass_mg": 0.26,

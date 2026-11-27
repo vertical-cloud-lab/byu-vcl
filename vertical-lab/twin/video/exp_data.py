@@ -457,6 +457,7 @@ def facts() -> dict:
     b = cubes[al.best]
     ten, ps, sp, eb, sx = (al.measure(n) for n in ("tensile", "psd", "sem_powder", "ebsd", "sem_section"))
     yl = al.measure("yield")
+    ed = al.measure("eds")
     op = scheil_open()
     out["al"] = dict(
         open=dict(liquidus_C=_r(s["open"]["liquidus_C"], 1), kou_K=_r(s["open"]["kou_K"], 1),
@@ -474,6 +475,10 @@ def facts() -> dict:
                 W_um=_r(mp["twin"]["W_um"], 0), D_um=_r(mp["twin"]["D_um"], 0), kh=_r(mp["twin"]["kh"], 2),
                 lof=_r(mp["twin"]["lof"], 2), cool_K_s=_r(mp["twin"]["cool_K_s"], 0),
                 cool_MK_s=_r(mp["twin"]["cool_K_s"] / 1e6, 1), probe_um=_r(mp["probe_um"], 0),
+                probe_layers=_r(mp["probe_um"] / al.proc["t_um"], 0), probe_cool_MK_s=_r(mp["hist_cool_K_s"] / 1e6, 1),
+                molten_ms=_r(float(np.sum(mp["hist_C"] >= mp["liquidus_C"]) * (mp["t_ms"][1] - mp["t_ms"][0])), 2),
+                iso_depth_um=_r(mp["twin"]["W_um"] / 2, 0), Ev_J_mm3=_r(mp["twin"]["Ev_J_mm3"], 0),
+                boil_C=_r(mp["boil_C"], 0),
                 probe_peak_C=_r(mp["hist_peak_C"], 0), liquidus_C=_r(mp["liquidus_C"], 0),
                 node=dict(W_um=_r(s["am"]["width_um"], 0), D_um=_r(s["am"]["depth_um"], 0),
                           lof=_r(s["am"]["lof_index"], 2), kh=_r(s["am"]["keyhole_index"], 2),
@@ -485,7 +490,12 @@ def facts() -> dict:
                     charge_g=_r(yl["charge_g"], 0), collected_g=_r(yl["collected_g"], 0), cut_g=_r(yl["cut_g"], 0),
                     yield_pct=_r(100 * yl["yield_frac"], 0), cut_yield_pct=_r(100 * yl["cut_yield_frac"], 0),
                     sphericity=_r(sp["sphericity"], 2), satellite_pct=_r(100 * sp["satellite_frac"], 1),
-                    particles=int(sp["n_particles"]), oxygen_ppm=_r(al.lot["oxygen_ppm"], 0)),
+                    particles=int(sp["n_particles"]), oxygen_ppm=_r(al.lot["oxygen_ppm"], 0),
+                    T_melt_C=_r(float(np.mean([r["T_melt_C"] for r in al.lot["runs"]])), 0),
+                    amplitude=al.proc["amplitude"], charge_per_run_g=_r(yl["raw"]["runs"]["charge_g"][0], 0)),
+        eds=dict(comp={e: _r(v, 2) for e, v in ed["comp"].items()}, live_s=_r(ed["raw"]["live_s"], 0),
+                 below_detection=sorted(e for e in al.design if e not in ed["comp"] and e in ed["lod"]),
+                 invisible=sorted(e for e in al.design if e not in ed["comp"] and e not in ed["lod"])),
         cubes=[dict(P_W=c["P_W"], v_mm_s=c["v_mm_s"], density_pct=_r(100 * c["measured"]["rel_density"], 2),
                     true_pct=_r(100 * c["true_density"], 2), crack=_r(c["measured"]["crack_density"], 3),
                     kh=_r(c["kh"], 2), lof=_r(c["lof"], 2)) for c in cubes],
@@ -516,10 +526,11 @@ def facts() -> dict:
                   ys_MPa=_r(tc["ys_MPa"], 0), el_pct=_r(tc["el_pct"], 1)),
         screen=dict(ocp_mV=_r(scr["ocp_mV"], 0), rp_kohm_cm2=_r(scr["rp_ohm_cm2"] / 1000, 1),
                     icorr_uA_cm2=_r(scr["icorr_uA_cm2"], 1), early_um_yr=_r(scr["early_rate_um_yr"], 0),
-                    Eb_mV=_r(scr["Eb_mV"], 0), minutes=60),
+                    Eb_mV=_r(scr["Eb_mV"], 0), minutes=60, area_cm2=_r(scr["raw"]["area_cm2"], 3)),
         immersion=dict(days=30, rate30_um_yr=_r(imm["final"]["rate30_um_yr"], 1),
                        mass_loss_mg=_r(imm["final"]["raw"]["mass_loss_mg"], 1),
-                       attack_um=_r(imm["final"]["attack_um"], 1),
+                       attack_um=_r(imm["final"]["attack_um"], 1), cu_ppb=_r(imm["final"].get("cu_ppb"), 0),
+                       ni_ppb=_r(imm["final"].get("ni_ppb"), 0),
                        interim={str(d): dict(mass_mg=_r(m["mass_change_mg"], 2), rate_um_yr=_r(m["rate_um_yr"], 1))
                                 for d, m in imm["interim"].items()},
                        read_days=dict(zip(("first", "second", "third", "fourth"), sorted(imm["interim"]))),
