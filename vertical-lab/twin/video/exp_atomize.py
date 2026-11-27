@@ -45,29 +45,9 @@ LOSS = (112, 118, 130)                             # what did not become powder:
 
 
 def _alpha_text(cv: Canvas):
-    """exp_draw.Canvas.text passes its alpha to PIL in the fill, and PIL draws text opaque on an RGB image whatever
-    the fill's alpha is (shapes do blend), so text popped in while its panel was still fading. Until Canvas.text
-    does this itself, give the frame's canvas a text() that fades: the glyphs drawn on a mask and pasted through it.
-    Everything that writes (para, value, tag, Axes.draw, the segment's caption) goes through cv.text."""
-    from PIL import ImageDraw
-
-    def text(x, y, s, size=24, bold=False, fill=INK, anchor="la", cond=False, mono=False, a=1.0, stroke=0):
-        if a >= 0.996 or stroke:
-            return Canvas.text(cv, x, y, s, size, bold, fill, anchor, cond, mono, a, stroke)
-        if a <= 0.004 or not s:
-            return None
-        f = St.font(size, bold=bold, cond=cond, mono=mono)
-        X, Y = x * G.S, y * G.S
-        l, t_, r, b = cv.d.textbbox((X, Y), str(s), font=f, anchor=anchor)
-        x0, y0, x1, y1 = int(math.floor(l)) - 1, int(math.floor(t_)) - 1, int(math.ceil(r)) + 1, int(math.ceil(b)) + 1
-        if x1 <= x0 or y1 <= y0:
-            return None
-        m = Image.new("L", (x1 - x0, y1 - y0), 0)
-        ImageDraw.Draw(m).text((X - x0, Y - y0), str(s), font=f, fill=int(round(255 * a)), anchor=anchor)
-        cv.im.paste(Image.new("RGB", m.size, tuple(int(v) for v in fill[:3])), (x0, y0), m)
-        return None
-
-    cv.text = text
+    """Kept for its caller: exp_draw.Canvas.text now fades a text itself (through a mask of its glyphs), which this
+    module first had to do on its own."""
+    return None
 
 
 def _manifest(name: str) -> dict:

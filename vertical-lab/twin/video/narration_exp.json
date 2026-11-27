@@ -99,8 +99,8 @@
   },
   {
    "id": "am2",
-   "mark": "am.not_tc",
-   "offset": 0.3,
+   "mark": "am.takes",
+   "offset": 3.5,
    "text": "This is not Thermo-Calc output, and no run bought this node. But the same model decides the porosity of every simulated build.",
    "src": "exp_am: the statement on screen; facts.json sim_kinds; twin/truth_al.py build()"
   },
@@ -146,8 +146,8 @@
    "id": "prt1",
    "mark": "print.build",
    "offset": 0.5,
-   "text": "One build is nine cubes at nine laser settings. Too little energy leaves lack of fusion. Too much makes keyhole pores.",
-   "src": "exp_print: the plate and the power-speed map (twin/truth_al.py build on a 3 x 3 grid)",
+   "text": "One build is nine cubes, each at its own laser power and speed.",
+   "src": "exp_print: the plate with nine cubes growing, each labelled with its setting (twin/truth_al.py build on a 3 x 3 grid)",
    "nums": [
     [
      "nine",
@@ -158,10 +158,24 @@
   },
   {
    "id": "prt2",
+   "mark": "print.readings",
+   "offset": 2.2,
+   "text": "Each cube's density and crack reading goes on the map. Too little energy leaves lack of fusion. Too much makes keyhole pores.",
+   "src": "exp_print: the power-speed map filling in; 'lack of fusion' and 'keyholing' where the twin's indices peak"
+  },
+  {
+   "id": "prt3",
    "mark": "print.net",
    "offset": 0.3,
-   "text": "Each cube's density and crack reading is one data point for the network's print node.",
-   "src": "exp_print: what the network takes (policies2.datasets, the print node)"
+   "text": "One build gives the network's print node nine data points.",
+   "src": "exp_print: what the network takes (policies2.datasets, the print node: one row per cube)",
+   "nums": [
+    [
+     "nine",
+     "al.n_cubes",
+     "d"
+    ]
+   ]
   },
   {
    "id": "sem1",
