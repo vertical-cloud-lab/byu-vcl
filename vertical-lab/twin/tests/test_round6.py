@@ -331,3 +331,24 @@ def test_stations_without_a_used_market():
         assert set(s["used"]) <= {k for k, v in s["used_rule"].items() if v["bought_used"]}
         assert all(not v["bought_used"] for k, v in s["used_rule"].items() if k in none)
     assert not R6.build_schedule6(0, "parallel", opts=dict(used=False), market=m)["used"]
+
+
+def test_timings_use_measured_variant_ratios():
+    """A lean-stock group and the automated lab's wait plan are priced from the stocked parallel arm times the ratio a
+    two-year run measured (its own policy's, else its class's), the stream's cost taken out first."""
+    g = {"r6_vertical_parallel_bofn3_reorder": {"full": dict(seconds=1, cpu_seconds=7000, scale=64)},
+         "r6_vertical_parallel_pkgfn3_reorder": {"full": dict(seconds=1, cpu_seconds=8000, scale=64)},
+         "r6_vertical_parallel_bofn3_lean": {"full": dict(seconds=1, cpu_seconds=9000, scale=64)},
+         "r6_vertical_wait_bofn3_reorder": {"full": dict(seconds=1, cpu_seconds=4000, scale=64)}}
+    k = {"gp": {"vertical": 0.05, "conventional": 0.05}, "fast": {"vertical": 0.03, "conventional": 0.03}}
+    tm = B6.timings(g, k)
+    s = 0.05 * 64 * B6.DAYS
+    lean, wait = (9000 - s) / (7000 - s), (4000 - s) / (7000 - s)
+    assert tm["r6_vertical_parallel_bofn3_lean"]["how"].startswith("measured")
+    assert math.isclose(tm["r6_vertical_parallel_pkgfn3_lean"]["seconds_2y"], (8000 - s) * lean + s, abs_tol=0.1)
+    assert math.isclose(tm["r6_vertical_parallel_pkgfn3_lean_dec-slow"]["seconds_2y"], (8000 - s) * lean + s,
+                        abs_tol=0.1)
+    assert math.isclose(tm["r6_vertical_wait_pkgfn3_reorder"]["seconds_2y"], (8000 - s) * wait + s, abs_tol=0.1)
+    assert "round 5's" in tm["r6_vertical_external_pkgfn3_reorder"]["how"]          # not measured: round 5's ratio
+    assert math.isclose(tm["r6_vertical_parallel_pkgfn3_reorder_hpc16"]["seconds_2y"], 8000 - 0.05 * 48 * B6.DAYS,
+                        abs_tol=0.1)

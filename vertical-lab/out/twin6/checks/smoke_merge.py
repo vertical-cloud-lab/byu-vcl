@@ -109,8 +109,11 @@ def main():
         if r["days"] < B6.DAYS or r["seed"] != 0:
             continue
         lab, plan = ARM[r["lab"]]
-        g = B6.group_key(B6._cfg(lab, plan, r["policy"], "reorder", 0, hpc=dict(scale=r["scale"])))
-        e = rec["groups"].setdefault(g, dict(experiment="arms" if r["scale"] == B6.HPC_SCALE else "hpc"))
+        plan, stock = r.get("plan", plan), r.get("stock", "reorder")
+        g = B6.group_key(B6._cfg(r["lab"], plan, r["policy"], stock, 0, hpc=dict(scale=r["scale"])))
+        name = next((n for n, cs in B6.EXPERIMENTS.items() for c in cs if c["seed"] == 0 and B6.group_key(c) == g),
+                    None)
+        e = rec["groups"].setdefault(g, dict(experiment=name))
         e["full"] = dict(seconds=r["seconds"], cpu_seconds=r["cpu_seconds"], loadavg_end=r["timing"]["loadavg_end"],
                          days=r["days"], scale=r["scale"], gp_fits=r.get("gp_fits"), cpu=r.get("cpu"),
                          commit=(r.get("code") or {}).get("commit"), twin_dirty=(r.get("code") or {}).get("twin_dirty"),

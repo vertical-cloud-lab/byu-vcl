@@ -9,7 +9,8 @@ Sets: ``gp_auto`` (the automated lab's BOFN and pKGFN, stocked, two years at 64x
 lab's three policies), ``pilot`` (BOFN's scale pilot: the automated lab stocked, 300 days, seeds 0-1 at 1x, 16x and
 64x and seed 0 at 4x, as the first attempt's pilot ran it), ``pilot1x`` (the conventional lab's BOFN and both labs'
 heuristic and funnel at 1x for 300 days, against the same seed's two-year run at 64x read at day 300: the stream's
-cost for those).
+cost for those), ``variants`` (BOFN two years at 64x in the automated lab's lean-stock arm and its wait plan: the
+grid prices those groups from the stocked parallel arm, and these measure how far off that is).
 
 Each run is seed ``s`` of a grid configuration (``bench6._cfg``), run by ``bench6.simulate`` in a fresh process. Its
 line records the wall seconds, **the process's CPU seconds** (what it costs a slice that runs one run per vCPU,
@@ -53,11 +54,16 @@ SETS = {
     "pilot1x": [("pilot conventional bofn3 s0 1x", "conventional", "bofn3", 0, 1, 300),
                 ("pilot vertical fast s0 1x", "vertical", "fast", 0, 1, 300),
                 ("pilot conventional fast s0 1x", "conventional", "fast", 0, 1, 300)],
+    # the grid prices a lean-stock group, and the automated lab's other plans, from the stocked parallel arm's run;
+    # BOFN two years at 64x in each, to measure those ratios rather than assume them (plan, stock after the days)
+    "variants": [("vertical bofn3 64x lean", "vertical", "bofn3", 0, 64, 730, "parallel", "lean"),
+                 ("vertical bofn3 64x wait", "vertical", "bofn3", 0, 64, 730, "wait", "reorder")],
 }
 
 
 def one(job):
-    label, lab, policy, seed, scale, days = job
+    label, lab, policy, seed, scale, days = job[:6]
+    plan, stock = (job[6], job[7]) if len(job) > 6 else ARM[lab][1:]
     from twin import bench2 as B2
     from twin import bench6 as B6
     from twin import round6 as R6
@@ -76,10 +82,11 @@ def one(job):
         return tick(self, g)
 
     R6.Twin6._stream_tick = _tick
-    cfg = B6._cfg(*ARM[lab][:2], policy, ARM[lab][2], seed, hpc=dict(scale=scale))
+    cfg = B6._cfg(lab, plan, policy, stock, seed, hpc=dict(scale=scale))
     out, tw = B6.simulate(cfg)
     T = B2.targets()
-    rec = dict(label=label, lab=lab, policy=policy, seed=seed, scale=scale, days=days, run_id=B6.run_id(cfg),
+    rec = dict(label=label, lab=lab, plan=plan, stock=stock, policy=policy, seed=seed, scale=scale, days=days,
+               run_id=B6.run_id(cfg),
                group=B6.group_key(dict(cfg, days=B6.DAYS)), seconds=out["seconds"],
                cpu_seconds=out["timing"]["cpu_seconds"], timing=out["timing"], gp_fits=out["gp"].get("fits"),
                gp=out["gp"], code=out["code"], cpu=out["env"]["cpu"], pin=out["env"]["pin"],

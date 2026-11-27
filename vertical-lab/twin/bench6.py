@@ -431,9 +431,10 @@ def timings(groups=None, k=None) -> dict:
     * ``measured``: a two-year run of the group's own seed 0 on this runner;
     * otherwise its arms group's two-year run (``base_cfg``: the same lab and policy, stocked, the main plan), with
       the stream's cost moved from that run's scale to the group's (``k`` x scale difference x 730 days); for one of
-      the automated lab's other plans, the arms group's work times round 5's ratio of that plan's seconds to the
-      parallel plan's (``R5_PLAN_RATIO``); anything else (lean stock, decision windows, the atomizer's cycle, late
-      crucibles, all-new equipment) as its arms group, whose work it shares;
+      the automated lab's other plans, the arms group's work times that plan's measured ratio to the parallel plan
+      (``variant_ratios``: its own policy's, else its class's), else round 5's ratio (``R5_PLAN_RATIO``); for lean
+      stock, times lean's measured ratio to the stocked arm where there is one; anything else (decision windows, the
+      atomizer's cycle, late crucibles, all-new equipment) as its arms group, whose work it shares;
     * with no two-year run to go by, the shortened run scaled by days (a lower bound for BOFN and pKGFN).
     """
     if groups is None:
@@ -452,6 +453,7 @@ def timings(groups=None, k=None) -> dict:
         f = e.get("full")
         if f:
             full_at[g] = (_secs(f), f.get("scale", HPC_SCALE))
+    ratios = variant_ratios(groups, k, cfgs)
     out = {}
     for g, (name, c) in cfgs.items():
         e = groups.get(g) or {}
@@ -472,9 +474,16 @@ def timings(groups=None, k=None) -> dict:
             work = secs - kk * s_f * DAYS
             how = f"its arms group's two years at {s_f:g}x"
             if c["plan"] == "wait" or (c["lab"] == "vertical" and c["plan"] == "external"):
-                r = R5_PLAN_RATIO[_pclass(c["policy"])][c["plan"]]
+                r, src = _ratio(ratios, c, ("plan", c["plan"]))
+                if r is None:
+                    r, src = R5_PLAN_RATIO[_pclass(c["policy"])][c["plan"]], "round 5's"
                 work *= r
-                how += f", its work x round 5's {c['plan']} ratio ({r:.2f})"
+                how += f", its work x {src} {c['plan']} ratio ({r:.2f})"
+            if c["stock"] != "reorder":
+                r, src = _ratio(ratios, c, ("stock", c["stock"]))
+                if r is not None:
+                    work *= r
+                    how += f", its work x {src} {c['stock']}-stock ratio ({r:.2f})"
             if sc != s_f:
                 how += f", the stream's cost moved to {sc:g}x ({kk:.4f} s a day per unit of scale)"
             out[g] = dict(seconds_2y=round(max(work, 0.0) + kk * sc * DAYS, 1), how=how)
@@ -484,6 +493,55 @@ def timings(groups=None, k=None) -> dict:
             out[g] = dict(seconds_2y=round(_secs(sh) * DAYS / sh["days"], 1),
                           how=f"a {sh['days']}-day run scaled by days (a lower bound)")
     return out
+
+
+def variant_ratios(groups, k, cfgs) -> dict:
+    """Measured ratios of a run's work (its CPU seconds less the stream's) between a variant and the stocked arm it
+    is otherwise priced from: a lean-stock arm against the stocked one (``("stock", "lean")``) and the automated lab's
+    other plans against its parallel plan (``("plan", plan)``), from two-year runs of seed 0 at the same scale, by
+    ``(policy, lab, variant)`` and, the mean over the policies measured, ``(class, lab, variant)``."""
+    rec = {}
+    for g, e in groups.items():
+        f = e.get("full")
+        if not f or g not in cfgs:
+            continue
+        c = cfgs[g][1]
+        o = c["opts"]
+        if o.get("decisions", "nominal") != "nominal" or o.get("atom", "derived") != "derived" \
+                or not o.get("used", True) or (o.get("crucibles") or {}).get("late_d"):
+            continue
+        sc = (o.get("hpc") or {}).get("scale", HPC_SCALE)
+        main = "external" if c["lab"] == "conventional" else "parallel"
+        if (c["plan"] == main) == (c["stock"] == "reorder"):
+            continue                                      # the stocked arm itself, or two changes at once
+        ref = group_key(_cfg(c["lab"], main, c["policy"], "reorder", 0, hpc=dict(scale=sc)))
+        fr = (groups.get(ref) or {}).get("full")
+        kk = (k.get(_pclass(c["policy"])) or {}).get(c["lab"])
+        if not fr or fr.get("scale", HPC_SCALE) != sc or kk is None:
+            continue
+        w, w0 = _secs(f) - kk * sc * DAYS, _secs(fr) - kk * sc * DAYS
+        if w0 <= 0:
+            continue
+        var = ("stock", c["stock"]) if c["plan"] == main else ("plan", c["plan"])
+        rec[(c["policy"], c["lab"], var)] = w / w0
+    out = dict(rec)
+    by_cls = {}
+    for (pol, lab, var), r in rec.items():
+        by_cls.setdefault((_pclass(pol), lab, var), []).append(r)
+    for key, v in by_cls.items():
+        out[key] = sum(v) / len(v)
+    return out
+
+
+def _ratio(ratios, c, var):
+    """A measured variant ratio for config ``c``: its own policy's, else its policy class's (None: not measured)."""
+    r = ratios.get((c["policy"], c["lab"], var))
+    if r is not None:
+        return r, "the measured"
+    r = ratios.get((_pclass(c["policy"]), c["lab"], var))
+    if r is not None:
+        return r, f"{_pclass(c['policy'])}'s measured"
+    return None, None
 
 
 def est_seconds(cfg, tm=None) -> float | None:
