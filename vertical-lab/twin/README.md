@@ -195,3 +195,32 @@ python -m twin.figures4
 ```
 
 Round 3's code is unchanged: round 4 subclasses `Facility`, `Campaign` and `Twin`.
+
+## Round 5 (2026-11-27): two years from the day the money arrives, the automated lab against a conventional lab
+
+All money at t = 0; the facility ready between day 60 and day 100; used equipment by a rule; a reorder-point stock
+heuristic (and a look back at what should have been bought); copper's route with the steps the real process needs;
+decision windows for people; Sterling's four notes while it ran (8 atomizations a week in the conventional lab; the
+automated atomizer 24/7 at a cycle derived from the lab's record; idle stretches with causes; a continuous HPC stream
+of simulated candidates). The write-up and results are in [`../notes/twin_round5.md`](../notes/twin_round5.md).
+
+| Piece | Code |
+|---|---|
+| The facility window, used equipment (stand-ins and the rule) | `round5.py` (`ROOM_DAYS`, `USED_OK`, `USED`, `used_rule`, `build_schedule5`) |
+| The atomizer: 8 a week by people, 24/7 at the derived cycle once the cell is integrated | `round5.py` (`ATOM_MANUAL`, `ATOM_CYCLE`, `ResourceAtom`) |
+| Decision windows (review, meeting, sign-off), per lab and per kind of decision | `round5.py` (`DECISIONS`, `Decide`, `Twin5.run_async`) |
+| Copper's and aluminium's added steps on the shared stations | `round5.py` (`CU_STEPS`, `AL_STEPS`, `Campaign5`) |
+| Money at t = 0, money kept for the work in progress, the stock heuristic and its money rules | `round5.py` (`Campaign5.plan`, `wip_reserve`, `REORDER`, `_reorder`) |
+| The HPC stream (note 4) | `round5.py` (`HPC`, `Twin5._stream_tick`) |
+| Reports: shared stations by campaign, idle stretches with causes, counters, stock | `round5.py` (`shared_use`, `idle_report`, `counters`, `Campaign5.stock_report`) |
+| The runs (every row under `TWIN_PIN=avx2`, with its commit, CPU, kernels and notes), comparisons, figures | `bench5.py`, `like5.py`, `figures5.py` |
+
+```bash
+cd vertical-lab
+python -m pytest -q twin/tests/test_round5.py
+TWIN_WORKERS=4 python -m twin.bench5 run arms plans dec_none dec_slow atom noused hpc_more net net_more plans_net
+python -m twin.bench5 pack && python -m twin.like5 && python -m twin.figures5
+```
+
+Round 4's code is unchanged but for a hook (`Facility4.schedule`): round 5 subclasses `Facility4`, `Campaign4` and
+`Twin4`.

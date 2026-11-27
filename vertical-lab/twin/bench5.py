@@ -2,6 +2,8 @@
 
     python3 -m twin.bench5 run [experiment ...]    # -> out/twin5/runs/<experiment>.jsonl, events/<run id>.json.xz
     python3 -m twin.bench5 status                  # what is done, what is left (out/twin5/left.md)
+    python3 -m twin.bench5 pack                    # merge appended rows into runs/<experiment>.jsonl.xz
+    python3 -m twin.bench5 snapshot                # the same, keeping the appended file (while runs go on)
     python3 -m twin.bench5 one LAB PLAN POLICY STOCK [SEED]   # one run, printed (TWIN5_DAYS shortens it)
 
 Every row is made under round 3b's pin (twin/repro.py) with ``TWIN_PIN=avx2`` (set here if unset: the AVX2 kernels
@@ -213,16 +215,50 @@ def read_events(path) -> dict:
     return json.loads(lzma.decompress(b) if p.suffix == ".xz" else b)
 
 
+def _lines(name):
+    """An experiment's rows as text lines: the packed file (``<name>.jsonl.xz``, committed) and any rows appended
+    since (``<name>.jsonl``)."""
+    out = []
+    px = RUNS / f"{name}.jsonl.xz"
+    if px.exists():
+        out += lzma.decompress(px.read_bytes()).decode().splitlines()
+    p = RUNS / f"{name}.jsonl"
+    if p.exists():
+        out += p.read_text().splitlines()
+    return [l for l in out if l.strip()]
+
+
 def _done(name):
-    path = RUNS / f"{name}.jsonl"
     done = set()
-    if path.exists():
-        for line in path.read_text().splitlines():
-            try:
-                done.add(run_id(json.loads(line)["cfg"]))
-            except Exception:
-                pass
+    for line in _lines(name):
+        try:
+            done.add(run_id(json.loads(line)["cfg"]))
+        except Exception:
+            pass
     return done
+
+
+def pack(keep_appended=False):
+    """Merge each experiment's appended rows into its packed file (one row per run id, the first kept). With
+    ``keep_appended`` the appended file stays (a checkpoint while runs are still being added to it)."""
+    for name in EXPERIMENTS:
+        p = RUNS / f"{name}.jsonl"
+        if not p.exists():
+            continue
+        seen, keep = set(), []
+        for line in _lines(name):
+            try:
+                rid = run_id(json.loads(line)["cfg"])
+            except Exception:                          # a row being written while this reads
+                continue
+            if rid not in seen:
+                seen.add(rid)
+                keep.append(line)
+        (RUNS / f"{name}.jsonl.xz").write_bytes(lzma.compress(("\n".join(keep) + "\n").encode(),
+                                                              preset=9 | lzma.PRESET_EXTREME))
+        if not keep_appended:
+            p.unlink()
+        print(f"{name}: {len(keep)} rows packed")
 
 
 def plan(names):
@@ -269,8 +305,7 @@ def run(names, workers=4):
 
 
 def load(name):
-    p = RUNS / f"{name}.jsonl"
-    return [json.loads(l) for l in p.read_text().splitlines() if l.strip()] if p.exists() else []
+    return [json.loads(l) for l in _lines(name)]
 
 
 def status(write=True):
@@ -304,6 +339,10 @@ def main(argv):
     from twin import repro as R
     R.reexec_pinned("twin.bench5")
     if not argv or argv[0] == "status":
+        status()
+        return
+    if argv[0] in ("pack", "snapshot"):
+        pack(keep_appended=argv[0] == "snapshot")
         status()
         return
     if argv[0] == "run":

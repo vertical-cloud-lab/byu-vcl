@@ -310,75 +310,114 @@ def stock_summary(A) -> dict:
     return out
 
 
-def lookback(A, key, q=0.9, period_w=8) -> dict:
-    """The purchasing look-back for one arm: from the materials the campaigns actually used (weekly, every seed),
-    a buying schedule (an order every ``period_w`` weeks, for the use of the next period plus the item's median
-    lead, at the ``q`` quantile over seeds, net of what is left), and both it and the heuristic's rule replayed on
-    each seed's own use: stock-outs (weeks with use not covered) and cost (what was bought, and what was left)."""
+def lookback(A, key, qs=(0.5, 0.75, 0.9), period_w=8) -> dict:
+    """The purchasing look-back for one arm. From the materials the campaigns actually used (weekly, every seed), a
+    buying schedule for each quantile q: an order every ``period_w`` weeks, timed to arrive (a median lead after it
+    is placed, never before day 0, since nothing can be bought before the money arrives) at the start of its period,
+    for the use until the next order arrives, at the q quantile over seeds, net of what is left. Each schedule, and
+    the heuristic's own orders as they were placed in the runs (event logs; with the stock on hand at day 0), are set
+    against each seed's own use: item-weeks short (a week that ends with more used than has arrived: a charge was
+    waiting), money bought, and stock left at the end."""
+    from twin import campaign as C
     from twin import supply
     arm = A.get(key, {})
     if len(arm) < MIN_SEEDS:
         return {}
+    nw = int(math.ceil(HORIZON / 7.0))
     out = {}
+    logs = {}
+    if key.endswith("_reorder") or "_reorder_" in key:
+        for s_, r in arm.items():
+            p = HERE.parent / r.get("events_file", "")
+            if p.exists():
+                try:
+                    logs[s_] = B5.read_events(p).get("round5", {}).get("stock", {})
+                except Exception:
+                    pass
     for camp in CAMPS:
         U = {}
-        for s, r in arm.items():
+        for s_, r in arm.items():
             for it, w in r["r5"]["stock"][camp]["use_weekly"].items():
-                U.setdefault(it, {})[s] = np.array(w, dtype=float)
-        nw = int(math.ceil(HORIZON / 7.0))
-        sched, rep = {}, {}
+                U.setdefault(it, {})[s_] = np.array(w[:nw] + [0.0] * max(0, nw - len(w)), dtype=float)
+        seeds = sorted(arm)
+        pre = C.PRESTOCK[camp]
+        res = {q: dict(usd=0.0, left=0.0, short=0.0, schedule={}) for q in qs}
+        heur = dict(usd=0.0, left=0.0, short=0.0, n=0)
         for it, per in U.items():
             if it not in supply.ITEMS:
                 continue
             I = supply.ITEMS[it]
-            M = np.zeros((len(per), nw))
-            for i, w in enumerate(per.values()):
-                M[i, :min(nw, len(w))] = w[:nw]
-            lead_w = int(math.ceil((I.lead_days + 3.0) / 7.0))
             price = I.price
-            orders = []
+            M = np.array([per.get(s_, np.zeros(nw)) for s_ in seeds])
             cum = np.cumsum(M, axis=1)
-            have = 0.0
-            for w0 in range(0, nw, period_w):
-                w1 = min(nw, w0 + period_w + lead_w)
-                need = np.quantile(cum[:, w1 - 1] - (cum[:, w0 - 1] if w0 > 0 else 0.0), q)
-                bought = sum(o[1] for o in orders)
-                used_q = np.quantile(cum[:, w0 - 1], q) if w0 > 0 else 0.0
-                have = max(0.0, bought - used_q)
-                qty = max(0.0, need - have)
-                if qty > 1e-9:
-                    qty = max(qty, I.moq)
-                    orders.append((max(0, w0 - lead_w), qty))
-            sched[it] = dict(orders=[(int(w * 7), round(qq, 4)) for w, qq in orders], lead_d=I.lead_days,
-                             total_qty=round(sum(o[1] for o in orders), 4),
-                             usd=round(sum(o[1] for o in orders) * price, 2),
-                             use_median=round(float(np.median(cum[:, -1])), 4))
-            # replay: the schedule's arrivals (ordered lead weeks before) against each seed's use
-            arr = np.zeros(nw)
-            for w, qq in orders:
-                arr[min(nw - 1, w + lead_w)] += qq
-            short_s, left_s = [], []
-            for i in range(M.shape[0]):
-                stock, short = 0.0, 0
-                for w in range(nw):
-                    stock += arr[w]
-                    if M[i, w] > stock + 1e-9:
-                        short += 1
-                        stock = 0.0
-                    else:
-                        stock -= M[i, w]
-                short_s.append(short)
-                left_s.append(stock * price)
-            rep[it] = dict(weeks_short_mean=float(np.mean(short_s)), left_usd_mean=float(np.mean(left_s)))
+            lead_w = int(math.ceil((I.lead_days + 3.0) / 7.0))
+            p0 = pre.get(it, 0.0)
+            for q in qs:
+                arr = np.zeros(nw + lead_w + 2)
+                arr[0] += p0
+                orders = []
+                for w_arr in range(0, nw, period_w):
+                    w_ord = max(0, w_arr - lead_w)
+                    w_got = w_ord + lead_w
+                    w_next = min(nw, w_arr + period_w + lead_w)
+                    need_to = np.quantile(cum[:, min(w_next, nw) - 1], q)
+                    have = float(arr[:nw].sum())
+                    qty = max(0.0, need_to - have)
+                    if qty > 1e-9:
+                        qty = max(qty, I.moq)
+                        arr[min(w_got, nw + lead_w)] += qty
+                        orders.append((w_ord, qty))
+                ca = np.cumsum(arr[:nw])
+                short = float(np.mean([(cum[i] > ca + 1e-9).sum() for i in range(len(seeds))]))
+                left = float(np.mean([max(0.0, arr.sum() - cum[i, -1]) for i in range(len(seeds))])) * price
+                usd = sum(qq for _, qq in orders) * price
+                R = res[q]
+                R["usd"] += usd
+                R["left"] += left
+                R["short"] += short
+                merged = {}
+                for w, qq in orders:
+                    merged[int(w * 7)] = merged.get(int(w * 7), 0.0) + qq
+                R["schedule"][it] = dict(orders=[(d_, round(qq, 4)) for d_, qq in sorted(merged.items())],
+                                         lead_d=I.lead_days,
+                                         total_qty=round(sum(qq for _, qq in orders), 4), usd=round(usd, 2),
+                                         weeks_short=round(short, 2), left_usd=round(left, 2),
+                                         use_median=round(float(np.median(cum[:, -1])), 4))
+            if logs:
+                sh, lf, us = [], [], []
+                for i, s_ in enumerate(seeds):
+                    L = logs.get(s_, {}).get(camp)
+                    if not L:
+                        continue
+                    arr = np.zeros(nw + 400)
+                    arr[0] += p0
+                    tot = p0
+                    usd = 0.0
+                    for o in L.get("orders", []):
+                        d0, item, qty, cost, why, arr_d = o
+                        if item != it:
+                            continue
+                        arr[min(int(arr_d // 7), nw + 399)] += qty
+                        tot += qty
+                        usd += cost
+                    ca = np.cumsum(arr[:nw])
+                    sh.append(int((cum[i] > ca + 1e-9).sum()))
+                    lf.append(max(0.0, tot - cum[i, -1]) * price)
+                    us.append(usd)
+                if sh:
+                    heur["short"] += float(np.mean(sh))
+                    heur["left"] += float(np.mean(lf))
+                    heur["usd"] += float(np.mean(us))
+                    heur["n"] = len(sh)
         H = [r["r5"]["stock"][camp] for r in arm.values()]
-        out[camp] = dict(schedule=sched, replay=rep,
-                         schedule_usd=round(sum(v["usd"] for v in sched.values()), 2),
-                         schedule_left_usd=round(sum(v["left_usd_mean"] for v in rep.values()), 2),
-                         schedule_weeks_short=round(sum(v["weeks_short_mean"] for v in rep.values()), 2),
-                         heuristic_usd=float(np.mean([h["stock_usd"] for h in H])),
-                         heuristic_left_usd=float(np.mean([h["left_usd"] for h in H])),
-                         heuristic_short_frac=float(np.mean([h.get("charges_short_frac", 0) for h in H])),
-                         heuristic_short_after90=float(np.mean([h.get("n_stockouts_after90", 0) for h in H])))
+        out[camp] = dict(schedules={str(q): dict(usd=round(R["usd"], 2), left_usd=round(R["left"], 2),
+                                                 item_weeks_short=round(R["short"], 2), schedule=R["schedule"])
+                                    for q, R in res.items()},
+                         heuristic=dict(usd=round(heur["usd"], 2), left_usd=round(heur["left"], 2),
+                                        item_weeks_short=round(heur["short"], 2), n=heur["n"]) if logs else None,
+                         heuristic_run=dict(usd=float(np.mean([h["stock_usd"] for h in H])),
+                                            left_usd=float(np.mean([h["left_usd"] for h in H])),
+                                            charges_short=float(np.mean([h.get("charges_short_frac", 0) for h in H]))))
     return out
 
 
@@ -412,7 +451,14 @@ def shared(A, key) -> dict:
     return out
 
 
+CAUSE_NAMES = {"spending plan": "money kept for the partners' standing slots",
+               "WIP limit": "WIP limit (lots already waiting for the first fabrication step)",
+               "capacity": "capacity (station busy)"}
+
+
 def idle(A, key) -> dict:
+    """Round 5 has no spending plan: a 'plan' refusal there is round 4's reserve for the coming week's standing
+    slots, so it is named that here."""
     arm = A.get(key, {})
     out = {}
     for camp in CAMPS:
@@ -420,7 +466,8 @@ def idle(A, key) -> dict:
             days, n, flagged = {}, 0, []
             for s, r in arm.items():
                 for x in r["r5"]["idle"]["stretches"][camp][grp]:
-                    days[x["cause"]] = days.get(x["cause"], 0) + x["days"]
+                    cz = CAUSE_NAMES.get(x["cause"], x["cause"])
+                    days[cz] = days.get(cz, 0) + x["days"]
                     n += 1
                     if x["flag"]:
                         flagged.append(dict(seed=s, start_d=x["start_d"], days=x["days"], causes=x["causes"]))
@@ -667,14 +714,33 @@ def tables(S) -> str:
     for key, lb in (S.get("lookback") or {}).items():
         if not lb:
             continue
-        L += ["", f"### Purchasing look-back: `{key}`", "", "| Campaign | schedule: bought | schedule: left (mean) | "
-              "schedule: item-weeks short (mean) | heuristic: bought | heuristic: left | heuristic: charges short |",
-              "|---|---|---|---|---|---|---|"]
+        L += ["", f"### Purchasing look-back: `{key}`", "",
+              "Each set against each seed's own weekly use, mean over seeds. An item-week short is a week that ends with "
+              "more of an item used than has arrived (a charge was waiting for it). The look-back schedules order every "
+              "8 weeks, timed to arrive as each period starts (never before day 0), for the use until the next order "
+              "arrives at the given quantile over seeds.", "",
+              "| Campaign | rule | bought | left at the end | item-weeks short |", "|---|---|---|---|---|"]
         for camp in CAMPS:
             x = lb[camp]
-            L.append(f"| {CAMPS[camp]} | ${x['schedule_usd']:,.0f} | ${x['schedule_left_usd']:,.0f} | "
-                     f"{x['schedule_weeks_short']:.1f} | ${x['heuristic_usd']:,.0f} | ${x['heuristic_left_usd']:,.0f} | "
-                     f"{x['heuristic_short_frac']:.0%} |")
+            if x.get("heuristic"):
+                h = x["heuristic"]
+                L.append(f"| {CAMPS[camp]} | the heuristic, as it ran | ${h['usd']:,.0f} | ${h['left_usd']:,.0f} | "
+                         f"{h['item_weeks_short']:.1f} |")
+            for q, d in x["schedules"].items():
+                L.append(f"| {CAMPS[camp]} | look-back schedule, q = {q} | ${d['usd']:,.0f} | ${d['left_usd']:,.0f} | "
+                         f"{d['item_weeks_short']:.1f} |")
+        for camp in CAMPS:
+            sch = lb[camp]["schedules"].get("0.75", {}).get("schedule", {})
+            top = sorted(sch.items(), key=lambda kv: -kv[1]["usd"])[:8]
+            if not top:
+                continue
+            L += ["", f"Recommended buying schedule (q = 0.75), {CAMPS[camp]}: the 8 items with the most money "
+                  "(day the order is placed: quantity)", "", "| Item | median lead (days) | orders | total | $ |",
+                  "|---|---|---|---|---|"]
+            for it, d in top:
+                od = ", ".join(f"d{dd}: {qq:.3g}" for dd, qq in d["orders"][:7]) + (" ..." if len(d["orders"]) > 7
+                                                                                   else "")
+                L.append(f"| {it} | {d['lead_d']:.0f} | {od} | {d['total_qty']:.3g} | ${d['usd']:,.0f} |")
     # shared and idle
     for key, sh in (S.get("shared") or {}).items():
         if not sh:

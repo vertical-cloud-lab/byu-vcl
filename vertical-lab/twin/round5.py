@@ -1342,7 +1342,7 @@ def idle_report(tw) -> dict:
                     elif stt.get("capacity") or stt.get("kanban"):
                         cause = "capacity" if stt.get("capacity", 0) >= stt.get("kanban", 0) else "WIP limit"
                     elif stt.get("plan") or stt.get("plan_wait"):
-                        cause = "spending plan"
+                        cause = "spending plan"          # round 5: round 4's reserve for the standing slots
                     elif stt.get("money"):
                         cause = "money"
                     elif x["held"] > 0:
