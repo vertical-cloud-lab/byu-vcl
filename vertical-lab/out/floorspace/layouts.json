@@ -20,8 +20,8 @@
      "benches, shelves and Shuttles": 28.0,
      "service clearance": 66.2,
      "aisles and corridor": 121.2,
-     "walls": 25.7,
-     "other floor": 110.2
+     "walls": 25.1,
+     "other floor": 110.7
     },
     "notes": [
      "Zones along a 6 ft corridor; each zone's back row against its far wall, its front row against the corridor wall, a 5 ft aisle between them."
@@ -45,8 +45,8 @@
      "benches, shelves and Shuttles": 28.0,
      "service clearance": 66.2,
      "aisles and corridor": 120.5,
-     "walls": 25.7,
-     "other floor": 110.2
+     "walls": 25.1,
+     "other floor": 110.7
     },
     "notes": [
      "4 mobile manipulators; 24 docking targets; 5 fixed arms, each with a sample rack; 2 chargers. A docked MiR250 (580 mm wide) leaves 0.94 m of a 5 ft aisle: less than the 1.45 m one needs to drive by, so robots wait in the aisles."
@@ -1361,11 +1361,23 @@
      -12637.4,
      -15506.0,
      -12487.4,
+     -11267.0
+    ],
+    [
+     -12637.4,
+     -9438.0,
+     -12487.4,
      -1750.0
     ],
     [
      16117.4,
      -15506.0,
+     16267.4,
+     -11267.0
+    ],
+    [
+     16117.4,
+     -9438.0,
      16267.4,
      -1750.0
     ],
@@ -2367,11 +2379,23 @@
      -12637.4,
      -15506.0,
      -12487.4,
+     -11267.0
+    ],
+    [
+     -12637.4,
+     -9438.0,
+     -12487.4,
      -1750.0
     ],
     [
      16117.4,
      -15506.0,
+     16267.4,
+     -11267.0
+    ],
+    [
+     16117.4,
+     -9438.0,
      16267.4,
      -1750.0
     ],
@@ -2896,12 +2920,12 @@
    "chargers": [
     [
      15620.4,
-     -10732.5,
+     -13641.0,
      90.0
     ],
     [
      15620.4,
-     -9972.5,
+     -12841.0,
      90.0
     ]
    ],
@@ -3549,5 +3573,174 @@
     "North row: glovebox, atomizer, sieving cell, two Shuttles, LPBF. South row: two Instrons, three chargers, fume hood, DED, wire EDM, packaging. East end: EOS M 400-4 and Meltio cell (no MiR dock)."
    ]
   }
+ },
+ "without_scaleup": {
+  "note": "the same rules and zones without the EOS M 400-4 and the Meltio cell",
+  "summary": {
+   "rows": [
+    {
+     "name": "conventional",
+     "title": "Conventional lab",
+     "length_m": 28.9,
+     "width_m": 11.87,
+     "area_m2": 343.0,
+     "area_sqft": 3692,
+     "instruments": 41,
+     "per_1000_sqft": 11.1,
+     "sqft_per_instrument": 90,
+     "docks": 0,
+     "arms": 0,
+     "chargers": 0,
+     "breakdown_m2": {
+      "floor machines": 24.6,
+      "benches, shelves and Shuttles": 28.0,
+      "service clearance": 48.0,
+      "aisles and corridor": 127.1,
+      "walls": 23.5,
+      "other floor": 92.3
+     },
+     "notes": [
+      "Zones along a 6 ft corridor; each zone's back row against its far wall, its front row against the corridor wall, a 5 ft aisle between them."
+     ]
+    },
+    {
+     "name": "flat",
+     "title": "Automated, same floor plan",
+     "length_m": 28.9,
+     "width_m": 11.87,
+     "area_m2": 343.0,
+     "area_sqft": 3692,
+     "instruments": 41,
+     "per_1000_sqft": 11.1,
+     "sqft_per_instrument": 90,
+     "docks": 22,
+     "arms": 5,
+     "chargers": 2,
+     "breakdown_m2": {
+      "floor machines": 25.3,
+      "benches, shelves and Shuttles": 28.0,
+      "service clearance": 48.0,
+      "aisles and corridor": 126.4,
+      "walls": 23.5,
+      "other floor": 92.3
+     },
+     "notes": [
+      "4 mobile manipulators; 22 docking targets; 5 fixed arms, each with a sample rack; 2 chargers. A docked MiR250 (580 mm wide) leaves 0.94 m of a 5 ft aisle: less than the 1.45 m one needs to drive by, so robots wait in the aisles."
+     ]
+    },
+    {
+     "name": "vertical",
+     "title": "Vertical lab",
+     "length_m": 19.13,
+     "width_m": 11.84,
+     "area_m2": 226.6,
+     "area_sqft": 2439,
+     "instruments": 41,
+     "per_1000_sqft": 16.8,
+     "sqft_per_instrument": 59,
+     "docks": 12,
+     "arms": 0,
+     "chargers": 3,
+     "breakdown_m2": {
+      "floor machines": 25.5,
+      "benches, shelves and Shuttles": 18.0,
+      "service clearance": 44.1,
+      "aisles and corridor": 71.1,
+      "walls": 10.0,
+      "other floor": 58.3
+     },
+     "notes": [
+      "North row: glovebox, atomizer, sieving cell, two Shuttles, LPBF. South row: two Instrons, three chargers, fume hood, DED, wire EDM, packaging. East end: EOS M 400-4 and Meltio cell (no MiR dock)."
+     ]
+    }
+   ],
+   "counts": {
+    "instruments": 41,
+    "benchtop": 31,
+    "floor": 10,
+    "benchtop_labels": [
+     "SEM (Hitachi TM4000Plus II)",
+     "XRD (Rigaku MiniFlex)",
+     "powder prep station",
+     "Opentrons OT-2",
+     "corrosion cell (CubXL + EZstat)",
+     "multi-doser",
+     "vacuum press (Specac)",
+     "PIP (Plastometrex)",
+     "nanoindenter (KLA iMicro)",
+     "particle size (Mastersizer)",
+     "Bambu Lab H2D",
+     "Bambu Lab A1 mini",
+     "polisher (LECO PX500)",
+     "furnace (Nabertherm)",
+     "mounting press (LECO MX400)",
+     "N2 glovebox",
+     "digital microscope (Keyence VHX)",
+     "tensile (zwickiLine)",
+     "hardness (Mitutoyo HM-220)",
+     "XRF (Bruker S2 PUMA)",
+     "ductless hood",
+     "CNC (Makera Carvera)",
+     "stencil printer",
+     "pick-and-place (LumenPnP)",
+     "reflow oven",
+     "Formlabs Form 4",
+     "Formlabs Form 4",
+     "Form Wash",
+     "Form Cure",
+     "desktop LPBF (SnowPod)",
+     "desktop LPBF (SnowPod)"
+    ],
+    "floor_labels": [
+     "atomizer (AMAZEMET rePowder)",
+     "sieving cell",
+     "glovebox (Ar)",
+     "LPBF (Aconity MIDI)",
+     "DED (MX-Lab)",
+     "wire EDM (FANUC)",
+     "tensile (Instron 68FM-100)",
+     "tensile (Instron 68SC-2)",
+     "fume hood",
+     "packaging station"
+    ]
+   },
+   "assume": {
+    "bench_d": 762.0,
+    "bench_d_deep": 914.0,
+    "bench_h": 914.0,
+    "bench_gap": 150.0,
+    "bench_module": 305.0,
+    "bench_back": 50.0,
+    "aisle": 1524.0,
+    "corridor": 1829.0,
+    "service": 600.0,
+    "wall": 150.0,
+    "door": 1219.0,
+    "mir_aisle": 3000.0,
+    "mir_corridor": 1450.0,
+    "dock_zone": 838.0,
+    "shelf_h": 1830.0,
+    "module": 3353.0
+   },
+   "ecl": {
+    "ssf": {
+     "sqft": 15000,
+     "m2": 1400,
+     "instruments": "more than 100 items of equipment",
+     "source": "The Guardian, Tom Ireland, 2022-09-11, 'Cloud labs and remote research aren't the future of science - they're here' (reprinted by CMU: cmu.edu/ambassadors/december-2022/pdf/guardian_cloud-labs.pdf)"
+    },
+    "austin": {
+     "sqft": 105000,
+     "instruments": "over 230 unique types of instruments",
+     "source": "Emerald Cloud Lab press release, 2023-02-28 (PR Newswire, 'Emerald Cloud Lab to relocate state-of-the-art facility from South San Francisco to Austin')"
+    },
+    "cmu": {
+     "sqft": 16000,
+     "m2": 1500,
+     "source": "The Guardian, 2022-09-11 (as above): Carnegie Mellon's cloud lab, built and run with Emerald"
+    }
+   }
+  },
+  "problems": []
  }
 }

@@ -380,6 +380,9 @@ def conventional(inv: dict | None = None, y_north: float = -1750.0, x_mid: float
     A_ = ASSUME
     wall, aisle = A_["wall"], A_["aisle"]
     north, south = _zones(inv)
+    north = [(n, e, [u for u in b if not isinstance(u, str) or u in inv],
+              [u for u in f if not isinstance(u, str) or u in inv]) for n, e, b, f in north]
+    north = [z for z in north if z[2] or z[3]]
     bands = []
     for zones in (north, south):
         zs = []
@@ -407,9 +410,10 @@ def conventional(inv: dict | None = None, y_north: float = -1750.0, x_mid: float
     yS_in = yCS - wall - dS
     y0 = yS_in - wall
     lay = Layout("conventional", "Conventional lab", (x0, y0, x1, y_north))
-    # outer walls
-    lay.walls += [(x0, y_north - wall, x1, y_north), (x0, y0, x1, y0 + wall), (x0, y0, x0 + wall, y_north),
-                  (x1 - wall, y0, x1, y_north)]
+    # outer walls, with the corridor open at both ends (its doors)
+    lay.walls += [(x0, y_north - wall, x1, y_north), (x0, y0, x1, y0 + wall),
+                  (x0, y0, x0 + wall, yCS), (x0, yCN - wall, x0 + wall, y_north),
+                  (x1 - wall, y0, x1, yCS), (x1 - wall, yCN - wall, x1, y_north)]
     lay.aisles.append(dict(rect=(x0 + wall, yCS, x1 - wall, yCN - wall), kind="corridor"))
     for bi, zs in enumerate(bands):
         x = x0 + wall
@@ -495,11 +499,11 @@ def flat(conv: Layout, inv: dict) -> Layout:
         else:
             continue
         lay.racks.append(dict(x=lay.arms[-1]["x"], y=(y0 + y1) / 2, z=880.0, zone=b["zone"]))
+    # two chargers against the east wall of the last room on the south side, in its aisle, facing west
     x0, y0, x1, y1 = conv.envelope
-    cor = next(a for a in conv.aisles if a["kind"] == "corridor")["rect"]
-    yc = (cor[1] + cor[3]) / 2
-    for dy in (-380.0, 380.0):
-        lay.chargers.append((x1 - ASSUME["wall"] - 487.0 - 10.0, yc + dy, 90.0))
+    last = max((r for r in conv.rooms if r.get("band") == "S"), key=lambda r: r["rect"][2])
+    for dy in (-400.0, 400.0):
+        lay.chargers.append((x1 - ASSUME["wall"] - 487.0 - 10.0, last["aisle_y"] + dy, 90.0))
     lay.notes.append(f"{FLAT_UNITS} mobile manipulators; {len(lay.docks)} docking targets; {len(lay.arms)} fixed arms, "
                      f"each with a sample rack; {len(lay.chargers)} chargers. A docked MiR250 (580 mm wide) leaves "
                      "0.94 m of a 5 ft aisle: less than the 1.45 m one needs to drive by, so robots wait in the aisles.")
@@ -568,19 +572,24 @@ def vertical(inv: dict) -> Layout:
     xe_s = x + svc
     # the scale-up machines at the aisle's east end, facing west into it, their long sides along y
     xe = max(xe_n, xe_s)
-    eos, mel = inv["eos_m400"], inv["meltio_cell"]
     yc = (y_aisle_n + y_aisle_s) / 2
     x_cap = xe + svc
-    cap_w = max(eos.d, mel.d)
-    lay.places["meltio_cell"] = Place("meltio_cell", x_cap + mel.d / 2, yc + svc / 2 + mel.w / 2, "W")
-    lay.places["eos_m400"] = Place("eos_m400", x_cap + eos.d / 2, yc - svc / 2 - eos.w / 2, "W")
-    x1 = x_cap + cap_w + svc
+    if "eos_m400" in inv and "meltio_cell" in inv:
+        eos, mel = inv["eos_m400"], inv["meltio_cell"]
+        cap_w = max(eos.d, mel.d)
+        lay.places["meltio_cell"] = Place("meltio_cell", x_cap + mel.d / 2, yc + svc / 2 + mel.w / 2, "W")
+        lay.places["eos_m400"] = Place("eos_m400", x_cap + eos.d / 2, yc - svc / 2 - eos.w / 2, "W")
+        x1 = x_cap + cap_w + svc
+    else:                                            # (the sensitivity without them: no cap)
+        x1 = xe
+        x_cap = xe + svc
     # the envelope: the deepest row's back + clearance, both ends
     y_n = max(VLM["d"] / 2 + svc, max(p.rect(inv[k])[3] + svc for k, p in lay.places.items() if p.facing == "S"))
     y_s = min(p.rect(inv[k])[1] - svc for k, p in lay.places.items() if p.facing == "N")
-    ys_caps = [lay.places[k].rect(inv[k]) for k in ("meltio_cell", "eos_m400")]
-    y_n = max(y_n, max(r[3] for r in ys_caps) + svc)
-    y_s = min(y_s, min(r[1] for r in ys_caps) - svc)
+    ys_caps = [lay.places[k].rect(inv[k]) for k in ("meltio_cell", "eos_m400") if k in lay.places]
+    if ys_caps:
+        y_n = max(y_n, max(r[3] for r in ys_caps) + svc)
+        y_s = min(y_s, min(r[1] for r in ys_caps) - svc)
     lay.envelope = (xw - wall, y_s - wall, x1 + wall, y_n + wall)
     ex0, ey0, ex1, ey1 = lay.envelope
     lay.walls += [(ex0, ey1 - wall, ex1, ey1), (ex0, ey0, ex1, ey0 + wall), (ex0, ey0, ex0 + wall, ey1),
@@ -720,8 +729,8 @@ ECL = dict(
 )
 
 
-def build_all() -> tuple[dict, list[Layout]]:
-    inv = {it.key: it for it in inventory()}
+def build_all(exclude=()) -> tuple[dict, list[Layout]]:
+    inv = {it.key: it for it in inventory() if it.key not in exclude}
     conv = conventional(inv)
     fl = flat(conv, inv)
     ver = vertical(inv)
@@ -751,6 +760,10 @@ def main():
               inventory=[dict(key=it.key, name=it.name, label=it.label, group=it.group, instrument=it.instrument,
                               w=round(it.w), d=round(it.d), h=round(it.h), tray=it.tray) for it in inv.values()],
               layouts={lay.name: to_json(lay) for lay in lays})
+    # the sensitivity: the same, without the two scale-up printers (EOS M 400-4, Meltio cell)
+    inv2, lays2 = build_all(exclude=("eos_m400", "meltio_cell"))
+    js["without_scaleup"] = dict(note="the same rules and zones without the EOS M 400-4 and the Meltio cell",
+                                 summary=summary(lays2, inv2), problems=[p for lay in lays2 for p in check(lay, inv2)])
     (OUTD / "layouts.json").write_text(json.dumps(js, indent=1) + "\n")
     for r in s["rows"]:
         print(f"{r['title']:<28} {r['length_m']:6.2f} x {r['width_m']:5.2f} m = {r['area_m2']:6.1f} m2 = "
@@ -758,6 +771,9 @@ def main():
     print(s["counts"]["instruments"], "instruments:", s["counts"]["benchtop"], "benchtop,", s["counts"]["floor"],
           "floor")
     print("problems:", probs or "none")
+    for r in js["without_scaleup"]["summary"]["rows"]:
+        print(f"  without the scale-up printers: {r['title']:<28} {r['length_m']:6.2f} x {r['width_m']:5.2f} m = "
+              f"{r['area_m2']:6.1f} m2 = {r['area_sqft']:6,} sq ft; {r['per_1000_sqft']:.1f} / 1000 sq ft")
 
 
 if __name__ == "__main__":

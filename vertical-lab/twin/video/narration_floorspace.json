@@ -13,7 +13,7 @@
    "text": "Benches are thirty inches deep and aisles five feet wide, with service space behind every floor machine. Measured to its walls, it comes to 4,280 square feet.",
    "shows": "the rules box; the area panel: 4,280 sq ft"},
   {"id": "f4", "phase": "flat", "at": 0.8,
-   "text": "Now automate it on the same floor plan. Mobile robots drive the routes people walked, with fixed arms, docking targets and sample racks at the stations.",
+   "text": "Next, the same floor plan, automated. Mobile robots drive the routes people walked, with fixed arms, docking targets and sample racks at the stations.",
    "shows": "'automation added' panel"},
   {"id": "f5", "phase": "flat", "at": 12.5,
    "text": "The floor area stays the same. And a robot docked in a five-foot aisle leaves too little room for another to pass.",
@@ -31,7 +31,7 @@
    "text": "Most of what is left is floor machines, their clearances and the robot aisle. And the Shuttles stand 9.15 meters tall, so it needs a high bay.",
    "shows": "where the floor goes bars; 'Shuttles 9.15 m tall: a high bay'"},
   {"id": "f10", "phase": "plans", "at": 23.2,
-   "text": "For scale, Emerald Cloud Lab's lab in South San Francisco held more than a hundred items of equipment in about 15,000 square feet.",
+   "text": "For scale, Emerald Cloud Lab in South San Francisco held more than a hundred items of equipment in about 15,000 square feet.",
    "shows": "the Emerald Cloud Lab line"}
  ]
 }

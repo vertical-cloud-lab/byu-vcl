@@ -11,7 +11,9 @@ segment rebuilds without the speech model. A line is spoken again only when its 
 from __future__ import annotations
 
 import hashlib
+import math
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -87,12 +89,23 @@ def _norm(t: str) -> list:
     return [w.strip(".") for w in t.split() if w.strip(".")]
 
 
+def _audio16k(path) -> np.ndarray:
+    """A file as 16 kHz mono float32, decoded here (this runner's PyAV is newer than faster-whisper's decoder)."""
+    import soundfile as sf
+    from scipy.signal import resample_poly
+    y, sr = sf.read(str(path), dtype="float32")
+    if y.ndim > 1:
+        y = y.mean(axis=1)
+    g = math.gcd(int(sr), 16000)
+    return resample_poly(y, 16000 // g, int(sr) // g).astype(np.float32)
+
+
 def check(model="small.en") -> dict:
     """Every line transcribed by faster-whisper and compared word by word with its spoken form (numbers in words)."""
     import jiwer
     from faster_whisper import WhisperModel
     from num2words import num2words
-    wm = WhisperModel(model, device="cpu", compute_type="int8")
+    wm = WhisperModel(model, device="cpu", compute_type="int8", cpu_threads=int(os.environ.get("WHISPER_THREADS", "1")))
     sc = script()
     say = sc.get("say", {})
     res, ref_all, hyp_all = {}, [], []
@@ -104,7 +117,7 @@ def check(model="small.en") -> dict:
         t = re.sub(r"\d+", lambda m: num2words(int(m.group(0))), t)
         return " ".join(_norm(t))
     for ln in sc["lines"]:
-        segs, _ = wm.transcribe(str(NDIR / f"{ln['id']}.flac"), language="en", beam_size=5)
+        segs, _ = wm.transcribe(_audio16k(NDIR / f"{ln['id']}.flac"), language="en", beam_size=5)
         hyp = " ".join(s.text for s in segs).strip()
         r, h = words(ln["text"]), words(hyp)
         res[ln["id"]] = dict(text=ln["text"], heard=hyp, wer=round(jiwer.wer(r, h), 4))

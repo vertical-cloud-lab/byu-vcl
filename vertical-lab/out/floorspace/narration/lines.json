@@ -30,11 +30,11 @@
    "sha256": "b5f4899d63e9dbbd75557e3e2032c365b2318728028d93f851810e0653706aa9"
   },
   "f4": {
-   "text": "Now automate it on the same floor plan. Mobile robots drive the routes people walked, with fixed arms, docking targets and sample racks at the stations.",
-   "spoken": "Now automate it on the same floor plan. Mobile robots drive the routes people walked, with fixed arms, docking targets and sample racks at the stations.",
-   "phonemes": "nˈaʊ ˈɔːɾəmˌeɪt ɪɾ ɔnðə sˈeɪm flˈɔːɹ plˈæn. mˈoʊbəl ɹˈoʊbɑːts dɹˈaɪv ðə ɹˈaʊts pˈiːpəl wˈɔːkt, wɪð fˈɪkst ˈɑːɹmz, dˈɑːkɪŋ tˈɑːɹɡɪts ænd sˈæmpəl ɹˈæks æt ðə stˈeɪʃənz.",
-   "seconds": 9.94,
-   "sha256": "8187493a09376c107fb671d8e75b2180801207ecb2045d42eb49e1cfcc6a7285"
+   "text": "Next, the same floor plan, automated. Mobile robots drive the routes people walked, with fixed arms, docking targets and sample racks at the stations.",
+   "spoken": "Next, the same floor plan, automated. Mobile robots drive the routes people walked, with fixed arms, docking targets and sample racks at the stations.",
+   "phonemes": "nˈɛkst, ðə sˈeɪm flˈɔːɹ plˈæn, ˈɔːɾəmˌeɪɾᵻd. mˈoʊbəl ɹˈoʊbɑːts dɹˈaɪv ðə ɹˈaʊts pˈiːpəl wˈɔːkt, wɪð fˈɪkst ˈɑːɹmz, dˈɑːkɪŋ tˈɑːɹɡɪts ænd sˈæmpəl ɹˈæks æt ðə stˈeɪʃənz.",
+   "seconds": 10.05,
+   "sha256": "163a06c4774574ee12e285a012f5cc194156d643ff7506a906ce52460c06c9ba"
   },
   "f5": {
    "text": "The floor area stays the same. And a robot docked in a five-foot aisle leaves too little room for another to pass.",
@@ -72,11 +72,11 @@
    "sha256": "da263889c736b84b0dae5b1b6bf3a8804461373071e3f188c6461a1152740d13"
   },
   "f10": {
-   "text": "For scale, Emerald Cloud Lab's lab in South San Francisco held more than a hundred items of equipment in about 15,000 square feet.",
-   "spoken": "For scale, Emerald Cloud Lab's lab in South San Francisco held more than a hundred items of equipment in about fifteen thousand square feet.",
-   "phonemes": "fɔːɹ skˈeɪl, ˈɛmɚɹəld klˈaʊd lˈæbz lˈæb ɪn sˈaʊθ sˌæn fɹænsˈɪskoʊ hˈɛld mˈɔːɹ ðˌænə hˈʌndɹɪd ˈaɪɾəmz ʌv ɪkwˈɪpmənt ɪn ɐbˌaʊt fˈɪftiːn θˈaʊzənd skwˈɛɹ fˈiːt.",
-   "seconds": 8.83,
-   "sha256": "8a146c878bc046122c7263657b798ca69eeebb4fbacf1d1bea8bf852bb434885"
+   "text": "For scale, Emerald Cloud Lab in South San Francisco held more than a hundred items of equipment in about 15,000 square feet.",
+   "spoken": "For scale, Emerald Cloud Lab in South San Francisco held more than a hundred items of equipment in about fifteen thousand square feet.",
+   "phonemes": "fɔːɹ skˈeɪl, ˈɛmɚɹəld klˈaʊd lˈæb ɪn sˈaʊθ sˌæn fɹænsˈɪskoʊ hˈɛld mˈɔːɹ ðˌænə hˈʌndɹɪd ˈaɪɾəmz ʌv ɪkwˈɪpmənt ɪn ɐbˌaʊt fˈɪftiːn θˈaʊzənd skwˈɛɹ fˈiːt.",
+   "seconds": 8.47,
+   "sha256": "4588a57d0afc4d030b41fc2953114e47f0017cc0a7b3b89a3dfd0c274340bc11"
   }
  }
 }
