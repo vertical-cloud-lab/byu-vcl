@@ -655,11 +655,18 @@ jobs:
       # trigger ("PR #N was updated after the trigger"). If the first attempt
       # pushed to the PR branch before it failed, that check refused the retry,
       # which then did nothing (byu-vcl PR 394, run 45781437965). This step
-      # moves the trigger time in the event payload to just after the first
-      # attempt's last push, and only when every push since the trigger was a
-      # plain push by the Claude app, chained from the head the trigger saw,
-      # the trigger comment wasn't edited, and nobody but a bot has posted in
-      # the thread since. Otherwise it changes nothing and the action decides.
+      # moves the retry's trigger time to just after the first attempt's last
+      # push, and only when every push since the trigger was a plain push by
+      # the Claude app, chained from the head the trigger saw, the trigger
+      # comment wasn't edited, and nobody but a bot has posted in the thread
+      # since. Otherwise it changes nothing and the action decides.
+      #
+      # How: the line where the action takes its trigger time
+      # (src/modes/tag/index.ts in the copy the retry runs) is pointed at
+      # CLAUDE_RETRY_TRIGGER_TIME, set through GITHUB_ENV. Rewriting the event
+      # payload file doesn't work: the runner rewrites event.json before every
+      # action step (digital-alloy-lab PR 249, run 45933150247). If the action's
+      # line isn't there exactly once, nothing is changed.
       - name: Let the retry build on the first attempt's pushes
         if: ${{ !cancelled() && steps.billing.outputs.retry == 'true' }}
         continue-on-error: true
@@ -667,7 +674,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           python3 - <<'PY'
-          import datetime, json, os, shutil, subprocess, sys
+          import datetime, json, os, subprocess, sys
 
           repo = os.environ["GITHUB_REPOSITORY"]
           event_name = os.environ["GITHUB_EVENT_NAME"]
@@ -677,6 +684,9 @@ jobs:
           def api(route):
               out = subprocess.run(["gh", "api", route], capture_output=True, text=True, check=True).stdout
               return json.loads(out)
+
+          with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as fh:
+              fh.write("CLAUDE_RETRY_TRIGGER_TIME=\n")
 
           def stop(msg):
               print(f"Leaving the trigger time alone: {msg}")
@@ -741,13 +751,24 @@ jobs:
           if people:
               stop(f"{len(people)} comment(s) or review(s) by people since the trigger")
 
-          new = ts(pushes[0]["timestamp"]) + datetime.timedelta(seconds=1)
-          shutil.copy(path, os.path.join(os.environ["RUNNER_TEMP"], "event.original.json"))
-          ev[obj][field] = new.strftime("%Y-%m-%dT%H:%M:%SZ")
-          json.dump(ev, open(path, "w"))
+          new = (ts(pushes[0]["timestamp"]) + datetime.timedelta(seconds=1)).strftime("%Y-%m-%dT%H:%M:%SZ")
+          src_path = os.path.join(os.path.dirname(os.environ["RUNNER_WORKSPACE"]), "_actions", "anthropics",
+                                  "claude-code-action", "v1", "src", "modes", "tag", "index.ts")
+          old_line = "const triggerTime = await resolveTriggerTimestamp(context, octokit);"
+          new_line = ("const triggerTime = process.env.CLAUDE_RETRY_TRIGGER_TIME || "
+                      "(await resolveTriggerTimestamp(context, octokit));")
+          if not os.path.isfile(src_path):
+              stop(f"the action's source isn't at {src_path}")
+          src = open(src_path, encoding="utf-8").read()
+          if src.count(old_line) != 1:
+              stop("the action's trigger-time line has changed, so the action's own check decides")
+          with open(src_path, "w", encoding="utf-8") as fh:
+              fh.write(src.replace(old_line, new_line))
+          with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as fh:
+              fh.write(f"CLAUDE_RETRY_TRIGGER_TIME={new}\n")
           print(f"The first attempt pushed {len(after)} time(s) to {branch} after the trigger "
                 f"({before[0]['after'][:7]} -> {head[:7]}), all plain pushes by claude[bot]. "
-                f"The retry's trigger time is now {ev[obj][field]} (was {trigger:%Y-%m-%dT%H:%M:%SZ}).")
+                f"The retry's trigger time is now {new} (was {trigger:%Y-%m-%dT%H:%M:%SZ}).")
           PY
 
       # Second attempt, on another seat (and the fallback model, if one is set). This is a fresh session: it posts
