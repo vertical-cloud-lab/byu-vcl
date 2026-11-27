@@ -308,6 +308,7 @@ jobs:
         run: |
           cat > "$RUNNER_TEMP/pick_seat.py" <<'PY'
           import json, os, re, subprocess, tempfile
+          from concurrent.futures import ThreadPoolExecutor
 
           secrets = {"CLAUDE_TOKEN_" + k[4:]: v for k, v in os.environ.items()
                      if k.startswith("TOK_") and v}
@@ -330,29 +331,61 @@ jobs:
                   if not k.startswith(("TOK_", "ANTHROPIC_", "CLAUDE_CODE_OAUTH"))}
 
           print(f"{len(seats)} seats in the pool; probing on {model} in this order: {' '.join(order) or '(none)'}")
-          chosen, tried = "", []
-          for name in order:
-              if len(tried) >= 8:
-                  print("Stopping after 8 probes.")
-                  break
-              tried.append(name)
+
+          # Every seat is probed at once. The one-word probe's stream-json output carries Claude Code's
+          # rate_limit_event, with the seat's 5-hour and 7-day utilization, so the pick can prefer seats
+          # with headroom instead of taking the first that answers (a seat at 93 % of its 5-hour window
+          # once ran out partway through a long run).
+          def probe(name):
               env = dict(base, CLAUDE_CODE_OAUTH_TOKEN=secrets["CLAUDE_TOKEN_" + name],
                          CLAUDE_CONFIG_DIR=tempfile.mkdtemp())
               try:
                   p = subprocess.run(["claude", "-p", "Reply with the single word ok.", "--model", model,
-                                      "--output-format", "json", "--max-turns", "1"],
+                                      "--output-format", "stream-json", "--verbose", "--max-turns", "1"],
                                      env=env, capture_output=True, text=True, timeout=120,
                                      stdin=subprocess.DEVNULL)
-                  res = json.loads(p.stdout or "{}")
               except Exception as exc:
-                  print(f"  {name}: probe failed ({type(exc).__name__}), skipping")
-                  continue
+                  return name, None, f"probe failed ({type(exc).__name__})"
+              res, use = None, {}
+              for line in p.stdout.splitlines():
+                  try:
+                      m = json.loads(line)
+                  except ValueError:
+                      continue
+                  if m.get("type") == "rate_limit_event":
+                      w = (m.get("rate_limit_info") or {}).get("unifiedWindows") or {}
+                      use = {k: (w.get(k) or {}).get("utilization") for k in ("five_hour", "seven_day")}
+                  elif m.get("type") == "result":
+                      res = m
               if res and not res.get("is_error"):
-                  chosen = name
-                  print(f"  {name}: ok")
-                  break
+                  return name, use, "ok"
+              res = res or {}
               msg = re.sub(r"\s+", " ", str(res.get("result") or res.get("errors") or "no result"))[:160]
-              print(f"  {name}: skipped ({msg})")
+              return name, None, f"skipped ({msg})"
+
+          # Tier 0: 5-hour under 50 % and 7-day under 80 %. Tier 1: under 80 % and 95 %. Tier 2: the rest.
+          # A seat that reports no usage counts as tier 0, as the old picker treated every seat.
+          def tier(use):
+              f = float(use.get("five_hour") or 0.0)
+              s = float(use.get("seven_day") or 0.0)
+              return 0 if (f < 0.5 and s < 0.8) else 1 if (f < 0.8 and s < 0.95) else 2
+
+          with ThreadPoolExecutor(max_workers=8) as ex:
+              results = {n: (use, why) for n, use, why in ex.map(probe, order)}
+          for n in order:
+              use, why = results[n]
+              shown = "" if use is None else f" (5-hour {use.get('five_hour')}, 7-day {use.get('seven_day')}, tier {tier(use)})"
+              print(f"  {n}: {why}{shown}")
+
+          # The first seat in the rotation order within the best tier, so runs that start together
+          # still spread across seats.
+          ok = [n for n in order if results[n][1] == "ok"]
+          chosen = ""
+          if ok:
+              best = min(tier(results[n][0]) for n in ok)
+              chosen = next(n for n in ok if tier(results[n][0]) == best)
+          # The retry skips the chosen seat and the ones that failed, and re-probes the rest.
+          tried = ([chosen] if chosen else []) + [n for n in order if results[n][1] != "ok"]
 
           print(f"Seat for this attempt: {chosen or '(none answered; using CLAUDE_CODE_OAUTH_TOKEN)'}")
           with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
