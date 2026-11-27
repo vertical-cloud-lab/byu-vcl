@@ -411,10 +411,14 @@ The code for the labour-cost analysis (`labor_cost_analysis.py`), the derived pe
 
 We thank the attendees of the Democratizing Self-Driving Labs workshop at Accelerate 2024 for their participation and survey responses, and its co-organizers, including Milad Abolhasani and Curtis Berlinguette.
 
-During the preparation of this manuscript, the authors used Claude (Anthropic; Claude Opus 5 and Claude Opus 5.5, through Claude Code, August–October 2026). They used it to restructure and draft the revised text; to write the analysis code that generates Figure 1 and Tables 3 and 4; to propose the documentation scores in Table 5 from public resources; to check references against Crossref and repositories, licences and deposits against the live resources; and to crop institutional logos and a spell-check mark from Figure 8. The prompts and the model's responses are preserved in the public issue and pull-request threads of the repository named in the Data availability statement. The authors have reviewed and edited the output and take full responsibility for the content of this publication.
+During the preparation of this manuscript, the authors used Claude (Anthropic) through Claude Code, August–November 2026: Claude Opus 5 and Claude Opus 5.5 for the work described here, with Claude Haiku 4.5 and Claude Haiku 5.5 used by Claude Code for auxiliary steps such as summarizing fetched web pages. They used it to restructure and draft the revised text; to write the analysis code that generates Figure 1 and Tables 3 and 4; to propose the documentation scores in Table 5 from public resources; to check references against Crossref and repositories, licences and deposits against the live resources; and to crop institutional logos and a spell-check mark from Figure 8. The prompts and the model's responses are preserved in the public issue and pull-request threads of the repository named in the Data availability statement. The authors have reviewed and edited the output and take full responsibility for the content of this publication.
 
 <!-- SIGN-OFF: SGB-3. RSC requires this declaration in the cover letter and the tool and model in the
-     Acknowledgements (a Perspective has no Methods section). Confirm the model list against the Actions run logs. -->
+     Acknowledgements (a Perspective has no Methods section). Model list verified 2026-11-27 against the
+     "modelUsage" record in the Actions logs of runs 33917146757 (2026-09-04), 34901270867 and 34905830027
+     (2026-09-14): claude-opus-5 + claude-haiku-4-5-20251001; run 38081233692 (2026-10-10): claude-opus-5-5 +
+     claude-haiku-5-5; run 46053340726 (2026-11-27): claude-opus-5-5. The 2026-08-26 and 2026-08-28 logs have
+     expired; the workflow file then set claude-opus-5. SGB accepts the wording. -->
 
 - Wenyu Zhang, Lucy Hao and Jason Hein acknowledge Canada Foundation for Innovation (CFI-35833), Natural Sciences and Engineering Research Council of Canada (RGPIN-2021-03168, Discovery Accelerator), and the University of British Columbia.
 - Jin Hyun Chang and Tejs Vegge acknowledge Pioneer Center for Accelerating P2X Materials Discovery (CAPeX), DNRF grant number P3.

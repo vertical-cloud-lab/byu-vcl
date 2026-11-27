@@ -245,6 +245,8 @@ Software-only projects are n/a (not applicable) for Procure and Build. The score
 - labour share of first-build cost = *L* / (*B* + *L*);
 - break-even wage *w*\* = *B* / *h*, the rate at which *L* = *B*. It does not depend on any assumed *w*. Labour exceeds parts whenever *w* > *w*\*.
 
+**Rounding.** Percentages and dollar amounts are rounded from the exact values, not from the three-decimal CSV, to the nearest integer; an exact half goes to the even neighbour (round-half-to-even, as in ISO 80000-1). The one case where this matters is a labour share of exactly 62.5% (P1, P3 and P4 at $50/h, and the median at $50/h), reported as 62%.
+
 **Per-project values** (from `table1-derived.csv`):
 
 | Project | BOM (USD) | Hours | Break-even wage (USD/h) | Labour @ $25 | @ $50 | @ $75 | Labour share @ $25 | @ $50 | @ $75 | Note |
@@ -253,9 +255,9 @@ Software-only projects are n/a (not applicable) for Procure and Build. The score
 | LEDbyXample modular photoreactor | 120 | 24 | 5.00 | 600 | 1,200 | 1,800 | 83% | 91% | 94% | BOM range midpoint used |
 | Public control of OpenFlexure microscope | 300 | 30 | 10.00 | 750 | 1,500 | 2,250 | 71% | 83% | 88% | time includes the microscope build itself |
 | Science-jubilee flexible automation platform | 2,000 | 100 | 20.00 | 2,500 | 5,000 | 7,500 | 56% | 71% | 79% |  |
-| Powder dispensing module | 300 | 10 | 30.00 | 250 | 500 | 750 | 46% | 62% | 71% |  |
-| Rolling ball viscometer | 300 | 10 | 30.00 | 250 | 500 | 750 | 46% | 62% | 71% |  |
-| Color mixing bot | 300 | 10 | 30.00 | 250 | 500 | 750 | 46% | 62% | 71% |  |
+| Powder dispensing module | 300 | 10 | 30.00 | 250 | 500 | 750 | 45% | 62% | 71% |  |
+| Rolling ball viscometer | 300 | 10 | 30.00 | 250 | 500 | 750 | 45% | 62% | 71% |  |
+| Color mixing bot | 300 | 10 | 30.00 | 250 | 500 | 750 | 45% | 62% | 71% |  |
 | Digital pipette Jubilee integration | 100 | 3 | 33.33 | 75 | 150 | 225 | 43% | 60% | 69% |  |
 | Electrochemical workflow on science-jubilee | 20,000 | 300 | 66.67 | 7,500 | 15,000 | 22,500 | 27% | 43% | 53% |  |
 | DiSCO photovoltaics platform | 35,000 | 480 | 72.92 | 12,000 | 24,000 | 36,000 | 26% | 41% | 51% | '3 months' read as 12 weeks x 40 h = 480 h at 1 FTE |
@@ -267,7 +269,7 @@ Software-only projects are n/a (not applicable) for Procure and Build. The score
 | 10 | 2 / 10 | 25% | 37% |
 | 15 | 3 / 10 | 33% | 44% |
 | 20 | 3 / 10 | 40% | 50% |
-| 25 | 4 / 10 | 46% | 54% |
+| 25 | 4 / 10 | 45% | 54% |
 | 30 | 4 / 10 | 50% | 58% |
 | 40 | 8 / 10 | 57% | 63% |
 | 50 | 8 / 10 | 62% | 68% |
@@ -277,4 +279,4 @@ Software-only projects are n/a (not applicable) for Procure and Build. The score
 | 125 | 10 / 10 | 81% | 82% |
 | 150 | 10 / 10 | 83% | 85% |
 
-**Reproducing.** `python labor_cost_analysis.py` (Python ≥ 3.9 with matplotlib) rewrites both CSV files and Figure 1. Re-running it on 2026-10-10 reproduced both CSV files byte-for-byte.
+**Reproducing.** `python labor_cost_analysis.py` (Python ≥ 3.9 with matplotlib) rewrites both CSV files and Figure 1. Re-running it from a clean copy on 2026-10-10 and again on 2026-11-27 (Python 3.14, matplotlib 3.11.2) reproduced both CSV files byte-for-byte.
