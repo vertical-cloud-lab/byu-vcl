@@ -1,0 +1,6 @@
+{
+ "task_id": "402407dd-3cb0-430e-9f55-16e035d746b8",
+ "job": "LITERATURE_HIGH",
+ "query": "Mobile manipulators (a robot arm on an autonomous mobile base) working in chemistry, materials and life-science laboratories and in manufacturing machine tending, for example the Liverpool mobile robotic chemist (Burger et al. 2020, KUKA KMR iiwa), CELISCA Rostock's H20 robots, Fraunhofer's Kevin, Biosero and Thermo Fisher mobile robots, Astech's and others' MiR or Omron base with a UR arm: reported driving speeds and the speed limits set where people share the space, time to dock and localize at a station (touch-off, fiducial or camera calibration) and the positioning accuracy reached, pick-and-place cycle times, success rates and failures per number of operations, uptime, share of time spent charging, and what share of total workflow time is robot transport as opposed to instrument time. Include the requirements of ISO 3691-4, ISO 10218, ISO/TS 15066 and ANSI/RIA R15.08 on speed and separation where they are discussed.",
+ "submitted_utc": "2026-11-27T06:17:14Z"
+}
