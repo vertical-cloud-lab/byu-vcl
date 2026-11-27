@@ -52,6 +52,7 @@ ASSUME = dict(
     mir_corridor=1450.0,    # one MiR250 driving (the same sheet)
     dock_zone=838.0,        # from a row's fronts to the aisle's edge in the 3-D lab (-1562 to -2400)
     shelf_h=1830.0,         # storage shelving, 6 ft (our choice)
+    module=3353.0,          # no room narrower than one 11 ft lab module (NIH's bulletin: 11 ft is the ideal module)
 )
 
 # ============================================================================================ the equipment
@@ -174,6 +175,7 @@ class Place:
     facing: str
     z: float = 0.0
     on: str | None = None          # the bench or shelf it stands on
+    zone: str | None = None        # the room or area it stands in
 
     def rect(self, it: Item) -> tuple:
         w, d = (it.w, it.d) if self.facing in ("N", "S") else (it.d, it.w)
@@ -285,7 +287,7 @@ def place_row(lay: Layout, inv: dict, units: list[Unit], x0: float, y_wall: floa
         y_back = y_wall + toward * u.rear
         yc = y_back + toward * u.d / 2
         if u.kind == "machine":
-            lay.places[u.keys[0]] = Place(u.keys[0], x + u.w / 2, yc, facing)
+            lay.places[u.keys[0]] = Place(u.keys[0], x + u.w / 2, yc, facing, zone=zone)
         else:
             rect = (x, min(y_back, y_back + toward * u.d), x + u.w, max(y_back, y_back + toward * u.d))
             lay.benches.append(dict(rect=rect, h=u.h, kind=u.kind, zone=zone, keys=list(u.keys)))
@@ -293,12 +295,12 @@ def place_row(lay: Layout, inv: dict, units: list[Unit], x0: float, y_wall: floa
                 for k, off in zip(u.keys, u.offsets):
                     it = inv[k]
                     yi = y_back + toward * (ASSUME["bench_back"] + it.d / 2)
-                    lay.places[k] = Place(k, x + off, yi, facing, z=u.h, on="bench")
+                    lay.places[k] = Place(k, x + off, yi, facing, z=u.h, on="bench", zone=zone)
             else:                                     # a shelf: one rack a level, from 150 mm up
                 n = len(u.keys)
                 for j, k in enumerate(u.keys):
                     z = 150.0 + j * (u.h - 300.0) / max(1, n)
-                    lay.places[k] = Place(k, x + u.w / 2, yc, facing, z=z, on="shelf")
+                    lay.places[k] = Place(k, x + u.w / 2, yc, facing, z=z, on="shelf", zone=zone)
         x += u.w
 
 
@@ -383,8 +385,9 @@ def conventional(inv: dict | None = None, y_north: float = -1750.0, x_mid: float
         zs = []
         for name, enclosed, back, front in zones:
             bu, fu = _units(back, inv), _units(front, inv)
-            door = A_["door"] + 2 * 150.0 if enclosed else 0.0
-            wz = max(row_length(bu), row_length(fu) + door)
+            # an entry at the zone's west end: a door in an enclosed zone's wall, a gap in an open zone's front row
+            door = A_["door"] + 2 * 150.0 if (enclosed or fu) else 0.0
+            wz = max(row_length(bu), row_length(fu) + door, door, A_["module"])
             dz = row_depth(bu) + aisle + row_depth(fu)
             zs.append(dict(name=name, enclosed=enclosed, back=bu, front=fu, w=wz, d=dz, door=door))
         bands.append(zs)
@@ -421,11 +424,14 @@ def conventional(inv: dict | None = None, y_north: float = -1750.0, x_mid: float
                 zy0, zy1 = yS_in, yCS - wall
                 back_wall, toward_b = zy0, +1.0
                 front_wall, toward_f = zy1, -1.0
-            lay.rooms.append(dict(name=z["name"], rect=(zx0, zy0, zx1, zy1), enclosed=z["enclosed"]))
+            dB = row_depth(z["back"])
+            ay = (zy1 - dB - aisle / 2) if north_band else (zy0 + dB + aisle / 2)
+            lay.rooms.append(dict(name=z["name"], rect=(zx0, zy0, zx1, zy1), enclosed=z["enclosed"],
+                                  entry=(zx0 + 150.0 + A_["door"] / 2, (yCN - wall / 2) if north_band else
+                                         (yCS - wall / 2)), aisle_y=ay, band="N" if north_band else "S"))
             place_row(lay, inv, z["back"], zx0, back_wall, toward_b, z["name"], x_end=zx1)
             if z["front"]:
-                place_row(lay, inv, z["front"], zx0 + (z["door"] if z["enclosed"] else 0.0), front_wall, toward_f,
-                          z["name"], x_end=zx1)
+                place_row(lay, inv, z["front"], zx0 + z["door"], front_wall, toward_f, z["name"], x_end=zx1)
             # the aisle inside the zone, in front of its back row
             dB = row_depth(z["back"])
             if north_band:
@@ -453,17 +459,15 @@ FLAT_UNITS = 4          # MiR250 + UR12e mobile manipulators: stations are sprea
 
 
 def flat(conv: Layout, inv: dict) -> Layout:
-    """The conventional plan, automated: nothing moves and the walls stay. A docking target in front of every
-    station a robot serves, a sample rack on every bench, a fixed arm at the bench clusters, chargers in the
-    corridor's ends, FLAT_UNITS mobile manipulators."""
+    """The conventional plan, automated: nothing moves and the walls stay. A docking target in front of every floor
+    machine and every bench, a fixed arm with a sample rack on a pedestal beside each bench whose row has room for one
+    (600 mm free at the bench's end), two chargers at the corridor's east end, FLAT_UNITS mobile manipulators."""
     lay = Layout("flat", "Automated, same floor plan", conv.envelope, dict(conv.places), list(conv.benches),
                  list(conv.walls), list(conv.rooms), list(conv.aisles))
-    # docks: in front of each floor machine and each bench, in its aisle, 450 mm off its front
+    leads = _bench_leads(conv)
     for k, p in conv.places.items():
         it = inv[k]
-        if p.on == "shelf" or not it.instrument:
-            continue
-        if p.on == "bench" and k not in _bench_leads(conv):
+        if p.on == "shelf" or not it.instrument or (p.on == "bench" and k not in leads):
             continue
         sgn = 1.0 if p.facing == "N" else -1.0
         r = p.rect(it)
@@ -471,22 +475,34 @@ def flat(conv: Layout, inv: dict) -> Layout:
         if p.on == "bench":
             b = next(b for b in conv.benches if k in b["keys"])
             y_front = b["rect"][3] if sgn > 0 else b["rect"][1]
-        lay.docks.append(dict(station=k, x=p.x, y=y_front + sgn * (450.0 + 290.0), heading=0.0 if True else 0.0))
+        lay.docks.append(dict(station=k, x=p.x, y=y_front + sgn * (450.0 + 290.0), heading=0.0))
+    # what stands in each row, to find room beside a bench
+    rects = [b["rect"] for b in conv.benches] + [p.rect(inv[k]) for k, p in conv.places.items() if p.on is None]
+    zones = {r["name"]: r["rect"] for r in conv.rooms}
     for b in conv.benches:
         if b["kind"] != "bench":
             continue
         x0, y0, x1, y1 = b["rect"]
-        lay.racks.append(dict(x=x1 - 220.0, y=(y0 + y1) / 2, z=b["h"], zone=b["zone"]))
-        if (x1 - x0) > 3000:                          # a fixed arm on a pedestal at the long bench clusters
-            lay.arms.append(dict(x=(x0 + x1) / 2, y=(y0 + y1) / 2, zone=b["zone"]))
+        zx0, _, zx1, _ = zones[b["zone"]]
+        right = min([r[0] for r in rects if r[0] >= x1 - 1 and r[1] < y1 and r[3] > y0 and r is not b["rect"]] +
+                    [zx1])
+        left = max([r[2] for r in rects if r[2] <= x0 + 1 and r[1] < y1 and r[3] > y0 and r is not b["rect"]] +
+                   [zx0 + 150.0 + ASSUME["door"] + 150.0])
+        if right - x1 >= 600.0:
+            lay.arms.append(dict(x=x1 + 40.0 + 260.0, y=(y0 + y1) / 2, side=1, toward=(-1.0, 0.0), zone=b["zone"]))
+        elif x0 - left >= 600.0:
+            lay.arms.append(dict(x=x0 - 40.0 - 260.0, y=(y0 + y1) / 2, side=-1, toward=(1.0, 0.0), zone=b["zone"]))
+        else:
+            continue
+        lay.racks.append(dict(x=lay.arms[-1]["x"], y=(y0 + y1) / 2, z=880.0, zone=b["zone"]))
     x0, y0, x1, y1 = conv.envelope
     cor = next(a for a in conv.aisles if a["kind"] == "corridor")["rect"]
     yc = (cor[1] + cor[3]) / 2
-    for i in range(FLAT_UNITS):
-        lay.chargers.append((x0 + 900.0 + i * 0.0, yc, 0.0))
-    lay.notes.append(f"{FLAT_UNITS} mobile manipulators; {len(lay.docks)} docking targets; {len(lay.arms)} fixed arms; "
-                     f"{len(lay.racks)} sample racks. A docked MiR250 (580 mm wide) leaves 0.94 m of a 5 ft aisle: "
-                     "less than the 1.45 m one needs to drive by, so robots wait in the aisles.")
+    for dy in (-380.0, 380.0):
+        lay.chargers.append((x1 - ASSUME["wall"] - 487.0 - 10.0, yc + dy, 90.0))
+    lay.notes.append(f"{FLAT_UNITS} mobile manipulators; {len(lay.docks)} docking targets; {len(lay.arms)} fixed arms, "
+                     f"each with a sample rack; {len(lay.chargers)} chargers. A docked MiR250 (580 mm wide) leaves "
+                     "0.94 m of a 5 ft aisle: less than the 1.45 m one needs to drive by, so robots wait in the aisles.")
     return lay
 
 
@@ -570,6 +586,8 @@ def vertical(inv: dict) -> Layout:
     lay.walls += [(ex0, ey1 - wall, ex1, ey1), (ex0, ey0, ex1, ey0 + wall), (ex0, ey0, ex0 + wall, ey1),
                   (ex1 - wall, ey0, ex1, ey1)]
     lay.aisles.append(dict(rect=(ex0 + wall, y_aisle_s, x_cap - svc, y_aisle_n), kind="mir"))
+    lay.aisles.append(dict(rect=(ex0 + wall, y_aisle_n, x_cap - svc, y_front_n), kind="dock"))
+    lay.aisles.append(dict(rect=(ex0 + wall, y_front_s, x_cap - svc, y_aisle_s), kind="dock"))
     lay.rooms.append(dict(name="Vertical lab", rect=(ex0 + wall, ey0 + wall, ex1 - wall, ey1 - wall), enclosed=True))
     # every benchtop item on its tray (the tray plan), so no place on the floor
     for k, it in inv.items():
@@ -628,6 +646,51 @@ def check(lay: Layout, inv: dict) -> list[str]:
     return probs
 
 
+CATS = ("floor machines", "benches, shelves and Shuttles", "service clearance", "aisles and corridor", "walls",
+        "other floor")
+
+
+def breakdown(lay: Layout, inv: dict, res: float = 25.0) -> dict:
+    """Where a layout's floor goes, m2 by category, rasterized at res mm: walls; floor machines (and chargers);
+    benches, shelves and the Shuttles; service clearance (0.6 m beside and behind each floor machine, where nothing
+    else is); aisles, the corridor and the MiR aisle's dock lanes; the rest."""
+    x0, y0, x1, y1 = lay.envelope
+    nx, ny = int(math.ceil((x1 - x0) / res)), int(math.ceil((y1 - y0) / res))
+    grid = np.full((ny, nx), 5, np.int8)                      # other floor
+
+    def fill(r, cat, only=None):
+        i0, i1 = int((r[0] - x0) / res), int(math.ceil((r[2] - x0) / res))
+        j0, j1 = int((r[1] - y0) / res), int(math.ceil((r[3] - y0) / res))
+        i0, j0 = max(i0, 0), max(j0, 0)
+        sub = grid[j0:j1, i0:i1]
+        if only is None:
+            sub[...] = cat
+        else:
+            sub[np.isin(sub, only)] = cat
+    for a in lay.aisles:
+        fill(a["rect"], 3)
+    svc = ASSUME["service"]
+    for k, p in lay.places.items():
+        if p.on is not None or math.isnan(p.x) or k in VLM_KEYS:
+            continue
+        r = p.rect(inv[k])
+        fill((r[0] - svc, r[1] - svc, r[2] + svc, r[3] + svc), 2, only=[5, 3])
+    for k, p in lay.places.items():
+        if k in VLM_KEYS:
+            fill((p.x - VLM["w"] / 2, p.y - VLM["d"] / 2, p.x + VLM["w"] / 2, p.y + VLM["d"] / 2), 1)
+        elif p.on is None and not math.isnan(p.x):
+            fill(p.rect(inv[k]), 0)
+    for b in lay.benches:
+        fill(b["rect"], 1)
+    for c in lay.chargers:
+        fill((c[0] - 311, c[1] - 244, c[0] + 311, c[1] + 244), 0)
+    for w in lay.walls:
+        fill(w, 4)
+    cell = res * res / 1e6
+    out = {CATS[i]: round(float((grid == i).sum() * cell), 1) for i in range(len(CATS))}
+    return out
+
+
 def summary(layouts: list[Layout], inv: dict) -> dict:
     c = counts(inv)
     rows = []
@@ -639,7 +702,7 @@ def summary(layouts: list[Layout], inv: dict) -> dict:
                          per_1000_sqft=round(c["instruments"] / lay.area_sqft * 1000, 1),
                          sqft_per_instrument=round(lay.area_sqft / c["instruments"]),
                          docks=len(lay.docks), arms=len(lay.arms), chargers=len(lay.chargers),
-                         notes=lay.notes))
+                         breakdown_m2=breakdown(lay, inv), notes=lay.notes))
     return dict(rows=rows, counts=c, assume=ASSUME, ecl=ECL)
 
 
