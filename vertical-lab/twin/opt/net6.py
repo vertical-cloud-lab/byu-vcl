@@ -23,12 +23,32 @@
 """
 from __future__ import annotations
 
+import math
+
 import numpy as np
 
 from twin import policies as P1
 from twin.opt import net3 as N3
 from twin.opt import policies2 as P2
 from twin.opt import policies3 as P3
+
+
+class _Trials:
+    """A design's 64 trial settings, each built as a dict only when it is asked for."""
+    __slots__ = ("design", "names", "V")
+
+    def __init__(self, design, names, V):
+        self.design, self.names, self.V = design, names, V
+
+    def __len__(self):
+        return len(self.V)
+
+    def __getitem__(self, i):
+        d = dict(self.design)
+        if i:
+            for j, n in enumerate(self.names):
+                d[n] = float(self.V[i, j])
+        return d
 
 
 class _Six:
@@ -56,16 +76,33 @@ class _Six:
 
     def _trials(self, design):
         """policies2's 64 trial settings for a design (itself, then 63 random draws of the atomizer's three settings,
-        drawn in the same order), and their encodings as ``Space.encode`` makes them."""
+        drawn in the same order), and their encodings as ``Space.encode`` makes them.
+
+        The same numbers as drawing and converting one at a time, faster: the 189 draws in one call (numpy's
+        generator gives the same values, in the same order, and ends in the same state), a linear setting's
+        conversions as array arithmetic (the same IEEE operations, one element at a time), a logarithmic one's
+        with ``math`` one at a time as ``Var`` does, and a trial's dict built only when it is asked for (one of the
+        64 is). ``test_trials_are_the_unvectorized_trials`` checks it byte for byte against the loop it replaced."""
         pv = self.space.process[:3]
-        trial = [dict(design)]
-        for _ in range(63):
-            d = dict(design)
-            for var in pv:
-                d[var.name] = float(var.from_unit(self.gen.random()))
-            trial.append(d)
-        U = np.clip(np.array([[var.to_unit(d[var.name]) for var in pv] for d in trial], float), 0, 1)
-        return trial, U
+        R = self.gen.random(63 * len(pv)).reshape(63, len(pv))
+        V = np.empty((64, len(pv)))
+        for j, var in enumerate(pv):
+            u = np.clip(R[:, j], 0.0, 1.0)
+            if var.log:
+                a, b = math.log(var.lo), math.log(var.hi) - math.log(var.lo)
+                V[1:, j] = [math.exp(a + x * b) for x in u]
+            else:
+                V[1:, j] = var.lo + u * (var.hi - var.lo)
+        names = [var.name for var in pv]
+        U = np.empty_like(V)
+        for j, var in enumerate(pv):
+            V[0, j] = design[var.name]
+            if var.log:
+                a, b = math.log(var.lo), math.log(var.hi) - math.log(var.lo)
+                U[:, j] = [(math.log(x) - a) / b for x in V[:, j].tolist()]
+            else:
+                U[:, j] = (V[:, j] - var.lo) / (var.hi - var.lo)
+        return _Trials(design, names, V), np.clip(U, 0, 1)
 
     def _atom_rows(self, v, did, U):
         """``atom_x`` for one composition at several settings: the composition's and the simulation's features

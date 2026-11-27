@@ -380,3 +380,42 @@ def test_a_run_stopped_saved_and_carried_on_is_the_same_run(tmp_path, monkeypatc
     out, tw = B6.simulate(cfg, ckpt=ck)
     assert h(out, tw) == a
     assert [s["to_day"] for s in out["timing"]["segments"]] == [17.0, 29.0, 40.0]
+
+
+def _trials_unvectorized(pol, design):
+    """net6._Six._trials as it was before 2026-11-27 23:50 UTC, verbatim: the reference for the faster one."""
+    pv = pol.space.process[:3]
+    trial = [dict(design)]
+    for _ in range(63):
+        d = dict(design)
+        for var in pv:
+            d[var.name] = float(var.from_unit(pol.gen.random()))
+        trial.append(d)
+    U = np.clip(np.array([[var.to_unit(d[var.name]) for var in pv] for d in trial], float), 0, 1)
+    return trial, U
+
+
+def test_trials_are_the_unvectorized_trials():
+    """The atomize search's trial settings, byte for byte: the same 64 dicts (keys, order, values), the same
+    encodings and the generator left in the same state, for both campaigns' spaces and many designs."""
+    import copy
+    pols = B6.make_policies("bofn3", 3)
+    for k, pol in pols.items():
+        rng = np.random.default_rng(7)
+        for _ in range(25):
+            design = pol.space.decode(rng.random(pol.space.dim)) if hasattr(pol.space, "decode") else None
+            if design is None:
+                design = {var.name: float(var.from_unit(rng.random())) for var in pol.space.process}
+            g0 = copy.deepcopy(pol.gen.bit_generator.state)
+            ta, Ua = _trials_unvectorized(pol, design)
+            ga = copy.deepcopy(pol.gen.bit_generator.state)
+            pol.gen.bit_generator.state = copy.deepcopy(g0)
+            tb, Ub = pol._trials(design)
+            assert pol.gen.bit_generator.state == ga
+            assert Ua.dtype == Ub.dtype and Ua.shape == Ub.shape and Ua.tobytes() == Ub.tobytes()
+            assert len(tb) == 64
+            for i in range(64):
+                a, b = ta[i], tb[i]
+                assert list(a) == list(b) and all(type(a[x]) is type(b[x]) and a[x] == b[x] for x in a)
+                assert all(math.copysign(1.0, a[x]) == math.copysign(1.0, b[x]) for x in a
+                           if isinstance(a[x], float))
