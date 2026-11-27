@@ -8,12 +8,12 @@ Made by `python -m twin.bench5 status`. Each arm needs at least 12 seeds before 
 | arms | `r5_vertical_parallel_fast_lean` | 16 | 0 |
 | arms | `r5_conventional_external_fast_reorder` | 16 | 0 |
 | arms | `r5_conventional_external_fast_lean` | 16 | 0 |
-| net | `r5_vertical_parallel_bofn3_reorder` | 1 | 11 (1-11) |
-| net | `r5_vertical_parallel_bofn3_lean` | 1 | 11 (1-11) |
+| net | `r5_vertical_parallel_bofn3_reorder` | 5 | 7 (5-11) |
+| net | `r5_vertical_parallel_bofn3_lean` | 5 | 7 (5-11) |
 | net | `r5_conventional_external_bofn3_reorder` | 12 | 0 |
 | net | `r5_conventional_external_bofn3_lean` | 12 | 0 |
-| net | `r5_vertical_parallel_pkgfn3_reorder` | 1 | 11 (1-11) |
-| net | `r5_vertical_parallel_pkgfn3_lean` | 1 | 11 (1-11) |
+| net | `r5_vertical_parallel_pkgfn3_reorder` | 3 | 9 (3-11) |
+| net | `r5_vertical_parallel_pkgfn3_lean` | 4 | 8 (4-11) |
 | net | `r5_conventional_external_pkgfn3_reorder` | 12 | 0 |
 | net | `r5_conventional_external_pkgfn3_lean` | 12 | 0 |
 | net_more | `r5_vertical_parallel_bofn3_reorder` | 0 | 4 (12-15) |
@@ -44,4 +44,4 @@ Made by `python -m twin.bench5 status`. Each arm needs at least 12 seeds before 
 | plans_net | `r5_vertical_wait_bofn3_reorder` | 1 | 11 (1-11) |
 | plans_net | `r5_vertical_external_bofn3_reorder` | 1 | 11 (1-11) |
 
-Runs left: 82.
+Runs left: 69.

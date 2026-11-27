@@ -51,7 +51,7 @@ lead rests on stand-ins.**
   is capacity (the partners' printers and Utah's monthly MX-Lab). No stretch had money and free capacity and no start.
 - **BOFN and pKGFN** (section 9): the conventional lab's four arms are done (16 seeds). They reach aluminium's halfway
   target in 15 of 16 seeds (day 228-372): more often and sooner than the automated lab with the rule of thumb (7-9 of
-  16). On copper they do worse than the funnel. The automated lab's BOFN and pKGFN arms have <!-- V-NET-SEEDS-SHORT -->
+  16). On copper they do worse than the funnel. The automated lab's BOFN and pKGFN arms have 3-5 seeds each
   (a run takes 24-37 minutes there), fewer than 12, so their like-for-like factors are left to a follow-up; "What's
   left" gives the command.
 
@@ -65,7 +65,7 @@ and its 40 rows discarded; every row in `out/twin5/runs/` includes notes 1-4.
 |---|---|---|---|
 | 1 | 05:37 | "For the conventional lab, assume at most 8 atomizations per week." | The conventional lab's atomizer has two attended starts a day (08:00, 13:00), aluminium Mon-Wed and copper Friday, Thursday free as DAL #256's flex day: 8 a week. The automated lab's atomizer runs the same way until its cell is integrated (people run it then). |
 | 2 | 05:41 | The automated lab's atomizer runs 24/7; derive the cycle for a unique composition from the lab's record, step by step, as a design target, with a sensitivity (derived, 3 h, slower). | Section 2. Derived: about 2.2 h a composition for aluminium (about 76 a week), 3.4 h for copper, from the cell's integration, both campaigns as they need it. Sensitivity: derived, 3 h, slow. |
-| 3 | 05:51 | Round 3's automated lab sat idle for long stretches: give it its own 24/7 atomizer used by both campaigns as needed; check nothing but the spending plan causes the stall; idle time per station and campaign with a cause for each stretch; unambiguous counters. | The atomizer as in note 2; all money at t = 0; a daily log per campaign and the idle stretches with their causes (section 7); counters (designed, lots made, alloys made, alloys printed, alloys tested). |
+| 3 | 05:51 | Round 3's automated lab sat idle for long stretches: give it its own 24/7 atomizer used by both campaigns as needed; check nothing but the spending plan causes the stall; idle time per station and campaign with a cause for each stretch; unambiguous counters. | The atomizer as in note 2; all money at t = 0; a daily log per campaign and the idle stretches with their causes (section 7.11); counters (designed, lots made, alloys made, alloys printed, alloys tested). |
 | 4 | 06:11 | "Designed" at full computational capacity, outside the cost-aware choice: model the HPC available; keep it running both years; the simulation nodes not part of pKGFN's p or BOFN's cost; report HPC use, candidates evaluated, and whether more compute would have changed anything. | Section 6: an open-CALPHAD stream on a stand-in allocation of 256 cores (122,880 candidates a day), free to the campaigns; the policies see the newest 128 unexplored candidates, 64 new a day. |
 
 ## What changed from round 4, and why
@@ -82,6 +82,7 @@ and its 40 rows discarded; every row in `out/twin5/runs/` includes notes 1-4.
 | Simulations bought by the policies, $1-25 each, as a small pool | A continuous stream on the HPC allocation, free to the campaigns; open-CALPHAD only (Thermo-Calc is licence-limited) | Note 4 |
 | The conventional lab was round 3's facility, ordered as it went (round 3b) | The conventional lab is round 4's external-only plan run by people: BYU's existing equipment and core facilities and the same partners, with the same money from day 0 | Like with like: the same outside world for both labs |
 | Two engine rules for every policy (a WIP limit before the first fabrication step; money kept for the coming week's standing slots) | A third: money kept for the work in progress (section 3) | The first runs: without a spending plan, copper spent its money on powders it couldn't test |
+| A standing slot took an action only once the slot started within its shipping time plus a day of the decision | For an action with steps before the slot (copper's blend screens: the doser on day shifts, then Utah's MX-Lab on Tuesdays), that window counts working hours from the end of those steps to the material's departure | The first BOFN runs: no moment satisfied round 4's rule, so copper's BOFN and pKGFN, whose new designs are blend screens, made 3 lots in two years. The heuristic and the funnel never use that path (a cheap row reran identical) |
 
 Round 4's code is unchanged but for a hook (`Facility4.schedule`), so its results still reproduce. Round 5 is
 [`twin/round5.py`](../twin/round5.py) (round 4's classes, subclassed), its runner
@@ -93,8 +94,10 @@ Round 4's code is unchanged but for a hook (`Facility4.schedule`), so its result
 runner has AVX-512 (an AMD EPYC 9V45), but round 5's rows are all new, and a follow-up may land on an AVX2-only
 runner (the three cancelled runs had EPYC 7763s), so one pin keeps every table on one set of kernels. Every row
 records the CPU, the kernels, the package versions (numpy 2.5.5, scipy 1.18.1, torch 2.15.0 CPU, botorch 0.18.1,
-gpytorch 1.15.2, linear_operator 0.6.1, as round 3b's), the commit it was made from and the notes it includes.
-`twin/tests/test_round5.py` reruns a short run and checks the row is identical.
+gpytorch 1.15.2, linear_operator 0.6.1, as round 3b's; `out/twin5/requirements.txt`), the commit it was made from and the
+notes it includes. The heuristic's and the funnel's rows were made from `6895a09`, before the blend-screen fix
+(`43ba098`), which doesn't touch them: a committed row reran identical after it. BOFN's and pKGFN's rows were made after
+it. `twin/tests/test_round5.py` reruns a short run and checks the row is identical.
 
 ## 1. The facility window and used equipment
 
@@ -311,8 +314,8 @@ Median days (seeds there): aluminium T1, automated 81 stocked and 130 lean again
 * **Aluminium's halfway target, with the heuristic, is reached in about half the seeds in either lab.** Paired, the
   automated lab is first in 8 seeds and the conventional lab in 3 with both lean, 6 and 3 with both stocked; the
   Kaplan-Meier medians go the other way when both are stocked (7 of 16 seeds get there in the automated lab, 8 in the
-  conventional lab), so the factor is a bound below 1. The heuristic rarely reaches T2 in any lab (round 4 found the
-  same); BOFN and pKGFN are the policies for that target (section 9).
+  conventional lab), so the factor is a bound below 1. The heuristic reaches T2 in only about half the seeds in any lab
+  (round 4 found the same); BOFN and pKGFN are the policies for that target (section 9).
 * **Copper comes 1.5-2.1× sooner in the automated lab**, first in 13-15 seeds of 16 in every pairing, and gets there
   in more seeds (15 of 16 against 9-14). 12 of the 15 first copper T1 alloys in the stocked automated lab came from its
   in-house MX-Lab (online at day 228, median; 186-414); the conventional lab's came from Mines (11 of 11).
@@ -435,7 +438,6 @@ Each arm's median day (seeds there), no delay / nominal / slow:
   but copper waits for deposition slots, consumables and money, not for candidates. BOFN and pKGFN choose their new
   designs from this pool (section 9), so a bigger pool might matter more for them; not run.
 
-<!-- PENDING-SENSITIVITIES -->
 
 ### 7.7 Round 4's three plans under the facility window and advance ordering (comparison 2; the heuristic and the funnel, stocked, 16 seeds)
 
@@ -659,7 +661,7 @@ cell**, 3.4× sooner to aluminium's first target and 1.2-1.3× to copper's.
 ## 9. BOFN and pKGFN (time-aware, on both campaigns)
 
 **What ran in this job:** the conventional lab's four arms (BOFN and pKGFN, stocked and lean) on 16 seeds each, and
-the automated lab's on <!-- V-NET-SEEDS -->. A conventional-lab run takes 3-5 minutes (people decide at their reviews
+the automated lab's on 3-5 seeds each (seeds 0, 1, 2, 3, 4). A conventional-lab run takes 3-5 minutes (people decide at their reviews
 and meetings, so the optimizers refit rarely); an automated-lab run takes 24-37 minutes (hourly decisions on a lab
 that runs round the clock after its cell). **The automated lab's BOFN and pKGFN arms have fewer than 12 seeds, so the
 like-for-like table for these policies isn't reported yet**; "What's left" says what a follow-up runs.
@@ -698,7 +700,16 @@ with like: the lab and the policy both change; 16 seeds; conventional over autom
 * The automated lab with the funnel reaches copper's targets more than 2.3× sooner than the conventional lab with
   either optimizer.
 
-<!-- V-NET-TEXT -->
+**The automated lab's BOFN and pKGFN so far** (each seed's day to each target, '-' where it didn't get there in two years; too few seeds for a median or a factor, shown so the follow-up's direction can be checked):
+
+| Arm | seeds | Al T1 | Al T2 | Cu T1 | Cu T2 | Al best | Cu best |
+|---|---|---|---|---|---|---|---|
+| BOFN, lean | 0, 1, 2, 3, 4 | 319, 157, 270, 246, 169 | 377, 253, 270, 253, 256 | 345, 302, 424, 264, 354 | 666, -, 424, 264, 354 | 0.74, 0.83, 0.78, 0.86, 0.80 | 0.71, 0.61, 0.72, 0.73, 0.66 |
+| BOFN, stocked | 0, 1, 2, 3, 4 | 267, 176, 254, 170, 238 | 267, 182, 254, 170, 238 | 352, 291, 340, 281, 460 | -, 291, 340, 281, 590 | 0.76, 0.79, 0.80, 0.79, 0.80 | 0.65, 0.70, 0.72, 0.71, 0.67 |
+| pKGFN, lean | 0, 1, 2, 3 | 259, 157, 253, 228 | 259, 207, 257, 274 | 303, 295, -, 296 | -, -, -, 296 | 0.75, 0.83, 0.76, 0.83 | 0.64, 0.61, 0.48, 0.73 |
+| pKGFN, stocked | 0, 1, 2 | 317, 179, 225 | 329, 184, 334 | 330, 297, 365 | 479, 297, 365 | 0.77, 0.79, 0.76 | 0.69, 0.70, 0.68 |
+
+The conventional lab's BOFN and pKGFN rows for the same seeds are in `out/twin5/runs/net.jsonl.xz`; `like5.json` has every seed's day for every arm.
 
 ## Limits
 
@@ -730,7 +741,33 @@ All simulated: synthetic truths, simulated instruments, assumed capacities, pric
 
 ## What's left, and what a follow-up should run
 
-<!-- LEFT-TABLE -->
+| Experiment | Arm | seeds done | runs left |
+|---|---|---|---|
+| arms | 4 arms, all done | 16 each | 0 |
+| plans | 2 arms, all done | 16 each | 0 |
+| dec_none | 4 arms, all done | 16 each | 0 |
+| dec_slow | 4 arms, all done | 16 each | 0 |
+| atom | 4 arms, all done | 16 each | 0 |
+| noused | 1 arm, all done | 16 each | 0 |
+| hpc_more | 2 arms, all done | 16 each | 0 |
+| net | `r5_vertical_parallel_bofn3_reorder` | 5 | 7 |
+| net | `r5_vertical_parallel_bofn3_lean` | 5 | 7 |
+| net | `r5_conventional_external_bofn3_reorder` | 12 | 0 |
+| net | `r5_conventional_external_bofn3_lean` | 12 | 0 |
+| net | `r5_vertical_parallel_pkgfn3_reorder` | 3 | 9 |
+| net | `r5_vertical_parallel_pkgfn3_lean` | 4 | 8 |
+| net | `r5_conventional_external_pkgfn3_reorder` | 12 | 0 |
+| net | `r5_conventional_external_pkgfn3_lean` | 12 | 0 |
+| net_more | `r5_vertical_parallel_bofn3_reorder` | 0 | 4 |
+| net_more | `r5_vertical_parallel_bofn3_lean` | 0 | 4 |
+| net_more | `r5_conventional_external_bofn3_reorder` | 4 | 0 |
+| net_more | `r5_conventional_external_bofn3_lean` | 4 | 0 |
+| net_more | `r5_vertical_parallel_pkgfn3_reorder` | 0 | 4 |
+| net_more | `r5_vertical_parallel_pkgfn3_lean` | 0 | 4 |
+| net_more | `r5_conventional_external_pkgfn3_reorder` | 4 | 0 |
+| net_more | `r5_conventional_external_pkgfn3_lean` | 4 | 0 |
+| plans_net | `r5_vertical_wait_bofn3_reorder` | 1 | 11 |
+| plans_net | `r5_vertical_external_bofn3_reorder` | 1 | 11 |
 
 The remaining rows are BOFN and pKGFN (both campaigns) in the four arms, seeds 0-11 (`net`) then 12-15
 (`net_more`), and the waiting and external-only plans with BOFN (`plans_net`). A follow-up comment on PR 405 can run
@@ -746,8 +783,8 @@ TWIN_WORKERS=4 python -m twin.bench5 run net net_more plans_net
 python -m twin.bench5 pack && python -m twin.like5 && python -m twin.figures5
 ```
 
-At 4 workers a BOFN or pKGFN two-year run takes <!-- NET-MINUTES --> on this runner, so the 12 seeds of the four arms
-need about <!-- NET-HOURS --> more; `net_more` and `plans_net` about <!-- NET-MORE-HOURS -->. A job that stops early
+At 4 workers a BOFN or pKGFN two-year run takes 21-37 minutes in the automated lab (the conventional lab's 3-5) on this runner, so the 12 seeds of the four arms
+need about 3.6 hours of a 4-core runner (31 runs) more; `net_more` and `plans_net` about 2.8 hours more (16 and 22 runs). A job that stops early
 leaves usable rows: the queue runs seed by seed across the eight arms, and `pack` keeps whatever finished.
 
 ## Sources
