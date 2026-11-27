@@ -16,11 +16,15 @@ The paper cannot be submitted until these are done. Everything else is a confirm
 
 | # | Item | Owner | IDs |
 | --- | --- | --- | --- |
-| 1 | A public work-in-progress repository for **P3 Rolling ball viscometer**, the only project with nothing public (checked 2026-10-10) | DTU team (Chang, Gambhir, Ziskason, Nyeland); escalation: Tejs Vegge | TV-1 |
+| 1 | A public work-in-progress repository for **P3 Rolling ball viscometer**, the only project with nothing public (checked 2026-10-10 and 2026-11-27) | DTU team (Chang, Gambhir, Ziskason, Nyeland); escalation: Tejs Vegge | TV-1 |
 | 2 | Confirm that the files found by search are the projects' own: **P1** `github.com/loppe35/PowderDispensing_and_Weighing_Module` and **P7** `github.com/ethraj2001/jubilee` + `github.com/cyrilcaoyang/jubilee-sdl2` | DTU team; P7 team | TV-1, P7-1 |
-| 3 | Agreement to the archival-deposit commitment in §6, from every team | all project teams | TV-6, OM-5, TB-4, BP-9, P7-5, SGB-11, JEH-3 |
-| 4 | Consent to publish each team's Table 5 row | all project teams | TV-4, OM-3, TB-3, BP-8, P7-4, SGB-10, JEH-2 |
-| 5 | Every author approves the final text and agrees to submission (RSC requires this) | all 28 authors | ALL-1 |
+| 3 | A clean **Figure 8**, exported by the P7 team from its own file without AI tools (the AI-assisted crop was withdrawn on 2026-11-27) | P7 team | P7-2 |
+| 4 | The **survey ethics statement** in §2 (committee and number, or a plain statement) | Brenden Pelkie, Lilo D. Pozzo | BP-3, LDP-1 |
+| 5 | Agreement to the archival-deposit commitment in §6, from every team | all project teams | TV-6, OM-5, TB-4, BP-9, P7-5, SGB-11, JEH-3 |
+| 6 | Consent to publish each team's Table 5 row | all project teams | TV-4, OM-3, TB-3, BP-8, P7-4, SGB-10, JEH-2 |
+| 7 | Seth Leavitt's consent; the decisions on Basita Das and Ilya Yakavets | SL; TB with Basita Das; P7 team with Ilya Yakavets; SGB | SL-1, TB-2, P7-3, SGB-5 |
+| 8 | Every author approves the final text and agrees to submission (RSC requires this) | all 28 authors | ALL-1 |
+| 9 | At submission: merge PR #193, tag the commit, fill the code version and the ScholarOne fields | SGB | SGB-4, SGB-12 |
 
 **The bar for item 1 is low.** The decision letter says the editors would expect "at least the current 'work in progress' repositories". A public repository is enough if it contains:
 
@@ -226,11 +230,14 @@ Blair Subbaraman, Danli Luo, Sonya Vasquez, Wm Salt Hale; Maria Politi is now at
 
 ---
 
-## Status at the time of writing (2026-10-10)
+## Status on 2026-11-27
 
 | Category | Count |
 | --- | --- |
+| Confirmations received | **None.** No co-author has replied on the PR thread or in the repository since the package went up on 2026-10-10 |
 | v2 `[NEEDED]` markers | 18 occurrences, 12 distinct items; all resolved or turned into an owned ID above (`revision-notes-v3.md` §2) |
-| `[TO SUPPLY]` placeholders left | 2: the P3 repository (manuscript and response letter) and the survey material in Note S2 |
+| `[TO SUPPLY]` placeholders | manuscript: the P3 repository (Table 1), the survey ethics statement (§2), the code version (Data availability); response letter: the P3 sentence and row; ESI: the survey material (Note S2) |
 | Sign-off IDs | listed by `tools/check_manuscript.py` |
-| Blocking items | 1 repository (P3), two confirmations that found files are the projects' own (P1, P7), plus consents |
+| Blocking items | the nine in §0 above; the sign-off package's [README](sign-off/README.md) lists who has to do each |
+
+The per-author view of the same items, with each person's contribution and the files behind it, is [`sign-off/per-author-checklist.md`](sign-off/per-author-checklist.md).
