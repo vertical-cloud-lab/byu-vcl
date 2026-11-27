@@ -1,0 +1,1 @@
+Forty-five open projects from a two-day virtual hackathon show where Bayesian optimization helps chemistry and materials research, where it struggles, and what makes community events like this one work.
