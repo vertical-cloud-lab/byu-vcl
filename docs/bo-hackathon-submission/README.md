@@ -29,7 +29,7 @@ submission as listed in the portal on 8 October (screenshot in issue 185).
 | --- | --- | --- | --- |
 | [`cover-letter/cover-letter.docx`](cover-letter/cover-letter.docx) ([PDF](cover-letter/cover-letter.pdf)) | Cover letter field, or a file | Letter_to_Referees_BYU_letterhead_signed_fullpage.docx | **Draft.** Put it on letterhead, fill in the editor's name and the date, sign. Declares the AI use and the authorship change, as RSC requires. |
 | [`response/Response_to_Referees.pdf`](response/Response_to_Referees.pdf) | Response to Referees | (new for the revision) | Every page pointer checked against the PDF below. Also paste or attach in the "Response to Decision Letter" step. |
-| [`manuscript/BO_Hackathon_Manuscript_Revised.pdf`](manuscript/BO_Hackathon_Manuscript_Revised.pdf) | Main Article | BO_Hackathon_Manuscript_Final.pdf | 26 pages, 0 unresolved references or citations. |
+| [`manuscript/BO_Hackathon_Manuscript_Revised.pdf`](manuscript/BO_Hackathon_Manuscript_Revised.pdf) | Main Article | BO_Hackathon_Manuscript_Final.pdf | 27 pages, 0 unresolved references or citations. |
 | [`manuscript/BO_Hackathon_Manuscript_Revised_marked_changes.pdf`](manuscript/BO_Hackathon_Manuscript_Revised_marked_changes.pdf) | Revised manuscript with changes marked | (new) | latexdiff against the submitted source (`6d2c616`). |
 | [`manuscript/BO_Hackathon_Manuscript_Revised_LaTeX_source.zip`](manuscript/BO_Hackathon_Manuscript_Revised_LaTeX_source.zip) | LaTeX source files | (new) | Compiles without shell-escape: tested by unzipping into an empty folder. Needs TeX Live 2023 (see below). |
 | [`figures/Fig1.tif`](figures/) to `Fig5.tif` | Figure | (new) | TIFF at 600 dpi or more at print width (8.3 cm for Fig. 1, 17.1 cm for the rest), transparency flattened onto white. Figs. 3 to 5 were upsampled to reach 600 dpi; Fig. 5's source screenshot is only 1660 px wide. |
@@ -59,16 +59,23 @@ see step 5 below), and every PDF above was rebuilt from them.
    recounted for the 124 current authors from the same evidence file: 73 students, 94 with a
    visible output, 56 of the students (percentages unchanged: 59, 76, 77). Nine faculty moves
    became eight (Toledo was Jiale Shi's).
-4. **References** (Crossref check, [`reference-check.md`](reference-check.md)). Three DOIs were wrong (Szymanski 2023 resolved to a paper on the yeast interactome; Aldeghi 2022 and Graff 2021 did not resolve), seven author lists were wrong, four preprints have since been published, 27 DOIs were missing, five works printed twice under two keys, and two sentences cited *Sustainable concrete via Bayesian optimization* for acquisition optimization where Ament et al.'s *Unexpected improvements to expected improvement* was meant. All fixed.
+4. **References** (Crossref check, [`reference-check.md`](reference-check.md)). Three DOIs were
+   wrong (Szymanski 2023 resolved to a paper on the yeast interactome; Aldeghi 2022 and Graff
+   2021 did not resolve), seven author lists were wrong, four preprints have since been
+   published, 27 DOIs were missing, five works printed twice under two keys, BayBE was cited as
+   a GitHub repository although it now has a Digital Discovery paper, and two sentences cited
+   *Sustainable concrete via Bayesian optimization* for acquisition optimization where Ament et
+   al.'s *Unexpected improvements to expected improvement* was meant. All fixed.
 5. **Table III and Table V.** Table III linked project 15 to project 13's repository; links now
    come from the project pages. Project 22's repository was deleted after July, so Table V is
    now 19 MIT and 5 inaccessible, checked 27 November.
 6. **ESI Tables S2 and S3 (new).** S2 gives the license, README, dependency files and last push
    of every project's repository: the documentation, dependency and maintenance part of
    Referee 1's request that was still open, and the evidence for Referee 4's point 2. S3 prints
-   the full URL behind every link icon in Table III, for printed copies (Referee 4, minor 11).
-   Tracking parameters were stripped from those links; one LinkedIn link carried the sharer's
-   member token.
+   the full URL behind every link icon in Table III, for printed copies (Referee 4, minor 11);
+   the few links that sat behind words (Section II, Table II, Figs. 3 and 4) are now printed
+   URLs. Tracking parameters were stripped from the Table III links; one LinkedIn link carried
+   the sharer's member token.
 7. **Presentation:** Data availability now sits after Conflicts of interest with full URLs
    (RSC's rule); the follow-up papers in Section VI are numbered references instead of opaque
    links (Referee 4, minor 11); Gavel and the Crowd-BT model it implements are cited; the
@@ -115,8 +122,8 @@ In this order:
 4. **Read and approve the AI statement (Sterling)** in the Acknowledgements and the cover
    letter. Confirm: the models (Claude Opus 5 and Fable 5 per the AC-BO workflow file, Claude
    Opus 5.5 for this round, the Copilot coding agent, Edison), whether anyone checked the
-   Table IV assignments by hand (if
-   so, add "and checked by the authors" to the Section IV and ESI wording), and what the
+   Table IV assignments by hand (if so, add "and checked by the authors" to the ESI wording),
+   and what the
    ChatGPT share link in the abstract's source comment was for (the link is dead; if ChatGPT
    wrote text, add it to the statement).
 5. **Apply the patches to PR 171 (Sterling)**, so the repository matches what is uploaded. On
@@ -124,7 +131,7 @@ In this order:
    `git am --keep-cr docs/bo-hackathon-submission/patches/*.patch`, then
    `sed -i 's/Los Angles/Los Angeles/g; s/Departmentt/Department/' latex/authors-hardcoded.tex`
    (two affiliation typos, kept out of the patches because that file's context lines carry
-   co-authors' personal e-mail addresses). Tested: the 21 patches plus that command reproduce
+   co-authors' personal e-mail addresses). Tested: the 23 patches plus that command reproduce
    the tree the PDFs were built from, exactly. Or ask `@claude` on PR 171 to do it.
 6. **Fix the participant spreadsheet before reviewers follow the new link (Sterling).**
    `AC-bo-hackathon-2024.csv` in the public AC-BO repository holds 131 participants' e-mail
@@ -165,18 +172,15 @@ authors have:
 2. **Classification criteria.** Table IV's categories were proposed by an AI agent and are not
    defined beyond "mature software"; the first-place project (23) and two projects that became
    papers (15, 36) are "preliminary concept". Referee 1 may ask for definitions and who checked.
-3. **Table III's icon links** (about 110, plus links behind text on pp. 3 to 6). Referee 4
-   objected to opaque links in the headings; the same applies here. Printing short URLs in an
-   ESI table would settle it.
-4. **Consent and ethics beyond Figs. 4 and 5:** the per-person review in Section VI lives in a
+3. **Consent and ethics beyond Figs. 4 and 5:** the per-person review in Section VI lives in a
    public GitHub comment; Fig. 3 contains third-party thumbnails and logos; Table III uses brand
    icons; RSC figures should not carry logos.
-5. **Confidentiality:** the referee reports are quoted in full in public AC-BO issue 170, and
+4. **Confidentiality:** the referee reports are quoted in full in public AC-BO issue 170, and
    the AI statement says the prompts are those threads. Worth deciding whether that issue
    should stay public before the editor reads the statement.
-6. **Counts that need a list:** "roughly 19 of the 45 projects" continued, and "6 of 45 (8 under
+5. **Counts that need a list:** "roughly 19 of the 45 projects" continued, and "6 of 45 (8 under
    a broader definition)" used LLMs. Listing them in the ESI would close the question.
-7. **Affiliations:** a few duplicate institution names, ETH Zurich and EPFL merged in one, and a
+6. **Affiliations:** a few duplicate institution names, ETH Zurich and EPFL merged in one, and a
    DTU affiliation with an Athens address. Production will query them; Gage can fix them in
    `latex/authors-hardcoded.tex`.
 
@@ -201,8 +205,8 @@ add the office's turnaround: about **11 December**. If the office wants a signed
 - Source zip: the two shell-escape pipes are replaced with their output; only the files the
   build reads are included, so no participant spreadsheet, no `edison_output/` and no unused
   `latex/authors.tex`, and the commented-out personal e-mail addresses in the author file are
-  dropped (only the two printed corresponding-author addresses remain). Unzipped into an empty folder and compiled with plain
-  `pdflatex`/`bibtex`: same 26 pages and the same text as the manuscript PDF (one word breaks
-  differently at a line end).
+  dropped (only the two printed corresponding-author addresses remain). Unzipped into an
+  empty folder and compiled with plain `pdflatex`/`bibtex`: same 27 pages and the same text as
+  the manuscript PDF (one word breaks differently at a line end).
 - Figures: lossless TIFF (Deflate), RGB, white background, resolution tag set to the print width.
 - Response letter: `scripts/make_response_letter.sh` (pandoc), as before.

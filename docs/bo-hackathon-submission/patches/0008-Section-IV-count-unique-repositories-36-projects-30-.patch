@@ -1,7 +1,7 @@
-From 92ea5044845a204ef1ec57a98a20236038ab9ad0 Mon Sep 17 00:00:00 2001
+From eb6194e1f9bebf922ea7dacfdda2b0a2086c79fd Mon Sep 17 00:00:00 2001
 From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
 Date: Fri, 27 Nov 2026 19:33:59 +0000
-Subject: [PATCH 08/21] Section IV: count unique repositories (36; projects 30
+Subject: [PATCH 08/23] Section IV: count unique repositories (36; projects 30
  and 31 share one)
 
 ---

@@ -1,7 +1,7 @@
-From 41a9414551df94ec0c522088e6350f48a35ebff1 Mon Sep 17 00:00:00 2001
+From e9711e3252ea9d04120745ec8588cb6d93598062 Mon Sep 17 00:00:00 2001
 From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
 Date: Fri, 27 Nov 2026 19:22:40 +0000
-Subject: [PATCH 03/21] Response letter: R4.3 reply for the ported dataset
+Subject: [PATCH 03/23] Response letter: R4.3 reply for the ported dataset
  work, R4.5 model/date/archive, hyperlink and ligature notes, page pointers
  for the 26-page build; ESI Table S1 states how categories were assigned
 

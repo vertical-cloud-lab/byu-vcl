@@ -1,0 +1,27 @@
+From 44d91da9fa5e4242c89d37eacafc62a6c0833fc8 Mon Sep 17 00:00:00 2001
+From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
+Date: Fri, 27 Nov 2026 20:29:44 +0000
+Subject: [PATCH 23/23] Response letter: minor 11 reply mentions the printed
+ URLs
+
+---
+ RESPONSE_TO_REVIEWERS.md | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/RESPONSE_TO_REVIEWERS.md b/RESPONSE_TO_REVIEWERS.md
+index 5eb3090..ba6f841 100644
+--- a/RESPONSE_TO_REVIEWERS.md
++++ b/RESPONSE_TO_REVIEWERS.md
+@@ -235,7 +235,8 @@ caption states this. The names still legible in Figure 4's other panels are thos
+ Changed to plain text throughout the summary headings (Section III, pages 9 to 19); the links
+ remain in Table III (pages 8 and 9), and ESI Table S3 prints the full URL behind each of its icons.
+ Papers named in Post-hackathon Outcomes are now numbered references rather than links (Section VI,
+-second paragraph, page 22).
++second paragraph, page 22), and the website links in Section II and in the Table II, Figure 3 and
++Figure 4 captions are printed as URLs.
+ 
+ > 13a. Project 40 has been migrated from the github listed on its project page to the repo listed in
+ > the Zenodo metadata file.
+-- 
+2.56.1
+
