@@ -273,9 +273,38 @@ capacity; round 6 counts the sessions offered and not used (`round6._could_start
 same stretches, to keep a change of rule from passing as a change of policy. The check ran at 16× round 5's
 candidates (the main scale when it started), for 260 days in the conventional lab and 170 in the automated one.
 
-<!-- COPPER_TABLE -->
+Flagged stretches at copper's first fabrication step (round 6's rule / round 5's rule):
 
-<!-- COPPER_FINDINGS -->
+| Lab | Policy | Stock | Seed | Days | Round 5 flagged | Flagged, cap (r6 rule / r5 rule) | Flagged, no cap (r6 rule / r5 rule) | Blend screens, cap / no cap | Lots, cap / no cap |
+|---|---|---|---|---|---|---|---|---|---|
+| conventional | bofn3 | lean | 0 | 260 | 2 | 1 / 1 | 0 / 0 | 6 / 6 | 5 / 5 |
+| conventional | bofn3 | lean | 4 | 260 | 2 | 1 / 2 | 0 / 0 | 7 / 7 | 5 / 5 |
+| conventional | bofn3 | reorder | 0 | 260 | 1 | 0 / 0 | 0 / 0 | 6 / 6 | 6 / 6 |
+| conventional | bofn3 | reorder | 2 | 260 | 1 | 0 / 0 | 0 / 0 | 6 / 6 | 6 / 6 |
+| conventional | pkgfn3 | reorder | 0 | 260 | 1 | 0 / 0 | 0 / 0 | 6 / 6 | 6 / 6 |
+| conventional | pkgfn3 | reorder | 2 | 260 | 1 | 0 / 0 | 0 / 0 | 6 / 6 | 6 / 6 |
+| vertical | bofn3 | reorder | 0 | 170 | 3 | 0 / 0 | 0 / 0 | 5 / 5 | 4 / 4 |
+| vertical | bofn3 | reorder | 1 | 170 | 2 | 0 / 0 | 0 / 0 | 4 / 4 | 7 / 7 |
+| vertical | pkgfn3 | reorder | 0 | 170 | 3 | 0 / 0 | 0 / 0 | 5 / 5 | 4 / 4 |
+| vertical | pkgfn3 | reorder | 1 | 170 | 2 | 0 / 0 | 0 / 0 | 4 / 4 | 7 / 7 |
+
+**What it shows.**
+
+* **Without the cap no stretch is flagged in any case, by either rule** (0 of 10 runs).
+* **The cap was the cause where copper spends slowly**: in the conventional lab ordering metal as it goes, putting the
+  cap back brings round 5's stretches back (days 0-53 and 0-57 for seed 0, 0-81 and 0-43 for seed 4, against round 5's
+  0-53 and 0-22/23-64, 0-81 and 0-43/44-78). With the cap, BOFN asked for a new copper design 255 and 334 times in
+  260 days and was turned away by its own cap nearly every time; without it, 38 and 24 times. The count shows as
+  `new_low_ei` in those rows: net3 returns before it counts the eligible candidates (the check-only variants now
+  count it as `new_capped`).
+* **Elsewhere the cap never bound in round 6.** In the conventional lab with stock and in the automated lab, the run
+  with the cap put back is the same as the run without it, call for call and dollar for dollar: buying stock and
+  running the lab raise the money spent, and the cap rises with it. Round 5's stretches there came from its other
+  money rules (the money kept for work in progress, the stock heuristic's money rules, the budget), which round 6 has
+  also removed.
+* Where the cap bound, it delayed copper's work rather than stopping it: by day 260 the same blend screens and lots
+  were made with and without it, but with it copper had spent less ($37,900 against $45,900 for seed 0; the same
+  $25,800 for seed 4) and its first weeks were idle.
 
 ## 7. Speed
 
