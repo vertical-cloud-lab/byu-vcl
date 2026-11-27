@@ -1,0 +1,26 @@
+From c6aacd2f8d8bb2bf350a47e1164df2df8965e36f Mon Sep 17 00:00:00 2001
+From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
+Date: Fri, 27 Nov 2026 19:48:53 +0000
+Subject: [PATCH 16/16] AI statement: add Claude Opus 5.5 (used for this round
+ of revisions and the Crossref check)
+
+---
+ main.tex | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/main.tex b/main.tex
+index 7cfcb63..545a061 100644
+--- a/main.tex
++++ b/main.tex
+@@ -575,7 +575,7 @@ Andy S. Anker acknowledges support by Novo Nordisk Foundation grant NNF23OC00813
+ 
+ Finally, we express thanks to all participants in the hackathon. The hackathon was only possible and meaningful due to the time dedicated by many in the projects themselves.
+ 
+-Generative AI tools were used in preparing this article. Draft project summaries were generated from the video transcripts with Anthropic's claude-3-5-sonnet-20240620 model (temperature 0.3) in January 2025, as described in Section III. During revision, Edison Scientific's literature and analysis agents were used to search the literature for the new sections and to propose the project classification in Table IV and ESI Table S1; the follow-up review in Section VI was compiled with Anthropic's Claude and Edison's literature agent in August 2026; and the interview cited in Section V was transcribed with faster-whisper (small.en). Anthropic's Claude Opus 5 and Claude Fable 5, run through Claude Code, and the GitHub Copilot coding agent were used to draft and edit revised text, the response to referees, the deterministic image-processing scripts that outline the labels in Fig. 2 and pixelate participant names in Figs. 4 and 5 (no generative editing of images), the script that generates the table of contents graphic, and the LaTeX source. The prompts are the public issue and pull request comments of the hackathon repository, where the agents' outputs are also archived. The authors reviewed and edited all AI-generated content and take full responsibility for the content of this article.
++Generative AI tools were used in preparing this article. Draft project summaries were generated from the video transcripts with Anthropic's claude-3-5-sonnet-20240620 model (temperature 0.3) in January 2025, as described in Section III. During revision, Edison Scientific's literature and analysis agents were used to search the literature for the new sections and to propose the project classification in Table IV and ESI Table S1; the follow-up review in Section VI was compiled with Anthropic's Claude and Edison's literature agent in August 2026; and the interview cited in Section V was transcribed with faster-whisper (small.en). Anthropic's Claude Opus 5, Claude Opus 5.5 and Claude Fable 5, run through Claude Code, and the GitHub Copilot coding agent were used to draft and edit revised text, to check the references against Crossref, the response to referees, the deterministic image-processing scripts that outline the labels in Fig. 2 and pixelate participant names in Figs. 4 and 5 (no generative editing of images), the script that generates the table of contents graphic, and the LaTeX source. The prompts are the public issue and pull request comments of the hackathon repository, where the agents' outputs are also archived. The authors reviewed and edited all AI-generated content and take full responsibility for the content of this article.
+ 
+ \section*{References}
+ 
+-- 
+2.56.1
+

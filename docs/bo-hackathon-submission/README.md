@@ -95,14 +95,15 @@ In this order:
    the response letter now says it was regenerated, so export with embedded fonts and check
    that copying "Griffiths", "Özkan", "Šošić" and "Lála" out of the PDF works.
 4. **Read and approve the AI statement (Sterling)** in the Acknowledgements and the cover
-   letter. Confirm: the models (Claude Opus 5 and Fable 5 per the AC-BO workflow file, the
-   Copilot coding agent, Edison), whether anyone checked the Table IV assignments by hand (if
+   letter. Confirm: the models (Claude Opus 5 and Fable 5 per the AC-BO workflow file, Claude
+   Opus 5.5 for this round, the Copilot coding agent, Edison), whether anyone checked the
+   Table IV assignments by hand (if
    so, add "and checked by the authors" to the Section IV and ESI wording), and what the
    ChatGPT share link in the abstract's source comment was for (the link is dead; if ChatGPT
    wrote text, add it to the statement).
 5. **Apply the patches to PR 171 (Sterling)**, so the repository matches what is uploaded:
    `git am --keep-cr docs/bo-hackathon-submission/patches/*.patch` on
-   `copilot/address-dd-reviewer-feedback` (tested: the 15 patches apply cleanly to `8321260`),
+   `copilot/address-dd-reviewer-feedback` (tested: the 16 patches apply cleanly to `8321260`),
    or ask `@claude` on PR 171 to do it.
 6. **Fix the participant spreadsheet before reviewers follow the new link (Sterling).**
    `AC-bo-hackathon-2024.csv` in the public AC-BO repository holds 131 participants' e-mail
@@ -152,7 +153,9 @@ add the office's turnaround: about **11 December**. If the office wants a signed
 - `latexmk -f` is still needed for the original 8321260 tree because three `.bib` entries carry
   `language = {en}`; the patches fix the entries, so the build now exits cleanly.
 - Source zip: the two shell-escape pipes are replaced with their output; only the files the
-  build reads are included. Unzipped into an empty folder and compiled with plain
-  `pdflatex`/`bibtex`: same 27 pages, same text as the manuscript PDF.
+  build reads are included, so no participant spreadsheet, no `edison_output/` and no unused
+  `latex/authors.tex`. Unzipped into an empty folder and compiled with plain
+  `pdflatex`/`bibtex`: same 27 pages and the same text as the manuscript PDF (one word breaks
+  differently at a line end).
 - Figures: lossless TIFF (Deflate), RGB, white background, resolution tag set to the print width.
 - Response letter: `scripts/make_response_letter.sh` (pandoc), as before.

@@ -56,8 +56,9 @@ Acknowledgements. Anthropic's claude-3-5-sonnet-20240620 drafted the per-project
 from the video transcripts in January 2025, and the organizers reviewed and edited every
 summary. During revision, Edison Scientific's literature and analysis agents supported the
 literature search and proposed the project classification. Anthropic's Claude (Claude Opus
-5 and Claude Fable 5, through Claude Code) and the GitHub Copilot coding agent helped draft
-and edit revised text, the response to referees and the figure-processing scripts. Claude,
+5, Claude Opus 5.5 and Claude Fable 5, through Claude Code) and the GitHub Copilot coding
+agent helped draft and edit revised text, the response to referees and the figure-processing
+scripts, and to check the references against Crossref. Claude,
 with Edison's literature agent, compiled the review of public records in Section VI, and
 faster-whisper transcribed the interview cited in Section V. The prompts and outputs are
 archived in the public hackathon repository. The authors reviewed all AI-generated content

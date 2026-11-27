@@ -1,7 +1,7 @@
-From febb497099437d063ebb64e9697cccc628dbf5b2 Mon Sep 17 00:00:00 2001
+From af0d7fd42250cbbad6611d004fb996527853c6b7 Mon Sep 17 00:00:00 2001
 From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
 Date: Fri, 27 Nov 2026 19:40:34 +0000
-Subject: [PATCH 11/15] References checked against Crossref and DataCite: wrong
+Subject: [PATCH 11/16] References checked against Crossref and DataCite: wrong
  DOIs, wrong author lists, published versions
 
 Corrections backed by the registry record (full audit in byu-vcl
