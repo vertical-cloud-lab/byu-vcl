@@ -1,7 +1,7 @@
-From f7811ae604d7be06c8ed28ae856bad4196209dfc Mon Sep 17 00:00:00 2001
+From 24135870601de68361e116190e67bad369b074bc Mon Sep 17 00:00:00 2001
 From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
 Date: Fri, 27 Nov 2026 19:36:30 +0000
-Subject: [PATCH 10/24] Response letter: page pointers for the 27-page build;
+Subject: [PATCH 10/25] Response letter: page pointers for the 27-page build;
  ESI Table S2 in the R1 and R4.2 replies; font fix in the ligature reply
 
 ---

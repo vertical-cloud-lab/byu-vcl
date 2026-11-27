@@ -1,7 +1,7 @@
-From d1950108bb818063c1d7f86113ab6701e930f8d0 Mon Sep 17 00:00:00 2001
+From ac5816958cc3a8ba5a1893e01b055469b0a0ca18 Mon Sep 17 00:00:00 2001
 From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
 Date: Fri, 27 Nov 2026 20:22:01 +0000
-Subject: [PATCH 18/24] Cite the source of the hackathon definition quote
+Subject: [PATCH 18/25] Cite the source of the hackathon definition quote
  (GitHub's hackathon guide); V.B no longer claims DoE baselines no project ran
 
 ---

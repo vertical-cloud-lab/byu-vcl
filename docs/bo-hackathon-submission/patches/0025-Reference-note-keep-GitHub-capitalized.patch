@@ -1,0 +1,23 @@
+From a0444817b82522ddba81ec5096da62f26b8e77e7 Mon Sep 17 00:00:00 2001
+From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
+Date: Fri, 27 Nov 2026 20:32:20 +0000
+Subject: [PATCH 25/25] Reference note: keep GitHub capitalized
+
+---
+ latex/revision-refs.bib | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/latex/revision-refs.bib b/latex/revision-refs.bib
+index 25d6762..1657210 100644
+--- a/latex/revision-refs.bib
++++ b/latex/revision-refs.bib
+@@ -107,5 +107,5 @@
+ 	author = {Mannering, Michelle},
+ 	year = {2021},
+ 	howpublished = {\url{https://github.com/github/hackathons/blob/main/TipsandTricks.md}},
+-	note = {GitHub hackathons guide; the author now publishes as Michelle Duke. Accessed: 2026-11-27},
++	note = {{GitHub} hackathons guide; the author now publishes as Michelle Duke. Accessed: 2026-11-27},
+ }
+-- 
+2.56.1
+

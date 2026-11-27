@@ -1,7 +1,7 @@
-From bca5b9baf8d6af54ffb31b58d51a01204edbb1f9 Mon Sep 17 00:00:00 2001
+From 9630243dc915adafd792718c8d99c7b553b6f070 Mon Sep 17 00:00:00 2001
 From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
 Date: Fri, 27 Nov 2026 20:31:05 +0000
-Subject: [PATCH 24/24] Section II refers to the Fig. 4 caption for the
+Subject: [PATCH 24/25] Section II refers to the Fig. 4 caption for the
  recordings instead of an inline URL (keeps page 4 from being left nearly
  empty); letter pointers for the 26-page build
 

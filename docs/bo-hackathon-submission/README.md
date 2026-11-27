@@ -131,7 +131,7 @@ In this order:
    `git am --keep-cr docs/bo-hackathon-submission/patches/*.patch`, then
    `sed -i 's/Los Angles/Los Angeles/g; s/Departmentt/Department/' latex/authors-hardcoded.tex`
    (two affiliation typos, kept out of the patches because that file's context lines carry
-   co-authors' personal e-mail addresses). Tested: the 24 patches plus that command reproduce
+   co-authors' personal e-mail addresses). Tested: the 25 patches plus that command reproduce
    the tree the PDFs were built from, exactly. Or ask `@claude` on PR 171 to do it.
 6. **Fix the participant spreadsheet before reviewers follow the new link (Sterling).**
    `AC-bo-hackathon-2024.csv` in the public AC-BO repository holds 131 participants' e-mail
