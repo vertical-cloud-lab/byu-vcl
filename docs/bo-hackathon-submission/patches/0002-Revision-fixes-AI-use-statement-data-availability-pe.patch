@@ -1,0 +1,210 @@
+From 79bdd0cb477dea0d54bb9ff22f7a9908191d0723 Mon Sep 17 00:00:00 2001
+From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
+Date: Fri, 27 Nov 2026 19:17:06 +0000
+Subject: [PATCH 2/2] Revision fixes: AI-use statement, data availability per
+ RSC, 124-author outcome counts, cited follow-up papers
+
+- Acknowledgements: declare the generative AI tools used (models, purposes,
+  where prompts and outputs are archived), as RSC policy requires when
+  there is no methods section.
+- Data availability: titled and placed after Conflicts of interest as RSC
+  asks, full https://doi.org URL, and the repository material behind the
+  analyses (scripts, raw and edited AI summaries, agent outputs).
+- Post-hackathon Outcomes: recount the cohort statistics for the 124
+  current co-authors (73 students, 94 with outputs, 56 students with
+  outputs; percentages unchanged) and eight faculty moves.
+- Section VI follow-up papers and the review record become numbered
+  references instead of opaque hyperlinks (Referee 4, minor 11).
+- Section II: cite Gavel and the Crowd-BT model it implements.
+- Section III: generation date of the AI-drafted summaries (January 2025).
+---
+ latex/revision-refs.bib | 94 +++++++++++++++++++++++++++++++++++++++++
+ main.tex                | 26 ++++++------
+ 2 files changed, 108 insertions(+), 12 deletions(-)
+ create mode 100644 latex/revision-refs.bib
+
+diff --git a/latex/revision-refs.bib b/latex/revision-refs.bib
+new file mode 100644
+index 0000000..69cab5d
+--- /dev/null
++++ b/latex/revision-refs.bib
+@@ -0,0 +1,94 @@
++% References added in the revision (Digital Discovery DD-ART-06-2026-000353).
++% Metadata taken from Crossref (journal articles), DataCite (arXiv) and the
++% Gavel README (software); kept in their own file so they cannot collide with
++% the Zotero exports in references.bib and summaries-ref.bib.
++
++@misc{athalye_gavel_2016,
++	title = {Gavel},
++	author = {Athalye, Anish},
++	year = {2016},
++	howpublished = {\url{https://github.com/anishathalye/gavel}},
++	note = {Pairwise-comparison judging system. Accessed: 2026-11-27},
++}
++
++@inproceedings{chen_pairwise_2013,
++	title = {Pairwise ranking aggregation in a crowdsourced setting},
++	author = {Chen, Xi and Bennett, Paul N. and Collins-Thompson, Kevyn and Horvitz, Eric},
++	booktitle = {Proceedings of the Sixth {ACM} International Conference on Web Search and Data Mining},
++	series = {WSDM '13},
++	publisher = {ACM},
++	pages = {193--202},
++	year = {2013},
++	doi = {10.1145/2433396.2433420},
++}
++
++@misc{acbo_followup_2026,
++	title = {Follow-up review of public records for the {AC-BO} {Hackathon} co-authors},
++	author = {{AC-BO Hackathon organizers}},
++	year = {2026},
++	howpublished = {\url{https://github.com/AC-BO-Hackathon/ac-bo-hackathon.github.io/issues/172\#issuecomment-5348017006}},
++	note = {Compiled August 2026. Accessed: 2026-11-27},
++}
++
++@article{tom_ranking_2025,
++	title = {Ranking over regression for {Bayesian} optimization and molecule selection},
++	author = {Tom, Gary and Lo, Stanley and Corapi, Samantha and Aspuru-Guzik, Al{\'a}n and Sanchez-Lengeling, Benjamin},
++	journal = {APL Machine Learning},
++	volume = {3},
++	number = {3},
++	pages = {036113},
++	year = {2025},
++	doi = {10.1063/5.0272663},
++}
++
++@misc{schmid_general_2025,
++	title = {Bayesian optimization for general reaction conditions},
++	author = {Schmid, Stefan P. and Rajaonson, Ella Miray and Ser, Cher Tian and Haddadnia, Mohammad and Leong, Shi Xuan and Aspuru-Guzik, Al{\'a}n and Kristiadi, Agustinus and Jorner, Kjell and Strieth-Kalthoff, Felix},
++	year = {2025},
++	howpublished = {arXiv preprint, arXiv:2502.18966},
++	doi = {10.48550/arXiv.2502.18966},
++}
++
++@article{haddadnia_botier_2025,
++	title = {{BoTier}: multi-objective {Bayesian} optimization with tiered objective structures},
++	author = {Haddadnia, Mohammad and Grashoff, Leonie and Strieth-Kalthoff, Felix},
++	journal = {Digital Discovery},
++	volume = {4},
++	number = {6},
++	pages = {1417--1422},
++	year = {2025},
++	doi = {10.1039/D5DD00039D},
++}
++
++@article{schoepfer_cost-informed_2024,
++	title = {Cost-informed {Bayesian} reaction optimization},
++	author = {Schoepfer, Alexandre A. and Weinreich, Jan and Laplaza, Ruben and Waser, Jerome and Corminboeuf, Clemence},
++	journal = {Digital Discovery},
++	volume = {3},
++	number = {11},
++	pages = {2289--2297},
++	year = {2024},
++	doi = {10.1039/D4DD00225C},
++}
++
++@article{movassaghi_machine-learning-guided_2025,
++	title = {Machine-learning-guided design of electroanalytical pulse waveforms},
++	author = {Movassaghi, Cameron S. and Perrotta, Katie A. and Curry, Maya E. and Nashner, Audrey N. and Nguyen, Katherine K. and Wesely, Mila E. and Alca{\~n}iz Fillol, Miguel and Liu, Chong and Meyer, Aaron S. and Andrews, Anne M.},
++	journal = {Digital Discovery},
++	volume = {4},
++	number = {7},
++	pages = {1812--1832},
++	year = {2025},
++	doi = {10.1039/D5DD00005J},
++}
++
++@article{anker_autonomous_2026,
++	title = {Autonomous synthesis of nanoparticles with target scattering patterns},
++	author = {Anker, Andy S. and Jensen, Jonas H. and Gonz{\'a}lez-Duque, Miguel and Moreno, Rodrigo and Smolska, Aleksandra and Juelsholt, Mikkel and Hardion, Vincent and J{\o}rgensen, Mads R. V. and Fa{\'i}{\~n}a, Andr{\'e}s and Quinson, Jonathan and St{\o}y, Kasper and Vegge, Tejs},
++	journal = {ACS Nano},
++	volume = {20},
++	number = {8},
++	pages = {6767--6782},
++	year = {2026},
++	doi = {10.1021/acsnano.5c15488},
++}
+diff --git a/main.tex b/main.tex
+index 35491a2..f476009 100644
+--- a/main.tex
++++ b/main.tex
+@@ -316,7 +316,7 @@ One of the unique aspects of this event is that it was hosted in Gather Town, a
+ 
+ The hackathon concluded with a project showcase accompanied by crowdsourced judging within a "poster room" (\cref{fig:poster}).
+ 
+-Community judging occurred via \href{https://github.com/anishathalye/gavel}{Gavel}, an automated pairwise comparison judging system. Use of this system helped to improve fairness, scalability, and accuracy by having judges compare projects relative to each other rather than assigning subjective numerical scores (for example, "rate your pain on a scale from 1 to 10, where 10 is the worst possible pain you can imagine"). Rather than scoring against a numeric rubric, judges answered a single holistic question for each assigned pair, effectively "which of these two projects is better?". The approach of pairwise judging reduces bias, allows for handling large competitions efficiently, and produces high-quality rankings using statistical models with dynamic assignments to judges to maximize information gain. It has been successfully used at HackMIT and other events to streamline judging and enhance transparency and credibility. See \cref{tab:winners} for rankings of the top 10 projects and the awarded prizes.
++Community judging occurred via Gavel~\cite{athalye_gavel_2016}, an automated pairwise comparison judging system. Use of this system helped to improve fairness, scalability, and accuracy by having judges compare projects relative to each other rather than assigning subjective numerical scores (for example, "rate your pain on a scale from 1 to 10, where 10 is the worst possible pain you can imagine"). Rather than scoring against a numeric rubric, judges answered a single holistic question for each assigned pair, effectively "which of these two projects is better?". The approach of pairwise judging reduces bias, allows for handling large competitions efficiently, and produces high-quality rankings using a statistical model of pairwise preferences and judge reliability (Crowd-BT~\cite{chen_pairwise_2013}) with dynamic assignments to judges to maximize information gain. It has been successfully used at HackMIT and other events to streamline judging and enhance transparency and credibility. See \cref{tab:winners} for rankings of the top 10 projects and the awarded prizes.
+ 
+ The corresponding Gavel web app was hosted on Heroku according to directions in the Gavel repository. Individualized links were distributed to judges via email using Gavel's SendGrid integration. Collectively, 35 judges cast 319 votes.
+ 
+@@ -458,8 +458,8 @@ The corresponding Gavel web app was hosted on Heroku according to directions in
+ \section{Projects' Key Findings}
+ 
+ This section provides a summary of the key findings from all 45 project submissions.
+-To streamline the process, the speech transcript of each YouTube video submission was retrieved and condensed into a draft summary by an AI agent powered by Anthropic's \emph{claude-3-5-sonnet-20240620} language model with a temperature of 0.3, applied uniformly across submissions.
+-Each draft was then reviewed and edited by the organizers to correct errors and ensure a faithful description; the per-project summaries are archived alongside the manuscript source.
++To streamline the process, the speech transcript of each YouTube video submission was retrieved and condensed into a draft summary by an AI agent powered by Anthropic's \emph{claude-3-5-sonnet-20240620} language model with a temperature of 0.3, applied uniformly across submissions in January 2025.
++Each draft was then reviewed and edited by the organizers to correct errors and ensure a faithful description; both the raw model outputs and the edited summaries are archived in the hackathon repository (see Data availability).
+ Six projects (14, 19, 23, 29, 34, and 42) had no recorded video submission to transcribe; their summaries were instead prepared from the corresponding project pages and each team's public artifacts, as noted at the end of each such summary.
+ 
+ 
+@@ -491,7 +491,7 @@ Mature software & 3 & 7\% \\
+ \end{tabular}
+ \end{table}
+ 
+-We also assessed code availability and licensing. Of the 45 projects, 42 link to a public code repository; \cref{tab:licenses} tallies license status per project. Explicit licenses are overwhelmingly permissive (20 MIT, 4 Apache-2.0); 12 projects provide no license file, and 4 link to repositories that were private or removed when checked. Dependency specifications were frequently incomplete, so most outputs are reusable starting points rather than finished tools~\cite{nolte_what_2020}. The license tabulation script is archived with the manuscript source.
++We also assessed code availability and licensing. Of the 45 projects, 42 link to a public code repository; \cref{tab:licenses} tallies license status per project. Explicit licenses are overwhelmingly permissive (20 MIT, 4 Apache-2.0); 12 projects provide no license file, and 4 link to repositories that were private or removed when checked. Dependency specifications were frequently incomplete, so most outputs are reusable starting points rather than finished tools~\cite{nolte_what_2020}. The license tabulation script is available in the hackathon repository (see Data availability).
+ 
+ \begin{table}[tbp]
+ \centering
+@@ -542,11 +542,11 @@ The projects also surfaced well-known limitations. Default BO was not always sup
+ \section{Post-hackathon Outcomes}
+ \label{sec:outcomes}
+ 
+-A \href{https://github.com/AC-BO-Hackathon/ac-bo-hackathon.github.io/issues/172\#issuecomment-5348017006}{follow-up review of public records} provides a snapshot of longer-term outcomes. Of the 126 paper co-authors, 74 (59\%) were students at the time of the hackathon; by August 2026, 96 (76\%) had a publicly visible post-event output in or adjacent to BO, active learning, or self-driving laboratories, including 57 of the 74 students (77\%). Roughly 19 of the 45 projects showed a continuation trail through a manuscript, software tool, thesis chapter, or maintained benchmark.
++A follow-up review of public records (publications, code repositories, and professional profiles), compiled in August 2026 with an evidence link recorded for each person, provides a snapshot of longer-term outcomes~\cite{acbo_followup_2026}. Of the 124 paper co-authors, 73 (59\%) were students at the time of the hackathon; by August 2026, 94 (76\%) had a publicly visible post-event output in or adjacent to BO, active learning, or self-driving laboratories, including 56 of the 73 students (77\%). Roughly 19 of the 45 projects showed a continuation trail through a manuscript, software tool, thesis chapter, or maintained benchmark.
+ 
+-Several of these continuations can be traced to specific manuscripts. Project 44's work on rank-based BO became \href{https://doi.org/10.1063/5.0272663}{\emph{Ranking over regression for Bayesian optimization and molecule selection}} (\emph{APL Machine Learning}, 2025), which explicitly acknowledges the hackathon. Project 45's generality-oriented BO work continued as \href{https://arxiv.org/abs/2502.18966}{\emph{One Set to Rule Them All: How to Obtain General Chemical Conditions via Bayesian Optimization over Curried Functions}} (CurryBO) and \href{https://doi.org/10.1039/D5DD00039D}{\emph{BoTier: multi-objective Bayesian optimization with tiered objective structures}} (\emph{Digital Discovery}, 2025). Project 15 was followed by \href{https://doi.org/10.1039/D4DD00225C}{\emph{Cost-informed Bayesian reaction optimization}} (\emph{Digital Discovery}, 2024), while projects 30 and 31 developed into the SeroOpt software and \href{https://doi.org/10.1039/D5DD00005J}{\emph{Machine-learning-guided design of electroanalytical pulse waveforms}} (\emph{Digital Discovery}, 2025). Project 36 continued as the LookaHES manuscript, \href{https://arxiv.org/abs/2601.06505}{\emph{Neural nonmyopic Bayesian optimization in dynamic cost settings}}, and the ScattBO benchmark from project 24 informed the later autonomous-synthesis study \href{https://doi.org/10.1021/acsnano.5c15488}{\emph{Autonomous synthesis of nanoparticles with target scattering patterns}} (\emph{ACS Nano}, 2026).
++Several of these continuations can be traced to specific manuscripts. Project 44's work on rank-based BO became \emph{Ranking over regression for Bayesian optimization and molecule selection}~\cite{tom_ranking_2025}, which explicitly acknowledges the hackathon. Project 45's generality-oriented BO work continued as CurryBO~\cite{schmid_general_2025} and \emph{BoTier: multi-objective Bayesian optimization with tiered objective structures}~\cite{haddadnia_botier_2025}. Project 15 was followed by \emph{Cost-informed Bayesian reaction optimization}~\cite{schoepfer_cost-informed_2024}, while projects 30 and 31 developed into the SeroOpt software and \emph{Machine-learning-guided design of electroanalytical pulse waveforms}~\cite{movassaghi_machine-learning-guided_2025}. Project 36 continued as the LookaHES manuscript, \emph{Neural nonmyopic Bayesian optimization in dynamic cost settings}~\cite{truong2026neural}, and the ScattBO benchmark from project 24 informed the later autonomous-synthesis study \emph{Autonomous synthesis of nanoparticles with target scattering patterns}~\cite{anker_autonomous_2026}.
+ 
+-Career outcomes provide a complementary signal: nine participants moved into faculty or group-leader roles at institutions such as the Technical University of Denmark, Mohamed bin Zayed University of Artificial Intelligence, Brigham Young University, Sungkyunkwan University, Virginia Tech, and the University of Toledo. Because the participants were self-selected and the review captured only public evidence, these figures are best understood as lower bounds on continued activity rather than causal estimates of the hackathon's impact.
++Career outcomes provide a complementary signal: eight co-authors moved into faculty or group-leader roles at institutions such as the Technical University of Denmark, Mohamed bin Zayed University of Artificial Intelligence, Brigham Young University, Sungkyunkwan University, Nanyang Technological University, and Virginia Tech. Because the participants were self-selected and the review captured only public evidence, these figures are best understood as lower bounds on continued activity rather than causal estimates of the hackathon's impact.
+ 
+ \section{Future Opportunities}
+ \label{sec:future}
+@@ -556,14 +556,14 @@ Building on the hackathon outputs and the trends above, we highlight several pro
+ The large share of hackathon projects that already incorporated language models points to \emph{foundation-model- and LLM-assisted BO} as a particularly active frontier for design-space specification, prior construction, and warm-starting; reported evidence on whether LLM-based surrogates and priors outperform strong classical baselines is mixed, and benchmarking such hybrids fairly (separating genuine generalization from memorized results) is itself an open problem~\cite{kristiadi_sober_2024, rankovic_gollum_2025}. Other opportunities include \emph{preference-based and human-in-the-loop BO} for subjective or hard-to-quantify objectives~\cite{adachi_looping_2024, deneault_preferential_2025}; \emph{multi-objective materials design} with scalable hypervolume-based acquisitions~\cite{ament_sustainable_2023}; \emph{robust BO under noisy experimental data}~\cite{aldeghi_golem_2021, altamirano_robust_2023}; \emph{community benchmark development} to enable reproducible, apples-to-apples comparisons~\cite{liang_benchmarking_2021, felton_summit_2021}; use of agents to redefine search spaces mid-campaign \cite{muller_la_agente_optima_2026}; and \emph{domain-specific, deployment-ready BO tools} for synthesis and processing optimization that meet experimentalists where they work, including a growing set of graphical and web-based BO interfaces that remove coding barriers~\cite{durholt_bofire_2024, fitzner_baybe_2022, ishii_boxvia_2022, torres_multi-objective_2022, tamura_nims-os_2023}. Collectively, these directions echo the broader perspective that Bayesian methods are a core component of the autonomous materials-discovery toolkit~\cite{arroyave_perspective_2022}.
+ 
+ 
+-\section*{Data Availability}
+-
+-The code and materials associated with the projects in this hackathon are archived on Zenodo at \zenodolink{10.5281/zenodo.20496810}.
+-
+ \section*{Conflicts of interest}
+ 
+ There are no conflicts of interest to declare.
+ 
++\section*{Data availability}
++
++The code and materials associated with the projects in this hackathon are archived on Zenodo at \url{https://doi.org/10.5281/zenodo.20496810}. The manuscript source and the material behind its analyses are in the hackathon repository at \url{https://github.com/AC-BO-Hackathon/ac-bo-hackathon.github.io}: the project pages, the scripts that generate Table III and the project summaries, the repository license tabulation behind Table V, the figure redaction script, the raw and edited AI-drafted project summaries, and the archived outputs of the AI analysis and literature queries. A versioned snapshot of this repository will be deposited on Zenodo upon acceptance. Per-project category assignments are given in the ESI. Participant demographics (Fig. 2) are reported only in aggregate.
++
+ \section*{Acknowledgements}
+ 
+ We express a huge thanks to Kevin Jablonka and Ben Blaiszik (latter a co-author of this paper) and others did phenomenal work paving the way with the LLMs for Chemistry and Materials Hackathon (2023). Much of the setup and many of the patterns of the Bayesian optimization hackathon was either directly replicated based off of or inspired by the LLM hackathon.
+@@ -573,11 +573,13 @@ Andy S. Anker acknowledges support by Novo Nordisk Foundation grant NNF23OC00813
+ 
+ Finally, we express thanks to all participants in the hackathon. The hackathon was only possible and meaningful due to the time dedicated by many in the projects themselves.
+ 
++Generative AI tools were used in preparing this article. Draft project summaries were generated from the video transcripts with Anthropic's claude-3-5-sonnet-20240620 model (temperature 0.3) in January 2025, as described in Section III. During revision, Edison Scientific's literature and analysis agents were used to search the literature for the new sections and to propose the project classification in Table IV and ESI Table S1; the follow-up review in Section VI was compiled with Anthropic's Claude and Edison's literature agent in August 2026; and the interview cited in Section V was transcribed with faster-whisper (small.en). Anthropic's Claude Opus 5 and Claude Fable 5, run through Claude Code, and the GitHub Copilot coding agent were used to draft and edit revised text, the response to referees, the deterministic image-processing scripts that outline the labels in Fig. 2 and pixelate participant names in Figs. 4 and 5 (no generative editing of images), the script that generates the table of contents graphic, and the LaTeX source. The prompts are the public issue and pull request comments of the hackathon repository, where the agents' outputs are also archived. The authors reviewed and edited all AI-generated content and take full responsibility for the content of this article.
++
+ \section*{References}
+ 
+ %\printglossaries
+ 
+ % \bibliographystyle{achemso}
+-\bibliography{latex/references, latex/summaries-ref}
++\bibliography{latex/references, latex/summaries-ref, latex/revision-refs}
+ 
+ \end{document}
+-- 
+2.56.1
+

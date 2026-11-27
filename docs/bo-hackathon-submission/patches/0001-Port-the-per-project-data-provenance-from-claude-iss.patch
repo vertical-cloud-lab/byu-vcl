@@ -1,0 +1,293 @@
+From f8a9648b4b0bcd0b53564f38bc2e8a504d60528e Mon Sep 17 00:00:00 2001
+From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
+Date: Fri, 27 Nov 2026 19:07:47 +0000
+Subject: [PATCH 1/2] Port the per-project data provenance from
+ claude/issue-176 (0258d7a) onto the revision branch
+
+Referee 4 point 3: each flagged summary (6, 15, 19, 20, 21, 29, 30, 31,
+36, 37, 40, 42, 45) states its data source; Cross-Project Synthesis gains
+the data-provenance paragraph; seven supporting references. The branch was
+built on a4ef317 and never merged, so the Oct 8 upload set lacked it.
+Also fixes a missing space in the project 37 summary.
+---
+ _projects/json_summaries/project_15.json |  2 +-
+ _projects/json_summaries/project_19.json |  4 +-
+ _projects/json_summaries/project_20.json |  2 +-
+ _projects/json_summaries/project_21.json |  2 +-
+ _projects/json_summaries/project_29.json |  4 +-
+ _projects/json_summaries/project_30.json |  2 +-
+ _projects/json_summaries/project_31.json |  2 +-
+ _projects/json_summaries/project_36.json |  2 +-
+ _projects/json_summaries/project_37.json |  2 +-
+ _projects/json_summaries/project_40.json |  2 +-
+ _projects/json_summaries/project_42.json |  4 +-
+ _projects/json_summaries/project_45.json |  2 +-
+ _projects/json_summaries/project_6.json  |  2 +-
+ latex/summaries-ref.bib                  | 67 +++++++++++++++++++++++-
+ main.tex                                 |  2 +
+ 15 files changed, 84 insertions(+), 17 deletions(-)
+
+diff --git a/_projects/json_summaries/project_15.json b/_projects/json_summaries/project_15.json
+index ee309ed..01b1943 100644
+--- a/_projects/json_summaries/project_15.json
++++ b/_projects/json_summaries/project_15.json
+@@ -2,6 +2,6 @@
+     "project_number": 15,
+     "project_name": "Adaptive Batch Sizes for Bayesian Optimization of Reaction Yield",
+     "video_url": "https://www.youtube.com/watch?v=utnWbJsObF0",
+-    "summary": "This research project investigates the optimization of batch sizes in BO for chemical reaction yield optimization. The study focuses on determining the optimal batch size (Q) at each step of the BO process, considering both smaller and larger batch sizes. The researchers examine how Q impacts the cost of retraining models, such as large language models, and how it relates to additional experimentation overhead. The project findings indicate that the optimal Q depends on a trade-off between model retraining time and additional experimentation overhead. For a fixed batch size, the researchers observed two minima at Q=3 and Q=7, reflecting the relative importance of Q in different scenarios. With very large batch sizes, the retraining cost had minimal impact on the overall experimental overhead, while experimentation overhead had a significant influence. The study also explored adaptive batch sizing strategies, decreasing batch sizes when performance was good and increasing them as the surrogate model became more trustworthy. The researchers conclude that batch sizes have a crucial effect on BO efficiency in real-world settings, and adaptive batch sizes could effectively balance the trade-off between model retraining and batch sampling effectiveness.",
++    "summary": "This research project investigates the optimization of batch sizes in BO for chemical reaction yield optimization. All optimization runs were retrospective queries of the 1,728-reaction palladium-catalyzed direct arylation benchmark of Shields et al.\\cite{shields2021bayesian}, which spans 12 ligands, 4 bases, 4 solvents, 3 concentrations, and 3 temperatures with measured yields; the project code fetches this dataset at run time from the EDBO+ repository\\cite{torres_multi-objective_2022} rather than shipping a copy of its own. The study focuses on determining the optimal batch size (Q) at each step of the BO process, considering both smaller and larger batch sizes. The researchers examine how Q impacts the cost of retraining models, such as large language models, and how it relates to additional experimentation overhead. The project findings indicate that the optimal Q depends on a trade-off between model retraining time and additional experimentation overhead. For a fixed batch size, the researchers observed two minima at Q=3 and Q=7, reflecting the relative importance of Q in different scenarios. With very large batch sizes, the retraining cost had minimal impact on the overall experimental overhead, while experimentation overhead had a significant influence. The study also explored adaptive batch sizing strategies, decreasing batch sizes when performance was good and increasing them as the surrogate model became more trustworthy. The researchers conclude that batch sizes have a crucial effect on BO efficiency in real-world settings, and adaptive batch sizes could effectively balance the trade-off between model retraining and batch sampling effectiveness.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_19.json b/_projects/json_summaries/project_19.json
+index 5526830..149bcb8 100644
+--- a/_projects/json_summaries/project_19.json
++++ b/_projects/json_summaries/project_19.json
+@@ -2,6 +2,6 @@
+     "project_number": 19,
+     "project_name": "Quantum Bayesian Optimization for Automatic Chemical Design",
+     "video_url": "",
+-    "summary": "This project proposed a quantum-computing route to BO for molecular design, with quantum Gaussian-process regression\\cite{rapp_quantum_2024} in place of the classical surrogate. The submission was never carried out.",
++    "summary": "This project proposed a quantum-computing route to BO for molecular design, with quantum Gaussian-process regression\\cite{rapp_quantum_2024} in place of the classical surrogate. The submission was never carried out, so no dataset was used.",
+     "status": "manual"
+-}
++}
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_20.json b/_projects/json_summaries/project_20.json
+index 7da4adc..6baf4d3 100644
+--- a/_projects/json_summaries/project_20.json
++++ b/_projects/json_summaries/project_20.json
+@@ -2,6 +2,6 @@
+     "project_number": 20,
+     "project_name": "Closed loop optimization of hydrogel formulations using dynamic light scattering",
+     "video_url": "https://youtu.be/Qbvq7uolQr8",
+-    "summary": "This research project proposes a self-driving lab approach to optimize hydrogel formulations using BO and automated characterization techniques. The study aims to address the challenge of creating hydrogels with specific properties for applications such as cell culture, tissue engineering, drug delivery, and agriculture. The proposed workflow utilizes an open-source liquid handling robot to mix hydrogel formulations in a 96-well plate, followed by cross-linking using various methods (LED array, heating module, or time). The key innovation is the use of Dynamic Light Scattering (DLS)\\cite{stetefeld2016dynamic} for automated characterization of gelation and viscoelastic properties, which can measure gel stiffness up to 10 kilopascals. This DLS method is implemented using a plate reader specifically designed for 96-well plates, enabling high-throughput analysis. The resulting property data is then fed into a Bayesian Optimizer to determine the next set of formulations and processing parameters to test. This approach aims to efficiently explore the complex relationship between hydrogel formulation parameters and their resulting properties, potentially accelerating the development of custom hydrogels for specific applications in biological research and improving data availability and reliability in the field.",
++    "summary": "This research project proposes a self-driving lab approach to optimize hydrogel formulations using BO and automated characterization techniques. The study aims to address the challenge of creating hydrogels with specific properties for applications such as cell culture, tissue engineering, drug delivery, and agriculture. The proposed workflow utilizes an open-source liquid handling robot to mix hydrogel formulations in a 96-well plate, followed by cross-linking using various methods (LED array, heating module, or time). The key innovation is the use of Dynamic Light Scattering (DLS)\\cite{stetefeld2016dynamic} for automated characterization of gelation and viscoelastic properties, which can measure gel stiffness up to 10 kilopascals. This DLS method is implemented using a plate reader specifically designed for 96-well plates, enabling high-throughput analysis. The resulting property data is then fed into a Bayesian Optimizer to determine the next set of formulations and processing parameters to test. This approach aims to efficiently explore the complex relationship between hydrogel formulation parameters and their resulting properties, potentially accelerating the development of custom hydrogels for specific applications in biological research and improving data availability and reliability in the field. As a two-day proposal, the closed loop was exercised only in software: the accompanying example script populates a BayBE\\cite{fitzner2022baybe} campaign with mock measurement values, and no experimental hydrogel dataset was generated or used.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_21.json b/_projects/json_summaries/project_21.json
+index 6856793..6005353 100644
+--- a/_projects/json_summaries/project_21.json
++++ b/_projects/json_summaries/project_21.json
+@@ -2,6 +2,6 @@
+     "project_number": 21,
+     "project_name": "Benchmarking Molecular Descriptors with Actively Identified Subsets (MolDAIS)",
+     "video_url": "https://www.youtube.com/watch?v=uYXAe3sRUSo",
+-    "summary": "This research presents a novel approach called MOLDES (Molecular Descriptors with Actively Identified Subspaces) for molecular property optimization. The method addresses the challenge of optimizing molecules in high-dimensional spaces by using molecular descriptors - sets of rotationally and translationally invariant calculations performed on molecular graphs - coupled with active subspace identification. MOLDES employs a sparse axis-aligned subspace Gaussian Process prior, which actively learns an encoding while performing Bayesian optimization. Recent works\\cite{sorourifar_accelerating_2024,maus_local_2023} are increasingly turning towards active encoding of molecular feature spaces. The researchers evaluated MOLDES on three case studies: experimental lipophilicity (4,200 compounds), log P optimization benchmark (250,000 molecules), and power conversion efficiency from the Harvard Clean Energy Project (30,000 compounds). In all cases, MOLDES demonstrated superior performance compared to other optimizers, particularly in larger datasets. For the log P optimization, MOLDES consistently found the optimal molecule within 100 iterations. The method also showed strong performance in constrained optimization problems, often achieving the best-case scenario and maintaining a favorable worst-case scenario compared to other methods. Overall, MOLDES proved efficient in identifying high-performing molecules in low-data regimes, offering a promising approach for molecular property optimization tasks.",
++    "summary": "This research presents a novel approach called MolDAIS (Molecular Descriptors with Actively Identified Subsets) for molecular property optimization. The method addresses the challenge of optimizing molecules in high-dimensional spaces by using molecular descriptors - sets of rotationally and translationally invariant calculations performed on molecular graphs - coupled with active subspace identification. MolDAIS employs a sparse axis-aligned subspace Gaussian Process prior, which actively learns an encoding while performing Bayesian optimization. Recent works\\cite{sorourifar_accelerating_2024,maus_local_2023} are increasingly turning towards active encoding of molecular feature spaces. The researchers evaluated MolDAIS on three case studies: experimental lipophilicity measurements for 4,200 compounds from the MoleculeNet benchmark collection\\cite{wu2018moleculenet}, log P optimization over the 250,000-molecule ZINC subset popularized by Kusner et al.\\cite{kusner2017grammar}, and computed power conversion efficiencies for 30,000 organic photovoltaic candidates from the Harvard Clean Energy Project\\cite{hachmann2011harvard}. In all cases, MolDAIS demonstrated superior performance compared to other optimizers, particularly in larger datasets. For the log P optimization, MolDAIS consistently found the optimal molecule within 100 iterations. The method also showed strong performance in constrained optimization problems, often achieving the best-case scenario and maintaining a favorable worst-case scenario compared to other methods. Overall, MolDAIS proved efficient in identifying high-performing molecules in low-data regimes, offering a promising approach for molecular property optimization tasks.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_29.json b/_projects/json_summaries/project_29.json
+index 181344a..d83fecd 100644
+--- a/_projects/json_summaries/project_29.json
++++ b/_projects/json_summaries/project_29.json
+@@ -2,6 +2,6 @@
+     "project_number": 29,
+     "project_name": "A Bayesian Approach to Predict Solubility Parameters",
+     "video_url": "",
+-    "summary": "This project proposed modeling Hansen solubility parameters with Gaussian-process regression on chemical descriptors and sigma profiles, comparing molecular kernels from the GAUCHE framework\\cite{griffiths_gauche_2024} against an existing Bayesian treatment used as benchmark and dataset\\cite{sanchez-lengeling_bayesian_2018}. The submission stayed at the proposal stage: no code or results were published.",
++    "summary": "This project proposed modeling Hansen solubility parameters with Gaussian-process regression on chemical descriptors and sigma profiles, comparing molecular kernels from the GAUCHE framework\\cite{griffiths_gauche_2024} against an existing Bayesian treatment whose published solubility-parameter compilation was to serve as both benchmark and dataset\\cite{sanchez-lengeling_bayesian_2018}. The submission stayed at the proposal stage: no dataset was ultimately used and no code or results were published.",
+     "status": "manual"
+-}
++}
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_30.json b/_projects/json_summaries/project_30.json
+index b45cbf1..e456b5c 100644
+--- a/_projects/json_summaries/project_30.json
++++ b/_projects/json_summaries/project_30.json
+@@ -2,6 +2,6 @@
+     "project_number": 30,
+     "project_name": "Active learning for voltammetry waveform design",
+     "video_url": "https://www.youtube.com/watch?v=78bKXIIB_GA",
+-    "summary": "This research project focused on using Bayesian Optimization to optimize voltammetry waveforms for sensor performance testing. The researchers employed the scikit-optimize package\\cite{scikit-optimize_2021} to implement a human-in-the-loop optimization process, allowing for pauses between optimization iterations to conduct laboratory experiments. The study encoded a four-step pulse waveform into a continuous parameter space for the optimization model. The process began with six randomly generated initial waveforms, which were tested in the lab to obtain performance metrics. These results were used to initialize a Gaussian process model. The optimization then proceeded in batches, with the model suggesting the next best waveforms to test based on previous results. The researchers conducted four total batches, updating the model after each laboratory testing phase. Progress plots were generated to visualize the improvement in sensor error across batches, demonstrating the effectiveness of the approach in finding optimal waveform parameters. The study also explored the interactions between model parameters and the performance metric across multiple dimensions, providing insights into the complex relationship between waveform characteristics and sensor performance.",
++    "summary": "This research project focused on using Bayesian Optimization to optimize voltammetry waveforms for sensor performance testing. The researchers employed the scikit-optimize package\\cite{scikit-optimize_2021} to implement a human-in-the-loop optimization process, allowing for pauses between optimization iterations to conduct laboratory experiments. All observations were collected in-house: the team measured serotonin concentration prediction error (mean absolute error in nanomolar) in vitro for each candidate waveform using their rapid pulse voltammetry platform\\cite{movassaghi2021simultaneous}, and this waveform-performance dataset is recorded directly in the project notebook. The study encoded a four-step pulse waveform into a continuous parameter space for the optimization model. The process began with six randomly generated initial waveforms, which were tested in the lab to obtain performance metrics. These results were used to initialize a Gaussian process model. The optimization then proceeded in batches, with the model suggesting the next best waveforms to test based on previous results. The researchers conducted four total batches, updating the model after each laboratory testing phase. Progress plots were generated to visualize the improvement in sensor error across batches, demonstrating the effectiveness of the approach in finding optimal waveform parameters. The study also explored the interactions between model parameters and the performance metric across multiple dimensions, providing insights into the complex relationship between waveform characteristics and sensor performance.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_31.json b/_projects/json_summaries/project_31.json
+index b840a47..d11d5ef 100644
+--- a/_projects/json_summaries/project_31.json
++++ b/_projects/json_summaries/project_31.json
+@@ -2,6 +2,6 @@
+     "project_number": 31,
+     "project_name": "A tutorial on ask/tell mode for Ax",
+     "video_url": "https://www.youtube.com/watch?v=X5PDvdXoBdA",
+-    "summary": "This project focuses on utilizing the open-source package AX\\cite{bakshy2018ax} for Bayesian optimization in an asynchronous, human-in-the-loop experimental setting, particularly applied to voltammetry. The researchers developed custom figures and explanations to elucidate the complex interactions within the AX package, emphasizing its user-friendly nature while acknowledging its potential complexity. The study explores various aspects of the optimization process, including strategy selection, surrogate model choice, and search space definition. It demonstrates two primary approaches: a \"cold start\" scenario, where optimization begins with no prior data, and a \"warm start\" scenario for situations with existing experimental data. For the cold start, the researchers showcase the use of sequence generators like Sobol sequences and random generators to initialize the optimization campaign. The project also highlights the package's ability to handle real-world experimental constraints, such as marking broken electrodes to exclude them from future suggestions. In the warm start scenario, the researchers detail the process of translating existing experimental workflows into the AX framework, emphasizing the package's automatic tracking of experiments, results, and parameters. The study also notes the inclusion of visualization tools within AX, though these are not described in detail.",
++    "summary": "This project focuses on utilizing the open-source package AX\\cite{bakshy2018ax} for Bayesian optimization in an asynchronous, human-in-the-loop experimental setting, particularly applied to voltammetry. The researchers developed custom figures and explanations to elucidate the complex interactions within the AX package, emphasizing its user-friendly nature while acknowledging its potential complexity. The study explores various aspects of the optimization process, including strategy selection, surrogate model choice, and search space definition. It demonstrates two primary approaches: a \"cold start\" scenario, where optimization begins with no prior data, and a \"warm start\" scenario for situations with existing experimental data. The demonstration data are the team's own in vitro voltammetry measurements, the same in-house dataset used in project 30\\cite{movassaghi2021simultaneous}; no external dataset is involved. For the cold start, the researchers showcase the use of sequence generators like Sobol sequences and random generators to initialize the optimization campaign. The project also highlights the package's ability to handle real-world experimental constraints, such as marking broken electrodes to exclude them from future suggestions. In the warm start scenario, the researchers detail the process of translating existing experimental workflows into the AX framework, emphasizing the package's automatic tracking of experiments, results, and parameters. The study also notes the inclusion of visualization tools within AX, though these are not described in detail.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_36.json b/_projects/json_summaries/project_36.json
+index 2b56986..9f52288 100644
+--- a/_projects/json_summaries/project_36.json
++++ b/_projects/json_summaries/project_36.json
+@@ -2,6 +2,6 @@
+     "project_number": 36,
+     "project_name": "Scalable Nonmyopic Bayesian Optimization in Dynamic Cost Settings",
+     "video_url": "https://youtu.be/CXweDiS_wbI",
+-    "summary": "This research project focuses on scalable Bayesian optimization in dynamic settings, addressing limitations of previous approaches that rely on myopic acquisition functions and assume fixed cost structures. The researchers introduce a novel method using non-myopic acquisition functions\\cite{jiang_efficient_2020} that incorporate a look-ahead mechanism and dynamic cost functions. The project evaluates the proposed algorithm, named HBE, through two main experimental setups. First, they use synthetic functions across 14 different environments with varying dimensions to test scalability. Second, they apply the method to a real-world protein sequence design problem, aiming to maximize a protein score. The researchers compare their HBE algorithm against six other acquisition functions, including state-of-the-art methods. To enhance practicality, they integrate automatic hyperparameter tuning to reduce the number of optimization parameters. While specific results are not provided in the given context, the approach aims to overcome suboptimal resource allocation in dynamic cost experiments and improve upon existing Bayesian optimization techniques.",
++    "summary": "This research project focuses on scalable Bayesian optimization in dynamic settings, addressing limitations of previous approaches that rely on myopic acquisition functions and assume fixed cost structures. The researchers introduce a novel method using non-myopic acquisition functions\\cite{jiang_efficient_2020} that incorporate a look-ahead mechanism and dynamic cost functions. The project evaluates the proposed algorithm, named HBE, through two main experimental setups. First, they use synthetic functions across 14 different environments with varying dimensions to test scalability. Second, they apply the method to a real-world protein sequence design problem, aiming to maximize a protein fitness score; in the published version of this work, the scoring oracle is fitted to the ProteinEA fluorescence dataset\\cite{truong2026neural}. The researchers compare their HBE algorithm against six other acquisition functions, including state-of-the-art methods. To enhance practicality, they integrate automatic hyperparameter tuning to reduce the number of optimization parameters. While specific results are not provided in the given context, the approach aims to overcome suboptimal resource allocation in dynamic cost experiments and improve upon existing Bayesian optimization techniques.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_37.json b/_projects/json_summaries/project_37.json
+index c57eb85..bb47309 100644
+--- a/_projects/json_summaries/project_37.json
++++ b/_projects/json_summaries/project_37.json
+@@ -2,6 +2,6 @@
+     "project_number": 37,
+     "project_name": "The Effects of Post-Modelling Performance Metric Computation on the Efficiency of Bayesian Optimizers",
+     "video_url": "https://www.youtube.com/watch?v=kwXHoWV8g1E",
+-    "summary": "This research project explored modifications to the Bayesian Optimization algorithm to enhance its efficiency in solving real-world problems. The key innovation was changing the order of objective calculation and model fitting. Instead of calculating all objectives first and then modeling each objective, the proposed method only models the essential observations (e.g., yield) and calculates the objectives after the modeling process. This approach was tested using a simulation of a real-world system based on kinetics discovered by Hornel, employing a plug flow reactor. The optimization aimed to maximize both space-time yield and E factor for the predicted yield.The results demonstrated significant time savings by computing objectives after modeling, primarily because only a single model for yield needed to be fitted instead of separate models for space-time yield and E factor. While computational performance improved, there was negligible impact on convergence speed. Interestingly, the research suggests that this new approach might potentially improve the efficiency of selection criteria by allowing the fitting of a prior distribution biased towards regions with more potential based on the objective function's structure. In summary, the study found that fitting objectives after modeling can lead to substantial increases in computational performance, with the possibility of also improving hypervolume convergence efficiency.",
++    "summary": "This research project explored modifications to the Bayesian Optimization algorithm to enhance its efficiency in solving real-world problems. The key innovation was changing the order of objective calculation and model fitting. Instead of calculating all objectives first and then modeling each objective, the proposed method only models the essential observations (e.g., yield) and calculates the objectives after the modeling process. This approach was tested on a simulated plug flow reactor benchmark of a nucleophilic aromatic substitution reaction from the Summit package\\cite{felton_summit_2021}, which generates yield observations from the kinetic model of Hone et al.\\cite{hone_rapid_2017}; no external experimental dataset was involved. The optimization aimed to maximize space-time yield and minimize the E-factor computed from the predicted yield. The results demonstrated significant time savings by computing objectives after modeling, primarily because only a single model for yield needed to be fitted instead of separate models for space-time yield and E factor. While computational performance improved, there was negligible impact on convergence speed. Interestingly, the research suggests that this new approach might potentially improve the efficiency of selection criteria by allowing the fitting of a prior distribution biased towards regions with more potential based on the objective function's structure. In summary, the study found that fitting objectives after modeling can lead to substantial increases in computational performance, with the possibility of also improving hypervolume convergence efficiency.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_40.json b/_projects/json_summaries/project_40.json
+index 57a5f1b..bbd0fc5 100644
+--- a/_projects/json_summaries/project_40.json
++++ b/_projects/json_summaries/project_40.json
+@@ -2,6 +2,6 @@
+     "project_number": 40,
+     "project_name": "Optimizing Chemical Reaction Conditions with Multi-Agent Systems Using LLM and BO",
+     "video_url": "https://x.com/Bozhao95501764/status/1777029207857451508",
+-    "summary": "This research project focuses on optimizing Suzuki reaction conditions using Bayesian optimization enhanced by a multi-agent large language model (LLM) system. The target dataset consists of Suzuki reactions, with the goal of optimizing reaction ligands, bases, and solvents. The researchers observed that while the target dataset contains unique combinations of conditions, many of the ligands are similar to those in existing reaction data points, suggesting potential for knowledge transfer.The developed system employs a multi-agent LLM approach comprising three domain expert agents and a reaction optimization agent. The process involves four steps: (1) the reaction optimization agent assigns tags to domain agents, (2) gathers feedback from them, (3) uses this feedback to warm-start initial data point generation and evaluation, and (4) acquires new data points based on existing data. In demo experiments, the multi-agent LLM system demonstrated improved performance, reaching target reaction yields with fewer iterations compared to traditional methods. Additionally, the multi-agent approach showed an ability to avoid local maxima traps, which is particularly valuable given the challenging nature of reaction optimization due to data sparsity. This research highlights the potential of integrating LLM-based multi-agent systems with Bayesian optimization techniques to enhance reaction condition optimization in chemistry.",
++    "summary": "This research project focuses on optimizing Suzuki reaction conditions using Bayesian optimization enhanced by a multi-agent large language model (LLM) system. The target dataset, included in the project repository, is drawn from the nanomole-scale Suzuki-Miyaura coupling screen of Perera et al.\\cite{perera2018platform} and tabulates measured yields for 308 combinations of 11 ligands, 7 bases, and 4 solvents; the goal is to optimize reaction ligands, bases, and solvents. The researchers observed that while the target dataset contains unique combinations of conditions, many of the ligands are similar to those in existing reaction data points, suggesting potential for knowledge transfer.The developed system employs a multi-agent LLM approach comprising three domain expert agents and a reaction optimization agent. The process involves four steps: (1) the reaction optimization agent assigns tags to domain agents, (2) gathers feedback from them, (3) uses this feedback to warm-start initial data point generation and evaluation, and (4) acquires new data points based on existing data. In demo experiments, the multi-agent LLM system demonstrated improved performance, reaching target reaction yields with fewer iterations compared to traditional methods. Additionally, the multi-agent approach showed an ability to avoid local maxima traps, which is particularly valuable given the challenging nature of reaction optimization due to data sparsity. This research highlights the potential of integrating LLM-based multi-agent systems with Bayesian optimization techniques to enhance reaction condition optimization in chemistry.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_42.json b/_projects/json_summaries/project_42.json
+index 043b337..ed42585 100644
+--- a/_projects/json_summaries/project_42.json
++++ b/_projects/json_summaries/project_42.json
+@@ -2,6 +2,6 @@
+     "project_number": 42,
+     "project_name": "Bayesian Optimization and Design of Experiments for Pharmaceutical Formulation (BODoE)",
+     "video_url": "",
+-    "summary": "This industry-led project proposed coupling BO-driven design of experiments with an automated laboratory for the formulation of pharmaceutical drug compounds as multi-component mixtures, defining the data schemas and interfaces linking laboratory devices, property-prediction services such as COSMO-SAC\\cite{mqs_cosmo_2024}, and the optimization loop. The submission stayed at the proposal stage: no code or results were published.",
++    "summary": "This industry-led project proposed coupling BO-driven design of experiments with an automated laboratory for the formulation of pharmaceutical drug compounds as multi-component mixtures, defining the data schemas and interfaces linking laboratory devices, property-prediction services such as COSMO-SAC\\cite{mqs_cosmo_2024}, and the optimization loop. The submission stayed at the proposal stage: no dataset was used and no code or results were published.",
+     "status": "manual"
+-}
++}
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_45.json b/_projects/json_summaries/project_45.json
+index fdcc43f..fc6e5a9 100644
+--- a/_projects/json_summaries/project_45.json
++++ b/_projects/json_summaries/project_45.json
+@@ -2,6 +2,6 @@
+     "project_number": 45,
+     "project_name": "Bayesian Optimization for generality",
+     "video_url": "https://www.youtube.com/watch?v=wfSyIudptfc",
+-    "summary": "This research introduces a novel approach to Bayesian Optimization (BO) focused on finding general parameters that perform well across multiple related tasks, a common challenge in fields like chemistry where optimal reaction conditions for various substrates are sought. The researchers formulate this problem within the BO framework, aiming to maximize a general response from a set of multiple related objective functions.The proposed algorithm operates in two steps: first selecting a value in the optimization domain X, then choosing an individual objective function to optimize for that value. This approach aims to find the most general values in X without exhaustively evaluating every individual surface, thus minimizing evaluation costs. To support further research in this area, the team adapted popular test surfaces (Dixon-Price, Branin, and Beale) to be compatible with their generality problem and made these benchmark problems available on Hugging Face. This contribution allows other researchers to test and develop new algorithms for generalized Bayesian Optimization, potentially advancing the field and its applications in natural sciences.",
++    "summary": "This research introduces a novel approach to Bayesian Optimization (BO) focused on finding general parameters that perform well across multiple related tasks, a common challenge in fields like chemistry where optimal reaction conditions for various substrates are sought. The researchers formulate this problem within the BO framework, aiming to maximize a general response from a set of multiple related objective functions.The proposed algorithm operates in two steps: first selecting a value in the optimization domain X, then choosing an individual objective function to optimize for that value. This approach aims to find the most general values in X without exhaustively evaluating every individual surface, thus minimizing evaluation costs. All objectives were synthetic rather than drawn from a chemical dataset: to support further research in this area, the team adapted popular test surfaces (Dixon-Price, Branin, and Beale) into families of related tasks compatible with their generality problem and made these benchmark problems available on Hugging Face. This contribution allows other researchers to test and develop new algorithms for generalized Bayesian Optimization, potentially advancing the field and its applications in natural sciences.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/_projects/json_summaries/project_6.json b/_projects/json_summaries/project_6.json
+index eefe6cb..e84ff17 100644
+--- a/_projects/json_summaries/project_6.json
++++ b/_projects/json_summaries/project_6.json
+@@ -2,6 +2,6 @@
+     "project_number": 6,
+     "project_name": "Multi-Objective Bayesian Optimization for Transparent Electromagnetic Interference Shielding with Thin-Film Structures",
+     "video_url": "https://www.youtube.com/watch?v=RgEbcWIBDn8",
+-    "summary": "This research project focuses on applying multi-objective BO to design transparent electromagnetic interference (EMI) shielding using thin film structures\\cite{li2022bayesian}. The primary objectives are to maximize both transmittance and shielding effectiveness simultaneously. The optimization problem involves selecting materials and thicknesses for each layer of the thin film structure, with a search space comprising 12 material choices (Ag, Al, Al$_2$O$_3$, Cr, Ni, Pd, Si$_3$N$_4$, SiO$_2$, Ti, TiN, TiO$_2$, W) and thickness ranges from 5 to 20 nm. The researchers implemented multi-objective BO using random scalarization for the acquisition function via BayesO package\\cite{kim2023bayeso}. Gaussian process regression and expected improvement were employed as part of the BO framework. The results demonstrate that the multi-objective BO approach effectively identified the Pareto frontier for the two objectives of transmittance and shielding effectiveness. This suggests that the method is successful in finding optimal trade-offs between transparency and EMI shielding performance for thin film structures, which could have applications in areas such as spacecraft windows where both properties are crucial.",
++    "summary": "This research project focuses on applying multi-objective BO to design transparent electromagnetic interference (EMI) shielding using thin film structures\\cite{li2022bayesian}. The primary objectives are to maximize both transmittance and shielding effectiveness simultaneously. The optimization problem involves selecting materials and thicknesses for each layer of the thin film structure, with a search space comprising 12 material choices (Ag, Al, Al$_2$O$_3$, Cr, Ni, Pd, Si$_3$N$_4$, SiO$_2$, Ti, TiN, TiO$_2$, W) and thickness ranges from 5 to 20 nm. No pre-existing dataset was involved: both objectives were computed on demand with LayerLumos, the team's open-source transfer-matrix simulator for the optical and radio-frequency response of candidate film stacks. The researchers implemented multi-objective BO using random scalarization for the acquisition function via BayesO package\\cite{kim2023bayeso}. Gaussian process regression and expected improvement were employed as part of the BO framework. The results demonstrate that the multi-objective BO approach effectively identified the Pareto frontier for the two objectives of transmittance and shielding effectiveness. This suggests that the method is successful in finding optimal trade-offs between transparency and EMI shielding performance for thin film structures, which could have applications in areas such as spacecraft windows where both properties are crucial.",
+     "status": "success"
+ }
+\ No newline at end of file
+diff --git a/latex/summaries-ref.bib b/latex/summaries-ref.bib
+index 0c4968b..86fd9ad 100644
+--- a/latex/summaries-ref.bib
++++ b/latex/summaries-ref.bib
+@@ -396,4 +396,69 @@
+   pages={50--66},
+   year={2006},
+   publisher={IEEE}
+-}
+\ No newline at end of file
++}
++
++@article{shields2021bayesian,
++  title={Bayesian reaction optimization as a tool for chemical synthesis},
++  author={Shields, Benjamin J and Stevens, Jason and Li, Jun and Parasram, Marvin and Damani, Farhan and Alvarado, Jesus I Martinez and Janey, Jacob M and Adams, Ryan P and Doyle, Abigail G},
++  journal={Nature},
++  volume={590},
++  number={7844},
++  pages={89--96},
++  year={2021},
++  doi={10.1038/s41586-021-03213-y}
++}
++@article{perera2018platform,
++  title={A platform for automated nanomole-scale reaction screening and micromole-scale synthesis in flow},
++  author={Perera, Damith and Tucker, Joseph W and Brahmbhatt, Shalini and Helal, Christopher J and Chong, Ashley and Farrell, William and Richardson, Paul and Sach, Neal W},
++  journal={Science},
++  volume={359},
++  number={6374},
++  pages={429--434},
++  year={2018},
++  doi={10.1126/science.aap9112}
++}
++@article{wu2018moleculenet,
++  title={{MoleculeNet}: a benchmark for molecular machine learning},
++  author={Wu, Zhenqin and Ramsundar, Bharath and Feinberg, Evan N and Gomes, Joseph and Geniesse, Caleb and Pappu, Aneesh S and Leswing, Karl and Pande, Vijay},
++  journal={Chemical Science},
++  volume={9},
++  number={2},
++  pages={513--530},
++  year={2018},
++  doi={10.1039/C7SC02664A}
++}
++@inproceedings{kusner2017grammar,
++  title={Grammar variational autoencoder},
++  author={Kusner, Matt J and Paige, Brooks and Hern{\'a}ndez-Lobato, Jos{\'e} Miguel},
++  booktitle={Proceedings of the 34th International Conference on Machine Learning},
++  volume={70},
++  pages={1945--1954},
++  year={2017}
++}
++@article{hachmann2011harvard,
++  title={The {Harvard} {Clean} {Energy} {Project}: large-scale computational screening and design of organic photovoltaics on the world community grid},
++  author={Hachmann, Johannes and Olivares-Amaya, Roberto and Atahan-Evrenk, Sule and Amador-Bedolla, Carlos and S{\'a}nchez-Carrera, Roel S and Gold-Parker, Aryeh and Vogt, Leslie and Brockway, Anna M and Aspuru-Guzik, Al{\'a}n},
++  journal={The Journal of Physical Chemistry Letters},
++  volume={2},
++  number={17},
++  pages={2241--2251},
++  year={2011},
++  doi={10.1021/jz200866s}
++}
++@article{movassaghi2021simultaneous,
++  title={Simultaneous serotonin and dopamine monitoring across timescales by rapid pulse voltammetry with partial least squares regression},
++  author={Movassaghi, Cameron S and Perrotta, Katie A and Yang, Hongyan and Iyer, Rahul and Cheng, Xinyi and Dagher, Merel and Fillol, Miguel Alca{\~n}iz and Andrews, Anne M},
++  journal={Analytical and Bioanalytical Chemistry},
++  volume={413},
++  number={27},
++  pages={6747--6767},
++  year={2021},
++  doi={10.1007/s00216-021-03665-1}
++}
++@article{truong2026neural,
++  title={Neural nonmyopic {Bayesian} optimization in dynamic cost settings},
++  author={Truong, Sang T and Nguyen, Duc Q and Neiswanger, Willie and Griffiths, Ryan-Rhys and Ermon, Stefano and Haber, Nick and Koyejo, Sanmi},
++  journal={arXiv preprint arXiv:2601.06505},
++  year={2026}
++}
+diff --git a/main.tex b/main.tex
+index 1a8711b..35491a2 100644
+--- a/main.tex
++++ b/main.tex
+@@ -514,6 +514,8 @@ No public repository (proposal stage) & 3 \\
+ \end{tabular}
+ \end{table}
+ 
++Data provenance was similarly uneven: for roughly a quarter of the submissions, the dataset in use was not evident from the project page or repository alone, so the per-project summaries in the preceding section state each project's data source explicitly wherever it is not obvious. The patterns are few. Some projects retrospectively queried published experimental datasets, for example the direct arylation yields of Shields et al.~\cite{shields2021bayesian} in project 15 and the Suzuki-Miyaura screen of Perera et al.~\cite{perera2018platform} in project 40. Others generated objective values on demand from physics-based simulators or synthetic test functions (projects 6, 36, 37, and 45), collected new measurements in-house (projects 30 and 31), or, for proposal-stage submissions, used no data at all (projects 19, 29, and 42). Even where a published dataset was used, it was more often fetched at run time or referenced from within the code than deposited in the repository: project 15, for instance, pulls its benchmark directly from the EDBO+ repository~\cite{torres_multi-objective_2022}. Archiving a copy of the queried dataset alongside the project code, with its provenance stated in the README, would make such outputs considerably easier to audit and reuse.
++
+ Many projects framed a chemistry or materials task as sequential optimization of an expensive objective with a Gaussian-process surrogate and an acquisition function, most often built on \textsc{BoTorch}/Ax, sometimes through domain wrappers such as \textsc{BayBE}~\cite{fitzner_baybe_2022} or \textsc{gauche}~\cite{griffiths_gauche_2024}. Teams differed most in input representation, in whether they compared against simple baselines such as random search, and in whether they targeted real experimental data or retrospective benchmarks. Participants ranged from students to senior researchers across academia, industry, and government, and mixed-expertise teams pairing domain scientists with BO practitioners appeared to be an asset~\cite{valentine_hacktive_2025, busby_building_2015}. Roughly one in six projects (6 of 45 under a strict definition, 8 under a broader one) incorporated large language models, mirroring dedicated LLM-for-chemistry hackathons~\cite{jablonka_14_2023, zimmermann_reflections_2024} and motivating the outlook in \cref{sec:future}.
+ 
+ \section{Lessons Learned}
+-- 
+2.56.1
+
