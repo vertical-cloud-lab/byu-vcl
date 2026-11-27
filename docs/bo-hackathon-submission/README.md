@@ -33,7 +33,7 @@ submission as listed in the portal on 8 October (screenshot in issue 185).
 | [`manuscript/BO_Hackathon_Manuscript_Revised_marked_changes.pdf`](manuscript/BO_Hackathon_Manuscript_Revised_marked_changes.pdf) | Revised manuscript with changes marked | (new) | latexdiff against the submitted source (`6d2c616`). |
 | [`manuscript/BO_Hackathon_Manuscript_Revised_LaTeX_source.zip`](manuscript/BO_Hackathon_Manuscript_Revised_LaTeX_source.zip) | LaTeX source files | (new) | Compiles without shell-escape: tested by unzipping into an empty folder. Needs TeX Live 2023 (see below). |
 | [`figures/Fig1.tif`](figures/) to `Fig5.tif` | Figure | (new) | TIFF at 600 dpi or more at print width (8.3 cm for Fig. 1, 17.1 cm for the rest), transparency flattened onto white. Figs. 3 to 5 were upsampled to reach 600 dpi; Fig. 5's source screenshot is only 1660 px wide. |
-| Original ESI + [`esi/ESI_Tables_S1_S2_addendum.pdf`](esi/ESI_Tables_S1_S2_addendum.pdf) | Supplementary Information | ESI_AC-BO-Hackathon-2024-All-Projects.pdf | **Merge needed**: the original ESI is not in any repository. `pdfunite ESI_AC-BO-Hackathon-2024-All-Projects.pdf ESI_Tables_S1_S2_addendum.pdf ESI_revised.pdf`. If the original already has a Table S1, renumber. |
+| Original ESI + [`esi/ESI_Tables_S1_to_S3_addendum.pdf`](esi/ESI_Tables_S1_to_S3_addendum.pdf) | Supplementary Information | ESI_AC-BO-Hackathon-2024-All-Projects.pdf | **Merge needed**: the original ESI is not in any repository. `pdfunite ESI_AC-BO-Hackathon-2024-All-Projects.pdf ESI_Tables_S1_to_S3_addendum.pdf ESI_revised.pdf`. The addendum holds Table S1 (categories), S2 (repository status) and S3 (the full URL behind every Table III link). If the original already numbers tables S1 to S3, renumber. |
 | [`toc/TOC_entry.tif`](toc/TOC_entry.tif) + [`toc/TOC_entry.docx`](toc/TOC_entry.docx) | Table of Contents Entry | TOC_entry.pdf | 8.0 x 2.7 cm at 600 dpi (the journal's maximum is 8 x 4 cm). The 202-character text is a draft; keep the June text if you prefer it (250 characters maximum). |
 | [`das/Data_Availability_Statement.docx`](das/Data_Availability_Statement.docx) | Data Availability Statement | Data_Availability_Statement.docx | The statement changed, so the old file is out of date. Same text as the manuscript. |
 | Author contributions (CRediT) without Jiale Shi and Dandan Tang | Other | Author_Contributions_CRediT.pdf | **Not built**: its source is in no repository. See blockers. |
@@ -121,7 +121,7 @@ In this order:
    `git am --keep-cr docs/bo-hackathon-submission/patches/*.patch`, then
    `sed -i 's/Los Angles/Los Angeles/g; s/Departmentt/Department/' latex/authors-hardcoded.tex`
    (two affiliation typos, kept out of the patches because that file's context lines carry
-   co-authors' personal e-mail addresses). Tested: the 19 patches plus that command reproduce
+   co-authors' personal e-mail addresses). Tested: the 20 patches plus that command reproduce
    the tree the PDFs were built from, exactly. Or ask `@claude` on PR 171 to do it.
 6. **Fix the participant spreadsheet before reviewers follow the new link (Sterling).**
    `AC-bo-hackathon-2024.csv` in the public AC-BO repository holds 131 participants' e-mail
@@ -129,7 +129,7 @@ In this order:
    to that repository. Table III only needs the project and link columns. Dropping the e-mail
    and address columns takes minutes; whether to purge them from the history is a separate
    call.
-7. **Merge the ESI (Gage or Sterling):** original ESI followed by the S1/S2 addendum.
+7. **Merge the ESI (Gage or Sterling):** original ESI followed by the S1 to S3 addendum.
 8. **Cover letter (Sterling):** letterhead, editor's name, date, signature. Do not mention the
    invitation in the letter; RSC wants that in the submission form only.
 9. **Upload** the files in the table above, update the abstract in the form (it changed), remove
@@ -145,7 +145,7 @@ In this order:
 | New CRediT statement | Gage | yes |
 | Approve the AI statement; ChatGPT link; who checked Table IV | Sterling | yes |
 | Participant e-mails and addresses in the public CSV | Sterling | should be done first |
-| Merge the original ESI with Tables S1 and S2 | Gage or Sterling | yes |
+| Merge the original ESI with Tables S1 to S3 | Gage or Sterling | yes |
 | The summarization prompt (and transcripts if kept), to archive with the raw outputs. The journal's LLM policy asks for input and output logs, and Referee 4 raised reproducibility. Without it, say in the letter that the prompt was not retained | Mehrad Ansari | no, but the data reviewer may come back on it |
 | Fig. 1 is a DoE vs BO plot credited to ref. 1 (Baird and Sparks, STAR Protocols 2023, CC BY 4.0). If it is taken from that paper, add "Adapted from ref. 1 (CC BY 4.0)" to the caption | Sterling | no, but production will ask |
 | Project 22: Jiale Shi deleted the repository and withdrew; decide whether its summary and Table III row stay as they are | Sterling | no |

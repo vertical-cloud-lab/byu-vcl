@@ -38,7 +38,8 @@ The main changes are:
   raw and edited outputs are archived.
 - **Figures and presentation:** participant display names are pixelated in Figures 4 and
   5, the Figure 2 labels are outlined for legibility, the project table no longer ends on
-  an empty page, and the PDF text now extracts correctly.
+  an empty page, the PDF text now extracts correctly, and ESI Table S3 prints the full URL
+  behind every link in Table III.
 - **References** were checked against Crossref: incorrect DOIs and author lists were
   corrected, missing DOIs added, and preprints that have since been published are cited in
   their published form.

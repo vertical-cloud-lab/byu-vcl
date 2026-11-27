@@ -233,8 +233,9 @@ caption states this. The names still legible in Figure 4's other panels are thos
 > are redundant with the links already provided in Table 1.
 
 Changed to plain text throughout the summary headings (Section III, pages 8 to 18); the links
-remain in Table III (pages 7 and 8). Papers named in Post-hackathon Outcomes are now numbered
-references rather than links (Section VI, second paragraph, page 21).
+remain in Table III (pages 7 and 8), and ESI Table S3 prints the full URL behind each of its icons.
+Papers named in Post-hackathon Outcomes are now numbered references rather than links (Section VI,
+second paragraph, page 21).
 
 > 13a. Project 40 has been migrated from the github listed on its project page to the repo listed in
 > the Zenodo metadata file.
