@@ -1,0 +1,15 @@
+{
+ "title": "Floor space: four labs, the same equipment, and the same capacity (preview)",
+ "description": "A preview segment for review (unlisted): the vertical lab's equipment laid out four ways, the floor area each layout takes, and the Shuttles' tray capacity laid out flat. Design layouts, not built labs.\n\nSame equipment: today's 43 instruments (31 benchtop, 12 floor machines), from the 3-D lab of PR 318:\n1. Conventional materials lab, grouped by workflow: 28.9 x 13.8 m, 398 m2 (4,280 sq ft), 10.0 instruments per 1,000 sq ft.\n2. The same plan automated (4 MiR250 + UR12e mobile manipulators, 24 docking targets, 5 fixed arms with sample racks, 2 chargers): the same 4,280 sq ft, but a docked robot leaves 0.94 m of a 5 ft aisle, under the 1.45 m another needs to pass.\n3. Automated, laid out for robots: the 18 trays in use as tray-sized bench positions (864 mm benches, a dock lane in front of each row, one-way 1.45 m MiR aisles in loops), the floor machines as in the vertical lab: 34.3 x 11.2 m, 384 m2 (4,128 sq ft).\n4. Vertical lab (two Kardex Shuttle XP 500s, 9.15 m tall, with the benchtop instruments on their trays; the floor machines along one 3.0 m MiR aisle): 23.8 x 11.8 m, 281 m2 (3,029 sq ft), 14.2 instruments per 1,000 sq ft: 29 % less floor than the conventional lab and 27 % less than the layout for robots, but it needs a high bay.\n\nSame capacity: the two Shuttles hold 45 trays at 9.15 m with the tray plan's slot spans (18 in use, 27 more at 750 mm), 95 m2 of tray. Laid out flat by the same rules, they need 575 m2 (6,192 sq ft) against the vertical lab's 281 m2: 14.9 tray positions per 1,000 sq ft against 7.3. The floor machines' block (242 m2) is the same in the vertical lab and both layouts for robots.\n\nRules: benches 30 in deep (36 in for deeper instruments), aisles 5 ft (NIH Office of Research Facilities, Lab Module Design Considerations, 2013), a 6 ft corridor, 0.6 m service space beside and behind every floor machine, 150 mm walls, no room narrower than one 11 ft module; for robots, the trays' own 2,450 x 864 mm per position, an 838 mm dock lane, MiR aisles of 1.45 m one way and 3.0 m to pass (MiR250 spec sheet); area to the walls' outer faces.\n\nFor scale: Emerald Cloud Lab's South San Francisco lab, about 15,000 sq ft with more than 100 items of equipment (The Guardian, 11 September 2022); its Austin facility, 105,000 sq ft for over 230 instrument types (Emerald Cloud Lab press release, 28 February 2023).\n\nNarration: Kokoro v1.0 (open weights), voice af_heart. Code and notes: https://github.com/vertical-cloud-lab/byu-vcl/tree/f18dd48/vertical-lab (twin/video/floorspace*.py, notes/twin_floorspace.md).",
+ "tags": [
+  "vertical lab",
+  "self-driving lab",
+  "lab automation",
+  "floor space",
+  "Kardex",
+  "MiR250"
+ ],
+ "categoryId": "28",
+ "privacy": "unlisted",
+ "commit": "f18dd48"
+}
