@@ -69,10 +69,13 @@ EXPERIMENTS = {
     "plans": [_cfg("vertical", p, "fast", "reorder", s) for s in range(N_CHEAP) for p in ("wait", "external")],
     # what used equipment buys: the automated lab with every station bought new
     "noused": [_cfg("vertical", "parallel", "fast", "reorder", s, used=False) for s in range(N_CHEAP)],
+    # note 4: four times the simulated candidates the policies see (512 kept, 256 new a day), both labs stocked
+    "hpc_more": [_cfg(lab, plan, "fast", "reorder", s, hpc=dict(keep=512, add_per_day=256))
+                 for s in range(N_CHEAP) for lab, plan, _ in ARMS[::2]],
     # comparison 2 with BOFN (on both campaigns): wait and external, 12 seeds (parallel is "net")
     "plans_net": [_cfg("vertical", p, "bofn3", "reorder", s) for s in range(N_NET) for p in ("wait", "external")],
 }
-CHEAP_FIRST = ("arms", "plans", "dec_none", "dec_slow", "atom", "noused")
+CHEAP_FIRST = ("arms", "plans", "dec_none", "dec_slow", "atom", "noused", "hpc_more")
 
 
 def run_id(cfg):
@@ -88,6 +91,9 @@ def run_id(cfg):
         if k in ("lab", "decisions", "atom", "used"):
             continue
         v = o[k]
+        if isinstance(v, dict):
+            parts.append(f"{k}-" + "-".join(f"{kk}{vv}" for kk, vv in sorted(v.items())))
+            continue
         parts.append(f"{k}-{'.'.join(map(str, v)) if isinstance(v, (list, tuple)) else v}")
     if cfg.get("days", DAYS) != DAYS:
         parts.append(f"d{cfg['days']}")

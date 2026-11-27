@@ -462,6 +462,30 @@ def money_out(A, key) -> dict:
     return out
 
 
+def hpc_summary(A, T, n_boot=1000) -> dict:
+    """Note 4: the HPC stream's candidates (evaluated at the allocation's throughput, and seen by the policies),
+    the policies' own simulation hours, and four times the candidates seen against the nominal pool."""
+    out = dict(arms={}, more={})
+    for key, arm in A.items():
+        if len(arm) < MIN_SEEDS or "dec-" in key or "atom-" in key or "noused" in key:
+            continue
+        hp = [r["r5"].get("hpc") for r in arm.values() if r["r5"].get("hpc")]
+        if not hp:
+            continue
+        out["arms"][key] = dict(cores=hp[0]["cores"], per_day=hp[0]["per_day"], keep=hp[0]["keep"],
+                                add_per_day=hp[0]["add_per_day"],
+                                **{f"{camp}_{f}": float(np.mean([h["campaigns"][camp][f] for h in hp]))
+                                   for camp in CAMPS for f in ("evaluated", "materialized", "own_sims",
+                                                               "hpc_station_h")})
+    for lab, plan in (("vertical", "parallel"), ("conventional", "external")):
+        base = A.get(gk(lab, plan, "fast", "reorder"), {})
+        more = A.get(gk(lab, plan, "fast", "reorder", hpc=dict(keep=512, add_per_day=256)), {})
+        for camp in CAMPS:
+            for tn in ("T1", "T2"):
+                out["more"][f"{lab}|{camp}|{tn}"] = factor(base, more, camp, T[tn][camp], n_boot=n_boot)
+    return out
+
+
 # ------------------------------------------------------------------------------------------- median seeds
 def median_seed(arm, T) -> dict | None:
     """The one seed whose aluminium and copper days to their targets are both closest to the arm's medians: the
@@ -502,6 +526,7 @@ def run(n_boot=2000) -> dict:
                                                  for t in ("T1", "T2")},
                               counters=counters(A, key), money=money_out(A, key), median_seed=median_seed(arm, T),
                               idle=idle(A, key))
+    S["hpc"] = hpc_summary(A, T)
     for key in (gk("vertical", "parallel", "fast", "reorder"), gk("conventional", "external", "fast", "reorder"),
                 gk("vertical", "parallel", "fast", "lean"), gk("conventional", "external", "fast", "lean")):
         S.setdefault("lookback", {})[key] = lookback(A, key)
@@ -685,6 +710,21 @@ def tables(S) -> str:
             if c:
                 L.append(f"| `{key}` | {CAMPS[camp]} | {c['designed']:.0f} | {c['lots_made']:.0f} | {c['alloys_made']:.0f} | "
                          f"{c['alloys_printed']:.0f} | {c['alloys_tested']:.0f} | {c['tests']:.0f} |")
+    Hh = S.get("hpc") or {}
+    if Hh.get("arms"):
+        L += ["", "## The HPC stream (note 4)", "", "| Arm | cores | candidates a day (allocation) | evaluated, Al | "
+              "seen by the policy, Al | evaluated, Cu | seen, Cu | policies' own simulation hours (Al, Cu) |",
+              "|---|---|---|---|---|---|---|---|"]
+        for key, d in sorted(Hh["arms"].items()):
+            L.append(f"| `{key}` | {d['cores']} | {d['per_day']:,.0f} | {d['flaime_al_evaluated']:,.0f} | "
+                     f"{d['flaime_al_materialized']:,.0f} | {d['onr_cu_evaluated']:,.0f} | {d['onr_cu_materialized']:,.0f} | "
+                     f"{d['flaime_al_hpc_station_h']:.0f}, {d['onr_cu_hpc_station_h']:.0f} |")
+        L += ["", "Four times the candidates the policies see (512 kept, 256 new a day) against the nominal pool "
+              "(128, 64 a day): factor (nominal's median over the bigger pool's); seeds there (bigger vs nominal)", "",
+              "| Lab | Target | factor |", "|---|---|---|"]
+        for k, r in Hh["more"].items():
+            lab, c, t = k.split("|")
+            L.append(f"| {lab} | {CAMPS[c]} {t} | {_f(r)}; {_cnt(r)} |")
     L += ["", "## Median seed for both campaigns together (for a continuous replay)", "",
           "| Arm | seed | Al T1, T2 (median) | Cu T1, T2 (median) | event log |", "|---|---|---|---|---|"]
     for key, a in sorted(S["arms"].items()):
