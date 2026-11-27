@@ -114,7 +114,7 @@
   {
    "id": "atm1",
    "mark": "atomize.pour",
-   "offset": 0.3,
+   "offset": 1.4,
    "text": "This footage is real: our own atomizer, running a bronze. The size distribution beside it is the twin's, for this alloy.",
    "src": "exp_atomize: out/footage/nab_pour1.mp4 (DAL #219, 27 Oct 2026) and the simulated laser-diffraction result"
   },
@@ -234,16 +234,16 @@
   {
    "id": "cor1",
    "mark": "corrosion.scans",
-   "offset": 0.3,
-   "text": "In the screen, the potential settles over the hour. Then two quick scans give an early corrosion rate and a breakdown potential.",
-   "src": "exp_corrosion: the open-circuit potential, then the polarization scans (twin/instruments/corrosion.py)"
+   "offset": 0.7,
+   "text": "After an hour at rest, two quick scans give an early corrosion rate and a breakdown potential.",
+   "src": "exp_corrosion: the open-circuit potential over the hour, then the linear and cyclic scans and the two read-outs (twin/instruments/corrosion.py)"
   },
   {
    "id": "cor2",
    "mark": "corrosion.immersion",
    "offset": 0.4,
-   "text": "In immersion, the coupon is weighed on days 1, 3, 7 and 14, and after any reading the policy may stop it. Day 30 gives the rate: 16.6 micrometres a year.",
-   "src": "exp_corrosion: mass change against days (Campaign._interim; measure_immersion, full fidelity)",
+   "text": "In immersion, the coupon is weighed on days 1, 3, 7 and 14. After any reading, the policy may stop it.",
+   "src": "exp_corrosion: mass loss against days as each interim reading arrives (Campaign._interim)",
    "nums": [
     [
      "1",
@@ -264,7 +264,16 @@
      "14",
      "cu.immersion.read_days.fourth",
      "d"
-    ],
+    ]
+   ]
+  },
+  {
+   "id": "cor3",
+   "mark": "corrosion.day30",
+   "offset": 0.5,
+   "text": "On day 30 it is cleaned and weighed: 16.6 micrometres a year.",
+   "src": "exp_corrosion: the day-30 point and the 30-day rate (measure_immersion, full fidelity)",
+   "nums": [
     [
      "30",
      "cu.immersion.days",

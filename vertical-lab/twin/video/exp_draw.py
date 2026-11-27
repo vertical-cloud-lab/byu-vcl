@@ -52,6 +52,7 @@ def _lut(stops) -> np.ndarray:
     return np.stack([np.interp(u, xs, cs[:, i]) for i in range(3)], 1).astype(np.uint8)
 
 
+lut = _lut                       # public name: other modules make their own tables
 LUT_HEAT = _lut([(0.0, (14, 12, 28)), (0.18, (70, 16, 92)), (0.38, (158, 36, 98)), (0.58, (226, 78, 52)),
                  (0.78, (250, 150, 34)), (0.92, (252, 224, 96)), (1.0, (255, 252, 226))])
 LUT_GRAY = _lut([(0.0, (6, 7, 9)), (1.0, (238, 240, 244))])
@@ -94,11 +95,36 @@ class Canvas:
         return f[:3] + (int(round(al * max(0.0, min(1.0, a)))),)
 
     def text(self, x, y, s, size=24, bold=False, fill=INK, anchor="la", cond=False, mono=False, a=1.0, stroke=0):
+        """Text at (x, y), faded by ``a``. A faded text is drawn through a mask of its glyphs: on this Pillow an RGBA
+        fill on an RGB image blends for shapes but comes out opaque for text, so a fade would pop."""
         if a <= 0.004 or not s:
             return
-        kw = dict(stroke_width=px(stroke), stroke_fill=(0, 0, 0, int(210 * a))) if stroke else {}
-        self.d.text((x * S, y * S), str(s), font=font(size, bold=bold, cond=cond, mono=mono), fill=self._c(fill, a),
-                    anchor=anchor, **kw)
+        s = str(s)
+        f = font(size, bold=bold, cond=cond, mono=mono)
+        col = tuple(int(v) for v in fill[:3])
+        al = (fill[3] / 255.0 if len(fill) > 3 else 1.0) * max(0.0, min(1.0, a))
+        sw = px(stroke) if stroke else 0
+        X, Y = x * S, y * S
+        if al >= 0.996:
+            if sw:
+                self.d.text((X, Y), s, font=f, fill=col + (255,), anchor=anchor, stroke_width=sw,
+                            stroke_fill=(0, 0, 0, 255))
+            else:
+                self.d.text((X, Y), s, font=f, fill=col + (255,), anchor=anchor)
+            return
+        x0, y0, x1, y1 = self.d.textbbox((X, Y), s, font=f, anchor=anchor, stroke_width=sw)
+        x0, y0 = max(0, int(x0) - 2), max(0, int(y0) - 2)
+        x1, y1 = min(self.im.width, int(x1) + 3), min(self.im.height, int(y1) + 3)
+        if x1 <= x0 or y1 <= y0:
+            return
+        if sw:                                              # the dark outline first, at the same fade
+            m = Image.new("L", (x1 - x0, y1 - y0), 0)
+            ImageDraw.Draw(m).text((X - x0, Y - y0), s, font=f, fill=int(round(255 * al)), anchor=anchor,
+                                   stroke_width=sw, stroke_fill=int(round(255 * al)))
+            self.im.paste(Image.new("RGB", m.size, (0, 0, 0)), (x0, y0), m)
+        m = Image.new("L", (x1 - x0, y1 - y0), 0)
+        ImageDraw.Draw(m).text((X - x0, Y - y0), s, font=f, fill=int(round(255 * al)), anchor=anchor)
+        self.im.paste(Image.new("RGB", m.size, col), (x0, y0), m)
 
     def text_w(self, s, size=24, bold=False, cond=False, mono=False) -> float:
         return St.text_w(font(size, bold=bold, cond=cond, mono=mono), str(s)) / S
@@ -321,7 +347,7 @@ class Axes:
         if clip:
             x0, y0, x1, y1 = self.box
             X, Y = np.clip(X, x0, x1), np.clip(Y, y0, y1)
-        p = _thin(np.stack([X, Y], 1))
+        p = thin(np.stack([X, Y], 1))
         if len(p) < 2:
             return tuple(p[-1]) if len(p) else None
         if dashed:
@@ -357,7 +383,7 @@ class Axes:
                     else "ls", a=a)
 
 
-def _thin(p: np.ndarray, tol: float = 0.35) -> np.ndarray:
+def thin(p: np.ndarray, tol: float = 0.35) -> np.ndarray:
     """Drop points closer than tol design units to the one kept before (long records: thousands of points)."""
     if len(p) < 3:
         return p
@@ -609,3 +635,6 @@ def fmt(v, n=0) -> str:
     """A number as the chapter writes it: fixed decimals, a thin thousands separator from 10,000."""
     s = f"{v:,.{n}f}"
     return s if abs(v) >= 10000 else s.replace(",", "")
+
+
+_thin = thin                     # the names the first segments were written against
