@@ -163,3 +163,9 @@ cd vertical-lab
 TWIN_WORKERS=4 /tmp/venv/bin/python -m twin.bench3b run v_lean c_stocked c_lean_net re_main re_main_more re_conventional
 /tmp/venv/bin/python -m twin.like3b && /tmp/venv/bin/python -m twin.figures3b
 ```
+
+**Round 3b's video** is round 3's cut again with these results (`TWIN_VIDEO_ROUND=3b`: the cards in `video/figs3b.py`,
+their numbers in `video/numbers3b.py`, the script in `video/narration3b.json`). It leads the lab comparison with like
+for like, shows the stock as its own effect, and replays the replay arm's two median seeds. See
+[`../notes/twin_video.md`](../notes/twin_video.md#round-3bs-re-cut). `python -m pytest -q
+twin/tests/test_video_round3b.py` checks every spoken number against `like3b.json` and the cells against `tables.md`.

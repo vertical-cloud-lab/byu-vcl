@@ -129,13 +129,14 @@ if ROUND3:
     SUBTITLE = "Round 3 of a digital-twin benchmark: two campaigns, replayed"
 if R3B:
     SUBTITLE = "Round 3b of a digital-twin benchmark: the lab comparison, like for like"
+TITLE_DUR = 14.5 if R3B else 8.0      # round 3b: the card stays while the opening line says what this cut compares
 
 
 def title_frame(t: float) -> np.ndarray:
     be = S("be")
     fr = np.asarray(be.base("high", 1.0 + 0.04 * t / 8.0, (0.5, 0.5))).copy()
     St.dim(fr, 0.28)
-    k = St.window(t, 0.2, 8.0, 0.8)
+    k = St.window(t, 0.2, TITLE_DUR, 0.8)
     im, d = St.layer()
     if ROUND3:
         d.text((W / 2, px(330)), "A simulated year of alloy discovery", font=St.font(64, bold=True), fill=St.INK,
@@ -859,10 +860,11 @@ def seed_words3b(i: int) -> str:
     camp = {"flaime_al": "aluminium", "onr_cu": "copper"}
     pol = {"bofn3": "time-aware BOFN", "pkgfn3": "time-aware pKGFN"}.get(rep_["policy"], rep_["policy"])
     what = "halfway target" if q["target"] == "T2" else "best existing alloy"
+    what_o = "halfway target" if o["target"] == "T2" else "best existing alloy"
     out = (f"Seed {q['seed']} of {rep_['n']}, {pol}, the stocked automated lab. The median seed for "
            f"{camp[q['campaign']]}'s {what}: day {q['day']:.0f}. ")
-    out += (f"From day {rep_['switch_day']} the replay is seed {o['seed']}." if i == 0 else
-            f"Until day {rep_['switch_day']} the replay was seed {o['seed']}.")
+    out += (f"{'From' if i == 0 else 'Until'} day {rep_['switch_day']}: seed {o['seed']}, the median seed for "
+            f"{camp[o['campaign']]}'s {what_o} (day {o['day']:.0f}).")
     return out
 
 
@@ -1161,7 +1163,7 @@ def segments() -> list:
     if R3B:
         F3 = S("figs3")
         return [
-            ("title", 8.0, title_frame, "Title"),
+            ("title", TITLE_DUR, title_frame, "A simulated year of alloy discovery: round 3b, like for like"),
             ("simulated", SIM_DUR, simulated_frame, "What is simulated: the lab and two search spaces"),
             ("changes", float(F3.CHANGES_DURATION), changes_frame, "Rounds 3 and 3b: what changed in the twin"),
             ("dag", float(dag.DURATION), dag.intro_frame, "The function networks"),
