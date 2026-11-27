@@ -69,7 +69,7 @@ The tables are below.*
 
 | Gain claimed for VLM trays | What it is for a warehouse | For us | How big |
 |---|---|---|---|
-| **Floor space** | Dense storage up the height of the room; vendors claim "up to 85-92 %" | **Real, and the only big one.** 281 m² against 398 m² for the same 43 instruments ([PR 406](https://github.com/vertical-cloud-lab/byu-vcl/pull/406), [`twin_floorspace.md`](twin_floorspace.md) on its branch). The saving is benches and their aisles: 31 benchtop instruments go into 18 m² of Shuttle footprint | 117 m² less, 29 %. Worth about $51k a year at the twin's space rates ($215/m² a year to run it plus $222/m² a year of building, [`twin/econ.py`](../twin/econ.py) `RATES`), and nothing if the room is already ours. It needs a 9.15 m bay. The vertical lab is not smaller in volume |
+| **Floor space** | Dense storage up the height of the room; vendors claim "up to 85-92 %" | **Real, and the only big one.** 281 m² against 398 m² for the same 43 instruments ([PR 406](https://github.com/vertical-cloud-lab/byu-vcl/pull/406), [`twin_floorspace.md`](https://github.com/vertical-cloud-lab/byu-vcl/blob/72177f1/vertical-lab/notes/twin_floorspace.md) on its branch). The saving is benches and their aisles: 31 benchtop instruments go into 18 m² of Shuttle footprint | 117 m² less, 29 %. Worth about $51k a year at the twin's space rates ($215/m² a year to run it plus $222/m² a year of building, [`twin/econ.py`](../twin/econ.py) `RATES`), and nothing if the room is already ours. It needs a 9.15 m bay. The vertical lab is not smaller in volume |
 | **Throughput** | Goods-to-person: the picker stops walking | **Not a gain.** The replay never finds the VLM faster for internal work, and with outside users it is slower (section 6) | Driving falls from 51-81 s a task on benches to 29-61 s at the VLM. That doesn't matter while the robots are 1-2 % busy |
 | **Positioning at a fixed bay** | One pick face, known geometry | **Real but small.** The arm calibrates at 2 openings instead of 24 bench docks. A MiR250 docks to a VL-marker to ±3 mm in up to 14 s (MiR250 spec, 2023), and an arm camera takes that to about 1 mm (Enabled Robotics' ER-VISION). Liverpool's touch-off reached ±0.12 mm (Burger et al. 2020). Kardex doesn't publish the extractor's repeatability at the opening; PR 318's coupling needs 4 mm ([`services.md`](services.md)) | Seconds a visit. Vision calibration takes about 5 s, touch-off about 53 s (Edison, mobile manipulators) |
 | **Enclosure** (dust, light, temperature, humidity) | Kardex sells climate-controlled, clean-room and low-humidity units | **Mixed.** It keeps out dust and light, but every watt a stored tray uses stays inside the cladding: 1.3 kW in Shuttle 1 when idle, 3.7 kW with a printer and the furnace running, which needs 1,100-2,200 m³/h of forced air ([`services.md`](services.md)). A room's HVAC does this for benches | Small, and partly a cost |
@@ -279,9 +279,9 @@ within a factor of two: about $250k against about $150k. PR 318 has two Shuttles
   - Its site needed its own disconnect, "since the VLM's built-in emergency shutoff doesn't actually cut transformer
     power" ([ac-dev-lab #471](https://github.com/AccelerationConsortium/ac-dev-lab/issues/471)).
   - Recovering from a power cut mid-lift needs Kardex's service login.
-- **Questions only Kardex can answer** ([`services.md`](services.md)): the heat a tray may give off, the interior
-  temperature rating, the extractor's repeatability against the coupling's 4 mm, access times for a 9.15 m unit served
-  by a robot, and whether a slot's power stays on while a tray is stored.
+- **Questions only Kardex can answer** (all but the access times are on [`services.md`](services.md)'s list): the
+  heat a tray may give off, the interior temperature rating, the extractor's repeatability against the coupling's
+  4 mm, whether a slot's power stays on while a tray is stored, and access times for a 9.15 m unit served by a robot.
 
 **What each option fixes.**
 

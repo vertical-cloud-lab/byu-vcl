@@ -169,3 +169,23 @@ their numbers in `video/numbers3b.py`, the script in `video/narration3b.json`). 
 for like, shows the stock as its own effect, and replays the replay arm's two median seeds. See
 [`../notes/twin_video.md`](../notes/twin_video.md#round-3bs-re-cut). `python -m pytest -q
 twin/tests/test_video_round3b.py` checks every spoken number against `like3b.json` and the cells against `tables.md`.
+
+## Is the vertical lab worth it? (#407, 2026-11-27): VLM trays against benches, with outside users
+
+A queue model that replays round 3b's event logs through a transport layer: the instruments on the two Shuttles' trays
+(one extractor and opening each, a running instrument holding its tray), or on PR 406's benches with mobile
+manipulators driving to them; one or two units; outside jobs from `cloud.py`'s catalogue at 0, 30 and 60 % of each
+instrument's clock; the twin's timing or PR 332's attended time. The write-up, with the decision table, is
+[`../notes/vertical_lab_worth_it.md`](../notes/vertical_lab_worth_it.md).
+
+| Piece | Code |
+|---|---|
+| The model (handling stand-ins in `Params`), the grid and the sensitivities | `worth_it.py` |
+| The tables (`out/worth_it/tables.md`, `sens.md`) and the figure (`out/worth_it/worth_it.png`) | `worth_it_report.py`, `worth_it_figure.py` |
+| The seven Edison queries behind the note (submit, wait, fetch) | `worth_it_edison.py` |
+
+```bash
+cd vertical-lab
+python -m twin.worth_it run && python -m twin.worth_it sens && python -m twin.worth_it_figure
+python -m pytest -q twin/tests/test_worth_it.py
+```
