@@ -79,6 +79,26 @@ def spoken(text: str) -> str:
     return _word(SAY).sub(lambda m: SAY[m.group(1)], text)
 
 
+_DEC = re.compile(r"(?<![\w.])(\d+)\.(\d+)(?![\w]|\.\d)")
+
+
+def _decimals(t: str) -> str:
+    """A decimal as it is to be said: '1.8' -> '1 point 8', '0.73' -> '0 point 7 3'. The phonemizer is asked to keep
+    punctuation, and some of its versions then split a number at its point and say 'one. eight' (found by the
+    heard-back check on round 3b's lines: every decimal came back without 'point')."""
+    return _DEC.sub(lambda m: f"{m.group(1)} point {' '.join(m.group(2))}", t)
+
+
+def _phon(chunk: str) -> str:
+    """One chunk of a line through espeak, its decimals said with 'point' (unstressed, as espeak says it inside a
+    number: round 3's recordings have 'fˈɔːɹ pɔɪnt zˈiəɹoʊ')."""
+    said = _decimals(chunk)
+    ph = _TOK.phonemize(said)
+    if said != chunk and not re.search(r"\bpoint", chunk):
+        ph = ph.replace("pˈɔɪnt", "pɔɪnt")
+    return ph
+
+
 def phonemes(text: str) -> str:
     """The line's phonemes for Kokoro: espeak's (kokoro-onnx's tokenizer), except IPA's words."""
     global _TOK
@@ -88,11 +108,11 @@ def phonemes(text: str) -> str:
     t, out, pos = spoken(text), [], 0
     for m in _word(IPA).finditer(t):
         if t[pos:m.start()].strip():
-            out.append(_TOK.phonemize(t[pos:m.start()].strip()))
+            out.append(_phon(t[pos:m.start()].strip()))
         out.append(IPA[m.group(1)])
         pos = m.end()
     if t[pos:].strip():
-        out.append(_TOK.phonemize(t[pos:].strip()))
+        out.append(_phon(t[pos:].strip()))
     return " ".join(out)
 
 

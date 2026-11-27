@@ -909,8 +909,9 @@ def target_events() -> list:
                     if not on_screen:
                         continue
                     med = (q["campaign"], q["target"]) == (c, tn)
-                    small = (f"seed {q['seed']}: the median seed for this target ({hits[tn]} of {q['of']} seeds reach "
-                             "it)" if med else f"seed {q['seed']}; {hits[tn]} of {q['of']} seeds reach it")
+                    which = "the halfway target" if tn == "T2" else "the best existing alloy"
+                    small = (f"seed {q['seed']}: the median seed for {which} ({hits[tn]} of {q['of']} seeds reach it)"
+                             if med else f"seed {q['seed']}; {hits[tn]} of {q['of']} seeds reach {which}")
                     out.append((float(np.interp(day * D.HPD, tl.lab_g, tl.vg)), c,
                                 f"{camp[c]}: {words}, day {day:.0f}", small))
         _BADGE["events"] = sorted(out)

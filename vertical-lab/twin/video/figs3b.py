@@ -350,7 +350,7 @@ def results_frame(t: float, captions: bool = True) -> np.ndarray:
 
 # =========================================================================== the lab comparison, like for like
 def labs_t() -> tuple:
-    return (0.0,) + tuple(max(1.0, cue(k, v) - 0.8) for k, v in (("stk1", 30.6), ("tie1", 53.0), ("cost1", 79.0))) + \
+    return (0.0,) + tuple(max(1.0, cue(k, v) - 0.8) for k, v in (("stk1", 30.6), ("tie1", 53.6), ("cost1", 79.0))) + \
         (LABS_DURATION,)
 
 
@@ -444,10 +444,10 @@ def _lab_like(d, lay, t, ctx=None):
     rows = {
         AL: [("BOFN and pKGFN against a conventional lab run by rule of thumb", ["BOFN", "pKGFN"],
               ("bofn_thumb", "pkgfn_thumb"), 4.4),
-             ("The same policy in both labs: the heuristic (rule of thumb)", ["heuristic"], ("same_heur",), 24.6)],
-        CU: [("The same policy in both labs: tiered CALPHAD screening", ["tiered"], ("same_funnel",), 17.6),
+             ("The same policy in both labs: the heuristic (rule of thumb)", ["heuristic"], ("same_heur",), 25.4)],
+        CU: [("The same policy in both labs: tiered CALPHAD screening", ["tiered"], ("same_funnel",), 18.4),
              ("BOFN and pKGFN against a conventional lab run by rule of thumb", ["BOFN", "pKGFN"],
-              ("bofn_thumb", "pkgfn_thumb"), 24.6)],
+              ("bofn_thumb", "pkgfn_thumb"), 25.4)],
     }
     y_top = 196
     for i, camp in enumerate(D.CAMPAIGNS):

@@ -538,7 +538,7 @@
   {
    "id": "tie1",
    "seg": "labs",
-   "at": 53.0,
+   "at": 53.6,
    "text": "Where the automated lab does not win. Against the same optimizer in a conventional lab, with both ordering as they go, it is about a tie on aluminium's halfway target: 0.9 times for BOFN and 1.0 for pKGFN, on four seeds. And in those seeds the conventional lab, with three years and three years' money, reached copper's best existing alloy more often.",
    "src": "figs3b._lab_tie: tables.md, both lean, the same policy: Al T2 BOFN 0.9x (3/4 vs 4/4), pKGFN 1.0x (3/4 vs 4/4); Cu T1 BOFN 2/4 vs 4/4, pKGFN 2/4 vs 3/4",
    "nums": [

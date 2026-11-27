@@ -90,20 +90,20 @@
    "sha256": "bedc50559cf5313e3da4566152e0c9c0bdc412b0647ec147ce9183e75e03c6cb"
   },
   "fig4": {
-   "key": "4c4e496dc80c708e",
+   "key": "80de85c2456ffbe1",
    "text": "Days to a target are the median over twelve runs. Here the automated lab reaches the halfway target on day 183, in 11 of its 12 runs. The conventional lab does on day 337, in only 6 of 12, so its median is its last run to get there. The factor is therefore a lower bound: at least 1.8 times.",
    "spoken": "Days to a target are the median over twelve runs. Here the automated lab reaches the halfway target on day 183, in 11 of its 12 runs. The conventional lab does on day 337, in only 6 of 12, so its median is its last run to get there. The factor is therefore a lower bound: at least 1.8 times.",
-   "phonemes": "dˈeɪz tʊ ɐ tˈɑːɹɡɪt ɑːɹ ðə mˈiːdiːən ˌoʊvɚ twˈɛlv ɹˈʌnz. hˈɪɹ ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb ɹˈiːtʃᵻz ðə hˈæfweɪ tˈɑːɹɡɪt ˌɔn dˈeɪ wˈʌnhˈʌndɹɪd ˈeɪɾi θɹˈiː, ɪn ɪlˈɛvən ʌv ɪts twˈɛlv ɹˈʌnz. ðə kənvˈɛnʃənəl lˈæb dˈʌz ˌɔn dˈeɪ θɹˈiːhˈʌndɹɪd θˈɜːɾi sˈɛvən, ɪn ˈoʊnli sˈɪks ʌv twˈɛlv, sˌoʊ ɪts mˈiːdiːən ɪz ɪts lˈæst ɹˈʌn tə ɡɛt ðˈɛɹ. ðə fˈæktɚɹ ɪz ðˈɛɹfɔːɹ ɐ lˈoʊɚ bˈaʊnd: æt lˈiːst wˈʌn.ˈeɪt tˈaɪmz.",
-   "seconds": 22.04,
-   "sha256": "a48fe33769a2f034f15494a54bff24b295556c2cc535fed83be55b437f90168a"
+   "phonemes": "dˈeɪz tʊ ɐ tˈɑːɹɡɪt ɑːɹ ðə mˈiːdiːən ˌoʊvɚ twˈɛlv ɹˈʌnz. hˈɪɹ ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb ɹˈiːtʃᵻz ðə hˈæfweɪ tˈɑːɹɡɪt ˌɔn dˈeɪ wˈʌnhˈʌndɹɪd ˈeɪɾi θɹˈiː, ɪn ɪlˈɛvən ʌv ɪts twˈɛlv ɹˈʌnz. ðə kənvˈɛnʃənəl lˈæb dˈʌz ˌɔn dˈeɪ θɹˈiːhˈʌndɹɪd θˈɜːɾi sˈɛvən, ɪn ˈoʊnli sˈɪks ʌv twˈɛlv, sˌoʊ ɪts mˈiːdiːən ɪz ɪts lˈæst ɹˈʌn tə ɡɛt ðˈɛɹ. ðə fˈæktɚɹ ɪz ðˈɛɹfɔːɹ ɐ lˈoʊɚ bˈaʊnd: æt lˈiːst wˈʌn pɔɪnt ˈeɪt tˈaɪmz.",
+   "seconds": 22.14,
+   "sha256": "d006d31e0ba8abcc14c6f717cf3f1bd6ea4910680cf6371bfe2cc6d4241b249f"
   },
   "fig5": {
-   "key": "8478d503263f0a96",
+   "key": "223c99597d942fb9",
    "text": "Stocking is a separate effect. With its metal on the shelf from day zero, the same automated lab gets there on day 83: 2.2 times sooner. Round three's figure of 4.0 times set that stocked lab against a conventional lab ordering as it goes, so it counted the stock as well as the lab.",
    "spoken": "Stocking is a separate effect. With its metal on the shelf from day zero, the same automated lab gets there on day 83: 2.2 times sooner. Round three's figure of 4.0 times set that stocked lab against a conventional lab ordering as it goes, so it counted the stock as well as the lab.",
-   "phonemes": "stˈɑːkɪŋ ɪz ɐ sˈɛpɹət ɪfˈɛkt. wɪð ɪts mˈɛɾəl ɔnðə ʃˈɛlf fɹʌm dˈeɪ zˈiəɹoʊ, ðə sˈeɪm ˈɔːɾəmˌeɪɾᵻd lˈæb ɡˈɛts ðɛɹ ˌɔn dˈeɪ ˈeɪɾi θɹˈiː: tˈuː.tˈuː tˈaɪmz sˈuːnɚ. ɹˈaʊnd θɹˈiːz fˈɪɡjɚɹ ʌv fˈɔːɹ.zˈiəɹoʊ tˈaɪmz sˈɛt ðæt stˈɑːkt lˈæb ɐɡˈɛnst ɐ kənvˈɛnʃənəl lˈæb ˈɔːɹdɚɹɪŋ æz ɪt ɡˈoʊz, sˌoʊ ɪt kˈaʊntᵻd ðə stˈɑːk æz wˈɛl æz ðə lˈæb.",
-   "seconds": 19.67,
-   "sha256": "5136afa334fe8c9a81789681887dede29b5d22fbdad1720c6be30293f3fcde5e"
+   "phonemes": "stˈɑːkɪŋ ɪz ɐ sˈɛpɹət ɪfˈɛkt. wɪð ɪts mˈɛɾəl ɔnðə ʃˈɛlf fɹʌm dˈeɪ zˈiəɹoʊ, ðə sˈeɪm ˈɔːɾəmˌeɪɾᵻd lˈæb ɡˈɛts ðɛɹ ˌɔn dˈeɪ ˈeɪɾi θɹˈiː: tˈuː pɔɪnt tˈuː tˈaɪmz sˈuːnɚ. ɹˈaʊnd θɹˈiːz fˈɪɡjɚɹ ʌv fˈɔːɹ pɔɪnt zˈiəɹoʊ tˈaɪmz sˈɛt ðæt stˈɑːkt lˈæb ɐɡˈɛnst ɐ kənvˈɛnʃənəl lˈæb ˈɔːɹdɚɹɪŋ æz ɪt ɡˈoʊz, sˌoʊ ɪt kˈaʊntᵻd ðə stˈɑːk æz wˈɛl æz ðə lˈæb.",
+   "seconds": 20.22,
+   "sha256": "4dca841a53bdc33e9c2b1f14e1e612ec1eb8be3bbc05c2c1b4132494fb5b3ef7"
   },
   "asm1": {
    "key": "6c7d70a27935be40",
@@ -210,36 +210,36 @@
    "sha256": "f0ae1821c15a691b375fec9e2c8f61c57fbd72da7715f622114e4ec814d68ac0"
   },
   "lfl1": {
-   "key": "773393fbbe9a933d",
+   "key": "3570a5e13717731e",
    "text": "Now the two labs, like for like: both order their metal as they go. To aluminium's halfway target, BOFN and pKGFN in the automated lab are at least 1.8 times sooner than a conventional lab run by rule of thumb. They got there in 11 of 12 runs, against 6 of 12, so this is a lower bound. To copper's halfway target, with tiered screening in both labs, the automated lab is 3.2 times sooner, with an interval from 1.9 to 4.8.",
    "spoken": "Now the two labs, like for like: both order their metal as they go. To aluminum's halfway target, B O F N and P K G F N in the automated lab are at least 1.8 times sooner than a conventional lab run by rule of thumb. They got there in 11 of 12 runs, against 6 of 12, so this is a lower bound. To copper's halfway target, with tiered screening in both labs, the automated lab is 3.2 times sooner, with an interval from 1.9 to 4.8.",
-   "phonemes": "nˈaʊ ðə tˈuː lˈæbz, lˈaɪk fɔːɹ lˈaɪk: bˈoʊθ ˈɔːɹdɚ ðɛɹ mˈɛɾəl æz ðeɪ ɡˈoʊ. tʊ ɐlˈuːmɪnəmz hˈæfweɪ tˈɑːɹɡɪt, bˈiː ˈoʊ ˈɛf ˈɛn ænd pˈiː kˈeɪ dʒˈiː ˈɛf ˈɛn ɪnðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb ɑːɹ æt lˈiːst wˈʌn.ˈeɪt tˈaɪmz sˈuːnɚ ðˌænə kənvˈɛnʃənəl lˈæb ɹˈʌn baɪ ɹˈuːl ʌv θˈʌm. ðeɪ ɡɑːt ðɛɹ ɪn ɪlˈɛvən ʌv twˈɛlv ɹˈʌnz, ɐɡˈɛnst sˈɪks ʌv twˈɛlv, sˌoʊ ðɪs ɪz ɐ lˈoʊɚ bˈaʊnd. tə kˈɑːpɚz hˈæfweɪ tˈɑːɹɡɪt, wɪð tˈɪɹd skɹˈiːnɪŋ ɪn bˈoʊθ lˈæbz, ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb ɪz θɹˈiː.tˈuː tˈaɪmz sˈuːnɚ, wɪð ɐn ˈɪntɚvəl fɹʌm wˈʌn.nˈaɪn tə fˈɔːɹ.ˈeɪt.",
-   "seconds": 28.44,
-   "sha256": "7126a8d946b40377527f83f5c59c7026914b061a347359f2d53954ffa30bbbf4"
+   "phonemes": "nˈaʊ ðə tˈuː lˈæbz, lˈaɪk fɔːɹ lˈaɪk: bˈoʊθ ˈɔːɹdɚ ðɛɹ mˈɛɾəl æz ðeɪ ɡˈoʊ. tʊ ɐlˈuːmɪnəmz hˈæfweɪ tˈɑːɹɡɪt, bˈiː ˈoʊ ˈɛf ˈɛn ænd pˈiː kˈeɪ dʒˈiː ˈɛf ˈɛn ɪnðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb ɑːɹ æt lˈiːst wˈʌn pɔɪnt ˈeɪt tˈaɪmz sˈuːnɚ ðˌænə kənvˈɛnʃənəl lˈæb ɹˈʌn baɪ ɹˈuːl ʌv θˈʌm. ðeɪ ɡɑːt ðɛɹ ɪn ɪlˈɛvən ʌv twˈɛlv ɹˈʌnz, ɐɡˈɛnst sˈɪks ʌv twˈɛlv, sˌoʊ ðɪs ɪz ɐ lˈoʊɚ bˈaʊnd. tə kˈɑːpɚz hˈæfweɪ tˈɑːɹɡɪt, wɪð tˈɪɹd skɹˈiːnɪŋ ɪn bˈoʊθ lˈæbz, ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb ɪz θɹˈiː pɔɪnt tˈuː tˈaɪmz sˈuːnɚ, wɪð ɐn ˈɪntɚvəl fɹʌm wˈʌn pɔɪnt nˈaɪn tə fˈɔːɹ pɔɪnt ˈeɪt.",
+   "seconds": 29.23,
+   "sha256": "ca2453e733cd9ba8363c77c2b3dc04013c405d6e8bdc1a8314ebfd99dbd84549"
   },
   "stk1": {
-   "key": "b78692c2927e8624",
+   "key": "71f12d166afe26eb",
    "text": "Stocking is its own effect, and it is not the lab's. In the automated lab, having the metal on the shelf brings BOFN and pKGFN to aluminium's halfway target 1.9 and 2.2 times sooner than ordering as they go. Round three's 4.0 times was that stock multiplied by the lab's 1.8.",
    "spoken": "Stocking is its own effect, and it is not the lab's. In the automated lab, having the metal on the shelf brings B O F N and P K G F N to aluminum's halfway target 1.9 and 2.2 times sooner than ordering as they go. Round three's 4.0 times was that stock multiplied by the lab's 1.8.",
-   "phonemes": "stˈɑːkɪŋ ɪz ɪts ˈoʊn ɪfˈɛkt, ænd ɪɾ ɪz nˌɑːt ðə lˈæbz. ɪnðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb, hˌævɪŋ ðə mˈɛɾəl ɔnðə ʃˈɛlf bɹˈɪŋz bˈiː ˈoʊ ˈɛf ˈɛn ænd pˈiː kˈeɪ dʒˈiː ˈɛf ˈɛn tʊ ɐlˈuːmɪnəmz hˈæfweɪ tˈɑːɹɡɪt wˈʌn.nˈaɪn ænd tˈuː.tˈuː tˈaɪmz sˈuːnɚ ðɐn ˈɔːɹdɚɹɪŋ æz ðeɪ ɡˈoʊ. ɹˈaʊnd θɹˈiːz fˈɔːɹ.zˈiəɹoʊ tˈaɪmz wʌz ðæt stˈɑːk mˌʌltɪplˈaɪd baɪ ðə lˈæbz wˈʌn.ˈeɪt.",
-   "seconds": 21.01,
-   "sha256": "da64a1ab481b4e2b9c28888e2364de2389041a05b5877021575d6ae77b4db85c"
+   "phonemes": "stˈɑːkɪŋ ɪz ɪts ˈoʊn ɪfˈɛkt, ænd ɪɾ ɪz nˌɑːt ðə lˈæbz. ɪnðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb, hˌævɪŋ ðə mˈɛɾəl ɔnðə ʃˈɛlf bɹˈɪŋz bˈiː ˈoʊ ˈɛf ˈɛn ænd pˈiː kˈeɪ dʒˈiː ˈɛf ˈɛn tʊ ɐlˈuːmɪnəmz hˈæfweɪ tˈɑːɹɡɪt wˈʌn pɔɪnt nˈaɪn ænd tˈuː pɔɪnt tˈuː tˈaɪmz sˈuːnɚ ðɐn ˈɔːɹdɚɹɪŋ æz ðeɪ ɡˈoʊ. ɹˈaʊnd θɹˈiːz fˈɔːɹ pɔɪnt zˈiəɹoʊ tˈaɪmz wʌz ðæt stˈɑːk mˌʌltɪplˈaɪd baɪ ðə lˈæbz wˈʌn pɔɪnt ˈeɪt.",
+   "seconds": 22.31,
+   "sha256": "25aa3bafdaf62be69139d5da63f951597e26413e988f7e4b767108754f7a123d"
   },
   "tie1": {
-   "key": "8c65a8bcac7fce9e",
+   "key": "46fe32a8f93a0f1f",
    "text": "Where the automated lab does not win. Against the same optimizer in a conventional lab, with both ordering as they go, it is about a tie on aluminium's halfway target: 0.9 times for BOFN and 1.0 for pKGFN, on four seeds. And in those seeds the conventional lab, with three years and three years' money, reached copper's best existing alloy more often.",
    "spoken": "Where the automated lab does not win. Against the same optimizer in a conventional lab, with both ordering as they go, it is about a tie on aluminum's halfway target: 0.9 times for B O F N and 1.0 for P K G F N, on four seeds. And in those seeds the conventional lab, with three years and three years' money, reached copper's best existing alloy more often.",
-   "phonemes": "wˌɛɹ ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb dʌznˌɑːt wˈɪn. ɐɡˈɛnst ðə sˈeɪm ˈɑːptɪmˌaɪzɚɹ ɪn ɐ kənvˈɛnʃənəl lˈæb, wɪð bˈoʊθ ˈɔːɹdɚɹɪŋ æz ðeɪ ɡˈoʊ, ɪɾ ɪz ɐbˌaʊt ɐ tˈaɪ ˌɔn ɐlˈuːmɪnəmz hˈæfweɪ tˈɑːɹɡɪt: zˈiəɹoʊ.nˈaɪn tˈaɪmz fɔːɹ bˈiː ˈoʊ ˈɛf ˈɛn ænd wˈʌn.zˈiəɹoʊ fɔːɹ pˈiː kˈeɪ dʒˈiː ˈɛf ˈɛn, ˌɔn fˈɔːɹ sˈiːdz. ænd ɪn ðoʊz sˈiːdz ðə kənvˈɛnʃənəl lˈæb, wɪð θɹˈiː jˈɪɹz ænd θɹˈiː jˈɪɹz mˈʌni, ɹˈiːtʃt kˈɑːpɚz bˈɛst ɛɡzˈɪstɪŋ ˈælɔɪ mˈɔːɹ ˈɔfən.",
-   "seconds": 24.66,
-   "sha256": "f8bb50ea57764755279ca2cdead1caf0d4a6692b2678c470a8579cd4cc64b170"
+   "phonemes": "wˌɛɹ ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb dʌznˌɑːt wˈɪn. ɐɡˈɛnst ðə sˈeɪm ˈɑːptɪmˌaɪzɚɹ ɪn ɐ kənvˈɛnʃənəl lˈæb, wɪð bˈoʊθ ˈɔːɹdɚɹɪŋ æz ðeɪ ɡˈoʊ, ɪɾ ɪz ɐbˌaʊt ɐ tˈaɪ ˌɔn ɐlˈuːmɪnəmz hˈæfweɪ tˈɑːɹɡɪt: zˈiəɹoʊ pɔɪnt nˈaɪn tˈaɪmz fɔːɹ bˈiː ˈoʊ ˈɛf ˈɛn ænd wˈʌn pɔɪnt zˈiəɹoʊ fɔːɹ pˈiː kˈeɪ dʒˈiː ˈɛf ˈɛn, ˌɔn fˈɔːɹ sˈiːdz. ænd ɪn ðoʊz sˈiːdz ðə kənvˈɛnʃənəl lˈæb, wɪð θɹˈiː jˈɪɹz ænd θɹˈiː jˈɪɹz mˈʌni, ɹˈiːtʃt kˈɑːpɚz bˈɛst ɛɡzˈɪstɪŋ ˈælɔɪ mˈɔːɹ ˈɔfən.",
+   "seconds": 24.45,
+   "sha256": "e9f3bfc537bb5ec7660a57fbe2115ca33651b69769f21ab3562eedc0c1fbd6ec"
   },
   "cost1": {
-   "key": "3a296fe504784b69",
+   "key": "f47aa4ad3cffd958",
    "text": "Cost, on one basis: what a campaign had spent when it reached the target. With both labs ordering as they go, the automated lab spent at least 2.2 times less to aluminium's halfway target than the lab run by rule of thumb, and 3.2 times less to copper's, with tiered screening in both. Against the same optimizer, it spent about the same, or more. This basis leaves out fixed costs: staff, equipment and the building, where round three found the automated lab costs more.",
    "spoken": "Cost, on one basis: what a campaign had spent when it reached the target. With both labs ordering as they go, the automated lab spent at least 2.2 times less to aluminum's halfway target than the lab run by rule of thumb, and 3.2 times less to copper's, with tiered screening in both. Against the same optimizer, it spent about the same, or more. This basis leaves out fixed costs: staff, equipment and the building, where round three found the automated lab costs more.",
-   "phonemes": "kˈɔst, ˌɔn wˈʌn bˈeɪsɪs: wˌʌt ɐ kæmpˈeɪn hæd spˈɛnt wɛn ɪt ɹˈiːtʃt ðə tˈɑːɹɡɪt. wɪð bˈoʊθ lˈæbz ˈɔːɹdɚɹɪŋ æz ðeɪ ɡˈoʊ, ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb spˈɛnt æt lˈiːst tˈuː.tˈuː tˈaɪmz lˈɛs tʊ ɐlˈuːmɪnəmz hˈæfweɪ tˈɑːɹɡɪt ðɐn ðə lˈæb ɹˈʌn baɪ ɹˈuːl ʌv θˈʌm, ænd θɹˈiː.tˈuː tˈaɪmz lˈɛs tə kˈɑːpɚz, wɪð tˈɪɹd skɹˈiːnɪŋ ɪn bˈoʊθ. ɐɡˈɛnst ðə sˈeɪm ˈɑːptɪmˌaɪzɚ, ɪt spˈɛnt ɐbˌaʊt ðə sˈeɪm, ɔːɹ mˈɔːɹ. ðɪs bˈeɪsɪs lˈiːvz ˈaʊt fˈɪkst kˈɔsts: stˈæf, ɪkwˈɪpmənt ænd ðə bˈɪldɪŋ, wˌɛɹ ɹˈaʊnd θɹˈiː fˈaʊnd ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb kˈɔsts mˈɔːɹ.",
-   "seconds": 28.5,
-   "sha256": "4d513fafe251c854afd8b387feeadf46cc8ea90df2924e3bf4df1af00403d490"
+   "phonemes": "kˈɔst, ˌɔn wˈʌn bˈeɪsɪs: wˌʌt ɐ kæmpˈeɪn hæd spˈɛnt wɛn ɪt ɹˈiːtʃt ðə tˈɑːɹɡɪt. wɪð bˈoʊθ lˈæbz ˈɔːɹdɚɹɪŋ æz ðeɪ ɡˈoʊ, ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb spˈɛnt æt lˈiːst tˈuː pɔɪnt tˈuː tˈaɪmz lˈɛs tʊ ɐlˈuːmɪnəmz hˈæfweɪ tˈɑːɹɡɪt ðɐn ðə lˈæb ɹˈʌn baɪ ɹˈuːl ʌv θˈʌm, ænd θɹˈiː pɔɪnt tˈuː tˈaɪmz lˈɛs tə kˈɑːpɚz, wɪð tˈɪɹd skɹˈiːnɪŋ ɪn bˈoʊθ. ɐɡˈɛnst ðə sˈeɪm ˈɑːptɪmˌaɪzɚ, ɪt spˈɛnt ɐbˌaʊt ðə sˈeɪm, ɔːɹ mˈɔːɹ. ðɪs bˈeɪsɪs lˈiːvz ˈaʊt fˈɪkst kˈɔsts: stˈæf, ɪkwˈɪpmənt ænd ðə bˈɪldɪŋ, wˌɛɹ ɹˈaʊnd θɹˈiː fˈaʊnd ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb kˈɔsts mˈɔːɹ.",
+   "seconds": 28.35,
+   "sha256": "869a28b9cfe91aa9ad2de12a9259e7e5ce66c6d6fd99b1f2d83abbc555fded4b"
   },
   "take1": {
    "key": "75b56b1083d94546",
@@ -250,20 +250,20 @@
    "sha256": "ee25d975d64230b81f1769551d517c60f037a7e22fb9da6e74228d70afcfc8ac"
   },
   "take2": {
-   "key": "fbf01729b676abbe",
+   "key": "d4e1b1a0031576da",
    "text": "Against a conventional lab, like for like, with both ordering metal as they go: at least 1.8 times sooner to aluminium's halfway target than a lab run by rule of thumb, and 3.2 times sooner to copper's, with tiered screening in both. Stocking adds its own 1.9 to 2.2 times on aluminium. And against the same optimizer in a conventional lab, it is about a tie.",
    "spoken": "Against a conventional lab, like for like, with both ordering metal as they go: at least 1.8 times sooner to aluminum's halfway target than a lab run by rule of thumb, and 3.2 times sooner to copper's, with tiered screening in both. Stocking adds its own 1.9 to 2.2 times on aluminum. And against the same optimizer in a conventional lab, it is about a tie.",
-   "phonemes": "ɐɡˈɛnst ɐ kənvˈɛnʃənəl lˈæb, lˈaɪk fɔːɹ lˈaɪk, wɪð bˈoʊθ ˈɔːɹdɚɹɪŋ mˈɛɾəl æz ðeɪ ɡˈoʊ: æt lˈiːst wˈʌn.ˈeɪt tˈaɪmz sˈuːnɚ tʊ ɐlˈuːmɪnəmz hˈæfweɪ tˈɑːɹɡɪt ðˌænə lˈæb ɹˈʌn baɪ ɹˈuːl ʌv θˈʌm, ænd θɹˈiː.tˈuː tˈaɪmz sˈuːnɚ tə kˈɑːpɚz, wɪð tˈɪɹd skɹˈiːnɪŋ ɪn bˈoʊθ. stˈɑːkɪŋ ˈædz ɪts ˈoʊn wˈʌn.nˈaɪn tə tˈuː.tˈuː tˈaɪmz ˌɔn ɐlˈuːmɪnəm. ænd ɐɡˈɛnst ðə sˈeɪm ˈɑːptɪmˌaɪzɚɹ ɪn ɐ kənvˈɛnʃənəl lˈæb, ɪɾ ɪz ɐbˌaʊt ɐ tˈaɪ.",
-   "seconds": 23.74,
-   "sha256": "cfef22b19fcef175d05e5afb89d36566da68ce005f097617bd74bf5e177850e2"
+   "phonemes": "ɐɡˈɛnst ɐ kənvˈɛnʃənəl lˈæb, lˈaɪk fɔːɹ lˈaɪk, wɪð bˈoʊθ ˈɔːɹdɚɹɪŋ mˈɛɾəl æz ðeɪ ɡˈoʊ: æt lˈiːst wˈʌn pɔɪnt ˈeɪt tˈaɪmz sˈuːnɚ tʊ ɐlˈuːmɪnəmz hˈæfweɪ tˈɑːɹɡɪt ðˌænə lˈæb ɹˈʌn baɪ ɹˈuːl ʌv θˈʌm, ænd θɹˈiː pɔɪnt tˈuː tˈaɪmz sˈuːnɚ tə kˈɑːpɚz, wɪð tˈɪɹd skɹˈiːnɪŋ ɪn bˈoʊθ. stˈɑːkɪŋ ˈædz ɪts ˈoʊn wˈʌn pɔɪnt nˈaɪn tə tˈuː pɔɪnt tˈuː tˈaɪmz ˌɔn ɐlˈuːmɪnəm. ænd ɐɡˈɛnst ðə sˈeɪm ˈɑːptɪmˌaɪzɚɹ ɪn ɐ kənvˈɛnʃənəl lˈæb, ɪɾ ɪz ɐbˌaʊt ɐ tˈaɪ.",
+   "seconds": 24.09,
+   "sha256": "39d8115a12c632d074b3735e4f9f6c7b8340e1289eec92969fe77e362232ed84"
   },
   "take3": {
-   "key": "eb28295e4934b63a",
+   "key": "8ebac9ebe6576893",
    "text": "On campaign spend alone, it reached those two targets for at least 2.2 and for 3.2 times less. Fixed costs, where the automated lab costs more, are left out.",
    "spoken": "On campaign spend alone, it reached those two targets for at least 2.2 and for 3.2 times less. Fixed costs, where the automated lab costs more, are left out.",
-   "phonemes": "ˌɔn kæmpˈeɪn spˈɛnd ɐlˈoʊn, ɪt ɹˈiːtʃt ðoʊz tˈuː tˈɑːɹɡɪts fɔːɹ æt lˈiːst tˈuː.tˈuː ænd fɔːɹ θɹˈiː.tˈuː tˈaɪmz lˈɛs. fˈɪkst kˈɔsts, wˌɛɹ ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb kˈɔsts mˈɔːɹ, ɑːɹ lˈɛft ˈaʊt.",
-   "seconds": 10.94,
-   "sha256": "4795960b527cbc642a881cdcc079fa6785926ba48383de31992aab22d83da46e"
+   "phonemes": "ˌɔn kæmpˈeɪn spˈɛnd ɐlˈoʊn, ɪt ɹˈiːtʃt ðoʊz tˈuː tˈɑːɹɡɪts fɔːɹ æt lˈiːst tˈuː pɔɪnt tˈuː ænd fɔːɹ θɹˈiː pɔɪnt tˈuː tˈaɪmz lˈɛs. fˈɪkst kˈɔsts, wˌɛɹ ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb kˈɔsts mˈɔːɹ, ɑːɹ lˈɛft ˈaʊt.",
+   "seconds": 11.2,
+   "sha256": "0b4a514e880aa2057b31c4cf67f6dfd62a2983029fc69bb0f3482df36543f310"
   },
   "note1": {
    "key": "4475a5e9531915b7",
