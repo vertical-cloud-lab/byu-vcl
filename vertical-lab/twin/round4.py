@@ -321,7 +321,7 @@ class Facility4(fac.Facility):
         self.plan = plan
         self.physical = True
         self.opts = dict(opts or {})
-        self.sched = build_schedule(seed, plan)
+        self.sched = self.schedule(seed, plan)
         self.start_h = self.sched["start_h"]
         self.cell_h = self.sched.get("cell_h")
         rng = np.random.default_rng(30_000 + seed)
@@ -396,6 +396,11 @@ class Facility4(fac.Facility):
         self.prov_sites = set(OFFSETS) if prov == "all" else set(prov)
         self.prov_log = []
         self.route_log = []                                # (t, campaign, role, station, what)
+
+    def schedule(self, seed, plan) -> dict:
+        """The build-out (round 4's ``build_schedule``; round 5 overrides it with the facility window and used
+        equipment)."""
+        return build_schedule(seed, plan)
 
     # ------------------------------------------------------------------------------------------ availability
     def online(self, k, t) -> bool:
