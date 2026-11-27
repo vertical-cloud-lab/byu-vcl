@@ -23,7 +23,6 @@ import numpy as np
 
 from . import exp_data as X
 from . import exp_draw as G
-from . import style as St
 from .exp_draw import Axes, Canvas, Segment, fmt, lin, ramp
 from .style import CAMP, INK, INK2, mix
 
@@ -203,7 +202,6 @@ class Mech(Segment):
 
     def draw(self, cv: Canvas, t: float):
         col = CAMP[self.campaign]
-        swap = ramp(t, *self.T_SWAP)
         stage2 = t >= self.T_SWAP[0] + 0.5 * (self.T_SWAP[1] - self.T_SWAP[0])
         a1 = 1.0 - ramp(t, self.T_SWAP[0], self.T_SWAP[0] + 0.55)     # the furnace's picture and plot
         a2 = ramp(t, self.T_SWAP[1] - 0.55, self.T_SWAP[1])           # the frame's
@@ -214,7 +212,7 @@ class Mech(Segment):
             fr = self._clip("furnace").frame(max(0.0, t - 0.2))
             cv.paste(fr, 78, 196, a=a1)
             G.framed(cv, (78, 196, 878, 646), "the furnace and its quench tank (tray F)", a=a1)
-            w = cv.tag(88, 606, "render", "the lab's 3-D model (PR 318)", a=a1)
+            cv.tag(88, 606, "render", "the lab's 3-D model (PR 318)", a=a1)
             self._specimen(cv, t, 0.0, "wait", temp if t >= self.T_FURNACE[0] else 25.0)
         else:
             e_now, s_now, state = self._strain_now(t)
