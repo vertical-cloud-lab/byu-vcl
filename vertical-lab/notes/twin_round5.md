@@ -110,14 +110,16 @@ row records the CPU, the kernels, the package versions (numpy 2.5.5, scipy 1.18.
 gpytorch 1.15.2, linear_operator 0.6.1, as round 3b's; `out/twin5/requirements.txt`), the commit it was made from and
 the notes it includes. `twin/tests/test_round5.py` reruns a short run and checks the row is identical.
 
-* **The engine is one.** The heuristic's and the funnel's rows were made from `6895a09`, before the blend-screen fix
-  (`43ba098`), which doesn't touch them: a committed row reran identical after it, again on each slice's runner.
+* **The engine is one.** The heuristic's and the funnel's rows were made from `6895a09` (`hpc_more`'s from
+  `f2b40fd`), before the blend-screen fix (`43ba098`), which doesn't touch them: a committed row reran identical
+  after it, again on each slice's runner.
   BOFN's and pKGFN's rows were made after it: from `9ecef6f`, `3de9012` and, in the slices, six commits whose `twin/`
   is `b410477`'s. Between `9ecef6f` and `b410477` only `bench5.py`'s queue order and `like5.py` changed.
-* **Some of this PR's own rows carry `twin_dirty: true`:** 72 BOFN and pKGFN rows (`3de9012`) and the 32 `hpc_more`
-  rows (`f2b40fd`). They were made while analysis code was being edited and not yet committed. The engine files
-  differ between those commits and `b410477` by one comment (`round5.py`, for `f2b40fd`) or not at all, but the flag
-  can't say which files were dirty. The 69 slice rows are all clean.
+* **Some of this PR's own rows carry `twin_dirty: true`:** 72 BOFN and pKGFN rows (recorded commit `3de9012`) and the
+  32 `hpc_more` rows (`f2b40fd`). They were made while files in `twin/` were edited and not yet committed, and the
+  flag can't say which files. After `3de9012` only `like5.py` (analysis) changed. After `f2b40fd`, `bench5.py`, the
+  analysis, a comment in `round5.py` and the blend-screen fix changed; `hpc_more` runs the heuristic and the funnel,
+  which never reach that fix. The 69 slice rows are all clean.
 * **A heuristic or funnel row reruns bit for bit on every CPU tried:** an AMD EPYC 9V45, 9V74 and 7763 and an Intel
   Xeon 6975P-C, the row and its event log byte for byte.
 * **A BOFN or pKGFN row doesn't on every CPU, under the same pin.** It is deterministic on one machine. Rows made on
@@ -1006,7 +1008,8 @@ All simulated: synthetic truths, simulated instruments, assumed capacities, pric
 * **The atomizer's design cycle is not a demonstrated rate.** It assumes pre-coated spare crucibles in rotation (6-8
   per family for a 2-3 h cadence) that the lab doesn't have; with today's hardware the ceiling is about 1 run a day.
 * **Money binds the automated lab.** Round 3's money a year (aluminium $120k, copper $60k), two years' worth from
-  day 0, runs out in the automated lab around day 300-350 in both campaigns, and the lab then idles. A lab that fast
+  day 0, runs out in the automated lab around day 300-350 in both campaigns (day 370-430 with BOFN or pKGFN), and the
+  lab then idles. A lab that fast
   would be planned with more money or paced spending; neither was run here. The third engine rule (money kept for the
   work in progress) and the stock's money rules are round 5's own and hold for every policy in both labs.
 * **The stock heuristic is a simple rule with money caps**, not an optimized policy. With the market model's lead
@@ -1089,3 +1092,7 @@ python out/twin5/slices/fold_check.py after      # the packed rows against the f
 6. Stock: Silver, Pyke & Thomas, *Inventory and Production Management in Supply Chains*, 4th ed. (2017), ch. 6;
    `twin/supply.py` (the market model of rounds 1-4: DAL's procurement experience).
 7. Round 4's build-out, routes and learning curve: [`twin_round4.md`](twin_round4.md) and its sources.
+8. The six compute slices: PRs 421, 419, 423, 420, 422 and 418 (slices 1-6), their drivers and checks in
+   [`out/twin5/slices/`](../out/twin5/slices/); the fold's check (`fold_check.py`, `fold_check.json`) and the CPU
+   check (`check_gp_cpu.py`, `check_gp_cpu.json`) there too. Sterling's request for this write-up: PR 405, comment
+   7219480588 (2026-11-27).

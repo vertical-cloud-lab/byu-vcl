@@ -782,6 +782,12 @@ def tables(S) -> str:
               "| Target | Automated lab | Conventional lab | " + " | ".join(PAIR_NAMES[p] for p in PAIRS) + " |",
               "|---|---|---|" + "---|" * len(PAIRS)]
         L += four_rows(cross)
+        L += ["", "Their cost on one basis (campaign spend to the target):", "",
+              "| Target | Automated | Conventional | both lean | both stocked |", "|---|---|---|---|---|"]
+        for r in cross:
+            m = r["money"]
+            L.append(f"| {CAMPS[r['camp']]} {r['target']} | {r['vert_name']} | {r['conv_name']} | "
+                     f"{_f(m.get('lean|lean'), True)} | {_f(m.get('reorder|reorder'), True)} |")
     # decisions
     L += ["", "## Decision time: the four-way factors with no delay, the nominal windows and slow windows (cheap "
           "policies)", "", "| Target | Pairing | no delay | nominal | slow |", "|---|---|---|---|---|"]

@@ -1,14 +1,18 @@
 """Round 5, a check made when the slices were folded in (not rows): do this PR's own rows that carry
 ``twin_dirty: true`` reproduce from the committed engine?
 
-    cd vertical-lab && mkdir -p /tmp/twin5dirty && TWIN_PIN=avx2 PYTHONHASHSEED=0 TWIN5_OUT=/tmp/twin5dirty \
-        python out/twin5/slices/check_dirty_rows.py > out/twin5/slices/check_dirty_rows.json
+    git worktree add --detach /tmp/twin5clean b410477a          # a clean checkout of the engine of record
+    cd /tmp/twin5clean/vertical-lab && mkdir -p /tmp/twin5dirty && \
+        TWIN_PIN=avx2 PYTHONHASHSEED=0 TWIN5_OUT=/tmp/twin5dirty \
+        python <this checkout>/vertical-lab/out/twin5/slices/check_dirty_rows.py > check_dirty_rows.json
 
-72 BOFN and pKGFN rows (recorded commit 3de9012) and the 32 hpc_more rows (f2b40fd) were made while analysis code in
-twin/ was edited and not yet committed, so their flag is true and can't say which files differed. This reruns five of
-them from a clean checkout (the commit each rerun records) on the same CPU model they were made on (an AMD EPYC 9V45),
-each in a fresh worker, with outputs under TWIN5_OUT (outside the repository). A row is compared apart from timing and
-provenance (``seconds``, ``gp``, ``env``, ``code``, ``events_file``), and its event log as decompressed JSON.
+72 BOFN and pKGFN rows (recorded commit 3de9012) and the 32 hpc_more rows (f2b40fd) were made while files in twin/
+were edited and not yet committed, so their flag is true and can't say which files differed. This reruns five of them
+with the engine at b410477 from a detached worktree (so each rerun records b410477 and twin_dirty false), on the same
+CPU model they were made on (an AMD EPYC 9V45), each in a fresh worker, with outputs under TWIN5_OUT (outside the
+repository). The engine and the committed rows and event logs are read from the working directory. A row is compared
+apart from timing and provenance (``seconds``, ``gp``, ``env``, ``code``, ``events_file``), and its event log as
+decompressed JSON.
 """
 import json
 import lzma
@@ -82,6 +86,6 @@ if __name__ == "__main__":
                         code=dict(rerun=new["code"], committed=ref["code"]),
                         seconds=dict(rerun=new["seconds"], committed=ref["seconds"])))
     print(json.dumps(dict(
-        what="five of this PR's rows that carry twin_dirty: true, rerun from a clean checkout on the CPU model they were "
-             "made on; [rerun, committed] are compared apart from timing and provenance",
+        what="five of this PR's rows that carry twin_dirty: true, rerun with the engine at b410477 (a detached worktree) on "
+             "the CPU model they were made on; [rerun, committed] are compared apart from timing and provenance",
         pin=os.environ["TWIN_PIN"], reruns=out), indent=1))

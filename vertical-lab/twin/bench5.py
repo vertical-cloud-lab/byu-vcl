@@ -7,9 +7,10 @@
     python3 -m twin.bench5 one LAB PLAN POLICY STOCK [SEED]   # one run, printed (TWIN5_DAYS shortens it)
 
 Every row is made under round 3b's pin (twin/repro.py) with ``TWIN_PIN=avx2`` (set here if unset: the AVX2 kernels
-run on any x86-64 runner, so the seeds a follow-up adds reproduce, and match, on whatever runner it gets). Every row
-records the CPU, the kernels and the package versions (``env``), the notes it includes (``r5.notes``), and writes
-its event log, compressed with xz.
+run on any x86-64 runner). Under it a heuristic or funnel row reproduces bit for bit on every CPU tried; a BOFN or
+pKGFN row is deterministic on one CPU model but doesn't reproduce on every other (notes/twin_round5.md,
+"Reproducibility"). Every row records the CPU, the kernels and the package versions (``env``), the notes it includes
+(``r5.notes``), and writes its event log, compressed with xz.
 
 The arms. ``lab`` is ``vertical`` (round 4's parallel plan with round 5's set-up: the in-house stations from the
 facility window, the partners and BYU's equipment from day 0) or ``conventional`` (BYU's existing equipment and

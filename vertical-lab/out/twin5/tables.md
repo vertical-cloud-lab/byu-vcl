@@ -176,6 +176,23 @@ Kept for reference. The like-for-like table above and the within-lab table just 
 | Copper T2 | funnel | BOFN | >= 2.5x; 14/16 vs 3/16 | >= 2.3x; 15/16 vs 4/16 | >= 2.3x; 15/16 vs 3/16 | >= 2.5x; 14/16 vs 4/16 |
 | Copper T2 | funnel | pKGFN | >= 2.5x; 14/16 vs 3/16 | >= 2.3x; 15/16 vs 4/16 | >= 2.3x; 15/16 vs 3/16 | >= 2.5x; 14/16 vs 4/16 |
 
+Their cost on one basis (campaign spend to the target):
+
+| Target | Automated | Conventional | both lean | both stocked |
+|---|---|---|---|---|
+| Aluminium T1 | BOFN | heuristic | 0.2x (0.1-0.5) | 0.6x (0.4-0.8) |
+| Aluminium T1 | pKGFN | heuristic | 0.2x (0.1-0.5) | 0.5x (0.4-0.7) |
+| Aluminium T1 | heuristic | BOFN | 3.4x (2.0-4.7) | 1.6x (1.4-2.3) |
+| Aluminium T1 | heuristic | pKGFN | 3.5x (2.1-4.4) | 1.7x (1.4-2.2) |
+| Aluminium T2 | BOFN | heuristic | 1.6x (0.3-∞) | 2.7x (1.7-∞) |
+| Aluminium T2 | pKGFN | heuristic | 1.7x (0.3-∞) | 2.4x (1.5-∞) |
+| Aluminium T2 | heuristic | BOFN | 0.3x (0-0.7) | <= 0.4x |
+| Aluminium T2 | heuristic | pKGFN | 0.3x (0-0.6) | <= 0.4x |
+| Copper T1 | funnel | BOFN | >= 1.0x | 1.0x (0.7-∞) |
+| Copper T1 | funnel | pKGFN | 0.8x (0.5-∞) | >= 1.0x |
+| Copper T2 | funnel | BOFN | >= 1.0x | >= 0.9x |
+| Copper T2 | funnel | pKGFN | >= 1.0x | >= 0.9x |
+
 ## Decision time: the four-way factors with no delay, the nominal windows and slow windows (cheap policies)
 
 | Target | Pairing | no delay | nominal | slow |
