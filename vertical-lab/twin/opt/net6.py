@@ -184,10 +184,23 @@ class PKGFN6(_Six, N3.PKGFN3):
 
 class _Cap:
     """For a check only (out/twin6/checks/copper_idle.py), never the grid: round 6's policy with round 5's cap on
-    copper's blend screens put back, so that what the cap does can be told apart from what the rest of round 6 does."""
+    copper's blend screens put back, so that what the cap does can be told apart from what the rest of round 6 does.
+    A call the cap refuses is counted as ``new_capped``. (The check's rows made at d865668 count such a call as
+    ``new_low_ei``: net3 returns before it counts the eligible candidates, so net6 read the last call's count.)"""
+
+    def __init__(self, key, seed=0, crucible=None):
+        super().__init__(key, seed, crucible)
+        self.counts["new_capped"] = 0
 
     def _screen_share_ok(self, v):
         return N3.Net3._screen_share_ok(self, v)
+
+    def _cands_new(self, v, P, pi, best_kb):
+        if not N3.Net3._screen_share_ok(self, v):
+            self.counts["new_calls"] += 1
+            self.counts["new_capped"] += 1
+            return []
+        return super()._cands_new(v, P, pi, best_kb)
 
 
 class Net6Cap(_Cap, Net6):
