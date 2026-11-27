@@ -1,0 +1,80 @@
+{
+ "note": "The four earlier uploads, read through the YouTube Data API (videos.list: snippet, status, contentDetails) before and after round 3b's re-cut was uploaded. The upload token can add a video and read; it cannot edit, unlist or delete one.",
+ "checked_before_utc": "2026-11-27T03:52Z",
+ "checked_after_utc": "2026-11-27T04:32Z",
+ "new_video": "97BZNOI5V1w",
+ "unchanged": {
+  "7DjfEBGe4Jw": true,
+  "Pz7hxqfODmE": true,
+  "tX8Ik8oKnhk": true,
+  "s854ahFNihU": true
+ },
+ "before": {
+  "7DjfEBGe4Jw": {
+   "title": "A simulated year of alloy discovery in an automated lab: round 3 (digital twin benchmark)",
+   "privacy": "public",
+   "duration": "PT14M19S",
+   "published": "2026-11-26T14:01:49Z",
+   "description_sha256": "80d9df39613aa11c",
+   "tags": 21
+  },
+  "Pz7hxqfODmE": {
+   "title": "A year of alloy discovery in an automated lab: a simulated benchmark (digital twin)",
+   "privacy": "public",
+   "duration": "PT11M41S",
+   "published": "2026-11-26T00:15:42Z",
+   "description_sha256": "6c4fe17ac8b050e4",
+   "tags": 14
+  },
+  "tX8Ik8oKnhk": {
+   "title": "A year of alloy discovery in an automated lab, animated: a simulated benchmark (digital twin)",
+   "privacy": "unlisted",
+   "duration": "PT11M41S",
+   "published": "2026-11-26T04:02:33Z",
+   "description_sha256": "742bdeb542116ba7",
+   "tags": 17
+  },
+  "s854ahFNihU": {
+   "title": "A year of alloy discovery in an automated lab, narrated: a simulated benchmark (digital twin)",
+   "privacy": "unlisted",
+   "duration": "PT12M51S",
+   "published": "2026-11-26T04:28:30Z",
+   "description_sha256": "926e346fcf73ba2d",
+   "tags": 18
+  }
+ },
+ "after": {
+  "7DjfEBGe4Jw": {
+   "title": "A simulated year of alloy discovery in an automated lab: round 3 (digital twin benchmark)",
+   "privacy": "public",
+   "duration": "PT14M19S",
+   "published": "2026-11-26T14:01:49Z",
+   "description_sha256": "80d9df39613aa11c",
+   "tags": 21
+  },
+  "Pz7hxqfODmE": {
+   "title": "A year of alloy discovery in an automated lab: a simulated benchmark (digital twin)",
+   "privacy": "public",
+   "duration": "PT11M41S",
+   "published": "2026-11-26T00:15:42Z",
+   "description_sha256": "6c4fe17ac8b050e4",
+   "tags": 14
+  },
+  "tX8Ik8oKnhk": {
+   "title": "A year of alloy discovery in an automated lab, animated: a simulated benchmark (digital twin)",
+   "privacy": "unlisted",
+   "duration": "PT11M41S",
+   "published": "2026-11-26T04:02:33Z",
+   "description_sha256": "742bdeb542116ba7",
+   "tags": 17
+  },
+  "s854ahFNihU": {
+   "title": "A year of alloy discovery in an automated lab, narrated: a simulated benchmark (digital twin)",
+   "privacy": "unlisted",
+   "duration": "PT12M51S",
+   "published": "2026-11-26T04:28:30Z",
+   "description_sha256": "926e346fcf73ba2d",
+   "tags": 18
+  }
+ }
+}

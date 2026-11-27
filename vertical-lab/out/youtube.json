@@ -841,6 +841,18 @@
     "notified_subscribers": false
    }
   ],
+  "twin3b/video/campaign_lab3d_narrated.mp4": [
+   {
+    "id": "97BZNOI5V1w",
+    "sha256": "6c1e9fab4ce75ad98ee94d40bf06a5013c1bd25d99b2ec712abac19109332e15",
+    "bytes": 162749577,
+    "commit": "734ff1f",
+    "uploaded": "2026-11-27T04:32:13Z",
+    "title": "A simulated year of alloy discovery in an automated lab: round 3b, like for like (digital twin)",
+    "privacy": "public",
+    "notified_subscribers": false
+   }
+  ],
   "vacuum_press.mp4": [
    {
     "id": "UGTGpEfyUeQ",

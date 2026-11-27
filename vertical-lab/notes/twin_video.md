@@ -17,6 +17,8 @@ results and notes reworded as DAL's audit of the first cut suggested (digital-al
 
 **Round 3's video** (PR 394, 2026-11-26): a new cut from round 3's results, with the corrections DAL's audit of round 2's video asked for. Public, subscribers not notified: [7DjfEBGe4Jw](https://www.youtube.com/watch?v=7DjfEBGe4Jw) (14:18). See [Round 3's video](#round-3s-video) below.
 
+**Round 3b's re-cut** (PR 400, 2026-11-27): round 3's cut again with round 3b's results: the lab comparison like for like, the stock as its own effect, and the replay on the replay arm's two median seeds. Public, subscribers not notified: [97BZNOI5V1w](https://www.youtube.com/watch?v=97BZNOI5V1w) (15:42). See [Round 3b's re-cut](#round-3bs-re-cut) below.
+
 ## What is on screen
 
 | Part | What it shows | Code |
@@ -503,3 +505,190 @@ python -m twin.video.upload --yes --file out/twin3/video/campaign_lab3d_narrated
 ```
 
 **What it cost on the runner** (2026-11-26, 4 cores). The replay's 3-D track: 21 jobs, 4,785 frames, 56 min on three workers (two at 1920 × 1080, one for the 960 × 540 inset). That is slower than round 2's 30 min because the lines were being spoken and the cards drawn on the same cores, and the first scene build tessellated for about 17 min (the cache isn't committed). The encode: 23 pieces on four workers, 35 min, of which 28 min were the two results pieces holding the days card, which recomputed every run's days on each frame. `data.arm3` now computes each arm once (the card draws in 23 ms a frame instead of 430), so a rebuild's encode should take about 15 min.
+
+## Round 3b's re-cut
+
+Sterling, on [PR 400](https://github.com/vertical-cloud-lab/byu-vcl/pull/400#issuecomment-7208857759) (2026-11-27):
+"Re-cut the round 3 campaign video with round 3b's results, and upload it as a new video, public, with subscribers
+not notified. ... Build on round 3's cut ... Change what round 3b changes, and keep the rest."
+
+**On YouTube:** [97BZNOI5V1w](https://www.youtube.com/watch?v=97BZNOI5V1w) (public, subscribers not notified; uploaded
+2026-11-27, built from commit 734ff1f), 15:42. The earlier uploads (7DjfEBGe4Jw, Pz7hxqfODmE, tX8Ik8oKnhk,
+s854ahFNihU) are as they were: their titles, privacy, lengths and descriptions were read before and after the upload
+and are the same (`out/twin3b/video/earlier_uploads.json`). The upload token can only add a video.
+
+![Contact sheet of round 3b's re-cut](../out/twin3b/video/sheet_lab3d_narrated.png)
+
+It is round 3's cut switched to round 3b by `TWIN_VIDEO_ROUND=3b`: `twin/video/data.py` still reads round 3's runs
+and summaries (`out/twin3/`), adds `out/twin3b/like3b.json` (what [`tables.md`](../out/twin3b/tables.md) prints) and
+the event logs in `out/twin3b/events/`, and writes to `out/twin3b/video/`. `TWIN_VIDEO_ROUND=3` still builds round
+3's cut as it was. Everything in the video is simulated, except what the closing notes list as real.
+
+### What changed from round 3's cut (7DjfEBGe4Jw)
+
+| Part | Round 3's cut | Round 3b's re-cut | Code |
+|---|---|---|---|
+| Title | "Round 3 of a digital-twin benchmark" | "Round 3b ...: the lab comparison, like for like". The card stays for the whole opening line | `compose.title_frame`, line `open1` |
+| What changed in the twin | Six changes | A seventh: round 3b's new arms, and round 3's runs rerun under a pinned set-up (338 of 348 identical, the other 10 to the last bit of a utility) | `figs3b.changes_frame`, line `chg2` |
+| The figures we track | The stocked automated lab against a conventional lab ordering as it goes: "at least 4.0x", with "how much of it is the stock is not known" | Like for like: both labs ordering metal as they go, day 183 against day 337, "at least 1.8x" (11 of 12 runs against 6 of 12). Then the stock as a separate effect: the same automated lab stocked gets there on day 83, 2.2x sooner. Round 3's 4.0x is shown as the two multiplied | `figs3b.explain_frame`, lines `fig3` to `fig5` |
+| The replay | Seed 0 for the whole year. A badge said its copper never reached the first target | Seed 0 to day 119, then seed 5 (below). A badge names the seed on screen and what it is the median seed for, a card says the change, and a tag marks each target as it is passed. The copper badge is gone | `data.Replay2`, `compose.seed_badge3b`, `switch_card`, `target_tags`; lines `seed1`, `mid1`, `cu1` |
+| The replay's live plots | Dashed: the conventional lab run by rule of thumb, ordering as it goes | Dashed: the same policy in a stocked conventional lab (4 seeds), like for like with the stocked runs replayed | `figs_anim.Ctx` (`base_replay`) |
+| Results: the policies | Four policies' curves with the conventional lab's first year dashed behind them | The same curves without the conventional lab's: that pairing was a stocked lab against one ordering as it goes. The days card and the money card are unchanged | `figs3._res_curves` |
+| The lab comparison | One card of round 3's pairing (3.8x, at least 4.0x), with "not run" for the rest | Its own chapter of four cards: like for like to both targets, with round 3's pairing small and labelled beside each factor; what the stock buys; where the automated lab doesn't win; the cost | `figs3b.labs_frame` |
+| Cost | Equipment included: cost per demonstrated alloy, and the cost of reaching the first target | Campaign spend to the target, one basis, both labs ordering as they go. A box says what the basis leaves out, with round 3's fixed costs and cost per alloy | `figs3b._lab_cost`, line `cost1` |
+| The takeaway | Round 3's pairing to the halfway target, and "not measured" | Like for like, the stock as its own effect, "about a tie" against the same optimizer, campaign spend with fixed costs left out | `figs3b.takeaway_frame` |
+| Notes | Round 3's | The stock as an assumption for either lab; both replayed runs named | `compose.NOTES_R3B` |
+
+Kept as they were: what is simulated, the function networks, the atomizer's design targets against the lab's record,
+day 1's alloy, the 3-D lab moved by the event log, the days card and the money card, and 19 of the 34 lines of the
+script with their recorded audio.
+
+### The replay: two median seeds in one year
+
+Round 3b's notes name each arm's median seed for a replay (`like3b.json`, `median_seeds`; section 3 of
+[`twin_round3b.md`](twin_round3b.md)). For the replay arm, time-aware BOFN in the stocked automated lab, they are two
+different seeds: seed 0 for aluminium's halfway target (day 96) and seed 5 for copper's best existing alloy (day
+221). `data.replay3b_parts()` reads them from that file, so nothing is typed in.
+
+**The replay stays one simulated year and changes seed once.**
+- Seed 0 is on screen from day 1 to day 119. Its aluminium campaign passes both targets on day 96.
+- Seed 5 is on screen from day 119 to day 365. Its copper campaign passes the best existing alloy on day 221, and
+  the halfway target on day 288 (5 of 12 seeds reach that one, and the tag says so).
+- The change falls where the cut already changes camera, at the start of "month by month". The clock keeps running.
+- At the change, both seeds' aluminium is past both targets (seed 5's since day 94) and neither has a new copper
+  alloy yet, so the plots change little. The counters step: 57 aluminium lots made in seed 0, 72 in seed 5.
+
+**What says which seed is on screen:**
+- a badge under the moves panel, for the whole replay: the seed, what it is the median seed for and on which day,
+  and the other seed with its day;
+- a card for 7 s at the change: "From here: seed 5 of 12", the same lab and policy, and where seed 5's own year
+  stands;
+- a tag above the plots for 8 s as a campaign passes a target, with the seed and how many of the 12 seeds reach it;
+- the chapter titles, the closing notes and the description;
+- three lines of the narration (`seed1`, `mid1`, `cu1`).
+
+**Each question goes to the run on screen** (`data.Replay2`): the plots, counters, compositions, lit network nodes
+and lit stations are always one run's own. Seed 5's curves include its year before the change. The 3-D lab has one
+move plan per run (`lab3d_cut.part_clock`). Seed 5's plan starts 8 s of video before it is on screen, so its lab is
+in the middle of its work at the change and "the last 7 days" counts are its own.
+
+**Two alternatives, and why not.** Replaying seed 0 for the whole year with seed 5's copper curve beside it would
+show a lab moved by one run under a plot of another. Two full years one after the other would add about four minutes
+for a second year in which aluminium looks the same.
+
+### The numbers
+
+`twin/video/numbers3b.py` reads `out/twin3b/like3b.json` on top of round 3's numbers and writes
+[`out/twin3b/video/numbers.json`](../out/twin3b/video/numbers.json). Every card, every spoken number and the
+description are drawn from it.
+
+- **Like for like** is like3b's "both lean": both labs ordering metal as they go. The cut leads with aluminium's
+  halfway target, BOFN and pKGFN against the conventional lab run by rule of thumb (1.8x; 11 of 12 runs against 6
+  of 12), and copper's halfway target, tiered screening in both labs (3.2x, 1.9 to 4.8).
+- **A lower bound is shown as one.** `tables.md` prints aluminium's factor as "1.8x (1.3-∞)". The conventional lab
+  got there in exactly half its runs, so its median is its last run to get there. The cut says "at least 1.8x", as
+  round 3's cut did for 4.0x. The same rule gives "at most" where the automated lab got there in half its seeds.
+- **The stock** is like3b's `stock_effect`: the automated lab against itself, stocked against ordering as it goes,
+  on the same seeds. BOFN 1.9x (0.7 to 3.3) and pKGFN 2.2x (1.0 to 5.1) to aluminium's halfway target.
+- **Round 3's pairing** (a stocked automated lab against a conventional lab ordering as it goes) appears on four
+  cards and in two lines, each time labelled as round 3's and beside the like-for-like factor: the explainer, every
+  cell of the like-for-like card, the stock card ("at least 4.0x = at least 1.8x × 2.2x", and "3.8x = 3.2x × 1.2x"
+  for copper) and the takeaway; the lines are `fig5` and `stk1`.
+- **Where it doesn't win:** the same optimizer in both labs, both ordering as they go: 0.9x (BOFN) and 1.0x (pKGFN)
+  on aluminium's halfway target, on 4 seeds. In those seeds the conventional lab reached copper's best existing alloy
+  more often (4 of 4 against 2 of 4 for BOFN, 3 of 4 against 2 of 4 for pKGFN). A stocked conventional lab run by
+  rule of thumb reaches aluminium's best existing alloy on day 46, before the automated lab ordering as it goes with
+  any policy.
+- **Cost** is like3b's `usd`: campaign spend on the day the target was first reached. The card's box says what that
+  leaves out, with round 3's numbers for it ($1.18M a year of fixed costs against $121k; $35k against $8.0k per
+  demonstrated alloy with the equipment). Round 3b didn't redo that model.
+- **The reruns** (338 of 348 identical, the other 10 to the last bit of a utility) are
+  `twin.bench3b.rerun_report()`. They are on the "what changed" card. The voice says only that round 3's results
+  reproduce when they are rerun under a pinned set-up.
+
+### The script, with its times in the cut
+
+`twin/video/narration3b.json`: 34 lines, 9.1 min of speech in 15:42. Each line's `nums` gives every
+number it speaks with its path in `out/twin3b/video/numbers.json`. Lines marked * have round 3's text and round 3's
+recorded audio, byte for byte.
+
+| Time | Part | Line |
+|---|---|---|
+| 0:00-0:13 | Opening | This is a simulated benchmark, in its third round: two alloy discovery campaigns, replayed for a whole year in a digital twin of our planned automated lab. This cut compares the two labs like for like. |
+| 0:16-0:32 | Opening | Some of it comes from real sources: the lab's design and its 3-D model, footage from our own atomizer, the search spaces in the two proposals, and published prices. Everything else is simulated: every alloy, every measurement, and every result. * |
+| 1:01-1:20 | What changed in round 3 | Round three removes the cap on how much work is in flight. What sets the pace now is physical: stations, robots, people and fixtures. Decisions come every simulated hour, one spending plan paces the money for every policy, and the thirty-day immersion gives interim readings and can be stopped early. * |
+| 1:21-1:37 | What changed in round 3 | Round three b adds the runs that the lab comparison was missing: both labs ordering their metal as they go, both labs stocked, and the same optimizers in the conventional lab. And round three's results reproduce when they are rerun under a pinned set-up. |
+| 1:40-1:53 | The function networks | Each campaign is a function network: a chain of steps, where each step's results feed the next. BOFN, Bayesian optimization over function networks, models every step, not just the final score. * |
+| 1:54-2:00 | The function networks | For aluminium, the lab makes each alloy's powder itself, then prints it and checks every build. * |
+| 2:47-2:55 | The function networks | For copper, a one-hour corrosion screen ranks the DED deposits, and thirty days in seawater come before a utility is known. * |
+| 3:11-3:17 | The function networks | Both campaigns share one lab. From here on, each step is an icon that lights up while it runs. * |
+| 3:24-3:38 | Reading the figures | Best so far is the highest utility of any new alloy tested yet. The first dotted line is the best existing alloy on this synthetic benchmark. One random design in twelve beats it, so it is a low bar. * |
+| 3:39-3:45 | Reading the figures | The second line is the halfway target: halfway from there to the best alloy the twin's own search found. * |
+| 3:46-3:58 | Reading the figures | The grey dashed curve is a conventional lab run by rule of thumb, through partner and core facilities. Here both labs order their metal as they go: the comparison is like for like. |
+| 3:59-4:21 | Reading the figures | Days to a target are the median over twelve runs. Here the automated lab reaches the halfway target on day 183, in 11 of its 12 runs. The conventional lab does on day 337, in only 6 of 12, so its median is its last run to get there. The factor is therefore a lower bound: at least 1.8 times. |
+| 4:21-4:42 | Reading the figures | Stocking is a separate effect. With its metal on the shelf from day zero, the same automated lab gets there on day 83: 2.2 times sooner. Round three's figure of 4.0 times set that stocked lab against a conventional lab ordering as it goes, so it counted the stock as well as the lab. |
+| 4:43-5:04 | The atomizer's assumptions | One assumption matters more than the rest. In the twin, the atomizer has sixteen start slots a week and uses about ten, and a run fails six percent of the time, more for a cold melt. The lab's own record so far is 1.7 runs a week, with problems in eight of ten runs. These are design targets, not demonstrated rates. * |
+| 5:08-5:22 | The campaign year | Day one follows a single simulated aluminium alloy from start to finish: the reference alloy, which the lab makes first. Its cup is machined, its metals are dosed and pressed under vacuum, then melted and atomized into powder. * |
+| 5:23-5:27 | The campaign year | The melt and the pour are real footage, from the lab's own atomizer. * |
+| 5:44-5:51 | The campaign year | After sieving and powder checks, it's printed by laser powder bed fusion, then inspected, sectioned and indented. * |
+| 6:18-6:23 | The campaign year | Wire EDM cuts its bars, and a tensile test scores it on the second day. * |
+| 6:28-6:41 | The campaign year | From day two, the event log moves the lab's 3-D model: each booking brings its tray to a Shuttle's opening and back, and a mobile arm drives over to serve it. Trays nobody has booked stay in their slots. * |
+| 7:01-7:13 | The campaign year | Now the whole lab from above, with the two Shuttles up close from a second camera. The moves run on a clock of their own, so you can follow them; the panel at the bottom counts how many were drawn. * |
+| 7:46-8:07 | The campaign year | This part of the replay is seed zero of twelve, running time-aware BOFN in the stocked lab. It is the median seed for aluminium's halfway target, which it reaches on day 96. Later, the replay changes to seed five, the median seed for copper's best existing alloy, on day 221. |
+| 9:10-9:25 | The campaign year | Aluminium has passed both targets: in seed zero, on day 96. From here the replay is seed five, with the same lab and the same policy: the median seed for copper's best existing alloy on this synthetic benchmark. |
+| 10:03-10:12 | The campaign year | Day 221. In seed five, copper's best new alloy passes the best existing alloy on this synthetic benchmark. |
+| 11:08-11:30 | Results | Twelve simulated one-year runs per policy in the automated lab. On aluminium, time-aware BOFN and pKGFN finished highest, at 0.73 and 0.71. On copper, tiered CALPHAD screening still finished ahead, at 0.69 against 0.58 and 0.61. * |
+| 11:32-12:02 | Results | Days to each target, with every run a mark. Time-aware BOFN and pKGFN reach aluminium's halfway target on day 96 and day 83, in 11 and 10 of 12 runs. BOFN per dollar does in 7, and no other policy in more than 2. The heuristic reaches the first target soonest, on day 24, and then stalls. On copper, tiered screening reaches the halfway target on day 148, in 10 of 12 runs. * |
+| 12:04-12:27 | Results | Removing the cap did not speed copper up: money is its limit. More than four fifths of each campaign's spending is orders of metal and consumables. With three times the copper money, BOFN and pKGFN gain 0.14 and 0.08 over four runs each, and draw level with tiered screening, which is still first to both targets. * |
+| 12:29-12:59 | The lab comparison, like for like | Now the two labs, like for like: both order their metal as they go. To aluminium's halfway target, BOFN and pKGFN in the automated lab are at least 1.8 times sooner than a conventional lab run by rule of thumb. They got there in 11 of 12 runs, against 6 of 12, so this is a lower bound. To copper's halfway target, with tiered screening in both labs, the automated lab is 3.2 times sooner, with an interval from 1.9 to 4.8. |
+| 12:59-13:21 | The lab comparison, like for like | Stocking is its own effect, and it is not the lab's. In the automated lab, having the metal on the shelf brings BOFN and pKGFN to aluminium's halfway target 1.9 and 2.2 times sooner than ordering as they go. Round three's 4.0 times was that stock multiplied by the lab's 1.8. |
+| 13:22-13:47 | The lab comparison, like for like | Where the automated lab does not win. Against the same optimizer in a conventional lab, with both ordering as they go, it is about a tie on aluminium's halfway target: 0.9 times for BOFN and 1.0 for pKGFN, on four seeds. And in those seeds the conventional lab, with three years and three years' money, reached copper's best existing alloy more often. |
+| 13:48-14:16 | The lab comparison, like for like | Cost, on one basis: what a campaign had spent when it reached the target. With both labs ordering as they go, the automated lab spent at least 2.2 times less to aluminium's halfway target than the lab run by rule of thumb, and 3.2 times less to copper's, with tiered screening in both. Against the same optimizer, it spent about the same, or more. This basis leaves out fixed costs: staff, equipment and the building, where round three found the automated lab costs more. |
+| 14:19-14:37 | The takeaway | So, in this simulated benchmark. On aluminium, BOFN and pKGFN reached the halfway target in about three months with the metal in stock, and in about six when ordering it as they went. On copper, tiered CALPHAD screening still won, and money, not capacity, was the limit. |
+| 14:38-15:02 | The takeaway | Against a conventional lab, like for like, with both ordering metal as they go: at least 1.8 times sooner to aluminium's halfway target than a lab run by rule of thumb, and 3.2 times sooner to copper's, with tiered screening in both. Stocking adds its own 1.9 to 2.2 times on aluminium. And against the same optimizer in a conventional lab, it is about a tie. |
+| 15:03-15:14 | The takeaway | On campaign spend alone, it reached those two targets for at least 2.2 and for 3.2 times less. Fixed costs, where the automated lab costs more, are left out. |
+| 15:17-15:38 | Closing notes | Everything here is simulated: the alloys, the results, and every measurement, with modelled noise not yet calibrated on the lab's instruments. The atomizer's rates, station times and fees, the stock on the shelf and the spending plan are assumptions. It shows how a lab design and its policies interact in a model, not what the real lab will find. * |
+
+**Checked.** `python -m twin.video.narration nums` (with `TWIN_VIDEO_ROUND=3b`): 73 spoken numbers and 29 worded
+claims, all as `like3b.json` and round 3's summaries have them. `twin/tests/test_video_round3b.py` (10 tests) also
+checks that the cells the cut leads with are in `tables.md` as printed, that the replay's two logs are the committed
+runs, that a line speaking a factor of round 3's pairing says it is round three's, that the upload is recorded as
+public with subscribers not notified, and that the earlier uploads read the same before and after.
+
+**Heard back.** Every line was transcribed by faster-whisper and compared word by word with what it should say: 1.24 % (small.en) and 3.0 % (base.en) word error over 1,530 words; 27 and 23 of the 34 lines word-perfect (`out/twin3b/video/narration/check.json`; `lines.ogg` has every line in a row, to listen to). The encoded file's own audio was heard back too, line by line from the MP4: 1.05 % (small.en), 24 of 34 lines word-perfect (`out/twin3b/video/encoded_audio_check.json`). small.en's differences, on the lines and in the encoded file alike, are spellings and words it doesn't know: "set-up" as "setup", "round three's" as "round 3's", "this synthetic benchmark" as "the synthetic benchmark" (twice), "CALPHAD" as "calfed" and "pKGFN" written "PKG, FN" (both in round 3's own recordings too), and once each "pour" as "pore" and "stocking" as "stalking" in the encoded file. base.en adds a phrase after one line and repeats one in another, as in round 3's check. Between the lines the encoded track is silent.
+
+**A fault the check found: decimals without "point".** On the first pass every decimal in the eight new lines that have one came back without it ("at least one eight times sooner"), from both recognizers. The cause is the phonemizer on this runner (phonemizer-fork 3.3.1 under kokoro-onnx 0.4.7): asked to keep punctuation, it splits a number at its point, and Kokoro then reads "1.8" as "one. eight". Round 3's recordings were made where it didn't (their phonemes have "pɔɪnt"). `narration.phonemes` now respells a decimal before the phonemizer sees it ("1.8" as "1 point 8", with "point" unstressed as espeak says it inside a number). With that, round 3's six lines with decimals phonemize here to exactly their recorded phonemes, and the eight lines were spoken again. One sentence was also reworded after the first pass: a sentence-initial "Rerun" came back from base.en as "we run", so the line says "round three's results reproduce when they are rerun under a pinned set-up".
+
+### Limits of this cut
+
+- **One year from two seeds.** The lab on screen isn't continuous at the change: seed 5's trays and units follow
+  seed 5's own bookings, and the counters step. Each stretch is a committed run, replayed as it ran.
+- **The tie rests on 4 seeds.** BOFN and pKGFN ran in the conventional lab on seeds 0-3, and the live plots'
+  dashed reference is the mean of those 4 runs.
+- **The cost is campaign spend.** It leaves out fixed costs, and the cut says so on the card, in the takeaway and
+  in two lines.
+- **Round 3's limits stand:** the atomizer's design targets, the spending plan, and a synthetic truth.
+
+### Rebuilding it
+
+```bash
+cd vertical-lab
+export TWIN_VIDEO_ROUND=3b TWIN_VIDEO_LAB3D=1 TWIN_VIDEO_NARRATION=1
+python -m twin.video.numbers3b           # out/twin3b/video/numbers.json, and the claims
+python -m twin.video.narration nums      # every spoken number against the tables
+python -m twin.video.narration tts       # speak the lines whose text changed (Kokoro), into out/twin3b/video/narration/
+python -m twin.video.narration check     # heard back by faster-whisper
+# the 3-D lab needs the set-up movie's stack (VTK, cadquery), so run this with that Python
+TWIN_VIDEO_WORKERS=3 python -m twin.video.compose final3d   # out/twin3b/video/campaign_lab3d_narrated.mp4
+python -m twin.video.upload --yes --file out/twin3b/video/campaign_lab3d_narrated.mp4 \
+    --meta out/twin3b/video/youtube_meta_lab3d_narrated.json --privacy public \
+    --key twin3b/video/campaign_lab3d_narrated.mp4
+```
+
+**What it cost on the runner** (2026-11-27, 4 cores, 1 h 15 min from the request to the upload).
+- The 3-D scene's first build: 6 min. The tessellation cache isn't committed.
+- The replay's 3-D track: 21 jobs, 4,785 frames, 40 min on three workers (two at 1920 × 1080, one for the 960 × 540 inset), while the lines were spoken and the cards drawn on the same cores.
+- The encode: 25 pieces on four workers, 14 min. The eight replay pieces took about 4 min each.
+- Two sentences on the stock card and the tie card were corrected after that, before the upload. Only their segments were encoded again: `python -m twin.video.compose finish labs notes` (4 pieces, 2 min), which also redoes the join, the narration, the record, the description and the contact sheet. The notes segment was among them so that the commit it shows is the one every frame comes from.
+
+**Not on YouTube:** the subtitles. The upload token can't add a caption track. They are `out/twin3b/video/narration/narration.srt`.

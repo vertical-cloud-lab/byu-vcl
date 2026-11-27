@@ -171,3 +171,32 @@ def test_round_3s_cut_is_unchanged_by_the_switch():
                      run="r3_vertical_lab_bofn3_s0.json",
                      segs=["title", "simulated", "changes", "dag", "figures", "assume", "replay", "results",
                            "takeaway", "notes"])
+
+
+def test_the_upload_is_recorded_and_the_earlier_ones_are_untouched():
+    """out/youtube.json has the upload (public, subscribers not notified) with the sha256 of the file as built, from
+    the commit the description links; and the four earlier uploads read the same before and after it."""
+    rec = json.loads((HERE / "out" / "youtube.json").read_text())["videos"]["twin3b/video/campaign_lab3d_narrated.mp4"]
+    up = rec[-1]
+    assert up["privacy"] == "public" and up["notified_subscribers"] is False and len(up["id"]) == 11
+    meta = json.loads((HERE / "out" / "twin3b" / "video" / "youtube_meta_lab3d_narrated.json").read_text())
+    assert meta["commit"] == up["commit"] and meta["privacy"] == "public" and meta["notifySubscribers"] is False
+    assert len(meta["description"].encode()) < 4900 and f"/tree/{up['commit']}/" in meta["description"]
+    assert meta["replay"] == ["r3_vertical_lab_bofn3_s0.json.xz", "r3_vertical_lab_bofn3_s5.json.xz"]
+    e = json.loads((HERE / "out" / "twin3b" / "video" / "earlier_uploads.json").read_text())
+    assert e["new_video"] == up["id"] and set(e["unchanged"]) == {"7DjfEBGe4Jw", "Pz7hxqfODmE", "tX8Ik8oKnhk", "s854ahFNihU"}
+    assert all(e["unchanged"].values()) and e["before"] == e["after"]
+
+
+def test_the_encoded_cut_was_heard_back():
+    """The encoded file's own audio, line by line: every line of the script is there, in order, and what differs from
+    the script is a few spellings (under 3 % of the words)."""
+    a = json.loads((HERE / "out" / "twin3b" / "video" / "encoded_audio_check.json").read_text())
+    S = [ln["id"] for ln in json.loads((HERE / "twin" / "video" / "narration3b.json").read_text())["lines"]]
+    assert [r["id"] for r in a["rows"]] == S and a["word_error_rate"] < 0.03 and a["peak_between_lines"] < 1e-3
+    assert all(r["wer"] < 0.15 for r in a["rows"])
+    c = json.loads((HERE / "out" / "twin3b" / "video" / "narration" / "check.json").read_text())
+    assert c["word_error_rate"]["small.en"] < 0.03
+    said = " ".join(r["small.en"]["heard"].lower() for r in c["lines"])
+    for dec in ("1.8", "3.2", "1.9", "4.8", "2.2", "4.0", "0.9", "1.0"):          # decimals are said with their point
+        assert dec in said, dec

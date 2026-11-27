@@ -393,6 +393,10 @@ Every row of round 3's main benchmark and lab comparison has a log.
 | vertical, stocked, pKGFN | seed 5 (day 67; 12/12) | seed 7 (day 83; 10/12) | seed 3 (day 295; 9/12) | seed 4 (not reached by most; 4/12) |
 | vertical, stocked, funnel | seed 10 (day 146; 6/12) | seed 10 (not reached by most; 1/12) | seed 3 (day 142; 11/12) | seed 10 (day 148; 10/12) |
 
+**The replay made from them.** Round 3b's re-cut of the campaign video replays the stocked vertical lab's BOFN arm on
+these two seeds: seed 0 to day 119 (aluminium's halfway target, day 96), then seed 5 (copper's best existing alloy,
+day 221). See [`twin_video.md`](twin_video.md#round-3bs-re-cut).
+
 ## 4. What changes in round 3's notes
 
 **Round 3's numbers don't change.** Every committed row that was rerun matches: exactly, or to the last bit of a true

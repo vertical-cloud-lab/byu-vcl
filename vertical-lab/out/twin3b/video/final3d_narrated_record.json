@@ -1,0 +1,432 @@
+{
+ "segments": [
+  {
+   "name": "title",
+   "start_s": 0.0,
+   "seconds": 14.5,
+   "title": "A simulated year of alloy discovery: round 3b, like for like"
+  },
+  {
+   "name": "simulated",
+   "start_s": 14.5,
+   "seconds": 46.0,
+   "title": "What is simulated: the lab and two search spaces"
+  },
+  {
+   "name": "changes",
+   "start_s": 60.5,
+   "seconds": 39.0,
+   "title": "Rounds 3 and 3b: what changed in the twin"
+  },
+  {
+   "name": "dag",
+   "start_s": 99.5,
+   "seconds": 105.0,
+   "title": "The function networks"
+  },
+  {
+   "name": "figures",
+   "start_s": 204.5,
+   "seconds": 78.5,
+   "title": "The figures we track, the two targets, and like for like"
+  },
+  {
+   "name": "assume",
+   "start_s": 283.0,
+   "seconds": 24.5,
+   "title": "The atomizer: design targets, not demonstrated rates"
+  },
+  {
+   "name": "replay",
+   "start_s": 307.5,
+   "seconds": 360.0,
+   "title": "The campaign year, replayed"
+  },
+  {
+   "name": "results",
+   "start_s": 667.5,
+   "seconds": 81.5,
+   "title": "Results: the policies in the automated lab"
+  },
+  {
+   "name": "labs",
+   "start_s": 749.0,
+   "seconds": 109.0,
+   "title": "The lab comparison, like for like"
+  },
+  {
+   "name": "takeaway",
+   "start_s": 858.0,
+   "seconds": 58.5,
+   "title": "The takeaway"
+  },
+  {
+   "name": "notes",
+   "start_s": 916.5,
+   "seconds": 26.0,
+   "title": "Notes: real, assumed, simulated"
+  }
+ ],
+ "total_s": 942.5,
+ "chapters": [
+  [
+   0.0,
+   "A simulated year of alloy discovery: round 3b, like for like"
+  ],
+  [
+   14.5,
+   "What is simulated: the lab and two search spaces"
+  ],
+  [
+   60.5,
+   "Rounds 3 and 3b: what changed in the twin"
+  ],
+  [
+   99.5,
+   "The function networks"
+  ],
+  [
+   204.5,
+   "The figures we track, the two targets, and like for like"
+  ],
+  [
+   283.0,
+   "The atomizer: design targets, not demonstrated rates"
+  ],
+  [
+   307.5,
+   "The first alloy, start to finish (seed 0)"
+  ],
+  [
+   387.5,
+   "Day by day: the lab up close, moved by the event log (seed 0)"
+  ],
+  [
+   465.9,
+   "Week by week: the whole lab (seed 0)"
+  ],
+  [
+   549.9,
+   "Month by month, to the end of the year (seed 5)"
+  ],
+  [
+   667.5,
+   "Results: the policies in the automated lab"
+  ],
+  [
+   749.0,
+   "The lab comparison, like for like"
+  ],
+  [
+   858.0,
+   "The takeaway"
+  ],
+  [
+   916.5,
+   "Notes: real, assumed, simulated"
+  ]
+ ],
+ "narration": {
+  "voice": "Kokoro v1.0 af_heart, speed 0.96",
+  "lines": 34,
+  "spoken_s": 547.7,
+  "placed": [
+   {
+    "id": "open1",
+    "seg": "title",
+    "t": 0.8,
+    "end": 13.94,
+    "text": "This is a simulated benchmark, in its third round: two alloy discovery campaigns, replayed for a whole year in a digital twin of our planned automated lab. This cut compares the two labs like for like.",
+    "warn": []
+   },
+   {
+    "id": "open2",
+    "seg": "simulated",
+    "t": 16.5,
+    "end": 32.5,
+    "text": "Some of it comes from real sources: the lab's design and its 3-D model, footage from our own atomizer, the search spaces in the two proposals, and published prices. Everything else is simulated: every alloy, every measurement, and every result.",
+    "warn": []
+   },
+   {
+    "id": "chg1",
+    "seg": "changes",
+    "t": 61.1,
+    "end": 80.56,
+    "text": "Round three removes the cap on how much work is in flight. What sets the pace now is physical: stations, robots, people and fixtures. Decisions come every simulated hour, one spending plan paces the money for every policy, and the thirty-day immersion gives interim readings and can be stopped early.",
+    "warn": []
+   },
+   {
+    "id": "chg2",
+    "seg": "changes",
+    "t": 81.3,
+    "end": 97.81,
+    "text": "Round three b adds the runs that the lab comparison was missing: both labs ordering their metal as they go, both labs stocked, and the same optimizers in the conventional lab. And round three's results reproduce when they are rerun under a pinned set-up.",
+    "warn": []
+   },
+   {
+    "id": "dag1",
+    "seg": "dag",
+    "t": 100.1,
+    "end": 113.43,
+    "text": "Each campaign is a function network: a chain of steps, where each step's results feed the next. BOFN, Bayesian optimization over function networks, models every step, not just the final score.",
+    "warn": []
+   },
+   {
+    "id": "dag2",
+    "seg": "dag",
+    "t": 114.9,
+    "end": 120.55,
+    "text": "For aluminium, the lab makes each alloy's powder itself, then prints it and checks every build.",
+    "warn": []
+   },
+   {
+    "id": "dag3",
+    "seg": "dag",
+    "t": 167.85,
+    "end": 175.81,
+    "text": "For copper, a one-hour corrosion screen ranks the DED deposits, and thirty days in seawater come before a utility is known.",
+    "warn": []
+   },
+   {
+    "id": "dag4",
+    "seg": "dag",
+    "t": 191.4,
+    "end": 197.29,
+    "text": "Both campaigns share one lab. From here on, each step is an icon that lights up while it runs.",
+    "warn": []
+   },
+   {
+    "id": "fig1",
+    "seg": "figures",
+    "t": 204.9,
+    "end": 218.85,
+    "text": "Best so far is the highest utility of any new alloy tested yet. The first dotted line is the best existing alloy on this synthetic benchmark. One random design in twelve beats it, so it is a low bar.",
+    "warn": []
+   },
+   {
+    "id": "fig2",
+    "seg": "figures",
+    "t": 219.7,
+    "end": 225.89,
+    "text": "The second line is the halfway target: halfway from there to the best alloy the twin's own search found.",
+    "warn": []
+   },
+   {
+    "id": "fig3",
+    "seg": "figures",
+    "t": 226.9,
+    "end": 238.21,
+    "text": "The grey dashed curve is a conventional lab run by rule of thumb, through partner and core facilities. Here both labs order their metal as they go: the comparison is like for like.",
+    "warn": []
+   },
+   {
+    "id": "fig4",
+    "seg": "figures",
+    "t": 239.0,
+    "end": 261.14,
+    "text": "Days to a target are the median over twelve runs. Here the automated lab reaches the halfway target on day 183, in 11 of its 12 runs. The conventional lab does on day 337, in only 6 of 12, so its median is its last run to get there. The factor is therefore a lower bound: at least 1.8 times.",
+    "warn": []
+   },
+   {
+    "id": "fig5",
+    "seg": "figures",
+    "t": 261.8,
+    "end": 282.02,
+    "text": "Stocking is a separate effect. With its metal on the shelf from day zero, the same automated lab gets there on day 83: 2.2 times sooner. Round three's figure of 4.0 times set that stocked lab against a conventional lab ordering as it goes, so it counted the stock as well as the lab.",
+    "warn": []
+   },
+   {
+    "id": "asm1",
+    "seg": "assume",
+    "t": 283.6,
+    "end": 304.85,
+    "text": "One assumption matters more than the rest. In the twin, the atomizer has sixteen start slots a week and uses about ten, and a run fails six percent of the time, more for a cold melt. The lab's own record so far is 1.7 runs a week, with problems in eight of ten runs. These are design targets, not demonstrated rates.",
+    "warn": []
+   },
+   {
+    "id": "pov1",
+    "seg": "replay",
+    "t": 308.0,
+    "end": 322.89,
+    "text": "Day one follows a single simulated aluminium alloy from start to finish: the reference alloy, which the lab makes first. Its cup is machined, its metals are dosed and pressed under vacuum, then melted and atomized into powder.",
+    "warn": []
+   },
+   {
+    "id": "pov2",
+    "seg": "replay",
+    "t": 323.39,
+    "end": 327.44,
+    "text": "The melt and the pour are real footage, from the lab's own atomizer.",
+    "warn": [
+     "pushed 1.4 s later"
+    ]
+   },
+   {
+    "id": "pov3",
+    "seg": "replay",
+    "t": 344.16,
+    "end": 351.33,
+    "text": "After sieving and powder checks, it's printed by laser powder bed fusion, then inspected, sectioned and indented.",
+    "warn": []
+   },
+   {
+    "id": "pov4",
+    "seg": "replay",
+    "t": 378.1,
+    "end": 383.03,
+    "text": "Wire EDM cuts its bars, and a tensile test scores it on the second day.",
+    "warn": []
+   },
+   {
+    "id": "lab0",
+    "seg": "replay",
+    "t": 388.3,
+    "end": 401.33,
+    "text": "From day two, the event log moves the lab's 3-D model: each booking brings its tray to a Shuttle's opening and back, and a mobile arm drives over to serve it. Trays nobody has booked stay in their slots.",
+    "warn": []
+   },
+   {
+    "id": "lab1",
+    "seg": "replay",
+    "t": 421.7,
+    "end": 433.18,
+    "text": "Now the whole lab from above, with the two Shuttles up close from a second camera. The moves run on a clock of their own, so you can follow them; the panel at the bottom counts how many were drawn.",
+    "warn": []
+   },
+   {
+    "id": "seed1",
+    "seg": "replay",
+    "t": 466.7,
+    "end": 487.16,
+    "text": "This part of the replay is seed zero of twelve, running time-aware BOFN in the stocked lab. It is the median seed for aluminium's halfway target, which it reaches on day 96. Later, the replay changes to seed five, the median seed for copper's best existing alloy, on day 221.",
+    "warn": []
+   },
+   {
+    "id": "mid1",
+    "seg": "replay",
+    "t": 550.9,
+    "end": 565.79,
+    "text": "Aluminium has passed both targets: in seed zero, on day 96. From here the replay is seed five, with the same lab and the same policy: the median seed for copper's best existing alloy on this synthetic benchmark.",
+    "warn": []
+   },
+   {
+    "id": "cu1",
+    "seg": "replay",
+    "t": 603.95,
+    "end": 612.06,
+    "text": "Day 221. In seed five, copper's best new alloy passes the best existing alloy on this synthetic benchmark.",
+    "warn": []
+   },
+   {
+    "id": "res1",
+    "seg": "results",
+    "t": 668.3,
+    "end": 690.47,
+    "text": "Twelve simulated one-year runs per policy in the automated lab. On aluminium, time-aware BOFN and pKGFN finished highest, at 0.73 and 0.71. On copper, tiered CALPHAD screening still finished ahead, at 0.69 against 0.58 and 0.61.",
+    "warn": []
+   },
+   {
+    "id": "res2",
+    "seg": "results",
+    "t": 692.0,
+    "end": 722.97,
+    "text": "Days to each target, with every run a mark. Time-aware BOFN and pKGFN reach aluminium's halfway target on day 96 and day 83, in 11 and 10 of 12 runs. BOFN per dollar does in 7, and no other policy in more than 2. The heuristic reaches the first target soonest, on day 24, and then stalls. On copper, tiered screening reaches the halfway target on day 148, in 10 of 12 runs.",
+    "warn": []
+   },
+   {
+    "id": "res3",
+    "seg": "results",
+    "t": 724.5,
+    "end": 747.11,
+    "text": "Removing the cap did not speed copper up: money is its limit. More than four fifths of each campaign's spending is orders of metal and consumables. With three times the copper money, BOFN and pKGFN gain 0.14 and 0.08 over four runs each, and draw level with tiered screening, which is still first to both targets.",
+    "warn": []
+   },
+   {
+    "id": "lfl1",
+    "seg": "labs",
+    "t": 749.8,
+    "end": 779.03,
+    "text": "Now the two labs, like for like: both order their metal as they go. To aluminium's halfway target, BOFN and pKGFN in the automated lab are at least 1.8 times sooner than a conventional lab run by rule of thumb. They got there in 11 of 12 runs, against 6 of 12, so this is a lower bound. To copper's halfway target, with tiered screening in both labs, the automated lab is 3.2 times sooner, with an interval from 1.9 to 4.8.",
+    "warn": []
+   },
+   {
+    "id": "stk1",
+    "seg": "labs",
+    "t": 779.6,
+    "end": 801.91,
+    "text": "Stocking is its own effect, and it is not the lab's. In the automated lab, having the metal on the shelf brings BOFN and pKGFN to aluminium's halfway target 1.9 and 2.2 times sooner than ordering as they go. Round three's 4.0 times was that stock multiplied by the lab's 1.8.",
+    "warn": []
+   },
+   {
+    "id": "tie1",
+    "seg": "labs",
+    "t": 802.6,
+    "end": 827.05,
+    "text": "Where the automated lab does not win. Against the same optimizer in a conventional lab, with both ordering as they go, it is about a tie on aluminium's halfway target: 0.9 times for BOFN and 1.0 for pKGFN, on four seeds. And in those seeds the conventional lab, with three years and three years' money, reached copper's best existing alloy more often.",
+    "warn": []
+   },
+   {
+    "id": "cost1",
+    "seg": "labs",
+    "t": 828.0,
+    "end": 856.35,
+    "text": "Cost, on one basis: what a campaign had spent when it reached the target. With both labs ordering as they go, the automated lab spent at least 2.2 times less to aluminium's halfway target than the lab run by rule of thumb, and 3.2 times less to copper's, with tiered screening in both. Against the same optimizer, it spent about the same, or more. This basis leaves out fixed costs: staff, equipment and the building, where round three found the automated lab costs more.",
+    "warn": []
+   },
+   {
+    "id": "take1",
+    "seg": "takeaway",
+    "t": 859.0,
+    "end": 877.67,
+    "text": "So, in this simulated benchmark. On aluminium, BOFN and pKGFN reached the halfway target in about three months with the metal in stock, and in about six when ordering it as they went. On copper, tiered CALPHAD screening still won, and money, not capacity, was the limit.",
+    "warn": []
+   },
+   {
+    "id": "take2",
+    "seg": "takeaway",
+    "t": 878.6,
+    "end": 902.69,
+    "text": "Against a conventional lab, like for like, with both ordering metal as they go: at least 1.8 times sooner to aluminium's halfway target than a lab run by rule of thumb, and 3.2 times sooner to copper's, with tiered screening in both. Stocking adds its own 1.9 to 2.2 times on aluminium. And against the same optimizer in a conventional lab, it is about a tie.",
+    "warn": []
+   },
+   {
+    "id": "take3",
+    "seg": "takeaway",
+    "t": 903.4,
+    "end": 914.6,
+    "text": "On campaign spend alone, it reached those two targets for at least 2.2 and for 3.2 times less. Fixed costs, where the automated lab costs more, are left out.",
+    "warn": []
+   },
+   {
+    "id": "note1",
+    "seg": "notes",
+    "t": 917.3,
+    "end": 938.93,
+    "text": "Everything here is simulated: the alloys, the results, and every measurement, with modelled noise not yet calibrated on the lab's instruments. The atomizer's rates, station times and fees, the stock on the shelf and the spending plan are assumptions. It shows how a lab design and its policies interact in a model, not what the real lab will find.",
+    "warn": []
+   }
+  ]
+ },
+ "kind": "final3d",
+ "file": "out/twin3b/video/campaign_lab3d_narrated.mp4",
+ "seconds": 942.5,
+ "wall_s": 830.3,
+ "python_cpu_s": 1932.3,
+ "preset": "medium",
+ "workers": 4,
+ "placeholder": false,
+ "replay": [
+  "r3_vertical_lab_bofn3_s0.json.xz",
+  "r3_vertical_lab_bofn3_s5.json.xz"
+ ],
+ "built_utc": "2026-11-27 04:29 UTC",
+ "finished_again": {
+  "pieces": [
+   "labs 0.0-45.0",
+   "labs 45.0-90.0",
+   "labs 90.0-109.0",
+   "notes 0.0-26.0"
+  ],
+  "wall_s": 123.6
+ }
+}
