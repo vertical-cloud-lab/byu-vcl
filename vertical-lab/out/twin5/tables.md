@@ -1021,7 +1021,7 @@ Four times the candidates the policies see (512 kept, 256 new a day) against the
 
 ## Where the rows were made (each row's `env` and `code`)
 
-Every row was made under `TWIN_PIN=avx2`. A heuristic and funnel row reran bit for bit on every CPU model below; BOFN and pKGFN rows made on an AMD EPYC did not reproduce on the Intel Xeon (the checks in `out/twin5/slices/`), so for those arms the CPU is part of what a seed's row depends on.
+Every row was made under `TWIN_PIN=avx2`. A heuristic and funnel row reran bit for bit on every CPU model below. A BOFN or pKGFN row is deterministic on one model but not across all of them: rows made on the EPYC 9V45 and 9V74 reran identical on the 9V45; rows made on the EPYC 7763 and the Xeon 6975P-C did not (the checks in `out/twin5/slices/`). So for those arms the CPU is part of what a seed's row depends on.
 
 | Arm | seeds | CPU: seeds made on it | commit: rows |
 |---|---|---|---|
@@ -1057,13 +1057,13 @@ Every row was made under `TWIN_PIN=avx2`. A heuristic and funnel row reran bit f
 | `r5_vertical_wait_bofn3_reorder` | 12 | EPYC 9V45 96-Core: 0, 1, 4, 7, 10; EPYC 7763 64-Core: 2, 5, 8, 11; Xeon 6975P-C: 3, 6, 9 | `9ecef6f`: 1; `b410477`: 7; `662621d`: 4 |
 | `r5_vertical_wait_fast_reorder` | 16 | EPYC 9V45 96-Core: all | `6895a09`: 16 |
 
-Intel-made against AMD-made rows in the arms made on both (`r5_vertical_external_bofn3_reorder`, `r5_vertical_parallel_bofn3_lean`, `r5_vertical_parallel_bofn3_reorder`, `r5_vertical_parallel_pkgfn3_lean`, `r5_vertical_parallel_pkgfn3_reorder`, `r5_vertical_wait_bofn3_reorder`): each outcome's mean in the two groups, the mean of its within-arm z-score, and a two-sided Mann-Whitney test on the z-scores. The two groups hold different seeds.
+Rows made on the EPYC 7763 or the Xeon 6975P-C ("other") against rows made on the EPYC 9V45 or 9V74 ("ours"), in the arms made on both (`r5_vertical_external_bofn3_reorder`, `r5_vertical_parallel_bofn3_lean`, `r5_vertical_parallel_bofn3_reorder`, `r5_vertical_parallel_pkgfn3_lean`, `r5_vertical_parallel_pkgfn3_reorder`, `r5_vertical_wait_bofn3_reorder`): each outcome's mean in the two groups, the mean of its within-arm z-score, and a two-sided Mann-Whitney test on the z-scores. The two groups hold different seeds.
 
-| Outcome | Intel-made rows | AMD-made rows | mean (Intel, AMD) | mean z (Intel, AMD) | p |
+| Outcome | rows: other | rows: ours | mean (other, ours) | mean z (other, ours) | p |
 |---|---|---|---|---|---|
-| Al best | 34 | 54 | 0.793, 0.785 | +0.13, -0.08 | 0.42 |
-| Cu best | 34 | 54 | 0.659, 0.684 | -0.00, +0.00 | 0.70 |
-| Aluminium T1, days (730 if never) | 34 | 54 | 240, 228 | +0.21, -0.13 | 0.07 |
-| Aluminium T2, days (730 if never) | 34 | 54 | 259, 271 | -0.00, +0.00 | 0.94 |
-| Copper T1, days (730 if never) | 34 | 54 | 392, 356 | +0.16, -0.10 | 0.44 |
-| Copper T2, days (730 if never) | 34 | 54 | 481, 438 | +0.09, -0.06 | 0.28 |
+| Al best | 46 | 42 | 0.790, 0.786 | +0.02, -0.02 | 0.98 |
+| Cu best | 46 | 42 | 0.665, 0.685 | -0.05, +0.05 | 0.23 |
+| Aluminium T1, days (730 if never) | 46 | 42 | 243, 221 | +0.15, -0.16 | 0.09 |
+| Aluminium T2, days (730 if never) | 46 | 42 | 263, 269 | -0.01, +0.01 | 0.84 |
+| Copper T1, days (730 if never) | 46 | 42 | 377, 363 | +0.06, -0.07 | 0.57 |
+| Copper T2, days (730 if never) | 46 | 42 | 462, 447 | +0.04, -0.04 | 0.60 |

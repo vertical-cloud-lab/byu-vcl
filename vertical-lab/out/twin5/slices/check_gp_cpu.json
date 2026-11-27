@@ -1,0 +1,249 @@
+{
+ "what": "four committed BOFN rows (plans_net), one made on each CPU model the slices ran on, rerun on the runner that folded the slices in; [rerun, committed] are compared apart from timing and provenance",
+ "runner_cpu": "AMD EPYC 9V45 96-Core Processor",
+ "pin": "avx2",
+ "reruns": [
+  {
+   "experiment": "plans_net",
+   "run_id": "r5_vertical_wait_bofn3_reorder_s1",
+   "committed_on": "AMD EPYC 9V45 96-Core Processor",
+   "rerun_on": "AMD EPYC 9V45 96-Core Processor",
+   "row_identical": true,
+   "n_differences": 0,
+   "event_log_identical": true,
+   "first_differences": [],
+   "env_same_apart_from_cpu": true,
+   "code": {
+    "rerun": {
+     "commit": "e169459a5606f6b5ecab2d77065decb2d933b15b",
+     "twin_dirty": false
+    },
+    "committed": {
+     "commit": "b410477a3e41dd8d6eb40cb566c8eb11deed70d7",
+     "twin_dirty": false
+    }
+   },
+   "seconds": {
+    "rerun": 528.3,
+    "committed": 513.5
+   },
+   "gp_fits_rerun": 175,
+   "best_new": {
+    "rerun": {
+     "flaime_al": 0.8174,
+     "onr_cu": 0.6569
+    },
+    "committed": {
+     "flaime_al": 0.8174,
+     "onr_cu": 0.6569
+    }
+   },
+   "days_to_target": {
+    "rerun": {
+     "flaime_al|T1": 305.0,
+     "flaime_al|T2": 318.0,
+     "onr_cu|T1": 379.1,
+     "onr_cu|T2": 417.7
+    },
+    "committed": {
+     "flaime_al|T1": 305.0,
+     "flaime_al|T2": 318.0,
+     "onr_cu|T1": 379.1,
+     "onr_cu|T2": 417.7
+    }
+   }
+  },
+  {
+   "experiment": "plans_net",
+   "run_id": "r5_vertical_external_bofn3_reorder_s10",
+   "committed_on": "AMD EPYC 9V74 80-Core Processor",
+   "rerun_on": "AMD EPYC 9V45 96-Core Processor",
+   "row_identical": true,
+   "n_differences": 0,
+   "event_log_identical": true,
+   "first_differences": [],
+   "env_same_apart_from_cpu": true,
+   "code": {
+    "rerun": {
+     "commit": "e169459a5606f6b5ecab2d77065decb2d933b15b",
+     "twin_dirty": false
+    },
+    "committed": {
+     "commit": "21d9b1aecd1aece3757eba0d0738b843326c3f93",
+     "twin_dirty": false
+    }
+   },
+   "seconds": {
+    "rerun": 721.2,
+    "committed": 836.2
+   },
+   "gp_fits_rerun": 97,
+   "best_new": {
+    "rerun": {
+     "flaime_al": 0.5865,
+     "onr_cu": 0.6386
+    },
+    "committed": {
+     "flaime_al": 0.5865,
+     "onr_cu": 0.6386
+    }
+   },
+   "days_to_target": {
+    "rerun": {
+     "flaime_al|T1": 157.7,
+     "flaime_al|T2": null,
+     "onr_cu|T1": 594.9,
+     "onr_cu|T2": null
+    },
+    "committed": {
+     "flaime_al|T1": 157.7,
+     "flaime_al|T2": null,
+     "onr_cu|T1": 594.9,
+     "onr_cu|T2": null
+    }
+   }
+  },
+  {
+   "experiment": "plans_net",
+   "run_id": "r5_vertical_wait_bofn3_reorder_s2",
+   "committed_on": "AMD EPYC 7763 64-Core Processor",
+   "rerun_on": "AMD EPYC 9V45 96-Core Processor",
+   "row_identical": false,
+   "n_differences": 2536,
+   "event_log_identical": false,
+   "first_differences": [
+    [
+     "campaigns/flaime_al/best",
+     "0.7930061428061612",
+     "0.775608572488852"
+    ],
+    [
+     "campaigns/flaime_al/best_new",
+     "0.7930061428061612",
+     "0.775608572488852"
+    ],
+    [
+     "campaigns/flaime_al/curve_new/len",
+     "46",
+     "55"
+    ],
+    [
+     "campaigns/flaime_al/demonstrated/len",
+     "46",
+     "55"
+    ]
+   ],
+   "env_same_apart_from_cpu": true,
+   "code": {
+    "rerun": {
+     "commit": "e169459a5606f6b5ecab2d77065decb2d933b15b",
+     "twin_dirty": false
+    },
+    "committed": {
+     "commit": "662621d456a43af7f1cc7ef84ad5901307606084",
+     "twin_dirty": false
+    }
+   },
+   "seconds": {
+    "rerun": 556.4,
+    "committed": 1155.1
+   },
+   "gp_fits_rerun": 159,
+   "best_new": {
+    "rerun": {
+     "flaime_al": 0.793,
+     "onr_cu": 0.6577
+    },
+    "committed": {
+     "flaime_al": 0.7756,
+     "onr_cu": 0.6577
+    }
+   },
+   "days_to_target": {
+    "rerun": {
+     "flaime_al|T1": 359.9,
+     "flaime_al|T2": 359.9,
+     "onr_cu|T1": 421.4,
+     "onr_cu|T2": 474.1
+    },
+    "committed": {
+     "flaime_al|T1": 359.9,
+     "flaime_al|T2": 359.9,
+     "onr_cu|T1": 421.4,
+     "onr_cu|T2": 479.9
+    }
+   }
+  },
+  {
+   "experiment": "plans_net",
+   "run_id": "r5_vertical_wait_bofn3_reorder_s3",
+   "committed_on": "Intel(R) Xeon(R) 6975P-C",
+   "rerun_on": "AMD EPYC 9V45 96-Core Processor",
+   "row_identical": false,
+   "n_differences": 4725,
+   "event_log_identical": false,
+   "first_differences": [
+    [
+     "campaigns/flaime_al/best",
+     "0.7989658417026388",
+     "0.7710001530753953"
+    ],
+    [
+     "campaigns/flaime_al/best_new",
+     "0.7989658417026388",
+     "0.7710001530753953"
+    ],
+    [
+     "campaigns/flaime_al/curve_new/len",
+     "39",
+     "61"
+    ],
+    [
+     "campaigns/flaime_al/demonstrated/len",
+     "39",
+     "61"
+    ]
+   ],
+   "env_same_apart_from_cpu": true,
+   "code": {
+    "rerun": {
+     "commit": "e169459a5606f6b5ecab2d77065decb2d933b15b",
+     "twin_dirty": false
+    },
+    "committed": {
+     "commit": "b410477a3e41dd8d6eb40cb566c8eb11deed70d7",
+     "twin_dirty": false
+    }
+   },
+   "seconds": {
+    "rerun": 539.9,
+    "committed": 683.0
+   },
+   "gp_fits_rerun": 157,
+   "best_new": {
+    "rerun": {
+     "flaime_al": 0.799,
+     "onr_cu": 0.7297
+    },
+    "committed": {
+     "flaime_al": 0.771,
+     "onr_cu": 0.7297
+    }
+   },
+   "days_to_target": {
+    "rerun": {
+     "flaime_al|T1": 314.0,
+     "flaime_al|T2": 374.3,
+     "onr_cu|T1": 330.1,
+     "onr_cu|T2": 330.1
+    },
+    "committed": {
+     "flaime_al|T1": 287.1,
+     "flaime_al|T2": 342.1,
+     "onr_cu|T1": 325.8,
+     "onr_cu|T2": 325.8
+    }
+   }
+  }
+ ]
+}

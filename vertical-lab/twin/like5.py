@@ -623,14 +623,19 @@ def provenance(A) -> dict:
     return out
 
 
+SAME_AS_OURS = ("EPYC 9V45", "EPYC 9V74")     # CPU models on which a BOFN row reran bit for bit on this PR's runner
+
+
 def cpu_effect(A, T) -> dict:
     """The arms whose rows were made on more than one CPU model (the automated lab's BOFN and pKGFN: this PR's own
-    runner was an AMD EPYC, and three of the six compute slices that finished the seeds ran on Intel Xeons). A BOFN or
-    pKGFN row doesn't reproduce bit for bit across CPU vendors under the pin (the slices' checks,
-    ``out/twin5/slices/``), so a seed's row depends on the CPU it was made on. This sets the Intel-made rows against the
-    AMD-made ones: each outcome standardized within its arm (so the arms pool), the two groups' means, and a two-sided
-    Mann-Whitney test. The groups hold different seeds, so it can only show a shift well beyond the seed-to-seed
-    spread; a bit-for-bit answer needs the same seed on both, which the slices' reruns give for a few rows."""
+    runner was an AMD EPYC 9V45, and the six compute slices that finished the seeds ran on an EPYC 9V45, an EPYC 9V74,
+    an EPYC 7763 and three Intel Xeon 6975P-C). A BOFN or pKGFN row is deterministic on one CPU model but doesn't
+    reproduce bit for bit on every other under the pin: rows made on the EPYC 9V45 and 9V74 reran identical on the
+    9V45, rows made on the EPYC 7763 and the Xeon did not (``out/twin5/slices/check_gp_cpu.json``, and slice 6's
+    check). So a seed's row depends on the CPU it was made on. This sets the rows made on the EPYC 7763 or the Xeon
+    ("other") against the rows made on the EPYC 9V45 or 9V74 ("ours"): each outcome standardized within its arm (so
+    the arms pool), the two groups' means, and a two-sided Mann-Whitney test. The groups hold different seeds, so it
+    can only show a shift well beyond the seed-to-seed spread."""
     from scipy import stats
     arms = {k: a for k, a in A.items() if len({r["env"]["cpu"] for r in a.values()}) > 1}
     if not arms:
@@ -641,23 +646,24 @@ def cpu_effect(A, T) -> dict:
         for tn in ("T1", "T2"):
             fns[f"{CAMPS[camp]} {tn}, days (730 if never)"] = \
                 lambda r, camp=camp, tn=tn: to_target(r, camp, T[tn][camp])[0]
-    out = dict(arms=sorted(arms), outcomes={})
+    out = dict(arms=sorted(arms), ours=list(SAME_AS_OURS), outcomes={})
     for name, fn in fns.items():
-        z = {"Intel": [], "AMD": []}
-        raw = {"Intel": [], "AMD": []}
+        z = {"other": [], "ours": []}
+        raw = {"other": [], "ours": []}
         for arm in arms.values():
             v = {s_: fn(r) for s_, r in arm.items()}
             m, sd = float(np.mean(list(v.values()))), float(np.std(list(v.values()), ddof=1)) or 1.0
             for s_, r in arm.items():
-                g = "Intel" if "Intel" in r["env"]["cpu"] else "AMD"
+                g = "ours" if any(c in r["env"]["cpu"] for c in SAME_AS_OURS) else "other"
                 z[g].append((v[s_] - m) / sd)
                 raw[g].append(v[s_])
-        if not z["Intel"] or not z["AMD"]:
+        if not z["other"] or not z["ours"]:
             continue
-        u = stats.mannwhitneyu(z["Intel"], z["AMD"], alternative="two-sided")
-        out["outcomes"][name] = dict(n_intel=len(z["Intel"]), n_amd=len(z["AMD"]), mean_intel=float(np.mean(raw["Intel"])),
-                                     mean_amd=float(np.mean(raw["AMD"])), z_intel=float(np.mean(z["Intel"])),
-                                     z_amd=float(np.mean(z["AMD"])), p=float(u.pvalue))
+        u = stats.mannwhitneyu(z["other"], z["ours"], alternative="two-sided")
+        out["outcomes"][name] = dict(n_other=len(z["other"]), n_ours=len(z["ours"]),
+                                     mean_other=float(np.mean(raw["other"])), mean_ours=float(np.mean(raw["ours"])),
+                                     z_other=float(np.mean(z["other"])), z_ours=float(np.mean(z["ours"])),
+                                     p=float(u.pvalue))
     return out
 
 
@@ -1001,8 +1007,10 @@ def tables(S) -> str:
             return c
         L += ["", "## Where the rows were made (each row's `env` and `code`)", "",
               "Every row was made under `TWIN_PIN=avx2`. A heuristic and funnel row reran bit for bit on every CPU model "
-              "below; BOFN and pKGFN rows made on an AMD EPYC did not reproduce on the Intel Xeon (the checks in "
-              "`out/twin5/slices/`), so for those arms the CPU is part of what a seed's row depends on.", "",
+              "below. A BOFN or pKGFN row is deterministic on one model but not across all of them: rows made on the "
+              "EPYC 9V45 and 9V74 reran identical on the 9V45; rows made on the EPYC 7763 and the Xeon 6975P-C did not "
+              "(the checks in `out/twin5/slices/`). So for those arms the CPU is part of what a seed's row depends on.",
+              "",
               "| Arm | seeds | CPU: seeds made on it | commit: rows |", "|---|---|---|---|"]
         for key, d in sorted(PV.items()):
             cp = "; ".join(f"{cpu_name(c)}: {', '.join(map(str, ss))}" if len(d["cpus"]) > 1 else f"{cpu_name(c)}: all"
@@ -1011,15 +1019,16 @@ def tables(S) -> str:
                                                                  for c, n in d["commits"].items()) + " |")
     CE = S.get("cpu_effect") or {}
     if CE.get("outcomes"):
-        L += ["", "Intel-made against AMD-made rows in the arms made on both (" + ", ".join(f"`{a}`" for a in CE["arms"])
+        L += ["", "Rows made on the EPYC 7763 or the Xeon 6975P-C (\"other\") against rows made on the EPYC 9V45 or 9V74 "
+              "(\"ours\"), in the arms made on both (" + ", ".join(f"`{a}`" for a in CE["arms"])
               + "): each outcome's mean in the two groups, the mean of its within-arm z-score, and a two-sided "
               "Mann-Whitney test on the z-scores. The two groups hold different seeds.", "",
-              "| Outcome | Intel-made rows | AMD-made rows | mean (Intel, AMD) | mean z (Intel, AMD) | p |",
+              "| Outcome | rows: other | rows: ours | mean (other, ours) | mean z (other, ours) | p |",
               "|---|---|---|---|---|---|"]
         for name, d in CE["outcomes"].items():
             fm = (lambda v: f"{v:.3f}") if "best" in name else (lambda v: f"{v:.0f}")
-            L.append(f"| {name} | {d['n_intel']} | {d['n_amd']} | {fm(d['mean_intel'])}, {fm(d['mean_amd'])} | "
-                     f"{d['z_intel']:+.2f}, {d['z_amd']:+.2f} | {d['p']:.2f} |")
+            L.append(f"| {name} | {d['n_other']} | {d['n_ours']} | {fm(d['mean_other'])}, {fm(d['mean_ours'])} | "
+                     f"{d['z_other']:+.2f}, {d['z_ours']:+.2f} | {d['p']:.2f} |")
     return "\n".join(L) + "\n"
 
 
