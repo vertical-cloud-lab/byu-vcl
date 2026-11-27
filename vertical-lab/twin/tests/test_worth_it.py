@@ -41,7 +41,7 @@ def test_drive_time_is_a_trapezoid_or_a_triangle():
 @pytest.mark.parametrize("prefetch", [False, True])
 def test_one_tray_step_takes_the_drive_the_dock_the_fetch_and_the_load(prefetch):
     p = W.Params(prefetch=prefetch)
-    sim, _ = _run(_log([("byu_sem", 1.0, 2.0, 1)]), "vlm", 1, prefetch=prefetch)
+    sim, _ = _run(_log([("byu_sem", 1.0, 2.0, 1)]), "vlm", 1, prefetch=prefetch, credit_h=0.0)
     j = sim.jobs[0]
     drive = W.drive_s(W.vert_dist(W.VERT_CHARGER, W.VERT_DOCKS["vlm1"]), p)
     fetch_wait = 0.0 if prefetch else p.t_fetch           # the drive (> 26 s) hides a fetch started at once
@@ -93,6 +93,28 @@ def test_attended_time_by_mode():
         W.attend_h("xrd", 1.0, "some")
 
 
+def test_the_twins_transfer_is_inside_the_step():
+    sim0, _ = _run(_log([("byu_sem", 1.0, 2.0, 1)]), "flat", 1, credit_h=0.0)
+    sim1, _ = _run(_log([("byu_sem", 1.0, 2.0, 1)]), "flat", 1)
+    assert sim1.jobs[0]["t_end"] == pytest.approx(sim0.jobs[0]["t_end"] - 0.1)
+    sim2, _ = _run(_log([("byu_icpms", 1.0, 1.1, 1)]), "flat", 1)      # never more than half a short step
+    assert sim2.jobs[0]["t_end"] - sim2.jobs[0]["t_start"] == pytest.approx(0.05)
+
+
+def test_one_unit_charges_at_a_time():
+    sim = W.Sim(_log([], days=30), "flat", 2, 0.6, W.Params(attend="cells"), seed=1)     # both units saturated
+    seen = []
+    orig = sim._on_charged
+
+    def charged(m):
+        seen.append(sum(1 for o in sim.mm if o["charging"]))
+        orig(m)
+    sim._on_charged = charged
+    sim.run()
+    assert seen and max(seen) <= 2
+    assert sum(1 for n in seen if n == 2) <= len(seen) // 4      # both at once only when one is out of reserve
+
+
 def test_attended_time_holds_the_unit_and_the_opening_but_not_the_run():
     events = [("xrd", 1.0, 2.0, 1)]
     sim0, out0 = _run(_log(events), "vlm", 1)
@@ -134,12 +156,16 @@ def test_internal_steps_wait_for_their_predecessor():
 @pytest.mark.parametrize("layout", ["flat", "vlm"])
 def test_with_no_handling_time_the_replay_is_the_twin(layout):
     log = W.load_log(LOG)
-    sim = W.Sim(log, layout, 2, 0.0, W.Params(lock="never", **ZERO), seed=0)
+    sim = W.Sim(log, layout, 2, 0.0, W.Params(lock="never", credit_h=0.0, **ZERO), seed=0)
     out = sim.run()
     n = sum(1 for j in sim.jobs if j["t0"] < sim.H)
     assert out["internal"]["done"] == n
     # within a second: the "zero" drive still takes d / v + v / a = 1 ms each
     assert max(abs(sim.t_end[j["id"]] - j["t1"]) for j in sim.jobs if j["id"] in sim.t_end) < 1.0 / 3600
+    # with the twin's 6 min transfer credited back, no step ends later than the twin's
+    sim = W.Sim(log, layout, 2, 0.0, W.Params(lock="never", **ZERO), seed=0)
+    sim.run()
+    assert max(sim.t_end[j["id"]] - j["t1"] for j in sim.jobs if j["id"] in sim.t_end) < 1.0 / 3600
 
 
 @pytest.mark.skipif(not LOG.exists(), reason="needs the committed event logs (out/twin3b/events)")
@@ -149,7 +175,7 @@ def test_every_internal_step_finishes(layout, n_mm, attend):
     sim = W.Sim(log, layout, n_mm, 0.0, W.Params(attend=attend), seed=0)
     out = sim.run()
     assert out["internal"]["done"] == sum(1 for j in sim.jobs if j["t0"] < sim.H)
-    assert 0.0 <= out["internal"]["end_delay_h"] < 2.0
+    assert -0.1 <= out["internal"]["end_delay_h"] < 2.0     # the twin's 6 min is credited back, so it can be < 0
     assert 0.0 < out["mm_busy"] < 0.1
 
 

@@ -21,9 +21,18 @@ layer that has the resources the issue names:
 
 Each with one or two mobile manipulators. Every visit to an instrument is two robot tasks: IN (the sample from a rack
 into the instrument) and OUT (back to a rack beside the dock). Internal steps are the log's bookings, released at
-their original start or when their predecessor's sample is out, whichever is later; internal work goes before
-external. External jobs arrive at random (Poisson) at the instruments in twin/cloud.py's catalogue, at a rate that
-would keep each instrument busy for `ext` of the clock (0, 0.3, 0.6).
+their original start or when their predecessor's sample is out, whichever is later. The twin books a 6 min transfer
+inside each step (``credit_h``), so a step runs for its booking less that, and the replay's own handling takes its
+place: with handling as quick as the twin assumed, the replay keeps the twin's pace.
+
+Rules a lab would use, all in both layouts: time-critical stations first (the atomizer's start slots, the furnace's
+cycles, and the steps that feed them), then internal loads and every unload, then outside loads; outside work takes
+only the gaps the twin's plan leaves before the next internal step at its station, or anywhere on its tray in the VLM
+(``protect``); one unit charges at a time while the others have charge in reserve. External jobs arrive at random
+(Poisson) at the instruments in twin/cloud.py's catalogue, at a rate that would keep each instrument busy for `ext`
+of the clock (0, 0.3, 0.6). Two timings: the twin's (a load and an unload a step) and PR 332's attended time
+(``attend="cells"``: the arm stays for its share of each step, at the presented tray in the VLM; the powder line in a
+cell of its own).
 
 Everything here is a model. The handling times are stand-ins (Params, each marked); nobody has timed a MiR250 + UR12e
 at one of these instruments or a Shuttle carrying one. The replay keeps the twin's decisions fixed: a policy that saw
@@ -32,6 +41,7 @@ later results would choose differently. Pure standard library, so it runs withou
 """
 from __future__ import annotations
 
+import bisect
 import heapq
 import json
 import lzma
@@ -80,6 +90,13 @@ class Params:
     #                            attends each step for PR 332's share of it (ATTEND), at the presented tray in the
     #                            VLM, with the powder line in cells of its own; "pr332": PR 332's shares everywhere
     prefetch: bool = True      # the Shuttle starts fetching a tray when a unit is assigned to it, not when it arrives
+    credit_h: float = 0.1      # the twin books a 6 min robot transfer inside each step (twin/facility.py ROBOT_H), so
+    #                            an internal step's run is its booking less this (at most half the step); the replay's
+    #                            own handling takes its place. 0 adds the handling on top of the twin's bookings
+    protect: bool = True       # outside work takes only the gaps: an outside job starts only if it would end before
+    #                            the next internal step due at its station (or, in the VLM, anywhere on its tray), as
+    #                            the twin's plan has it. False: first come, first served (internal first in the queue)
+    protect_margin_h: float = 0.25  # handling allowance when fitting an outside job into a gap
     ext_intake: bool = False   # True: every outside sample is carried from the packaging station to its instrument;
     #                            False: outside samples wait in a rack at the instrument's dock (delivered in batches)
 
@@ -317,8 +334,12 @@ class Sim:
         self.now, self.seq, self.heap = 0.0, 0, []
         self.docks = VERT_DOCKS if layout == "vlm" else FLAT_DOCKS
         self.jobs = jobs if jobs is not None else internal_jobs(log)
-        self.jobs = [dict(j, succ=list(j["succ"])) for j in self.jobs]
+        self.jobs = [dict(j, succ=list(j["succ"]), credit=min(self.p.credit_h, j["dur"] / 2.0)) for j in self.jobs]
         self.slots = slots_of(log, self.jobs)
+        self.int_at = defaultdict(list)             # station -> internal jobs in order of their planned start
+        for j in sorted(self.jobs, key=lambda j: j["t0"]):
+            self.int_at[j["station"]].append(j)
+        self.int_t0 = {k: [j["t0"] for j in v] for k, v in self.int_at.items()}
         # Time-critical stations go first: a slotted station (the atomizer's starts, the furnace's cycles) loses its
         # slot after `slot_grace_h`, and so does a slotted job whose predecessor (the crucible's charge) is late.
         slotted = {st for st, _ in self.slots}
@@ -340,13 +361,18 @@ class Sim:
                                   lock=s.get("lock", True), run_h=0.0, blocked_h=0.0, t_state=0.0)
                              for i in range(n)]
         self.waiting, self.done_units = set(), []
+        self.mates = defaultdict(set)               # (shuttle, tray) -> stations with a locking unit on it
+        for k, us in self.units.items():
+            for u in us:
+                if u["loc"][0] == "tray" and u["lock"]:
+                    self.mates[u["loc"][1:]].add(k)
         # shuttles
         self.sh = {s: dict(id=s, holder=None, presented=None, busy_until=0.0, running=defaultdict(int), pending=[],
                            pres_start=None, open_h=0.0, lock_h=defaultdict(float), lock_t0={}, n_pres=0)
                    for s in (1, 2)} if layout == "vlm" else {}
         home = VERT_CHARGER if layout == "vlm" else FLAT_CHARGER
         self.mm = [dict(id=i, busy=False, dock=None, pos=home, used_h=0.0, free_since=0.0, busy_h=0.0, charge_h=0.0, drive_h=0.0,
-                        aisles=set(), n_tasks=0) for i in range(n_mm)]
+                        aisles=set(), n_tasks=0, charging=False) for i in range(n_mm)]
         self.stats = dict(task=defaultdict(list), resp=defaultdict(list), turned_away=0, ext_offered=0, ext_done=0,
                           ext_turnaround=[], ext_start_wait=[], int_start_delay=[], int_delay=[], int_done=0,
                           tray_wait=[], attended_h=0.0)
@@ -417,7 +443,7 @@ class Sim:
                 sh["lock_t0"][tray] = t
             sh["running"][tray] += 1
         (self.stats["ext_start_wait"] if j["ext"] else self.stats["int_start_delay"]).append(t - j["t_req"])
-        self._push(t + j["dur"] - j.get("att", 0.0), "run_done", u)
+        self._push(t + j["dur"] - j.get("credit", 0.0) - j.get("att", 0.0), "run_done", u)
 
     def _on_run_done(self, u):
         j = u["job"]
@@ -467,12 +493,21 @@ class Sim:
         else:
             self._unloaded(u, j)
         if m["used_h"] >= self.p.charge_every_h:        # worked a battery's worth without an idle spell
+            reserve = m["used_h"] < self.p.charge_every_h / 0.9      # 100-10 % used; the last 10 % is the reserve
+            if reserve and (any(o["charging"] for o in self.mm) or self._urgent_waiting()):
+                return                                  # one unit charges at a time; slot-critical work first
             self._release_opening(m, None)
             home = VERT_CHARGER if self.layout == "vlm" else FLAT_CHARGER
-            dt = drive_s(self._dist(m["pos"], None, home, None), self.p) / 3600.0 + self.p.charge_h
-            m.update(busy=True, dock=None, pos=home)
+            dt = (drive_s(self._dist(m["pos"], None, home, None), self.p) / 3600.0
+                  + self.p.charge_h * min(1.0, m["used_h"] / self.p.charge_every_h))
+            m.update(busy=True, dock=None, pos=home, charging=True)
             m["charge_h"] += dt
             self._push(self.now + dt, "charged", m)
+
+    def _urgent_waiting(self) -> bool:
+        if any(u["state"] == "done" and u["station"] in self.urgent for u in self.done_units):
+            return True
+        return any(self.q_int[st] for st in self.urgent if st not in self.cell)
 
     def _unloaded(self, u, j):
         self._state(u, "idle")
@@ -491,7 +526,7 @@ class Sim:
             self.waiting.add(u["station"])
 
     def _on_charged(self, m):
-        m["busy"], m["used_h"], m["free_since"] = False, 0.0, self.now
+        m["busy"], m["used_h"], m["free_since"], m["charging"] = False, 0.0, self.now, False
 
     def _on_noop(self, x):
         pass
@@ -564,8 +599,37 @@ class Sim:
             self._push(ts, "noop", None)
         return False
 
+    def _due(self, st, t_from, t_to):
+        """Internal jobs planned to start at `st` before t_to that have not started (including late ones)."""
+        t0s = self.int_t0.get(st)
+        if not t0s:
+            return 0
+        n = 0
+        for i in range(bisect.bisect_left(t0s, t_from - 48.0), bisect.bisect_left(t0s, t_to)):
+            j = self.int_at[st][i]
+            if "t_start" not in j and j["t0"] < self.H:
+                n += 1
+        return n
+
+    def _protect_ok(self, u, j) -> bool:
+        """An outside job may start on unit u only in a gap that internal work does not need."""
+        end = self.now + j["dur"] + self.p.protect_margin_h
+        st = u["station"]
+        idle_others = sum(1 for v in self.units[st] if v is not u and v["state"] == "idle")
+        if self.q_int[st] and idle_others == 0:
+            return False
+        if self._due(st, self.now, end) > idle_others:
+            return False
+        if self.layout == "vlm" and u["loc"][0] == "tray" and u["lock"] and self.p.lock == "running":
+            for st2 in self.mates[u["loc"][1:]]:        # a run here holds the tray for its tray-mates too
+                if self.q_int[st2] or self._due(st2, self.now, end):
+                    return False
+        return True
+
     def _feasible(self, m, kind, u, j) -> bool:
         if kind == "IN" and not self._slot_open(u, j):
+            return False
+        if kind == "IN" and j["ext"] and self.p.protect and not self._protect_ok(u, j):
             return False
         if self.layout == "vlm":
             src = j.get("src") if kind == "IN" else None
@@ -661,7 +725,7 @@ class Sim:
         if self.layout == "flat":
             m["aisles"] = {flat_aisle(dock)}
         arm = p.t_arm + p.t_rack
-        att = attend_h(u["station"], j["dur"], p.attend) if kind == "IN" else 0.0
+        att = attend_h(u["station"], j["dur"] - j.get("credit", 0.0), p.attend) if kind == "IN" else 0.0
         if kind == "IN":
             j["att"] = att
             self.stats["attended_h"] += att
@@ -731,7 +795,11 @@ class Sim:
                      served=S["ext_done"] / S["ext_offered"] if S["ext_offered"] else None,
                      turnaround_h=mean(S["ext_turnaround"]), turnaround_p95_h=q(S["ext_turnaround"], 0.95),
                      start_wait_h=mean(S["ext_start_wait"]), start_wait_p95_h=q(S["ext_start_wait"], 0.95)),
+            atomizer_runs=sum(1 for j in self.jobs if j["station"] == "atomizer" and j["t0"] < H),
+            atomizer_late=sum(1 for j in self.jobs if j["station"] == "atomizer" and j["t0"] < H
+                              and j.get("t_start", 1e18) > j["t0"] + self.p.slot_grace_h + 1e-6),
             internal=dict(done=S["int_done"], start_delay_min=(mean(S["int_start_delay"]) or 0) * 60,
+                          end_delay_p50_h=q(S["int_delay"], 0.5),
                           start_delay_p95_min=(q(S["int_start_delay"], 0.95) or 0) * 60,
                           end_delay_h=mean(S["int_delay"]), end_delay_p95_h=q(S["int_delay"], 0.95)))
         if self.sh:
@@ -832,6 +900,8 @@ SENS = {
     "attended, a bare MiR250's battery": dict(attend="cells", charge_every_h=13.0, charge_h=52.0 / 60.0),
     "aisles shared (flat)": dict(aisle_exclusive=False),
     "outside samples carried from packaging": dict(ext_intake=True),
+    "outside work first come, first served (no gaps kept for internal work)": dict(protect=False),
+    "attended, outside work first come, first served": dict(attend="cells", protect=False),
 }
 
 

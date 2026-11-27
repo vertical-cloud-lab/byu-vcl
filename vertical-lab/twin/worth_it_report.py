@@ -69,6 +69,8 @@ def metrics(r: dict) -> dict:
         tray_busiest=busiest[1], tray_busiest_name=busiest[0],
         int_resp_min=resp_i.get("mean_min"), ext_resp_min=resp_e.get("mean_min"),
         int_end_h=i["end_delay_h"], int_end_p95_h=i["end_delay_p95_h"], int_start_min=i["start_delay_min"],
+        int_end_p50_h=i.get("end_delay_p50_h"),
+        atom_late=r.get("atomizer_late"), atom_runs=r.get("atomizer_runs"),
         ext_done_day=e["done_per_day"] if e["offered"] else None, ext_served=e["served"],
         ext_turn_h=e["turnaround_h"], ext_turn_p95_h=e["turnaround_p95_h"], ext_wait_h=e["start_wait_h"],
         drive_s=statistics.mean(m["drive_s_per_task"] for m in r["mm"]),
@@ -95,9 +97,9 @@ def main_table(rows, mode: str) -> str:
     g = _group(rows)
     loads = sorted({k[1] for k in g if k[0] == mode})
     head = ("| Outside load | Layout | Units busy | Busiest opening busy | Busiest tray held by a run | "
-            "Internal step ends later by (h) | Outside jobs served | Outside jobs a day | Outside turnaround (h) | "
-            "Outside turnaround, 95th pct (h) |")
-    lines = [head, "|" + "---|" * 10]
+            "Internal steps end later than the twin's, mean (h) | Atomizer runs off their slot | "
+            "Outside jobs served | Outside jobs a day | Outside turnaround (h) | Outside turnaround, 95th pct (h) |")
+    lines = [head, "|" + "---|" * 11]
     for ext in loads:
         for lay in ORDER:
             ms = g.get((mode, ext, *lay))
@@ -105,11 +107,13 @@ def main_table(rows, mode: str) -> str:
                 continue
             names = [m["tray_busiest_name"] for m in ms if m["tray_busiest_name"]]
             tray_name = max(set(names), key=names.count) if names else None
-            lines.append("| %s | %s | %s | %s | %s | %s | %s | %s | %s | %s |" % (
+            lines.append("| %s | %s | %s | %s | %s | %s | %s | %s | %s | %s | %s |" % (
                 f"{100 * ext:.0f} %", LAYOUT_NAME[lay], _rng([m["mm_busy"] for m in ms], 0, pct=True),
                 _rng([m["opening"] for m in ms], 0, pct=True) if lay[0] == "vlm" else "-",
                 (_rng([m["tray_busiest"] for m in ms], 0, pct=True) + f" ({tray_name})") if lay[0] == "vlm" else "-",
                 _rng([m["int_end_h"] for m in ms], 2),
+                "%s; %d of %d logs" % (_f(_med([m["atom_late"] for m in ms]), 0),
+                                      sum(1 for m in ms if (m["atom_late"] or 0) > 0), len(ms)),
                 _f(_med([m["ext_served"] for m in ms]), 1, pct=True) if ext else "-",
                 _f(_med([m["ext_done_day"] for m in ms]), 0) if ext else "-",
                 _rng([m["ext_turn_h"] for m in ms], 1) if ext else "-",
@@ -131,7 +135,7 @@ def targets_table(rows, mode: str) -> str:
             for k, _ in TARGETS:
                 v = [m["shift_" + k] for m in ms if m["shift_" + k] is not None]
                 lost = sum(1 for m in ms if m["twin_" + k] is not None and not m["reached_" + k])
-                c = f"{_med(v):.2f} ({max(v):.2f}), {len(v)} logs" if v else "-"
+                c = f"{_med(v):.2f} ({max(v):.2f}; n={len(v)})" if v else "-"
                 if lost:
                     c += f"; {lost} not reached"
                 cells.append(c)
@@ -178,7 +182,11 @@ def write(rows) -> str:
              "Written by `python -m twin.worth_it tables` from `out/worth_it/results.json.xz`. Simulated: the "
              "twin's round-3 event logs (24: 12 seeds of time-aware BOFN, 12 of the funnel, the vertical lab, one "
              "year) replayed through a transport layer with stand-in handling times (`twin/worth_it.py`, "
-             "`Params`). Medians over the logs, 10th-90th percentile in brackets.", "",
+             "`Params`). Medians over the logs, 10th-90th percentile in brackets. An internal step's delay is "
+             "against the twin's own end; the twin's 6 min transfer is credited back, so it can be negative. "
+             "'Atomizer runs off their slot': runs that started more than 30 min after their slot in the twin "
+             "(median over logs; how many logs had any). A replay keeps the twin's order, so one lost slot "
+             "moves every later run: those rows are the cases to read as 'this many units can't carry it'.", "",
              "The twin's own days to its targets in these logs: " + twin_days(rows) + ".", ""]
     for mode in ("none", "cells"):
         if not any((r.get("params") or {}).get("attend", "none") == mode for r in rows):
@@ -198,8 +206,8 @@ def write_sens(sens: dict) -> str:
              "the funnel, seeds 0-1), every layout, 30 % and 60 % outside load. Medians over the logs.", ""]
     for ext in (0.3, 0.6):
         parts += [f"## {100 * ext:.0f} % outside load", "",
-                  "| Case | " + " | ".join(f"{LAYOUT_NAME[l]}: turnaround h, served, step delay h, units, opening"
-                                         for l in ORDER) + " |", "|" + "---|" * 5]
+                  "| Case | " + " | ".join(f"{LAYOUT_NAME[l]}: turnaround h; served; step delay h; atomizer runs "
+                                         f"off slot; units busy; opening busy" for l in ORDER) + " |", "|" + "---|" * 5]
         for name, rows in sens.items():
             g = defaultdict(list)
             for r in rows:
@@ -211,9 +219,10 @@ def write_sens(sens: dict) -> str:
                 if not ms:
                     cells.append("-")
                     continue
-                cells.append("%s; %s; %s; %s; %s" % (
+                cells.append("%s; %s; %s; %s; %s; %s" % (
                     _f(_med([m["ext_turn_h"] for m in ms]), 1), _f(_med([m["ext_served"] for m in ms]), 0, pct=True),
-                    _f(_med([m["int_end_h"] for m in ms]), 1), _f(_med([m["mm_busy"] for m in ms]), 0, pct=True),
+                    _f(_med([m["int_end_h"] for m in ms]), 1), _f(_med([m["atom_late"] for m in ms]), 0),
+                    _f(_med([m["mm_busy"] for m in ms]), 0, pct=True),
                     _f(_med([m["opening"] for m in ms]), 0, pct=True) if lay[0] == "vlm" else "-"))
             parts.append(f"| {name} | " + " | ".join(cells) + " |")
         parts.append("")
