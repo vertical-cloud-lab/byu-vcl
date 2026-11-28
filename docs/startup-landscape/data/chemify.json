@@ -1,0 +1,521 @@
+{
+  "company": "Chemify",
+  "slug": "chemify",
+  "hq": "Glasgow, UK",
+  "country": "UK",
+  "founded": "2019",
+  "category": "self-driving lab",
+  "focus": "'Chemputation': chemical programming language (XDL) plus robotic synthesis and AI, run in automated 'Chemifarm' facilities for drug and materials molecule discovery",
+  "status": "active",
+  "website": "https://www.chemify.io",
+  "funding": [
+    {
+      "date": "2022-02-14",
+      "round": "Seed",
+      "amount_usd_m": null,
+      "original_amount": "undisclosed (included in the USD 43M cumulative figure announced in 2023)",
+      "type": "equity",
+      "lead_investors": [
+        "BlueYard Capital"
+      ],
+      "source": "https://find-and-update.company-information.service.gov.uk/company/SC645290/filing-history?page=3"
+    },
+    {
+      "date": "2023-08-02",
+      "round": "Series A (announced with seed as USD 43M total)",
+      "amount_usd_m": 43.0,
+      "original_amount": "GBP 36M (cumulative seed + Series A)",
+      "type": "equity",
+      "lead_investors": [
+        "Triatomic Capital"
+      ],
+      "source": "https://www.gla.ac.uk/news/archiveofnews/2023/august/headline_990451_en.html"
+    },
+    {
+      "date": "2025-10-21",
+      "round": "Series B",
+      "amount_usd_m": 50.0,
+      "original_amount": "USD 50M+ (~EUR 43M)",
+      "type": "equity",
+      "lead_investors": [
+        "Wing Venture Capital",
+        "Insight Partners"
+      ],
+      "source": "https://www.businesswire.com/news/home/20251021496528/en/Chemify-Raises-More-Than-%2450-Million-in-Oversubscribed-Series-B-to-Drive-Global-Expansion-of-Digital-Chemistry-and-Discovery"
+    },
+    {
+      "date": "2025-12-12",
+      "round": "Series B1 extension (allotments 12 Dec 2025, 24 Feb 2026, 24 Jul 2026 per SH01; accounts say 27 Jul)",
+      "amount_usd_m": null,
+      "original_amount": "undisclosed; 178,327 + 8,491 + 101,901 Series B1 shares vs 1,320,012 Series B shares",
+      "type": "equity",
+      "lead_investors": [],
+      "source": "https://find-and-update.company-information.service.gov.uk/company/SC645290/filing-history/MzU0ODA0MDc5NWFkaXF6a2N4/document?format=pdf&download=0"
+    },
+    {
+      "date": "2026-09-16",
+      "round": "Grants (Scottish Enterprise + UK Government)",
+      "amount_usd_m": 29.5,
+      "original_amount": "GBP 22M (GBP 16M Scottish Enterprise, GBP 6M UK Government)",
+      "type": "grant",
+      "lead_investors": [
+        "Scottish Enterprise",
+        "UK Government"
+      ],
+      "source": "https://dealroom.co/news/150875-chemify-lands-22m-state-grant-one-of-the-uks-largest-for-an-ai-startup/"
+    }
+  ],
+  "headcount": [
+    {
+      "date": "2021-12-31",
+      "value": 0,
+      "low": null,
+      "high": null,
+      "method": "registry",
+      "note": "average monthly employees incl. directors, FY2021 (pre-spinout; research staff were university-employed)",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/SC645290/filing-history/MzM5MDg0ODY1NWFkaXF6a2N4/document?format=pdf&download=0"
+    },
+    {
+      "date": "2022-12-31",
+      "value": 15,
+      "low": null,
+      "high": null,
+      "method": "registry",
+      "note": "average monthly employees incl. directors, FY2022",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/SC645290/filing-history/MzM5MDg0ODY1NWFkaXF6a2N4/document?format=pdf&download=0"
+    },
+    {
+      "date": "2023-12-31",
+      "value": 38,
+      "low": null,
+      "high": null,
+      "method": "registry",
+      "note": "average monthly employees incl. directors, FY2023",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/SC645290/filing-history/MzQzNjUzNDgyN2FkaXF6a2N4/document?format=pdf&download=0"
+    },
+    {
+      "date": "2024-12-31",
+      "value": 79,
+      "low": null,
+      "high": null,
+      "method": "registry",
+      "note": "average monthly employees incl. directors, FY2024: operations & laboratory 42, engineering & technology 25, commercial & corporate 7, leadership & management 5",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/SC645290/filing-history/MzQ5OTI0MDA4M2FkaXF6a2N4/document?format=pdf&download=0"
+    },
+    {
+      "date": "2025-12-31",
+      "value": 127,
+      "low": null,
+      "high": null,
+      "method": "registry",
+      "note": "group average monthly employees incl. directors, FY2025: operations & laboratory 79, engineering & technology 32, commercial & corporate 11, leadership & management 5; staff costs GBP 8.1M (2024: 5.3M)",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/SC645290/filing-history/MzU0ODA0MDc5NWFkaXF6a2N4/document?format=pdf&download=0"
+    },
+    {
+      "date": "2026-09-16",
+      "value": 150,
+      "low": null,
+      "high": null,
+      "method": "press",
+      "note": "'about 150' Scottish workforce, to treble to ~450 in three years with the grants (government insider via Sky News / Dealroom); The Scotsman gives 200",
+      "source": "https://dealroom.co/news/150875-chemify-lands-22m-state-grant-one-of-the-uks-largest-for-an-ai-startup/"
+    },
+    {
+      "date": "2026-10-09",
+      "value": 200,
+      "low": null,
+      "high": null,
+      "method": "team-page",
+      "note": "About page: 'grown to over 200 employees, of which over half have advanced chemistry or engineering degrees'",
+      "source": "https://www.chemify.io/about"
+    }
+  ],
+  "postings": [
+    {
+      "period": "2025Q4",
+      "new_postings": 11,
+      "method": "wayback-cdx",
+      "source": "https://web.archive.org/web/*/chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx*"
+    },
+    {
+      "period": "2026Q1",
+      "new_postings": 19,
+      "method": "wayback-cdx",
+      "source": "https://web.archive.org/web/*/chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx*"
+    },
+    {
+      "period": "2026Q2",
+      "new_postings": 7,
+      "method": "wayback-cdx",
+      "source": "https://web.archive.org/web/*/chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx*"
+    },
+    {
+      "period": "2026Q3",
+      "new_postings": 21,
+      "method": "ats",
+      "source": "https://www.chemify.io/careers"
+    }
+  ],
+  "current_openings": {
+    "date": "2026-10-09",
+    "count": 33,
+    "by_function": {
+      "ml-research": 4,
+      "materials-science": 7,
+      "lab-automation": 6,
+      "software-eng": 8,
+      "business-ops": 8
+    },
+    "titles": [
+      "Automation Scientist",
+      "Senior Mechanical Engineer",
+      "Mechatronics Engineer",
+      "Mechanical Engineer",
+      "Synthetic Chemist",
+      "Senior Product Owner",
+      "Business Support Assistant",
+      "Senior Full Stack Software Engineer",
+      "Payroll Clerk",
+      "Management Accountant",
+      "Laboratory Coordinator",
+      "CADD Scientist / Senior CADD Scientist",
+      "Senior Software Engineer",
+      "Tech Director, CTO Office",
+      "Senior Manufacturing Engineer",
+      "Senior Manager, Operations Dev",
+      "Senior Full Stack SW Engineer",
+      "Senior Firmware Engineer",
+      "Production Chemist",
+      "Lead Full Stack SW Engineer",
+      "Junior Full Stack Engineer",
+      "Health & Safety Advisor",
+      "Engineering Project Manager",
+      "Product Operations Manager - Synthetic Chemistry",
+      "Staff CADD Scientist USA",
+      "Senior / Staff Machine Learning Scientist USA",
+      "Senior / Staff Machine Learning Scientist",
+      "Staff Product Designer",
+      "Senior/ Staff Analytical Technician",
+      "Analytical Technician",
+      "Purification Technician/Senior / Staff Purification Technician",
+      "Production Chemist (Dispensary)",
+      "Project Manager"
+    ],
+    "source": "https://www.chemify.io/careers"
+  },
+  "people": [
+    {
+      "name": "Lee Cronin",
+      "title": "Founder, CEO and board member",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2019-10",
+      "start_basis": "director from incorporation, 24 Oct 2019 (Companies House)",
+      "end": null,
+      "background": "PhD Chemistry, University of York; Regius Chair of Chemistry, University of Glasgow (retained)",
+      "source": "https://www.chemify.io/about"
+    },
+    {
+      "name": "David Cleevely",
+      "title": "Chairman",
+      "function": "leadership",
+      "seniority": "board",
+      "start": "2021-07",
+      "start_basis": "director appointed 23 Jul 2021 (Companies House); early backer",
+      "end": null,
+      "background": "PhD; co-founder and former chairman of Abcam; founder of Analysys; Cambridge Angels",
+      "source": "https://www.chemify.io/about"
+    },
+    {
+      "name": "Bonnie Phillips Dean",
+      "title": "Director (incorporation)",
+      "function": "leadership",
+      "seniority": "board",
+      "start": "2019-10",
+      "start_basis": "director from incorporation (Companies House)",
+      "end": "2022-02",
+      "background": "not stated",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/SC645290/officers"
+    },
+    {
+      "name": "Jason Whitmire",
+      "title": "Board member (BlueYard Capital)",
+      "function": "leadership",
+      "seniority": "board",
+      "start": "2022-02",
+      "start_basis": "director appointed 14 Feb 2022, the date of the first seed allotment (Companies House)",
+      "end": null,
+      "background": "Co-founder and GP, BlueYard Capital; ex-Earlybird; ex-Wind River",
+      "source": "https://www.chemify.io/about"
+    },
+    {
+      "name": "Steve Hochberg",
+      "title": "Board member (Triatomic Capital)",
+      "function": "leadership",
+      "seniority": "board",
+      "start": "2023-02",
+      "start_basis": "director appointed 20 Feb 2023, Series A (Companies House)",
+      "end": null,
+      "background": "Partner, Triatomic Capital; ex-Deerfield Management",
+      "source": "https://www.chemify.io/about"
+    },
+    {
+      "name": "Ansuman Satpathy",
+      "title": "Board member (Wing Venture Capital)",
+      "function": "leadership",
+      "seniority": "board",
+      "start": "2025-09",
+      "start_basis": "director appointed 23 Sep 2025, Series B (Companies House)",
+      "end": null,
+      "background": "MD/PhD; associate professor, Stanford; venture partner, Wing",
+      "source": "https://www.chemify.io/about"
+    },
+    {
+      "name": "Aiden Aceves",
+      "title": "Board member (Insight Partners)",
+      "function": "leadership",
+      "seniority": "board",
+      "start": "2025-09",
+      "start_basis": "director appointed 23 Sep 2025 (Companies House)",
+      "end": "2026-08",
+      "background": "Vice President, Insight Partners",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/SC645290/officers"
+    },
+    {
+      "name": "Jonathan Hostens",
+      "title": "Board member (Insight Partners)",
+      "function": "leadership",
+      "seniority": "board",
+      "start": "2026-08",
+      "start_basis": "director appointed 24 Aug 2026, replacing the other Insight director (Companies House)",
+      "end": null,
+      "background": "Principal, Insight Partners; ex-McKinsey; MSc Management, UCLouvain; CEMS MIM",
+      "source": "https://www.chemify.io/about"
+    },
+    {
+      "name": "Rima Alameddine",
+      "title": "Director",
+      "function": "leadership",
+      "seniority": "board",
+      "start": "2026-09",
+      "start_basis": "director appointed 22 Sep 2026 (Companies House); not yet on the About page",
+      "end": null,
+      "background": "not checked",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/SC645290/officers"
+    },
+    {
+      "name": "Mike Bell",
+      "title": "Chief Technical Officer (to lead planned Silicon Valley facility)",
+      "function": "leadership",
+      "seniority": "exec",
+      "start": null,
+      "start_basis": "named as CTO in the Oct 2025 Series B release; not on the Aug 2024 About page (Delubac was COO/CTO then)",
+      "end": null,
+      "background": "not stated; no longer listed on the About page by Oct 2026, where Knut Sauer is CTO",
+      "source": "https://siliconcanals.com/glasgows-chemify-raises-43m/"
+    },
+    {
+      "name": "Knut Sauer",
+      "title": "Chief Technology Officer",
+      "function": "leadership",
+      "seniority": "exec",
+      "start": null,
+      "start_basis": "listed on the About page, Oct 2026",
+      "end": null,
+      "background": "PhD Computer Science, Imperial College; ex-CTO GuardKnox; CTO Automotive at DXC Technology; VP Engineering at Virgin Hyperloop; IBM Distinguished Engineer",
+      "source": "https://www.chemify.io/about"
+    },
+    {
+      "name": "Martin Stephenson",
+      "title": "Chief Financial Officer",
+      "function": "business-ops",
+      "seniority": "exec",
+      "start": "2024-08",
+      "start_basis": "listed as CFO on the archived About page, 29 Aug 2024 (start on or before)",
+      "end": null,
+      "background": "Economics degree; FCA; 30+ years in finance leadership at start-ups, scale-ups and multinationals",
+      "source": "https://web.archive.org/web/20240829041046/https://chemify.io/about"
+    },
+    {
+      "name": "Neil McCourt",
+      "title": "Chief Operating Officer",
+      "function": "business-ops",
+      "seniority": "exec",
+      "start": null,
+      "start_basis": "listed on the About page, Oct 2026",
+      "end": null,
+      "background": "Ex-Virgin Media O2 (Director, CCO Channels), Amazon (EU Director of Operations), Tesco (Managing Director)",
+      "source": "https://www.chemify.io/about"
+    },
+    {
+      "name": "Swati Chatterjee",
+      "title": "SVP, Business Development (SVP Sales and Business Development in 2024)",
+      "function": "business-ops",
+      "seniority": "exec",
+      "start": "2024-08",
+      "start_basis": "listed on the archived About page, 29 Aug 2024 (start on or before)",
+      "end": null,
+      "background": "15+ years building chemistry design and synthesis partnerships, incl. Syngene",
+      "source": "https://web.archive.org/web/20240829041046/https://chemify.io/about"
+    },
+    {
+      "name": "Sandy Mahatme",
+      "title": "Chair, Advisory Board",
+      "function": "business-ops",
+      "seniority": "advisor",
+      "start": null,
+      "start_basis": "listed on the About page, Oct 2026",
+      "end": null,
+      "background": "Ex-President/COO/CFO Resilience; ex-CFO/CBO Sarepta; ex-SVP Celgene",
+      "source": "https://www.chemify.io/about"
+    },
+    {
+      "name": "Torsten Pilz",
+      "title": "Advisory Board",
+      "function": "business-ops",
+      "seniority": "advisor",
+      "start": null,
+      "start_basis": "listed on the About page, Oct 2026",
+      "end": null,
+      "background": "Chief Supply Chain Officer, 3M; ex-Honeywell, SpaceX, Amazon, Henkel",
+      "source": "https://www.chemify.io/about"
+    },
+    {
+      "name": "Tim Garnett",
+      "title": "Advisory Board",
+      "function": "business-ops",
+      "seniority": "advisor",
+      "start": null,
+      "start_basis": "listed on the About page, Oct 2026",
+      "end": null,
+      "background": "Former Chief Medical Officer, Eli Lilly",
+      "source": "https://www.chemify.io/about"
+    },
+    {
+      "name": "Kim Branson",
+      "title": "Advisory Board",
+      "function": "ml-research",
+      "seniority": "advisor",
+      "start": null,
+      "start_basis": "listed on the About page, Oct 2026",
+      "end": null,
+      "background": "PhD computational drug design (Melbourne); SVP Global Head of AI/ML at GSK; ex-Head of AI Genentech",
+      "source": "https://www.chemify.io/about"
+    },
+    {
+      "name": "Daniel Delubac",
+      "title": "COO/CTO",
+      "function": "leadership",
+      "seniority": "exec",
+      "start": "2024-08",
+      "start_basis": "listed on the archived About page, 29 Aug 2024 (start on or before)",
+      "end": "2026-10",
+      "background": "not stated",
+      "source": "https://web.archive.org/web/20240829041046/https://chemify.io/about"
+    },
+    {
+      "name": "Mike Frumkin",
+      "title": "Advisory board",
+      "function": "software-eng",
+      "seniority": "advisor",
+      "start": "2024-08",
+      "start_basis": "archived About page, 29 Aug 2024",
+      "end": "2026-10",
+      "background": "25+ years in technical leadership incl. NeXT and Google",
+      "source": "https://web.archive.org/web/20240829041046/https://chemify.io/about"
+    },
+    {
+      "name": "Sara Walker",
+      "title": "Advisory board",
+      "function": "materials-science",
+      "seniority": "advisor",
+      "start": "2024-08",
+      "start_basis": "archived About page, 29 Aug 2024",
+      "end": "2026-10",
+      "background": "Astrobiologist and theoretical physicist, Arizona State University; PhD Dartmouth",
+      "source": "https://web.archive.org/web/20240829041046/https://chemify.io/about"
+    }
+  ],
+  "staff_roles": [
+    {
+      "title": "Operations & laboratory staff (registry category)",
+      "function": "materials-science",
+      "first_seen": "2024",
+      "last_seen": null,
+      "background": "42 average in 2024, 79 in 2025",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/SC645290/filing-history/MzU0ODA0MDc5NWFkaXF6a2N4/document?format=pdf&download=0"
+    },
+    {
+      "title": "Engineering & technology staff (registry category)",
+      "function": "lab-automation",
+      "first_seen": "2024",
+      "last_seen": null,
+      "background": "25 average in 2024, 32 in 2025",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/SC645290/filing-history/MzU0ODA0MDc5NWFkaXF6a2N4/document?format=pdf&download=0"
+    },
+    {
+      "title": "Commercial & corporate functions (registry category)",
+      "function": "business-ops",
+      "first_seen": "2024",
+      "last_seen": null,
+      "background": "7 average in 2024, 11 in 2025",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/SC645290/filing-history/MzU0ODA0MDc5NWFkaXF6a2N4/document?format=pdf&download=0"
+    },
+    {
+      "title": "Staff overall",
+      "function": "materials-science",
+      "first_seen": "2026-10",
+      "last_seen": null,
+      "background": "'over half have advanced chemistry or engineering degrees' (About page)",
+      "source": "https://www.chemify.io/about"
+    }
+  ],
+  "departures": [
+    {
+      "who": "Bonnie Phillips Dean",
+      "title": "Director (incorporation)",
+      "date": "2022-02",
+      "basis": "Companies House resignation 14 Feb 2022, as the seed investor director joined",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/SC645290/officers"
+    },
+    {
+      "who": "Aiden Aceves",
+      "title": "Board member (Insight Partners)",
+      "date": "2026-08",
+      "basis": "Companies House TM01, 24 Aug 2026; replaced by another Insight director the same day",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/SC645290/officers"
+    },
+    {
+      "who": "Mike Bell",
+      "title": "Chief Technical Officer",
+      "date": null,
+      "basis": "CTO in the Oct 2025 release; the Oct 2026 About page lists Knut Sauer as CTO. Not a director, so no registry date",
+      "source": "https://www.chemify.io/about"
+    },
+    {
+      "who": "Daniel Delubac",
+      "title": "COO/CTO",
+      "date": "2026-10",
+      "basis": "on the Aug 2024 About page, absent from the Oct 2026 page (exact exit date unknown; latest possible date shown); role split into COO (Neil McCourt) and CTO",
+      "source": "https://web.archive.org/web/20240829041046/https://chemify.io/about"
+    },
+    {
+      "who": "Mike Frumkin; Sara Walker",
+      "title": "Advisory board",
+      "date": "2026-10",
+      "basis": "on the Aug 2024 About page, absent from the Oct 2026 page",
+      "source": "https://web.archive.org/web/20240829041046/https://chemify.io/about"
+    }
+  ],
+  "notes": [
+    "Companies House SC645290 (CHEMIFY LIMITED), a Scottish company incorporated 24 Oct 2019. The company says it was 'founded in 2022', i.e. its spin-out from the University of Glasgow in March 2022.",
+    "Accounts PDFs are scanned images; employee counts were read by OCR and checked against the category totals (79+32+11+5=127; 42+25+7+5=79). FY2025 are group accounts and include the subsidiary Chemify US Inc.",
+    "SH01 allotments: 14 Feb, 25 Feb, 11 Mar 2022 (seed); 27 Jan, 28 Feb, 5 May, 13 Jul 2023 (Series A); 26 and 29 Jan, 1 Apr, 18 Jun, 1 Oct 2024 and 7 Jan, 1 Jun 2025 (small, likely options or extensions); 23 Sep 2025 (Series B); 12 Dec 2025, 24 Feb 2026, 24 Jul 2026 (Series B1).",
+    "Disclosed equity about USD 93M+ (USD 43M cumulative to Aug 2023, USD 50M+ Series B); Sky News reported 'more than GBP 100m' from investors by Sep 2026, suggesting the unpriced Series B1 extension was material. A Series C of USD 250M-1B was reportedly being prepared (Dealroom, Sep 2026).",
+    "Grant USD figure converts GBP 22M at ~1.34 USD/GBP. The 2023 round also included the UK Government Innovation Accelerators programme (Glasgow City Region).",
+    "No OpenAlex institution record or works with a Chemify raw affiliation; staff publish under the University of Glasgow.",
+    "Current openings are listed on chemify.io/careers and hosted on PeopleHR (chemifyltd.peoplehr.net); 33 titles. Mapping: CADD and ML scientists -> ml-research; chemists and analytical/purification technicians and lab coordinator -> materials-science; mechanical, mechatronics, manufacturing, firmware engineers and automation scientist -> lab-automation; software, product owner/designer and CTO-office director -> software-eng; finance, H&S, project and operations managers -> business-ops.",
+    "Postings: 58 distinct PeopleHR posting IDs, merging 32 Wayback-captured IDs (first capture 2025-11-22) with 32 live IDs dated on the careers page (6 overlap); earliest date per ID wins. The board is not visible in Wayback before the Oct 2025 Series B, so earlier hiring is uncovered. 24 of 33 live titles were posted June-September 2026.",
+    "Aug 2024 About page also lists investors not named in the round announcements: Founders Fund, Berggruen Holdings, DCVC and Creator Fund."
+  ]
+}

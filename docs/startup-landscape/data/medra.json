@@ -1,0 +1,35 @@
+{
+  "company": "Medra",
+  "slug": "medra",
+  "hq": "San Francisco, US",
+  "country": "US",
+  "founded": "2022",
+  "category": "self-driving lab",
+  "focus": "'Physical AI scientists': general-purpose robots operating standard lab instruments plus a scientific-reasoning layer, deployed as workcells at biopharma partners (e.g. Genentech)",
+  "status": "active",
+  "website": "https://www.medra.ai",
+  "funding": [
+    {"date": "2025-09-11", "round": "Seed (announced on leaving stealth)", "amount_usd_m": 11.0, "original_amount": "USD 11M", "type": "equity", "lead_investors": ["Lux Capital", "Neo", "NFDG"], "source": "https://dealroom.co/companies/medra-/"},
+    {"date": "2025-12-11", "round": "Series A", "amount_usd_m": 52.0, "original_amount": "USD 52M", "type": "equity", "lead_investors": ["Human Capital"], "source": "https://www.businesswire.com/news/home/20251211748411/en/Medra-Raises-%2452-Million-Series-A-to-Build-Physical-AI"}
+  ],
+  "headcount": [],
+  "postings": [
+    {"period": "2026Q2", "new_postings": 6, "method": "ats", "source": "https://jobs.ashbyhq.com/medraai"},
+    {"period": "2026Q3", "new_postings": 7, "method": "ats", "source": "https://jobs.ashbyhq.com/medraai"},
+    {"period": "2026Q4", "new_postings": 2, "method": "ats", "source": "https://jobs.ashbyhq.com/medraai"}
+  ],
+  "current_openings": {"date": "2026-10-09", "count": 15, "by_function": {"materials-science": 6, "software-eng": 3, "lab-automation": 3, "business-ops": 2, "ml-research": 1}, "titles": ["Scientist, Biology", "Scientist, Cell Biology & Antibody Engineering", "Scientist, Biophysical Characterization (SPR/BLI)", "Research Associate - Foundry", "Research Associate, Protein Purification & Quality Control", "Scientific Operations", "Robotics Software Engineer", "Tech Lead Manager - Full Stack", "Full Stack Software Engineer", "Mechanical Engineer", "Robotics Manufacturing Technician", "Systems Test Engineer - Contract", "Research Engineer, Post-training", "Engagement Manager", "Business Operations"], "source": "https://jobs.ashbyhq.com/medraai"},
+  "people": [
+    {"name": "Michelle Lee", "title": "Founder & CEO", "function": "leadership", "seniority": "founder", "start": "2022", "start_basis": "Founding year per most profiles (Dealroom says 2021); CEO in Series A release", "end": null, "background": "PhD robotics, Stanford; left an incoming NYU assistant-professor post to found Medra; earlier NVIDIA, SpaceX, McKinsey (as summarized from public profiles)", "source": "https://www.businesswire.com/news/home/20251211748411/en/Medra-Raises-%2452-Million-Series-A-to-Build-Physical-AI"}
+  ],
+  "staff_roles": [],
+  "departures": [],
+  "notes": [
+    "Wet-lab science openings (biology, protein, antibody) are filed under 'materials-science' because the schema has no biology function. Medra is bio/biopharma-focused, not materials.",
+    "Series A co-investors: Lux Capital, Neo and NFDG (existing), plus Catalio Capital Management, Menlo Ventures, 776 and Fusion Fund. The company said in mid-2026 it had raised more than USD 60M in total. The seed amount and date come from aggregator and press summaries (Endpoints News, 2025-09-11).",
+    "SEC: the only Form D hit is an SPV, 'V360 Holdings LLC Series Medra Fund I' (CIK 2128349, filed 2026-04-24, San Francisco). That is a third-party vehicle buying Medra exposure, not a company raise, so it is excluded.",
+    "Reported deployments: robotic workcells at biopharma partners from 2024-12 (five units cited), plus a Genentech partnership announced with the Series A.",
+    "Postings are the 15 currently open Ashby roles, bucketed by publishedAt. They are a lower bound on hiring flow, since filled roles are gone. All 15 were posted 2026-04 to 2026-10, i.e. 4-10 months after the Series A.",
+    "Not done (time and Wayback budget): team-page or LinkedIn headcount via Wayback, Wayback posting history, OpenAlex. No headcount datapoint was found."
+  ]
+}

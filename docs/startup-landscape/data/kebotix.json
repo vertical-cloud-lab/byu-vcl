@@ -1,0 +1,213 @@
+{
+ "company": "Kebotix",
+ "slug": "kebotix",
+ "hq": "Cambridge, US",
+ "country": "US",
+ "founded": "2017",
+ "category": "self-driving lab",
+ "focus": "AI plus robotic autonomous lab for materials and chemicals discovery (Harvard / Aspuru-Guzik spinout)",
+ "status": "active",
+ "website": "https://www.kebotix.com",
+ "funding": [
+  {
+   "date": "2018-07-23",
+   "round": "Seed (Form D first sale)",
+   "amount_usd_m": 5.06,
+   "original_amount": "USD 5,055,279 sold, 20 investors",
+   "type": "equity",
+   "lead_investors": [],
+   "source": "https://www.sec.gov/Archives/edgar/data/1749021/000174902118000001/primary_doc.xml"
+  },
+  {
+   "date": "2020-04-02",
+   "round": "Series A (announced April 2020 as $11.4M)",
+   "amount_usd_m": 11.39,
+   "original_amount": "USD 11,388,778 sold of 15,000,000 offered, 14 investors",
+   "type": "equity",
+   "lead_investors": [
+    "Novo Holdings"
+   ],
+   "source": "https://www.builtinboston.com/articles/kebotix-raises-11m"
+  },
+  {
+   "date": "2023-03-29",
+   "round": "Unannounced equity (Form D)",
+   "amount_usd_m": 2.21,
+   "original_amount": "USD 2,209,999 sold of 3,999,999 offered, 11 investors",
+   "type": "equity",
+   "lead_investors": [],
+   "source": "https://www.sec.gov/Archives/edgar/data/1749021/000174902123000001/primary_doc.xml"
+  },
+  {
+   "date": "2024-07-22",
+   "round": "Unannounced equity (Form D)",
+   "amount_usd_m": 5.0,
+   "original_amount": "USD 4,999,765 sold of 9,999,999 offered, 10 investors",
+   "type": "equity",
+   "lead_investors": [],
+   "source": "https://www.sec.gov/Archives/edgar/data/1749021/000174902124000001/primary_doc.xml"
+  }
+ ],
+ "headcount": [],
+ "postings": [],
+ "current_openings": {
+  "date": "2026-10-09",
+  "count": 0,
+  "by_function": {},
+  "titles": [],
+  "source": "https://www.kebotix.com/"
+ },
+ "people": [
+  {
+   "name": "Jill Becker",
+   "title": "Founder and CEO; director",
+   "function": "leadership",
+   "seniority": "founder",
+   "start": "2017",
+   "start_basis": "Form D 2018 (executive officer, director, promoter)",
+   "end": "by 2023-03",
+   "background": "PhD; founder of Cambridge NanoTech (sold to Ultratech) and 02139 Inc. consultancy",
+   "source": "https://www.aiche.org/community/bio/jill-becker"
+  },
+  {
+   "name": "Alán Aspuru-Guzik",
+   "title": "Co-founder; director, later executive officer",
+   "function": "ml-research",
+   "seniority": "founder",
+   "start": "2017",
+   "start_basis": "Form D 2018 (director, promoter); executive officer 2020, 2023",
+   "end": "by 2024-07",
+   "background": "Harvard (later Univ. of Toronto) chemistry professor",
+   "source": "https://www.sec.gov/Archives/edgar/data/1749021/000174902118000001/primary_doc.xml"
+  },
+  {
+   "name": "Semyon Dukach",
+   "title": "Director",
+   "function": "leadership",
+   "seniority": "board",
+   "start": "2018-07",
+   "start_basis": "Form D 2018",
+   "end": "by 2023-03",
+   "background": "not stated in filing",
+   "source": "https://www.sec.gov/Archives/edgar/data/1749021/000174902118000001/primary_doc.xml"
+  },
+  {
+   "name": "Kartik Dharmadhikari",
+   "title": "Director (joined at Series A close)",
+   "function": "leadership",
+   "seniority": "board",
+   "start": "2020-04",
+   "start_basis": "Form D 2020",
+   "end": "by 2023-03",
+   "background": "not stated in filing",
+   "source": "https://www.sec.gov/Archives/edgar/data/1749021/000174902120000001/primary_doc.xml"
+  },
+  {
+   "name": "Ashish Kulkarni",
+   "title": "Director; executive officer from 2023",
+   "function": "leadership",
+   "seniority": "exec",
+   "start": "2020-04",
+   "start_basis": "Form D 2020 (director); 2023 and 2024 (executive officer, director)",
+   "end": null,
+   "background": "not stated in filing",
+   "source": "https://www.sec.gov/Archives/edgar/data/1749021/000174902123000001/primary_doc.xml"
+  },
+  {
+   "name": "Semion Saikin",
+   "title": "Executive officer",
+   "function": "ml-research",
+   "seniority": "exec",
+   "start": "2023-03",
+   "start_basis": "Form D 2023, 2024 (signer of 2024 filing)",
+   "end": null,
+   "background": "not stated in filing",
+   "source": "https://www.sec.gov/Archives/edgar/data/1749021/000174902124000001/primary_doc.xml"
+  },
+  {
+   "name": "Dennis Sheberla",
+   "title": "Executive officer",
+   "function": "ml-research",
+   "seniority": "exec",
+   "start": "2023-03",
+   "start_basis": "Form D 2023, 2024",
+   "end": null,
+   "background": "not stated in filing",
+   "source": "https://www.sec.gov/Archives/edgar/data/1749021/000174902124000001/primary_doc.xml"
+  },
+  {
+   "name": "Andrew Krowne",
+   "title": "Director",
+   "function": "leadership",
+   "seniority": "board",
+   "start": "2023-03",
+   "start_basis": "Form D 2023",
+   "end": null,
+   "background": "not stated in filing",
+   "source": "https://www.sec.gov/Archives/edgar/data/1749021/000174902123000001/primary_doc.xml"
+  },
+  {
+   "name": "Yipeng Zhao",
+   "title": "Director",
+   "function": "leadership",
+   "seniority": "board",
+   "start": "2023-03",
+   "start_basis": "Form D 2023",
+   "end": null,
+   "background": "not stated in filing",
+   "source": "https://www.sec.gov/Archives/edgar/data/1749021/000174902123000001/primary_doc.xml"
+  },
+  {
+   "name": "Tong Hui",
+   "title": "Director",
+   "function": "leadership",
+   "seniority": "board",
+   "start": "2024-07",
+   "start_basis": "Form D 2024",
+   "end": null,
+   "background": "not stated in filing",
+   "source": "https://www.sec.gov/Archives/edgar/data/1749021/000174902124000001/primary_doc.xml"
+  },
+  {
+   "name": "Vijay Sarathy",
+   "title": "Advisory panel member",
+   "function": "business-ops",
+   "seniority": "advisor",
+   "start": "2021-03",
+   "start_basis": "press release 2021-03-18",
+   "end": null,
+   "background": "chemical industry executive",
+   "source": "https://www.businesswire.com/news/home/20210318005166/en/Chemical-Industry-Veteran-Vijay-Sarathy-Joins-Kebotix-Advisory-Panel"
+  }
+ ],
+ "staff_roles": [],
+ "departures": [
+  {
+   "who": "Jill Becker",
+   "title": "Founder and CEO",
+   "date": "2021-03 to 2023-03",
+   "basis": "CEO in March 2021 press; absent from 2023 Form D related persons",
+   "source": "https://www.sec.gov/Archives/edgar/data/1749021/000174902123000001/primary_doc.xml"
+  },
+  {
+   "who": "Semyon Dukach; Kartik Dharmadhikari",
+   "title": "Directors",
+   "date": "2020-04 to 2023-03",
+   "basis": "on 2020 Form D, absent from 2023 Form D",
+   "source": "https://www.sec.gov/Archives/edgar/data/1749021/000174902123000001/primary_doc.xml"
+  },
+  {
+   "who": "Alán Aspuru-Guzik",
+   "title": "Co-founder, executive officer",
+   "date": "2023-03 to 2024-07",
+   "basis": "on 2023 Form D, absent from 2024 Form D",
+   "source": "https://www.sec.gov/Archives/edgar/data/1749021/000174902124000001/primary_doc.xml"
+  }
+ ],
+ "notes": [
+  "Status: site live with a 2026 copyright but no dated news, team or openings; the last dated activity found is the July 2024 Form D. Not defunct on available evidence, but low-visibility.",
+  "Total raised per Form D: ~$23.7M (SIT Capital also joined the Series A per a 2021-03-24 release).",
+  "Officers changed completely between the 2020 and 2023 Form Ds: founder-CEO and two directors out; new executive officers and three new directors.",
+  "Skipped for time: Wayback team pages, archived LinkedIn, job-board history, OpenAlex. No headcount data collected."
+ ]
+}

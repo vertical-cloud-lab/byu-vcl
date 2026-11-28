@@ -1,0 +1,303 @@
+{
+ "captures": {
+  "matlantis.com/careers/": [
+   {
+    "urlkey": "com,matlantis)/careers/cs-engineer",
+    "first": "20230607220522",
+    "last": "20230607220522",
+    "n": 1,
+    "original": "https://matlantis.com/careers/cs-engineer"
+   },
+   {
+    "urlkey": "com,matlantis)/careers/sales",
+    "first": "20230607223349",
+    "last": "20240805031056",
+    "n": 4,
+    "original": "https://matlantis.com/careers/sales"
+   },
+   {
+    "urlkey": "com,matlantis)/careers",
+    "first": "20230607223751",
+    "last": "20250620103228",
+    "n": 13,
+    "original": "https://matlantis.com/careers"
+   },
+   {
+    "urlkey": "com,matlantis)/careers/feed",
+    "first": "20230709094013",
+    "last": "20230709094013",
+    "n": 1,
+    "original": "https://matlantis.com/careers/feed"
+   },
+   {
+    "urlkey": "com,matlantis)/careers-sitemap.xml",
+    "first": "20230804030201",
+    "last": "20241106211530",
+    "n": 8,
+    "original": "https://matlantis.com/careers-sitemap.xml"
+   },
+   {
+    "urlkey": "com,matlantis)/careers/cs-engineer-2",
+    "first": "20240304040648",
+    "last": "20250516072800",
+    "n": 7,
+    "original": "https://matlantis.com/careers/cs-engineer-2"
+   }
+  ],
+  "matlantis.com/en/careers": [
+   {
+    "urlkey": "com,matlantis)/en/careers",
+    "first": "20230926121529",
+    "last": "20240106005115",
+    "n": 2,
+    "original": "https://matlantis.com/en/careers"
+   }
+  ]
+ },
+ "board_captures": {
+  "matlantis.com/careers": [
+   [
+    "20230607223751",
+    "https://matlantis.com/careers"
+   ],
+   [
+    "20230709020137",
+    "https://matlantis.com/careers"
+   ],
+   [
+    "20240304051027",
+    "https://matlantis.com/careers"
+   ],
+   [
+    "20240620122641",
+    "https://matlantis.com/careers"
+   ],
+   [
+    "20240915033749",
+    "https://matlantis.com/careers"
+   ],
+   [
+    "20241106211242",
+    "https://matlantis.com/careers"
+   ],
+   [
+    "20250123030545",
+    "https://matlantis.com/careers"
+   ],
+   [
+    "20250620103228",
+    "https://matlantis.com/careers"
+   ]
+  ],
+  "matlantis.com/en/careers": [
+   [
+    "20230926121529",
+    "https://matlantis.com/en/careers"
+   ],
+   [
+    "20240106005115",
+    "https://matlantis.com/en/careers"
+   ]
+  ]
+ },
+ "postings": [
+  {
+   "company": "matlantis",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230607220522/https://matlantis.com/careers/cs-engineer",
+   "url": "https://matlantis.com/careers/cs-engineer",
+   "first_seen": "20230607220522",
+   "last_seen": "20230607220522",
+   "n_captures": 1,
+   "title": "MATLANTIS",
+   "text": "Home Careers Customer success engineer\nCareers\nCustomer success engineer\nDescription\nWe are looking to hire technical members responsible for the customer success of Matlantis, a SaaS service provided by PFCC.\nWith the mission of \"exploring the creation of innovative materials for a sustainable world,\" PFCC provides Matlantis, a versatile calculation engine, to help customers accelerate the development of new materials and the elucidation of their mechanisms.\nTraditionally, first-principles calculations have not been able to perform a large number of trials due to their large computational cost. In the materials industry, it is common to discover materials through experimentation first and then perform first-principles calculations to elucidate phenomena later.\nWith Matlantis, the versatility and speed of Matlantis can be used to shorten the time required to validate experimental results in a variety of areas and to present promising candidates before experimentation.\nPFCC offers Matlantis as SaaS. We do not only sell software licenses, but also accompany our clients to achieve real results by using Matlantis (customer success), which requires not only assistance in using Matlantis, but also technical expertise in discussing modeling and simulation methods, case studies, and other technical explanations. An explanation is also required. In addition, the project will support the customer's DX promotion.\nSince the start of our business in July 2021, we have received interest from customers in a variety of industries, and we are receiving cutting-edge issues regarding the application of materials, the phenomena we handle, and the calculation methods, all of which will provide us with a variety of experiences. We are looking forward to receiving applications from enthusiastic individuals who are willing to learn and work in this challenging environment.\nTasks\n- Customer Success: Discussing appropriate simulation methods for each customer issue, creating calculation examples, etc.\n- Customer Support: Provide support to customers on how to better use Matlantis, answer questions about the system, etc.\n- Business Efficiency: Selection and implementation of internal IT tools, formulation of business processes, etc\nRequirements\nMinimum\n- Education: Bachelor Degree (Physics, Chemistry, and Materials science)\n- Knowledge: Computer science\n- Programming skills: Python language\n- Preferred\nWorking Experience:\n- Computational chemistry.\n- For example, in-depth knowledge of and experience using simulation techniques such as quantum chemical calculations, molecular dynamics methods, electrical conduction calculations, etc.\n- Research and development and writing papers on physical simulations.\n- Research and development and writing papers in the field of Chemoinformatics and Materials Informatics\n- In-depth experience and knowledge\n- A specific materials field.\n- In one's field of expertise\n- Knowledge and proficiency with computational chemistry software and ancillary tools.\n- In particular, ASE (Atomic Simulation Environment) software\n- Other software, e.g. GAUSSIAN, VASP, LAMMPS, RDKit, Open Babel, etc.\nSkills:\n- Data analysis techniques using machine learning and statistical tools (e.g. NumPy, pandas, scikit-learn, etc.)\n- Market and customer analysis\n- Engage the audience presentation\n- English (discussion with clients, writing and reading skills)\n※Matlantis is looking to expand overseas, those interested can get involved\nWilling and ability\n- Actively discussing with engineers from different fields and companies\n- Following and following up on the latest publications\n- Constantly learning new domain knowledge\n- Smooth discussions with clients\nRequired documents in addition to a resume\n- Paper list\nAppeal\n- It is possible to be involved in work with a high degree of social contribution, such as developing materials to achieve the SDGs.\n- You can be involved in cutting-edge issues at top companies in various industries.\n- As a start-up with a small number of employees, each individual has enormous scope and discretion in their work.\nType of Employment\nFull-time employee, a probationary period of 3 months (same terms and conditions as the primary employment)\nLocation\nTokyo - Japan\nWork schedule\n- Saturdays, Sundays, national holidays, national holidays, other (congratulation, condolence, year-end and New Year holidays)\n- Full flextime system (no core time)\n- Remote work is possible.\n- Annual paid leave system by our company's regulations.\nCompensation\n- Compensation based on experience, performance, ability, and contribution\n- Reviewed twice a year\n- In addition to base salary, bonus based on company performance and individual performance (twice a year, in April and October)\n- Transportation expenses paid (maximum 150,000 yen/month actual expenses paid; if exceeding the limit, a consultation will be required)\nWelfare\n- Social insurance (employee pension insurance, health insurance, unemployment insurance, worker's accident compensation insurance)\n- Paid vacations, maternity leave, childcare leave, congratulation or condolence leave, etc.\n- Periodic health checkups\n- Subsidy for purchase of laptop PC\n- Smaller Enterprise Retirement Allowance Mutual Aid System\nIf you have a Google account,\nclick here to apply\nIf you don’t have a Google account,\nclick here to apply\nIf you don't have a Google account, you will be asked to send us your resume by email. Sorry for the inconvenience.\nOpenings\nFollow us\n-\nTwitter\n-\nYouTube\n-\nslideshare\n-\nGitHub\n-\nLinkedIn\nProduct\n- Technologies\n- 3 Key Features\n- Try Matlantis\n- How to Get Started\nCases\n- User Testimonials\n- Simulation Case Studies\n- Research Using Matlantis\n- Research on Matlantis\nCompany\n- Message\n- About Us\n- Careers\nCareers\n- Openings\nNews\nContact\nPrivacy Policy Terms of use Help\n© Preferred Computational Chemistry",
+   "generic": true,
+   "posting_id": "matlantis.com/careers/cs-engineer"
+  },
+  {
+   "company": "matlantis",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230607223349/https://matlantis.com/careers/sales",
+   "url": "https://matlantis.com/careers/sales",
+   "first_seen": "20230607223349",
+   "last_seen": "20240805031056",
+   "n_captures": 4,
+   "title": "MATLANTIS",
+   "text": "Home Careers Sales\nCareers\nSales\nDescription\nWe are looking to hire sales members responsible for the customer success of Matlantis, a SaaS service provided by PFCC.\nWith the mission of \"exploring the creation of innovative materials for a sustainable world,\" PFCC provides Matlantis, a versatile calculation engine, to help customers accelerate the development of new materials and the elucidation of their mechanisms.\nTraditionally, first-principles calculations have not been able to perform a large number of trials due to their large computational cost. In the materials industry, it is common to discover materials through experimentation first and then perform first-principles calculations to elucidate phenomena later.\nWith Matlantis, the versatility and speed of Matlantis can be used to shorten the time required to validate experimental results in a variety of areas and to present promising candidates before experimentation.\nPFCC offers and sells Matlantis as SaaS (software on a cloud environment). The candidate will be responsible for inbound and outbound sales activities, business strategy, marketing strategy, partner management strategy, etc., to pave the way for the future of Matlantis, which has the world's most advanced technology. We are constantly improving our technology and services based on customer feedback. We also set our sights on expanding overseas in 2022 and have begun contacting universities and companies overseas. We have positions available for overseas business development and sales activities to spread SaaS from Japan to the rest of the world.\nWe look forward to hearing from enthusiastic individuals willing to learn and work in a cutting-edge and challenging environment.\nTasks\nInside Sales/Field Sales\n- Conduct business meetings with new clients and follow up with them.\n- Propose solutions to customer problems in cooperation with technical members and back office\n- Negotiate contract terms with customers in cooperation with the in-house legal department.\n- Follow up on post-contract customer success operations in cooperation with technical members.\n- Develop sales strategies and improve the efficiency of the sales process.\nMarketing:\n- Generate new leads through the development and implementation of digital marketing strategies.\n- Gather/analyze information on market trends, competitor trends, and technology trends.\n- Overseas Business Strategies:\n- Formulate and implement global business strategies focusing on Europe, the U.S., and East Asia.\n- Promote sales activities to overseas customers.\nBusiness efficiency improvement: Select and implement internal IT tools.\n- Selection and implementation of internal IT tools and formulation of business processes.\nRequirements\nMinimum\n- Education: Bachelor Degree (Physics, Chemistry, and Materials science)\n- Knowledge: Computer science\n- Computer literacy above a certain level\n- Able to discuss and communicate the value of Matlantis with clients\n- Ability to communicate and coordinate with internal back-office staff\n- Enthusiasm for market expansion and development\n- English language skills for discussions with customers, reading and writing in English.\nPreferred - Working Experience\n- Sales or marketing related to software or SaaS business\n- Sales data analysis technology using machine learning and statistical tools\n- Sales simulation software\n- Digital marketing (especially SaaS products)\n- Experience in launching an overseas business\nPreferred - Willing and ability\n- Stay abreast of new technology trends and learn new domain knowledge\n- Actively discussing with engineers from different fields and companies\n- Market and customer analysis skills\n- Smooth discussions with clients\n- Engage the audience presentation\nAppeal\n- Ability to be involved in work with a high degree of social contribution, such as developing materials for the achievement of the SDGs.\n- Involvement in cutting-edge issues at top companies in various industries\n- As a startup with a small number of employees, each individual has an enormous scope of responsibility and discretion.\n- Be involved in the growth of a startup company as a participant.\n- Contribute to the spread of Japanese software throughout the world\nType of Employment\nFull-time employee, a probationary period of 3 months (same terms and conditions as the primary employment)\nLocation\nTokyo - Japan\nWork schedule\n- Saturdays, Sundays, national holidays, national holidays, other (congratulation, condolence, year-end and New Year holidays)\nFull flextime system (no core time)\n- Remote work is possible.\n- Annual paid leave system by our company's regulations.\nCompensation\n- Compensation based on experience, performance, ability, and contribution\n- Reviewed twice a year\n- In addition to base salary, bonus based on company performance and individual performance (twice a year, in April and October)\n- Transportation expenses paid (maximum 150,000 yen/month actual expenses paid; if exceeding the limit, a consultation will be required)\nWelfare\n- Social insurance (employee pension insurance, health insurance, unemployment insurance, worker's accident compensation insurance)\n- Paid vacations, maternity leave, childcare leave, congratulation or condolence leave, etc.\n- Periodic health checkups\n- Subsidy for purchase of laptop PC\n- Smaller Enterprise Retirement Allowance Mutual Aid System\nIf you have a Google account,\nclick here to apply\nIf you don’t have a Google account,\nclick here to apply\nIf you don't have a Google account, you will be asked to send us your resume by email. Sorry for the inconvenience.\nOpenings\nFollow us\n-\nTwitter\n-\nYouTube\n-\nslideshare\n-\nGitHub\n-\nLinkedIn\nProduct\n- Technologies\n- 3 Key Features\n- Try Matlantis\n- How to Get Started\nCases\n- User Testimonials\n- Simulation Case Studies\n- Research Using Matlantis\n- Research on Matlantis\nCompany\n- Message\n- About Us\n- Careers\nCareers\n- Openings\nNews\nContact\nPrivacy Policy Terms of use Help\n© Preferred Computational Chemistry",
+   "generic": true,
+   "posting_id": "matlantis.com/careers/sales"
+  },
+  {
+   "company": "matlantis",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230607223751/https://matlantis.com/careers",
+   "url": "https://matlantis.com/careers",
+   "first_seen": "20230607223751",
+   "last_seen": "20230607223751",
+   "n_captures": 1,
+   "title": "MATLANTIS",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "matlantis",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230709020137/https://matlantis.com/careers",
+   "url": "https://matlantis.com/careers",
+   "first_seen": "20230709020137",
+   "last_seen": "20230709020137",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "matlantis",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230709094013/https://matlantis.com/careers/feed",
+   "url": "https://matlantis.com/careers/feed",
+   "first_seen": "20230709094013",
+   "last_seen": "20230709094013",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true,
+   "posting_id": "matlantis.com/careers/feed"
+  },
+  {
+   "company": "matlantis",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230926121529/https://matlantis.com/en/careers",
+   "url": "https://matlantis.com/en/careers",
+   "first_seen": "20230926121529",
+   "last_seen": "20230926121529",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "matlantis",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20240106005115/https://matlantis.com/en/careers",
+   "url": "https://matlantis.com/en/careers",
+   "first_seen": "20240106005115",
+   "last_seen": "20240106005115",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "matlantis",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20240304040648/https://matlantis.com/careers/cs-engineer-2",
+   "url": "https://matlantis.com/careers/cs-engineer-2",
+   "first_seen": "20240304040648",
+   "last_seen": "20250516072800",
+   "n_captures": 7,
+   "title": "Customer Success Engineer",
+   "text": "Home Careers Customer Success Engineer\nCareers\nCustomer Success Engineer\nDescription\nWith the mission of \"accelerating materials discovery for a sustainable future\", PFCC provides Matlantis™, a versatile calculation engine, to help customers accelerate the development of new materials and elucidate their mechanisms.\nTraditionally, first-principles calculations have not been able to perform a large number of trials due to their large computational cost. In the materials industry, it is common to discover materials first through experimentation and then via first-principles calculations to elucidate phenomena later.\nThe versatility and speed of Matlantis can be used to shorten the time required to validate experimental results in a variety of areas and to present promising candidates before experimentation.\nPFCC offers Matlantis as SaaS. Not only do we sell software licenses but also accompany our clients to achieve meaningful results by using Matlantis. We provide support for how to use Matlantis, but also conduct professional technical explanations such as discussions on modeling and simulation methods and case validations. Moreover, we support the promotion of customers' digital transformation (DX).\nSince the business started in July 2021, we have received interest from customers in various industries. We deal with cutting-edge issues in all areas, including the application of materials, phenomena handled, and computational methods, allowing us to gain a wide range of experiences. We look forward to applications from enthusiastic individuals who want to learn and advance their work in this challenging environment.\nResponsibilities\nCustomer Success：\n- Discuss and propose appropriate simulation methods and workflows for each customer issue, and create and provide computational case studies.\n- Work closely with the product development team to reflect customer feedback in our products and to share our roadmap.\nRequirements\nMinimum\n- Knowledge of basic computer science\n- Programming skills using the Python language\n- Experience and knowledge in a specific materials science field\n- Experience in computational chemistry, for example, simulations involving quantum chemical calculations, molecular dynamics methods, electrical conductivity calculations, etc.\n- Knowledge and experience using simulation techniques and tools, such as ASE (Atomic Simulation Environment) and LAMMPS\n- Data analysis skills using machine learning and statistical tools (e.g., NumPy, Pandas, scikit-learn)\nPreferred\n- Experience in research and development, as well as writing papers on physical simulations\n- Knowledge and proficiency in computational chemistry software and auxiliary tools\n- Experience using software like GAUSSIAN, VASP, RDKit, Open Babel, etc.\n- Experience in research and development, as well as writing papers in the fields of cheminformatics and materials informatics\n- Ability to actively discuss with engineers from different fields and companies\n- Ability to keep up with the latest research trends and replicate studies\n- Deep insights and experience in one's area of expertise\n- Willingness to constantly learn new domain knowledge\n- Ability to engage in smooth discussions with customers\n- Presentation skills that captivate an audience\n- Market and customer analysis skills\n- Passion for market expansion and exploration\n- English language ability\n- Japanese language ability\nRequired documents in addition to a resume\n- Paper list\nAppeal\n- You can be involved in socially beneficial work, such as material development to achieve the SDGs.\n- You can engage with cutting-edge challenges faced by various industry-leading companies.\n- As a member of a small startup, you will have a large scope of responsibility and discretion.\n- You can be involved as a stakeholder in the growth of a startup company.\n- You can contribute to the global dissemination of software originating from Japan.\nType of Employment\nFull-time employee, a probationary period of 3 months (same terms and conditions as the primary employment)\nLocation\n- Tokyo, Japan\n- WFH available\nWork schedule\n- Saturdays, Sundays, national holidays, national holidays, other (congratulation, condolence, year-end and New Year holidays)\n- Full flextime system (no core time)\n- Remote work is possible.\n- Annual paid leave system by our company's regulations.\nCompensation\n- Compensation based on experience, performance, ability, and contribution\n- Reviewed twice a year\n- In addition to base salary, bonus based on company performance and individual performance (twice a year, in April and October)\n- Transportation expenses paid (maximum 150,000 yen/month actual expenses paid; if exceeding the limit, a consultation will be required)\nWelfare\n- Social insurance (employee pension insurance, health insurance, unemployment insurance, worker's accident compensation insurance)\n- Paid vacations, maternity leave, childcare leave, congratulation or condolence leave, etc.\n- Periodic health checkups\n- Subsidy for purchase of laptop PC\n- Smaller Enterprise Retirement Allowance Mutual Aid System\nIf you have a Google account,\nclick here to apply\nIf you don’t have a Google account,\nclick here to apply\nIf you don't have a Google account, you will be asked to send us your resume by email. Sorry for the inconvenience.\nOpenings\nFollow us\n-\nX (Twitter)\n-\nYouTube\n-\nSpeakerDeck\n-\nGitHub\n-\nLinkedIn\nProduct\n- Technologies\n- 3 Key Features\n- Try Matlantis\n- How to Get Started\nCases\n- User Testimonials\n- Simulation Case Studies\n- Research Using Matlantis\n- Research on Matlantis\nCompany\n- Message\n- About Us\n- Careers\nCareers\n- Openings\nNews\nContact\nPrivacy Policy Terms of use Help\n© Preferred Computational Chemistry",
+   "generic": true,
+   "posting_id": "matlantis.com/careers/cs-engineer-2"
+  },
+  {
+   "company": "matlantis",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20240304051027/https://matlantis.com/careers",
+   "url": "https://matlantis.com/careers",
+   "first_seen": "20240304051027",
+   "last_seen": "20240304051027",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "matlantis",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20240620122641/https://matlantis.com/careers",
+   "url": "https://matlantis.com/careers",
+   "first_seen": "20240620122641",
+   "last_seen": "20240620122641",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "matlantis",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20240915033749/https://matlantis.com/careers",
+   "url": "https://matlantis.com/careers",
+   "first_seen": "20240915033749",
+   "last_seen": "20240915033749",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "matlantis",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20241106211242/https://matlantis.com/careers",
+   "url": "https://matlantis.com/careers",
+   "first_seen": "20241106211242",
+   "last_seen": "20241106211242",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "matlantis",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250123030545/https://matlantis.com/careers",
+   "url": "https://matlantis.com/careers",
+   "first_seen": "20250123030545",
+   "last_seen": "20250123030545",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "matlantis",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250620103228/https://matlantis.com/careers",
+   "url": "https://matlantis.com/careers",
+   "first_seen": "20250620103228",
+   "last_seen": "20250620103228",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  }
+ ],
+ "spans": {
+  "matlantis.com/careers/cs-engineer": {
+   "first": "20230607220522",
+   "last": "20230607220522",
+   "n": 1,
+   "url": "https://matlantis.com/careers/cs-engineer"
+  },
+  "matlantis.com/careers/sales": {
+   "first": "20230607223349",
+   "last": "20240805031056",
+   "n": 4,
+   "url": "https://matlantis.com/careers/sales"
+  },
+  "matlantis.com/careers/feed": {
+   "first": "20230709094013",
+   "last": "20230709094013",
+   "n": 1,
+   "url": "https://matlantis.com/careers/feed"
+  },
+  "matlantis.com/careers/cs-engineer-2": {
+   "first": "20240304040648",
+   "last": "20250516072800",
+   "n": 7,
+   "url": "https://matlantis.com/careers/cs-engineer-2"
+  }
+ }
+}

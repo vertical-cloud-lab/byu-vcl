@@ -1,0 +1,102 @@
+{
+  "company": "Telescope Innovations",
+  "slug": "telescope-innovations",
+  "hq": "Vancouver, Canada",
+  "country": "CA",
+  "founded": null,
+  "category": "self-driving lab",
+  "focus": "Self-driving-lab platforms (robotics plus AI software) and process-development tools such as DirectInject-LC for pharma and chemical process chemistry; listed on the CSE (TELI)",
+  "status": "active",
+  "website": "https://telescopeinnovations.com",
+  "funding": [
+    {
+      "date": "2022-11-10",
+      "round": "Non-brokered private placement",
+      "amount_usd_m": 1.08,
+      "original_amount": "CAD 1.46M (4,879,499 units at CAD 0.30)",
+      "type": "equity",
+      "lead_investors": [],
+      "source": "https://www.newsfilecorp.com/release/143859/Telescope-Announces-Closing-of-1.46-Million-NonBrokered-Private-Placement"
+    },
+    {
+      "date": "2025-06-10",
+      "round": "Secured loan from directors and others",
+      "amount_usd_m": 0.88,
+      "original_amount": "CAD 1.2M at 6.95%, due 2026-06-01",
+      "type": "debt",
+      "lead_investors": [
+        "Henry Dubina",
+        "Jason Hein"
+      ],
+      "source": "https://www.globenewswire.com/news-release/2025/06/11/3097239/0/en/Telescope-Innovations-Directors-Establish-Private-Debt-Instrument-to-Accelerate-Development-of-Self-Driving-Labs.html"
+    },
+    {
+      "date": "2025-09",
+      "round": "Private placement, tranche 1 (LIFE exemption)",
+      "amount_usd_m": 3.75,
+      "original_amount": "CAD 5.2M (20,813,184 shares at CAD 0.25)",
+      "type": "equity",
+      "lead_investors": [],
+      "source": "https://finder.techleap.nl/news/feed/telescope-innovations-raises-5-2m-funding"
+    },
+    {
+      "date": "2025-10",
+      "round": "Private placement, tranche 2",
+      "amount_usd_m": 0.93,
+      "original_amount": "CAD 1.3M (5,186,816 shares at CAD 0.25)",
+      "type": "equity",
+      "lead_investors": [],
+      "source": "https://finder.techleap.nl/news/feed/telescope-innovations-raises-1-29m-funding"
+    }
+  ],
+  "headcount": [],
+  "postings": [],
+  "current_openings": {
+    "date": "2026-10-09",
+    "count": null,
+    "by_function": {},
+    "titles": [],
+    "source": "https://telescopeinnovations.com"
+  },
+  "people": [
+    {
+      "name": "Jason Hein",
+      "title": "Founder; CEO (2022), then Founder & CTO and director (2025)",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": null,
+      "start_basis": "Named CEO in the 2022-11-10 release; Founder and CTO in the 2025-06-10 release",
+      "end": null,
+      "background": "Professor of chemistry, University of British Columbia (company is a UBC spinout per the brief; not verified here)",
+      "source": "https://www.globenewswire.com/news-release/2025/06/11/3097239/0/en/Telescope-Innovations-Directors-Establish-Private-Debt-Instrument-to-Accelerate-Development-of-Self-Driving-Labs.html"
+    },
+    {
+      "name": "Henry Dubina",
+      "title": "CEO and Chairman of the Board",
+      "function": "leadership",
+      "seniority": "exec",
+      "start": null,
+      "start_basis": "CEO and Chairman in the 2025-06-10 release; Hein was CEO on 2022-11-10, so the handover falls between those dates",
+      "end": null,
+      "background": "Not stated in sources read",
+      "source": "https://www.globenewswire.com/news-release/2025/06/11/3097239/0/en/Telescope-Innovations-Directors-Establish-Private-Debt-Instrument-to-Accelerate-Development-of-Self-Driving-Labs.html"
+    }
+  ],
+  "staff_roles": [],
+  "departures": [
+    {
+      "who": "Jason Hein",
+      "title": "CEO (moved to CTO)",
+      "date": null,
+      "basis": "CEO on 2022-11-10; by 2025-06-10 Henry Dubina was CEO and Hein was Founder & CTO",
+      "source": "https://www.globenewswire.com/news-release/2025/06/11/3097239/0/en/Telescope-Innovations-Directors-Establish-Private-Debt-Instrument-to-Accelerate-Development-of-Self-Driving-Labs.html"
+    }
+  ],
+  "notes": [
+    "Minimal pass: only funding and leadership from press releases were collected. Headcount, postings, SEDAR+/CSE filings (MD&A), Wayback and OpenAlex were not checked for lack of time.",
+    "The February 2025 private placement was paused 'due to tariff uncertainty and public market volatility' (2025-06-10 release); the directors' CAD 1.2M loan bridged the gap, then a CAD 0.25/share placement (expanded to up to CAD 6.5M) closed in two tranches in Sep and Oct 2025. The tranche amounts come from Techleap summaries citing Stockwatch, not the company's own releases.",
+    "A TipRanks item describes an undated non-brokered placement of up to CAD 3M at CAD 0.40 per unit; not placed in the timeline.",
+    "Founding year not verified. Website telescopeinnovations.com confirmed live 2026-10-09 (homepage only; careers not checked).",
+    "Public-company status makes this the best-documented company on paper (quarterly MD&A, CSE Form 9 notices), so a follow-up pass could add audited headcount and every financing."
+  ]
+}
