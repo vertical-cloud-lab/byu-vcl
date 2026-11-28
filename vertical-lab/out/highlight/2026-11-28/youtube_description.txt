@@ -1,0 +1,56 @@
+Where BYU's vertical cloud lab design study stands on 28 November 2026: seven shots of the alloy route in 3-D, one of the lab's own atomizer, six of what the lab model gained since round 15, three from the digital twin's latest finished round, then the whole lab at speed. Each caption names the instruments or the result in the shot; the sources' own captions and narration are left out.
+
+0:00 The alloy route: 1/7 The charge
+0:15 The alloy route: 2/7 Melt and atomize
+0:27 The alloy route: 3/7 Sieve and print
+0:39 The alloy route: 4/7 The powder, checked
+0:52 The alloy route: 5/7 Depowder, cut, heat treat, test
+1:04 The alloy route: 6/7 Sample prep
+1:15 The alloy route: 7/7 Characterizing the build
+1:27 In the real lab: The lab's own atomizer (DAL)
+1:37 New in the lab: Automating the atomizer (#353)
+1:48 New in the lab: Services on every tray
+1:59 New in the lab: Safety assets (#379)
+2:09 New in the lab: Cleaning the floor (#369)
+2:20 New in round 16: Waste (#371)
+2:31 New in the lab: Scaling up
+2:42 The digital twin, round 5: Two simulated years
+2:53 The digital twin, round 5: The two labs, like for like
+3:03 The digital twin, round 5: Floor space (#406)
+3:14 The whole lab at speed: a model year, week by week, then month by month
+
+Each shot in its full video:
+1/7 The charge: https://youtu.be/YWbplBXPC84?t=1167
+2/7 Melt and atomize: https://youtu.be/YWbplBXPC84?t=1713
+3/7 Sieve and print: https://youtu.be/YWbplBXPC84?t=2861
+4/7 The powder, checked: https://youtu.be/YWbplBXPC84?t=3147
+5/7 Depowder, cut, heat treat, test: https://youtu.be/YWbplBXPC84?t=3607
+6/7 Sample prep: https://youtu.be/YWbplBXPC84?t=3894
+7/7 Characterizing the build: https://youtu.be/YWbplBXPC84?t=4039
+The lab's own atomizer (DAL): https://youtu.be/2brsz-90seg?t=497
+Automating the atomizer (#353): https://youtu.be/YWbplBXPC84?t=2264
+Services on every tray: https://youtu.be/YWbplBXPC84?t=254
+Safety assets (#379): https://youtu.be/YWbplBXPC84?t=539
+Cleaning the floor (#369): https://youtu.be/YWbplBXPC84?t=5089
+Waste (#371): https://youtu.be/YWbplBXPC84?t=5310
+Scaling up: https://youtu.be/YWbplBXPC84?t=4736
+Two simulated years: https://youtu.be/Ty6njW-GF74?t=556
+The two labs, like for like: https://youtu.be/Ty6njW-GF74?t=858
+Floor space (#406): https://youtu.be/Ty6njW-GF74?t=1100
+The whole lab at speed: a model year, week by week, then month by month: https://youtu.be/YWbplBXPC84?t=5436
+
+The lab, start to finish (round 16, 1:31:05): https://www.youtube.com/watch?v=YWbplBXPC84
+The twin's two simulated years (round 5, 19:54): https://www.youtube.com/watch?v=Ty6njW-GF74
+
+A 3-D animation of a design study at BYU's Vertical Cloud Lab, not footage of a working lab: two Kardex vertical lift modules hold the instruments on powered trays, and UR12e arms (the UR10e, renamed in 2025) on MiR250 mobile bases work at their openings and at the floor machines. Panels that aren't measured are badged computed or illustrative.
+The digital twin's results are simulated: synthetic truths, simulated instruments, and assumed capacities, prices, lead times and schedules. Its atomizer rates are design targets, not the lab's record. Round 5 is its latest finished round (16 runs an arm, like for like); round 6 is running.
+
+In the real lab (https://github.com/vertical-cloud-lab/digital-alloy-lab): the AMAZEMET rePowder logged 10 runs from 2 Oct to 13 Nov 2026, five of aluminium alloys and five of 630 nickel aluminium bronze. The bronze of 27 and 28 Oct, sieved together, gave 1,015 g under 250 um from 1,938 g charged (DAL PR 286). It hasn't run since 13 Nov, when a run burned the collection cup's seals; the next runs wait on a new cup (DAL #269). The lab's own powder hasn't been printed yet; AlSi10Mg printed at the University of Utah from bought powder gave a yield strength of 228 +/- 13 MPa and a UTS of 376 +/- 10 MPa (DAL PR 288).
+
+An open question, in PR #410 (under review): is the vertical lift worth it? In the twin's own logs the mobile manipulators are 1-2 % busy, so transport doesn't bind; the gain is floor space (29 % less for today's 43 instruments, 51 % at the Shuttles' full 45 trays). https://github.com/vertical-cloud-lab/byu-vcl/pull/410
+
+Cut with https://github.com/vertical-cloud-lab/byu-vcl/blob/3710709/vertical-lab/highlight.py from the videos as YouTube serves them.
+Code, notes and sources: https://github.com/vertical-cloud-lab/byu-vcl/tree/3710709/vertical-lab
+PR: https://github.com/vertical-cloud-lab/byu-vcl/pull/390
+
+Requested in https://github.com/vertical-cloud-lab/byu-vcl/pull/390#issuecomment-7236449593

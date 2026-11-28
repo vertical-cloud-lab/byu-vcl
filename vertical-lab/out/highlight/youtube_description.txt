@@ -1,0 +1,28 @@
+Highlights of the vertical cloud lab's round-15 long-form, https://www.youtube.com/watch?v=79FL6mTFSsI (1:28:55, 67 chapters): one shot from each chapter of the alloy route, then the whole lab at speed. Each caption names the instruments in the shot; the long-form's own captions and narration are left out.
+
+0:00 The charge: powder-doser's chain carousel v5 · A&D HR-202i balance · Specac Atlas Autotouch 15T vacuum press
+0:24 Melt and atomize: AMAZEMET rePowder ultrasonic atomizer, cut open for the pour
+0:40 Sieve and print: Retsch AS 200 sieve shaker, in a downdraft enclosure
+0:58 The powder, checked: Rigaku MiniFlex benchtop powder XRD, its housing drawn see-through
+1:18 Depowder, cut, heat treat, test: Instron 68FM-100 · 3119-608 environmental chamber · AVE 2 video extensometer
+1:38 Sample prep: LECO PX500 grinder-polisher and its magazine of pre-loaded discs
+1:53 Characterizing the build: Hitachi TM4000PlusII tabletop SEM · Oxford Instruments AZtecOne EDS
+2:10 The whole lab at speed: Two 30 ft Kardex Shuttle XP 500s with 19 trays, the floor machines and two UR12e arms on MiR250s
+
+Each shot in the full video:
+The charge: https://youtu.be/79FL6mTFSsI?t=1139
+Melt and atomize: https://youtu.be/79FL6mTFSsI?t=1682
+Sieve and print: https://youtu.be/79FL6mTFSsI?t=2831
+The powder, checked: https://youtu.be/79FL6mTFSsI?t=3114
+Depowder, cut, heat treat, test: https://youtu.be/79FL6mTFSsI?t=3575
+Sample prep: https://youtu.be/79FL6mTFSsI?t=3863
+Characterizing the build: https://youtu.be/79FL6mTFSsI?t=4006
+The whole lab at speed: https://youtu.be/79FL6mTFSsI?t=5297
+
+A 3-D animation of a design study at BYU's Vertical Cloud Lab, not footage of a working lab: two Kardex vertical lift modules hold the instruments on powered trays, and UR12e arms (the UR10e, renamed in 2025) on MiR250 mobile bases work at their openings and at the floor machines. Panels that aren't measured are badged computed or illustrative.
+
+Cut with https://github.com/vertical-cloud-lab/byu-vcl/blob/f90ff956/vertical-lab/highlight.py from the long-form as YouTube serves it (720p).
+Code, notes and sources: https://github.com/vertical-cloud-lab/byu-vcl/tree/f90ff956/vertical-lab
+PR: https://github.com/vertical-cloud-lab/byu-vcl/pull/318
+
+Requested in https://github.com/vertical-cloud-lab/byu-vcl/pull/318#issuecomment-7177099697
