@@ -8,6 +8,8 @@ Hangzhou, China (registered entity; also reported as Shenzhen; started in Boston
 What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
 
 **LinkedIn job search** ([logged out, by name](https://www.linkedin.com/jobs/search?keywords=%22Deep%20Principle%22&location=Worldwide&geoId=92000000), 2026-11-28): no postings.
+
+- An English release says the Series A is complete and total funding exceeds $100M. It gives no new amount and appears to restate the July close. ([source](https://www.eznewswire.com/newsroom/deep-principle-series-a-funding-materials-ai))
 <!-- /refresh:2026-11-28 -->
 
 Generative AI for chemical reactions and materials: OA-ReactDiff and React-OT for transition states, the MPA property model and the SAGA generator. Its products are the Mira "AI scientist" agent and the AI Materials Factory, which it describes as an autonomous high-throughput lab.

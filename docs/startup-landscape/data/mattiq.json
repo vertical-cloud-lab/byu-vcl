@@ -85,16 +85,6 @@
       "added": "2026-11-28"
     },
     {
-      "date": "2025-01-30",
-      "value": 19,
-      "low": 11,
-      "high": 50,
-      "method": "linkedin-band",
-      "note": "LinkedIn 'View all 19 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
-      "source": "https://web.archive.org/web/20250130154241/https://www.linkedin.com/company/mattiq",
-      "added": "2026-11-28"
-    },
-    {
       "date": "2026-10-09",
       "value": null,
       "low": 5,
@@ -111,8 +101,8 @@
     "count": 0,
     "by_function": {},
     "titles": [],
-    "source": "https://www.linkedin.com/jobs/search?keywords=%22Mattiq%22&location=Worldwide&geoId=92000000",
-    "basis": "LinkedIn public job search, logged out, by name",
+    "source": "https://www.linkedin.com/jobs/search?f_C=75435970&geoId=92000000&location=Worldwide",
+    "basis": "LinkedIn public job search, logged out, by company ID",
     "previous": {
       "date": "2026-10-09",
       "count": 0,

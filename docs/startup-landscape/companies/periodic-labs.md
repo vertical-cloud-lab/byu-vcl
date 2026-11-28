@@ -21,7 +21,7 @@ What changed between the first snapshot (2026-10-10) and 2026-11-28. The method 
 **Openings.** 27 open on 2026-11-28 on [its job board](https://jobs.ashbyhq.com/periodic-labs), against 33 on 2026-10-10. 0 new, 6 closed.
 - Closed since 2026-10-10: Business Operations, Product & Science; Electrical Technician; Equipment Engineer; Forward Deployed Engineer, Physics & Simulation; ML Systems Engineer; Research Scientist, Condensed Matter Theory.
 
-**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=108918379&geoId=92000000&location=Worldwide), 2026-11-28): 25 postings: Don't See Your Role? Apply Here! (Menlo Park, CA, posted 2026-09-11); Technical Recruiter (Menlo Park, CA, posted 2026-08-21); Computational Scientist, Differentiable Physics (Menlo Park, CA, posted 2026-09-04); Research Scientist/Research Engineer, Midtraining (Menlo Park, CA, posted 2026-09-30); Research Scientist/Research Engineer, Materials Data (Menlo Park, CA, posted 2026-09-01); Research Scientist, Data (Montreal, Quebec, Canada, posted 2026-08-22); XRD Facility Manager (Menlo Park, CA, posted 2026-09-15); Software Engineer (Menlo Park, CA, posted 2026-02-11); Research Scientist, Data (Menlo Park, CA, posted 2026-08-22); Procurement & Finance Operations Manager (Menlo Park, CA, posted 2026-05-21); Product Engineer (Menlo Park, CA, posted 2026-06-21); Controller (Menlo Park, CA, posted 2026-10-06) and 13 more.
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=108918379&geoId=92000000&location=Worldwide), 2026-11-28): 25 postings across Menlo Park, CA (24), Montreal, Quebec, Canada (1).
 <!-- /refresh:2026-11-28 -->
 
 ## Funding timeline

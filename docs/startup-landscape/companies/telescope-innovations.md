@@ -18,6 +18,8 @@ What changed between the first snapshot (2026-10-10) and 2026-11-28. The method 
 **Openings.** 0 open on 2026-11-28 on [its job board](https://www.linkedin.com/jobs/search?f_C=76182686&geoId=92000000&location=Worldwide&original_referer=), against 0 on 2026-10-10. 0 new, 0 closed.
 
 **LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=76182686&geoId=92000000&location=Worldwide&original_referer=), 2026-11-28): 1 posting: Product Manager (Vancouver, British Columbia, Canada, posted 2026-11-16, 95 applicants).
+
+- Preliminary unaudited FY2026 results (to 31 August): revenue about C$9.3M, up 60%, and a net loss of about C$4.6M. ([source](https://investingnews.com/telescope-innovations-reports-60-revenue-growth-in-preliminary-unaudited-fiscal-year-2026-results/))
 <!-- /refresh:2026-11-28 -->
 
 Minimal pass: funding and leadership only, from the company's own press releases plus two secondary summaries.

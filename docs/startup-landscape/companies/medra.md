@@ -22,7 +22,7 @@ What changed between the first snapshot (2026-10-10) and 2026-11-28. The method 
 - New since 2026-10-10: Forward Deployed Robotics Engineer; Mechanical Engineer - Winter 2026 Internship; Recruiting Coordinator.
 - Closed since 2026-10-10: Business Operations; Robotics Manufacturing Technician; Scientific Operations.
 
-**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=89739944&geoId=92000000&location=Worldwide&original_referer=), 2026-11-28): 15 postings: Scientist, Biophysical Characterization (SPR/BLI) (San Francisco, CA, posted 2026-08-04); Research Engineer, Post-training (San Francisco, CA, posted 2026-10-02); Mechanical Engineer (San Francisco, CA, posted 2026-05-30); Robotics Software Engineer (San Francisco, CA, posted 2026-07-14); Full Stack Software Engineer (San Francisco, CA, posted 2026-07-14); Recruiting Coordinator (San Francisco, CA, posted 2026-10-13); Research Associate, Protein Purification & Quality Control (San Francisco, CA, posted 2026-08-31); Tech Lead Manager - Full Stack (San Francisco, CA, posted 2026-05-12); Scientist, Cell Biology & Antibody Engineering (San Francisco, CA, posted 2026-05-12); Scientist, Biology (San Francisco, CA, posted 2026-10-06); Systems Test Engineer (San Francisco, CA, posted 2026-07-27); Research Associate - Foundry (San Francisco, CA, posted 2026-06-05) and 3 more.
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=89739944&geoId=92000000&location=Worldwide&original_referer=), 2026-11-28): 15 postings across San Francisco, CA (15).
 <!-- /refresh:2026-11-28 -->
 
 ## Funding timeline

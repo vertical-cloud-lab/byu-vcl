@@ -6,7 +6,7 @@
   "founded": "2023",
   "category": "self-driving lab",
   "focus": "Autonomous 'AI scientist' software and sensors retrofitted onto existing liquid-handling robots (ResearchOS); first system in a rare-disease gene-therapy lab",
-  "status": "active",
+  "status": "unclear",
   "website": "https://www.tetsuwan.com",
   "funding": [
     {
@@ -92,6 +92,7 @@
     "Conflicting: StartupIntros lists a USD 3M seed in April 2024 and USD 5.7M total; VC Backed dates the pre-seed to April 2024. Neither is corroborated, so only the 2024-11-19 USD 2.7M round is recorded. No Form D was found in EDGAR full-text search for 'Tetsuwan'.",
     "Openings: 2 on Ashby (board 'tetsuwan'), both published 2026-06-03. 'Product Designer' is counted under software-eng.",
     "Not done (time and Wayback budget): team-page or LinkedIn headcount via Wayback, posting history, OpenAlex. No headcount datapoint was found. Bio-lab focused, not materials.",
-    "Positioning shift: the live homepage (2026-10-09) reads 'Building a biology lab you can use from your browser'. Researchers run experiments on 'our cloud lab' via ResearchOS. The 2024 pitch was retrofitting liquid handlers inside customer labs, so the company is moving toward a cloud-lab model. Source: https://www.tetsuwan.com"
+    "Positioning shift: the live homepage (2026-10-09) reads 'Building a biology lab you can use from your browser'. Researchers run experiments on 'our cloud lab' via ResearchOS. The 2024 pitch was retrofitting liquid handlers inside customer labs, so the company is moving toward a cloud-lab model. Source: https://www.tetsuwan.com",
+    "28 Nov 2026: tetsuwan.com fails at the TLS handshake (it was up in the 12 Oct 2026 Wayback capture), while its Ashby board still lists two roles posted 3 Jun 2026. Search snippets point to a late-October LinkedIn post saying it is closing; that post was not opened and no other source was found, so the status is unconfirmed."
   ]
 }

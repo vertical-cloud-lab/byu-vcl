@@ -51,11 +51,11 @@ def linkedin_headcount(d, pages):
     keep, run = [], []
     for o in obs:
         if run and (o.get("members"), o.get("size")) != (run[-1].get("members"), run[-1].get("size")):
-            keep += [run[0]] + ([run[-1]] if len(run) > 1 else [])
+            keep += [run[0]] + ([run[-1]] if len(run) > 1 and run[-1]["date"] != run[0]["date"] else [])
             run = []
         run.append(o)
     if run:
-        keep += [run[0]] + ([run[-1]] if len(run) > 1 else [])
+        keep += [run[0]] + ([run[-1]] if len(run) > 1 and run[-1]["date"] != run[0]["date"] else [])
     # A band alone is added only for a company with no counted team size at all, and then only the latest.
     counted = [o for o in keep if o.get("members")] or [h for h in d.get("headcount") or [] if h.get("value") is not None]
     from datetime import date as _d
@@ -249,7 +249,18 @@ def profile_block(d, pages, li, news, date, prev_date):
     if li:
         cards = li.get("cards") or []
         how = "by company ID" if li.get("f_C") else "by name"
-        if cards:
+        m = re.match(r"([\d,]+) Jobs? in", li.get("header") or "")
+        total = int(m.group(1).replace(",", "")) if m else len(cards)
+        if cards and total > len(cards):
+            where = Counter(c.get("location") for c in cards).most_common(4)
+            lines.append(f"**LinkedIn job search** ([logged out, {how}]({li['search_url']}), {li['fetched_utc'][:10]}): "
+                         f"{total} postings, the same roles as its own board, listed in "
+                         + ", ".join(f"{loc} ({n})" for loc, n in where) + f" among the first {len(cards)}.")
+        elif cards and len(cards) > 12 and slug not in ("matlantis", "telescope-innovations"):
+            where = Counter(c.get("location") for c in cards).most_common(4)
+            lines.append(f"**LinkedIn job search** ([logged out, {how}]({li['search_url']}), {li['fetched_utc'][:10]}): "
+                         f"{len(cards)} postings across " + ", ".join(f"{loc} ({n})" for loc, n in where) + ".")
+        elif cards:
             items = "; ".join(f'{_clean_title(c["title"])} ({c.get("location") or "location n/a"}, posted {c.get("posted") or "n/a"}'
                               + (f', {c["applicants"]}' if c.get("applicants") else "") + ")" for c in cards[:12])
             more = f" and {len(cards) - 12} more" if len(cards) > 12 else ""

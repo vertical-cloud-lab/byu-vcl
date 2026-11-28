@@ -7,7 +7,7 @@ Back to [all companies](README.md) · [company profile](../companies/dunia-innov
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
 | 2025-07-01 | open | [Spontaneous application](#spontaneous-application-2025-07-01) | general-application |  | Berlin |  |  |  | [live](https://dunia.jobs.personio.com/job/2205674?language=en) [Wayback](https://web.archive.org/web/20250916072056/https://dunia.jobs.personio.com/job/2205674?language=en) |
-| 2025-07-29 | 2026-10-10 | [Business Development Manager](#business-development-manager-2025-07-29) | business-ops |  | Berlin | PhD/MS | 3 |  | [live](https://dunia.jobs.personio.com/job/2267425?language=en) |
+| 2025-07-29 | 2026-10-10 | [Business Development Manager](#business-development-manager-2025-07-29) | business-ops |  | Berlin | PhD/MS | 3 |  | [live](https://dunia.jobs.personio.com/job/2267425?language=en) [Wayback](https://web.archive.org/web/20250916072721/https://dunia.jobs.personio.com/job/2267425?language=en) |
 | 2026-02-02 | open | [Head of AI Research](#head-of-ai-research-2026-02-02) | leadership |  | Berlin | PhD |  |  | [live](https://dunia.jobs.personio.com/job/2516220?language=en) |
 | 2026-02-02 | open | [Materials Informatics Scientist (Evaluation-focused)](#materials-informatics-scientist-evaluation-focused-2026-02-02) | materials-science |  | Berlin | PhD/MS |  |  | [live](https://dunia.jobs.personio.com/job/2516249?language=en) |
 | 2026-02-04 | 2026-10-10 | [Chemical Data Scientist](#chemical-data-scientist-2026-02-04) | ml-research |  | Berlin | PhD/MS | 3 |  | [live](https://dunia.jobs.personio.com/job/2519182?language=en) |
@@ -15,13 +15,13 @@ Back to [all companies](README.md) · [company profile](../companies/dunia-innov
 | 2026-02-04 | 2026-10-10 | [Lab Technicians](#lab-technicians-2026-02-04) | lab-automation |  | Berlin |  |  |  | [live](https://dunia.jobs.personio.com/job/2519206?language=en) |
 | 2026-02-04 | 2026-10-10 | [Research Scientist, Thermocatalysis](#research-scientist-thermocatalysis-2026-02-04) | materials-science |  | Berlin | PhD | 3 |  | [live](https://dunia.jobs.personio.com/job/2519204?language=en) |
 | 2026-02-04 | 2026-10-10 | [Software Engineer, Infrastructure](#software-engineer-infrastructure-2026-02-04) | software-eng |  | Berlin |  | 2 |  | [live](https://dunia.jobs.personio.com/job/2519188?language=en) |
-| 2026-02-06 | 2026-10-10 | [ML Engineer, Agents & Reasoning](#ml-engineer-agents-reasoning-2026-02-06) | ml-research |  | Berlin |  | 4 |  | [live](https://dunia.jobs.personio.com/job/2521701?language=en) |
-| 2026-02-06 | 2026-10-10 | [ML Researcher, Representation Learning](#ml-researcher-representation-learning-2026-02-06) | ml-research |  | Berlin | PhD | 4 |  | [live](https://dunia.jobs.personio.com/job/2521638?language=en) |
-| 2026-02-06 | 2026-10-10 | [Manufacturing Systems Engineer](#manufacturing-systems-engineer-2026-02-06) | software-eng |  | Berlin |  |  |  | [live](https://dunia.jobs.personio.com/job/2521931?language=en) |
-| 2026-02-06 | 2026-10-10 | [Quantum Chemistry Specialist](#quantum-chemistry-specialist-2026-02-06) | materials-science |  | Berlin | PhD | 3 |  | [live](https://dunia.jobs.personio.com/job/2521891?language=en) |
-| 2026-02-06 | 2026-10-10 | [Reliability & Test Engineer](#reliability-test-engineer-2026-02-06) | software-eng |  | Berlin |  | 5 |  | [live](https://dunia.jobs.personio.com/job/2521947?language=en) |
+| 2026-02-06 | 2026-10-10 | [ML Engineer, Agents & Reasoning](#ml-engineer-agents-reasoning-2026-02-06) | ml-research |  | Berlin |  | 4 |  | [live](https://dunia.jobs.personio.com/job/2521701?language=en) [Wayback](https://web.archive.org/web/20260310155616/https://dunia.jobs.personio.com/job/2521701?language=en) |
+| 2026-02-06 | 2026-10-10 | [ML Researcher, Representation Learning](#ml-researcher-representation-learning-2026-02-06) | ml-research |  | Berlin | PhD | 4 |  | [live](https://dunia.jobs.personio.com/job/2521638?language=en) [Wayback](https://web.archive.org/web/20260310153052/https://dunia.jobs.personio.com/job/2521638?language=en) |
+| 2026-02-06 | 2026-10-10 | [Manufacturing Systems Engineer](#manufacturing-systems-engineer-2026-02-06) | software-eng |  | Berlin |  |  |  | [live](https://dunia.jobs.personio.com/job/2521931?language=en) [Wayback](https://web.archive.org/web/20260310161640/https://dunia.jobs.personio.com/job/2521931?language=en) |
+| 2026-02-06 | 2026-10-10 | [Quantum Chemistry Specialist](#quantum-chemistry-specialist-2026-02-06) | materials-science |  | Berlin | PhD | 3 |  | [live](https://dunia.jobs.personio.com/job/2521891?language=en) [Wayback](https://web.archive.org/web/20260310153124/https://dunia.jobs.personio.com/job/2521891?language=en) |
+| 2026-02-06 | 2026-10-10 | [Reliability & Test Engineer](#reliability-test-engineer-2026-02-06) | software-eng |  | Berlin |  | 5 |  | [live](https://dunia.jobs.personio.com/job/2521947?language=en) [Wayback](https://web.archive.org/web/20260310150118/https://dunia.jobs.personio.com/job/2521947?language=en) |
 | 2026-04-10 | 2026-05-14 | [Head of People](#head-of-people-2026-04-10) | leadership |  |  |  |  |  | [Wayback](https://web.archive.org/web/20260410191200/https://dunia.jobs.personio.com/job/2515890) |
-| 2026-04-10 | 2026-06-17 | [Partnership Manager](#partnership-manager-2026-04-10) | business-ops |  |  |  | 5 |  | [Wayback](https://web.archive.org/web/20260410203801/https://dunia.jobs.personio.com/job/2516252) |
+| 2026-04-10 | 2026-07-13 | [Partnership Manager](#partnership-manager-2026-04-10) | business-ops |  |  |  | 5 |  | [Wayback](https://web.archive.org/web/20260410203801/https://dunia.jobs.personio.com/job/2516252) |
 | 2026-06-17 | 2026-06-17 | [Bilanzbuchhalter/in (IHK) / Finance Manager (m/w/d) — 20 Std./Woche, hybrid](#bilanzbuchhalter-in-ihk-finance-manager-m-w-d-20-std-woche-hybrid-2026-06-17) | business-ops |  |  |  |  |  | [Wayback](https://web.archive.org/web/20260617195805/https://dunia.jobs.personio.com/job/2630177) |
 
 ## Descriptions
@@ -676,7 +676,7 @@ Protect and evolve company culture
 
 ### Partnership Manager (2026-04-10)
 
-2026-04-10 → 2026-06-17 · business-ops · location not stated · [source](https://web.archive.org/web/20260410203801/https://dunia.jobs.personio.com/job/2516252)
+2026-04-10 → 2026-07-13 · business-ops · location not stated · [source](https://web.archive.org/web/20260410203801/https://dunia.jobs.personio.com/job/2516252)
 
 <details><summary>Description</summary>
 

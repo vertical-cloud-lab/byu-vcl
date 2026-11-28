@@ -485,6 +485,18 @@
       "end": null,
       "background": "Professor; carbon-capture process engineering",
       "source": "https://hyper.ai/de/news/35190"
+    },
+    {
+      "name": "Susumu Kitagawa",
+      "title": "Advisory board",
+      "function": "leadership",
+      "seniority": "advisor",
+      "start": "2026-11",
+      "start_basis": "company release, 19 Nov 2026",
+      "end": null,
+      "background": "2025 Nobel laureate in Chemistry (metal-organic frameworks), Kyoto University",
+      "source": "https://www.financialcontent.com/article/bizwire-2026-11-19-nobel-prize-winning-chemist-susumu-kitagawa-joins-cuspai-advisory-board",
+      "added": "2026-11-28"
     }
   ],
   "staff_roles": [
@@ -538,6 +550,7 @@
     "OpenAlex has no institution record; raw-affiliation search finds 59 works and 10 distinct CuspAI-affiliated authors (5 in 2025, 7 in 2026), a lower bound on publishing staff.",
     "Current openings function mapping: program managers, developer relations, partnerships, ecosystem and talent roles -> business-ops; data engineer -> software-eng; application scientists -> materials-science; internship and agents engineer -> ml-research.",
     "Posting history merges 6 Wayback-captured Ashby posting IDs (board first captured Oct 2025) with live Ashby publishedAt dates; earliest date per ID wins. Hiring before Oct 2025 is invisible here.",
-    "Older LinkedIn captures (Jul 2024, Apr and Dec 2025) exist in Wayback but were not re-read after the gzip fix; only the Aug 2026 capture is used."
+    "Older LinkedIn captures (Jul 2024, Apr and Dec 2025) exist in Wayback but were not re-read after the gzip fix; only the Aug 2026 capture is used.",
+    "19 Nov 2026 release: CuspAI 'has raised over $725M', about $145M more than the rounds on record ($30M seed, $100M+ Series A, $450M Series B); no announcement of the difference was found. The same release describes Asia-Pacific operations in Tokyo (a Japanese entity, CuspAI KK) and Singapore."
   ]
 }

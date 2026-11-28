@@ -112,8 +112,8 @@
    "function": "leadership",
    "seniority": "founder",
    "start": "2020",
-   "start_basis": "founding (press); Form D 2024 executive officer and director",
-   "end": "by 2026-03 (inferred from Form D)",
+   "start_basis": "founding (press); Form D 2024 executive officer and director; CEO in the 2025-12-05 capture of the leadership page, absent from it by 2026-03-09",
+   "end": "2026-03",
    "background": "PhD Stanford (battery materials ML)",
    "source": "https://www.sec.gov/Archives/edgar/data/2023133/000202313324000001/primary_doc.xml"
   },
@@ -130,11 +130,11 @@
   },
   {
    "name": "Venkat Viswanathan",
-   "title": "Co-founder; director; executive officer by 2026",
+   "title": "Co-founder; Chief Scientist, then CEO (by Mar 2026); director",
    "function": "leadership",
    "seniority": "founder",
    "start": "2020",
-   "start_basis": "founding (press); Form D 2024 director; 2026 executive officer and director",
+   "start_basis": "founding (press); Form D 2024 director; 2026 executive officer and director; leadership page: Chief Scientist in the 2025-12-05 capture, CEO in the 2026-03-09 capture and on 2026-11-28",
    "end": null,
    "background": "professor, Univ. of Michigan (previously Carnegie Mellon)",
    "source": "https://www.sec.gov/Archives/edgar/data/2023133/000202313326000001/primary_doc.xml"

@@ -10,6 +10,8 @@ What changed between the first snapshot (2026-10-10) and 2026-11-28. The method 
 **Openings.** 2 open on 2026-11-28 on [its job board](https://jobs.ashbyhq.com/tetsuwan), against 2 on 2026-10-10. 0 new, 0 closed.
 
 **LinkedIn job search** ([logged out, by name](https://www.linkedin.com/jobs/search?keywords=%22Tetsuwan%20Scientific%22&location=Worldwide&geoId=92000000), 2026-11-28): no postings.
+
+- Possibly shut down, unconfirmed. tetsuwan.com fails at the TLS handshake on 28 November (it was up on 12 October), though its Ashby board still lists two June roles. Search snippets point to a late-October LinkedIn post about closing, which was not opened. ([source](https://web.archive.org/web/20261012082833/https://tetsuwan.com/))
 <!-- /refresh:2026-11-28 -->
 
 ## Funding timeline

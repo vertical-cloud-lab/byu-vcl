@@ -21,6 +21,16 @@
         "Felicis"
       ],
       "source": "https://www.cathaycapital.com/behind-the-term-sheet-entalpics-8-5m-seed/"
+    },
+    {
+      "date": "2026-10-12",
+      "round": "Strategic investment, planned (NVIDIA; amount undisclosed)",
+      "amount_usd_m": null,
+      "original_amount": "undisclosed (minority stake per Les Echos via Tech.eu)",
+      "type": "equity",
+      "lead_investors": "NVIDIA",
+      "source": "https://blogs.nvidia.com/blog/france-ecosystem-agentic-computing/",
+      "added": "2026-11-28"
     }
   ],
   "headcount": [

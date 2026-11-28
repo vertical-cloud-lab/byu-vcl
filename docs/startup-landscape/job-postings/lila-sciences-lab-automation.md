@@ -72,31 +72,42 @@ A Note to Agencies
 
 </details>
 
-<a id="scientist-sr-scientist-ai-safety-2025-12-16"></a>
+<a id="senior-manager-research-operations-2025-12-04"></a>
 
-### Scientist/Sr. Scientist, AI Safety (2025-12-16)
+### Senior Manager, Research Operations (2025-12-04)
 
-2025-12-16 → 2026-07-10 · lab-automation · London, UK · [source](https://web.archive.org/web/20260116214847/https://job-boards.greenhouse.io/lilasciences/jobs/4079014009)
+2025-12-04 → 2026-02-28 · lab-automation · Cambridge, MA USA · $148–198K · [source](https://web.archive.org/web/20260228141209/https://job-boards.greenhouse.io/lilasciences/jobs/4069628009)
 
 <details><summary>Description</summary>
 
 **Your Impact at Lila**
-We're building a talent-dense, high-agency AI safety team at Lila that will engage all core teams within the organization (science, model training, lab integration, etc.), to prepare for risks from scientific superintelligence. The initial focus of this team will be to build and implement a bespoke safety strategy for Lila, tailored to its specific goals and deployment strategies. This will involve technical safety strategy development, broader ecosystem engagement, as well as developing technical collateral including risk- and capability-focused evaluations and safeguards.
+Lila Sciences is seeking a deeply technical and rigorous leader to build and lead our Research Operations (ResOps) organization. This role integrates high-throughput production of lab data, automation-assisted laboratory execution, quality control systems, operator career development, and continuous improvement into a unified operating engine that accelerates Lila’s path to scientific superintelligence (SSI).
+Your leadership will directly increase the intelligence and reliability of Lila’s scientific AI systems by ensuring the delivery of high-quality, observable, and reproducible experimental data at scale. You will architect the production and quality infrastructure that transforms cutting-edge R&D into standardized, automated, and continuously-improving scientific operations—and build the team that will power that future. The remit of the Production and Quality functions are as follows:
+Production
+- Validating scientific workflows directly on automated and semi-automated lab equipment
+- Executing experiments with accuracy and consistency
+- Monitoring scientific and operational quality metrics across runs
+- Generating high-quality, fully observable datasets for AI model training
+- Collaborating with domain scientists and AI researchers to realize closed-loop learning
+Quality
+- Ensuring process consistency and scientific integrity
+- Maintaining standard operating procedures and quality control frameworks
+- Performing internal audits and supporting external audits
+- Maintaining end-to-end data integrity and traceability
+- Building a Continuous Integration and Continuous Deployment (CI/CD) infrastructure for quality assurance
 What You'll Be Building
-- Evaluations to test for scientific risks (both known but especially novel) from cutting edge scientific models integrated with automated physical labs
-- Initial proof-of-concept safeguards, such as ML models to detect and block unsafe behavior from scientific AI models, as well as from physical lab outputs.
-- Understanding of a range of model capabilities, across primarily scientific but also non-scientific domains (e.g. persuasion, deception) to inform Lila's broader safety strategy.
-- Broader, high-quality research efforts - as and when needed - for scientific capability evaluation and restriction.
-- Bachelor's degree in a technical field (e.g., computer science, engineering, machine learning, mathematics, physics, statistics), or related experience.
-- Strong programming skills in Python, and experience with ML frameworks (including, for instance, Inspect) for large-scale evaluation and scaffolded testing.
-- Experience in building evaluations, or conducting red-teaming exercises, for CBRN / cyber risks (or for frontier model capabilities more generally, including both unsafe and benign capabilities)
-- Experience in designing and/or implementing (directly or through consultation) AI safety frameworks for frontier AI companies.
-- Ability to communicate complex technical concepts and concerns to non-expert audiences effectively.
+- Design and lead the operational backbone for driving autonomous scientific discovery.
+- Build and deploy the Production and Quality functions for application across life science, chemistry, and materials science
+- Drive the Research Operations team to maximize AI learnings from the lab
+- Establish and own a career development framework that nurtures the most energetic and brilliant minds in Research Operations, with career development paths spanning automation engineering, research science, technical and team leadership, and beyond.
+- Partner with Software/Automation to establish observability dashboards, run-booking systems, and data pipelines
+- Maintain audit-ready traceability, deviations, investigations, and CAPA procedures, where applicable
+- Build a team culture centered on safety, quality, scientific excellence, and professional growth
+- Manage vendor Service Level Agreement (SLA) including turnaround time, availability, and quality of research operations and coordinate with internal stakeholders (i.e., LabOps, procurement and science/product teams)
+- Manage multi-shift coverage, cross-training, and shared instrument scheduling
+- Work with domain scientists and automation engineers to validate scientific workflows before operationalization
 
-**Bonus Points For**
-- Masters or PhD in a field relevant to safety evaluations of AI models in scientific domains, or a technical field.
-- Publications in AI safety / evaluations / model behaviour in top ML / AI conferences (NeurIPS, ICML, ICLR, ACL) or model release system cards.
-- Experience researching risks from novel science (e.g. biosecurity, computational biology, etc.) or working with narrow scientific tools (e.g. large scale foundation models for science).
+*(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
 
@@ -262,77 +273,6 @@ Project Innovation
 
 </details>
 
-<a id="research-scientist-i-ii-ai-safety-biological-physical-sciences-2026-01-26"></a>
-
-### Research Scientist I/II, AI Safety, Biological/ Physical Sciences (2026-01-26)
-
-2026-01-26 → 2026-02-13 · lab-automation · Cambridge, MA USA; London, UK; San Francisco, CA USA · $176–304K · [source](https://web.archive.org/web/20260213064356/https://job-boards.greenhouse.io/lilasciences/jobs/4111818009)
-
-<details><summary>Description</summary>
-
-**Your Impact at Lila**
-We're building a talent-dense, high-agency AI safety team at Lila that will engage all core teams within the organization (science, model training, lab integration, etc.), to prepare for risks from scientific superintelligence. The initial focus of this team will be to build and implement a bespoke safety strategy for Lila, tailored to its specific goals and deployment strategies. This will involve technical safety strategy development, broader ecosystem engagement, as well as developing technical collateral including risk- and capability-focused evaluations and safeguards.
-What You'll Be Building
-- Design and build capability evaluations to test for scientific risks (both known but especially novel) from cutting edge scientific models integrated with automated physical labs, across biological / physical sciences.
-- Coordinate and lead threat modelling exercises with internal and external scientific experts, including monitoring for emerging technologies and use-cases.
-- Develop and curate high-quality training and test data for evals and safety systems.
-- Evaluate risks from Lila’s capabilities, including through interactions with the wider ecosystem of capabilities (e.g. general-purpose frontier models as well as narrow scientific tools)
-- Contributing to broader, high-quality research efforts - as and when needed - for scientific capability evaluation and restriction.
-- Contribute to external communications on Lila’s safety efforts.
-- A PhD in either a biological sciences domain (e.g., molecular biology, virology, computational biology or related fields) or a physical sciences domain (materials sciences, physics, chemistry, chemical or nuclear engineering, or related fields), or other related experience.
-- Experience in scientific computing, across either biological or physical sciences.
-- Familiarity with dual-use research and dissemination concerns, across the relevant safety / regulatory / governance frameworks (e.g. export control frameworks, biological and chemical-related conventions and controls).
-- Ability to communicate complex technical concepts and concerns to non-expert audiences effectively.
-- Demonstrated ability to lead teams of internal and external collaborators in buildout of Lila’s point-of-view on biological / physical risks
-- Demonstrated ability to deal with cross-functional stakeholders (science, AI, product, policy) in a complex environment.
-
-**Bonus Points For**
-- Experience in developing or applying ML to biological or physical sciences
-- Experience in building evaluations, or conducting red-teaming exercises, across scientific risks for frontier models / narrow scientific tools.
-Location
-- This position may be based in any of Lila's offices, including Cambridge (MA), San Francisco (CA), or London (UK).
-
-**Compensation**
-
-*(truncated: full text in `data/job_postings.jsonl`)*
-
-</details>
-
-<a id="senior-principal-research-scientist-ai-safety-biological-physical-sciences-2026-01-26"></a>
-
-### Senior/ Principal Research Scientist, AI Safety, Biological/ Physical Sciences (2026-01-26)
-
-2026-01-26 → 2026-02-15 · lab-automation · Cambridge, MA USA; London, UK; San Francisco, CA USA · $268–384K · [source](https://web.archive.org/web/20260215084918/https://job-boards.greenhouse.io/lilasciences/jobs/4111976009)
-
-<details><summary>Description</summary>
-
-**Your Impact at Lila**
-We're building a talent-dense, high-agency AI safety team at Lila that will engage all core teams within the organization (science, model training, lab integration, etc.), to prepare for risks from scientific superintelligence. The initial focus of this team will be to build and implement a bespoke safety strategy for Lila, tailored to its specific goals and deployment strategies. This will involve technical safety strategy development, broader ecosystem engagement, as well as developing technical collateral including risk- and capability-focused evaluations and safeguards.
-What You'll Be Building
-- Set the build and research strategy for Lila’s safety approach to biological / physical risks.
-- Design and build capability evaluations to test for scientific risks (both known but especially novel) from cutting edge scientific models integrated with automated physical labs, across biological / physical sciences.
-- Coordinate and lead threat modelling exercises with internal and external scientific experts, including monitoring for emerging technologies and use-cases.
-- Develop and curate high-quality training and test data for evals and safety systems.
-- Evaluate risks from Lila’s capabilities, including through interactions with the wider ecosystem of capabilities (e.g. general-purpose frontier models as well as narrow scientific tools)
-- Contributing to broader, high-quality research efforts - as and when needed - for scientific capability evaluation and restriction.
-- Contribute to external communications on Lila’s safety efforts.
-- A PhD in either a biological sciences domain (e.g., molecular biology, virology, computational biology or related fields) or a physical sciences domain (materials sciences, physics, chemistry, chemical or nuclear engineering, or related fields), or other related experience.
-- Demonstrated ability to set research directions for open problems in dual-use risks in the biological / physical sciences.
-- Experience in scientific computing, across either biological or physical sciences.
-- Familiarity with dual-use research and dissemination concerns, across the relevant safety / regulatory / governance frameworks (e.g. export control frameworks, biological and chemical-related conventions and controls).
-- Ability to communicate complex technical concepts and concerns to non-expert audiences effectively.
-- Demonstrated ability to lead teams of internal and external collaborators in buildout of Lila’s point-of-view on biological / physical risks
-- Demonstrated ability to deal with cross-functional stakeholders (science, AI, product, policy) in a complex environment.
-
-**Bonus Points For**
-- Experience in developing or applying ML to biological or physical sciences
-- Experience in building evaluations, or conducting red-teaming exercises, across scientific risks for frontier models / narrow scientific tools.
-Location
-
-*(truncated: full text in `data/job_postings.jsonl`)*
-
-</details>
-
 <a id="staff-principal-automated-systems-engineer-2026-01-28"></a>
 
 ### Staff / Principal Automated Systems Engineer (2026-01-28)
@@ -475,42 +415,6 @@ What You'll Be Building
 
 </details>
 
-<a id="manager-senior-manager-capital-equipment-accounting-2026-03-29"></a>
-
-### Manager / Senior Manager, Capital Equipment Accounting (2026-03-29)
-
-2026-03-29 → open · lab-automation · Cambridge, MA USA; San Francisco, CA USA · $108–187K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4195640009)
-
-<details><summary>Description</summary>
-
-**Your Impact at LILA**
-Lila is seeking a Manager / Senior Manager, Capital Equipment Accounting to own the accounting for the Company's rapidly growing base of capital assets—the laboratory equipment and facilities buildouts, among other things, that power Lila's operations. As we scale, you will help ensure the operational scalability and financial accuracy of the asset base that underpins our success.
-You will own the end-to-end capex function, including managing the fixed assets and leased ROU assets lifecycle—from acquisition through capitalization, depreciation, impairment, retirement, and audit—working closely with Procurement, Facilities, Lab Operations, and Finance. You will apply deep technical accounting expertise under ASC 360 and ASC 842 and build the processes, controls, and systems that support this function.
-What You'll Own
-Fixed Asset & Leased Equipment Accounting
-- Own end-to-end capex accounting under ASC 360 from timely placement in service, to depreciation, transfers, disposals, and impairments.
-- Support accounting for finance leases under ASC 842, including commencement, renewals, modifications, and related leasehold improvements.
-- Maintain accurate asset records and lease inventories.
-- Assist with technical accounting analyses related to capital assets, lease arrangements, and complex capital projects.
-- Partner with Facilities and Procurement to monitor leasehold improvement projects and capital construction activities.
-- Manage the monthly fixed asset and leased equipment close process and prepare supporting journal entries, account reconciliations, rollforwards, and flux analyses.
-- Ensure compliance with U.S. GAAP and company accounting policies.
-Operations, Governance, & Controls
-- Develop and maintain accounting policies, procedures, and internal controls related to fixed assets and capital expenditures.
-- Assist with asset tracking, tagging, and periodic physical inventories and ensure consistency of data across ERP, procurement, and asset management systems.
-- Prepare audit schedules and support internal and external audit requests related to fixed assets, leases, and capital projects.
-- Bachelor's degree in Accounting or Finance; CPA or equivalent preferred.
-- 6+ years of progressive accounting experience, including public accounting and/or industry experience in a capital-intensive environment.
-- Strong technical knowledge of U.S. GAAP, particularly ASC 360 (property, plant, and equipment) and ASC 842 (leases).
-- Hands-on experience owning a significant capex portfolio in a high-growth environment.
-- Experience supporting laboratory, manufacturing, research, or facility-intensive operations.
-- Experience with ERP systems (NetSuite preferred) and strong analytical skills, including comfort working with large, complex datasets.
-- A track record of building scalable processes and controls in fast-moving environments.
-
-*(truncated: full text in `data/job_postings.jsonl`)*
-
-</details>
-
 <a id="engineer-ii-senior-mechatronics-engineer-hardware-controls-engineering-2026-04-14"></a>
 
 ### Engineer II / Senior Mechatronics Engineer, Hardware & Controls Engineering (2026-04-14)
@@ -621,7 +525,7 @@ What You'll Be Building
 
 ### Senior Engineer II / Staff Engineer, Electromechanical Technician (2026-05-14)
 
-2026-05-14 → 2026-06-17 · lab-automation · Cambridge, MA USA · $137–218K · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4240297009)
+2026-05-14 → 2026-07-12 · lab-automation · Cambridge, MA USA · $137–218K · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4240297009)
 
 <details><summary>Description</summary>
 
@@ -652,7 +556,7 @@ What You'll Be Building
 
 ### Lab Operations Specialist I (Contract) (2026-05-20)
 
-2026-05-20 → 2026-06-02 · lab-automation · Cambridge, MA USA · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4246299009)
+2026-05-20 → 2026-07-21 · lab-automation · Cambridge, MA USA · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4246299009)
 
 <details><summary>Description</summary>
 
@@ -722,7 +626,7 @@ What You'll Be Building
 
 ### Contractor, Support Engineer I, Automation (2nd shift) (2026-05-22)
 
-2026-05-22 → 2026-06-08 · lab-automation · Cambridge, MA USA · [source](https://web.archive.org/web/20260602011834/https://job-boards.greenhouse.io/lilasciences/jobs/4249657009)
+2026-05-22 → 2026-07-12 · lab-automation · Cambridge, MA USA · [source](https://web.archive.org/web/20260602011834/https://job-boards.greenhouse.io/lilasciences/jobs/4249657009)
 
 <details><summary>Description</summary>
 
@@ -788,11 +692,43 @@ What You'll Be Building
 
 </details>
 
+<a id="co-op-mechanical-engineer-2026-06-12"></a>
+
+### Co-op, Mechanical Engineer (2026-06-12)
+
+2026-06-12 → 2026-07-21 · lab-automation · Cambridge, MA USA · [source](https://web.archive.org/web/20260721163208/https://job-boards.greenhouse.io/lilasciences/jobs/4284223009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila Sciences is looking for a Mechanical Engineering Co-Op to join our Hardware and Controls (HCE) - Mechanical team this summer. You'll work on real hardware that powers autonomous scientific discovery, designing, building, and testing systems alongside experimental scientists, AI/ML researchers, and software/controls engineers throughout life science and physical science applications. From CAD to prototype to initial test builds, your work will directly contribute to Lila's mission of building Scientific Superintelligence.
+What You'll Be Building
+- Design and engineer components ranging from bench-scale robotics to full-size lab automation workcells, using knowledge of mechanical system design.
+- Work with cross-functional teams on CAD design and analysis.
+- Create and test engineered solutions using 3D printing and other fabrication methods. These solutions will range from static fixtures to multi-axis motion assemblies.
+- Support assembly and build processes with guidance from senior engineers.
+- Take ownership of discrete project tasks end to end, from spec to delivery.
+- Currently pursuing a Bachelor's degree in Mechanical Engineering, Robotics, or related field.
+- Experience with SolidWorks CAD design (Parts and Assemblies) or similar parametric 3D CAD software.
+- Proactive mindset with eagerness to learn in a fast-paced environment.
+- Ability to balance input and collaborate across multiple teams or stakeholders.
+- Excellent problem-solving abilities and attention to detail.
+- Curiosity about life science or physical science automation.
+
+**Bonus Points For**
+- A basic understanding of GD&T.
+- Experience with designing parts for specific fabrication techniques (Milling, Lathing, Sheet Metal, 3D Printing).
+- Previous internship/co-op experience in industrial automation, lab automation, or R&D industries.
+- Experience with robotics, industrial controls, electrical engineering, or automation software/programming.
+- Experience with SolidWorks PDM.
+
+</details>
+
 <a id="shift-supervisor-research-operations-2026-07-01"></a>
 
 ### Shift Supervisor, Research Operations (2026-07-01)
 
-2026-07-01 → 2026-10-10 · lab-automation · Cambridge, MA USA · $119–182K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4277904009)
+2026-07-01 → 2026-11-02 · lab-automation · Cambridge, MA USA · $119–182K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4277904009)
 
 <details><summary>Description</summary>
 
@@ -822,7 +758,7 @@ What You'll Be Building
 
 ### Controls Engineer II, Sustaining Engineering (2026-07-20)
 
-2026-07-20 → 2026-10-10 · lab-automation · Cambridge, MA USA · $94–139K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4294210009)
+2026-07-20 → 2026-11-02 · lab-automation · Cambridge, MA USA · $94–139K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4294210009)
 
 <details><summary>Description</summary>
 
@@ -905,7 +841,7 @@ $136,800 — $217,866 USD
 
 ### Senior Human Factors Engineer I/II, Robotics (2026-08-10)
 
-2026-08-10 → 2026-10-10 · lab-automation · Cambridge, MA USA · $144–240K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4332442009)
+2026-08-10 → 2026-11-02 · lab-automation · Cambridge, MA USA · $144–240K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4332442009)
 
 <details><summary>Description</summary>
 
@@ -976,7 +912,7 @@ $144,000 — $240,000 USD
 
 ### Engineer I, Research Operations (2nd Shift) (2026-09-08)
 
-2026-09-08 → 2026-10-10 · lab-automation · Cambridge, MA USA · $76–101K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4386306009)
+2026-09-08 → 2026-10-18 · lab-automation · Cambridge, MA USA · $76–101K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4386306009)
 
 <details><summary>Description</summary>
 
@@ -1005,7 +941,7 @@ What You'll Be Building
 
 ### Robotics Operations Engineer I, First Shift (2026-09-22)
 
-2026-09-22 → 2026-10-10 · lab-automation · Cambridge, MA USA · $76–109K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4410043009)
+2026-09-22 → 2026-11-02 · lab-automation · Cambridge, MA USA · $76–109K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4410043009)
 
 <details><summary>Description</summary>
 
@@ -1046,7 +982,7 @@ $75,600 — $109,200 USD
 
 ### Lab Operations Specialist (2026-09-28)
 
-2026-09-28 → 2026-10-10 · lab-automation · Cambridge, MA USA · $68–103K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4395906009)
+2026-09-28 → 2026-11-02 · lab-automation · Cambridge, MA USA · $68–103K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4395906009)
 
 <details><summary>Description</summary>
 
@@ -1147,32 +1083,6 @@ What You'll Be Building
 
 **Compensation**
 $108,000 — $170,000 USD
-
-</details>
-
-<a id="senior-principal-chemist-ai-safety-2026-10-05"></a>
-
-### Senior / Principal Chemist, AI Safety (2026-10-05)
-
-2026-10-05 → open · lab-automation · Cambridge, MA USA; London, UK; San Francisco, CA USA · $268–384K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423500009)
-
-<details><summary>Description</summary>
-
-**Your Impact at LILA**
-We're building a talent-dense, high-agency AI safety team at Lila that will engage all core teams within the organization (science, model training, lab integration, etc.), to identify and mitigate risks from scientific superintelligence while retaining the core scientific discovery capabilities of the stack. The initial focus of this team will be to build and implement a bespoke safety strategy for Lila, tailored to its specific goals and deployment strategies. This will involve technical safety strategy development, broader ecosystem engagement, safety-focused evaluations, safety systems to mitigate risks, and a research agenda that explores longer-term needs such as oversight of superintelligent scientific systems.
-We are seeking a chemist to map risk across the chemical sciences domain: you will connect deep chemistry expertise with dual-use risk assessment to help safeguard increasingly capable scientific AI. You will investigate how advances in chemical research could change harmful capabilities, including established and emerging chemical threats.
-What You'll Be Building
-- Map chemical misuse risks across scientific models, agents and automated experimentation, connecting scientific advances to harmful applications and identifying emerging or overlooked pathways.
-- Assess how scientific feasibility, practical complexity and actors' expertise or resources affect the plausibility and likelihood of misuse, including which constraints AI could change.
-- Distinguish established capabilities, plausible future developments and weakly supported hypotheses, updating assessments as scientific evidence and AI capabilities evolve.
-- Identify gaps in coverage, frame questions for consultants and specialist organizations, and assess and integrate their findings with support from the expert-program team.
-- Translate scientific risk judgments into dual-use policy boundaries, evaluation priorities and mitigation requirements that preserve beneficial chemistry.
-- Partner with threat modelers, evaluation researchers and mitigation teams to design informative assessments, interpret red-team findings and test safeguards.
-- Deep expertise (a PhD, or comparable experience) in synthetic chemistry or a closely related discipline, demonstrated through substantial research or applied work and sound interpretation of experimental evidence. This includes a background in molecular design and medicinal chemistry, inorganic and organometallic chemistry, synthesis, process development and formulations, or other relevant sub-fields.
-- Substantive experience assessing chemical dual-use risks (e.g. across national security, export controls, or other chemical risk tracking such as the CWC).
-- Strong scientific judgment about feasibility, uncertainty and practical constraints, including the ability to investigate unfamiliar questions and recognize the limits of your expertise.
-
-*(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
 
@@ -1334,110 +1244,6 @@ $136,800 — $217,866 USD
 
 </details>
 
-<a id="manager-senior-manager-ai-safety-data-and-evaluation-program-2026-10-16"></a>
-
-### Manager / Senior Manager, AI Safety Data and Evaluation Program (2026-10-16)
-
-2026-10-16 → open · lab-automation · Cambridge, MA USA; London, UK; San Francisco, CA USA · $180–256K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423490009)
-
-<details><summary>Description</summary>
-
-**Your Impact at LILA**
-We're building a talent-dense, high-agency AI safety team at Lila that will engage all core teams within the organization (science, model training, lab integration, etc.), to identify and mitigate risks from scientific superintelligence while retaining the core scientific discovery capabilities of the stack. The initial focus of this team will be to build and implement a bespoke safety strategy for Lila, tailored to its specific goals and deployment strategies. This will involve technical safety strategy development, broader ecosystem engagement, safety-focused evaluations, safety systems to mitigate risks, and a research agenda that explores longer-term needs such as oversight of superintelligent scientific systems.
-High-quality safety depends on the right expertise, consistent and repeatable workflows and high levels of interpretability. At Lila Sciences, you will turn scientific risk questions into well-run expert-data and evaluation programs to build this evidence-base.
-You will bring a strong working understanding of AI safety and scientific misuse risks to connect internal risk mapping and threat modeling with expertise across Lila and external specialists. Your primary responsibilities will be program execution and data quality: organizing contributors, running red-teaming and evaluation campaigns, and ensuring their outputs meet agreed standards. You will also be responsible for gathering targeted high-impact feedback from partners in the AI Safety community on our different aspects of our approach to Safety. You will work closely with scientists who frame the research questions and interpret their significance, while creating the operational conditions for their expertise to have an impact. Ultimately, you will play a key role in generating the evidence that informs safety decisions made by senior leadership at Lila.
-What You'll Be Building
-- Translate agreed scientific briefs into executable plans covering tasks, contributor needs, instructions, milestones, quality standards and delivery expectations.
-- Source and coordinate external experts with scientific colleagues, and organize access to relevant expertise within Lila.
-- Manage contributor onboarding, task assignment, training and support so specialists can contribute effectively and consistently.
-- Run expert-data collection, annotation, red-teaming and evaluation programs, tracking progress and resolving delivery problems.
-- Establish quality controls covering completeness, consistency, provenance and adherence to rubrics; coordinate calibration, review, disagreement resolution and rework with scientific owners.
-- Maintain clear records, versioned guidance and usable datasets, and improve workflows based on quality findings and researcher feedback.
-- Identify questions that require scientific judgment and bring them to the appropriate specialists, ensuring decisions are reflected in program materials and subsequent work.
-
-*(truncated: full text in `data/job_postings.jsonl`)*
-
-</details>
-
-<a id="staff-principal-research-engineer-ai-safety-mitigations-2026-10-16"></a>
-
-### Staff / Principal Research Engineer, AI Safety Mitigations (2026-10-16)
-
-2026-10-16 → open · lab-automation · Cambridge, MA USA; London, UK; San Francisco, CA USA · $224–336K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423492009)
-
-<details><summary>Description</summary>
-
-**Your Impact at LILA**
-We're building a talent-dense, high-agency AI safety team at Lila that will engage all core teams within the organization (science, model training, lab integration, etc.), to identify and mitigate risks from scientific superintelligence while retaining the core scientific discovery capabilities of the stack. The initial focus of this team will be to build and implement a bespoke safety strategy for Lila, tailored to its specific goals and deployment strategies. This will involve technical safety strategy development, broader ecosystem engagement, safety-focused evaluations, safety systems to mitigate risks, and a research agenda that explores longer-term needs such as oversight of superintelligent scientific systems.
-At Lila Sciences, you will develop and test safeguards that reduce societal risks from increasingly capable closed loop scientific AI. This is a high-priority individual contributor role for an engineer who has built safety interventions within the development and deployment of frontier models and wants to apply that experience to scientific models, agents, tools and laboratory-connected workflows.
-You will work with domain scientists, risk researchers, evaluators and engineering teams to turn risk findings and policy requirements into effective interventions. The work spans research and implementation: developing approaches, testing their limits and helping integrate reliable safeguards into the systems where they are needed. We are open to different levels of seniority and depth across mitigation approaches.
-What You'll Be Building
-- Translate scientific risk assessments, dual-use policy boundaries and evaluation findings into concrete mitigation designs and testable requirements.
-- Develop and implement safeguards suited to the problem, potentially spanning model training, classifiers, monitoring, access controls and runtime interventions.
-- Build experiments that measure risk reduction, robustness and effects on legitimate scientific use, alongside practical performance constraints.
-- Use adversarial findings and observed failures to improve safeguards, working closely with automated-safety and scientific evaluation researchers.
-- Work directly with model-training, post-training, inference and platform teams to integrate mitigations into model development, release evaluation and large-scale serving systems, with appropriate instrumentation and reproducible testing.
-- Investigate regressions, distribution shifts and emerging misuse patterns, and use the evidence to guide further development.
-- Hands-on experience developing and validating safety interventions for frontier models within training, post-training or large-scale inference systems, with contributions to model development or release cycles.
-- Depth in at least one relevant area, such as safety post-training, model-level classifiers, safeguards integrated into inference, or abuse monitoring and enforcement across a model-serving platform.
-
-*(truncated: full text in `data/job_postings.jsonl`)*
-
-</details>
-
-<a id="staff-principal-security-engineer-ai-safety-and-security-2026-10-16"></a>
-
-### Staff / Principal Security Engineer, AI Safety and Security (2026-10-16)
-
-2026-10-16 → open · lab-automation · Cambridge, MA USA; London, UK; San Francisco, CA USA · $192–306K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4429015009)
-
-<details><summary>Description</summary>
-
-**Your Impact at LILA**
-Lila is developing AI systems for scientific discovery, connecting advanced models with scientific tools and automated laboratories. As these systems become more capable, we need to understand how they could be misused or compromised, which protections matter most, and how to establish that those protections work together.
-We're hiring an experienced security practitioner to lead this work at the boundary between AI safety and security. You will investigate real systems, develop threat models, test important assumptions and recommend the protections needed for particular capabilities and deployments. Your work will address both dangerous misuse and the protection of sensitive models, data and research.
-This is an opportunity to help shape a developing area of AI safety through security practice. You will combine technical investigation with careful analysis and clear writing, working closely with our established Security team, researchers and engineers to turn findings into implemented improvements.
-You will bring security depth and develop your understanding of model capabilities, evaluations and safeguards through that work. Prior experience in AI safety is welcome, but not required.
-What You'll Be Building
-- Threat-model consequential systems and capabilities. Investigate how dangerous misuse or compromise could occur across models, deployed services and scientific workflows. Identify the relevant actors, access routes and failure paths, and the protections that could interrupt them.
-- Test the assumptions behind our defenses. Examine architectures, code, configurations and operational evidence. Run focused adversarial tests, build prototypes and investigate weaknesses, including situations where several protections depend on the same underlying system.
-- Shape the protections needed for safe deployment. Turn dangerous-capability assessments into concrete security requirements. Assess how compromise of models, sensitive assets or supporting systems changes the safety assessment, drawing on personnel, physical and other security specialists where relevant.
-- Make evidence-based recommendations. Define what evidence would demonstrate that important controls and safeguards work together. Combine findings from model evaluations and security testing, explain the remaining uncertainty, and recommend improvements or conditions for use.
-- Carry findings through to practical improvements. Work with Security, Safety and engineering owners to prioritize changes, specify acceptance criteria and verify the results. Make clear recommendations about which gaps require attention first and why.
-- Anticipate what more capable systems will require. Identify where changes in capability, access or deployment call for stronger protections. Help teams plan security work with long lead times, and update assessments as systems change or new evidence emerges.
-
-*(truncated: full text in `data/job_postings.jsonl`)*
-
-</details>
-
-<a id="staff-software-engineer-ai-safety-2026-10-16"></a>
-
-### Staff Software Engineer, AI Safety (2026-10-16)
-
-2026-10-16 → open · lab-automation · Cambridge, MA USA; London, UK; San Francisco, CA USA · $192–288K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423484009)
-
-<details><summary>Description</summary>
-
-**Your Impact at LILA**
-We're building a talent-dense, high-agency AI safety team at Lila that will engage all core teams within the organization (science, model training, lab integration, etc.), to identify and mitigate risks from scientific superintelligence while retaining the core scientific discovery capabilities of the stack. The initial focus of this team will be to build and implement a bespoke safety strategy for Lila, tailored to its specific goals and deployment strategies. This will involve technical safety strategy development, broader ecosystem engagement, safety-focused evaluations, safety systems to mitigate risks, and a research agenda that explores longer-term needs such as oversight of superintelligent scientific systems.
-At Lila's AI Safety team, you will build the shared software that helps our team understand and reduce societal risks from scientific AI. Working with researchers, domain scientists and program colleagues, you will turn needs across threat modeling, evaluations, red teaming and mitigation development into reliable tools and systems. You will own engineering work from scoping and prototyping through deployment and ongoing improvement, supporting research across scientific models, agents and automated experimentation.
-What You'll Be Building
-- Build reusable services, libraries and model/tool integrations that make evaluations, red-teaming campaigns and mitigation experiments repeatable.
-- Develop applications that help researchers and scientific experts organize evidence, inspect results, review data and investigate failures.
-- Work with safety colleagues to understand research needs and identify shared engineering needs, prioritize useful improvements and turn evolving research workflows into maintainable software.
-- Build data pipelines and experiment records that preserve datasets, taxonomies, model versions, configurations and results, making findings traceable and comparisons reproducible.
-- Own the reliability and usability of shared safety tools through testing, debugging, monitoring, documentation and continued improvement.
-- Collaborate across LILA with our core AI and software engineering teams to share tooling, align on infrastructure, and avoid duplication.
-- A track record of independently delivering and maintaining production software, including projects with ambiguous or changing requirements.
-- Strong Python and backend engineering skills, with experience designing APIs, working with databases and building dependable data or execution pipelines.
-- Experience translating the needs of researchers, domain experts or other technical users into usable tools, and comfort working across services and interfaces.
-- Sound engineering judgment in system design, testing and debugging, including practical decisions about reliability, performance and complexity.
-- Engineering experience in AI research, AI safety, scientific computing or other settings with rapidly evolving experimental workflows.
-
-*(truncated: full text in `data/job_postings.jsonl`)*
-
-</details>
-
 <a id="research-scientist-research-engineer-automated-safety-2026-10-21"></a>
 
 ### Research Scientist / Research Engineer, Automated Safety (2026-10-21)
@@ -1459,56 +1265,6 @@ What You'll Be Building
 - Collaborate with risk researchers and mitigation engineers to translate findings into improved assessments and safeguards, and verify whether those changes work.
 - Strong empirical judgment, practical programming ability and experience working with modern AI systems.
 - The ability to investigate ambiguous failures, design informative comparisons and communicate limitations clearly.
-
-*(truncated: full text in `data/job_postings.jsonl`)*
-
-</details>
-
-<a id="senior-principal-computational-biologist-ai-safety-2026-10-21"></a>
-
-### Senior / Principal Computational Biologist, AI Safety (2026-10-21)
-
-2026-10-21 → open · lab-automation · Cambridge, MA USA; London, UK; San Francisco, CA USA · $268–384K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423494009)
-
-<details><summary>Description</summary>
-
-**Your Impact at LILA**
-We're building a talent-dense, high-agency AI safety team at Lila that will engage all core teams within the organization (science, model training, lab integration, etc.), to identify and mitigate risks from scientific superintelligence while retaining the core scientific discovery capabilities of the stack. The initial focus of this team will be to build and implement a bespoke safety strategy for Lila, tailored to its specific goals and deployment strategies. This will involve technical safety strategy development, broader ecosystem engagement, safety-focused evaluations, safety systems to mitigate risks, and a research agenda that explores longer-term needs such as oversight of superintelligent scientific systems.
-You will conduct original computational biology research for AI safety and build an integrated understanding of biological risks. You will investigate how capabilities across large language models, specialized biological models, agents and automated laboratories combine to change what is biologically feasible. Our work spans protein and nucleic-acid design, cellular systems and biological delivery; we welcome other specialisms that bring relevant scientific depth and risk judgment.
-What You'll Be Building
-- Formulate and pursue original computational biology research questions relevant to safety, developing computational approaches and designing and running studies that generate new evidence about biological capabilities, risks and safeguards.
-- Build and update an integrated picture of risks, examining how capabilities across LLMs, specialized biological models, agents and automated laboratories interact within scientific workflows and change practical constraints.
-- Combine your research with literature, model assessments, experimental findings and expert input to judge biological feasibility, uncertainty and the significance of emerging capabilities for misuse.
-- Identify gaps in expertise, frame questions for external specialists and critically integrate their findings with support from the expert-program team.
-- Translate scientific risk judgments into dual-use policy boundaries, evaluation priorities and mitigation requirements that preserve beneficial biological research.
-- Work with threat modelers, automated-safety researchers, experimental scientists and mitigation engineers to design informative evaluations and red-teaming studies, test assumptions and assess safeguards.
-- Deep expertise (a PhD, or comparable experience) in computational biology or a related quantitative biological discipline, with a record of original research from question formulation and computational study design through to defensible findings.
-- Substantive experience assessing biological dual-use risks, with a strong understanding of relevant harmful applications, including pathogen- or toxin-related risks or other consequential biological misuse.
-
-*(truncated: full text in `data/job_postings.jsonl`)*
-
-</details>
-
-<a id="senior-principal-materials-scientist-ai-safety-2026-10-21"></a>
-
-### Senior / Principal Materials Scientist, AI Safety (2026-10-21)
-
-2026-10-21 → open · lab-automation · Cambridge, MA USA; London, UK; San Francisco, CA USA · $268–384K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423496009)
-
-<details><summary>Description</summary>
-
-**Your Impact at LILA**
-We're building a talent-dense, high-agency AI safety team at Lila that will engage all core teams within the organization (science, model training, lab integration, etc.), to identify and mitigate risks from scientific superintelligence while retaining the core scientific discovery capabilities of the stack. The initial focus of this team will be to build and implement a bespoke safety strategy for Lila, tailored to its specific goals and deployment strategies. This will involve technical safety strategy development, broader ecosystem engagement, safety-focused evaluations, safety systems to mitigate risks, and a research agenda that explores longer-term needs such as oversight of superintelligent scientific systems.
-We are seeking a materials scientist to map risk across the material sciences domain: you will connect deep materials expertise with dual-use risk assessment to help safeguard increasingly capable scientific AI. You will investigate how advances in materials research could change harmful capabilities, including established and emerging threats.
-What You'll Be Building
-- Map misuse risks by connecting material properties, processing and functional performance (across a range of materials domains) to harmful applications, including emerging or overlooked uses of scientific advances.
-- Assess how physical feasibility, processing complexity, manufacturing requirements and actors' resources affect the plausibility and likelihood of misuse, including which constraints AI could change.
-- Distinguish established capabilities, plausible future developments and weakly supported hypotheses, revising assessments as evidence changes across models, tools and automated laboratories.
-- Identify gaps in expertise, commission targeted scientific input with the expert-program team, and integrate specialist findings into a coherent assessment of the risk landscape.
-- Translate dual-use judgments into policy boundaries, evaluation priorities and mitigation requirements that support beneficial materials research.
-- Work with threat modelers, evaluation researchers and engineering and experimental colleagues to assess capabilities, interpret red-team findings and evaluate safeguards.
-- Deep expertise (a PhD, or comparable experience) in materials science or a closely related discipline, with a strong grasp of the relationships between structure, properties, processing and applications. Relevant backgrounds include particulate, porous and formulated systems; and structural and functional materials, including thin films, electrochemical materials and metals and alloys.
-- Substantive experience assessing dual-use risks in a relevant area, with a strong understanding of harmful applications such as nuclear proliferation, radiological misuse, weapons-related capabilities (e.g. energetics) or other consequential materials risks.
 
 *(truncated: full text in `data/job_postings.jsonl`)*
 

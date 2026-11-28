@@ -109,6 +109,30 @@
       "end": null,
       "background": "PhD (Dr.); materials scientist with R&D experience in the polymers industry (company about page)",
       "source": "https://www.polymerize.io/about-us"
+    },
+    {
+      "name": "Masahiro Fujita",
+      "title": "Country Manager, Japan",
+      "function": "leadership",
+      "seniority": "head",
+      "start": "2026-11-01",
+      "start_basis": "company news post, effective 1 Nov 2026",
+      "end": null,
+      "background": "not stated",
+      "source": "https://polymerize.io/company-news/japan-country-manager",
+      "added": "2026-11-28"
+    },
+    {
+      "name": "Tomoya Yamada",
+      "title": "SVP, Global Operations (previously Country Manager, Japan)",
+      "function": "leadership",
+      "seniority": "exec",
+      "start": "2026-11-01",
+      "start_basis": "company news post, effective 1 Nov 2026",
+      "end": null,
+      "background": "not stated",
+      "source": "https://polymerize.io/company-news/japan-country-manager",
+      "added": "2026-11-28"
     }
   ],
   "staff_roles": [],

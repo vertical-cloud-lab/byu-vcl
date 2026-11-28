@@ -39,6 +39,16 @@
     "US DOE Office of Manufacturing and Energy Supply Chains"
    ],
    "source": "https://metaltechnews.com/story/2024/09/25/tech-bytes/doe-and-michigan-fund-mitra-chem-cathodes/1959.html"
+  },
+  {
+   "date": "2025-05-23",
+   "round": "Series B extension (Form D: $15.6M sold of a $50.0M offering)",
+   "amount_usd_m": 15.6,
+   "original_amount": "$15,599,991 sold of $49,999,996",
+   "type": "equity",
+   "lead_investors": "not stated",
+   "source": "https://www.sec.gov/Archives/edgar/data/1887663/000188766325000002/primary_doc.xml",
+   "added": "2026-11-28"
   }
  ],
  "headcount": [
@@ -274,6 +284,30 @@
    "end": null,
    "background": "Alpha Wave Global, EIR",
    "source": "https://www.mitrachem.com/team"
+  },
+  {
+   "name": "Jiang-Ling Du",
+   "title": "Director",
+   "function": "leadership",
+   "seniority": "board",
+   "start": "by 2025-06",
+   "start_basis": "director on the 2025 Form D (Mitra Future Technologies, Inc.)",
+   "end": null,
+   "background": "not stated",
+   "source": "https://www.sec.gov/Archives/edgar/data/1887663/000188766325000002/primary_doc.xml",
+   "added": "2026-11-28"
+  },
+  {
+   "name": "Chamath Palihapitiya",
+   "title": "Director",
+   "function": "leadership",
+   "seniority": "board",
+   "start": "by 2025-06",
+   "start_basis": "director on the 2025 Form D (Mitra Future Technologies, Inc.)",
+   "end": null,
+   "background": "not stated",
+   "source": "https://www.sec.gov/Archives/edgar/data/1887663/000188766325000002/primary_doc.xml",
+   "added": "2026-11-28"
   }
  ],
  "staff_roles": [],

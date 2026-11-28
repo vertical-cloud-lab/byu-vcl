@@ -1,6 +1,6 @@
 # AI-for-materials and self-driving-lab startups: who they hire, when, and how it tracks funding
 
-A survey of 25 startups in the US, Europe, Canada and Asia. For each one: who holds which role, when they joined and what they did before; what jobs the company posts and how often its people leave; how big the team is; and how hiring moves against the funding timeline. It continues the enterprise/academic precedent work in [#155](https://github.com/vertical-cloud-lab/byu-vcl/issues/155). Data snapshot: **9 October 2026**.
+A survey of 25 startups in the US, Europe, Canada and Asia. For each one: who holds which role, when they joined and what they did before; what jobs the company posts and how often its people leave; how big the team is; and how hiring moves against the funding timeline. It continues the enterprise/academic precedent work in [#155](https://github.com/vertical-cloud-lab/byu-vcl/issues/155). Data snapshot: **9 October 2026**, refreshed **28 November 2026** ([what changed](#update-2026-11-28)).
 
 **25 companies** are covered:
 - **US:** Periodic Labs, Lila Sciences, Radical AI, Medra, Tetsuwan Scientific, Citrine Informatics, Kebotix, Mitra Chem, Aionics, Mattiq, Emerald Cloud Lab.
@@ -10,6 +10,101 @@ A survey of 25 startups in the US, Europe, Canada and Asia. For each one: who ho
 - **Asia:** DP Technology, Deep Principle, Matlantis, Polymerize.
 
 The one-row-per-company table is in [`summary.md`](summary.md), and each company has a sourced profile in [`companies/`](companies/).
+
+## Update, 2026-11-28
+
+Seven weeks after the first snapshot, the survey was refreshed with the tool the request asked for. Headed Chrome ran on a virtual display, its traffic left through the CubXL Pi, and it was driven with mouse moves, scrolls and clicks. [LinkedIn: what was driven, and where it stopped](#linkedin-what-was-driven-and-where-it-stopped) covers what LinkedIn allowed. In short, it served one logged-out company page and then its sign-in wall, but its public job search kept loading.
+
+**What the refresh added:**
+- **LinkedIn member counts for 20 companies,** from Wayback captures of their LinkedIn pages read through the Pi, plus one live view.
+  - Seven had no team-size series before: Medra, Mitra Chem, Aionics, Kebotix, Mattiq, Intrepid Labs and Telescope.
+  - Emerald Cloud Lab, Orbital and Chemify gain a LinkedIn series beside their team-page or registry counts.
+  - Radical AI, Tetsuwan and Deep Principle still have none.
+  - All are in [`data/linkedin_company_pages.json`](data/linkedin_company_pages.json).
+- **Live job boards, read again and compared with 10 October.** The postings folder now holds 968 postings, 903 with full descriptions, up from 811 and 757.
+- **LinkedIn's public job search for 24 companies,** by company ID ([`data/linkedin_jobs.json`](data/linkedin_jobs.json)).
+  - Where a company runs its own board, LinkedIn lists the same roles.
+  - It added postings only for Matlantis and Telescope, which have none of their own.
+- **Client-side careers pages, rendered in the browser:**
+  - **Atinary:** three Zoho Recruit postings, with full descriptions.
+  - **Entalpic:** a Notion board showing four roles. Eleven untitled drafts in its database are hidden from visitors and are no longer counted.
+  - **Polymerize:** the careers page is now a 404.
+  - **MatNex:** no vacancies.
+  - **Matlantis:** a closed BizReach recruiting feature.
+  - **Telescope:** a bot check that did not clear. It was left alone.
+- **Leadership pages and Companies House officer lists,** diffed against the names on record.
+- **A news search, 1 October–28 November, and SEC EDGAR for new Form Ds.** No new Form D was found for any of the 25 companies.
+
+**1. The 2025 cohort keeps compounding; three older companies are shrinking.** LinkedIn members (people listing the company, so a trend rather than a headcount):
+
+| Company | LinkedIn members | Reading |
+|---|---|---|
+| [Lila Sciences](companies/lila-sciences.md) | 326 (Mar 2026) → 477 (Jul) → 550 (1 Oct) → 567 (27 Oct) | still growing, more slowly |
+| [Periodic Labs](companies/periodic-labs.md) | 36 (Jan 2026) → 56 (May) → 88 (Aug) → **110 (28 Nov, live)** | +25% since August |
+| [Medra](companies/medra.md) | 22 (Feb 2025) → 31 (Jan 2026) → 60 (Jul) → 77 (Oct) | more than doubled in the ten months after its Dec 2025 Series A |
+| [CuspAI](companies/cuspai.md) | 43 (Nov 2025) → 85 (Aug 2026) → 95 (Oct) → 100 (13 Nov) | more than doubled in a year that included its $450M Series B |
+| [Chemify](companies/chemify.md) | 37 (Aug 2023) → 79 (Aug 2024) → 210 (Oct 2026) | matches its own "200+" |
+| [Intrepid Labs](companies/intrepid-labs.md) | 3 (Jan 2024) → 9 (Feb 2025) → 20 (Sep 2025) | first series for it |
+| [Telescope](companies/telescope-innovations.md) | 21 (Dec 2024) → 27 (Apr 2026) → 28 (Aug) | first series for it |
+| [Emerald Cloud Lab](companies/emerald-cloud-lab.md) | 159 (Feb 2025) → 180 (Feb 2026) → 201 (Nov) | its team page shows about 100; LinkedIn keeps alumni |
+| [Mitra Chem](companies/mitra-chem.md) | **67 (Sep 2024) → 60 (Aug 2025) → 51 (Aug 2026) → 46 (Oct 2026)** | down a third in two years |
+| [Aionics](companies/aionics.md) | **17 (Nov 2025) → 15 (Jan 2026) → 12 (Jun 2026)** | shrinking as the CEO changed (below) |
+| [Kebotix](companies/kebotix.md) | 11 (Apr 2024) → 9 (Aug 2024); band only since | consistent with its thin public footprint |
+| [Mattiq](companies/mattiq.md) | 18 (Jan 2024) → 19 (Jan 2025) | flat |
+
+**2. Openings, 10 October → 28 November.** These are counted per posting on each company's own board, with general applications left out. The October snapshot was recounted the same way.
+
+| Company | 10 Oct | 28 Nov | What changed |
+|---|---|---|---|
+| [CuspAI](job-postings/cuspai.md) | 14 | 27 | 18 new. They cover AI Materials Foundry ecosystem and programme roles, scientific product managers (one in Singapore), platform, performance and security engineers, and research engineers for generative and materials foundation models. There is also a lab-integration software engineer. LinkedIn lists the roles 66 times across London, Cambridge, Berlin and Amsterdam. |
+| [Radical AI](job-postings/radical-ai.md) | 9 | 16 | A thin-film materials scientist, a laboratory technician, ML, robotics and perception engineers, two technical product managers, and an applied scientist for experiment selection. |
+| [Lila Sciences](job-postings/lila-sciences.md) | 107 | 113 | 50 first seen since 10 October, 21 of them co-op roles. Also director-level roles for AI-lab integration, lab platform engineering, IP and inference engineering, and a set of AI-safety research roles. |
+| [Emerald Cloud Lab](job-postings/emerald-cloud-lab.md) | 7 | 9 | A construction project director, a compliance and quality director, an alliance manager and an FP&A manager. |
+| [Orbital](job-postings/orbital-materials.md) | 7 | 9 | Two "Founding Sales (Science)" roles and a supply-chain manager. |
+| [Periodic Labs](job-postings/periodic-labs.md) | 33 | 27 | Nothing new. Six closed, among them condensed-matter theory, ML systems, forward-deployed physics, an electrical technician and an equipment engineer. |
+| [Chemify](job-postings/chemify.md) | 32 | 12 | Nothing new; 20 closed. Nine links on its careers page now open "This vacancy has now been closed". |
+| [Dunia](job-postings/dunia-innovations.md) | 13 | 2 | The February batch (ML, lab technicians, chemists, engineers) has all closed. |
+| [Citrine](job-postings/citrine-informatics.md) | 4 | 0 | Only a general application is left. |
+| [DP Technology](job-postings/dp-technology.md) | 275 | 247 | 24 new. They include a head of an autonomous drug-discovery lab, an automated-lab operations engineer, and delivery engineers for "large facilities" in its electrolyte line. |
+| Unchanged or nearly so | | | Medra 15, Entalpic 4, Tetsuwan 2, Mitra Chem 1, Atinary 4 → 3 |
+| LinkedIn only | | | Matlantis: a Senior Solutions Scientist in Cambridge, MA. Telescope: a Product Manager in Vancouver. Nothing for Intrepid, Kebotix, Mattiq, MatNex, Polymerize, Altrove, Aionics or Deep Principle. |
+
+![Open roles by function](figures/openings_by_function.png)
+
+**3. Leadership, funding and status since 10 October.** Every item is sourced in the company's profile and in [`data/news_2026-11-28.json`](data/news_2026-11-28.json).
+
+**Leadership:**
+- **[Aionics](companies/aionics.md)'s CEO is now co-founder Venkat Viswanathan.** Austin Sendek was CEO on the December 2025 capture of the leadership page. By March 2026 he is no longer listed. No announcement was found.
+- **[Lila](companies/lila-sciences.md)** dropped two leaders from its team page: Jack Milwid (Office of the CEO) and Chris O'Donnell (Chief Government Affairs Officer). Chris Fussell became Vice Chair.
+- **[Citrine](companies/citrine-informatics.md):** its head of strategy and operations is off the leadership page.
+- **[MatNex](companies/materials-nexus.md),** the new trading name of Materials Nexus, lost its non-executive director on 6 November.
+- **[Chemify](companies/chemify.md)** announced an ex-IonQ CRO as an independent director.
+- **[CuspAI](companies/cuspai.md)** added Nobel laureate Susumu Kitagawa to its advisory board.
+- **[Polymerize](companies/polymerize.md)** appointed a new Japan country manager.
+
+**Funding:**
+- **[Entalpic](companies/entalpic.md):** NVIDIA announced a planned strategic investment on 12 October, amount undisclosed.
+- **CuspAI** now says it has raised "over $725M", about $145M more than the announced rounds. It is setting up in Tokyo and Singapore.
+- **[Mitra Chem](companies/mitra-chem.md):** a 2025 Form D, missed in October, shows $15.6M sold of a $50M offering under its legal name. It settles the conflicting reports of a Series B extension.
+- **Still unconfirmed:** Periodic's and Lila's reported 2026 rounds. Only a private-market aggregator lists them, and neither company has announced them.
+
+**Status:**
+- **[Tetsuwan](companies/tetsuwan-scientific.md)'s website is down.** It fails at the TLS handshake, after a normal capture on 12 October. Search snippets point to a late-October LinkedIn post about closing, which was not opened. Treat it as unconfirmed.
+- **[Mattiq](companies/mattiq.md)'s new site** sells experimental materials data for AI.
+- **[Atinary](companies/atinary.md)'s job ads** now give Menlo Park as headquarters.
+
+**4. Posted pay, 28 November.** There are 126 US postings with a published range: Lila 91, Periodic 19, Medra 14, Tetsuwan 2. Median midpoints, with 10 October in brackets:
+
+| Function | 28 Nov | 10 Oct |
+|---|---|---|
+| ML research | $266K | $288K |
+| Software | $204K | $217K |
+| Lab automation | $188K | $166K |
+| Materials science | $168K | $178K |
+| Business and operations | $155K | $156K |
+| Leadership | $282K | $255K |
+
+The 10 October medians differ from finding 5 below because the title classifier was corrected. It had filed Lila's new "AI Safety" scientist and engineer roles under lab automation, because their titles contain "safety". It also filed an equipment-accounting manager there. Both now go where they belong, for both dates.
 
 ## Findings
 

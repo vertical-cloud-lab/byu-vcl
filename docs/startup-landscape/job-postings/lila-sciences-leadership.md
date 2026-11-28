@@ -111,7 +111,7 @@ Produce content that supports revenue and credibility
 
 ### Associate Director/Director, Strategic Events (2026-02-26)
 
-2026-02-26 → 2026-06-10 · leadership · Cambridge, MA USA · $148–224K · [source](https://web.archive.org/web/20260610125132/https://job-boards.greenhouse.io/lilasciences/jobs/4147718009)
+2026-02-26 → 2026-07-18 · leadership · Cambridge, MA USA · $148–224K · [source](https://web.archive.org/web/20260610125132/https://job-boards.greenhouse.io/lilasciences/jobs/4147718009)
 
 <details><summary>Description</summary>
 
@@ -278,7 +278,7 @@ Process & Scale
 
 ### Director, Discovery Chemistry (2026-03-25)
 
-2026-03-25 → 2026-06-10 · leadership · Cambridge, MA USA · $184–246K · [source](https://web.archive.org/web/20260602011834/https://job-boards.greenhouse.io/lilasciences/jobs/4192648009)
+2026-03-25 → 2026-08-12 · leadership · Cambridge, MA USA · $184–246K · [source](https://web.archive.org/web/20260602011834/https://job-boards.greenhouse.io/lilasciences/jobs/4192648009)
 
 <details><summary>Description</summary>
 
@@ -336,7 +336,7 @@ Institution Building — Help stand up Lila's federal capture function, includin
 
 ### Senior Director, Data Platform Engineering (2026-04-01)
 
-2026-04-01 → 2026-10-10 · leadership · San Francisco, CA USA · $300–390K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4202443009)
+2026-04-01 → 2026-10-10 · leadership · San Francisco, CA USA · $232–346K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4202443009)
 
 <details><summary>Description</summary>
 
@@ -425,7 +425,7 @@ What You'll Be Building
 
 ### Director, Sustaining Engineering & Lab Operations (2026-04-22)
 
-2026-04-22 → 2026-06-10 · leadership · Cambridge, MA USA · $168–224K · [source](https://web.archive.org/web/20260602011834/https://job-boards.greenhouse.io/lilasciences/jobs/4227385009)
+2026-04-22 → 2026-07-12 · leadership · Cambridge, MA USA · $168–224K · [source](https://web.archive.org/web/20260602011834/https://job-boards.greenhouse.io/lilasciences/jobs/4227385009)
 
 <details><summary>Description</summary>
 
@@ -452,7 +452,7 @@ The site-level execution layer described in the ASP Engineering operating model 
 
 ### Vice President, Engineering (2026-04-25)
 
-2026-04-25 → 2026-06-14 · leadership · Cambridge, MA USA · $310–380K · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4232839009)
+2026-04-25 → 2026-07-12 · leadership · Cambridge, MA USA · $310–380K · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4232839009)
 
 <details><summary>Description</summary>
 
@@ -472,6 +472,41 @@ What You'll Be Building
 - Partner with AI Research, Software, Product, and Science to align platform capabilities with scientific and commercial priorities
 
 *(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="director-senior-director-tax-2026-05-13"></a>
+
+### Director / Senior Director, Tax (2026-05-13)
+
+2026-05-13 → 2026-06-17 · leadership · Cambridge, MA USA · $168–272K · [source](https://web.archive.org/web/20260617044525/https://job-boards.greenhouse.io/lilasciences/jobs/4240449009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+LILA Sciences is seeking a Tax Director (or Senior Director, depending on experience) to build and lead our tax function. As a foundational hire — the first dedicated tax leader at LILA — you will establish our tax strategy, infrastructure, and ongoing compliance across federal, state, local, and international jurisdictions.
+You will work hand-in-hand with Finance, Legal, and the executive team to ensure our tax position is optimized, compliant, and aligned with our long-term goals. This is a high-impact, high-ownership role where you'll have the opportunity to shape the function from the ground up while contributing to the company's strategic direction.
+What You'll Be Building
+- Own end-to-end U.S. and international tax compliance and reporting — federal, state, local, income, sales & use, and R&D credits — and manage all related filings.
+- Develop and execute LILA's tax planning strategy, optimizing the effective tax rate (ETR) while supporting the company's growth, capital structure, and strategic initiatives.
+- Lead all aspects of ASC 740 income tax accounting — provisions, deferred tax, and uncertain tax positions — and manage relationships with external tax advisors and auditors.
+- Partner with Finance, Accounting, and Legal on the tax implications of M&A, equity rounds, equity compensation, intercompany transactions, and major vendor agreements.
+- Build scalable tax infrastructure (systems, controls, documentation, advisor network) and advise on international tax matters including transfer pricing, GILTI, and FDII.
+- Monitor legislative and regulatory developments and serve as a cross-functional partner to Legal, People Ops, Supply Chain, and Finance — translating complex tax matters for non-tax stakeholders.
+- 8+ years of progressive tax experience, including a mix of Big 4 and/or in-house tax leadership at high-growth technology or life sciences companies.
+- Deep expertise in U.S. federal and multi-state corporate income tax, with meaningful exposure to international tax.
+- Strong working knowledge of ASC 740 and GAAP-compliant tax accounting.
+- Demonstrated track record of building or significantly improving in-house tax functions, processes, and controls in a scaling environment.
+- Experience advising on complex transactions — equity rounds, M&A, and strategic partnerships — from a tax perspective.
+- Excellent judgment and communication skills, with the ability to translate complex tax matters for non-tax stakeholders.
+- CPA required.
+
+**Bonus Points For**
+- Advanced degree (MST, LLM, or JD).
+- Biotech, life sciences, or AI-tech experience with significant R&D operations.
+- Familiarity with R&D tax credits (IRC Section 41).
+- Experience with equity compensation tax matters (ISO/NSO, 83(b), QSBS).
+- International tax experience including transfer pricing documentation.
 
 </details>
 
@@ -586,7 +621,7 @@ What You'll Be Building
 
 ### Senior Director / Vice President, Chemistry Experiment (2026-07-02)
 
-2026-07-02 → 2026-10-10 · leadership · Cambridge, MA USA · $204–346K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4300718009)
+2026-07-02 → 2026-10-18 · leadership · Cambridge, MA USA · $204–346K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4300718009)
 
 <details><summary>Description</summary>
 
@@ -707,7 +742,7 @@ What You'll Be Building
 
 ### Director / Senior Director, Origins (2026-07-23)
 
-2026-07-23 → 2026-10-10 · leadership · Cambridge, MA USA · $168–272K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4314463009)
+2026-07-23 → 2026-11-02 · leadership · Cambridge, MA USA · $168–272K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4314463009)
 
 <details><summary>Description</summary>
 
@@ -868,7 +903,7 @@ What You'll Be Building
 
 ### Principal Scientist / Associate Director, Soft Materials Experimentation (2026-09-24)
 
-2026-09-24 → 2026-10-10 · leadership · Cambridge, MA USA · $156–214K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4403708009)
+2026-09-24 → 2026-10-27 · leadership · Cambridge, MA USA · $156–214K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4403708009)
 
 <details><summary>Description</summary>
 

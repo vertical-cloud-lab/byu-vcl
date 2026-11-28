@@ -266,7 +266,7 @@ What You'll Be Building
 
 ### SCADA Engineer (2026-04-13)
 
-2026-04-13 → 2026-06-10 · software-eng · Cambridge, MA USA · $76–125K · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4209788009)
+2026-04-13 → 2026-07-12 · software-eng · Cambridge, MA USA · $76–125K · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4209788009)
 
 <details><summary>Description</summary>
 
@@ -479,7 +479,7 @@ What You'll Be Building
 
 ### Senior Software Engineer, Operations Research (2026-05-26)
 
-2026-05-26 → 2026-10-10 · software-eng · Cambridge, MA USA · $180–256K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4246973009)
+2026-05-26 → 2026-11-02 · software-eng · Cambridge, MA USA · $180–256K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4246973009)
 
 <details><summary>Description</summary>
 
@@ -620,7 +620,7 @@ You’ll help define the platform primitives that make that possible.
 
 ### Operations and Quality Engineer, Sustaining Engineering (2026-07-01)
 
-2026-07-01 → 2026-10-10 · software-eng · Cambridge, MA USA · $94–158K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4277749009)
+2026-07-01 → 2026-10-18 · software-eng · Cambridge, MA USA · $94–158K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4277749009)
 
 <details><summary>Description</summary>
 
@@ -813,7 +813,7 @@ You’ll help define the platform primitives that make that possible.
 
 ### Global Security Operations Center Manager (2026-09-29)
 
-2026-09-29 → 2026-10-10 · software-eng · Cambridge, MA USA · $108–187K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4331069009)
+2026-09-29 → 2026-11-02 · software-eng · Cambridge, MA USA · $108–187K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4331069009)
 
 <details><summary>Description</summary>
 
@@ -837,6 +837,38 @@ What You'll Be Building
 - 5+ years (L5) to 8+ years (L6) of experience in corporate/physical security operations, a GSOC/SOC environment, law enforcement, or military service.
 - Hands-on experience with access control systems and video management systems.
 - Experience monitoring and managing intrusion detection/alarm systems.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="staff-it-systems-engineer-endpoints-2026-10-16"></a>
+
+### Staff IT Systems Engineer, Endpoints (2026-10-16)
+
+2026-10-16 → 2026-11-02 · software-eng · Cambridge, MA USA · $163–218K · [source](https://web.archive.org/web/20261102190423/https://job-boards.greenhouse.io/lilasciences/jobs/4375564009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila is hiring a Staff IT Systems Engineer, Endpoints to own the architecture and roadmap for endpoint management across the company. This role sits within IT & Security and supports the technology every scientist, engineer, and employee relies on, including laptops, mobile devices, specialized research compute, endpoint security, and device trust.
+We treat endpoint management as a software engineering discipline. Configuration, policy, remediation, and fleet operations should move through code, CI/CD, staged rollout, observability, and automated rollback. This is a hands-on staff-level role for someone who can set technical standards, build missing tooling, mentor engineers, and lead cross-functional initiatives across IT, Security, Research Computing, and Lab Operations.
+As Lila scales its workforce and physical footprint, endpoint systems need to become more automated, secure, auditable, and seamless. The right person will help employees and scientists become productive faster while reducing device risk, operational noise, and manual toil.
+What You'll Be Building
+- Own the architecture and roadmap for Lila’s endpoint fleet across macOS, Windows, Linux, mobile devices, and specialized research or lab computing endpoints.
+- Define standards for endpoint configuration, policy, remediation, observability, and rollout practices across the IT & Security team.
+- Drive configuration-as-code adoption for MDM policies, profiles, scripts, staged rollouts, canary groups, and automated rollback.
+- Design zero-touch provisioning workflows so devices arrive encrypted, configured, compliant, and productive out of the box.
+- Partner with Security to integrate endpoint posture, device trust, vulnerability data, EDR, and Zero Trust access controls.
+- Build automation and internal tooling using scripts, APIs, CI/CD, and AI-assisted engineering practices to reduce manual toil.
+- Improve vulnerability and patch management through telemetry, dashboards, drift detection, and auditable compliance workflows.
+- Support specialized computing environments, including research workstations, lab-adjacent systems, VDI, managed browsers, and remote-access patterns where appropriate.
+- Serve as a technical escalation point for complex endpoint issues and mentor engineers across IT and Security.
+- Partner across Security, Legal, HR, Research Computing, and Lab Operations to protect sensitive IP while keeping the employee experience seamless.
+- Deep experience in IT systems engineering, endpoint engineering, infrastructure, or platform engineering, with staff-level technical ownership.
+- Strong experience with modern MDM or UEM platforms such as Jamf, Intune, Workspace ONE, or similar tools.
+- Experience managing endpoint configuration through code, automation, version control, staged rollout, or CI/CD practices.
+- Strong systems knowledge across macOS and Windows endpoint environments.
 
 *(truncated: full text in `data/job_postings.jsonl`)*
 

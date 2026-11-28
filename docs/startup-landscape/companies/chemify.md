@@ -19,6 +19,8 @@ What changed between the first snapshot (2026-10-10) and 2026-11-28. The method 
 - Closed since 2026-10-10: Business Support Assistant; Engineering Project Manager; Health & Safety Advisor; Laboratory Coordinator; Management Accountant; Mechatronics Engineer; Payroll Clerk; Product Operations Manager - Synthetic Chemistry; Production Chemist (Dispensary); Senior / Staff Machine Learning Scientist; Senior / Staff Machine Learning Scientist USA; Senior Full Stack Software Engineer; Senior Manager, Operations Dev; Senior Manufacturing Engineer; Senior Mechanical Engineer; Senior/ Staff Analytical Technician; Staff CADD Scientist USA; Staff Product Designer; Synthetic Chemist; Tech Director, CTO Office.
 
 **LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=82235193&geoId=92000000&location=Worldwide), 2026-11-28): 5 postings: Senior Product Owner (Glasgow, Scotland, United Kingdom, posted 2026-11-13); Product Operations Manager - Synthetic Chemistry (Glasgow, Scotland, United Kingdom, posted 2026-11-05); Cyber Security Engineer (Infrastructure & OT) (Glasgow, Scotland, United Kingdom, posted 2026-11-09); Senior Manager of Facilities and Property Services (Glasgow, Scotland, United Kingdom, posted 2026-11-19); Engineering Operations Shift Supervisor (Greater Glasgow Area, posted 2026-11-05).
+
+- Announced Rima Alameddine (ex-IonQ CRO) as an independent non-executive director; Companies House dates the appointment 22 September 2026. ([source](https://finance.yahoo.com/technology/ai/articles/chemify-appoints-rima-alameddine-board-120100061.html))
 <!-- /refresh:2026-11-28 -->
 
 ## Funding timeline

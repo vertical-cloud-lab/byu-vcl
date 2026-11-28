@@ -532,6 +532,42 @@ Cross-Functional Partnership
 
 </details>
 
+<a id="manager-senior-manager-capital-equipment-accounting-2026-03-29"></a>
+
+### Manager / Senior Manager, Capital Equipment Accounting (2026-03-29)
+
+2026-03-29 → open · business-ops · Cambridge, MA USA; San Francisco, CA USA · $108–187K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4195640009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila is seeking a Manager / Senior Manager, Capital Equipment Accounting to own the accounting for the Company's rapidly growing base of capital assets—the laboratory equipment and facilities buildouts, among other things, that power Lila's operations. As we scale, you will help ensure the operational scalability and financial accuracy of the asset base that underpins our success.
+You will own the end-to-end capex function, including managing the fixed assets and leased ROU assets lifecycle—from acquisition through capitalization, depreciation, impairment, retirement, and audit—working closely with Procurement, Facilities, Lab Operations, and Finance. You will apply deep technical accounting expertise under ASC 360 and ASC 842 and build the processes, controls, and systems that support this function.
+What You'll Own
+Fixed Asset & Leased Equipment Accounting
+- Own end-to-end capex accounting under ASC 360 from timely placement in service, to depreciation, transfers, disposals, and impairments.
+- Support accounting for finance leases under ASC 842, including commencement, renewals, modifications, and related leasehold improvements.
+- Maintain accurate asset records and lease inventories.
+- Assist with technical accounting analyses related to capital assets, lease arrangements, and complex capital projects.
+- Partner with Facilities and Procurement to monitor leasehold improvement projects and capital construction activities.
+- Manage the monthly fixed asset and leased equipment close process and prepare supporting journal entries, account reconciliations, rollforwards, and flux analyses.
+- Ensure compliance with U.S. GAAP and company accounting policies.
+Operations, Governance, & Controls
+- Develop and maintain accounting policies, procedures, and internal controls related to fixed assets and capital expenditures.
+- Assist with asset tracking, tagging, and periodic physical inventories and ensure consistency of data across ERP, procurement, and asset management systems.
+- Prepare audit schedules and support internal and external audit requests related to fixed assets, leases, and capital projects.
+- Bachelor's degree in Accounting or Finance; CPA or equivalent preferred.
+- 6+ years of progressive accounting experience, including public accounting and/or industry experience in a capital-intensive environment.
+- Strong technical knowledge of U.S. GAAP, particularly ASC 360 (property, plant, and equipment) and ASC 842 (leases).
+- Hands-on experience owning a significant capex portfolio in a high-growth environment.
+- Experience supporting laboratory, manufacturing, research, or facility-intensive operations.
+- Experience with ERP systems (NetSuite preferred) and strong analytical skills, including comfort working with large, complex datasets.
+- A track record of building scalable processes and controls in fast-moving environments.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
 <a id="manager-senior-manager-human-resources-2026-04-06"></a>
 
 ### Manager / Senior Manager, Human Resources (2026-04-06)
@@ -569,7 +605,7 @@ What You'll Be Building
 
 ### Life Sciences Technical Program Manager (2026-04-07)
 
-2026-04-07 → 2026-06-11 · business-ops · Cambridge, MA USA · $128–172K · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4204248009)
+2026-04-07 → 2026-07-12 · business-ops · Cambridge, MA USA · $128–172K · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4204248009)
 
 <details><summary>Description</summary>
 
@@ -633,7 +669,7 @@ What You'll Be Building
 
 ### Chemistry Technical Program Manager (2026-04-24)
 
-2026-04-24 → 2026-10-10 · business-ops · Cambridge, MA USA · $128–172K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4204188009)
+2026-04-24 → 2026-10-18 · business-ops · Cambridge, MA USA · $128–172K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4204188009)
 
 <details><summary>Description</summary>
 
@@ -665,7 +701,7 @@ What You'll Be Building
 
 ### Materials Technical Program Manager (2026-04-24)
 
-2026-04-24 → 2026-06-11 · business-ops · Cambridge, MA USA · $156–214K · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4207843009)
+2026-04-24 → 2026-07-12 · business-ops · Cambridge, MA USA · $156–214K · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4207843009)
 
 <details><summary>Description</summary>
 
@@ -852,7 +888,7 @@ What You'll Be Building
 
 ### Technical Program Manager, AISF (2026-07-09)
 
-2026-07-09 → 2026-10-10 · business-ops · Cambridge, MA USA · $128–170K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4289723009)
+2026-07-09 → 2026-10-18 · business-ops · Cambridge, MA USA · $128–170K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4289723009)
 
 <details><summary>Description</summary>
 
@@ -975,7 +1011,7 @@ What You'll Be Building
 
 ### Research Product Manager, Fine-tuning (2026-08-03)
 
-2026-08-03 → 2026-10-10 · business-ops · Cambridge, MA USA; San Francisco, CA USA · $204–310K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4339607009)
+2026-08-03 → 2026-11-02 · business-ops · Cambridge, MA USA; San Francisco, CA USA · $204–310K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4339607009)
 
 <details><summary>Description</summary>
 
@@ -1224,6 +1260,41 @@ What You'll Be Building
 
 **Compensation**
 $160,000 — $215,000 USD
+
+</details>
+
+<a id="co-op-cell-based-sequencing-2026-10-26"></a>
+
+### Co-Op, Cell Based Sequencing (2026-10-26)
+
+2026-10-26 → 2026-10-27 · business-ops · Cambridge, MA USA · [source](https://web.archive.org/web/20261027015646/https://job-boards.greenhouse.io/lilasciences/jobs/4465070009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila Sciences is hiring a winter co-op to join the LS Experiment team at our Alewife lab in Cambridge, MA. You will support cell-based sequencing assay development to investigate RNA biology and advance our mRNA platform.
+Day to day, you will run mammalian cell culture and transfections (chemical or electroporation), extract RNA, prepare samples for sequencing, and carry out bead-based purifications. You will work under the supervision of a scientist who will help you build reproducible protocols and interpret results.
+The co-op runs January 11 through May 14, on site and full time. Expect hands-on bench work, careful data capture, and regular reviews where you present findings to the team.
+What You'll Be Building
+- Maintain and passage mammalian cell lines for assay experiments
+- Transfect mammalian cell lines using chemical or electroporation methods
+- Extract RNA from cultured cells and assess sample quality
+- Run PCR and prepare samples for sequencing
+- Perform bead-based purifications and sample cleanup
+- Record protocols and results in formats ready for computational analysis
+- Present experimental findings to the team in regular reviews
+- Pursuing a bachelor's degree in molecular biology, biochemistry, biotechnology, bioengineering, or a related field
+- Hands-on experience with mammalian cell culture and aseptic technique
+- Experience with RNA extraction and PCR
+- Strong attention to detail in sample handling and labeling
+- Clear, consistent record keeping and comfort following detailed protocols
+- Available full time on site in Cambridge, MA from January 11 to May 14
+
+**Bonus Points For**
+- Familiarity with next-generation sequencing library prep
+- Exposure to Python or R for sequencing data analysis
+- Experience with magnetic bead purification workflows
+- Interest in applying AI tools in a laboratory setting
 
 </details>
 
@@ -1496,6 +1567,39 @@ What You'll Be Building
 - Experience with video production and editing tools
 - Familiarity with design tools for graphics, diagrams, or data visuals
 - Student newspaper, magazine, or science communication experience
+
+</details>
+
+<a id="co-op-targeted-non-viral-delivery-2026-11-02"></a>
+
+### Co-Op, Targeted Non-Viral Delivery (2026-11-02)
+
+2026-11-02 → 2026-11-02 · business-ops · Cambridge, MA USA · [source](https://web.archive.org/web/20261102185157/https://job-boards.greenhouse.io/lilasciences/jobs/4472544009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila is seeking a co-op to help build the automated non-viral delivery platform. The role focuses on improving an automated system for production and characterization of targeted lipid nanoparticles (tLNP).
+Day-to-day work involves producing tLNPs to support ongoing experiments, developing new conjugation and purification methods for tLNPs, and applying those methods on the automated system.
+The co-op works alongside chemists, biologists, automation engineers, and data scientists, with hands-on time across both bench science and automated lab systems.
+What You'll Be Building
+- Formulate and characterize targeted LNPs on an automated microfluidic workcell
+- Run high-throughput screens of ionizable lipids and targeting ligands
+- Execute downstream characterization assays such as DLS, RiboGreen, and TNS
+- Onboard new workflows and experiment types onto the workcell
+- Test and document changes that increase screening throughput
+- Record methods, results, and observations in the ELN for reuse across teams
+- Pursuing a BSc or MSc in chemical engineering, biomedical engineering, pharmaceutical sciences, biology, or a related field
+- Hands-on wet-lab experience and comfort following detailed SOPs
+- Data analysis skills, with the ability to interpret results and iterate on experimental design
+- Clear written and verbal communication, including ELN documentation
+- Available for the full January co-op term, onsite at Alewife
+
+**Bonus Points For**
+- Experience with lipid nanoparticle formulation, microfluidics, or other drug delivery systems
+- Familiarity with automated systems or high-throughput screening platforms
+- Familiarity with protein characterization methods
+- Working knowledge of bioanalytical techniques such as fluorescence spectroscopy and electrophoresis
 
 </details>
 

@@ -19,6 +19,8 @@ What changed between the first snapshot (2026-10-10) and 2026-11-28. The method 
 **Openings.** 0 open on 2026-11-28 on [its job board](https://aionics.io/), against 0 on 2026-10-10. 0 new, 0 closed.
 
 **LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=65616801&geoId=92000000&location=Worldwide), 2026-11-28): no postings.
+
+- Co-founder Venkat Viswanathan is now CEO. The leadership page listed Austin Sendek as CEO in its 5 December 2025 capture; by 9 March 2026 it lists Viswanathan as CEO and no longer lists Sendek. No announcement was found. ([source](https://aionics.io/about))
 <!-- /refresh:2026-11-28 -->
 
 ## Funding timeline

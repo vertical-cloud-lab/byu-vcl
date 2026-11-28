@@ -12,7 +12,6 @@ What changed between the first snapshot (2026-10-10) and 2026-11-28. The method 
 | Date | Members | Band | Source |
 | --- | --- | --- | --- |
 | 2025-01-23 | 22 | 11-50 | [Wayback](https://web.archive.org/web/20250123140825/https://www.linkedin.com/company/materials-nexus) |
-| 2025-01-23 | 22 | 11-50 | [Wayback](https://web.archive.org/web/20250123164848/https://www.linkedin.com/company/materials-nexus/) |
 
 **LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=79745357&geoId=92000000&location=Worldwide), 2026-11-28): no postings.
 

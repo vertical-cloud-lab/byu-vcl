@@ -11,9 +11,18 @@ What changed between the first snapshot (2026-10-10) and 2026-11-28. The method 
 
 | Date | Members | Band | Source |
 | --- | --- | --- | --- |
+| 2025-07-01 | 147 | 51-200 | [Wayback](https://web.archive.org/web/20250701041228/https://www.linkedin.com/company/lila-sciences) |
+| 2025-11-22 | 225 | 201-500 | [Wayback](https://web.archive.org/web/20251122105941/https://www.linkedin.com/company/lila-sciences) |
+| 2026-02-01 | 284 | 201-500 | [Wayback](https://web.archive.org/web/20260201190209/https://www.linkedin.com/company/lila-sciences) |
+| 2026-07-19 | 477 | 201-500 | [Wayback](https://web.archive.org/web/20260719234827/https://www.linkedin.com/company/lila-sciences) |
+| 2026-10-11 | 563 | 201-500 | [Wayback](https://web.archive.org/web/20261011205614/https://www.linkedin.com/company/lila-sciences) |
+| 2026-10-12 | 563 | 201-500 | [Wayback](https://web.archive.org/web/20261012002210/https://www.linkedin.com/company/lila-sciences) |
+| 2026-10-20 | 567 | 201-500 | [Wayback](https://web.archive.org/web/20261020053619/https://www.linkedin.com/company/lila-sciences) |
 | 2026-10-27 | 567 | 201-500 | [Wayback](https://web.archive.org/web/20261027050333/https://www.linkedin.com/company/lila-sciences) |
 
 **Openings.** 113 open on 2026-11-28 on [its job board](https://job-boards.greenhouse.io/lilasciences), against 107 on 2026-10-10. 52 new, 46 closed.
+
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=105565838&geoId=92000000&location=Worldwide&original_referer=), 2026-11-28): 113 postings, the same roles as its own board, listed in Cambridge, MA (47), San Francisco, CA (11), London, England, United Kingdom (1), United States (1) among the first 60.
 
 - Two of the 33 leaders on the 24 September team page are no longer listed: Jack Milwid (Office of the CEO) and Chris O'Donnell (Chief Government Affairs Officer). Chris Fussell moved from President, Operations to Vice Chair, and Jon Hennek from Chief Revenue & Product Officer to Chief Product Officer. ([source](https://www.lila.ai/team))
 <!-- /refresh:2026-11-28 -->

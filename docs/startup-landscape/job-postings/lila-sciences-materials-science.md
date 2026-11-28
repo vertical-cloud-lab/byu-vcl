@@ -74,7 +74,7 @@ A Note to Agencies
 
 ### Research Scientist I/II, Statistical Mechanics and Dynamics (2025-10-06)
 
-2025-10-06 → 2026-06-11 · materials-science · Cambridge, MA USA · $176–234K · [source](https://web.archive.org/web/20260610131124/https://job-boards.greenhouse.io/lilasciences/jobs/4031471009)
+2025-10-06 → 2026-07-14 · materials-science · Cambridge, MA USA · $176–234K · [source](https://web.archive.org/web/20260610131124/https://job-boards.greenhouse.io/lilasciences/jobs/4031471009)
 
 <details><summary>Description</summary>
 
@@ -105,7 +105,7 @@ What You'll Be Building
 
 ### Research Scientist, Frontier Capabilities (2025-10-06)
 
-2025-10-06 → 2026-06-09 · materials-science · Cambridge, MA USA; San Francisco, CA USA · $176–304K · [source](https://web.archive.org/web/20260602011834/https://job-boards.greenhouse.io/lilasciences/jobs/4031326009)
+2025-10-06 → 2026-07-12 · materials-science · Cambridge, MA USA; San Francisco, CA USA · $176–304K · [source](https://web.archive.org/web/20260602011834/https://job-boards.greenhouse.io/lilasciences/jobs/4031326009)
 
 <details><summary>Description</summary>
 
@@ -166,6 +166,40 @@ What You'll Be Building
 - Experience with self-driving lab platforms or closed-loop optimization systems.
 - Knowledge of design-of-experiment (DoE) methods and Bayesian optimization.
 - Experience contributing to scientific software tools or open-source automation frameworks.
+We’re All In
+A Note to Agencies
+
+</details>
+
+<a id="scientist-senior-scientist-flow-chemistry-2025-10-06"></a>
+
+### Scientist / Senior Scientist, Flow Chemistry (2025-10-06)
+
+2025-10-06 → 2025-10-24 · materials-science · Cambridge, MA USA · [source](https://web.archive.org/web/20251024090511/https://job-boards.greenhouse.io/lilasciences/jobs/4029548009)
+
+<details><summary>Description</summary>
+
+**Your Impact at Lila**
+As a Senior Scientist on our Physical Sciences team, you will lead the development of cutting-edge flow chemistry workflows. You’ll design and optimize flow chemistry platforms that integrate real-time analytics, advanced control strategies, and AI-driven decision-making. In this role, you’ll work closely with systems engineers and AI scientists to unlock new capabilities in autonomous chemistry and accelerate discovery at scale.
+What You'll Be Building
+- Design & Commission: Architect and develop versatile flow chemistry platforms for autonomous synthesis, ensuring seamless integration with the Lila platform.
+- Integrate & Scale: Build, control, and optimize flow reactors and inline analytics. Interface flow chemistry platforms with robotic and sensing systems.
+- Workflow Optimization: Tune flow chemistry platform design and software pipelines for high-throughput closed-loop experimentation with rich metadata capture.
+- Closed-Loop Execution: Collaborate with AI teams to run iterative experiments in real time, enabling fast optimization and discovery cycles.
+- Collaboration & Documentation: Work with chemists, material scientists, engineers, and data scientists to document systems, share insights, and refine best practices in autonomous flow chemistry.
+- Ph.D. or M.S. in Chemical Engineering, Chemistry, or a related field.
+- ≥ 5 years of hands-on experience in flow chemistry, microfluidics, or microreaction engineering.
+- Strong background in catalysis and organic synthesis.
+- Experience with automation, instrumentation, and integrating real-time analytics into experimental workflows.
+- Proficiency in Python for scripting, data analysis, and instrument control.
+- Excellent problem-solving, communication, and collaboration skills.
+
+**Bonus Points For**
+- Prior experience working in an autonomous or self-driving lab environment.
+- Familiarity with cloud-based instrumentation control and orchestration.
+- Hands-on experience with AI-driven experimental design or Bayesian optimization.
+- Background in scaling workflows from proof-of-concept to routine, high-throughput operation.
+- Contributions to open-source lab automation or scientific software projects.
 We’re All In
 A Note to Agencies
 
@@ -343,7 +377,7 @@ What You'll Be Building
 
 ### Scientist I/II, Organic Chemistry (2026-03-25)
 
-2026-03-25 → 2026-06-10 · materials-science · Cambridge, MA USA · $108–170K · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4192801009)
+2026-03-25 → 2026-07-18 · materials-science · Cambridge, MA USA · $108–170K · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4192801009)
 
 <details><summary>Description</summary>
 
@@ -371,7 +405,7 @@ What You'll Be Building
 
 ### Scientist I/II, Process Chemistry (2026-03-25)
 
-2026-03-25 → 2026-06-10 · materials-science · Cambridge, MA USA · $108–170K · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4192775009)
+2026-03-25 → 2026-07-12 · materials-science · Cambridge, MA USA · $108–170K · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4192775009)
 
 <details><summary>Description</summary>
 
@@ -449,7 +483,7 @@ What You'll Be Building
 
 ### Scientist I/II, mRNA Translation Dynamics (2026-04-09)
 
-2026-04-09 → 2026-06-11 · materials-science · Cambridge, MA USA · $108–170K · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4204230009)
+2026-04-09 → 2026-07-14 · materials-science · Cambridge, MA USA · $108–170K · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4204230009)
 
 <details><summary>Description</summary>
 
@@ -583,7 +617,7 @@ What You'll Be Building
 
 ### Associate / Engineer I, ResOps, Synthesis (2026-05-19)
 
-2026-05-19 → 2026-06-08 · materials-science · Cambridge, MA USA · $72–106K · [source](https://web.archive.org/web/20260602011834/https://job-boards.greenhouse.io/lilasciences/jobs/4246303009)
+2026-05-19 → 2026-07-12 · materials-science · Cambridge, MA USA · $72–106K · [source](https://web.archive.org/web/20260602011834/https://job-boards.greenhouse.io/lilasciences/jobs/4246303009)
 
 <details><summary>Description</summary>
 
@@ -709,7 +743,7 @@ What You'll Be Building
 
 ### Scientist II, Mechanics & Extreme Materials (2026-06-01)
 
-2026-06-01 → 2026-06-08 · materials-science · Cambridge, MA USA · $128–172K · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4251028009)
+2026-06-01 → 2026-07-19 · materials-science · Cambridge, MA USA · $128–172K · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4251028009)
 
 <details><summary>Description</summary>
 
@@ -780,7 +814,7 @@ What You'll Be Building
 
 ### Scientist, Epitaxial Thin Film Synthesis (2026-06-11)
 
-2026-06-11 → 2026-10-10 · materials-science · Cambridge, MA USA · $108–150K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4253548009)
+2026-06-11 → 2026-10-18 · materials-science · Cambridge, MA USA · $108–150K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4253548009)
 
 <details><summary>Description</summary>
 
@@ -817,7 +851,7 @@ What You'll Be Building
 
 ### Senior/Principal Scientist, Small Molecule Therapeutics (2026-07-01)
 
-2026-07-01 → 2026-10-10 · materials-science · Cambridge, MA USA · $148–208K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4296054009)
+2026-07-01 → 2026-10-18 · materials-science · Cambridge, MA USA · $148–208K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4296054009)
 
 <details><summary>Description</summary>
 
@@ -864,6 +898,42 @@ What You'll Be Building
 - Familiarity with assay development, optimization, and data analysis for bioassay techniques such as ELISA, AlphaLisa, SPR/BLI, and functional activity assays.
 
 *(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="senior-research-associate-associate-scientist-characterization-2026-07-20"></a>
+
+### Senior Research Associate / Associate Scientist, Characterization (2026-07-20)
+
+2026-07-20 → 2026-08-07 · materials-science · Cambridge, MA USA · $80–118K · [source](https://web.archive.org/web/20260807212344/https://job-boards.greenhouse.io/lilasciences/jobs/4310496009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila Sciences is seeking a Senior Research Associate / Associate Scientist, Characterization to join the Materials Science team within the Autonomous Science Platform. This role focuses on operating, maintaining, and improving characterization workflows that support active materials research campaigns.
+The person in this role will run and troubleshoot core characterization methods, including SEM, optical microscopy, and XRD, while helping bring new instruments and protocols into reliable use. They will partner with scientists, engineers, and platform teams to deliver high-quality measurements, document methods, and keep characterization workflows moving efficiently.
+This is a hands-on role for someone who enjoys careful experimental work, dependable lab operations, and practical method development. The ideal candidate brings strong attention to detail, comfort working with scientific equipment, and interest in building repeatable workflows that support fast, high-quality research.
+What You'll Be Building
+- Operate SEM, optical microscopy, XRD, and related characterization workflows.
+- Prepare samples and measurement plans for routine characterization requests.
+- Maintain instrument readiness through checks, calibration, documentation, and troubleshooting.
+- Develop and refine protocols for new tools, methods, and sample types.
+- Deliver high-quality measurement data with clear records and traceable methods.
+- Identify workflow bottlenecks and improve throughput, reliability, and data quality.
+- Partner with Materials Science, platform, and operations teams on campaign needs.
+- B.S. or M.S. in Materials Science, Chemistry, Physics, Engineering, or a related field.
+- 2 to 5 years of hands-on laboratory experience in materials characterization or adjacent workflows.
+- Experience operating SEM, optical microscopy, XRD, or other common materials characterization tools.
+- Strong sample preparation, measurement planning, and experimental documentation skills.
+- Ability to troubleshoot instruments, workflows, and data-quality issues.
+- Comfort following SOPs while improving protocols as methods mature.
+- Strong communication skills for coordinating with scientists, engineers, and operations teams.
+
+**Bonus Points For**
+- Familiarity with materials sample preparation for microscopy or diffraction workflows.
+- Experience onboarding new lab equipment, methods, or characterization protocols.
+- Comfort working in high-throughput or service-oriented lab environments.
+- Basic data analysis, visualization, or scripting experience for measurement workflows.
 
 </details>
 
@@ -1066,7 +1136,7 @@ What You'll Be Building
 
 ### Scientist I/II, X-ray Diffraction Characterization (2026-09-14)
 
-2026-09-14 → 2026-10-10 · materials-science · Cambridge, MA USA · $108–170K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4378385009)
+2026-09-14 → 2026-10-27 · materials-science · Cambridge, MA USA · $108–170K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4378385009)
 
 <details><summary>Description</summary>
 
@@ -1130,7 +1200,7 @@ What You'll Be Building
 
 ### Scientist II, Silicon Photonics (2026-09-14)
 
-2026-09-14 → 2026-10-10 · materials-science · Cambridge, MA USA · $128–170K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4383465009)
+2026-09-14 → 2026-11-02 · materials-science · Cambridge, MA USA · $128–170K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4383465009)
 
 <details><summary>Description</summary>
 
@@ -1187,7 +1257,7 @@ What You'll Be Building
 
 ### Associate Scientist/Scientist I, Translational Biology (2026-09-29)
 
-2026-09-29 → 2026-10-10 · materials-science · Cambridge, MA USA · $88–144K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4415281009)
+2026-09-29 → 2026-10-18 · materials-science · Cambridge, MA USA · $88–144K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4415281009)
 
 <details><summary>Description</summary>
 

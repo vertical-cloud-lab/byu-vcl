@@ -29,8 +29,8 @@ Back to [all companies](README.md) · [company profile](../companies/radical-ai.
 | 2026-04-08 | 2026-04-22 | [Software Engineer, Platform](#software-engineer-platform-2026-04-08) | software-eng |  | New York, NY, USA |  | 5 | $200–250K | [Wayback](https://web.archive.org/web/20260422181541/https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/73774131-software-engineer-platform) |
 | 2026-06-03 | open | [Director of Software Engineering](#director-of-software-engineering-2026-06-03) | leadership | Core Software | New York, NY |  | 10 | $237–350K | [live](https://jobs.lever.co/RadicalAI/caaac405-c8a5-4daa-ae6d-0a0e51e199b8) [live](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655547) |
 | 2026-06-04 | 2026-06-16 | [Laboratory Operations Specialist](#laboratory-operations-specialist-2026-06-04) | lab-automation |  | New York, NY, USA | BS | 1 | $87–120K | [live](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655548) |
-| 2026-06-04 | 2026-07-15 | [Product Manager](#product-manager-2026-06-04) | business-ops |  | New York, NY, USA |  |  | $195–265K | [live](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655549) |
-| 2026-06-04 | 2026-07-12 | [Senior Product Designer](#senior-product-designer-2026-06-04) | business-ops |  | New York, NY, USA |  | 4 | $157–206K | [live](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655550) |
+| 2026-06-04 | 2026-07-20 | [Product Manager](#product-manager-2026-06-04) | business-ops |  | New York, NY, USA |  |  | $195–265K | [live](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655549) [Wayback](https://web.archive.org/web/20260720124028/https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655549-product-manager) |
+| 2026-06-04 | 2026-07-20 | [Senior Product Designer](#senior-product-designer-2026-06-04) | business-ops |  | New York, NY, USA |  | 4 | $157–206K | [live](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655550) [Wayback](https://web.archive.org/web/20260720013033/https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655550-senior-product-designer) |
 | 2026-08-19 | open | [Head of Software Engineering](#head-of-software-engineering-2026-08-19) | leadership | Engineering | Brooklyn, NY |  | 5 | $237–340K | [live](https://app.nodi.global/jobs/public/9bbdef83-7745-4853-9401-2e5577df3ae3) |
 | 2026-08-21 | 2026-10-10 | [Automation Technician](#automation-technician-2026-08-21) | lab-automation | Hardware | Brooklyn Navy Yard |  |  | $66–103K | [live](https://app.nodi.global/jobs/public/5e6d0a4e-c594-494f-8507-35976506f7e5) |
 | 2026-08-21 | 2026-10-10 | [Mechanical Engineering - Design](#mechanical-engineering-design-2026-08-21) | lab-automation | Hardware | Brooklyn Navy Yard | BS | 3 | $140–185K | [live](https://app.nodi.global/jobs/public/b2fa9303-6ec7-4cea-9dad-5cfe8b05aeaa) |
@@ -50,7 +50,7 @@ Back to [all companies](README.md) · [company profile](../companies/radical-ai.
 
 ## Careers-page captures
 
-1 archived captures of the company's careers page, or of its page on a job board. Their text is not reproduced here: where they list openings, those are in the table above or sat in embedded widgets the archive did not capture, and some pages feature named staff, whom this survey does not name. The captures: [2026-04-14](https://web.archive.org/web/20260414162446/https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee).
+2 archived captures of the company's careers page, or of its page on a job board. Their text is not reproduced here: where they list openings, those are in the table above or sat in embedded widgets the archive did not capture, and some pages feature named staff, whom this survey does not name. The captures: [2026-04-14](https://web.archive.org/web/20260414162446/https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee), [2026-07-17](https://web.archive.org/web/20260717090224/https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee).
 
 ## Descriptions
 
@@ -731,7 +731,7 @@ We are looking for a hands-on Laboratory Operations Specialist to help keep our 
 
 ### Product Manager (2026-06-04)
 
-2026-06-04 → 2026-07-15 · business-ops · New York, NY, USA · $195–265K · [source](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655549)
+2026-06-04 → 2026-07-20 · business-ops · New York, NY, USA · $195–265K · [source](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655549)
 
 <details><summary>Description</summary>
 
@@ -768,7 +768,7 @@ What You'll Own
 
 ### Senior Product Designer (2026-06-04)
 
-2026-06-04 → 2026-07-12 · business-ops · New York, NY, USA · $157–206K · [source](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655550)
+2026-06-04 → 2026-07-20 · business-ops · New York, NY, USA · $157–206K · [source](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655550)
 
 <details><summary>Description</summary>
 

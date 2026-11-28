@@ -23,6 +23,8 @@ What changed between the first snapshot (2026-10-10) and 2026-11-28. The method 
 **Openings.** 1 open on 2026-11-28 on [its job board](https://www.mitrachem.com/join-us), against 1 on 2026-10-10. 0 new, 0 closed.
 
 **LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=79849770&geoId=92000000&location=Worldwide), 2026-11-28): no postings.
+
+- A Form D under its legal name, Mitra Future Technologies, Inc., records $15.6M sold of a $50.0M equity offering (first sale 23 May 2025, signed 6 Jun 2025). This settles the conflicting reports of a 2025 Series B extension. It also names two directors who are not on the team page, Jiang-Ling Du and Chamath Palihapitiya. ([source](https://www.sec.gov/Archives/edgar/data/1887663/000188766325000002/primary_doc.xml))
 <!-- /refresh:2026-11-28 -->
 
 ## Funding timeline

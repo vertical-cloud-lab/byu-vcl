@@ -14,9 +14,8 @@ What changed between the first snapshot (2026-10-10) and 2026-11-28. The method 
 | 2024-01-14 | 18 | 11-50 | [Wayback](https://web.archive.org/web/20240114191103/https://www.linkedin.com/company/mattiq/) |
 | 2024-09-13 | 18 | 11-50 | [Wayback](https://web.archive.org/web/20240913020600/https://www.linkedin.com/company/mattiq/) |
 | 2025-01-30 | 19 | 11-50 | [Wayback](https://web.archive.org/web/20250130134322/https://www.linkedin.com/company/mattiq/) |
-| 2025-01-30 | 19 | 11-50 | [Wayback](https://web.archive.org/web/20250130154241/https://www.linkedin.com/company/mattiq) |
 
-**LinkedIn job search** ([logged out, by name](https://www.linkedin.com/jobs/search?keywords=%22Mattiq%22&location=Worldwide&geoId=92000000), 2026-11-28): no postings.
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=75435970&geoId=92000000&location=Worldwide), 2026-11-28): no postings.
 
 - The redesigned site sells Mattiq as a source of experimental materials data for AI: "Mattiq generates the ground truth that turns AI prediction into reality". It cites 250M material instances and 100K compositions per Megalibrary chip. It no longer leads with electrocatalysts, and it has no careers page. ([source](https://mattiq.com/))
 <!-- /refresh:2026-11-28 -->

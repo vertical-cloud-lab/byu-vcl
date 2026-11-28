@@ -452,6 +452,9 @@ def backgrounds(cos):
 
 TITLE_RULES = [  # first match wins
     ("leadership", r"\bhead of|\bchief\b|\bvp\b|vice president|\bdirector\b|general manager"),
+    # Finance roles that mention equipment, and AI-safety research roles, are not lab automation.
+    ("business-ops", r"accounting|accountant|payroll"),
+    ("ml-research", r"\bai safety"),
     ("lab-automation", r"automation|robot|mechanical|mechatron|electrical|equipment|technician|hardware|"
                        r"controls|process engineer|process safety|facilit|\behs\b|safety|maintenance|"
                        r"lab operations|laboratory|instrument"),

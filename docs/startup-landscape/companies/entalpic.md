@@ -12,6 +12,8 @@ What changed between the first snapshot (2026-10-10) and 2026-11-28. The method 
 - Closed since 2026-10-10: Application Lead (Vapor Deposition Precursor Chemistry); Scientific Software Developer.
 
 **LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=104033114&geoId=92000000&location=Worldwide), 2026-11-28): no postings.
+
+- NVIDIA announced a planned strategic investment in Entalpic during its Paris visit. No amount was given; Tech.eu, citing Les Echos, calls it a minority stake. ([source](https://blogs.nvidia.com/blog/france-ecosystem-agentic-computing/))
 <!-- /refresh:2026-11-28 -->
 
 ## Funding timeline

@@ -508,7 +508,7 @@
       "seniority": "head",
       "start": "2026-10",
       "start_basis": "live about page 2026-10-09",
-      "end": null,
+      "end": "2026-11",
       "background": "not stated",
       "source": "https://citrine.io/about/"
     }
@@ -629,6 +629,14 @@
       "date": "2024",
       "basis": "84 (2024-02) to 69 (2024-12) on archived LinkedIn page",
       "source": "https://web.archive.org/web/20241212055339/https://www.linkedin.com/company/citrine-informatics"
+    },
+    {
+      "who": "Steve Edkins",
+      "title": "Leadership team, Strategy and Operations",
+      "date": "2026-11",
+      "basis": "listed on citrine.io/about in October 2026; not listed on 2026-11-28",
+      "source": "https://citrine.io/about/",
+      "added": "2026-11-28"
     }
   ],
   "notes": [

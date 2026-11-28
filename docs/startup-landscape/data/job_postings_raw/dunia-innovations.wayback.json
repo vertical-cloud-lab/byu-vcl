@@ -186,8 +186,8 @@
    {
     "urlkey": "com,personio,jobs,dunia)/job/2519206",
     "first": "20260410193954",
-    "last": "20260410193954",
-    "n": 1,
+    "last": "20260713122255",
+    "n": 2,
     "original": "https://dunia.jobs.personio.com/job/2519206"
    },
    {
@@ -207,8 +207,8 @@
    {
     "urlkey": "com,personio,jobs,dunia)/job/2519182",
     "first": "20260410195028",
-    "last": "20260410195028",
-    "n": 1,
+    "last": "20260713123337",
+    "n": 2,
     "original": "https://dunia.jobs.personio.com/job/2519182"
    },
    {
@@ -221,8 +221,8 @@
    {
     "urlkey": "com,personio,jobs,dunia)/job/2521638",
     "first": "20260410195410",
-    "last": "20260410195410",
-    "n": 1,
+    "last": "20260713123740",
+    "n": 2,
     "original": "https://dunia.jobs.personio.com/job/2521638"
    },
    {
@@ -270,15 +270,15 @@
    {
     "urlkey": "com,personio,jobs,dunia)/job/2521931",
     "first": "20260410203537",
-    "last": "20260410203537",
-    "n": 1,
+    "last": "20260713131530",
+    "n": 2,
     "original": "https://dunia.jobs.personio.com/job/2521931"
    },
    {
     "urlkey": "com,personio,jobs,dunia)/job/2516252",
     "first": "20260410203801",
-    "last": "20260410203801",
-    "n": 1,
+    "last": "20260713131748",
+    "n": 2,
     "original": "https://dunia.jobs.personio.com/job/2516252"
    },
    {
@@ -291,8 +291,8 @@
    {
     "urlkey": "com,personio,jobs,dunia)/privacy-policy",
     "first": "20260410205054",
-    "last": "20260410205054",
-    "n": 1,
+    "last": "20260713132458",
+    "n": 2,
     "original": "https://dunia.jobs.personio.com/privacy-policy"
    },
    {
@@ -497,6 +497,13 @@
     "last": "20260618213450",
     "n": 1,
     "original": "https://dunia.jobs.personio.com/_next/static/chunks/app/company/%5Bsubdomain%5D/page-54657256eeb51c5b.js"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2688916",
+    "first": "20260713130437",
+    "last": "20260713130437",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2688916"
    }
   ]
  },
@@ -633,6 +640,114 @@
    "n_captures": 1,
    "title": "Open positions",
    "text": ""
+  },
+  {
+   "company": "dunia-innovations",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250916072721/https://dunia.jobs.personio.com/job/2267425?language=en",
+   "url": "https://dunia.jobs.personio.com/job/2267425?language=en",
+   "first_seen": "20250916072721",
+   "last_seen": "20260514140115",
+   "n_captures": 6,
+   "title": null,
+   "text": "",
+   "posting_id": "2267425"
+  },
+  {
+   "company": "dunia-innovations",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260310150118/https://dunia.jobs.personio.com/job/2521947?language=en",
+   "url": "https://dunia.jobs.personio.com/job/2521947?language=en",
+   "first_seen": "20260310150118",
+   "last_seen": "20260514130100",
+   "n_captures": 5,
+   "title": null,
+   "text": "",
+   "posting_id": "2521947"
+  },
+  {
+   "company": "dunia-innovations",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260310153052/https://dunia.jobs.personio.com/job/2521638?language=en",
+   "url": "https://dunia.jobs.personio.com/job/2521638?language=en",
+   "first_seen": "20260310153052",
+   "last_seen": "20260713123740",
+   "n_captures": 5,
+   "title": null,
+   "text": "",
+   "posting_id": "2521638"
+  },
+  {
+   "company": "dunia-innovations",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260310153124/https://dunia.jobs.personio.com/job/2521891?language=en",
+   "url": "https://dunia.jobs.personio.com/job/2521891?language=en",
+   "first_seen": "20260310153124",
+   "last_seen": "20260812134035",
+   "n_captures": 5,
+   "title": null,
+   "text": "",
+   "posting_id": "2521891"
+  },
+  {
+   "company": "dunia-innovations",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260310155616/https://dunia.jobs.personio.com/job/2521701?language=en",
+   "url": "https://dunia.jobs.personio.com/job/2521701?language=en",
+   "first_seen": "20260310155616",
+   "last_seen": "20260514135020",
+   "n_captures": 4,
+   "title": null,
+   "text": "",
+   "posting_id": "2521701"
+  },
+  {
+   "company": "dunia-innovations",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260310161640/https://dunia.jobs.personio.com/job/2521931?language=en",
+   "url": "https://dunia.jobs.personio.com/job/2521931?language=en",
+   "first_seen": "20260310161640",
+   "last_seen": "20260713131530",
+   "n_captures": 5,
+   "title": null,
+   "text": "",
+   "posting_id": "2521931"
+  },
+  {
+   "company": "dunia-innovations",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260410185734/https://dunia.jobs.personio.com/job/2519192?language=en&utm_source=Kindred+Capital+job+board&utm_medium=getro.com&gh_src=Kindred+Capital+job+board",
+   "url": "https://dunia.jobs.personio.com/job/2519192?language=en&utm_source=Kindred+Capital+job+board&utm_medium=getro.com&gh_src=Kindred+Capital+job+board",
+   "first_seen": "20260410185734",
+   "last_seen": "20260514132821",
+   "n_captures": 3,
+   "title": "Lab Operations & Procurement Manager",
+   "text": "Your mission\nMake ambitious science possible by running an exceptional lab operation\nDunia is building AI for one of the hardest unsolved problems in science: turning materials discovery from an academic, trial-and-error process into a programmable, scalable discipline.\nAt Dunia, the lab is not just a workspace. It is a production system where experiments, automation, and AI-driven discovery intersect. When lab operations work well, discovery accelerates. When they don’t, everything slows down.\nAs Lab Operations & Procurement Manager, you are responsible for turning the lab into an engine for discovery; one that runs smoothly, scales reliably, and accelerates the work of everyone who depends on it.\nYou own the systems, processes, and details that allow scientists and automation to operate without friction. Your work determines whether experiments start on time, whether data is trustworthy, and whether the lab scales gracefully or painfully.\nYour tasks will include:\nAct as Procurement Owner Across Projects\nYou are the single accountable stakeholder for major equipment procurement.\n- Join early-stage project discussions to understand technical requirements\n- Quickly grasp unfamiliar technologies and experimental workflows\n- Translate scientific needs into structured procurement specifications\n- Challenge unclear requirements and sharpen decision criteria\n- Ensure no major purchase happens without structured evaluation\nYou may not be the domain expert, but you learn fast enough to ask the right questions and make informed technical and commercial decisions.\nLead Multi-Million Equipment Negotiations\n- Run structured RFP or vendor comparison processes\n- Evaluate technical proposals together with internal experts\n- Negotiate pricing, delivery timelines, payment terms, service agreements, and warranties\n- Push vendors on performance guarantees and accountability\n- Close contracts in the multi-million euro range\nYou are comfortable getting on calls with global suppliers and driving hard but fair negotiations.\nMake Decisions Under Technical Uncertainty\nIn a fast-scaling R&D environment, specifications evolve.\n- Assess trade-offs between flexibility and cost\n- Avoid over-specification that locks capital unnecessarily\n- Avoid under-specification that limits future capability\n- Evaluate modularity and upgrade paths\n- Balance immediate project needs with long-term platform vision\nYou make decisions that hold up three years from now.\nProtect Capital and Runway\n- Build cost models for major purchases\n- Support CAPEX planning with leadership\n- Monitor procurement budgets across parallel projects\n- Identify savings opportunities without compromising capability\n- Prevent hidden long-term costs in service or consumables contracts\nYou treat company capital as if it were your own.\nEnsure Execution After Signature\nProcurement does not end with negotiation.\n- Track delivery milestones\n- Coordinate installation and acceptance testing\n- Ensure vendors deliver according to contract\n- Escalate when commitments are not met\n- Maintain documentation for compliance and grant reporting\nYou ensure equipment is operational on time and at spec.\nYour profile\n- Proven experience managing complex technical procurement programs\n- Experience handling capital\n- Strong contractual negotiation skills\n- Ability to quickly understand new technical domains\n- Confidence to challenge both vendors and internal stakeholders\n- Structured thinking under ambiguity\n- Fluent English, additional languages is a plus\nExperience in automation, laboratory infrastructure, industrial systems, or engineering-heavy environments is strongly preferred.\nAbout us\nDunia , meaning “world” in over 20 languages, reflects our focus on building technologies that deliver abundance globally. By combining physics, AI, and automation, we accelerate materials discovery for next-generation energy and industrial systems. Our work helps make energy more accessible and materials more affordable and resilient while reshaping how science moves from idea to impact. Join us to work on problems where progress truly compounds.\nNeed more convincing? -->   Watch this video\nWe strive to create a diverse and inclusive workplace where everyone feels welcome and safe to be their authentic self. Non-traditional career paths are welcome and valued. If you share our vision, you can be certain that we want you to succeed. You might be just the right candidate for this or for other roles that have not opened yet.\nReach out, and follow us on  LinkedIn !\nApply for this job",
+   "posting_id": "2519192"
+  },
+  {
+   "company": "dunia-innovations",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260410190613/https://dunia.jobs.personio.com/job/2519204?language=en&utm_source=Kindred+Capital+job+board&utm_medium=getro.com&gh_src=Kindred+Capital+job+board",
+   "url": "https://dunia.jobs.personio.com/job/2519204?language=en&utm_source=Kindred+Capital+job+board&utm_medium=getro.com&gh_src=Kindred+Capital+job+board",
+   "first_seen": "20260410190613",
+   "last_seen": "20260514133641",
+   "n_captures": 4,
+   "title": "Research Scientist, Thermocatalysis",
+   "text": "Your mission\nAdvance thermocatalysis from hypothesis to proof in real-world programs\nDunia is building AI for one of the hardest unsolved problems in science: turning materials discovery from an academic, trial-and-error process into a programmable, scalable discipline.\nAs Research Scientist, Thermocatalysis, you will own applied thermocatalysis research tied directly to proof-of-concept (PoC) projects and customer programs. Your role is to turn hypotheses into validated results that inform decisions, models, and next steps.\nThis is a delivery-oriented scientific role embedded in an end-to-end discovery system.\nYour tasks will include:\nOwn applied thermocatalysis research\n- Design, execute, and iterate  thermocatalysis  experiments aligned with program goals\n- Develop and refine experimental protocols as understanding evolves\n- Ensure results are reproducible, interpretable, and decision-relevant\nWork within an AI-native discovery loop\n- Collaborate closely with AI, automation, and materials teams\n- Help translate experimental workflows into machine-readable representations\n- Provide  experimental insight that informs model development and active learning\nTranslate science into outcomes\n- Analyze and interpret experimental results with an applied lens\n- Communicate findings clearly to internal stakeholders and program leads\n- Connect experimental outcomes to customer and PoC objectives\nOperate with rigor and discipline\n- Maintain  high standards  for lab documentation, safety, and data quality\n- Contribute to continuous improvement of experimental workflows\n- Stay current on relevant  thermocatalysis  literature and techniques\nYour profile\n- PhD in chemistry, chemical engineering, materials science, or a closely related field, wit h 3–6 years of post-PhD experience  in appli ed catalysis or industrial R&D\n- Strong hands-on experimental background in  thermocatalysis  or closely related catalytic systems\n- Demonstrated experience designing, executing, and iterating experiments under real-world constraints\n- Comfortable working in multidisciplinary teams spanning chemistry, AI, and automation\n- Applied, delivery-oriented mindset paired with a high bar for scientific rigor\n- Clear communicator who can translate experimental results into decisions and next steps\n- English fluency,  additional  languages preferred\nAbout us\nDunia , meaning “world” in over 20 languages, reflects our focus on building technologies that deliver abundance globally. By combining physics, AI, and automation, we accelerate materials discovery for next-generation energy and industrial systems. Our work helps make energy more accessible and materials more affordable and resilient while reshaping how science moves from idea to impact. Join us to work on problems where progress truly compounds.\nNeed more convincing? -->   Watch this video\nWe strive to create a diverse and inclusive workplace where everyone feels welcome and safe to be their authentic self. Non-traditional career paths are welcome and valued. If you share our vision, you can be certain that we want you to succeed. You might be just the right candidate for this or for other roles that have not opened yet.\nReach out, and follow us on  LinkedIn !\nApply for this job",
+   "posting_id": "2519204"
+  },
+  {
+   "company": "dunia-innovations",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260410190928/https://dunia.jobs.personio.com/job/2519206?language=en",
+   "url": "https://dunia.jobs.personio.com/job/2519206?language=en",
+   "first_seen": "20260410190928",
+   "last_seen": "20260713122255",
+   "n_captures": 5,
+   "title": "Lab Technicians",
+   "text": "Your mission\nExecute high-quality experiments that make autonomous materials discovery possible\nDunia is building AI for one of the hardest unsolved problems in science: turning materials discovery from an academic, trial-and-error process into a programmable, scalable discipline.\nRobots, software, and AI depend on experimental execution that is precise, repeatable, and honest about its limitations.\nAs a Lab Technician at Dunia, you are a key part of that system. You ensure that what the lab produces is real signal, not noise. Your work directly affects whether models learn correctly, whether experiments can be trusted, and whether discovery accelerates or stalls.\nThis role is for technicians who take pride in applying extreme attention to detail to their work.\nYour tasks will include:\nRun experiments that matter\n- Execute synthesis, deposition, and device fabrication with care and consistency\n- Perform electrochemical measurements where small mistakes have large consequences\n- Understand not just  how  to run an experiment, but  why  it’s  run that way\nWork in a human-robot lab\n- Operate automated lab equipment and digital experiment systems\n- Ensure data is recorded accurately and completely\n- Spot issues early and speak up when something  doesn’t  look right\nKeep the lab sharp\n- Maintain order, safety, and readiness in a fast-moving lab environment\n- Take ownership of tools, materials, and workflows\n- Help improve how experiments are run as throughput increases\nGrow your technical craft\n- Learn new experimental techniques and technologies\n- Gain exposure to automation, AI-driven discovery, and product development\n- Develop into a more senior technical role as the platform evolves\nYour profile\n- Trained lab technician (CTA / Chemielaborant:in or similar), or hands-on chemistry graduate\n- Experienced enough to know where experiments can fail\n- Detail-oriented, disciplined, and reliable\n- Curious, practical, and proud of doing high-quality work\n- Comfortable working in a modern, digital lab environment\n- Good command of English (B1), German skills are a plus\nAbout us\nDunia , meaning “world” in over 20 languages, reflects our focus on building technologies that deliver abundance globally. By combining physics, AI, and automation, we accelerate materials discovery for next-generation energy and industrial systems. Our work helps make energy more accessible and materials more affordable and resilient while reshaping how science moves from idea to impact. Join us to work on problems where progress truly compounds.\nNeed more convincing? -->   Watch this video\nWe strive to create a diverse and inclusive workplace where everyone feels welcome and safe to be their authentic self. Non-traditional career paths are welcome and valued. If you share our vision, you can be certain that we want you to succeed. You might be just the right candidate for this or for other roles that have not opened yet.\nReach out, and follow us on  LinkedIn !\nApply for this job",
+   "posting_id": "2519206"
   }
  ],
  "spans": {
@@ -668,8 +783,8 @@
   },
   "2521638": {
    "first": "20260310153052",
-   "last": "20260514132900",
-   "n": 4,
+   "last": "20260713123740",
+   "n": 5,
    "url": "https://dunia.jobs.personio.com/job/2521638?language=en"
   },
   "2521891": {
@@ -686,8 +801,8 @@
   },
   "2521931": {
    "first": "20260310161640",
-   "last": "20260514140950",
-   "n": 4,
+   "last": "20260713131530",
+   "n": 5,
    "url": "https://dunia.jobs.personio.com/job/2521931?language=en"
   },
   "2516220": {
@@ -716,8 +831,8 @@
   },
   "2519206": {
    "first": "20260410190928",
-   "last": "20260514131321",
-   "n": 4,
+   "last": "20260713122255",
+   "n": 5,
    "url": "https://dunia.jobs.personio.com/job/2519206?language=en"
   },
   "2515890": {
@@ -728,8 +843,8 @@
   },
   "2519182": {
    "first": "20260410192243",
-   "last": "20260514132629",
-   "n": 4,
+   "last": "20260713123337",
+   "n": 5,
    "url": "https://dunia.jobs.personio.com/job/2519182?language=en"
   },
   "2519188": {
@@ -740,14 +855,14 @@
   },
   "2516252": {
    "first": "20260410203801",
-   "last": "20260617194755",
-   "n": 3,
+   "last": "20260713131748",
+   "n": 4,
    "url": "https://dunia.jobs.personio.com/job/2516252"
   },
   "dunia.jobs.personio.com/privacy-policy": {
    "first": "20260410205054",
-   "last": "20260410205054",
-   "n": 1,
+   "last": "20260713132458",
+   "n": 2,
    "url": "https://dunia.jobs.personio.com/privacy-policy"
   },
   "2630177": {
@@ -755,6 +870,12 @@
    "last": "20260617195805",
    "n": 1,
    "url": "https://dunia.jobs.personio.com/job/2630177"
+  },
+  "2688916": {
+   "first": "20260713130437",
+   "last": "20260713130437",
+   "n": 1,
+   "url": "https://dunia.jobs.personio.com/job/2688916"
   }
  }
 }
