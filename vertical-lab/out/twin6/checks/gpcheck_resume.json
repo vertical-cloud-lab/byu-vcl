@@ -4,44 +4,44 @@
  "runs": {
   "conventional_bofn3": {
    "stopped_at_day": 110.0,
-   "checkpoint_bytes": 734924,
+   "checkpoint_bytes": 734904,
    "match": {
     "row": true,
     "log": true,
     "gp": true
    },
    "seconds": [
-    64.3,
-    105.0
+    45.4,
+    69.7
    ]
   },
   "conventional_pkgfn3": {
    "stopped_at_day": 110.0,
-   "checkpoint_bytes": 734888,
+   "checkpoint_bytes": 734948,
    "match": {
     "row": true,
     "log": true,
     "gp": true
    },
    "seconds": [
-    57.5,
-    100.7
+    46.4,
+    77.4
    ]
   },
   "automated_bofn3": {
    "stopped_at_day": 100.0,
-   "checkpoint_bytes": 838864,
+   "checkpoint_bytes": 838820,
    "match": {
     "row": true,
     "log": true,
     "gp": true
    },
    "seconds": [
-    41.2,
-    119.6
+    35.9,
+    104.5
    ]
   }
  },
- "seconds": 499.7,
+ "seconds": 390.0,
  "compared_with": "out/twin6/checks/gpcheck.json"
 }
