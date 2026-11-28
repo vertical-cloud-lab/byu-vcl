@@ -1,0 +1,13 @@
+{"day": "2026-10-23",
+ "parts": [
+  {"from": "22:51:36", "to": "22:57:55", "speed": 4, "label": "Bambu Studio's first start on the runner (the login after it is cut)"},
+  {"from": "22:59:03", "to": "23:01:05", "speed": 2, "label": "Device page: the H2D is paused on another job, the A1 mini is idle"},
+  {"from": "23:01:05", "to": "23:03:20", "speed": 8, "label": "Modelling the spacer (in the terminal, off screen)"},
+  {"from": "23:03:20", "to": "23:04:50", "speed": 2, "label": "The A1 mini's camera: the frame posted for the go"},
+  {"from": "23:04:50", "to": "23:09:50", "speed": 2, "label": "Slicing: Sync info, both rings, 0.08 mm High Quality, 6 walls, black PLA"},
+  {"from": "23:09:50", "to": "23:11:40", "speed": 1, "label": "Fresh check, then Send at 23:10:45 UTC"},
+  {"from": "23:11:40", "to": "23:20:30", "speed": 16, "label": "Start-up: heating, levelling, flow calibration"},
+  {"from": "23:20:30", "to": "23:52:50", "speed": 24, "label": "Layers 1 to 111"},
+  {"from": "23:52:50", "to": "23:54:58", "speed": 2, "label": "Finished; the H2D's job is running again"}
+ ],
+ "blur": [["23:03:20", "23:04:56"], ["23:09:56", "23:10:30"], ["23:10:44", "23:54:45"]]}

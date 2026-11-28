@@ -147,7 +147,9 @@ buckle. Assign PLA to one nozzle and TPU to the other.
 
 ## 5. Running the print
 
-1. **Send** the job via LAN / Bambu Studio / SD card (per lab preference).
+1. **Send** the job via LAN / Bambu Studio / SD card (per lab preference). To send it from
+   a script or a CI agent (the A1 mini so far), follow the runbook in
+   [`bambu/README.md`](../bambu/README.md): pre-flight checks, a person's go, and watching.
 2. **Watch the first layer.** This is the single most important step — confirm
    good bed adhesion and no nozzle collisions. Cancel and re-level/re-clean if
    the first layer looks poor.

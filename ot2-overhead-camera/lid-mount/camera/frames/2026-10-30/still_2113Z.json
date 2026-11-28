@@ -1,0 +1,187 @@
+{
+ "asked": "https://github.com/vertical-cloud-lab/byu-vcl/pull/234 (mcwilliams03, 2026-10-30 ~21:02 UTC: printed C-CS spacer now fitted correctly; asked for the live stream link)",
+ "broadcast": {
+  "video_id": "N2pR7U7BdkI",
+  "title": "OT2 overhead stream hqcam-ot2-lid, 2026-10-30 UTC 19:00",
+  "playlist": "PLM4VC4X_7XKQ",
+  "playlist_add_status": "added",
+  "yt_dlp": "live_status is_live, availability public (21:14 UTC, on the Pi)",
+  "device_service": "active since the 13:00 MDT scheduled reboot, 0 restarts; 22,248 frames, 0 dropped at 21:04 UTC; RTMP bytes acknowledged and climbing; no watchdog entries"
+ },
+ "frames": {
+  "stream_frame_2114Z_spacer_in.jpg": "pulled from the broadcast on the Pi at 21:14:20 UTC (yt-dlp -g -f 270, then ffmpeg -live_start_index -1 -frames:v 1); overlay clock 15:14:07 MDT, so 13 s behind live. Rail lights on",
+  "still_2113Z_spacer_in.jpg": "half-resolution copy of a 4056 x 3040 still from picam_source.py /still at 21:13:36 UTC, 9 s after the rail lights came on; the stream ran on"
+ },
+ "camera": {
+  "2112Z_lights_off": {
+   "ExposureTime_us": 66654,
+   "AnalogueGain": 15.52,
+   "Lux": 3.4,
+   "focus_centre": 13.5,
+   "focus_grid": [
+    [
+     6.8,
+     8.0,
+     6.7
+    ],
+    [
+     10.1,
+     13.5,
+     11.3
+    ],
+    [
+     8.2,
+     8.9,
+     6.3
+    ]
+   ],
+   "note": "at maximum exposure and gain the score is mostly noise"
+  },
+  "2113Z_lights_on": {
+   "ExposureTime_us": 49963,
+   "AnalogueGain": 2.86,
+   "Lux": 71.9,
+   "focus_centre": 6.2,
+   "focus_best_2min": 23.7,
+   "focus_grid": [
+    [
+     5.4,
+     5.9,
+     6.1
+    ],
+    [
+     5.3,
+     6.2,
+     6.2
+    ],
+    [
+     4.2,
+     4.9,
+     4.5
+    ]
+   ],
+   "best_note": "the 2 min best is probably the lights coming on, as on 2026-10-22"
+  }
+ },
+ "measured": {
+  "how": "back_focus_sweep.measure() and focus_side.fit_well(), unchanged, on the full-resolution still; the 23 Oct sweep's turn 0 was re-fitted the same way today for comparison",
+  "now": {
+   "sharpness": 195.0,
+   "plate_brightness": 87.0,
+   "well_pitch_px_full_res": 306.0,
+   "px_per_mm": 34.0,
+   "spot_rms_radius_px_median": 82.9,
+   "spot_rms_radius_mm_at_plate": 2.44,
+   "spot_shape_votes": {
+    "up": 0,
+    "down": 1,
+    "round": 3
+   },
+   "wells": [
+    {
+     "paint": "yellow",
+     "x": 1136,
+     "y": 1588,
+     "best_shape": "round",
+     "rms_up_over_down": 0.998,
+     "spot_rms_radius_px": 83.2
+    },
+    {
+     "paint": "yellow",
+     "x": 832,
+     "y": 2204,
+     "best_shape": "down",
+     "rms_up_over_down": 1.049,
+     "spot_rms_radius_px": 91.0
+    },
+    {
+     "paint": "red",
+     "x": 2052,
+     "y": 1584,
+     "best_shape": "round",
+     "rms_up_over_down": 0.996,
+     "spot_rms_radius_px": 80.6
+    },
+    {
+     "paint": "red",
+     "x": 1444,
+     "y": 2200,
+     "best_shape": "round",
+     "rms_up_over_down": 0.999,
+     "spot_rms_radius_px": 82.6
+    }
+   ]
+  },
+  "2026-10-23_sweep_turn0": {
+   "still": "../2026-10-23/back_focus_sweep/turn00_2016Z.jpg",
+   "state": "no C-CS ring, knurled ring all the way out, focus thumbscrew near NEAR, rail lights on; the sharpest of that sweep",
+   "sharpness": 78.6,
+   "well_pitch_px_full_res": 357.1,
+   "px_per_mm": 39.7,
+   "spot_rms_radius_px_median": 217.35000000000002,
+   "spot_rms_radius_mm_at_plate": 5.48,
+   "spot_shape_votes": {
+    "up": 4,
+    "down": 0,
+    "round": 0
+   },
+   "wells": [
+    {
+     "paint": "yellow",
+     "x": 748,
+     "y": 1656,
+     "best_shape": "up",
+     "rms_up_over_down": 0.666,
+     "spot_rms_radius_px": 230.0
+    },
+    {
+     "paint": "yellow",
+     "x": 384,
+     "y": 2328,
+     "best_shape": "up",
+     "rms_up_over_down": 0.749,
+     "spot_rms_radius_px": 210.9
+    },
+    {
+     "paint": "red",
+     "x": 1780,
+     "y": 1640,
+     "best_shape": "up",
+     "rms_up_over_down": 0.752,
+     "spot_rms_radius_px": 223.8
+    },
+    {
+     "paint": "red",
+     "x": 1048,
+     "y": 2336,
+     "best_shape": "up",
+     "rms_up_over_down": 0.721,
+     "spot_rms_radius_px": 206.7
+    }
+   ]
+  },
+  "iris": "about the same: rail lights on both times; turn 1 of the sweep needed 49.96 ms x 3.39 at 46.9 lux, now 49.96 ms x 2.86 at 71.9 lux, so the iris is if anything a little wider now, which would make the same focus error a bigger blur",
+  "plate_position": {
+   "how": "dark well centres in the lit still, folded onto the 306 px pitch: 12 columns at x 510-3876 and 8 rows at y 63-2205 (full-resolution px); minima along the plate's edges dropped",
+   "grid_centre_px": [
+    2193,
+    1134
+   ],
+   "picture_centre_px": [
+    2028,
+    1520
+   ],
+   "offset_mm": {
+    "right": 4.9,
+    "towards_top_of_picture": 11.4
+   },
+   "plate_width_px_at_34_px_per_mm": 4344,
+   "box_width_px": 3760
+  }
+ },
+ "reading": "With the spacer in, the blur at the plate is about 2.4 mm rms, against 5.5 mm at the sharpest point of the 23 Oct sweep at about the same iris: less than half. Not sharp yet. The spot fits as round, not as a triangle either way up, so this still does not say which side of focus the lens is on. The plate is drawn at 34 px/mm, about 15 % bigger than the orange box's 29.4 px/mm, so its right and top edges are out of the picture.",
+ "ot2": {
+  "state_before": "/health 200, rail lights off, no maintenance run, no current protocol run",
+  "rail_lights": "turned on at 21:13:27 UTC for focusing; a transient user timer on the Pi (ot2-rail-lights-off.timer, systemd-run --user, removes itself) turns them off at 2026-10-30 23:00 UTC (17:00 MDT) unless a maintenance or protocol run is active then"
+ }
+}

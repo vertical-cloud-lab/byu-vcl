@@ -1,0 +1,54 @@
+{
+ "what": "Lid camera still after @timothy-commins reported the focus thumbscrew at the end of its travel at NEAR, and about 16 mm from the deck to the lens's silver rim with no way to make it shorter, 2026-10-23",
+ "request": "https://github.com/vertical-cloud-lab/byu-vcl/pull/234 (trigger comment, 2026-10-23)",
+ "still": "still_1808Z_focus_at_near.jpg (saved at half resolution)",
+ "taken_utc": "2026-10-23T18:08:51Z",
+ "how": "curl -s localhost:8081/still and /status on the lid camera Pi while the stream ran (picam_source.py); stream untouched",
+ "ot2": "rail lights already on (GET /robot/lights); no maintenance run, no current protocol run; nothing on the robot changed",
+ "metadata": {
+  "ExposureTime": 66654,
+  "AnalogueGain": 13.473684310913086,
+  "DigitalGain": 1.0004384517669678,
+  "Lux": 9.18441390991211,
+  "ColourTemperature": 4671,
+  "ScalerCrop": [
+   0,
+   0,
+   4056,
+   3040
+  ]
+ },
+ "focus_score_at_still": {
+  "centre": 5.2,
+  "best_2min": 5.3,
+  "grid": [
+   [
+    4.0,
+    5.0,
+    4.4
+   ],
+   [
+    4.0,
+    5.2,
+    5.1
+   ],
+   [
+    4.0,
+    7.6,
+    3.2
+   ]
+  ],
+  "grid_layout": "3x3 patches of 512x384 full-resolution px",
+  "note": "about 5, against 22-34 when the deck was sharp on 2026-10-20; at gain 13.5 it is mostly sensor noise"
+ },
+ "seen": "Unchanged from 2026-10-22 21:47 UTC: the plate fills the frame (about 27 mm zoom) and every well is smeared into the half-closed iris's triangle. Exposure and gain at the auto-exposure limits with the rail lights on, so the iris is still well closed.",
+ "stack_mm": {
+  "basis": "Raspberry Pi HQ Camera CS drawing: 18.58 overall, minus the 2.75 connector and the 1.4 PCB, puts the knurled ring's face (the CS seat, screwed fully in) 14.43 in front of the board; PCB 2.0 as measured 2026-10-08; camera bosses 3.3 as sliced on the H2D deck",
+  "ring_face_from_board_back": 16.43,
+  "ring_face_from_deck_plate": 19.73,
+  "lens_rim_with_one_adapter_from_board_back": 21.46,
+  "lens_rim_with_one_adapter_from_deck_plate": 24.76,
+  "back_focus_range": "12.5-22.4 mm (HQ Camera product brief); a C-mount lens wants 17.53"
+ },
+ "reading": "Focus that runs out at NEAR with the plate still soft means the picture forms behind the sensor: the lens needs more distance from it. A stack that can't get shorter is the knurled back-focus ring screwed fully in, and Tim's 2026-10-09 photo shows no C-CS adapter between the ring and the lens, so the lens is 5.0 mm closer than a C-mount lens is built for (12.5 against 17.53). 16 mm matches that from the camera board's back (16.4). The deck was sharp at the wide end on 2026-10-20, which can't happen 5 mm short, so the ring was backed out then and has been screwed in since. Fix: a C-CS adapter, or the ring backed out about 5 mm, then refocus from FAR."
+}

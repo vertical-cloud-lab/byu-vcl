@@ -1,0 +1,63 @@
+{
+ "gcode": "plate_1.gcode",
+ "rings": {
+  "B": {
+   "object_id": 134,
+   "centre_xy": [
+    110.19,
+    88.879
+   ],
+   "notches_seen": 2,
+   "ring": "B",
+   "end_bore_path_r": 11.259,
+   "end_bore_path_r_model": 11.26,
+   "female": {
+    "layers": 42,
+    "sliced_minus_model_mm_p5_p50_p95": [
+     -0.005,
+     0.001,
+     -0.004
+    ],
+    "worst_abs_mm": 0.013
+   },
+   "male": {
+    "layers": 32,
+    "sliced_minus_model_mm_p5_p50_p95": [
+     -0.006,
+     -0.002,
+     -0.003
+    ],
+    "worst_abs_mm": 0.071
+   }
+  },
+  "A": {
+   "object_id": 94,
+   "centre_xy": [
+    141.947,
+    91.119
+   ],
+   "notches_seen": 1,
+   "ring": "A",
+   "end_bore_path_r": 11.259,
+   "end_bore_path_r_model": 11.26,
+   "female": {
+    "layers": 42,
+    "sliced_minus_model_mm_p5_p50_p95": [
+     -0.006,
+     0.001,
+     -0.004
+    ],
+    "worst_abs_mm": 0.014
+   },
+   "male": {
+    "layers": 32,
+    "sliced_minus_model_mm_p5_p50_p95": [
+     -0.007,
+     -0.003,
+     -0.003
+    ],
+    "worst_abs_mm": 0.071
+   }
+  }
+ }
+}
