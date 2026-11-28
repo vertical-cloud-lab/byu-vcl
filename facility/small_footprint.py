@@ -40,8 +40,8 @@ BUILDINGS = [
     dict(key="3k", w=74.0, d=41.0, ox=35.0, oy=29.8, scaleup=False, door=("W", 16.0), pad=(-8.5, 1.5),
          title="3,000 ft² (74 x 41 ft): round 11's floor and nothing else",
          rooms=[("gas and powder cabinets, eyewash, panels, chiller", 0.0, 35.4, 74.0, 5.6)],
-         note="Offices, receiving and a workshop stay on campus. Powder stays in cabinets in a sprinklered building,\n"
-              "under the code's per-control-area limits, so no H room. No room for the EOS or the Meltio cell."),
+         note="Offices, receiving and a workshop stay on campus. No powder room: sprinklered, the jar store stays under one\n"
+              "control area's limit if the powder tests as a flammable solid. No room for the EOS or the Meltio cell."),
     dict(key="6k", w=100.0, d=60.0, ox=39.4, oy=42.2, scaleup=True, door=("E", 43.0), pad=(101.5, 6.0),
          title="6,000 ft² (100 x 60 ft): with the EOS, the Meltio cell and the rooms it can't do without",
          rooms=[("powder room\n(outside wall;\nH room if over\nthe limits)", 80.0, 0.0, 20.0, 22.0),
