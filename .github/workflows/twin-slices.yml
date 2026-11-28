@@ -42,13 +42,17 @@ on:
         description: "Most jobs at once (empty: all of them)"
         required: false
         default: ""
+      jobs:
+        description: "Only these plan jobs, comma-separated (empty: every job with runs left). Runs for different job sets can go side by side"
+        required: false
+        default: ""
 
 permissions:
   contents: write
   actions: read
 
 concurrency:
-  group: twin-slices-${{ inputs.branch }}
+  group: twin-slices-${{ inputs.branch }}-${{ inputs.jobs }}
   cancel-in-progress: false
 
 env:
@@ -72,6 +76,7 @@ jobs:
       name: ${{ steps.plan.outputs.name }}
     env:
       PLAN: ${{ inputs.plan }}
+      ONLY: ${{ inputs.jobs }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -85,6 +90,9 @@ jobs:
           python ci/twin_slices.py check-tree "$PLAN"
           name=$(python -c 'import json, sys, pathlib; p = pathlib.Path(sys.argv[1]); print(json.loads(p.read_text()).get("name") or p.stem)' "$PLAN")
           jobs=$(python ci/twin_slices.py jobs "$PLAN")
+          if [ -n "$ONLY" ]; then
+            jobs=$(python -c 'import json, sys; only = {s.strip() for s in sys.argv[2].split(",") if s.strip()}; print(json.dumps([j for j in json.loads(sys.argv[1]) if str(j) in only]))' "$jobs" "$ONLY")
+          fi
           echo "name=$name" >> "$GITHUB_OUTPUT"
           echo "jobs=$jobs" >> "$GITHUB_OUTPUT"
           echo "Plan \`$name\`: jobs with runs left: $jobs" >> "$GITHUB_STEP_SUMMARY"
@@ -135,7 +143,38 @@ jobs:
           ls -la out/twin6/checkpoints 2>/dev/null || echo "no checkpoints to carry on"
           mkdir -p "out/twin6/slices/$NAME/job-$JOB"
           python ci/twin_slices.py done-ids > "$RUNNER_TEMP/done_before.txt"
+          set +e
           TWIN_WORKERS=4 python -m twin.gpcheck6 --out "out/twin6/slices/$NAME/job-$JOB/gpcheck.json"
+          rc=$?
+          set -e
+          if [ "$rc" -eq 1 ]; then
+            # Intel runners may run too (Sterling, 2026-11-28). On Intel (Xeon 8370C, 8573C and 6975P-C alike) torch's
+            # BLAS and vector-math probe groups differ from the AMD reference in the last bits, while every run's row,
+            # event log, GP state and network output match. Exactly that is accepted, with a warning; any other
+            # difference still stops the job before it makes a row.
+            python - "out/twin6/slices/$NAME/job-$JOB/gpcheck.json" <<'PY'
+          import json, os, sys
+          d = json.load(open(sys.argv[1], encoding="utf-8"))
+          c = d.get("comparison") or {}
+          probe_bad = sorted(k for k, v in (c.get("probe") or {}).items() if v is not True)
+          parts = {**(c.get("runs") or {}), **(c.get("late") or {})}
+          runs_bad = sorted(f"{r}.{k}" for r, v in parts.items() for k, ok in v.items() if ok is not True)
+          ok = (d.get("pin") == "portable" and not d.get("problems") and not d.get("errors")
+                and c.get("engine_same") is True and not c.get("versions_differ")
+                and len(parts) >= 5 and not runs_bad and probe_bad and set(probe_bad) <= {"torch_blas", "torch_math"})
+          cpu = (d.get("env") or {}).get("cpu") or d.get("cpu") or "this CPU"
+          msg = f"GP check on {cpu}: probe groups that differ: {', '.join(probe_bad) or 'none'}; runs that differ: {', '.join(runs_bad) or 'none'}"
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
+              f.write(("Accepted: torch kernels only, every run matches. " if ok else "Stopped. ") + msg + chr(10))
+          if ok:
+              print(f"::warning title=GP check accepted::{msg}. Every run's row, event log, GP state and network output match.")
+          else:
+              print(f"::error title=GP check failed::{msg}")
+          sys.exit(0 if ok else 1)
+          PY
+            rc=0
+          fi
+          exit "$rc"
       - name: The slice (python -m twin.bench6 ids ... --hours 5.2)
         id: slice
         timeout-minutes: 325
