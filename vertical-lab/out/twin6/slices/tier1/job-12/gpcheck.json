@@ -89,7 +89,7 @@
   "torch_blas": "41ade912ed02cd56d1c838047ed31c39e03ca2db6d58ef5229736b1350bb24bf",
   "torch_math": "52a2ae205cfc88b95f1640354e2017c0588d0d749a49bf68b44c5596faa6e110"
  },
- "probe_seconds": 13.6,
+ "probe_seconds": 14.0,
  "errors": {},
  "runs": {
   "conventional_bofn3": {
@@ -107,7 +107,7 @@
    "n_bookings": 1346,
    "n_results": 75,
    "torch_rng_used": false,
-   "seconds": 67.5
+   "seconds": 65.9
   },
   "conventional_pkgfn3": {
    "run_id": "r6_conventional_external_pkgfn3_lean_s0_hpc4",
@@ -124,7 +124,7 @@
    "n_bookings": 1346,
    "n_results": 75,
    "torch_rng_used": false,
-   "seconds": 61.3
+   "seconds": 60.3
   },
   "automated_bofn3": {
    "run_id": "r6_vertical_parallel_bofn3_reorder_s0_hpc4",
@@ -141,7 +141,7 @@
    "n_bookings": 1568,
    "n_results": 571,
    "torch_rng_used": false,
-   "seconds": 41.4
+   "seconds": 41.9
   }
  },
  "engine": "twin.bench6",
@@ -166,7 +166,7 @@
    },
    "predict_calls": 2852,
    "calls_over_chunk": 208,
-   "seconds": 26.0
+   "seconds": 26.2
   },
   "automated_pkgfn3_late": {
    "run_id": "r6_vertical_parallel_pkgfn3_reorder_s0",
@@ -188,10 +188,10 @@
    },
    "predict_calls": 5377,
    "calls_over_chunk": 242,
-   "seconds": 22.9
+   "seconds": 22.7
   }
  },
- "seconds": 76.1,
+ "seconds": 75.5,
  "compared_with": "out/twin6/checks/gpcheck.json",
  "comparison": {
   "probe": {

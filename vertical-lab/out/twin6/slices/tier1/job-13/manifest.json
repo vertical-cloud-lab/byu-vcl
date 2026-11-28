@@ -3,20 +3,37 @@
  "job": 13,
  "slice": "tier1-13",
  "runs": {
-  "r6_vertical_parallel_pkgfn3_lean_s6": "no row, no checkpoint",
-  "r6_vertical_parallel_pkgfn3_reorder_s6": "no row, no checkpoint",
-  "r6_vertical_parallel_bofn3_lean_s6": "no row, no checkpoint",
-  "r6_vertical_parallel_bofn3_reorder_s6": "no row, no checkpoint",
-  "r6_conventional_external_pkgfn3_lean_s6": "no row, no checkpoint",
-  "r6_conventional_external_pkgfn3_reorder_s6": "no row, no checkpoint",
-  "r6_conventional_external_bofn3_lean_s6": "no row, no checkpoint",
-  "r6_conventional_external_bofn3_reorder_s6": "no row, no checkpoint",
-  "r6_vertical_parallel_fast_lean_s6": "no row, no checkpoint",
-  "r6_vertical_parallel_fast_reorder_s6": "no row, no checkpoint",
-  "r6_conventional_external_fast_lean_s6": "no row, no checkpoint",
-  "r6_conventional_external_fast_reorder_s6": "no row, no checkpoint"
+  "r6_vertical_parallel_pkgfn3_lean_s6": "checkpoint",
+  "r6_vertical_parallel_pkgfn3_reorder_s6": "checkpoint",
+  "r6_vertical_parallel_bofn3_lean_s6": "checkpoint",
+  "r6_vertical_parallel_bofn3_reorder_s6": "checkpoint",
+  "r6_conventional_external_pkgfn3_lean_s6": "not started",
+  "r6_conventional_external_pkgfn3_reorder_s6": "not started",
+  "r6_conventional_external_bofn3_lean_s6": "not started",
+  "r6_conventional_external_bofn3_reorder_s6": "not started",
+  "r6_vertical_parallel_fast_lean_s6": "not started",
+  "r6_vertical_parallel_fast_reorder_s6": "not started",
+  "r6_conventional_external_fast_lean_s6": "not started",
+  "r6_conventional_external_fast_reorder_s6": "not started"
  },
- "checkpoints": {},
+ "checkpoints": {
+  "r6_vertical_parallel_bofn3_lean_s6": {
+   "day": 649.0,
+   "bytes": 33221900
+  },
+  "r6_vertical_parallel_bofn3_reorder_s6": {
+   "day": 702.0,
+   "bytes": 33638060
+  },
+  "r6_vertical_parallel_pkgfn3_lean_s6": {
+   "day": 697.0,
+   "bytes": 31860720
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_s6": {
+   "day": 725.0,
+   "bytes": 31023664
+  }
+ },
  "errors": [],
  "n_rows": 0,
  "n_waiting": 12

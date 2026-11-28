@@ -3,21 +3,38 @@
  "job": 16,
  "slice": "tier1-16",
  "runs": {
-  "r6_vertical_parallel_pkgfn3_lean_s9": "no row, no checkpoint",
-  "r6_vertical_parallel_pkgfn3_reorder_s9": "no row, no checkpoint",
-  "r6_vertical_parallel_bofn3_lean_s9": "no row, no checkpoint",
-  "r6_vertical_parallel_bofn3_reorder_s9": "no row, no checkpoint",
-  "r6_conventional_external_pkgfn3_lean_s9": "no row, no checkpoint",
-  "r6_conventional_external_pkgfn3_reorder_s9": "no row, no checkpoint",
-  "r6_conventional_external_bofn3_lean_s9": "no row, no checkpoint",
-  "r6_conventional_external_bofn3_reorder_s9": "no row, no checkpoint",
-  "r6_vertical_parallel_fast_lean_s9": "no row, no checkpoint",
-  "r6_vertical_parallel_fast_reorder_s9": "no row, no checkpoint",
-  "r6_conventional_external_fast_lean_s9": "no row, no checkpoint",
-  "r6_conventional_external_fast_reorder_s9": "no row, no checkpoint"
+  "r6_vertical_parallel_pkgfn3_lean_s9": "checkpoint",
+  "r6_vertical_parallel_pkgfn3_reorder_s9": "row",
+  "r6_vertical_parallel_bofn3_lean_s9": "checkpoint",
+  "r6_vertical_parallel_bofn3_reorder_s9": "checkpoint",
+  "r6_conventional_external_pkgfn3_lean_s9": "checkpoint",
+  "r6_conventional_external_pkgfn3_reorder_s9": "not started",
+  "r6_conventional_external_bofn3_lean_s9": "not started",
+  "r6_conventional_external_bofn3_reorder_s9": "not started",
+  "r6_vertical_parallel_fast_lean_s9": "not started",
+  "r6_vertical_parallel_fast_reorder_s9": "not started",
+  "r6_conventional_external_fast_lean_s9": "not started",
+  "r6_conventional_external_fast_reorder_s9": "not started"
  },
- "checkpoints": {},
+ "checkpoints": {
+  "r6_conventional_external_pkgfn3_lean_s9": {
+   "day": 504.0,
+   "bytes": 9159580
+  },
+  "r6_vertical_parallel_bofn3_lean_s9": {
+   "day": 567.0,
+   "bytes": 42041800
+  },
+  "r6_vertical_parallel_bofn3_reorder_s9": {
+   "day": 696.0,
+   "bytes": 38662604
+  },
+  "r6_vertical_parallel_pkgfn3_lean_s9": {
+   "day": 651.0,
+   "bytes": 34318140
+  }
+ },
  "errors": [],
- "n_rows": 0,
- "n_waiting": 12
+ "n_rows": 1,
+ "n_waiting": 11
 }
