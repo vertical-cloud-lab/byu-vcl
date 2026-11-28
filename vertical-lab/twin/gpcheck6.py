@@ -9,6 +9,7 @@
     python -m twin.gpcheck6 show            # the committed reference
     python -m twin.gpcheck6 resume [DAY]    # checkpoints: each run stopped and saved at DAY (default: half way) in
                                             # one fresh interpreter and carried on in another, against the reference
+                                            # (the late runs: stopped half way through their two days)
     TWIN_GPCHECK_WRAP="sde64 -gnr --" python -m twin.gpcheck6 probe     # under an emulated CPU (Intel SDE, QEMU)
 
 Round 5's BOFN and pKGFN rows differed between CPU models under ``TWIN_PIN=avx2`` because numpy's own float64 kernels
@@ -317,8 +318,10 @@ def net_state(tw) -> dict:
     return st
 
 
-def late_run(name: str) -> dict:
-    """One late run in this (pinned, fresh) interpreter: the committed checkpoint carried on ``LATE_DAYS`` days."""
+def late_run(name: str, split=None, stop=False) -> dict:
+    """One late run in this (pinned, fresh) interpreter: the committed checkpoint carried on ``LATE_DAYS`` days. With
+    ``split`` (a path) and ``stop``, the run stops half way through its window and is saved there instead; with
+    ``split`` alone, a run saved there is carried on to the window's end and hashed (``resume``)."""
     import shutil
     import tempfile
 
@@ -352,9 +355,13 @@ def late_run(name: str) -> dict:
 
     GP.Node._predict, GP.Node.predict = _counted, _pred
     t0 = time.time()
+    if split is not None and stop:                          # the first half, saved to ``split``
+        shutil.copyfile(src, split)
+        out, info = B.simulate(cfg, ckpt=split, stop_day=day + LATE_DAYS / 2)
+        return dict(stopped=dict(day=info["day"], bytes=info["bytes"]), seconds=round(time.time() - t0, 1))
     with tempfile.TemporaryDirectory(prefix="gpcheck6-late-") as tmp:
         ck = Path(tmp) / fname
-        shutil.copyfile(src, ck)
+        shutil.copyfile(split if split is not None else src, ck)
         out, info = B.simulate(cfg, ckpt=ck, stop_day=day + LATE_DAYS)
         if out is not None:
             raise RuntimeError("the late run ended before its window did")
@@ -482,28 +489,45 @@ def _line(got: dict, cmp_: dict | None) -> dict:
 
 
 def resume(stop_day=None, out_file=None) -> int:
-    """Checkpoints: each of the three runs stopped at ``stop_day`` (default: half way) and saved in one fresh pinned
-    interpreter, carried on to its end in a second, and its row, event log and GP state compared with the
-    reference (made by unbroken runs). Exit 0 if all three match."""
+    """Checkpoints: each of the three short runs stopped at ``stop_day`` (default: half way), and each late run half
+    way through its window, saved in one fresh pinned interpreter, carried on to its end in a second, and its row (the
+    late runs: what the network computed), event log and GP state compared with the reference (made by unbroken
+    runs). The runs go side by side (``TWIN_WORKERS``). Exit 0 if all match."""
     import tempfile
     ref = json.loads(REF.read_text())
     t0 = time.time()
-    res, ok = {}, True
+    res = {}
     with tempfile.TemporaryDirectory(prefix="gpcheck6-") as tmp:
-        for name, *_, days in RUNS:
+        def short(r):
+            name, days = r[0], r[-1]
             d = stop_day if stop_day is not None else float(days // 2)
             ck = str(Path(tmp) / f"{name}.ckpt.xz")
             first = _child_args(["split", name, ck, str(d)])
             second = _child_args(["split", name, ck]) if "stopped" in first else first
-            if "error" in second or "row" not in second:
-                res[name] = dict(error=(second.get("error") or first.get("error") or str(first))[-800:])
-                ok = False
-                continue
-            m = {k: second[k] == ref["runs"][name][k] for k in ("row", "log", "gp")}
-            ok = ok and all(m.values())
-            res[name] = dict(stopped_at_day=first.get("stopped", {}).get("day"),
-                             checkpoint_bytes=first.get("stopped", {}).get("bytes"), match=m,
-                             seconds=[first.get("seconds"), second.get("seconds")])
+            return name, first, second, ref["runs"][name], ("row", "log", "gp")
+
+        def late(r):
+            name = r[0]
+            ck = str(Path(tmp) / f"{name}.ckpt.xz")
+            first = _child_args(["late-split", name, ck, "stop"])
+            second = _child_args(["late-split", name, ck]) if "stopped" in first else first
+            return name, first, second, ref["late"][name], ("log", "gp", "net")
+
+        jobs = [(short, r) for r in RUNS] + [(late, r) for r in LATE if r[0] in (ref.get("late") or {})
+                                             and (LATE_DIR / r[1]).exists()]
+        with ThreadPoolExecutor(max(1, int(os.environ.get("TWIN_WORKERS", "1")))) as ex:
+            outs = list(ex.map(lambda j: j[0](j[1]), jobs))
+    ok = True
+    for name, first, second, want, keys in outs:
+        if "error" in second or keys[0] not in second:
+            res[name] = dict(error=(second.get("error") or first.get("error") or str(first))[-800:])
+            ok = False
+            continue
+        m = {k: second[k] == want[k] for k in keys}
+        ok = ok and all(m.values())
+        res[name] = dict(stopped_at_day=first.get("stopped", {}).get("day"),
+                         checkpoint_bytes=first.get("stopped", {}).get("bytes"), match=m,
+                         seconds=[first.get("seconds"), second.get("seconds")])
     line = dict(check="gpcheck6 resume", match=ok, runs=res, seconds=round(time.time() - t0, 1))
     if out_file is not None:
         out_file.parent.mkdir(parents=True, exist_ok=True)
@@ -538,6 +562,8 @@ def main(argv) -> int:
                                   seconds=round(time.time() - t0, 1))))
         elif argv[1] == "late":
             print(json.dumps(late_run(argv[2])))
+        elif argv[1] == "late-split":                       # _child late-split NAME CKPT [stop]
+            print(json.dumps(late_run(argv[2], split=argv[3], stop=len(argv) > 4)))
         elif argv[1] == "split":                            # _child split NAME CKPT [STOP_DAY]
             print(json.dumps(run(argv[2], ckpt=argv[3], stop_day=float(argv[4]) if len(argv) > 4 else None)))
         else:

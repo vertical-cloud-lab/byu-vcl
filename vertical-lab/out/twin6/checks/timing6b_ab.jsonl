@@ -1,0 +1,4 @@
+{"label": "vertical bofn3 64x batched", "from_day": 300, "days": 10, "chunk": 64, "nodes": 24, "cpu_seconds": 157.7, "wall_seconds": 415.9, "to_day": 310.0, "cpu_model": "AMD EPYC 7763 64-Core Processor", "load1": 14.35}
+{"label": "vertical pkgfn3 64x batched", "from_day": 300, "days": 10, "chunk": 64, "nodes": 24, "cpu_seconds": 180.9, "wall_seconds": 476.5, "to_day": 310.0, "cpu_model": "AMD EPYC 7763 64-Core Processor", "load1": 13.86}
+{"label": "vertical bofn3 64x batched", "from_day": 300, "days": 10, "chunk": null, "nodes": 24, "cpu_seconds": 230.6, "wall_seconds": 579.0, "to_day": 310.0, "cpu_model": "AMD EPYC 7763 64-Core Processor", "load1": 9.84}
+{"label": "vertical pkgfn3 64x batched", "from_day": 300, "days": 10, "chunk": null, "nodes": 24, "cpu_seconds": 303.3, "wall_seconds": 669.9, "to_day": 310.0, "cpu_model": "AMD EPYC 7763 64-Core Processor", "load1": 8.76}
