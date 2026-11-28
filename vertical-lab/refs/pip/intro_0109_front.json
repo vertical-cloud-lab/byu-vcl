@@ -1,0 +1,26 @@
+{
+ "source": "https://youtu.be/w7OZsrru9AI?t=69 (Plastometrex, Introducing the PLX-Benchtop, 1:09)",
+ "video": "w7OZsrru9AI",
+ "t": 69,
+ "pose": {},
+ "points": {
+  "trim fl": [224, 391],
+  "bay tl": [300, 399],
+  "bay tr": [510, 395],
+  "led bl": [277, 347],
+  "led br": [520, 346],
+  "led tl": [275, 252],
+  "led tr": [521, 247],
+  "estop": [605, 326],
+  "label L": [317, 452],
+  "label R": [500, 447],
+  "bay bl": [313, 622],
+  "bay br": [518, 620],
+  "col fl foot": [247, 642]
+ },
+ "curves": {
+  "top": [[300, 180], [400, 179], [500, 180]],
+  "left edge": [[224, 260], [231, 450], [243, 610]],
+  "platen edge": [[381, 578], [470, 578]]
+ }
+}

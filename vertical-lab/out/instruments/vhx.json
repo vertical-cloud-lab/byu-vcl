@@ -1,0 +1,95 @@
+{
+ "name": "instruments/vhx",
+ "fps": 8,
+ "n_frames": 282,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/14",
+   "caption": "A loading slide (ours) runs its carrier out of the stage to the front: the ring light is 25 mm over the focal point, too close for a gripper.",
+   "start_frame": 0,
+   "end_frame": 22
+  },
+  {
+   "label": "2/14",
+   "caption": "Half of a broken tensile bar from chapter 5 goes on the carrier's narrow pedestal, grip end to the front.",
+   "start_frame": 23,
+   "end_frame": 44
+  },
+  {
+   "label": "3/14",
+   "caption": "Back to the stage's centre: the bar's top face at the focal point.",
+   "start_frame": 45,
+   "end_frame": 62
+  },
+  {
+   "label": "4/14",
+   "caption": "The free-angle head tilts about the focal point (eucentric: the view stays on the bar) while the stage turns: a series of views from every side.",
+   "start_frame": 63,
+   "end_frame": 98
+  },
+  {
+   "label": "5/14",
+   "caption": "The free-angle head tilts about the focal point (eucentric: the view stays on the bar) while the stage turns: a series of views from every side.",
+   "start_frame": 99,
+   "end_frame": 126
+  },
+  {
+   "label": "6/14",
+   "caption": "Depth composition at each view: the motorized focus sweeps through the relief.",
+   "start_frame": 127,
+   "end_frame": 146
+  },
+  {
+   "label": "7/14",
+   "caption": "Turned over once (the arm does it in chapter 7), and the series again: the whole bar in 3-D, the fracture surface included.",
+   "start_frame": 147,
+   "end_frame": 161
+  },
+  {
+   "label": "8/14",
+   "caption": "Turned over once (the arm does it in chapter 7), and the series again: the whole bar in 3-D, the fracture surface included.",
+   "start_frame": 162,
+   "end_frame": 171
+  },
+  {
+   "label": "9/14",
+   "caption": "Turned over once (the arm does it in chapter 7), and the series again: the whole bar in 3-D, the fracture surface included.",
+   "start_frame": 172,
+   "end_frame": 188
+  },
+  {
+   "label": "10/14",
+   "caption": "Turned over once (the arm does it in chapter 7), and the series again: the whole bar in 3-D, the fracture surface included.",
+   "start_frame": 189,
+   "end_frame": 198
+  },
+  {
+   "label": "11/14",
+   "caption": "Turned over once (the arm does it in chapter 7), and the series again: the whole bar in 3-D, the fracture surface included.",
+   "start_frame": 199,
+   "end_frame": 213
+  },
+  {
+   "label": "12/14",
+   "caption": "The reconstruction: a height map of the fracture surface (illustrative).",
+   "start_frame": 214,
+   "end_frame": 249
+  },
+  {
+   "label": "13/14",
+   "caption": "The carrier runs out and the bar comes off.",
+   "start_frame": 250,
+   "end_frame": 266
+  },
+  {
+   "label": "14/14",
+   "caption": "The carrier runs out and the bar comes off.",
+   "start_frame": 267,
+   "end_frame": 281
+  }
+ ]
+}

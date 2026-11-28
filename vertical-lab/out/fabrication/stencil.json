@@ -1,0 +1,41 @@
+{
+ "name": "fabrication/stencil",
+ "fps": 15,
+ "n_frames": 181,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/5",
+   "caption": "The frame is up. A bare board goes onto the vacuum nest.",
+   "start_frame": 0,
+   "end_frame": 46
+  },
+  {
+   "label": "2/5",
+   "caption": "The vision assist lines the stencil's apertures up with the pads; the frame comes down onto the board.",
+   "start_frame": 47,
+   "end_frame": 78
+  },
+  {
+   "label": "3/5",
+   "caption": "The print head drives a squeegee across: paste rolls ahead of the blade and fills the apertures.",
+   "start_frame": 79,
+   "end_frame": 116
+  },
+  {
+   "label": "4/5",
+   "caption": "The frame lifts straight up off the board, leaving the paste on the pads.",
+   "start_frame": 117,
+   "end_frame": 145
+  },
+  {
+   "label": "5/5",
+   "caption": "The pasted board goes on to the pick-and-place.",
+   "start_frame": 146,
+   "end_frame": 180
+  }
+ ]
+}

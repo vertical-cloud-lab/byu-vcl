@@ -1,0 +1,185 @@
+{
+ "name": "atom_container",
+ "fps": 15,
+ "n_frames": 935,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/6",
+   "caption": "After the run: cold, vented (Pressure Control off, Vent Valve), the door's two clamps swung off, then the door opened (178_sop After a run; T2 39:00). Paper under the opening catches what falls (DAL SOP 1).",
+   "start_frame": 0,
+   "end_frame": 65
+  },
+  {
+   "label": "2/6",
+   "caption": "Arm 1 takes the brush by its grip (ours): a square block between two collars. Flat pads on flat faces can't turn on it, and the collars, 1 mm clear of the fingertips, stop it sliding along the fingers or pivoting out of them. On its rest it lies one way only: two V-blocks, and a fin under the shaft in a slot.",
+   "start_frame": 66,
+   "end_frame": 102
+  },
+  {
+   "label": "2/6",
+   "caption": "Arm 1 takes the brush by its grip (ours): a square block between two collars. Flat pads on flat faces can't turn on it, and the collars, 1 mm clear of the fingertips, stop it sliding along the fingers or pivoting out of them. On its rest it lies one way only: two V-blocks, and a fin under the shaft in a slot.",
+   "start_frame": 103,
+   "end_frame": 115
+  },
+  {
+   "label": "2/6",
+   "caption": "Arm 1 takes the brush by its grip (ours): a square block between two collars. Flat pads on flat faces can't turn on it, and the collars, 1 mm clear of the fingertips, stop it sliding along the fingers or pivoting out of them. On its rest it lies one way only: two V-blocks, and a fin under the shaft in a slot.",
+   "start_frame": 116,
+   "end_frame": 133
+  },
+  {
+   "label": "2/6",
+   "caption": "It lifts the brush out with a fresh head on: one head per run (ours). Its spring slides the magazine's next head into the rest's pocket, ready for the end of this run.",
+   "start_frame": 134,
+   "end_frame": 168
+  },
+  {
+   "label": "3/6",
+   "caption": "It brushes the powder down the cone into the container, then round the catch bowl, in a circle (178_sop After a run 2; T2 43:37, T4 08:47). The view port is not brushed here: from the door the grip meets the stack on the open door.",
+   "start_frame": 169,
+   "end_frame": 205
+  },
+  {
+   "label": "3/6",
+   "caption": "It brushes the powder down the cone into the container, then round the catch bowl, in a circle (178_sop After a run 2; T2 43:37, T4 08:47). The view port is not brushed here: from the door the grip meets the stack on the open door.",
+   "start_frame": 206,
+   "end_frame": 274
+  },
+  {
+   "label": "3/6",
+   "caption": "It brushes the powder down the cone into the container, then round the catch bowl, in a circle (178_sop After a run 2; T2 43:37, T4 08:47). The view port is not brushed here: from the door the grip meets the stack on the open door.",
+   "start_frame": 275,
+   "end_frame": 329
+  },
+  {
+   "label": "3/6",
+   "caption": "It brushes the powder down the cone into the container, then round the catch bowl, in a circle (178_sop After a run 2; T2 43:37, T4 08:47). The view port is not brushed here: from the door the grip meets the stack on the open door.",
+   "start_frame": 330,
+   "end_frame": 354
+  },
+  {
+   "label": "4/6",
+   "caption": "The used head goes into a grounded waste can on MiR250 1 (ours). The shaft drops into the slot of a stripper bar across the can's mouth and pulls back: the bar holds the head's orange ferrule, the head comes off the spigot's spring detent and falls into the can, with this run's powder on it.",
+   "start_frame": 355,
+   "end_frame": 397
+  },
+  {
+   "label": "4/6",
+   "caption": "The used head goes into a grounded waste can on MiR250 1 (ours). The shaft drops into the slot of a stripper bar across the can's mouth and pulls back: the bar holds the head's orange ferrule, the head comes off the spigot's spring detent and falls into the can, with this run's powder on it.",
+   "start_frame": 398,
+   "end_frame": 414
+  },
+  {
+   "label": "4/6",
+   "caption": "The used head goes into a grounded waste can on MiR250 1 (ours). The shaft drops into the slot of a stripper bar across the can's mouth and pulls back: the bar holds the head's orange ferrule, the head comes off the spigot's spring detent and falls into the can, with this run's powder on it.",
+   "start_frame": 415,
+   "end_frame": 437
+  },
+  {
+   "label": "4/6",
+   "caption": "The used head goes into a grounded waste can on MiR250 1 (ours). The shaft drops into the slot of a stripper bar across the can's mouth and pulls back: the bar holds the head's orange ferrule, the head comes off the spigot's spring detent and falls into the can, with this run's powder on it.",
+   "start_frame": 438,
+   "end_frame": 450
+  },
+  {
+   "label": "4/6",
+   "caption": "The used head goes into a grounded waste can on MiR250 1 (ours). The shaft drops into the slot of a stripper bar across the can's mouth and pulls back: the bar holds the head's orange ferrule, the head comes off the spigot's spring detent and falls into the can, with this run's powder on it.",
+   "start_frame": 451,
+   "end_frame": 463
+  },
+  {
+   "label": "4/6",
+   "caption": "A fresh head on: the headless shaft goes down onto its rest 25 mm short and pushes along its axis onto the head waiting in the pocket, until the detent clicks. One head per run, so no bristle that touched this alloy touches the next, and nothing is washed: an ultrasonic IPA bath would put reactive fines in a solvent, needs drying, and can't show the bristles' roots are clean.",
+   "start_frame": 464,
+   "end_frame": 503
+  },
+  {
+   "label": "4/6",
+   "caption": "A fresh head on: the headless shaft goes down onto its rest 25 mm short and pushes along its axis onto the head waiting in the pocket, until the detent clicks. One head per run, so no bristle that touched this alloy touches the next, and nothing is washed: an ultrasonic IPA bath would put reactive fines in a solvent, needs drying, and can't show the bristles' roots are clean.",
+   "start_frame": 504,
+   "end_frame": 520
+  },
+  {
+   "label": "4/6",
+   "caption": "A fresh head on: the headless shaft goes down onto its rest 25 mm short and pushes along its axis onto the head waiting in the pocket, until the detent clicks. One head per run, so no bristle that touched this alloy touches the next, and nothing is washed: an ultrasonic IPA bath would put reactive fines in a solvent, needs drying, and can't show the bristles' roots are clean.",
+   "start_frame": 521,
+   "end_frame": 545
+  },
+  {
+   "label": "4/6",
+   "caption": "A fresh head on: the headless shaft goes down onto its rest 25 mm short and pushes along its axis onto the head waiting in the pocket, until the detent clicks. One head per run, so no bristle that touched this alloy touches the next, and nothing is washed: an ultrasonic IPA bath would put reactive fines in a solvent, needs drying, and can't show the bristles' roots are clean.",
+   "start_frame": 546,
+   "end_frame": 552
+  },
+  {
+   "label": "4/6",
+   "caption": "A fresh head on: the headless shaft goes down onto its rest 25 mm short and pushes along its axis onto the head waiting in the pocket, until the detent clicks. One head per run, so no bristle that touched this alloy touches the next, and nothing is washed: an ultrasonic IPA bath would put reactive fines in a solvent, needs drying, and can't show the bristles' roots are clean.",
+   "start_frame": 553,
+   "end_frame": 563
+  },
+  {
+   "label": "5/6",
+   "caption": "The dust settles for a minute before anyone reaches in again (178_sop After a run 2; T2 50:32). Time-lapse.",
+   "start_frame": 564,
+   "end_frame": 605
+  },
+  {
+   "label": "5/6",
+   "caption": "MiR250 1 drives round to the container.",
+   "start_frame": 606,
+   "end_frame": 681
+  },
+  {
+   "label": "6/6",
+   "caption": "Arm 1 closes the container's valve: its lever pulled down a quarter turn (\"pull down and move\", T2 53:39). Shut, it keeps the argon in the container's bottom (T6 00:03).",
+   "start_frame": 682,
+   "end_frame": 715
+  },
+  {
+   "label": "6/6",
+   "caption": "Arm 1 closes the container's valve: its lever pulled down a quarter turn (\"pull down and move\", T2 53:39). Shut, it keeps the argon in the container's bottom (T6 00:03).",
+   "start_frame": 716,
+   "end_frame": 728
+  },
+  {
+   "label": "6/6",
+   "caption": "Arm 1 closes the container's valve: its lever pulled down a quarter turn (\"pull down and move\", T2 53:39). Shut, it keeps the argon in the container's bottom (T6 00:03).",
+   "start_frame": 729,
+   "end_frame": 735
+  },
+  {
+   "label": "6/6",
+   "caption": "Arm 1 closes the container's valve: its lever pulled down a quarter turn (\"pull down and move\", T2 53:39). Shut, it keeps the argon in the container's bottom (T6 00:03).",
+   "start_frame": 736,
+   "end_frame": 764
+  },
+  {
+   "label": "6/6",
+   "caption": "Arm 1 closes the container's valve: its lever pulled down a quarter turn (\"pull down and move\", T2 53:39). Shut, it keeps the argon in the container's bottom (T6 00:03).",
+   "start_frame": 765,
+   "end_frame": 771
+  },
+  {
+   "label": "6/6",
+   "caption": "Arm 1 closes the container's valve: its lever pulled down a quarter turn (\"pull down and move\", T2 53:39). Shut, it keeps the argon in the container's bottom (T6 00:03).",
+   "start_frame": 772,
+   "end_frame": 782
+  },
+  {
+   "label": "6/6",
+   "caption": "Arm 1 stands back.",
+   "start_frame": 783,
+   "end_frame": 806
+  },
+  {
+   "label": "6/6",
+   "caption": "Next, not animated yet: arm 2 holds the weight from below with a fork (ours; the 2F-85 opens to 85 mm, the container is 130 mm across), arm 1 opens the clamp, the container goes onto MiR250 1, capped, and a clean one with a fresh splash disc goes on. It weighs about 4.2 kg empty (the model's stainless) plus 0.14-1.6 kg of powder: under the UR10e's 12.5 kg, near or over the 2F-85's 5 kg.",
+   "start_frame": 807,
+   "end_frame": 934
+  }
+ ]
+}

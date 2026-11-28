@@ -1,0 +1,50 @@
+{
+ "source": "https://youtu.be/jI-MMJVOH94?t=40 (CCEM, Table Top SEM Hitachi TM4000Plus - Stopping Observation and Unloading the Sample, 0:40)",
+ "video": "jI-MMJVOH94",
+ "t": 40,
+ "pose": {
+  "drawer": 0.0
+ },
+ "points": {
+  "blue tl": [
+   204,
+   167
+  ],
+  "blue tr": [
+   345,
+   157
+  ],
+  "button": [
+   337,
+   231
+  ],
+  "badge": [
+   285,
+   214
+  ],
+  "drawer tl": [
+   221,
+   272
+  ]
+ },
+ "curves": {
+  "back left edge": [
+   [
+    88,
+    93
+   ],
+   [
+    92,
+    160
+   ],
+   [
+    97,
+    227
+   ],
+   [
+    102,
+    277
+   ]
+  ]
+ }
+}

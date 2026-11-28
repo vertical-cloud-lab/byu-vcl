@@ -1,0 +1,65 @@
+{
+ "name": "instruments/xrd",
+ "fps": 8,
+ "n_frames": 185,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/9",
+   "caption": "The door, drawn see-through, swings open on its right-hand hinge. The goniometer stands still at its load position: nothing moves inside until the door is locked and the X-rays are on.",
+   "start_frame": 0,
+   "end_frame": 22
+  },
+  {
+   "label": "2/9",
+   "caption": "The prepared holder goes onto the stage by hand: a zero-background plate, single-crystal Si, with the powder struck off flush in its well, so the powder's face is on the goniometer's axis.",
+   "start_frame": 23,
+   "end_frame": 44
+  },
+  {
+   "label": "3/9",
+   "caption": "Door shut and DOOR LOCK pressed.",
+   "start_frame": 45,
+   "end_frame": 59
+  },
+  {
+   "label": "4/9",
+   "caption": "Only then does the interlock let the 600 W tube switch on: the X-ray lamp on top lights.",
+   "start_frame": 60,
+   "end_frame": 73
+  },
+  {
+   "label": "5/9",
+   "caption": "The goniometer drives to its start, theta 5 deg and 2theta 10 deg, and the shutter opens: the incident beam from the tube on the left.",
+   "start_frame": 74,
+   "end_frame": 90
+  },
+  {
+   "label": "6/9",
+   "caption": "The scan, the housing drawn see-through: the tube stays put, the sample tilts by theta and the detector on the right sweeps 2theta from 10 to 90 deg, counting the diffracted beam.",
+   "start_frame": 91,
+   "end_frame": 131
+  },
+  {
+   "label": "7/9",
+   "caption": "Shutter shut and X-rays off, the lamp out; the goniometer goes back to its load position. The door stays locked until then.",
+   "start_frame": 132,
+   "end_frame": 149
+  },
+  {
+   "label": "8/9",
+   "caption": "Door open, the holder out.",
+   "start_frame": 150,
+   "end_frame": 169
+  },
+  {
+   "label": "9/9",
+   "caption": "Door shut. At 722 mm tall the MiniFlex just fits a tray: Kardex allows 727.5 mm.",
+   "start_frame": 170,
+   "end_frame": 184
+  }
+ ]
+}

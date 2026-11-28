@@ -1,0 +1,3349 @@
+{
+ "what": "Unit 3's nightly pass across the lab (floor_pass.py): the route, its work spots and studs, and its time step by step, on floor_cleaning.py's floor, reach and pass model. Ours, a model.",
+ "assumed": {
+  "bond_s_a_spot": 20.0,
+  "look_s": 10.0,
+  "check_s": 10.0,
+  "pick_up_s": 120.0,
+  "return_s": 120.0,
+  "scoop_s": 60.0,
+  "wheel_strip_s": 60.0,
+  "keep_out_mm": 1000.0,
+  "stud_share_mm": 800.0,
+  "loose_powder_at": [
+   -1985.0,
+   -2090.0
+  ],
+  "visible_spill_at": [
+   -150.0,
+   -1950.0
+  ],
+  "route": [
+   {
+    "station": "atomizer",
+    "zones": [
+     "glovebox",
+     "atomizer",
+     "sieving",
+     "opening 1",
+     "aisle"
+    ]
+   },
+   {
+    "station": "printer line",
+    "zones": [
+     "opening 2",
+     "midi",
+     "DED",
+     "aisle"
+    ]
+   }
+  ],
+  "note": "the two powder events are illustrations: the model has no spill rate"
+ },
+ "summary": {
+  "total_min": 86.0,
+  "model_night_min": 41.4,
+  "by_step_min": {
+   "undock": 0.2,
+   "drive": 5.2,
+   "turn": 0.8,
+   "pickup": 4.0,
+   "bond": 8.7,
+   "look": 8.7,
+   "clean": 34.7,
+   "check": 8.7,
+   "unbond": 8.7,
+   "spill": 0.5,
+   "scoop": 1.0,
+   "ret": 4.0,
+   "dock": 1.0
+  },
+  "spots": 52,
+  "studs": 40,
+  "cleaned_m2": 75.1,
+  "robot_zones_m2": 77.4,
+  "cleaned_share_of_robot_zones": 0.97,
+  "left_for_the_person_m2": 2.27,
+  "drive_m": 154.8
+ },
+ "zones": {
+  "glovebox": {
+   "spots": 2,
+   "cleaned_m2": 1.86,
+   "area_m2": 1.86
+  },
+  "atomizer": {
+   "spots": 7,
+   "cleaned_m2": 6.54,
+   "area_m2": 6.54
+  },
+  "sieving": {
+   "spots": 2,
+   "cleaned_m2": 1.23,
+   "area_m2": 1.42
+  },
+  "opening 1": {
+   "spots": 1,
+   "cleaned_m2": 0.29,
+   "area_m2": 2.09
+  },
+  "aisle": {
+   "spots": 28,
+   "cleaned_m2": 58.29,
+   "area_m2": 59.02
+  },
+  "opening 2": {
+   "spots": 1,
+   "cleaned_m2": 2.07,
+   "area_m2": 2.07
+  },
+  "midi": {
+   "spots": 7,
+   "cleaned_m2": 5.76,
+   "area_m2": 5.79
+  },
+  "DED": {
+   "spots": 4,
+   "cleaned_m2": 3.87,
+   "area_m2": 3.87
+  }
+ },
+ "spots": [
+  {
+   "zone": "glovebox",
+   "station": "atomizer",
+   "xy": [
+    -6020,
+    -1588
+   ],
+   "heading": 0.0,
+   "area_m2": 0.89,
+   "stud": [
+    -6020,
+    -2028
+   ]
+  },
+  {
+   "zone": "glovebox",
+   "station": "atomizer",
+   "xy": [
+    -7420,
+    -1588
+   ],
+   "heading": 0.0,
+   "area_m2": 0.97,
+   "stud": [
+    -7420,
+    -2028
+   ]
+  },
+  {
+   "zone": "atomizer",
+   "station": "atomizer",
+   "xy": [
+    -5620,
+    -2388
+   ],
+   "heading": 0.0,
+   "area_m2": 1.5,
+   "stud": [
+    -5620,
+    -2828
+   ]
+  },
+  {
+   "zone": "atomizer",
+   "station": "atomizer",
+   "xy": [
+    -4420,
+    -3588
+   ],
+   "heading": 0.0,
+   "area_m2": 1.08,
+   "stud": [
+    -4420,
+    -4028
+   ]
+  },
+  {
+   "zone": "atomizer",
+   "station": "atomizer",
+   "xy": [
+    -3220,
+    -4388
+   ],
+   "heading": 0.0,
+   "area_m2": 0.47,
+   "stud": [
+    -3220,
+    -4828
+   ]
+  },
+  {
+   "zone": "atomizer",
+   "station": "atomizer",
+   "xy": [
+    -1620,
+    -2788
+   ],
+   "heading": 90.0,
+   "area_m2": 1.49,
+   "stud": [
+    -1180,
+    -2788
+   ]
+  },
+  {
+   "zone": "atomizer",
+   "station": "atomizer",
+   "xy": [
+    -2420,
+    -188
+   ],
+   "heading": 0.0,
+   "area_m2": 1.5,
+   "stud": [
+    -2420,
+    -628
+   ]
+  },
+  {
+   "zone": "atomizer",
+   "station": "atomizer",
+   "xy": [
+    -2820,
+    -188
+   ],
+   "heading": 0.0,
+   "area_m2": 0.24,
+   "stud": [
+    -2420,
+    -628
+   ]
+  },
+  {
+   "zone": "atomizer",
+   "station": "atomizer",
+   "xy": [
+    -4020,
+    -188
+   ],
+   "heading": 0.0,
+   "area_m2": 0.25,
+   "stud": [
+    -4020,
+    -628
+   ]
+  },
+  {
+   "zone": "sieving",
+   "station": "atomizer",
+   "xy": [
+    -2220,
+    -188
+   ],
+   "heading": 0.0,
+   "area_m2": 0.02,
+   "stud": [
+    -2420,
+    -628
+   ]
+  },
+  {
+   "zone": "sieving",
+   "station": "atomizer",
+   "xy": [
+    -1620,
+    -2388
+   ],
+   "heading": 90.0,
+   "area_m2": 0.12,
+   "stud": [
+    -1180,
+    -2788
+   ]
+  },
+  {
+   "zone": "opening 1",
+   "station": "atomizer",
+   "xy": [
+    1180,
+    -2788
+   ],
+   "heading": 0.0,
+   "area_m2": 0.28,
+   "stud": [
+    1180,
+    -3228
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "atomizer",
+   "xy": [
+    -1220,
+    -3588
+   ],
+   "heading": 0.0,
+   "area_m2": 3.63,
+   "stud": [
+    -1220,
+    -4028
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "atomizer",
+   "xy": [
+    -1220,
+    -4188
+   ],
+   "heading": 0.0,
+   "area_m2": 1.37,
+   "stud": [
+    -1220,
+    -4028
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "atomizer",
+   "xy": [
+    -1020,
+    -5788
+   ],
+   "heading": 0.0,
+   "area_m2": 0.18,
+   "stud": [
+    -1020,
+    -6228
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "atomizer",
+   "xy": [
+    -2820,
+    -4988
+   ],
+   "heading": 0.0,
+   "area_m2": 2.54,
+   "stud": [
+    -3220,
+    -4828
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "atomizer",
+   "xy": [
+    -3820,
+    -4588
+   ],
+   "heading": 0.0,
+   "area_m2": 1.8,
+   "stud": [
+    -3220,
+    -4828
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "atomizer",
+   "xy": [
+    -5220,
+    -4988
+   ],
+   "heading": 0.0,
+   "area_m2": 2.16,
+   "stud": [
+    -5220,
+    -5428
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "atomizer",
+   "xy": [
+    -6420,
+    -4188
+   ],
+   "heading": 0.0,
+   "area_m2": 3.44,
+   "stud": [
+    -6420,
+    -4628
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "atomizer",
+   "xy": [
+    -6620,
+    -3188
+   ],
+   "heading": 0.0,
+   "area_m2": 1.71,
+   "stud": [
+    -6620,
+    -3628
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "atomizer",
+   "xy": [
+    -8620,
+    -2988
+   ],
+   "heading": 0.0,
+   "area_m2": 3.48,
+   "stud": [
+    -8620,
+    -3428
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "atomizer",
+   "xy": [
+    -8820,
+    -4188
+   ],
+   "heading": 0.0,
+   "area_m2": 2.86,
+   "stud": [
+    -8820,
+    -4628
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "atomizer",
+   "xy": [
+    -9820,
+    -4188
+   ],
+   "heading": 0.0,
+   "area_m2": 0.67,
+   "stud": [
+    -9820,
+    -4628
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "atomizer",
+   "xy": [
+    -10420,
+    -3588
+   ],
+   "heading": 0.0,
+   "area_m2": 0.17,
+   "stud": [
+    -10420,
+    -4028
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "atomizer",
+   "xy": [
+    -8220,
+    -5788
+   ],
+   "heading": 0.0,
+   "area_m2": 0.37,
+   "stud": [
+    -8220,
+    -6228
+   ]
+  },
+  {
+   "zone": "opening 2",
+   "station": "printer line",
+   "xy": [
+    3580,
+    -2188
+   ],
+   "heading": 0.0,
+   "area_m2": 2.07,
+   "stud": [
+    3580,
+    -2628
+   ]
+  },
+  {
+   "zone": "midi",
+   "station": "printer line",
+   "xy": [
+    5180,
+    -2388
+   ],
+   "heading": 0.0,
+   "area_m2": 0.91,
+   "stud": [
+    5180,
+    -2828
+   ]
+  },
+  {
+   "zone": "midi",
+   "station": "printer line",
+   "xy": [
+    6380,
+    -2188
+   ],
+   "heading": 90.0,
+   "area_m2": 0.77,
+   "stud": [
+    6820,
+    -2188
+   ]
+  },
+  {
+   "zone": "midi",
+   "station": "printer line",
+   "xy": [
+    7380,
+    -3188
+   ],
+   "heading": 0.0,
+   "area_m2": 0.07,
+   "stud": [
+    7380,
+    -3628
+   ]
+  },
+  {
+   "zone": "midi",
+   "station": "printer line",
+   "xy": [
+    8580,
+    -988
+   ],
+   "heading": 90.0,
+   "area_m2": 1.99,
+   "stud": [
+    8580,
+    -438
+   ]
+  },
+  {
+   "zone": "midi",
+   "station": "printer line",
+   "xy": [
+    8580,
+    -388
+   ],
+   "heading": 90.0,
+   "area_m2": 0.24,
+   "stud": [
+    8580,
+    -438
+   ]
+  },
+  {
+   "zone": "midi",
+   "station": "printer line",
+   "xy": [
+    6180,
+    212
+   ],
+   "heading": 0.0,
+   "area_m2": 1.63,
+   "stud": [
+    6180,
+    -228
+   ]
+  },
+  {
+   "zone": "midi",
+   "station": "printer line",
+   "xy": [
+    5580,
+    212
+   ],
+   "heading": 0.0,
+   "area_m2": 0.15,
+   "stud": [
+    6180,
+    -228
+   ]
+  },
+  {
+   "zone": "DED",
+   "station": "printer line",
+   "xy": [
+    3780,
+    -5788
+   ],
+   "heading": 90.0,
+   "area_m2": 1.84,
+   "stud": [
+    4220,
+    -5788
+   ]
+  },
+  {
+   "zone": "DED",
+   "station": "printer line",
+   "xy": [
+    4980,
+    -6788
+   ],
+   "heading": 90.0,
+   "area_m2": 1.18,
+   "stud": [
+    5420,
+    -6788
+   ]
+  },
+  {
+   "zone": "DED",
+   "station": "printer line",
+   "xy": [
+    3980,
+    -7388
+   ],
+   "heading": 0.0,
+   "area_m2": 0.74,
+   "stud": [
+    3980,
+    -7828
+   ]
+  },
+  {
+   "zone": "DED",
+   "station": "printer line",
+   "xy": [
+    2580,
+    -7588
+   ],
+   "heading": 0.0,
+   "area_m2": 0.11,
+   "stud": [
+    2580,
+    -8028
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "printer line",
+   "xy": [
+    2180,
+    -5388
+   ],
+   "heading": 0.0,
+   "area_m2": 2.69,
+   "stud": [
+    2180,
+    -5828
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "printer line",
+   "xy": [
+    1180,
+    -4188
+   ],
+   "heading": 0.0,
+   "area_m2": 3.8,
+   "stud": [
+    1180,
+    -4628
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "printer line",
+   "xy": [
+    580,
+    -3788
+   ],
+   "heading": 0.0,
+   "area_m2": 0.65,
+   "stud": [
+    1180,
+    -4628
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "printer line",
+   "xy": [
+    380,
+    -4188
+   ],
+   "heading": 0.0,
+   "area_m2": 0.23,
+   "stud": [
+    380,
+    -4628
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "printer line",
+   "xy": [
+    2180,
+    -2988
+   ],
+   "heading": 0.0,
+   "area_m2": 2.32,
+   "stud": [
+    2180,
+    -3428
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "printer line",
+   "xy": [
+    3780,
+    -4188
+   ],
+   "heading": 0.0,
+   "area_m2": 3.91,
+   "stud": [
+    3780,
+    -4628
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "printer line",
+   "xy": [
+    4780,
+    -2988
+   ],
+   "heading": 0.0,
+   "area_m2": 2.45,
+   "stud": [
+    5180,
+    -2828
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "printer line",
+   "xy": [
+    5580,
+    -3588
+   ],
+   "heading": 0.0,
+   "area_m2": 2.37,
+   "stud": [
+    5580,
+    -4028
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "printer line",
+   "xy": [
+    6380,
+    -4188
+   ],
+   "heading": 0.0,
+   "area_m2": 2.48,
+   "stud": [
+    6380,
+    -4628
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "printer line",
+   "xy": [
+    7380,
+    -2988
+   ],
+   "heading": 0.0,
+   "area_m2": 2.46,
+   "stud": [
+    7380,
+    -3628
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "printer line",
+   "xy": [
+    8980,
+    -4188
+   ],
+   "heading": 0.0,
+   "area_m2": 4.52,
+   "stud": [
+    8980,
+    -4628
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "printer line",
+   "xy": [
+    9380,
+    -3388
+   ],
+   "heading": 0.0,
+   "area_m2": 1.04,
+   "stud": [
+    9380,
+    -3828
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "printer line",
+   "xy": [
+    9580,
+    -5788
+   ],
+   "heading": 0.0,
+   "area_m2": 0.2,
+   "stud": [
+    9580,
+    -6228
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "printer line",
+   "xy": [
+    7380,
+    -5388
+   ],
+   "heading": 0.0,
+   "area_m2": 0.55,
+   "stud": [
+    7380,
+    -5828
+   ]
+  },
+  {
+   "zone": "aisle",
+   "station": "printer line",
+   "xy": [
+    4780,
+    -5388
+   ],
+   "heading": 0.0,
+   "area_m2": 0.49,
+   "stud": [
+    4220,
+    -5788
+   ]
+  }
+ ],
+ "studs": [
+  [
+   -6020,
+   -2028
+  ],
+  [
+   -7420,
+   -2028
+  ],
+  [
+   -5620,
+   -2828
+  ],
+  [
+   -4420,
+   -4028
+  ],
+  [
+   -3220,
+   -4828
+  ],
+  [
+   -1180,
+   -2788
+  ],
+  [
+   -2420,
+   -628
+  ],
+  [
+   -4020,
+   -628
+  ],
+  [
+   1180,
+   -3228
+  ],
+  [
+   -1220,
+   -4028
+  ],
+  [
+   -1020,
+   -6228
+  ],
+  [
+   -5220,
+   -5428
+  ],
+  [
+   -6420,
+   -4628
+  ],
+  [
+   -6620,
+   -3628
+  ],
+  [
+   -8620,
+   -3428
+  ],
+  [
+   -8820,
+   -4628
+  ],
+  [
+   -9820,
+   -4628
+  ],
+  [
+   -10420,
+   -4028
+  ],
+  [
+   -8220,
+   -6228
+  ],
+  [
+   3580,
+   -2628
+  ],
+  [
+   5180,
+   -2828
+  ],
+  [
+   6820,
+   -2188
+  ],
+  [
+   7380,
+   -3628
+  ],
+  [
+   8580,
+   -438
+  ],
+  [
+   6180,
+   -228
+  ],
+  [
+   4220,
+   -5788
+  ],
+  [
+   5420,
+   -6788
+  ],
+  [
+   3980,
+   -7828
+  ],
+  [
+   2580,
+   -8028
+  ],
+  [
+   2180,
+   -5828
+  ],
+  [
+   1180,
+   -4628
+  ],
+  [
+   380,
+   -4628
+  ],
+  [
+   2180,
+   -3428
+  ],
+  [
+   3780,
+   -4628
+  ],
+  [
+   5580,
+   -4028
+  ],
+  [
+   6380,
+   -4628
+  ],
+  [
+   8980,
+   -4628
+  ],
+  [
+   9380,
+   -3828
+  ],
+  [
+   9580,
+   -6228
+  ],
+  [
+   7380,
+   -5828
+  ]
+ ],
+ "events": [
+  {
+   "kind": "undock",
+   "t0_min": 0.0,
+   "t1_min": 0.17,
+   "text": "01:00: unit 3 leaves its charger"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 0.17,
+   "t1_min": 0.33,
+   "text": "To the atomizer's vacuum station"
+  },
+  {
+   "kind": "turn",
+   "t0_min": 0.33,
+   "t1_min": 0.39,
+   "text": "To the atomizer's vacuum station"
+  },
+  {
+   "kind": "pickup",
+   "t0_min": 0.39,
+   "t1_min": 2.39,
+   "text": "The atomizer's station: the Al-family wand out of its holster; continuity on the station's fixture, 0.1 ohm a joint at most (vacuum SOP 1); vacuum on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 2.39,
+   "t1_min": 2.43,
+   "text": "glovebox: work spot 1"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 2.43,
+   "t1_min": 2.59,
+   "zone": "glovebox",
+   "text": "glovebox, spot 1: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 2.59,
+   "t1_min": 2.76,
+   "zone": "glovebox",
+   "text": "glovebox, spot 1: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 2.76,
+   "t1_min": 3.17,
+   "zone": "glovebox",
+   "area_m2": 0.89,
+   "text": "glovebox, spot 1: squeegee lanes, 14 in at 0.15 m/s (0.9 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 3.17,
+   "t1_min": 3.34,
+   "zone": "glovebox",
+   "text": "glovebox, spot 1: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 3.34,
+   "t1_min": 3.5,
+   "zone": "glovebox",
+   "text": "glovebox, spot 1: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 3.5,
+   "t1_min": 3.59,
+   "text": "glovebox: work spot 2"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 3.59,
+   "t1_min": 3.76,
+   "zone": "glovebox",
+   "text": "glovebox, spot 2: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 3.76,
+   "t1_min": 3.93,
+   "zone": "glovebox",
+   "text": "glovebox, spot 2: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 3.93,
+   "t1_min": 4.37,
+   "zone": "glovebox",
+   "area_m2": 0.97,
+   "text": "glovebox, spot 2: squeegee lanes, 14 in at 0.15 m/s (1.0 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 4.37,
+   "t1_min": 4.54,
+   "zone": "glovebox",
+   "text": "glovebox, spot 2: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 4.54,
+   "t1_min": 4.71,
+   "zone": "glovebox",
+   "text": "glovebox, spot 2: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 4.71,
+   "t1_min": 4.79,
+   "text": "atomizer (rePowder): work spot 1"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 4.79,
+   "t1_min": 4.96,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 1: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 4.96,
+   "t1_min": 5.13,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 1: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 5.13,
+   "t1_min": 5.82,
+   "zone": "atomizer",
+   "area_m2": 1.5,
+   "text": "atomizer (rePowder), spot 1: squeegee lanes, 14 in at 0.15 m/s (1.5 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 5.82,
+   "t1_min": 5.99,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 1: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 5.99,
+   "t1_min": 6.16,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 1: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 6.16,
+   "t1_min": 6.24,
+   "text": "atomizer (rePowder): work spot 2"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 6.24,
+   "t1_min": 6.4,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 2: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 6.4,
+   "t1_min": 6.57,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 2: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 6.57,
+   "t1_min": 7.07,
+   "zone": "atomizer",
+   "area_m2": 1.08,
+   "text": "atomizer (rePowder), spot 2: squeegee lanes, 14 in at 0.15 m/s (1.1 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 7.07,
+   "t1_min": 7.24,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 2: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 7.24,
+   "t1_min": 7.41,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 2: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 7.41,
+   "t1_min": 7.45,
+   "text": "atomizer (rePowder): work spot 3"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 7.45,
+   "t1_min": 7.62,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 3: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 7.62,
+   "t1_min": 7.79,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 3: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 7.79,
+   "t1_min": 8.0,
+   "zone": "atomizer",
+   "area_m2": 0.47,
+   "text": "atomizer (rePowder), spot 3: squeegee lanes, 14 in at 0.15 m/s (0.5 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 8.0,
+   "t1_min": 8.17,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 3: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 8.17,
+   "t1_min": 8.34,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 3: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 8.34,
+   "t1_min": 8.42,
+   "text": "atomizer (rePowder): work spot 4"
+  },
+  {
+   "kind": "turn",
+   "t0_min": 8.42,
+   "t1_min": 8.49,
+   "text": "atomizer (rePowder): work spot 4"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 8.49,
+   "t1_min": 8.66,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 4: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 8.66,
+   "t1_min": 8.82,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 4: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "spill",
+   "t0_min": 8.82,
+   "t1_min": 9.32,
+   "zone": "atomizer",
+   "text": "A visible layer in front of Shuttle 1's opening: a person's job (vacuum SOP 8). Unit 3 keeps 1 m away, leaves it, and messages the person and EHS"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 9.32,
+   "t1_min": 10.01,
+   "zone": "atomizer",
+   "area_m2": 1.49,
+   "text": "atomizer (rePowder), spot 4: squeegee lanes, 14 in at 0.15 m/s (1.5 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 10.01,
+   "t1_min": 10.18,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 4: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 10.18,
+   "t1_min": 10.34,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 4: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 10.34,
+   "t1_min": 10.8,
+   "text": "atomizer (rePowder): work spot 5"
+  },
+  {
+   "kind": "turn",
+   "t0_min": 10.8,
+   "t1_min": 10.87,
+   "text": "atomizer (rePowder): work spot 5"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 10.87,
+   "t1_min": 11.03,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 5: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 11.03,
+   "t1_min": 11.2,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 5: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 11.2,
+   "t1_min": 11.9,
+   "zone": "atomizer",
+   "area_m2": 1.5,
+   "text": "atomizer (rePowder), spot 5: squeegee lanes, 14 in at 0.15 m/s (1.5 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 11.9,
+   "t1_min": 12.06,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 5: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 12.06,
+   "t1_min": 12.23,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 5: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 12.23,
+   "t1_min": 12.24,
+   "text": "atomizer (rePowder): work spot 6"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 12.24,
+   "t1_min": 12.41,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 6: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 12.41,
+   "t1_min": 12.58,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 6: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 12.58,
+   "t1_min": 12.69,
+   "zone": "atomizer",
+   "area_m2": 0.24,
+   "text": "atomizer (rePowder), spot 6: squeegee lanes, 14 in at 0.15 m/s (0.2 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 12.69,
+   "t1_min": 12.86,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 6: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 12.86,
+   "t1_min": 13.02,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 6: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 13.02,
+   "t1_min": 13.06,
+   "text": "atomizer (rePowder): work spot 7"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 13.06,
+   "t1_min": 13.23,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 7: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 13.23,
+   "t1_min": 13.4,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 7: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 13.4,
+   "t1_min": 13.51,
+   "zone": "atomizer",
+   "area_m2": 0.25,
+   "text": "atomizer (rePowder), spot 7: squeegee lanes, 14 in at 0.15 m/s (0.3 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 13.51,
+   "t1_min": 13.68,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 7: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 13.68,
+   "t1_min": 13.84,
+   "zone": "atomizer",
+   "text": "atomizer (rePowder), spot 7: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 13.84,
+   "t1_min": 13.9,
+   "text": "sieving cell: work spot 1"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 13.9,
+   "t1_min": 14.07,
+   "zone": "sieving",
+   "text": "sieving cell, spot 1: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 14.07,
+   "t1_min": 14.24,
+   "zone": "sieving",
+   "text": "sieving cell, spot 1: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 14.24,
+   "t1_min": 14.25,
+   "zone": "sieving",
+   "area_m2": 0.02,
+   "text": "sieving cell, spot 1: squeegee lanes, 14 in at 0.15 m/s (0.0 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 14.25,
+   "t1_min": 14.41,
+   "zone": "sieving",
+   "text": "sieving cell, spot 1: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 14.41,
+   "t1_min": 14.58,
+   "zone": "sieving",
+   "text": "sieving cell, spot 1: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 14.58,
+   "t1_min": 15.03,
+   "text": "sieving cell: work spot 2"
+  },
+  {
+   "kind": "turn",
+   "t0_min": 15.03,
+   "t1_min": 15.1,
+   "text": "sieving cell: work spot 2"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 15.1,
+   "t1_min": 15.26,
+   "zone": "sieving",
+   "text": "sieving cell, spot 2: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 15.26,
+   "t1_min": 15.43,
+   "zone": "sieving",
+   "text": "sieving cell, spot 2: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "scoop",
+   "t0_min": 15.43,
+   "t1_min": 16.43,
+   "zone": "sieving",
+   "text": "Loose powder by the door: scooped and brushed into the conductive bag first (conductive scoop, natural bristles: NFPA 484 11.5)"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 16.43,
+   "t1_min": 16.49,
+   "zone": "sieving",
+   "area_m2": 0.12,
+   "text": "sieving cell, spot 2: squeegee lanes, 14 in at 0.15 m/s (0.1 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 16.49,
+   "t1_min": 16.65,
+   "zone": "sieving",
+   "text": "sieving cell, spot 2: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 16.65,
+   "t1_min": 16.82,
+   "zone": "sieving",
+   "text": "sieving cell, spot 2: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 16.82,
+   "t1_min": 16.91,
+   "text": "Shuttle 1's opening: work spot 1"
+  },
+  {
+   "kind": "turn",
+   "t0_min": 16.91,
+   "t1_min": 16.98,
+   "text": "Shuttle 1's opening: work spot 1"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 16.98,
+   "t1_min": 17.15,
+   "zone": "opening 1",
+   "text": "Shuttle 1's opening, spot 1: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 17.15,
+   "t1_min": 17.31,
+   "zone": "opening 1",
+   "text": "Shuttle 1's opening, spot 1: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 17.31,
+   "t1_min": 17.44,
+   "zone": "opening 1",
+   "area_m2": 0.28,
+   "text": "Shuttle 1's opening, spot 1: squeegee lanes, 14 in at 0.15 m/s (0.3 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 17.44,
+   "t1_min": 17.61,
+   "zone": "opening 1",
+   "text": "Shuttle 1's opening, spot 1: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 17.61,
+   "t1_min": 17.78,
+   "zone": "opening 1",
+   "text": "Shuttle 1's opening, spot 1: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 17.78,
+   "t1_min": 17.86,
+   "text": "aisle: work spot 1"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 17.86,
+   "t1_min": 18.03,
+   "zone": "aisle",
+   "text": "aisle, spot 1: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 18.03,
+   "t1_min": 18.19,
+   "zone": "aisle",
+   "text": "aisle, spot 1: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 18.19,
+   "t1_min": 19.87,
+   "zone": "aisle",
+   "area_m2": 3.63,
+   "text": "aisle, spot 1: squeegee lanes, 14 in at 0.15 m/s (3.6 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 19.87,
+   "t1_min": 20.04,
+   "zone": "aisle",
+   "text": "aisle, spot 1: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 20.04,
+   "t1_min": 20.21,
+   "zone": "aisle",
+   "text": "aisle, spot 1: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 20.21,
+   "t1_min": 20.23,
+   "text": "aisle: work spot 2"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 20.23,
+   "t1_min": 20.39,
+   "zone": "aisle",
+   "text": "aisle, spot 2: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 20.39,
+   "t1_min": 20.56,
+   "zone": "aisle",
+   "text": "aisle, spot 2: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 20.56,
+   "t1_min": 21.19,
+   "zone": "aisle",
+   "area_m2": 1.37,
+   "text": "aisle, spot 2: squeegee lanes, 14 in at 0.15 m/s (1.4 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 21.19,
+   "t1_min": 21.36,
+   "zone": "aisle",
+   "text": "aisle, spot 2: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 21.36,
+   "t1_min": 21.53,
+   "zone": "aisle",
+   "text": "aisle, spot 2: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 21.53,
+   "t1_min": 21.58,
+   "text": "aisle: work spot 3"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 21.58,
+   "t1_min": 21.75,
+   "zone": "aisle",
+   "text": "aisle, spot 3: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 21.75,
+   "t1_min": 21.91,
+   "zone": "aisle",
+   "text": "aisle, spot 3: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 21.91,
+   "t1_min": 22.0,
+   "zone": "aisle",
+   "area_m2": 0.18,
+   "text": "aisle, spot 3: squeegee lanes, 14 in at 0.15 m/s (0.2 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 22.0,
+   "t1_min": 22.16,
+   "zone": "aisle",
+   "text": "aisle, spot 3: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 22.16,
+   "t1_min": 22.33,
+   "zone": "aisle",
+   "text": "aisle, spot 3: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 22.33,
+   "t1_min": 22.4,
+   "text": "aisle: work spot 4"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 22.4,
+   "t1_min": 22.56,
+   "zone": "aisle",
+   "text": "aisle, spot 4: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 22.56,
+   "t1_min": 22.73,
+   "zone": "aisle",
+   "text": "aisle, spot 4: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 22.73,
+   "t1_min": 23.91,
+   "zone": "aisle",
+   "area_m2": 2.54,
+   "text": "aisle, spot 4: squeegee lanes, 14 in at 0.15 m/s (2.5 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 23.91,
+   "t1_min": 24.07,
+   "zone": "aisle",
+   "text": "aisle, spot 4: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 24.07,
+   "t1_min": 24.24,
+   "zone": "aisle",
+   "text": "aisle, spot 4: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 24.24,
+   "t1_min": 24.27,
+   "text": "aisle: work spot 5"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 24.27,
+   "t1_min": 24.44,
+   "zone": "aisle",
+   "text": "aisle, spot 5: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 24.44,
+   "t1_min": 24.61,
+   "zone": "aisle",
+   "text": "aisle, spot 5: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 24.61,
+   "t1_min": 25.44,
+   "zone": "aisle",
+   "area_m2": 1.8,
+   "text": "aisle, spot 5: squeegee lanes, 14 in at 0.15 m/s (1.8 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 25.44,
+   "t1_min": 25.61,
+   "zone": "aisle",
+   "text": "aisle, spot 5: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 25.61,
+   "t1_min": 25.78,
+   "zone": "aisle",
+   "text": "aisle, spot 5: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 25.78,
+   "t1_min": 25.82,
+   "text": "aisle: work spot 6"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 25.82,
+   "t1_min": 25.99,
+   "zone": "aisle",
+   "text": "aisle, spot 6: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 25.99,
+   "t1_min": 26.16,
+   "zone": "aisle",
+   "text": "aisle, spot 6: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 26.16,
+   "t1_min": 27.16,
+   "zone": "aisle",
+   "area_m2": 2.16,
+   "text": "aisle, spot 6: squeegee lanes, 14 in at 0.15 m/s (2.2 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 27.16,
+   "t1_min": 27.32,
+   "zone": "aisle",
+   "text": "aisle, spot 6: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 27.32,
+   "t1_min": 27.49,
+   "zone": "aisle",
+   "text": "aisle, spot 6: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 27.49,
+   "t1_min": 27.54,
+   "text": "aisle: work spot 7"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 27.54,
+   "t1_min": 27.71,
+   "zone": "aisle",
+   "text": "aisle, spot 7: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 27.71,
+   "t1_min": 27.87,
+   "zone": "aisle",
+   "text": "aisle, spot 7: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 27.87,
+   "t1_min": 29.46,
+   "zone": "aisle",
+   "area_m2": 3.44,
+   "text": "aisle, spot 7: squeegee lanes, 14 in at 0.15 m/s (3.4 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 29.46,
+   "t1_min": 29.63,
+   "zone": "aisle",
+   "text": "aisle, spot 7: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 29.63,
+   "t1_min": 29.8,
+   "zone": "aisle",
+   "text": "aisle, spot 7: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 29.8,
+   "t1_min": 29.83,
+   "text": "aisle: work spot 8"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 29.83,
+   "t1_min": 30.0,
+   "zone": "aisle",
+   "text": "aisle, spot 8: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 30.0,
+   "t1_min": 30.16,
+   "zone": "aisle",
+   "text": "aisle, spot 8: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 30.16,
+   "t1_min": 30.95,
+   "zone": "aisle",
+   "area_m2": 1.71,
+   "text": "aisle, spot 8: squeegee lanes, 14 in at 0.15 m/s (1.7 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 30.95,
+   "t1_min": 31.12,
+   "zone": "aisle",
+   "text": "aisle, spot 8: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 31.12,
+   "t1_min": 31.29,
+   "zone": "aisle",
+   "text": "aisle, spot 8: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 31.29,
+   "t1_min": 31.35,
+   "text": "aisle: work spot 9"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 31.35,
+   "t1_min": 31.52,
+   "zone": "aisle",
+   "text": "aisle, spot 9: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 31.52,
+   "t1_min": 31.69,
+   "zone": "aisle",
+   "text": "aisle, spot 9: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 31.69,
+   "t1_min": 33.3,
+   "zone": "aisle",
+   "area_m2": 3.48,
+   "text": "aisle, spot 9: squeegee lanes, 14 in at 0.15 m/s (3.5 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 33.3,
+   "t1_min": 33.46,
+   "zone": "aisle",
+   "text": "aisle, spot 9: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 33.46,
+   "t1_min": 33.63,
+   "zone": "aisle",
+   "text": "aisle, spot 9: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 33.63,
+   "t1_min": 33.67,
+   "text": "aisle: work spot 10"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 33.67,
+   "t1_min": 33.84,
+   "zone": "aisle",
+   "text": "aisle, spot 10: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 33.84,
+   "t1_min": 34.0,
+   "zone": "aisle",
+   "text": "aisle, spot 10: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 34.0,
+   "t1_min": 35.33,
+   "zone": "aisle",
+   "area_m2": 2.86,
+   "text": "aisle, spot 10: squeegee lanes, 14 in at 0.15 m/s (2.9 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 35.33,
+   "t1_min": 35.5,
+   "zone": "aisle",
+   "text": "aisle, spot 10: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 35.5,
+   "t1_min": 35.66,
+   "zone": "aisle",
+   "text": "aisle, spot 10: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 35.66,
+   "t1_min": 35.7,
+   "text": "aisle: work spot 11"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 35.7,
+   "t1_min": 35.86,
+   "zone": "aisle",
+   "text": "aisle, spot 11: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 35.86,
+   "t1_min": 36.03,
+   "zone": "aisle",
+   "text": "aisle, spot 11: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 36.03,
+   "t1_min": 36.34,
+   "zone": "aisle",
+   "area_m2": 0.67,
+   "text": "aisle, spot 11: squeegee lanes, 14 in at 0.15 m/s (0.7 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 36.34,
+   "t1_min": 36.51,
+   "zone": "aisle",
+   "text": "aisle, spot 11: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 36.51,
+   "t1_min": 36.67,
+   "zone": "aisle",
+   "text": "aisle, spot 11: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 36.67,
+   "t1_min": 36.7,
+   "text": "aisle: work spot 12"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 36.7,
+   "t1_min": 36.87,
+   "zone": "aisle",
+   "text": "aisle, spot 12: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 36.87,
+   "t1_min": 37.03,
+   "zone": "aisle",
+   "text": "aisle, spot 12: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 37.03,
+   "t1_min": 37.11,
+   "zone": "aisle",
+   "area_m2": 0.17,
+   "text": "aisle, spot 12: squeegee lanes, 14 in at 0.15 m/s (0.2 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 37.11,
+   "t1_min": 37.28,
+   "zone": "aisle",
+   "text": "aisle, spot 12: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 37.28,
+   "t1_min": 37.45,
+   "zone": "aisle",
+   "text": "aisle, spot 12: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 37.45,
+   "t1_min": 37.55,
+   "text": "aisle: work spot 13"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 37.55,
+   "t1_min": 37.72,
+   "zone": "aisle",
+   "text": "aisle, spot 13: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 37.72,
+   "t1_min": 37.88,
+   "zone": "aisle",
+   "text": "aisle, spot 13: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 37.88,
+   "t1_min": 38.06,
+   "zone": "aisle",
+   "area_m2": 0.37,
+   "text": "aisle, spot 13: squeegee lanes, 14 in at 0.15 m/s (0.4 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 38.06,
+   "t1_min": 38.22,
+   "zone": "aisle",
+   "text": "aisle, spot 13: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 38.22,
+   "t1_min": 38.39,
+   "zone": "aisle",
+   "text": "aisle, spot 13: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 38.39,
+   "t1_min": 38.54,
+   "text": "Back to the atomizer's station"
+  },
+  {
+   "kind": "ret",
+   "t0_min": 38.54,
+   "t1_min": 40.54,
+   "text": "The atomizer's station: 20 s of run-on in clean air, off, 60 s to settle, the wand in its holster (vacuum SOP 4.1-4.3)"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 40.54,
+   "t1_min": 40.99,
+   "text": "To the printer line's vacuum station"
+  },
+  {
+   "kind": "pickup",
+   "t0_min": 40.99,
+   "t1_min": 42.99,
+   "text": "The printer line's station: the Al-family wand out of its holster; continuity on the station's fixture, 0.1 ohm a joint at most (vacuum SOP 1); vacuum on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 42.99,
+   "t1_min": 43.05,
+   "text": "Shuttle 2's opening: work spot 1"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 43.05,
+   "t1_min": 43.22,
+   "zone": "opening 2",
+   "text": "Shuttle 2's opening, spot 1: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 43.22,
+   "t1_min": 43.39,
+   "zone": "opening 2",
+   "text": "Shuttle 2's opening, spot 1: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 43.39,
+   "t1_min": 44.34,
+   "zone": "opening 2",
+   "area_m2": 2.07,
+   "text": "Shuttle 2's opening, spot 1: squeegee lanes, 14 in at 0.15 m/s (2.1 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 44.34,
+   "t1_min": 44.51,
+   "zone": "opening 2",
+   "text": "Shuttle 2's opening, spot 1: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 44.51,
+   "t1_min": 44.68,
+   "zone": "opening 2",
+   "text": "Shuttle 2's opening, spot 1: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 44.68,
+   "t1_min": 44.73,
+   "text": "Aconity MIDI: work spot 1"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 44.73,
+   "t1_min": 44.9,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 1: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 44.9,
+   "t1_min": 45.06,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 1: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 45.06,
+   "t1_min": 45.48,
+   "zone": "midi",
+   "area_m2": 0.91,
+   "text": "Aconity MIDI, spot 1: squeegee lanes, 14 in at 0.15 m/s (0.9 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 45.48,
+   "t1_min": 45.65,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 1: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 45.65,
+   "t1_min": 45.82,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 1: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 45.82,
+   "t1_min": 45.86,
+   "text": "Aconity MIDI: work spot 2"
+  },
+  {
+   "kind": "turn",
+   "t0_min": 45.86,
+   "t1_min": 45.93,
+   "text": "Aconity MIDI: work spot 2"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 45.93,
+   "t1_min": 46.09,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 2: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 46.09,
+   "t1_min": 46.26,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 2: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 46.26,
+   "t1_min": 46.62,
+   "zone": "midi",
+   "area_m2": 0.77,
+   "text": "Aconity MIDI, spot 2: squeegee lanes, 14 in at 0.15 m/s (0.8 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 46.62,
+   "t1_min": 46.78,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 2: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 46.78,
+   "t1_min": 46.95,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 2: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 46.95,
+   "t1_min": 47.0,
+   "text": "Aconity MIDI: work spot 3"
+  },
+  {
+   "kind": "turn",
+   "t0_min": 47.0,
+   "t1_min": 47.07,
+   "text": "Aconity MIDI: work spot 3"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 47.07,
+   "t1_min": 47.23,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 3: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 47.23,
+   "t1_min": 47.4,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 3: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 47.4,
+   "t1_min": 47.43,
+   "zone": "midi",
+   "area_m2": 0.07,
+   "text": "Aconity MIDI, spot 3: squeegee lanes, 14 in at 0.15 m/s (0.1 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 47.43,
+   "t1_min": 47.6,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 3: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 47.6,
+   "t1_min": 47.76,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 3: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 47.76,
+   "t1_min": 47.85,
+   "text": "Aconity MIDI: work spot 4"
+  },
+  {
+   "kind": "turn",
+   "t0_min": 47.85,
+   "t1_min": 47.92,
+   "text": "Aconity MIDI: work spot 4"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 47.92,
+   "t1_min": 48.09,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 4: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 48.09,
+   "t1_min": 48.25,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 4: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 48.25,
+   "t1_min": 49.18,
+   "zone": "midi",
+   "area_m2": 1.99,
+   "text": "Aconity MIDI, spot 4: squeegee lanes, 14 in at 0.15 m/s (2.0 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 49.18,
+   "t1_min": 49.34,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 4: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 49.34,
+   "t1_min": 49.51,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 4: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 49.51,
+   "t1_min": 49.53,
+   "text": "Aconity MIDI: work spot 5"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 49.53,
+   "t1_min": 49.7,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 5: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 49.7,
+   "t1_min": 49.86,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 5: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 49.86,
+   "t1_min": 49.98,
+   "zone": "midi",
+   "area_m2": 0.24,
+   "text": "Aconity MIDI, spot 5: squeegee lanes, 14 in at 0.15 m/s (0.2 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 49.98,
+   "t1_min": 50.14,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 5: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 50.14,
+   "t1_min": 50.31,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 5: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 50.31,
+   "t1_min": 50.4,
+   "text": "Aconity MIDI: work spot 6"
+  },
+  {
+   "kind": "turn",
+   "t0_min": 50.4,
+   "t1_min": 50.47,
+   "text": "Aconity MIDI: work spot 6"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 50.47,
+   "t1_min": 50.64,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 6: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 50.64,
+   "t1_min": 50.8,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 6: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 50.8,
+   "t1_min": 51.56,
+   "zone": "midi",
+   "area_m2": 1.63,
+   "text": "Aconity MIDI, spot 6: squeegee lanes, 14 in at 0.15 m/s (1.6 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 51.56,
+   "t1_min": 51.73,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 6: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 51.73,
+   "t1_min": 51.89,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 6: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 51.89,
+   "t1_min": 51.91,
+   "text": "Aconity MIDI: work spot 7"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 51.91,
+   "t1_min": 52.08,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 7: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 52.08,
+   "t1_min": 52.25,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 7: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 52.25,
+   "t1_min": 52.31,
+   "zone": "midi",
+   "area_m2": 0.15,
+   "text": "Aconity MIDI, spot 7: squeegee lanes, 14 in at 0.15 m/s (0.1 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 52.31,
+   "t1_min": 52.48,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 7: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 52.48,
+   "t1_min": 52.65,
+   "zone": "midi",
+   "text": "Aconity MIDI, spot 7: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 52.65,
+   "t1_min": 53.02,
+   "text": "DED: work spot 1"
+  },
+  {
+   "kind": "turn",
+   "t0_min": 53.02,
+   "t1_min": 53.08,
+   "text": "DED: work spot 1"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 53.08,
+   "t1_min": 53.25,
+   "zone": "DED",
+   "text": "DED, spot 1: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 53.25,
+   "t1_min": 53.42,
+   "zone": "DED",
+   "text": "DED, spot 1: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 53.42,
+   "t1_min": 54.27,
+   "zone": "DED",
+   "area_m2": 1.84,
+   "text": "DED, spot 1: squeegee lanes, 14 in at 0.15 m/s (1.8 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 54.27,
+   "t1_min": 54.44,
+   "zone": "DED",
+   "text": "DED, spot 1: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 54.44,
+   "t1_min": 54.6,
+   "zone": "DED",
+   "text": "DED, spot 1: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 54.6,
+   "t1_min": 54.67,
+   "text": "DED: work spot 2"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 54.67,
+   "t1_min": 54.84,
+   "zone": "DED",
+   "text": "DED, spot 2: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 54.84,
+   "t1_min": 55.0,
+   "zone": "DED",
+   "text": "DED, spot 2: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 55.0,
+   "t1_min": 55.55,
+   "zone": "DED",
+   "area_m2": 1.18,
+   "text": "DED, spot 2: squeegee lanes, 14 in at 0.15 m/s (1.2 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 55.55,
+   "t1_min": 55.72,
+   "zone": "DED",
+   "text": "DED, spot 2: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 55.72,
+   "t1_min": 55.88,
+   "zone": "DED",
+   "text": "DED, spot 2: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 55.88,
+   "t1_min": 55.94,
+   "text": "DED: work spot 3"
+  },
+  {
+   "kind": "turn",
+   "t0_min": 55.94,
+   "t1_min": 56.01,
+   "text": "DED: work spot 3"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 56.01,
+   "t1_min": 56.17,
+   "zone": "DED",
+   "text": "DED, spot 3: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 56.17,
+   "t1_min": 56.34,
+   "zone": "DED",
+   "text": "DED, spot 3: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 56.34,
+   "t1_min": 56.69,
+   "zone": "DED",
+   "area_m2": 0.74,
+   "text": "DED, spot 3: squeegee lanes, 14 in at 0.15 m/s (0.7 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 56.69,
+   "t1_min": 56.85,
+   "zone": "DED",
+   "text": "DED, spot 3: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 56.85,
+   "t1_min": 57.02,
+   "zone": "DED",
+   "text": "DED, spot 3: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 57.02,
+   "t1_min": 57.07,
+   "text": "DED: work spot 4"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 57.07,
+   "t1_min": 57.23,
+   "zone": "DED",
+   "text": "DED, spot 4: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 57.23,
+   "t1_min": 57.4,
+   "zone": "DED",
+   "text": "DED, spot 4: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 57.4,
+   "t1_min": 57.45,
+   "zone": "DED",
+   "area_m2": 0.11,
+   "text": "DED, spot 4: squeegee lanes, 14 in at 0.15 m/s (0.1 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 57.45,
+   "t1_min": 57.62,
+   "zone": "DED",
+   "text": "DED, spot 4: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 57.62,
+   "t1_min": 57.78,
+   "zone": "DED",
+   "text": "DED, spot 4: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 57.78,
+   "t1_min": 57.86,
+   "text": "aisle: work spot 1"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 57.86,
+   "t1_min": 58.02,
+   "zone": "aisle",
+   "text": "aisle, spot 1: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 58.02,
+   "t1_min": 58.19,
+   "zone": "aisle",
+   "text": "aisle, spot 1: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 58.19,
+   "t1_min": 59.44,
+   "zone": "aisle",
+   "area_m2": 2.69,
+   "text": "aisle, spot 1: squeegee lanes, 14 in at 0.15 m/s (2.7 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 59.44,
+   "t1_min": 59.6,
+   "zone": "aisle",
+   "text": "aisle, spot 1: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 59.6,
+   "t1_min": 59.77,
+   "zone": "aisle",
+   "text": "aisle, spot 1: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 59.77,
+   "t1_min": 59.82,
+   "text": "aisle: work spot 2"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 59.82,
+   "t1_min": 59.99,
+   "zone": "aisle",
+   "text": "aisle, spot 2: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 59.99,
+   "t1_min": 60.15,
+   "zone": "aisle",
+   "text": "aisle, spot 2: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 60.15,
+   "t1_min": 61.91,
+   "zone": "aisle",
+   "area_m2": 3.8,
+   "text": "aisle, spot 2: squeegee lanes, 14 in at 0.15 m/s (3.8 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 61.91,
+   "t1_min": 62.08,
+   "zone": "aisle",
+   "text": "aisle, spot 2: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 62.08,
+   "t1_min": 62.25,
+   "zone": "aisle",
+   "text": "aisle, spot 2: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 62.25,
+   "t1_min": 62.27,
+   "text": "aisle: work spot 3"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 62.27,
+   "t1_min": 62.44,
+   "zone": "aisle",
+   "text": "aisle, spot 3: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 62.44,
+   "t1_min": 62.6,
+   "zone": "aisle",
+   "text": "aisle, spot 3: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 62.6,
+   "t1_min": 62.91,
+   "zone": "aisle",
+   "area_m2": 0.65,
+   "text": "aisle, spot 3: squeegee lanes, 14 in at 0.15 m/s (0.7 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 62.91,
+   "t1_min": 63.07,
+   "zone": "aisle",
+   "text": "aisle, spot 3: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 63.07,
+   "t1_min": 63.24,
+   "zone": "aisle",
+   "text": "aisle, spot 3: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 63.24,
+   "t1_min": 63.25,
+   "text": "aisle: work spot 4"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 63.25,
+   "t1_min": 63.42,
+   "zone": "aisle",
+   "text": "aisle, spot 4: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 63.42,
+   "t1_min": 63.59,
+   "zone": "aisle",
+   "text": "aisle, spot 4: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 63.59,
+   "t1_min": 63.7,
+   "zone": "aisle",
+   "area_m2": 0.23,
+   "text": "aisle, spot 4: squeegee lanes, 14 in at 0.15 m/s (0.2 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 63.7,
+   "t1_min": 63.86,
+   "zone": "aisle",
+   "text": "aisle, spot 4: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 63.86,
+   "t1_min": 64.03,
+   "zone": "aisle",
+   "text": "aisle, spot 4: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 64.03,
+   "t1_min": 64.1,
+   "text": "aisle: work spot 5"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 64.1,
+   "t1_min": 64.27,
+   "zone": "aisle",
+   "text": "aisle, spot 5: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 64.27,
+   "t1_min": 64.44,
+   "zone": "aisle",
+   "text": "aisle, spot 5: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 64.44,
+   "t1_min": 65.51,
+   "zone": "aisle",
+   "area_m2": 2.32,
+   "text": "aisle, spot 5: squeegee lanes, 14 in at 0.15 m/s (2.3 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 65.51,
+   "t1_min": 65.68,
+   "zone": "aisle",
+   "text": "aisle, spot 5: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 65.68,
+   "t1_min": 65.84,
+   "zone": "aisle",
+   "text": "aisle, spot 5: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 65.84,
+   "t1_min": 65.91,
+   "text": "aisle: work spot 6"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 65.91,
+   "t1_min": 66.08,
+   "zone": "aisle",
+   "text": "aisle, spot 6: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 66.08,
+   "t1_min": 66.24,
+   "zone": "aisle",
+   "text": "aisle, spot 6: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 66.24,
+   "t1_min": 68.05,
+   "zone": "aisle",
+   "area_m2": 3.91,
+   "text": "aisle, spot 6: squeegee lanes, 14 in at 0.15 m/s (3.9 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 68.05,
+   "t1_min": 68.22,
+   "zone": "aisle",
+   "text": "aisle, spot 6: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 68.22,
+   "t1_min": 68.39,
+   "zone": "aisle",
+   "text": "aisle, spot 6: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 68.39,
+   "t1_min": 68.44,
+   "text": "aisle: work spot 7"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 68.44,
+   "t1_min": 68.61,
+   "zone": "aisle",
+   "text": "aisle, spot 7: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 68.61,
+   "t1_min": 68.77,
+   "zone": "aisle",
+   "text": "aisle, spot 7: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 68.77,
+   "t1_min": 69.91,
+   "zone": "aisle",
+   "area_m2": 2.45,
+   "text": "aisle, spot 7: squeegee lanes, 14 in at 0.15 m/s (2.5 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 69.91,
+   "t1_min": 70.08,
+   "zone": "aisle",
+   "text": "aisle, spot 7: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 70.08,
+   "t1_min": 70.24,
+   "zone": "aisle",
+   "text": "aisle, spot 7: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 70.24,
+   "t1_min": 70.28,
+   "text": "aisle: work spot 8"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 70.28,
+   "t1_min": 70.44,
+   "zone": "aisle",
+   "text": "aisle, spot 8: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 70.44,
+   "t1_min": 70.61,
+   "zone": "aisle",
+   "text": "aisle, spot 8: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 70.61,
+   "t1_min": 71.7,
+   "zone": "aisle",
+   "area_m2": 2.37,
+   "text": "aisle, spot 8: squeegee lanes, 14 in at 0.15 m/s (2.4 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 71.7,
+   "t1_min": 71.87,
+   "zone": "aisle",
+   "text": "aisle, spot 8: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 71.87,
+   "t1_min": 72.04,
+   "zone": "aisle",
+   "text": "aisle, spot 8: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 72.04,
+   "t1_min": 72.07,
+   "text": "aisle: work spot 9"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 72.07,
+   "t1_min": 72.24,
+   "zone": "aisle",
+   "text": "aisle, spot 9: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 72.24,
+   "t1_min": 72.4,
+   "zone": "aisle",
+   "text": "aisle, spot 9: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 72.4,
+   "t1_min": 73.55,
+   "zone": "aisle",
+   "area_m2": 2.48,
+   "text": "aisle, spot 9: squeegee lanes, 14 in at 0.15 m/s (2.5 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 73.55,
+   "t1_min": 73.72,
+   "zone": "aisle",
+   "text": "aisle, spot 9: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 73.72,
+   "t1_min": 73.89,
+   "zone": "aisle",
+   "text": "aisle, spot 9: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 73.89,
+   "t1_min": 73.94,
+   "text": "aisle: work spot 10"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 73.94,
+   "t1_min": 74.11,
+   "zone": "aisle",
+   "text": "aisle, spot 10: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 74.11,
+   "t1_min": 74.27,
+   "zone": "aisle",
+   "text": "aisle, spot 10: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 74.27,
+   "t1_min": 75.41,
+   "zone": "aisle",
+   "area_m2": 2.46,
+   "text": "aisle, spot 10: squeegee lanes, 14 in at 0.15 m/s (2.5 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 75.41,
+   "t1_min": 75.58,
+   "zone": "aisle",
+   "text": "aisle, spot 10: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 75.58,
+   "t1_min": 75.74,
+   "zone": "aisle",
+   "text": "aisle, spot 10: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 75.74,
+   "t1_min": 75.81,
+   "text": "aisle: work spot 11"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 75.81,
+   "t1_min": 75.98,
+   "zone": "aisle",
+   "text": "aisle, spot 11: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 75.98,
+   "t1_min": 76.14,
+   "zone": "aisle",
+   "text": "aisle, spot 11: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 76.14,
+   "t1_min": 78.24,
+   "zone": "aisle",
+   "area_m2": 4.52,
+   "text": "aisle, spot 11: squeegee lanes, 14 in at 0.15 m/s (4.5 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 78.24,
+   "t1_min": 78.4,
+   "zone": "aisle",
+   "text": "aisle, spot 11: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 78.4,
+   "t1_min": 78.57,
+   "zone": "aisle",
+   "text": "aisle, spot 11: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 78.57,
+   "t1_min": 78.6,
+   "text": "aisle: work spot 12"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 78.6,
+   "t1_min": 78.77,
+   "zone": "aisle",
+   "text": "aisle, spot 12: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 78.77,
+   "t1_min": 78.93,
+   "zone": "aisle",
+   "text": "aisle, spot 12: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 78.93,
+   "t1_min": 79.42,
+   "zone": "aisle",
+   "area_m2": 1.04,
+   "text": "aisle, spot 12: squeegee lanes, 14 in at 0.15 m/s (1.0 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 79.42,
+   "t1_min": 79.58,
+   "zone": "aisle",
+   "text": "aisle, spot 12: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 79.58,
+   "t1_min": 79.75,
+   "zone": "aisle",
+   "text": "aisle, spot 12: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 79.75,
+   "t1_min": 79.83,
+   "text": "aisle: work spot 13"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 79.83,
+   "t1_min": 80.0,
+   "zone": "aisle",
+   "text": "aisle, spot 13: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 80.0,
+   "t1_min": 80.16,
+   "zone": "aisle",
+   "text": "aisle, spot 13: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 80.16,
+   "t1_min": 80.26,
+   "zone": "aisle",
+   "area_m2": 0.2,
+   "text": "aisle, spot 13: squeegee lanes, 14 in at 0.15 m/s (0.2 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 80.26,
+   "t1_min": 80.42,
+   "zone": "aisle",
+   "text": "aisle, spot 13: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 80.42,
+   "t1_min": 80.59,
+   "zone": "aisle",
+   "text": "aisle, spot 13: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 80.59,
+   "t1_min": 80.66,
+   "text": "aisle: work spot 14"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 80.66,
+   "t1_min": 80.83,
+   "zone": "aisle",
+   "text": "aisle, spot 14: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 80.83,
+   "t1_min": 81.0,
+   "zone": "aisle",
+   "text": "aisle, spot 14: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 81.0,
+   "t1_min": 81.25,
+   "zone": "aisle",
+   "area_m2": 0.55,
+   "text": "aisle, spot 14: squeegee lanes, 14 in at 0.15 m/s (0.5 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 81.25,
+   "t1_min": 81.42,
+   "zone": "aisle",
+   "text": "aisle, spot 14: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 81.42,
+   "t1_min": 81.58,
+   "zone": "aisle",
+   "text": "aisle, spot 14: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 81.58,
+   "t1_min": 81.67,
+   "text": "aisle: work spot 15"
+  },
+  {
+   "kind": "bond",
+   "t0_min": 81.67,
+   "t1_min": 81.84,
+   "zone": "aisle",
+   "text": "aisle, spot 15: the bonding lead on the floor stud; the bond read before suction (NFPA 484 11.6.3.1: after each move)"
+  },
+  {
+   "kind": "look",
+   "t0_min": 81.84,
+   "t1_min": 82.0,
+   "zone": "aisle",
+   "text": "aisle, spot 15: the camera looks over the floor in reach"
+  },
+  {
+   "kind": "clean",
+   "t0_min": 82.0,
+   "t1_min": 82.23,
+   "zone": "aisle",
+   "area_m2": 0.49,
+   "text": "aisle, spot 15: squeegee lanes, 14 in at 0.15 m/s (0.5 m2 here)"
+  },
+  {
+   "kind": "check",
+   "t0_min": 82.23,
+   "t1_min": 82.4,
+   "zone": "aisle",
+   "text": "aisle, spot 15: colour check: the floor's colour must show through (NFPA 484 11.4.1)"
+  },
+  {
+   "kind": "unbond",
+   "t0_min": 82.4,
+   "t1_min": 82.56,
+   "zone": "aisle",
+   "text": "aisle, spot 15: unclip, move on"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 82.56,
+   "t1_min": 82.67,
+   "text": "Back to the printer line's station"
+  },
+  {
+   "kind": "ret",
+   "t0_min": 82.67,
+   "t1_min": 84.67,
+   "text": "The printer line's station: 20 s of run-on in clean air, off, 60 s to settle, the wand in its holster (vacuum SOP 4.1-4.3)"
+  },
+  {
+   "kind": "drive",
+   "t0_min": 84.67,
+   "t1_min": 84.97,
+   "text": "Back to the charger"
+  },
+  {
+   "kind": "turn",
+   "t0_min": 84.97,
+   "t1_min": 85.04,
+   "text": "Back to the charger"
+  },
+  {
+   "kind": "dock",
+   "t0_min": 85.04,
+   "t1_min": 86.04,
+   "text": "On the charger, outside every zone; the wheels over the brush strip"
+  }
+ ],
+ "render": {
+  "frames": 1330,
+  "seconds": 88.7,
+  "gif_frames": 887,
+  "gif_mb": 1.03,
+  "mp4_mb": 1.5
+ }
+}

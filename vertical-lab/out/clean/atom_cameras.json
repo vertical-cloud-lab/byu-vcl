@@ -1,0 +1,191 @@
+{
+ "name": "atom_cameras",
+ "fps": 15,
+ "n_frames": 1581,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/6",
+   "caption": "Three Pi 5 camera units from DAL PR 189, on the lab's rePowder model: one on the chamber's front view port, one on the door's sight glass, one looking down through the furnace lid's window. Each shows its picture on its own display beside the operator.",
+   "start_frame": 0,
+   "end_frame": 107
+  },
+  {
+   "label": "2/6",
+   "caption": "Top: the HQ Camera sits on the line through the lid's 60 x 64 mm window to the crucible, 66 deg below level, 250 mm from the glass. With the 16 mm lens it sees 22 x 17 deg: about 190 mm across at the melt (DAL).",
+   "start_frame": 108,
+   "end_frame": 182
+  },
+  {
+   "label": "2/6",
+   "caption": "Front: both cameras look in along the port's axis, 20 deg up from the plate. The HQ (16 mm M12 lens) sees about 65 x 49 mm at 165 mm, the impact zone; the Camera Module 3 Wide (102 x 67 deg) the nozzle, plate and chamber.",
+   "start_frame": 183,
+   "end_frame": 260
+  },
+  {
+   "label": "2/6",
+   "caption": "Left: a Camera Module 3 Wide on the door's sight-glass axis, side on. DAL put it here to see where the stream lands (on 6 Oct it hit the upper sonotrode). Here the landing point is 49 deg below its axis: outside its 67 deg and the 44 mm bore through the door.",
+   "start_frame": 261,
+   "end_frame": 338
+  },
+  {
+   "label": "3/6",
+   "caption": "To load the crucible the top arm swings 90 deg about its post to a second dimple, clear of the furnace (DAL). MiR250 1 comes up to the front of the machine.",
+   "start_frame": 339,
+   "end_frame": 386
+  },
+  {
+   "label": "3/6",
+   "caption": "The UR10e reaches up to the 2020 extrusion, 300 mm out from the post, and closes the 2F-85 on its top and bottom faces, on the side away from the way it will turn.",
+   "start_frame": 387,
+   "end_frame": 403
+  },
+  {
+   "label": "3/6",
+   "caption": "The UR10e reaches up to the 2020 extrusion, 300 mm out from the post, and closes the 2F-85 on its top and bottom faces, on the side away from the way it will turn.",
+   "start_frame": 404,
+   "end_frame": 444
+  },
+  {
+   "label": "3/6",
+   "caption": "The UR10e reaches up to the 2020 extrusion, 300 mm out from the post, and closes the 2F-85 on its top and bottom faces, on the side away from the way it will turn.",
+   "start_frame": 445,
+   "end_frame": 464
+  },
+  {
+   "label": "3/6",
+   "caption": "The UR10e reaches up to the 2020 extrusion, 300 mm out from the post, and closes the 2F-85 on its top and bottom faces, on the side away from the way it will turn.",
+   "start_frame": 465,
+   "end_frame": 477
+  },
+  {
+   "label": "3/6",
+   "caption": "It swings the arm 90 deg about the post, over the blue frame's top, until the ball plunger in the hub clicks into the 'parked' dimple of the detent collar (M6 plunger; DAL's design).",
+   "start_frame": 478,
+   "end_frame": 543
+  },
+  {
+   "label": "3/6",
+   "caption": "Click: parked. The 2F-85 lets go and backs off.",
+   "start_frame": 544,
+   "end_frame": 554
+  },
+  {
+   "label": "3/6",
+   "caption": "Click: parked. The 2F-85 lets go and backs off.",
+   "start_frame": 555,
+   "end_frame": 572
+  },
+  {
+   "label": "3/6",
+   "caption": "Why it parks. The lid opens up and over to the left (ghost), 133 mm clear of the arm in its working dimple (DAL: 118 mm). The loading arm's wrist and tong come in over the furnace, where the arm, pod and display box hang, 1.68-1.84 m up.",
+   "start_frame": 573,
+   "end_frame": 644
+  },
+  {
+   "label": "3/6",
+   "caption": "Why it parks. The lid opens up and over to the left (ghost), 133 mm clear of the arm in its working dimple (DAL: 118 mm). The loading arm's wrist and tong come in over the furnace, where the arm, pod and display box hang, 1.68-1.84 m up.",
+   "start_frame": 645,
+   "end_frame": 658
+  },
+  {
+   "label": "3/6",
+   "caption": "Loaded and the lid shut again (the charge and the lid are other clips). The arm grips the extrusion again and swings it back until it clicks into the 'working' dimple: the camera's aim comes back to the same place.",
+   "start_frame": 659,
+   "end_frame": 681
+  },
+  {
+   "label": "3/6",
+   "caption": "Loaded and the lid shut again (the charge and the lid are other clips). The arm grips the extrusion again and swings it back until it clicks into the 'working' dimple: the camera's aim comes back to the same place.",
+   "start_frame": 682,
+   "end_frame": 693
+  },
+  {
+   "label": "3/6",
+   "caption": "Loaded and the lid shut again (the charge and the lid are other clips). The arm grips the extrusion again and swings it back until it clicks into the 'working' dimple: the camera's aim comes back to the same place.",
+   "start_frame": 694,
+   "end_frame": 759
+  },
+  {
+   "label": "3/6",
+   "caption": "Click: working. The 2F-85 lets go and the arm folds back.",
+   "start_frame": 760,
+   "end_frame": 770
+  },
+  {
+   "label": "3/6",
+   "caption": "Click: working. The 2F-85 lets go and the arm folds back.",
+   "start_frame": 771,
+   "end_frame": 787
+  },
+  {
+   "label": "3/6",
+   "caption": "Click: working. The 2F-85 lets go and the arm folds back.",
+   "start_frame": 788,
+   "end_frame": 826
+  },
+  {
+   "label": "3/6",
+   "caption": "MiR250 1 drives back to its waiting spot, clear of the operator's places at the displays.",
+   "start_frame": 827,
+   "end_frame": 896
+  },
+  {
+   "label": "4/6",
+   "caption": "Front: the 5 in HDMI display (Elecrow, 800 x 480) shows both feeds side by side, facing out along the port, 20 deg up to a standing operator. It is HDMI because the two cameras take both of the Pi 5's camera ports.",
+   "start_frame": 897,
+   "end_frame": 977
+  },
+  {
+   "label": "4/6",
+   "caption": "Left: the 5 in Touch Display 2 (DSI), the largest picture, beside the operator's hands at the stack. The unit rides on the door. Touch stays off on all three; nothing is controlled from them (DAL).",
+   "start_frame": 978,
+   "end_frame": 1058
+  },
+  {
+   "label": "4/6",
+   "caption": "Top: a 2.8 in DSI display (Waveshare, 480 x 640) at the arm's tip, tilted 30 deg down to the operator: a glance at whether the charge has melted. Its Pi 5 is in the box behind it.",
+   "start_frame": 1059,
+   "end_frame": 1139
+  },
+  {
+   "label": "4/6",
+   "caption": "The atomizer's own HMI (Weintek, 15.6 in) is separate. The 5 in HDMI panel was bench-tested on 13 Nov on the lab's atomizer HMI Pi: 800 x 480 set by hand (no EDID), two feeds side by side at 30 fps, none dropped.",
+   "start_frame": 1140,
+   "end_frame": 1220
+  },
+  {
+   "label": "5/6",
+   "caption": "The coil heats the charge under argon. The top camera watches through the lid window: the hot mirror and the ND keep the glowing charge from saturating the sensor.",
+   "start_frame": 1221,
+   "end_frame": 1271
+  },
+  {
+   "label": "5/6",
+   "caption": "The cups slump and run together into a pool round the sealing rod. The pool's surface is about 20-30 mm over the crucible's datum, where DAL aimed the camera.",
+   "start_frame": 1272,
+   "end_frame": 1364
+  },
+  {
+   "label": "6/6",
+   "caption": "Vibration on, argon over-pressure on the furnace, the sealing rod up: the stream falls through the nozzle onto the vibrating plate. The front and left feeds show it on their displays and here.",
+   "start_frame": 1365,
+   "end_frame": 1415
+  },
+  {
+   "label": "6/6",
+   "caption": "Front HQ, on the port's axis: the stream in mid-air and the sonotrode's end; the landing point is 24 deg below its axis, as DAL found on 5 Nov. The front wide sees the landing. The left sees the nozzle and the stream's top only.",
+   "start_frame": 1416,
+   "end_frame": 1517
+  },
+  {
+   "label": "6/6",
+   "caption": "The crucible runs empty and the coil and the plate stop. Each unit also streams to YouTube in the same picamera2 process (DAL); nothing here has been printed or bench-tested with cameras yet.",
+   "start_frame": 1518,
+   "end_frame": 1580
+  }
+ ]
+}

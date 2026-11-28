@@ -1,0 +1,60 @@
+{
+ "key": "xrf",
+ "free": [
+  "deck",
+  "scr_w",
+  "scr_h",
+  "scr_x",
+  "scr_z"
+ ],
+ "params": {
+  "deck": 320.7,
+  "scr_w": 255.0,
+  "scr_h": 182.9,
+  "scr_x": -15.3,
+  "scr_z": 170.1
+ },
+ "start": {
+  "deck": 322.0,
+  "scr_w": 253.0,
+  "scr_h": 184.0,
+  "scr_x": -17.0,
+  "scr_z": 172.0
+ },
+ "views": {
+  "overview_0009_front_left": {
+   "source": "https://youtu.be/ogSg0j6j2Gw?t=9 (Bruker, S2 PUMA Overview, 0:09: the XY Autochanger, closed)",
+   "size": [
+    1280,
+    720
+   ],
+   "holdout": false,
+   "camera": [
+    1.4656214543491817,
+    -0.39397245944450177,
+    0.3844172010554191,
+    -128.68106870580544,
+    390.69482839355055,
+    1930.0846343516444,
+    7.106463406781073,
+    -0.00014191451950524864
+   ],
+   "focal_px": 1219.8,
+   "k1": -0.0001,
+   "rms_px_camera_only": 13.2,
+   "rms_px": 12.65,
+   "residual_px": {
+    "lid top front left": 6.0,
+    "lid top front right": 30.7,
+    "lid bottom front left": 3.6,
+    "lid bottom front right": 4.3,
+    "screen tl": 5.8,
+    "screen tr": 10.3,
+    "screen bl": 6.0,
+    "screen br": 8.1,
+    "foot front left": 4.8,
+    "foot front right": 18.1
+   }
+  }
+ }
+}

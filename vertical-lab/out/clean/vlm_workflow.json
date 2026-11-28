@@ -1,0 +1,497 @@
+{
+ "name": "vlm_workflow",
+ "fps": 15,
+ "n_frames": 1628,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/6",
+   "caption": "An example run in the lab as set up: two Kardex Shuttles with every tray loaded (A-S), the floor machines, one MiR250 + UR10e docked at Shuttle 1's opening and the other on its charger (unit 3, the floor-cleaning option, parked by its own). The multi-doser doses 25 mg of an atomized powder and the CubXL adds electrolyte to it, DAL's powder reactivity test (PR #180, cubxl-setup.md §8: 10-50 mg of each atomizer run's powder; the metal it gives up tracks its oxide).",
+   "start_frame": 0,
+   "end_frame": 59
+  },
+  {
+   "label": "1/6",
+   "caption": "An example run: the multi-doser doses 25 mg of an atomized powder and the CubXL adds electrolyte to it, DAL's powder reactivity test (PR #180, cubxl-setup.md §8: 10-50 mg of each atomizer run's powder; the metal it gives up tracks its oxide). The arm asks for tray B, the powder doser.",
+   "start_frame": 60,
+   "end_frame": 103
+  },
+  {
+   "label": "1/6",
+   "caption": "An example run: the multi-doser doses 25 mg of an atomized powder and the CubXL adds electrolyte to it, DAL's powder reactivity test (PR #180, cubxl-setup.md §8: 10-50 mg of each atomizer run's powder; the metal it gives up tracks its oxide). The arm asks for tray B, the powder doser.",
+   "start_frame": 104,
+   "end_frame": 116
+  },
+  {
+   "label": "1/6",
+   "caption": "An example run: the multi-doser doses 25 mg of an atomized powder and the CubXL adds electrolyte to it, DAL's powder reactivity test (PR #180, cubxl-setup.md §8: 10-50 mg of each atomizer run's powder; the metal it gives up tracks its oxide). The arm asks for tray B, the powder doser.",
+   "start_frame": 117,
+   "end_frame": 151
+  },
+  {
+   "label": "1/6",
+   "caption": "An example run: the multi-doser doses 25 mg of an atomized powder and the CubXL adds electrolyte to it, DAL's powder reactivity test (PR #180, cubxl-setup.md §8: 10-50 mg of each atomizer run's powder; the metal it gives up tracks its oxide). The arm asks for tray B, the powder doser.",
+   "start_frame": 152,
+   "end_frame": 164
+  },
+  {
+   "label": "1/6",
+   "caption": "An example run: the multi-doser doses 25 mg of an atomized powder and the CubXL adds electrolyte to it, DAL's powder reactivity test (PR #180, cubxl-setup.md §8: 10-50 mg of each atomizer run's powder; the metal it gives up tracks its oxide). The arm asks for tray B, the powder doser.",
+   "start_frame": 165,
+   "end_frame": 174
+  },
+  {
+   "label": "1/6",
+   "caption": "An example run: the multi-doser doses 25 mg of an atomized powder and the CubXL adds electrolyte to it, DAL's powder reactivity test (PR #180, cubxl-setup.md §8: 10-50 mg of each atomizer run's powder; the metal it gives up tracks its oxide). The arm asks for tray B, the powder doser.",
+   "start_frame": 175,
+   "end_frame": 207
+  },
+  {
+   "label": "1/6",
+   "caption": "An example run: the multi-doser doses 25 mg of an atomized powder and the CubXL adds electrolyte to it, DAL's powder reactivity test (PR #180, cubxl-setup.md §8: 10-50 mg of each atomizer run's powder; the metal it gives up tracks its oxide). The arm asks for tray B, the powder doser.",
+   "start_frame": 208,
+   "end_frame": 217
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 20 mL vial from the rack at the front of the tray and stands it upright on the fork of our vessel shuttle, 71 mm outside a port in the multi-doser's -y panel: v5 leaves the balance's pan to a hand through its front hatch, and no gripper fits past its frame posts.",
+   "start_frame": 224,
+   "end_frame": 248
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 20 mL vial from the rack at the front of the tray and stands it upright on the fork of our vessel shuttle, 71 mm outside a port in the multi-doser's -y panel: v5 leaves the balance's pan to a hand through its front hatch, and no gripper fits past its frame posts.",
+   "start_frame": 249,
+   "end_frame": 263
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 20 mL vial from the rack at the front of the tray and stands it upright on the fork of our vessel shuttle, 71 mm outside a port in the multi-doser's -y panel: v5 leaves the balance's pan to a hand through its front hatch, and no gripper fits past its frame posts.",
+   "start_frame": 264,
+   "end_frame": 272
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 20 mL vial from the rack at the front of the tray and stands it upright on the fork of our vessel shuttle, 71 mm outside a port in the multi-doser's -y panel: v5 leaves the balance's pan to a hand through its front hatch, and no gripper fits past its frame posts.",
+   "start_frame": 273,
+   "end_frame": 285
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 20 mL vial from the rack at the front of the tray and stands it upright on the fork of our vessel shuttle, 71 mm outside a port in the multi-doser's -y panel: v5 leaves the balance's pan to a hand through its front hatch, and no gripper fits past its frame posts.",
+   "start_frame": 286,
+   "end_frame": 310
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 20 mL vial from the rack at the front of the tray and stands it upright on the fork of our vessel shuttle, 71 mm outside a port in the multi-doser's -y panel: v5 leaves the balance's pan to a hand through its front hatch, and no gripper fits past its frame posts.",
+   "start_frame": 311,
+   "end_frame": 325
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 20 mL vial from the rack at the front of the tray and stands it upright on the fork of our vessel shuttle, 71 mm outside a port in the multi-doser's -y panel: v5 leaves the balance's pan to a hand through its front hatch, and no gripper fits past its frame posts.",
+   "start_frame": 326,
+   "end_frame": 334
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 20 mL vial from the rack at the front of the tray and stands it upright on the fork of our vessel shuttle, 71 mm outside a port in the multi-doser's -y panel: v5 leaves the balance's pan to a hand through its front hatch, and no gripper fits past its frame posts.",
+   "start_frame": 335,
+   "end_frame": 347
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 20 mL vial from the rack at the front of the tray and stands it upright on the fork of our vessel shuttle, 71 mm outside a port in the multi-doser's -y panel: v5 leaves the balance's pan to a hand through its front hatch, and no gripper fits past its frame posts.",
+   "start_frame": 348,
+   "end_frame": 367
+  },
+  {
+   "label": "3/6",
+   "caption": "Module 6 (green) holds atomized AlSi10Mg from a rePowder run, its 20-63 µm cut. With our dose post empty, the carousel indexes the module to the station (8 chain links a module) and two P16s lift the electronics carriage on its bar to dock it; it tilts 30°, cap end up, which takes the carriage clear of the post (it parks right over it).",
+   "start_frame": 368,
+   "end_frame": 409
+  },
+  {
+   "label": "3/6",
+   "caption": "Module 6 (green) holds atomized AlSi10Mg from a rePowder run, its 20-63 µm cut. With our dose post empty, the carousel indexes the module to the station (8 chain links a module) and two P16s lift the electronics carriage on its bar to dock it; it tilts 30°, cap end up, which takes the carriage clear of the post (it parks right over it). The other modules are drawn see-through: the docked one rides inside the loop.",
+   "start_frame": 410,
+   "end_frame": 433
+  },
+  {
+   "label": "3/6",
+   "caption": "Module 6 (green) holds atomized AlSi10Mg from a rePowder run, its 20-63 µm cut. With our dose post empty, the carousel indexes the module to the station (8 chain links a module) and two P16s lift the electronics carriage on its bar to dock it; it tilts 30°, cap end up, which takes the carriage clear of the post (it parks right over it). The other modules are drawn see-through: the docked one rides inside the loop.",
+   "start_frame": 434,
+   "end_frame": 459
+  },
+  {
+   "label": "3/6",
+   "caption": "Our shield's door slides open and the shuttle carries the vial in over the post and drops it into the nest: a 4 mm ring round its foot holds it, and the fork goes on down the nest's grooves and backs out. The door shuts; nothing else touches the balance. The vial's rim is 50 mm under the auger's exit (156 mm before).",
+   "start_frame": 460,
+   "end_frame": 469
+  },
+  {
+   "label": "3/6",
+   "caption": "Our shield's door slides open and the shuttle carries the vial in over the post and drops it into the nest: a 4 mm ring round its foot holds it, and the fork goes on down the nest's grooves and backs out. The door shuts; nothing else touches the balance. The vial's rim is 50 mm under the auger's exit (156 mm before).",
+   "start_frame": 470,
+   "end_frame": 498
+  },
+  {
+   "label": "3/6",
+   "caption": "Our shield's door slides open and the shuttle carries the vial in over the post and drops it into the nest: a 4 mm ring round its foot holds it, and the fork goes on down the nest's grooves and backs out. The door shuts; nothing else touches the balance. The vial's rim is 50 mm under the auger's exit (156 mm before).",
+   "start_frame": 499,
+   "end_frame": 506
+  },
+  {
+   "label": "3/6",
+   "caption": "Our shield's door slides open and the shuttle carries the vial in over the post and drops it into the nest: a 4 mm ring round its foot holds it, and the fork goes on down the nest's grooves and backs out. The door shuts; nothing else touches the balance. The vial's rim is 50 mm under the auger's exit (156 mm before).",
+   "start_frame": 507,
+   "end_frame": 512
+  },
+  {
+   "label": "3/6",
+   "caption": "Our shield's door slides open and the shuttle carries the vial in over the post and drops it into the nest: a 4 mm ring round its foot holds it, and the fork goes on down the nest's grooves and backs out. The door shuts; nothing else touches the balance. The vial's rim is 50 mm under the auger's exit (156 mm before).",
+   "start_frame": 513,
+   "end_frame": 535
+  },
+  {
+   "label": "3/6",
+   "caption": "Our shield's door slides open and the shuttle carries the vial in over the post and drops it into the nest: a 4 mm ring round its foot holds it, and the fork goes on down the nest's grooves and backs out. The door shuts; nothing else touches the balance. The vial's rim is 50 mm under the auger's exit (156 mm before).",
+   "start_frame": 536,
+   "end_frame": 551
+  },
+  {
+   "label": "3/6",
+   "caption": "v5's dose-to doses by weight: a quarter auger turn, then a reading over RS-232, until the HR-202i reads 25 mg (readings illustrative): a heap 6 mm across, drawn to scale, from a 50 mm fall inside the shield. Then one turn back with the vial still under the exit, and the reading settles with the door shut.",
+   "start_frame": 552,
+   "end_frame": 565
+  },
+  {
+   "label": "3/6",
+   "caption": "v5's dose-to doses by weight: a quarter auger turn, then a reading over RS-232, until the HR-202i reads 25 mg (readings illustrative): a heap 6 mm across, drawn to scale, from a 50 mm fall inside the shield. Then one turn back with the vial still under the exit, and the reading settles with the door shut.",
+   "start_frame": 566,
+   "end_frame": 572
+  },
+  {
+   "label": "3/6",
+   "caption": "v5's dose-to doses by weight: a quarter auger turn, then a reading over RS-232, until the HR-202i reads 25 mg (readings illustrative): a heap 6 mm across, drawn to scale, from a 50 mm fall inside the shield. Then one turn back with the vial still under the exit, and the reading settles with the door shut.",
+   "start_frame": 573,
+   "end_frame": 586
+  },
+  {
+   "label": "3/6",
+   "caption": "v5's dose-to doses by weight: a quarter auger turn, then a reading over RS-232, until the HR-202i reads 25 mg (readings illustrative): a heap 6 mm across, drawn to scale, from a 50 mm fall inside the shield. Then one turn back with the vial still under the exit, and the reading settles with the door shut.",
+   "start_frame": 587,
+   "end_frame": 593
+  },
+  {
+   "label": "3/6",
+   "caption": "v5's dose-to doses by weight: a quarter auger turn, then a reading over RS-232, until the HR-202i reads 25 mg (readings illustrative): a heap 6 mm across, drawn to scale, from a 50 mm fall inside the shield. Then one turn back with the vial still under the exit, and the reading settles with the door shut.",
+   "start_frame": 594,
+   "end_frame": 607
+  },
+  {
+   "label": "3/6",
+   "caption": "v5's dose-to doses by weight: a quarter auger turn, then a reading over RS-232, until the HR-202i reads 25 mg (readings illustrative): a heap 6 mm across, drawn to scale, from a 50 mm fall inside the shield. Then one turn back with the vial still under the exit, and the reading settles with the door shut.",
+   "start_frame": 608,
+   "end_frame": 614
+  },
+  {
+   "label": "3/6",
+   "caption": "v5's dose-to doses by weight: a quarter auger turn, then a reading over RS-232, until the HR-202i reads 25 mg (readings illustrative): a heap 6 mm across, drawn to scale, from a 50 mm fall inside the shield. Then one turn back with the vial still under the exit, and the reading settles with the door shut.",
+   "start_frame": 615,
+   "end_frame": 628
+  },
+  {
+   "label": "3/6",
+   "caption": "v5's dose-to doses by weight: a quarter auger turn, then a reading over RS-232, until the HR-202i reads 25 mg (readings illustrative): a heap 6 mm across, drawn to scale, from a 50 mm fall inside the shield. Then one turn back with the vial still under the exit, and the reading settles with the door shut.",
+   "start_frame": 629,
+   "end_frame": 635
+  },
+  {
+   "label": "3/6",
+   "caption": "v5's dose-to doses by weight: a quarter auger turn, then a reading over RS-232, until the HR-202i reads 25 mg (readings illustrative): a heap 6 mm across, drawn to scale, from a 50 mm fall inside the shield. Then one turn back with the vial still under the exit, and the reading settles with the door shut.",
+   "start_frame": 636,
+   "end_frame": 656
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings the vial out (25.3 mg in it) and the door shuts; the module tilts back and parks over the empty post. The arm stands the vial in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power.",
+   "start_frame": 657,
+   "end_frame": 667
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings the vial out (25.3 mg in it) and the door shuts; the module tilts back and parks over the empty post. The arm stands the vial in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power.",
+   "start_frame": 668,
+   "end_frame": 690
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings the vial out (25.3 mg in it) and the door shuts; the module tilts back and parks over the empty post. The arm stands the vial in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power.",
+   "start_frame": 691,
+   "end_frame": 694
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings the vial out (25.3 mg in it) and the door shuts; the module tilts back and parks over the empty post. The arm stands the vial in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power.",
+   "start_frame": 695,
+   "end_frame": 703
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings the vial out (25.3 mg in it) and the door shuts; the module tilts back and parks over the empty post. The arm stands the vial in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power.",
+   "start_frame": 704,
+   "end_frame": 731
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings the vial out (25.3 mg in it) and the door shuts; the module tilts back and parks over the empty post. The arm stands the vial in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power.",
+   "start_frame": 732,
+   "end_frame": 741
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings the vial out (25.3 mg in it) and the door shuts; the module tilts back and parks over the empty post. The arm stands the vial in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power.",
+   "start_frame": 742,
+   "end_frame": 761
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings the vial out (25.3 mg in it) and the door shuts; the module tilts back and parks over the empty post. The arm stands the vial in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power.",
+   "start_frame": 762,
+   "end_frame": 782
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings the vial out (25.3 mg in it) and the door shuts; the module tilts back and parks over the empty post. The arm stands the vial in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power.",
+   "start_frame": 783,
+   "end_frame": 807
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings the vial out (25.3 mg in it) and the door shuts; the module tilts back and parks over the empty post. The arm stands the vial in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power.",
+   "start_frame": 808,
+   "end_frame": 822
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings the vial out (25.3 mg in it) and the door shuts; the module tilts back and parks over the empty post. The arm stands the vial in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power.",
+   "start_frame": 823,
+   "end_frame": 831
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings the vial out (25.3 mg in it) and the door shuts; the module tilts back and parks over the empty post. The arm stands the vial in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power.",
+   "start_frame": 832,
+   "end_frame": 844
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings the vial out (25.3 mg in it) and the door shuts; the module tilts back and parks over the empty post. The arm stands the vial in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power.",
+   "start_frame": 845,
+   "end_frame": 869
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings the vial out (25.3 mg in it) and the door shuts; the module tilts back and parks over the empty post. The arm stands the vial in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power.",
+   "start_frame": 870,
+   "end_frame": 884
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings the vial out (25.3 mg in it) and the door shuts; the module tilts back and parks over the empty post. The arm stands the vial in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power.",
+   "start_frame": 885,
+   "end_frame": 893
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings the vial out (25.3 mg in it) and the door shuts; the module tilts back and parks over the empty post. The arm stands the vial in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power.",
+   "start_frame": 894,
+   "end_frame": 906
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings the vial out (25.3 mg in it) and the door shuts; the module tilts back and parks over the empty post. The arm stands the vial in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power.",
+   "start_frame": 907,
+   "end_frame": 926
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings the vial out (25.3 mg in it) and the door shuts; the module tilts back and parks over the empty post. The arm stands the vial in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power.",
+   "start_frame": 927,
+   "end_frame": 936
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings the vial out (25.3 mg in it) and the door shuts; the module tilts back and parks over the empty post. The arm stands the vial in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power.",
+   "start_frame": 937,
+   "end_frame": 969
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings the vial out (25.3 mg in it) and the door shuts; the module tilts back and parks over the empty post. The arm stands the vial in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power.",
+   "start_frame": 970,
+   "end_frame": 981
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings the vial out (25.3 mg in it) and the door shuts; the module tilts back and parks over the empty post. The arm stands the vial in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power.",
+   "start_frame": 982,
+   "end_frame": 994
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings the vial out (25.3 mg in it) and the door shuts; the module tilts back and parks over the empty post. The arm stands the vial in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power.",
+   "start_frame": 995,
+   "end_frame": 1027
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A, the corrosion station, comes down: the CubXL laid out for DAL's copper screen, its head parked at the back. The arm stands the vial in the free front seat of Ben's 9-vial holder, beside the seawater and sulfide stocks (the seat a FeSO4 vial takes on other nights).",
+   "start_frame": 1032,
+   "end_frame": 1042
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A, the corrosion station, comes down: the CubXL laid out for DAL's copper screen, its head parked at the back. The arm stands the vial in the free front seat of Ben's 9-vial holder, beside the seawater and sulfide stocks (the seat a FeSO4 vial takes on other nights).",
+   "start_frame": 1043,
+   "end_frame": 1077
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A, the corrosion station, comes down: the CubXL laid out for DAL's copper screen, its head parked at the back. The arm stands the vial in the free front seat of Ben's 9-vial holder, beside the seawater and sulfide stocks (the seat a FeSO4 vial takes on other nights).",
+   "start_frame": 1078,
+   "end_frame": 1088
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A, the corrosion station, comes down: the CubXL laid out for DAL's copper screen, its head parked at the back. The arm stands the vial in the free front seat of Ben's 9-vial holder, beside the seawater and sulfide stocks (the seat a FeSO4 vial takes on other nights).",
+   "start_frame": 1089,
+   "end_frame": 1098
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A, the corrosion station, comes down: the CubXL laid out for DAL's copper screen, its head parked at the back. The arm stands the vial in the free front seat of Ben's 9-vial holder, beside the seawater and sulfide stocks (the seat a FeSO4 vial takes on other nights).",
+   "start_frame": 1099,
+   "end_frame": 1131
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A, the corrosion station, comes down: the CubXL laid out for DAL's copper screen, its head parked at the back. The arm stands the vial in the free front seat of Ben's 9-vial holder, beside the seawater and sulfide stocks (the seat a FeSO4 vial takes on other nights).",
+   "start_frame": 1132,
+   "end_frame": 1141
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A, the corrosion station, comes down: the CubXL laid out for DAL's copper screen, its head parked at the back. The arm stands the vial in the free front seat of Ben's 9-vial holder, beside the seawater and sulfide stocks (the seat a FeSO4 vial takes on other nights).",
+   "start_frame": 1148,
+   "end_frame": 1172
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A, the corrosion station, comes down: the CubXL laid out for DAL's copper screen, its head parked at the back. The arm stands the vial in the free front seat of Ben's 9-vial holder, beside the seawater and sulfide stocks (the seat a FeSO4 vial takes on other nights).",
+   "start_frame": 1173,
+   "end_frame": 1187
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A, the corrosion station, comes down: the CubXL laid out for DAL's copper screen, its head parked at the back. The arm stands the vial in the free front seat of Ben's 9-vial holder, beside the seawater and sulfide stocks (the seat a FeSO4 vial takes on other nights).",
+   "start_frame": 1188,
+   "end_frame": 1196
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A, the corrosion station, comes down: the CubXL laid out for DAL's copper screen, its head parked at the back. The arm stands the vial in the free front seat of Ben's 9-vial holder, beside the seawater and sulfide stocks (the seat a FeSO4 vial takes on other nights).",
+   "start_frame": 1197,
+   "end_frame": 1209
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A, the corrosion station, comes down: the CubXL laid out for DAL's copper screen, its head parked at the back. The arm stands the vial in the free front seat of Ben's 9-vial holder, beside the seawater and sulfide stocks (the seat a FeSO4 vial takes on other nights).",
+   "start_frame": 1210,
+   "end_frame": 1234
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A, the corrosion station, comes down: the CubXL laid out for DAL's copper screen, its head parked at the back. The arm stands the vial in the free front seat of Ben's 9-vial holder, beside the seawater and sulfide stocks (the seat a FeSO4 vial takes on other nights).",
+   "start_frame": 1235,
+   "end_frame": 1249
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A, the corrosion station, comes down: the CubXL laid out for DAL's copper screen, its head parked at the back. The arm stands the vial in the free front seat of Ben's 9-vial holder, beside the seawater and sulfide stocks (the seat a FeSO4 vial takes on other nights).",
+   "start_frame": 1250,
+   "end_frame": 1258
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A, the corrosion station, comes down: the CubXL laid out for DAL's copper screen, its head parked at the back. The arm stands the vial in the free front seat of Ben's 9-vial holder, beside the seawater and sulfide stocks (the seat a FeSO4 vial takes on other nights).",
+   "start_frame": 1259,
+   "end_frame": 1271
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A, the corrosion station, comes down: the CubXL laid out for DAL's copper screen, its head parked at the back. The arm stands the vial in the free front seat of Ben's 9-vial holder, beside the seawater and sulfide stocks (the seat a FeSO4 vial takes on other nights).",
+   "start_frame": 1272,
+   "end_frame": 1294
+  },
+  {
+   "label": "6/6",
+   "caption": "The CubXL's P300 (20-300 µL, on its own 40 mm lift; PR #372) takes a 300 µL tip, the capper lifts the seawater cap, and one transfer puts 200 µL on the powder, 0.4 mm deep (to scale): the P20 alone took ten. The copper deck's chloride stock is seawater; DAL's §8 names 0.6 M NaCl.",
+   "start_frame": 1295,
+   "end_frame": 1335
+  },
+  {
+   "label": "6/6",
+   "caption": "The CubXL's P300 (20-300 µL, on its own 40 mm lift; PR #372) takes a 300 µL tip, the capper lifts the seawater cap, and one transfer puts 200 µL on the powder, 0.4 mm deep (to scale): the P20 alone took ten. The copper deck's chloride stock is seawater; DAL's §8 names 0.6 M NaCl.",
+   "start_frame": 1336,
+   "end_frame": 1390
+  },
+  {
+   "label": "6/6",
+   "caption": "The CubXL's P300 (20-300 µL, on its own 40 mm lift; PR #372) takes a 300 µL tip, the capper lifts the seawater cap, and one transfer puts 200 µL on the powder, 0.4 mm deep (to scale): the P20 alone took ten. The copper deck's chloride stock is seawater; DAL's §8 names 0.6 M NaCl.",
+   "start_frame": 1391,
+   "end_frame": 1450
+  },
+  {
+   "label": "6/6",
+   "caption": "DAL's test then holds the liquid on the powder for a set time and sends it to ICP-MS with the corrosion tubes: dissolved metal per gram, run by run. Tray A goes back up with the vial, to a slot with power.",
+   "start_frame": 1451,
+   "end_frame": 1460
+  },
+  {
+   "label": "6/6",
+   "caption": "DAL's test then holds the liquid on the powder for a set time and sends it to ICP-MS with the corrosion tubes: dissolved metal per gram, run by run. Tray A goes back up with the vial, to a slot with power.",
+   "start_frame": 1461,
+   "end_frame": 1493
+  },
+  {
+   "label": "6/6",
+   "caption": "DAL's test then holds the liquid on the powder for a set time and sends it to ICP-MS with the corrosion tubes: dissolved metal per gram, run by run. Tray A goes back up with the vial, to a slot with power.",
+   "start_frame": 1494,
+   "end_frame": 1505
+  },
+  {
+   "label": "6/6",
+   "caption": "DAL's test then holds the liquid on the powder for a set time and sends it to ICP-MS with the corrosion tubes: dissolved metal per gram, run by run. Tray A goes back up with the vial, to a slot with power.",
+   "start_frame": 1506,
+   "end_frame": 1516
+  },
+  {
+   "label": "6/6",
+   "caption": "DAL's test then holds the liquid on the powder for a set time and sends it to ICP-MS with the corrosion tubes: dissolved metal per gram, run by run. Tray A goes back up with the vial, to a slot with power.",
+   "start_frame": 1517,
+   "end_frame": 1549
+  },
+  {
+   "label": "6/6",
+   "caption": "Done: 25 mg of atomized powder under 200 µL of seawater in the CubXL on tray A, stored and powered. The arm and the opening are free for the next request.",
+   "start_frame": 1554,
+   "end_frame": 1627
+  }
+ ]
+}

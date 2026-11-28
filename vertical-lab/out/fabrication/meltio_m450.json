@@ -1,0 +1,59 @@
+{
+ "name": "fabrication/meltio_m450",
+ "fps": 15,
+ "n_frames": 289,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/6",
+   "caption": "The door opens on its left-hand hinge.",
+   "start_frame": 0,
+   "end_frame": 37
+  },
+  {
+   "label": "2/6",
+   "caption": "A steel substrate plate goes onto the bed.",
+   "start_frame": 38,
+   "end_frame": 72
+  },
+  {
+   "label": "3/6",
+   "caption": "Door shut; the chamber fills with argon. Drawn see-through from here.",
+   "start_frame": 73,
+   "end_frame": 104
+  },
+  {
+   "label": "4/6",
+   "caption": "Six 200 W diode lasers converge on the wire fed through the head's centre; the table moves the plate under it, and a bead of metal follows.",
+   "start_frame": 105,
+   "end_frame": 139
+  },
+  {
+   "label": "5/6",
+   "caption": "Up a layer, and round again: a wall one bead wide (beads drawn about 5x).",
+   "start_frame": 140,
+   "end_frame": 174
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 175,
+   "end_frame": 209
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 210,
+   "end_frame": 244
+  },
+  {
+   "label": "6/6",
+   "caption": "Lasers off; the head lifts. 1400 mm tall, about twice what the VLM's opening takes, so it stands beside the VLM.",
+   "start_frame": 245,
+   "end_frame": 288
+  }
+ ]
+}

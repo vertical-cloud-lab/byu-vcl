@@ -1,0 +1,184 @@
+{
+ "hard": {
+  "unique": [],
+  "rfc1123": [],
+  "windows_15": [],
+  "length": [],
+  "in_repo_strings": [],
+  "suffix_list": [],
+  "stream_substring": [],
+  "brand": [],
+  "sounds_like_a_person": []
+ },
+ "soft": {
+  "close_pairs": [
+   {
+    "a": "timp",
+    "b": "chimney",
+    "spelled": 5,
+    "sounds": 0.5,
+    "ipa": [
+     "tɪmp",
+     "tʃɪmni"
+    ],
+    "both_in_use": true
+   },
+   {
+    "a": "pyrite",
+    "b": "tigereye",
+    "spelled": 6,
+    "sounds": 0.5,
+    "ipa": [
+     "paɪɹaɪt",
+     "taɪɡɚɹaɪ"
+    ],
+    "both_in_use": true
+   },
+   {
+    "a": "pyrite",
+    "b": "fluorite",
+    "spelled": 4,
+    "sounds": 0.5,
+    "ipa": [
+     "paɪɹaɪt",
+     "flʊɹɹaɪt"
+    ],
+    "both_in_use": true
+   },
+   {
+    "a": "halite",
+    "b": "sapphire",
+    "spelled": 5,
+    "sounds": 0.5,
+    "ipa": [
+     "hælaɪt",
+     "sæfaɪɚ"
+    ],
+    "both_in_use": true
+   },
+   {
+    "a": "halite",
+    "b": "agate",
+    "spelled": 3,
+    "sounds": 0.5,
+    "ipa": [
+     "hælaɪt",
+     "æɡeɪt"
+    ],
+    "both_in_use": true
+   },
+   {
+    "a": "sandstone",
+    "b": "whetstone",
+    "spelled": 4,
+    "sounds": 0.56,
+    "ipa": [
+     "sændstoʊn",
+     "wɛtstoʊn"
+    ],
+    "both_in_use": false
+   },
+   {
+    "a": "marble",
+    "b": "fossil",
+    "spelled": 6,
+    "sounds": 0.5,
+    "ipa": [
+     "mɑɹbəl",
+     "fɑsəl"
+    ],
+    "both_in_use": true
+   },
+   {
+    "a": "marble",
+    "b": "pebble",
+    "spelled": 3,
+    "sounds": 0.5,
+    "ipa": [
+     "mɑɹbəl",
+     "pɛbəl"
+    ],
+    "both_in_use": true
+   },
+   {
+    "a": "opal",
+    "b": "topaz",
+    "spelled": 2,
+    "sounds": 0.5,
+    "ipa": [
+     "oʊpəl",
+     "toʊpæz"
+    ],
+    "both_in_use": true
+   }
+  ],
+  "everyday_words": {
+   "quartz": 3.7,
+   "sandstone": 3.57,
+   "marble": 3.96,
+   "shale": 3.69,
+   "fossil": 3.99,
+   "rift": 3.64,
+   "pearl": 4.14,
+   "boulder": 3.71,
+   "chimney": 3.55,
+   "flint": 3.77,
+   "lava": 3.73,
+   "ruby": 3.98
+  },
+  "sounds_like_lab_word": {},
+  "lab_word_itself": {}
+ },
+ "ipa": {
+  "timp": "tɪmp",
+  "nebo": "niboʊ",
+  "elsie": "ɛlsi",
+  "freddy": "fɹɛdi",
+  "pyrite": "paɪɹaɪt",
+  "quartz": "kwɔɹts",
+  "aquamarine": "ækwɐmɚɹin",
+  "halite": "hælaɪt",
+  "talc": "tælk",
+  "sandstone": "sændstoʊn",
+  "marble": "mɑɹbəl",
+  "sapphire": "sæfaɪɚ",
+  "opal": "oʊpəl",
+  "shale": "ʃeɪl",
+  "mica": "maɪkə",
+  "emery": "ɛmɚɹi",
+  "obsidian": "əbsɪdiən",
+  "fossil": "fɑsəl",
+  "agate": "æɡeɪt",
+  "tigereye": "taɪɡɚɹaɪ",
+  "rift": "ɹɪft",
+  "topaz": "toʊpæz",
+  "fluorite": "flʊɹɹaɪt",
+  "garnet": "ɡɑɹnɪt",
+  "galena": "ɡɐlinə",
+  "gypsum": "dʒɪpsəm",
+  "cinder": "sɪndɚ",
+  "pearl": "pɜl",
+  "dune": "dun",
+  "magma": "mæɡmə",
+  "geode": "dʒioʊd",
+  "pumice": "pjumɪs",
+  "boulder": "boʊldɚ",
+  "pebble": "pɛbəl",
+  "chimney": "tʃɪmni",
+  "olivine": "ɑlɪvaɪn",
+  "flint": "flɪnt",
+  "basalt": "bɐzɔlt",
+  "lava": "lɑvə",
+  "ruby": "ɹubi",
+  "borax": "bɔɹæks",
+  "unimate": "ʌnɪmeɪt",
+  "genghis": "dʒɛŋɡɪs",
+  "cascade": "kɐskeɪd",
+  "lonepeak": "loʊnpik",
+  "lapis": "læpiz",
+  "turquoise": "tɜkwɔɪs",
+  "citrine": "sɪtɹin",
+  "whetstone": "wɛtstoʊn"
+ },
+ "ok": true
+}

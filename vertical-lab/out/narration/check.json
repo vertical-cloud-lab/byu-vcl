@@ -1,0 +1,1752 @@
+{
+ "voice": "Kokoro v1.0 af_heart, speed 0.96",
+ "recognizers": [
+  "faster-whisper base.en",
+  "faster-whisper small.en"
+ ],
+ "say": {
+  "MiR250": "MiR two-fifty",
+  "OT-2": "O T two",
+  "UPS": "U P S",
+  "SEM": "S E M",
+  "BYU": "B Y U",
+  "EDM": "E D M",
+  "VLM": "V L M",
+  "ICP-MS": "I C P M S",
+  "ICP-OES": "I C P O E S",
+  "ICP": "I C P",
+  "CubXL": "Cub X L",
+  "MX-Lab": "M X Lab",
+  "UR12e": "U R twelve E",
+  "UR10e": "U R ten E",
+  "HNO3": "nitric acid",
+  "HCl": "hydrochloric acid",
+  "PTFE": "P T F E",
+  "AirGradient": "Air Gradient",
+  "aluminium": "aluminum"
+ },
+ "ipa": {
+  "MiR": "mˈiːɹ",
+  "MiRs": "mˈiːɹz",
+  "potentiostat": "pətˌɛnʃiəstˈæt",
+  "doser": "dˈoʊsɚ",
+  "doser's": "dˈoʊsɚz",
+  "dosers": "dˈoʊsɚz",
+  "Vertiv": "vˈɜːtɪv",
+  "depowdered": "dˌiːpˈaʊdɚd",
+  "Instron": "ˈɪnstɹɑːn",
+  "Stäubli": "ʃtˈɔɪbli"
+ },
+ "lines": [
+  {
+   "i": 0,
+   "chapter": "intro",
+   "part": "card",
+   "text": "A real vertical lift module, a VLM, filmed from the sample's point of view. The planned lab keeps its instruments on the trays of two of these.",
+   "spoken": "A real vertical lift module, a V L M, filmed from the sample's point of view. The planned lab keeps its instruments on the trays of two of these.",
+   "phonemes": "ɐ ɹˈiːəl vˈɜːɾɪkəl lˈɪft mˈɑːdʒuːl, ɐ vˈiː ˈɛl ˈɛm, fˈɪlmd fɹʌmðə sˈæmpəlz pˈɔɪnt ʌv vjˈuː. ðə plˈænd lˈæb kˈiːps ɪts ˈɪnstɹəmənts ɔnðə tɹˈeɪz ʌv tˈuː ʌv ðˈiːz.",
+   "seconds": 9.3,
+   "base.en": {
+    "heard": "A real vertical lift module, a VLM, filmed from the sample's point of view. The planned lab keeps its instruments on the trays of two of these.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "A",
+      0.48
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "a real vertical lift module, a VLM, filmed from the sample's point of view. The planned lab keeps its instruments on the trays of two of these.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 1,
+   "chapter": "setup",
+   "part": "card",
+   "text": "From here on, everything is animation: makers' published sizes and photos, and our own designs where nothing exists yet. Real footage, photos and data carry a badge.",
+   "spoken": "From here on, everything is animation: makers' published sizes and photos, and our own designs where nothing exists yet. Real footage, photos and data carry a badge.",
+   "phonemes": "fɹʌm hˈɪɹ ˈɔn, ˈɛvɹɪθˌɪŋ ɪz ˌænɪmˈeɪʃən: mˈeɪkɚz pˈʌblɪʃt sˈaɪzᵻz ænd fˈoʊɾoʊz, ænd ˌaʊɚɹ ˈoʊn dɪzˈaɪnz wˌɛɹ nˈʌθɪŋ ɛɡzˈɪsts jˈɛt. ɹˈiːəl fˈʊɾɪdʒ, fˈoʊɾoʊz ænd dˈeɪɾə kˈæɹi ɐ bˈædʒ.",
+   "seconds": 11.35,
+   "base.en": {
+    "heard": "From here on, everything is animation. Makers published sizes and photos, and our own designs where nothing exists yet. Real footage, photos and data carry a badge.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "From here on, everything is animation. Makers published sizes and photos and our own designs where nothing exists yet. Real footage, photos, and data carry a badge.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "and",
+      0.45
+     ]
+    ]
+   }
+  },
+  {
+   "i": 2,
+   "chapter": "setup",
+   "part": "setup_lab",
+   "text": "Most tray loads weigh twenty to a hundred and ten kilograms, too much for the arm or one person, so people slide each machine across from a lift table.",
+   "spoken": "Most tray loads weigh twenty to a hundred and ten kilograms, too much for the arm or one person, so people slide each machine across from a lift table.",
+   "phonemes": "mˈoʊst tɹˈeɪ lˈoʊdz wˈeɪ twˈɛnti tʊ ɐ hˈʌndɹɪd ænd tˈɛn kˈɪləɡɹˌæmz, tˈuː mʌtʃ fɚðɪ ˈɑːɹm ɔːɹ wˈʌn pˈɜːsən, sˌoʊ pˈiːpəl slˈaɪd ˈiːtʃ məʃˈiːn əkɹˌɑːs fɹʌm ɐ lˈɪft tˈeɪbəl.",
+   "seconds": 9.41,
+   "base.en": {
+    "heard": "Most tray loads weigh 20 to 110 kg, too much for the arm or one person, so people slide each machine across from a lift table.",
+    "wer": 0.069,
+    "diffs": [
+     [
+      "substitute",
+      "a",
+      "one"
+     ],
+     [
+      "substitute",
+      "kilograms",
+      "kg"
+     ]
+    ],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "Most tray loads weigh 20 to 110 kilograms, too much for the arm or one person, so people slide each machine across from a lift table.",
+    "wer": 0.034,
+    "diffs": [
+     [
+      "substitute",
+      "a",
+      "one"
+     ]
+    ],
+    "unsure": []
+   }
+  },
+  {
+   "i": 3,
+   "chapter": "services",
+   "part": "card",
+   "text": "Each powered tray has its own UPS. Docks in the side wall, in its slot and at the opening, bring mains, network, air, nitrogen and chilled water.",
+   "spoken": "Each powered tray has its own U P S. Docks in the side wall, in its slot and at the opening, bring mains, network, air, nitrogen and chilled water.",
+   "phonemes": "ˈiːtʃ pˈaʊɚd tɹˈeɪ hɐz ɪts ˈoʊn jˈuː pˈiː ˈɛs. dˈɑːks ɪnðə sˈaɪd wˈɔːl, ɪn ɪts slˈɑːt ænd æt ðɪ ˈoʊpənɪŋ, bɹˈɪŋ mˈeɪnz, nˈɛtwɜːk, ˈɛɹ, nˈaɪtɹədʒən ænd tʃˈɪld wˈɔːɾɚ.",
+   "seconds": 9.92,
+   "base.en": {
+    "heard": "Each powered tray has its own UPS. Docs in the side wall, in its slot, and at the opening, bring mains, network, air, nitrogen, and chilled water.",
+    "wer": 0.037,
+    "diffs": [
+     [
+      "substitute",
+      "docks",
+      "docs"
+     ]
+    ],
+    "unsure": [
+     [
+      "side",
+      0.39
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "Each powered tray has its own UPS. Docks in the side wall, in its slot and at the opening, bring mains, network, air, nitrogen, and chilled water.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "side",
+      0.44
+     ],
+     [
+      "and",
+      0.46
+     ]
+    ]
+   }
+  },
+  {
+   "i": 4,
+   "chapter": "services",
+   "part": "vlm_coupling",
+   "text": "Earth makes first and a monitoring pair last, and power is switched only once that pair closes. The couplings are catalogue parts; the dock that drives them is our own design.",
+   "spoken": "Earth makes first and a monitoring pair last, and power is switched only once that pair closes. The couplings are catalogue parts; the dock that drives them is our own design.",
+   "phonemes": "ˈɜːθ mˌeɪks fˈɜːst ænd ɐ mˈɑːnɪɾɚɹɪŋ pˈɛɹ lˈæst, ænd pˈaʊɚɹ ɪz swˈɪtʃt ˈoʊnli wˈʌns ðæt pˈɛɹ klˈoʊzᵻz. ðə kˈʌplɪŋz ɑːɹ kˈæɾɐlˌɑːɡ pˈɑːɹts; ðə dˈɑːk ðæt dɹˈaɪvz ðˌɛm ɪz ˌaʊɚɹ ˈoʊn dɪzˈaɪn.",
+   "seconds": 10.94,
+   "base.en": {
+    "heard": "Earth makes first and a monitoring pair last, and power is switched only once that pair closes. The couplings are cataloged parts. The dock that drives them is our own design.",
+    "wer": 0.032,
+    "diffs": [
+     [
+      "substitute",
+      "catalog",
+      "cataloged"
+     ]
+    ],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "Earth makes first and a monitoring pair last, and power is switched only once that pair closes. The couplings are catalog parts. The dock that drives them is our own design.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 5,
+   "chapter": "services",
+   "part": "ups_lineup.png",
+   "text": "Three real Vertiv lithium units, sized per tray; the online ones go wherever a computer or measurement can't be interrupted. Each runs ten minutes or more, so a stranded tray can shut down cleanly.",
+   "spoken": "Three real Vertiv lithium units, sized per tray; the online ones go wherever a computer or measurement can't be interrupted. Each runs ten minutes or more, so a stranded tray can shut down cleanly.",
+   "phonemes": "θɹˈiː ɹˈiːəl vˈɜːtɪv lˈɪθiəm jˈuːnɪts, sˈaɪzd pɜː tɹˈeɪ; ðɪ ˈɑːnlaɪn wˈʌnz ɡˌoʊ wɛɹˈɛvɚɹ ɐ kəmpjˈuːɾɚ ɔːɹ mˈɛʒɚmənt kˈænt biː ˌɪntɚɹˈʌptᵻd. ˈiːtʃ ɹˈʌnz tˈɛn mˈɪnɪts ɔːɹ mˈɔːɹ, sˌoʊ ɐ stɹˈændᵻd tɹˈeɪ kæn ʃˈʌt dˌaʊn klˈiːnli.",
+   "seconds": 13.03,
+   "base.en": {
+    "heard": "3 real-vertive lithium units, sized per tray. The online ones go wherever a computer or measurement can't be interrupted. Each runs 10 minutes or more, so a stranded tray can shut down cleanly.",
+    "wer": 0.029,
+    "diffs": [
+     [
+      "substitute",
+      "vertiv",
+      "vertive"
+     ]
+    ],
+    "unsure": [
+     [
+      "3",
+      0.27
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "Three real, vertive lithium units, sized per tray. The online ones go wherever a computer or measurement can't be interrupted. Each runs 10 minutes or more, so a stranded tray can shut down cleanly.",
+    "wer": 0.029,
+    "diffs": [
+     [
+      "substitute",
+      "vertiv",
+      "vertive"
+     ]
+    ],
+    "unsure": []
+   }
+  },
+  {
+   "i": 6,
+   "chapter": "corrosion",
+   "part": "card",
+   "text": "The first tray is a corrosion station: the OT-2 makes up solutions and dilutions, and the CubXL runs the alloy lab's copper corrosion screen, spot by spot.",
+   "spoken": "The first tray is a corrosion station: the O T two makes up solutions and dilutions, and the Cub X L runs the alloy lab's copper corrosion screen, spot by spot.",
+   "phonemes": "ðə fˈɜːst tɹˈeɪ ɪz ɐ kɚɹˈoʊʒən stˈeɪʃən: ðɪ ˈoʊ tˈiː tˈuː mˌeɪks ˌʌp səlˈuːʃənz ænd daɪlˈuːʃənz, ænd ðə kˈʌb ˈɛks ˈɛl ɹˈʌnz ðɪ ˈælɔɪ lˈæbz kˈɑːpɚ kɚɹˈoʊʒən skɹˈiːn, spˈɑːt baɪ spˈɑːt.",
+   "seconds": 11.05,
+   "base.en": {
+    "heard": "The first tray is a corrosion station. The OT-2 makes up solutions and dilutions, and the Cub XL runs the Alloy Labs Copper Corrosion Screen, spot by spot.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "Alloy",
+      0.42
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "The first tray is a corrosion station. The OT2 makes up solutions and dilutions, and the Cub XL runs the Alloy Labs copper corrosion screen, spot by spot.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 7,
+   "chapter": "corrosion",
+   "part": "instruments/ot2_corrosion_prep",
+   "text": "One part sample to nine of dilute nitric acid, for ICP mass spectrometry. That step moves to an ICP-MS station on the floor, with its own fume hood, so no acid rides on a tray.",
+   "spoken": "One part sample to nine of dilute nitric acid, for I C P mass spectrometry. That step moves to an I C P M S station on the floor, with its own fume hood, so no acid rides on a tray.",
+   "phonemes": "wˈʌn pˈɑːɹt sˈæmpəl tə nˈaɪn ʌv daɪlˈuːt nˈaɪtɹɪk ˈæsɪd, fɔːɹ aɪ sˈiː pˈiː mˈæs spɛktɹˈɑːmətɹi. ðæt stˈɛp mˈuːvz tʊ ɐn aɪ sˈiː pˈiː ˈɛm ˈɛs stˈeɪʃən ɔnðə flˈɔːɹ, wɪð ɪts ˈoʊn fjˈuːm hˈʊd, sˌoʊ nˈoʊ ˈæsɪd ɹˈaɪdz ˌɔn ɐ tɹˈeɪ.",
+   "seconds": 13.38,
+   "base.en": {
+    "heard": "One part sample to nine of dilute nitric acid for ICP mass spectrometry. That step moves to an ICP-MS station on the floor with its own fume hood so no acid rides on a tray.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "so",
+      0.43
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "one part sample to nine of dilute nitric acid for ICP mass spectrometry. That step moves to an ICP-MS station on the floor, with its own fume hood, so no acid rides on a tray.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 8,
+   "chapter": "corrosion",
+   "part": "instruments/cubxl_corrosion",
+   "text": "The protocol includes impedance spectroscopy, which needs the potentiostat the lab has requested. Until it arrives, the open-circuit step runs thirty minutes instead.",
+   "spoken": "The protocol includes impedance spectroscopy, which needs the potentiostat the lab has requested. Until it arrives, the open-circuit step runs thirty minutes instead.",
+   "phonemes": "ðə pɹˈoʊɾəkˌɑːl ɪŋklˈuːdz ɪmpˈiːdəns spɛktɹˈɑːskəpi, wˌɪtʃ nˈiːdz ðə pətˌɛnʃiəstˈæt ðə lˈæb hɐz ɹᵻkwˈɛstᵻd. ʌntˈɪl ɪɾ ɚɹˈaɪvz, ðɪ ˈoʊpənsˈɜːkɪt stˈɛp ɹˈʌnz θˈɜːɾi mˈɪnɪts ɪnstˈɛd.",
+   "seconds": 11.01,
+   "base.en": {
+    "heard": "The protocol includes impedance spectroscopy, which needs the potentia stat the lab has requested. Until it arrives, the open circuit step runs 30 minutes instead.",
+    "wer": 0.083,
+    "diffs": [
+     [
+      "insert",
+      "",
+      "potentia"
+     ],
+     [
+      "substitute",
+      "potentiostat",
+      "stat"
+     ]
+    ],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "The protocol includes impedance spectroscopy, which needs the potentiostat the lab has requested. Until it arrives, the open circuit step runs 30 minutes instead.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 9,
+   "chapter": "corrosion",
+   "part": "icpms",
+   "text": "The concentrated acids stay in this hood, in a dilutor with an all-fluoropolymer path: Hamilton's own tables advise against nitric acid on its pipetting heads. The arm, in its cover, only moves racks.",
+   "spoken": "The concentrated acids stay in this hood, in a dilutor with an all-fluoropolymer path: Hamilton's own tables advise against nitric acid on its pipetting heads. The arm, in its cover, only moves racks.",
+   "phonemes": "ðə kˈɑːnsəntɹˌeɪɾᵻd ˈæsɪdz stˈeɪ ɪn ðɪs hˈʊd, ɪn ɐ daɪlˈuːɾɚ wɪð ɐn ˈɔːlflʊɹɹˈɑːpəlˌaɪmɚ pˈæθ: hˈæməltənz ˈoʊn tˈeɪbəlz ɐdvˈaɪz ɐɡˈɛnst nˈaɪtɹɪk ˈæsɪd ˌɔn ɪts pˈaɪpəɾɪŋ hˈɛdz. ðɪ ˈɑːɹm, ɪn ɪts kˈʌvɚ, ˈoʊnli mˈuːvz ɹˈæks.",
+   "seconds": 13.82,
+   "base.en": {
+    "heard": "The concentrated acids stay in this hood, in a diluter with an olfler-ropolimer path. Hamilton's own tables advise against nitric acid on its pipetting heads. The arm, in its cover, only moves racks.",
+    "wer": 0.088,
+    "diffs": [
+     [
+      "substitute",
+      "dilutor",
+      "diluter"
+     ],
+     [
+      "substitute",
+      "all fluoropolymer",
+      "olfler ropolimer"
+     ]
+    ],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "The concentrated acids stay in this hood, in a diluter with an all-fluoropolymer path. Hamilton's own tables advise against nitric acid on its pipetting heads. The arm, in its cover, only moves racks.",
+    "wer": 0.029,
+    "diffs": [
+     [
+      "substitute",
+      "dilutor",
+      "diluter"
+     ]
+    ],
+    "unsure": []
+   }
+  },
+  {
+   "i": 10,
+   "chapter": "corrosion",
+   "part": "vlm_workflow",
+   "text": "This dose is for the alloy lab's powder reactivity test. The doser works to weight, a quarter auger turn at a time, to twenty-five milligrams; the readings are illustrative.",
+   "spoken": "This dose is for the alloy lab's powder reactivity test. The doser works to weight, a quarter auger turn at a time, to twenty-five milligrams; the readings are illustrative.",
+   "phonemes": "ðɪs dˈoʊs ɪz fɚðɪ ˈælɔɪ lˈæbz pˈaʊdɚ ɹɪɐktˈɪvᵻɾi tˈɛst. ðə dˈoʊsɚ wˈɜːks tə wˈeɪt, ɐ kwˈɔːɹɾɚɹ ˈɔːɡɚ tˈɜːn æɾə tˈaɪm, tə twˈɛntifˈaɪv mˈɪlɪɡɹˌæmz; ðə ɹˈiːdɪŋz ɑːɹ ˈɪləstɹətˌɪv.",
+   "seconds": 11.14,
+   "base.en": {
+    "heard": "This dose is for the alloy lab's powder reactivity test. The doseer works to wait a quarter auger turn at a time to 25 milligrams. The readings are illustrative.",
+    "wer": 0.067,
+    "diffs": [
+     [
+      "substitute",
+      "doser",
+      "doseer"
+     ],
+     [
+      "substitute",
+      "weight",
+      "wait"
+     ]
+    ],
+    "unsure": [
+     [
+      "alloy",
+      0.23
+     ],
+     [
+      "doseer",
+      0.44
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "This dose is for the Alloy Labs Powder Reactivity Test. The doser works to weight, a quarter auger turn at a time, to 25 milligrams. The readings are illustrative.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 11,
+   "chapter": "alloy1",
+   "part": "card",
+   "text": "The alloy route follows one alloy from its charge to the finished measurements. First the charge: aluminium cups dosed with powder by weight, then pressed shut under vacuum.",
+   "spoken": "The alloy route follows one alloy from its charge to the finished measurements. First the charge: aluminum cups dosed with powder by weight, then pressed shut under vacuum.",
+   "phonemes": "ðɪ ˈælɔɪ ɹˈaʊt fˈɑːloʊz wˈʌn ˈælɔɪ fɹʌm ɪts tʃˈɑːɹdʒ tə ðə fˈɪnɪʃt mˈɛʒɚmənts. fˈɜːst ðə tʃˈɑːɹdʒ: ɐlˈuːmɪnəm kˈʌps dˈoʊst wɪð pˈaʊdɚ baɪ wˈeɪt, ðˈɛn pɹˈɛst ʃˈʌt ˌʌndɚ vˈækjuːm.",
+   "seconds": 10.54,
+   "base.en": {
+    "heard": "The alloy route follows one alloy from its charge to the finished measurements. First the charge, aluminum cups dosed with powder by weight, then pressed shut under vacuum.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "The alloy route follows one alloy from its charge to the finished measurements. First the charge. Aluminum cups dosed with powder by weight, then pressed shut under vacuum.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 12,
+   "chapter": "alloy1",
+   "part": "dal_workflow_table.png",
+   "text": "The alloy lab's seventeen steps, and what this design does with each: fifteen are automated and shown in this video, two have no station yet, and the last column says what is still by hand, in progress, or open.",
+   "spoken": "The alloy lab's seventeen steps, and what this design does with each: fifteen are automated and shown in this video, two have no station yet, and the last column says what is still by hand, in progress, or open.",
+   "phonemes": "ðɪ ˈælɔɪ lˈæbz sˈɛvəntˌiːn stˈɛps, ænd wʌt ðɪs dɪzˈaɪn dˈʌz wɪð ˈiːtʃ: fˈɪftiːn ɑːɹ ˈɔːɾəmˌeɪɾᵻd ænd ʃˈoʊn ɪn ðɪs vˈɪdɪoʊ, tˈuː hæv nˈoʊ stˈeɪʃən jˈɛt, ænd ðə lˈæst kˈɑːlʌm sˈɛz wʌt ɪz stˈɪl baɪ hˈænd, ɪn pɹˈɑːɡɹɛs, ɔːɹ ˈoʊpən.",
+   "seconds": 13.4,
+   "base.en": {
+    "heard": "the alloy lab's 17 steps, and what this design does with each. 15 are automated and shown in this video, two have no station yet, and the last column says what is still by hand in progress or open.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "lab's",
+      0.49
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "the Alloy Lab 17 steps, and what this design does with each. 15 are automated and shown in this video, two have no station yet, and the last column says what is still by hand, in progress, or open.",
+    "wer": 0.026,
+    "diffs": [
+     [
+      "substitute",
+      "labs",
+      "lab"
+     ]
+    ],
+    "unsure": []
+   }
+  },
+  {
+   "i": 13,
+   "chapter": "alloy1",
+   "part": "alloy_charge",
+   "text": "The balance stands under the doser's outlet without touching it, so each dose falls straight into the cup and is weighed as it lands.",
+   "spoken": "The balance stands under the doser's outlet without touching it, so each dose falls straight into the cup and is weighed as it lands.",
+   "phonemes": "ðə bˈæləns stˈændz ˈʌndɚ ðə dˈoʊsɚz ˈaʊtlɛt wɪðˌaʊt tˈʌtʃɪŋ ɪt, sˌoʊ ˈiːtʃ dˈoʊs fˈɔːlz stɹˈeɪt ˌɪntʊ ðə kˈʌp ænd ɪz wˈeɪd æz ɪt lˈændz.",
+   "seconds": 7.04,
+   "base.en": {
+    "heard": "The balance stands under the doser's outlet without touching it, so each dose falls straight into the cup and is weighed as it lands.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "The balance stands under the doser's outlet without touching it, so each dose falls straight into the cup and is weighed as it lands.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 14,
+   "chapter": "alloy1",
+   "part": "doser_shield_section.png",
+   "text": "A post on the balance pan now brings the cup up to forty-five millimetres under the outlet, inside a clear draft shield of our own. Before, the powder fell a hundred and fifty-three millimetres, most of it in open air.",
+   "spoken": "A post on the balance pan now brings the cup up to forty-five millimetres under the outlet, inside a clear draft shield of our own. Before, the powder fell a hundred and fifty-three millimetres, most of it in open air.",
+   "phonemes": "ɐ pˈoʊst ɔnðə bˈæləns pˈæn nˈaʊ bɹˈɪŋz ðə kˈʌp ˌʌp tə fˈɔːɹɾifˈaɪv mˈɪlɪmˌiːɾɚz ˌʌndɚ ðɪ ˈaʊtlɛt, ɪnsˈaɪd ɐ klˈɪɹ dɹˈæft ʃˈiːld ʌv ˌaʊɚɹ ˈoʊn. bᵻfˈɔːɹ, ðə pˈaʊdɚ fˈɛl ɐ hˈʌndɹɪd ænd fˈɪftiθɹˈiː mˈɪlɪmˌiːɾɚz, mˈoʊst əv ɪɾ ɪn ˈoʊpən ˈɛɹ.",
+   "seconds": 13.38,
+   "base.en": {
+    "heard": "A post on the balance pan now brings the cup up to 45 millimeters under the outlet, inside a clear draft shield of our own. Before, the powder fell 153 millimeters, most of it in open air.",
+    "wer": 0.024,
+    "diffs": [
+     [
+      "substitute",
+      "a",
+      "one"
+     ]
+    ],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "A post on the balance pan now brings the cup up to 45 millimeters under the outlet, inside a clear draft shield of our own. Before, the powder fell 153 millimeters, most of it in open air.",
+    "wer": 0.024,
+    "diffs": [
+     [
+      "substitute",
+      "a",
+      "one"
+     ]
+    ],
+    "unsure": []
+   }
+  },
+  {
+   "i": 15,
+   "chapter": "alloy2",
+   "part": "card",
+   "text": "Both mobile robots, each a Universal Robots arm on a ballasted MiR250, go to the atomizer and open its furnace together.",
+   "spoken": "Both mobile robots, each a Universal Robots arm on a ballasted MiR two-fifty, go to the atomizer and open its furnace together.",
+   "phonemes": "bˈoʊθ mˈoʊbəl ɹˈoʊbɑːts, ˈiːtʃ ɐ jˌuːnɪvˈɜːsəl ɹˈoʊbɑːts ˈɑːɹm ˌɔn ɐ bˈæləstᵻd mˈiːɹ tˈuːfˈɪfti, ɡˌoʊ tə ðɪ ˈæɾəmˌaɪzɚ ænd ˈoʊpən ɪts fˈɜːnɪs təɡˈɛðɚ.",
+   "seconds": 8.53,
+   "base.en": {
+    "heard": "Both mobile robots, each a universal robot's arm on a ballasted mirror 250, go to the atomizer and open its furnace together.",
+    "wer": 0.13,
+    "diffs": [
+     [
+      "substitute",
+      "mir",
+      "mirror"
+     ],
+     [
+      "insert",
+      "",
+      "hundred and"
+     ]
+    ],
+    "unsure": [
+     [
+      "mirror",
+      0.48
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "Both mobile robots, each a universal robot's arm on a ballasted mere 250, go to the atomizer and open its furnace together.",
+    "wer": 0.13,
+    "diffs": [
+     [
+      "substitute",
+      "mir",
+      "mere"
+     ],
+     [
+      "insert",
+      "",
+      "hundred and"
+     ]
+    ],
+    "unsure": [
+     [
+      "mere",
+      0.31
+     ]
+    ]
+   }
+  },
+  {
+   "i": 16,
+   "chapter": "alloy2",
+   "part": "alloy_atomize",
+   "text": "The stack under the charge is built between runs by the two arms: one holds the graphite crucible still while the other threads the thin nut on from below. The next chapter shows it.",
+   "spoken": "The stack under the charge is built between runs by the two arms: one holds the graphite crucible still while the other threads the thin nut on from below. The next chapter shows it.",
+   "phonemes": "ðə stˈæk ˌʌndɚ ðə tʃˈɑːɹdʒ ɪz bˈɪlt bᵻtwˌiːn ɹˈʌnz baɪ ðə tˈuː ˈɑːɹmz: wˈʌn hˈoʊldz ðə ɡɹˈæfaɪt kɹˈuːsᵻbəl stˈɪl wˌaɪl ðɪ ˈʌðɚ θɹˈɛdz ðə θˈɪn nˈʌt ˌɔn fɹʌm bᵻlˈoʊ. ðə nˈɛkst tʃˈæptɚ ʃˈoʊz ɪt.",
+   "seconds": 11.2,
+   "base.en": {
+    "heard": "The stack under the charge is built between runs by the two arms. One holds the graphite crucible still, while the other threads the thin nut on from below. The next chapter shows it.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "The stack under the charge is built between runs by the two arms. One holds the graphite crucible still, while the other threads the thin nut on from below. The next chapter shows it.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 17,
+   "chapter": "alloy2",
+   "part": "alloy_atomize",
+   "text": "Four cups make about a hundred and forty grams of powder, some twenty-six grams of it in the printer's size range. A fuller crucible, or the larger four-hundred cubic centimetre one, makes several times more a run.",
+   "spoken": "Four cups make about a hundred and forty grams of powder, some twenty-six grams of it in the printer's size range. A fuller crucible, or the larger four-hundred cubic centimetre one, makes several times more a run.",
+   "phonemes": "fˈɔːɹ kˈʌps mˌeɪk ɐbˌaʊt ɐ hˈʌndɹɪd ænd fˈɔːɹɾi ɡɹˈæmz ʌv pˈaʊdɚ, sˌʌm twˈɛntisˈɪks ɡɹˈæmz ʌv ɪɾ ɪnðə pɹˈɪntɚz sˈaɪz ɹˈeɪndʒ. ɐ fˈʊlɚ kɹˈuːsᵻbəl, ɔːɹ ðə lˈɑːɹdʒɚ fˈɔːɹhˈʌndɹɪd kjˈuːbɪk sˈɛntɪmˌiːɾɚ wˌʌn, mˌeɪks sˈɛvɹəl tˈaɪmz mˈɔːɹ ɐ ɹˈʌn.",
+   "seconds": 13.14,
+   "base.en": {
+    "heard": "Four cups make about 140 grams of powder, some 26 grams of it in the printer's size range. A fuller crucible, or the larger 400 cubic centimeter one, makes several times more a run.",
+    "wer": 0.026,
+    "diffs": [
+     [
+      "substitute",
+      "a",
+      "one"
+     ]
+    ],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "Four cups make about 140 grams of powder, some 26 grams of it in the printer's size range. A fuller crucible, or the larger 400 cubic centimeter one, makes several times more a run.",
+    "wer": 0.026,
+    "diffs": [
+     [
+      "substitute",
+      "a",
+      "one"
+     ]
+    ],
+    "unsure": []
+   }
+  },
+  {
+   "i": 18,
+   "chapter": "atomizer",
+   "part": "card",
+   "text": "Between runs the atomizer is cooled, opened, cleaned and rebuilt, all by hand today. These clips give the lab's own procedure, step by step, to two mobile arms.",
+   "spoken": "Between runs the atomizer is cooled, opened, cleaned and rebuilt, all by hand today. These clips give the lab's own procedure, step by step, to two mobile arms.",
+   "phonemes": "bᵻtwˌiːn ɹˈʌnz ðɪ ˈæɾəmˌaɪzɚɹ ɪz kˈuːld, ˈoʊpənd, klˈiːnd ænd ɹᵻbˈɪlt, ˈɔːl baɪ hˈænd tədˈeɪ. ðiːz klˈɪps ɡˈɪv ðə lˈæbz ˈoʊn pɹəsˈiːdʒɚ, stˈɛp baɪ stˈɛp, tə tˈuː mˈoʊbəl ˈɑːɹmz.",
+   "seconds": 10.79,
+   "base.en": {
+    "heard": "Between runs, the atomizer is cooled, opened, cleaned, and rebuilt, all by hand today. These clips give the lab's own procedure, step-by-step, to two mobile arms.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "Between runs, the atomizer is cooled, opened, cleaned, and rebuilt all by hand today. These clips give the lab's own procedure, step by step, to two mobile arms.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 19,
+   "chapter": "atomizer",
+   "part": "atom_latch",
+   "text": "Unlatching follows the training video: with the lever eased open, the arm lifts the loop off the keeper's hook, lets the lever down and lets the loop fall over it. No arm presses on the lid.",
+   "spoken": "Unlatching follows the training video: with the lever eased open, the arm lifts the loop off the keeper's hook, lets the lever down and lets the loop fall over it. No arm presses on the lid.",
+   "phonemes": "ʌnlˈætʃɪŋ fˈɑːloʊz ðə tɹˈeɪnɪŋ vˈɪdɪoʊ: wɪððə lˈɛvɚɹ ˈiːzd ˈoʊpən, ðɪ ˈɑːɹm lˈɪfts ðə lˈuːp ˈɔf ðə kˈiːpɚz hˈʊk, lˈɛts ðə lˈɛvɚ dˌaʊn ænd lˈɛts ðə lˈuːp fˈɔːl ˈoʊvɚɹ ɪt. nˈoʊ ˈɑːɹm pɹˈɛsᵻz ɔnðə lˈɪd.",
+   "seconds": 11.75,
+   "base.en": {
+    "heard": "Unlatching follows the training video. With the lever eased open, the arm lifts the loop off the keeper's hook, lets the lever down, and lets the loop fall over it. No arm presses on the lid.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "Unlatching follows the training video. With the lever eased open, the arm lifts the loop off the keeper's hook, lets the lever down, and lets the loop fall over it. No arm presses on the lid.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 20,
+   "chapter": "atomizer",
+   "part": "atom_container",
+   "text": "Taking the container off isn't animated yet. At an estimated four kilograms empty, it is near or past the gripper's five-kilogram limit with powder, so a second arm would hold it from below.",
+   "spoken": "Taking the container off isn't animated yet. At an estimated four kilograms empty, it is near or past the gripper's five-kilogram limit with powder, so a second arm would hold it from below.",
+   "phonemes": "tˈeɪkɪŋ ðə kəntˈeɪnɚɹ ˈɔf ˌɪzənt ˈænɪmˌeɪɾᵻd jˈɛt. æɾ ɐn ˈɛstᵻmˌeɪɾᵻd fˈɔːɹ kˈɪləɡɹˌæmz ˈɛmpti, ɪɾ ɪz nˌɪɹ ɔːɹ pˈæst ðə ɡɹˈɪpɚz fˈaɪvkˈɪləɡɹˌæm lˈɪmɪt wɪð pˈaʊdɚ, sˌoʊ ɐ sˈɛkənd ˈɑːɹm wʊd hˈoʊld ɪt fɹʌm bᵻlˈoʊ.",
+   "seconds": 12.05,
+   "base.en": {
+    "heard": "Taking the container off isn't animated yet. At an estimated four kilograms empty, it is near or past the gripper's five kilogram limit with powder, so a second arm would hold it from below.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "four",
+      0.33
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "Taking the container off isn't animated yet. At an estimated four kilograms empty, it is near or past the gripper's five kilogram limit with powder, so a second arm would hold it from below.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "four",
+      0.49
+     ]
+    ]
+   }
+  },
+  {
+   "i": 21,
+   "chapter": "atomizer",
+   "part": "atom_vacuum",
+   "text": "Each joint of the vacuum's ground path must read a tenth of an ohm or less, or the run stops. These readings are illustrative; the lab's own crevice tool failed this check in August.",
+   "spoken": "Each joint of the vacuum's ground path must read a tenth of an ohm or less, or the run stops. These readings are illustrative; the lab's own crevice tool failed this check in August.",
+   "phonemes": "ˈiːtʃ dʒˈɔɪnt ʌvðə vˈækjuːmz ɡɹˈaʊnd pˈæθ mˈʌst ɹˈiːd ɐ tˈɛnθ əvən ˈoʊm ɔːɹ lˈɛs, ɔːɹ ðə ɹˈʌn stˈɑːps. ðiːz ɹˈiːdɪŋz ɑːɹ ˈɪləstɹətˌɪv; ðə lˈæbz ˈoʊn kɹˈɛvɪs tˈuːl fˈeɪld ðɪs tʃˈɛk ɪn ˈɔːɡəst.",
+   "seconds": 11.65,
+   "base.en": {
+    "heard": "Each joint of the vacuum's ground path must read a tenth of an ohm or less, or the run stops. These readings are illustrative. The lab's own crevice tool failed this check in August.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "Each joint of the vacuum's ground path must read a tenth of an ohm or less or the run stops. These readings are illustrative. The lab's own crevice tool failed this check in August.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "or",
+      0.4
+     ]
+    ]
+   }
+  },
+  {
+   "i": 22,
+   "chapter": "atomizer",
+   "part": "atom_plate",
+   "text": "This joint takes fifty newton metres, close to the rating of the arm's wrist, so the wrench holds both flats and takes its own reaction. The arm only places it.",
+   "spoken": "This joint takes fifty newton metres, close to the rating of the arm's wrist, so the wrench holds both flats and takes its own reaction. The arm only places it.",
+   "phonemes": "ðɪs dʒˈɔɪnt tˈeɪks fˈɪfti nˈuːtən mˈiːɾɚz, klˈoʊs tə ðə ɹˈeɪɾɪŋ ʌvðɪ ˈɑːɹmz ɹˈɪst, sˌoʊ ðə ɹˈɛntʃ hˈoʊldz bˈoʊθ flˈæts ænd tˈeɪks ɪts ˈoʊn ɹɪˈækʃən. ðɪ ˈɑːɹm ˈoʊnli plˈeɪsᵻz ɪt.",
+   "seconds": 10.22,
+   "base.en": {
+    "heard": "This joint takes 50 newton meters, close to the rating of the arm's wrist, so the wrench holds both flats and takes its own reaction. The arm only places it.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "This joint takes 50 newton meters, close to the rating of the arm's wrist, so the wrench holds both flats and takes its own reaction. The arm only places it.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 23,
+   "chapter": "atomizer",
+   "part": "atom_crucible_out",
+   "text": "The arm's own sensor can't tell a snug joint from a cracked one, so each arm carries a finer wrist sensor and logs every breakaway. None of these torques has been measured yet.",
+   "spoken": "The arm's own sensor can't tell a snug joint from a cracked one, so each arm carries a finer wrist sensor and logs every breakaway. None of these torques has been measured yet.",
+   "phonemes": "ðɪ ˈɑːɹmz ˈoʊn sˈɛnsɚ kˈænt tˈɛl ɐ snˈʌɡ dʒˈɔɪnt fɹʌm ɐ kɹˈækt wˌʌn, sˌoʊ ˈiːtʃ ˈɑːɹm kˈæɹiz ɐ fˈaɪnɚ ɹˈɪst sˈɛnsɚ ænd lˈɔɡz ˈɛvɹi bɹˈeɪkəwˌeɪ. nˈʌn ʌv ðiːz tˈɔːɹks hˈæzbiːn mˈɛʒɚd jˈɛt.",
+   "seconds": 10.86,
+   "base.en": {
+    "heard": "The arm's own sensor can't tell a snug joint from a cracked one, so each arm carries a finer wrist sensor and logs every breakaway. None of these torques has been measured yet.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "The arm's own sensor can't tell a snug joint from a cracked one, so each arm carries a finer wrist sensor and logs every breakaway. None of these torques has been measured yet.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 24,
+   "chapter": "atomizer",
+   "part": "atom_bn",
+   "text": "Boron nitride goes on as an aerosol, so the recoat happens in a fume hood: the arm scrapes off what has cracked or lifted, then sprays thin coats over the scraped spots.",
+   "spoken": "Boron nitride goes on as an aerosol, so the recoat happens in a fume hood: the arm scrapes off what has cracked or lifted, then sprays thin coats over the scraped spots.",
+   "phonemes": "bˈɔːɹɑːn nˈaɪtɹaɪd ɡoʊz ˌɔn æz ɐn ˈɛɹəsˌɑːl, sˌoʊ ðə ɹᵻkˈoʊt hˈæpənz ɪn ɐ fjˈuːm hˈʊd: ðɪ ˈɑːɹm skɹˈeɪps ˈɔf wʌt hɐz kɹˈækt ɔːɹ lˈɪftᵻd, ðˈɛn spɹˈeɪz θˈɪn kˈoʊts ˌoʊvɚ ðə skɹˈeɪpt spˈɑːts.",
+   "seconds": 10.65,
+   "base.en": {
+    "heard": "Boron nitride goes on as an aerosol, so the recoat happens in a fume hood. The arm scrapes off what is cracked or lifted, then sprays thin coats over the scraped spots.",
+    "wer": 0.031,
+    "diffs": [
+     [
+      "substitute",
+      "has",
+      "is"
+     ]
+    ],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "Boron nitride goes on as an aerosol, so the recoat happens in a fume hood. The arm scrapes off what is cracked or lifted, then sprays thin coats over the scraped spots.",
+    "wer": 0.031,
+    "diffs": [
+     [
+      "substitute",
+      "has",
+      "is"
+     ]
+    ],
+    "unsure": []
+   }
+  },
+  {
+   "i": 25,
+   "chapter": "atomizer",
+   "part": "atom_crucible_in",
+   "text": "Here the arm presses the machine's own keys. A direct link to the atomizer's controls would need the maker's agreement, and is the first question for them.",
+   "spoken": "Here the arm presses the machine's own keys. A direct link to the atomizer's controls would need the maker's agreement, and is the first question for them.",
+   "phonemes": "hˈɪɹ ðɪ ˈɑːɹm pɹˈɛsᵻz ðə məʃˈiːnz ˈoʊn kˈiːz. ɐ dᵻɹˈɛkt lˈɪŋk tə ðɪ ˈæɾəmˌaɪzɚz kəntɹˈoʊlz wʊd nˈiːd ðə mˈeɪkɚz ɐɡɹˈiːmənt, ænd ɪz ðə fˈɜːst kwˈɛstʃən fɔːɹ ðˌɛm.",
+   "seconds": 9.05,
+   "base.en": {
+    "heard": "Here the arm presses the machine's own keys. A direct link to the atomizer's controls would need the maker's agreement and is the first question for them.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "Here the arm presses the machine's own keys. A direct link to the atomizer's controls would need the maker's agreement and is the first question for them.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 26,
+   "chapter": "alloy3",
+   "part": "card",
+   "text": "The arm runs the sieving cell on its own, then pours the fine cut into the Aconity printer, which prints the tensile bars.",
+   "spoken": "The arm runs the sieving cell on its own, then pours the fine cut into the Aconity printer, which prints the tensile bars.",
+   "phonemes": "ðɪ ˈɑːɹm ɹˈʌnz ðə sˈɪvɪŋ sˈɛl ˌɔn ɪts ˈoʊn, ðˈɛn pˈɔːɹz ðə fˈaɪn kˈʌt ˌɪntʊ ðɪ ækˈɑːnᵻɾi pɹˈɪntɚ, wˌɪtʃ pɹˈɪnts ðə tˈɛnsəl bˈɑːɹz.",
+   "seconds": 7.47,
+   "base.en": {
+    "heard": "The arm runs the sieving cell on its own, then pours the fine cut into the aconity printer, which prints the tensile bars.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "aconity",
+      0.43
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "The arm runs the sieving cell on its own, then pours the fine cut into the aconity printer, which prints the tensile bars.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 27,
+   "chapter": "alloy3",
+   "part": "alloy_print",
+   "text": "No sieve shaker found is sold for robot loading, so the arm turns the lid's clamp knobs as a person would.",
+   "spoken": "No sieve shaker found is sold for robot loading, so the arm turns the lid's clamp knobs as a person would.",
+   "phonemes": "nˈoʊ sˈɪv ʃˈeɪkɚ fˈaʊnd ɪz sˈoʊld fɔːɹ ɹˈoʊbɑːt lˈoʊdɪŋ, sˌoʊ ðɪ ˈɑːɹm tˈɜːnz ðə lˈɪdz klˈæmp nˈɑːbz æz ɐ pˈɜːsən wˈʊd.",
+   "seconds": 6.57,
+   "base.en": {
+    "heard": "No Siv Shaker found is sold for robot loading, so the arm turns the lids clamp knobs as a person would.",
+    "wer": 0.048,
+    "diffs": [
+     [
+      "substitute",
+      "sieve",
+      "siv"
+     ]
+    ],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "No sieve shaker found is sold for robot loading, so the arm turns the lids clamp knobs as a person would.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 28,
+   "chapter": "alloy3",
+   "part": "alloy_print",
+   "text": "That photo is real: the lab's bronze powder from October, sieved by hand. Of nearly two kilograms melted in two runs, a hundred and eighty-eight grams came out under sixty-three microns.",
+   "spoken": "That photo is real: the lab's bronze powder from October, sieved by hand. Of nearly two kilograms melted in two runs, a hundred and eighty-eight grams came out under sixty-three microns.",
+   "phonemes": "ðæt fˈoʊɾoʊ ɪz ɹˈiːəl: ðə lˈæbz bɹˈɑːnz pˈaʊdɚ fɹʌm ɑːktˈoʊbɚ, sˈɪvd baɪ hˈænd. ʌv nˌɪɹli tˈuː kˈɪləɡɹˌæmz mˈɛltᵻd ɪn tˈuː ɹˈʌnz, ɐ hˈʌndɹɪd ænd ˈeɪɾiˈeɪt ɡɹˈæmz kˈeɪm ˈaʊt ˌʌndɚ sˈɪkstiθɹˈiː mˈaɪkɹɑːnz.",
+   "seconds": 12.63,
+   "base.en": {
+    "heard": "That photo is real. The lab's bronze powder from October, sieved by hand. Of nearly two kilograms melted in two runs, 188 grams came out under 63 microns.",
+    "wer": 0.03,
+    "diffs": [
+     [
+      "substitute",
+      "a",
+      "one"
+     ]
+    ],
+    "unsure": [
+     [
+      "two",
+      0.49
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "That photo is real. The lab's bronze powder from October sieved by hand. Of nearly two kilograms melted in two runs, 188 grams came out under 63 microns.",
+    "wer": 0.03,
+    "diffs": [
+     [
+      "substitute",
+      "a",
+      "one"
+     ]
+    ],
+    "unsure": [
+     [
+      "two",
+      0.49
+     ]
+    ]
+   }
+  },
+  {
+   "i": 29,
+   "chapter": "alloy4",
+   "part": "card",
+   "text": "While the build prints, a retained sample of the sieved powder goes round the trays: size distribution, X-ray diffraction, X-ray fluorescence and the SEM.",
+   "spoken": "While the build prints, a retained sample of the sieved powder goes round the trays: size distribution, X-ray diffraction, X-ray fluorescence and the S E M.",
+   "phonemes": "wˌaɪl ðə bˈɪld pɹˈɪnts, ɐ ɹᵻtˈeɪnd sˈæmpəl ʌvðə sˈɪvd pˈaʊdɚ ɡoʊz ɹˈaʊnd ðə tɹˈeɪz: sˈaɪz dˌɪstɹɪbjˈuːʃən, ˈɛksɹˈeɪ dᵻfɹˈækʃən, ˈɛksɹˈeɪ flʊɹɹˈɛsəns ænd ðɪ ˈɛs ˈiː ˈɛm.",
+   "seconds": 10.37,
+   "base.en": {
+    "heard": "While the build prints, a retained sample of the sieved powder goes round the trays. Size distribution, X-ray diffraction, X-ray fluorescence, and the SEM.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "While",
+      0.37
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "While the build prints, a retained sample of the sieved powder goes around the trays. Size distribution, x-ray diffraction, x-ray fluorescence, and the SEM.",
+    "wer": 0.038,
+    "diffs": [
+     [
+      "substitute",
+      "round",
+      "around"
+     ]
+    ],
+    "unsure": []
+   }
+  },
+  {
+   "i": 30,
+   "chapter": "alloy4",
+   "part": "alloy_powder",
+   "text": "These SEM images are real: the lab's own atomized aluminium alloy powder. The diffraction pattern, size curve and composition panel in this chapter are computed or illustrative.",
+   "spoken": "These S E M images are real: the lab's own atomized aluminum alloy powder. The diffraction pattern, size curve and composition panel in this chapter are computed or illustrative.",
+   "phonemes": "ðiːz ˈɛs ˈiː ˈɛm ˈɪmɪdʒᵻz ɑːɹ ɹˈiːəl: ðə lˈæbz ˈoʊn ˈæɾəmˌaɪzd ɐlˈuːmɪnəm ˈælɔɪ pˈaʊdɚ. ðə dᵻfɹˈækʃən pˈætɚn, sˈaɪz kˈɜːv ænd kˌɑːmpəzˈɪʃən pˈænəl ɪn ðɪs tʃˈæptɚɹ ɑːɹ kəmpjˈuːɾᵻd ɔːɹ ˈɪləstɹətˌɪv.",
+   "seconds": 12.93,
+   "base.en": {
+    "heard": "These SEM images are real. The lab's own atomized aluminum alloy powder. The diffraction pattern, size, curve, and composition panel in this chapter are computed or illustrative.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "These SEM images are real. The labs own atomized aluminum alloy powder. The diffraction pattern, size, curve, and composition panel in this chapter are computed or illustrative.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 31,
+   "chapter": "alloy5",
+   "part": "card",
+   "text": "The build is cleared of powder, its bars cut off in the wire EDM, rinsed and heat treated, then pulled at room temperature and at two hundred degrees.",
+   "spoken": "The build is cleared of powder, its bars cut off in the wire E D M, rinsed and heat treated, then pulled at room temperature and at two hundred degrees.",
+   "phonemes": "ðə bˈɪld ɪz klˈɪɹd ʌv pˈaʊdɚ, ɪts bˈɑːɹz kˈʌt ˈɔf ɪnðə wˈaɪɚɹ ˈiː dˈiː ˈɛm, ɹˈɪnst ænd hˈiːt tɹˈiːɾᵻd, ðˈɛn pˈʊld æt ɹˈuːm tˈɛmpɹɪtʃɚ ænd æt tˈuː hˈʌndɹɪd dᵻɡɹˈiːz.",
+   "seconds": 9.49,
+   "base.en": {
+    "heard": "The build is cleared of powder. Its bars cut off in the wire EDM, rinsed and heat treated, then pulled at room temperature and at 200 degrees.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "The build is cleared of powder. Its bars cut off in the wire EDM, rinsed and heat treated, then pulled at room temperature and at 200 degrees.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 32,
+   "chapter": "alloy5",
+   "part": "alloy_workflow",
+   "text": "The alloy lab's heat-treatment schedule is still to be set, so the hour at five hundred and thirty degrees shown here, before the quench and ageing, is an assumption.",
+   "spoken": "The alloy lab's heat-treatment schedule is still to be set, so the hour at five hundred and thirty degrees shown here, before the quench and ageing, is an assumption.",
+   "phonemes": "ðɪ ˈælɔɪ lˈæbz hˈiːttɹˈiːtmənt skˈɛdʒuːl ɪz stˈɪl təbi sˈɛt, sˌoʊ ðɪ ˈaʊɚɹ æt fˈaɪv hˈʌndɹɪd ænd θˈɜːɾi dᵻɡɹˈiːz ʃˈoʊn hˈɪɹ, bᵻfˌɔːɹ ðə kwˈɛntʃ ænd ˈeɪdʒɪŋ, ɪz ɐn ɐsˈʌmpʃən.",
+   "seconds": 9.51,
+   "base.en": {
+    "heard": "The alloy lab's heat treatment schedule is still to be set. So the hour at 530 degrees shown here before the quench and aging is an assumption.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "The Alloy Labs heat treatment schedule is still to be set, so the hour at 530 degrees shown here before the quench and aging is an assumption.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "Alloy",
+      0.47
+     ],
+     [
+      "before",
+      0.47
+     ]
+    ]
+   }
+  },
+  {
+   "i": 33,
+   "chapter": "alloy5",
+   "part": "alloy_workflow",
+   "text": "The stress-strain curve is illustrative, taken from a printer maker's data sheet for this alloy, not measured.",
+   "spoken": "The stress-strain curve is illustrative, taken from a printer maker's data sheet for this alloy, not measured.",
+   "phonemes": "ðə stɹˈɛsstɹˈeɪn kˈɜːv ɪz ˈɪləstɹətˌɪv, tˈeɪkən fɹʌm ɐ pɹˈɪntɚ mˈeɪkɚz dˈeɪɾə ʃˈiːt fɔːɹ ðɪs ˈælɔɪ, nˌɑːt mˈɛʒɚd.",
+   "seconds": 6.25,
+   "base.en": {
+    "heard": "The stress strain curve is illustrative, taken from a printer maker's data sheet for this alloy, not measured.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "The stress strain curve is illustrative, taken from a printer maker's data sheet for this alloy, not measured.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 34,
+   "chapter": "alloy5",
+   "part": "edm_orientations.png",
+   "text": "Printed bars behave differently along and across the layers, so the lab wants flat, vertical and forty-five degree bars, each cut off with the plate on edge.",
+   "spoken": "Printed bars behave differently along and across the layers, so the lab wants flat, vertical and forty-five degree bars, each cut off with the plate on edge.",
+   "phonemes": "pɹˈɪntᵻd bˈɑːɹz bᵻhˈeɪv dˈɪfɹəntli ɐlˈɔŋ ænd əkɹˌɑːs ðə lˈeɪɚz, sˌoʊ ðə lˈæb wˈɔnts flˈæt, vˈɜːɾɪkəl ænd fˈɔːɹɾifˈaɪv dᵻɡɹˈiː bˈɑːɹz, ˈiːtʃ kˈʌt ˈɔf wɪððə plˈeɪt ˌɔn ˈɛdʒ.",
+   "seconds": 9.47,
+   "base.en": {
+    "heard": "printed bars behave differently along and across the layers. So the lab wants flat, vertical, and 45-degree bars, each cut off with the plate on edge.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "Printed bars behave differently along and across the layers, so the lab wants flat, vertical, and 45 degree bars, each cut off with the plate on edge.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 35,
+   "chapter": "alloy6",
+   "part": "card",
+   "text": "Sections are cut from the build, mounted and polished. Polishing is the hardest step to automate, and the chapter shows where.",
+   "spoken": "Sections are cut from the build, mounted and polished. Polishing is the hardest step to automate, and the chapter shows where.",
+   "phonemes": "sˈɛkʃənz ɑːɹ kˈʌt fɹʌmðə bˈɪld, mˈaʊntᵻd ænd pˈɑːlɪʃt. pˈɑːlɪʃɪŋ ɪz ðə hˈɑːɹdɪst stˈɛp tʊ ˈɔːɾəmˌeɪt, ænd ðə tʃˈæptɚ ʃˈoʊz wˈɛɹ.",
+   "seconds": 7.47,
+   "base.en": {
+    "heard": "Sections are cut from the build, mounted and polished. Polishing is the hardest step to automate, and the chapter shows where.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "Sections are cut from the build, mounted and polished. Polishing is the hardest step to automate, and the chapter shows where.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 36,
+   "chapter": "alloy6",
+   "part": "alloy_prep",
+   "text": "Re-papering a disc means prying off a ring, peeling, laying new paper flat and refitting the ring. No robot has been shown doing that, so each grit gets its own disc.",
+   "spoken": "Re-papering a disc means prying off a ring, peeling, laying new paper flat and refitting the ring. No robot has been shown doing that, so each grit gets its own disc.",
+   "phonemes": "ɹˌiːpˈeɪpɚɹɪŋ ɐ dˈɪsk mˈiːnz pɹˈaɪɪŋ ˈɔf ɐ ɹˈɪŋ, pˈiːlɪŋ, lˈeɪɪŋ nˈuː pˈeɪpɚ flˈæt ænd ɹˈiːfɪɾɪŋ ðə ɹˈɪŋ. nˈoʊ ɹˈoʊbɑːt hˈæzbiːn ʃˈoʊn dˌuːɪŋ ðˈæt, sˌoʊ ˈiːtʃ ɡɹˈɪt ɡˈɛts ɪts ˈoʊn dˈɪsk.",
+   "seconds": 10.43,
+   "base.en": {
+    "heard": "Repapering a disc means prying off a ring, peeling, laying new paper flat and refitting the ring. No robot has been shown doing that, so each grit gets its own disc.",
+    "wer": 0.062,
+    "diffs": [
+     [
+      "substitute",
+      "re",
+      "repapering"
+     ],
+     [
+      "delete",
+      "papering",
+      ""
+     ]
+    ],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "Repapering a disc means prying off a ring, peeling, laying new paper flat, and refitting the ring. No robot has been shown doing that, so each grit gets its own disc.",
+    "wer": 0.062,
+    "diffs": [
+     [
+      "substitute",
+      "re",
+      "repapering"
+     ],
+     [
+      "delete",
+      "papering",
+      ""
+     ]
+    ],
+    "unsure": []
+   }
+  },
+  {
+   "i": 37,
+   "chapter": "alloy7",
+   "part": "card",
+   "text": "The trays come to the opening in turn: the SEM, the nanoindenter, the indentation plastometer, micro-Vickers hardness and the digital microscope.",
+   "spoken": "The trays come to the opening in turn: the S E M, the nanoindenter, the indentation plastometer, micro-Vickers hardness and the digital microscope.",
+   "phonemes": "ðə tɹˈeɪz kˈʌm tə ðɪ ˈoʊpənɪŋ ɪn tˈɜːn: ðɪ ˈɛs ˈiː ˈɛm, ðə nˌænoʊˌɪndˈɛntɚ, ðɪ ˌɪndɛntˈeɪʃən plæstˈɑːmɪɾɚ, mˈaɪkɹoʊvˈɪkɚz hˈɑːɹdnəs ænd ðə dˈɪdʒɪɾəl mˈaɪkɹəskˌoʊp.",
+   "seconds": 9.77,
+   "base.en": {
+    "heard": "The trays come to the opening in turn. The SEM, the nano-indentre, the indentation plastometer, microvickers hardness, and the digital microscope.",
+    "wer": 0.182,
+    "diffs": [
+     [
+      "insert",
+      "",
+      "nano"
+     ],
+     [
+      "substitute",
+      "nanoindenter",
+      "indentre"
+     ],
+     [
+      "substitute",
+      "micro",
+      "microvickers"
+     ],
+     [
+      "delete",
+      "vickers",
+      ""
+     ]
+    ],
+    "unsure": [
+     [
+      "nano",
+      0.47
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "The trays come to the opening in turn. The SEM, the nanoindenter, the indentation plastometer, micro Vickers hardness, and the digital microscope.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "Vickers",
+      0.46
+     ]
+    ]
+   }
+  },
+  {
+   "i": 38,
+   "chapter": "alloy7",
+   "part": "alloy_characterize",
+   "text": "No section of the lab's own prints has been imaged yet, so these data panels are illustrative or computed; only the SEM inset, of the lab's powder, is real.",
+   "spoken": "No section of the lab's own prints has been imaged yet, so these data panels are illustrative or computed; only the S E M inset, of the lab's powder, is real.",
+   "phonemes": "nˈoʊ sˈɛkʃən ʌvðə lˈæbz ˈoʊn pɹˈɪnts hˈæzbiːn ˈɪmɪdʒd jˈɛt, sˌoʊ ðiːz dˈeɪɾə pˈænəlz ɑːɹ ˈɪləstɹətˌɪv ɔːɹ kəmpjˈuːɾᵻd; ˈoʊnli ðɪ ˈɛs ˈiː ˈɛm ˈɪnsɛt, ʌvðə lˈæbz pˈaʊdɚ, ɪz ɹˈiːəl.",
+   "seconds": 10.73,
+   "base.en": {
+    "heard": "No section of the lab's own prints has been imaged yet, so these data panels are illustrative or computed. Only the SEM inset of the lab's powder is real.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "No section of the lab's own prints has been imaged yet, so these data panels are illustrative or computed. Only the SEM inset of the lab's powder is real.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 39,
+   "chapter": "stations",
+   "part": "card",
+   "text": "Then the stations the alloy route doesn't use: a tensile tester on its side, two gloveboxes, fume hoods, the sample and powder stores, and packaging for shipping.",
+   "spoken": "Then the stations the alloy route doesn't use: a tensile tester on its side, two gloveboxes, fume hoods, the sample and powder stores, and packaging for shipping.",
+   "phonemes": "ðˈɛn ðə stˈeɪʃənz ðɪ ˈælɔɪ ɹˈaʊt dˈʌzənt jˈuːz: ɐ tˈɛnsəl tˈɛstɚɹ ˌɔn ɪts sˈaɪd, tˈuː ɡlˈʌvbɑːksᵻz, fjˈuːm hˈʊdz, ðə sˈæmpəl ænd pˈaʊdɚ stˈɔːɹz, ænd pˈækɪdʒɪŋ fɔːɹ ʃˈɪpɪŋ.",
+   "seconds": 10.15,
+   "base.en": {
+    "heard": "Then the station's the alloy route doesn't use. A tensile tester on its side, two glove boxes, fume hoods, the sample and powder stores, and packaging for shipping.",
+    "wer": 0.074,
+    "diffs": [
+     [
+      "insert",
+      "",
+      "glove"
+     ],
+     [
+      "substitute",
+      "gloveboxes",
+      "boxes"
+     ]
+    ],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "then the stations the alloy route doesn't use. A tensile tester on its side, two glove boxes, fume hoods, the sample and powder stores, and packaging for shipping.",
+    "wer": 0.074,
+    "diffs": [
+     [
+      "insert",
+      "",
+      "glove"
+     ],
+     [
+      "substitute",
+      "gloveboxes",
+      "boxes"
+     ]
+    ],
+    "unsure": []
+   }
+  },
+  {
+   "i": 40,
+   "chapter": "stations",
+   "part": "instruments/tensile_h",
+   "text": "It takes thin bars only: the route's six by six millimetre bar needs nearly fifteen kilonewtons, and no motorized horizontal machine with a published size pulls that.",
+   "spoken": "It takes thin bars only: the route's six by six millimetre bar needs nearly fifteen kilonewtons, and no motorized horizontal machine with a published size pulls that.",
+   "phonemes": "ɪt tˈeɪks θˈɪn bˈɑːɹz ˈoʊnli: ðə ɹˈaʊts sˈɪks baɪ sˈɪks mˈɪlɪmˌiːɾɚ bˈɑːɹ nˈiːdz nˌɪɹli fˈɪftiːn kˈɪlənˌuːtənz, ænd nˈoʊ mˈoʊɾɚɹˌaɪzd hˌɔːɹɪzˈɔntəl məʃˈiːn wɪð ɐ pˈʌblɪʃt sˈaɪz pˈʊlz ðˈæt.",
+   "seconds": 10.65,
+   "base.en": {
+    "heard": "It takes thin bars only. The Route 6x6mm bar needs nearly 15 kN and no motorized horizontal machine with a published size pulls that.",
+    "wer": 0.148,
+    "diffs": [
+     [
+      "substitute",
+      "routes",
+      "route"
+     ],
+     [
+      "substitute",
+      "by",
+      "x"
+     ],
+     [
+      "substitute",
+      "millimeter",
+      "mm"
+     ],
+     [
+      "substitute",
+      "kilonewtons",
+      "kn"
+     ]
+    ],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "It takes thin bars only. The route six by six millimeter bar needs nearly 15 kilonewtons, and no motorized horizontal machine with a published size pulls that.",
+    "wer": 0.037,
+    "diffs": [
+     [
+      "substitute",
+      "routes",
+      "route"
+     ]
+    ],
+    "unsure": [
+     [
+      "route",
+      0.39
+     ],
+     [
+      "six",
+      0.39
+     ]
+    ]
+   }
+  },
+  {
+   "i": 41,
+   "chapter": "fab",
+   "part": "card",
+   "text": "Fabrication next. Of three compact metal printers only the smallest fits on a tray, and it isn't shipping yet; the resin printers and a circuit-board line do fit.",
+   "spoken": "Fabrication next. Of three compact metal printers only the smallest fits on a tray, and it isn't shipping yet; the resin printers and a circuit-board line do fit.",
+   "phonemes": "fˌæbɹɪkˈeɪʃən nˈɛkst. ʌv θɹˈiː kəmpˈækt mˈɛɾəl pɹˈɪntɚz ˈoʊnli ðə smˈɔːlɪst fˈɪts ˌɔn ɐ tɹˈeɪ, ænd ɪɾ ˌɪzənt ʃˈɪpɪŋ jˈɛt; ðə ɹˈɛzɪn pɹˈɪntɚz ænd ɐ sˈɜːkɪtbˈɔːɹd lˈaɪn dˈuː fˈɪt.",
+   "seconds": 10.6,
+   "base.en": {
+    "heard": "Fabrication next, of three compact metal printers only the smallest fits on a tray, and it isn't shipping yet, the resin printers and a circuit board line do fit.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "Fabrication next. Of three compact metal printers, only the smallest fits on a tray, and it isn't shipping yet. The resin printers and a circuit board line do fit.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 42,
+   "chapter": "fab",
+   "part": "instruments/ded",
+   "text": "The MX-Lab feeds up to six powders to one nozzle, so a single build can hold six different compositions.",
+   "spoken": "The M X Lab feeds up to six powders to one nozzle, so a single build can hold six different compositions.",
+   "phonemes": "ðɪ ˈɛm ˈɛks lˈæb fˈiːdz ˌʌp tə sˈɪks pˈaʊdɚz tə wˈʌn nˈɑːzəl, sˌoʊ ɐ sˈɪŋɡəl bˈɪld kæn hˈoʊld sˈɪks dˈɪfɹənt kˌɑːmpəzˈɪʃənz.",
+   "seconds": 6.7,
+   "base.en": {
+    "heard": "The MX lab feeds up to six powders to one nozzle, so a single build can hold six different compositions.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "The MX lab feeds up to six powders to one nozzle, so a single build can hold six different compositions.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 43,
+   "chapter": "scale",
+   "part": "card",
+   "text": "An alloy that passes the route goes on to a large-format printer for real parts, and to a robot cell that repairs worn ship parts.",
+   "spoken": "An alloy that passes the route goes on to a large-format printer for real parts, and to a robot cell that repairs worn ship parts.",
+   "phonemes": "ɐn ˈælɔɪ ðæt pˈæsᵻz ðə ɹˈaʊt ɡoʊz ˌɔn tʊ ɐ lˈɑːɹdʒfˈɔːɹmæt pɹˈɪntɚ fɔːɹ ɹˈiːəl pˈɑːɹts, ænd tʊ ɐ ɹˈoʊbɑːt sˈɛl ðæt ɹᵻpˈɛɹz wˈɔːɹn ʃˈɪp pˈɑːɹts.",
+   "seconds": 8.7,
+   "base.en": {
+    "heard": "An alloy that passes the route goes on to a large format printer for real parts, and to a robot cell that repairs worn ship parts.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "An alloy that passes the route goes on to a large format printer for real parts, and to a robot cell that repairs worn ship parts.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 44,
+   "chapter": "scale",
+   "part": "scaleup",
+   "text": "At this scale the powder is bought, not atomized: a hundred-millimetre build in this bed takes about twenty-two kilograms, against four hundred and forty grams for the lab's printer.",
+   "spoken": "At this scale the powder is bought, not atomized: a hundred-millimetre build in this bed takes about twenty-two kilograms, against four hundred and forty grams for the lab's printer.",
+   "phonemes": "æt ðɪs skˈeɪl ðə pˈaʊdɚɹ ɪz bˈɔːt, nˌɑːt ˈæɾəmˌaɪzd: ɐ hˈʌndɹɪdmˈɪlɪmˌiːɾɚ bˈɪld ɪn ðɪs bˈɛd tˈeɪks ɐbˌaʊt twˈɛntitˈuː kˈɪləɡɹˌæmz, ɐɡˈɛnst fˈɔːɹ hˈʌndɹɪd ænd fˈɔːɹɾi ɡɹˈæmz fɚðə lˈæbz pɹˈɪntɚ.",
+   "seconds": 10.99,
+   "base.en": {
+    "heard": "At this scale, the powder is bought, not atomized. A 100-millimeter build in this bed takes about 22 kilograms against 440 grams for the lab's printer. Enter.",
+    "wer": 0.065,
+    "diffs": [
+     [
+      "insert",
+      "",
+      "one"
+     ],
+     [
+      "insert",
+      "",
+      "enter"
+     ]
+    ],
+    "unsure": [
+     [
+      "Enter.",
+      0.14
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "At this scale, the powder is bought, not atomized. A 100 millimeter build in this bed takes about 22 kilograms against 440 grams for the lab's printer.",
+    "wer": 0.032,
+    "diffs": [
+     [
+      "insert",
+      "",
+      "one"
+     ]
+    ],
+    "unsure": []
+   }
+  },
+  {
+   "i": 45,
+   "chapter": "limits",
+   "part": "card",
+   "text": "Some things don't fit: a hot isostatic press is too tall, too deep and too heavy for a tray, and its cooling can't stop for a ride in the lift.",
+   "spoken": "Some things don't fit: a hot isostatic press is too tall, too deep and too heavy for a tray, and its cooling can't stop for a ride in the lift.",
+   "phonemes": "sˌʌm θˈɪŋz dˈoʊnt fˈɪt: ɐ hˈɑːt ˌaɪsəstˈæɾɪk pɹˈɛs ɪz tˈuː tˈɔːl, tˈuː dˈiːp ænd tˈuː hˈɛvi fɚɹə tɹˈeɪ, ænd ɪts kˈuːlɪŋ kˈænt stˈɑːp fɚɹɚ ɹˈaɪd ɪnðə lˈɪft.",
+   "seconds": 9.15,
+   "base.en": {
+    "heard": "Some things don't fit. A hot isostatic press is too tall, too deep and too heavy for a tray, and its cooling can't stop for a ride in the lift.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "Some things don't fit. A hot isostatic press is too tall, too deep and too heavy for a tray, and its cooling can't stop for a ride in the lift.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 46,
+   "chapter": "limits",
+   "part": "tall_opening_bays.png",
+   "text": "The opening used throughout, just under a metre tall, comes from one used unit's listing. Kardex publishes about seventy-three centimetres of goods height; a taller bay is a question for Kardex.",
+   "spoken": "The opening used throughout, just under a metre tall, comes from one used unit's listing. Kardex publishes about seventy-three centimetres of goods height; a taller bay is a question for Kardex.",
+   "phonemes": "ðɪ ˈoʊpənɪŋ jˈuːzd θɹuːˈaʊt, dʒˈʌst ˌʌndɚɹ ɐ mˈiːɾɚ tˈɔːl, kˈʌmz fɹʌm wˈʌn jˈuːzd jˈuːnɪts lˈɪstɪŋ. kˈɑːɹdɛks pˈʌblɪʃᵻz ɐbˌaʊt sˈɛvəntiθɹˈiː sˈɛntɪmˌiːɾɚz ʌv ɡˈʊdz hˈaɪt; ɐ tˈɔːlɚ bˈeɪ ɪz ɐ kwˈɛstʃən fɔːɹ kˈɑːɹdɛks.",
+   "seconds": 12.12,
+   "base.en": {
+    "heard": "The opening used throughout, just under a meter tall, comes from one used unit's listing. Cardex publishes about 73 centimeters of goods height. A taller bay is a question for Cardex.",
+    "wer": 0.062,
+    "diffs": [
+     [
+      "substitute",
+      "kardex",
+      "cardex"
+     ],
+     [
+      "substitute",
+      "kardex",
+      "cardex"
+     ]
+    ],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "The opening used throughout, just under a meter tall, comes from one used units listing. Cardex publishes about 73 centimeters of goods height. A taller bay is a question for Cardex.",
+    "wer": 0.062,
+    "diffs": [
+     [
+      "substitute",
+      "kardex",
+      "cardex"
+     ],
+     [
+      "substitute",
+      "kardex",
+      "cardex"
+     ]
+    ],
+    "unsure": []
+   }
+  },
+  {
+   "i": 47,
+   "chapter": "checks",
+   "part": "card",
+   "text": "Ten models were fitted to frames of the real machines; one still fails its held-out check, the digital microscope's stand. Every instrument's motion also ran through MuJoCo.",
+   "spoken": "Ten models were fitted to frames of the real machines; one still fails its held-out check, the digital microscope's stand. Every instrument's motion also ran through MuJoCo.",
+   "phonemes": "tˈɛn mˈɑːdəlz wɜː fˈɪɾᵻd tə fɹˈeɪmz ʌvðə ɹˈiːəl məʃˈiːnz; wˈʌn stˈɪl fˈeɪlz ɪts hˈɛldˈaʊt tʃˈɛk, ðə dˈɪdʒɪɾəl mˈaɪkɹəskˌoʊpz stˈænd. ˈɛvɹi ˈɪnstɹəmənts mˈoʊʃən ˈɔːlsoʊ ɹˈæn θɹuː mˈuː dʒˈoʊ kˈoʊ.",
+   "seconds": 11.09,
+   "base.en": {
+    "heard": "Ten models were fitted to frames of the real machines, one still fails its held-out check, the digital microscope stand. Every instrument's motion also ran through Mujo-Co.",
+    "wer": 0.107,
+    "diffs": [
+     [
+      "substitute",
+      "microscopes",
+      "microscope"
+     ],
+     [
+      "insert",
+      "",
+      "mujo"
+     ],
+     [
+      "substitute",
+      "mujoco",
+      "co"
+     ]
+    ],
+    "unsure": [
+     [
+      "real",
+      0.39
+     ],
+     [
+      "Mujo",
+      0.37
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "Ten models were fitted to frames of the real machines. One still fails its held-out check, the digital microscopes stand. Every instrument's motion also ran through MujoCo.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 48,
+   "chapter": "checks",
+   "part": "collisions/round11_sheet.png",
+   "text": "A stricter audit caught contacts the old rules missed. After its fixes, six clips were down to two frames or fewer; the powder checks, sample prep and scale-up still had some.",
+   "spoken": "A stricter audit caught contacts the old rules missed. After its fixes, six clips were down to two frames or fewer; the powder checks, sample prep and scale-up still had some.",
+   "phonemes": "ɐ stɹˈɪktɚɹ ˈɔːdɪt kˈɔːt kˈɑːntækts ðɪ ˈoʊld ɹˈuːlz mˈɪst. ˈæftɚɹ ɪts fˈɪksᵻz, sˈɪks klˈɪps wɜː dˌaʊn tə tˈuː fɹˈeɪmz ɔːɹ fjˈuːɚ; ðə pˈaʊdɚ tʃˈɛks, sˈæmpəl pɹˈɛp ænd skˈeɪlˌʌp stˈɪl hˌæd sʌm.",
+   "seconds": 11.14,
+   "base.en": {
+    "heard": "A stricter audit caught contacts the old rules missed. After its fixes, six clips were down to two frames or fewer. The powder checks, sample prep and scale-up still had some.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "A stricter audit caught contacts the old rule's mist. After its fixes, six clips were down to two frames or fewer, the powder checks, sample prep and scale-up still had some.",
+    "wer": 0.031,
+    "diffs": [
+     [
+      "substitute",
+      "missed",
+      "mist"
+     ]
+    ],
+    "unsure": []
+   }
+  },
+  {
+   "i": 49,
+   "chapter": "checks",
+   "part": "collisions/round13_table.png",
+   "text": "This video's own check: the clips drawn for it were checked frame by frame as they rendered. The table lists, clip by clip, the frames where something still touches.",
+   "spoken": "This video's own check: the clips drawn for it were checked frame by frame as they rendered. The table lists, clip by clip, the frames where something still touches.",
+   "phonemes": "ðɪs vˈɪdɪoʊz ˈoʊn tʃˈɛk: ðə klˈɪps dɹˈɔːn fɔːɹ ɪt wɜː tʃˈɛkt fɹˈeɪm baɪ fɹˈeɪm æz ðeɪ ɹˈɛndɚd. ðə tˈeɪbəl lˈɪsts, klˈɪp baɪ klˈɪp, ðə fɹˈeɪmz wˌɛɹ sˈʌmθɪŋ stˈɪl tˈʌtʃᵻz.",
+   "seconds": 9.88,
+   "base.en": {
+    "heard": "This video's own check. The clips drawn for it were checked frame by frame as they rendered. The table lists clip by clip, the frames where something still touches.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "clip",
+      0.48
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "This video's own check. The clips drawn for it were checked frame by frame as they rendered. The table lists, clip by clip, the frames where something still touches.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 50,
+   "chapter": "upkeep",
+   "part": "card",
+   "text": "Maintenance is booked into the same schedule as the experiments: calendar service, consumables by use, checks the arm runs between jobs, and repairs.",
+   "spoken": "Maintenance is booked into the same schedule as the experiments: calendar service, consumables by use, checks the arm runs between jobs, and repairs.",
+   "phonemes": "mˈeɪntənəns ɪz bˈʊkt ˌɪntʊ ðə sˈeɪm skˈɛdʒuːl æz ðɪ ɛkspˈɛɹɪmənts: kˈæləndɚ sˈɜːvɪs, kənsˈuːməbəlz baɪ jˈuːs, tʃˈɛks ðɪ ˈɑːɹm ɹˈʌnz bᵻtwˌiːn dʒˈɑːbz, ænd ɹᵻpˈɛɹz.",
+   "seconds": 9.58,
+   "base.en": {
+    "heard": "Maintenance is booked into the same schedule as the experiments. Calendar service, consumables by use, checks the arm runs between jobs and repairs. Pairs.",
+    "wer": 0.043,
+    "diffs": [
+     [
+      "insert",
+      "",
+      "pairs"
+     ]
+    ],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "Maintenance is booked into the same schedule as the experiments. Calendar service, consumables by use, checks the arm runs between jobs and repairs.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 51,
+   "chapter": "upkeep",
+   "part": "upkeep_year.png",
+   "text": "In this modelled year, upkeep and failures cost fifteen of three hundred and twenty-four alloys; other random draws, as few as three. Most intervals and every failure rate are assumed.",
+   "spoken": "In this modelled year, upkeep and failures cost fifteen of three hundred and twenty-four alloys; other random draws, as few as three. Most intervals and every failure rate are assumed.",
+   "phonemes": "ɪn ðɪs mˈɑːdəld jˈɪɹ, ˈʌpkiːp ænd fˈeɪlɪɹz kˈɔst fˈɪftiːn ʌv θɹˈiː hˈʌndɹɪd ænd twˈɛntifˈɔːɹ ˈælɔɪz; ˈʌðɚ ɹˈændəm dɹˈɔːz, æz fjˈuː æz θɹˈiː. mˈoʊst ˈɪntɚvəlz ænd ˈɛvɹi fˈeɪlɪɹ ɹˈeɪt ɑːɹ ɐsˈuːmd.",
+   "seconds": 11.35,
+   "base.en": {
+    "heard": "In this modeled year, upkeep and failures cost 15 of 324 alloys, other random draws, as few as three. Most intervals and every failure rate are assumed.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "In this modeled year, upkeep and failures cost 15 of 324 alloys, other random draws, as few as three. Most intervals and every failure rate are assumed.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 52,
+   "chapter": "bottlenecks",
+   "part": "card",
+   "text": "The modelled lab fully tests about one alloy a day, a pace set by staffing: an atomizer run starts only when someone can change the crucible.",
+   "spoken": "The modelled lab fully tests about one alloy a day, a pace set by staffing: an atomizer run starts only when someone can change the crucible.",
+   "phonemes": "ðə mˈɑːdəld lˈæb fˈʊli tˈɛsts ɐbˌaʊt wˈʌn ˈælɔɪ ɐ dˈeɪ, ɐ pˈeɪs sˈɛt baɪ stˈæfɪŋ: ɐn ˈæɾəmˌaɪzɚ ɹˈʌn stˈɑːɹts ˈoʊnli wɛn sˈʌmwʌn kæn tʃˈeɪndʒ ðə kɹˈuːsᵻbəl.",
+   "seconds": 9.3,
+   "base.en": {
+    "heard": "The modeled lab fully tests about one alloy a day, a pace set by staffing. An atomizer run starts only when someone can change the crucible.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "The modeled lab fully tests about one alloy a day, a pace set by staffing. An atomizer run starts only when someone can change the crucible.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 53,
+   "chapter": "bottlenecks",
+   "part": "bottleneck_ladder.png",
+   "text": "Ten a day would take crucible changes round the clock, by people or robots, three atomizers, four printers, and floor cells with their own arms.",
+   "spoken": "Ten a day would take crucible changes round the clock, by people or robots, three atomizers, four printers, and floor cells with their own arms.",
+   "phonemes": "tˈɛn ɐ dˈeɪ wʊd tˈeɪk kɹˈuːsᵻbəl tʃˈeɪndʒᵻz ɹˈaʊnd ðə klˈɑːk, baɪ pˈiːpəl ɔːɹ ɹˈoʊbɑːts, θɹˈiː ˈæɾəmˌaɪzɚz, fˈɔːɹ pɹˈɪntɚz, ænd flˈɔːɹ sˈɛlz wɪð ðɛɹ ˈoʊn ˈɑːɹmz.",
+   "seconds": 9.3,
+   "base.en": {
+    "heard": "Ten a day would take crucible changes around the clock by people or robots, three atomizers, four printers, and floor cells with their own arms.",
+    "wer": 0.04,
+    "diffs": [
+     [
+      "substitute",
+      "round",
+      "around"
+     ]
+    ],
+    "unsure": [
+     [
+      "Ten",
+      0.38
+     ],
+     [
+      "by",
+      0.49
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "Ten a day would take crucible changes around the clock, by people or robots, three atomizers, four printers, and floor cells with their own arms.",
+    "wer": 0.04,
+    "diffs": [
+     [
+      "substitute",
+      "round",
+      "around"
+     ]
+    ],
+    "unsure": [
+     [
+      "Ten",
+      0.43
+     ],
+     [
+      "around",
+      0.3
+     ]
+    ]
+   }
+  },
+  {
+   "i": 54,
+   "chapter": "finale",
+   "part": "timelapse",
+   "text": "By the end of the first year: about three hundred alloys fully tested, a hundred and sixty kilograms of powder, and a hundred terabytes of video if every stream is kept.",
+   "spoken": "By the end of the first year: about three hundred alloys fully tested, a hundred and sixty kilograms of powder, and a hundred terabytes of video if every stream is kept.",
+   "phonemes": "baɪ ðɪ ˈɛnd ʌvðə fˈɜːst jˈɪɹ: ɐbˌaʊt θɹˈiː hˈʌndɹɪd ˈælɔɪz fˈʊli tˈɛstᵻd, ɐ hˈʌndɹɪd ænd sˈɪksti kˈɪləɡɹˌæmz ʌv pˈaʊdɚ, ænd ɐ hˈʌndɹɪd tˈɛɹəbˌaɪts ʌv vˈɪdɪoʊ ɪf ˈɛvɹi stɹˈiːm ɪz kˈɛpt.",
+   "seconds": 9.96,
+   "base.en": {
+    "heard": "By the end of the first year, about 300 alloys fully tested, 160 kilograms of powder, and 100 terabytes of video if every stream is kept.",
+    "wer": 0.065,
+    "diffs": [
+     [
+      "substitute",
+      "a",
+      "one"
+     ],
+     [
+      "substitute",
+      "a",
+      "one"
+     ]
+    ],
+    "unsure": [
+     [
+      "By",
+      0.49
+     ]
+    ]
+   },
+   "small.en": {
+    "heard": "by the end of the first year. About 300 alloys fully tested, 160 kilograms of powder, and 100 terabytes of video if every stream is kept.",
+    "wer": 0.065,
+    "diffs": [
+     [
+      "substitute",
+      "a",
+      "one"
+     ],
+     [
+      "substitute",
+      "a",
+      "one"
+     ]
+    ],
+    "unsure": []
+   }
+  },
+  {
+   "i": 55,
+   "chapter": "finale",
+   "part": "timelapse",
+   "text": "All of it is a model, not a measurement. The code, the notes and every source are public, in the lab's GitHub repository.",
+   "spoken": "All of it is a model, not a measurement. The code, the notes and every source are public, in the lab's GitHub repository.",
+   "phonemes": "ˈɔːl ʌv ɪɾ ɪz ɐ mˈɑːdəl, nˌɑːɾə mˈɛʒɚmənt. ðə kˈoʊd, ðə nˈoʊts ænd ˈɛvɹi sˈɔːɹs ɑːɹ pˈʌblɪk, ɪnðə lˈæbz ɡˈɪt hˈʌb ɹᵻpˈɑːzɪtˌɔːɹi.",
+   "seconds": 7.68,
+   "base.en": {
+    "heard": "All of it is a model, not a measurement. The code, the notes, and every source are public in the Labs GitHub repository.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   },
+   "small.en": {
+    "heard": "All of it is a model, not a measurement. The code, the notes, and every source are public in the Labs GitHub repository.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": [
+     [
+      "Labs",
+      0.35
+     ]
+    ]
+   }
+  }
+ ]
+}

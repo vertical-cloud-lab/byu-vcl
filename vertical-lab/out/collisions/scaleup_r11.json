@@ -1,0 +1,1395 @@
+{
+ "clip": "scaleup",
+ "frames_checked": 603,
+ "frames_with_collisions": 0,
+ "runs": [],
+ "rules": "What may touch (round 11, the default): the gripper and whatever group it is picking up, holding or putting down, within 4 s of the grasp or release, and a held part and the groups it touches when it is taken and when it is let go (where it came from and where it goes), each only up to 1.5 mm deep (collide.depth: the shortest of 26 moves that frees the pair). Anything else an arm, its gripper or what it holds touches is a collision at any depth. The movers check (collide.Movers, its own \"movers\" section) covers everything else that moves. ARM_AUDIT_RULES=old: round 10's rules (no depth limit, no movers).",
+ "rules_version": "round 11 (strict)",
+ "depth_limit_mm": 1.5,
+ "hits_allowed_before_but_too_deep": 0,
+ "fps": 6,
+ "arm_seconds": 0.0,
+ "method": "FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to 8000 triangles; every frame of the clip, after its update; depths by collide.depth (26-direction translational depth, rounded up to 1.5/3/6/12/25/50 mm, 999 past 50)",
+ "movers": {
+  "frames_checked": 603,
+  "frames_moving": 492,
+  "frames_with_collisions": 73,
+  "runs": [
+   {
+    "label": "3/9",
+    "first_frame": 110,
+    "last_frame": 110,
+    "frames": 1,
+    "depth_mm": 999.0,
+    "pairs": [
+     {
+      "mover": "cart",
+      "body": "cart/top",
+      "other": "eos:door/r8s_eos_grey0",
+      "other_group": "eos:door",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "cart",
+      "body": "cart/top",
+      "other": "eos:door/r8s_window1",
+      "other_group": "eos:door",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "cart",
+      "body": "cart/scissor",
+      "other": "eos:door/r8s_eos_grey0",
+      "other_group": "eos:door",
+      "depth_mm": 25.0
+     }
+    ]
+   },
+   {
+    "label": "6/9",
+    "first_frame": 349,
+    "last_frame": 350,
+    "frames": 2,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "saw",
+      "body": "saw/band",
+      "other": "build/brackets",
+      "other_group": "eos:lift",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "6/9",
+    "first_frame": 355,
+    "last_frame": 356,
+    "frames": 2,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "saw",
+      "body": "saw/band",
+      "other": "build/brackets",
+      "other_group": "eos:lift",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "6/9",
+    "first_frame": 371,
+    "last_frame": 376,
+    "frames": 6,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "eos:lift",
+      "body": "build/brackets",
+      "other": "saw/band",
+      "other_group": "saw",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 497,
+    "last_frame": 497,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead0_0/mesh0",
+      "other_group": "cell:bead0_0",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead0_0",
+      "body": "cell:bead0_0/mesh0",
+      "other": "cell:prop/mesh0",
+      "other_group": "cell:prop",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 499,
+    "last_frame": 499,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead0_1/mesh0",
+      "other_group": "cell:bead0_1",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead0_1",
+      "body": "cell:bead0_1/mesh0",
+      "other": "cell:prop/mesh0",
+      "other_group": "cell:prop",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 500,
+    "last_frame": 500,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead0_2/mesh0",
+      "other_group": "cell:bead0_2",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead0_2",
+      "body": "cell:bead0_2/mesh0",
+      "other": "cell:prop/mesh0",
+      "other_group": "cell:prop",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 502,
+    "last_frame": 502,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead0_3/mesh0",
+      "other_group": "cell:bead0_3",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead0_3",
+      "body": "cell:bead0_3/mesh0",
+      "other": "cell:prop/mesh0",
+      "other_group": "cell:prop",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 504,
+    "last_frame": 504,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cell:bead0_4",
+      "body": "cell:bead0_4/mesh0",
+      "other": "cell:prop/mesh0",
+      "other_group": "cell:prop",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 505,
+    "last_frame": 505,
+    "frames": 1,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead0_5/mesh0",
+      "other_group": "cell:bead0_5",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_blue0",
+      "other": "cell:bead0_5/mesh0",
+      "other_group": "cell:bead0_5",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead0_5",
+      "body": "cell:bead0_5/mesh0",
+      "other": "cell:prop/mesh0",
+      "other_group": "cell:prop",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 506,
+    "last_frame": 506,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead0_5/mesh0",
+      "other_group": "cell:bead0_5",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 509,
+    "last_frame": 510,
+    "frames": 2,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead0_5/mesh0",
+      "other_group": "cell:bead0_5",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 511,
+    "last_frame": 511,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead1_0/mesh0",
+      "other_group": "cell:bead1_0",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead1_0",
+      "body": "cell:bead1_0/mesh0",
+      "other": "cell:bead0_5/mesh0",
+      "other_group": "cell:bead0_5",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead1_0",
+      "body": "cell:bead1_0/mesh0",
+      "other": "cell:bead0_4/mesh0",
+      "other_group": "cell:bead0_4",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 512,
+    "last_frame": 512,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead1_1/mesh0",
+      "other_group": "cell:bead1_1",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead1_1",
+      "body": "cell:bead1_1/mesh0",
+      "other": "cell:bead0_4/mesh0",
+      "other_group": "cell:bead0_4",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead1_1",
+      "body": "cell:bead1_1/mesh0",
+      "other": "cell:bead0_3/mesh0",
+      "other_group": "cell:bead0_3",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 513,
+    "last_frame": 513,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead1_2/mesh0",
+      "other_group": "cell:bead1_2",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead1_2",
+      "body": "cell:bead1_2/mesh0",
+      "other": "cell:bead0_3/mesh0",
+      "other_group": "cell:bead0_3",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 515,
+    "last_frame": 515,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead1_3/mesh0",
+      "other_group": "cell:bead1_3",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead1_3",
+      "body": "cell:bead1_3/mesh0",
+      "other": "cell:bead0_2/mesh0",
+      "other_group": "cell:bead0_2",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 516,
+    "last_frame": 516,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead1_4/mesh0",
+      "other_group": "cell:bead1_4",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead1_4",
+      "body": "cell:bead1_4/mesh0",
+      "other": "cell:bead0_1/mesh0",
+      "other_group": "cell:bead0_1",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 517,
+    "last_frame": 517,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead0_0/mesh0",
+      "other_group": "cell:bead0_0",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 518,
+    "last_frame": 518,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead1_5/mesh0",
+      "other_group": "cell:bead1_5",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead0_0/mesh0",
+      "other_group": "cell:bead0_0",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead1_5",
+      "body": "cell:bead1_5/mesh0",
+      "other": "cell:bead0_0/mesh0",
+      "other_group": "cell:bead0_0",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 521,
+    "last_frame": 522,
+    "frames": 2,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead1_5/mesh0",
+      "other_group": "cell:bead1_5",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 523,
+    "last_frame": 523,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead2_0/mesh0",
+      "other_group": "cell:bead2_0",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead2_0",
+      "body": "cell:bead2_0/mesh0",
+      "other": "cell:bead1_5/mesh0",
+      "other_group": "cell:bead1_5",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead2_0",
+      "body": "cell:bead2_0/mesh0",
+      "other": "cell:bead0_0/mesh0",
+      "other_group": "cell:bead0_0",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cell:bead2_0",
+      "body": "cell:bead2_0/mesh0",
+      "other": "cell:bead1_4/mesh0",
+      "other_group": "cell:bead1_4",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 524,
+    "last_frame": 524,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead2_1/mesh0",
+      "other_group": "cell:bead2_1",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead2_1",
+      "body": "cell:bead2_1/mesh0",
+      "other": "cell:bead1_4/mesh0",
+      "other_group": "cell:bead1_4",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 525,
+    "last_frame": 525,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead2_2/mesh0",
+      "other_group": "cell:bead2_2",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead2_2",
+      "body": "cell:bead2_2/mesh0",
+      "other": "cell:bead1_3/mesh0",
+      "other_group": "cell:bead1_3",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 527,
+    "last_frame": 527,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead2_3/mesh0",
+      "other_group": "cell:bead2_3",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cell:bead2_3",
+      "body": "cell:bead2_3/mesh0",
+      "other": "cell:bead1_2/mesh0",
+      "other_group": "cell:bead1_2",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 528,
+    "last_frame": 528,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead2_4/mesh0",
+      "other_group": "cell:bead2_4",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead2_4",
+      "body": "cell:bead2_4/mesh0",
+      "other": "cell:bead1_2/mesh0",
+      "other_group": "cell:bead1_2",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cell:bead2_4",
+      "body": "cell:bead2_4/mesh0",
+      "other": "cell:bead1_1/mesh0",
+      "other_group": "cell:bead1_1",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 529,
+    "last_frame": 529,
+    "frames": 1,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead2_5/mesh0",
+      "other_group": "cell:bead2_5",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "cell:bead2_5",
+      "body": "cell:bead2_5/mesh0",
+      "other": "cell:bead1_0/mesh0",
+      "other_group": "cell:bead1_0",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead1_0/mesh0",
+      "other_group": "cell:bead1_0",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_blue0",
+      "other": "cell:bead2_5/mesh0",
+      "other_group": "cell:bead2_5",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cell:bead2_5",
+      "body": "cell:bead2_5/mesh0",
+      "other": "cell:bead1_1/mesh0",
+      "other_group": "cell:bead1_1",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 530,
+    "last_frame": 530,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead1_0/mesh0",
+      "other_group": "cell:bead1_0",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead2_5/mesh0",
+      "other_group": "cell:bead2_5",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 533,
+    "last_frame": 533,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead2_5/mesh0",
+      "other_group": "cell:bead2_5",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 534,
+    "last_frame": 534,
+    "frames": 1,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead3_0/mesh0",
+      "other_group": "cell:bead3_0",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_blue0",
+      "other": "cell:bead3_0/mesh0",
+      "other_group": "cell:bead3_0",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cell:bead3_0",
+      "body": "cell:bead3_0/mesh0",
+      "other": "cell:bead2_4/mesh0",
+      "other_group": "cell:bead2_4",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cell:bead3_0",
+      "body": "cell:bead3_0/mesh0",
+      "other": "cell:bead2_5/mesh0",
+      "other_group": "cell:bead2_5",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 535,
+    "last_frame": 535,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead3_0/mesh0",
+      "other_group": "cell:bead3_0",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 536,
+    "last_frame": 536,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead3_1/mesh0",
+      "other_group": "cell:bead3_1",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead3_1",
+      "body": "cell:bead3_1/mesh0",
+      "other": "cell:bead2_4/mesh0",
+      "other_group": "cell:bead2_4",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 537,
+    "last_frame": 537,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead3_2/mesh0",
+      "other_group": "cell:bead3_2",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead3_2",
+      "body": "cell:bead3_2/mesh0",
+      "other": "cell:bead2_2/mesh0",
+      "other_group": "cell:bead2_2",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cell:bead3_2",
+      "body": "cell:bead3_2/mesh0",
+      "other": "cell:bead2_3/mesh0",
+      "other_group": "cell:bead2_3",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 539,
+    "last_frame": 539,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead3_3/mesh0",
+      "other_group": "cell:bead3_3",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cell:bead3_3",
+      "body": "cell:bead3_3/mesh0",
+      "other": "cell:bead2_2/mesh0",
+      "other_group": "cell:bead2_2",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 540,
+    "last_frame": 540,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead3_4/mesh0",
+      "other_group": "cell:bead3_4",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead3_4",
+      "body": "cell:bead3_4/mesh0",
+      "other": "cell:bead2_1/mesh0",
+      "other_group": "cell:bead2_1",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 541,
+    "last_frame": 541,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead3_5/mesh0",
+      "other_group": "cell:bead3_5",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead3_5",
+      "body": "cell:bead3_5/mesh0",
+      "other": "cell:bead2_0/mesh0",
+      "other_group": "cell:bead2_0",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead2_0/mesh0",
+      "other_group": "cell:bead2_0",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cell:bead3_5",
+      "body": "cell:bead3_5/mesh0",
+      "other": "cell:bead2_1/mesh0",
+      "other_group": "cell:bead2_1",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 542,
+    "last_frame": 542,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead2_0/mesh0",
+      "other_group": "cell:bead2_0",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead3_5/mesh0",
+      "other_group": "cell:bead3_5",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 545,
+    "last_frame": 546,
+    "frames": 2,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead3_5/mesh0",
+      "other_group": "cell:bead3_5",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 547,
+    "last_frame": 547,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead4_0/mesh0",
+      "other_group": "cell:bead4_0",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead4_0",
+      "body": "cell:bead4_0/mesh0",
+      "other": "cell:bead3_5/mesh0",
+      "other_group": "cell:bead3_5",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead4_0",
+      "body": "cell:bead4_0/mesh0",
+      "other": "cell:bead3_4/mesh0",
+      "other_group": "cell:bead3_4",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 548,
+    "last_frame": 548,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead4_1/mesh0",
+      "other_group": "cell:bead4_1",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead4_1",
+      "body": "cell:bead4_1/mesh0",
+      "other": "cell:bead3_4/mesh0",
+      "other_group": "cell:bead3_4",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 549,
+    "last_frame": 549,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead4_1/mesh0",
+      "other_group": "cell:bead4_1",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 550,
+    "last_frame": 550,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead4_2/mesh0",
+      "other_group": "cell:bead4_2",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 552,
+    "last_frame": 552,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead4_3/mesh0",
+      "other_group": "cell:bead4_3",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 553,
+    "last_frame": 553,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead4_4/mesh0",
+      "other_group": "cell:bead4_4",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 555,
+    "last_frame": 555,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead4_5/mesh0",
+      "other_group": "cell:bead4_5",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead3_0/mesh0",
+      "other_group": "cell:bead3_0",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cell:bead4_5",
+      "body": "cell:bead4_5/mesh0",
+      "other": "cell:bead3_1/mesh0",
+      "other_group": "cell:bead3_1",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cell:bead4_5",
+      "body": "cell:bead4_5/mesh0",
+      "other": "cell:bead3_0/mesh0",
+      "other_group": "cell:bead3_0",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 556,
+    "last_frame": 556,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead4_5/mesh0",
+      "other_group": "cell:bead4_5",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead3_0/mesh0",
+      "other_group": "cell:bead3_0",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 560,
+    "last_frame": 560,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead4_5/mesh0",
+      "other_group": "cell:bead4_5",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead4_4/mesh0",
+      "other_group": "cell:bead4_4",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 561,
+    "last_frame": 561,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead4_4/mesh0",
+      "other_group": "cell:bead4_4",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 562,
+    "last_frame": 562,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead5_0/mesh0",
+      "other_group": "cell:bead5_0",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead5_0",
+      "body": "cell:bead5_0/mesh0",
+      "other": "cell:bead4_4/mesh0",
+      "other_group": "cell:bead4_4",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 563,
+    "last_frame": 563,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead5_0/mesh0",
+      "other_group": "cell:bead5_0",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 564,
+    "last_frame": 564,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead5_1/mesh0",
+      "other_group": "cell:bead5_1",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead5_1",
+      "body": "cell:bead5_1/mesh0",
+      "other": "cell:bead4_3/mesh0",
+      "other_group": "cell:bead4_3",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 565,
+    "last_frame": 565,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead5_1/mesh0",
+      "other_group": "cell:bead5_1",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 566,
+    "last_frame": 566,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead5_1/mesh0",
+      "other_group": "cell:bead5_1",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead5_2/mesh0",
+      "other_group": "cell:bead5_2",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 567,
+    "last_frame": 568,
+    "frames": 2,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead5_2/mesh0",
+      "other_group": "cell:bead5_2",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 569,
+    "last_frame": 571,
+    "frames": 3,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead5_3/mesh0",
+      "other_group": "cell:bead5_3",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 572,
+    "last_frame": 572,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead5_4/mesh0",
+      "other_group": "cell:bead5_4",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:bead5_4",
+      "body": "cell:bead5_4/mesh0",
+      "other": "cell:bead4_2/mesh0",
+      "other_group": "cell:bead4_2",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cell:bead5_4",
+      "body": "cell:bead5_4/mesh0",
+      "other": "cell:bead4_1/mesh0",
+      "other_group": "cell:bead4_1",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 573,
+    "last_frame": 573,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead5_4/mesh0",
+      "other_group": "cell:bead5_4",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 574,
+    "last_frame": 574,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead5_4/mesh0",
+      "other_group": "cell:bead5_4",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead4_1/mesh0",
+      "other_group": "cell:bead4_1",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 575,
+    "last_frame": 575,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:bead5_5",
+      "body": "cell:bead5_5/mesh0",
+      "other": "cell:bead4_1/mesh0",
+      "other_group": "cell:bead4_1",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead5_5/mesh0",
+      "other_group": "cell:bead5_5",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead5_4/mesh0",
+      "other_group": "cell:bead5_4",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead4_1/mesh0",
+      "other_group": "cell:bead4_1",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "8/9",
+    "first_frame": 576,
+    "last_frame": 577,
+    "frames": 2,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead5_5/mesh0",
+      "other_group": "cell:bead5_5",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead4_0/mesh0",
+      "other_group": "cell:bead4_0",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cell:glow",
+      "body": "cell:glow/r8s_glow1",
+      "other": "cell:bead4_1/mesh0",
+      "other_group": "cell:bead4_1",
+      "depth_mm": 3.0
+     }
+    ]
+   }
+  ],
+  "fcl_pairs_checked": 22912,
+  "seconds": 29.0,
+  "rules": "A group \"moves\" in a frame when its world matrix changed since the last audited frame (by more than 1e-6). Groups that moved by the same rigid motion (a MiR with its cabinet, its holders and the parts on them) form one cluster and are not checked against each other: their relative poses didn't change, so no new contact can appear between them. Every visible body of a moving group is checked against every other visible body except its own group's subtree and ancestors, the arms and what they hold (the arm checks do those), liquids, and the floor with its markings (anything whose top is within FLOOR_MM, 6 mm, of z = 0: tape is paint, and a MiR's skirt is drawn down to the floor): world boxes first, all at once, then FCL on the meshes of the pairs whose boxes overlap (BVHs built only for those). The contacts a group had at its last pose before it started moving are its baseline and are left out while it keeps moving, until that pair comes apart; a new contact counts if depth() puts it deeper than DEPTH_MM (1.5 mm), so a tray set down on a table or a MiR rolling onto a floor plate isn't reported."
+ },
+ "frames_with_collisions_all": 73
+}

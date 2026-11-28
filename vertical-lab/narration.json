@@ -1,0 +1,657 @@
+[
+ {
+  "chapter": "intro",
+  "part": "card",
+  "offset": 0.5,
+  "text": "A real vertical lift module, a VLM, filmed from the sample's point of view. The planned lab keeps its instruments on the trays of two of these.",
+  "source": "README.md (The real VLM); longform.py intro card"
+ },
+ {
+  "chapter": "setup",
+  "part": "card",
+  "offset": 0.5,
+  "text": "From here on, everything is animation: makers' published sizes and photos, and our own designs where nothing exists yet. Real footage, photos and data carry a badge.",
+  "source": "longform.py intro card"
+ },
+ {
+  "chapter": "setup",
+  "part": "setup_lab",
+  "substep": 16,
+  "label": "7/9",
+  "offset": 0.5,
+  "text": "Most tray loads weigh twenty to a hundred and ten kilograms, too much for the arm or one person, so people slide each machine across from a lift table.",
+  "source": "out/setup_lab.json caption",
+  "match": "Most of what goes on a tray weighs"
+ },
+ {
+  "chapter": "setup",
+  "part": "setup_lab",
+  "match": "The chemical waste station, from the aisle",
+  "offset": 0.5,
+  "text": "The fume hood's base holds the chemical waste: a vented cabinet for the solvents and one for the acids, with an intake tray above for the capped bottles the robots bring.",
+  "source": "out/clean/setup_lab.json caption (step 5), notes/waste.md, PR #371; round 16"
+ },
+ {
+  "chapter": "services",
+  "part": "card",
+  "offset": 0.5,
+  "text": "Each powered tray has its own UPS. Docks in the side wall, in its slot and at the opening, bring mains, network, air, nitrogen and chilled water.",
+  "source": "longform.py services card; out/vlm_hookups.json caption; notes/coupling.md"
+ },
+ {
+  "chapter": "services",
+  "part": "vlm_coupling",
+  "substep": 8,
+  "label": "4/7",
+  "offset": 0.5,
+  "text": "Earth makes first and a monitoring pair last, and power is switched only once that pair closes. The couplings are catalogue parts; the dock that drives them is our own design.",
+  "source": "out/vlm_coupling.json caption; notes/coupling.md (The order things connect; What is ours)"
+ },
+ {
+  "chapter": "services",
+  "part": "ups_lineup.png",
+  "offset": 0.5,
+  "text": "Three real Vertiv lithium units, sized per tray; the online ones go wherever a computer or measurement can't be interrupted. Each runs ten minutes or more, so a stranded tray can shut down cleanly.",
+  "source": "notes/ups.md (The rule; The pick)"
+ },
+ {
+  "chapter": "services",
+  "part": "base_cameras",
+  "at": 1.0,
+  "text": "Each mobile base now carries three cameras, after a cell in the lab's robot-arms work: two low on the cabinet's ends, one on a mast over the arm's shoulder. They check the docking and watch the arm from outside; none of them is a safety device.",
+  "source": "notes/base_cameras.md (What was chosen; What each camera does that the wrist D405 and the bay camera can't); out/base_cameras_vlm.json captions (PR #374)"
+ },
+ {
+  "chapter": "services",
+  "part": "security_cameras_bay.png",
+  "offset": 0.5,
+  "text": "Off-the-shelf security cameras were costed too, in place of the Pi units: about nine to nineteen thousand dollars for the lab. Under the bay's roof most PTZ cameras don't fit.",
+  "source": "notes/security_cameras.md (Recommendation: tiers C $8,566 to B $19,044; the roof band, 95.5 mm), PR #370"
+ },
+ {
+  "chapter": "safety",
+  "part": "card",
+  "offset": 0.5,
+  "text": "A metal powder fire needs a Class D agent, not water or carbon dioxide. Every station that handles powder has one within four metres, and each mobile base carries its own.",
+  "source": "notes/safety.md; out/safety.json (walks: 0.5-4.0 m), PR #379"
+ },
+ {
+  "chapter": "safety",
+  "part": "safety",
+  "substep": 7,
+  "label": "On every MiR250",
+  "match": "Each MiR250 carries one in an 811",
+  "offset": 0.5,
+  "text": "On the robot it rides on the aisle side, where it widens the circle the base turns in by only five millimetres. It leaves three kilograms of the MiR250's payload when the arm holds a full load.",
+  "source": "out/safety.json (mir: turning radius 499 mm against 494; load: 247.0 of 250 kg with the arm's 12.5 kg); notes/safety.md, PR #379"
+ },
+ {
+  "chapter": "safety",
+  "part": "safety_other_assets.png",
+  "offset": 0.5,
+  "text": "The building's own extinguishers hang on the racking, four metres or more from any Class D unit and signed differently. BYU's safety office still has to confirm the plan.",
+  "source": "notes/safety.md (The other safety assets; Open: BYU EHS), PR #379"
+ },
+ {
+  "chapter": "corrosion",
+  "part": "card",
+  "offset": 0.5,
+  "text": "The first tray is a corrosion station: the OT-2 makes up the sulfide stock, and the CubXL runs the alloy lab's copper corrosion screen, spot by spot.",
+  "source": "longform.py corrosion card; ot2_corrosion.py (round 15: no acid on its deck); notes/cubxl_corrosion.md"
+ },
+ {
+  "chapter": "corrosion",
+  "part": "instruments/ot2_corrosion_prep",
+  "substep": 4,
+  "label": "5/5",
+  "offset": 0.5,
+  "text": "The OT-2's maker says to keep corrosive materials away from it, so its deck now holds only seawater and sulfide. The tenfold dilution for ICP-MS is made at the ICP-MS station, in its own fume hood.",
+  "source": "ot2_corrosion.py (round 15: the dilution and standard moved to the ICP-MS station); notes/icpms.md (Why not a Hamilton (or the OT-2): the OT-2R manual)",
+  "match": "No acid on this deck"
+ },
+ {
+  "chapter": "corrosion",
+  "part": "instruments/cubxl_corrosion",
+  "substep": 2,
+  "label": "3/12",
+  "match": "The P300 builds S1's well",
+  "offset": 0.5,
+  "text": "The second pipette, a P300 on its own small lift, is a proposal: it cuts a spot's thirty-three transfers to six. The alloy lab's protocol itself is unchanged.",
+  "source": "notes/cubxl_pipettes.md (1. Pipettes); out/instruments/cubxl_corrosion.json captions (PR #372)"
+ },
+ {
+  "chapter": "corrosion",
+  "part": "instruments/cubxl_corrosion",
+  "substep": 6,
+  "label": "7/12",
+  "offset": 0.5,
+  "text": "The protocol includes impedance spectroscopy, which needs the potentiostat the lab has requested. Until it arrives, the open-circuit step runs thirty minutes instead.",
+  "source": "out/instruments/cubxl_corrosion.json caption",
+  "match": "EIS needs the requested potentiostat"
+ },
+ {
+  "chapter": "corrosion",
+  "part": "cubxl_evap.png",
+  "offset": 0.5,
+  "text": "By a first-order estimate the well loses only one to three percent of its water a spot. The sulfide is another matter: as hydrogen sulfide escapes, the metal sees about a tenth of the planned dose unless the well is mixed or sealed.",
+  "source": "notes/cubxl_pipettes.md (2. Evaporation is small, but sulfide loss is not); out/cubxl_evap.json, PR #372"
+ },
+ {
+  "chapter": "corrosion",
+  "part": "icpms",
+  "substep": 12,
+  "label": "5/8",
+  "match": "Inside, an acid-rated dilutor (QPrep class)",
+  "offset": 0.5,
+  "text": "The concentrated acids stay in this hood, in a dilutor with an all-fluoropolymer path: Hamilton's own tables advise against nitric acid on its pipetting heads. The arm, in its cover, only moves racks.",
+  "source": "notes/icpms.md (Hamilton's STAR resistance table; the dilutor; the arm's cover)"
+ },
+ {
+  "chapter": "corrosion",
+  "part": "vlm_workflow",
+  "substep": 25,
+  "label": "3/6",
+  "offset": 0.5,
+  "text": "This dose is for the alloy lab's powder reactivity test. The doser works to weight, a quarter auger turn at a time, to twenty-five milligrams; the readings are illustrative.",
+  "source": "out/vlm_workflow.json caption (substeps 0 and 25)",
+  "match": "v5's dose-to doses by weight"
+ },
+ {
+  "chapter": "corrosion",
+  "part": "vlm_workflow",
+  "match": "The CubXL's P300 (20-300 µL",
+  "offset": 0.5,
+  "text": "The CubXL's second pipette, the proposed P300, now puts the test's two hundred microlitres of seawater on the powder in one transfer. The small one alone took ten.",
+  "source": "out/clean/vlm_workflow.json caption (step 6), notes/cubxl_pipettes.md, PR #372; round 16"
+ },
+ {
+  "chapter": "alloy1",
+  "part": "card",
+  "offset": 0.5,
+  "text": "The alloy route follows one alloy from its charge to the finished measurements. First the charge: cups turned from bar, dosed with powder by weight, then pressed shut under vacuum.",
+  "source": "longform.py alloy1 card (round 15: the cups machined, PR #373); out/dag/route_dag.json"
+ },
+ {
+  "chapter": "alloy1",
+  "part": "dal_workflow_table.png",
+  "offset": 0.5,
+  "text": "The alloy lab's seventeen steps, and what this design does with each: fifteen are automated and shown in this video, two have no station yet, and the last column says what is still by hand, in progress, or open.",
+  "source": "longform.py DAL_STEPS (round 13: per step, automated, no station yet, or still a person's); notes/dal_workflow.md"
+ },
+ {
+  "chapter": "alloy1",
+  "part": "machining_cell",
+  "substep": 0,
+  "label": "1/6",
+  "match": "The charge-cup cell on the lab floor",
+  "offset": 1.0,
+  "text": "The cups start as bar. No other machine here can turn one, so this cell is new: a bar-fed lathe, the same arm on a pedestal, two IPA washes and a vacuum dryer.",
+  "source": "notes/machining.md (PR #373: the model's only CNC, the Carvera, doesn't turn)"
+ },
+ {
+  "chapter": "alloy1",
+  "part": "machining_cell",
+  "substep": 31,
+  "label": "4/6",
+  "match": "the basket goes into the first vessel of IPA",
+  "offset": 0.5,
+  "text": "The IPA stays in closed vessels standing in the baths' water, as the bath's maker requires for a flammable liquid. On the lathe, alcohol is the only lubricant, and aluminium and copper run on separate days with their own tools.",
+  "source": "notes/machining.md (Cleaning: Elma's manual; Contamination), PR #373"
+ },
+ {
+  "chapter": "alloy1",
+  "part": "machining_sim.png",
+  "offset": 0.5,
+  "text": "Simulated part by part, the cell makes about a hundred and fourteen pairs a day against the sixty-seven needed. The dryer and the baskets set the pace, not the lathe, and the stoppage rates are estimates.",
+  "source": "machining_sim.py, out/machining_sim.json; PR #373 (comment of 2026-11-22: 1. Simulations)"
+ },
+ {
+  "chapter": "alloy1",
+  "part": "alloy_charge",
+  "substep": 8,
+  "label": "1/6",
+  "offset": 0.5,
+  "text": "The balance stands under the doser's outlet without touching it, so each dose falls straight into the cup and is weighed as it lands.",
+  "source": "out/alloy_charge.json caption"
+ },
+ {
+  "chapter": "alloy1",
+  "part": "doser_shield_section.png",
+  "offset": 0.5,
+  "text": "A post on the balance pan now brings the cup up to forty-five millimetres under the outlet, inside a clear draft shield of our own. Before, the powder fell a hundred and fifty-three millimetres, most of it in open air.",
+  "source": "notes/multidoser.md (round 14, run B: the dose post and draft shield); out/doser_shield.json"
+ },
+ {
+  "chapter": "alloy1",
+  "part": "ext/doser_drop_v10.mp4",
+  "offset": 0.3,
+  "text": "This is the powder doser project's own render of its newest design: the beaker sits eighteen millimetres under the auger's exit. This lab's animation hasn't caught up; it still shows version five with the dose post.",
+  "source": "out/mp4/ext/credits.json (powder-doser PR #185 at c72c5bc, chain carousel v10, 2026-11-19)"
+ },
+ {
+  "chapter": "alloy2",
+  "part": "card",
+  "offset": 0.5,
+  "text": "Both mobile robots, each a Universal Robots arm on a ballasted MiR250, go to the atomizer and open its furnace together.",
+  "source": "longform.py alloy2 card; out/alloy_atomize.json caption (substeps 2, 3)"
+ },
+ {
+  "chapter": "alloy2",
+  "part": "alloy_atomize",
+  "substep": 137,
+  "label": "3/5",
+  "offset": 0.5,
+  "text": "The stack under the charge is built between runs by the two arms: one holds the graphite crucible still while the other threads the thin nut on from below. The next chapter shows it.",
+  "source": "alloy_atomize.py (round 14, run C: the stack aside); notes/atom_crucible.md",
+  "match": "The stack under the charge was built by the two arms"
+ },
+ {
+  "chapter": "alloy2",
+  "part": "alloy_atomize",
+  "substep": 151,
+  "label": "4/5",
+  "offset": 0.5,
+  "text": "Four cups make about a hundred and fifty-seven grams of powder, some twenty-nine grams of it in the printer's size range. A fuller crucible, or the larger four-hundred cubic centimetre one, makes several times more a run.",
+  "source": "out/alloy_atomize.json caption (round 15: substeps 151, 173; chapter 1's pressed 172.3 g run); notes/alloy_atomize.md (How much powder a run makes)",
+  "match": "The powder collects in the container"
+ },
+ {
+  "chapter": "atomizer",
+  "part": "card",
+  "offset": 0.5,
+  "text": "Between runs the atomizer is cooled, opened, cleaned and rebuilt, all by hand today. These clips give the lab's own procedure, step by step, to two mobile arms.",
+  "source": "notes/atomizer_automation.md"
+ },
+ {
+  "chapter": "atomizer",
+  "part": "atom_latch",
+  "substep": 9,
+  "label": "5/9",
+  "offset": 0.5,
+  "text": "Unlatching follows the training video: with the lever eased open, the arm lifts the loop off the keeper's hook, lets the lever down and lets the loop fall over it. No arm presses on the lid.",
+  "source": "out/atom_latch.json (sub-steps 5-14); notes/atom_latch_container.md",
+  "match": "Unlatching: arm 1 takes the loop by its two legs"
+ },
+ {
+  "chapter": "atomizer",
+  "part": "atom_container",
+  "substep": 28,
+  "label": "6/6",
+  "offset": 0.5,
+  "text": "Taking the container off isn't animated yet. At an estimated four kilograms empty, it is near or past the gripper's five-kilogram limit with powder, so a second arm would hold it from below.",
+  "source": "out/atom_container.json caption",
+  "match": "Next, not animated yet: arm 2 holds the weight from below"
+ },
+ {
+  "chapter": "atomizer",
+  "part": "atom_vacuum",
+  "substep": 11,
+  "label": "5/10 Continuity",
+  "offset": 0.5,
+  "text": "Each joint of the vacuum's ground path must read a tenth of an ohm or less, or the run stops. These readings are illustrative; the lab's own crevice tool failed this check in August.",
+  "source": "out/atom_vacuum.json caption; notes/atom_vacuum.md"
+ },
+ {
+  "chapter": "atomizer",
+  "part": "atom_plate",
+  "substep": 40,
+  "label": "5/12",
+  "offset": 0.5,
+  "text": "This joint takes fifty newton metres, close to the rating of the arm's wrist, so the wrench holds both flats and takes its own reaction. The arm only places it.",
+  "source": "notes/atom_plate.md (The tool); out/atom_plate.json caption"
+ },
+ {
+  "chapter": "atomizer",
+  "part": "atom_crucible_out",
+  "substep": 73,
+  "label": "5/8",
+  "offset": 0.5,
+  "text": "The arm's own sensor can't tell a snug joint from a cracked one, so each arm carries a finer wrist sensor and logs every breakaway. None of these torques has been measured yet.",
+  "source": "notes/atom_crucible.md (wrist sensor; Forces and torques); out/atom_crucible_out.json caption"
+ },
+ {
+  "chapter": "atomizer",
+  "part": "atom_bn",
+  "substep": 82,
+  "label": "8/10",
+  "offset": 0.5,
+  "text": "Boron nitride goes on as an aerosol, so the recoat happens in a fume hood: the arm scrapes off what has cracked or lifted, then sprays thin coats over the scraped spots.",
+  "source": "notes/atom_bn.md (scrape what has cracked or lifted, mask the seat, thin coats in the hood)"
+ },
+ {
+  "chapter": "atomizer",
+  "part": "atom_crucible_in",
+  "substep": 115,
+  "label": "9/9",
+  "offset": 0.5,
+  "text": "Here the arm presses the machine's own keys. A direct link to the atomizer's controls would need the maker's agreement, and is the first question for them.",
+  "source": "out/atom_crucible_in.json caption; notes/atomizer_automation.md (The cell; Questions for AMAZEMET)",
+  "match": "The sealing rod by its adapter"
+ },
+ {
+  "chapter": "alloy3",
+  "part": "card",
+  "offset": 0.5,
+  "text": "The arm runs the sieving cell on its own, then pours the fine cut into the Aconity printer, which prints the tensile bars.",
+  "source": "longform.py alloy3 card; out/alloy_print.json caption"
+ },
+ {
+  "chapter": "alloy3",
+  "part": "alloy_print",
+  "substep": 76,
+  "label": "2/5",
+  "offset": 0.5,
+  "text": "No sieve shaker found is sold for robot loading, so the arm turns the lid's clamp knobs as a person would.",
+  "source": "out/alloy_print.json caption"
+ },
+ {
+  "chapter": "alloy3",
+  "part": "alloy_print",
+  "substep": 322,
+  "label": "3/5",
+  "offset": 0.5,
+  "text": "That photo is real: the lab's bronze powder from October, sieved by hand. Of nearly two kilograms melted in two runs, a hundred and eighty-eight grams came out under sixty-three microns.",
+  "source": "out/alloy_print.json caption"
+ },
+ {
+  "chapter": "alloy4",
+  "part": "card",
+  "offset": 0.5,
+  "text": "While the build prints, a retained sample of the sieved powder goes round the trays: size distribution, X-ray diffraction, X-ray fluorescence and the SEM.",
+  "source": "longform.py alloy4 card; out/alloy_powder.json caption"
+ },
+ {
+  "chapter": "alloy4",
+  "part": "alloy_powder",
+  "substep": 78,
+  "label": "4/7",
+  "offset": 0.5,
+  "text": "These SEM images are real: the lab's own atomized aluminium alloy powder. The diffraction pattern, size curve and composition panel in this chapter are computed or illustrative.",
+  "source": "out/alloy_powder.json caption (substeps 65, 78, 117, 147)"
+ },
+ {
+  "chapter": "alloy5",
+  "part": "card",
+  "offset": 0.5,
+  "text": "The build is cleared of powder, its bars cut off in the wire EDM, rinsed and heat treated, then pulled at room temperature and at two hundred degrees.",
+  "source": "longform.py alloy5 card; out/alloy_workflow.json caption"
+ },
+ {
+  "chapter": "alloy5",
+  "part": "alloy_workflow",
+  "substep": 191,
+  "label": "6/7",
+  "offset": 0.5,
+  "text": "The alloy lab's heat-treatment schedule is still to be set, so the hour at five hundred and thirty degrees shown here, before the quench and ageing, is an assumption.",
+  "source": "out/alloy_workflow.json caption"
+ },
+ {
+  "chapter": "alloy5",
+  "part": "alloy_workflow",
+  "substep": 260,
+  "label": "7/7",
+  "offset": 0.5,
+  "text": "The stress-strain curve is illustrative, taken from a printer maker's data sheet for this alloy, not measured.",
+  "source": "out/alloy_workflow.json caption"
+ },
+ {
+  "chapter": "alloy5",
+  "part": "edm_orientations.png",
+  "offset": 0.5,
+  "text": "Printed bars behave differently along and across the layers, so the lab wants flat, vertical and forty-five degree bars, each cut off with the plate on edge.",
+  "source": "notes/edm_orientations.md at 193778b (PR #328); longform.py still caption"
+ },
+ {
+  "chapter": "alloy6",
+  "part": "card",
+  "offset": 0.5,
+  "text": "Sections are cut from the build, mounted and polished. Polishing is the hardest step to automate, and the chapter shows where.",
+  "source": "longform.py alloy6 card"
+ },
+ {
+  "chapter": "alloy6",
+  "part": "alloy_prep",
+  "substep": 127,
+  "label": "Polish",
+  "offset": 0.5,
+  "text": "Re-papering a disc means prying off a ring, peeling, laying new paper flat and refitting the ring. No robot has been shown doing that, so each grit gets its own disc.",
+  "source": "out/alloy_prep.json caption (substeps 127, 128)"
+ },
+ {
+  "chapter": "alloy7",
+  "part": "card",
+  "offset": 0.5,
+  "text": "The trays come to the opening in turn: the SEM, the nanoindenter, the indentation plastometer, micro-Vickers hardness and the digital microscope.",
+  "source": "longform.py alloy7 card; out/alloy_characterize.json caption"
+ },
+ {
+  "chapter": "alloy7",
+  "part": "alloy_characterize",
+  "substep": 18,
+  "label": "SEM",
+  "offset": 0.5,
+  "text": "No section of the lab's own prints has been imaged yet, so these data panels are illustrative or computed; only the SEM inset, of the lab's powder, is real.",
+  "source": "out/alloy_characterize.json caption (substep 183)"
+ },
+ {
+  "chapter": "stations",
+  "part": "card",
+  "offset": 0.5,
+  "text": "Then the stations the alloy route doesn't use: a tensile tester on its side, two gloveboxes, fume hoods, the sample and powder stores, and packaging for shipping.",
+  "source": "longform.py stations card"
+ },
+ {
+  "chapter": "stations",
+  "part": "naming/floor_names.png",
+  "offset": 0.3,
+  "text": "A proposal for names: each station a stone whose own property is its job, like fluorite for the X-ray fluorescence, and the two Shuttles the peaks over Provo, Timp and Nebo.",
+  "source": "notes/naming.md (Round 2: why stones); out/naming/registry.md, PR #376"
+ },
+ {
+  "chapter": "stations",
+  "part": "colour/bench.png",
+  "offset": 0.3,
+  "text": "Colour goes only where a person decides which tool touches which powder: blue for the aluminium family, orange for copper, always with a word, and checked for colour-blind readers.",
+  "source": "notes/colour_coding.md (The rule; The alloy-family code), PR #377"
+ },
+ {
+  "chapter": "stations",
+  "part": "instruments/tensile_h",
+  "substep": 5,
+  "label": "6/6",
+  "offset": 0.5,
+  "text": "It takes thin bars only: the route's six by six millimetre bar needs nearly fifteen kilonewtons, and no motorized horizontal machine with a published size pulls that.",
+  "source": "out/instruments/tensile_h.json caption (substeps 3, 5)"
+ },
+ {
+  "chapter": "fab",
+  "part": "card",
+  "offset": 0.5,
+  "text": "Fabrication next. Of three compact metal printers only the smallest fits on a tray, and it isn't shipping yet; the resin printers and a circuit-board line do fit.",
+  "source": "out/fabrication.json; out/fabrication/snowpod.json caption"
+ },
+ {
+  "chapter": "fab",
+  "part": "instruments/ded",
+  "substep": 0,
+  "label": "1/6",
+  "offset": 1.0,
+  "text": "The MX-Lab feeds up to six powders to one nozzle, so a single build can hold six different compositions.",
+  "source": "out/instruments/ded.json caption (substeps 0, 4, 5)"
+ },
+ {
+  "chapter": "scale",
+  "part": "card",
+  "offset": 0.5,
+  "text": "An alloy that passes the route goes on to a large-format printer for real parts, and to a robot cell that repairs worn ship parts.",
+  "source": "longform.py scale card; out/scaleup.json caption"
+ },
+ {
+  "chapter": "scale",
+  "part": "scaleup",
+  "substep": 1,
+  "label": "2/9",
+  "offset": 0.5,
+  "text": "At this scale the powder is bought, not atomized: a hundred-millimetre build in this bed takes about twenty-two kilograms, against four hundred and forty grams for the lab's printer.",
+  "source": "out/scaleup.json caption"
+ },
+ {
+  "chapter": "limits",
+  "part": "card",
+  "offset": 0.5,
+  "text": "Some things don't fit: a hot isostatic press is too tall, too deep and too heavy for a tray, and its cooling can't stop for a ride in the lift.",
+  "source": "out/instruments/hip.json caption (substeps 2, 3); longform.py limits card"
+ },
+ {
+  "chapter": "limits",
+  "part": "tall_opening_bays.png",
+  "offset": 0.5,
+  "text": "The opening used throughout, just under a metre tall, comes from one used unit's listing. Kardex publishes about seventy-three centimetres of goods height; a taller bay is a question for Kardex.",
+  "source": "notes/kardex_opening.md"
+ },
+ {
+  "chapter": "checks",
+  "part": "card",
+  "offset": 0.5,
+  "text": "Ten models were fitted to frames of the real machines; one still fails its held-out check, the digital microscope's stand. Every instrument's motion also ran through MuJoCo.",
+  "source": "README.md (The models against real footage); notes/interference.md"
+ },
+ {
+  "chapter": "checks",
+  "part": "collisions/round11_sheet.png",
+  "offset": 0.3,
+  "text": "A stricter audit caught contacts the old rules missed. After its fixes, six clips were down to two frames or fewer; the powder checks, sample prep and scale-up still had some.",
+  "source": "README.md (A stricter audit; Still open after round 11); out/collisions/round11_summary.json"
+ },
+ {
+  "chapter": "checks",
+  "part": "collisions/round16_table.png",
+  "offset": 0.5,
+  "text": "This video's own check: each clip was checked frame by frame as it rendered, this round's and round fifteen's alike. The table lists, clip by clip, the frames where something still touches.",
+  "source": "out/collisions/round16_summary.json (longform.py audit, round 16)"
+ },
+ {
+  "chapter": "upkeep",
+  "part": "card",
+  "offset": 1.0,
+  "text": "Maintenance is booked into the same schedule as the experiments: calendar service, consumables by use, checks the arm runs between jobs, and repairs.",
+  "source": "longform.py upkeep card; notes/upkeep.md"
+ },
+ {
+  "chapter": "upkeep",
+  "part": "upkeep_year.png",
+  "offset": 0.5,
+  "text": "In this modelled year, upkeep and failures cost fifteen of three hundred and twenty-four alloys; other random draws, as few as three. Most intervals and every failure rate are assumed.",
+  "source": "notes/upkeep.md"
+ },
+ {
+  "chapter": "floor",
+  "part": "card",
+  "offset": 0.5,
+  "text": "No floor-cleaning robot on the market is rated for metal dust; the makers that address it forbid it. So this is one option, explored, not decided: what may clean this floor is for the lab's dust hazard analysis.",
+  "source": "notes/floor_cleaning.md (What was found), PR #369"
+ },
+ {
+  "chapter": "floor",
+  "part": "floor_clean_people",
+  "substep": 7,
+  "label": "3/6 A visible spill",
+  "match": "Its camera finds a visible layer",
+  "offset": 0.5,
+  "text": "A visible spill stays a person's job, as the lab's vacuum procedure says: the robot stops and messages them. The person sweeps up the bulk with a natural-bristle broom and leaves the residue to the robot.",
+  "source": "out/floor_clean_people.json captions (vacuum SOP 8; NFPA 484 11.5.1); notes/floor_cleaning.md"
+ },
+ {
+  "chapter": "floor",
+  "part": "floor_pass",
+  "at": 1.0,
+  "text": "The whole night's pass, seen from above: fifty-two work spots and forty ground studs. Bonding and checking at every spot doubles the model's forty-one minutes to nearly an hour and a half.",
+  "source": "out/floor_pass.json (summary: 53 spots, 45 studs, 88.7 against 42.9 min), PR #369; round 16: re-run with the powder point and the machining cell (out/floor_pass.json)"
+ },
+ {
+  "chapter": "floor",
+  "part": "floor_pass",
+  "at": 76.0,
+  "text": "Its two spills are illustrations, since the model has no spill rate. Whatever the robot leaves goes on the person's list for the morning.",
+  "source": "out/floor_pass.json (assumed: 'the two powder events are illustrations: the model has no spill rate'); notes/floor_cleaning.md"
+ },
+ {
+  "chapter": "floor",
+  "part": "waste_streams.png",
+  "offset": 0.5,
+  "text": "The largest hazardous stream would be powder the route never uses: about three quarters of every run comes out too coarse for the printer. What happens to it is undecided, and the amounts are modelled, not weighed.",
+  "source": "notes/waste.md (The answer, short: 1. the surplus powder, 74 % at 63-250 um); out/waste_model.json, PR #371"
+ },
+ {
+  "chapter": "floor",
+  "part": "waste_clip",
+  "match": "Liquid waste leaves a station only in the capped bottle",
+  "offset": 0.5,
+  "text": "Liquid waste leaves a station in the capped bottle it was made in, one class a trip. At the fume hood the arm sets it in the intake tray, under the sash, and takes an empty back. It never opens or pours.",
+  "source": "out/clean/waste_clip.json caption (1/4), notes/waste.md, notes/waste_clip.md; round 16"
+ },
+ {
+  "chapter": "floor",
+  "part": "waste_clip",
+  "match": "The hood's base is two vented cabinets",
+  "offset": 0.5,
+  "text": "A person moves the bottles into the hood's vented cabinets each day shift: solvents on the left, acids on the right, a shelf apart.",
+  "source": "out/clean/waste_clip.json caption (2/4), notes/waste.md; round 16"
+ },
+ {
+  "chapter": "floor",
+  "part": "waste_clip",
+  "match": "Powder waste stays where it is made",
+  "offset": 0.5,
+  "text": "Powder waste stays by the atomizer: a vacuum and a pail for each alloy family, a bucket for sweepings, used filters in dry sand. A person seals and carries the liners; powder never rides a robot.",
+  "source": "out/clean/waste_clip.json caption (3/4), notes/waste.md (How it is kept); round 16"
+ },
+ {
+  "chapter": "floor",
+  "part": "waste_clip",
+  "match": "A person changes the liners; the arms don't",
+  "offset": 0.5,
+  "text": "Changing a vacuum's liner is a person's job: they seal it where it is, lift it out and set it in its family's pail, the lid set on but not crimped.",
+  "source": "out/clean/waste_clip.json caption (3/4 The vacuum liners), notes/waste.md (How it is kept); round 16"
+ },
+ {
+  "chapter": "floor",
+  "part": "waste_clip",
+  "offset": 0.5,
+  "text": "Everything hazardous leaves through BYU Risk Management's pickups: about one a month at one alloy a day, one every week or two at ten.",
+  "source": "notes/waste.md (Pickups), PR #371; round 16: over the waste clip's last shot",
+  "match": "Two places on the floor"
+ },
+ {
+  "chapter": "bottlenecks",
+  "part": "card",
+  "offset": 0.5,
+  "text": "The modelled lab fully tests about one alloy a day, a pace set by staffing: an atomizer run starts only when someone can change the crucible.",
+  "source": "notes/bottleneck.md on origin/claude/bottlenecks-10-a-day-20261108 (The short answer)"
+ },
+ {
+  "chapter": "bottlenecks",
+  "part": "bottleneck_ladder.png",
+  "offset": 7.5,
+  "text": "Ten a day would take crucible changes round the clock, by people or robots, three atomizers, four printers, and floor cells with their own arms.",
+  "source": "notes/bottleneck.md on origin/claude/bottlenecks-10-a-day-20261108 (The short answer; The ladder)"
+ },
+ {
+  "chapter": "finale",
+  "part": "timelapse",
+  "substep": 4,
+  "label": "4/4  Month by month",
+  "offset": 0.5,
+  "text": "By the end of the first year: about three hundred alloys fully tested, a hundred and sixty kilograms of powder, and a hundred terabytes of video if every stream is kept.",
+  "source": "notes/timelapse.md (What it gives)"
+ },
+ {
+  "chapter": "finale",
+  "part": "timelapse",
+  "substep": 5,
+  "label": "The first year",
+  "offset": 0.5,
+  "text": "All of it is a model, not a measurement. The code, the notes and every source are public, in the lab's GitHub repository.",
+  "source": "out/timelapse.json caption (substep 4); longform.py OUTRO"
+ }
+]

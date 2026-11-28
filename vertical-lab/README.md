@@ -1,0 +1,3558 @@
+# Vertical lift module: the vertical cloud lab in 3-D
+
+Animations of the vertical lift module (VLM) quoted in
+[#53](https://github.com/vertical-cloud-lab/byu-vcl/issues/53), a **Kardex Shuttle XP 500**, holding the lab's own
+equipment on three electrified trays, with a **UR10e on a MiR250** working at its access opening
+([#303](https://github.com/vertical-cloud-lab/byu-vcl/issues/303)). They follow the org page's
+[`vertical-lab.gif`](https://github.com/vertical-cloud-lab/.github/blob/main/profile/vertical-lab.gif) and are built
+the way the lab's other animations are (rePowder training, sieving, atomizer charge, the doser's assembly): CadQuery
+models tessellated into PyVista, rendered off-screen, text drawn with PIL, written as an MP4 and a GIF. The scene
+framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #124's branch.
+
+## Round 16: #371's check addressed: the waste on screen, the machining cell on the floor, the kept clips redrawn (2026-11-26)
+
+Sterling on #318 (2026-11-26): "address https://github.com/vertical-cloud-lab/byu-vcl/pull/371#issuecomment-7184403979
+in full and rerender and get on YouTube. Can be longer if needed. Careful with memory. Plan ahead so you'll take the
+full six hours." The check had found what round 15 really rendered: #371's waste station was in the 3-D lab but never
+on screen, about 10½ minutes of the long-form were clips kept from before the merges, the set-up GIF in the repo was
+round 14's, the machining cell had no place on the floor, and this README's table overstated where the merged PRs
+appear.
+
+**The video:** [The vertical cloud lab, start to finish: a Kardex VLM and the alloy route (3-D, round 16)](https://www.youtube.com/watch?v=YWbplBXPC84), **unlisted** (no visibility was named, so as this PR's uploads are unless asked; round 15's stays public), 1:31:05, 69 chapters, 1280 x 720 at 30 fps, narrated (81 lines, 14.7 min, Kokoro; 7 of them new and heard back by faster-whisper). `out/longform.json` lists every part and its source.
+
+### Round 15's clips, recovered from its YouTube copy
+
+Round 15's renders were git-ignored (`out/r15/`) and went with its runner, and drawing all 89 minutes again would take
+this 4-core runner more than a day. So the long-form takes round 15's own frames back out of the video it uploaded:
+
+- **The source:** round 15's 720p stream as YouTube serves it (itag 232, H.264 at 30 fps, 438 MB), fetched through the
+  CubXL Pi's network over an SSH SOCKS tunnel (YouTube refuses runners), each segment capped at 750 kB/s.
+- **The cut:** each clip by frame, from round 15's own `out/longform.json`: frame *n* of the stream is at its start
+  time plus *n*/30 s, checked at the set-up clip's first frame (the card's last frame is *n* = 893, the clip's first
+  894). 53 clips, each its exact frame count, into `out/r15/` (`out/r15/recovered.json` lists them).
+- **The join:** `longform.py` takes a clip from `out/r16/` (this round's renders) first, then `out/r15/`, then
+  `out/mp4/`. A line of narration over a recovered clip is spoken where round 15 spoke it (`r15_offsets`, from round
+  15's `out/longform_narration.srt`), since the frames are the same.
+- **The cost:** one more generation of YouTube's compression on the recovered clips.
+
+### The check, item by item
+
+| The check found | Round 16 |
+| --- | --- |
+| #371's waste station is in the lab model but never on screen: every view of the hood was from behind | A new clip, [`waste_clip.py`](waste_clip.py): a MiR250 + UR12e brings a capped 1 L bottle of sieve-wash IPA in its spill tray to the fume hood, sets it in the intake tray under the raised sash and takes an empty back; the hood's solvent and acid cabinets drawn see-through with their contents; the powder point; where waste waits ([`notes/waste_clip.md`](notes/waste_clip.md)), and a person changing the Al-family vacuum's liner: sealed where it is, lifted out, set in its family's pail, lid set on, not crimped (117 s in all). Consolidating the bottles at the hood is still a caption. The set-up movie also turns to the hood from the aisle after the floor machines come in |
+| Nothing about waste handling is animated: the bottle trip, the powder waste at the atomizer cell (pails, *Solid Material* bucket, sand cans), the vacuum liners | The bottle trip, the powder point and a person changing a liner are in the waste clip. The powder point is on the lab floor ([`powder_point.py`](powder_point.py), `VLAB_POWDER_POINT`): #369's two 118EXPs on wall power at their station post, a grounded pail per alloy family for sealed liners (lids set on, not crimped), Risk Management's *Solid Material* bucket, a grounded can of dry sand for filters, the area sign, behind the safety PR's fire point (its front half took the old `VAC_STATION`) |
+| Waste person-time isn't booked in `upkeep.TASKS` | `waste`: weekly, a person, 1 h (notes/waste.md's estimate). People go from 31 to 32 h a week on average; the year's 309 fully tested alloys don't change |
+| The services, base-camera, safety, floor-cleaning and scale-up clips and seven fabrication clips are renders from before the merges | All re-rendered on the current lab (table below), the fabrication tour from all nine clips at 30 fps. The floor-clean scene now draws the powder point and the rePowder's fire point where the lab has them (its own station was #369's pre-#379 layout), and #369's night pass (`floor_pass.py`) is re-run on the round-16 floor: 52 spots, 40 studs, 86 min (was 53, 45, 88.7) |
+| `out/setup_lab.gif` is round 14's render | Remade from this round's set-up render (`r16_gifs.py`, which now makes the GIF and still of any clip rendered for the long-form) |
+| The machining cell has no place on the floor: its spot is unit 3's charger bay and its dock's post is on the 68SC-2's | South of the south row, front to the north, its MiR250 in down the row's west end and along a corridor behind the row; nothing that was on the floor moved; `setup_lab.py fit` clean ([`notes/lab_r16.md`](notes/lab_r16.md)) |
+| #369's 118EXP vacuums are not on the floor | At the powder point (above) |
+| #372: the *Atomized powder dosed for the CubXL* clip has the P20 making ten 20 µL transfers | The P300 puts the 200 µL in with one transfer, from its own rack, on its 40 mm lift (`r9_cubxl.powder_test_p300`) |
+| #374, #379: their own clips are renders from before the merge; the UR control box slides through a MiR's Class D unit in the set-up movie | Both clips re-rendered. The box now settles onto the MiR's top and the cabinet goes on round it; the first round-16 render's audit caught my first fix (the box lowered 600 mm, through where the arm will stand), so it settles only the last 40 mm |
+| #376, #377: names and colours need a decision | #377: you okayed blue for Al and orange for Cu on 2026-11-22, so the powder point's pails and vacuums carry them, always with words, and `charge.FUNNEL_LABEL` follows the code. Recolouring our blue "ours" fixtures to a neutral, which the scheme asks for, would mean re-rendering chapters 1-2, the turnaround and the floor cleaning, so it is left (below). #376: no decision since the names' second round, so they stay a proposal and no clip uses them |
+| The README's table says #369 and #379 are in "every lab scene" and #374 in "every clip" | Corrected in round 15's section |
+
+### Renders
+
+Each clip rendered this round at 1280 x 720 into `out/r16/` (`render_r16.py`, one or two whole-lab scenes at a time through `runner_guard.py`), each checking its own frames as it rendered (collide.py, round 11's strict rules):
+
+| Clip | Length | Drawn at | Frames checked | Arm in collision | Anything moving |
+| --- | --- | --- | --- | --- | --- |
+| set-up movie | 138 s | 15 fps | 1565 | 0 | 39 |
+| waste clip (new) | 117 s | 15 fps | 1399 | 0 | 0 |
+| 9:22, powder dosed for the CubXL | 109 s | 15 fps | 1425 | 0 | 0 |
+| storage to the bay: hookups, UPS | 40 s | 15 fps | 537 | 0 | 0 |
+| docks in every slot | 37 s | 15 fps | 369 | 0 | 0 |
+| cabling | 35 s | 15 fps | 327 | 0 | 0 |
+| the bay's cameras | 33 s | 15 fps | 358 | 0 | 0 |
+| three cameras on each MiR250 | 46 s | 15 fps | 529 | 0 | 0 |
+| safety | 55 s | 15 fps | 592 | 0 | 21 |
+| floor cleaning: unit 3 and a person | 33 s | 15 fps | 390 | 0 | 0 |
+| scaling up | 115 s | 15 fps | 1508 | 0 | 153 |
+| the finale | 88 s | 15 fps | - | - | - |
+| fabrication tour (nine clips) | 181 s | 30 fps | 3873 | 0 | 258 |
+| chapter 1, the charge (fresh frames) | 308 s | 15 fps | 3435 | 4 | 4 |
+| chapter 2, atomize (fresh frames, byte-identical) | 305 s | 15 fps | 3391 | 76 | 76 |
+| chapter 4, the powder checked (fresh frames) | 214 s | 15 fps | 2625 | 0 | 0 |
+| chapter 5, cut, heat treat, test (the cell now in view) | 386 s | 15 fps | 5249 | 2 | 3 |
+| chapter 7, characterize (fresh frames) | 247 s | 15 fps | 3198 | 0 | 0 |
+
+- **Arm frames left:** chapter 1's 4 (a fingertip on the left base camera's case) and chapter 5's 2 (the plate 3 mm into the depowdering box's rotor) are round 15's, unchanged; chapter 2's 76 are the checker artifact of the held cup against its own cutaway copy.
+- **Moving parts:** the set-up movie's 39 are rigging (machines set down over their drops, the MiR250 onto its charger, tray B's racks sliding in), down from round 15's 60 now that the control box no longer goes through the Class D unit; safety's 21 are each B570 sliding into its 811 bracket; the scale-up's 153 and the fabrication tour's 258 are the work itself (the saw, the deposition's glow, parts in the IPA and the UV, the laser in the bed).
+- **The first set-up render caught my first fix:** the control box lowered from 600 mm passed where the arm will stand (19 arm frames), so it settles the last 40 mm and the cabinet fades in round it; and the 9:22 clip was rendered twice, for a status label that read "P3000 µL".
+- **Chapters 1, 2, 4 and 7 were re-rendered with the time left,** so the long-form takes them fresh instead of from YouTube. Chapter 2 came out byte-identical to round 15's committed render (its floor, `alloy_atomize_floor`, never draws `setup_lab.Floor`'s stations); chapters 1, 4 and 7 stand on the full floor, so they differ from round 15's only where the powder point or the cell is in view. Chapter 5 is the one whose shots visibly changed (the cell behind the Instron). In all, 43 of the video's 91 minutes are this round's renders, 40 round 15's recovered frames, and the rest cards and stills.
+- `out/collisions/round16_table.png` is this video's table, clip by clip, and the checks chapter's last still.
+
+### Not done, or still open
+
+- **Clips round 16 didn't redraw are round 15's frames,** recovered from its video, so they don't show this round's
+  floor changes where their cameras would see them. Chapters 2 and 3 and the turnaround build their own floor
+  (`alloy_atomize_floor`, `atom_base`), which never drew the stations `setup_lab.Floor` adds (the waste station, unit
+  3, and now the powder point and the cell): chapter 2, re-rendered this round, came out byte-identical to round 15's.
+  Chapters 1, 4, 6 and 7 and the maintenance clip build on the full floor; their aisle cameras mostly look north
+  (notes/lab_r16.md). Chapter 5, which looks south past the Instrons towards the cell, is redrawn.
+- **#377's neutral for "ours":** the scheme also asks that our own printed and machined parts stop being drawn blue
+  (blue now means the Al family): `atom_brush`, `atom_ground`, `atom_nilfisk` (`OURS`) and `carousel` (teal). That is a
+  constant per file, but every clip with those parts would need re-rendering for the change to read consistently:
+  chapters 1 and 2, the turnaround, the floor cleaning and the 9:22 clip, about 40 minutes of video.
+- **#376's names** wait for your decision; no clip uses them.
+- **The machining cell's route isn't animated:** no clip drives a MiR250 down the row's west end to its dock, so the
+  docking there has no arm audit, and the cell has no utility drop drawn (notes/lab_r16.md).
+- **The day-shift beat at the hood** (a person moving the delivered bottles into the cabinets) is a caption; the liner change is animated. The pails moved to the corridor side for it (notes/waste_clip.md).
+- **The ICP-MS station** still has no spot on the floor (notes/lab_r15.md).
+- **On YouTube:** the round-16 video is unlisted (no visibility was named). Round 15's public video stays up; the
+  upload token can't change either, so making round 16 public and round 15 unlisted is a click each in YouTube Studio,
+  or a `@claude-youtube` run.
+
+## Round 15: everything brought together, one lab in every clip, re-rendered at 720p (2026-11-23)
+
+Sterling on #318 (2026-11-23): "pull in the latest results from all the other relevant PRs (use gh api to retrieve
+latest comments as well) and re-render everything in a self-consistent and cohesive way. Fix collisions, nonsensical
+parts, etc. You might have to render multiple times because of that. In a final pass, render at a higher res (max fps
+for 720p) and upload to YouTube (notify subscribers this time)."
+
+**The video:** [The vertical cloud lab, start to finish: a Kardex VLM and the alloy route (3-D, round 15)](https://www.youtube.com/watch?v=79FL6mTFSsI), **public, subscribers notified**, 1:28:55, 67 chapters, 1280 x 720 at 30 fps, narrated (75 lines, 13.6 min, Kokoro). `out/longform.json` lists every part and its source; round 13's unlisted video ([ySiuvP9C190](https://www.youtube.com/watch?v=ySiuvP9C190)) and round 12's public one ([G6_1FtXHmKI](https://www.youtube.com/watch?v=G6_1FtXHmKI)) are superseded.
+
+### What was pulled in
+
+Merged into this branch, with each PR's latest comments read first (`gh api`). Corrected in round 16 after
+[#371's check](https://github.com/vertical-cloud-lab/byu-vcl/pull/371#issuecomment-7184403979): this table first said
+"every lab scene" and "every clip", which held only for the clips drawn in round 15, not for the ten and a half
+minutes it kept from earlier renders (the four services clips, base cameras, safety, floor cleaning, scale-up and
+seven of the nine fabrication clips). Round 16 re-renders those (below).
+
+| PR | What it adds | In the video |
+| --- | --- | --- |
+| #379 | Class D extinguishers (Amerex B570, 811 bracket, 680R, Super D pails) at every powder station and on every MiR250; the building's ABC units, eyewash/showers, O2 monitors | every lab scene **drawn in round 15** (not the clips it kept, below); a *Safety* chapter, whose clip was #379's own render from before the merge |
+| #377 | colour coding: blue for Al, orange for Cu, everything else by standard; a priced BoM | a still in the stations chapter; no clip uses the code |
+| #376 | equipment names: stones for stations, mountains for the Shuttles (`timp`, `nebo`) | a still in the stations chapter; no clip uses the names |
+| #374 | three cameras on each MiR250: a 1.8 m mast and two end posts | on every MiR250 in every clip **drawn in round 15**; its own clip in services, #374's render from before the merge |
+| #373 | machining the cups and plugs: a Haas ST-10 cell, IPA wash, vacuum dryer, a SimPy model | its clip and the simulation in chapter 1; not on the lab floor |
+| #372 | the CubXL's pipettes: a P300 on its own lift beside the P20; evaporation and sulfide loss | the CubXL clip, a still; the 9:22 clip still filled with ten P20 transfers |
+| #371 | waste streams, BYU's pickups, a waste station | the station under the fume hood in the lab model, but no camera shows the hood's front (every view of it is from behind); two stills |
+| #370 | security cameras instead of the Pi units (research) | a still in services |
+| #369 | floor cleaning: a third MiR250 with an explosion-proof vacuum | unit 3 on its own charger in every lab scene **drawn in round 15**; its two clips, #369's renders from before the merge; the 118EXP vacuums not on the floor |
+
+Not merged: #320, #321, #328 and #332 are 400-800 commits behind this branch, and the long-form already shows their
+figures at pinned commits; #331 is vendor documents; #329 the org GIF. **powder-doser #185** has moved from the v5
+carousel these clips use (353dae7) to v10 (c72c5bc, 2026-11-19: the station inside the loop, the beaker's rim 18 mm
+under the exit; powder-doser keeps v7 as its main version). Its own CAD render of v10's drop is in chapter 1
+(`out/mp4/ext/`, credited); re-modelling chapter 1's station on v10 is open.
+
+### One lab in every clip
+
+- **Every whole-lab clip builds on `setup_lab.build`.** Chapter 1 did not: it was still staged in round 2's
+  one-Shuttle lab with trays A-C (`animate.Lab`). It now stands in the shared lab like chapters 2-7, with unit 0
+  docked where round 2's was, so its poses at tray B hold ([`notes/alloy_charge.md`](notes/alloy_charge.md)).
+- **On the floor:** the waste station on the ducted fume hood's base (#371) and floor-cleaning unit 3 parked on a
+  third charger (#369), each behind a flag (`VLAB_WASTE`, `VLAB_UNIT3`); the safety PR's Class D units, ordinary
+  extinguishers, eyewash/showers and O2 monitors (#379). The rePowder's dock now reads the sieving cell's target post:
+  its own stood where MiR250 1 parks for the latch since round 14 ([`notes/lab_r15.md`](notes/lab_r15.md)).
+- **Not on the floor plan yet:** the ICP-MS station (round 14's spot at the south row's east end is the Meltio cell's
+  clear strip and the wire EDM's only pivot spot) and the cups' machining cell (its spot is unit 3's charger bay).
+  Their clips show them on their own, and the cards say so; `notes/lab_r15.md` has a proposal for each.
+- **On every MiR250:** its Class D unit and #364's three cameras. Chapters 2 and 6 had opted out of the cameras; both
+  are re-planned with them aboard ([`notes/alloy_atomize.md`](notes/alloy_atomize.md),
+  [`notes/alloy_prep.md`](notes/alloy_prep.md)), and so are the moves in chapter 1, the turnaround clips and the
+  ICP-MS clip that touched them.
+- **Tray A without concentrated acid** (Sterling, 2026-11-20: "it would be very risky to try to put high-hazard
+  chemicals on a tray"): the OT-2 makes only the CubXL's sulfide stock; the CubXL's 20 µL of 1 M HNO3 per tube, from
+  a capped vial, is the only acid on the tray; the ICP-MS station takes the CubXL's own rack of 0.5 mL tubes and
+  dilutes them in its hood ([`notes/cubxl_corrosion.md`](notes/cubxl_corrosion.md), [`notes/icpms.md`](notes/icpms.md)).
+- **The turnaround's MiR250s off the rePowder's vacuum pump:** MiR250 2 stood on 215 x 215 mm of the pump for both
+  crucible clips, and the container clip parked one unit's corner in it and the other's end over the base rail
+  ([`notes/atom_crucible.md`](notes/atom_crucible.md)). The floor's ground plates follow the clips' parking spots.
+- **What the clips say:** a sweep of every caption, label, title and card against the lab as it is now. Stale text
+  was fixed in 19 files: the room above a tray (856.5 mm, not 727.5), the bay's two ceiling cameras, the stream
+  camera's real pan and tilt limits, chapter 1's 172.3 g run carried into chapters 2 and 3 and the scale-up, six
+  bars in chapter 5, Al-10Si in chapter 4's XRD and XRF, the 1,506-jar store, powered trays in the services clips,
+  the fume hood no longer sending ICP-MS out, UR12e and the in-house ICP-MS in the upkeep, security-camera and waste
+  figures. The turnaround clips no longer show module names, and their step counters run in order. The coupling's
+  and the services clips' letting-go order now agree (contactor, then valves).
+- **Dropped:** the vacuum press's separate close-up (it set the plug at the press, drew one powder layer and no
+  cleaning; chapter 1 shows the press's whole cycle).
+
+### The final pass: 1280 x 720, drawn at up to 30 fps
+
+- **1280 x 720, encoded at 30 fps.** Each clip is drawn at:
+  - **30 fps:** the 13 instrument clips, the OT-2 and CubXL clips, the coupling close-up, the route diagrams, and
+    the two fabrication clips whose captions changed (the SnowPod, the Meltio M450);
+  - **20 fps:** the BN clip; **15 fps:** the other seven turnaround clips, all seven chapters, the set-up movie, the
+    9:22 clip, the ICP-MS station, the machining cell, the maintenance clip and the finale.
+- **Why not 30 for the chapters:** a whole-lab frame at 720p costs about 0.5-0.7 CPU-s with its inline audit, and
+  only two whole-lab scenes fit in the runner's 16 GB at once (the set-up movie peaked at 6.7 GB, the 9:22 clip at
+  7.7 GB; the watchdog stopped one render that pushed memory to 547 MB). At 30 fps the 3-D chapters alone would have
+  needed about seven hours of the 4-core runner. `render_r15.py` queued everything longest-first at `runner_guard`'s
+  new `--low` priority, so the helpers' fix audits always went first.
+- **Kept from earlier renders** (no CPU left for them beside the whole-lab renders), scaled to 720p:
+  - the four services clips (round 14 A's 1080p at 12 fps);
+  - the safety clip (#379's 1080p at 15 fps), the base-camera clip (#374's 1080p at 10 fps), and the floor-cleaning
+    clip (#369's 720p at 10 fps);
+  - the scale-up (round 12's 720p at 6 fps);
+  - seven of the nine fabrication clips (round 13's 720p at 15 fps).
+
+  These predate this round's floor (unit 3, the waste station, the MiR250s' cameras and extinguishers) and the
+  caption fixes in them.
+
+### Collisions, each clip's own audit
+
+Every clip drawn this round checked its own frames as it rendered (round 11's strict rules: an arm, its gripper or
+what it holds may touch where it takes or sets a part only up to 1.5 mm deep; everything else that moves is checked
+too), at the rate it is drawn. Four clips were audited by their helpers on the final code instead (chapter 6 at 10 fps,
+the crucible and container clips at 10, the ICP-MS at 15), then drawn without a second audit. Frames with something
+in collision, of the frames checked:
+
+| Clip | fps | Checked | Arm | Anything moving | What is left |
+| --- | --- | --- | --- | --- | --- |
+| Ch. 1, the charge (restaged) | 15 | 3,435 | 4 | 4 | a fingertip 12 mm into the left base camera's case, setting a cup in the carrier |
+| Ch. 2, atomize | 15 | 3,391 | 76 | 76 | the held cup against its own cutaway copy (the same cup drawn whole and halved), not a contact |
+| Ch. 3, sieve and print | 15 | 3,410 | 0 | 0 | rendered twice: the first pass had 27 frames of the forearm in its own MiR250's Class D hose while taking the container; the moves were re-picked with `alloy_atomize.path_branch` |
+| Ch. 4, the powder checked | 15 | 2,625 | 0 | 0 | |
+| Ch. 5, depowder, cut, test | 15 | 5,249 | 2 | 3 | the plate 3 mm into the depowdering rotor; a bar 6 mm into its trough |
+| Ch. 6, sample prep | 15 | 3,565 | 0 | 2 | the work itself (the holder into the alumina) |
+| Ch. 7, characterize | 15 | 3,198 | 0 | 0 | |
+| The set-up movie | 15 | 1,418 | 0 | 60 | rigging: floor machines set down over their drops, the MiR onto its charger, and the UR control box going into its cabinet through the Class D unit now hung on that side (new) |
+| The 9:22 clip | 15 | 1,440 | 0 | 0 | |
+| ICP-MS station | 15 | 1,332 | 0 | 0 | |
+| Machining cell | 15 | 2,169 | 0 | 0 | |
+| Maintenance | 15 | 1,513 | 0 | 0 | |
+| The eight turnaround clips | 15-20 | 10-15 fps each | 0 | 0 | |
+| CubXL / OT-2 | 30 | 2,874 / 702 | 0 | 28 / 3 | a nozzle seated in a tip at pick-up (tips drawn solid) |
+| Coupling close-up | 30 | 1,455 | 0 | 0 | |
+| Instrument clips | 30 | | 0 | 0-108 | their own effects and work: airflow arrows, the powder stream, the DED's melt pool, the HIP drawn through a tray |
+
+`out/collisions/round15_table.png` (the checks chapter's last still) and `out/collisions/round15_summary.json` have
+every clip.
+
+### Still open after round 15
+
+- **Re-render on this round's lab** the clips kept from earlier renders: the four services clips, the safety,
+  base-camera, floor-cleaning and scale-up clips, and seven of the nine fabrication clips:
+  `python3 render_r15.py queue svc_services svc_hookups svc_baycam svc_cabling safety basecams_vlm basecams_atom
+  floorclean scaleup f_metalone f_mprint f_form4 f_form_wash f_form_cure f_stencil f_lumenpnp`, then
+  `VIZ3D_HD=1 VIZ3D_HD_DIR=r15 python3 base_cameras.py join` and `python3 render_r15.py fabjoin`. Whole-lab scenes
+  need 6-7.7 GB each, so run at most two at once.
+- **The floor plan:** a place for the ICP-MS station and one for the machining cell (`notes/lab_r15.md` proposes the
+  north row's west end with a 200 mm setback, or a room of its own, for the ICP-MS).
+- **The doser:** chapter 1's station is still powder-doser's v5 with our dose post and draft shield; v10 (#185) puts
+  the beaker 18 mm under the exit with no post.
+- **Chapter 2's container** still comes off by its valve's lever, a stand-in for the turnaround's fork and clamp.
+- **The set-up movie:** the UR control box slides into its cabinet through the Class D unit; #379 moved the cabinet's
+  door to the front end, but the movie still slides the box in from the side.
+- **The 9:22 clip** still has the CubXL's P20 make ten 20 µL transfers where #372's P300 would make one.
+- **Drawing faults found and not fixed:** the 0.5 mL tubes are drawn almost closed at the rim (`r9_cubxl.py`,
+  `instruments_lab.py`); `maintenance_access.png` still says UR10e (`maintenance.py` no longer runs against
+  `services.py`'s constants).
+- **YouTube:** rounds 7-13's long-forms are superseded; round 12's is public. A `@claude-youtube` run can remove or
+  unlist them.
+
+### Running it (round 15)
+
+```bash
+python3 runner_guard.py watch &                          # memory log and watchdog
+python3 render_r15.py list                               # every 3-D clip of the long-form: script, fps, memory
+python3 render_r15.py queue ch1 ch2 ...                  # each through runner_guard --low (helpers' audits go first)
+python3 render_r15.py check                              # out/r15/: frames, fps, each clip's audit
+python3 render_r15.py collect; python3 render_r15.py fabjoin
+VIZ3D_HD=1 VIZ3D_HD_DIR=r15 python3 base_cameras.py join
+python3 longform.py audit; python3 longform.py           # 1280 x 720 at 30 fps from out/r15/ (the defaults)
+python3 longform.py upload                               # public, subscribers notified (LONGFORM_NOTIFY)
+```
+
+## Safety assets: Class D extinguishers at the powder stations and on every MiR250 (2026-11-20)
+
+Sterling, PR #318: "create a new PR focused on assets for safety. Class D fire extinguishers at each station, etc.
+Focused primarily on faithful reconstruction / asset creation. Noting that we might even want to have a class D fire
+extinguisher mounted at all times to the MiR250 and available for use". The code is [`safety.py`](safety.py) and
+[`safety_render.py`](safety_render.py); the write-up, with every source, is [`notes/safety.md`](notes/safety.md).
+
+![The assets](out/safety_assets.png)
+
+- **Amerex B570** (the lab's own unit, DAL #126): 30 lb Super D, built part by part from Amerex's datasheet and its
+  render, and checked against that render: **89 %** front-silhouette overlap
+  ([`out/safety_b570_vs_amerex.png`](out/safety_b570_vs_amerex.png)). The datasheet's 35 in includes the hose's coil;
+  the squeeze lever is at 27 in.
+- **Amerex 811** heavy-duty vehicle bracket (Buckeye 700229: 30 lb Class D, 7.5-8.5 in cylinders), the B570's own
+  wall hook, an **Amerex 680R** (150 lb wheeled, argon-regulated), **Super D** 50 lb pails with a scoop, CLASS D signs
+  at 60 and 80 in on a floor post, a 20 x 36 in keep-clear area taped in front.
+- **Where:** a B570 at the glovebox, the rePowder (with a 680R and a pail: its fire point), between the two Shuttles,
+  between Shuttle 2 and the Aconity MIDI (with a pail), packaging, the DED and the EOS (with a 680R), each placed by a
+  search clear of machines, docks, lanes, turning circles, target posts, the aisle, the Shuttles' fronts and chapter
+  5's depowdering box. Every
+  powder station is within **4.0 m** walk of one (NFPA 10: 75 ft, 22.9 m; the lab's vacuum SOP: ideally 25 ft).
+  On the posts the units meet NFPA 10's heights (lever 826 mm, hose 1044 mm, bottom 140 mm).
+  The sieving cell has no room for one of its own: its docked MiR's unit and two others 4.0 m away cover it.
+- **On every MiR250:** a B570 in an 811 on the cabinet's **aisle side**, its hose stowed low. On the cabinet's back
+  end it grew the MiR's turning circle from 494 to 619 mm and six docks lost their pivot spot; on the side the circle
+  grows 5 mm, to 499, and every dock is as before. With its hose in the coil Amerex draws, the arm's wrists went
+  through the coil in chapter 5 and the plate swap. Payload 234.5 of 250 kg (247 holding a full 12.5 kg). The UR
+  control box's door moves to the cabinet's front end, and chapter 5's plate pocket on the cabinet moves 60 mm towards
+  the arm, the arm lifting straight off it.
+- **In every lab scene from now on:** the fixed units go into `setup_lab.build` (with the utilities) and the MiR's
+  into `props.mir250`, so the chapters pick them up when next rendered (`VLAB_CLASS_D=0`, `VLAB_MIR_CLASS_D=0` leave
+  them out).
+
+| The floor | A MiR250 with its unit |
+| --- | --- |
+| ![](out/safety_plan.png) | ![](out/safety_mir.png) |
+
+![In the lab](out/safety_lab.png)
+
+The arms against the MiR's unit (`ARM_AUDIT=1`, strict rules, 4 fps; the same clip without the unit for comparison):
+
+| Clip | With the unit on both MiR250s | Without it |
+| --- | --- | --- |
+| Chapter 1, the charge | **0** of 1,129 frames | 0 (round 14) |
+| Chapter 2, atomize (two arms) | **0** of 846 | 0 (round 14) |
+| The plate swap (`atom_plate`) | **0** of 569 (3 with the hose in its coil) | 0 of 569 |
+| BN coating (`atom_bn`) | **0** of 582 | 0 (round 14) |
+| Chapter 5, cut, heat-treat, test | **0** of 1,411 (14 with the hose in its coil and the plate's pocket where it was) | 0 of 1,411 |
+
+Clip: `out/hd/safety.mp4` (1080p, 15 fps), `out/mp4/safety.mp4`, `out/safety.gif`. BoM: about $34,500
+(`out/safety.json`), two thirds of it the two 680Rs.
+
+### The other safety assets: ordinary extinguishers, showers, O2 monitors (2026-11-22)
+
+Sterling, PR #379, of what the PR hadn't modelled (the building's ordinary extinguishers, kept apart and signed
+differently; an eyewash and shower at the ICP-MS hood and the fume hood; O2 monitors where argon and nitrogen are used):
+"Do these." The code is [`safety_other.py`](safety_other.py) and [`safety_other_render.py`](safety_other_render.py);
+the write-up is in [`notes/safety.md`](notes/safety.md#the-other-safety-assets-ordinary-extinguishers-showers-o2-monitors).
+
+![The other safety assets](out/safety_other_assets.png)
+
+- **The building's ordinary extinguishers:** three Amerex **B456** (10 lb ABC, 4-A:80-B:C; Amerex's catalogue) on the
+  racking's uprights, where a warehouse keeps them, under a red FIRE EXTINGUISHER sign and an ABC / NOT FOR METAL FIRES
+  placard. **Kept apart:** 4.3 m or more from every Class D unit, and at every powder station a Class D unit is nearer
+  by 3 m or more. **Signed differently:** red, an arrow and A B C in their own shapes, on the blue racking; the Class D
+  units are white and yellow-starred on red posts at the stations. NFPA 10: the farthest walk 19.0 m of 75 ft (22.9 m);
+  the hoods 9.8 m and 0.9 m of 50 ft.
+- **A Guardian G1902 shower and eyewash** (its spec sheet: head 84 in up and 24 in out, eyewash 37.5 in, triangle
+  handle 65.5 in) at the fume hood (1.2 m, on the side away from the DED's powder) and at the ICP-MS hood (0.95 m, at
+  notes/icpms.md's suggested spot; it goes in with the station). ANSI Z358.1: within 10 s and immediately adjacent,
+  the heights, the spray's 16 in clear. Tempered water from a thermostatic mixing valve, and (ours) a floor drain.
+- **PureAire 99028 O2 monitors** (alarms at 19.5 and 18.0 %, a horn and strobe, a CAUTION sign) at every argon user
+  and store (the cylinder manifold, the glovebox, the rePowder, the Aconity, the DED, the EOS, the ICP-MS's dewar), the
+  sensor 12 in up because argon sinks; and one at 5 ft for the N2 generator, on Shuttle 1's side.
+- Every spot is checked like the Class D units' (every dock, lane, turning circle, target post, the aisle, each
+  other): all thirteen clear. They go into `setup_lab.build` (`VLAB_SAFETY_OTHER=0` leaves them out). About $26,100
+  before the plumbing; the arm audits weren't re-run.
+
+| The floor | In the lab |
+| --- | --- |
+| ![](out/safety_other_plan.png) | ![](out/safety_other_lab.png) |
+
+## Round 14 (A): the lab, the VLM and its services (2026-11-20)
+
+Sterling's notes on round 12's video, handed to run A of four (the lab, the VLM and its services; B, C and D took the
+charge chapter, the atomizer and the narration). Each point below links its notes.
+
+- **The tray plan (2:50) showed modules overlapping the UPSs; `fit` passed.**
+  - **The drawing:** every part was drawn as its bounding box, the dock plate and the tray's lines as one box over the
+    UPS.
+  - **The check:** a pair failed only if its boxes overlapped *and* its solids touched.
+  - **Now:** the plan draws each part's own footprint, and `fit` fails two things closer than 10 mm, solid to solid
+    (5 mm to the lines).
+  - **Two real tight spots, fixed:** tray K's VHX (7 mm from its UPS) and tray L's zwickiLine (3 mm).
+  - [notes/tray_plan.md](notes/tray_plan.md).
+- **The OT-2 has its deck** in every lab scene (`ot2_deck.py`): tips, the tube block, the deep-well plate and the
+  reservoir, as its own clip sets them out.
+- **Voltages per machine,** with sources ([notes/voltage.md](notes/voltage.md), `out/voltage.json`).
+  - Not all 120 V. On the trays, the furnace needs 208 V (across L1-L2) and the PX500 is sold only as 230 V, both on
+    tray F. Nothing on a tray is three-phase.
+  - Tray D's GXT5LI-3000 takes 24 A on one leg, the 30 A breaker's continuous limit. Two smaller units on opposite
+    legs, or one 3 kVA unit fed at 208 V, would split it.
+  - Five machines draw 12-15 A at 120 V and want their own branch.
+- **The rail at 5:56** was the cabling clip, still on round 3's one-Shuttle line. It is rebuilt on the two-Shuttle
+  floor, mobile manipulators only.
+- **The bay has a roof,** with two cameras hung from it (middle back and middle front) in place of round 13's 2020
+  bar. The bay-camera clip shows each one's Wide, not a Wide and an HQ.
+  - The front camera sees none of the room; the back one's picture wants a privacy mask.
+  - [notes/services.md](notes/services.md).
+- **An AirGradient ONE on every powered tray** (on its UPS) **and at every floor station** (on its junction box):
+  `airgradient.py`, [notes/airgradient.md](notes/airgradient.md).
+- **The Shuttles are 9150 mm, 30 ft** ([notes/kardex_height.md](notes/kardex_height.md)): on Kardex's grid; its
+  published range is 2550-30050 mm.
+  - Every tray keeps its slot, and three more stores go in, which takes the powder store to 1506 jars.
+  - 21.4 m of slots is left free: enough for the three-each plan without a third Shuttle.
+  - The cable trays and argon run round the Shuttles' backs, under a 36 ft roof with high-bay lights.
+- **A vacuum line through the CombiTac coupling** (`coupling.py`, [notes/coupling.md](notes/coupling.md), "Vacuum").
+  - **The module:** Stäubli's open-flow UCT08/10 pair, 8 mm, the largest bore it makes, in the fluid frame.
+  - **The rating:** Stäubli rates its couplings to only 14 mbar absolute. That is enough for tray K's antechamber, but
+    not for tray B's die (under 1 mbar) without a leak test.
+  - **Where:** the socket on trays B, K and M, a blind carrier on the others, the plug on the bay's dock and theirs.
+  - **The pump:** a Pfeiffer HiScroll 12 per Shuttle, kept at base pressure behind the docks' isolation valves; a
+    turbo, where one is needed, goes at the tray.
+  - The close-up is re-rendered.
+- **The tray's lines, its mains and the UPS's cord, re-routed.** They ran through the tray's distribution box and
+  across each other, a round-12 fault (notes/services.md).
+- **What this adds, counted from the model** (`out/round14_a_bom.json`):
+  - 23 AirGradient ONEs (12 trays, 11 stations), USD 230 each;
+  - four bay camera units, two per bay;
+  - the vacuum modules: sockets on 3 trays, plugs on 5 docks, blind carriers on 9 trays;
+  - two HiScroll 12 pumps, USD 8.3-9k each;
+  - 20 high-bay lights.
+
+  The priced part comes to about USD 22,600. The rest is for #331's quote list.
+
+**Rendered at 1080p this run,** each checking its own frames:
+
+| Clip | Length, fps | Arm frames in collision | Moving parts | Round 13 |
+|---|---|---|---|---|
+| `setup_lab` | 122 s, 10 | 0 of 948 | 45 | 0 / 35 |
+| `vlm_services` | 37 s, 12 | 0 of 295 | 0 | 0 / 10 |
+| `vlm_hookups` | 39 s, 12 | 0 of 428 | 0 | not kept |
+| `bay_camera` | 33 s, 12 | 0 of 285 | 0 | 2 / 0 |
+| `vlm_cabling` | 35 s, 12 | 0 of 262 | 0 | (the old line) |
+| `vlm_coupling` | 77 s, 15 | 0 of 728 | 0 | 0 |
+
+- **The set-up movie's 45 frames** are rigging moves: machines set down past their own drops, junction boxes and
+  target posts, the MiR onto its charger plate, the UR control box into its cabinet. They are round 13's 35 plus the
+  rePowder past a target post.
+- **The 1080p files** are in `out/hd/`.
+- **Figures:**
+  - [`out/bay_camera_views.png`](out/bay_camera_views.png): what each bay camera sees;
+  - [`out/airgradient_mounts.png`](out/airgradient_mounts.png): the AirGradient on a tray's UPS and on a station's
+    junction box.
+
+Running it (round 14, A; renders at 1080p with their own audits, two heavy jobs at a time through `runner_guard.py`):
+
+```bash
+python3 setup_lab.py fit                   # every tray solid to solid (10 mm), the 30 ft columns -> out/tray_plan.{png,json}
+python3 ot2_deck.py; python3 airgradient.py   # the OT-2's deck; the AirGradient on each tray's UPS
+python3 services.py json                   # both bay cameras' views and arm clearances, the heat, out/cabling.json
+H="VIZ3D_HD=1 VIZ3D_SIZE=1920x1080 VIZ3D_HD_CLEAN=0 VIZ3D_AUDIT=1 VIZ3D_FPS=12"
+python3 runner_guard.py slot --mem 5000 --label baycam -- env $H xvfb-run -a python3 services.py baycam
+python3 runner_guard.py slot --mem 6500 --label cabling -- env $H xvfb-run -a python3 services.py cabling
+python3 runner_guard.py slot --mem 5000 --label services -- env $H xvfb-run -a python3 services.py services hookups
+python3 runner_guard.py slot --mem 7000 --label setup -- env VIZ3D_HD=1 VIZ3D_SIZE=1920x1080 VIZ3D_HD_CLEAN=0 \
+    VIZ3D_AUDIT=1 VIZ3D_FPS=10 xvfb-run -a python3 setup_lab.py
+```
+
+Each 1080p render is in `out/hd/` and `out/clean/` (committed, as run C does, so the next long-form needn't render
+it again); `out/mp4/` keeps a 720p copy, with the GIF and the still made from it.
+
+## Round 14 (B): the doser's fall cut to 45 mm, a nest that holds the vessel, the die cleaned, every cup weighed again (2026-11-20)
+
+Sterling's notes on round 12's public video (PR #318, 2026-11-20 ~18:00 UTC), the charge chapter and the doser:
+
+- **"The dose is still going from way too high up ... a custom breeze break that extends higher up."** What limits it is
+  v5's electronics carriage, which parks right over the stream's axis, not the balance. Turning the balance round
+  would put its rear housing through v5's front hatch and free nothing over the pan. Measured on v5's meshes in every
+  state of the carriage ([`doser_shield.py`](doser_shield.py), [`out/doser_shield.json`](out/doser_shield.json)):
+  - **The station (ours, v5 unchanged).** A carbon-fibre dose post on the pan rises through a roof plate in the
+    HR-202i's top-door rails. A vessel stands on it only while a module is docked and tilted. Round it is a clear draft
+    shield, up to 405 mm, notched for the carriage, with a sliding door for the shuttle.
+  - **The fall: 153.4 → 45.4 mm into a charge cup, 155.9 → 49.9 mm into the vial.** None of it is now in the open; in
+    rounds 9-13, 124 mm of it was. A Stokes estimate of drift in a 0.1 m/s draft gives about 8× less.
+  - **Clearances:** every part of ours is at least 8.2 mm from every v5 part in every state.
+  - Details: [`notes/multidoser.md`](notes/multidoser.md#round-14-a-dose-post-a-nest-that-holds-the-vessel-our-draft-shield-pr-318-2026-11-20).
+
+  ![](out/doser_shield_section.png)
+- **"On the pedestal, it still looks relatively unsecure" (9:54).** The post's nest has a 4 mm ring round the vessel's
+  foot, 0.25 mm a side with a lead-in, and grooves the fork's narrower tines drop into. There is one nest for the cup
+  and one for the vial.
+- **The die and punch cleaned between presses.**
+  - After every press, the punch goes back through a brush-and-vacuum cup in its rest, and a bore wand brushes and
+    vacuums the die's bore (`alloy_press.Cleaner`).
+  - At a change of run, an IPA swab as well (not animated).
+  - The target: carry-over of at most 10 ppm of the next charge, 0.43 mg in an Al cup and 1.46 mg in a Cu cup, shown by
+    validation swabs and ICP-MS
+    ([`notes/vacuum_press.md`](notes/vacuum_press.md#round-14-cleaning-the-die-and-the-punch-between-presses-pr-318-2026-11-20)).
+- **Each cup weighed again after the press fit.** It goes back to the HR-202i and is read against its weight before
+  pressing plus its plug's (±1.0 mg), recorded in the clip's JSON.
+- **Re-rendered at 1080p, each checking its own frames** (`VIZ3D_AUDIT=1`, round 11's strict rules):
+
+  | Clip | Length | Frames in collision (arm; movers; all) | Round 13 | Files |
+  |---|---|---|---|---|
+  | Chapter 1, `alloy_charge.py` | 5:10 (3,723 frames) | **0 of 2,732**; 0; 0 | 0 of 2,147 | [1080p](out/hd/alloy_charge.mp4), [720p](out/mp4/alloy_charge.mp4), [GIF](out/alloy_charge.gif), [audit](out/collisions/alloy_charge.json) |
+  | 9:22, `animate.py workflow` | 1:48 (1,300 frames) | **0 of 1,144**; 0; 0 | 5 (the vial in Ben's holder) | [1080p](out/hd/vlm_workflow.mp4), [720p](out/mp4/vlm_workflow.mp4), [GIF](out/vlm_workflow.gif), [audit](out/collisions/vlm_workflow.json) |
+  | Maintenance, `upkeep_clip.py` (10 fps; its balance check moved to the new station) | 2:07 (1,271 frames) | **0 of 1,016**; 1 (part 3: the person's glove 3 mm into the iMicro's panel); 1 | 0 | [1080p](out/hd/upkeep_clip.mp4), [720p](out/mp4/upkeep_clip.mp4), [GIF](out/upkeep_clip.gif), [audit](out/collisions/upkeep_clip.json) |
+
+  The 9:22 clip is drawn in the whole lab as run A left it at `51a72c1` (the 9150 mm Shuttles, trays A-S, the bay's
+  roof, the coupling's vacuum line), its opening and closing views `setup_lab.ORBIT`'s last as A moved it.
+  The 9:22 clip's last frames in collision were the vial going into Ben's tight-fit 9-vial holder on the CubXL (round
+  11: "a grip by design"). That seat is now drawn with its PETG lips flexed open: the holder is clipped to the vial's
+  own cylinder, 1 mm round it, at that seat only.
+
+  ![](out/round14_doser_sheet.png)
+
+### Running it (round 14, B)
+
+```bash
+python3 doser_shield.py; python3 doser_shield.py figure        # the room over the pan, the checks, the section
+ARM_AUDIT=1 VIZ3D_FPS=4 xvfb-run -a python3 alloy_charge.py    # a quick audit (about 6 min); then the render:
+FFMPEG_THREADS=2 VIZ3D_HD=1 VIZ3D_SIZE=1920x1080 VIZ3D_HD_CLEAN=0 VIZ3D_AUDIT=1 VIZ3D_FPS=12 xvfb-run -a python3 alloy_charge.py
+FFMPEG_THREADS=2 VIZ3D_HD=1 VIZ3D_SIZE=1920x1080 VIZ3D_HD_CLEAN=0 VIZ3D_AUDIT=1 VIZ3D_FPS=12 xvfb-run -a python3 animate.py workflow
+```
+
+### Still open (B)
+
+- **Nothing here is measured.** The post, nest, roof plate, shield, fork, brush cup and wand are our designs, not built.
+  Whether the HR-202i's glass top door lifts out of its rails for a plate of ours is to check on the balance (or the
+  GH-202 that replaces it). The stream's own spread over 45 mm of still air is still powder-doser's T8b.
+- **The die's cleaning is a plan to validate**, with swabs and ICP-MS at the run changes. The IPA swab at a change of
+  run is not animated.
+- **The maintenance clip's balance check is on the new station too** (`upkeep_clip.py`): the 100 g check weight goes
+  onto the vial's nest with the carriage docked and no module tilted, at 0 arm and 0 mover frames in collision (4 fps
+  audit of the whole clip). The people check there still finds the person's glove 3 mm into the extraction table's
+  frame for one frame in part 3, which this run didn't touch.
+- **For the next long-form** (run D's narration, `longform.py`): chapter 1's still "Can the cup come closer to the
+  exit?" (`doser_raise_section.png`, round 10) and its narration line ("The cup can't come closer to the outlet ...")
+  are out of date. Suggested: `doser_shield_section.png`, captioned "The doser's carriage parks right over the cup,
+  so a cup stands on our dose post only while a module is docked and tilted: 45 mm under the exit (153 before),
+  inside our draft shield", and the line "The doser's carriage parks right over the cup, so the cup goes onto its post
+  only while a module is docked and tilted. It now stands forty-five millimetres under the outlet, inside a draft
+  shield of its own."
+
+## Round 14 (D): the narration said right, the footage credited, the 17-step card, an ICP-MS station, the UR12e (2026-11-20)
+
+Sterling's notes on round 12's public video, handed to run D of four (the narration, the footage, the chapter cards,
+ICP-MS and the arm's name; A, B and C took the lab and its services, the charge chapter and the atomizer). Each point
+links its notes.
+
+- **The narration's pronunciation** ([notes/narration.md](notes/narration.md)).
+  - **Fixed:** "potentiostat" (espeak said "puh-TEN-tee-AH-stat") and "MiR", now "meer". The same check found more:
+    "doser" was heard back as "dozer", "Vertiv" as "verdive", "depowdered" as "de-powered" and "recoating" as
+    "recoding".
+  - **How:** each line in `narration.json` is now written as it reads in the subtitles (OT-2, SEM, MiR250). The voice
+    speaks it from phonemes: `longform.SAY` respells a written form, and `longform.IPA` gives Kokoro the phonemes of
+    the words a respelling can't fix.
+  - **Checked by machine:** `python3 longform.py narration-check` speaks every line and hears it back with
+    faster-whisper base.en and small.en. It writes [`out/narration/check.json`](out/narration/check.json) and every
+    line in one file to listen to, [`out/narration/lines.ogg`](out/narration/lines.ogg).
+    - Result: 56 lines, 9.7 min of speech, mean word error 1.4 % (small.en) and 2.8 % (base.en).
+    - Every remaining difference is a number written another way or a homophone.
+  - **Checked by eye:** espeak's phonemes for all 690 distinct words.
+  - **Kept in step with runs B and C:**
+    - Chapter 1's figure is now run B's dose post and draft shield (a 45 mm fall, from 153), and its line says so.
+    - The atomizer lines follow run C's chapter 2 and latch clip. A line can now anchor on a phrase of its sub-step's
+      caption.
+- **11:43, "most by hand"** ([notes/dal_workflow.md](notes/dal_workflow.md)).
+  - DAL's 17-step card now says, per step, what this design does: 15 steps automated and shown in the video (the
+    chapter given), 2 with no station yet (density, long-term imaging). Its last column tags what inside each step is
+    still by hand (4), in progress (3) or open (4).
+  - Its line is rewritten. The BN line no longer quotes the old card.
+
+  ![The 17-step card](out/dal_workflow_table.png)
+- **11:46, a simplified tray setup? Yes.**
+  - Chapter 1 is still staged in round 2's one-Shuttle lab with trays A-C: `alloy_charge.py` builds `animate.Lab`.
+    Chapters 2-7 use `setup_lab.build`'s two Shuttles and every tray.
+  - Its title bar still says "the alloy route 1/4".
+  - `alloy_charge.py` is run B's file, so this run left it. The fix is to stage it on `setup_lab.build`, as
+    `alloy_powder.py` does (with `VLAB_ONLY_TRAYS` to keep it light).
+- **20:05, AMAZEMET's footage** ([notes/footage.md](notes/footage.md)).
+  - The melt stream cut from Sterling's MS&T 2026 talk is AMAZEMET's, so it is out of chapter 2.
+  - The pour beat is the lab's own Oct 27 bronze jet on the plate, which already followed it.
+- **20:26, the slag photo** ([notes/footage.md](notes/footage.md)).
+  - c3k0n5's "bag and jar" was a phone photo of a screen showing a lump of splats.
+  - Chapter 2 now shows a jar of the lab's own atomized aluminium, lot 4yghtr, cropped from Ronnie Guymon's photo in
+    DAL #159. Every Al photo in DAL #157 and #159 was looked at.
+  - Chapter 2 picks up both changes when run C re-renders it: `splice()` skips a file that isn't in `out/footage/`.
+- **ICP-MS: there was none; now a station on the floor** ([`icpms.py`](icpms.py), [notes/icpms.md](notes/icpms.md),
+  [`out/icpms_bom.json`](out/icpms_bom.json)).
+  - **The hood:** a metal-free polypropylene trace-metals hood (HEMCO UniFlow, 6 ft) on an acid cabinet. The
+    concentrated HNO3 and HCl live only there. No HF.
+  - **Inside the hood:** an acid-rated dilutor with an all-fluoropolymer path (QPrep class) and a graphite hot block.
+  - **Not a Hamilton:** Hamilton's own resistance table rates the STAR's CO-RE head "not recommended" for nitric acid
+    at 5-10 % and 70 %, and a STARlet is 1.1 m wide. Opentrons' manuals say to keep corrosives away from the OT-2.
+  - **Beside the hood:** an Agilent 7850 (its aerosol dilution takes samples up to 25 % dissolved solids, so seawater
+    needs no big liquid dilution) with its SPS 4. The chiller and forepump sit under the bench, the 180 L argon dewar
+    beside it. About $160-220k for the ICP-MS.
+  - **The arm:** works it in a PTFE-laminate cover. It carries capped tubes in and the autosampler rack out, never an
+    open concentrated acid.
+  - **Which instrument:** ICP-OES suits percent-level alloy composition, ICP-MS the trace metals in the corrosion
+    electrolyte. Si above about 1 % needs HF, so silicon comes from the XRF.
+  - **The clip,** 99.8 s at 1080p ([MP4, 720p](out/mp4/icpms.mp4), [GIF](out/icpms.gif)): **0 of 1,070 frames in collision**
+    under the strict audit, arm and everything that moves. The audit's first pass found 597; the notes say what
+    fixed them. It is in the long-form's corrosion chapter, with a narration line.
+
+    ![The ICP-MS station, six frames](out/icpms_sheet.png)
+  - **Where it goes (for run A):** the south row's east end, past the wire EDM, or a room of its own. The notes give
+    the numbers.
+- **UR10e or UR12e: the same arm, renamed** (June 2025, for its 12.5 kg payload; mechanically unchanged;
+  [notes/ur12e.md](notes/ur12e.md)).
+  - Every frame drawn from now on says UR12e (`scene.ON_SCREEN`); so do the cards and the YouTube description.
+  - Code identifiers, notes and old records keep UR10e.
+
+**Still open (D):**
+- The long-form isn't rebuilt or uploaded. The next build takes the new narration, the card, the ICP-MS clip and the
+  footage changes.
+- Clips rendered before this round still say UR10e until they are re-rendered.
+- Chapter 1's one-Shuttle staging (above) is open.
+- The OT-2's clip still shows it diluting the ICP-MS samples on tray A. The card and narration say that step moved.
+- Run A places the ICP-MS station on the set-up floor.
+
+## Round 14 (C): the atomizer chapters (2026-11-20)
+
+Sterling's notes on round 12's public video, for the atomizer (PR #318, 2026-11-20 ~18:00 UTC; run (C) of a
+claude-super hand-off). Timestamps are in round 12's long-form ([G6_1FtXHmKI](https://www.youtube.com/watch?v=G6_1FtXHmKI)).
+
+| Time | Note | Now |
+| --- | --- | --- |
+| 17:28 | holding the lid down while working the latch seems unnecessary; the unlatching step is missing | No arm presses on the lid, in chapter 2 and in `atom_latch`: opened only at atmosphere, nothing pushes the lid up; closing, the latch's own over-centre draw squeezes the seal. Chapter 2 drops its round-6 latch (front right, one lever pulled out and down, the loop never unhooked) for the model's latch on the housing's right face and the latch clip's moves (`atom_latch.Work`): the lever over centre, then the unlatching proper (the loop lifted off the keeper's hook and let fall over the folded lever), then the lid; closing is the reverse. MiR250 1 works from the furnace's right, so the cups no longer go in past the turned lid ([notes](notes/alloy_atomize.md#round-14-pr-318-2026-11-20-the-models-latch-the-tong-explained-the-plate-steered), [latch notes](notes/atom_latch_container.md#round-14-2026-11-20-no-arm-on-the-lid-chapter-2-uses-the-same-moves)) |
+| 18:06 | how does the loading tong work? | Redesigned as two flat bars that slide past each other, each pinned to one of the 2F-85's fingertips, so each jaw moves with its finger; a flexure keeps the jaws open when the tong is left alone. On screen: a taken-apart figure while the arm picks it up, and cup 1 followed down a cut-open bore, the jaws opening on the floor cone |
+| 19:21 | the stack "still by hand" | The aside now says the two arms build it in the turnaround (#353's rebuild), with that clip's picture |
+| 21:12 | the new atomizer renders are missing elsewhere | Chapter 2 draws DAL PR 189's camera units. Every other lab scene takes the rePowder from `lab._repowder()`, which now adds the units and the ground plates (below): chapter 3 is re-rendered with them; the set-up movie, the finale and the wide shots of chapters 1 and 4-7 take them when next rendered |
+| (new) | the two arms adjust the plate in real time during the pour | A landing stage between the door and the stack's housing, sealed by a bellows (ours): one knob slides the stack along its axis, the other moves it across; arm 2 and arm 1 each hold one through the pour and turn it when the melt-stream cameras put the landing more than 1 mm off target (a schematic of their measurement is in the corner) |
+| 23:59 | the latch clip's collision | 0 frames since round 13; re-audited at 0 of 1,123 without the press, re-rendered at 1080p |
+| 24:58 | a collision, and a grip that would slip | At 24:58 the arm is putting the anti-static brush back: the brush now has a square grip between two collars and a V-rest with a fin slot ([`atom_brush.py`](atom_brush.py)); the clip is at 0 of 723 frames |
+| (24:58) | the brush carrying powder from one alloy to the next | One disposable head per run: a spring magazine on the brush's rest, a stripper bar over a grounded can. Ultrasonic cleaning in IPA rejected: reactive fines in a solvent bath, a new waste stream, drying, and no check that the bristles' roots are clean |
+| 25:53 | the sign's text bleeds off its edges | Fitted: every line measured and scaled together inside a margin (`atom_nilfisk.fit_text`); the widest line 368 mm on the 460 mm board. It was the only text board in the atom_* clips |
+| 25:53 | ground within reach, near every machine and wherever the arm works | A stainless plate set flush in the floor at every spot a MiR250 parks to work at the atomizer, its leads in a floor channel to the area's ground bar; two sprung copper-graphite shoes on each MiR250, lowered once it is parked; the arm waits until shoe to shoe and plate to bar both read 1 ohm or less, then the MiR's bond lamp turns green ([`atom_ground.py`](atom_ground.py), [notes](notes/atom_vacuum.md)). Compared and rejected: an overhead trolley with a lead, a reel on each MiR, studs a person clips. Shown in the vacuum clip (a new 3/10, "Bond") and on both MiRs in chapter 2. Ours, for EHS to check |
+
+**Rendered at 1080p** (each with its own strict audit; the 1080p MP4 and its sub-steps committed under `out/hd/` and
+`out/clean/` for the long-form, a 720p copy in `out/mp4/`):
+
+| Clip | Length | Drawn at | Audit (strict) |
+| --- | --- | --- | --- |
+| `alloy_atomize` (chapter 2) | 288 s, 25 s of it the lab's footage | 12 fps | 0 of 2,527 frames on the whole lab, movers 0 |
+| `atom_latch` | 93 s | 15 fps | 0 of 1,123 frames, movers 0 |
+| `atom_container` | 62 s | 15 fps | 0 of 723 frames, movers 0 |
+| `atom_vacuum` | 149 s | 15 fps | 0 of 1,836 frames, movers 0 |
+| `atom_plate` | 152 s | 15 fps | 0 of 2,146 frames, movers 0 |
+| `atom_crucible_in` | 148 s | 15 fps | 0 of 2,004 frames, movers 0 |
+| `atom_crucible_out` | 113 s | 15 fps | 0 of 1,520 frames, movers 0 |
+| `atom_bn` | 155 s | 15 fps | 0 of 2,250 frames, movers 0 |
+| `atom_cameras` | 105 s | 15 fps | 0 of 1,181 frames, movers 0 |
+| `alloy_print` (chapter 3) | 272 s | 12 fps | 1 of 2,709 frames (round 13's 0.3 mm fingertip graze), movers 0 |
+
+The last five were re-rendered without changes of their own: their committed MP4s were #353's 720p renders of
+2026-11-19, from before round 13 put the rePowder's latch back in these clips and took the rebuild's 16 frames and
+the plate's last ones out of collision; round 13's 1080p renders of them stayed on its runner (`out/hd/` is
+git-ignored). So all eight turnaround clips and chapter 2 are now at 1080p in git.
+
+**For the long-form** (not rebuilt here): the clips above changed, and with them their sub-steps' numbering, so
+`narration.json`'s lines anchored on `alloy_atomize`, `atom_latch` and `atom_container` sub-steps need re-anchoring
+(chapter 2: the stack line now at sub-step 120, the powder line at 162; `atom_latch`'s and `atom_container`'s are already on the new clips' 9 and 28). Chapter 3 is re-rendered with the camera units and the plates from `lab._repowder()` (its sieving cell stands
+beside the rePowder; the plates are kept as floor markings, since merged by colour with the machine's steel they
+read as an obstacle under a MiR's skirt); the set-up movie (run A renders it last), the finale and the other wide
+shots pick them up when next rendered.
+
+**Open:**
+- **Chapter 2 still takes the container off by its valve's lever** (a stand-in, said so on screen). The turnaround's
+  design, a fork under its flat bottom while the other arm opens the clamp, is still not animated without collisions
+  (`atom_container.py`, `ATOM_CONTAINER_FULL=1`).
+- **The sealing rod's safety pin:** the turnaround's crucible clips pull it before lifting the rod's lever; chapter 2
+  lifts the lever without it.
+- **The top camera stays parked in chapter 2**; the camera clip shows it swung back over the lid's window.
+- **The landing stage is ours, to check with AMAZEMET** (the stack's seal at the door, the transducer's cable and cooling
+  air, whether the plate may move while it vibrates). The drift on screen is illustrative.
+- **Layout:** setup_lab's AprilTag post for the rePowder (`TARGET_AT`, model (938, -379)) stands inside MiR250 1's
+  footprint at the latch spot (650, -560), which chapter 2 now uses (chapter 2's floor doesn't draw the post).
+  `atom_crucible`'s MiR250 2 (-960, -40, 90 deg) and `atom_base.PARK["left"]` stand over the model's vacuum pump, and
+  `atom_container`'s second MiR250 stands where chapter 3 puts the wash module.
+
+## Round 13: collisions, artifacts, everything at 1080p, drawn at 10-15 fps (2026-11-20)
+
+Sterling on #318 (2026-11-20): "continue fixing collisions or weird artifacts and rendering at higher resolution and
+fps ... Upload to YouTube as unlisted".
+
+**The video:** [The vertical cloud lab, start to finish: a Kardex VLM and the alloy route (3-D, round 13)](https://www.youtube.com/watch?v=ySiuvP9C190), unlisted, 1:17:17, 55 chapters, 1920 x 1080 at 30 fps, narrated (55 lines, 9.3 min, Kokoro). 36 of its 41 3-D clips (3,618 of 4,223 s) were rendered this round, at 1080p and drawn at 10-15 fps; `out/longform.json` lists every part and its source. Round 12's public video ([G6_1FtXHmKI](https://www.youtube.com/watch?v=G6_1FtXHmKI)) is superseded.
+
+### A frame two to three times cheaper
+
+Round 12's 1080p renders were kept in `out/hd/`, which is git-ignored, so they went with that runner: every clip had to
+be rendered again to be at 1080p. On the 4-core runner that meant making a frame cheaper first. Measured with a
+profiling hook on chapters 1 and 4 at 1920 x 1080 (CPU per frame, `scene.py`):
+
+| Change | Before | After |
+| --- | --- | --- |
+| FXAA in place of SSAA (`VIZ3D_AA`; SSAA was the default and renders oversampled) | 1.82 s | 0.91 s |
+| Depth peeling only on frames with something see-through (`VIZ3D_PEEL=auto`) | 0.91 s | 0.70 s |
+| Depth peeling at 3 passes, not 6 (`VIZ3D_PEELS`): VTK's cost is per pass, however little is see-through | 1.38-1.57 s | 1.11-1.18 s |
+| The clipping range from the visible bounds every 8 frames, padded by a metre (`VIZ3D_CLIP_EVERY`) | a tenth of the main thread | |
+| Fonts loaded once, each caption wrapped once | | |
+
+- Merging all 1,266 actors of a frame into one changed nothing, so the cost is in triangles and pixels, not draw
+  calls. Resolution costs CPU (0.30 s at 960 x 540, 0.61 s at 1080p, 1.48 s at 2160p, no anti-aliasing), even though
+  a single render's wall time barely shows it: round 12's "resolution is nearly free" was wall time on an idle machine.
+- 3 peel passes change 600-1,000 of 2 million pixels, all where see-through parts overlap. FXAA against SSAA softens
+  edges a little; at 1080p it reads the same.
+- Chapter 6 now loads only the trays it presents (F and M) with the cladding opaque, as chapters 4, 5 and 7 do.
+- **A startup fault.** With three renders and the audits running (load 7-12), a new process's first X connection
+  failed about half the time; VTK then fell back to OSMesa, which isn't installed, and the render died at its first
+  frame, after the scene build. `scene.py` makes the window again until it is an X one.
+
+### Collisions fixed
+
+Three helper agents worked on the clips with frames left in round 12's table, each on its own files, auditing through
+`runner_guard.py` (strict rules, at 6 fps while fixing, then at 15 fps on the final code). Frames in collision, round
+12's render against round 13's 1080p render, each audited at the rate it is drawn (10-15 fps; round 12's at 6-10):
+
+| Clip | Round 12 | Round 13 | What changed |
+| --- | --- | --- | --- |
+| `atom_latch` | 123 | 0 | Unclamping, the loop is lifted off the hook's lip, the lever let down, the loop let fall over it (the training video's way); hooking on, the hanging loop is carried round its pin between lightly closed pads. The gripper turns about 36 deg, not 170, and the forearm stays out of the machine. The lid's knob grasp tilted 20 deg. A camera at the latch's height. |
+| `alloy_powder` (ch. 4) | 30 | 0 | The MiniFlex door opens 40 deg, clear of camera D1; the holder set 4 mm forward and not spun (its fin hit the 2-theta arm); the SEM stub carrier into the cup's real position; the Mastersizer cover swung away from the iMicro; the XRF through the park pose. |
+| `atom_container` | 18 | 0 | A smaller brush circle in the bowl, a steeper cone stroke, the fingers 12 mm over the valve's bar. |
+| `atom_crucible_in` | 16 | 0 | The wrist turns back before lifting off the sealing rod's lever. |
+| `atom_vacuum` | 11 | 2 | The holster approached from 200 mm up and backed off upwards. Left: the crevice tool 3 mm into its station and the brush 0.3 mm, a frame each. |
+| `atom_plate` | 2 | 1 | The fingers closed to 38 mm on the way to the top bolt's knob. Left: a fingertip 1.5 mm into the furnace for a frame, with the latch back. |
+| `alloy_print` (ch. 3) | 2 | 1 | The gripper opens wider on the No. 325's tab; one fingertip touch left on the sieving cell's frame. |
+| `setup_lab` | 2 arm / 88 all | 0 arm / 35 all | Each tray loaded back to front (machines had slid through UPSs and camera posts already down); the VLMs' posts, columns, lift, trays and cladding put in place on the base instead of slid through each other and the cable trays; the floor machines set down on their footprints, not rolled 2.6 m through their drops and dock posts; the first arm stretches straight up. |
+| `scaleup` | 73 (movers) | 0 arm / 107 all | The EOS door opens before the cart rolls up and shuts after it rolls away; what is left is the work itself (the saw through the brackets, the deposition's glow on the beads). |
+
+**An artifact found on the way.** Round 12 made `alloy_atomize.load_rp` leave out the rePowder model's own latch,
+meant for chapter 2 (which draws its own). It did so for every caller, so every atomizer clip lost the latch's base,
+hold-down foot and bolt, and drew its lever and loop attached to nothing. `load_rp(own_latch=True)` is now chapter 2's
+alone. With the latch back, the rebuild clip's first render stopped in the collision checker (a held part's group no
+longer under the group it was held by: `collide._rel` now goes through the world matrices), and was rendered again.
+
+**Other fixes:** the chapters' burned-in titles are numbered of 7 (chapter 1 said "1/4"); the finale writes its 1080p
+frames to `out/hd/` (round 12's wrote none); chapter 6 draws its cladding opaque with only trays F and M loaded, as
+chapters 4, 5 and 7 do.
+
+**Chapter 2, held back.** Chapter 2 was rendered at 1080p this round too, and its own audit found **143 of 1,539
+frames** with arm 1's forearm and wrist camera in the rePowder's lid while it loads the cups (step 2/5; round 11's
+audit, on round 11's model, had 0). Round 12 never rendered or audited chapter 2 again after #353 turned the lid
+assembly 90 deg, so chapter 2's planned moves no longer match the model's open lid. The long-form keeps round 11's
+render (720p, 6 fps, scaled up), as round 12 did; the 1080p audit is `out/collisions/alloy_atomize_r13_1080p.json`.
+The fix is to re-plan chapter 2's cup loading against the turned lid (or open it to where the moves were planned).
+
+### Rendering at 1080p, at 10-15 fps
+
+Everything that renders this round was drawn at 1920 x 1080: chapters 1 (12 fps), 3 (10), 4 (12), 5 (12), 6 (10) and 7
+(15); the set-up movie (10); the services, hookups, cabling and bay-camera clips (10); the coupling (15); all eight
+atomizer clips (10-12); the scale-up (10); maintenance (10); the 8:00 clip (10); 13 instrument clips (15); the route
+diagrams (30). Round 12 drew the chapters at 6 fps and the clips at 10. The long-form encodes everything at 30 fps.
+Each fresh clip checked its own frames as it rendered (`VIZ3D_AUDIT=1` or the clip's own auditor, round 11's strict
+rules), at the rate it is drawn. The checks chapter ends on
+`out/collisions/round13_table.png`, and `out/collisions/round13_summary.json` has the numbers.
+
+How the work was spread: a priority list fed to `runner_guard.py` one job at a time (what was 1080p in round 12
+first, so nothing got worse; then the collision-fixed clips; then the clips round 12 had at 720p), three or four
+renders at once, and a fourth slot shared by the three fix agents' audits. Chapters 1 and 5 were restarted on the
+faster `scene.py` after their first starts, at 0.4-0.5 frames a second, would have run past the upload.
+
+**Not rendered this round, kept at their earlier 720p renders and scaled up:** chapter 2 (above), the finale, the OT-2
+clip, the vacuum press and the fabrication tour. The last four were 720p in round 12 too; there was no CPU left for
+them before the upload.
+
+### Still open after round 13
+
+- **Chapter 2** needs its cup loading re-planned against #353's turned lid (143 frames at 1080p); until then the video
+  shows round 11's render.
+- **Not at 1080p:** chapter 2, the finale, the OT-2 clip, the vacuum press, the fabrication tour. Each renders with
+  `VIZ3D_HD=1 VIZ3D_SIZE=1920x1080 VIZ3D_HD_CLEAN=0 VIZ3D_AUDIT=1 VIZ3D_FPS=10` (chapter 2 without `VIZ3D_HD`, then
+  its 1080p splice moved to `out/hd/`; the fabrication tour's nine clips then joined into `out/hd/fabrication_tour.mp4`).
+- **Collision frames left in the video** (the table at the end of the checks chapter):
+  - chapter 6: 3 arm frames (a hot mount set 12 mm into its holder) and the CNC's lid opening into the bay above it
+    (6 frames); the rest is the work itself (end mill, pistons, the press's charge);
+  - chapter 5: the plate 6 mm into the depowdering box's rotor for one frame;
+  - the vacuum clip: the crevice tool 3 mm into its station; chapter 3, the plate clip and the bay-camera clip: a
+    fingertip or a vial 1.5-3 mm into a fixture for a frame or two;
+  - the hookups clip: the bay's dock head comes out through the bay's side wall, drawn without an opening;
+  - the set-up movie: floor machines set down over their utility drops, the control box into its cabinet as built.
+- **Chapter 5's last shots** have a target post's tag cube in the foreground of the Instron.
+- **The XRD door** opens 40 deg in chapter 4, to clear camera D1; moving D1 would let it open fully.
+- **The Mastersizer's tour clip** still swings its cover over the iMicro (chapter 4 swings it the other way).
+
+### Running it (round 13)
+
+```bash
+python3 runner_guard.py watch &                       # memory log and watchdog, as before
+VIZ3D_HD=1 VIZ3D_SIZE=1920x1080 VIZ3D_HD_CLEAN=0 VIZ3D_AUDIT=1 VIZ3D_FPS=12 \
+  python3 runner_guard.py slot --mem 3500 --label ch4 -- env VLAB_ONLY_TRAYS=DEM xvfb-run -a python3 alloy_powder.py
+VLAB_ONLY_TRAYS=FM ... alloy_prep.py; VLAB_ONLY_TRAYS=F ... alloy_workflow.py; VLAB_ONLY_TRAYS=DEKL ... alloy_characterize.py
+python3 longform.py audit                              # -> out/collisions/round13_table.png, round13_summary.json
+python3 longform.py; LONGFORM_PRIVACY=unlisted python3 longform.py upload
+```
+
+`VIZ3D_AA` (fxaa), `VIZ3D_PEEL` (auto), `VIZ3D_PEELS` (3), `VIZ3D_CLIP_EVERY` (8) and `VIZ3D_PRESET` (faster) are
+`scene.py`'s new switches; the old behaviour is `VIZ3D_AA=ssaa VIZ3D_PEEL=on VIZ3D_PEELS=6 VIZ3D_CLIP_EVERY=1
+VIZ3D_PRESET=slow`.
+
+## Round 12: everything in one long-form, at 1080p, narrated, public (2026-11-20)
+
+Sterling on #318 (2026-11-20): "pull in the latest from everywhere and above and bring it altogether and create a fresh
+render of the entire full video, add a mild amount of non-cringe-AI narration, and upload that to YouTube as public
+... Probably 1080p at 30 fps, unless you need to drop to 720p".
+
+**The video:** [The vertical cloud lab, start to finish: a Kardex VLM, its instruments and the alloy route (3-D)](https://www.youtube.com/watch?v=G6_1FtXHmKI), public, 1:19:15, 55 chapters,
+1920 × 1080 at 30 fps, with a narration. [`longform.py`](longform.py) builds it; `out/longform.json` lists every part
+with its start, its source and whether it was scaled up from 720p; `out/longform_narration.srt` has the narration with
+its times.
+
+### What came in
+
+- **#353, the atomizer's turnaround, merged** (a fast-forward: it was stacked on this branch with nothing behind). Its
+  eight clips are a chapter of their own after chapter 2, in turnaround order, with its turnaround timeline.
+- **`main`, merged**: among the rest, the YouTube service's public default (#355) and the triggering comment's link in
+  every upload's description (#356).
+- **The coupling close-up and the UPS line-up** (2026-11-18) are in the services chapter, and every tray rendered this
+  round carries its own Vertiv unit and the CombiTac dock.
+- **#332's bottleneck ladder** is a chapter before the finale, and **#328's three build orientations** stay in chapter
+  5, both as figures at their pinned commits. #327's back-hinge sheet is out of the checks chapter: #353 turned the lid
+  to hinge on the left.
+
+### Rendering at 1080p: a 3× faster frame, and what still didn't fit
+
+- **The speed-up** (`scene.py`, frames bit-identical to before, checked on a clip's 268 frame hashes):
+  - A whole-lab frame at 1920 × 1080 took 2.2 s, and 1.4 s of that was `Scene.apply()`. pyvista's wrappers are
+    Python subclasses of the VTK classes, so every `actor.GetProperty()` made a new wrapper, and dropping it made VTK's
+    Python wrapping walk its whole map of about 2,600 "ghosts" (0.5 ms a call; py-spy put 96 % of `apply()` in
+    `vtkPythonUtil::RemoveObjectFromMap`).
+  - Each actor's property, mapper and mesh wrappers are now kept for the scene's life, and `apply()` sends VTK only
+    what changed. A frame now takes 0.79 s, of which `apply()` is 0.01 s. The collision checker's per-frame scan of
+    `GetMapper().GetInput()` gets the same saving.
+  - Resolution is nearly free on the software renderer: 0.74 s at 1920 × 1080 against 0.61 s at 640 × 360. The cost
+    is the 5.1 M triangles, half of them in about 50 over-tessellated parts.
+  - Two ideas that didn't pay: drawing the heaviest meshes decimated, by swapping mappers for the draw (5 % faster
+    once the wrappers were fixed, not worth the risk to the picture), and anti-aliasing (SSAA and FXAA cost the same).
+- **The frame rate.** Even so, a 1080p whole-lab frame costs about 2.5 CPU-seconds, and the 4-core runner draws about
+  1.4 frames a second. At a native 30 fps, the video's ~72 min of 3-D would have taken about a day. So the 3-D is
+  drawn at 10 fps (cubxl_corrosion, ded, fumehood, fumehood_tray, glovebox, glovebox_tray, hip, packaging, powder_store_feed, powder_store_lots, storage, stream_cam, tensile_h, vlm_coupling, vlm_services); 6 fps (alloy_characterize, alloy_charge, alloy_powder, alloy_prep, alloy_workflow, setup_lab), and encoded at 30 fps by repeating frames. The chapters move as they did in round 11 (6 fps); the short clips at 10 fps, against 15 before; everything rendered this round is sharper.
+- **Fresh at 1080p (21 clips):** `alloy_characterize`, `alloy_charge`, `alloy_powder`, `alloy_prep`, `alloy_workflow`, `cubxl_corrosion`, `ded`, `fumehood`, `fumehood_tray`, `glovebox`, `glovebox_tray`, `hip`, `packaging`, `powder_store_feed`, `powder_store_lots`, `setup_lab`, `storage`, `stream_cam`, `tensile_h`, `vlm_coupling`, `vlm_services`.
+- **Earlier renders from the same code, scaled up from 720p (20 clips):** `alloy_atomize`, `alloy_print`, `atom_bn`, `atom_cameras`, `atom_container`, `atom_crucible_in`, `atom_crucible_out`, `atom_latch`, `atom_plate`, `atom_vacuum`, `bay_camera`, `fabrication_tour`, `ot2_corrosion_prep`, `scaleup`, `timelapse`, `upkeep_clip`, `vacuum_press`, `vlm_cabling`, `vlm_hookups`, `vlm_workflow`.
+  - **The eight atomizer clips** were rendered the day before (#353) at 10 fps, from the code merged here, with no
+    trays in view. Re-rendering them at 6 fps would have cost an hour and made them choppier.
+  - **Chapter 2's** round-11 render already opens the lid about the left hinge that #353 settled on. The current code
+    would also draw the model's own latch, which #327 added and whose groups share chapter 2's latch's names, so that
+    latch is now left out of chapter 2's scene (`load_rp`). Chapter 2 keeps its own, the one its arm poses were
+    planned and audited against.
+  - **Chapter 3's** 1080p render was corrupted by a test of mine that wrote the same file while it rendered, so it is
+    round 11's. **The finale's** 1080p render wrote no frames: `timelapse.py` writes to the scene's own encoder, which
+    `VIZ3D_HD_CLEAN=0` turned off. **The OT-2 clip** stopped on a singular matrix at 10 fps. All three are their
+    earlier renders.
+  - **Out of render time:** the hookups, cabling, bay-camera, vacuum-press, 8:00, scale-up and maintenance clips and
+    the fabrication tour.
+- **Each fresh clip checked its own frames** while it rendered (`VIZ3D_AUDIT=1` for clips without an auditor of their
+  own, the strict round-11 rules), at the rate it is shown. The checks chapter ends on the table, and
+  `out/collisions/round12_summary.json` has the numbers: 22 clips audited as they rendered; 10 at 0 frames in collision (vlm_coupling, stream_cam, alloy_charge, alloy_workflow, alloy_characterize, tensile_h, glovebox, storage, powder_store_feed, powder_store_lots); with frames left: setup_lab 2 arm / 88 in all, vlm_services 0 arm / 10 in all, cubxl_corrosion 0 arm / 30 in all, alloy_print 2 arm / 2 in all, alloy_powder 14 arm / 30 in all, alloy_prep 1 arm / 56 in all, glovebox_tray 0 arm / 28 in all, fumehood 0 arm / 15 in all, fumehood_tray 0 arm / 4 in all, packaging 0 arm / 2 in all, ded 0 arm / 36 in all, hip 0 arm / 14 in all.
+
+### The narration
+
+- **54 lines, about 1,500 words**, roughly 9.3 min of speech in 1:19:15 (12 %), in
+  [`narration.json`](narration.json).
+  - Each line is anchored to a chapter's card, a still, or a clip's sub-step (by index, checked against the label),
+    and gives the file its facts come from.
+  - The tone is plain: what the picture doesn't say, what is real and what is assumed, a number where it matters.
+- **The voice** is Kokoro v1.0 (open weights, Apache 2.0), `af_heart` at speed 0.96, run on the runner with
+  `kokoro-onnx`. No cloud voice was used. Each line is levelled to −20 dBFS RMS with peaks under −1 dBFS, and placed so
+  no two overlap.
+- **Checked by ear, by machine:** faster-whisper (`base.en`) transcribed every line back, and the word error rate per
+  line is low. Most differences were numbers written as digits. Five lines were reworded where the voice misread an
+  abbreviation, then checked again: "Tray A" came out as "tray uh", "MiR" as "my R", "a UR10e" as "of you are",
+  "Stäubli" as "stably", and the rePowder maker's name was garbled.
+
+### Still open after round 12
+
+- **Not at 1080p (20 clips, 720p scaled up):** listed above. A follow-up run can render them with
+  `VIZ3D_HD=1 VIZ3D_SIZE=1920x1080 VIZ3D_HD_CLEAN=0 VIZ3D_AUDIT=1` and rebuild with `python3 longform.py`. Each clip
+  falls back to out/mp4/ until its 1080p file and JSON are in out/hd/ and out/clean/. The finale needs
+  `VIZ3D_HD_CLEAN=1`.
+- **Collisions left in the video**, from the table:
+  - chapter 4: 30 frames, unchanged from round 11 (the XRD's door through camera D1's head at 25-50 mm, the zero-background
+    holder and the puck set down 3 and 12 mm deep, the forearm folding on the gripper);
+  - the atomizer clips from #353: the latch 123 frames, the container 18, the rebuild 16, the vacuum 11, the plate 2;
+  - chapter 3: 2 frames; chapter 6: 56, mostly its own work;
+  - the set-up movie: the two arms touch for 2 frames as they stretch, and the Mastersizer slides across tray E's new UPS
+    for 3;
+  - the scale-up's cart through the EOS's shut door;
+  - the instrument clips' own mechanisms, as "anything moving": the CubXL 30, the DED 36, the tray glovebox 28, the
+    fume hood 15.
+- **Burned-in titles:** some chapter clips still carry their old numbering in the title bar (chapter 1 says "the alloy
+  route 1/4"). The cards between them have the current numbering.
+- **Chapter 2's latch** sits where chapter 2 has always drawn it (the front-right face), 30° round from #353's model,
+  whose latch is on the right face. Chapter 2 still opens the lid about the left hinge, as #353 has it.
+- **The GIFs and stills in out/** are round 11's. This round wrote only 1080p video and audits.
+- **YouTube:** the new video is public and was uploaded without notifying subscribers. Rounds 7-11's long-forms
+  (unlisted) are superseded; a `@claude-youtube` run can remove them.
+
+## Cameras on the mobile manipulators: two on the ends, one on a mast (#364, 2026-11-20)
+
+Sterling, PR #318: "add two or three cameras to the mobile manipulator (one on either side, one that's situated higher
+up, maybe on some kind of rod or extrusion, mimicking the three cameras described in" robot-arms PR 40. The full
+write-up is [`notes/base_cameras.md`](notes/base_cameras.md).
+
+![What each base camera sees, at the VLM and at the rePowder](out/base_cams/views.png)
+
+- **What:** each MiR250 + UR10e carries three Raspberry Pi Camera Module 3 Wides, each with its own Pi 5:
+  - **a mast:** a 2040 extrusion at the base's back-left corner, lens at 1.75 m, top at 1.80 m (the height the
+    MiR250's own 3D cameras see obstacles up to);
+  - **two side cameras:** robot-arms PR 40's case on a wedge, on short 2020 posts at the cabinet's ends, lenses at
+    0.88 m. Their Pis sit on the cabinet's ends, under the top.
+
+  They take their power from the MiR250's isolated 24 V, which stays on through a protective stop, and everything is
+  inside the base's footprint. `props.mir250()` draws them, so every clip has them; `VLAB_BASE_CAMS=0` leaves them out.
+- **Where from:** [`base_cams_sweep.py`](base_cams_sweep.py) recorded every arm's frames in its own MiR's frame in 17
+  clips (59,660 arm-frames), on the code before the cameras. The arms pass over every part of the cabinet's rim between
+  about 1.0 and 2.0 m, so the cameras went where they pass least. The clips' own audits with the cameras in place
+  ([`base_cams_audit.py`](base_cams_audit.py), `out/collisions/*_basecams.json`) are the check. 15 of the 17 clips have no camera contact in any frame. In chapters 2 and 4 the arms still go
+  where the mast stands, so those two leave the cameras out (`props.BASE_CAMS_OPT_OUT`) until they are re-planned.
+- **The clip:** [`base_cameras.py`](base_cameras.py) makes `out/mp4/base_cameras.mp4`, 46 s at 1920 × 1080. It shows
+  the base parked at the VLM and at the rePowder, and looks through each camera while the arm works. Its audit found 0
+  frames in collision.
+
+## Waste: where each stream goes, how it is picked up, and how to make less of it (`waste.py`)
+
+Sterling, PR #318, 2026-11-20: "consider waste and disposal procedures. Where does each waste go, how do we get
+pickups, and what can we do to minimize the hazard and risk, and thereby the cost of disposal?" The full write-up is
+[`notes/waste.md`](notes/waste.md): every workflow's waste streams, an amount per unit of work times the finale's year
+(one fully tested alloy a day) and PR #332's R11 (ten a day), each stream's classification, how it is kept, where it
+goes, and how to cut it.
+
+![Every waste stream, a year, at one a day and at ten](out/waste_streams.png)
+
+- **Pickups are BYU Risk Management's** (Environmental Management): BYU works under EPA's academic-lab rule (Subpart
+  K); a pickup is requested in the [Pickup Request app](https://riskapps.byu.edu/apps/pickuprequest/) at 80 % full; at
+  most 55 gal of unwanted material in a lab and nothing older than 12 months. The atomizer already uses this route.
+- **The biggest hazardous stream is undecided: the surplus powder.** 74 % of every charge comes out at 63-250 µm,
+  which the route never uses: 135 kg a year at one a day, 1.6 t at ten. Use it (DED, the next run of a promoted alloy),
+  melt it into scrap (powder isn't scrap metal; a slug is), or it becomes most of the lab's hazardous waste.
+- **The other big levers:** a drain ruling for the polishing water (770 L a year, 9.4 m³ at ten), vacuum liners changed
+  by fill (their plastic outweighs the fines three to one), brass and aluminium scrap recycled, and the alloy families
+  and waste classes kept apart.
+- **A waste station** under and in the ducted fume hood: its base as vented solvent and acid cabinets, an intake tray
+  where a unit sets capped bottles (`waste_station.py`, [still](out/waste_station_still.png)); powder waste stays at
+  the atomizer cell and never rides a MiR.
+
+## The trays' UPSs: real units, sized tray by tray (`ups.py`)
+
+Sterling, PR #318, 2026-11-18: "identify real UPS's rather than what looks like a placeholder there, and we might
+need multiple types of UPS units (i.e., multiple capacities depending on the tray requirements)". The full write-up is
+[`notes/ups.md`](notes/ups.md).
+
+![The three units, to scale](out/ups_lineup.png)
+
+**Every powered tray now has two branches.** The dock's mains go to the tray's distribution box at its back right:
+- the **backed** branch runs through the UPS: PCs, controllers, the SEM's pumps, the 0.1 mg balance (an hour's
+  warm-up), the Mastersizer's laser (30 min), the nanoindenter, the potentiostat, the cameras and the switch;
+- the **unbacked** branch comes straight from the dock: heaters, presses, vacuum pumps, the printers. They pause for
+  the 6–8 s of a transit.
+
+Before this, everything on a tray drew through one 1440 W box: 3.7 kW of it on tray F.
+
+**The rule** (`ups.choose`) is the smallest unit that carries the backed branch at its machines' rated draw and runs
+at least 10 minutes at its typical draw. Ten minutes covers a tray stranded off its dock: the network card tells the
+PCs to shut down cleanly. The six trays with a PC, a vacuum or a measurement in progress get an online unit, so their
+load never sees a transfer.
+
+| Unit (all Vertiv Liebert, LiFePO4, RDU120 card) | Rating | Kind | Standing, H x thickness x depth | kg | Trays |
+|---|---|---|---|---|---|
+| PSI5-800SRT2ULIN | 800 VA / 720 W | line-interactive | 439 x 86 x 300 mm | 8.4 | B, C, F, G, H, I |
+| GXT5LI-1500LVRT2UXL | 1500 VA / 1350 W | online | 430 x 85 x 476 mm | 18.0 | A, E, K, L, M |
+| GXT5LI-3000LVRT2UXL | 3000 VA / 2700 W | online | 430 x 85 x 546 mm | 21.5 | D |
+
+![Each tray's backed branch against its unit](out/ups_sizing.png)
+
+![One tray with each unit at the opening, its instruments faint](out/ups_on_trays.png)
+
+- **Runtime at the typical draw:**
+  - 19 min (tray E) to 36 min on the online trays;
+  - 1.7–6 h on the light ones (scaled conservatively as 1/W).
+- **Why lithium:**
+  - it tolerates the warm inside of a Shuttle;
+  - it weighs about half as much;
+  - Vertiv gives up to 10 years for the battery. A lead-acid battery would need changing every 3–5 years, and each
+    unit's front faces into its crowded tray.
+- **Why Vertiv:** one card and one spares kit, short enough to fit, and the only short lithium unit small enough for
+  the light trays. Eaton's 9PX Li-ion is the close alternative for the online trays.
+- **Each unit is drawn from the maker's photos and published size:**
+  - grille, stripe, badge and display;
+  - receptacles, card slot and the cord to the tray's distribution box;
+  - status LEDs the clips light green on mains and amber on battery;
+  - standing on its side in our bolted cradle.
+
+**Found on the way:**
+- **Tray D needs the 3 kVA unit.** Rigaku rates the MiniFlex at 1.0–1.1 kVA, not the 600 W of its tube.
+- **Tray F's unbacked branch is 5.0 kW,** at the dock's 5 kVA continuous rating, so the furnace and the MX400 must
+  take turns.
+- **The heat budget** (`services.py`) now covers all twelve powered trays and both Shuttles: about 1.3 kW and 0.8 kW
+  idle, 274 W of it the UPSs' own loss.
+- **Every tray still fits** (`setup_lab.py fit`, which now also checks each UPS against the camera posts).
+- **On screen:** the hookups clip ([`out/vlm_hookups.gif`](out/vlm_hookups.gif)) is re-rendered with tray A's
+  GXT5LI-1500 and the new CombiTac dock. The set-up movie, the chapters, the finale and the long-form are not, and
+  still show round 11's box.
+
+## The tray coupling, part by part: Stäubli CombiTac frames on a floating dock (2026-11-18)
+
+PR #318, 2026-11-18: "I think we need something more real and high-fidelity for the liquid, gas, and power transfer
+modules (quick disconnect, etc.) for the VLM". Round 4's coupling was a block with six discs and bars for its inserts.
+[`coupling.py`](coupling.py) now draws the parts from Stäubli's CombiTac uniq catalogue (CT-Main-11014009-en) and its
+align flyer. `services.py` takes every tray plate and dock in the VLM scenes from it. The full write-up is
+[`notes/coupling.md`](notes/coupling.md).
+
+- **Two frames, electrical above fluid**, as Stäubli's safety notes require (p. 137):
+  - **electrical:** an LMFB monitoring pair; PE on the long Ø3 mm pin, so it mates first; L1, L2 and N on Ø3 mm
+    contacts (39 A); a 10 Gbit module for Cat 6A Ethernet;
+  - **fluid:** SCT03 couplings for air and N₂ (G1/8), LCT06 for chilled water in and out (G1/4). All four shut off on
+    both sides behind flat faces.
+- **CombiTac align 4 end pieces.** A Ø9.8 mm pin with an insulated tip goes into a cone with a bronze bushing, taking
+  up 4 mm and ±2°.
+- **Which half goes where.** The touch-safe sockets and the cones are on the tray, 6 mm inside its side. The pins and
+  the plugs are on the dock.
+- **The order things connect:** PE first, then Ethernet and power, then the couplings open, and the LMFB pair last.
+  - The contactor closes only once the LMFB loop is closed, so no contact makes or breaks under load.
+  - The valves open only after mating, and must vent to 0 bar (pressure sensors) before the head lets go.
+- **The dock (ours):**
+  - a floating plate on four springs, on a carriage on two MGN12 guides;
+  - driven 75 mm by a slider-crank on a self-locking worm gearmotor. Both ends are dead centres, so the couplings'
+    175 N of springs can't push it back;
+  - an energy chain down to a valve bank with the contactor and the LMFB relay.
+
+  The plugging force is 286 N. It fits the 108 mm cavity behind the column's side wall.
+- **Checked in MuJoCo** (`interference.py tray_dock`): its first run found four faults in our dock (the rod into the
+  back plate, the crank's hub in the rod's path, the chain's hanger in the tubes' drop, a cable at a slot's edge),
+  all fixed. What is left is listed as intended (the chain's links pivoting, the lines entering the chain, the two
+  halves mating) or only touches.
+- **Against the lift** (re-run):
+  - the extractor stays at least 96 mm from every dock (was 158);
+  - a tray passes its own pulled-back dock at 18.6 mm;
+  - the bay's dock is 20.6 mm from the shutter.
+
+| The close-up: docking and letting go, in the order things connect | The tray's face |
+|---|---|
+| [`out/mp4/vlm_coupling.mp4`](out/mp4/vlm_coupling.mp4), [`out/vlm_coupling.gif`](out/vlm_coupling.gif) | ![](out/vlm_coupling_still.png) |
+
+```bash
+xvfb-run -a python3 coupling.py movie json      # the close-up; out/coupling.json (parts, forces, stroke, clearances)
+python3 services.py clearance                    # the docks against the lift, re-run
+python3 interference.py tray_dock                # the dock's own motion in MuJoCo
+xvfb-run -a python3 tour.py tray_dock            # the coupling on its own, as an instrument (crank, rod, chain jointed)
+```
+
+**Open:**
+- **Pin lengths, carrier heights and the couplings' insides are drawn.** Stäubli publishes the order things mate, not
+  the lengths. Questions for Stäubli and Kardex are in the notes.
+- **The set-up movie and the long-form still show the old plate.**
+
+## Round 11: passive storage trays, the bay camera in view, specimen fingers, a real person, a stricter audit
+
+Sterling's comment of 2026-11-13 23:35 UTC on PR #318, on round 10's long-form. Five streams did the work; the split is
+in [`notes/round11_plan.md`](notes/round11_plan.md).
+
+![Round 11's stricter audit, clip by clip](out/collisions/round11_sheet.png)
+
+| Sterling | Where, in round 10's long-form | Round 11 |
+|---|---|---|
+| "At 2:14, you show cameras by the jars and possibly a UPS at the back ... very inefficient from a vertical space usage ... Do we actual need cameras on the jars at all times?" | the set-up movie, 105 s: tray N loaded with a UPS and two camera posts | no: the storage trays are passive, below |
+| "Can't see the overhead camera from the angle. Should change the view angle and temporarily make things opaque again" | the set-up, 106-112 s, and the services clip's last step (3:57) | both from an operator's eyes, the cladding solid while the unit is shown |
+| "Why isn't it the CubXL showing the corrosion workflow? ... fine for now" | 5:33 | answered below; unchanged |
+| "at 32:57 the arm passing through the camera / collision" | chapter 5, 242 s: the quench's tongs and rack through camera F1's post | F1 moved; chapter 5 re-audited and re-rendered |
+| "Insertion / removal of the tensile bars (and the halves) have another collision ... needs it's own tool/end effector" | chapter 5, the Instron | specimen fingers for the 2F-85, from a stand on the MiR |
+| "That's kind of a cringy looking human" | the maintenance clip | [`people.py`](people.py): MakeHuman's CC0 body, skinned |
+| "maintenance step shows a collision. There are probably other collisions and interferences that I didn't catch" | every clip | a stricter audit, every arm clip re-audited, six re-rendered |
+
+**Why round 10 missed them.** Chapter 5's final render was never audited frame by frame (round 9 stopped that audit to
+free a slot, and round 10 didn't rerun it). The arm audit checked only the arms: not the person, a tray on a table, the
+MiRs or anything else that moves. And it let the gripper and a held part touch where the part came from and where it
+went, for 4 s around each grasp and release, however deep, so fingers sunk into a grip's jaws passed.
+
+### The storage trays are passive
+
+A storage tray changes only at the opening, where the bay camera sees 94 % of its floor and the wrist D405 sees each
+seat the arm picks. So trays J (samples), N and O (jars) now carry no stream cameras, and since nothing on them draws
+power or gas, no UPS, dock plate or tray lines either (`setup_lab.PASSIVE`, `r8_store.PASSIVE_TRAYS`). Their own loads
+set their slots ([`notes/tray_plan.md`](notes/tray_plan.md)):
+
+| Tray | Before | Now |
+|---|---|---|
+| J, sample store | F0, 475 mm | F0, 325 mm |
+| N, feedstock jars | 2F0, 475 mm | 2F0, 225 mm |
+| O, atomized-lot jars | 2R5, 500 mm | 2F0b, 150 mm, under Shuttle 2's access table beside N |
+| Jars | 581 (N 204, O 377) | **753** (N 264, O 489): the racks run the full tray, 2410 × 800 mm |
+
+- The three passive slots went from 1450 to 700 mm, and the free column in the two Shuttles from 896 to 1621 mm.
+  Shuttle 2's rear column has 515 mm free at the top. None of the gaps takes a 725 mm instrument tray, so the three-each
+  plan still needs a third Shuttle.
+- **A real fault the wider racks turned up:** with round 8's 20 mm between rows, the open 2F-85 hit the next row for
+  every jar size but 30 mL. The rows are now spaced from the gripper's real shape; the closest seat clears by 1.4 mm.
+- A full rack of 500 mL jars is about 45 kg: two people or the lift table.
+- The service risers in the columns stay, since they also feed the powered trays in the same columns.
+
+### The overhead camera, in view
+
+The set-up movie's step 8 and the services clip's last step now show each bay's unit (a Pi 5 with the HQ Camera and the
+Camera Module 3 Wide on a pan-tilt head, on a 2020 bar under the header) from where an operator stands, eyes at 1.6 m,
+with the cladding drawn solid, then go see-through again.
+
+### Why the OT-2 and the CubXL share the corrosion work
+
+digital-wetlab PR #83 (direction 5) gives the OT-2 the corrosion screen's liquids. With its P300 and P20 it makes the
+CubXL's sulfide stock (1980 µL of seawater as 300 µL transfers, then 20 µL of the 10 mg/L stock) and dilutes the
+night's tubes for ICP-MS. The CubXL's own pipette never moves more than 20 µL: it fills the wells, runs the
+electrochemistry and collects. One machine could do both only with a larger pipette on the CubXL
+([`notes/ot2_corrosion.md`](notes/ot2_corrosion.md)). Left as it is ("fine for now").
+
+### Chapter 5: the camera post, specimen fingers, the Instron
+
+- **Camera F1 stands behind the quench tank,** its head over the tank's back edge looking down into it. In front of the
+  tank it stood in the 150 mm the rack sweeps from the furnace to the lift basket. Nothing fits beside that path.
+  Behind the tank it is clear of every path in chapters 5 and 6. With the tray presented, 22 % of its Wide picture is
+  now the room through the opening, as for A1 (26 %) and E1 (20 %).
+- **Specimen fingers for the 2F-85** (`ur_arm.SPEC_FINGER`, `robot.FingerSet`, `alloy_models.FINGER_STAND`). After the
+  break each half of the E8 subsize bar has 20 mm between its broken end and its grip, and the stock fingertips are
+  27 mm tall, so no grasp, level or tilted, clears both. Automated cells fit fingers to the specimen (ZwickRoell's
+  roboTest C: the "gripper finger (depending on specimen thickness) must be offered for the gripper"). Ours: two
+  aluminium caps that slip over the 2F-85's own fingertips, each ending in a blade 4 mm thick and 8 mm tall reaching
+  73.6 mm past the pad. The arm fits them from a two-slot stand on the MiR's cabinet and takes them off before the tongs
+  and the jar's lid. The audit checks them as real geometry.
+- **The Instron loaded and unloaded with real clearances.** The grips have jaws that open and close; each bar goes
+  straight down between the open jaws, and after the break the crosshead backs off 60 mm, so each half comes out of its
+  own jaws without meeting the other, and the blades take it 10 mm from its broken end.
+- The MiR parks 500 mm off the Instron, clear of the 3119-608 chamber's door, and the test camera looks over the
+  target post's tag cube that hid both pulls in the first render (section 7 re-rendered and spliced).
+- Rendered: 412.3 s, 2474 frames at 6 fps. Its audit under round 11's rules: **1 of 2089 frames** (the tongs 3 mm into
+  a bar for one frame), against 275 before the fixes and 60 under round 10's rules. Details in
+  [`notes/alloy_workflow.md`](notes/alloy_workflow.md).
+
+### A person (`people.py`)
+
+Round 10's figure was capsules on a box with an egg for a head. It is replaced by **MakeHuman's base mesh** (13,380
+vertices, with a face, ears and five fingers a hand) on **MakeHuman's default skeleton and skin weights**, posed every
+frame by linear-blend skinning in numpy: a walk cycle with the shoes grounded, a lean, two-arm IK to the hands' targets,
+the head turned to the work, the fingers curled. It is dressed by region: a lab coat that hangs (smoothed and bridged
+over the hollows, so it doesn't follow the waist), a collar and lapels, a scrub top, trousers, shoes, nitrile gloves,
+hair and wrap-around safety glasses; 1.75 m in shoes. The three files are CC0 (MakeHuman's assets), fetched at run time
+into `.cache/makehuman/`, pinned to `makehumancommunity/makehuman@a8bc2d5` and checked by sha256; nothing is committed.
+The maintenance clip and the finale use it ([`notes/upkeep_clip.md`](notes/upkeep_clip.md)).
+
+**The maintenance clip's collisions.** A check of the person as posed, the extraction table and the pulled-out tray
+(`PeopleCheck`) found the person walking into the second MiR on its charger, the shoes 25 mm into the floor, the gloves
+and coat in the table's push bar, the table in the LED-Navigator strip and its hooks in the cover's lip, and the
+iMicro's hood swinging through tray E's cameras. All fixed. The iMicro's front panel is now the cabinet's, only its lid
+lifts, and camera E1 stands behind the Mastersizer. A person couldn't then reach the tip over the fixed panel (it sits
+235 mm under the panel's top edge and 260 mm behind it), so the panel is a **removable service panel** that lifts
+straight off (our design: KLA publishes no service drawing), and the hand works in the 120 mm under the head.
+
+### A stricter audit (`collide.py`, the default for `ARM_AUDIT=1`)
+
+1. **What may touch, only up to 1.5 mm deep.** The gripper and a held part may still touch where a part is taken from
+   and set down, but `collide.depth` (the shortest of 26 moves that frees the pair) must put it under 1.5 mm.
+2. **The movers check.** Every group that moves in a frame and isn't an arm (MiR bodies, trays, doors, tables, carried
+   parts) is checked against everything else visible, except its own subtree, the floor and its markings, and the
+   contacts it had when it started moving.
+
+Validated on round 10's chapter 5: it catches the tongs through F1's post, 25 mm deep, 28 frames.
+[`notes/arm_collisions.md`](notes/arm_collisions.md) has the rules and what the check still can't see;
+[`out/collisions/round11_summary.json`](out/collisions/round11_summary.json) has every clip's numbers.
+
+| Clip | Round 10's rules | Round 11's, before the fixes | Now | Re-rendered |
+|---|---|---|---|---|
+| Chapter 1, the charge | 0 of 1145 | 40 | **0** of 1145 | yes, 254.3 s |
+| Chapter 2, melt and atomize | 0 of 920 | 11 | **0** of 920 | yes, 223.5 s |
+| Chapter 3, sieve and print | 7 of 3402 | 138 of 1371 | **2** of 1374: the pan's tab touches a fingertip, up to 3 mm, one frame each way | yes, 303.5 s |
+| Chapter 4, the powder checked | 0 of 1028 | 92 (64 of them light drawn as meshes) | 30, in code: the MiniFlex's door swings through camera D1, the Mastersizer's cover into the iMicro beside it, and the forearm meets the gripper and Shuttle 2's bay at the S2 PUMA | no: round 10's render stands |
+| Chapter 5, depowder, cut, heat treat, test | 60 of 2101 | 275 of 1965 | **1** of 2089: the tongs 3 mm into a bar, one frame | yes, 412.3 s |
+| Chapter 6, sample prep | 0 of 1423 | 56 | 56, audited, not fixed: mostly the work itself (the end mill in the puck it faces, the pistons on the holder, the compound round the coupon); one real, the Carvera's lid at 65 deg into the tray stored over Shuttle 2's opening | no: round 10's render stands |
+| Chapter 7, characterization | 13 of 1269 | 113 | **0** of 1279 | yes, 256.7 s |
+| The 8:00 clip, a vial dosed for the CubXL | 0 of 574 | 11 | 5: the vial in the CubXL's 9-vial holder, whose lips grip it by design (0.6-1.0 mm a side) | no: the fixes don't show |
+| The maintenance clip (arm, movers, person) | 0 of 534 | 120 of 1460 | **0** of 1491 | yes, 128.7 s |
+| The bay camera | not audited | 21 of 134, 20 of them the arm in the cameras' see-through view cones | fixed in code, not re-audited | no |
+| Scaling up (the EOS and the Meltio cell) | not audited | 73 of 603 | not fixed: a cart drives through the EOS's door while it is shut (frame 110) | no |
+
+
+**What it found that round 10's rules let through,** besides chapter 5's and the maintenance clip's:
+- the cup rack, the punch's rest and tray B's vial rack were solid blocks with their pockets only drawn as rims, so cups
+  and vials stood 22-32 mm inside them (chapter 1, the 8:00 clip);
+- trays going back into their slots ran 12-25 mm into the column supports, since a tray's rim, plate and lines stand
+  over the 20 mm the supports reach in. Only the support a tray rests on is drawn now (`vlm.support_parts`). A real
+  Shuttle has a profile every 25 mm, so whether ours can have them only at our slot heights is a question for Kardex;
+- the bay's side walls stood 6 mm into the shutter's path;
+- chapter 2's latch loop through the rePowder's keeper, and the tong holder's tab across the sleeve's bore;
+- chapter 3's tipper shaft through every sieve in its cradle, and the sieve wash module inside the rePowder's utility
+  cabinet (it now has its own stand in front of the cabinet);
+- chapter 7's caddy 12 mm into the arm's mounting plate, the mount plungers, the PIP's stylus in its head;
+- the MiR's skirt on the Aconity target post's foot plate (its dock moved to chapter 5's stop), the Instron's junction
+  box inside its crosshead, and its dock tape 270 mm short of where the MiR stops.
+
+**Every model's own motion** (`interference.py`, MuJoCo) now covers 49 models, the round-8 and round-9 modules included. Its first results add the round-8 polisher's pre-loaded discs, whose handles pass 12-13 mm through each other and through the head ([`notes/interference.md`](notes/interference.md)); the full run was still going when this was written.
+
+### The long-form, round 11
+
+**[The vertical cloud lab, round 11](https://www.youtube.com/watch?v=Dvtc3h4ZSkw)** is on YouTube: unlisted, 1:01:00,
+43 YouTube chapters, built from what is committed here (`c371877`). New since round 10's
+[aW5YoxPi0pM](https://www.youtube.com/watch?v=aW5YoxPi0pM):
+- the set-up with the passive storage trays and the bay cameras in view;
+- the services clip's camera shot;
+- the jar-store and sample-store clips;
+- chapters 1, 2, 3, 5 and 7 re-rendered under the stricter audit;
+- the maintenance clip and the finale with the new person;
+- the audit's sheet in "How the models were checked".
+
+| # | Starts | Chapter | Parts |
+|---|---|---|---|
+| 1 | 0:00 | A real VLM, then the plan | [`vlm_real_ck8QJhVqPiY.mp4`](out/footage/vlm_real_ck8QJhVqPiY.mp4) |
+| 2 | 0:23 | The lab set up from scratch | [`setup_lab.mp4`](out/mp4/setup_lab.mp4), [`tray_plan.png`](out/tray_plan.png) |
+| 3 | 2:40 | Services: UPS, automatic hookups, cabling and cameras | [`vlm_hookups.mp4`](out/mp4/vlm_hookups.mp4), [`vlm_services.mp4`](out/mp4/vlm_services.mp4), [`dock_lift_clearance.png`](out/dock_lift_clearance.png), [`vlm_cabling.mp4`](out/mp4/vlm_cabling.mp4), [`stream_cam.mp4`](out/mp4/instruments/stream_cam.mp4), [`bay_camera.mp4`](out/mp4/bay_camera.mp4) |
+| 4 | 5:36 | Tray A: the corrosion station, OT-2 and CubXL | [`ot2_corrosion_prep.mp4`](out/mp4/instruments/ot2_corrosion_prep.mp4), [`cubxl_corrosion.mp4`](out/mp4/instruments/cubxl_corrosion.mp4), [`vlm_workflow.mp4`](out/mp4/vlm_workflow.mp4) |
+| 5 | 9:54 | Alloy route 1/7: the charge cups, dosed, weighed and pressed under vacuum | [`route_dag_ch1.mp4`](out/mp4/dag/route_dag_ch1.mp4), [`dal_workflow_table.png`](out/dal_workflow_table.png), [`alloy_charge.mp4`](out/mp4/alloy_charge.mp4), [`doser_raise_section.png`](out/doser_raise_section.png), [`vacuum_press.mp4`](out/mp4/vacuum_press.mp4) |
+| 6 | 15:44 | Alloy route 2/7: melt and atomize in the rePowder | [`route_dag_ch2.mp4`](out/mp4/dag/route_dag_ch2.mp4), [`alloy_atomize.mp4`](out/mp4/alloy_atomize.mp4) |
+| 7 | 19:40 | Alloy route 3/7: sieve and print | [`route_dag_ch3.mp4`](out/mp4/dag/route_dag_ch3.mp4), [`alloy_print.mp4`](out/mp4/alloy_print.mp4) |
+| 8 | 24:56 | Alloy route 4/7: the powder, checked | [`route_dag_ch4.mp4`](out/mp4/dag/route_dag_ch4.mp4), [`alloy_powder.mp4`](out/mp4/alloy_powder.mp4) |
+| 9 | 28:46 | Alloy route 5/7: depowder, cut, heat treat, tensile at room and elevated temperature | [`route_dag_ch5.mp4`](out/mp4/dag/route_dag_ch5.mp4), [`alloy_workflow.mp4`](out/mp4/alloy_workflow.mp4), [`edm_orientations.png`](https://github.com/vertical-cloud-lab/byu-vcl/blob/193778b/vertical-lab/out/edm_orientations.png) (193778b) |
+| 10 | 36:05 | Alloy route 6/7: sample prep: section, mount, grind and polish | [`route_dag_ch6.mp4`](out/mp4/dag/route_dag_ch6.mp4), [`alloy_prep.mp4`](out/mp4/alloy_prep.mp4) |
+| 11 | 41:20 | Alloy route 7/7: characterizing the build | [`route_dag_ch7.mp4`](out/mp4/dag/route_dag_ch7.mp4), [`alloy_characterize.mp4`](out/mp4/alloy_characterize.mp4) |
+| 12 | 45:49 | The other stations: a tensile tester on its side, gloveboxes, fume hoods, stores, shipping | [`instruments_gallery.png`](out/instruments_gallery.png), [`tensile_h.mp4`](out/mp4/instruments/tensile_h.mp4), [`glovebox_tray.mp4`](out/mp4/instruments/glovebox_tray.mp4), [`glovebox.mp4`](out/mp4/instruments/glovebox.mp4), [`fumehood.mp4`](out/mp4/instruments/fumehood.mp4), [`fumehood_tray.mp4`](out/mp4/instruments/fumehood_tray.mp4), [`storage.mp4`](out/mp4/instruments/storage.mp4), [`powder_store_feed.mp4`](out/mp4/instruments/powder_store_feed.mp4), [`powder_store_lots.mp4`](out/mp4/instruments/powder_store_lots.mp4), [`packaging.mp4`](out/mp4/instruments/packaging.mp4) |
+| 13 | 49:17 | Fabrication: metal printers, DED, resin and PCB assembly | [`fabrication_tour.mp4`](out/mp4/fabrication_tour.mp4), [`ded.mp4`](out/mp4/instruments/ded.mp4) |
+| 14 | 52:52 | Scaling up: large-format printing and ship-part repair | [`scaleup.mp4`](out/mp4/scaleup.mp4) |
+| 15 | 54:52 | What doesn't fit, and getting a tray out | [`hip.mp4`](out/mp4/instruments/hip.mp4), [`tall_opening_bays.png`](out/tall_opening_bays.png), [`maintenance_access.png`](out/maintenance_access.png) |
+| 16 | 55:40 | How the models were checked | [`before_after.jpg`](out/register/before_after.jpg), [`before_after.jpg`](https://github.com/vertical-cloud-lab/byu-vcl/blob/f9db700/vertical-lab/out/repowder_refine/before_after.jpg) (f9db700), [`interference_sheet.png`](out/interference_sheet.png), [`vlm_workflow_before_after.png`](out/collisions/vlm_workflow_before_after.png), [`round11_sheet.png`](out/collisions/round11_sheet.png) |
+| 17 | 56:51 | Maintenance over the long term, inside the workflow | [`upkeep_clip.mp4`](out/mp4/upkeep_clip.mp4), [`upkeep_year.png`](out/upkeep_year.png) |
+| 18 | 59:19 | The whole lab at speed: an hour, a day, a week, a month | [`timelapse.mp4`](out/mp4/timelapse.mp4) |
+
+```bash
+python3 audit_all.py selftest            # the stricter audit against cases with known answers
+ARM_AUDIT=1 xvfb-run -a python3 <clip>.py   # every frame: arm, movers (and the person in upkeep_clip.py) -> out/collisions/
+python3 audit_all.py summary; python3 audit_all.py sheet   # out/collisions/round11_summary.json, round11_sheet.png
+python3 people.py                        # the person's sheet (MakeHuman's CC0 assets fetched into .cache/makehuman/)
+python3 longform.py warm alloy_print     # pre-encode every finished clip while one still renders
+python3 longform.py; python3 longform.py upload
+```
+
+### Still open after round 11
+
+- **Not re-rendered.** These clips keep round 10's renders, with the collisions the table lists:
+  - chapters 4 and 6;
+  - the 8:00 clip (5 frames, by design);
+  - the bay-camera clip: 20 of its 21 frames are the arm in the cameras' see-through view cones, and it is fixed in code;
+  - the scale-up: a cart drives through the EOS's shut door at frame 110, not fixed.
+- **The set-up movie** (its second render, from 01:17 UTC) doesn't show the last fixes:
+  - camera E1 behind the Mastersizer;
+  - the Instron's junction box over its frame;
+  - the Instron's dock tape on its load axis.
+- **Cameras that see the room.** With their trays presented, A1 (26 %), F1 (22 %) and E1 (20 %) take in part of the room
+  through the opening, so those streams want a privacy crop. The arm misses posts D0, D1 and F0 by 11-12 mm in chapters
+  4, 6 and 7, tighter than a real cell would want.
+- **For Kardex:** support profiles only at our fixed slot heights, since a tray's rim, coupling plate and lines stand
+  over the 20 mm the profiles reach in.
+- **Assumed in the maintenance clip:**
+  - The iMicro's service panel is ours (KLA publishes no service drawing). It lifts 650 mm here, past its 420 mm guides.
+  - The tip turns in place, because a fist fills the 120 mm under the head; a real change would raise the head or lower
+    the stage.
+  - The extraction table's push bar is under the hips, so the person stoops 24°; a handle near 1 m would be better. The
+    table's size is still assumed.
+  - The person's hair reads as a cap, and the coat shows a seam at the waist.
+- **Chapter 5:**
+  - The break is always mid-bar here; a real one can leave a half only 4 mm to grip.
+  - The MiR's skirt stood over the Aconity target post's foot plate in sections 1-2. The dock has moved in code
+    (`1c36cef`), not in the render.
+  - The tongs graze a bar for one frame; fixed in code.
+- **Jar sizes** are estimates, and a full rack of 500 mL jars is about 45 kg.
+- **YouTube:** rounds 7-10's long-forms are superseded and still up; a `@claude-youtube` run can remove them.
+- **From before:**
+  - three each, and the 50 ft array, are Sterling's call;
+  - #327's lid isn't in chapter 2, and #328's 45° bars aren't animated;
+  - no measured data from a build is on screen.
+
+## Round 10: long-term maintenance, the doser's fall, vendor contacts, collisions to zero, the lab on round 9's models
+
+Sterling's comment of 2026-11-07 03:36 UTC on PR #318. The first run (03:37-04:23 UTC) stopped when the account ran out
+of model credits. The rest was done in the run of 22:07 UTC (`notes/round10_plan.md`, "Continuation").
+
+![Six frames of round 10](out/round10_sheet.png)
+
+### Every point checked: the ledger
+
+[`notes/feedback_ledger.md`](notes/feedback_ledger.md) goes through every comment Sterling wrote on #303 and on this
+PR. It checks each point against the branch and marks its status. Three early asks had never reached this branch:
+- three each of the OT-2, CubXL, H2D, A2L and A1 mini;
+- the 50 ft array;
+- whether to build our own VLM.
+
+### Long-term maintenance, inside the workflow
+
+[`upkeep.py`](upkeep.py) holds 121 maintenance tasks and 28 failure modes as data. Each has its interval, who does
+it, the downtime and the spares, with a source or "assumed". The same schedule that runs the alloys
+(`timelapse.simulate`) books all of them.
+
+It comes in four kinds:
+- calendar maintenance;
+- consumables changed by use;
+- reference checks the arm runs between jobs, onto control charts;
+- random failures, repaired by a person on the next shift, or by a vendor after a wait for parts.
+
+A person's task holds a Shuttle's opening, so the MiR drives off and works at the other Shuttle.
+[`notes/upkeep.md`](notes/upkeep.md) is the written answer. Over the model's year:
+- **The one person:** 31 h of their 40-hour week on average, at most 36. 13 h are at the atomizer's crucible and 18
+  on upkeep.
+- **Availability:** the route's stations average 99.0 %. The lowest are the atomizer (95.2 %), the two MiR250 + UR10e
+  units (95.3-95.4 %) and Shuttle 1's opening (95.6 %).
+- **Alloys:** 304 fully tested a year, against 324 with no upkeep and no failures. The failures cost the 20; planned
+  upkeep fits round the crucible's staffed hours, which set the pace. Someone on call at night would win back 7.
+- **Assumed:** 72 of the 121 intervals and all 28 failure rates. The other 49 cite a maker or a standard.
+
+[`upkeep_clip.py`](upkeep_clip.py) shows three of the tasks happening (116.8 s, 0 of 534 checked frames in collision;
+[notes](notes/upkeep_clip.md)):
+1. the week's schedule;
+2. the arm's daily check of the HR-202i with a 100 g E2 weight, onto a control chart;
+3. a person changing the iMicro's tip with tray E pulled out onto Kardex's extraction table. The arm then runs the
+   fused-silica check on the new tip as its next job.
+
+**The finale now shows the maintenance** ([notes](notes/timelapse.md)):
+- the person and visiting vendors are drawn where their task is;
+- an opening a person holds shows its tray there, and the arm keeps off that Shuttle;
+- each machine has a beacon: amber while it's out for upkeep, red while a fault waits;
+- a card of upkeep counters sits beside the throughput ones.
+
+The finale is 87.5 s (525 frames). The failure seed it shows, 303, is the unluckiest of eight tried: seeds 1-7 give
+312-321 alloys fully tested, and in one of them the busiest week reaches 41 h, over the 40-hour shift. The finale
+shows no tray pulled out, since that happens once in the year, as a repair, at the month scale.
+
+### The multi-doser: why a block can't shorten the fall, and the funnel
+
+**Yes, it's the latest:** powder-doser #185's head is still `353dae7`, chain carousel v5 with the HR-202i under the dose
+point, and Sterling's block comment is its last. Measured on v5's own geometry
+([`r10_doser_raise.py`](r10_doser_raise.py), [`out/doser_raise.json`](out/doser_raise.json)):
+
+![](out/doser_raise_section.png)
+
+- **The fall:** the auger exit is at 435.9 mm above the bench, and the balance's top at 312 mm.
+- **The carriage:** when parked, v5's electronics carriage sits 12.6 mm above the balance, and v5 keeps 10 mm clear
+  there. So a block under the balance can be at most 2.6 mm.
+- **The block needed:** bringing a cup's rim within 5 mm of the exit would take 148 mm, through the carriage and the
+  frame.
+- **Tray B has no room either:** the rig is 854 mm tall against the Shuttle's 856.5 mm.
+- **The vessel is already as high as it can go:** on the fork, the cup's rim passes 2.5 mm under the balance's side
+  door.
+- **The vial needs no funnel.** The 8 mm stream has 8.8 mm each side in its 25.6 mm mouth.
+- **The cups should have one, one per powder.** In the 12.7 mm bore the stream has only 2.35 mm each side, and a miss
+  lands on the rim or the pedestal: it is on the pan, so it is weighed as dosed without being in the cup. The funnel
+  rides on the shuttle's upper tine, off the pan, with its stem 4 mm above the bore.
+  - It's collision-checked along the shuttle's travel.
+  - The pan carries about 156 g of its 220 g.
+  - It isn't in chapter 1 yet.
+- **A shorter fall needs a change in powder-doser:** a spout per module, or parking the carriage away from the
+  balance's top.
+
+### Vendor contacts and quotes: #331
+
+#331's second pass checked every contact on the vendor's own page, fetching through the Pi where the runner was
+blocked:
+- **The contacts:** of 88, 45 are verified, 27 partly verified and 16 unverified, each tagged with its URL and date or
+  the reason.
+- **Added:** 11 contacts, among them Utah partners for Solukon, Formlabs, Kardex and MiR.
+- **Corrected:** five entries.
+- **Purchasing:** `lab_answers.md` now answers the purchasing questions too: tax-exempt status, PO and W-9, shipping
+  terms, the loading dock and hazmat.
+- **No email was sent.**
+- **Still blocked even from the Pi:** Hitachi's, KLA's and Instron's pages; they need a person with a normal browser.
+  Modula sits behind Cloudflare.
+- **The first pass** answers whether to build our own VLM: buy the lift; build what sits on and around the trays.
+
+### Collisions: chapters 4, 3, 7 and 6
+
+Sterling's question from round 8, "are there other things like that, that you didn't address yet?", applied to the
+arm. Round 9 had left collisions in four chapters.
+
+- **Chapter 4: 19 → 0 of 1,028 frames, and re-rendered** (1,309 frames, 218 s; [notes](notes/alloy_powder.md)).
+  - **The 16-frame sweep was on the way in to the MiniFlex, not on the way out.** The arm waited for the door in a
+    different IK branch from the one that is clear at the stage. Its straight line in then swung the upper arm
+    through the SEM, the MiniFlex's housing and a camera post. It now waits in the branch that is clear on the stage.
+  - **The opening door brushed the holder,** because the arm waited inside the door's swing. It now waits 480 mm back
+    (was 380).
+  - **A finger swept the holder as the vial turned over to sift.** The vial now sifts from 60 mm above the holder
+    (was 48). That this doesn't change the powder layer is assumed, not measured.
+- **Chapter 3: 7 → 0 in the changed sub-step, fixed in code** ([notes](notes/alloy_print.md)).
+  - **The forearm met the Aconity's lifted door,** going in and out with the jar. No other arm configuration cleared
+    it, and with the MiR parked further off the pour is out of reach. So the jar is carried 15 mm lower, its foot
+    17 mm above the chamber floor.
+  - **The seventh frame,** a fingertip on the sieving enclosure, showed up only in a 15 fps audit, not at the render's
+    6 fps.
+- **Chapter 7: 1 → 0 in the changed sub-step, fixed in code** ([notes](notes/alloy_characterize.md)). The wrist grazed
+  the VHX's stand while setting the bar down. Our loading slide now runs its carrier 140 mm out of the stage, not 110.
+  A real slide's travel would be set the same way, by what the wrist has to clear.
+- **Chapters 3 and 7's committed renders predate their fixes;** there wasn't render time for them this round.
+- **Chapter 6:** **456 of 3,539 → 0, and re-rendered** (1,816 frames, 302.7 s; [notes](notes/alloy_prep.md)). The render
+  audits its own 1,423 moving frames. Every hit in round 9's audit was traced:
+  - **In our model, the PX500's head column stood inside the bowl,** 95 mm behind its centre. So a 300 mm disc lifted
+    off the platen ran into it, and as modelled no disc could pass under the head at any height. The column now
+    stands behind the bowl's lip, still inside the machine's footprint. That is assumed: the column is hidden behind
+    the head in the SOP frames the model was fitted to.
+  - **Over the MX400's mold, the wrist camera hit the press** in all four IK branches. The gripper now turns 180°
+    there.
+  - **The pistons hung 4 mm into the holder's apertures when up,** so the holder couldn't slide on under them. Their
+    up gap is now 12 mm instead of 5.
+  - **The disc changes** were most of the frames: the forearm into the gripper, the upper arm through the bay's frame
+    and into the MiR's cabinet. Each move had simply kept the IK branch the last one left. Each approach is now a
+    joint move into a branch from which every straight line that follows is clear. The transfer between the
+    magazine and the platen is a planned move, not one 2 m straight line through the furnace's corner.
+  - **A disc lifted 8 mm in the magazine met the disc above.** It now lifts 4 mm.
+
+
+### The lab brought up to round 9
+
+- **The set-up movie** loads each tray from a scissor lift table at the opening; most items weigh 20-110 kg, more than
+  the arm's 12.5 kg or one person should lift.
+- **Added:** the dock utilities, and a reflow oven (Puhui T-962A) on tray H for the PCB line.
+- **The services, hookups and bay-camera clips** carry the vial to the v5 doser's shuttle, with the access table
+  under the bay.
+- **`setup_lab.py fit`:** all 15 trays (tray B's slot is 900 mm) and all 13 MiR docks check clear.
+- **One fix:** the first set-up render showed trays N and O's jars tinted teal and amber with no legend. A fade
+  piece that starts hidden now stays out of what the loading fades in (`54c3bdb`).
+- **Re-rendered on round 9's lab:** the set-up movie (118 s), and the hookups (40 s), services (34 s) and
+  bay-camera (32 s) clips.
+
+### Three each of the OT-2, CubXL, H2D, A2L and A1 mini
+
+Sterling asked for these on #303 (Nov 3). [`notes/three_each.md`](notes/three_each.md) is a plan to decide on, not a
+render:
+- **What's added:** 2 OT-2s, 2 CubXLs, 2 H2Ds, 2 A1 minis and 3 A2Ls.
+- **The safe layout** takes five new trays and 3,500 mm of column.
+- **A denser layout** takes four, but each printer tray then draws about 1,650 W against the UPS's 1,350 W.
+- **A third Shuttle is needed either way.** The free gaps in the two Shuttles are 390, 290, 15 and 290 mm, and the
+  shortest new tray needs 475 mm.
+- **It would stand where the Aconity MIDI is,** so the Aconity and the packaging station would have to move.
+- **For Sterling to decide:** whether the Aconity moves, and whether stored trays stay powered (a question for
+  Kardex).
+
+### The rePowder model: #327's second pass
+
+From the first run of round 10:
+- the chamber door hinges at the back;
+- two front swing-bolt clamps and the viewport are placed from DAL #189;
+- the control panel's keys are added;
+- a second held-out frame (T2 51:00) fits to 11.4 px RMS.
+
+The long-form shows the new before/after sheet. Chapter 2 still opens the lid about the old hinge until #327 is merged.
+
+### The long-form, round 10
+
+**[The vertical cloud lab, round 10](https://www.youtube.com/watch?v=aW5YoxPi0pM)** is on YouTube: unlisted, 1:00:03,
+42 YouTube chapters, built from what is committed here. New since round 9's
+[Y1cB7xoOZ_4](https://www.youtube.com/watch?v=Y1cB7xoOZ_4):
+- the maintenance chapter, before the finale, and the finale with upkeep on screen;
+- the doser figure in chapter 1;
+- chapters 4 and 6 re-rendered at 0 frames in collision;
+- the set-up, services and bay-camera clips on round 9's lab;
+- #327's second-pass sheet.
+
+| # | Starts | Chapter | Parts |
+|---|---|---|---|
+| 1 | 0:00 | A real VLM, then the plan | [`vlm_real_ck8QJhVqPiY.mp4`](out/footage/vlm_real_ck8QJhVqPiY.mp4) |
+| 2 | 0:23 | The lab set up from scratch | [`setup_lab.mp4`](out/mp4/setup_lab.mp4), [`tray_plan.png`](out/tray_plan.png) |
+| 3 | 2:40 | Services: UPS, automatic hookups, cabling and cameras | [`vlm_hookups.mp4`](out/mp4/vlm_hookups.mp4), [`vlm_services.mp4`](out/mp4/vlm_services.mp4), [`dock_lift_clearance.png`](out/dock_lift_clearance.png), [`vlm_cabling.mp4`](out/mp4/vlm_cabling.mp4), [`stream_cam.mp4`](out/mp4/instruments/stream_cam.mp4), [`bay_camera.mp4`](out/mp4/bay_camera.mp4) |
+| 4 | 5:33 | Tray A: the corrosion station, OT-2 and CubXL | [`ot2_corrosion_prep.mp4`](out/mp4/instruments/ot2_corrosion_prep.mp4), [`cubxl_corrosion.mp4`](out/mp4/instruments/cubxl_corrosion.mp4), [`vlm_workflow.mp4`](out/mp4/vlm_workflow.mp4) |
+| 5 | 9:52 | Alloy route 1/7: the charge cups, dosed, weighed and pressed under vacuum | [`route_dag_ch1.mp4`](out/mp4/dag/route_dag_ch1.mp4), [`dal_workflow_table.png`](out/dal_workflow_table.png), [`alloy_charge.mp4`](out/mp4/alloy_charge.mp4), [`doser_raise_section.png`](out/doser_raise_section.png), [`vacuum_press.mp4`](out/mp4/vacuum_press.mp4) |
+| 6 | 15:41 | Alloy route 2/7: melt and atomize in the rePowder | [`route_dag_ch2.mp4`](out/mp4/dag/route_dag_ch2.mp4), [`alloy_atomize.mp4`](out/mp4/alloy_atomize.mp4) |
+| 7 | 19:37 | Alloy route 3/7: sieve and print | [`route_dag_ch3.mp4`](out/mp4/dag/route_dag_ch3.mp4), [`alloy_print.mp4`](out/mp4/alloy_print.mp4) |
+| 8 | 24:52 | Alloy route 4/7: the powder, checked | [`route_dag_ch4.mp4`](out/mp4/dag/route_dag_ch4.mp4), [`alloy_powder.mp4`](out/mp4/alloy_powder.mp4) |
+| 9 | 28:43 | Alloy route 5/7: depowder, cut, heat treat, tensile at room and elevated temperature | [`route_dag_ch5.mp4`](out/mp4/dag/route_dag_ch5.mp4), [`alloy_workflow.mp4`](out/mp4/alloy_workflow.mp4), [`edm_orientations.png`](https://github.com/vertical-cloud-lab/byu-vcl/blob/193778b/vertical-lab/out/edm_orientations.png) (193778b) |
+| 10 | 35:34 | Alloy route 6/7: sample prep: section, mount, grind and polish | [`route_dag_ch6.mp4`](out/mp4/dag/route_dag_ch6.mp4), [`alloy_prep.mp4`](out/mp4/alloy_prep.mp4) |
+| 11 | 40:49 | Alloy route 7/7: characterizing the build | [`route_dag_ch7.mp4`](out/mp4/dag/route_dag_ch7.mp4), [`alloy_characterize.mp4`](out/mp4/alloy_characterize.mp4) |
+| 12 | 45:15 | The other stations: a tensile tester on its side, gloveboxes, fume hoods, stores, shipping | [`instruments_gallery.png`](out/instruments_gallery.png), [`tensile_h.mp4`](out/mp4/instruments/tensile_h.mp4), [`glovebox_tray.mp4`](out/mp4/instruments/glovebox_tray.mp4), [`glovebox.mp4`](out/mp4/instruments/glovebox.mp4), [`fumehood.mp4`](out/mp4/instruments/fumehood.mp4), [`fumehood_tray.mp4`](out/mp4/instruments/fumehood_tray.mp4), [`storage.mp4`](out/mp4/instruments/storage.mp4), [`powder_store_feed.mp4`](out/mp4/instruments/powder_store_feed.mp4), [`powder_store_lots.mp4`](out/mp4/instruments/powder_store_lots.mp4), [`packaging.mp4`](out/mp4/instruments/packaging.mp4) |
+| 13 | 48:43 | Fabrication: metal printers, DED, resin and PCB assembly | [`fabrication_tour.mp4`](out/mp4/fabrication_tour.mp4), [`ded.mp4`](out/mp4/instruments/ded.mp4) |
+| 14 | 52:18 | Scaling up: large-format printing and ship-part repair | [`scaleup.mp4`](out/mp4/scaleup.mp4) |
+| 15 | 54:19 | What doesn't fit, and getting a tray out | [`hip.mp4`](out/mp4/instruments/hip.mp4), [`tall_opening_bays.png`](out/tall_opening_bays.png), [`maintenance_access.png`](out/maintenance_access.png) |
+| 16 | 55:06 | How the models were checked | [`before_after.jpg`](out/register/before_after.jpg), [`before_after.jpg`](https://github.com/vertical-cloud-lab/byu-vcl/blob/f9db700/vertical-lab/out/repowder_refine/before_after.jpg) (f9db700), [`interference_sheet.png`](out/interference_sheet.png), [`vlm_workflow_before_after.png`](out/collisions/vlm_workflow_before_after.png) |
+| 17 | 56:06 | Maintenance over the long term, inside the workflow | [`upkeep_clip.mp4`](out/mp4/upkeep_clip.mp4), [`upkeep_year.png`](out/upkeep_year.png) |
+| 18 | 58:22 | The whole lab at speed: an hour, a day, a week, a month | [`timelapse.mp4`](out/mp4/timelapse.mp4) |
+
+```bash
+python3 longform.py warm alloy_prep    # pre-encode every finished clip (here, all but alloy_prep) while a render runs
+python3 longform.py; python3 longform.py upload
+LONGFORM_SRC=alloy_prep.mp4=/tmp/old.mp4 python3 longform.py   # build from another copy of a clip
+```
+
+### Still open after round 10
+
+- **The doser's funnel isn't in chapter 1.** It is designed and collision-checked on our shuttle, but the arm's
+  funnel swaps aren't animated. Whether it's needed at all rests on powder-doser's test of how far the stream strays
+  over a 150 mm fall.
+- **Chapters 3 and 7 are fixed in code, not re-rendered.** Their audits covered only the changed sub-steps, and the
+  MiR bodies still aren't in any audit.
+- **The PX500's column and the polisher's tour clip:** the column's position behind the bowl is assumed and needs
+  checking on the lab's machine, and the polisher's tour clip still shows the old column.
+- **The maintenance model is mostly assumed:** all 28 failure rates and 72 of the 121 task intervals. The size of
+  Kardex's extraction table isn't published.
+- **Three each and the 50 ft array:** three each is a plan for Sterling to decide; the array isn't started.
+- **#331:** Hitachi's, KLA's and Instron's contacts need a person with a normal browser. The lab's own facts in
+  `lab_answers.md` (the contact person, the room, the budget, the dates) need filling in before anything is sent.
+- **Still not merged:** #327's lid isn't in chapter 2, and #328's 45° bars aren't animated.
+- **No measured data from a build is on screen.** Every panel is badged real, computed or illustrative.
+- **YouTube:** rounds 7-9's long-forms are superseded and still up; a `@claude-youtube` run can remove them.
+
+## Round 9: the new multi-doser, a parked cap, plain jars, the bay floor, two arms on the atomizer, bars at three orientations
+
+Asked for on [PR #318](https://github.com/vertical-cloud-lab/byu-vcl/pull/318) (2026-11-05 22:56 UTC, after watching
+round 8's long-form). Two sessions: the first, from 22:58, ran out of model credits at 23:31 with only the bay floor,
+the brief and the lab-wide jar committed; the second, from 03:14 on 2026-11-06, restarted nine streams from
+[`notes/round9_plan.md`](notes/round9_plan.md), which has the split, the rules and what happened to the render queue.
+Two pieces of the work have their own stacked PRs:
+[#327](https://github.com/vertical-cloud-lab/byu-vcl/pull/327) (the rePowder model against the lab's training video) and
+[#328](https://github.com/vertical-cloud-lab/byu-vcl/pull/328) (tensile bars at three build orientations through the
+wire EDM).
+
+![Round 9's changes, six frames from the final renders](out/round9_sheet.png)
+
+### The multi-doser is chain carousel v5, on an HR-202i under the dose point
+
+- **powder-doser's own CAD, verbatim:** `cad/chain-carousel-v5/` at `353dae7` and the helpers it imports, copied into
+  [`multidoser/`](multidoser/) with their SHA-256s, and run by [`carousel.py`](carousel.py) with the rig's own
+  kinematics (the chain, the electronics carriage's lift bar and tilt, the auger, the doors). Round 8's v2 copies are gone.
+- **The balance stands under the dose point,** inside the U-shaped base and touching nothing of the doser; no funnel and
+  no load cell. The dose falls 154 mm into the vessel, by weight.
+- **A UR10e can't reach v5's pan:** the 2F-85's knuckles span 127-138 mm and the frame posts leave 117. So a fork shuttle
+  of ours carries the vessel through a port in the side panel and the balance's side door onto a pedestal riser on the
+  pan, and pushers of ours open the balance's doors (v5 opens them by hand and says a robot-served station needs an
+  actuator).
+- **The 8:37 vial stands upright** (it lay on its side in round 8): 111.8 s, 671 frames, on the whole floor with the
+  Shuttles drawn open; 0 of 574 checked frames in collision.
+- **Chapter 1's charge cups** ride the shuttle onto the pedestal on the HR-202i's pan and are dosed in place by weight,
+  with no funnels and nothing shared between powders: 254 s, 1,526 frames, 0 of 1,145 checked frames in collision.
+- **Tray B's slot is 900 mm** (`vlm.COLUMNS`, was 775), which moves tray E up 125 mm. v5 stands 860 mm, 3.5 mm over
+  the 856.5 mm product height, so its top panel is laid on the rails (854 mm), and the rig is no longer turned on the
+  tray, so the balance's side door faces the arm.
+- Details, sources and what is ours: [`notes/multidoser.md`](notes/multidoser.md), [`notes/alloy_charge.md`](notes/alloy_charge.md).
+
+### The CubXL's second cap
+
+The magnet holds one cap at a time, so the clip now keeps a second cap on an **empty parking vial** in holder seat 6.
+DAL's own convention already parks the electrode's cap in a vial ([DAL PR #180](https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/180),
+`cubxl-setup.md` §3). DAL's 13 steps, run strictly one stock at a time, never have two caps off; the clip now keeps the
+artificial seawater open through the sulfide addition, the case that needs the parking spot. Checked for interference
+in MuJoCo; [`r9_cubxl.py`](r9_cubxl.py), [`notes/cubxl_corrosion.md`](notes/cubxl_corrosion.md).
+
+### Jars: clear glass, a black cap, and a legend when something is pointed out
+
+Every jar in the 581-jar store (trays N and O), the sample store (tray J) and the packaging station is the lab-wide jar
+in [`props.py`](props.py) (`jar_parts`): clear glass, a matte black cap, a white label, the powder showing. Where a clip
+points something out (the master alloys, a size cut, one run's lots), those jars are tinted for a few seconds while a
+legend says what the tint means, then fade back. The chapters' own jars follow the same rule.
+
+**Which containers for powder?** Glass is fine for what the lab holds now: small sealed lots of coarse powder in a
+dehumidified room, handled by a force-limited gripper. It isn't what the standards prefer for aluminium: NFPA 484 and
+the Aluminum Association's TR-2 ask for conductive, grounded containers, and glass can't be grounded; HDPE is worse
+for static and a poor long-term moisture barrier; powder makers ship large lots in metal. So: clear glass with a
+PTFE-lined black cap for the 30-500 mL working jars, grounded racks and dosing path, and fines under about 63 µm, Mg and
+Al-Li master alloy in gasketed metal cans or the glovebox. Sources in [`notes/lab_r8.md`](notes/lab_r8.md#which-containers-for-powder-is-glass-ok).
+
+### The bay has a floor
+
+Kardex's order sheet puts the access table (TH1) at 833 mm, 21 mm under the presented tray. Only the cover's 80 mm lip
+was drawn, so an empty bay showed air. The table is now a closed floor from the cover back to the shutter, with a sill
+under the shutter ([`vlm.py`](vlm.py)). Every clip re-rendered this round shows it.
+
+### Chapter 2: two mobile manipulators open the furnace, on ballasted bases
+
+- **The second MiR250 + UR10e parks beside the first.** Arm 2 holds the lid down while arm 1 opens the latch, and again
+  while arm 1 closes it, as two hands do in training video T4 (5:23). Arm 1 swings the lid alone: from 95° up, the lid
+  would hit arm 2's forearm, which the first audit found.
+- **Arm 2 presses about 100 N (an estimate) with its tool leaning 25°**; straight down was out of its reach from there.
+- **Each base carries a 131 kg steel plate** (760 × 550 × 40 mm, ours) under its cabinet, labelled as the units arrive.
+  The payload is about 206 kg against the MiR250's 250 kg; the centre of gravity drops from 442 to 389 mm.
+
+  | Load | Tips at, with / without the plate | Slides at, with / without |
+  |---|---|---|
+  | Arm 1 pulls the latch (100 N expected, 200 N stiff) | 829 / 466 N | 891 / 505 N |
+  | Arm 1 pushes the latch shut | 846 / 483 N | 891 / 505 N |
+  | Arm 2's 100 N press (the weakest case) | 648 / 377 N | 2,087 / 1,173 N |
+
+  Even without the plates, every load is held at least 2.3 times over. The press force, the lid's mass, the caster
+  positions and the cabinet's mass are estimates; [`out/alloy_atomize_stability.json`](out/alloy_atomize_stability.json).
+- **Rendered:** 223.5 s at 6 fps, 32 s of it the lab's footage in 8 pieces; **0 of 920 frames in collision, both arms.**
+  The lid still opens about the old model's hinge: [#327](https://github.com/vertical-cloud-lab/byu-vcl/pull/327) puts
+  it at the back, from T4, and lists the edits this chapter needs when it merges.
+  [`notes/alloy_atomize.md`](notes/alloy_atomize.md).
+
+### Chapter 3: the sieves cleaned without a person, and the MIDI's door
+
+- **A wash module beside the tipper** (`sieve_station.wash_parts`, on a 450 mm extension of the bench, with its own
+  hood and duct, our design). The chapter takes the No. 325 through it: turned over the funnel and vibrated to get the
+  trapped powder out dry, set on a basket ring and lowered into an ultrasonic IPA tank, raised through a warm-air knife,
+  back to the tipper and the stand. The other five sieves would take the same cycle; they aren't drawn through it.
+- **Is that a sound way to clean test sieves? Mostly, with three cautions.**
+  - Retsch cleans meshes finer than 500 µm in an ultrasonic bath for 2-3 min, the sieve held off the tank floor;
+    nothing was found for sonicating meshes under about 20 µm.
+  - Dry below 80 °C with the sieve upright (Retsch), and with a low-pressure slot, not a compressed-air jet, which
+    distorts the openings (DAL #234).
+  - IPA rather than water because fine Al in water makes hydrogen. But DAL #234 says not to put IPA in an ordinary
+    ultrasonic cleaner, so the module sonicates indirectly: IPA in a closed vessel inside a water jacket, a few hundred
+    mL, under extraction and grounded, or an explosion-proof unit for a direct bath.
+- **About 12-15 min a sieve, 75-90 min for the stack** with one module (an estimate). The cheaper answer may be DAL
+  #234's own: a dedicated sieve set per alloy family, which makes washing a between-campaign job.
+- **The MIDI's door** lifts about its top edge (chapter 5's fix), and the jars are the lab-wide jar, tinted with a legend
+  for the size cuts for 6 s, then plain again.
+- **Rendered:** 1,816 frames, 302.7 s at 6 fps, with only tray F populated (the chapter fetches no tray). The last audit,
+  on the code just before the render, found 7 of 3,402 frames in collision: the forearm against the MIDI's new lift-up
+  door going into and out of the chamber (6), and a fingertip against the enclosure (1). The wash module's own moves are
+  clear. [`notes/alloy_print.md`](notes/alloy_print.md).
+
+### Chapter 4: the Mastersizer's laser in one cutaway, the S2 PUMA's transfer seen
+
+- **The Mastersizer in one cutaway:** the ghosted body is gone. Its outer covers are one piece that fades fully out for
+  the measurement, the optics sit bare on their base plate, the cell cassette is sectioned along the beam, and the
+  camera looks from the laser's end, high and in front, so the laser, the beam, the cell and the detector are in one
+  frame.
+- **27:13, the S2 PUMA:** its hood and body go see-through in the first step, before the cup moves, and stay so, so the
+  cup's whole path through the hatch and down the lift ring is seen.
+- **Round 8's 23 collision frames:** a via pose over the MiR after the holder is set in the MiniFlex, and 48 mm (was 26)
+  between the vial and the holder while it sifts. **The final render audits at 19 of 1,028 frames,** in the same three places as before the last two fixes: the right
+  finger brushing the holder while the vial sifts (2), the held holder touching the MiniFlex's door (1), and the arm
+  sweeping the SEM's and MiniFlex's housings and tray D's camera post on its way back from the MiniFlex (16). The fix is
+  still a waypoint straight out of the doorway before the arm turns.
+- **Rendered:** 1,309 frames, 218 s, 6 fps, with the trays that can show built (D, E, M and those behind the openings).
+  [`notes/alloy_powder.md`](notes/alloy_powder.md).
+
+### Chapter 5: the lance, the clamp, bars at two orientations, the test in the hot chamber
+
+- **The MIDI's door lifts about its top edge, out and up to 165°.** Rounds 4-8 hinged it on the left, swinging into
+  the chamber. From AMAZEMET's photo of its MIDI (the handle centred on the door's lower edge) and Aconity's photo of the
+  MIDI+ with its flap raised; no photo of an open MIDI itself was found ([`alloy_models.py`](alloy_models.py)).
+- **28:08, the lance:** now 400 mm long, so the gripper stays outside the chamber and the nozzle inside the 170 mm bore;
+  36 sweep poses checked with FCL, the hose included, with no contact.
+- **How the depowdering box holds the plate:** its stud locks in a zero-point chuck and three swing clamps close over the
+  rim before it turns, and open after (ours; Solukon's SFM-AT200 page doesn't say).
+- **Two build orientations on the plate:** two vertical bars beside the four flat ones, cut in the same EDM pass, caught
+  in troughs, rinsed and racked. The 45° bars and the options are in
+  [#328](https://github.com/vertical-cloud-lab/byu-vcl/pull/328).
+- **32:20, the test in the hot chamber:** the 3119-608's front wall was solid behind its door and its controller stood
+  24 mm into the column; both fixed. The test is now a cutaway from the right, past the right column, with nothing
+  see-through.
+- **Round 8's six colliding poses:** the park, jar, rack and cradle moves now take the first clear approach. The planner
+  reports no move that starts or ends in collision. The frame-by-frame audit was stopped at 05:45 to free its slot, so
+  the moves in between are not checked.
+- **Rendered:** 385 s at 6 fps, 2,309 frames, with only tray F populated (the Shuttles stay clad).
+  [`notes/alloy_workflow.md`](notes/alloy_workflow.md).
+
+### Chapter 6, whole: the PX500's mounts stand free and its pistons press them
+
+- **The holder holds nothing.** Each 38.1 mm mount sits free in a stepped bore with a 5 mm back ledge (ours): no set
+  screw, no clip. The PX500's six individual-force pistons (`r8_prep.py`'s `pistons`) come down onto the mounts' backs
+  for each grind and lift off after, so with the pistons up the mounts just stand in their holes. A close-up shows each
+  one.
+- **How a mount stays in when the holder is lifted isn't published.** The chapter loads it face up against the ledge, and
+  a light O-ring grip in the bore holds it while the holder is turned over: an assumption. The other way is to leave
+  the holder on the head and load mounts one at a time. LECO's PX series page says only that the holder indexes "to
+  make loading easier".
+- **The whole chapter is rendered this time:** 1,816 frames, 302.7 s, to the cloth and alumina and the hand-over to
+  chapter 7 (round 8 stopped at the first grind).
+- **Its arm audit is not clean: 456 of 3,539 checked frames are in collision,** in 90 runs. 51 are the wrist camera
+  against the mounting press; 405 are in the polishing, mostly the forearm folding into the gripper and the upper arm
+  into the bay and the MiR's cabinet while it carries a disc to and from the magazine. Fixing them is new poses for the
+  disc changes and an hour's re-render, which didn't fit this round.
+  [`notes/alloy_prep.md`](notes/alloy_prep.md), [`out/collisions/alloy_prep.json`](out/collisions/alloy_prep.json).
+
+### Chapter 7, re-rendered with round 8's last fixes
+
+Round 8's committed render had 13 frames in collision at the iMicro's unload and an HM-220 close-up that looked into
+Shuttle 2's frame; both fixes were in the code but not rendered. Re-rendered on them and on the bay floor: 1526 frames,
+254 s. One frame is left, the wrist grazing the VHX's stand (frame 1246). [`notes/alloy_characterize.md`](notes/alloy_characterize.md).
+
+### The long-form, round 9
+
+**[The vertical cloud lab, round 9](https://www.youtube.com/watch?v=Y1cB7xoOZ_4)** (unlisted, 57 min 25 s, 39 YouTube
+chapters), built at 07:53 UTC on 2026-11-06 from the clips committed by then. The MP4 isn't committed (174 MB); its
+sha256 is in `out/youtube.json`.
+
+![The long-form, one frame per part](out/longform_sheet.png)
+
+| # | Starts | Chapter | Parts |
+|---|---|---|---|
+| 1 | 0:00 | A real VLM, then the plan | [`vlm_real_ck8QJhVqPiY.mp4`](out/footage/vlm_real_ck8QJhVqPiY.mp4) |
+| 2 | 0:23 | The lab set up from scratch | [`setup_lab.mp4`](out/mp4/setup_lab.mp4), [`tray_plan.png`](out/tray_plan.png) |
+| 3 | 2:38 | Services: UPS, automatic hookups, cabling and cameras | [`vlm_hookups.mp4`](out/mp4/vlm_hookups.mp4), [`vlm_services.mp4`](out/mp4/vlm_services.mp4), [`dock_lift_clearance.png`](out/dock_lift_clearance.png), [`vlm_cabling.mp4`](out/mp4/vlm_cabling.mp4), [`stream_cam.mp4`](out/mp4/instruments/stream_cam.mp4), [`bay_camera.mp4`](out/mp4/bay_camera.mp4) |
+| 4 | 5:32 | Tray A: the corrosion station, OT-2 and CubXL | [`ot2_corrosion_prep.mp4`](out/mp4/instruments/ot2_corrosion_prep.mp4), [`cubxl_corrosion.mp4`](out/mp4/instruments/cubxl_corrosion.mp4), [`vlm_workflow.mp4`](out/mp4/vlm_workflow.mp4) |
+| 5 | 9:50 | Alloy route 1/7: the charge cups, dosed, weighed and pressed under vacuum | [`route_dag_ch1.mp4`](out/mp4/dag/route_dag_ch1.mp4), [`dal_workflow_table.png`](out/dal_workflow_table.png), [`alloy_charge.mp4`](out/mp4/alloy_charge.mp4), [`vacuum_press.mp4`](out/mp4/vacuum_press.mp4) |
+| 6 | 15:26 | Alloy route 2/7: melt and atomize in the rePowder | [`route_dag_ch2.mp4`](out/mp4/dag/route_dag_ch2.mp4), [`alloy_atomize.mp4`](out/mp4/alloy_atomize.mp4) |
+| 7 | 19:22 | Alloy route 3/7: sieve and print | [`route_dag_ch3.mp4`](out/mp4/dag/route_dag_ch3.mp4), [`alloy_print.mp4`](out/mp4/alloy_print.mp4) |
+| 8 | 24:37 | Alloy route 4/7: the powder, checked | [`route_dag_ch4.mp4`](out/mp4/dag/route_dag_ch4.mp4), [`alloy_powder.mp4`](out/mp4/alloy_powder.mp4) |
+| 9 | 28:27 | Alloy route 5/7: depowder, cut, heat treat, tensile at room and elevated temperature | [`route_dag_ch5.mp4`](out/mp4/dag/route_dag_ch5.mp4), [`alloy_workflow.mp4`](out/mp4/alloy_workflow.mp4), [`edm_orientations.png`](https://github.com/vertical-cloud-lab/byu-vcl/blob/193778b/vertical-lab/out/edm_orientations.png) (193778b) |
+| 10 | 35:18 | Alloy route 6/7: sample prep: section, mount, grind and polish | [`route_dag_ch6.mp4`](out/mp4/dag/route_dag_ch6.mp4), [`alloy_prep.mp4`](out/mp4/alloy_prep.mp4) |
+| 11 | 40:33 | Alloy route 7/7: characterizing the build | [`route_dag_ch7.mp4`](out/mp4/dag/route_dag_ch7.mp4), [`alloy_characterize.mp4`](out/mp4/alloy_characterize.mp4) |
+| 12 | 45:00 | The other stations: a tensile tester on its side, gloveboxes, fume hoods, stores, shipping | [`instruments_gallery.png`](out/instruments_gallery.png), [`tensile_h.mp4`](out/mp4/instruments/tensile_h.mp4), [`glovebox_tray.mp4`](out/mp4/instruments/glovebox_tray.mp4), [`glovebox.mp4`](out/mp4/instruments/glovebox.mp4), [`fumehood.mp4`](out/mp4/instruments/fumehood.mp4), [`fumehood_tray.mp4`](out/mp4/instruments/fumehood_tray.mp4), [`storage.mp4`](out/mp4/instruments/storage.mp4), [`powder_store_feed.mp4`](out/mp4/instruments/powder_store_feed.mp4), [`powder_store_lots.mp4`](out/mp4/instruments/powder_store_lots.mp4), [`packaging.mp4`](out/mp4/instruments/packaging.mp4) |
+| 13 | 48:28 | Fabrication: metal printers, DED, resin and PCB assembly | [`fabrication_tour.mp4`](out/mp4/fabrication_tour.mp4), [`ded.mp4`](out/mp4/instruments/ded.mp4) |
+| 14 | 52:03 | Scaling up: large-format printing and ship-part repair | [`scaleup.mp4`](out/mp4/scaleup.mp4) |
+| 15 | 54:03 | What doesn't fit, and getting a tray out | [`hip.mp4`](out/mp4/instruments/hip.mp4), [`tall_opening_bays.png`](out/tall_opening_bays.png), [`maintenance_access.png`](out/maintenance_access.png) |
+| 16 | 54:51 | How the models were checked | [`before_after.jpg`](out/register/before_after.jpg), [`before_after.jpg`](https://github.com/vertical-cloud-lab/byu-vcl/blob/4885eb7/vertical-lab/out/repowder_refine/before_after.jpg) (4885eb7), [`interference_sheet.png`](out/interference_sheet.png), [`vlm_workflow_before_after.png`](out/collisions/vlm_workflow_before_after.png) |
+| 17 | 55:44 | The whole lab at speed: an hour, a day, a week, a month | [`timelapse.mp4`](out/mp4/timelapse.mp4) |
+
+- **Re-rendered this round:** chapters 1-7, the 8:37 clip, the CubXL clip, and the sample-store, jar-store and
+  packaging clips. Each changed chapter's card says what changed; chapter 6's says its disc changes still collide.
+- **From the two new PRs,** taken from their branches at pinned commits without merging (`longform.py`'s `gitstill`):
+  the three build orientations after chapter 5 (#328) and the rePowder refit among the checks (#327).
+- **Not re-rendered, so still round 8's:** the set-up movie, the services, hookups and bay-camera clips, and the
+  finale. They still show the coloured jar lids, the v2 doser on tray B, tray B's old 775 mm slot and the bay without
+  its floor.
+
+### Still open after round 9
+
+- **Collisions left in the renders:**
+  - chapter 6: 456 of 3,539 checked frames, 405 of them in the disc changes (the forearm folding into the gripper, the
+    upper arm into the bay and the MiR's cabinet) and 51 of the wrist camera against the mounting press;
+  - chapter 4: 19 of 1,028, above;
+  - chapter 3: 7 of 3,402, audited on the code just before the render: the forearm against the MIDI's new lift-up door
+    going into and out of the chamber (6), a fingertip against the enclosure (1);
+  - chapter 5: not audited frame by frame (the audit was stopped at 05:45 to free its slot); the planner reports no move
+    starting or ending in collision;
+  - chapter 7: 1 frame, the wrist grazing the VHX's stand;
+  - chapters 1 and 2 and the 8:37 clip: 0;
+  - the MiR250 bodies aren't checked in chapters 2-7 (#321's `audit_mir.py` wasn't brought over).
+- **The rePowder:** #327's lid (hinged at the back) isn't in chapter 2 yet; its notes list the edits. Its clamps,
+  fittings, chamber door and viewport aren't refitted. Arm 2 opening the container's flange clamp isn't animated, and in
+  the side view of the latch arm 1's gripper hides the lever.
+- **The doser station's robot parts are ours,** not powder-doser's: the fork shuttle, the pedestal and the door pushers
+  should go to powder-doser as an issue if the station is to be robot-served. The lab's documented 0.1 mg balance is an
+  HR-100A (102 g), and a Cu charge cup weighs 135.7 g: the HR-202i (220 g) is a candidate, and A&D has discontinued it
+  for the GH-202. Chapter 1's dose close-up is crowded by the balance's frame. `reach.py` and the doser's box in
+  `services.py` still use round 8's positions, and the tray plan figure predates tray B's 900 mm slot.
+- **The CubXL's close-up of the parked cap** is too tight to see the cap well; a pulled-back camera is in the notes,
+  not rendered. Whether the magnet seats and lifts a cap 33 mm from the stocks is untested.
+- **Chapter 3's plate prints flat bars only;** chapter 5's has the vertical ones too (`Aconity(zbars=True)` would match).
+  The 45° bars are in #328's figures, not animated.
+- **How a mount stays in the PX500's holder when it is lifted** is assumed (a light O-ring grip in the bore); LECO
+  publishes nothing. Ask LECO, or look on the lab's machine.
+- **Tour clips not re-rendered:** the XRD, Mastersizer, XRF, polisher, furnace and floor Instron (not in the long-form).
+- **`runner_guard.py` serves strictly in order,** so a job that needs more memory than is free holds up every job
+  behind it; it cost about 25 slot-minutes this round. Worth letting a job that fits go past, for a while.
+- **On YouTube,** round 7's and round 8's long-forms and clips are superseded and still up; the upload token can't
+  delete. A `@claude-youtube` run can remove them or leave them out of a playlist.
+
+## Round 8: the route in seven chapters, sample prep, the powder checked, scaling up, the lab at speed
+
+Asked for on [PR #318](https://github.com/vertical-cloud-lab/byu-vcl/pull/318) (2026-11-05 00:37 UTC, after watching
+the long-form). Three sessions worked on it: two at 00:37 and 03:16 that lost their runner part-way (below), and one
+from 15:37 with six hours and seven sub-agents. Each stream has a notes file. The split, and the rules every stream
+worked to, are in [`notes/round8_plan.md`](notes/round8_plan.md).
+
+### Keeping the runner alive: at most three scene jobs, a memory gate and a watchdog
+
+Both earlier round-8 runs ended with "The runner has received a shutdown signal" (exit 143) after 61 and 41 minutes,
+with eight agents rendering, auditing and encoding on the runner's 4 cores and 16 GB at once. The last run used
+[`runner_guard.py`](runner_guard.py):
+
+- **At most three scene jobs at once.** Every render, `PREVIEW=1` still, `ARM_AUDIT=1` pass, tour clip and long
+  ffmpeg join takes a slot, a `flock()`ed file under `/tmp/vlab_slots`, which frees itself however its process ends.
+- **A memory gate.** A job starts only if the free memory, less what the running jobs may still grow into (each one's
+  declared peak less what it already holds), covers its own declared peak: 3 GB by default, 6.5 GB for a scene on the
+  whole two-Shuttle floor.
+- **A watchdog.** It logs memory every minute and stops the slotted job holding the most memory if less than
+  1.2 GB is left (900 MB until 17:12). It fired once, at 17:09: two whole-lab jobs, a chapter-6 preview and a GIF
+  built outside any slot had grown to 15.1 GB, and it stopped the 5.7 GB render of the 9:09 clip at 868 MB free.
+  The runner lived; the render was run again.
+- **A fast lane.** `--quick` jobs (previews, stills) go ahead of renders; a render that has waited 20 minutes is
+  promoted.
+- **What it changed on the way.** A whole-lab scene first took two of the three slots. That left a slot and three
+  cores idle for 25 minutes behind a single-threaded collision audit, so from 16:45 every job took one slot and the
+  memory gate did the rest. The gate first checked only the memory free at the start, which is how the 17:09 dip
+  happened.
+- **Lighter scenes for collision audits.** `setup_lab.build` used to load every instrument on all fifteen trays,
+  including the 581 jars, though a chapter presents only a few. `VLAB_ONLY_TRAYS=DEKL` loads just those: 1.5 GB against
+  about 5 GB, and the audits run several times faster. It's also fine for a render whose Shuttles stay clad, as the
+  chapters' do. It's never used for the clips that draw the Shuttles as open frames (the set-up, the 9:09 clip), where
+  the Shuttles would look half empty.
+- **Where the memory goes,** measured on the 9:09 clip (`notes/lab_r8.md`):
+  - building the scene, 1.5 GB;
+  - rendering, about 2 GB more;
+  - the arm planner's collision world of 2,439 FCL bodies, which takes it to 4.5–5.9 GB.
+
+  Building collision meshes only near the arm would cut this; `collide.py` is shared, so it wasn't changed mid-run.
+- **GitHub.** The session re-minted its token every 40 minutes and pushed every 10.
+
+### Chapters 2 and 3: the MS&T stream, the unsieved jar first, grey powder, the MiR at its real acceleration
+
+[`notes/alloy_atomize.md`](notes/alloy_atomize.md), [`notes/alloy_print.md`](notes/alloy_print.md).
+
+- **The Oct 8 Al 6063 clip is out.** It dripped rather than atomized. In its place is a melt stream breaking up on the
+  plate, from Sterling's MS&T 2026 talk ([YmvaeqOQAU4](https://youtu.be/YmvaeqOQAU4?t=298), 4:58–5:05), credited and
+  cropped. The talk names neither the alloy nor the run.
+- **The powder appears in order.** Chapter 2 shows only the unsieved powder: the k7m2q9 jar on the day of the run and the
+  c3k0n5 bag and jar as collected. Gage's photo of the three sieved bronze jars (< 63, 63–250 and > 250 µm; 188, 827
+  and 182 g) comes in chapter 3, after the arm has done the sieving.
+- **Grey until it settles.** The powder is grey while it is poured, shaken and settles. Then it takes the fraction
+  colours with a legend for 0.8 s, and goes back to grey.
+- **The sieve set is the lab's own stack:** No. 60, 100, 140, 230 and 325 and the pan, since the No. 100, 140 and 325
+  arrived on Nov 4 ([DAL PR #175](https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/175)).
+- **Both chapters run on the set-up's two-Shuttle floor** (`alloy_atomize_floor.py`). The Aconity is at x = 6950,
+  clear of the second Shuttle.
+- **The MiR250 drives at its published 0.3 m/s²**, from rest to rest along S-curves with its long axis on the tangent.
+  These are PR #321's ramps, brought over into [`props.py`](props.py): `ramp_secs`, `ramp_frac`, `s_curve` and
+  `unease`. A differential-drive base can't slide sideways, so chapter 3's 300 mm sideways slide up to the bench is now
+  900 mm forward onto the line and back.
+- **Rendered at 6 fps:**
+  - **Chapter 2:** 3 min 30 s, 32 s of it the lab's footage in 8 pieces. 0 of 866 arm frames in collision.
+  - **Chapter 3:** 4 min 14 s. 0 of 1112 in collision, where round 7 had 97.
+- **Still open:**
+  - Chapter 3 was rendered against round 7's EDM and Instron models in the background.
+  - The MiR bodies aren't collision-checked here: #321's `audit_mir.py` wasn't brought over.
+
+### Scaling up: an EOS M 400-4 and a Meltio robot cell
+
+![The scale-up chapter](out/scaleup_still.png)
+
+[`scaleup.py`](scaleup.py), [`r8_scale.py`](r8_scale.py), [`notes/scaleup.md`](notes/scaleup.md). Sterling: "add an EOS
+or some type of large-format printer and show later on the printing of real aerospace parts and repairs of real ship
+parts."
+
+- **The EOS M 400-4 builds antenna brackets after RUAG Space's,** with 30 tensile bars.
+  - The shape is schematic: 380 × 110 × 100 mm, 1667 layers at 60 µm.
+  - Its four lasers are drawn to the layer being melted.
+  - The plate goes in and out on a lift-table cart, our stand-in for the operator's trolley, and a band saw parts
+    the brackets.
+- **The Meltio robot cell rebuilds a damaged leading edge on a nickel-aluminium-bronze propeller.** The positioner tilts
+  it 72°, six passes of beads fill the notch, and the edge is machined back to the profile.
+  - The printhead stays at least 75 mm from the propeller over the whole program.
+  - The robot's links stay at least 334 mm away.
+- **Both stand beyond the south row's ends** on the set-up's floor, with no MiR dock. Their powder, wire and parts come
+  by forklift.
+- **Rendered:** 1 min 55 s at 6 fps.
+- **Fixed before the render:** the plate used to appear from nowhere and float 1.3 m, and the cut brackets hung over the
+  plate. Now the cart carries the plate, and the brackets are lifted off by hand and laid on the saw table.
+
+### Chapter 4: the powder, checked, in line at the trays
+
+[`alloy_powder.py`](alloy_powder.py), [`r8_powder.py`](r8_powder.py), [`r8_powder_data.py`](r8_powder_data.py),
+[`notes/alloy_powder.md`](notes/alloy_powder.md).
+
+Sterling asked why the XRD stood apart from the route: "why isn't a tray coming and then the robot is putting
+something in there". While the plate prints, the MiR250 + UR10e brings a retained sample of the sieved 20–63 µm cut,
+about 15 g in a vial with a mesh cap, round the trays.
+
+- **The XRD prep, at a prep station on tray D** (our design, where the OpenFlexure array stood).
+  - The arm turns the vial over and shakes it, sifting the powder onto a zero-background holder.
+  - A blade strikes the powder off flush with the holder's reference plane.
+  - **No grinding:** milling gas-atomized Al powder turns spheres into flakes by cold welding (Edison's answer,
+    [`out/edison/auto_pxrd_prep`](out/edison/auto_pxrd_prep/answer.md)).
+  - A-Lab's UR5e uses a vial with a mesh lid the same way.
+  - The same visit dusts an SEM stub and fills an XRF cup.
+- **The MiniFlex.**
+  - Its door is see-through from the start. The goniometer stands still until the door is shut and the X-rays are on.
+  - The holder spins during the scan.
+  - The XRD panel is COMPUTED, not measured: Al-12Si from Bragg's law and structure factors.
+- **The SEM shows the lab's own atomized Al 4047** (run c3k0n5, BYU's Apreo, DAL #157), badged REAL, in place of the
+  stock AlSi10Mg image. 972 particles are counted from those images.
+- **Laser diffraction gets time:**
+  - the Aero S disperses the powder;
+  - the optical bench is cut away;
+  - large particles scatter narrow onto the focal-plane arcs, and small ones wide.
+  - The PSD is COMPUTED from the SEM count through a soft-edged 20–63 µm sieve (Dv50 58 µm), since no Mastersizer
+    result exists for this powder.
+- **The XRF's own transfer.**
+  - A hatch in the S2 PUMA's hood slides back.
+  - The chamber's lift ring rises to take the cup from the arm, then lowers it over the tube.
+  - The panel is ILLUSTRATIVE: real line energies against Al 4047's limits.
+
+### Chapter 5: a catch that catches, a capped IPA jar, real specimens, automated loading, a hot test
+
+[`alloy_workflow.py`](alloy_workflow.py), [`alloy_models.py`](alloy_models.py), [`r8_test.py`](r8_test.py),
+[`notes/alloy_workflow.md`](notes/alloy_workflow.md).
+
+- **"The bars dropping onto the catch shelf ... they'd just bounce and fall straight off."**
+  - The plate stands on edge in the EDM, so each cut bar stands on end in its own slot of a comb under it. The slot's
+    floor is 0.5 mm under the bar, so the bar settles onto a urethane pad instead of falling 14 mm.
+  - The slot is walled in front (75 mm tall), on both sides and, behind, by the plate itself.
+  - An ejector pin then lifts the bar 65 mm for the gripper, which removes round 6's 57 frames of taking it off the
+    shelf.
+  - The comb is our design ([`alloy_models.catch_comb`](alloy_models.py)).
+- **The IPA jar starts capped.** The arm lifts the lid off onto a rest, dips each bar, dries it through the air knife
+  and puts the lid back.
+- **Real specimens in the heat treatment:** four E8 subsize dogbones standing in a stainless rack.
+  - The rack gets a T6 on tray F: 530 °C, a water quench, then 160 °C. The times are assumptions until DAL sets one.
+  - It is handled with 300 mm tongs that ride on the MiR, so the gripper stays out of the 530 °C mouth.
+  - The quench tank has a lift basket, and the quench comes about 7 s after the door opens.
+- **Loaded as in Instron's AT6 cells** (Instron's own footage). The 68FM-100 has a 3119-608 chamber on pull rods, an
+  AVE 2 video extensometer and a scrap chute.
+  - The arm sets each specimen in the lower wedge grip and backs out.
+  - The chamber door shuts and the crosshead brings the upper grip down.
+- **Elevated temperature.** The second specimen is pulled at 200 °C after a 15-minute soak.
+  - The room-temperature halves go to the MiR's cradle for chapter 7's fractography; the hot test's go down the chute.
+  - Both curves are **illustrative**.
+- **On the set-up's floor,** the MiR250 at 0.3 m/s². The long drives are shown at 4× and captioned so.
+
+### Chapter 6: sample prep, every transfer by the arm, to the lab's SOP
+
+[`alloy_prep.py`](alloy_prep.py), [`r8_prep.py`](r8_prep.py), [`r8_specimens.py`](r8_specimens.py),
+[`notes/alloy_prep.md`](notes/alloy_prep.md). Sterling: "You jumped straight to the mounted coupons, without all the
+prep involved". Chapter 5's build is sectioned and two specimens are made for chapter 7. Nothing drops, floats or
+teleports: the only things that move on their own are what a machine moves itself.
+
+- **Sectioning on the wire EDM** (the floor's FANUC). It cuts without force or burr. The Carvera's 200 W spindle takes
+  no slitting saw, and the lab's SOP sections with a diamond saw.
+- **A steel mount** (Sterling: "polish by bonding it to a metal mount (maybe with an inset ...)").
+  - The slice is pressed into a pocket of a 1.5 in 416-stainless puck, on its steel floor, and held by a ball plunger.
+  - The **Makera Carvera** on tray M faces it flush with a 6 mm end mill. That takes off the EDM's recast layer and
+    makes the face parallel to the base, as nanoindentation and PIP need.
+  - That's what the CNC is for (Sterling: "What did the CNC actually get used for?"). Its tour clip now faces this mount.
+- **The hot mount on the lab's LECO MX400,** modelled from the lab's own video,
+  [Making Bakelite Polishing Puck](https://www.youtube.com/watch?v=9m_hdgmu2Jw).
+  - The video's sequence: face down, a scoop of compound, the stopper "green marble end up", the lock bar, the cycle at
+    the screen's values, then the ram pushes the mount out.
+  - The compound is carbon-filled, so the mount conducts.
+  - Added for the arm: a compound doser (Struers sells one, the CitoDoser). The stopper is pressed home by the closed
+    fingers.
+  - Depth, height and the units of the screen's values are estimates.
+- **"You're not showing the robot arm swapping out different grits ... this retaining ring."**
+  - The PX500 gets a magnetic platen and six steel discs, each pre-loaded with its paper or cloth under its own retaining
+    ring.
+  - The arm changes disc, abrasive and ring as one piece from a six-shelf magazine.
+  - That's the one automated route the Edison search found: BAM's cell, a QATM QPOL 250 Bot with 16 pre-loaded discs.
+    Nobody has a robot re-papering under a ring.
+  - Re-papering the discs stays a person's job, between batches.
+- **The grits follow the lab's own SOP (PR #258):**
+  - 320, 400, 600, 800 and 1200 SiC at the SOP's "35, 30, 150", 30 s each, rinsed between grits;
+  - then 1 µm alumina on cloth for 3 min.
+  - The SOP's final step, 0.1 µm diamond for 1–2 h on a Buehler VibroMet 2, and its ultrasonic cleans, are captions,
+    not modelled.
+
+### Chapter 7: characterizing the build, on chapter 6's mounts
+
+![Chapter 7's data panels](out/alloy_characterize_still.png)
+
+[`alloy_characterize.py`](alloy_characterize.py), [`r8_char.py`](r8_char.py), [`data_panels.py`](data_panels.py),
+[`notes/alloy_characterize.md`](notes/alloy_characterize.md).
+
+The chapter starts from chapter 6's specimens:
+- a 1.5 in conductive hot mount (carbon-filled phenolic), for the SEM/EDS and micro-Vickers;
+- a steel mount with the wire-EDM slice on its steel floor, for nanoindentation and PIP;
+- the broken half of an E8 subsize bar from chapter 5, for the VHX.
+
+The trays come to the opening and the arm loads each instrument.
+
+- **"No conductive path between the sample and the SEM stage ... it needs to actually mount onto the stage."**
+  - The conductive mount sits in a holder cup in the TM4000's stage socket.
+  - A spring plunger (a ball-nose set screw) clamps it against the cup's wall, so the path runs coupon → compound →
+    cup → stage.
+  - The mount pushes the ball back as it goes in, so the arm needs no screwdriver.
+- **"What's that box off to the right of the SEM?"** It is Oxford's AZtecOne EDS analyser, now lettered and labelled.
+- **"You can't just use the puck" for PIP and nanoindentation.** Both run on the steel mount, so there is metal from
+  the indent to the load cell.
+- **"Non-physical self-motion ... no idea what's going on inside of that indenter."**
+  - The specimen now moves only with the stage it sits in.
+  - The iMicro's hood is drawn see-through while it works. The stage carries the slice under the objective, then
+    under the head, and the Berkovich tip comes down for a 5 × 5 grid.
+- **The VHX head is on the stage's axis** and tilts about the focal point. As Sterling suggested, it builds a 3-D
+  reconstruction of the broken bar: a tilt series, the arm turns the bar over, then the series again.
+- **Micro-Vickers on a Mitutoyo HM-220** on tray L, a row of HV0.1 indents.
+- **Data after every instrument,** each panel badged REAL DATA, COMPUTED or ILLUSTRATIVE.
+  - Nothing in them was measured on this build; no micrograph of a section of the lab's prints was found.
+  - The SEM panel's real inset is now the lab's own atomized Al 4047 (run c3k0n5, BYU's Apreo, DAL #157), not the stock
+    AlSi10Mg powder.
+  - The hardness is from Thijs et al. 2013 (127 ± 3 HV0.5).
+- **No OpenFlexures.**
+- **Rendered:** 4 min 14 s at 6 fps. Its audit has 13 of 1269 checked frames in collision, at the iMicro's unload;
+  [`notes/alloy_characterize.md`](notes/alloy_characterize.md) has the details.
+
+### The lab: the 9:09 clip in the whole lab, quieter service lines, the jar store, no HF, the set-up with everything
+
+[`notes/lab_r8.md`](notes/lab_r8.md), [`notes/tray_plan.md`](notes/tray_plan.md).
+
+- **"In 9:09, suddenly the VLM only has a few things on board."**
+  - 9:09 was round 2's `animate.py workflow` ("atomized powder dosed for the CubXL"), which built its own one-Shuttle
+    scene with trays A–C.
+  - `animate.lab_scene()` now builds the lab as the set-up movie leaves it: two Shuttles, all 15 trays loaded with
+    their UPSs, dock plates and cameras, the floor machines, and a MiR250 + UR10e docked at Shuttle 1.
+  - 1 min 38 s at 6 fps, 0 of 496 arm frames in collision. Round 2's one-Shuttle version is `animate.py workflow_r2`.
+- **The service lines are quieter.**
+  - Each medium's colour is mixed 45 % towards grey.
+  - The flow markers creep at 40 mm/s without a glow, where they ran at 160 mm/s.
+  - `vlm_hookups`, `vlm_services` and `vlm_cabling` are re-rendered.
+- **"A ton of powder jars ... hundreds, including of different sizes":** 581 labelled jars on two new short trays in
+  Shuttle 2 ([`r8_store.py`](r8_store.py), [`out/powder_store.json`](out/powder_store.json)).
+  - Tray N: 204 feedstock jars of 60–500 mL, DAL #146's elements and master alloys, with lids coloured by element.
+  - Tray O: 377 atomized lots of 30–125 mL, each run's ID with its five sieve fractions.
+  - No jar is wider than the 2F-85's stroke. The sizes are typical wide-mouth jars (estimates).
+- **No HF.** Round 7's ducted hood etched in Keller's reagent, which contains HF. It now uses Weck's reagent
+  (KMnO₄ + NaOH), an HF-free tint etch for Al. ICP-MS goes out to the
+  [BYU Spectroscopic Facility](https://labs.chem.byu.edu/byu-spectroscopic-facility/atomic-analysis)'s Agilent 8900,
+  which does its own digestion.
+- **The OpenFlexure array is dropped.** The VHX on tray K does the imaging. Tray D now carries the SEM, the MiniFlex
+  and the powder prep station.
+- **Modula's taller bays** (Sterling's find, 2026-11-04 18:41) are checked against our machines in
+  [`out/tall_opening_bays.png`](out/tall_opening_bays.png):
+
+  | Product height | Fits |
+  |---|---|
+  | Bay S (695 mm), Kardex's published 727.5 mm | none of them |
+  | 856.5 mm, the opening drawn here | MX-Lab, MX100, an open Form 4 |
+  | Bay M (895 mm) | also the Fusion X and the N₂ generator |
+  | Bay XL (1,295 mm) | also the MetalONE, the DiMetal-100 and the MX-Lab's base cabinet |
+
+  The trays are still fitted to Kardex's 2450 × 864 mm. Re-fitting them to Modula's 2,500 × 857 mm, and the requote,
+  are open.
+- **The tray plan takes every round-8 placement** (`setup_lab.merge_r8`): all 15 trays fit their slots and all 13
+  MiR250 docks are clear. Round 6's camera clashes on D0, E0 and F1 are gone.
+  - Two streams' parts clashed on tray F (the quench tank inside the disc magazine), so the tank moved left and back.
+  - The scale-up machines stand beyond the south row's ends, with no MiR dock.
+- **The set-up movie is re-rendered with all of it:** 15 trays, the jar store, tray F's press, magazine and quench
+  tank, and a new step for the EOS and the Meltio cell. 1 min 56 s at 6 fps, 3.5 GB peak without the arm planner.
+
+### The finale: the whole lab at speed
+
+![The finale, month by month](out/timelapse_still.png)
+
+[`timelapse.py`](timelapse.py), [`notes/timelapse.md`](notes/timelapse.md), the model in
+[`out/timelapse_model.json`](out/timelapse_model.json). Sterling: "show the entire laboratory operating in high-speed,
+starting by the hour, then day-by-day, then by weeks and months showing the total dataset sizes, including number of
+unique alloys fully tested and printed."
+
+- **The scene is the set-up's lab:** every tray, see-through Shuttles. It plays hour by hour (1 s = 48 min), day by
+  day, week by week, then month by month (1 s ≈ 17 days), and ends on the first year's totals.
+  - A clad, eight-tray version needed half the memory but looked like a different machine, so it wasn't used.
+- **A schedule drives every frame.**
+  - Each alloy goes through chapters 1–7, each step on its own station, carried by two MiR250 + UR10e units.
+  - Trays come to the openings when a step needs them.
+  - Beacons drawn for this clip show what each machine is doing.
+  - The room dims when nobody is on site.
+- **The counters are a model, not a measurement.** Step times come from the chapters' notes. The rest are assumptions,
+  each marked in the notes:
+  - one person on weekday day shifts, for the atomizer's crucible;
+  - up to three runs a day after a four-week ramp;
+  - one run in ten drips.
+- **What the model finds:**
+  - **The atomizer is the bottleneck,** because it needs a person; the MIDI runs at 27 % and the rePowder at 21 %.
+  - **The first alloy is fully tested 16 h after the lab starts.** A median alloy goes from atomized to fully tested in
+    12 h.
+  - **After one year:** 378 alloys atomized, 324 printed and fully tested, 1,420 tensile tests, 6,800 SEM/EDS images,
+    and about 2.1 TB of instrument data plus 126 TB of stream video if all of it were kept.
+  - **"Fully tested" means all of these:**
+    - the powder measured;
+    - printed, heat treated, and tensile tested at room and elevated temperature;
+    - sectioned, mounted, polished and characterized (SEM/EDS, VHX, micro-Vickers, nanoindentation, PIP);
+    - a corrosion screen on the CubXL.
+- **Rendered:** 87.5 s at 6 fps.
+
+### The long-form, round 8
+
+**[The vertical cloud lab, round 8](https://www.youtube.com/watch?v=gBCTmjrows8)** (unlisted, 53 min 26 s, 37 YouTube chapters), built at 20:59 UTC on 2026-11-05 from the clips committed by then. The MP4 isn't committed (170 MB); its sha256 is in `out/youtube.json`. The chapters, and the sheet of one frame from each:
+
+![The long-form, one frame per part](out/longform_sheet.png)
+
+| # | Starts | Chapter | Parts |
+|---|---|---|---|
+| 1 | 0:00 | A real VLM, then the plan | [`vlm_real_ck8QJhVqPiY.mp4`](out/footage/vlm_real_ck8QJhVqPiY.mp4) |
+| 2 | 0:23 | The lab set up from scratch | [`setup_lab.mp4`](out/mp4/setup_lab.mp4), [`tray_plan.png`](out/tray_plan.png) |
+| 3 | 2:38 | Services: UPS, automatic hookups, cabling and cameras | [`vlm_hookups.mp4`](out/mp4/vlm_hookups.mp4), [`vlm_services.mp4`](out/mp4/vlm_services.mp4), [`dock_lift_clearance.png`](out/dock_lift_clearance.png), [`vlm_cabling.mp4`](out/mp4/vlm_cabling.mp4), [`stream_cam.mp4`](out/mp4/instruments/stream_cam.mp4), [`bay_camera.mp4`](out/mp4/bay_camera.mp4) |
+| 4 | 5:32 | Tray A: the corrosion station, OT-2 and CubXL | [`ot2_corrosion_prep.mp4`](out/mp4/instruments/ot2_corrosion_prep.mp4), [`cubxl_corrosion.mp4`](out/mp4/instruments/cubxl_corrosion.mp4), [`vlm_workflow.mp4`](out/mp4/vlm_workflow.mp4) |
+| 5 | 9:33 | Alloy route 1/7: the charge cups, dosed, weighed and pressed under vacuum | [`route_dag_ch1.mp4`](out/mp4/dag/route_dag_ch1.mp4), [`dal_workflow_table.png`](out/dal_workflow_table.png), [`alloy_charge.mp4`](out/mp4/alloy_charge.mp4), [`vacuum_press.mp4`](out/mp4/vacuum_press.mp4) |
+| 6 | 15:36 | Alloy route 2/7: melt and atomize in the rePowder | [`route_dag_ch2.mp4`](out/mp4/dag/route_dag_ch2.mp4), [`alloy_atomize.mp4`](out/mp4/alloy_atomize.mp4) |
+| 7 | 19:19 | Alloy route 3/7: sieve and print | [`route_dag_ch3.mp4`](out/mp4/dag/route_dag_ch3.mp4), [`alloy_print.mp4`](out/mp4/alloy_print.mp4) |
+| 8 | 23:45 | Alloy route 4/7: the powder, checked | [`route_dag_ch4.mp4`](out/mp4/dag/route_dag_ch4.mp4), [`alloy_powder.mp4`](out/mp4/alloy_powder.mp4) |
+| 9 | 27:30 | Alloy route 5/7: depowder, cut, heat treat, tensile at room and elevated temperature | [`route_dag_ch5.mp4`](out/mp4/dag/route_dag_ch5.mp4), [`alloy_workflow.mp4`](out/mp4/alloy_workflow.mp4) |
+| 10 | 33:39 | Alloy route 6/7: sample prep: section, mount, grind and polish | [`route_dag_ch6.mp4`](out/mp4/dag/route_dag_ch6.mp4), [`alloy_prep.mp4`](out/mp4/alloy_prep.mp4) |
+| 11 | 37:06 | Alloy route 7/7: characterizing the build | [`route_dag_ch7.mp4`](out/mp4/dag/route_dag_ch7.mp4), [`alloy_characterize.mp4`](out/mp4/alloy_characterize.mp4) |
+| 12 | 41:33 | The other stations: a tensile tester on its side, gloveboxes, fume hoods, stores, shipping | [`instruments_gallery.png`](out/instruments_gallery.png), [`tensile_h.mp4`](out/mp4/instruments/tensile_h.mp4), [`glovebox_tray.mp4`](out/mp4/instruments/glovebox_tray.mp4), [`glovebox.mp4`](out/mp4/instruments/glovebox.mp4), [`fumehood.mp4`](out/mp4/instruments/fumehood.mp4), [`fumehood_tray.mp4`](out/mp4/instruments/fumehood_tray.mp4), [`storage.mp4`](out/mp4/instruments/storage.mp4), [`powder_store_feed.mp4`](out/mp4/instruments/powder_store_feed.mp4), [`powder_store_lots.mp4`](out/mp4/instruments/powder_store_lots.mp4), [`packaging.mp4`](out/mp4/instruments/packaging.mp4) |
+| 13 | 44:41 | Fabrication: metal printers, DED, resin and PCB assembly | [`fabrication_tour.mp4`](out/mp4/fabrication_tour.mp4), [`ded.mp4`](out/mp4/instruments/ded.mp4) |
+| 14 | 48:15 | Scaling up: large-format printing and ship-part repair | [`scaleup.mp4`](out/mp4/scaleup.mp4) |
+| 15 | 50:16 | What doesn't fit, and getting a tray out | [`hip.mp4`](out/mp4/instruments/hip.mp4), [`tall_opening_bays.png`](out/tall_opening_bays.png), [`maintenance_access.png`](out/maintenance_access.png) |
+| 16 | 51:03 | How the models were checked | [`before_after.jpg`](out/register/before_after.jpg), [`interference_sheet.png`](out/interference_sheet.png), [`vlm_workflow_before_after.png`](out/collisions/vlm_workflow_before_after.png) |
+| 17 | 51:45 | The whole lab at speed: an hour, a day, a week, a month | [`timelapse.mp4`](out/mp4/timelapse.mp4) |
+
+- **Chapters 4 and 6, the scale-up and the finale are new.** Chapters 2, 3, 5 and 7, the set-up and the 9:09 clip are
+  re-rendered on round 8's code.
+- **Clips are dropped where a chapter now shows the same machine at work.** These are the stand-alone tour clips of
+  the XRD, Mastersizer, XRF, SEM, VHX, HM-220, iMicro, PIP, mounting press, PX500, Carvera, furnace, wire EDM,
+  Instrons and sieve shaker. One chapter keeps the gallery and the stations no chapter passes through.
+- **One video, no separate clip uploads,** as Sterling asked after YouTube's daily limit. Round 8's clips are in
+  `out/mp4/` and on this branch; `out/youtube.md` lists the round-7 uploads.
+
+### Other PRs
+
+- **#321's MiR250 ramps** are brought over into `props.py` (`ramp_secs`, `ramp_peak`, `ramp_frac`, `s_curve`, and
+  `unease`, there rather than in `scene.py`). Chapters 2–7 drive with them. Its `audit_mir.py` wasn't brought over.
+- **#320 and #321 had nothing newer** than the commits `longform.py` pins (`5a39245`, `a34367a`). The exception is
+  #320's set-up with trays G–I in one Shuttle, which round 7's two-Shuttle set-up replaced.
+- **#258, the lab's SEM/EDS polishing SOP,** sets chapter 6's grits, settings and rinses. Its step 7, now 0.1 µm diamond
+  on the VibroMet 2, is a caption.
+
+### Still open after round 8
+
+- **No measured data on the build.** Each panel is badged with what it is:
+  - SEM/EDS, hardness and VHX panels: illustrative;
+  - nanoindentation, XRD and laser diffraction: computed;
+  - XRF: illustrative;
+  - the tensile curves: illustrative.
+
+  The real data are the c3k0n5 SEM images and the particle count made from them.
+- **Chapter 6 stops at the first grind,** at 3:15 of about 4:30.
+  - The full render would have ended after the long-form's cutoff.
+  - The other grits, the cloth and alumina, and handing the holder to chapter 7 are coded but not rendered.
+  - Its arm audit hadn't finished.
+- **Chapter 4 has 23 of 1002 frames in collision,** in three places
+  ([`notes/alloy_powder.md`](notes/alloy_powder.md)):
+  - 16 frames as the arm returns to rest from the MiniFlex through the SEM and MiniFlex housings;
+  - 6 frames of a finger brushing the holder;
+  - 1 frame at the MiniFlex door.
+- **Chapter 5 wasn't audited frame by frame.** The planner reports six joint moves that end in a pose already in
+  collision, which the arm holds for about a second each: two carrying a bar, and four at its park pose against
+  the tongs' rest or the Instron chamber's door ([`notes/alloy_workflow.md`](notes/alloy_workflow.md)).
+- **Chapter 7's committed render has 13 frames in collision** at the iMicro's unload (frames 574–598) and one at the
+  VHX stand.
+  - Its HM-220 close-up looks into Shuttle 2's frame, and the VHX turn-over isn't shown.
+  - The fixes are in the code (`5518d3e`, `2d0fc50`) but not rendered. `CH7_WINDOW=560:610,890:1155` re-renders just
+    those stretches for splicing.
+- **Chapter 3 was rendered against round 7's EDM and Instron models in the background,** before chapter 5's catch
+  comb.
+- **The MiR250 bodies aren't collision-checked** in chapters 2–7: #321's `audit_mir.py` wasn't brought over.
+- **Not modelled, captions only:**
+  - the SOP's 0.1 µm diamond step on the VibroMet 2, and its ultrasonic cleans (chapter 6);
+  - the tongs' linkage (chapter 5).
+- **The finale's arm poses come straight from IK and aren't collision-checked,** and its counters are a model.
+- **Open from the lab stream:**
+  - re-fitting the trays to Modula's 2,500 × 857 mm tray;
+  - building the collision world lazily (it is most of a whole-floor scene's memory);
+  - the services and bay-camera clips, which still show round 7's trays.
+- **On YouTube:** round 7's clips and long-forms are superseded and still up, because the upload token can't delete.
+  A `@claude-youtube` run can remove them or leave them out of a playlist.
+
+## Round 7: a 996 mm opening, two Shuttles, a UPS on every tray, new stations, the trays at work
+
+Asked for on [PR #318](https://github.com/vertical-cloud-lab/byu-vcl/pull/318) (2026-11-04, after watching the
+long-form to 14:18). Nine sub-agents worked in parallel, each on its own files. Each part has a notes file.
+
+### The opening, the MiR's storage, the wrist camera and the tag cubes
+
+[`notes/foundation_r7.md`](notes/foundation_r7.md).
+
+- **The opening is now 996 mm tall** over the 833 mm table, as on one used Shuttle XP 500
+  ([lagersysteme-paternoster.de, Pos. 89](https://www.lagersysteme-paternoster.de/gebrauchte-lagertechnik/kardex-shuttle-xp500-3050x864-pos-89/)).
+  - That gives about **856.5 mm** of product height, an estimate: Kardex publishes 727.5 mm for its standard opening,
+    and the header is assumed to stand as far above the goods as on that one (`vlm.MAX_GOODS_H`).
+  - `tour.FIT` and the tray checks follow it.
+- **The MiR's storage is a low block on its cabinet top, with no post.** It has bored pockets with 1 mm radial
+  clearance, a 3 mm lead-in, and 26 mm depth (43 % of a vial, 41 % of a cup), so nothing slides off while the MiR
+  drives (`props.pocket_block`). The UR10e reaches every seat on a collision-free IK branch.
+- **A wrist camera:** an Intel RealSense D405 on a bracket round the 2F-85's coupling.
+  - It doesn't move the TCP, and it is drawn and collision-checked wherever the arm is.
+  - The arm parks with wrist 3 at 180°: at 0° the camera stuck out past the MiR and met the opening's post.
+- **The camera targets are 120 mm cubes,** with a different AprilTag-36h11-like pattern on the top and all four sides.
+  A camera sees one from any heading, not only from above. The bit patterns are drawn, not real tag IDs.
+
+### The tray plan, two Shuttles, and no rail
+
+![The tray plan](out/tray_plan.png)
+
+[`notes/tray_plan.md`](notes/tray_plan.md).
+
+- **Each slot is as tall as its tray needs:** the tray floor, plus the tallest item, UPS or camera head, plus 20 mm,
+  on the 25 mm pitch (`vlm.COLUMNS`).
+- **Thirteen trays need two Shuttles.** The second stands 800 mm to the right of the first, room for a MiR250 to turn.
+
+  | Shuttle | Slots | Trays |
+  |---|---|---|
+  | 1 | R1-R4, F0 (under the table), F1, F2 | D, A, B, E; J (storage); C, F |
+  | 2 | 2R1-2R4, 2F1, 2F2 | K (glovebox + VHX), L (sideways tensile + hardness), M (XRF + ductless hood + CNC), H; G, I |
+
+- **Every tray carries its UPS, dock plate and camera posts.** `python3 setup_lab.py fit` checks them all from the
+  meshes ([`out/tray_plan.json`](out/tray_plan.json)).
+- **The floor is planned for the MiR250 alone** ([`out/tray_plan_floor.png`](out/tray_plan_floor.png)).
+  - Every dock, its way in and its turning spot are checked.
+  - The rePowder's dock sits where the alloy chapters already park.
+  - The new ducted fume hood stands across the aisle.
+- **No rail anywhere.** With the aisle clear, [`maintenance.py`](maintenance.py) shows a tray coming out at the front by
+  Kardex's full tray extraction, after the MiR drives off ([`out/maintenance_access.png`](out/maintenance_access.png)).
+- **The set-up movie** loads both Shuttles. Every tray comes in with its UPS and cameras, and the Specac Autotouch
+  goes onto tray B. The power and network drops end in grey junction boxes with sockets and a network port; they were
+  the yellow boxes. Nothing is removed at the end. [`out/setup_lab_preview.png`](out/setup_lab_preview.png) has the end
+  of 32 of its 57 steps.
+
+### New stations
+
+Code: [`instruments_r7.py`](instruments_r7.py). Sources: [`notes/instruments_r7.md`](notes/instruments_r7.md).
+
+| Station | Model | W × D × H (mm) | Where | Clip |
+|---|---|---|---|---|
+| Glovebox | Our N2 design, purge-only, 150 mm mini antechamber at the front | 1390 × 830 × 810 | tray K | [GIF](out/instruments/glovebox_tray.gif) |
+| Tensile, on its side | ZwickRoell zwickiLine Z5.0 TN, 5 kN | 1289 × 638 × 448 | tray L | [GIF](out/instruments/tensile_h.gif) |
+| Hardness | Mitutoyo HM-220 Type D (AVPAK) | 533 × 672 × 595 | tray L | [GIF](out/instruments/hardness.gif) |
+| CNC | Makera Carvera, plus our lid actuator and pneumatic vise | 610 × 535 × 540 (836 open) | tray M | [GIF](out/instruments/cnc.gif) |
+| Fume hood, ducted | Labconco Protector XStream 4 ft | 1219 × 958 × 2581 | floor | [GIF](out/instruments/fumehood.gif) |
+| Fume hood, ductless | Sentry Air 24 in, with its blower | 1030 × 610 × 715 | tray M | [GIF](out/instruments/fumehood_tray.gif) |
+| Storage | Our design: Al and Cu cups and plugs, vials, tubes, stubs, mounts, bars, jars | 1760 × 760 × 300 | tray J | [GIF](out/instruments/storage.gif) |
+| VHX, no monitor | VHX-7000 + EA-300, controller turned sideways, PiKVM V4 Mini | 630 × 625 × 716 | tray K | [GIF](out/instruments/vhx.gif) |
+
+- **No compact glovebox on the market fits a tray**, so ours is built from Vigor's 220 mm ports and its 150 × 300 mm
+  mini antechamber.
+  - It is purge-only. A purifier needs H2 regeneration and a heater inside the VLM.
+  - The dock's 0.5-1.1 L/min of N2 can't do the first purge (2.4 m³), so it needs a bigger supply.
+- **The zwickiLine runs horizontally** at 5 kN.
+  - It can pull a bar faced to 6 × 1.5 mm (3.7 kN), not the route's 6 × 6 mm bar (14.8 kN). That bar stays on the
+    68FM-100.
+  - No motorized horizontal machine with a published size reaches 14.8 kN. Tinius Olsen and ADMET only give sizes on
+    a quote.
+- **The HM-220 was the only automatic tester found whose maker publishes its height:** 595 mm, 43 kg,
+  0.05 gf-2 kgf. It is the hardness tester DAL's workflow notes listed as missing.
+- **The Carvera is the only tool-changer mill found that fits a tray.** But its lid is lifted by hand, it has no
+  automation interface, and 200 W allows only light cuts in aluminium.
+- **Keller's reagent (HF) needs the ducted hood.** The ductless one returns its air into the VLM.
+- **The VHX-7000's controller is its 27 in monitor** (625 × 460 × 180 mm, 12 kg; LAN, USB, DisplayPort), so a Windows
+  SBC can't replace it.
+  - The monitor now stands sideways as a controller, and a PiKVM gives remote use from a browser.
+  - The old monitor ran 430 mm past tray C's rim, which is the interference you saw. Check the DisplayPort resolution
+    with Keyence before relying on the PiKVM.
+- **`storage_seats()`** lists every pocket for the arm.
+
+### Tray services: the UPS, the hookups, the docks against the lift, the cameras
+
+| Video | GIF | MP4 |
+|---|---|---|
+| **Hookups and the UPS:** tray A from its slot to the bay | [GIF](out/vlm_hookups.gif) | [MP4](out/mp4/vlm_hookups.mp4) |
+| **The bay camera:** from an operator's eyes, then through its own lenses | [GIF](out/bay_camera.gif) | [MP4](out/mp4/bay_camera.mp4) |
+| **Tray services, joined:** the docks, the hookups, the bay camera, the cabling | | [MP4](out/mp4/vlm_services_all.mp4) |
+
+[`notes/services.md`](notes/services.md).
+
+- **Every tray's UPS shows.** "UPS" is on its top and front, with a status strip: green on mains, amber on battery.
+- **The hookups, automatic, in storage and in the bay.**
+  - Each dock has a vented valve on air, N₂ and both water lines, a mains contactor and an Ethernet link light.
+  - To let go, the valves shut and vent, the UPS takes the load, and then the dock pulls back.
+  - At the bay the order reverses, pins first.
+- **The docks don't get in the lift's way** (`services.dock_clearance()`).
+  - The nearest dock is 158 mm from the extractor at any height, empty or carrying any tray, docked or pulled back.
+  - A tray passes its own pulled-back dock 22 mm clear.
+  - The one tight spot was the plate's inserts against the extractor's carriages, 3.5 mm. The plate face is now sunk
+    6 mm and the stroke is 60 mm.
+
+  ![The docks against the lift](out/dock_lift_clearance.png)
+- **The retractable line is dropped.** While its tray was out, the line spanned the shaft.
+- **Tray cameras look back, away from the opening.** With its tray presented, 11 of 13 units see none of the room.
+  A1 (the OT-2) sees 26 % of the room and D2 (the OpenFlexures) 15 %, because those instruments leave no room in
+  front, so those two streams want a crop.
+- **The bay camera** sits on a clamp on its bar, with no post, to fit under the taller opening.
+  - The Camera Module 3 Wide covers 102 × 67° (120° diagonal) and sees 95 % of the tray.
+  - The HQ Camera with its 16 mm lens covers 22.2 × 16.8°, from its 6.29 × 4.71 mm sensor.
+- **The yellow boxes** were `setup_lab.utilities()`'s drop boxes, where each power and network drop from the overhead
+  cable tray ends at a machine. They are now grey junction boxes with the machine's receptacle and an RJ45 jack.
+
+### Tray A, the corrosion station: the CubXL as DAL has it, the OT-2's job, no salt
+
+| Clip | Shows |
+|---|---|
+| [`cubxl_corrosion.mp4`](out/mp4/instruments/cubxl_corrosion.mp4) | One spot of DAL's copper screen, on DAL's deck |
+| [`vlm_workflow.mp4`](out/mp4/vlm_workflow.mp4) | 25 mg of atomized powder dosed for the CubXL's powder test |
+| [`ot2_corrosion_prep.mp4`](out/mp4/instruments/ot2_corrosion_prep.mp4) | The OT-2 makes the sulfide stock and dilutes the ICP-MS tubes |
+
+[`notes/cubxl_corrosion.md`](notes/cubxl_corrosion.md), [`notes/ot2_corrosion.md`](notes/ot2_corrosion.md).
+
+- **The CubXL is DAL PR #180's copper deck** at
+  [`aeda51a`](https://github.com/vertical-cloud-lab/digital-alloy-lab/tree/aeda51a/alloy-corrosion/copper), with Ben's
+  STEP parts (`deck_cu.py`, `protocol.md`, `render_cubxl_cu.py`). The only difference: the EZstat Pro stands beside
+  the frame.
+  - **The spot runs as DAL's protocol does:** fill, OCP, EIS, LPR, rest, the +50 mV hold, OCP, then collect, acidify
+    and image.
+  - **EIS** is captioned as needing the requested potentiostat, since the EZstat Pro has none.
+  - **Cyclic polarization** runs only on selected spots, last on each.
+- **Every volume is a P20 transfer** of 20 µL or less, counted on screen. The 150 µL fill is 7 × 19.3 µL of seawater
+  plus 15 µL of sulfide. Levels are drawn to scale.
+- **No salt is dosed.** DAL's `cubxl-setup.md` §8 calls dosing salt "possible but pointless here". Instead, the
+  multi-doser doses 25 mg of atomized AlSi10Mg for DAL's powder reactivity test from the same section, and the P20 adds
+  200 µL of seawater in 10 transfers. The charge cups' precursors are dosed in chapter 1.
+- **The OT-2** is the corrosion station's liquid prep (digital-wetlab PR #83, direction 5). With its P300 and P20 it
+  makes the CubXL's 0.1 mg/L sulfide stock, dilutes an ICP-MS tube 10×, and makes a 10 µg/L standard.
+- **Arm:** 0 of 1191 frames in collision.
+- **For DAL:**
+  - Ben's capper mount brushes his tip rack 1 by 1.6 mm, 1 mm deep, when drawing from two of the stocks.
+  - DAL doesn't say where the 150 µL DI rinse is drawn from.
+
+### Alloy chapter 1: a catch ring in the press
+
+[`notes/vacuum_press.md`](notes/vacuum_press.md); the press's clip: [GIF](out/vacuum_press.gif),
+[MP4](out/mp4/vacuum_press.mp4).
+
+- **The catch is the die's mouth, not the pin.** The pin pushes the cup out through F1, a line-to-line fit, so
+  nothing riding up with it can hold the cup round its base.
+  - The catch is a hardened ring as wide as F1 and 22 mm tall, standing on F1 flush with the die's top. Its bore is
+    Ø19.30 with a 30° lead-in.
+  - The pin now stops 75.5 mm up, with the cup's bottom 10 mm still in the ring, so the cup stands in a socket with
+    1.4° of play.
+  - The arm grips 45 mm up the cup, so its fingers pass at least 20 mm over the die.
+  - The punch has a Ø19.20 nose that runs in the ring, and a collar that lands on the ring at flush.
+- **The press is on tray B from the set-up on.** The set-up movie loads it, and chapter 1's first caption says so.
+- **The arm's audit on the round-7 code** (catch ring, low carrier, wrist camera): **0 of 2979 frames** in
+  collision, against 8 of 1926 before.
+  - At the rack the gripper opens to 23.5 mm, and every approach must have a clear straight line in and out.
+  - One move is left: rack cup 7 has no clear straight-line approach, so six of its moves in the sped-up section aren't
+    checked. Moving the rack 120 mm left would fix it.
+- **Chapter 1 is re-rendered on the round-7 code** at 6 fps (282 s; [GIF](out/alloy_charge.gif),
+  [MP4](out/mp4/alloy_charge.mp4)): the catch ring, the low carrier, the wrist camera. `VIZ3D_FPS=10 CHARGE_FXAA=1
+  xvfb-run -a python3 alloy_charge.py` gives 10 fps in 35-50 min.
+
+### Alloy chapter 2: the lid's latch, the MiR's margin, a loading tong, the crucible
+
+[`notes/alloy_atomize.md`](notes/alloy_atomize.md),
+[`notes/crucible_automation.md`](notes/crucible_automation.md).
+
+- **The lid shuts with one over-centre draw latch**, its keeper on the lid. A pneumatic bolt blocks the lever whenever
+  the furnace is off atmosphere.
+  - Sources: the lab's training video T4, 5:08-5:23 ([frames](refs/repowder_lid/)), and AMAZEMET at the install call.
+  - The arm pulls the lever over centre by a pull tab, which is our addition, and closes it again after loading.
+  - The force isn't measured. Kipp publishes 100-200 N of hand force for this kind of latch.
+- **Will the MiR tip?** At the chapter's pose, with the pull 1331 mm up and 664 mm out:
+  - it tips at 466 N and slides at 505 N, 2.3× and 2.5× a stiff 200 N latch;
+  - with a 95 kg ballast plate under the cabinet (drawn), 730 and 785 N
+    ([sums](out/alloy_atomize_stability.json)).
+
+  So the mobile base is heavy enough for this, without a rail. The MiR250's wheel positions aren't published, so they
+  are estimated.
+- **A loading tong, no drop.** The 2F-85 takes a slim tong from a sleeve on the cabinet. The tong carries each cup by
+  its top 12 mm and sets it on the floor cone before its jaws open.
+  - The jaws stay 3.3 mm from the bore, 7.6 mm from the rod's adapter and 10.2 mm from the rod.
+  - The stem stays 2.6 mm from the adapter, and the gripper 136 mm above the rim
+    ([clearances](out/alloy_atomize_clearance.json)).
+  - The 3/4 in cup's own −0.09 mm squeeze past the adapter (#222) remains; a 5/8 in cup goes straight in.
+- **The crucible stack**, with its threaded graphite parts, gets a short stop in the chapter. The notes have the plan:
+  a custom tool, threading under force control, and the UR10e's own force sensing against a dedicated wrist F/T
+  sensor, with the risks and first trials.
+- **Also:**
+  - the wrist camera shows in the tong close-up;
+  - the melt footage runs at 2× and its badge says so;
+  - the container's cradle is a low ring.
+- **Collisions: 0 of 1339 frames** (round 5: 10 of 1586).
+- **Two faults left in the committed render:** the lid-knob and lever steps are seen from the latch close-up, and the
+  camera passes through the machine for a few frames on its way to the tong. Both are fixed in code but not
+  re-rendered.
+
+### Alloy chapter 5: the trays at work
+
+[`alloy_characterize.py`](alloy_characterize.py), [notes](notes/alloy_characterize.md), [GIF](out/alloy_characterize.gif),
+[MP4](out/mp4/alloy_characterize.mp4).
+
+Samples of chapter 4's AlSi10Mg build go through trays F, D and E. Each tray comes to the opening only when it is
+needed, the arm loads and unloads every instrument, and each instrument runs its own joints, sped up, under a clock.
+- **Tray F, the LECO PX500.**
+  - The arm fits the 6-position holder, with the coupon's mount in it, onto the raised head. It holds it by a tab and a
+    quick-change coupling, both ours.
+  - The coupon is ground at 320-1200 grit and polished with 1 µm alumina, as in the lab's SOP.
+- **Tray D, the TM4000PlusII.** The mount goes face up into a cup on the stage. The inset is real data, the lab's image
+  of the powder, and says it isn't of this section.
+- **Tray E, the KLA iMicro and the Mastersizer 3000:** a grid of nanoindents, then a roll of the wrist pours the powder
+  into the Aero S's hopper.
+- **Collisions: 0 of 1266 frames** at 10 fps. The first draft had 132 of 1875.
+- **Not used yet:** the PIP, the XRD, the OpenFlexures and the furnace. The PIP's 77 mm bay is too low for the gripper.
+
+![Chapter 5](out/alloy_characterize_sheet.png)
+
+### The route as a function network
+
+[`route_dag.py`](route_dag.py) brings in DAL's ONR YIP network one stage at a time before each alloy chapter: the
+inputs, then CALPHAD, then atomize, print and test. The source is
+[`network_dag.py`](https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/b553306/benchmarks/bofn-prelim/dag/network_dag.py)
+at `b553306`, with its nodes, edges and costs.
+- The stage each chapter is about is red. Earlier stages fade to grey, and later ones aren't drawn yet.
+- Only one caption shows at a time.
+- The lab's five steps sit under the graph as chips.
+- In chapter 5, each instrument is tied to the node it looks at:
+  - the Mastersizer to powder quality;
+  - the SEM and OpenFlexure to the dense, crack-free fraction;
+  - the PIP, nanoindenter and Vickers tester to strength, without a bar.
+
+FLAIME's DAG (the DOE Genesis proposal) is the same chain with four coarser nodes.
+
+![The DAG, one card per chapter](out/dag/route_dag_sheet.png)
+
+
+## Everything in one video: the long-form, with chapters
+
+**[The vertical cloud lab, start to finish](https://www.youtube.com/watch?v=myUrMHN7VBA)** (unlisted,
+41 min 31 s, 46 YouTube chapters), rebuilt in round 7. It replaces
+[`c-xBEmRLq5k`](https://www.youtube.com/watch?v=c-xBEmRLq5k).
+- [`longform.py`](longform.py) joins the parts below, with a title card before each chapter.
+- [`out/longform.json`](out/longform.json) lists every part, where it came from and where it starts.
+- [`out/longform_youtube.txt`](out/longform_youtube.txt) is the video's description, with its chapter timestamps.
+- **The upload is the 20:47 UTC build,** with round 6's chapter 1 followed by the press's catch-ring clip. A rebuild
+  with the re-rendered chapter 1 (41 min 18 s) was refused by YouTube's daily upload limit. To upload it once
+  the limit resets: `python3 longform.py; python3 longform.py upload`.
+- The MP4 (1280 × 720 at 15 fps, 140 MB) is too big for git, so it isn't committed. `python3 longform.py` rebuilds it
+  from the committed clips, and its sha256 is in [`out/youtube.json`](out/youtube.json).
+
+![One frame from each chapter](out/longform_sheet.png)
+
+| # | Starts | Chapter | Parts |
+|---|---|---|---|
+| 1 | 0:00 | A real VLM, then the plan | [`vlm_real_ck8QJhVqPiY.mp4`](out/footage/vlm_real_ck8QJhVqPiY.mp4) |
+| 2 | 0:23 | The lab set up from scratch | [`setup_lab.mp4`](out/mp4/setup_lab.mp4), [`tray_plan.png`](out/tray_plan.png) |
+| 3 | 2:29 | Services: UPS, automatic hookups, cabling and cameras | [`vlm_hookups.mp4`](out/mp4/vlm_hookups.mp4), [`vlm_services.mp4`](out/mp4/vlm_services.mp4), [`dock_lift_clearance.png`](out/dock_lift_clearance.png), [`vlm_cabling.mp4`](out/mp4/vlm_cabling.mp4), [`stream_cam.mp4`](out/mp4/instruments/stream_cam.mp4), [`bay_camera.mp4`](out/mp4/bay_camera.mp4) |
+| 4 | 5:21 | Tray A: the corrosion station, OT-2 and CubXL | [`ot2_corrosion_prep.mp4`](out/mp4/instruments/ot2_corrosion_prep.mp4), [`cubxl_corrosion.mp4`](out/mp4/instruments/cubxl_corrosion.mp4), [`vlm_workflow.mp4`](out/mp4/vlm_workflow.mp4) |
+| 5 | 9:15 | Alloy route 1/5: the charge cups, dosed, weighed and pressed under vacuum | [`route_dag_ch1.mp4`](out/mp4/dag/route_dag_ch1.mp4), [`dal_workflow_table.png`](out/dal_workflow_table.png), [`alloy_charge.mp4`](out/mp4/alloy_charge.mp4), [`vacuum_press.mp4`](out/mp4/vacuum_press.mp4) |
+| 6 | 14:42 | Alloy route 2/5: melt and atomize in the rePowder | [`route_dag_ch2.mp4`](out/mp4/dag/route_dag_ch2.mp4), [`alloy_atomize.mp4`](out/mp4/alloy_atomize.mp4) |
+| 7 | 18:11 | Alloy route 3/5: sieve and print | [`route_dag_ch3.mp4`](out/mp4/dag/route_dag_ch3.mp4), [`alloy_print.mp4`](out/mp4/alloy_print.mp4) |
+| 8 | 21:42 | Alloy route 4/5: depowder, cut and test | [`route_dag_ch4.mp4`](out/mp4/dag/route_dag_ch4.mp4), [`alloy_workflow.mp4`](out/mp4/alloy_workflow.mp4) |
+| 9 | 24:36 | Alloy route 5/5: the trays at work, characterizing the build | [`route_dag_ch5.mp4`](out/mp4/dag/route_dag_ch5.mp4), [`alloy_characterize.mp4`](out/mp4/alloy_characterize.mp4) |
+| 10 | 27:11 | Characterization instruments, one by one | [`instruments_gallery.png`](out/instruments_gallery.png), [`xrd.mp4`](out/mp4/instruments/xrd.mp4), [`sem.mp4`](out/mp4/instruments/sem.mp4), [`vhx.mp4`](out/mp4/instruments/vhx.mp4), [`xrf.mp4`](out/mp4/instruments/xrf.mp4), [`openflexure_array.mp4`](out/mp4/instruments/openflexure_array.mp4), [`mastersizer.mp4`](out/mp4/instruments/mastersizer.mp4), [`nanoindenter.mp4`](out/mp4/instruments/nanoindenter.mp4), [`pip.mp4`](out/mp4/instruments/pip.mp4), [`hardness.mp4`](out/mp4/instruments/hardness.mp4) |
+| 11 | 29:56 | Sample prep, testing, powder handling, fume hoods and shipping | [`polisher.mp4`](out/mp4/instruments/polisher.mp4), [`furnace.mp4`](out/mp4/instruments/furnace.mp4), [`cnc.mp4`](out/mp4/instruments/cnc.mp4), [`wire_edm.mp4`](out/mp4/instruments/wire_edm.mp4), [`tensile_h.mp4`](out/mp4/instruments/tensile_h.mp4), [`instron_small.mp4`](https://github.com/vertical-cloud-lab/byu-vcl/blob/a34367a/vertical-lab/out/mp4/instruments/instron_small.mp4) (a34367a), [`instron_floor.mp4`](out/mp4/instruments/instron_floor.mp4), [`sieve.mp4`](out/mp4/instruments/sieve.mp4), [`glovebox_tray.mp4`](out/mp4/instruments/glovebox_tray.mp4), [`glovebox.mp4`](out/mp4/instruments/glovebox.mp4), [`fumehood.mp4`](out/mp4/instruments/fumehood.mp4), [`fumehood_tray.mp4`](out/mp4/instruments/fumehood_tray.mp4), [`storage.mp4`](out/mp4/instruments/storage.mp4), [`packaging.mp4`](out/mp4/instruments/packaging.mp4) |
+| 12 | 34:11 | Fabrication: metal printers, DED, resin and PCB assembly | [`fabrication_tour.mp4`](out/mp4/fabrication_tour.mp4), [`ded.mp4`](out/mp4/instruments/ded.mp4) |
+| 13 | 37:46 | The same machines on a warehouse floor | [`warehouse.mp4`](https://github.com/vertical-cloud-lab/byu-vcl/blob/a34367a/vertical-lab/out/mp4/warehouse.mp4) (a34367a) |
+| 14 | 40:08 | What doesn't fit, and getting a tray out | [`hip.mp4`](out/mp4/instruments/hip.mp4), [`maintenance_access.png`](out/maintenance_access.png) |
+| 15 | 40:42 | How the models were checked | [`before_after.jpg`](out/register/before_after.jpg), [`interference_sheet.png`](out/interference_sheet.png), [`vlm_workflow_before_after.png`](out/collisions/vlm_workflow_before_after.png) |
+
+**What changed since the 35-minute version:**
+- **No rail.** The rail chapter and the line along the rail are gone; it is the mobile base only.
+- **Trays in a workflow, not presented and put back.** The trays now appear in the set-up, in the tray plan, and at
+  work in alloy chapter 5.
+- **Tray A is a corrosion station.** The OT-2 and the CubXL now run DAL's copper screen, in place of PR #320's
+  round-2 cutaways.
+- **Services:** the UPS and the automatic hookups, the docks against the lift, and the bay camera's own sequence.
+  There is no tether.
+- **Five alloy chapters**, each introduced by DAL's function network.
+- **New stations** are in chapters 10 and 11.
+
+It runs 41 min because nothing asked for in the thread is left out. The chapters are there to skip around.
+
+**Still wrong in it, or open:**
+- **Chapter 1 is rendered at 6 fps**, the set-up movie at 6 fps, and the other new chapters at 10 fps (the long-form
+  is 15 fps, so their frames repeat).
+- **Chapters 3 and 4 still have arm collisions** (97 and 60 frames, round 6's audit) and the old raised holders on the
+  MiR.
+- **Two floor layouts.** The set-up movie uses the new two-Shuttle floor plan (`setup_lab.FLOOR_PLAN`). The alloy
+  chapters and the warehouse still use `warehouse.STATIONS`: one Shuttle, with the Aconity where Shuttle 2 now stands.
+- **In the set-up movie, trays A and B show two old camera posts** inside the CubXL frame and the multi-doser. It was
+  rendered just before the services fix that moved them.
+- **The warehouse clip still carries a vial.**
+
+| Chapter | GIF (800 × 450, 10 fps) | MP4 (1280 × 720, 15 fps) |
+|---|---|---|
+| **Assembly**: base, frame, columns, extractor, trays, then the cladding goes on, opaque | [`out/vlm_assembly.gif`](out/vlm_assembly.gif) | [`out/mp4/vlm_assembly.mp4`](out/mp4/vlm_assembly.mp4) |
+| **Loading**: the closed machine, then see-through; every piece of equipment goes onto its tray through the opening, one at a time; the arm rolls up | [`out/vlm_loading.gif`](out/vlm_loading.gif) | [`out/mp4/vlm_loading.mp4`](out/mp4/vlm_loading.mp4) |
+| **Workflow** (round 2; for the alloy work, superseded by [the alloy route](#the-alloy-route-start-to-finish-charge-cups-to-tensile-bar), where the vial is the lab's charge cups): the arm doses a powder with the multi-doser and takes the vial to the CubXL, which adds liquid | [`out/vlm_workflow.gif`](out/vlm_workflow.gif) | [`out/mp4/vlm_workflow.mp4`](out/mp4/vlm_workflow.mp4) |
+| **Disassembly**: unloaded one piece at a time, then taken apart. A clip of its own, left out of the joined video ("no need to remove the equipment at the end of the video", PR #318) | [`out/vlm_disassembly.gif`](out/vlm_disassembly.gif) | [`out/mp4/vlm_disassembly.mp4`](out/mp4/vlm_disassembly.mp4) |
+| **Assembly, loading and workflow**, one after the other (3 min 4 s), ending with the lab loaded and working. The earlier join of all four ([`ro-pUo0ie_M`](https://www.youtube.com/watch?v=ro-pUo0ie_M)) ended with the disassembly | [on YouTube](https://www.youtube.com/watch?v=FHjg3R7of4g) (unlisted; re-rendered with the arm's moves collision-checked, replacing `xI1d0kkX8VA`) | [`out/mp4/vertical_lab_full.mp4`](out/mp4/vertical_lab_full.mp4) |
+
+Every MP4 under `out/mp4/` is also on the lab's YouTube channel, unlisted: each clip on its own as well as the joined ones. [`out/youtube.md`](out/youtube.md) lists every file and its video. It is written from [`out/youtube.json`](out/youtube.json), which [`youtube_upload.py`](youtube_upload.py) fills in as it uploads.
+
+![The alloy route, chapter 1: the lab's charge cups dosed and plugged on tray B](out/alloy_charge.gif)
+
+![The dose into a charge cup, in half section](out/alloy_charge_dose.png)
+
+![Loading](out/vlm_loading.gif)
+
+`out/<name>.json` gives the frame range of every sub-step in the MP4, `out/<name>_still.png` is a still of the last
+view, and [`out/reach.json`](out/reach.json) is the arm study below.
+
+## The models against real footage
+
+Asked for in [PR #318](https://github.com/vertical-cloud-lab/byu-vcl/pull/318): refine the equipment piece by piece
+against the lab's SOP videos and other footage, registering each model to frames taken from different angles.
+
+Ten models are refitted this way. Each row of the sheet below shows a frame of the real machine, then the model
+before this round ([`379df6b`](https://github.com/vertical-cloud-lab/byu-vcl/tree/379df6b/vertical-lab)), then the
+model now. `register.py sheet` makes it.
+
+![Footage, before and after, for the ten refitted models](out/register/before_after.jpg)
+
+**The method.**
+1. [`frames.py`](frames.py) finds the moments that show a machine whole. It fetches storyboard thumbnails, then
+   single 720p frames, through a stream-cam Pi, because YouTube refuses the runner.
+2. Points and edges are picked on each frame: corners, screen corners, circle edges.
+3. [`register.py`](register.py) fits the camera of each frame. Frames from one video share a lens. It fits the
+   model's own unpublished proportions too, with the published size, or a part of known size, as the scale.
+4. `register.py` then draws the model's outline over each frame
+   ([`out/register/<key>/`](out/register/)), so a wrong shape shows up as a gap.
+5. A held-out frame checks the result.
+
+Each model publishes its anchors (named points, circles and lines) from the same parameters that build it. So a
+fitted number is a model dimension, and the same picks re-test the model after every change.
+
+- **Frames from the lab's own videos are committed** in `refs/<key>/`.
+- **Frames from others' videos are not.** They are fetched again from their video id and time, as the vendor CAD is.
+- **The overlays are committed.**
+
+| Model | What the footage changed | Fit (RMS) | Notes |
+|---|---|---|---|
+| **Grinder-polisher** | It is the lab's **LECO PX500**, not the Buehler EcoMet 30 that was modelled. The model is rebuilt from the SOP frames: round bowl drum, screen block, tall rounded head, gooseneck spigot, bottle holder. The clip follows the SOP: SiC papers at the screen's settings, then the white cloth with alumina | 8.6 and 4.5 px on two frames of [SOP part 2](https://www.youtube.com/watch?v=nfnl0aPJPZc); 11.8 px on a held-out frame of [part 3](https://www.youtube.com/watch?v=eLrJxxBAcnE) | [`notes/refine_polisher.md`](notes/refine_polisher.md), [overlays](out/register/polisher/) |
+| **Furnace** (Nabertherm NAT 15/65) | A chamber unit on a separate controller unit with a wide, centred touchscreen; a vent strip along the top; the door a panel with a white fibre plug, a bar handle and two right-hand hinges; a 72 mm fan guard. Before: one box, a strip controller, a lever latch | 1.2 and 6.3 px, two shots of [Nabertherm's NAT video](https://www.youtube.com/watch?v=WE6O8EccLyc) | [`notes/refine_furnace.md`](notes/refine_furnace.md), [overlays](out/register/furnace/) |
+| **XRF** (Bruker S2 PUMA Series 2) | A full-width white hood with a dark window, hinged at the back, over a white body with the touchscreen in its vertical front and navy side panels. Before: a small dark lid on a sloped body, with the screen on top | 12.7 px, [Bruker's S2 PUMA Overview](https://www.youtube.com/watch?v=ogSg0j6j2Gw) | [`notes/refine_xrf.md`](notes/refine_xrf.md), [overlays](out/register/xrf/) |
+| **PIP** (Plastometrex PLX-Benchtop) | The profilometer is a slotted arm on a carriage under the crosshead, not on a column: its pick-up runs in under the lifted indenter. A pancake load cell in the floor; a matte black body with a blue LED U, louvred columns and a fixed crosshead cowl | 6.3 px, [Plastometrex's introduction](https://www.youtube.com/watch?v=w7OZsrru9AI) | [`notes/refine_pip.md`](notes/refine_pip.md), [overlays](out/register/pip/) |
+| **XRD** (Rigaku MiniFlex) | It is the 6th-generation MiniFlex the envelope came from, not the MiniFlex 600 its title said. A navy front in three parts (Rigaku band, door, button strip), a flat top, side bulges and the lamp on top centre | 2.1, 1.1 and 1.2 px, [Rigaku's 6G video](https://www.youtube.com/watch?v=8tI9uFKevr0) | [`notes/refine_xrd.md`](notes/refine_xrd.md), [overlays](out/register/xrd/) |
+| **SEM** (Hitachi TM4000PlusII) | No overhanging hood: the top's front edge rolls over in an 80 mm radius, with a wedge on top and the cover's seam down each side; a navy front panel (it was bright blue) set into a white frame; a 201 mm door with a bar handle; an X-Y stage whose socket the holder drops into, as in the videos | 4.6, 5.0, 4.0 and 2.1 px, four views ([Hitachi](https://www.youtube.com/watch?v=cg1S2WZVWr8), [CCEM](https://www.youtube.com/watch?v=IqZkvBX-7cU)) | [`notes/refine_sem.md`](notes/refine_sem.md), [overlays](out/register/sem/) |
+| **Particle sizer** (Malvern Mastersizer 3000 + Aero S) | A satin silver bench under a charcoal deck, not black. A narrow bay holds the cell's AERO cassette, and the panels' lower edges sweep down over a set-back plinth. The deck has a round lid, an oval tail and an end cap. The Aero S stands in front of the left panel, with its hose to the cassette. Its clear cover lifts off by hand, as in Malvern's demo, rather than hinging | 4.2, 2.6 and 3.0 px, three views ([Malvern's metal-powder demo](https://www.youtube.com/watch?v=6ZuKAAHb_20), [Aero demo](https://www.youtube.com/watch?v=iaHJ8QEwJ-I)) | [`notes/refine_mastersizer.md`](notes/refine_mastersizer.md), [overlays](out/register/mastersizer/) |
+| **Resin printer** (Formlabs Form 4) | A silver base, 170 mm to an 18 mm lip, with the touchscreen in a black bezel across the right half of its front. One orange cover over the whole footprint, which pivots on hinges on the Z tower, as Formlabs' hinge-replacement page shows, and ends above the machine; it used to swing out in front. Inside: a black deck, a light grey tank and a two-column Z tower | 2.2, 2.4, 1.6 and 2.4 px; 4.6 px on a held-out frame from another video | [`notes/refine_form4.md`](notes/refine_form4.md), [overlays](out/register/form4/) |
+| **Pick-and-place** (Opulo LumenPnP v4.2) | **Rebuilt from Opulo's own CAD**, `src/assembly.FCStd` at `opulo-inc/lumenpnp@64cf68d`, read and cited, not committed: 707 × 673 × 342 mm, against the estimated 680 × 680 × 450. The frame, legs, tension arms, head (diamond Z motor, red and blue nozzle motors, top camera in its diffuser), v4.2 staging plate and drag chains are where the CAD puts them. The motion is the real travel, with counterweighted nozzles. Only the feeders, which aren't in the CAD, are fitted | 6.1 and 7.4 px; 5.6 px held out | [`notes/refine_lumenpnp.md`](notes/refine_lumenpnp.md), [overlays](out/register/lumenpnp/) |
+| **Digital microscope** (Keyence VHX-7000 + EA-300) | The beige box stand and plain monitor become Keyence's: a dark, flared pedestal with the VHX badge and focus knob, the XY stage on its own column, a back column whose silver arch runs over the EA-300, the zoom lens down the EA-300's front, and the monitor-controller on a silver "VHX" foot bar with the console and joystick in front. On tray C the monitor now stands 130 mm closer to the stand, so the pair fits beside the A1 mini | 3.3, 3.3 and 4.6 px; **33.6 px on the held-out EA-300 stand view**, which fails: its knob and base land 66 px off while the EA-300's top matches to 1–2 px | [`notes/refine_vhx.md`](notes/refine_vhx.md), [overlays](out/register/vhx/) |
+<!-- refine-table -->
+
+## Characterization instruments, the alloy line and the backup rail (round 3)
+
+Fourteen more models, each its own, from the makers' published figures and photos or, for the OpenFlexure
+microscopes, from OpenFlexure's own OpenSCAD:
+- [`instruments.py`](instruments.py) holds the models. Doors, drawers, stages, crossheads and samples are separate
+  pieces with joints.
+- [`openflexure.py`](openflexure.py) loads the two OpenFlexure microscopes.
+- [`tour.py`](tour.py) renders each instrument doing what it does.
+- [`line.py`](line.py) puts them in the lab.
+
+![The instruments](out/instruments_gallery.png)
+
+| Instrument | Model | What the animation shows | GIF, MP4 | Size W × D × H (mm), published | Where |
+|---|---|---|---|---|---|
+| Benchtop XRD | Rigaku MiniFlex, 6th generation (the "MiniFlex 6G"; this was titled MiniFlex 600) | The door swings open on its right-hand hinge; a powder sample goes onto the stage; the door shuts; the scan is drawn see-through, with the sample tilting by θ and the detector sweeping 2θ on its arm; the door opens and the sample comes out | [GIF](out/instruments/xrd.gif), [MP4](out/mp4/instruments/xrd.mp4) | 620 × 456 × 722 | tray D: 5.5 mm under Kardex's limit |
+| Tabletop SEM, EDS, EBSD | Hitachi TM4000PlusII | The drawer slides out with the stage; a mounted sample goes on; EVAC | [GIF](out/instruments/sem.gif), [MP4](out/mp4/instruments/sem.mp4) | 330 × 614 × 547 (main unit) | tray D |
+| Microscope, reflection | OpenFlexure Microscope v7 | A polished coupon goes under the clips; the stage scans on its four flexure legs, which lean and shear with it (the camera moves in on them), and the optics focus | [GIF](out/instruments/openflexure_v7.gif), [MP4](out/mp4/instruments/openflexure_v7.mp4) | 171 × 139 × 169 | tray D |
+| Microscope, reflection | OpenFlexure Delta Stage | The same, with the delta stage moving in x, y and z: each actuator tips a lever, and the leg standing on it pushes the stage | [GIF](out/instruments/openflexure_delta.gif), [MP4](out/mp4/instruments/openflexure_delta.mp4) | 166 × 156 × 173 | tray D |
+| Indentation plastometer (PIP) | Plastometrex PLX-Benchtop | The sample goes onto the platen by hand; the indenter goes in and lifts; the profilometer's arm reaches in under it and the stylus traces the indent | [GIF](out/instruments/pip.gif), [MP4](out/mp4/instruments/pip.mp4) | about 500 × 500 × 680, estimated | tray E |
+| Nanoindenter | KLA iMicro | The hood lifts; a mount goes onto the XY stage; the stage carries it from the microscope to the indenter | [GIF](out/instruments/nanoindenter.gif), [MP4](out/mp4/instruments/nanoindenter.mp4) | about 540 × 520 × 520, estimated | tray E |
+| Laser diffraction | Malvern Mastersizer 3000 + Aero S | The Aero S's dome lifts and powder goes into its hopper; the laser and the dispersed powder are drawn see-through | [GIF](out/instruments/mastersizer.gif), [MP4](out/mp4/instruments/mastersizer.mp4) | 690 × 300 × 450 (bench); Aero S 260 × 180 × 380 | tray E |
+| Grinder-polisher | LECO PX500 semi-automatic, the lab's (was the Buehler EcoMet 30; see [above](#the-models-against-real-footage)) | As in the lab's SOP: SiC papers from 320 to 1200 grit with water, then a white cloth with alumina; the head presses six mounts down while platen and holder turn | [GIF](out/instruments/polisher.gif), [MP4](out/mp4/instruments/polisher.mp4) | 558 × 711 × 677 (fitted; plus the bottle holder) | tray F |
+| Heat treatment and ageing furnace | Nabertherm NAT 15/65 | The door swings open; a tray of coupons goes in; the circulation fan runs | [GIF](out/instruments/furnace.gif), [MP4](out/mp4/instruments/furnace.mp4) | 470 × 790 × 460 | tray F |
+| Tabletop testing machine | Instron 68SC-2 | The arm rides up the column and pulls a sub-size bar | [GIF](out/instruments/instron_small.gif), [MP4](out/mp4/instruments/instron_small.mp4) | 460 × 615 × 1410 | beside the VLM |
+| Floor testing machine | Instron 68FM-100 | The crosshead pulls a printed tensile bar | [GIF](out/instruments/instron_floor.gif), [MP4](out/mp4/instruments/instron_floor.mp4) | 1140 × 786 × 2287 | beside the VLM |
+| Wire EDM | FANUC ROBOCUT α-C400iC | The yellow tank door drops; a build plate is clamped on its edge, parts facing out; the tank fills; the wire runs along the plate's face and cuts the parts off at their base | [GIF](out/instruments/wire_edm.gif), [MP4](out/mp4/instruments/wire_edm.mp4) | 2120 × 2540 × 1970 | beside the VLM |
+| Inert glovebox | Inert PureLab HE 2GB, with an automatic antechamber | The antechamber's outer door opens; a tray with a powder jar and a vial goes in; the PLC cycles it | [GIF](out/instruments/glovebox.gif), [MP4](out/mp4/instruments/glovebox.mp4) | 2005 × 834 × 1794 | beside the VLM |
+| Backup rail | Vention robot 7th axis, rack and pinion | The carriage carries a UR10e along the beam; its energy chain rolls with it (round 5) | [GIF](out/instruments/rail.gif), [MP4](out/mp4/instruments/rail.mp4) | 3488 × 628 × 1017 (Vention's 3.3 m unit) | along the line |
+
+All fourteen, one after the other: [`out/mp4/instruments_tour.mp4`](out/mp4/instruments_tour.mp4).
+[`out/instruments.json`](out/instruments.json) has each model's source, its size as drawn and whether it fits a tray.
+
+### The line
+
+![The line](out/vlm_line.gif)
+
+[`line.py`](line.py) puts it together:
+- **Three more trays.** Round 2 left three storage slots free, R1, R4 and F2. They now hold trays D (microscopy and
+  diffraction), E (mechanical testing and particle size) and F (sample prep and heat treatment).
+- **The line.** Everything taller than the opening takes stands in a line with the VLM, fronts in line with its
+  front. Left: the glovebox and the rePowder. Right: the Aconity MIDI (#199's model), the two Instrons and the wire EDM.
+- **The rail.** A Vention seventh axis runs about 17 m along the fronts. The UR10e rides its carriage at 800 mm, the
+  same height as on the MiR250, and parks at the opening.
+
+MP4: [`out/mp4/vlm_line.mp4`](out/mp4/vlm_line.mp4); still: [`out/vlm_line_still.png`](out/vlm_line_still.png).
+
+### Where the round-3 models come from
+
+No maker here publishes CAD without a login or a form. Instron's STEP files come by e-mail after a request form.
+Vention's export from MachineBuilder needs an account, which a residential IP doesn't get around, so the Pi wasn't
+needed. GrabCAD, TraceParts and CADENAS block the runner and need logins anyway. So each model is built from these:
+
+- **Rigaku MiniFlex, 6th generation:** the outline drawings in Rigaku's MiniFlex brochure (620 × 456 × 722 mm, 80 kg)
+  and the MiniFlex 6G sheet. The front is fitted to Rigaku's 6G video: see
+  [`notes/refine_xrd.md`](notes/refine_xrd.md).
+  - The door hinges on its right edge and has no window.
+  - The goniometer is vertical, 150 mm radius, θ-2θ.
+  - The MiniFlex600-C, with its built-in chiller, is 526 mm deep.
+- **Hitachi TM4000PlusII:** Hitachi's figures, 330 × 614 × 547 mm and 54 kg; the pump is 144 × 270 × 216 mm.
+  - The drawer slides straight out; its 17 cm travel is from ac-dev-lab #132.
+  - The envelope matches ac-dev-lab's Fusion model of the TM4000II.
+  - The EDS detector is built in; Oxford's AZtecOne analyser stands beside it, 290 × 260 × 330 mm.
+  - **EBSD:** Hitachi lists no EBSD option for the TM4000 series. The model shows Bruker's e-Flash XS, sold for
+    tabletop SEMs, on a side port, with a 70° pre-tilted holder. That is a proposal, not a documented configuration.
+    A reseller says the COXEM EM-40 is the only tabletop SEM with integrated EBSD; I could not verify it.
+- **Plastometrex PLX-Benchtop:** Plastometrex's render, brochure and FAQ; Illinois MRL's page and a published SOP.
+  - There is no door or guard. The sample sits unclamped on the platen; up to 160 mm across.
+  - **Plastometrex publishes no dimensions.** The envelope is scaled from photos, ±20 %.
+  - PLX-AutoStage is their add-on that automates loading and places indents.
+  - **The profilometer is a stylus on the Benchtop** (an interferometer on the PLX-Portable), per Plastometrex's
+    "What is PIP?" page. **Where it sits is not published.** The model puts a traverse unit on the left-hand column.
+    Its arm stays parked while the indent is made, then reaches in under the lifted indenter and traces the indent.
+    Without the AutoStage the sample can't move, so the stylus has to come to it.
+- **OpenFlexure Microscope v7 and Delta Stage:** OpenFlexure's own OpenSCAD at pinned tags, exported assembled. See
+  [`openflexure/README.md`](openflexure/README.md).
+- **KLA iMicro:** KLA's photos.
+  - The L-shaped hood is hinged at the top rear and lifts 70-80°.
+  - KLA publishes no dimensions; scaled from photos, about 0.5-0.55 m on a side.
+- **Malvern Mastersizer 3000 + Aero S:** Malvern's Mastersizer 3000 and 3000+ brochures (bench 690 × 300 × 450 mm,
+  30 kg; Aero S 260 × 180 × 380 mm, 10.5 kg) and product photos.
+- **LECO PX500 semi-automatic** (until the SOP footage was checked, a Buehler EcoMet 30):
+  - **The lab's own SOP videos,** fitted with `register.py`.
+  - **LECO's PX400/PX500 brochure** (form 209-254) for the features.
+  - **LECO publishes no dimensions.** 533 × 711 × 635 mm is a reseller's figure for the series.
+  - See [`notes/refine_polisher.md`](notes/refine_polisher.md).
+- **Nabertherm NAT 15/65:** Nabertherm's forced-convection tabletop range (470 × 790 × 460 mm, 60 kg, 15 L, 650 °C,
+  ±5 °C).
+  - It covers solution treatment (about 530 °C) and ageing (160-200 °C) in one furnace.
+  - Why not the L 9/11 muffle furnace: its uniformity is only specified above 800 °C.
+- **Instron 68SC-2 and 68FM-100:** Instron's 6800 Series brochure and floor-model sheet.
+  - 68SC-2: 1410 × 460 × 615 mm, 62 kg.
+  - 68FM-100: 2287 × 1140 × 786 mm, 799 kg; 1494 mm test space, 575 mm between columns.
+  - Matte black frames with red Instron accents.
+- **FANUC ROBOCUT α-C400iC:** FANUC America's data sheet and floor plan (2120 × 2540 × 1970 mm, about 2200 kg; X/Y
+  travel 400 × 300 mm), and FANUC's photo.
+- **Inert glovebox:** the envelope is the Inert PureLab HE 2GB drawing in NIST's copy of Inert's manual. The automation
+  follows the lab's own glovebox research:
+  - DAL PR #185's decision matrix: keep the arm outside and transfer through an automated antechamber.
+  - DAL #130: VAC's NexGen PLC; LC Technology's quote included the AC-601 automatic antechamber control.
+  - Here, the antechamber's outer door faces along the line, towards the rail.
+- **Vention robot 7th axis:** Vention design 337010 (3488 × 628 × 1017 mm, 220 kg) and its part pages.
+  - A 247.5 mm square beam in 3330 mm segments, 20 mm profile guides, a steel rack.
+  - A 426.5 × 358 × 86 mm carriage plate, driven by a NEMA 34 through a right-angle gearbox, up to 4 m/s.
+  - The legs are cut so the arm's base is at 800 mm.
+- **Aconity MIDI:** `lab_models.equipment.aconity_midi()` from #199. DAL has documents for it but no model.
+
+### Things the round-3 models show
+
+- **The MiniFlex fits with 5.5 mm to spare.** It is 722 mm tall against Kardex's 727.5 mm. The MiniFlex600-C, with
+  the built-in chiller, is 70 mm deeper. The plain 600 needs a separate chiller, which has to go on the tray too.
+- **The PIP and the nanoindenter fit only on estimates.** Neither maker publishes a size; both are scaled from photos.
+  The nanoindenter's hood adds about 0.3 m when it is up. That is fine at the opening, where there is about 845 mm
+  under the header, but not in a slot.
+- **No Instron fits a tray.** The shortest single column, the 68SC-05, is 1020 mm tall, so both Instrons stand in the
+  line.
+- **No benchtop wire EDM is sold.** The smallest lab unit found, MTI's SYJ-7720-S, is 1250 × 1200 × 1380 mm. The
+  FANUC stands in the line.
+- **Some instruments need services a tray does not have.** Kardex's trays carry power, not plumbing:
+  - the polisher needs water, compressed air and a drain, so on a tray it needs a recirculating unit;
+  - the Mastersizer's Aero S needs compressed air (0-4 bar) and its vacuum extractor;
+  - the SEM needs its pump, which sits beside it on the tray.
+- **Heat and vibration in a VLM are open questions.**
+  - A 650 °C furnace running inside the machine needs Kardex's say-so, and probably ventilation.
+  - The SEM and the nanoindenter are vibration-sensitive. Their trays are still in their slots, but the extractor
+    moves other trays past them.
+- **The rail closes the front to people.** Its beam runs about 120 mm in front of the machines' fronts, between about
+  440 and 690 mm up, so the line becomes a cell for the arm. That is the trade against the MiR250, which leaves the
+  floor free.
+
+## Fabrication: compact metal printers, resin printing and PCB assembly
+
+Asked for in [PR #318](https://github.com/vertical-cloud-lab/byu-vcl/pull/318): a couple of desktop LPBF machines on the
+VLM, a DED machine if any fits, resin printers, an automatic pick-and-place (an open-source one if possible) and a PCB
+stencil printer. Nine models, in `instruments.py`'s framework (pieces, joints and an action script):
+- [`fab_metal.py`](fab_metal.py): the SnowX SnowPod, Sharebot MetalONE and One Click Metal MPRINT (LPBF) and the
+  Meltio M450 (DED).
+- [`fab_resin.py`](fab_resin.py): the Formlabs Form 4, Form Wash and Form Cure.
+- [`fab_pcb.py`](fab_pcb.py): the DDM Novastar SPR-45VA stencil printer and the Opulo LumenPnP v4.
+- [`fab_tour.py`](fab_tour.py) renders each one doing its job, as `tour.py` does for the instruments.
+- [`fab_trays.py`](fab_trays.py) lays out trays G, H and I and stands the other metal printers against the opening's
+  height.
+
+![The fabrication tools](out/fabrication_gallery.png)
+
+| Machine | Model | What the animation shows | GIF, MP4 | Size W × D × H (mm), published | Where |
+|---|---|---|---|---|---|
+| Desktop LPBF, pre-release | SnowX SnowPod | A build plate goes in; nitrogen from its NitroPod; see-through, the recoater spreads 316L from a sealed cartridge, the laser melts a layer and the platform drops, three times | [GIF](out/fabrication/snowpod.gif), [MP4](out/mp4/fabrication/snowpod.mp4) | 360 × 360 × 660, 40 kg | tray I, two of them: 67.5 mm under the limit |
+| Desktop LPBF | Sharebot MetalONE | A build plate goes in; see-through, the recoater spreads powder, the laser scans a layer and the platform drops, three times | [GIF](out/fabrication/metalone.gif), [MP4](out/mp4/fabrication/metalone.mp4) | 740 × 630 × 1000, 150 kg (launch figures) | the line: 272.5 mm too tall |
+| Compact LPBF | One Click Metal MPRINT | The hatch opens on the five-cartridge revolver; a spent cartridge comes out and a full one goes in; a 150 mm plate goes in; recoat, scan, the platform drops; the plate goes out to the MUNPACK station | [GIF](out/fabrication/mprint.gif), [MP4](out/mp4/fabrication/mprint.mp4) | 1100 × 790 × 1900, 440 kg | the line |
+| Wire-laser DED | Meltio M450 | A substrate goes in; see-through, the head's six lasers melt the wire and a wall grows layer by layer | [GIF](out/fabrication/meltio_m450.gif), [MP4](out/mp4/fabrication/meltio_m450.mp4) | 560 × 600 × 1400, 250 kg | the line |
+| Resin printer (MSLA) | Formlabs Form 4 | The platform rises out of the resin with the parts; the cover lifts; the platform comes off; a fresh one goes on | [GIF](out/fabrication/form4.gif), [MP4](out/mp4/fabrication/form4.mp4) | 398 × 367 × 554, 18.3 kg; 844 tall with the cover open | tray G, two of them |
+| Wash | Formlabs Form Wash (2nd Gen) | The lid lifts; the Form 4's platform goes onto the elevator; it lowers the parts into the IPA while the impeller stirs, then lifts them out to dry | [GIF](out/fabrication/form_wash.gif), [MP4](out/mp4/fabrication/form_wash.mp4) | 315 × 293 × 405; 714 tall open | tray G |
+| Post-cure | Formlabs Form Cure (2nd Gen) | The door opens; the parts go onto the turntable; it turns under 405 nm light | [GIF](out/fabrication/form_cure.gif), [MP4](out/mp4/fabrication/form_cure.mp4) | 337 × 356 × 404, 12.1 kg | tray G |
+| Stencil printer, semi-automatic | DDM Novastar SPR-45VA | A bare board onto the vacuum nest; the frame comes down; the squeegee drives the paste across; the frame lifts off, leaving paste on the pads | [GIF](out/fabrication/stencil.gif), [MP4](out/mp4/fabrication/stencil.mp4) | 762 × 889 × 406, about 73 kg | tray H, turned 90° |
+| Pick-and-place, open source | Opulo LumenPnP v4.2 | The top camera finds the board's fiducials; each part is picked from a front or back feeder, turned over the up-looking camera and placed, the two counterweighted nozzles moving opposite ways | [GIF](out/fabrication/lumenpnp.gif), [MP4](out/mp4/fabrication/lumenpnp.mp4) | 707 × 673 × 342, from Opulo's CAD (see [below](#the-models-against-real-footage)) | tray H |
+
+All nine, one after the other: [`out/mp4/fabrication_tour.mp4`](out/mp4/fabrication_tour.mp4).
+[`out/fabrication.json`](out/fabrication.json) has each model's source, its size as drawn, whether it fits a tray, how
+far it is over the opening's height and its notes.
+
+### Trays G, H and I, and the metal printers against the opening
+
+![Trays G, H and I, and the metal printers](out/vlm_fab_trays.gif)
+
+The blue boxes are what goes through the Shuttle's opening: the tray's inside, 2426 × 840 mm, by Kardex's 727.5 mm of
+product height. The metal printers stand on red boxes of the same height. MP4:
+[`out/mp4/vlm_fab_trays.mp4`](out/mp4/vlm_fab_trays.mp4); still: [`out/vlm_fab_trays_still.png`](out/vlm_fab_trays_still.png).
+
+- **Tray G, resin printing:** two Form 4s, the Form Wash and the Form Cure, left to right in the order a print goes.
+- **Tray H, PCB assembly:** the stencil printer, then the LumenPnP. The right end, about 470 mm, is free for a reflow
+  oven, which the line still needs.
+- **Tray I, desktop LPBF:** two SnowPods, with room beside each for its NitroPod.
+
+### Where the fabrication models come from
+
+None of these makers publishes CAD for download, except Opulo, whose CAD is FreeCAD (`.FCStd`, not read here). So each
+model is built from these:
+- **SnowX SnowPod:** 3DWithUs's hands-on review (360 × 360 × 660 mm, 40 kg, a 200 W fibre laser) and SnowX's
+  announcements, via 3Dnatives (22 October 2026), Makers101 and 3DPrint.com:
+  - an 80 × 80 × 100 mm build, a 40 µm spot, 316L at launch;
+  - powder in sealed supply and recovery cartridges; a cyclone, two H13 filters and an H14 at the exhaust;
+  - nitrogen from the companion NitroPod, which separates it from air (99.9 % at 3 L/min).
+  - SnowX gives no outer size of its own, and the NitroPod's size isn't published, so it isn't modelled. The look is
+    approximate: no photo was checked.
+  - A Kickstarter kit: $5,299 at the launch special, $9,299 MSRP, launch planned for Q4 2026. Not shipping yet.
+- **Sharebot MetalONE:** the 2019 launch figures (engineering.com, 3D Printing Industry, Aniwaa: 740 × 630 × 1000 mm,
+  150 kg; Fabbaloo: 174 kg); build area 65 × 65 or 100 × 100 mm, 100 mm tall; fibre laser, 200 W at launch.
+  - Later dealer listings give 1000 × 600 × 1470 mm and 270-315 kg, probably with its stand or a bigger configuration.
+    The launch figures are used.
+- **One Click Metal MPRINT:** 1100 × 790 × 1900 mm and 440 kg (filament2print; MPRINT+ 450 kg, MPRINTpro 490 kg);
+  build 150 × 150 × 150 mm; 200 W fibre laser; a revolver of five powder cartridges (Autodesk's case study).
+  - The published order is "1100 × 1900 × 790"; read here as W × H × D, since the photos show a cabinet taller than it
+    is wide.
+  - Depowdering is a separate station, MUNPACK, not modelled.
+- **Meltio M450:** Meltio's technical specifications (560 × 600 × 1400 mm, 250 kg, print envelope 145 × 168 × 390 mm;
+  six 200 W diode lasers, 1200 W, around a wire fed through the head; wire 0.8-1.2 mm). MatterHackers gives 1414 mm
+  tall. The next smallest, Meltio's M600, is 1050 × 1050 × 1950 mm.
+- **Formlabs Form 4:** Formlabs' tech specs (398 × 367 × 554 mm, 18.3 kg; 407 × 478 × 844 mm minimum access, the cover
+  open; build 200 × 125 × 210 mm). The cover's rear hinge is inferred from that open envelope, not from a drawing.
+- **Formlabs Form Wash and Form Cure (2nd Gen):** Formlabs' and resellers' figures (Wash 315 × 293 × 405 mm, 714 mm
+  open; Cure 337 × 356 × 404 mm, 12.1 kg, a 235 mm turntable, 405 nm light and heat). Which side the Cure's door
+  hinges on is assumed.
+  - Formlabs' Form Auto, which takes parts off the platform by itself, works only with the Form 3 series. With a Form 3
+    it is 610 × 914 × 914 mm, too deep and too tall for a tray.
+- **DDM Novastar SPR-45VA:** Pentalogix's listing (762 × 889 × 406 mm; frames up to 584 × 584 mm) and DDM Novastar's
+  SPR-45 description at its resellers (about 73 kg, dual squeegees, a power frame lift). The layout inside that outline
+  is generic for a benchtop semi-automatic printer.
+- **Opulo LumenPnP v4:** Opulo's repository ([`opulo-inc/lumenpnp`](https://github.com/opulo-inc/lumenpnp):
+  `DESIGN_DECISIONS.md`, `bom.json`) and its v4 photo:
+  - seven 600 mm lengths of 20 × 20 V-slot on four printed legs, an X gantry on two Y gantries;
+  - two nozzles on hollow-shaft NEMA 11s, top and bottom cameras with ring lights;
+  - 120 × 600 mm staging-plate PCBs, powered feeders, boards up to 225 × 400 mm.
+  - Opulo publishes no overall size, so 680 × 680 × 450 mm was first estimated from the extrusions and a photo.
+  - **Opulo's CAD gives every part's position:** `src/assembly.FCStd` at `opulo-inc/lumenpnp@64cf68d`, read, not
+    committed. The model is now built from it, at 707 × 673 × 342 mm, about 25 % lower. See
+    [`notes/refine_lumenpnp.md`](notes/refine_lumenpnp.md).
+
+### Things the fabrication models show
+
+- **One LPBF machine fits through the opening, and it isn't shipping yet.** The SnowPod is 660 mm tall, 67.5 mm under
+  Kardex's 727.5, and makes its own nitrogen, so its tray needs only power. Every other LPBF machine found is too tall:
+  - the Mastrex MX100, 800 mm (one retailer's listing);
+  - the Lasefinity Fusion X, 860 mm (TCT Magazine);
+  - the Kings 3D DiMetal-100, 1000 mm, on three-phase power (All3DP);
+  - the MetalONE as launched, 1000 mm, 272.5 mm over.
+- **No DED fits.** The most compact found, the Meltio M450, is 1400 mm tall. So it, the MetalONE and the MPRINT stand
+  in the line, next to the Aconity MIDI.
+- **The Shuttle is full.** Its six slots hold trays A-F, and its 3950 mm height is set by the ceiling (#53). So trays G,
+  H and I need a second Shuttle, as trays D-F already might (see the PR description). G and H are shorter than the
+  others, 554 and 450 mm of product, so they would take slots about 650 and 550 mm apart, not 800.
+- **The Form 4 and the Form Cure open only at the opening.** The Form 4's cover opens to 844 mm, which is more than a
+  slot takes and about the 845 mm under the header. The Cure's door swings out in front. The Form Wash fits even with
+  its lid open, 714 mm, with 13.5 mm to spare.
+- **Solvent and resin on a moving tray are open questions.** The Wash's bucket holds litres of IPA, a flammable vapour
+  inside an enclosed, powered machine, with waste solvent to handle. Resin stands in an open tank on a tray that the
+  extractor moves. Both need Kardex and EHS to agree, and the tray moved gently.
+- **The stencil printer only fits turned 90°.** It is 889 mm deep against the tray's 840. Turned, its front faces the
+  pick-and-place, and the arm meets it from the side, where its frame-lift column is. A shallower printer, or one the
+  arm can load from above, would suit a tray better.
+- **The PCB line is not complete.** It still needs a reflow oven, the free end of tray H. Solder paste lives in a
+  fridge and needs time to warm up, and the paste left on the stencil dries out over a few hours, so the stencil needs
+  wiping.
+- **The LumenPnP needs no compressed air.** Its vacuum pumps are on board, so on a tray it needs only power.
+
+```bash
+xvfb-run -a python3 fab_tour.py                 # every model -> out/fabrication/, out/mp4/fabrication/
+python3 fab_tour.py gallery join table          # out/fabrication_gallery.png, out/mp4/fabrication_tour.mp4, out/fabrication.json
+xvfb-run -a python3 fab_trays.py                # trays G-I, and the metal printers -> out/vlm_fab_trays.gif
+```
+
+## Round 4: tray services and cameras, more instruments, the alloy workflow, the warehouse, the lab from scratch
+
+Asked for in [PR #318](https://github.com/vertical-cloud-lab/byu-vcl/pull/318#issuecomment-6613794646). Each part has
+its own notes file, with every source:
+
+| Part | Code | Notes |
+|---|---|---|
+| Quick disconnects at the back of each tray, UPS, N₂, chilled water and heat; stream cameras; cabling | [`services.py`](services.py) | [`notes/services.md`](notes/services.md) |
+| VHX-7000 with the EA-300 laser, desktop XRF, sieve shaker, six OpenFlexures on a sub-tray | [`instruments_char.py`](instruments_char.py) | [`notes/instruments_char.md`](notes/instruments_char.md) |
+| The CubXL set up for corrosion, a DED machine, a packaging station, and whether a HIP fits | [`instruments_lab.py`](instruments_lab.py) | [`notes/instruments_lab.md`](notes/instruments_lab.md) |
+| From the metal printer to the tensile test | [`alloy_workflow.py`](alloy_workflow.py), [`alloy_models.py`](alloy_models.py) | [`notes/alloy_workflow.md`](notes/alloy_workflow.md) |
+| The warehouse version with mobile manipulators, rail or mobile base, the lab set up from scratch | [`warehouse.py`](warehouse.py), [`setup_lab.py`](setup_lab.py) | [`notes/warehouse.md`](notes/warehouse.md) |
+| DAL's workflow steps, and where each goes | | [`notes/dal_workflow.md`](notes/dal_workflow.md) |
+
+| Video | GIF | MP4 | YouTube (unlisted) |
+|---|---|---|---|
+| **The lab set up from scratch**: an empty warehouse bay, the layout, utilities, the VLM, the floor machines, the two MiR250 + UR10e units put together, every tray loaded (A–F, with round 4's instruments), the cameras | [GIF](out/setup_lab.gif) | [MP4](out/mp4/setup_lab.mp4) | [on YouTube](https://www.youtube.com/watch?v=oMvGIGQOKA4) (re-rendered; was `bITROBu1NNE`) |
+| **The warehouse version**: two MiR250 + UR10e units drive between the VLM and the floor machines along marked aisles | [GIF](out/warehouse.gif) | [MP4](out/mp4/warehouse.mp4) | [on YouTube](https://www.youtube.com/watch?v=3IrSB9-meN8) (collision-checked; was `KbrkulS07EM`) |
+| **From the printer to the tensile test**: the build plate out of the Aconity MIDI, the bars cut off in the wire EDM, one pulled to fracture in the 68FM-100 | [GIF](out/alloy_workflow.gif) | [MP4](out/mp4/alloy_workflow.mp4) | [on YouTube](https://www.youtube.com/watch?v=T16hQ4M-IkU) (round 5's chapter 4; round 4's was `YVdpGTLvxhI`) |
+| **Tray services**: the docking coupling in the slot and at the opening, the cabling (the tethered alternative was dropped in round 7) | [docking](out/vlm_services.gif), [cabling](out/vlm_cabling.gif) | [MP4](out/mp4/vlm_services_all.mp4) | [on YouTube](https://www.youtube.com/watch?v=TryzW_phOcw) (re-rendered; was `ed2M0u5Rjw0`) |
+| **The round-4 instruments**, each doing its job | [gallery](out/instruments_gallery.png) | [MP4](out/mp4/instruments_round4_tour.mp4) | [on YouTube](https://www.youtube.com/watch?v=WG_DAtSHg50) (re-rendered and rejoined; was `IEbhMjcAUOQ`) |
+
+![The lab set up from scratch](out/setup_lab_still.png)
+
+### Quick disconnects, UPS, N₂, chilled water and heat
+
+![Tray A at the opening, docked](out/vlm_services_still.png)
+
+- **A tray has power only in its slot and at the opening, not in transit** (#53, where the dealer offered a
+  quick-connect cord). A search of Kardex's published Shuttle options found nothing that brings air, gas, water or data
+  to a tray.
+- **The coupling can't go on the back edge itself.** In a front-column slot and at the opening, the back edge faces
+  the shaft. A dock there would sit in the extractor's path, and the shutter closes 35 mm behind the presented tray.
+- **One plate per tray, at its back-right corner, mating sideways, serves every place.** Its docks sit in the right
+  side wall of each slot and of the bay, with a 45 mm stroke, clear of the extractor and the shutter. The plate is a
+  Stäubli CombiTac carrying:
+  - four 39 A power contacts;
+  - Cat 6A;
+  - air and N₂;
+  - chilled water in and out.
+
+  CombiTac align 4's pins take up 4 mm of misalignment. ODU-MAC and Harting make similar docking frames.
+- **The couplings must not part under pressure** (Stäubli). So the dock shuts and vents the air, N₂ and water before
+  it pulls back, and opens them only once the plate is home. A tray is disconnected only while the extractor carries
+  it.
+- **A UPS on each tray covers the transit.** An Eaton 5PX1500 bridges the roughly 6 s from R2 to the opening for
+  trays A–E. Tray F's furnace draws 2.8 kW, more than the UPS gives, so its heaters pause in transit.
+- **Heat is the real limit.**
+  - With everything on, the trays put about 7.0 kW into the machine. Unventilated, that is about a 23 K rise; holding
+    the rise to 5 K takes about 4200 m³/h of air.
+  - The N₂ generator (Parker UHPN2-1100, 889 mm tall) can't go on a tray. It and the recirculating chiller stand
+    beside the VLM, piped through the docks, so their heat stays outside.
+  - This is the question for Kardex.
+- **(Dropped in round 7: "Let's remove the retractable line option for now.") The tether, the continuous alternative.** An igus e-spool carries power, data and hoses on one chain, and a slot
+  near the opening needs only 2.1–2.8 m of payout. While that tray is out, though, its line spans the shaft, so the
+  extractor can't fetch any other tray. It suits one tray, kept low.
+
+### Stream cameras
+
+Round 5 rebuilt the unit from the real parts, with height, pan and tilt joints:
+[Stream cameras, built from the real parts](#stream-cameras-built-from-the-real-parts). Round 4's version was:
+
+- **The unit is the lab's own**, from DAL PR #189: a Pi 5 with the HQ Camera (16 mm M12 lens) and a Camera Module 3
+  Wide, in a PETG box on a 2020 post.
+- **On the trays, not the modules.** There are 2–3 per tray, 14 in all, each aimed at an instrument's working face
+  and under the 727.5 mm product height. They watch the printers and the CubXL work while the tray is in storage, and
+  the dock already brings power and Ethernet.
+- **The overhead camera** hangs at the back of the bay, 28 mm above Kardex's product envelope. Its wide camera covers
+  about 2.37 m of the 2.45 m tray. It hasn't yet been checked against the arm's poses.
+
+### Cabling
+
+![The cabling](out/vlm_cabling_still.png)
+
+- **One overhead ladder tray** at 2.8 m behind the line and round the back of the VLM, with drops to every machine
+  and risers inside the VLM to the docks. [`out/cabling.json`](out/cabling.json) lists the circuits.
+- **The FANUC wire EDM is the biggest load**, at 13 kVA, 200 V three-phase. That figure is from a search result;
+  the page itself wasn't opened.
+- **No ratings found** for the Aconity MIDI or the glovebox. Several other ratings come from search snippets; the
+  JSON marks which.
+
+### More instruments
+
+![Every instrument](out/instruments_gallery.png)
+
+| Instrument | Model | GIF, MP4 | Where |
+|---|---|---|---|
+| Digital microscope with laser elemental analysis (LIBS) | Keyence VHX-7000 + EA-300 on the VHX-S750E stand | [GIF](out/instruments/vhx.gif), [MP4](out/mp4/instruments/vhx.mp4) | tray C, beside the A1 mini |
+| Benchtop EDXRF | Bruker S2 PUMA Series 2, 20-position XY Autochanger | [GIF](out/instruments/xrf.gif), [MP4](out/mp4/instruments/xrf.mp4) | tray F |
+| Sieve shaker | Retsch AS 200 control, with DAL's 8 in stack | [GIF](out/instruments/sieve.gif), [MP4](out/mp4/instruments/sieve.mp4) | tray F in the set-up scene; better beside the rePowder (below) |
+| Six reflection microscopes on one sub-tray | OpenFlexure, 4 × v7 + 2 × Delta Stage | [GIF](out/instruments/openflexure_array.gif), [MP4](out/mp4/instruments/openflexure_array.mp4) | tray D, in place of the two freestanding ones |
+| CubXL set up for corrosion | CubXL + NuVant EZstat Pro, DAL PR #180's deck | [GIF](out/instruments/cubxl_corrosion.gif), [MP4](out/mp4/instruments/cubxl_corrosion.mp4) | tray A, in place of round 2's CubXL |
+| Directed energy deposition | InssTek MX-Lab | [GIF](out/instruments/ded.gif), [MP4](out/mp4/instruments/ded.mp4) | the floor |
+| Packaging | Primera AP380 + LX500c, Zebra ZD621t, Uline H-190 | [GIF](out/instruments/packaging.gif), [MP4](out/mp4/instruments/packaging.mp4) | a bench on the floor |
+| HIP against a tray | Kobelco O2-Dr.HIP | [GIF](out/instruments/hip.gif), [MP4](out/mp4/instruments/hip.mp4) | doesn't fit |
+| The docking coupling; the camera unit | | [dock](out/instruments/tray_dock.gif), [camera](out/instruments/stream_cam.gif) | every tray |
+
+- **VHX + EA-300.**
+  - The EA-300 is a 355 nm laser with a 10 µm spot, reading elements H to U.
+  - Stand and head stand 655 mm against Kardex's 727.5 mm. The stand's outer size isn't published, so its base is an
+    estimate.
+  - Keyence has replaced the VHX-7000 with the VHX-X1.
+- **XRF.**
+  - The S2 PUMA is 670 × 710 × 610 mm and 108 kg. It has a reduced-pressure helium mode for loose powder.
+  - It is the only candidate with a published robot interface (its Automation version).
+  - Bruker doesn't publish the lid's open height; drawn 35° open, it reaches about 905 mm. That is more than the
+    roughly 844 mm under the opening's header, so ask Bruker.
+- **Sieving.**
+  - The stack is the one DAL bought or ordered (DAL PR #175): No. 60, 100, 140, 230, 325 and a pan.
+  - LPBF's 20–63 µm is the No. 325 and the pan. DED's 45–105 µm is the No. 230 and the No. 325.
+  - No sieve shaker sold for robot loading was found, so the clip shows what an arm would do: pour, lid, knobs.
+  - For aluminium powder the dust hazard argues for the shaker beside the rePowder, or in the glovebox, rather than
+    in the VLM.
+  - The lab's own sieving, by hand, is on the channel: the 630 bronze [1](https://www.youtube.com/watch?v=7pqPt9xbV8E),
+    [2](https://www.youtube.com/watch?v=sN0xzUjTDKE), [3](https://www.youtube.com/watch?v=Dni35K9VWck).
+- **OpenFlexure array.**
+  - Four v7 and two Delta Stages, so the two designs can be compared on the same coupons.
+  - They sit on a 1/4 in aluminium tooling plate, 700 × 510 mm and 5.6 kg after pocketing, each microscope in a 2 mm
+    pocket cut to its own footprint, with handles.
+  - The meshes are rebuilt from OpenFlexure's OpenSCAD. [`notes/instruments_char.md`](notes/instruments_char.md) has
+    four steps the pipeline's README lacked.
+- **The CubXL for corrosion.**
+  - It follows DAL PR #180's plan, which is not built yet:
+    - four coupons on pogo pins under FKM O-ring lids, each a 0.071 cm² well of about 150 µL;
+    - a magnetic cap with a 2 mm Ag/AgCl reference inside a Pt coil;
+    - 0.6, 0.06 and 0.006 M NaCl;
+    - per spot, OCP, then LPR, then cyclic polarization.
+  - No measured corrosion data exist yet. The curve on screen is labelled illustrative; only its E_corr and i_corr
+    come from Wu et al. 2022.
+- **DED: the InssTek MX-Lab.**
+  - It is the only candidate with a published size and mass: 680 × 684 × 835 mm and 250 kg without its base.
+  - It has six hoppers that blend in the melt pool, and an argon option holding O₂ at 50 ppm or less.
+  - It is also the first step in DAL PR #117's own plan, at Utah. The "Mines X2" in DAL PR #220 is a FormAlloy X2,
+    which publishes no size.
+  - The other session's Meltio M450 (wire-laser, [above](#fabrication-compact-metal-printers-resin-printing-and-pcb-assembly))
+    is the wire alternative.
+- **Packaging.**
+  - Primera sells no print-and-apply bundle: the LX500c prints a roll that the AP380 wraps on. Laid out with the
+    sealer, the foam shipper and the Zebra, the station is about 1990 × 650 × 229 mm.
+  - Whether a powder is dangerous goods depends on a test (UN N.1 / N.5), not the alloy's name. Coated aluminium
+    powder is UN 1309 (Class 4.1) and uncoated UN 1396 (4.3), and USPS takes no flammable solid abroad.
+  - The QR code in the clip is a placeholder pattern.
+
+### Could a hot isostatic press fit on the VLM? No.
+
+![The HIP against a tray](out/instruments/hip.png)
+
+The smallest 200 MPa lab HIP with a published size, Kobelco's O2-Dr.HIP, is 1315 × 1100 × 1300 mm and 1100 kg:
+- 572.5 mm over the 727.5 mm product height, and 236 mm deeper than the 864 mm tray;
+- 4.8×, 3.1× and 2.2× the light, medium and strong trays' payloads;
+- it needs argon, cooling water and air, and its cooling must not stop. A tray has power only, and none in transit.
+
+A HIP stands on the floor or goes out to a service.
+
+### From the metal printer to the tensile test
+
+| The wire cutting the bars off, machine see-through | The bar broken in the 68FM-100 |
+|---|---|
+| ![The cut](out/alloy_workflow_cut.png) | ![The break](out/alloy_workflow_still.png) |
+
+The UR10e on the MiR250 does each move with straight-line IK, as in round 2:
+1. **The Aconity MIDI.** The chamber opens and the platform rises. A person depowders: no automatic depowdering was
+   found for the MIDI. The arm lifts the plate out by a printed lug.
+2. **The wire EDM.** The plate goes into a fixture on the table, on edge. The tank fills, and the wire cuts the four
+   bars off at their base, drawn see-through.
+3. **The 68FM-100.** The arm puts one bar in the wedge grips, and the test runs to fracture. A stress–strain curve
+   draws in step.
+
+What the workflow showed:
+- **The arm can't point straight down inside the MIDI's chamber**, which is about 280 mm tall inside. Pointed down,
+  its wrist would be 38 mm above the roof, so it takes the plate by a lug, at 30° down.
+- **At the machines the MiR parks 230 mm off the front, not 30 mm** as at the VLM. Otherwise the plate's 435 mm move
+  out of the chamber has no IK solution.
+- **The bar needs the 68FM-100.** A 6 × 6 mm section at 412 MPa is a 14.8 kN pull. The 68SC-2's 2 kN is reached at
+  56 MPa, below yield.
+- **The plate stands on edge in the EDM.** A vertical wire can only cut the bars off at their base that way. The cut
+  is 3389 mm², so at least about 11 minutes at the 300 mm²/min GF quotes for its AM cutter. FANUC gives no rate for
+  aluminium.
+
+Real data and illustrative data:
+- **The SEM inset is real.** It is the lab's stock AlSi10Mg powder on BYU's Apreo, at 500×, taken 2 April 2026 by Gage
+  Erickson ([#48](https://github.com/vertical-cloud-lab/byu-vcl/issues/48#issuecomment-4181040112)).
+- **The curve is not a measurement**, and the clip says so. It is drawn through AddUp's published as-built values.
+  No real tensile data were found in DAL or here.
+
+### The warehouse version, and rail or mobile base
+
+![Rail or mobile base](out/rail_vs_amr.png)
+
+- **The floor.** Aisles are 3.0 m, MiR's figure for two MiR250s passing. Docks sit outside the aisle, and there are
+  two MiR chargers.
+- **MiR250 docking accuracy.**
+  - To an L-marker: ±6 / ±3 mm and ±1°. To a VL-marker: ±3 / ±3 mm. With no marker: ±60 / ±85 mm and ±4°.
+  - 1° of yaw is 23 mm at the arm's 1.3 m reach, so every station needs a reference the arm measures before it
+    works. A six-touch calibration on a cube reached ±0.12 mm (Burger et al., *Nature* 2020).
+- **The pedestal hardly sways; the carriage takes the moment.**
+  - A Ø219.1 × 8 mm steel tube lifting the UR10e from a floor-level rail moves the tool 0.05 mm running and 0.08 mm
+    in a stop. Its first mode is about 129 Hz, against UR's 45 Hz minimum.
+  - That is below Vention's own ±0.3 mm repeatability.
+  - What the pedestal costs is 29–48 % more moment on the carriage: 494–568 Nm against 384 Nm. No maker publishes the
+    figures to check that against. The numbers are in [`out/rail_vs_amr.json`](out/rail_vs_amr.json).
+- **A UR10e on a MiR250 can tip.** UR's worst-case loads give 619 Nm running and 955 Nm stopping, against roughly
+  554 Nm of resistance, so the arm runs with lower acceleration limits.
+- **The MiR250 can't power the arm.** Its top-module supply is 480 W at 48 V. The UR10e can draw 615 W, and its
+  standard control box wants mains.
+
+### Getting a tray out for maintenance, with the rail in front
+
+![Plan and side view at the opening](out/maintenance_access.png)
+
+- **The tray service dock is round 4's coupling, not a way out.** Its docks are inside the VLM, so the rail doesn't
+  affect it.
+- **Kardex's way out is full tray extraction onto a transport cart.** Both are Shuttle XP options. The tray comes out
+  in front of the opening, which needs at least its 864 mm of clear floor there.
+- **With the rail where `line.py` puts it, that floor is taken.**
+  - The rail fills 26–442 mm in front of the cladding. Its beam is 436–699 mm high, and one leg stands under the
+    opening.
+  - From the beam, the tray's front edge is 464 mm away and its back edge 1328 mm, so a person can't work there either.
+- **What would work:**
+  - a second opening at the back for service (Kardex offers front or rear). It costs two rear slots at the front
+    opening's height, and about 2 m of floor behind the VLM;
+  - a floor-flush rail section with covers;
+  - a removable rail section, for rare instrument swaps;
+  - the mobile base, which leaves nothing fixed in front of the opening.
+
+  [`notes/maintenance.md`](notes/maintenance.md) has the sources and the questions for Kardex.
+
+### The lab set up from scratch
+
+The set-up scene, in order:
+1. An empty warehouse bay.
+2. The layout in tape on the floor.
+3. Utilities: cable trays, power drops, network, argon.
+4. The VLM assembled.
+5. The floor machines, including the DED machine and the packaging station (on a bench).
+6. The first MiR250 + UR10e unit put together on its charger:
+   - the cabinet goes on;
+   - the UR control box goes inside;
+   - the arm is bolted down with UR's four M8 bolts and two dowel pins;
+   - the gripper goes on.
+
+   Then the second unit appears.
+7. Trays A–F loaded through the opening, by people, since most instruments weigh more than the arm's 12.5 kg.
+   Round 4's instruments go where `setup_lab.ROUND4_TRAY` puts them:
+   - the corrosion CubXL on A;
+   - the VHX on C;
+   - the OpenFlexure array on D;
+   - the sieve shaker and the XRF on F.
+
+   Each tray then goes back to its slot.
+8. The stream cameras, from `services.add_cameras`.
+9. A closing orbit.
+
+`python3 setup_lab.py fit` checks every tray item against the product height, the tray's rim and its neighbours.
+Trays G–I (fabrication, above) aren't in this scene yet.
+
+### The alloy workflow, step by step, from DAL
+
+[`notes/dal_workflow.md`](notes/dal_workflow.md) maps every step DAL runs by hand to the station it would use here, and
+names what is still missing. It links the lab's own footage of each step from the channel. The gaps it finds:
+- a station that fills and presses the atomizer's cups;
+- powder transfer between atomizer, sieve and jar without air exposure;
+- a dry cabinet;
+- a stub-prep station for the SEM;
+- a mounting press;
+- a hardness tester;
+- a balance with a density kit, for DAL #144's Archimedes cubes;
+- automatic depowdering.
+
+### The real VLM
+
+Sterling's test of a real vertical lift module is on his own channel: [*Vertical Lift Module in operation – from the
+sample's perspective*](https://www.youtube.com/watch?v=ck8QJhVqPiY) (59 s, 2025-09-15, recorded while collecting
+vibration data). The VLM also appears in two talks:
+- [*Towards an Autonomous Vertical Cloud Lab for Additively Manufactured Aerospace
+  Alloys*](https://www.youtube.com/watch?v=6uJP2CKMbEM) (Fall MRS 2025; "vertical automation" runs 00:00–14:00);
+- Matterhorn Studio's [*Vertical Cloud Lab*](https://www.youtube.com/watch?v=3xRSuz3zBww).
+
+Earlier rounds, on YouTube (unlisted), as re-rendered:
+- [every instrument, one after another](https://www.youtube.com/watch?v=J7EJQsmyAtk) (round 3's 14 on their own
+  were `ISyVIHtmvZc`);
+- [trays D–F and the line](https://www.youtube.com/watch?v=4M2j2etqiB0) (was `oWM3fCZiwRs`);
+- [the fabrication tools](https://www.youtube.com/watch?v=45-L9BnfBMw) (was `HYN9dYyRkrQ`);
+- [trays G–I](https://www.youtube.com/watch?v=7ISk_ULnVbQ) (was `5q5Pv2Mhbn8`).
+
+## The alloy route, start to finish: charge cups to tensile bar
+
+Asked for in [PR #318](https://github.com/vertical-cloud-lab/byu-vcl/pull/318): no vial. The atomizer is charged with
+the lab's own **charge cups** (#222), in **high-purity Al and Cu**, and putting the plugs into them is part of the
+route. Four chapters, each rendered on its own and joined by [`alloy_route.py`](alloy_route.py) into
+[`out/mp4/alloy_route.mp4`](out/mp4/alloy_route.mp4), a title card before each:
+
+<!-- alloy-route-table -->
+| Chapter | Code | GIF | MP4 | Notes |
+|---|---|---|---|---|
+| **All four, joined** (11 min 9 s, a title card before each) | [`alloy_route.py`](alloy_route.py) | | [MP4](out/mp4/alloy_route.mp4) | [on YouTube](https://www.youtube.com/watch?v=GE33p9N0x7c) (unlisted), chapters in [`out/alloy_route.json`](out/alloy_route.json). The 7 min 40 s round-4 version is [`9qnGCtPwCTM`](https://www.youtube.com/watch?v=9qnGCtPwCTM) |
+| **1. The charge** (245 s, 10 fps): four 5N Al and four OFE Cu cups, each dosed through its powder's own funnel, weighed on an A&D HR-202i, topped up to the plug line, then plugged and pressed home at 3.2 t under vacuum (shuttle out, onto the ejector pin, shuttle in, pumped down, pressed, vented, ejected), on tray B. One chapter now: round 5's doser version and the vacuum-press version merged | [`alloy_charge.py`](alloy_charge.py), [`alloy_press.py`](alloy_press.py), [`charge.py`](charge.py) | [GIF](out/alloy_charge.gif) | [MP4](out/mp4/alloy_charge.mp4) | [`notes/alloy_charge.md`](notes/alloy_charge.md). Earlier renders on YouTube: the doser version [`1Hnt4v2J_mI`](https://www.youtube.com/watch?v=1Hnt4v2J_mI), the vacuum-press version [`UjGb47I3fy0`](https://www.youtube.com/watch?v=UjGb47I3fy0) |
+| **2. Melt and atomize** (170 s, 10 fps): the four Al cups in the rePowder, cut with the lab's own footage of its bronze and Al runs; the arm swings the sealing-rod lever up first, and lets each cup go with its foot in the bore | [`alloy_atomize.py`](alloy_atomize.py) | [GIF](out/alloy_atomize.gif) (round 5's) | [MP4](out/mp4/alloy_atomize.mp4), round 5's [on YouTube](https://www.youtube.com/watch?v=znw55hE_dGs) | [`notes/alloy_atomize.md`](notes/alloy_atomize.md) |
+| **3. Sieve and print** (198 s, 10 fps): the arm runs a sieving cell, then the Aconity MIDI prints | [`alloy_print.py`](alloy_print.py), [`sieve_station.py`](sieve_station.py) | [GIF](out/alloy_print.gif) | [MP4](out/mp4/alloy_print.mp4), round 5's [on YouTube](https://www.youtube.com/watch?v=rm_XR5-2F5g) | [`notes/alloy_print.md`](notes/alloy_print.md) |
+| **4. Cut and test** (161 s, 10 fps): a suction lance and a depowdering box, the wire EDM, a rinse, the 68FM-100 | [`alloy_workflow.py`](alloy_workflow.py) | [GIF](out/alloy_workflow.gif) | [MP4](out/mp4/alloy_workflow.mp4), round 5's [on YouTube](https://www.youtube.com/watch?v=T16hQ4M-IkU) | [`notes/alloy_workflow.md`](notes/alloy_workflow.md) |
+<!-- /alloy-route-table -->
+
+![The four chapters at work: a plug pressed into a cup, the cups atomized, the plate printed, the bars cut off](out/alloy_route_sheet.png)
+
+No person is left in the route after the cups are loaded on tray B. Chapters 3 and 4 were rendered at 10 fps to fit
+the session (`VIZ3D_FPS=10`); the joined MP4 is 15 fps.
+
+**The charge.** The cup, the vented plug and the steel press sleeve (F1) are #222's own `charge_cad.py` profiles,
+dimension for dimension. **Four cups a run**, as the lab loads the crucible ([`out/alloy_recipe.json`](out/alloy_recipe.json)):
+
+| Run | Cups and plugs | Powder in each cup | Charge | Designed |
+|---|---|---|---|---|
+| this one | 4 × **5N Al** (DAL #152's rod) | Si, 3.92 g | 156.7 g | Al-10Si, the Si of the AlSi10Mg printed in chapter 4 |
+| the next one | 4 × **oxygen-free Cu**, C10100 (DAL #162) | Ni, 12.97 g | 518.9 g | 90/10 Cu-Ni, the Navy's seawater alloy |
+
+The lab's own Al runs melted 169–180 g (DAL #159), and the Oct 27 bronze run went in as four rod pieces, 1,080 g
+(DAL #219). The Al cups ride the MiR250 to the rePowder. The Cu cups go back on the rack for their own run.
+
+What the round-5 chapters show:
+- **The doser's balance is an A&D HR-202i,** 220 g × 0.1 mg with a 51 g × 0.01 mg fine range. It is the larger sibling of
+  the lab's HR-100A, named in powder-doser's design notes. A Cu cup with its plug and Ni is 129.7 g, so it no longer
+  overloads anything. **But the balance can't stand under the outlet as the rig is built:** the chain carousel's
+  docking actuator is 6 mm behind the auger's outlet. So the cup is dosed in a cradle, by auger turns, and weighed on
+  the HR-202i beside the doser; a short cup goes back for a top-up. Dosing straight onto a balance needs the station
+  redesigned (powder-doser).
+- **One funnel per powder, none shared.** Each powder has its own labelled funnel on a stand. At the doser it sits in
+  a fork with its stem 4 mm over the cup's rim, so it never touches a cup. The Si funnel serves the Al cups, then the
+  Ni funnel takes its place for the Cu cups. Single-use paper funnels, as the lab used by hand, would also work with a
+  dispenser.
+- **Four cups fit round the rod,** at #222's four places, 75° apart, clear of the sealing-rod lever, 2.2 mm from each
+  other.
+- **The 2F-85 can't load them as it is.** At release its fingertips are 14.7 mm under the rim, and their outer corners
+  run 4–5 mm into the crucible wall ([`out/alloy_atomize_clearance.json`](out/alloy_atomize_clearance.json)); round 4's
+  clip did the same. With #222's −0.09 mm past the adapter, loading needs thin fingers, a 5/8 in cup, or an adapter
+  fitted after loading.
+- **The MiR stands 220 mm further out to work the rePowder.** Closer, the lid's knob and the container's handle fall
+  inside the UR10e's unreachable cylinder over its base.
+- **Taking the container off under argon is unchecked.** The training vents the chamber first.
+- **The sieving cell stands beside the rePowder,** while `setup_lab.py` still puts the AS 200 on tray F.
+
+**How much powder a run makes.** The yields are the Oct 27 bronze run's (k7m2q9, DAL #219): 91 % usable (under 250
+µm), and 17 % of the charge under 63 µm, the MIDI's cut ([`out/alloy_atomize_powder.json`](out/alloy_atomize_powder.json)):
+
+| Charge | Al in | Usable, < 250 µm | 20–63 µm | Runs for a 440 g MIDI print | Runs with the 55 mm kit (~30 g) |
+|---|---|---|---|---|---|
+| 4 cups, this route | 157 g | 143 g | 26 g | 17 | about 1 |
+| the 225 cm³ crucible filled as on Oct 27 (142.5 cm³ of metal) | 385 g | 351 g | 65 g | 7 | 1 |
+| the 400 cm³ crucible, the same fill (assumed) | 684 g | 624 g | 116 g | 4 | 1 |
+
+- **The 440 g** is the Ø170 mm cylinder filled to three times a 5 mm build (powder-doser#31, DAL #138 and #152). The
+  MIDI's 55 mm build-reduction kit prints coupons from about 30 g (DAL #138). Chapter 3's 30 mm build in the full
+  cylinder takes about 1 kg.
+- **The cups, not the crucible, limit a cup charge.** Four 2.5 in cups hold 59 cm³ of metal, a quarter of the
+  crucible. Cups as long as the Oct 27 rod pieces, about 125 mm, would roughly double the charge.
+- **Al atomizes coarser than bronze** at the same 40 kHz, so the Al fines are an upper estimate. The 63–250 µm powder
+  and the flakes can go back into a later run.
+- **DED takes the coarse cut.** About 70 % of the k7m2q9 powder by volume fell in 50–200 µm (DAL #219).
+
+## Round 5: the lab's own footage, the robot sieving and depowdering, a taller opening, MuJoCo, real cameras
+
+Asked for on [PR #318](https://github.com/vertical-cloud-lab/byu-vcl/pull/318) (2026-11-04). The four-cup charge, the
+HR-202i, the funnels and the powder sums are in [the alloy route](#the-alloy-route-start-to-finish-charge-cups-to-tensile-bar)
+above. Round 1's joined video now ends with the lab loaded and working, not taken apart.
+
+### The lab's own footage, cut into the atomize chapter
+
+Chapter 2 cuts to the lab's own clips and photos where the animation reaches the same moment. Each is badged
+REAL FOOTAGE or REAL PHOTO, with the alloy, the date and the source. None of it is Al-10Si, and each caption says what
+it is. The excerpts are in [`out/footage/`](out/footage/), with a [manifest](out/footage/manifest.json) of credits.
+
+| Beat | What it shows | Source |
+|---|---|---|
+| Four cups in | the Oct 27 charge: four 630 bronze rod pieces, 1,079.886 g on the balance | Gage Erickson, DAL #219 |
+| The melt | the bronze pieces round the sealing rod glowing, sinking into their own melt, then molten, through the furnace port | [`2brsz-90seg`](https://youtu.be/2brsz-90seg) at about 1:02, 4:36 and 5:28 (k7m2q9, Oct 27) |
+| The pour | the bronze jet on the tip of the W-coated CF plate, atomizing | [`2brsz-90seg`](https://youtu.be/2brsz-90seg) at about 8:17 |
+| The pour | an Al 6063 stream on a CF plate, which dripped rather than atomized that day | [`dTyuZmqYxHA`](https://youtu.be/dTyuZmqYxHA) at about 1:40 (Oct 8, DAL #159) |
+| The powder | a jar of the k7m2q9 bronze powder; the Oct 22 Al 4047 run c3k0n5 | DAL #219; Ronnie Guymon, DAL #159 |
+| Sieved | the bronze sieved: under 63 µm, 63–250 µm, and flakes over 250 µm | Gage Erickson, DAL #219 |
+
+The clips came through a lab Pi, because YouTube refuses the runner. The footage shows one thing the model doesn't:
+the Oct 27 rod pieces stand up past the crucible's rim, where the four cups sit 19 mm under it.
+
+### Sieving and depowdering without a person (chapters 3 and 4)
+
+| | Stills |
+|---|---|
+| 3. Sieve and print | [the cell](out/alloy_print_cell.png), [the tipper](out/alloy_print_tipper.png) |
+| 4. Cut and test | [the lance](out/alloy_workflow_lance.png), [the depowdering box](out/alloy_workflow_depowder.png) |
+
+![The tipper turns the No. 60 over the funnel](out/alloy_print_tipper.png)
+
+**The sieving cell** ([`sieve_station.py`](sieve_station.py), [notes](notes/alloy_print.md)) stands beside the rePowder in
+a downdraft enclosure, with a ground bar and straps. There is still one arm.
+- **A 12 mm handling tab on each sieve and on the pan.** The arm grips it as it grips the build plate's lug, so it can
+  lift one sieve off a nested stack.
+- **The Al set's own stand.** The set waits nested in reverse, with the No. 60 at the bottom and the pan on top.
+  - Taken off top first, the pieces build the shaker's stack pan first.
+  - Put back top first after the run, they end in storage order, ready for the next run.
+
+  So no rack and no second arm are needed.
+- **A tipper.** A C-shaped cradle on a horizontal shaft clamps a sieve by its frame and turns it over a funnel, and a
+  knocker taps the frame. A turntable puts the right one of five labelled jars under the funnel. The No. 325 and the
+  pan share the LPBF jar.
+
+It does what the lab does by hand in Gage Erickson's videos of 29 Oct 2026
+([`7pqPt9xbV8E`](https://youtu.be/7pqPt9xbV8E), [`sN0xzUjTDKE`](https://youtu.be/sN0xzUjTDKE),
+[`Dni35K9VWck`](https://youtu.be/Dni35K9VWck)): each sieve tipped over a white funnel into a glass jar, labelled.
+
+DAL #234 sets the cleaning rules:
+- one sieve set per alloy family;
+- tap the frame, not the cloth;
+- no brush on 63 µm or finer;
+- an ultrasonic bath before a set changes alloy.
+
+**Depowdering, in two stages** ([notes](notes/alloy_workflow.md)):
+- **In the MIDI's chamber,** the arm takes a suction lance from a post and vacuums the build while the platform rises.
+- **Then a depowdering box** between the MIDI and the 68FM-100. The plate's zero-point stud goes into a chuck on a
+  shaft, which turns it over and back while a vibrator shakes it, under argon. It works like Solukon's SFM-AT200
+  (plates to 300 × 300 × 230 mm). Solukon publishes no outer size, so the real unit may need about a metre more of
+  line.
+- **The wet bar** from the EDM is dipped in isopropanol and pulled out through an air knife.
+
+The tab, stand, tipper, enclosure, lance, box and rinse cup are our designs, at assumed sizes.
+
+### Could Kardex make the opening taller? Probably, but it isn't published
+
+[`kardex_tall.py`](kardex_tall.py) checks every machine that failed on height against a taller opening. Results are in
+[`out/tall_opening.json`](out/tall_opening.json), sources and caveats in [`notes/kardex_opening.md`](notes/kardex_opening.md).
+Media: [still](out/vlm_tall_opening_still.png), [GIF](out/vlm_tall_opening.gif), [MP4](out/mp4/vlm_tall_opening.mp4).
+
+![Three trays against 727.5 mm (blue) and 1000 mm (green), and the machines still too tall](out/vlm_tall_opening_still.png)
+
+- **Kardex publishes 727.5 mm.** Its order sheets for the XP 500 give 727.5 mm (2450 × 864) and 727 mm (3050 × 864),
+  plus 20 mm clear. No brochure, factsheet or product page gives a taller opening.
+- **ac-dev-lab has no opening height either.** #372 only notes that the 32.8 in floor-to-tray height can be changed
+  before ordering. #216 does hold the VLM vibration data asked about in round 4: Johnstone's `VBA01001.XLS`,
+  `organized_data.csv`, and the Johnstone and CMTS runs.
+- **A taller opening is plausible, from indirect evidence:**
+  - the Shuttle 1000 stores Euro pallets and mesh boxes on special trays, and a mesh box is 970 mm tall;
+  - Kardex says "other sizes possible on request";
+  - one used XP 500 is listed with a 996 mm opening, which probably takes about 856 mm of goods (an estimate).
+- **About 1000 mm would let these on:**
+  - the InssTek MX-Lab (835 mm);
+  - desktop LPBF: Mastrex MX100 (800 mm), Lasefinity Fusion X (860), and the Sharebot MetalONE and Kings DiMetal-100
+    (1000 each, so no margin);
+  - the N₂ generator (889);
+  - a Form 4 with its cover open (844).
+- **Still too tall at 1000 mm:**
+  - Meltio M450, 1400 mm;
+  - Instron 68SC-2, 1410 mm (the shortest single column is 1020);
+  - MPRINT, 1900 mm;
+  - the HIP, 1300 mm and 1100 kg, which is also over every Shuttle tray's rating.
+- **The MX-Lab isn't too heavy, but it is too concentrated.**
+  - Its 250 kg is half a strong XP 500 tray's 500 kg.
+  - On 0.47 m² it is 537 kg/m², 2.3 times that tray's rating per area. It would need a spreader plate, or a Shuttle
+    1000 pallet tray.
+  - Its base cabinet, argon and exhaust come with it.
+- **Wider trays carry less.** The strong XP 500 tray is rated 265 kg at 3050 mm wide, against 500 kg at 2450.
+- **Ask Kardex:**
+  - the tallest opening on the Shuttle 700 and 1000;
+  - the goods height of the pallet trays, and their point-load rating;
+  - whether a tall opening changes the 833 mm delivery height.
+
+### Stream cameras, built from the real parts
+
+![The camera unit: height, pan and tilt](out/instruments/stream_cam.gif)
+
+- **The unit is now robot-arms' CAD of the real parts** (robot-arms PR #10, from Raspberry Pi's drawings):
+  - a Pi 5 with its Active Cooler;
+  - an HQ Camera with the 16 mm C-mount lens (Ø39 × 50 mm, 22.2 × 16.7°);
+  - a Camera Module 3 Wide (102 × 67°).
+
+  The Wide sits on a nose level with the front of the lens. Beside the 39 mm lens, it would have the lens in its view.
+- **Height, pan and tilt are joints.** The mount is printed, after robot-arms PR #40's 2020 fixtures:
+  - a block slides up the post on M5 T-nuts;
+  - a yoke pans on an M6 bolt, up to 75° each way;
+  - the head tilts on two thumb knobs, from 15° up to 65° down.
+- **Fourteen tray units, all checked.**
+  - `rig_pose()` stands each post square to its tray and aims the head at its instrument.
+  - Every unit is clear of its tray's instruments and inside the rim (`tray_unit_gaps()`, in `out/services.json`).
+  - The highest top is 688 mm, under the 727.5 mm product height.
+- **The bay unit stands on a bar at 1650 mm, tilted 64° down.**
+  - It is 31.5 mm over Kardex's product envelope and 43 mm under tray F1.
+  - The Wide sees 92 % of the presented tray.
+  - It stays 197 mm clear of the UR10e over 320 of `reach.py`'s poses. The moves between those poses aren't checked.
+
+  ![Tray E at the opening](out/vlm_cameras_still.png)
+
+  [Details](notes/services.md#the-stream-cameras). The docking, cabling and tether chapters and `setup_lab` still
+  show round 4's box camera until they are re-rendered.
+- **The rail's energy chain follows the carriage** ([GIF](out/instruments/rail.gif)). Its fixed end is halfway along
+  the travel, and the bend moves at half the carriage's speed. `vlm_line`'s 17 m beam keeps a fixed chain.
+
+### Could MuJoCo find the collisions? Yes: `interference.py`
+
+[`interference.py`](interference.py) loads every animated model into MuJoCo and plays its tour through it, every
+frame. Details are in [`notes/interference.md`](notes/interference.md), every finding in
+[`out/interference.json`](out/interference.json), and the worst ones in
+[`out/interference_sheet.png`](out/interference_sheet.png).
+
+![The deepest overlaps left, each at its worst frame, the two pieces in colour and the overlap in red](out/interference_sheet.png)
+
+- **MuJoCo collides convex shapes only.** A cabinet or a chamber would look solid as its convex hull. So a part
+  under 97 % of its hull's volume is split into convex pieces with CoACD first.
+- **MuJoCo then proposes the hits, and the exact meshes confirm them.** MuJoCo's pipeline gives the candidates, FCL
+  confirms each on the parts' own triangles, and manifold3d measures the overlap's volume and thickness. Contacts the
+  model means to have are listed with a reason: a specimen in its grips, the EDM wire through the bars it cuts.
+- **It finds what the last review found by eye.** With the round-3 furnace door hinged the wrong way again, it finds
+  the door 83.6 mm into the housing from two frames into the swing.
+- **31 models in about 2.5 min** once the convex pieces are cached. MuJoCo's own part takes 0.1–0.5 ms a frame. The
+  OpenFlexure models need their OpenSCAD meshes, which this run didn't build.
+- **Eight faults fixed:**
+  - the wire EDM's door dropping through a solid base;
+  - the XRF's cup clipping the lid;
+  - the MPRINT, MetalONE, SnowPod and Meltio plates clipping their door frames;
+  - the LumenPnP's board leaving under the head;
+  - two CubXL tips dropped on the same spot;
+  - the packaging jar through the next jar.
+
+  Their tours are re-rendered.
+- **Left, 28 moving overlaps of 2 mm or more in 10 models.** They are listed in the notes with a reading of each:
+  - the Meltio's carriage into its Z column (30 mm; a kinematics choice);
+  - the plug press's ejector pin through its base (7.6 mm);
+  - the refitted Form 4's cover, PIP indenter, LumenPnP Z motor, PX500 holder, VHX head and Mastersizer vial,
+    2–6.7 mm each;
+  - the packaging bag in its foam pocket;
+  - the CubXL capper at CubOS's own travel height through the tip racks (4.6 mm). That one is worth checking on the
+    real machine.
+- **Kinematic, not physics.** The same MuJoCo model can later carry physics: the 2F-85 gripping a cup, the cut bars
+  dropping into the tank, the plug's press force. Granular powder is a job for a DEM code (LIGGGHTS, Yade), not
+  MuJoCo.
+- **`collide.py` is a different check.** Another session wrote it to test the UR arm's own moves against the lab, with
+  FCL and RRT-Connect planning.
+
+## The workflow
+
+An example run, with every move a real one:
+
+1. **Tray B (powder dosing) comes down.** The extractor pulls it off its supports and carries it down. The shutter at
+   the back of the bay opens to let it through and closes behind it.
+2. **An empty 20 mL vial into the multi-doser.** The UR10e picks it from the rack at the front of the tray, pointing
+   down. It slides the vial level into the cup on the rig's 100 g load cell, under the station, then parks clear.
+3. **Dose.** The carousel indexes powder module 6 to the station: 8 chain links per module, run the way powder-doser's
+   leakage study says. The module is drawn green, as powder-doser's own movie marks one. The Actuonix P16 lifts the
+   electronics carriage and docks it with the magnet on. The docked module rides inside the loop, boxed in by the
+   other twelve, so those are drawn see-through for the dose. The station tilts the module 30°, cap end up, and turns
+   the auger two revolutions while the vial fills and the load cell counts 0.512 g. Then it tilts back, reverses one
+   turn at rest and undocks, as in the station's protocol in powder-doser PR #185.
+4. **The vial waits on the robot.** The arm stands the vial in a holder on the MiR's cabinet while the VLM swaps
+   trays. Tray B goes back to its slot and its power.
+5. **Tray A (liquid handling) comes down.** The CubXL's gantry parks at the back. The arm puts the vial in the free
+   seat of the CubXL's rack.
+6. **Liquid, then storage.** The CubXL brings its pipette over the vial and adds the liquid. Tray A goes back up with
+   the vial in it, to a slot that has power, so the CubXL can keep working while it is stored.
+
+Every approach, grasp and retreat is a straight line of the gripper's grasp point, solved with the UR's inverse
+kinematics every frame ([`robot.py`](robot.py)). A move that would need a flip of the arm fails before anything
+renders. The multi-doser moves through its own `layout.placements(State(...))`, so the chain, the carriages, the
+station's linkage, the tilt and the auger turn are its real kinematics.
+
+## The models, one by one
+
+| In the scene | Model | Where it comes from |
+|---|---|---|
+| Kardex Shuttle XP 500 | [`vlm.py`](vlm.py) | **Built here from Kardex's figures** (below). Kardex publishes no CAD, BIM or Revit file for the Shuttle |
+| Multi-doser: chain carousel v2, 13 powder modules, its station, load cell, vial and electronics board (tray B) | [`carousel.py`](carousel.py) over [`multidoser/`](multidoser/) | **The lab's own latest design**, powder-doser [PR #185](https://github.com/vertical-cloud-lab/powder-doser/pull/185) (#128). `multidoser/{params,parts,layout,kinematics}.py` are verbatim copies of `cad/chain-carousel-v2/` at `1c135e0`, its head. Its three reference STEPs (Sam's Oct 13 plate and electronics carriage, the threaded auger, the cap) are fetched at that commit and SHA-256 checked. On the tray its electronics board stands beside the frame, turned 90° |
+| Universal Robots UR10e with a Robotiq 2F-85 gripper | [`ur_arm.py`](ur_arm.py) | **Vendor descriptions**: UR's `Universal_Robots_ROS2_Description` at `81f7c9f` (visual meshes and the calibrated kinematics; FK matches UR's DH table to 3e-7 mm) and PickNik's `ros2_robotiq_gripper` at `a74d007` (2F-85 meshes and linkage). Fetched and hash-checked at run time. The UR3e and UR7e are there too, for the comparison |
+| MiR250 mobile base, with a cabinet for the UR control box | [`props.py`](props.py) | MiR's published size, 800 × 580 × 300 mm; the cabinet's height is a layout choice (it puts the arm's base at 800 mm, under the 833 mm table) |
+| Opentrons OT-2 (tray A) | Opentrons' reference STEP, "Detailed" | **Vendor CAD**, from [github.com/Opentrons/ot2](https://github.com/Opentrons/ot2), fetched and SHA-256 checked by [`lab_models/vendor.py`](lab_models/vendor.py) |
+| CubXL (tray A) | `equipment.cubxl()`, in four pieces | The lab's CadQuery model from #199: the Genmitsu PROVerXL 4030 V2 frame from SainSmart's spec, the rest from lab photos. Split here into frame, gantry, carriage and tools so the gantry moves over its 400 × 300 × 110 mm travel |
+| Bambu Lab H2D and A1 mini (tray C) | `equipment.h2d()`, `equipment.a1_mini()` | The lab's CadQuery models from #199, from Bambu's spec pages and outline drawing. Bambu publishes no CAD |
+| AMAZEMET rePowder atomizer and its utilities, beside the VLM | [`repowder/model.py`](repowder/model.py) | The CadQuery model behind the rePowder training animations (#124) |
+| Vials and the vial rack | [`props.py`](props.py) | The multi-doser's own 20 mL vial (28 × 61 mm, from its `params.py`); a printed rack like the CubXL's |
+
+[`lab_models/`](lab_models/) is a verbatim copy of `lab-models/cad/{common,equipment,labware,vendor}.py` from #199's
+branch at `7fc56b6`, and [`repowder/model.py`](repowder/model.py) one of `atomizer-training/viz3d/model.py` from #124's
+branch at `7757443`, so each model has one source. Vendor CAD is downloaded into `.cache/` (the carousel's references
+into `multidoser/reference/`) and never committed.
+
+## The Kardex Shuttle XP 500
+
+The front was rebuilt against Kardex's own Shuttle 500 renders and fact sheet, and against Kardex's order sheet for
+this configuration: "Kardex Shuttle POF Version 16", SHUTTLE-01-500-2450x864. That sheet is hosted by the dealer
+StoreMoreStore ([VLM option 1 specification sheet](https://products.storemorestore.com/hubfs/StoreMoreStore/Kardex-Vertical-Lift-Module/VLM-Option-1-96x34-Light-Specification-Sheet.pdf)).
+
+| | Value | Source |
+|---|---|---|
+| Tray | 2450 × 864 mm | #53: 96.46 × 34.00 in |
+| Module footprint | 2780 × 3074 mm | Relevator Group's listing of XP 500-2450x864 units; the order sheet gives 2780 × 3073 |
+| Height | 3950 mm | #53: "less than 13'"; Shuttle heights step 100 mm from 2550 mm |
+| Access table | 833 mm above the floor | Order sheet: front access table height TH1 |
+| Presented tray | underside at 854 mm, floor top at 855.5-856.5 mm | Order sheet: TH1 + 21, and TH1 + 22.5 / 23 / 23.5 for light / medium / strong trays |
+| Product height through the opening | 727.5 mm, plus 20 mm clearance | Order sheet |
+| Opening | 2500 mm between the side posts; header at 1700 mm | Kardex renders and a real 2450 × 864 unit (about tray + 50 mm); the mouth reads 850-870 mm tall |
+| Look | RAL 7035 panels in about 490 mm bands; white header with the logo and an LED light under it; anthracite posts; slatted side walls in the bay; a blue (RAL 230 60 15) cover under the tray with the LED-Navigator strip; the OPTIC panel on the right post | Order sheet (colours, options); Kardex renders |
+| Safety shutter | at the **back** of the bay, between the presented tray and the shaft; it closes while the extractor moves | Kardex: the operator works on one tray "while the extractor prepares the next tray behind the shutter doors" |
+| Tray supports | 25 mm pitch (drawn every 100 mm) | Kardex: 25 mm storage grid |
+| Speeds | up to 2.0 m/s vertical, 0.7 m/s in and out | Kardex Shuttle XP brochure; the animation keeps to these |
+| Trays | strong 1080 lb, medium 794 lb, light 502 lb; powered in a slot and at the opening, not in transit | #53 |
+
+**"The large bay opening".** For the Shuttle 250/500, Kardex's documents list no opening called "large". The largest
+is the full-width front opening above, which is what the model now has: 2500 mm wide, at an 833 mm table, taking 727.5 mm
+of product height. Two other options exist. Up to six openings can go on the front and rear. With full tray
+extraction, the tray is pulled out in front of the unit onto a table, for crane loading. Full tray extraction would
+put the whole tray under an open sky for the arm. Worth asking Kardex about if the arm has to reach the back of every
+tray.
+
+Still layout choices, not published: the front/back split of the columns, the slots the trays use, the extractor's
+details (a platform on four guide rails, a belt drive on the roof frame), and the console's exact size.
+
+## The arm: why a UR10e
+
+[`reach.py`](reach.py) puts each arm on the MiR250 where the animation parks it: square to the opening, 30 mm off the
+cover's lip, with its base at 800 mm. It then asks the arm's own inverse kinematics three things:
+- can the arm reach the four seats the workflow uses?
+- how much of the presented tray can it reach pointing straight down?
+- how close do its elbow, forearm and wrists come to the opening's header (at 1700 mm)?
+
+| | Reach, payload | Workflow seats reached (of 4) | Tray reached, gripper down, 100 mm up | Deepest point | Closest approach to the header |
+|---|---|---|---|---|---|
+| UR3e | 500 mm, 3 kg | 2 | 3 % | 100 mm | 496 mm |
+| UR7e | 850 mm, 7.5 kg | 4 | 31 % | 500 mm | 327 mm |
+| **UR10e** | 1300 mm, 12.5 kg | 4 | **83 %** | **800 mm** (the tray is 864 deep) | 118 mm |
+
+No arm ever has to go over the header to reach a point. The header limits none of them, so access decides:
+- The UR10e reaches the tray's full depth across most of its width.
+- The UR7e reaches only the front half near the middle, so everything it handles has to sit along the front edge.
+- The UR3e barely reaches past the lip.
+
+The cost of the UR10e is clearance: its closest approach to the header is 118 mm, against the UR7e's 327 mm.
+
+## The arm's collisions: checked, and planned round
+
+Sterling, on PR #318: "the robot arm didn't respect collisions with itself, at all. Passed through the MiR250 and
+collided with the vial holder." It did. [`robot.py`](robot.py)'s joint moves interpolated straight from one joint
+pose to the next, and nothing checked them against anything. The IK also took the nearest of the UR's eight
+solutions every time. For the reach into the multi-doser, that put the elbow down through the MiR's cabinet and the
+VLM's front panel. Over the holder on the MiR, it put the upper arm through the holder.
+
+[`collide.py`](collide.py) checks the arm with FCL, the collision library MoveIt uses, on the meshes as drawn:
+- the arm against itself, every pair of links that isn't adjacent, with the gripper as one body;
+- the arm, gripper and what it holds against everything visible: the MiR it rides on, holders, racks, trays, machines,
+  the VLM, the other arm.
+
+A joint move now takes the nearest IK solution that is clear. If the straight joint line hits something, it is
+planned round it with RRT-Connect, then shortcut, and a detour may not lift the arm more than 150 mm over the move's
+higher end. `ARM_AUDIT=1` runs a clip without rendering and checks every frame, line moves too, writing
+`out/collisions/<clip>.json`. The details are in [`notes/arm_collisions.md`](notes/arm_collisions.md).
+
+| Clip | Frames in collision, as it was | With the planner | |
+| --- | --- | --- | --- |
+| Round 2 workflow (`animate.py workflow`) | 130 of 1140 | **0** | re-rendered; [on YouTube](https://www.youtube.com/watch?v=255o9IVEOEs) |
+| Warehouse (`warehouse.py`) | 216 of 1138 | **0** of 1120, the MiR bodies checked too | re-rendered: one target post moved, three routes changed ([notes](notes/warehouse.md)); [on YouTube](https://www.youtube.com/watch?v=3IrSB9-meN8) |
+| Lab set up from scratch (`setup_lab.py`) | | 0 of 1376 | not re-rendered: its two joint moves were already clear |
+| Alloy route 1, vacuum-press version (`alloy_charge.py`) | | **0** of 2752 | rendered, [below](#the-plug-pressed-home-under-vacuum); [on YouTube](https://www.youtube.com/watch?v=UjGb47I3fy0) |
+| Alloy route 1, the charge, merged (`alloy_charge.py`, the doser and the vacuum press in one) | round 5's doser version: 59 of 1875 | **8** of 1926 | re-rendered (the long-form round, below). Left: four 2-frame brushes of the open left fingertip on the second Al cup as the first is taken from the rack |
+| Alloy route 2, atomize (`alloy_atomize.py`) | 257 of 1421 | **10** of 1586 | re-rendered. Left: two joint moves the planner can't route take the upper arm through the container's cradle on the MiR (9 frames), and one fingertip frame on the lever |
+| Alloy route 3, sieve and print (`alloy_print.py`) | 543 of 2372 | **97** of 2426 | re-rendered; the sieving cell is clear. Left: all in 4/5, the jar carried in through the Aconity's 280 mm door: no path found, so the forearm and wrist pass through the base cabinet's top and the chamber wall |
+| Alloy route 4, cut and test (`alloy_workflow.py`) | 539 of 2068 | **60** of 2101 | re-rendered. Left: 57 frames taking the bar off the wire EDM's catch shelf, which no pose can do as modelled (an ejector pin to lift the bar is the fix, in the notes), and 3 single-frame brushes |
+
+The four round-5 chapters were rendered by another session while the check was being written. What the planner
+leaves in them are poses the scripts ask for, where every IK solution touches something, and line moves through
+machines. They need new poses, as `alloy_charge.py`'s needed (aiming the level grasps, the plug set at the rack);
+`ARM_AUDIT=1` shows which. If a line move would flip the arm in the IK branch a clear joint move chose, `robot.py`
+now goes there by a planned joint move instead of stopping the render, which `alloy_print.py` needed.
+
+## The plug pressed home, under vacuum
+
+**Rendered on its own** as `out/alloy_charge_vacuum.*` (219 s, two Al and two Cu cups): [GIF](out/alloy_charge_vacuum.gif),
+[MP4](out/mp4/alloy_charge_vacuum.mp4), [on YouTube](https://www.youtube.com/watch?v=UjGb47I3fy0) (unlisted).
+This was the first version of the vacuum press in `alloy_charge.py`. Since the long-form round it is merged with round 5's
+doser version (the HR-202i, one funnel per powder, four cups a run) into the one chapter 1 that the alloy route
+uses: [`out/mp4/alloy_charge.mp4`](out/mp4/alloy_charge.mp4).
+
+![The die cut open during the press stroke: 3.1 of 3.2 t, 0.8 mbar](out/alloy_charge_vacuum_press.png)
+
+Also from Sterling: the plug "is supposed to be pushed in all the way such that the powder gets compressed to a
+certain tonnage. Also, it would be better if it were a vacuum press." Neither was true before. The doses stood 18 mm
+(Si) and 25 mm (Ni) below where the plug is set, so pressing it flush compacted nothing. The press was an assumed
+electric one, open to the air.
+
+- **The press** ([`vacuum_press.py`](vacuum_press.py), [notes](notes/vacuum_press.md)) is a **Specac Atlas Autotouch
+  15T**: an automatic hydraulic press, 425 × 405 × 640 mm, 95 kg, which runs programs of up to ten steps from one
+  Start ("pump up to", "maintain", "release"). It is drawn from Specac's published figures and its own videos
+  ([`BH___JpLYeE`](https://www.youtube.com/watch?v=BH___JpLYeE), [`b2jWgsfSmMQ`](https://www.youtube.com/watch?v=b2jWgsfSmMQ),
+  and [`ehN10mMm-T8`](https://www.youtube.com/watch?v=ehN10mMm-T8) for the evacuable-die procedure). The evacuable
+  die round F1, its punch with an O-ring, the ejector pin and the shuttle are ours. So are the pump, the two valves
+  and the gauge, as drawn. The press's own clip: [GIF](out/vacuum_press.gif),
+  [MP4](out/mp4/vacuum_press.mp4), [on YouTube](https://www.youtube.com/watch?v=UGTGpEfyUeQ).
+- **The fill** ([`alloy_press.py`](alloy_press.py), [`out/alloy_recipe_pressed.json`](out/alloy_recipe_pressed.json)).
+  The bore is tapped full to the set plug, 46.1 mm up. The alloying powder goes in first, then a top-up of the cup's
+  own metal, each run keeping its 10 wt %:
+
+  | Run | Alloying powder | Top-up | Tapped → pressed | Charged cup |
+  | --- | --- | --- | --- | --- |
+  | Al-10Si (5N Al cups) | 3.92 g Si (unchanged) | 3.91 g AlSi10Mg, itself 10 % Si | 52 → 63 % dense | 43.1 g |
+  | Cu-10Ni (OFE Cu cups) | 14.62 g Ni (was 12.97) | 14.81 g Cu | 55 → 66 % dense | 146.2 g |
+
+- **The cycle:**
+  1. The die is pumped below 1 mbar through its port, so no air is sealed into the compact (DAL #140: compacted
+     powder with air in it can throw molten metal out of the cup).
+  2. The press drives the plug 8.0 mm to flush on a **3.2 t (31.4 kN)** program. That is 1.05 t on the powder plus
+     #222's 2 t reserve for the plug's press fit. F1 stops the plug at flush, so the dose, not the force, sets the
+     final density.
+  3. The die is vented with dry Ar.
+- **The arm.** The plug goes into the cup at the rack, not at the press. A gripper pointing down at the press's
+  working height, about 450 mm above the tray, puts the wrist into the VLM's opening, and the gripper can't follow
+  the plug into the die's 31.8 mm bore anyway. The cup, its plug riding in the mouth, goes onto the raised ejector
+  pin, which lowers it into F1. The punch is handled level by its flange, from a rest beside the press. Level
+  grasps are aimed along whichever direction the checker finds clear, nearest the line from the arm's base.
+- **Open:**
+  - the Heckel line behind the set point is #222's E4 estimate for AlSi10Mg, and Si and Ni aren't calibrated;
+  - a Si layer is harder to compact, so check the plug reaches flush on the first cups;
+  - whether the Autotouch takes a remote start;
+  - the force to push a pressed cup out of F1.
+
+## Things the model shows
+
+- **The multi-doser is 3.5 mm too tall for the opening.** The chain carousel v2 stands 731 mm on its levelling feet,
+  and Kardex's limit is 727.5 mm of product height plus 20 mm clearance. Turning its four levelling feet down by 4 mm,
+  or a 3-4 mm shorter post, would make it pass Kardex's height check. The animation draws it as designed.
+- **The station's free fall is short.** The station drops the powder about 25 mm from the auger's outlet into the
+  D-cut funnel, behind the rig's front plate. So a camera sees the dose as the tilt, the vial filling and the load
+  cell's count, not as a falling stream.
+- **The vial is captured between its cup and the funnel.** In PR #185 the funnel's spout sits about 5 mm inside the
+  vial's mouth, and the vial stands in an 18 mm cup. An arm can't lift it straight out; here it slides the vial
+  forward a few millimetres while lifting it, which the real funnel would not allow. A robot-served station needs the
+  funnel to clear the mouth, or a cup open at the front.
+
+## Running it
+
+```bash
+pip install cadquery pyvista trimesh pycollada pillow numpy scipy python-fcl mujoco coacd psutil   # plus ffmpeg, gifsicle, xvfb
+pip install google-api-python-client google-auth google-auth-oauthlib google-auth-httplib2   # for youtube_upload.py, longform.py upload
+# round 16: the long-form from this round's renders, then round 15's clips recovered from its YouTube copy
+python3 r15_recover.py fetch --proxy socks5h://127.0.0.1:1080   # through `ssh -D 127.0.0.1:1080 -N -f <user>@<pi>`
+python3 r15_recover.py cut                                # -> out/r15/ (53 clips), out/r15_recovered.json
+python3 render_r16.py queue setup workflow waste ...      # this round's renders -> out/r16/ (runner_guard slots)
+python3 r16_gifs.py setup_lab waste_clip ...              # a clip rendered for the long-form -> its GIF and still
+python3 longform.py audit && python3 longform.py && python3 longform.py upload   # LONGFORM_HD_DIR=r16,r15 by default
+xvfb-run -a python3 animate.py assembly loading workflow disassembly full   # full joins the first three MP4s
+PREVIEW=1 xvfb-run -a python3 animate.py workflow        # the last frame of each sub-step, to /tmp
+python3 reach.py                                          # the arm study -> out/reach.json
+xvfb-run -a python3 tour.py                               # round 3: every instrument -> out/instruments/, out/mp4/instruments/
+python3 tour.py gallery join table                        # the gallery, the joined tour MP4, out/instruments.json
+python3 ups.py                                            # each tray's UPS, sized -> out/ups.json (notes/ups.md)
+python3 ups.py figure; xvfb-run -a python3 ups.py lineup  # out/ups_sizing.png, out/ups_lineup.png
+python3 waste.py                                          # the waste streams -> out/waste_model.json, out/waste_streams.png
+xvfb-run -a python3 waste_station.py                      # the waste station's still -> out/waste_station_still.png
+xvfb-run -a python3 line.py                               # the trays D-F, the line and the rail -> out/vlm_line.gif
+python3 charge.py                                         # the alloy route's charge recipe -> out/alloy_recipe.json
+xvfb-run -a python3 alloy_charge.py                       # chapter 1 with the vacuum press -> out/alloy_charge_vacuum.*
+python3 alloy_press.py                                    # the pressed fill per run -> out/alloy_recipe_pressed.json
+xvfb-run -a python3 vacuum_press.py                       # the vacuum press's own clip -> out/vacuum_press.gif, mp4
+ARM_AUDIT=1 xvfb-run -a python3 alloy_charge.py           # no render: every frame collision-checked -> out/collisions/
+ARM_AUDIT=1 ARM_NO_PLAN=1 ARM_AUDIT_TAG=before xvfb-run -a python3 animate.py workflow   # the old straight joint moves
+ARM_AUDIT=1 ARM_AUDIT_SNAP=540,930 xvfb-run -a python3 animate.py workflow   # those frames drawn, collisions in red
+xvfb-run -a python3 alloy_atomize.py                      # 2/4: melted and atomized in the rePowder
+xvfb-run -a python3 alloy_print.py                        # 3/4: sieved, printed in the Aconity MIDI
+python3 alloy_route.py                                    # the four (4/4 is alloy_workflow.py) -> out/mp4/alloy_route.mp4
+```
+
+Fitting the models to footage (see [above](#the-models-against-real-footage)):
+
+```bash
+python3 frames.py storyboard VIDEO_ID; python3 frames.py grab VIDEO_ID 180 219   # through the Pi -> .frames/
+python3 frames.py grid .frames/VIDEO_ID_0180.0.jpg 50                           # a gridded copy, to read picks off
+python3 register.py solve polisher                       # cameras and free dimensions -> refs/polisher/fit.json
+xvfb-run -a python3 register.py draw polisher            # the model over each frame -> out/register/polisher/
+```
+
+Round 4:
+
+```bash
+xvfb-run -a python3 tour.py vhx xrf sieve openflexure_array cubxl_corrosion ded packaging hip tray_dock stream_cam
+xvfb-run -a python3 services.py services hookups baycam cabling   # -> out/vlm_services.*, vlm_hookups.*, bay_camera.*, vlm_cabling.*
+python3 services.py clearance json join                          # the docks against the lift; services.json; vlm_services_all.mp4
+xvfb-run -a python3 alloy_workflow.py                                   # -> out/alloy_workflow.*
+xvfb-run -a python3 warehouse.py; python3 warehouse.py sway compare     # the warehouse; out/rail_vs_amr.{json,png}
+python3 setup_lab.py fit; xvfb-run -a python3 setup_lab.py              # check every tray item, then the set-up movie
+python3 maintenance.py                                                  # the rail against the opening -> out/maintenance_access.{png,json}
+```
+
+Round 5:
+
+```bash
+xvfb-run -a python3 alloy_charge.py                # chapter 1: the HR-202i, a funnel per powder, the vacuum press (CHARGE_FXAA=1 VIZ3D_FPS=10 as rendered)
+xvfb-run -a python3 alloy_atomize.py               # chapter 2: renders the 3-D to out/clean/, then cuts the footage in
+python3 alloy_atomize.py splice                    # re-cut the footage without re-rendering; 'powder' prints the sums
+xvfb-run -a python3 alloy_print.py; xvfb-run -a python3 alloy_workflow.py   # chapters 3 and 4
+python3 alloy_route.py                             # join the four -> out/mp4/alloy_route.mp4
+python3 longform.py plan; python3 longform.py       # everything in one video, with chapters -> out/mp4/vertical_lab_longform.mp4
+python3 longform.py upload                         # unlisted on YouTube, the chapter timestamps in its description
+python3 kardex_tall.py json; xvfb-run -a python3 kardex_tall.py   # out/tall_opening.json; the taller-opening scene
+python3 interference.py                            # every model's tour through MuJoCo -> out/interference.json
+xvfb-run -a python3 interference.py sheet          # out/interference_sheet.png
+xvfb-run -a python3 tour.py stream_cam rail        # the camera unit and the rail
+```
+
+Round 7:
+
+```bash
+python3 route_dag.py                                   # DAL's function network, a stage per alloy chapter -> out/dag/, out/mp4/dag/
+python3 setup_lab.py fit                               # every tray (UPS, dock plate, cameras) and every MiR dock checked
+VIZ3D_FPS=6 xvfb-run -a python3 setup_lab.py           # the set-up movie, two Shuttles (as rendered: 6 fps)
+xvfb-run -a python3 tour.py glovebox_tray tensile_h hardness cnc fumehood fumehood_tray storage vhx
+xvfb-run -a python3 alloy_characterize.py              # chapter 5, the trays at work (VIZ3D_FPS=10 as rendered)
+xvfb-run -a python3 ot2_corrosion.py                   # the OT-2 as the CubXL's liquid station
+python3 alloy_route.py; python3 longform.py; python3 longform.py upload
+```
+
+Round 8 (at most three scene jobs at once on a 4-core, 16 GB runner: see `runner_guard.py`):
+
+```bash
+python3 runner_guard.py watch &                        # memory log and watchdog; then every scene job through a slot:
+python3 runner_guard.py slot --mem 6500 --label ch2 -- env VIZ3D_FPS=6 xvfb-run -a python3 alloy_atomize.py
+VIZ3D_FPS=6 xvfb-run -a python3 alloy_print.py         # chapter 3
+VIZ3D_FPS=6 xvfb-run -a python3 alloy_powder.py        # chapter 4, the powder checked
+VIZ3D_FPS=6 xvfb-run -a python3 alloy_workflow.py      # chapter 5
+VIZ3D_FPS=6 xvfb-run -a python3 alloy_prep.py          # chapter 6, sample prep
+VIZ3D_FPS=6 xvfb-run -a python3 alloy_characterize.py  # chapter 7
+VIZ3D_FPS=6 xvfb-run -a python3 scaleup.py             # the EOS M 400-4 and the Meltio cell
+python3 timelapse.py model; VIZ3D_FPS=6 xvfb-run -a python3 timelapse.py   # the finale and its throughput model
+VIZ3D_FPS=6 xvfb-run -a python3 animate.py workflow    # the 9:09 clip, in the whole lab
+ARM_NO_PLAN=1 VIZ3D_FPS=6 xvfb-run -a python3 setup_lab.py   # the set-up, every round-8 model (3.5 GB without the planner)
+VLAB_ONLY_TRAYS=DEKL ARM_AUDIT=1 xvfb-run -a python3 alloy_characterize.py   # an audit with only the trays the arm works at
+xvfb-run -a python3 tour.py mount_press cnc polisher sem vhx nanoindenter pip hardness furnace xrd xrf
+python3 longform.py warm; python3 longform.py; python3 longform.py upload
+```
+
+Putting them on YouTube (needs `YOUTUBE_UPLOAD_TOKEN_PICKLE_B64`; see [`youtube/README.md`](../youtube/README.md)):
+
+```bash
+python3 youtube_upload.py plan      # every MP4 whose current bytes aren't on the channel, with its title
+python3 youtube_upload.py upload    # upload them unlisted, recording each in out/youtube.json as it lands
+python3 youtube_upload.py table     # out/youtube.md: every MP4 and its video
+```
+
+Under load, Xvfb sometimes drops the render window ("bad X server connection", "Render window is not current"). Retrying
+the same command has worked every time. Render one instrument per process with `PREVIEW=1`.
+
+**Render style** (`scene.py`, after review on PR #318):
+- **Hard edges stay hard.** The meshes are welded, so plain smooth shading averaged the normals across every crease:
+  flat panels faded from white to grey and discs turned into pillows. Normals are now split at 35°.
+- **Specular follows each material's shininess on a curve.** Paint and plastic are close to matte. Metal and glass
+  keep a small, tight highlight.
+- **The key light comes from the upper left** with a weaker headlight, so a box reads in three tones.
+- **The instrument tours put a soft contact shadow under each machine** (`tour.contact_shadow`).
+- **Screen-space ambient occlusion was tried and left out.** It was eight times slower per frame on the runner, for
+  little visible difference.
+
+`openflexure.py` reads the OpenFlexure meshes from `.cache/openflexure/`; [`openflexure/README.md`](openflexure/README.md)
+says how to make them.
+
+The first run downloads the OT-2, UR, Robotiq and carousel files and tessellates everything, which takes a few
+minutes. The meshes are cached in `.cache/` until a source file changes. Run the chapters one `xvfb-run` at a time,
+or give each one its own display number (`xvfb-run --server-num=N`): four `-a`s started together can race for the
+same display. `VIZ3D_SIZE=1920x1080 VIZ3D_FPS=30` gives a 1080p MP4 with every move taking the same time.

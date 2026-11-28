@@ -1,0 +1,41 @@
+{
+ "name": "instruments/tray_dock",
+ "fps": 15,
+ "n_frames": 244,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/5",
+   "caption": "In its slot the tray's half is held against the dock's: mains, Ethernet, compressed air, N2 and chilled water are live through two CombiTac frames, the electrical one above the fluid one.",
+   "start_frame": 0,
+   "end_frame": 55
+  },
+  {
+   "label": "2/5",
+   "caption": "Before the tray moves: the contactor opens (the tray's UPS takes the load), air, N2 and water shut and vent, then the crank turns 180 deg and the dock pulls back 75 mm. The LMFB pair breaks first.",
+   "start_frame": 56,
+   "end_frame": 111
+  },
+  {
+   "label": "3/5",
+   "caption": "The extractor pulls the tray out, past the dock, whose align pins are now 19 mm clear of the tray's side.",
+   "start_frame": 112,
+   "end_frame": 149
+  },
+  {
+   "label": "4/5",
+   "caption": "At the opening an identical dock waits in the bay's side wall. The tray stops in front of it ...",
+   "start_frame": 150,
+   "end_frame": 187
+  },
+  {
+   "label": "5/5",
+   "caption": "... the align 4 pins find their cones and the floating plate follows; PE makes first and the LMFB pair last, and only then does the contactor close and the valves open.",
+   "start_frame": 188,
+   "end_frame": 243
+  }
+ ]
+}

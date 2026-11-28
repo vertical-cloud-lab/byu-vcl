@@ -1,0 +1,9 @@
+{
+ "doser_drop_v10.mp4": {"source": "vertical-cloud-lab/powder-doser PR #185 @ c72c5bc, cad/chain-carousel-v10/renders/v10/drop_v10.mp4",
+   "what": "Chain carousel v10 (Sam's note of 2026-11-19): the station inside the loop, the beaker's rim 18 mm under the auger's exit (v9: 32 mm, v7: 154 mm). A CAD render; nothing is built.",
+   "url": "https://github.com/vertical-cloud-lab/powder-doser/blob/c72c5bc/cad/chain-carousel-v10/README.md"},
+ "doser_overview_v10.mp4": {"source": "vertical-cloud-lab/powder-doser PR #185 @ c72c5bc, cad/chain-carousel-v10/renders/v10/overview_v10.mp4",
+   "what": "Chain carousel v10, overview. powder-doser keeps v7 as its main version; v10 is a variation on v9.",
+   "url": "https://github.com/vertical-cloud-lab/powder-doser/blob/c72c5bc/cad/chain-carousel-v10/README.md"},
+ "note": "Fetched in round 15 (PR #318, 2026-11-23) as the doser's latest results. This lab's animations still use v5 (353dae7) with round 14's dose post and draft shield (a 45 mm fall); moving them to v10 is open."
+}

@@ -1,0 +1,25 @@
+{
+ "script": "animate.py",
+ "args": [
+  "workflow"
+ ],
+ "seconds": 214.5,
+ "arms": {
+  "vlm_workflow:unit0ur": {
+   "scene": "vlm_workflow",
+   "prefix": "unit0ur",
+   "model": "ur10e",
+   "mir_group": "unit0_cab"
+  },
+  "vlm_workflow:unit1ur": {
+   "scene": "vlm_workflow",
+   "prefix": "unit1ur",
+   "model": "ur10e",
+   "mir_group": "unit1_cab"
+  }
+ },
+ "frames": {
+  "vlm_workflow:unit0ur": 1446,
+  "vlm_workflow:unit1ur": 1446
+ }
+}

@@ -1,0 +1,172 @@
+[
+ {
+  "item": "Force/torque sensor between flange and 2F-85, one per arm",
+  "maker": "Robotiq",
+  "part_no": "FT 300-S",
+  "qty": 2,
+  "unit_usd": null,
+  "source": "https://blog.robotiq.com/hubfs/Product-sheets/FT%20300/ur/Product_sheet-FT300S_FC_EN.pdf",
+  "for": "reading 'snug' on graphite: Mz noise 0.003 N m against the UR10e's own +-0.5 N m torque accuracy (notes/crucible_automation.md); not drawn on the arms (it adds about 37 mm)",
+  "status": "to buy"
+ },
+ {
+  "item": "Force/torque sensor (alternative), 8 N m calibration",
+  "maker": "ATI Industrial Automation",
+  "part_no": "Axia80-M20",
+  "qty": 0,
+  "unit_usd": null,
+  "source": "https://www.ati-ia.com/Library/documents/Axia80_Flyer.pdf",
+  "for": "alternative to the FT 300-S: Tz resolution 0.005 N m, 20 or 8 N m ranges (ATI flyer)",
+  "status": "to buy"
+ },
+ {
+  "item": "Needle gripper head, 4 needles 0.8 mm, 3 mm stroke, 30 deg, 4-6 bar",
+  "maker": "Schmalz",
+  "part_no": "SNG-M 4 0.8 (10.01.29.00001)",
+  "qty": 4,
+  "unit_usd": null,
+  "source": "https://media.schmalz.com/MAM_Library/Dokumente/Datenblatt_Artikel/1/100/10012900001/eea1348ed8b8_Datasheet_Article_10.01.29.00001_en-EN.pdf",
+  "for": "the needle tool: lifts the top ring, side tube and bottom ring by their top faces",
+  "status": "to buy"
+ },
+ {
+  "item": "Needle tool body: hub r 58, stem, 28 mm handle",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "atom_crucible_tools.nt_meshes",
+  "for": "carries the four needle heads; 1-2 mm off the coil",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Solenoid valve, air line and 4-6 bar supply for the needle heads",
+  "maker": null,
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "Schmalz datasheet (operating pressure)",
+  "for": "the needle tool on MiR250 1",
+  "status": "to buy"
+ },
+ {
+  "item": "Crucible gripper: top plate, three jaws with 2 mm silicone pads, wedge driven by the 2F-85's squeeze",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "atom_crucible_tools.cg_meshes",
+  "for": "holds the crucible's outside, top 38 mm, 1.5 mm jaw stroke; inside r 46 (coil at r 60)",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Tweezers tool: two 1.5 mm jaws with PEEK tips on a flexure handle",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "atom_crucible_tools.tw_meshes",
+  "for": "the 16 mm nozzle into the holder",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Nut key: 300 mm bar, gear head, turning socket with six pins and a captive cup",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "atom_crucible_tools.key_meshes",
+  "for": "holds and turns the 60 x 12 mm graphite nut through the chamber's door; keeps the nut and seal",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Small DC gearmotor with encoder, about 1 N m",
+  "maker": null,
+  "part_no": null,
+  "qty": 2,
+  "unit_usd": null,
+  "source": "to choose",
+  "for": "one turns the key's socket (7 turns out, 6.9 in), one the holder fixture (1.25 turns); the encoders count turns",
+  "status": "to buy"
+ },
+ {
+  "item": "Bevel gear pair 1:1, module 0.5",
+  "maker": null,
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "to choose",
+  "for": "the key's gear head under the socket",
+  "status": "to buy"
+ },
+ {
+  "item": "Crucible cradle with a white LED under the nozzle",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "atom_crucible_tools.fixtures1",
+  "for": "carries the crucible on MiR250 1; backlight for the nozzle check",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Holder fixture: block with a shank bore, two soft jaws, turned by a gearmotor underneath",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "atom_crucible_tools.fixtures1",
+  "for": "clamps the nozzle holder's shank and turns the holder onto the crucible, which arm 1 holds still",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Small pneumatic parallel gripper for the holder fixture's jaws",
+  "maker": "SMC",
+  "part_no": "MHZ2-20D (e.g.)",
+  "qty": 1,
+  "unit_usd": null,
+  "source": "to confirm",
+  "for": "closes the fixture's soft jaws on the shank",
+  "status": "to buy"
+ },
+ {
+  "item": "Seats for the three insulation pieces, rod holder, thermocouple stand, pin rest, nozzle tray",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "atom_crucible_tools.fixtures1",
+  "for": "MiR250 1's cabinet top",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Spare graphite set: crucible, nozzle holder, nozzles, nuts, seals",
+  "maker": "AMAZEMET",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "ask AMAZEMET (notes/crucible_automation.md: no price found)",
+  "for": "the bench tests (snug and breaking torque) and a swap when one cracks",
+  "status": "to buy"
+ },
+ {
+  "item": "Peak-hold torque gauge with adapters for the nut and the crucible",
+  "maker": null,
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "to choose",
+  "for": "measuring what hands do: snug and breakaway torques",
+  "status": "to buy"
+ },
+ {
+  "item": "Bench rig plate with the furnace floor's and top plate's holes",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "notes/atom_crucible.md",
+  "for": "50+ thread-finding trials before the machine",
+  "status": "ours: to make"
+ }
+]

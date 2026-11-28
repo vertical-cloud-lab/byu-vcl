@@ -1,0 +1,114 @@
+{
+ "what": "the hose (a relaxed chain, re-meshed every frame) against everything but the wand, its tools, the vacuum's inlet and the floor's markings",
+ "frames_checked": 1836,
+ "frames_with_contact": 1836,
+ "frames_through": 1526,
+ "depth_note": "collide.depth, sampled: 1.5 or 3 = resting against it (touching), more = through it",
+ "hits": {
+  "vac:station/stn base": {
+   "frames": 1277,
+   "first": 12,
+   "last": 2217,
+   "deeper_than_3mm": 946,
+   "max_depth_mm": 6.0
+  },
+  "vac:station/stn ground lug": {
+   "frames": 393,
+   "first": 12,
+   "last": 553,
+   "deeper_than_3mm": 391,
+   "max_depth_mm": 6.0
+  },
+  "vac ground bar": {
+   "frames": 1835,
+   "first": 12,
+   "last": 2217,
+   "deeper_than_3mm": 11,
+   "max_depth_mm": 6.0
+  },
+  "vac:station/stn post": {
+   "frames": 799,
+   "first": 27,
+   "last": 1678,
+   "deeper_than_3mm": 603,
+   "max_depth_mm": 6.0
+  },
+  "vac:station/stn tool rack (ours)": {
+   "frames": 75,
+   "first": 36,
+   "last": 871,
+   "deeper_than_3mm": 24,
+   "max_depth_mm": 6.0
+  },
+  "vac:station/stn holster (ours)": {
+   "frames": 26,
+   "first": 545,
+   "last": 2103,
+   "deeper_than_3mm": 13,
+   "max_depth_mm": 6.0
+  },
+  "urB/wrist2/1": {
+   "frames": 2,
+   "first": 846,
+   "last": 847,
+   "deeper_than_3mm": 1,
+   "max_depth_mm": 6.0
+  },
+  "urB/gr/left_knuckle/0": {
+   "frames": 4,
+   "first": 848,
+   "last": 1663,
+   "deeper_than_3mm": 3,
+   "max_depth_mm": 6.0
+  },
+  "urB/gr/left_finger/0": {
+   "frames": 50,
+   "first": 848,
+   "last": 1664,
+   "deeper_than_3mm": 47,
+   "max_depth_mm": 6.0
+  },
+  "urB/gr/left_finger/1": {
+   "frames": 34,
+   "first": 848,
+   "last": 1661,
+   "deeper_than_3mm": 3,
+   "max_depth_mm": 6.0
+  },
+  "vacuum_pump": {
+   "frames": 16,
+   "first": 878,
+   "last": 1027,
+   "deeper_than_3mm": 0,
+   "max_depth_mm": 3.0
+  },
+  "vac:station/stn fixture (ours)": {
+   "frames": 99,
+   "first": 886,
+   "last": 1437,
+   "deeper_than_3mm": 8,
+   "max_depth_mm": 6.0
+  },
+  "vac:station/stn relay box (ours)": {
+   "frames": 35,
+   "first": 1501,
+   "last": 1542,
+   "deeper_than_3mm": 25,
+   "max_depth_mm": 6.0
+  },
+  "urB/gr/left_finger_tip/0": {
+   "frames": 43,
+   "first": 1523,
+   "last": 1571,
+   "deeper_than_3mm": 42,
+   "max_depth_mm": 6.0
+  },
+  "urB/gr/left_finger_tip/1": {
+   "frames": 32,
+   "first": 1523,
+   "last": 1570,
+   "deeper_than_3mm": 3,
+   "max_depth_mm": 6.0
+  }
+ }
+}

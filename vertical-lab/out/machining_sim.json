@@ -1,0 +1,483 @@
+{
+ "note": "machining_sim.py: SimPy, part by part; times from machining.py, stoppages est. (BASE)",
+ "base": {
+  "al_share": 0.5,
+  "demand_per_day": 67.0,
+  "lathe_cv": 0.04,
+  "bar_change_s": 90.0,
+  "magazine_bars": 10,
+  "jam_p": {
+   "Al": 0.004,
+   "Cu": 0.002
+  },
+  "jam_fix_s": 600.0,
+  "arm_cv": 0.1,
+  "misgrip_p": 0.002,
+  "wash_s": 300.0,
+  "rinse_s": 120.0,
+  "dry_s": [
+   480.0,
+   840.0
+  ],
+  "parts_per_basket": 8,
+  "baskets": 3,
+  "reject_p": 0.01,
+  "acc_pairs": null,
+  "mobile": false,
+  "hoist": false,
+  "lathe_24h": false,
+  "call_pairs": 4,
+  "call_dried": 1,
+  "fleet_wait_min": 15.0,
+  "dock_s": 150.0,
+  "leave_s": 60.0,
+  "arm_s": {
+   "load_part": 16.0,
+   "unload_part": 32.0,
+   "basket_moves": 48.0,
+   "lid": 15.0
+  }
+ },
+ "shift": [
+  25200.0,
+  54000.0
+ ],
+ "week_days": 5,
+ "days": 28,
+ "seeds": 5,
+ "scenarios": {
+  "pedestal": {
+   "pairs_per_working_day": {
+    "mean": 159.24,
+    "lo": 158.55,
+    "hi": 159.95
+   },
+   "pairs_per_calendar_day": {
+    "mean": 113.743,
+    "lo": 113.25,
+    "hi": 114.25
+   },
+   "lathe_util_shift": {
+    "mean": 0.467,
+    "lo": 0.464,
+    "hi": 0.469
+   },
+   "lathe_blocked_h_per_day": {
+    "mean": 4.03,
+    "lo": 3.997,
+    "hi": 4.073
+   },
+   "arm_busy_h_per_day": {
+    "mean": 4.932,
+    "lo": 4.914,
+    "hi": 4.938
+   },
+   "unit_at_cell_h_per_day": {
+    "mean": 0.0,
+    "lo": 0.0,
+    "hi": 0.0
+   },
+   "visits_per_day": {
+    "mean": 0.0,
+    "lo": 0.0,
+    "hi": 0.0
+   },
+   "jams": {
+    "mean": 16.6,
+    "lo": 11.0,
+    "hi": 22.0
+   },
+   "misgrips": {
+    "mean": 35.2,
+    "lo": 26.0,
+    "hi": 40.0
+   },
+   "rejected": {
+    "mean": 62.8,
+    "lo": 56.0,
+    "hi": 72.0
+   },
+   "acc_max_pairs": {
+    "mean": 0.5,
+    "lo": 0.5,
+    "hi": 0.5
+   },
+   "lead_h_median": {
+    "mean": 0.549,
+    "lo": 0.546,
+    "hi": 0.552
+   },
+   "lead_h_p90": {
+    "mean": 0.674,
+    "lo": 0.67,
+    "hi": 0.678
+   },
+   "dryer_h_per_day": {
+    "mean": 7.409,
+    "lo": 7.376,
+    "hi": 7.469
+   },
+   "call_to_arrival_min": {
+    "mean": 0.0,
+    "lo": 0.0,
+    "hi": 0.0
+   }
+  },
+  "mobile, stays": {
+   "pairs_per_working_day": {
+    "mean": 166.03,
+    "lo": 164.9,
+    "hi": 167.2
+   },
+   "pairs_per_calendar_day": {
+    "mean": 118.593,
+    "lo": 117.786,
+    "hi": 119.429
+   },
+   "lathe_util_shift": {
+    "mean": 0.492,
+    "lo": 0.488,
+    "hi": 0.495
+   },
+   "lathe_blocked_h_per_day": {
+    "mean": 3.794,
+    "lo": 3.679,
+    "hi": 3.846
+   },
+   "arm_busy_h_per_day": {
+    "mean": 5.141,
+    "lo": 5.113,
+    "hi": 5.184
+   },
+   "unit_at_cell_h_per_day": {
+    "mean": 7.995,
+    "lo": 7.986,
+    "hi": 8.007
+   },
+   "visits_per_day": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0
+   },
+   "jams": {
+    "mean": 21.6,
+    "lo": 16.0,
+    "hi": 31.0
+   },
+   "misgrips": {
+    "mean": 33.8,
+    "lo": 25.0,
+    "hi": 39.0
+   },
+   "rejected": {
+    "mean": 61.6,
+    "lo": 47.0,
+    "hi": 70.0
+   },
+   "acc_max_pairs": {
+    "mean": 24.0,
+    "lo": 24.0,
+    "hi": 24.0
+   },
+   "lead_h_median": {
+    "mean": 1.652,
+    "lo": 1.644,
+    "hi": 1.664
+   },
+   "lead_h_p90": {
+    "mean": 17.681,
+    "lo": 17.653,
+    "hi": 17.699
+   },
+   "dryer_h_per_day": {
+    "mean": 7.678,
+    "lo": 7.651,
+    "hi": 7.711
+   },
+   "call_to_arrival_min": {
+    "mean": 3.199,
+    "lo": 2.596,
+    "hi": 3.851
+   }
+  },
+  "mobile + hoist": {
+   "pairs_per_working_day": {
+    "mean": 136.17,
+    "lo": 133.8,
+    "hi": 137.1
+   },
+   "pairs_per_calendar_day": {
+    "mean": 97.264,
+    "lo": 95.571,
+    "hi": 97.929
+   },
+   "lathe_util_shift": {
+    "mean": 0.407,
+    "lo": 0.4,
+    "hi": 0.409
+   },
+   "lathe_blocked_h_per_day": {
+    "mean": 4.517,
+    "lo": 4.457,
+    "hi": 4.564
+   },
+   "arm_busy_h_per_day": {
+    "mean": 3.841,
+    "lo": 3.774,
+    "hi": 3.873
+   },
+   "unit_at_cell_h_per_day": {
+    "mean": 4.324,
+    "lo": 4.243,
+    "hi": 4.364
+   },
+   "visits_per_day": {
+    "mean": 6.17,
+    "lo": 6.0,
+    "hi": 6.3
+   },
+   "jams": {
+    "mean": 17.4,
+    "lo": 13.0,
+    "hi": 23.0
+   },
+   "misgrips": {
+    "mean": 21.6,
+    "lo": 20.0,
+    "hi": 25.0
+   },
+   "rejected": {
+    "mean": 59.0,
+    "lo": 51.0,
+    "hi": 67.0
+   },
+   "acc_max_pairs": {
+    "mean": 32.0,
+    "lo": 32.0,
+    "hi": 32.0
+   },
+   "lead_h_median": {
+    "mean": 3.22,
+    "lo": 3.109,
+    "hi": 3.321
+   },
+   "lead_h_p90": {
+    "mean": 19.43,
+    "lo": 19.26,
+    "hi": 19.623
+   },
+   "dryer_h_per_day": {
+    "mean": 6.322,
+    "lo": 6.218,
+    "hi": 6.39
+   },
+   "call_to_arrival_min": {
+    "mean": 41.166,
+    "lo": 21.797,
+    "hi": 90.696
+   }
+  },
+  "mobile + hoist, lathe overnight": {
+   "pairs_per_working_day": {
+    "mean": 132.58,
+    "lo": 131.55,
+    "hi": 133.3
+   },
+   "pairs_per_calendar_day": {
+    "mean": 94.7,
+    "lo": 93.964,
+    "hi": 95.214
+   },
+   "lathe_util_shift": {
+    "mean": 0.4,
+    "lo": 0.397,
+    "hi": 0.403
+   },
+   "lathe_blocked_h_per_day": {
+    "mean": 26.002,
+    "lo": 23.789,
+    "hi": 26.965
+   },
+   "arm_busy_h_per_day": {
+    "mean": 3.738,
+    "lo": 3.702,
+    "hi": 3.764
+   },
+   "unit_at_cell_h_per_day": {
+    "mean": 4.207,
+    "lo": 4.172,
+    "hi": 4.234
+   },
+   "visits_per_day": {
+    "mean": 5.99,
+    "lo": 5.9,
+    "hi": 6.05
+   },
+   "jams": {
+    "mean": 18.0,
+    "lo": 16.0,
+    "hi": 21.0
+   },
+   "misgrips": {
+    "mean": 19.6,
+    "lo": 14.0,
+    "hi": 23.0
+   },
+   "rejected": {
+    "mean": 54.0,
+    "lo": 50.0,
+    "hi": 61.0
+   },
+   "acc_max_pairs": {
+    "mean": 64.0,
+    "lo": 64.0,
+    "hi": 64.0
+   },
+   "lead_h_median": {
+    "mean": 20.317,
+    "lo": 20.247,
+    "hi": 20.393
+   },
+   "lead_h_p90": {
+    "mean": 22.834,
+    "lo": 22.223,
+    "hi": 23.863
+   },
+   "dryer_h_per_day": {
+    "mean": 6.206,
+    "lo": 6.11,
+    "hi": 6.305
+   },
+   "call_to_arrival_min": {
+    "mean": 51.88,
+    "lo": 34.102,
+    "hi": 64.832
+   }
+  }
+ },
+ "fleet_wait_sensitivity": {
+  "mobile, stays, wait 5 min": {
+   "pairs_per_calendar_day": 118.083,
+   "unit_at_cell_h_per_day": 8.001,
+   "visits_per_day": 1.0,
+   "lathe_blocked_h_per_day": 3.785,
+   "lead_h_median": 1.663
+  },
+  "mobile + hoist, wait 5 min": {
+   "pairs_per_calendar_day": 107.762,
+   "unit_at_cell_h_per_day": 4.787,
+   "visits_per_day": 6.917,
+   "lathe_blocked_h_per_day": 4.178,
+   "lead_h_median": 2.804
+  },
+  "mobile, stays, wait 15 min": {
+   "pairs_per_calendar_day": 118.214,
+   "unit_at_cell_h_per_day": 7.992,
+   "visits_per_day": 1.0,
+   "lathe_blocked_h_per_day": 3.818,
+   "lead_h_median": 1.656
+  },
+  "mobile + hoist, wait 15 min": {
+   "pairs_per_calendar_day": 96.821,
+   "unit_at_cell_h_per_day": 4.308,
+   "visits_per_day": 6.15,
+   "lathe_blocked_h_per_day": 4.538,
+   "lead_h_median": 3.26
+  },
+  "mobile, stays, wait 30 min": {
+   "pairs_per_calendar_day": 117.298,
+   "unit_at_cell_h_per_day": 7.978,
+   "visits_per_day": 1.0,
+   "lathe_blocked_h_per_day": 3.813,
+   "lead_h_median": 1.662
+  },
+  "mobile + hoist, wait 30 min": {
+   "pairs_per_calendar_day": 82.69,
+   "unit_at_cell_h_per_day": 3.68,
+   "visits_per_day": 5.283,
+   "lathe_blocked_h_per_day": 5.022,
+   "lead_h_median": 4.257
+  },
+  "mobile, stays, wait 60 min": {
+   "pairs_per_calendar_day": 117.964,
+   "unit_at_cell_h_per_day": 7.95,
+   "visits_per_day": 1.0,
+   "lathe_blocked_h_per_day": 3.781,
+   "lead_h_median": 1.645
+  },
+  "mobile + hoist, wait 60 min": {
+   "pairs_per_calendar_day": 66.607,
+   "unit_at_cell_h_per_day": 2.964,
+   "visits_per_day": 4.3,
+   "lathe_blocked_h_per_day": 5.575,
+   "lead_h_median": 18.35
+  },
+  "pedestal, dryer 6 min": {
+   "pairs_per_calendar_day": 134.405,
+   "lathe_blocked_h_per_day": 3.315,
+   "lead_h_median": 0.409
+  },
+  "pedestal, dryer 20 min": {
+   "pairs_per_calendar_day": 71.024,
+   "lathe_blocked_h_per_day": 5.476,
+   "lead_h_median": 0.969
+  },
+  "pedestal, dryer 40 min": {
+   "pairs_per_calendar_day": 39.595,
+   "lathe_blocked_h_per_day": 6.615,
+   "lead_h_median": 1.976
+  }
+ },
+ "drying_check": {
+  "T_eq_C": -4.9,
+  "Al, bore full": {
+   "ipa_g": 4.87,
+   "latent_J": 3684,
+   "part_heat_J": 1582,
+   "minutes_poor_good_contact": [
+    55.0,
+    16.1
+   ]
+  },
+  "Al, drained": {
+   "ipa_g": 0.16,
+   "latent_J": 119,
+   "part_heat_J": 1582,
+   "minutes_poor_good_contact": [
+    3.0,
+    3.0
+   ]
+  },
+  "Cu, bore full": {
+   "ipa_g": 4.87,
+   "latent_J": 3684,
+   "part_heat_J": 2242,
+   "minutes_poor_good_contact": [
+    38.7,
+    12.0
+   ]
+  },
+  "Cu, drained": {
+   "ipa_g": 0.16,
+   "latent_J": 119,
+   "part_heat_J": 2242,
+   "minutes_poor_good_contact": [
+    3.0,
+    3.0
+   ]
+  }
+ },
+ "drying_constants": {
+  "T_wall": 318.15,
+  "p_ch_mbar": 7.0,
+  "emissivity": 0.1,
+  "area_m2": 0.0061,
+  "pump_down_s": 180.0,
+  "contact_w_per_k": [
+   0.01,
+   0.05
+  ],
+  "bore_ml": 6.0,
+  "film_ml": 0.2
+ }
+}

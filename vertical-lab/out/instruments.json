@@ -1,0 +1,704 @@
+{
+ "xrd": {
+  "title": "Benchtop X-ray diffractometer",
+  "model": "Rigaku MiniFlex (6th generation)",
+  "source": "Rigaku MiniFlex 6G sheet and brochure (620 W x 456 D x 722 H mm, 80 kg; 150 mm vertical goniometer, theta-2theta, 600 W); the front fitted with register.py to Rigaku's 6G launch video",
+  "model_mm": [
+   620,
+   454,
+   723
+  ],
+  "published_mm": [
+   620.0,
+   456.0,
+   722.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "sem": {
+  "title": "Tabletop SEM with EDS and EBSD",
+  "model": "Hitachi TM4000PlusII",
+  "source": "Hitachi High-Tech TM4000PlusII specifications (main unit 330 W x 614 D x 547 H mm, 54 kg; pump 144 x 270 x 216 mm); Hitachi's EDS brochure (AZtecOne analyser 290 x 260 x 330 mm); proportions fitted with register.py to Hitachi's TM4000II/PlusII product shot and CCEM's TM4000Plus videos; the 17 cm drawer travel from ac-dev-lab #132's TM4000II model",
+  "model_mm": [
+   832,
+   653,
+   547
+  ],
+  "published_mm": [
+   330.0,
+   614.0,
+   547.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "pip": {
+  "title": "Indentation plastometer (PIP)",
+  "model": "Plastometrex PLX-Benchtop",
+  "source": "Plastometrex's videos (PLX-Benchtop introduction, benchtop demonstration, 'How a PIP test works!'), fitted with register.py; Illinois MRL and a published SOP for loading; no published dimensions, so the 500 mm width is the scale",
+  "model_mm": [
+   526,
+   677,
+   689
+  ],
+  "published_mm": [
+   500.0,
+   560.0,
+   689.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "openflexure_v7": {
+  "title": "Microscope, reflection",
+  "model": "OpenFlexure Microscope v7",
+  "source": "OpenFlexure Microscope v7.0.0-beta5's OpenSCAD (commit 4828ffa5, CERN-OHL-S-2.0), exported assembled with its own rendering modules; reflection optics placed from the .scad sources",
+  "model_mm": [
+   171,
+   139,
+   169
+  ],
+  "published_mm": [
+   171,
+   139,
+   169
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "openflexure_delta": {
+  "title": "Microscope, reflection",
+  "model": "OpenFlexure Delta Stage",
+  "source": "OpenFlexure Delta Stage v1.2.3's OpenSCAD (commit d882d18b, CERN-OHL-1.2), exported with its build.sh options for reflection illumination; assembled from the .scad sources",
+  "model_mm": [
+   166,
+   156,
+   173
+  ],
+  "published_mm": [
+   166,
+   156,
+   173
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "nanoindenter": {
+  "title": "Nanoindenter",
+  "model": "KLA iMicro",
+  "source": "KLA Instruments iMicro / iNano product photos and data sheet (InForce 50 actuator, Berkovich tip, 50 mN; motorized XY stage; optical microscope); envelope in SPECS; holder ours",
+  "model_mm": [
+   543,
+   522,
+   521
+  ],
+  "published_mm": [
+   540.0,
+   520.0,
+   520.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "polisher": {
+  "title": "Metallographic grinder-polisher, its discs changed by the arm",
+  "model": "LECO PX500 + disc magazine",
+  "source": "the lab's SOP videos (BYU Vertical Cloud Lab channel), fitted with register.py; LECO's PX400/PX500 brochure (form 209-254); the magnetic platen, the pre-loaded discs, their magazine and the head's extra lift are ours",
+  "model_mm": [
+   632,
+   729,
+   677
+  ],
+  "published_mm": [
+   1036.0,
+   711.0,
+   677
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "furnace": {
+  "title": "Heat treatment and ageing furnace",
+  "model": "Nabertherm NAT 15/65",
+  "source": "Nabertherm forced-convection chamber furnaces, tabletop (NAT 15/65: 470 x 790 x 460 mm, 60 kg, 650 C); the look from Nabertherm's NAT video, measured with register.py",
+  "model_mm": [
+   510,
+   824,
+   510
+  ],
+  "published_mm": [
+   470.0,
+   790.0,
+   460.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "mastersizer": {
+  "title": "Laser diffraction particle sizer",
+  "model": "Malvern Mastersizer 3000 + Aero S",
+  "source": "Malvern Panalytical Mastersizer 3000 brochure (bench 690 x 300 x 450 mm, 30 kg; Aero S 260 x 180 x 380 mm, 10.5 kg); proportions fitted with register.py to frames of Malvern's videos",
+  "model_mm": [
+   1080,
+   591,
+   506
+  ],
+  "published_mm": [
+   690.0,
+   300.0,
+   450.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "instron_small": {
+  "title": "Universal testing machine, tabletop",
+  "model": "Instron 68SC-2",
+  "source": "Instron 6800 Series brochure (68SC-1/-2: 1410 x 460 x 615 mm, 62 kg, 100 mm throat); look from Instron's renders",
+  "model_mm": [
+   480,
+   635,
+   1410
+  ],
+  "published_mm": [
+   460.0,
+   615.0,
+   1410.0
+  ],
+  "fits_tray": false,
+  "floor": true,
+  "where": "beside the VLM"
+ },
+ "instron_floor": {
+  "title": "Universal testing machine, floor model, with an environmental chamber",
+  "model": "Instron 68FM-100 with a 3119-608 chamber",
+  "source": "Instron 6800 Series floor-model sheet (2287 x 1140 x 786 mm, 799 kg, 1494 mm test space, 575 mm between columns); 3119-600 series chamber page; the AT6 and AT3 videos (5Hb-zpZ9Bk0, Tiipz6Yezek) for the automation",
+  "model_mm": [
+   1575,
+   1053,
+   2287
+  ],
+  "published_mm": [
+   1140.0,
+   786.0,
+   2287.0
+  ],
+  "fits_tray": false,
+  "floor": true,
+  "where": "beside the VLM"
+ },
+ "wire_edm": {
+  "title": "Wire EDM",
+  "model": "FANUC ROBOCUT alpha-C400iC",
+  "source": "FANUC America ROBOCUT alpha-C400iC data sheet and floor plan; look from FANUC's photo",
+  "model_mm": [
+   2120,
+   2544,
+   1970
+  ],
+  "published_mm": [
+   2120.0,
+   2540.0,
+   1970.0
+  ],
+  "fits_tray": false,
+  "floor": true,
+  "where": "beside the VLM"
+ },
+ "glovebox": {
+  "title": "Inert glovebox with automatic antechamber",
+  "model": "Inert PureLab HE 2GB",
+  "source": "Inert PureLab HE 2GB drawing (NIST's copy of Inert's manual); the automatic antechamber after DAL #130 and DAL PR #185",
+  "model_mm": [
+   2305,
+   804,
+   1795
+  ],
+  "published_mm": [
+   2005.0,
+   834.0,
+   1794.0
+  ],
+  "fits_tray": false,
+  "floor": true,
+  "where": "beside the VLM"
+ },
+ "rail": {
+  "title": "Backup: a floor rail for the arm",
+  "model": "Vention robot 7th axis",
+  "source": "Vention design 337010 and its part pages (beam, guides, carriage plate) and actuator docs",
+  "model_mm": [
+   4105,
+   508,
+   800
+  ],
+  "published_mm": [
+   4000.0,
+   628.0,
+   800.0
+  ],
+  "fits_tray": false,
+  "floor": true,
+  "where": "beside the VLM"
+ },
+ "openflexure_array": {
+  "title": "Six reflection microscopes on one sub-tray",
+  "model": "OpenFlexure array: 4 x v7 + 2 x Delta Stage",
+  "source": "OpenFlexure Microscope v7.0.0-beta5 and Delta Stage v1.2.3, exported from OpenFlexure's own OpenSCAD (openflexure/README.md); the sub-tray, ducts, hub and handles are designed here",
+  "model_mm": [
+   784,
+   524,
+   177
+  ],
+  "published_mm": [
+   784,
+   524,
+   177
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "vhx": {
+  "title": "Digital microscope, free-angle, 3-D",
+  "model": "Keyence VHX-7000 (VHX-S750E free-angle stand)",
+  "source": "Keyence VHX-7000N brochure KA1-1099 pp. 34-38 (EA-300 280 x 210 x 375 mm, 7.2 kg, 355 nm Nd:YAG, 10 um spot, H-U; VHX-S750E stage 171 x 168 mm, XY +-20 mm; controller 625 x 460 x 180 mm); EA-300 model page; the look from Keyence's VHX-7000N video, fitted with register.py",
+  "model_mm": [
+   630,
+   625,
+   716
+  ],
+  "published_mm": [
+   630,
+   625,
+   716
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "xrf": {
+  "title": "Benchtop EDXRF for powders and coupons",
+  "model": "Bruker S2 PUMA Series 2, XY Autochanger",
+  "source": "Bruker S2 PUMA Series 2 specifications via DKSH (XY Autochanger 67 x 71 x 61 cm, 108 kg; 20-position tray; 50 W Pd/Ag tube; HighSense SDD; reduced-pressure He for loose powders); the look from Bruker's S2 PUMA Overview video, fitted with register.py",
+  "model_mm": [
+   670,
+   712,
+   620
+  ],
+  "published_mm": [
+   670.0,
+   710.0,
+   610.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "sieve": {
+  "title": "Sieve shaker for atomized powder",
+  "model": "Retsch AS 200 control",
+  "source": "Retsch AS 200 control product page (417 W x 212 H x 384 D mm, about 35 kg, 3-D throwing motion, amplitude 0.2-3 mm); the 8 in stack from DAL PR #175 and DAL's sieving/viz3d model; look from Retsch's photos",
+  "model_mm": [
+   417,
+   392,
+   567
+  ],
+  "published_mm": [
+   417.0,
+   384.0,
+   212.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "cubxl_corrosion": {
+  "title": "Copper corrosion spots on the CubXL",
+  "model": "CubXL + NuVant EZstat Pro",
+  "source": "The CubXL from lab_models.equipment.cubxl() (#199); the deck, the head and one spot as digital-alloy-lab PR #180 lays them out for copper (alloy-corrosion/copper/deck_cu.py, protocol.md, render_cubxl_cu.py at aeda51a); Ben's capper mount, 9-vial holder and vial cap STEPs (modules/electromagnetic-capper/cad); NuVant's EZstat Pro (255 x 245 x 102 mm, nuvant.com) beside it, as in byu-vcl #231 / DAL #221",
+  "model_mm": [
+   1328,
+   605,
+   538
+  ],
+  "published_mm": [
+   1095.0,
+   605.0,
+   538.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "ded": {
+  "title": "Directed energy deposition, powder-fed laser",
+  "model": "InssTek MX-Lab",
+  "source": "InssTek MX-Lab Technical Data Rev.3 (680 x 684 x 835 mm, 250 kg, 1-phase 220 V), InssTek's 2024 brochure (150 mm stroke, 175 mm table, six hoppers, <= 500 W, Ar with <= 50 ppm O2); look from InssTek's and Chalmers' photos. The base cabinet's size is an estimate",
+  "model_mm": [
+   1323,
+   777,
+   1835
+  ],
+  "published_mm": [
+   680.0,
+   684.0,
+   835.0
+  ],
+  "fits_tray": false,
+  "floor": true,
+  "where": "beside the VLM"
+ },
+ "packaging": {
+  "title": "Automated packaging station for powders",
+  "model": "Primera AP380 + LX500c, Zebra ZD621t, Uline H-190",
+  "source": "Primera AP380 (340 x 508 x 226 mm) and LX500c (264 x 389 x 180 mm) pages; Zebra ZD621 spec sheet (ZD621t 202 x 267 x 192 mm); Uline H-190 (452 x 84 x 188 mm), S-23611 foam shipper, S-6802 4 x 6 in labels; Nalgene 2104-0008 250 mL jar (61 x 131 mm). Looks from the makers' photos; fixtures drawn here",
+  "model_mm": [
+   1989,
+   653,
+   229
+  ],
+  "published_mm": [
+   2000.0,
+   508.0,
+   226.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "hip": {
+  "title": "Hot isostatic press against a VLM tray",
+  "model": "Kobelco O2-Dr.HIP",
+  "source": "Kobelco's Dr. HIP page (O2-Dr.HIP: 1315 x 1100 x 1300 mm, 1100 kg, 200 MPa, up to 2000 C) and photo; the tray, product height and payloads from #53 and Kardex's order sheet. Vessel and frame inside drawn schematically (not published)",
+  "model_mm": [
+   2620,
+   944,
+   1026
+  ],
+  "published_mm": [
+   1315.0,
+   1100.0,
+   1300.0
+  ],
+  "fits_tray": false,
+  "floor": true,
+  "where": "beside the VLM"
+ },
+ "tray_dock": {
+  "title": "Tray service dock",
+  "model": "Staubli CombiTac-style docking plate, actuated",
+  "source": "CombiTac uniq catalogue (inserts, align 4 docking), Kardex #53 (power in a slot and at the opening); the layout, plate and stroke are ours",
+  "model_mm": [
+   462,
+   480,
+   230
+  ],
+  "published_mm": [
+   240.0,
+   240.0,
+   150.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "stream_cam": {
+  "title": "Stream camera unit for a tray",
+  "model": "Raspberry Pi 5, HQ Camera (16 mm) + Camera Module 3 Wide",
+  "source": "robot-arms' Pi 5, HQ Camera, 16 mm lens and Camera Module 3 models (PR #10, from Raspberry Pi's drawings) on a printed pan-tilt head and sliding block on a 2020 post, after robot-arms PR #40's fixtures; the mount's layout is ours",
+  "model_mm": [
+   128,
+   192,
+   600
+  ],
+  "published_mm": [
+   140.0,
+   210.0,
+   620.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "glovebox_tray": {
+  "title": "Inert glovebox for a tray, with an automatic mini antechamber",
+  "model": "Custom N2 glovebox (purge-only)",
+  "source": "Our design; sizes after Vigor's SG1200/750 (220 mm ports, 150 x 300 mm mini antechamber) and Plas-Labs' 830-ABC (1100 x 610 x 790 mm)",
+  "model_mm": [
+   1390,
+   826,
+   810
+  ],
+  "published_mm": [
+   1390.0,
+   830.0,
+   810.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "tensile_h": {
+  "title": "Tensile tester lying on its side, on a tray",
+  "model": "ZwickRoell zwickiLine Z5.0 TN",
+  "source": "ZwickRoell PI 396 1123 (Z5.0 TN 1289 x 408 x 480 mm, 622 deep with electronics, 78 kg, 5 kN); horizontal use per ZwickRoell's product information; layout from photos",
+  "model_mm": [
+   1289,
+   638,
+   448
+  ],
+  "published_mm": [
+   1289.0,
+   638.0,
+   448.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "hardness": {
+  "title": "Automatic micro-Vickers hardness tester",
+  "model": "Mitutoyo HM-220 Type D (AVPAK)",
+  "source": "Mitutoyo catalogue section K (HM-210/220: 315 x 671 x 595 mm, 43 kg; Type D motorized XY stage and autofocus; motorized turret); layout from Mitutoyo's photos",
+  "model_mm": [
+   533,
+   696,
+   595
+  ],
+  "published_mm": [
+   533.0,
+   672.0,
+   595.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "cnc": {
+  "title": "Desktop CNC mill with a tool changer, facing the steel mount's slice",
+  "model": "Makera Carvera",
+  "source": "Makera's Carvera spec (580 x 520 x 540 mm, 50 kg, 840 mm lid open, 360 x 240 x 140 mm, 6-tool changer, 200 W); lid actuator and pneumatic vise ours; layout from photos",
+  "model_mm": [
+   610,
+   534,
+   540
+  ],
+  "published_mm": [
+   610.0,
+   535.0,
+   540.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "fumehood": {
+  "title": "Ducted fume hood, on the floor beside the VLM",
+  "model": "Labconco Protector XStream 4 ft",
+  "source": "Labconco's XStream page (18 in sash stop, 325 mm collar); 4 ft size from Fisher's and Labrepco's listings (1219 x 958 x 1499 mm); base cabinet estimated",
+  "model_mm": [
+   1219,
+   959,
+   2581
+  ],
+  "published_mm": [
+   1219.0,
+   958.0,
+   2431.0
+  ],
+  "fits_tray": false,
+  "floor": true,
+  "where": "beside the VLM"
+ },
+ "fumehood_tray": {
+  "title": "Ductless fume hood for a tray",
+  "model": "Sentry Air Systems ductless hood, 24 in",
+  "source": "Sentry Air's ductless hood page (standard 24 in: 610 x 660 x 635 mm, about 90 lb; blower 13 x 13 x 14.5 in); filter and hose layout ours",
+  "model_mm": [
+   1030,
+   610,
+   715
+  ],
+  "published_mm": [
+   1030.0,
+   610.0,
+   715.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "storage": {
+  "title": "Sample storage on a tray",
+  "model": "Storage load (our design)",
+  "source": "Our design: #222's charge cups and plugs (charge.py), 20 mL vials (props.py), E8 sub-size bars (alloy_models); ICP-MS tubes, SEM stubs, mounts, jars and bins at common sizes (estimates)",
+  "model_mm": [
+   1760,
+   759,
+   300
+  ],
+  "published_mm": [
+   1760.0,
+   760.0,
+   300.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "mount_press": {
+  "title": "Hot mounting press",
+  "model": "LECO MX400",
+  "source": "the lab's video 'Making Bakelite Polishing Puck' (youtu.be/9m_hdgmu2Jw); LECO: 8 in wide, 1.25/1.5 in, 30/40/50 mm molds; depth and height read off the video (estimates)",
+  "model_mm": [
+   203,
+   464,
+   666
+  ],
+  "published_mm": [
+   203.0,
+   460.0,
+   546.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "disc_magazine": {
+  "title": "Magazine of pre-loaded polishing discs",
+  "model": "six-shelf disc magazine (ours)",
+  "source": "our design: six 300 mm steel discs, each with its paper or cloth and retaining ring",
+  "model_mm": [
+   356,
+   352,
+   638
+  ],
+  "published_mm": [
+   356.0,
+   352.0,
+   638
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "pxrd_prep": {
+  "title": "Powder prep station: XRD holder, SEM stub, XRF cup",
+  "model": "our design",
+  "source": "Our design (round 8): the sifting and striking-off of Whitfield, Huq and Kaduk (2019) and A-Lab's mesh-capped vial (Szymanski 2024), as Edison summarized them (notes/edison_r8.md)",
+  "model_mm": [
+   436,
+   233,
+   144
+  ],
+  "published_mm": [
+   380.0,
+   234.0,
+   150.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "quench_tank": {
+  "title": "Quench tank",
+  "model": "water tank with a lift basket, our design",
+  "source": "a stainless tank of water beside the furnace, for the T6's quench, with a basket that drops the rack in; size assumed",
+  "model_mm": [
+   240,
+   238,
+   326
+  ],
+  "published_mm": [
+   240.0,
+   200.0,
+   210.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "powder_store_feed": {
+  "title": "Powder-jar store: feedstock",
+  "model": "Jar racks on a tray (our design)",
+  "source": "Our design: DAL #146's feedstock and DAL #157's run IDs; wide-mouth jars at typical sizes (estimates)",
+  "model_mm": [
+   1760,
+   660,
+   182
+  ],
+  "published_mm": [
+   1760.0,
+   760.0,
+   182
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "powder_store_lots": {
+  "title": "Powder-jar store: atomized lots",
+  "model": "Jar racks on a tray (our design)",
+  "source": "Our design: DAL #146's feedstock and DAL #157's run IDs; wide-mouth jars at typical sizes (estimates)",
+  "model_mm": [
+   1760,
+   714,
+   104
+  ],
+  "published_mm": [
+   1760.0,
+   760.0,
+   104
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "eos_m400": {
+  "title": "Large-format metal printer (LPBF), 4 lasers",
+  "model": "EOS M 400-4",
+  "source": "EOS M 400-4 data sheet and product page (4181 x 1613 x 2355 mm, about 4835 kg; 400 x 400 x 400 mm build incl. plate; 4 x 400 W fibre lasers); look approximate, from EOS's photos",
+  "model_mm": [
+   4181,
+   1743,
+   2355
+  ],
+  "published_mm": [
+   4181.0,
+   1613.0,
+   2355.0
+  ],
+  "fits_tray": false,
+  "floor": true,
+  "where": "beside the VLM"
+ },
+ "meltio_cell": {
+  "title": "Robot DED cell for repairs (wire-laser, blue)",
+  "model": "Meltio Robot Cell",
+  "source": "Meltio Robot Cell (4050 x 2350 x 3000 mm; ABB robot + 2-axis positioner, 500 kg; 1000 mm dia. x 1200 mm envelope) with the Blue Laser Engine (1000 W, 9 x 450 nm); robot after ABB's IRB 2600 (estimate); look from Meltio's photos",
+  "model_mm": [
+   4354,
+   3430,
+   3160
+  ],
+  "published_mm": [
+   4050.0,
+   2350.0,
+   3000.0
+  ],
+  "fits_tray": false,
+  "floor": true,
+  "where": "beside the VLM"
+ }
+}

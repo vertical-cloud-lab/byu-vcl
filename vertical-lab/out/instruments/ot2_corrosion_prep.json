@@ -1,0 +1,89 @@
+{
+ "name": "instruments/ot2_corrosion_prep",
+ "fps": 15,
+ "n_frames": 893,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/13",
+   "caption": "The OT-2 beside the CubXL on tray A makes the corrosion screen's liquids. Its door, windows and frame fade: a P300 on the right mount, a P20 on the left.",
+   "start_frame": 0,
+   "end_frame": 52
+  },
+  {
+   "label": "2/13",
+   "caption": "Before a night: the CubXL's 0.1 mg/L sulfide stock, made from its 10 mg/L stock, not from solid (DAL protocol §3). The P300 takes a tip and puts 300 µL of seawater (ASTM D1141) from trough 2 into deep well H6.",
+   "start_frame": 53,
+   "end_frame": 129
+  },
+  {
+   "label": "3/13",
+   "caption": "Six more transfers, five of 300 µL and one of 180: 1980 µL, all from above the liquid. The tip goes into the trash.",
+   "start_frame": 130,
+   "end_frame": 218
+  },
+  {
+   "label": "4/13",
+   "caption": "Sulfide last: the P20 adds 20 µL of the 10 mg/L stock below the surface: 2.0 mL at 0.1 mg/L S, a night's worth, for the CubXL's 0.1 mg/L vial.",
+   "start_frame": 219,
+   "end_frame": 301
+  },
+  {
+   "label": "5/13",
+   "caption": "After the night: H6's stock has gone to the CubXL's vial, and the night's nine 0.5 mL tubes are in slot 2, 320 µL each: a well's 150 µL, a 150 µL DI rinse and 20 µL of 1 M HNO3 (DAL protocol §4).",
+   "start_frame": 302,
+   "end_frame": 363
+  },
+  {
+   "label": "6/13",
+   "caption": "A fresh tip draws 300 µL of 2% HNO3 from trough 1 and dispenses it into deep well H1 from above the liquid, so it touches nothing but the acid.",
+   "start_frame": 364,
+   "end_frame": 440
+  },
+  {
+   "label": "7/13",
+   "caption": "Twice more: 900 µL in H1. The same tip would give each of the nine samples' wells its 900 µL.",
+   "start_frame": 441,
+   "end_frame": 505
+  },
+  {
+   "label": "8/13",
+   "caption": "That tip goes into the trash, and the P300 takes a fresh one for the sample.",
+   "start_frame": 506,
+   "end_frame": 564
+  },
+  {
+   "label": "9/13",
+   "caption": "100 µL of tube 1 into H1's 900 µL: 1.0 mL, the 10x dilution in dilute HNO3 that DAL's protocol asks for before ICP-MS (§6). 220 µL stay in the tube for a re-run.",
+   "start_frame": 565,
+   "end_frame": 644
+  },
+  {
+   "label": "10/13",
+   "caption": "It mixes in the well: three times 250 µL up and back.",
+   "start_frame": 645,
+   "end_frame": 694
+  },
+  {
+   "label": "11/13",
+   "caption": "The tip goes into the trash. Tubes 2 to 9 get the same, a fresh tip each.",
+   "start_frame": 695,
+   "end_frame": 741
+  },
+  {
+   "label": "12/13",
+   "caption": "A matrix-matched standard (our example; DAL names none): the P20 adds 10 µL of a 1 mg/L Cu, Ni, Fe, Mn, Al standard to 990 µL of blank matrix in H12 (seawater diluted as the samples are): 10 µg/L.",
+   "start_frame": 742,
+   "end_frame": 833
+  },
+  {
+   "label": "13/13",
+   "caption": "Its tip goes into the trash and the head parks. The plate goes to the ICP-MS: a collision cell, Cu, Ni, Fe and Mn in every sample, Al on NAB.",
+   "start_frame": 834,
+   "end_frame": 892
+  }
+ ]
+}

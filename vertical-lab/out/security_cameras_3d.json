@@ -1,0 +1,17 @@
+{
+ "name": "security_cameras_3d",
+ "fps": 15,
+ "n_frames": 17,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "",
+   "caption": "Tray A at the opening with a Hanwha QNE-8011R (turret) on each of its two camera posts, where the HQ/Wide heads were. Under a roof assumed at the opening's top (drawn see-through): the pair at the middle back (an Axis M3086-V mini dome and the M5075-G PTZ, here turned to the CubXL's holder seat), a mini dome in the strip under the header looking back, and one looking straight down. Simple shapes at each model's published size.",
+   "start_frame": 0,
+   "end_frame": 16
+  }
+ ]
+}

@@ -1,0 +1,152 @@
+{
+ "key": "vhx",
+ "free": [
+  "base_w",
+  "logo_z",
+  "stage_w",
+  "stage_h",
+  "stage_z",
+  "scr_top",
+  "bez0"
+ ],
+ "params": {
+  "base_w": 290.7,
+  "logo_z": 73.7,
+  "stage_w": 213.4,
+  "stage_h": 53.4,
+  "stage_z": 225.0,
+  "scr_top": 12.2,
+  "bez0": 84.9
+ },
+ "start": {
+  "base_w": 291.5,
+  "logo_z": 73.7,
+  "stage_w": 213.9,
+  "stage_h": 54.0,
+  "stage_z": 227.7,
+  "scr_top": 12.0,
+  "bez0": 84.8
+ },
+ "views": {
+  "ea300_0085_monitor": {
+   "source": "https://youtu.be/C4IBBj20OpE?t=85 (Keyence, VHX-7000N Series, 1:25: the EA-300 configuration, studio; the monitor; a composited product shot, so the monitor and the stand get a camera each)",
+   "size": [
+    1280,
+    720
+   ],
+   "holdout": false,
+   "camera": [
+    1.7735667670636155,
+    -0.3162872916903488,
+    0.26128935466389364,
+    -596.3169105917415,
+    276.7459188442178,
+    1855.8046254781923,
+    7.305133093163999,
+    -0.00011226571406696536
+   ],
+   "focal_px": 1487.9,
+   "k1": -0.0001,
+   "rms_px_camera_only": 4.59,
+   "rms_px": 4.57,
+   "residual_px": {
+    "bezel top left": 4.3,
+    "bezel top right": 4.3,
+    "screen tl": 6.0,
+    "screen tr": 1.0,
+    "screen bl": 5.4,
+    "screen br": 5.9,
+    "bezel bottom left": 5.3,
+    "bezel bottom right": 0.7
+   }
+  },
+  "front_0019_monitor": {
+   "source": "https://youtu.be/C4IBBj20OpE?t=19 (Keyence, VHX-7000N Series, 0:19: the monitor-controller and console, front)",
+   "size": [
+    1280,
+    720
+   ],
+   "holdout": false,
+   "camera": [
+    1.544787732141113,
+    0.023708387647273833,
+    -0.04102646253524659,
+    -895.7450516952606,
+    333.2685384238383,
+    1112.742859238105,
+    6.934539789298134,
+    3.679055566291591e-05
+   ],
+   "focal_px": 1027.1,
+   "k1": 0.0,
+   "rms_px_camera_only": 3.36,
+   "rms_px": 3.34,
+   "residual_px": {
+    "bezel top left": 2.9,
+    "bezel top right": 4.3,
+    "screen tl": 3.2,
+    "screen tr": 0.8,
+    "screen bl": 5.4,
+    "screen br": 0.5
+   }
+  },
+  "front_0019_stand": {
+   "source": "https://youtu.be/C4IBBj20OpE?t=19 (Keyence, VHX-7000N Series, 0:19: the stand, front; the plain head, not the EA-300, so only the stage and base are picked)",
+   "size": [
+    1280,
+    720
+   ],
+   "holdout": false,
+   "camera": [
+    1.6901978425334532,
+    -0.038150521093524514,
+    0.05483919260630719,
+    307.1838073777701,
+    315.72096468739574,
+    1216.5429733552073,
+    6.934539789298134,
+    3.679055566291591e-05
+   ],
+   "focal_px": 1027.1,
+   "k1": 0.0,
+   "rms_px_camera_only": 3.31,
+   "rms_px": 3.26,
+   "residual_px": {
+    "plate front left": 2.3,
+    "plate front right": 3.7,
+    "stage bottom front left": 4.4,
+    "stage bottom front right": 4.6,
+    "knob end": 0.1,
+    "base front bottom": 2.1
+   }
+  },
+  "ea300_0085_stand": {
+   "source": "https://youtu.be/C4IBBj20OpE?t=85 (Keyence, VHX-7000N Series, 1:25: the EA-300 configuration from the front right; the stand. A composited product shot: a check, not fitted)",
+   "size": [
+    1280,
+    720
+   ],
+   "holdout": true,
+   "camera": [
+    1.7183662799097026,
+    -0.03746665993743955,
+    -0.06988466531801366,
+    -445.92515383578143,
+    316.2275367107372,
+    1343.700697928038,
+    6.873370650401506,
+    0.0
+   ],
+   "focal_px": 966.2,
+   "k1": 0.0,
+   "rms_px_camera_only": 33.76,
+   "rms_px": 33.6,
+   "residual_px": {
+    "base logo": 9.3,
+    "knob end": 66.5,
+    "EA top front right": 2.4,
+    "EA top back right": 1.1
+   }
+  }
+ }
+}

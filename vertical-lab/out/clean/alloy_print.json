@@ -1,0 +1,2159 @@
+{
+ "name": "alloy_print",
+ "fps": 15,
+ "n_frames": 4018,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/5",
+   "caption": "From the atomizer to the printer. The run's powder is in the rePowder's container, on the MiR250: four 5N Al cups with Si, Al-10Si, 172 g charged. Next, the sieving cell beside the rePowder, then the Aconity MIDI.",
+   "start_frame": 0,
+   "end_frame": 68
+  },
+  {
+   "label": "1/5",
+   "caption": "The sieving cell, in a downdraft enclosure, every metal part bonded to a ground bar. Left to right: a tipper over a funnel and five labelled jars, the Retsch AS 200, and the Al set's own stand: the lab's 8 in stack, No. 60, 100, 140, 230, 325 and the pan (DAL PR #175), nested in reverse, each sieve with a 12 mm handling tab at the front.",
+   "start_frame": 69,
+   "end_frame": 167
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm builds the stack on the AS 200. It takes the top piece off the stand by its tab, lifts it clear of the one below, draws it out and sets it between the shaker's two rods: the pan first.",
+   "start_frame": 168,
+   "end_frame": 183
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm builds the stack on the AS 200. It takes the top piece off the stand by its tab, lifts it clear of the one below, draws it out and sets it between the shaker's two rods: the pan first.",
+   "start_frame": 184,
+   "end_frame": 192
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm builds the stack on the AS 200. It takes the top piece off the stand by its tab, lifts it clear of the one below, draws it out and sets it between the shaker's two rods: the pan first.",
+   "start_frame": 193,
+   "end_frame": 197
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm builds the stack on the AS 200. It takes the top piece off the stand by its tab, lifts it clear of the one below, draws it out and sets it between the shaker's two rods: the pan first.",
+   "start_frame": 198,
+   "end_frame": 204
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm builds the stack on the AS 200. It takes the top piece off the stand by its tab, lifts it clear of the one below, draws it out and sets it between the shaker's two rods: the pan first.",
+   "start_frame": 205,
+   "end_frame": 214
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm builds the stack on the AS 200. It takes the top piece off the stand by its tab, lifts it clear of the one below, draws it out and sets it between the shaker's two rods: the pan first.",
+   "start_frame": 215,
+   "end_frame": 230
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm builds the stack on the AS 200. It takes the top piece off the stand by its tab, lifts it clear of the one below, draws it out and sets it between the shaker's two rods: the pan first.",
+   "start_frame": 231,
+   "end_frame": 240
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm builds the stack on the AS 200. It takes the top piece off the stand by its tab, lifts it clear of the one below, draws it out and sets it between the shaker's two rods: the pan first.",
+   "start_frame": 241,
+   "end_frame": 247
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm builds the stack on the AS 200. It takes the top piece off the stand by its tab, lifts it clear of the one below, draws it out and sets it between the shaker's two rods: the pan first.",
+   "start_frame": 248,
+   "end_frame": 252
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm builds the stack on the AS 200. It takes the top piece off the stand by its tab, lifts it clear of the one below, draws it out and sets it between the shaker's two rods: the pan first.",
+   "start_frame": 253,
+   "end_frame": 259
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 260,
+   "end_frame": 265
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 266,
+   "end_frame": 269
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 270,
+   "end_frame": 272
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 273,
+   "end_frame": 275
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 276,
+   "end_frame": 279
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 280,
+   "end_frame": 285
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 286,
+   "end_frame": 289
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 290,
+   "end_frame": 292
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 293,
+   "end_frame": 295
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 296,
+   "end_frame": 298
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 299,
+   "end_frame": 304
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 305,
+   "end_frame": 308
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 309,
+   "end_frame": 311
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 312,
+   "end_frame": 314
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 315,
+   "end_frame": 318
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 319,
+   "end_frame": 324
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 325,
+   "end_frame": 328
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 329,
+   "end_frame": 331
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 332,
+   "end_frame": 334
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 335,
+   "end_frame": 337
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 338,
+   "end_frame": 343
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 344,
+   "end_frame": 347
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 348,
+   "end_frame": 350
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 351,
+   "end_frame": 353
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 354,
+   "end_frame": 357
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 358,
+   "end_frame": 363
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 364,
+   "end_frame": 367
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 368,
+   "end_frame": 370
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 371,
+   "end_frame": 373
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 374,
+   "end_frame": 376
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 377,
+   "end_frame": 382
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 383,
+   "end_frame": 386
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 387,
+   "end_frame": 389
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 390,
+   "end_frame": 392
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 393,
+   "end_frame": 396
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 397,
+   "end_frame": 402
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 403,
+   "end_frame": 406
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 407,
+   "end_frame": 409
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 410,
+   "end_frame": 412
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 413,
+   "end_frame": 415
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 416,
+   "end_frame": 421
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 422,
+   "end_frame": 425
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 426,
+   "end_frame": 428
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 429,
+   "end_frame": 431
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 432,
+   "end_frame": 435
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 436,
+   "end_frame": 441
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 442,
+   "end_frame": 445
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 446,
+   "end_frame": 448
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 449,
+   "end_frame": 451
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below (sped up).",
+   "start_frame": 452,
+   "end_frame": 454
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm takes the rePowder's container by its handle and tips it into the No. 60. DIN 66165 allows about 26 cm³ on a 200 mm, 63 um sieve, some 35-40 g of Al powder (DAL PR #175), so a four-cup run goes through in about four passes; one is shown.",
+   "start_frame": 455,
+   "end_frame": 479
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm takes the rePowder's container by its handle and tips it into the No. 60. DIN 66165 allows about 26 cm³ on a 200 mm, 63 um sieve, some 35-40 g of Al powder (DAL PR #175), so a four-cup run goes through in about four passes; one is shown.",
+   "start_frame": 480,
+   "end_frame": 494
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm takes the rePowder's container by its handle and tips it into the No. 60. DIN 66165 allows about 26 cm³ on a 200 mm, 63 um sieve, some 35-40 g of Al powder (DAL PR #175), so a four-cup run goes through in about four passes; one is shown.",
+   "start_frame": 495,
+   "end_frame": 501
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm takes the rePowder's container by its handle and tips it into the No. 60. DIN 66165 allows about 26 cm³ on a 200 mm, 63 um sieve, some 35-40 g of Al powder (DAL PR #175), so a four-cup run goes through in about four passes; one is shown.",
+   "start_frame": 502,
+   "end_frame": 514
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm takes the rePowder's container by its handle and tips it into the No. 60. DIN 66165 allows about 26 cm³ on a 200 mm, 63 um sieve, some 35-40 g of Al powder (DAL PR #175), so a four-cup run goes through in about four passes; one is shown.",
+   "start_frame": 515,
+   "end_frame": 542
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm takes the rePowder's container by its handle and tips it into the No. 60. DIN 66165 allows about 26 cm³ on a 200 mm, 63 um sieve, some 35-40 g of Al powder (DAL PR #175), so a four-cup run goes through in about four passes; one is shown.",
+   "start_frame": 543,
+   "end_frame": 555
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm takes the rePowder's container by its handle and tips it into the No. 60. DIN 66165 allows about 26 cm³ on a 200 mm, 63 um sieve, some 35-40 g of Al powder (DAL PR #175), so a four-cup run goes through in about four passes; one is shown.",
+   "start_frame": 556,
+   "end_frame": 574
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm takes the rePowder's container by its handle and tips it into the No. 60. DIN 66165 allows about 26 cm³ on a 200 mm, 63 um sieve, some 35-40 g of Al powder (DAL PR #175), so a four-cup run goes through in about four passes; one is shown.",
+   "start_frame": 575,
+   "end_frame": 613
+  },
+  {
+   "label": "2/5",
+   "caption": "The empty container goes back in its cup on the MiR, to ride back to the rePowder for cleaning.",
+   "start_frame": 614,
+   "end_frame": 626
+  },
+  {
+   "label": "2/5",
+   "caption": "The empty container goes back in its cup on the MiR, to ride back to the rePowder for cleaning.",
+   "start_frame": 627,
+   "end_frame": 636
+  },
+  {
+   "label": "2/5",
+   "caption": "The empty container goes back in its cup on the MiR, to ride back to the rePowder for cleaning.",
+   "start_frame": 637,
+   "end_frame": 661
+  },
+  {
+   "label": "2/5",
+   "caption": "The empty container goes back in its cup on the MiR, to ride back to the rePowder for cleaning.",
+   "start_frame": 662,
+   "end_frame": 674
+  },
+  {
+   "label": "2/5",
+   "caption": "The empty container goes back in its cup on the MiR, to ride back to the rePowder for cleaning.",
+   "start_frame": 675,
+   "end_frame": 681
+  },
+  {
+   "label": "2/5",
+   "caption": "The empty container goes back in its cup on the MiR, to ride back to the rePowder for cleaning.",
+   "start_frame": 682,
+   "end_frame": 692
+  },
+  {
+   "label": "2/5",
+   "caption": "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's motor-tensioned ANALYSETTE 3 PRO would take this step out.",
+   "start_frame": 693,
+   "end_frame": 717
+  },
+  {
+   "label": "2/5",
+   "caption": "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's motor-tensioned ANALYSETTE 3 PRO would take this step out.",
+   "start_frame": 718,
+   "end_frame": 728
+  },
+  {
+   "label": "2/5",
+   "caption": "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's motor-tensioned ANALYSETTE 3 PRO would take this step out.",
+   "start_frame": 729,
+   "end_frame": 735
+  },
+  {
+   "label": "2/5",
+   "caption": "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's motor-tensioned ANALYSETTE 3 PRO would take this step out.",
+   "start_frame": 736,
+   "end_frame": 746
+  },
+  {
+   "label": "2/5",
+   "caption": "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's motor-tensioned ANALYSETTE 3 PRO would take this step out.",
+   "start_frame": 747,
+   "end_frame": 768
+  },
+  {
+   "label": "2/5",
+   "caption": "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's motor-tensioned ANALYSETTE 3 PRO would take this step out.",
+   "start_frame": 769,
+   "end_frame": 777
+  },
+  {
+   "label": "2/5",
+   "caption": "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's motor-tensioned ANALYSETTE 3 PRO would take this step out.",
+   "start_frame": 778,
+   "end_frame": 793
+  },
+  {
+   "label": "2/5",
+   "caption": "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's motor-tensioned ANALYSETTE 3 PRO would take this step out.",
+   "start_frame": 794,
+   "end_frame": 800
+  },
+  {
+   "label": "2/5",
+   "caption": "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's motor-tensioned ANALYSETTE 3 PRO would take this step out.",
+   "start_frame": 801,
+   "end_frame": 810
+  },
+  {
+   "label": "2/5",
+   "caption": "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's motor-tensioned ANALYSETTE 3 PRO would take this step out.",
+   "start_frame": 811,
+   "end_frame": 816
+  },
+  {
+   "label": "2/5",
+   "caption": "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's motor-tensioned ANALYSETTE 3 PRO would take this step out.",
+   "start_frame": 817,
+   "end_frame": 821
+  },
+  {
+   "label": "2/5",
+   "caption": "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's motor-tensioned ANALYSETTE 3 PRO would take this step out.",
+   "start_frame": 822,
+   "end_frame": 834
+  },
+  {
+   "label": "2/5",
+   "caption": "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's motor-tensioned ANALYSETTE 3 PRO would take this step out.",
+   "start_frame": 835,
+   "end_frame": 839
+  },
+  {
+   "label": "2/5",
+   "caption": "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's motor-tensioned ANALYSETTE 3 PRO would take this step out.",
+   "start_frame": 840,
+   "end_frame": 845
+  },
+  {
+   "label": "2/5",
+   "caption": "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's motor-tensioned ANALYSETTE 3 PRO would take this step out.",
+   "start_frame": 846,
+   "end_frame": 855
+  },
+  {
+   "label": "2/5",
+   "caption": "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's motor-tensioned ANALYSETTE 3 PRO would take this step out.",
+   "start_frame": 856,
+   "end_frame": 861
+  },
+  {
+   "label": "2/5",
+   "caption": "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's motor-tensioned ANALYSETTE 3 PRO would take this step out.",
+   "start_frame": 862,
+   "end_frame": 866
+  },
+  {
+   "label": "2/5",
+   "caption": "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's motor-tensioned ANALYSETTE 3 PRO would take this step out.",
+   "start_frame": 867,
+   "end_frame": 879
+  },
+  {
+   "label": "2/5",
+   "caption": "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's motor-tensioned ANALYSETTE 3 PRO would take this step out.",
+   "start_frame": 880,
+   "end_frame": 884
+  },
+  {
+   "label": "2/5",
+   "caption": "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's motor-tensioned ANALYSETTE 3 PRO would take this step out.",
+   "start_frame": 885,
+   "end_frame": 890
+  },
+  {
+   "label": "2/5",
+   "caption": "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's motor-tensioned ANALYSETTE 3 PRO would take this step out.",
+   "start_frame": 891,
+   "end_frame": 909
+  },
+  {
+   "label": "2/5",
+   "caption": "Sieving, the stack drawn see-through: 3-D throwing motion, amplitude 0.2-3 mm (Retsch). Each size class falls until a cloth stops it. The enclosure draws air down and out through the roof.",
+   "start_frame": 910,
+   "end_frame": 928
+  },
+  {
+   "label": "2/5",
+   "caption": "Sieving, the stack drawn see-through: 3-D throwing motion, amplitude 0.2-3 mm (Retsch). Each size class falls until a cloth stops it. The enclosure draws air down and out through the roof.",
+   "start_frame": 929,
+   "end_frame": 1005
+  },
+  {
+   "label": "2/5",
+   "caption": "Settled: the shaker stops, and every grain is on the cloth that stopped it.",
+   "start_frame": 1006,
+   "end_frame": 1026
+  },
+  {
+   "label": "2/5",
+   "caption": "Coloured now only to tell them apart: the fractions, by the sieve that keeps each. The LPBF cut, 20-63 um, is the No. 325 and the pan: there is no 20 um sieve, and DAL found under 20 um is about 0.05 % by mass.",
+   "start_frame": 1027,
+   "end_frame": 1089
+  },
+  {
+   "label": "2/5",
+   "caption": "And back to grey: it is all the same powder, only sorted by size.",
+   "start_frame": 1090,
+   "end_frame": 1110
+  },
+  {
+   "label": "3/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1111,
+   "end_frame": 1126
+  },
+  {
+   "label": "3/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1127,
+   "end_frame": 1148
+  },
+  {
+   "label": "2/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1149,
+   "end_frame": 1158
+  },
+  {
+   "label": "2/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1159,
+   "end_frame": 1164
+  },
+  {
+   "label": "2/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1165,
+   "end_frame": 1169
+  },
+  {
+   "label": "2/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1170,
+   "end_frame": 1182
+  },
+  {
+   "label": "2/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1183,
+   "end_frame": 1187
+  },
+  {
+   "label": "2/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1188,
+   "end_frame": 1193
+  },
+  {
+   "label": "2/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1194,
+   "end_frame": 1203
+  },
+  {
+   "label": "2/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1204,
+   "end_frame": 1209
+  },
+  {
+   "label": "2/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1210,
+   "end_frame": 1214
+  },
+  {
+   "label": "2/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1215,
+   "end_frame": 1227
+  },
+  {
+   "label": "2/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1228,
+   "end_frame": 1232
+  },
+  {
+   "label": "2/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1233,
+   "end_frame": 1238
+  },
+  {
+   "label": "3/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1239,
+   "end_frame": 1251
+  },
+  {
+   "label": "3/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1252,
+   "end_frame": 1260
+  },
+  {
+   "label": "3/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1261,
+   "end_frame": 1267
+  },
+  {
+   "label": "3/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1268,
+   "end_frame": 1283
+  },
+  {
+   "label": "3/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1284,
+   "end_frame": 1292
+  },
+  {
+   "label": "3/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1293,
+   "end_frame": 1314
+  },
+  {
+   "label": "3/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1315,
+   "end_frame": 1325
+  },
+  {
+   "label": "3/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1326,
+   "end_frame": 1332
+  },
+  {
+   "label": "3/5",
+   "caption": "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it back on the tipper's roof.",
+   "start_frame": 1333,
+   "end_frame": 1342
+  },
+  {
+   "label": "3/5",
+   "caption": "The No. 60 comes off the top, out between the rods and into the tipper's cradle, which is open at the front for the tab. The cradle clamps the frame.",
+   "start_frame": 1343,
+   "end_frame": 1358
+  },
+  {
+   "label": "3/5",
+   "caption": "The No. 60 comes off the top, out between the rods and into the tipper's cradle, which is open at the front for the tab. The cradle clamps the frame.",
+   "start_frame": 1359,
+   "end_frame": 1367
+  },
+  {
+   "label": "3/5",
+   "caption": "The No. 60 comes off the top, out between the rods and into the tipper's cradle, which is open at the front for the tab. The cradle clamps the frame.",
+   "start_frame": 1368,
+   "end_frame": 1372
+  },
+  {
+   "label": "3/5",
+   "caption": "The No. 60 comes off the top, out between the rods and into the tipper's cradle, which is open at the front for the tab. The cradle clamps the frame.",
+   "start_frame": 1373,
+   "end_frame": 1379
+  },
+  {
+   "label": "3/5",
+   "caption": "The No. 60 comes off the top, out between the rods and into the tipper's cradle, which is open at the front for the tab. The cradle clamps the frame.",
+   "start_frame": 1380,
+   "end_frame": 1389
+  },
+  {
+   "label": "3/5",
+   "caption": "The No. 60 comes off the top, out between the rods and into the tipper's cradle, which is open at the front for the tab. The cradle clamps the frame.",
+   "start_frame": 1390,
+   "end_frame": 1405
+  },
+  {
+   "label": "3/5",
+   "caption": "The No. 60 comes off the top, out between the rods and into the tipper's cradle, which is open at the front for the tab. The cradle clamps the frame.",
+   "start_frame": 1406,
+   "end_frame": 1415
+  },
+  {
+   "label": "3/5",
+   "caption": "The No. 60 comes off the top, out between the rods and into the tipper's cradle, which is open at the front for the tab. The cradle clamps the frame.",
+   "start_frame": 1416,
+   "end_frame": 1422
+  },
+  {
+   "label": "3/5",
+   "caption": "The No. 60 comes off the top, out between the rods and into the tipper's cradle, which is open at the front for the tab. The cradle clamps the frame.",
+   "start_frame": 1423,
+   "end_frame": 1427
+  },
+  {
+   "label": "3/5",
+   "caption": "The No. 60 comes off the top, out between the rods and into the tipper's cradle, which is open at the front for the tab. The cradle clamps the frame.",
+   "start_frame": 1428,
+   "end_frame": 1434
+  },
+  {
+   "label": "3/5",
+   "caption": "The cradle turns the sieve over the funnel, and a pneumatic knocker taps the frame, not the cloth (DAL #234: tap the frame; no brush on 63 um or finer, no air jet on any cloth). The fraction runs down the funnel into its labelled jar.",
+   "start_frame": 1435,
+   "end_frame": 1444
+  },
+  {
+   "label": "3/5",
+   "caption": "The cradle turns the sieve over the funnel, and a pneumatic knocker taps the frame, not the cloth (DAL #234: tap the frame; no brush on 63 um or finer, no air jet on any cloth). The fraction runs down the funnel into its labelled jar.",
+   "start_frame": 1445,
+   "end_frame": 1450
+  },
+  {
+   "label": "3/5",
+   "caption": "The cradle turns the sieve over the funnel, and a pneumatic knocker taps the frame, not the cloth (DAL #234: tap the frame; no brush on 63 um or finer, no air jet on any cloth). The fraction runs down the funnel into its labelled jar.",
+   "start_frame": 1451,
+   "end_frame": 1471
+  },
+  {
+   "label": "3/5",
+   "caption": "The cradle turns the sieve over the funnel, and a pneumatic knocker taps the frame, not the cloth (DAL #234: tap the frame; no brush on 63 um or finer, no air jet on any cloth). The fraction runs down the funnel into its labelled jar.",
+   "start_frame": 1472,
+   "end_frame": 1486
+  },
+  {
+   "label": "3/5",
+   "caption": "The cradle turns the sieve over the funnel, and a pneumatic knocker taps the frame, not the cloth (DAL #234: tap the frame; no brush on 63 um or finer, no air jet on any cloth). The fraction runs down the funnel into its labelled jar.",
+   "start_frame": 1487,
+   "end_frame": 1502
+  },
+  {
+   "label": "3/5",
+   "caption": "The cradle turns the sieve over the funnel, and a pneumatic knocker taps the frame, not the cloth (DAL #234: tap the frame; no brush on 63 um or finer, no air jet on any cloth). The fraction runs down the funnel into its labelled jar.",
+   "start_frame": 1503,
+   "end_frame": 1507
+  },
+  {
+   "label": "3/5",
+   "caption": "Empty, it goes back on the stand, the first of the set again: put back top down, the set ends in storage order for the next run. Every sieve is cleaned like the No. 325 (drawn: vibrate, ultrasonic IPA, warm air) before the next alloy.",
+   "start_frame": 1508,
+   "end_frame": 1523
+  },
+  {
+   "label": "3/5",
+   "caption": "Empty, it goes back on the stand, the first of the set again: put back top down, the set ends in storage order for the next run. Every sieve is cleaned like the No. 325 (drawn: vibrate, ultrasonic IPA, warm air) before the next alloy.",
+   "start_frame": 1524,
+   "end_frame": 1532
+  },
+  {
+   "label": "3/5",
+   "caption": "Empty, it goes back on the stand, the first of the set again: put back top down, the set ends in storage order for the next run. Every sieve is cleaned like the No. 325 (drawn: vibrate, ultrasonic IPA, warm air) before the next alloy.",
+   "start_frame": 1533,
+   "end_frame": 1537
+  },
+  {
+   "label": "3/5",
+   "caption": "Empty, it goes back on the stand, the first of the set again: put back top down, the set ends in storage order for the next run. Every sieve is cleaned like the No. 325 (drawn: vibrate, ultrasonic IPA, warm air) before the next alloy.",
+   "start_frame": 1538,
+   "end_frame": 1544
+  },
+  {
+   "label": "3/5",
+   "caption": "Empty, it goes back on the stand, the first of the set again: put back top down, the set ends in storage order for the next run. Every sieve is cleaned like the No. 325 (drawn: vibrate, ultrasonic IPA, warm air) before the next alloy.",
+   "start_frame": 1545,
+   "end_frame": 1554
+  },
+  {
+   "label": "3/5",
+   "caption": "Empty, it goes back on the stand, the first of the set again: put back top down, the set ends in storage order for the next run. Every sieve is cleaned like the No. 325 (drawn: vibrate, ultrasonic IPA, warm air) before the next alloy.",
+   "start_frame": 1555,
+   "end_frame": 1570
+  },
+  {
+   "label": "3/5",
+   "caption": "Empty, it goes back on the stand, the first of the set again: put back top down, the set ends in storage order for the next run. Every sieve is cleaned like the No. 325 (drawn: vibrate, ultrasonic IPA, warm air) before the next alloy.",
+   "start_frame": 1571,
+   "end_frame": 1580
+  },
+  {
+   "label": "3/5",
+   "caption": "Empty, it goes back on the stand, the first of the set again: put back top down, the set ends in storage order for the next run. Every sieve is cleaned like the No. 325 (drawn: vibrate, ultrasonic IPA, warm air) before the next alloy.",
+   "start_frame": 1581,
+   "end_frame": 1587
+  },
+  {
+   "label": "3/5",
+   "caption": "Empty, it goes back on the stand, the first of the set again: put back top down, the set ends in storage order for the next run. Every sieve is cleaned like the No. 325 (drawn: vibrate, ultrasonic IPA, warm air) before the next alloy.",
+   "start_frame": 1588,
+   "end_frame": 1592
+  },
+  {
+   "label": "3/5",
+   "caption": "Empty, it goes back on the stand, the first of the set again: put back top down, the set ends in storage order for the next run. Every sieve is cleaned like the No. 325 (drawn: vibrate, ultrasonic IPA, warm air) before the next alloy.",
+   "start_frame": 1593,
+   "end_frame": 1599
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1600,
+   "end_frame": 1604
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1605,
+   "end_frame": 1610
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1611,
+   "end_frame": 1614
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1615,
+   "end_frame": 1617
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1618,
+   "end_frame": 1620
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1621,
+   "end_frame": 1624
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1625,
+   "end_frame": 1630
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1631,
+   "end_frame": 1634
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1635,
+   "end_frame": 1637
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1638,
+   "end_frame": 1640
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1641,
+   "end_frame": 1643
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1644,
+   "end_frame": 1647
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1648,
+   "end_frame": 1650
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1651,
+   "end_frame": 1658
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1659,
+   "end_frame": 1664
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1665,
+   "end_frame": 1670
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1671,
+   "end_frame": 1673
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1674,
+   "end_frame": 1679
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1680,
+   "end_frame": 1683
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1684,
+   "end_frame": 1686
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1687,
+   "end_frame": 1689
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1690,
+   "end_frame": 1693
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1694,
+   "end_frame": 1699
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1700,
+   "end_frame": 1703
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1704,
+   "end_frame": 1706
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1707,
+   "end_frame": 1709
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1710,
+   "end_frame": 1712
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1713,
+   "end_frame": 1717
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1718,
+   "end_frame": 1723
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1724,
+   "end_frame": 1727
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1728,
+   "end_frame": 1730
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1731,
+   "end_frame": 1733
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1734,
+   "end_frame": 1737
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1738,
+   "end_frame": 1743
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1744,
+   "end_frame": 1747
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1748,
+   "end_frame": 1750
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1751,
+   "end_frame": 1753
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1754,
+   "end_frame": 1756
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1757,
+   "end_frame": 1760
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1761,
+   "end_frame": 1763
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1764,
+   "end_frame": 1771
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1772,
+   "end_frame": 1777
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1778,
+   "end_frame": 1783
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1784,
+   "end_frame": 1786
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1787,
+   "end_frame": 1792
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1793,
+   "end_frame": 1796
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1797,
+   "end_frame": 1799
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1800,
+   "end_frame": 1802
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1803,
+   "end_frame": 1806
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1807,
+   "end_frame": 1812
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1813,
+   "end_frame": 1816
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1817,
+   "end_frame": 1819
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1820,
+   "end_frame": 1822
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1823,
+   "end_frame": 1825
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1826,
+   "end_frame": 1830
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1831,
+   "end_frame": 1836
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1837,
+   "end_frame": 1840
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1841,
+   "end_frame": 1843
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1844,
+   "end_frame": 1846
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1847,
+   "end_frame": 1850
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1851,
+   "end_frame": 1856
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1857,
+   "end_frame": 1860
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1861,
+   "end_frame": 1863
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1864,
+   "end_frame": 1866
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1867,
+   "end_frame": 1869
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1870,
+   "end_frame": 1873
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1874,
+   "end_frame": 1876
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1877,
+   "end_frame": 1884
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1885,
+   "end_frame": 1890
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1891,
+   "end_frame": 1896
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1897,
+   "end_frame": 1899
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1900,
+   "end_frame": 1905
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1906,
+   "end_frame": 1909
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1910,
+   "end_frame": 1912
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1913,
+   "end_frame": 1915
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1916,
+   "end_frame": 1919
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1920,
+   "end_frame": 1925
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1926,
+   "end_frame": 1929
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1930,
+   "end_frame": 1932
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1933,
+   "end_frame": 1935
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1936,
+   "end_frame": 1938
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1939,
+   "end_frame": 1943
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1944,
+   "end_frame": 1949
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1950,
+   "end_frame": 1953
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1954,
+   "end_frame": 1956
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1957,
+   "end_frame": 1959
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1960,
+   "end_frame": 1963
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1964,
+   "end_frame": 1969
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1970,
+   "end_frame": 1973
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1974,
+   "end_frame": 1976
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1977,
+   "end_frame": 1979
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1980,
+   "end_frame": 1982
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1983,
+   "end_frame": 1986
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1987,
+   "end_frame": 1989
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1990,
+   "end_frame": 1997
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 1998,
+   "end_frame": 2003
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2004,
+   "end_frame": 2009
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2010,
+   "end_frame": 2012
+  },
+  {
+   "label": "3/5",
+   "caption": "Cleaning, with no person: the sieve is turned over the funnel again and a vibrator shakes the powder out of the cloth, the work a Solukon-style depowdering module does for a plate (here a small one).",
+   "start_frame": 2013,
+   "end_frame": 2018
+  },
+  {
+   "label": "3/5",
+   "caption": "Cleaning, with no person: the sieve is turned over the funnel again and a vibrator shakes the powder out of the cloth, the work a Solukon-style depowdering module does for a plate (here a small one).",
+   "start_frame": 2019,
+   "end_frame": 2039
+  },
+  {
+   "label": "3/5",
+   "caption": "Cleaning, with no person: the sieve is turned over the funnel again and a vibrator shakes the powder out of the cloth, the work a Solukon-style depowdering module does for a plate (here a small one).",
+   "start_frame": 2040,
+   "end_frame": 2085
+  },
+  {
+   "label": "3/5",
+   "caption": "Cleaning, with no person: the sieve is turned over the funnel again and a vibrator shakes the powder out of the cloth, the work a Solukon-style depowdering module does for a plate (here a small one).",
+   "start_frame": 2086,
+   "end_frame": 2101
+  },
+  {
+   "label": "3/5",
+   "caption": "Cleaning, with no person: the sieve is turned over the funnel again and a vibrator shakes the powder out of the cloth, the work a Solukon-style depowdering module does for a plate (here a small one).",
+   "start_frame": 2102,
+   "end_frame": 2106
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm parks and the MiR250 rolls 0.6 m left along the bench, to the wash module's side of the tipper. The sieve waits in the cradle.",
+   "start_frame": 2107,
+   "end_frame": 2125
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm parks and the MiR250 rolls 0.6 m left along the bench, to the wash module's side of the tipper. The sieve waits in the cradle.",
+   "start_frame": 2126,
+   "end_frame": 2168
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm takes the sieve by its tab and sets it on the basket ring, in the lift's top position, over the ultrasonic tank.",
+   "start_frame": 2169,
+   "end_frame": 2184
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm takes the sieve by its tab and sets it on the basket ring, in the lift's top position, over the ultrasonic tank.",
+   "start_frame": 2185,
+   "end_frame": 2193
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm takes the sieve by its tab and sets it on the basket ring, in the lift's top position, over the ultrasonic tank.",
+   "start_frame": 2194,
+   "end_frame": 2198
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm takes the sieve by its tab and sets it on the basket ring, in the lift's top position, over the ultrasonic tank.",
+   "start_frame": 2199,
+   "end_frame": 2205
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm takes the sieve by its tab and sets it on the basket ring, in the lift's top position, over the ultrasonic tank.",
+   "start_frame": 2206,
+   "end_frame": 2215
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm takes the sieve by its tab and sets it on the basket ring, in the lift's top position, over the ultrasonic tank.",
+   "start_frame": 2216,
+   "end_frame": 2231
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm takes the sieve by its tab and sets it on the basket ring, in the lift's top position, over the ultrasonic tank.",
+   "start_frame": 2232,
+   "end_frame": 2241
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm takes the sieve by its tab and sets it on the basket ring, in the lift's top position, over the ultrasonic tank.",
+   "start_frame": 2242,
+   "end_frame": 2248
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm takes the sieve by its tab and sets it on the basket ring, in the lift's top position, over the ultrasonic tank.",
+   "start_frame": 2249,
+   "end_frame": 2253
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm takes the sieve by its tab and sets it on the basket ring, in the lift's top position, over the ultrasonic tank.",
+   "start_frame": 2254,
+   "end_frame": 2260
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm takes the sieve by its tab and sets it on the basket ring, in the lift's top position, over the ultrasonic tank.",
+   "start_frame": 2261,
+   "end_frame": 2276
+  },
+  {
+   "label": "3/5",
+   "caption": "The lift lowers the basket into the tank: isopropanol in a water-jacketed ultrasonic bath, the cloth covered. Three to five minutes at room temperature, at most 150 W (Retsch, Advantech via DAL #234); shown sped up. Nothing else touches the cloth.",
+   "start_frame": 2277,
+   "end_frame": 2301
+  },
+  {
+   "label": "3/5",
+   "caption": "The lift lowers the basket into the tank: isopropanol in a water-jacketed ultrasonic bath, the cloth covered. Three to five minutes at room temperature, at most 150 W (Retsch, Advantech via DAL #234); shown sped up. Nothing else touches the cloth.",
+   "start_frame": 2302,
+   "end_frame": 2362
+  },
+  {
+   "label": "3/5",
+   "caption": "Out of the bath and into the warm-air knife: a slot nozzle above and one below travel along the cloth with air no warmer than 60 C (Retsch: dry below 80 C, standing, never above). No compressed-air jet on bare cloth by hand; the knife is a fixed slot at low pressure.",
+   "start_frame": 2363,
+   "end_frame": 2387
+  },
+  {
+   "label": "3/5",
+   "caption": "Out of the bath and into the warm-air knife: a slot nozzle above and one below travel along the cloth with air no warmer than 60 C (Retsch: dry below 80 C, standing, never above). No compressed-air jet on bare cloth by hand; the knife is a fixed slot at low pressure.",
+   "start_frame": 2388,
+   "end_frame": 2396
+  },
+  {
+   "label": "3/5",
+   "caption": "Out of the bath and into the warm-air knife: a slot nozzle above and one below travel along the cloth with air no warmer than 60 C (Retsch: dry below 80 C, standing, never above). No compressed-air jet on bare cloth by hand; the knife is a fixed slot at low pressure.",
+   "start_frame": 2397,
+   "end_frame": 2449
+  },
+  {
+   "label": "3/5",
+   "caption": "Out of the bath and into the warm-air knife: a slot nozzle above and one below travel along the cloth with air no warmer than 60 C (Retsch: dry below 80 C, standing, never above). No compressed-air jet on bare cloth by hand; the knife is a fixed slot at low pressure.",
+   "start_frame": 2450,
+   "end_frame": 2458
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm lifts the dry sieve off the basket and puts it back in the tipper's cradle.",
+   "start_frame": 2459,
+   "end_frame": 2474
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm lifts the dry sieve off the basket and puts it back in the tipper's cradle.",
+   "start_frame": 2475,
+   "end_frame": 2483
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm lifts the dry sieve off the basket and puts it back in the tipper's cradle.",
+   "start_frame": 2484,
+   "end_frame": 2488
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm lifts the dry sieve off the basket and puts it back in the tipper's cradle.",
+   "start_frame": 2489,
+   "end_frame": 2495
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm lifts the dry sieve off the basket and puts it back in the tipper's cradle.",
+   "start_frame": 2496,
+   "end_frame": 2505
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm lifts the dry sieve off the basket and puts it back in the tipper's cradle.",
+   "start_frame": 2506,
+   "end_frame": 2521
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm lifts the dry sieve off the basket and puts it back in the tipper's cradle.",
+   "start_frame": 2522,
+   "end_frame": 2531
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm lifts the dry sieve off the basket and puts it back in the tipper's cradle.",
+   "start_frame": 2532,
+   "end_frame": 2538
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm lifts the dry sieve off the basket and puts it back in the tipper's cradle.",
+   "start_frame": 2539,
+   "end_frame": 2543
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm lifts the dry sieve off the basket and puts it back in the tipper's cradle.",
+   "start_frame": 2544,
+   "end_frame": 2550
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm lifts the dry sieve off the basket and puts it back in the tipper's cradle.",
+   "start_frame": 2551,
+   "end_frame": 2566
+  },
+  {
+   "label": "3/5",
+   "caption": "The MiR rolls back to the stand.",
+   "start_frame": 2567,
+   "end_frame": 2609
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2610,
+   "end_frame": 2615
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2616,
+   "end_frame": 2619
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2620,
+   "end_frame": 2622
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2623,
+   "end_frame": 2625
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2626,
+   "end_frame": 2629
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2630,
+   "end_frame": 2635
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2636,
+   "end_frame": 2639
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2640,
+   "end_frame": 2642
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2643,
+   "end_frame": 2645
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2646,
+   "end_frame": 2648
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2649,
+   "end_frame": 2654
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2655,
+   "end_frame": 2658
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2659,
+   "end_frame": 2661
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2662,
+   "end_frame": 2664
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2665,
+   "end_frame": 2668
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2669,
+   "end_frame": 2674
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2675,
+   "end_frame": 2678
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2679,
+   "end_frame": 2681
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2682,
+   "end_frame": 2684
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2685,
+   "end_frame": 2687
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2688,
+   "end_frame": 2691
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2692,
+   "end_frame": 2694
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2695,
+   "end_frame": 2702
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2703,
+   "end_frame": 2708
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2709,
+   "end_frame": 2714
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2715,
+   "end_frame": 2717
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2718,
+   "end_frame": 2723
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2724,
+   "end_frame": 2727
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2728,
+   "end_frame": 2730
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2731,
+   "end_frame": 2733
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2734,
+   "end_frame": 2737
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2738,
+   "end_frame": 2743
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2744,
+   "end_frame": 2747
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2748,
+   "end_frame": 2750
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2751,
+   "end_frame": 2753
+  },
+  {
+   "label": "3/5",
+   "caption": "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 and the pan both into the LPBF jar (sped up).",
+   "start_frame": 2754,
+   "end_frame": 2756
+  },
+  {
+   "label": "3/5",
+   "caption": "The five jars, clear glass as always. For a few seconds each is tinted by its size cut, then they go back to plain.",
+   "start_frame": 2757,
+   "end_frame": 2848
+  },
+  {
+   "label": "3/5",
+   "caption": "The lab's own sieving, by hand: the Oct 27 bronze runs (lot k7m2q9) in three jars. Left, under 63 µm, the LPBF cut: 188 g; middle, 63-250 µm, 827 g; right, flakes over 250 µm, 182 g; of 1,938 g melted in two runs (Gage Erickson, DAL #219 comment 6509252104).",
+   "start_frame": 2849,
+   "end_frame": 2927
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm parks and the MiR250 pulls up to the bench for the jar under the funnel: forward onto its usual line, then back along it. It can't drive sideways.",
+   "start_frame": 2928,
+   "end_frame": 2946
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm parks and the MiR250 pulls up to the bench for the jar under the funnel: forward onto its usual line, then back along it. It can't drive sideways.",
+   "start_frame": 2947,
+   "end_frame": 3001
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm parks and the MiR250 pulls up to the bench for the jar under the funnel: forward onto its usual line, then back along it. It can't drive sideways.",
+   "start_frame": 3002,
+   "end_frame": 3054
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm draws the LPBF jar out from under the funnel and stands it in a cup on the MiR. The lab weighs and labels each jar now; here the label is printed before the run.",
+   "start_frame": 3055,
+   "end_frame": 3079
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm draws the LPBF jar out from under the funnel and stands it in a cup on the MiR. The lab weighs and labels each jar now; here the label is printed before the run.",
+   "start_frame": 3080,
+   "end_frame": 3094
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm draws the LPBF jar out from under the funnel and stands it in a cup on the MiR. The lab weighs and labels each jar now; here the label is printed before the run.",
+   "start_frame": 3095,
+   "end_frame": 3101
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm draws the LPBF jar out from under the funnel and stands it in a cup on the MiR. The lab weighs and labels each jar now; here the label is printed before the run.",
+   "start_frame": 3102,
+   "end_frame": 3116
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm draws the LPBF jar out from under the funnel and stands it in a cup on the MiR. The lab weighs and labels each jar now; here the label is printed before the run.",
+   "start_frame": 3117,
+   "end_frame": 3141
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm draws the LPBF jar out from under the funnel and stands it in a cup on the MiR. The lab weighs and labels each jar now; here the label is printed before the run.",
+   "start_frame": 3142,
+   "end_frame": 3154
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm draws the LPBF jar out from under the funnel and stands it in a cup on the MiR. The lab weighs and labels each jar now; here the label is printed before the run.",
+   "start_frame": 3155,
+   "end_frame": 3161
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm draws the LPBF jar out from under the funnel and stands it in a cup on the MiR. The lab weighs and labels each jar now; here the label is printed before the run.",
+   "start_frame": 3162,
+   "end_frame": 3172
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm draws the LPBF jar out from under the funnel and stands it in a cup on the MiR. The lab weighs and labels each jar now; here the label is printed before the run.",
+   "start_frame": 3173,
+   "end_frame": 3191
+  },
+  {
+   "label": "4/5",
+   "caption": "To the Aconity MIDI, 8.4 m along the row, past both Kardex Shuttles' openings.",
+   "start_frame": 3192,
+   "end_frame": 3353
+  },
+  {
+   "label": "4/5",
+   "caption": "The door opens, and the chamber is drawn see-through. The MIDI's 170 mm build cylinder is at the front; the 170 mm powder supply cylinder is behind it (DAL PR #169). Its piston drops to take the powder.",
+   "start_frame": 3354,
+   "end_frame": 3379
+  },
+  {
+   "label": "4/5",
+   "caption": "The door opens, and the chamber is drawn see-through. The MIDI's 170 mm build cylinder is at the front; the 170 mm powder supply cylinder is behind it (DAL PR #169). Its piston drops to take the powder.",
+   "start_frame": 3380,
+   "end_frame": 3396
+  },
+  {
+   "label": "4/5",
+   "caption": "The arm carries the jar in, level, over the supply cylinder, and turns its wrist to pour. A full MIDI build cylinder takes about 440 g of powder, and its 55 mm reduction kit about 30 g (DAL #138). Four cups make 172 g of charge; the 225 cm³ crucible has taken 1,080 g of 630 bronze in one run (DAL #219).",
+   "start_frame": 3397,
+   "end_frame": 3418
+  },
+  {
+   "label": "4/5",
+   "caption": "The arm carries the jar in, level, over the supply cylinder, and turns its wrist to pour. A full MIDI build cylinder takes about 440 g of powder, and its 55 mm reduction kit about 30 g (DAL #138). Four cups make 172 g of charge; the 225 cm³ crucible has taken 1,080 g of 630 bronze in one run (DAL #219).",
+   "start_frame": 3419,
+   "end_frame": 3431
+  },
+  {
+   "label": "4/5",
+   "caption": "The arm carries the jar in, level, over the supply cylinder, and turns its wrist to pour. A full MIDI build cylinder takes about 440 g of powder, and its 55 mm reduction kit about 30 g (DAL #138). Four cups make 172 g of charge; the 225 cm³ crucible has taken 1,080 g of 630 bronze in one run (DAL #219).",
+   "start_frame": 3432,
+   "end_frame": 3438
+  },
+  {
+   "label": "4/5",
+   "caption": "The arm carries the jar in, level, over the supply cylinder, and turns its wrist to pour. A full MIDI build cylinder takes about 440 g of powder, and its 55 mm reduction kit about 30 g (DAL #138). Four cups make 172 g of charge; the 225 cm³ crucible has taken 1,080 g of 630 bronze in one run (DAL #219).",
+   "start_frame": 3439,
+   "end_frame": 3451
+  },
+  {
+   "label": "4/5",
+   "caption": "The arm carries the jar in, level, over the supply cylinder, and turns its wrist to pour. A full MIDI build cylinder takes about 440 g of powder, and its 55 mm reduction kit about 30 g (DAL #138). Four cups make 172 g of charge; the 225 cm³ crucible has taken 1,080 g of 630 bronze in one run (DAL #219).",
+   "start_frame": 3452,
+   "end_frame": 3479
+  },
+  {
+   "label": "4/5",
+   "caption": "The arm carries the jar in, level, over the supply cylinder, and turns its wrist to pour. A full MIDI build cylinder takes about 440 g of powder, and its 55 mm reduction kit about 30 g (DAL #138). Four cups make 172 g of charge; the 225 cm³ crucible has taken 1,080 g of 630 bronze in one run (DAL #219).",
+   "start_frame": 3480,
+   "end_frame": 3504
+  },
+  {
+   "label": "4/5",
+   "caption": "The arm carries the jar in, level, over the supply cylinder, and turns its wrist to pour. A full MIDI build cylinder takes about 440 g of powder, and its 55 mm reduction kit about 30 g (DAL #138). Four cups make 172 g of charge; the 225 cm³ crucible has taken 1,080 g of 630 bronze in one run (DAL #219).",
+   "start_frame": 3505,
+   "end_frame": 3520
+  },
+  {
+   "label": "4/5",
+   "caption": "The arm carries the jar in, level, over the supply cylinder, and turns its wrist to pour. A full MIDI build cylinder takes about 440 g of powder, and its 55 mm reduction kit about 30 g (DAL #138). Four cups make 172 g of charge; the 225 cm³ crucible has taken 1,080 g of 630 bronze in one run (DAL #219).",
+   "start_frame": 3521,
+   "end_frame": 3559
+  },
+  {
+   "label": "4/5",
+   "caption": "The empty jar goes back on the MiR, and the door shuts. The chamber is purged with argon before the laser runs.",
+   "start_frame": 3560,
+   "end_frame": 3572
+  },
+  {
+   "label": "4/5",
+   "caption": "The empty jar goes back on the MiR, and the door shuts. The chamber is purged with argon before the laser runs.",
+   "start_frame": 3573,
+   "end_frame": 3594
+  },
+  {
+   "label": "4/5",
+   "caption": "The empty jar goes back on the MiR, and the door shuts. The chamber is purged with argon before the laser runs.",
+   "start_frame": 3595,
+   "end_frame": 3619
+  },
+  {
+   "label": "4/5",
+   "caption": "The empty jar goes back on the MiR, and the door shuts. The chamber is purged with argon before the laser runs.",
+   "start_frame": 3620,
+   "end_frame": 3632
+  },
+  {
+   "label": "4/5",
+   "caption": "The empty jar goes back on the MiR, and the door shuts. The chamber is purged with argon before the laser runs.",
+   "start_frame": 3633,
+   "end_frame": 3639
+  },
+  {
+   "label": "4/5",
+   "caption": "The empty jar goes back on the MiR, and the door shuts. The chamber is purged with argon before the laser runs.",
+   "start_frame": 3640,
+   "end_frame": 3650
+  },
+  {
+   "label": "4/5",
+   "caption": "The empty jar goes back on the MiR, and the door shuts. The chamber is purged with argon before the laser runs.",
+   "start_frame": 3651,
+   "end_frame": 3674
+  },
+  {
+   "label": "5/5",
+   "caption": "The print, sped up and cut open: the recoater spreads a layer from the supply over the build cylinder, the laser melts the bars' and the lug's outlines, the platform drops one layer. 600 layers of 50 um (assumed) make the 30 mm build.",
+   "start_frame": 3675,
+   "end_frame": 3696
+  },
+  {
+   "label": "5/5",
+   "caption": "The print, sped up and cut open: the recoater spreads a layer from the supply over the build cylinder, the laser melts the bars' and the lug's outlines, the platform drops one layer. 600 layers of 50 um (assumed) make the 30 mm build.",
+   "start_frame": 3697,
+   "end_frame": 3837
+  },
+  {
+   "label": "5/5",
+   "caption": "Printed: four ASTM E8 subsize bars and a handling lug on the 170 mm plate, buried in powder. The MiR comes back along the aisle. Chapter 4 checks the sieved powder; chapter 5 takes the plate from here.",
+   "start_frame": 3838,
+   "end_frame": 3857
+  },
+  {
+   "label": "5/5",
+   "caption": "Printed: four ASTM E8 subsize bars and a handling lug on the 170 mm plate, buried in powder. The MiR comes back along the aisle. Chapter 4 checks the sieved powder; chapter 5 takes the plate from here.",
+   "start_frame": 3858,
+   "end_frame": 3984
+  },
+  {
+   "label": "5/5",
+   "caption": "Printed: four ASTM E8 subsize bars and a handling lug on the 170 mm plate, buried in powder. The MiR comes back along the aisle. Chapter 4 checks the sieved powder; chapter 5 takes the plate from here.",
+   "start_frame": 3985,
+   "end_frame": 4017
+  }
+ ]
+}

@@ -1,0 +1,10453 @@
+{
+ "sources": {
+  "DAL #146 (feedstock)": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/146",
+  "DAL #157 (run IDs, labels)": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/157",
+  "jar sizes": "typical wide-mouth straight-sided jars: estimates, not a supplier's drawing"
+ },
+ "jar_sizes_mm": {
+  "30 mL": {
+   "diameter": 38.0,
+   "body_h": 50.0,
+   "lid_h": 12.0,
+   "ml": 30
+  },
+  "60 mL": {
+   "diameter": 48.0,
+   "body_h": 60.0,
+   "lid_h": 14.0,
+   "ml": 60
+  },
+  "125 mL": {
+   "diameter": 58.0,
+   "body_h": 76.0,
+   "lid_h": 16.0,
+   "ml": 125
+  },
+  "250 mL": {
+   "diameter": 70.0,
+   "body_h": 92.0,
+   "lid_h": 18.0,
+   "ml": 250
+  },
+  "500 mL": {
+   "diameter": 76.0,
+   "body_h": 150.0,
+   "lid_h": 20.0,
+   "ml": 500
+  }
+ },
+ "spacing_mm": {
+  "side_by_side": 6.0,
+  "front_to_back": 20.0
+ },
+ "stores": {
+  "powder_store_feed": {
+   "tray": "N",
+   "slot": "2F0",
+   "slot_span_mm": 225.0,
+   "rack_mm": [
+    2410.0,
+    800.0
+   ],
+   "jars": 264,
+   "by_size": {
+    "60 mL": {
+     "n": 82,
+     "reach_centre": 82,
+     "reach_any": 82
+    },
+    "125 mL": {
+     "n": 70,
+     "reach_centre": 70,
+     "reach_any": 70
+    },
+    "250 mL": {
+     "n": 58,
+     "reach_centre": 52,
+     "reach_any": 58
+    },
+    "500 mL": {
+     "n": 54,
+     "reach_centre": 34,
+     "reach_any": 54
+    }
+   },
+   "gripper_end_seats": {
+    "seats": [
+     {
+      "size": "60 mL",
+      "band": 0,
+      "row": 0,
+      "which": "left end",
+      "x": -1080.0,
+      "y": -340.2,
+      "pad_gap_mm": 62.0,
+      "close": 0.3055,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 45.0,
+         "tray": 64.8,
+         "taken jar": 6.0,
+         "jar": 2.3
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 44.2,
+         "tray": 64.8,
+         "taken jar": 6.0,
+         "jar": 2.2
+        }
+       }
+      }
+     },
+     {
+      "size": "60 mL",
+      "band": 0,
+      "row": 0,
+      "which": "middle",
+      "x": 0.0,
+      "y": -340.2,
+      "pad_gap_mm": 62.0,
+      "close": 0.3055,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "tray": 64.8,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "tray": 64.8,
+         "jar": 2.2,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "60 mL",
+      "band": 0,
+      "row": 0,
+      "which": "right end",
+      "x": 1080.0,
+      "y": -340.2,
+      "pad_gap_mm": 62.0,
+      "close": 0.3055,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 45.1,
+         "tray": 64.8,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 45.8,
+         "tray": 64.8,
+         "jar": 2.2,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "60 mL",
+      "band": 0,
+      "row": 1,
+      "which": "left end",
+      "x": -1080.0,
+      "y": -266.8,
+      "pad_gap_mm": 62.0,
+      "close": 0.3055,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 45.8,
+         "tray": 122.7,
+         "jar": 1.4,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 45.1,
+         "tray": 122.0,
+         "jar": 1.4,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "60 mL",
+      "band": 0,
+      "row": 1,
+      "which": "middle",
+      "x": 0.0,
+      "y": -266.8,
+      "pad_gap_mm": 62.0,
+      "close": 0.3055,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "tray": 125.9,
+         "jar": 1.4,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "tray": 125.9,
+         "jar": 1.4,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "60 mL",
+      "band": 0,
+      "row": 1,
+      "which": "right end",
+      "x": 1080.0,
+      "y": -266.8,
+      "pad_gap_mm": 62.0,
+      "close": 0.3055,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 44.2,
+         "tray": 122.0,
+         "jar": 1.4,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 45.0,
+         "tray": 122.7,
+         "jar": 1.4,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "125 mL",
+      "band": 1,
+      "row": 0,
+      "which": "left end",
+      "x": -1088.0,
+      "y": -174.8,
+      "pad_gap_mm": 72.0,
+      "close": 0.1786,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "handle": 44.2,
+         "tray": 117.9,
+         "jar": 2.5,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "handle": 43.5,
+         "tray": 117.2,
+         "jar": 2.5,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "125 mL",
+      "band": 1,
+      "row": 0,
+      "which": "middle",
+      "x": 0.0,
+      "y": -174.8,
+      "pad_gap_mm": 72.0,
+      "close": 0.1786,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "jar": 2.5,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "jar": 2.5,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "125 mL",
+      "band": 1,
+      "row": 0,
+      "which": "right end",
+      "x": 1088.0,
+      "y": -174.8,
+      "pad_gap_mm": 72.0,
+      "close": 0.1786,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "handle": 44.2,
+         "tray": 117.2,
+         "jar": 2.5,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "handle": 44.9,
+         "tray": 117.9,
+         "jar": 2.5,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "125 mL",
+      "band": 1,
+      "row": 1,
+      "which": "left end",
+      "x": -1088.0,
+      "y": -89.2,
+      "pad_gap_mm": 72.0,
+      "close": 0.1786,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "handle": 44.9,
+         "tray": 117.9,
+         "jar": 2.5,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "handle": 44.2,
+         "tray": 117.2,
+         "jar": 2.5,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "125 mL",
+      "band": 1,
+      "row": 1,
+      "which": "middle",
+      "x": 0.0,
+      "y": -89.2,
+      "pad_gap_mm": 72.0,
+      "close": 0.1786,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "jar": 1.9,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "jar": 1.9,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "125 mL",
+      "band": 1,
+      "row": 1,
+      "which": "right end",
+      "x": 1088.0,
+      "y": -89.2,
+      "pad_gap_mm": 72.0,
+      "close": 0.1786,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "handle": 43.5,
+         "tray": 117.2,
+         "jar": 2.5,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "handle": 44.2,
+         "tray": 117.9,
+         "jar": 2.5,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "250 mL",
+      "band": 2,
+      "row": 0,
+      "which": "left end",
+      "x": -1064.0,
+      "y": 15.8,
+      "pad_gap_mm": 84.0,
+      "close": 0.0144,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 69.9,
+         "handle": 73.6,
+         "tray": 145.8,
+         "jar": 3.1,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 69.9,
+         "handle": 72.9,
+         "tray": 145.1,
+         "jar": 3.1,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "250 mL",
+      "band": 2,
+      "row": 0,
+      "which": "middle",
+      "x": 0.0,
+      "y": 15.8,
+      "pad_gap_mm": 84.0,
+      "close": 0.0144,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 69.9,
+         "jar": 3.1,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 69.9,
+         "jar": 3.1,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "250 mL",
+      "band": 2,
+      "row": 0,
+      "which": "right end",
+      "x": 1064.0,
+      "y": 15.8,
+      "pad_gap_mm": 84.0,
+      "close": 0.0144,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 69.9,
+         "handle": 73.6,
+         "tray": 145.1,
+         "jar": 3.1,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 69.9,
+         "handle": 74.3,
+         "tray": 145.8,
+         "jar": 3.1,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "250 mL",
+      "band": 2,
+      "row": 1,
+      "which": "left end",
+      "x": -1064.0,
+      "y": 114.8,
+      "pad_gap_mm": 84.0,
+      "close": 0.0144,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 69.9,
+         "handle": 74.3,
+         "tray": 145.8,
+         "jar": 2.7,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 69.9,
+         "handle": 73.6,
+         "tray": 145.1,
+         "jar": 2.7,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "250 mL",
+      "band": 2,
+      "row": 1,
+      "which": "middle",
+      "x": 0.0,
+      "y": 114.8,
+      "pad_gap_mm": 84.0,
+      "close": 0.0144,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 69.9,
+         "jar": 2.7,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 69.9,
+         "jar": 2.7,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "250 mL",
+      "band": 2,
+      "row": 1,
+      "which": "right end",
+      "x": 1064.0,
+      "y": 114.8,
+      "pad_gap_mm": 84.0,
+      "close": 0.0144,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 69.9,
+         "handle": 72.9,
+         "tray": 145.1,
+         "jar": 2.7,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 69.9,
+         "handle": 73.6,
+         "tray": 145.8,
+         "jar": 2.7,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "500 mL",
+      "band": 3,
+      "row": 0,
+      "which": "left end",
+      "x": -1066.0,
+      "y": 231.2,
+      "pad_gap_mm": 85.0,
+      "close": 0.0,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 128.9,
+         "handle": 116.1,
+         "tray": 172.1,
+         "jar": 3.1,
+         "taken jar": 3.5
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 128.9,
+         "handle": 115.7,
+         "tray": 171.5,
+         "jar": 3.1,
+         "taken jar": 3.5
+        }
+       }
+      }
+     },
+     {
+      "size": "500 mL",
+      "band": 3,
+      "row": 0,
+      "which": "middle",
+      "x": 0.0,
+      "y": 231.2,
+      "pad_gap_mm": 85.0,
+      "close": 0.0,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 128.9,
+         "tray": 174.5,
+         "jar": 3.1,
+         "taken jar": 3.5
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 128.9,
+         "tray": 174.5,
+         "jar": 3.1,
+         "taken jar": 3.5
+        }
+       }
+      }
+     },
+     {
+      "size": "500 mL",
+      "band": 3,
+      "row": 0,
+      "which": "right end",
+      "x": 1066.0,
+      "y": 231.2,
+      "pad_gap_mm": 85.0,
+      "close": 0.0,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 128.9,
+         "handle": 116.2,
+         "tray": 171.5,
+         "jar": 3.1,
+         "taken jar": 3.5
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 128.9,
+         "handle": 116.5,
+         "tray": 172.1,
+         "jar": 3.1,
+         "taken jar": 3.5
+        }
+       }
+      }
+     },
+     {
+      "size": "500 mL",
+      "band": 3,
+      "row": 1,
+      "which": "left end",
+      "x": -1066.0,
+      "y": 334.2,
+      "pad_gap_mm": 85.0,
+      "close": 0.0,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 128.9,
+         "handle": 116.6,
+         "tray": 109.9,
+         "jar": 3.1,
+         "taken jar": 3.5
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 128.9,
+         "handle": 116.2,
+         "tray": 109.9,
+         "jar": 3.1,
+         "taken jar": 3.5
+        }
+       }
+      }
+     },
+     {
+      "size": "500 mL",
+      "band": 3,
+      "row": 1,
+      "which": "middle",
+      "x": 0.0,
+      "y": 334.2,
+      "pad_gap_mm": 85.0,
+      "close": 0.0,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 128.9,
+         "tray": 109.9,
+         "jar": 3.1,
+         "taken jar": 3.5
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 128.9,
+         "tray": 109.9,
+         "jar": 3.1,
+         "taken jar": 3.5
+        }
+       }
+      }
+     },
+     {
+      "size": "500 mL",
+      "band": 3,
+      "row": 1,
+      "which": "right end",
+      "x": 1066.0,
+      "y": 334.2,
+      "pad_gap_mm": 85.0,
+      "close": 0.0,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 128.9,
+         "handle": 115.7,
+         "tray": 109.9,
+         "jar": 3.1,
+         "taken jar": 3.5
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 128.9,
+         "handle": 116.1,
+         "tray": 109.9,
+         "jar": 3.1,
+         "taken jar": 3.5
+        }
+       }
+      }
+     }
+    ],
+    "all_clear": true,
+    "method": "the 2F-85 (ur_arm meshes, the D405 included) open around the cap, its grasp point at the cap's middle, fingers closing along y; FCL distance to the rack plates and handles (boxes), the jars near it (cylinders) and the tray's rim, in the tray's frame; clear if either spin (+-90) is"
+   },
+   "reach_from_centre": 238,
+   "reach_from_any_of_three": 264,
+   "seats": [
+    {
+     "size": "60 mL",
+     "x": -1080.0,
+     "y": -340.2,
+     "content": "Al powder",
+     "label": "Al",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -1026.0,
+     "y": -340.2,
+     "content": "Si powder",
+     "label": "Si",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -972.0,
+     "y": -340.2,
+     "content": "Mg powder",
+     "label": "Mg",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -918.0,
+     "y": -340.2,
+     "content": "Cu powder",
+     "label": "Cu",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -864.0,
+     "y": -340.2,
+     "content": "Mn powder",
+     "label": "Mn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -810.0,
+     "y": -340.2,
+     "content": "Cr powder",
+     "label": "Cr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -756.0,
+     "y": -340.2,
+     "content": "Zr powder",
+     "label": "Zr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -702.0,
+     "y": -340.2,
+     "content": "Ti powder",
+     "label": "Ti",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -648.0,
+     "y": -340.2,
+     "content": "Fe powder",
+     "label": "Fe",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -594.0,
+     "y": -340.2,
+     "content": "Ni powder",
+     "label": "Ni",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -540.0,
+     "y": -340.2,
+     "content": "Ce powder",
+     "label": "Ce",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -486.0,
+     "y": -340.2,
+     "content": "Sc powder",
+     "label": "Sc",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -432.0,
+     "y": -340.2,
+     "content": "Al-Li master alloy",
+     "label": "Al-Li",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -378.0,
+     "y": -340.2,
+     "content": "Er powder",
+     "label": "Er",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -324.0,
+     "y": -340.2,
+     "content": "Zn powder",
+     "label": "Zn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -270.0,
+     "y": -340.2,
+     "content": "Sn powder",
+     "label": "Sn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -216.0,
+     "y": -340.2,
+     "content": "Al-Sc master alloy",
+     "label": "Al-Sc",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -162.0,
+     "y": -340.2,
+     "content": "Al-Zr master alloy",
+     "label": "Al-Zr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -108.0,
+     "y": -340.2,
+     "content": "Al powder",
+     "label": "Al",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -54.0,
+     "y": -340.2,
+     "content": "Si powder",
+     "label": "Si",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 0.0,
+     "y": -340.2,
+     "content": "Mg powder",
+     "label": "Mg",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 54.0,
+     "y": -340.2,
+     "content": "Cu powder",
+     "label": "Cu",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 108.0,
+     "y": -340.2,
+     "content": "Mn powder",
+     "label": "Mn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 162.0,
+     "y": -340.2,
+     "content": "Cr powder",
+     "label": "Cr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 216.0,
+     "y": -340.2,
+     "content": "Zr powder",
+     "label": "Zr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 270.0,
+     "y": -340.2,
+     "content": "Ti powder",
+     "label": "Ti",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 324.0,
+     "y": -340.2,
+     "content": "Fe powder",
+     "label": "Fe",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 378.0,
+     "y": -340.2,
+     "content": "Ni powder",
+     "label": "Ni",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 432.0,
+     "y": -340.2,
+     "content": "Ce powder",
+     "label": "Ce",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 486.0,
+     "y": -340.2,
+     "content": "Sc powder",
+     "label": "Sc",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 540.0,
+     "y": -340.2,
+     "content": "Al-Li master alloy",
+     "label": "Al-Li",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 594.0,
+     "y": -340.2,
+     "content": "Er powder",
+     "label": "Er",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 648.0,
+     "y": -340.2,
+     "content": "Zn powder",
+     "label": "Zn",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 702.0,
+     "y": -340.2,
+     "content": "Sn powder",
+     "label": "Sn",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 756.0,
+     "y": -340.2,
+     "content": "Al-Sc master alloy",
+     "label": "Al-Sc",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 810.0,
+     "y": -340.2,
+     "content": "Al-Zr master alloy",
+     "label": "Al-Zr",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 864.0,
+     "y": -340.2,
+     "content": "Al powder",
+     "label": "Al",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 918.0,
+     "y": -340.2,
+     "content": "Si powder",
+     "label": "Si",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 972.0,
+     "y": -340.2,
+     "content": "Mg powder",
+     "label": "Mg",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 1026.0,
+     "y": -340.2,
+     "content": "Cu powder",
+     "label": "Cu",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 1080.0,
+     "y": -340.2,
+     "content": "Mn powder",
+     "label": "Mn",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -1080.0,
+     "y": -266.8,
+     "content": "Cr powder",
+     "label": "Cr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -1026.0,
+     "y": -266.8,
+     "content": "Zr powder",
+     "label": "Zr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -972.0,
+     "y": -266.8,
+     "content": "Ti powder",
+     "label": "Ti",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -918.0,
+     "y": -266.8,
+     "content": "Fe powder",
+     "label": "Fe",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -864.0,
+     "y": -266.8,
+     "content": "Ni powder",
+     "label": "Ni",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -810.0,
+     "y": -266.8,
+     "content": "Ce powder",
+     "label": "Ce",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -756.0,
+     "y": -266.8,
+     "content": "Sc powder",
+     "label": "Sc",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -702.0,
+     "y": -266.8,
+     "content": "Al-Li master alloy",
+     "label": "Al-Li",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -648.0,
+     "y": -266.8,
+     "content": "Er powder",
+     "label": "Er",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -594.0,
+     "y": -266.8,
+     "content": "Zn powder",
+     "label": "Zn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -540.0,
+     "y": -266.8,
+     "content": "Sn powder",
+     "label": "Sn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -486.0,
+     "y": -266.8,
+     "content": "Al-Sc master alloy",
+     "label": "Al-Sc",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -432.0,
+     "y": -266.8,
+     "content": "Al-Zr master alloy",
+     "label": "Al-Zr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -378.0,
+     "y": -266.8,
+     "content": "Al powder",
+     "label": "Al",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -324.0,
+     "y": -266.8,
+     "content": "Si powder",
+     "label": "Si",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -270.0,
+     "y": -266.8,
+     "content": "Mg powder",
+     "label": "Mg",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -216.0,
+     "y": -266.8,
+     "content": "Cu powder",
+     "label": "Cu",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -162.0,
+     "y": -266.8,
+     "content": "Mn powder",
+     "label": "Mn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -108.0,
+     "y": -266.8,
+     "content": "Cr powder",
+     "label": "Cr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -54.0,
+     "y": -266.8,
+     "content": "Zr powder",
+     "label": "Zr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 0.0,
+     "y": -266.8,
+     "content": "Ti powder",
+     "label": "Ti",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 54.0,
+     "y": -266.8,
+     "content": "Fe powder",
+     "label": "Fe",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 108.0,
+     "y": -266.8,
+     "content": "Ni powder",
+     "label": "Ni",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 162.0,
+     "y": -266.8,
+     "content": "Ce powder",
+     "label": "Ce",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 216.0,
+     "y": -266.8,
+     "content": "Sc powder",
+     "label": "Sc",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 270.0,
+     "y": -266.8,
+     "content": "Al-Li master alloy",
+     "label": "Al-Li",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 324.0,
+     "y": -266.8,
+     "content": "Er powder",
+     "label": "Er",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 378.0,
+     "y": -266.8,
+     "content": "Zn powder",
+     "label": "Zn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 432.0,
+     "y": -266.8,
+     "content": "Sn powder",
+     "label": "Sn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 486.0,
+     "y": -266.8,
+     "content": "Al-Sc master alloy",
+     "label": "Al-Sc",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 540.0,
+     "y": -266.8,
+     "content": "Al-Zr master alloy",
+     "label": "Al-Zr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 594.0,
+     "y": -266.8,
+     "content": "Al powder",
+     "label": "Al",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 648.0,
+     "y": -266.8,
+     "content": "Si powder",
+     "label": "Si",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 702.0,
+     "y": -266.8,
+     "content": "Mg powder",
+     "label": "Mg",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 756.0,
+     "y": -266.8,
+     "content": "Cu powder",
+     "label": "Cu",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 810.0,
+     "y": -266.8,
+     "content": "Mn powder",
+     "label": "Mn",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 864.0,
+     "y": -266.8,
+     "content": "Cr powder",
+     "label": "Cr",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 918.0,
+     "y": -266.8,
+     "content": "Zr powder",
+     "label": "Zr",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 972.0,
+     "y": -266.8,
+     "content": "Ti powder",
+     "label": "Ti",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 1026.0,
+     "y": -266.8,
+     "content": "Fe powder",
+     "label": "Fe",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 1080.0,
+     "y": -266.8,
+     "content": "Ni powder",
+     "label": "Ni",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -1088.0,
+     "y": -174.8,
+     "content": "Ce powder",
+     "label": "Ce",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -1024.0,
+     "y": -174.8,
+     "content": "Sc powder",
+     "label": "Sc",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -960.0,
+     "y": -174.8,
+     "content": "Al-Li master alloy",
+     "label": "Al-Li",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -896.0,
+     "y": -174.8,
+     "content": "Er powder",
+     "label": "Er",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -832.0,
+     "y": -174.8,
+     "content": "Zn powder",
+     "label": "Zn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -768.0,
+     "y": -174.8,
+     "content": "Sn powder",
+     "label": "Sn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -704.0,
+     "y": -174.8,
+     "content": "Al-Sc master alloy",
+     "label": "Al-Sc",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -640.0,
+     "y": -174.8,
+     "content": "Al-Zr master alloy",
+     "label": "Al-Zr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -576.0,
+     "y": -174.8,
+     "content": "Al powder",
+     "label": "Al",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -512.0,
+     "y": -174.8,
+     "content": "Si powder",
+     "label": "Si",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -448.0,
+     "y": -174.8,
+     "content": "Mg powder",
+     "label": "Mg",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -384.0,
+     "y": -174.8,
+     "content": "Cu powder",
+     "label": "Cu",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -320.0,
+     "y": -174.8,
+     "content": "Mn powder",
+     "label": "Mn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -256.0,
+     "y": -174.8,
+     "content": "Cr powder",
+     "label": "Cr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -192.0,
+     "y": -174.8,
+     "content": "Zr powder",
+     "label": "Zr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -128.0,
+     "y": -174.8,
+     "content": "Ti powder",
+     "label": "Ti",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -64.0,
+     "y": -174.8,
+     "content": "Fe powder",
+     "label": "Fe",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 0.0,
+     "y": -174.8,
+     "content": "Ni powder",
+     "label": "Ni",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 64.0,
+     "y": -174.8,
+     "content": "Ce powder",
+     "label": "Ce",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 128.0,
+     "y": -174.8,
+     "content": "Sc powder",
+     "label": "Sc",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 192.0,
+     "y": -174.8,
+     "content": "Al-Li master alloy",
+     "label": "Al-Li",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 256.0,
+     "y": -174.8,
+     "content": "Er powder",
+     "label": "Er",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 320.0,
+     "y": -174.8,
+     "content": "Zn powder",
+     "label": "Zn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 384.0,
+     "y": -174.8,
+     "content": "Sn powder",
+     "label": "Sn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 448.0,
+     "y": -174.8,
+     "content": "Al-Sc master alloy",
+     "label": "Al-Sc",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 512.0,
+     "y": -174.8,
+     "content": "Al-Zr master alloy",
+     "label": "Al-Zr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 576.0,
+     "y": -174.8,
+     "content": "Al powder",
+     "label": "Al",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 640.0,
+     "y": -174.8,
+     "content": "Si powder",
+     "label": "Si",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 704.0,
+     "y": -174.8,
+     "content": "Mg powder",
+     "label": "Mg",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 768.0,
+     "y": -174.8,
+     "content": "Cu powder",
+     "label": "Cu",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 832.0,
+     "y": -174.8,
+     "content": "Mn powder",
+     "label": "Mn",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 896.0,
+     "y": -174.8,
+     "content": "Cr powder",
+     "label": "Cr",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 960.0,
+     "y": -174.8,
+     "content": "Zr powder",
+     "label": "Zr",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 1024.0,
+     "y": -174.8,
+     "content": "Ti powder",
+     "label": "Ti",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 1088.0,
+     "y": -174.8,
+     "content": "Fe powder",
+     "label": "Fe",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -1088.0,
+     "y": -89.2,
+     "content": "Ni powder",
+     "label": "Ni",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -1024.0,
+     "y": -89.2,
+     "content": "Ce powder",
+     "label": "Ce",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -960.0,
+     "y": -89.2,
+     "content": "Sc powder",
+     "label": "Sc",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -896.0,
+     "y": -89.2,
+     "content": "Al-Li master alloy",
+     "label": "Al-Li",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -832.0,
+     "y": -89.2,
+     "content": "Er powder",
+     "label": "Er",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -768.0,
+     "y": -89.2,
+     "content": "Zn powder",
+     "label": "Zn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -704.0,
+     "y": -89.2,
+     "content": "Sn powder",
+     "label": "Sn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -640.0,
+     "y": -89.2,
+     "content": "Al-Sc master alloy",
+     "label": "Al-Sc",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -576.0,
+     "y": -89.2,
+     "content": "Al-Zr master alloy",
+     "label": "Al-Zr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -512.0,
+     "y": -89.2,
+     "content": "Al powder",
+     "label": "Al",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -448.0,
+     "y": -89.2,
+     "content": "Si powder",
+     "label": "Si",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -384.0,
+     "y": -89.2,
+     "content": "Mg powder",
+     "label": "Mg",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -320.0,
+     "y": -89.2,
+     "content": "Cu powder",
+     "label": "Cu",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -256.0,
+     "y": -89.2,
+     "content": "Mn powder",
+     "label": "Mn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -192.0,
+     "y": -89.2,
+     "content": "Cr powder",
+     "label": "Cr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -128.0,
+     "y": -89.2,
+     "content": "Zr powder",
+     "label": "Zr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -64.0,
+     "y": -89.2,
+     "content": "Ti powder",
+     "label": "Ti",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 0.0,
+     "y": -89.2,
+     "content": "Fe powder",
+     "label": "Fe",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 64.0,
+     "y": -89.2,
+     "content": "Ni powder",
+     "label": "Ni",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 128.0,
+     "y": -89.2,
+     "content": "Ce powder",
+     "label": "Ce",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 192.0,
+     "y": -89.2,
+     "content": "Sc powder",
+     "label": "Sc",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 256.0,
+     "y": -89.2,
+     "content": "Al-Li master alloy",
+     "label": "Al-Li",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 320.0,
+     "y": -89.2,
+     "content": "Er powder",
+     "label": "Er",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 384.0,
+     "y": -89.2,
+     "content": "Zn powder",
+     "label": "Zn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 448.0,
+     "y": -89.2,
+     "content": "Sn powder",
+     "label": "Sn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 512.0,
+     "y": -89.2,
+     "content": "Al-Sc master alloy",
+     "label": "Al-Sc",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 576.0,
+     "y": -89.2,
+     "content": "Al-Zr master alloy",
+     "label": "Al-Zr",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 640.0,
+     "y": -89.2,
+     "content": "Al powder",
+     "label": "Al",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 704.0,
+     "y": -89.2,
+     "content": "Si powder",
+     "label": "Si",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 768.0,
+     "y": -89.2,
+     "content": "Mg powder",
+     "label": "Mg",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 832.0,
+     "y": -89.2,
+     "content": "Cu powder",
+     "label": "Cu",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 896.0,
+     "y": -89.2,
+     "content": "Mn powder",
+     "label": "Mn",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 960.0,
+     "y": -89.2,
+     "content": "Cr powder",
+     "label": "Cr",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 1024.0,
+     "y": -89.2,
+     "content": "Zr powder",
+     "label": "Zr",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 1088.0,
+     "y": -89.2,
+     "content": "Ti powder",
+     "label": "Ti",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -1064.0,
+     "y": 15.8,
+     "content": "Fe powder",
+     "label": "Fe",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -988.0,
+     "y": 15.8,
+     "content": "Ni powder",
+     "label": "Ni",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -912.0,
+     "y": 15.8,
+     "content": "Ce powder",
+     "label": "Ce",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -836.0,
+     "y": 15.8,
+     "content": "Sc powder",
+     "label": "Sc",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -760.0,
+     "y": 15.8,
+     "content": "Al-Li master alloy",
+     "label": "Al-Li",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -684.0,
+     "y": 15.8,
+     "content": "Er powder",
+     "label": "Er",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -608.0,
+     "y": 15.8,
+     "content": "Zn powder",
+     "label": "Zn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -532.0,
+     "y": 15.8,
+     "content": "Sn powder",
+     "label": "Sn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -456.0,
+     "y": 15.8,
+     "content": "Al-Sc master alloy",
+     "label": "Al-Sc",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -380.0,
+     "y": 15.8,
+     "content": "Al-Zr master alloy",
+     "label": "Al-Zr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -304.0,
+     "y": 15.8,
+     "content": "Al powder",
+     "label": "Al",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -228.0,
+     "y": 15.8,
+     "content": "Si powder",
+     "label": "Si",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -152.0,
+     "y": 15.8,
+     "content": "Mg powder",
+     "label": "Mg",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -76.0,
+     "y": 15.8,
+     "content": "Cu powder",
+     "label": "Cu",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 0.0,
+     "y": 15.8,
+     "content": "Mn powder",
+     "label": "Mn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 76.0,
+     "y": 15.8,
+     "content": "Cr powder",
+     "label": "Cr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 152.0,
+     "y": 15.8,
+     "content": "Zr powder",
+     "label": "Zr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 228.0,
+     "y": 15.8,
+     "content": "Ti powder",
+     "label": "Ti",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 304.0,
+     "y": 15.8,
+     "content": "Fe powder",
+     "label": "Fe",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 380.0,
+     "y": 15.8,
+     "content": "Ni powder",
+     "label": "Ni",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 456.0,
+     "y": 15.8,
+     "content": "Ce powder",
+     "label": "Ce",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 532.0,
+     "y": 15.8,
+     "content": "Sc powder",
+     "label": "Sc",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 608.0,
+     "y": 15.8,
+     "content": "Al-Li master alloy",
+     "label": "Al-Li",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 684.0,
+     "y": 15.8,
+     "content": "Er powder",
+     "label": "Er",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 760.0,
+     "y": 15.8,
+     "content": "Zn powder",
+     "label": "Zn",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 836.0,
+     "y": 15.8,
+     "content": "Sn powder",
+     "label": "Sn",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 912.0,
+     "y": 15.8,
+     "content": "Al-Sc master alloy",
+     "label": "Al-Sc",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 988.0,
+     "y": 15.8,
+     "content": "Al-Zr master alloy",
+     "label": "Al-Zr",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 1064.0,
+     "y": 15.8,
+     "content": "Al powder",
+     "label": "Al",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -1064.0,
+     "y": 114.8,
+     "content": "Si powder",
+     "label": "Si",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -988.0,
+     "y": 114.8,
+     "content": "Mg powder",
+     "label": "Mg",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -912.0,
+     "y": 114.8,
+     "content": "Cu powder",
+     "label": "Cu",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -836.0,
+     "y": 114.8,
+     "content": "Mn powder",
+     "label": "Mn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -760.0,
+     "y": 114.8,
+     "content": "Cr powder",
+     "label": "Cr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -684.0,
+     "y": 114.8,
+     "content": "Zr powder",
+     "label": "Zr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -608.0,
+     "y": 114.8,
+     "content": "Ti powder",
+     "label": "Ti",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -532.0,
+     "y": 114.8,
+     "content": "Fe powder",
+     "label": "Fe",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -456.0,
+     "y": 114.8,
+     "content": "Ni powder",
+     "label": "Ni",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -380.0,
+     "y": 114.8,
+     "content": "Ce powder",
+     "label": "Ce",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -304.0,
+     "y": 114.8,
+     "content": "Sc powder",
+     "label": "Sc",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -228.0,
+     "y": 114.8,
+     "content": "Al-Li master alloy",
+     "label": "Al-Li",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -152.0,
+     "y": 114.8,
+     "content": "Er powder",
+     "label": "Er",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": -76.0,
+     "y": 114.8,
+     "content": "Zn powder",
+     "label": "Zn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 0.0,
+     "y": 114.8,
+     "content": "Sn powder",
+     "label": "Sn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 76.0,
+     "y": 114.8,
+     "content": "Al-Sc master alloy",
+     "label": "Al-Sc",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 152.0,
+     "y": 114.8,
+     "content": "Al-Zr master alloy",
+     "label": "Al-Zr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 228.0,
+     "y": 114.8,
+     "content": "Al powder",
+     "label": "Al",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 304.0,
+     "y": 114.8,
+     "content": "Si powder",
+     "label": "Si",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 380.0,
+     "y": 114.8,
+     "content": "Mg powder",
+     "label": "Mg",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 456.0,
+     "y": 114.8,
+     "content": "Cu powder",
+     "label": "Cu",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 532.0,
+     "y": 114.8,
+     "content": "Mn powder",
+     "label": "Mn",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 608.0,
+     "y": 114.8,
+     "content": "Cr powder",
+     "label": "Cr",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 684.0,
+     "y": 114.8,
+     "content": "Zr powder",
+     "label": "Zr",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 760.0,
+     "y": 114.8,
+     "content": "Ti powder",
+     "label": "Ti",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 836.0,
+     "y": 114.8,
+     "content": "Fe powder",
+     "label": "Fe",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 912.0,
+     "y": 114.8,
+     "content": "Ni powder",
+     "label": "Ni",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 988.0,
+     "y": 114.8,
+     "content": "Ce powder",
+     "label": "Ce",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "250 mL",
+     "x": 1064.0,
+     "y": 114.8,
+     "content": "Sc powder",
+     "label": "Sc",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -1066.0,
+     "y": 231.2,
+     "content": "Al-Li master alloy",
+     "label": "Al-Li",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -984.0,
+     "y": 231.2,
+     "content": "Er powder",
+     "label": "Er",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -902.0,
+     "y": 231.2,
+     "content": "Zn powder",
+     "label": "Zn",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -820.0,
+     "y": 231.2,
+     "content": "Sn powder",
+     "label": "Sn",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -738.0,
+     "y": 231.2,
+     "content": "Al-Sc master alloy",
+     "label": "Al-Sc",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -656.0,
+     "y": 231.2,
+     "content": "Al-Zr master alloy",
+     "label": "Al-Zr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -574.0,
+     "y": 231.2,
+     "content": "Al powder",
+     "label": "Al",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -492.0,
+     "y": 231.2,
+     "content": "Si powder",
+     "label": "Si",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -410.0,
+     "y": 231.2,
+     "content": "Mg powder",
+     "label": "Mg",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -328.0,
+     "y": 231.2,
+     "content": "Cu powder",
+     "label": "Cu",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -246.0,
+     "y": 231.2,
+     "content": "Mn powder",
+     "label": "Mn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -164.0,
+     "y": 231.2,
+     "content": "Cr powder",
+     "label": "Cr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -82.0,
+     "y": 231.2,
+     "content": "Zr powder",
+     "label": "Zr",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 0.0,
+     "y": 231.2,
+     "content": "Ti powder",
+     "label": "Ti",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 82.0,
+     "y": 231.2,
+     "content": "Fe powder",
+     "label": "Fe",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 164.0,
+     "y": 231.2,
+     "content": "Ni powder",
+     "label": "Ni",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 246.0,
+     "y": 231.2,
+     "content": "Ce powder",
+     "label": "Ce",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 328.0,
+     "y": 231.2,
+     "content": "Sc powder",
+     "label": "Sc",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 410.0,
+     "y": 231.2,
+     "content": "Al-Li master alloy",
+     "label": "Al-Li",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 492.0,
+     "y": 231.2,
+     "content": "Er powder",
+     "label": "Er",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 574.0,
+     "y": 231.2,
+     "content": "Zn powder",
+     "label": "Zn",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 656.0,
+     "y": 231.2,
+     "content": "Sn powder",
+     "label": "Sn",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 738.0,
+     "y": 231.2,
+     "content": "Al-Sc master alloy",
+     "label": "Al-Sc",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 820.0,
+     "y": 231.2,
+     "content": "Al-Zr master alloy",
+     "label": "Al-Zr",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 902.0,
+     "y": 231.2,
+     "content": "Al powder",
+     "label": "Al",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 984.0,
+     "y": 231.2,
+     "content": "Si powder",
+     "label": "Si",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 1066.0,
+     "y": 231.2,
+     "content": "Mg powder",
+     "label": "Mg",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -1066.0,
+     "y": 334.2,
+     "content": "Cu powder",
+     "label": "Cu",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -984.0,
+     "y": 334.2,
+     "content": "Mn powder",
+     "label": "Mn",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -902.0,
+     "y": 334.2,
+     "content": "Cr powder",
+     "label": "Cr",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -820.0,
+     "y": 334.2,
+     "content": "Zr powder",
+     "label": "Zr",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -738.0,
+     "y": 334.2,
+     "content": "Ti powder",
+     "label": "Ti",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -656.0,
+     "y": 334.2,
+     "content": "Fe powder",
+     "label": "Fe",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -574.0,
+     "y": 334.2,
+     "content": "Ni powder",
+     "label": "Ni",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -492.0,
+     "y": 334.2,
+     "content": "Ce powder",
+     "label": "Ce",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -410.0,
+     "y": 334.2,
+     "content": "Sc powder",
+     "label": "Sc",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -328.0,
+     "y": 334.2,
+     "content": "Al-Li master alloy",
+     "label": "Al-Li",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -246.0,
+     "y": 334.2,
+     "content": "Er powder",
+     "label": "Er",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -164.0,
+     "y": 334.2,
+     "content": "Zn powder",
+     "label": "Zn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": -82.0,
+     "y": 334.2,
+     "content": "Sn powder",
+     "label": "Sn",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 0.0,
+     "y": 334.2,
+     "content": "Al-Sc master alloy",
+     "label": "Al-Sc",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 82.0,
+     "y": 334.2,
+     "content": "Al-Zr master alloy",
+     "label": "Al-Zr",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 164.0,
+     "y": 334.2,
+     "content": "Al powder",
+     "label": "Al",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 246.0,
+     "y": 334.2,
+     "content": "Si powder",
+     "label": "Si",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 328.0,
+     "y": 334.2,
+     "content": "Mg powder",
+     "label": "Mg",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 410.0,
+     "y": 334.2,
+     "content": "Cu powder",
+     "label": "Cu",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 492.0,
+     "y": 334.2,
+     "content": "Mn powder",
+     "label": "Mn",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 574.0,
+     "y": 334.2,
+     "content": "Cr powder",
+     "label": "Cr",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 656.0,
+     "y": 334.2,
+     "content": "Zr powder",
+     "label": "Zr",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 738.0,
+     "y": 334.2,
+     "content": "Ti powder",
+     "label": "Ti",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 820.0,
+     "y": 334.2,
+     "content": "Fe powder",
+     "label": "Fe",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 902.0,
+     "y": 334.2,
+     "content": "Ni powder",
+     "label": "Ni",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 984.0,
+     "y": 334.2,
+     "content": "Ce powder",
+     "label": "Ce",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "500 mL",
+     "x": 1066.0,
+     "y": 334.2,
+     "content": "Sc powder",
+     "label": "Sc",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    }
+   ]
+  },
+  "powder_store_lots": {
+   "tray": "O",
+   "slot": "2F0b",
+   "slot_span_mm": 150.0,
+   "rack_mm": [
+    2410.0,
+    800.0
+   ],
+   "jars": 489,
+   "by_size": {
+    "30 mL": {
+     "n": 255,
+     "reach_centre": 255,
+     "reach_any": 255
+    },
+    "60 mL": {
+     "n": 164,
+     "reach_centre": 144,
+     "reach_any": 164
+    },
+    "125 mL": {
+     "n": 70,
+     "reach_centre": 42,
+     "reach_any": 70
+    }
+   },
+   "gripper_end_seats": {
+    "seats": [
+     {
+      "size": "30 mL",
+      "band": 0,
+      "row": 0,
+      "which": "left end",
+      "x": -1100.0,
+      "y": -359.2,
+      "pad_gap_mm": 52.0,
+      "close": 0.4262,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "handle": 74.0,
+         "tray": 47.4,
+         "taken jar": 6.0,
+         "jar": 2.3
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "handle": 73.8,
+         "tray": 47.4,
+         "taken jar": 6.0,
+         "jar": 2.2
+        }
+       }
+      }
+     },
+     {
+      "size": "30 mL",
+      "band": 0,
+      "row": 0,
+      "which": "middle",
+      "x": 0.0,
+      "y": -359.2,
+      "pad_gap_mm": 52.0,
+      "close": 0.4262,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "tray": 47.4,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "tray": 47.4,
+         "jar": 2.2,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "30 mL",
+      "band": 0,
+      "row": 0,
+      "which": "right end",
+      "x": 1100.0,
+      "y": -359.2,
+      "pad_gap_mm": 52.0,
+      "close": 0.4262,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "handle": 74.0,
+         "tray": 47.4,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "handle": 74.3,
+         "tray": 47.4,
+         "jar": 2.2,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "30 mL",
+      "band": 0,
+      "row": 1,
+      "which": "left end",
+      "x": -1100.0,
+      "y": -297.8,
+      "pad_gap_mm": 52.0,
+      "close": 0.4262,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "handle": 32.9,
+         "tray": 97.7,
+         "jar": 2.2,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "handle": 32.3,
+         "tray": 97.7,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "30 mL",
+      "band": 0,
+      "row": 1,
+      "which": "middle",
+      "x": 0.0,
+      "y": -297.8,
+      "pad_gap_mm": 52.0,
+      "close": 0.4262,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "tray": 97.7,
+         "jar": 2.2,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "tray": 97.7,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "30 mL",
+      "band": 0,
+      "row": 1,
+      "which": "right end",
+      "x": 1100.0,
+      "y": -297.8,
+      "pad_gap_mm": 52.0,
+      "close": 0.4262,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "handle": 32.9,
+         "tray": 97.7,
+         "jar": 2.2,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "handle": 33.5,
+         "tray": 97.7,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "30 mL",
+      "band": 0,
+      "row": 2,
+      "which": "left end",
+      "x": -1100.0,
+      "y": -236.2,
+      "pad_gap_mm": 52.0,
+      "close": 0.4262,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "handle": 29.9,
+         "tray": 102.0,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "handle": 29.3,
+         "tray": 101.2,
+         "jar": 2.2,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "30 mL",
+      "band": 0,
+      "row": 2,
+      "which": "middle",
+      "x": 0.0,
+      "y": -236.2,
+      "pad_gap_mm": 52.0,
+      "close": 0.4262,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "tray": 150.7,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "tray": 150.7,
+         "jar": 2.2,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "30 mL",
+      "band": 0,
+      "row": 2,
+      "which": "right end",
+      "x": 1100.0,
+      "y": -236.2,
+      "pad_gap_mm": 52.0,
+      "close": 0.4262,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "handle": 29.4,
+         "tray": 101.2,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "handle": 30.0,
+         "tray": 102.0,
+         "jar": 2.2,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "30 mL",
+      "band": 0,
+      "row": 3,
+      "which": "left end",
+      "x": -1100.0,
+      "y": -174.8,
+      "pad_gap_mm": 52.0,
+      "close": 0.4262,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "handle": 33.3,
+         "tray": 102.0,
+         "jar": 2.2,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "handle": 32.7,
+         "tray": 101.2,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "30 mL",
+      "band": 0,
+      "row": 3,
+      "which": "middle",
+      "x": 0.0,
+      "y": -174.8,
+      "pad_gap_mm": 52.0,
+      "close": 0.4262,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "jar": 2.2,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "30 mL",
+      "band": 0,
+      "row": 3,
+      "which": "right end",
+      "x": 1100.0,
+      "y": -174.8,
+      "pad_gap_mm": 52.0,
+      "close": 0.4262,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "handle": 32.1,
+         "tray": 101.2,
+         "jar": 2.2,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "handle": 32.6,
+         "tray": 102.0,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "30 mL",
+      "band": 0,
+      "row": 4,
+      "which": "left end",
+      "x": -1100.0,
+      "y": -113.2,
+      "pad_gap_mm": 52.0,
+      "close": 0.4262,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "handle": 74.1,
+         "tray": 102.0,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "handle": 73.9,
+         "tray": 101.2,
+         "jar": 2.4,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "30 mL",
+      "band": 0,
+      "row": 4,
+      "which": "middle",
+      "x": 0.0,
+      "y": -113.2,
+      "pad_gap_mm": 52.0,
+      "close": 0.4262,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "jar": 2.2,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "jar": 2.2,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "30 mL",
+      "band": 0,
+      "row": 4,
+      "which": "right end",
+      "x": 1100.0,
+      "y": -113.2,
+      "pad_gap_mm": 52.0,
+      "close": 0.4262,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "handle": 73.7,
+         "tray": 101.2,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 24.9,
+         "handle": 73.9,
+         "tray": 102.0,
+         "jar": 2.4,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "60 mL",
+      "band": 1,
+      "row": 0,
+      "which": "left end",
+      "x": -1080.0,
+      "y": -40.8,
+      "pad_gap_mm": 62.0,
+      "close": 0.3055,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 80.8,
+         "tray": 122.7,
+         "jar": 2.4,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 80.4,
+         "tray": 122.0,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "60 mL",
+      "band": 1,
+      "row": 0,
+      "which": "middle",
+      "x": 0.0,
+      "y": -40.8,
+      "pad_gap_mm": 62.0,
+      "close": 0.3055,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "jar": 2.4,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "60 mL",
+      "band": 1,
+      "row": 0,
+      "which": "right end",
+      "x": 1080.0,
+      "y": -40.8,
+      "pad_gap_mm": 62.0,
+      "close": 0.3055,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 80.8,
+         "tray": 122.0,
+         "jar": 2.4,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 81.2,
+         "tray": 122.7,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "60 mL",
+      "band": 1,
+      "row": 1,
+      "which": "left end",
+      "x": -1080.0,
+      "y": 32.8,
+      "pad_gap_mm": 62.0,
+      "close": 0.3055,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 45.0,
+         "tray": 122.7,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 44.2,
+         "tray": 122.0,
+         "jar": 2.2,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "60 mL",
+      "band": 1,
+      "row": 1,
+      "which": "middle",
+      "x": 0.0,
+      "y": 32.8,
+      "pad_gap_mm": 62.0,
+      "close": 0.3055,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "jar": 2.2,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "60 mL",
+      "band": 1,
+      "row": 1,
+      "which": "right end",
+      "x": 1080.0,
+      "y": 32.8,
+      "pad_gap_mm": 62.0,
+      "close": 0.3055,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 45.1,
+         "tray": 122.0,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 45.8,
+         "tray": 122.7,
+         "jar": 2.2,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "60 mL",
+      "band": 1,
+      "row": 2,
+      "which": "left end",
+      "x": -1080.0,
+      "y": 106.2,
+      "pad_gap_mm": 62.0,
+      "close": 0.3055,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 45.8,
+         "tray": 122.7,
+         "jar": 2.2,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 45.1,
+         "tray": 122.0,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "60 mL",
+      "band": 1,
+      "row": 2,
+      "which": "middle",
+      "x": 0.0,
+      "y": 106.2,
+      "pad_gap_mm": 62.0,
+      "close": 0.3055,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "jar": 2.2,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "60 mL",
+      "band": 1,
+      "row": 2,
+      "which": "right end",
+      "x": 1080.0,
+      "y": 106.2,
+      "pad_gap_mm": 62.0,
+      "close": 0.3055,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 44.2,
+         "tray": 122.0,
+         "jar": 2.2,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 45.0,
+         "tray": 122.7,
+         "jar": 2.3,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "60 mL",
+      "band": 1,
+      "row": 3,
+      "which": "left end",
+      "x": -1080.0,
+      "y": 179.8,
+      "pad_gap_mm": 62.0,
+      "close": 0.3055,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 76.3,
+         "tray": 122.7,
+         "jar": 1.4,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 75.8,
+         "tray": 122.0,
+         "jar": 1.4,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "60 mL",
+      "band": 1,
+      "row": 3,
+      "which": "middle",
+      "x": 0.0,
+      "y": 179.8,
+      "pad_gap_mm": 62.0,
+      "close": 0.3055,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "jar": 1.4,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "jar": 1.4,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "60 mL",
+      "band": 1,
+      "row": 3,
+      "which": "right end",
+      "x": 1080.0,
+      "y": 179.8,
+      "pad_gap_mm": 62.0,
+      "close": 0.3055,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 75.4,
+         "tray": 122.0,
+         "jar": 1.4,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 35.9,
+         "handle": 75.8,
+         "tray": 122.7,
+         "jar": 1.4,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "125 mL",
+      "band": 2,
+      "row": 0,
+      "which": "left end",
+      "x": -1088.0,
+      "y": 271.8,
+      "pad_gap_mm": 72.0,
+      "close": 0.1786,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "handle": 44.2,
+         "tray": 108.9,
+         "jar": 2.4,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "handle": 43.5,
+         "tray": 108.9,
+         "jar": 2.4,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "125 mL",
+      "band": 2,
+      "row": 0,
+      "which": "middle",
+      "x": 0.0,
+      "y": 271.8,
+      "pad_gap_mm": 72.0,
+      "close": 0.1786,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "tray": 108.9,
+         "jar": 2.4,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "tray": 108.9,
+         "jar": 2.4,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "125 mL",
+      "band": 2,
+      "row": 0,
+      "which": "right end",
+      "x": 1088.0,
+      "y": 271.8,
+      "pad_gap_mm": 72.0,
+      "close": 0.1786,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "handle": 44.2,
+         "tray": 108.9,
+         "jar": 2.4,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "handle": 44.9,
+         "tray": 108.9,
+         "jar": 2.4,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "125 mL",
+      "band": 2,
+      "row": 1,
+      "which": "left end",
+      "x": -1088.0,
+      "y": 357.2,
+      "pad_gap_mm": 72.0,
+      "close": 0.1786,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "handle": 44.9,
+         "tray": 34.6,
+         "jar": 2.4,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "handle": 44.2,
+         "tray": 34.6,
+         "jar": 2.4,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "125 mL",
+      "band": 2,
+      "row": 1,
+      "which": "middle",
+      "x": 0.0,
+      "y": 357.2,
+      "pad_gap_mm": 72.0,
+      "close": 0.1786,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "tray": 34.6,
+         "jar": 2.4,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "tray": 34.6,
+         "jar": 2.4,
+         "taken jar": 6.0
+        }
+       }
+      }
+     },
+     {
+      "size": "125 mL",
+      "band": 2,
+      "row": 1,
+      "which": "right end",
+      "x": 1088.0,
+      "y": 357.2,
+      "pad_gap_mm": 72.0,
+      "close": 0.1786,
+      "clear": true,
+      "poses": {
+       "spin +90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "handle": 43.5,
+         "tray": 34.6,
+         "jar": 2.4,
+         "taken jar": 6.0
+        }
+       },
+       "spin -90": {
+        "hits": [],
+        "min_clearance_mm": {
+         "rack": 52.9,
+         "handle": 44.2,
+         "tray": 34.6,
+         "jar": 2.4,
+         "taken jar": 6.0
+        }
+       }
+      }
+     }
+    ],
+    "all_clear": true,
+    "method": "the 2F-85 (ur_arm meshes, the D405 included) open around the cap, its grasp point at the cap's middle, fingers closing along y; FCL distance to the rack plates and handles (boxes), the jars near it (cylinders) and the tray's rim, in the tray's frame; clear if either spin (+-90) is"
+   },
+   "reach_from_centre": 441,
+   "reach_from_any_of_three": 489,
+   "seats": [
+    {
+     "size": "30 mL",
+     "x": -1100.0,
+     "y": -359.2,
+     "content": "Al 4047, < 63 um",
+     "label": "jz31op < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -1056.0,
+     "y": -359.2,
+     "content": "Al 4047, 63-106 um",
+     "label": "jz31op 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -1012.0,
+     "y": -359.2,
+     "content": "Al 4047, 106-150 um",
+     "label": "jz31op 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -968.0,
+     "y": -359.2,
+     "content": "Al 4047, 150-250 um",
+     "label": "jz31op 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -924.0,
+     "y": -359.2,
+     "content": "Al 4047, > 250 um",
+     "label": "jz31op > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -880.0,
+     "y": -359.2,
+     "content": "AlSi10Mg, < 63 um",
+     "label": "8rthq2 < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -836.0,
+     "y": -359.2,
+     "content": "AlSi10Mg, 63-106 um",
+     "label": "8rthq2 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -792.0,
+     "y": -359.2,
+     "content": "AlSi10Mg, 106-150 um",
+     "label": "8rthq2 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -748.0,
+     "y": -359.2,
+     "content": "AlSi10Mg, 150-250 um",
+     "label": "8rthq2 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -704.0,
+     "y": -359.2,
+     "content": "AlSi10Mg, > 250 um",
+     "label": "8rthq2 > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -660.0,
+     "y": -359.2,
+     "content": "Al-10Si, < 63 um",
+     "label": "u23y78 < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -616.0,
+     "y": -359.2,
+     "content": "Al-10Si, 63-106 um",
+     "label": "u23y78 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -572.0,
+     "y": -359.2,
+     "content": "Al-10Si, 106-150 um",
+     "label": "u23y78 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -528.0,
+     "y": -359.2,
+     "content": "Al-10Si, 150-250 um",
+     "label": "u23y78 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -484.0,
+     "y": -359.2,
+     "content": "Al-10Si, > 250 um",
+     "label": "u23y78 > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -440.0,
+     "y": -359.2,
+     "content": "Al-Mn-Zr, < 63 um",
+     "label": "4yghtr < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -396.0,
+     "y": -359.2,
+     "content": "Al-Mn-Zr, 63-106 um",
+     "label": "4yghtr 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -352.0,
+     "y": -359.2,
+     "content": "Al-Mn-Zr, 106-150 um",
+     "label": "4yghtr 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -308.0,
+     "y": -359.2,
+     "content": "Al-Mn-Zr, 150-250 um",
+     "label": "4yghtr 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -264.0,
+     "y": -359.2,
+     "content": "Al-Mn-Zr, > 250 um",
+     "label": "4yghtr > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -220.0,
+     "y": -359.2,
+     "content": "Al-Ce, < 63 um",
+     "label": "9fxeqt < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -176.0,
+     "y": -359.2,
+     "content": "Al-Ce, 63-106 um",
+     "label": "9fxeqt 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -132.0,
+     "y": -359.2,
+     "content": "Al-Ce, 106-150 um",
+     "label": "9fxeqt 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -88.0,
+     "y": -359.2,
+     "content": "Al-Ce, 150-250 um",
+     "label": "9fxeqt 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -44.0,
+     "y": -359.2,
+     "content": "Al-Ce, > 250 um",
+     "label": "9fxeqt > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 0.0,
+     "y": -359.2,
+     "content": "Al-Sc-Zr, < 63 um",
+     "label": "abc57t < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 44.0,
+     "y": -359.2,
+     "content": "Al-Sc-Zr, 63-106 um",
+     "label": "abc57t 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 88.0,
+     "y": -359.2,
+     "content": "Al-Sc-Zr, 106-150 um",
+     "label": "abc57t 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 132.0,
+     "y": -359.2,
+     "content": "Al-Sc-Zr, 150-250 um",
+     "label": "abc57t 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 176.0,
+     "y": -359.2,
+     "content": "Al-Sc-Zr, > 250 um",
+     "label": "abc57t > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 220.0,
+     "y": -359.2,
+     "content": "Cu-10Ni, < 63 um",
+     "label": "c3k0n5 < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 264.0,
+     "y": -359.2,
+     "content": "Cu-10Ni, 63-106 um",
+     "label": "c3k0n5 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 308.0,
+     "y": -359.2,
+     "content": "Cu-10Ni, 106-150 um",
+     "label": "c3k0n5 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 352.0,
+     "y": -359.2,
+     "content": "Cu-10Ni, 150-250 um",
+     "label": "c3k0n5 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 396.0,
+     "y": -359.2,
+     "content": "Cu-10Ni, > 250 um",
+     "label": "c3k0n5 > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 440.0,
+     "y": -359.2,
+     "content": "Al 6063, < 63 um",
+     "label": "09pol5 < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 484.0,
+     "y": -359.2,
+     "content": "Al 6063, 63-106 um",
+     "label": "09pol5 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 528.0,
+     "y": -359.2,
+     "content": "Al 6063, 106-150 um",
+     "label": "09pol5 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 572.0,
+     "y": -359.2,
+     "content": "Al 6063, 150-250 um",
+     "label": "09pol5 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 616.0,
+     "y": -359.2,
+     "content": "Al 6063, > 250 um",
+     "label": "09pol5 > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 660.0,
+     "y": -359.2,
+     "content": "Al 4047, < 63 um",
+     "label": "by02uy < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 704.0,
+     "y": -359.2,
+     "content": "Al 4047, 63-106 um",
+     "label": "by02uy 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 748.0,
+     "y": -359.2,
+     "content": "Al 4047, 106-150 um",
+     "label": "by02uy 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 792.0,
+     "y": -359.2,
+     "content": "Al 4047, 150-250 um",
+     "label": "by02uy 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 836.0,
+     "y": -359.2,
+     "content": "Al 4047, > 250 um",
+     "label": "by02uy > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 880.0,
+     "y": -359.2,
+     "content": "AlSi10Mg, < 63 um",
+     "label": "lo7ty1 < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 924.0,
+     "y": -359.2,
+     "content": "AlSi10Mg, 63-106 um",
+     "label": "lo7ty1 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 968.0,
+     "y": -359.2,
+     "content": "AlSi10Mg, 106-150 um",
+     "label": "lo7ty1 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 1012.0,
+     "y": -359.2,
+     "content": "AlSi10Mg, 150-250 um",
+     "label": "lo7ty1 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 1056.0,
+     "y": -359.2,
+     "content": "AlSi10Mg, > 250 um",
+     "label": "lo7ty1 > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 1100.0,
+     "y": -359.2,
+     "content": "Al-10Si, < 63 um",
+     "label": "5okbbw < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -1100.0,
+     "y": -297.8,
+     "content": "Al-10Si, 63-106 um",
+     "label": "5okbbw 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -1056.0,
+     "y": -297.8,
+     "content": "Al-10Si, 106-150 um",
+     "label": "5okbbw 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -1012.0,
+     "y": -297.8,
+     "content": "Al-10Si, 150-250 um",
+     "label": "5okbbw 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -968.0,
+     "y": -297.8,
+     "content": "Al-10Si, > 250 um",
+     "label": "5okbbw > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -924.0,
+     "y": -297.8,
+     "content": "Al-Mn-Zr, < 63 um",
+     "label": "wouifl < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -880.0,
+     "y": -297.8,
+     "content": "Al-Mn-Zr, 63-106 um",
+     "label": "wouifl 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -836.0,
+     "y": -297.8,
+     "content": "Al-Mn-Zr, 106-150 um",
+     "label": "wouifl 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -792.0,
+     "y": -297.8,
+     "content": "Al-Mn-Zr, 150-250 um",
+     "label": "wouifl 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -748.0,
+     "y": -297.8,
+     "content": "Al-Mn-Zr, > 250 um",
+     "label": "wouifl > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -704.0,
+     "y": -297.8,
+     "content": "Al-Ce, < 63 um",
+     "label": "ogbhz0 < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -660.0,
+     "y": -297.8,
+     "content": "Al-Ce, 63-106 um",
+     "label": "ogbhz0 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -616.0,
+     "y": -297.8,
+     "content": "Al-Ce, 106-150 um",
+     "label": "ogbhz0 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -572.0,
+     "y": -297.8,
+     "content": "Al-Ce, 150-250 um",
+     "label": "ogbhz0 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -528.0,
+     "y": -297.8,
+     "content": "Al-Ce, > 250 um",
+     "label": "ogbhz0 > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -484.0,
+     "y": -297.8,
+     "content": "Al-Sc-Zr, < 63 um",
+     "label": "yt9g14 < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -440.0,
+     "y": -297.8,
+     "content": "Al-Sc-Zr, 63-106 um",
+     "label": "yt9g14 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -396.0,
+     "y": -297.8,
+     "content": "Al-Sc-Zr, 106-150 um",
+     "label": "yt9g14 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -352.0,
+     "y": -297.8,
+     "content": "Al-Sc-Zr, 150-250 um",
+     "label": "yt9g14 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -308.0,
+     "y": -297.8,
+     "content": "Al-Sc-Zr, > 250 um",
+     "label": "yt9g14 > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -264.0,
+     "y": -297.8,
+     "content": "Cu-10Ni, < 63 um",
+     "label": "kbhvvx < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -220.0,
+     "y": -297.8,
+     "content": "Cu-10Ni, 63-106 um",
+     "label": "kbhvvx 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -176.0,
+     "y": -297.8,
+     "content": "Cu-10Ni, 106-150 um",
+     "label": "kbhvvx 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -132.0,
+     "y": -297.8,
+     "content": "Cu-10Ni, 150-250 um",
+     "label": "kbhvvx 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -88.0,
+     "y": -297.8,
+     "content": "Cu-10Ni, > 250 um",
+     "label": "kbhvvx > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -44.0,
+     "y": -297.8,
+     "content": "Al 6063, < 63 um",
+     "label": "xprfsw < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 0.0,
+     "y": -297.8,
+     "content": "Al 6063, 63-106 um",
+     "label": "xprfsw 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 44.0,
+     "y": -297.8,
+     "content": "Al 6063, 106-150 um",
+     "label": "xprfsw 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 88.0,
+     "y": -297.8,
+     "content": "Al 6063, 150-250 um",
+     "label": "xprfsw 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 132.0,
+     "y": -297.8,
+     "content": "Al 6063, > 250 um",
+     "label": "xprfsw > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 176.0,
+     "y": -297.8,
+     "content": "Al 4047, < 63 um",
+     "label": "cf9e6b < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 220.0,
+     "y": -297.8,
+     "content": "Al 4047, 63-106 um",
+     "label": "cf9e6b 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 264.0,
+     "y": -297.8,
+     "content": "Al 4047, 106-150 um",
+     "label": "cf9e6b 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 308.0,
+     "y": -297.8,
+     "content": "Al 4047, 150-250 um",
+     "label": "cf9e6b 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 352.0,
+     "y": -297.8,
+     "content": "Al 4047, > 250 um",
+     "label": "cf9e6b > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 396.0,
+     "y": -297.8,
+     "content": "AlSi10Mg, < 63 um",
+     "label": "iuix8i < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 440.0,
+     "y": -297.8,
+     "content": "AlSi10Mg, 63-106 um",
+     "label": "iuix8i 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 484.0,
+     "y": -297.8,
+     "content": "AlSi10Mg, 106-150 um",
+     "label": "iuix8i 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 528.0,
+     "y": -297.8,
+     "content": "AlSi10Mg, 150-250 um",
+     "label": "iuix8i 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 572.0,
+     "y": -297.8,
+     "content": "AlSi10Mg, > 250 um",
+     "label": "iuix8i > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 616.0,
+     "y": -297.8,
+     "content": "Al-10Si, < 63 um",
+     "label": "48kqrs < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 660.0,
+     "y": -297.8,
+     "content": "Al-10Si, 63-106 um",
+     "label": "48kqrs 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 704.0,
+     "y": -297.8,
+     "content": "Al-10Si, 106-150 um",
+     "label": "48kqrs 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 748.0,
+     "y": -297.8,
+     "content": "Al-10Si, 150-250 um",
+     "label": "48kqrs 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 792.0,
+     "y": -297.8,
+     "content": "Al-10Si, > 250 um",
+     "label": "48kqrs > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 836.0,
+     "y": -297.8,
+     "content": "Al-Mn-Zr, < 63 um",
+     "label": "1cau5e < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 880.0,
+     "y": -297.8,
+     "content": "Al-Mn-Zr, 63-106 um",
+     "label": "1cau5e 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 924.0,
+     "y": -297.8,
+     "content": "Al-Mn-Zr, 106-150 um",
+     "label": "1cau5e 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 968.0,
+     "y": -297.8,
+     "content": "Al-Mn-Zr, 150-250 um",
+     "label": "1cau5e 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 1012.0,
+     "y": -297.8,
+     "content": "Al-Mn-Zr, > 250 um",
+     "label": "1cau5e > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 1056.0,
+     "y": -297.8,
+     "content": "Al-Ce, < 63 um",
+     "label": "mvzw6y < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 1100.0,
+     "y": -297.8,
+     "content": "Al-Ce, 63-106 um",
+     "label": "mvzw6y 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -1100.0,
+     "y": -236.2,
+     "content": "Al-Ce, 106-150 um",
+     "label": "mvzw6y 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -1056.0,
+     "y": -236.2,
+     "content": "Al-Ce, 150-250 um",
+     "label": "mvzw6y 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -1012.0,
+     "y": -236.2,
+     "content": "Al-Ce, > 250 um",
+     "label": "mvzw6y > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -968.0,
+     "y": -236.2,
+     "content": "Al-Sc-Zr, < 63 um",
+     "label": "4ipx5t < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -924.0,
+     "y": -236.2,
+     "content": "Al-Sc-Zr, 63-106 um",
+     "label": "4ipx5t 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -880.0,
+     "y": -236.2,
+     "content": "Al-Sc-Zr, 106-150 um",
+     "label": "4ipx5t 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -836.0,
+     "y": -236.2,
+     "content": "Al-Sc-Zr, 150-250 um",
+     "label": "4ipx5t 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -792.0,
+     "y": -236.2,
+     "content": "Al-Sc-Zr, > 250 um",
+     "label": "4ipx5t > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -748.0,
+     "y": -236.2,
+     "content": "Cu-10Ni, < 63 um",
+     "label": "o92zez < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -704.0,
+     "y": -236.2,
+     "content": "Cu-10Ni, 63-106 um",
+     "label": "o92zez 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -660.0,
+     "y": -236.2,
+     "content": "Cu-10Ni, 106-150 um",
+     "label": "o92zez 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -616.0,
+     "y": -236.2,
+     "content": "Cu-10Ni, 150-250 um",
+     "label": "o92zez 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -572.0,
+     "y": -236.2,
+     "content": "Cu-10Ni, > 250 um",
+     "label": "o92zez > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -528.0,
+     "y": -236.2,
+     "content": "Al 6063, < 63 um",
+     "label": "eqsn69 < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -484.0,
+     "y": -236.2,
+     "content": "Al 6063, 63-106 um",
+     "label": "eqsn69 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -440.0,
+     "y": -236.2,
+     "content": "Al 6063, 106-150 um",
+     "label": "eqsn69 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -396.0,
+     "y": -236.2,
+     "content": "Al 6063, 150-250 um",
+     "label": "eqsn69 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -352.0,
+     "y": -236.2,
+     "content": "Al 6063, > 250 um",
+     "label": "eqsn69 > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -308.0,
+     "y": -236.2,
+     "content": "Al 4047, < 63 um",
+     "label": "6ar30e < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -264.0,
+     "y": -236.2,
+     "content": "Al 4047, 63-106 um",
+     "label": "6ar30e 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -220.0,
+     "y": -236.2,
+     "content": "Al 4047, 106-150 um",
+     "label": "6ar30e 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -176.0,
+     "y": -236.2,
+     "content": "Al 4047, 150-250 um",
+     "label": "6ar30e 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -132.0,
+     "y": -236.2,
+     "content": "Al 4047, > 250 um",
+     "label": "6ar30e > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -88.0,
+     "y": -236.2,
+     "content": "AlSi10Mg, < 63 um",
+     "label": "ju9vuh < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -44.0,
+     "y": -236.2,
+     "content": "AlSi10Mg, 63-106 um",
+     "label": "ju9vuh 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 0.0,
+     "y": -236.2,
+     "content": "AlSi10Mg, 106-150 um",
+     "label": "ju9vuh 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 44.0,
+     "y": -236.2,
+     "content": "AlSi10Mg, 150-250 um",
+     "label": "ju9vuh 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 88.0,
+     "y": -236.2,
+     "content": "AlSi10Mg, > 250 um",
+     "label": "ju9vuh > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 132.0,
+     "y": -236.2,
+     "content": "Al-10Si, < 63 um",
+     "label": "05h7os < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 176.0,
+     "y": -236.2,
+     "content": "Al-10Si, 63-106 um",
+     "label": "05h7os 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 220.0,
+     "y": -236.2,
+     "content": "Al-10Si, 106-150 um",
+     "label": "05h7os 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 264.0,
+     "y": -236.2,
+     "content": "Al-10Si, 150-250 um",
+     "label": "05h7os 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 308.0,
+     "y": -236.2,
+     "content": "Al-10Si, > 250 um",
+     "label": "05h7os > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 352.0,
+     "y": -236.2,
+     "content": "Al-Mn-Zr, < 63 um",
+     "label": "dtcpp0 < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 396.0,
+     "y": -236.2,
+     "content": "Al-Mn-Zr, 63-106 um",
+     "label": "dtcpp0 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 440.0,
+     "y": -236.2,
+     "content": "Al-Mn-Zr, 106-150 um",
+     "label": "dtcpp0 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 484.0,
+     "y": -236.2,
+     "content": "Al-Mn-Zr, 150-250 um",
+     "label": "dtcpp0 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 528.0,
+     "y": -236.2,
+     "content": "Al-Mn-Zr, > 250 um",
+     "label": "dtcpp0 > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 572.0,
+     "y": -236.2,
+     "content": "Al-Ce, < 63 um",
+     "label": "jpw4t6 < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 616.0,
+     "y": -236.2,
+     "content": "Al-Ce, 63-106 um",
+     "label": "jpw4t6 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 660.0,
+     "y": -236.2,
+     "content": "Al-Ce, 106-150 um",
+     "label": "jpw4t6 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 704.0,
+     "y": -236.2,
+     "content": "Al-Ce, 150-250 um",
+     "label": "jpw4t6 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 748.0,
+     "y": -236.2,
+     "content": "Al-Ce, > 250 um",
+     "label": "jpw4t6 > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 792.0,
+     "y": -236.2,
+     "content": "Al-Sc-Zr, < 63 um",
+     "label": "t70ina < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 836.0,
+     "y": -236.2,
+     "content": "Al-Sc-Zr, 63-106 um",
+     "label": "t70ina 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 880.0,
+     "y": -236.2,
+     "content": "Al-Sc-Zr, 106-150 um",
+     "label": "t70ina 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 924.0,
+     "y": -236.2,
+     "content": "Al-Sc-Zr, 150-250 um",
+     "label": "t70ina 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 968.0,
+     "y": -236.2,
+     "content": "Al-Sc-Zr, > 250 um",
+     "label": "t70ina > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 1012.0,
+     "y": -236.2,
+     "content": "Cu-10Ni, < 63 um",
+     "label": "duxdn9 < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 1056.0,
+     "y": -236.2,
+     "content": "Cu-10Ni, 63-106 um",
+     "label": "duxdn9 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 1100.0,
+     "y": -236.2,
+     "content": "Cu-10Ni, 106-150 um",
+     "label": "duxdn9 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -1100.0,
+     "y": -174.8,
+     "content": "Cu-10Ni, 150-250 um",
+     "label": "duxdn9 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -1056.0,
+     "y": -174.8,
+     "content": "Cu-10Ni, > 250 um",
+     "label": "duxdn9 > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -1012.0,
+     "y": -174.8,
+     "content": "Al 6063, < 63 um",
+     "label": "b7henp < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -968.0,
+     "y": -174.8,
+     "content": "Al 6063, 63-106 um",
+     "label": "b7henp 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -924.0,
+     "y": -174.8,
+     "content": "Al 6063, 106-150 um",
+     "label": "b7henp 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -880.0,
+     "y": -174.8,
+     "content": "Al 6063, 150-250 um",
+     "label": "b7henp 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -836.0,
+     "y": -174.8,
+     "content": "Al 6063, > 250 um",
+     "label": "b7henp > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -792.0,
+     "y": -174.8,
+     "content": "Al 4047, < 63 um",
+     "label": "s5kv22 < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -748.0,
+     "y": -174.8,
+     "content": "Al 4047, 63-106 um",
+     "label": "s5kv22 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -704.0,
+     "y": -174.8,
+     "content": "Al 4047, 106-150 um",
+     "label": "s5kv22 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -660.0,
+     "y": -174.8,
+     "content": "Al 4047, 150-250 um",
+     "label": "s5kv22 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -616.0,
+     "y": -174.8,
+     "content": "Al 4047, > 250 um",
+     "label": "s5kv22 > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -572.0,
+     "y": -174.8,
+     "content": "AlSi10Mg, < 63 um",
+     "label": "2utctt < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -528.0,
+     "y": -174.8,
+     "content": "AlSi10Mg, 63-106 um",
+     "label": "2utctt 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -484.0,
+     "y": -174.8,
+     "content": "AlSi10Mg, 106-150 um",
+     "label": "2utctt 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -440.0,
+     "y": -174.8,
+     "content": "AlSi10Mg, 150-250 um",
+     "label": "2utctt 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -396.0,
+     "y": -174.8,
+     "content": "AlSi10Mg, > 250 um",
+     "label": "2utctt > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -352.0,
+     "y": -174.8,
+     "content": "Al-10Si, < 63 um",
+     "label": "s7pyet < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -308.0,
+     "y": -174.8,
+     "content": "Al-10Si, 63-106 um",
+     "label": "s7pyet 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -264.0,
+     "y": -174.8,
+     "content": "Al-10Si, 106-150 um",
+     "label": "s7pyet 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -220.0,
+     "y": -174.8,
+     "content": "Al-10Si, 150-250 um",
+     "label": "s7pyet 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -176.0,
+     "y": -174.8,
+     "content": "Al-10Si, > 250 um",
+     "label": "s7pyet > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -132.0,
+     "y": -174.8,
+     "content": "Al-Mn-Zr, < 63 um",
+     "label": "iwd7nb < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -88.0,
+     "y": -174.8,
+     "content": "Al-Mn-Zr, 63-106 um",
+     "label": "iwd7nb 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -44.0,
+     "y": -174.8,
+     "content": "Al-Mn-Zr, 106-150 um",
+     "label": "iwd7nb 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 0.0,
+     "y": -174.8,
+     "content": "Al-Mn-Zr, 150-250 um",
+     "label": "iwd7nb 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 44.0,
+     "y": -174.8,
+     "content": "Al-Mn-Zr, > 250 um",
+     "label": "iwd7nb > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 88.0,
+     "y": -174.8,
+     "content": "Al-Ce, < 63 um",
+     "label": "05f3ma < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 132.0,
+     "y": -174.8,
+     "content": "Al-Ce, 63-106 um",
+     "label": "05f3ma 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 176.0,
+     "y": -174.8,
+     "content": "Al-Ce, 106-150 um",
+     "label": "05f3ma 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 220.0,
+     "y": -174.8,
+     "content": "Al-Ce, 150-250 um",
+     "label": "05f3ma 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 264.0,
+     "y": -174.8,
+     "content": "Al-Ce, > 250 um",
+     "label": "05f3ma > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 308.0,
+     "y": -174.8,
+     "content": "Al-Sc-Zr, < 63 um",
+     "label": "s2qgt3 < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 352.0,
+     "y": -174.8,
+     "content": "Al-Sc-Zr, 63-106 um",
+     "label": "s2qgt3 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 396.0,
+     "y": -174.8,
+     "content": "Al-Sc-Zr, 106-150 um",
+     "label": "s2qgt3 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 440.0,
+     "y": -174.8,
+     "content": "Al-Sc-Zr, 150-250 um",
+     "label": "s2qgt3 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 484.0,
+     "y": -174.8,
+     "content": "Al-Sc-Zr, > 250 um",
+     "label": "s2qgt3 > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 528.0,
+     "y": -174.8,
+     "content": "Cu-10Ni, < 63 um",
+     "label": "y17vky < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 572.0,
+     "y": -174.8,
+     "content": "Cu-10Ni, 63-106 um",
+     "label": "y17vky 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 616.0,
+     "y": -174.8,
+     "content": "Cu-10Ni, 106-150 um",
+     "label": "y17vky 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 660.0,
+     "y": -174.8,
+     "content": "Cu-10Ni, 150-250 um",
+     "label": "y17vky 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 704.0,
+     "y": -174.8,
+     "content": "Cu-10Ni, > 250 um",
+     "label": "y17vky > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 748.0,
+     "y": -174.8,
+     "content": "Al 6063, < 63 um",
+     "label": "71h53v < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 792.0,
+     "y": -174.8,
+     "content": "Al 6063, 63-106 um",
+     "label": "71h53v 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 836.0,
+     "y": -174.8,
+     "content": "Al 6063, 106-150 um",
+     "label": "71h53v 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 880.0,
+     "y": -174.8,
+     "content": "Al 6063, 150-250 um",
+     "label": "71h53v 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 924.0,
+     "y": -174.8,
+     "content": "Al 6063, > 250 um",
+     "label": "71h53v > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 968.0,
+     "y": -174.8,
+     "content": "Al 4047, < 63 um",
+     "label": "19ofi9 < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 1012.0,
+     "y": -174.8,
+     "content": "Al 4047, 63-106 um",
+     "label": "19ofi9 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 1056.0,
+     "y": -174.8,
+     "content": "Al 4047, 106-150 um",
+     "label": "19ofi9 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 1100.0,
+     "y": -174.8,
+     "content": "Al 4047, 150-250 um",
+     "label": "19ofi9 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -1100.0,
+     "y": -113.2,
+     "content": "Al 4047, > 250 um",
+     "label": "19ofi9 > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -1056.0,
+     "y": -113.2,
+     "content": "AlSi10Mg, < 63 um",
+     "label": "t8j9c1 < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -1012.0,
+     "y": -113.2,
+     "content": "AlSi10Mg, 63-106 um",
+     "label": "t8j9c1 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -968.0,
+     "y": -113.2,
+     "content": "AlSi10Mg, 106-150 um",
+     "label": "t8j9c1 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -924.0,
+     "y": -113.2,
+     "content": "AlSi10Mg, 150-250 um",
+     "label": "t8j9c1 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -880.0,
+     "y": -113.2,
+     "content": "AlSi10Mg, > 250 um",
+     "label": "t8j9c1 > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -836.0,
+     "y": -113.2,
+     "content": "Al-10Si, < 63 um",
+     "label": "jocmz0 < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -792.0,
+     "y": -113.2,
+     "content": "Al-10Si, 63-106 um",
+     "label": "jocmz0 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -748.0,
+     "y": -113.2,
+     "content": "Al-10Si, 106-150 um",
+     "label": "jocmz0 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -704.0,
+     "y": -113.2,
+     "content": "Al-10Si, 150-250 um",
+     "label": "jocmz0 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -660.0,
+     "y": -113.2,
+     "content": "Al-10Si, > 250 um",
+     "label": "jocmz0 > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -616.0,
+     "y": -113.2,
+     "content": "Al-Mn-Zr, < 63 um",
+     "label": "9ih9f5 < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -572.0,
+     "y": -113.2,
+     "content": "Al-Mn-Zr, 63-106 um",
+     "label": "9ih9f5 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -528.0,
+     "y": -113.2,
+     "content": "Al-Mn-Zr, 106-150 um",
+     "label": "9ih9f5 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -484.0,
+     "y": -113.2,
+     "content": "Al-Mn-Zr, 150-250 um",
+     "label": "9ih9f5 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -440.0,
+     "y": -113.2,
+     "content": "Al-Mn-Zr, > 250 um",
+     "label": "9ih9f5 > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -396.0,
+     "y": -113.2,
+     "content": "Al-Ce, < 63 um",
+     "label": "x0fp7d < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -352.0,
+     "y": -113.2,
+     "content": "Al-Ce, 63-106 um",
+     "label": "x0fp7d 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -308.0,
+     "y": -113.2,
+     "content": "Al-Ce, 106-150 um",
+     "label": "x0fp7d 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -264.0,
+     "y": -113.2,
+     "content": "Al-Ce, 150-250 um",
+     "label": "x0fp7d 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -220.0,
+     "y": -113.2,
+     "content": "Al-Ce, > 250 um",
+     "label": "x0fp7d > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -176.0,
+     "y": -113.2,
+     "content": "Al-Sc-Zr, < 63 um",
+     "label": "w4p627 < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -132.0,
+     "y": -113.2,
+     "content": "Al-Sc-Zr, 63-106 um",
+     "label": "w4p627 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -88.0,
+     "y": -113.2,
+     "content": "Al-Sc-Zr, 106-150 um",
+     "label": "w4p627 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": -44.0,
+     "y": -113.2,
+     "content": "Al-Sc-Zr, 150-250 um",
+     "label": "w4p627 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 0.0,
+     "y": -113.2,
+     "content": "Al-Sc-Zr, > 250 um",
+     "label": "w4p627 > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 44.0,
+     "y": -113.2,
+     "content": "Cu-10Ni, < 63 um",
+     "label": "6c77fv < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 88.0,
+     "y": -113.2,
+     "content": "Cu-10Ni, 63-106 um",
+     "label": "6c77fv 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 132.0,
+     "y": -113.2,
+     "content": "Cu-10Ni, 106-150 um",
+     "label": "6c77fv 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 176.0,
+     "y": -113.2,
+     "content": "Cu-10Ni, 150-250 um",
+     "label": "6c77fv 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 220.0,
+     "y": -113.2,
+     "content": "Cu-10Ni, > 250 um",
+     "label": "6c77fv > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 264.0,
+     "y": -113.2,
+     "content": "Al 6063, < 63 um",
+     "label": "sqivax < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 308.0,
+     "y": -113.2,
+     "content": "Al 6063, 63-106 um",
+     "label": "sqivax 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 352.0,
+     "y": -113.2,
+     "content": "Al 6063, 106-150 um",
+     "label": "sqivax 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 396.0,
+     "y": -113.2,
+     "content": "Al 6063, 150-250 um",
+     "label": "sqivax 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 440.0,
+     "y": -113.2,
+     "content": "Al 6063, > 250 um",
+     "label": "sqivax > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 484.0,
+     "y": -113.2,
+     "content": "Al 4047, < 63 um",
+     "label": "7ql3so < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 528.0,
+     "y": -113.2,
+     "content": "Al 4047, 63-106 um",
+     "label": "7ql3so 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 572.0,
+     "y": -113.2,
+     "content": "Al 4047, 106-150 um",
+     "label": "7ql3so 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 616.0,
+     "y": -113.2,
+     "content": "Al 4047, 150-250 um",
+     "label": "7ql3so 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 660.0,
+     "y": -113.2,
+     "content": "Al 4047, > 250 um",
+     "label": "7ql3so > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 704.0,
+     "y": -113.2,
+     "content": "AlSi10Mg, < 63 um",
+     "label": "1ygykc < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 748.0,
+     "y": -113.2,
+     "content": "AlSi10Mg, 63-106 um",
+     "label": "1ygykc 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 792.0,
+     "y": -113.2,
+     "content": "AlSi10Mg, 106-150 um",
+     "label": "1ygykc 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 836.0,
+     "y": -113.2,
+     "content": "AlSi10Mg, 150-250 um",
+     "label": "1ygykc 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 880.0,
+     "y": -113.2,
+     "content": "AlSi10Mg, > 250 um",
+     "label": "1ygykc > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 924.0,
+     "y": -113.2,
+     "content": "Al-10Si, < 63 um",
+     "label": "zqyyos < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 968.0,
+     "y": -113.2,
+     "content": "Al-10Si, 63-106 um",
+     "label": "zqyyos 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 1012.0,
+     "y": -113.2,
+     "content": "Al-10Si, 106-150 um",
+     "label": "zqyyos 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 1056.0,
+     "y": -113.2,
+     "content": "Al-10Si, 150-250 um",
+     "label": "zqyyos 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "30 mL",
+     "x": 1100.0,
+     "y": -113.2,
+     "content": "Al-10Si, > 250 um",
+     "label": "zqyyos > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -1080.0,
+     "y": -40.8,
+     "content": "Al-Mn-Zr, < 63 um",
+     "label": "colw9w < 63 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -1026.0,
+     "y": -40.8,
+     "content": "Al-Mn-Zr, 63-106 um",
+     "label": "colw9w 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -972.0,
+     "y": -40.8,
+     "content": "Al-Mn-Zr, 106-150 um",
+     "label": "colw9w 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -918.0,
+     "y": -40.8,
+     "content": "Al-Mn-Zr, 150-250 um",
+     "label": "colw9w 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -864.0,
+     "y": -40.8,
+     "content": "Al-Mn-Zr, > 250 um",
+     "label": "colw9w > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -810.0,
+     "y": -40.8,
+     "content": "Al-Ce, < 63 um",
+     "label": "snh0sr < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -756.0,
+     "y": -40.8,
+     "content": "Al-Ce, 63-106 um",
+     "label": "snh0sr 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -702.0,
+     "y": -40.8,
+     "content": "Al-Ce, 106-150 um",
+     "label": "snh0sr 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -648.0,
+     "y": -40.8,
+     "content": "Al-Ce, 150-250 um",
+     "label": "snh0sr 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -594.0,
+     "y": -40.8,
+     "content": "Al-Ce, > 250 um",
+     "label": "snh0sr > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -540.0,
+     "y": -40.8,
+     "content": "Al-Sc-Zr, < 63 um",
+     "label": "oc1u4g < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -486.0,
+     "y": -40.8,
+     "content": "Al-Sc-Zr, 63-106 um",
+     "label": "oc1u4g 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -432.0,
+     "y": -40.8,
+     "content": "Al-Sc-Zr, 106-150 um",
+     "label": "oc1u4g 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -378.0,
+     "y": -40.8,
+     "content": "Al-Sc-Zr, 150-250 um",
+     "label": "oc1u4g 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -324.0,
+     "y": -40.8,
+     "content": "Al-Sc-Zr, > 250 um",
+     "label": "oc1u4g > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -270.0,
+     "y": -40.8,
+     "content": "Cu-10Ni, < 63 um",
+     "label": "zxn2ln < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -216.0,
+     "y": -40.8,
+     "content": "Cu-10Ni, 63-106 um",
+     "label": "zxn2ln 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -162.0,
+     "y": -40.8,
+     "content": "Cu-10Ni, 106-150 um",
+     "label": "zxn2ln 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -108.0,
+     "y": -40.8,
+     "content": "Cu-10Ni, 150-250 um",
+     "label": "zxn2ln 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -54.0,
+     "y": -40.8,
+     "content": "Cu-10Ni, > 250 um",
+     "label": "zxn2ln > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 0.0,
+     "y": -40.8,
+     "content": "Al 6063, < 63 um",
+     "label": "z6t18a < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 54.0,
+     "y": -40.8,
+     "content": "Al 6063, 63-106 um",
+     "label": "z6t18a 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 108.0,
+     "y": -40.8,
+     "content": "Al 6063, 106-150 um",
+     "label": "z6t18a 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 162.0,
+     "y": -40.8,
+     "content": "Al 6063, 150-250 um",
+     "label": "z6t18a 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 216.0,
+     "y": -40.8,
+     "content": "Al 6063, > 250 um",
+     "label": "z6t18a > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 270.0,
+     "y": -40.8,
+     "content": "Al 4047, < 63 um",
+     "label": "xfhfd4 < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 324.0,
+     "y": -40.8,
+     "content": "Al 4047, 63-106 um",
+     "label": "xfhfd4 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 378.0,
+     "y": -40.8,
+     "content": "Al 4047, 106-150 um",
+     "label": "xfhfd4 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 432.0,
+     "y": -40.8,
+     "content": "Al 4047, 150-250 um",
+     "label": "xfhfd4 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 486.0,
+     "y": -40.8,
+     "content": "Al 4047, > 250 um",
+     "label": "xfhfd4 > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 540.0,
+     "y": -40.8,
+     "content": "AlSi10Mg, < 63 um",
+     "label": "mib8mf < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 594.0,
+     "y": -40.8,
+     "content": "AlSi10Mg, 63-106 um",
+     "label": "mib8mf 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 648.0,
+     "y": -40.8,
+     "content": "AlSi10Mg, 106-150 um",
+     "label": "mib8mf 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 702.0,
+     "y": -40.8,
+     "content": "AlSi10Mg, 150-250 um",
+     "label": "mib8mf 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 756.0,
+     "y": -40.8,
+     "content": "AlSi10Mg, > 250 um",
+     "label": "mib8mf > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 810.0,
+     "y": -40.8,
+     "content": "Al-10Si, < 63 um",
+     "label": "pksoj8 < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 864.0,
+     "y": -40.8,
+     "content": "Al-10Si, 63-106 um",
+     "label": "pksoj8 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 918.0,
+     "y": -40.8,
+     "content": "Al-10Si, 106-150 um",
+     "label": "pksoj8 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 972.0,
+     "y": -40.8,
+     "content": "Al-10Si, 150-250 um",
+     "label": "pksoj8 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 1026.0,
+     "y": -40.8,
+     "content": "Al-10Si, > 250 um",
+     "label": "pksoj8 > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 1080.0,
+     "y": -40.8,
+     "content": "Al-Mn-Zr, < 63 um",
+     "label": "2i311c < 63 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -1080.0,
+     "y": 32.8,
+     "content": "Al-Mn-Zr, 63-106 um",
+     "label": "2i311c 63-106 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -1026.0,
+     "y": 32.8,
+     "content": "Al-Mn-Zr, 106-150 um",
+     "label": "2i311c 106-150 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -972.0,
+     "y": 32.8,
+     "content": "Al-Mn-Zr, 150-250 um",
+     "label": "2i311c 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -918.0,
+     "y": 32.8,
+     "content": "Al-Mn-Zr, > 250 um",
+     "label": "2i311c > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -864.0,
+     "y": 32.8,
+     "content": "Al-Ce, < 63 um",
+     "label": "l0zxlg < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -810.0,
+     "y": 32.8,
+     "content": "Al-Ce, 63-106 um",
+     "label": "l0zxlg 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -756.0,
+     "y": 32.8,
+     "content": "Al-Ce, 106-150 um",
+     "label": "l0zxlg 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -702.0,
+     "y": 32.8,
+     "content": "Al-Ce, 150-250 um",
+     "label": "l0zxlg 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -648.0,
+     "y": 32.8,
+     "content": "Al-Ce, > 250 um",
+     "label": "l0zxlg > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -594.0,
+     "y": 32.8,
+     "content": "Al-Sc-Zr, < 63 um",
+     "label": "75oga5 < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -540.0,
+     "y": 32.8,
+     "content": "Al-Sc-Zr, 63-106 um",
+     "label": "75oga5 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -486.0,
+     "y": 32.8,
+     "content": "Al-Sc-Zr, 106-150 um",
+     "label": "75oga5 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -432.0,
+     "y": 32.8,
+     "content": "Al-Sc-Zr, 150-250 um",
+     "label": "75oga5 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -378.0,
+     "y": 32.8,
+     "content": "Al-Sc-Zr, > 250 um",
+     "label": "75oga5 > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -324.0,
+     "y": 32.8,
+     "content": "Cu-10Ni, < 63 um",
+     "label": "0gd9pi < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -270.0,
+     "y": 32.8,
+     "content": "Cu-10Ni, 63-106 um",
+     "label": "0gd9pi 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -216.0,
+     "y": 32.8,
+     "content": "Cu-10Ni, 106-150 um",
+     "label": "0gd9pi 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -162.0,
+     "y": 32.8,
+     "content": "Cu-10Ni, 150-250 um",
+     "label": "0gd9pi 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -108.0,
+     "y": 32.8,
+     "content": "Cu-10Ni, > 250 um",
+     "label": "0gd9pi > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -54.0,
+     "y": 32.8,
+     "content": "Al 6063, < 63 um",
+     "label": "8ootm5 < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 0.0,
+     "y": 32.8,
+     "content": "Al 6063, 63-106 um",
+     "label": "8ootm5 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 54.0,
+     "y": 32.8,
+     "content": "Al 6063, 106-150 um",
+     "label": "8ootm5 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 108.0,
+     "y": 32.8,
+     "content": "Al 6063, 150-250 um",
+     "label": "8ootm5 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 162.0,
+     "y": 32.8,
+     "content": "Al 6063, > 250 um",
+     "label": "8ootm5 > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 216.0,
+     "y": 32.8,
+     "content": "Al 4047, < 63 um",
+     "label": "u7bp5u < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 270.0,
+     "y": 32.8,
+     "content": "Al 4047, 63-106 um",
+     "label": "u7bp5u 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 324.0,
+     "y": 32.8,
+     "content": "Al 4047, 106-150 um",
+     "label": "u7bp5u 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 378.0,
+     "y": 32.8,
+     "content": "Al 4047, 150-250 um",
+     "label": "u7bp5u 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 432.0,
+     "y": 32.8,
+     "content": "Al 4047, > 250 um",
+     "label": "u7bp5u > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 486.0,
+     "y": 32.8,
+     "content": "AlSi10Mg, < 63 um",
+     "label": "v3slag < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 540.0,
+     "y": 32.8,
+     "content": "AlSi10Mg, 63-106 um",
+     "label": "v3slag 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 594.0,
+     "y": 32.8,
+     "content": "AlSi10Mg, 106-150 um",
+     "label": "v3slag 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 648.0,
+     "y": 32.8,
+     "content": "AlSi10Mg, 150-250 um",
+     "label": "v3slag 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 702.0,
+     "y": 32.8,
+     "content": "AlSi10Mg, > 250 um",
+     "label": "v3slag > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 756.0,
+     "y": 32.8,
+     "content": "Al-10Si, < 63 um",
+     "label": "a54u2r < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 810.0,
+     "y": 32.8,
+     "content": "Al-10Si, 63-106 um",
+     "label": "a54u2r 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 864.0,
+     "y": 32.8,
+     "content": "Al-10Si, 106-150 um",
+     "label": "a54u2r 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 918.0,
+     "y": 32.8,
+     "content": "Al-10Si, 150-250 um",
+     "label": "a54u2r 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 972.0,
+     "y": 32.8,
+     "content": "Al-10Si, > 250 um",
+     "label": "a54u2r > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 1026.0,
+     "y": 32.8,
+     "content": "Al-Mn-Zr, < 63 um",
+     "label": "vknl6a < 63 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 1080.0,
+     "y": 32.8,
+     "content": "Al-Mn-Zr, 63-106 um",
+     "label": "vknl6a 63-106 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -1080.0,
+     "y": 106.2,
+     "content": "Al-Mn-Zr, 106-150 um",
+     "label": "vknl6a 106-150 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -1026.0,
+     "y": 106.2,
+     "content": "Al-Mn-Zr, 150-250 um",
+     "label": "vknl6a 150-250 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -972.0,
+     "y": 106.2,
+     "content": "Al-Mn-Zr, > 250 um",
+     "label": "vknl6a > 250 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -918.0,
+     "y": 106.2,
+     "content": "Al-Ce, < 63 um",
+     "label": "l4m5si < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -864.0,
+     "y": 106.2,
+     "content": "Al-Ce, 63-106 um",
+     "label": "l4m5si 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -810.0,
+     "y": 106.2,
+     "content": "Al-Ce, 106-150 um",
+     "label": "l4m5si 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -756.0,
+     "y": 106.2,
+     "content": "Al-Ce, 150-250 um",
+     "label": "l4m5si 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -702.0,
+     "y": 106.2,
+     "content": "Al-Ce, > 250 um",
+     "label": "l4m5si > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -648.0,
+     "y": 106.2,
+     "content": "Al-Sc-Zr, < 63 um",
+     "label": "fazeki < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -594.0,
+     "y": 106.2,
+     "content": "Al-Sc-Zr, 63-106 um",
+     "label": "fazeki 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -540.0,
+     "y": 106.2,
+     "content": "Al-Sc-Zr, 106-150 um",
+     "label": "fazeki 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -486.0,
+     "y": 106.2,
+     "content": "Al-Sc-Zr, 150-250 um",
+     "label": "fazeki 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -432.0,
+     "y": 106.2,
+     "content": "Al-Sc-Zr, > 250 um",
+     "label": "fazeki > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -378.0,
+     "y": 106.2,
+     "content": "Cu-10Ni, < 63 um",
+     "label": "eqfcmt < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -324.0,
+     "y": 106.2,
+     "content": "Cu-10Ni, 63-106 um",
+     "label": "eqfcmt 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -270.0,
+     "y": 106.2,
+     "content": "Cu-10Ni, 106-150 um",
+     "label": "eqfcmt 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -216.0,
+     "y": 106.2,
+     "content": "Cu-10Ni, 150-250 um",
+     "label": "eqfcmt 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -162.0,
+     "y": 106.2,
+     "content": "Cu-10Ni, > 250 um",
+     "label": "eqfcmt > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -108.0,
+     "y": 106.2,
+     "content": "Al 6063, < 63 um",
+     "label": "i47r1i < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -54.0,
+     "y": 106.2,
+     "content": "Al 6063, 63-106 um",
+     "label": "i47r1i 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 0.0,
+     "y": 106.2,
+     "content": "Al 6063, 106-150 um",
+     "label": "i47r1i 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 54.0,
+     "y": 106.2,
+     "content": "Al 6063, 150-250 um",
+     "label": "i47r1i 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 108.0,
+     "y": 106.2,
+     "content": "Al 6063, > 250 um",
+     "label": "i47r1i > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 162.0,
+     "y": 106.2,
+     "content": "Al 4047, < 63 um",
+     "label": "s6cla6 < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 216.0,
+     "y": 106.2,
+     "content": "Al 4047, 63-106 um",
+     "label": "s6cla6 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 270.0,
+     "y": 106.2,
+     "content": "Al 4047, 106-150 um",
+     "label": "s6cla6 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 324.0,
+     "y": 106.2,
+     "content": "Al 4047, 150-250 um",
+     "label": "s6cla6 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 378.0,
+     "y": 106.2,
+     "content": "Al 4047, > 250 um",
+     "label": "s6cla6 > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 432.0,
+     "y": 106.2,
+     "content": "AlSi10Mg, < 63 um",
+     "label": "5i941l < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 486.0,
+     "y": 106.2,
+     "content": "AlSi10Mg, 63-106 um",
+     "label": "5i941l 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 540.0,
+     "y": 106.2,
+     "content": "AlSi10Mg, 106-150 um",
+     "label": "5i941l 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 594.0,
+     "y": 106.2,
+     "content": "AlSi10Mg, 150-250 um",
+     "label": "5i941l 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 648.0,
+     "y": 106.2,
+     "content": "AlSi10Mg, > 250 um",
+     "label": "5i941l > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 702.0,
+     "y": 106.2,
+     "content": "Al-10Si, < 63 um",
+     "label": "cj55ga < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 756.0,
+     "y": 106.2,
+     "content": "Al-10Si, 63-106 um",
+     "label": "cj55ga 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 810.0,
+     "y": 106.2,
+     "content": "Al-10Si, 106-150 um",
+     "label": "cj55ga 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 864.0,
+     "y": 106.2,
+     "content": "Al-10Si, 150-250 um",
+     "label": "cj55ga 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 918.0,
+     "y": 106.2,
+     "content": "Al-10Si, > 250 um",
+     "label": "cj55ga > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 972.0,
+     "y": 106.2,
+     "content": "Al-Mn-Zr, < 63 um",
+     "label": "ns4nrb < 63 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 1026.0,
+     "y": 106.2,
+     "content": "Al-Mn-Zr, 63-106 um",
+     "label": "ns4nrb 63-106 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 1080.0,
+     "y": 106.2,
+     "content": "Al-Mn-Zr, 106-150 um",
+     "label": "ns4nrb 106-150 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -1080.0,
+     "y": 179.8,
+     "content": "Al-Mn-Zr, 150-250 um",
+     "label": "ns4nrb 150-250 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -1026.0,
+     "y": 179.8,
+     "content": "Al-Mn-Zr, > 250 um",
+     "label": "ns4nrb > 250 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -972.0,
+     "y": 179.8,
+     "content": "Al-Ce, < 63 um",
+     "label": "8otujt < 63 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -918.0,
+     "y": 179.8,
+     "content": "Al-Ce, 63-106 um",
+     "label": "8otujt 63-106 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -864.0,
+     "y": 179.8,
+     "content": "Al-Ce, 106-150 um",
+     "label": "8otujt 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -810.0,
+     "y": 179.8,
+     "content": "Al-Ce, 150-250 um",
+     "label": "8otujt 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -756.0,
+     "y": 179.8,
+     "content": "Al-Ce, > 250 um",
+     "label": "8otujt > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -702.0,
+     "y": 179.8,
+     "content": "Al-Sc-Zr, < 63 um",
+     "label": "5mx34k < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -648.0,
+     "y": 179.8,
+     "content": "Al-Sc-Zr, 63-106 um",
+     "label": "5mx34k 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -594.0,
+     "y": 179.8,
+     "content": "Al-Sc-Zr, 106-150 um",
+     "label": "5mx34k 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -540.0,
+     "y": 179.8,
+     "content": "Al-Sc-Zr, 150-250 um",
+     "label": "5mx34k 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -486.0,
+     "y": 179.8,
+     "content": "Al-Sc-Zr, > 250 um",
+     "label": "5mx34k > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -432.0,
+     "y": 179.8,
+     "content": "Cu-10Ni, < 63 um",
+     "label": "w1t5ku < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -378.0,
+     "y": 179.8,
+     "content": "Cu-10Ni, 63-106 um",
+     "label": "w1t5ku 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -324.0,
+     "y": 179.8,
+     "content": "Cu-10Ni, 106-150 um",
+     "label": "w1t5ku 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -270.0,
+     "y": 179.8,
+     "content": "Cu-10Ni, 150-250 um",
+     "label": "w1t5ku 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -216.0,
+     "y": 179.8,
+     "content": "Cu-10Ni, > 250 um",
+     "label": "w1t5ku > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -162.0,
+     "y": 179.8,
+     "content": "Al 6063, < 63 um",
+     "label": "whk6hr < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -108.0,
+     "y": 179.8,
+     "content": "Al 6063, 63-106 um",
+     "label": "whk6hr 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": -54.0,
+     "y": 179.8,
+     "content": "Al 6063, 106-150 um",
+     "label": "whk6hr 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 0.0,
+     "y": 179.8,
+     "content": "Al 6063, 150-250 um",
+     "label": "whk6hr 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 54.0,
+     "y": 179.8,
+     "content": "Al 6063, > 250 um",
+     "label": "whk6hr > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 108.0,
+     "y": 179.8,
+     "content": "Al 4047, < 63 um",
+     "label": "jz31op < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 162.0,
+     "y": 179.8,
+     "content": "Al 4047, 63-106 um",
+     "label": "jz31op 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 216.0,
+     "y": 179.8,
+     "content": "Al 4047, 106-150 um",
+     "label": "jz31op 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 270.0,
+     "y": 179.8,
+     "content": "Al 4047, 150-250 um",
+     "label": "jz31op 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 324.0,
+     "y": 179.8,
+     "content": "Al 4047, > 250 um",
+     "label": "jz31op > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 378.0,
+     "y": 179.8,
+     "content": "AlSi10Mg, < 63 um",
+     "label": "8rthq2 < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 432.0,
+     "y": 179.8,
+     "content": "AlSi10Mg, 63-106 um",
+     "label": "8rthq2 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 486.0,
+     "y": 179.8,
+     "content": "AlSi10Mg, 106-150 um",
+     "label": "8rthq2 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 540.0,
+     "y": 179.8,
+     "content": "AlSi10Mg, 150-250 um",
+     "label": "8rthq2 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 594.0,
+     "y": 179.8,
+     "content": "AlSi10Mg, > 250 um",
+     "label": "8rthq2 > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 648.0,
+     "y": 179.8,
+     "content": "Al-10Si, < 63 um",
+     "label": "u23y78 < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 702.0,
+     "y": 179.8,
+     "content": "Al-10Si, 63-106 um",
+     "label": "u23y78 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 756.0,
+     "y": 179.8,
+     "content": "Al-10Si, 106-150 um",
+     "label": "u23y78 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 810.0,
+     "y": 179.8,
+     "content": "Al-10Si, 150-250 um",
+     "label": "u23y78 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 864.0,
+     "y": 179.8,
+     "content": "Al-10Si, > 250 um",
+     "label": "u23y78 > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 918.0,
+     "y": 179.8,
+     "content": "Al-Mn-Zr, < 63 um",
+     "label": "4yghtr < 63 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 972.0,
+     "y": 179.8,
+     "content": "Al-Mn-Zr, 63-106 um",
+     "label": "4yghtr 63-106 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 1026.0,
+     "y": 179.8,
+     "content": "Al-Mn-Zr, 106-150 um",
+     "label": "4yghtr 106-150 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "60 mL",
+     "x": 1080.0,
+     "y": 179.8,
+     "content": "Al-Mn-Zr, 150-250 um",
+     "label": "4yghtr 150-250 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -1088.0,
+     "y": 271.8,
+     "content": "Al-Mn-Zr, > 250 um",
+     "label": "4yghtr > 250 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -1024.0,
+     "y": 271.8,
+     "content": "Al-Ce, < 63 um",
+     "label": "9fxeqt < 63 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -960.0,
+     "y": 271.8,
+     "content": "Al-Ce, 63-106 um",
+     "label": "9fxeqt 63-106 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -896.0,
+     "y": 271.8,
+     "content": "Al-Ce, 106-150 um",
+     "label": "9fxeqt 106-150 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -832.0,
+     "y": 271.8,
+     "content": "Al-Ce, 150-250 um",
+     "label": "9fxeqt 150-250 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -768.0,
+     "y": 271.8,
+     "content": "Al-Ce, > 250 um",
+     "label": "9fxeqt > 250 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -704.0,
+     "y": 271.8,
+     "content": "Al-Sc-Zr, < 63 um",
+     "label": "abc57t < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -640.0,
+     "y": 271.8,
+     "content": "Al-Sc-Zr, 63-106 um",
+     "label": "abc57t 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -576.0,
+     "y": 271.8,
+     "content": "Al-Sc-Zr, 106-150 um",
+     "label": "abc57t 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -512.0,
+     "y": 271.8,
+     "content": "Al-Sc-Zr, 150-250 um",
+     "label": "abc57t 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -448.0,
+     "y": 271.8,
+     "content": "Al-Sc-Zr, > 250 um",
+     "label": "abc57t > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -384.0,
+     "y": 271.8,
+     "content": "Cu-10Ni, < 63 um",
+     "label": "c3k0n5 < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -320.0,
+     "y": 271.8,
+     "content": "Cu-10Ni, 63-106 um",
+     "label": "c3k0n5 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -256.0,
+     "y": 271.8,
+     "content": "Cu-10Ni, 106-150 um",
+     "label": "c3k0n5 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -192.0,
+     "y": 271.8,
+     "content": "Cu-10Ni, 150-250 um",
+     "label": "c3k0n5 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -128.0,
+     "y": 271.8,
+     "content": "Cu-10Ni, > 250 um",
+     "label": "c3k0n5 > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -64.0,
+     "y": 271.8,
+     "content": "Al 6063, < 63 um",
+     "label": "09pol5 < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 0.0,
+     "y": 271.8,
+     "content": "Al 6063, 63-106 um",
+     "label": "09pol5 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 64.0,
+     "y": 271.8,
+     "content": "Al 6063, 106-150 um",
+     "label": "09pol5 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 128.0,
+     "y": 271.8,
+     "content": "Al 6063, 150-250 um",
+     "label": "09pol5 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 192.0,
+     "y": 271.8,
+     "content": "Al 6063, > 250 um",
+     "label": "09pol5 > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 256.0,
+     "y": 271.8,
+     "content": "Al 4047, < 63 um",
+     "label": "by02uy < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 320.0,
+     "y": 271.8,
+     "content": "Al 4047, 63-106 um",
+     "label": "by02uy 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 384.0,
+     "y": 271.8,
+     "content": "Al 4047, 106-150 um",
+     "label": "by02uy 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 448.0,
+     "y": 271.8,
+     "content": "Al 4047, 150-250 um",
+     "label": "by02uy 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 512.0,
+     "y": 271.8,
+     "content": "Al 4047, > 250 um",
+     "label": "by02uy > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 576.0,
+     "y": 271.8,
+     "content": "AlSi10Mg, < 63 um",
+     "label": "lo7ty1 < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 640.0,
+     "y": 271.8,
+     "content": "AlSi10Mg, 63-106 um",
+     "label": "lo7ty1 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 704.0,
+     "y": 271.8,
+     "content": "AlSi10Mg, 106-150 um",
+     "label": "lo7ty1 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 768.0,
+     "y": 271.8,
+     "content": "AlSi10Mg, 150-250 um",
+     "label": "lo7ty1 150-250 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 832.0,
+     "y": 271.8,
+     "content": "AlSi10Mg, > 250 um",
+     "label": "lo7ty1 > 250 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 896.0,
+     "y": 271.8,
+     "content": "Al-10Si, < 63 um",
+     "label": "5okbbw < 63 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 960.0,
+     "y": 271.8,
+     "content": "Al-10Si, 63-106 um",
+     "label": "5okbbw 63-106 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 1024.0,
+     "y": 271.8,
+     "content": "Al-10Si, 106-150 um",
+     "label": "5okbbw 106-150 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 1088.0,
+     "y": 271.8,
+     "content": "Al-10Si, 150-250 um",
+     "label": "5okbbw 150-250 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -1088.0,
+     "y": 357.2,
+     "content": "Al-10Si, > 250 um",
+     "label": "5okbbw > 250 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -1024.0,
+     "y": 357.2,
+     "content": "Al-Mn-Zr, < 63 um",
+     "label": "wouifl < 63 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -960.0,
+     "y": 357.2,
+     "content": "Al-Mn-Zr, 63-106 um",
+     "label": "wouifl 63-106 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -896.0,
+     "y": 357.2,
+     "content": "Al-Mn-Zr, 106-150 um",
+     "label": "wouifl 106-150 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -832.0,
+     "y": 357.2,
+     "content": "Al-Mn-Zr, 150-250 um",
+     "label": "wouifl 150-250 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -768.0,
+     "y": 357.2,
+     "content": "Al-Mn-Zr, > 250 um",
+     "label": "wouifl > 250 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -704.0,
+     "y": 357.2,
+     "content": "Al-Ce, < 63 um",
+     "label": "ogbhz0 < 63 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -640.0,
+     "y": 357.2,
+     "content": "Al-Ce, 63-106 um",
+     "label": "ogbhz0 63-106 um",
+     "reach_offsets_mm": [
+      -600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -576.0,
+     "y": 357.2,
+     "content": "Al-Ce, 106-150 um",
+     "label": "ogbhz0 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -512.0,
+     "y": 357.2,
+     "content": "Al-Ce, 150-250 um",
+     "label": "ogbhz0 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -448.0,
+     "y": 357.2,
+     "content": "Al-Ce, > 250 um",
+     "label": "ogbhz0 > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -384.0,
+     "y": 357.2,
+     "content": "Al-Sc-Zr, < 63 um",
+     "label": "yt9g14 < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -320.0,
+     "y": 357.2,
+     "content": "Al-Sc-Zr, 63-106 um",
+     "label": "yt9g14 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -256.0,
+     "y": 357.2,
+     "content": "Al-Sc-Zr, 106-150 um",
+     "label": "yt9g14 106-150 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -192.0,
+     "y": 357.2,
+     "content": "Al-Sc-Zr, 150-250 um",
+     "label": "yt9g14 150-250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -128.0,
+     "y": 357.2,
+     "content": "Al-Sc-Zr, > 250 um",
+     "label": "yt9g14 > 250 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": -64.0,
+     "y": 357.2,
+     "content": "Cu-10Ni, < 63 um",
+     "label": "kbhvvx < 63 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 0.0,
+     "y": 357.2,
+     "content": "Cu-10Ni, 63-106 um",
+     "label": "kbhvvx 63-106 um",
+     "reach_offsets_mm": [
+      -600.0,
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 64.0,
+     "y": 357.2,
+     "content": "Cu-10Ni, 106-150 um",
+     "label": "kbhvvx 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 128.0,
+     "y": 357.2,
+     "content": "Cu-10Ni, 150-250 um",
+     "label": "kbhvvx 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 192.0,
+     "y": 357.2,
+     "content": "Cu-10Ni, > 250 um",
+     "label": "kbhvvx > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 256.0,
+     "y": 357.2,
+     "content": "Al 6063, < 63 um",
+     "label": "xprfsw < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 320.0,
+     "y": 357.2,
+     "content": "Al 6063, 63-106 um",
+     "label": "xprfsw 63-106 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 384.0,
+     "y": 357.2,
+     "content": "Al 6063, 106-150 um",
+     "label": "xprfsw 106-150 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 448.0,
+     "y": 357.2,
+     "content": "Al 6063, 150-250 um",
+     "label": "xprfsw 150-250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 512.0,
+     "y": 357.2,
+     "content": "Al 6063, > 250 um",
+     "label": "xprfsw > 250 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 576.0,
+     "y": 357.2,
+     "content": "Al 4047, < 63 um",
+     "label": "cf9e6b < 63 um",
+     "reach_offsets_mm": [
+      0.0,
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 640.0,
+     "y": 357.2,
+     "content": "Al 4047, 63-106 um",
+     "label": "cf9e6b 63-106 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 704.0,
+     "y": 357.2,
+     "content": "Al 4047, 106-150 um",
+     "label": "cf9e6b 106-150 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 768.0,
+     "y": 357.2,
+     "content": "Al 4047, 150-250 um",
+     "label": "cf9e6b 150-250 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 832.0,
+     "y": 357.2,
+     "content": "Al 4047, > 250 um",
+     "label": "cf9e6b > 250 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 896.0,
+     "y": 357.2,
+     "content": "AlSi10Mg, < 63 um",
+     "label": "iuix8i < 63 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 960.0,
+     "y": 357.2,
+     "content": "AlSi10Mg, 63-106 um",
+     "label": "iuix8i 63-106 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 1024.0,
+     "y": 357.2,
+     "content": "AlSi10Mg, 106-150 um",
+     "label": "iuix8i 106-150 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    },
+    {
+     "size": "125 mL",
+     "x": 1088.0,
+     "y": 357.2,
+     "content": "AlSi10Mg, 150-250 um",
+     "label": "iuix8i 150-250 um",
+     "reach_offsets_mm": [
+      600.0
+     ]
+    }
+   ]
+  }
+ },
+ "total_jars": 753,
+ "note": "reach: the UR10e on the MiR250 parked square to the opening (animate.AMR_XY), the gripper pointing straight down at the lid's middle, fingers closing front to back; MiR offsets of -600, 0 and +600 mm along the opening. IK only (ur_arm.ik via reach.solve): no collision check"
+}

@@ -1,0 +1,733 @@
+{
+ "alloy_charge": {
+  "fps": 15,
+  "frames": 2699,
+  "arm_frames_in_collision": 1,
+  "all_frames_in_collision": 1,
+  "camera_frames": 0,
+  "camera_runs": [],
+  "committed": {
+   "file": "alloy_charge.json",
+   "fps": 12,
+   "arm_frames_in_collision": 0,
+   "all_frames_in_collision": 0
+  },
+  "nocams": {
+   "file": "alloy_charge_nocams.json",
+   "fps": 15,
+   "arm_frames_in_collision": 0,
+   "all_frames_in_collision": 0
+  }
+ },
+ "alloy_atomize": {
+  "fps": 15,
+  "frames": 2303,
+  "arm_frames_in_collision": 184,
+  "all_frames_in_collision": 375,
+  "camera_frames": 45,
+  "camera_runs": [
+   {
+    "label": "2/5",
+    "frames": 2,
+    "first": 568,
+    "bodies": [
+     "amr/amr cam L box"
+    ],
+    "parts": [
+     "right_finger_tip"
+    ]
+   },
+   {
+    "label": "2/5",
+    "frames": 5,
+    "first": 570,
+    "bodies": [
+     "amr/amr cam L box",
+     "amr/amr cam L lens"
+    ],
+    "parts": [
+     "right_finger",
+     "right_finger_tip"
+    ]
+   },
+   {
+    "label": "2/5",
+    "frames": 1,
+    "first": 576,
+    "bodies": [
+     "amr/amr cam L box"
+    ],
+    "parts": [
+     "right_finger"
+    ]
+   },
+   {
+    "label": "2/5",
+    "frames": 1,
+    "first": 612,
+    "bodies": [
+     "amr/amr cam L box"
+    ],
+    "parts": [
+     "held:tong_a"
+    ]
+   },
+   {
+    "label": "2/5",
+    "frames": 29,
+    "first": 626,
+    "bodies": [
+     "amr/amr cam M post"
+    ],
+    "parts": [
+     "right_finger"
+    ]
+   },
+   {
+    "label": "2/5",
+    "frames": 1,
+    "first": 1137,
+    "bodies": [
+     "amr/amr cam L box"
+    ],
+    "parts": [
+     "right_finger"
+    ]
+   },
+   {
+    "label": "2/5",
+    "frames": 5,
+    "first": 1138,
+    "bodies": [
+     "amr/amr cam L box",
+     "amr/amr cam L lens"
+    ],
+    "parts": [
+     "right_finger",
+     "right_finger_tip"
+    ]
+   },
+   {
+    "label": "2/5",
+    "frames": 1,
+    "first": 1144,
+    "bodies": [
+     "amr/amr cam L box"
+    ],
+    "parts": [
+     "right_finger_tip"
+    ]
+   }
+  ],
+  "committed": {
+   "file": "alloy_atomize.json",
+   "fps": 6,
+   "arm_frames_in_collision": 0,
+   "all_frames_in_collision": 0
+  },
+  "nocams": {
+   "file": "alloy_atomize_nocams.json",
+   "fps": 15,
+   "arm_frames_in_collision": 139,
+   "all_frames_in_collision": 330
+  }
+ },
+ "alloy_powder": {
+  "fps": 15,
+  "frames": 2625,
+  "arm_frames_in_collision": 0,
+  "all_frames_in_collision": 0,
+  "camera_frames": 0,
+  "camera_runs": [],
+  "committed": {
+   "file": "alloy_powder_r13fix15.json",
+   "fps": 15,
+   "arm_frames_in_collision": 0,
+   "all_frames_in_collision": 0
+  },
+  "nocams": null
+ },
+ "alloy_prep": {
+  "fps": 15,
+  "frames": 3539,
+  "arm_frames_in_collision": 361,
+  "all_frames_in_collision": 489,
+  "camera_frames": 52,
+  "camera_runs": [
+   {
+    "label": "Polish",
+    "frames": 1,
+    "first": 2597,
+    "bodies": [
+     "unit0/amr cam M cable",
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "forearm",
+     "right_knuckle"
+    ]
+   },
+   {
+    "label": "Polish",
+    "frames": 1,
+    "first": 2598,
+    "bodies": [
+     "unit0/amr cam M cable",
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "adapter",
+     "base",
+     "camera",
+     "forearm",
+     "wrist3"
+    ]
+   },
+   {
+    "label": "Polish",
+    "frames": 1,
+    "first": 2599,
+    "bodies": [
+     "unit0/amr cam M cable",
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "forearm",
+     "wrist1",
+     "wrist2",
+     "wrist3"
+    ]
+   },
+   {
+    "label": "Polish",
+    "frames": 3,
+    "first": 2600,
+    "bodies": [
+     "unit0/amr cam M cable",
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "forearm",
+     "wrist1",
+     "wrist2"
+    ]
+   },
+   {
+    "label": "Polish",
+    "frames": 8,
+    "first": 2810,
+    "bodies": [
+     "unit0/amr cam L box",
+     "unit0/amr cam L cable",
+     "unit0/amr cam L post",
+     "unit0/amr cam M cable",
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "forearm",
+     "upper_arm"
+    ]
+   },
+   {
+    "label": "Polish",
+    "frames": 1,
+    "first": 2819,
+    "bodies": [
+     "unit0/amr cam M cable",
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "forearm"
+    ]
+   },
+   {
+    "label": "Polish",
+    "frames": 1,
+    "first": 2937,
+    "bodies": [
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "forearm"
+    ]
+   },
+   {
+    "label": "Polish",
+    "frames": 1,
+    "first": 2938,
+    "bodies": [
+     "unit0/amr cam M cable",
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "adapter",
+     "base",
+     "camera",
+     "forearm",
+     "wrist3"
+    ]
+   },
+   {
+    "label": "Polish",
+    "frames": 1,
+    "first": 2939,
+    "bodies": [
+     "unit0/amr cam M cable",
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "wrist1",
+     "wrist2",
+     "wrist3"
+    ]
+   },
+   {
+    "label": "Polish",
+    "frames": 2,
+    "first": 2940,
+    "bodies": [
+     "unit0/amr cam M cable",
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "forearm",
+     "wrist1",
+     "wrist2"
+    ]
+   },
+   {
+    "label": "Polish",
+    "frames": 1,
+    "first": 2947,
+    "bodies": [
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "forearm",
+     "wrist2"
+    ]
+   },
+   {
+    "label": "Polish",
+    "frames": 3,
+    "first": 3079,
+    "bodies": [
+     "unit0/amr cam L box",
+     "unit0/amr cam L cable",
+     "unit0/amr cam L lens",
+     "unit0/amr cam L post",
+     "unit0/amr cam M cable",
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "forearm",
+     "upper_arm"
+    ]
+   },
+   {
+    "label": "Polish",
+    "frames": 1,
+    "first": 3083,
+    "bodies": [
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "forearm",
+     "held:pd_400"
+    ]
+   },
+   {
+    "label": "Polish",
+    "frames": 3,
+    "first": 3137,
+    "bodies": [
+     "unit0/amr cam L box",
+     "unit0/amr cam L cable",
+     "unit0/amr cam L lens",
+     "unit0/amr cam L post",
+     "unit0/amr cam M cable",
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "forearm",
+     "upper_arm"
+    ]
+   },
+   {
+    "label": "Polish",
+    "frames": 3,
+    "first": 3234,
+    "bodies": [
+     "unit0/amr cam L box",
+     "unit0/amr cam L cable",
+     "unit0/amr cam L lens",
+     "unit0/amr cam L post",
+     "unit0/amr cam M cable",
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "forearm",
+     "upper_arm"
+    ]
+   },
+   {
+    "label": "Polish",
+    "frames": 3,
+    "first": 3292,
+    "bodies": [
+     "unit0/amr cam L box",
+     "unit0/amr cam L cable",
+     "unit0/amr cam L lens",
+     "unit0/amr cam L post",
+     "unit0/amr cam M cable",
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "forearm",
+     "upper_arm"
+    ]
+   },
+   {
+    "label": "Polish",
+    "frames": 3,
+    "first": 3389,
+    "bodies": [
+     "unit0/amr cam L box",
+     "unit0/amr cam L cable",
+     "unit0/amr cam L lens",
+     "unit0/amr cam L post",
+     "unit0/amr cam M cable",
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "forearm",
+     "upper_arm"
+    ]
+   },
+   {
+    "label": "Polish",
+    "frames": 3,
+    "first": 3447,
+    "bodies": [
+     "unit0/amr cam L box",
+     "unit0/amr cam L cable",
+     "unit0/amr cam L lens",
+     "unit0/amr cam L post",
+     "unit0/amr cam M cable",
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "forearm",
+     "upper_arm"
+    ]
+   },
+   {
+    "label": "Polish",
+    "frames": 3,
+    "first": 3544,
+    "bodies": [
+     "unit0/amr cam L box",
+     "unit0/amr cam L cable",
+     "unit0/amr cam L lens",
+     "unit0/amr cam L post",
+     "unit0/amr cam M cable",
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "forearm",
+     "upper_arm"
+    ]
+   },
+   {
+    "label": "Polish",
+    "frames": 1,
+    "first": 3601,
+    "bodies": [
+     "unit0/amr cam M cable",
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "camera",
+     "forearm",
+     "wrist1",
+     "wrist2",
+     "wrist3"
+    ]
+   },
+   {
+    "label": "Polish",
+    "frames": 1,
+    "first": 3602,
+    "bodies": [
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "forearm",
+     "wrist2"
+    ]
+   },
+   {
+    "label": "Done",
+    "frames": 3,
+    "first": 3723,
+    "bodies": [
+     "unit0/amr cam L box",
+     "unit0/amr cam L cable",
+     "unit0/amr cam L lens",
+     "unit0/amr cam L pi",
+     "unit0/amr cam L post"
+    ],
+    "parts": [
+     "forearm",
+     "upper_arm"
+    ]
+   },
+   {
+    "label": "Done",
+    "frames": 2,
+    "first": 3726,
+    "bodies": [
+     "unit0/amr cam L box",
+     "unit0/amr cam L cable",
+     "unit0/amr cam L post",
+     "unit0/amr cam M cable",
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "forearm",
+     "upper_arm"
+    ]
+   },
+   {
+    "label": "Done",
+    "frames": 2,
+    "first": 3728,
+    "bodies": [
+     "unit0/amr cam L box",
+     "unit0/amr cam M cable",
+     "unit0/amr cam M post"
+    ],
+    "parts": [
+     "upper_arm"
+    ]
+   }
+  ],
+  "committed": {
+   "file": "alloy_prep.json",
+   "fps": 10,
+   "arm_frames_in_collision": 3,
+   "all_frames_in_collision": 96
+  },
+  "nocams": {
+   "file": "alloy_prep_nocams.json",
+   "fps": 15,
+   "arm_frames_in_collision": 4,
+   "all_frames_in_collision": 143
+  }
+ },
+ "alloy_print": {
+  "fps": 15,
+  "frames": 3410,
+  "arm_frames_in_collision": 0,
+  "all_frames_in_collision": 0,
+  "camera_frames": 0,
+  "camera_runs": [],
+  "committed": {
+   "file": "alloy_print_r13fix15.json",
+   "fps": 15,
+   "arm_frames_in_collision": 1,
+   "all_frames_in_collision": 1
+  },
+  "nocams": null
+ },
+ "alloy_characterize": {
+  "fps": 15,
+  "frames": 3198,
+  "arm_frames_in_collision": 0,
+  "all_frames_in_collision": 0,
+  "camera_frames": 0,
+  "camera_runs": [],
+  "committed": {
+   "file": "alloy_characterize.json",
+   "fps": 15,
+   "arm_frames_in_collision": 0,
+   "all_frames_in_collision": 0
+  },
+  "nocams": null
+ },
+ "alloy_workflow": {
+  "fps": 15,
+  "frames": 5249,
+  "arm_frames_in_collision": 3,
+  "all_frames_in_collision": 4,
+  "camera_frames": 0,
+  "camera_runs": [],
+  "committed": {
+   "file": "alloy_workflow.json",
+   "fps": 12,
+   "arm_frames_in_collision": 1,
+   "all_frames_in_collision": 1
+  },
+  "nocams": {
+   "file": "alloy_workflow_nocams.json",
+   "fps": 15,
+   "arm_frames_in_collision": 2,
+   "all_frames_in_collision": 3
+  }
+ },
+ "vlm_workflow": {
+  "fps": 15,
+  "frames": 1446,
+  "arm_frames_in_collision": 13,
+  "all_frames_in_collision": 13,
+  "camera_frames": 0,
+  "camera_runs": [],
+  "committed": {
+   "file": "vlm_workflow.json",
+   "fps": null,
+   "arm_frames_in_collision": 0,
+   "all_frames_in_collision": null
+  },
+  "nocams": {
+   "file": "vlm_workflow_nocams.json",
+   "fps": 15,
+   "arm_frames_in_collision": 13,
+   "all_frames_in_collision": 13
+  }
+ },
+ "bay_camera": {
+  "fps": 15,
+  "frames": 337,
+  "arm_frames_in_collision": 3,
+  "all_frames_in_collision": 3,
+  "camera_frames": 0,
+  "camera_runs": [],
+  "committed": {
+   "file": "bay_camera_r11.json",
+   "fps": 6,
+   "arm_frames_in_collision": 21,
+   "all_frames_in_collision": 21
+  },
+  "nocams": null
+ },
+ "upkeep_clip": {
+  "fps": 15,
+  "frames": 1491,
+  "arm_frames_in_collision": 0,
+  "all_frames_in_collision": 0,
+  "camera_frames": 0,
+  "camera_runs": [],
+  "committed": {
+   "file": "upkeep_clip.json",
+   "fps": 15,
+   "arm_frames_in_collision": 0,
+   "all_frames_in_collision": 0
+  },
+  "nocams": null
+ },
+ "atom_bn": {
+  "fps": 15,
+  "frames": 2250,
+  "arm_frames_in_collision": 0,
+  "all_frames_in_collision": 0,
+  "camera_frames": 0,
+  "camera_runs": [],
+  "committed": {
+   "file": "atom_bn.json",
+   "fps": 10,
+   "arm_frames_in_collision": 0,
+   "all_frames_in_collision": 0
+  },
+  "nocams": null
+ },
+ "atom_container": {
+  "fps": 15,
+  "frames": 576,
+  "arm_frames_in_collision": 0,
+  "all_frames_in_collision": 0,
+  "camera_frames": 0,
+  "camera_runs": [],
+  "committed": {
+   "file": "atom_container_r13fix.json",
+   "fps": 15,
+   "arm_frames_in_collision": 0,
+   "all_frames_in_collision": 0
+  },
+  "nocams": null
+ },
+ "atom_crucible_in": {
+  "fps": 15,
+  "frames": 2004,
+  "arm_frames_in_collision": 0,
+  "all_frames_in_collision": 0,
+  "camera_frames": 0,
+  "camera_runs": [],
+  "committed": {
+   "file": "atom_crucible_in_r13fix.json",
+   "fps": 15,
+   "arm_frames_in_collision": 0,
+   "all_frames_in_collision": 0
+  },
+  "nocams": null
+ },
+ "atom_crucible_out": {
+  "fps": 15,
+  "frames": 1520,
+  "arm_frames_in_collision": 0,
+  "all_frames_in_collision": 0,
+  "camera_frames": 0,
+  "camera_runs": [],
+  "committed": {
+   "file": "atom_crucible_out.json",
+   "fps": 10,
+   "arm_frames_in_collision": 0,
+   "all_frames_in_collision": 0
+  },
+  "nocams": null
+ },
+ "atom_latch": {
+  "fps": 15,
+  "frames": 1260,
+  "arm_frames_in_collision": 0,
+  "all_frames_in_collision": 0,
+  "camera_frames": 0,
+  "camera_runs": [],
+  "committed": {
+   "file": "atom_latch_r13fix.json",
+   "fps": 15,
+   "arm_frames_in_collision": 0,
+   "all_frames_in_collision": 0
+  },
+  "nocams": null
+ },
+ "atom_plate": {
+  "fps": 15,
+  "frames": 2146,
+  "arm_frames_in_collision": 0,
+  "all_frames_in_collision": 0,
+  "camera_frames": 0,
+  "camera_runs": [],
+  "committed": {
+   "file": "atom_plate_r13fix.json",
+   "fps": 15,
+   "arm_frames_in_collision": 0,
+   "all_frames_in_collision": 0
+  },
+  "nocams": null
+ },
+ "atom_vacuum": {
+  "fps": 15,
+  "frames": 1782,
+  "arm_frames_in_collision": 1,
+  "all_frames_in_collision": 1,
+  "camera_frames": 0,
+  "camera_runs": [],
+  "committed": {
+   "file": "atom_vacuum_r13fix.json",
+   "fps": 15,
+   "arm_frames_in_collision": 1,
+   "all_frames_in_collision": 1
+  },
+  "nocams": null
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "source": "https://youtu.be/FzCwtPgJDBg?t=4",
+ "video": "FzCwtPgJDBg",
+ "t": 4.5,
+ "pose": {"gantry": 1.0, "head": 0.5, "load": 1.0},
+ "points": {
+  "FL arm top outer": [166, 367],
+  "FL arm top inner": [230, 366],
+  "FR arm top inner": [1060, 347],
+  "FR arm top outer": [1108, 346],
+  "FL foot outer": [196, 681],
+  "FL foot inner": [257, 680],
+  "FR foot outer": [1080, 630],
+  "x motor top left": [260, 201],
+  "x motor top right": [300, 201],
+  "x idler right": [877, 233],
+  "nozzle 1 tip": [574, 311],
+  "nozzle 2 tip": [616, 309]
+ },
+ "curves": {},
+ "holdout": true
+}

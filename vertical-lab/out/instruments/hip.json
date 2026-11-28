@@ -1,0 +1,41 @@
+{
+ "name": "instruments/hip",
+ "fps": 15,
+ "n_frames": 268,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/5",
+   "caption": "A Kardex tray, 2450 x 864 mm, and the room above it: 727.5 mm of product height through the opening.",
+   "start_frame": 0,
+   "end_frame": 55
+  },
+  {
+   "label": "2/5",
+   "caption": "The smallest 200 MPa lab HIP with a published size: Kobelco's O2-Dr.HIP, 1315 x 1100 x 1300 mm, 1100 kg.",
+   "start_frame": 56,
+   "end_frame": 105
+  },
+  {
+   "label": "3/5",
+   "caption": "572 mm too tall and 236 mm deeper than the tray; 2.2 times what a strong tray carries.",
+   "start_frame": 106,
+   "end_frame": 158
+  },
+  {
+   "label": "4/5",
+   "caption": "Inside, a vessel in a frame (drawn schematically): argon at 200 MPa, up to 2000 C. A HIP needs argon, cooling water and air, and its cooling must not stop. A tray has power only, and not in transit.",
+   "start_frame": 159,
+   "end_frame": 223
+  },
+  {
+   "label": "5/5",
+   "caption": "So no. A HIP stands on the floor with its gas and water, like the wire EDM, and the arm brings it work.",
+   "start_frame": 224,
+   "end_frame": 267
+  }
+ ]
+}

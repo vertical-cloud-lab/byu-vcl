@@ -1,0 +1,202 @@
+[
+ {
+  "item": "Boron Nitride Spray II, 13 oz aerosol",
+  "maker": "Momentive (sold by McMaster-Carr)",
+  "part_no": "10515K35",
+  "qty": 1,
+  "unit_usd": null,
+  "source": "DAL PR 220 bronze plan, 'What we have' (arrived Oct 23, 2026); McMaster 10515K35",
+  "for": "the coat: dried BN to 1,800 C inert, 850 C in air",
+  "status": "lab has"
+ },
+ {
+  "item": "Fume hood, ducted, 4 ft",
+  "maker": "Labconco",
+  "part_no": "Protector XStream 4 ft",
+  "qty": 1,
+  "unit_usd": null,
+  "source": "instruments_r7.py fumehood() (18 in sash stop, 1219 x 958 x 1499 mm); the bronze plan says spray in a fume hood",
+  "for": "spraying and the overnight dry",
+  "status": "lab has (a hood; the XStream is the repo's model of it, assumed)"
+ },
+ {
+  "item": "Explosion-proof vacuum CFM 118EXP",
+  "maker": "Nilfisk",
+  "part_no": "118EXP",
+  "qty": 1,
+  "unit_usd": null,
+  "source": "byu-vcl PR 80 vacuum-operating-sop.md; drawn from atom_nilfisk.py",
+  "for": "dust out of the crucible after brushing and scraping",
+  "status": "lab has"
+ },
+ {
+  "item": "Crevice tool, 11 in aluminium EXP",
+  "maker": "Nilfisk",
+  "part_no": "01768900",
+  "qty": 1,
+  "unit_usd": 56.0,
+  "source": "PR 80 vacuum-accessories-options.md (Caliber Equipment $56); vacuum SOP gate 0.1",
+  "for": "the vacuum's nozzle in the 57.1 mm bore",
+  "status": "lab has (out of service until it reads <= 0.1 ohm tool to wand, vacuum SOP 0.1)"
+ },
+ {
+  "item": "Conductive hose and cuff",
+  "maker": "Nilfisk",
+  "part_no": "107413543 / 4072000343",
+  "qty": 1,
+  "unit_usd": null,
+  "source": "PR 80 vacuum-operating-sop.md equipment list",
+  "for": "vacuum to the crevice tool",
+  "status": "lab has"
+ },
+ {
+  "item": "Cleaning bench, 680 x 600 mm, 900 mm top",
+  "maker": "any",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "ours",
+  "for": "the positioner, the tray, the holsters, the side light",
+  "status": "to buy"
+ },
+ {
+  "item": "Two-axis positioner: trunnion flip 180 deg + spin, 3-jaw chuck with acetal soft jaws; it taps the crucible by a 5 deg jolt of the flip axis",
+  "maker": "ours (an 80 mm 3-jaw chuck, two steppers with gearboxes)",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "ours (a small welding-positioner layout)",
+  "for": "holding the crucible upright or mouth down; tapping it",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Dark tray, 170 x 170 x 15 mm, black anodized aluminium",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "bronze plan: 'turn the crucible over a dark sheet and tap it'",
+  "for": "the skull (feedstock) and the flakes",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Tool holsters (4 cups)",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 4,
+  "unit_usd": null,
+  "source": "ours",
+  "for": "brush, scraper, vacuum tool, seat plug",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Bore brush, 50 mm round, soft nylon, on a 20 mm aluminium handle block",
+  "maker": "ours (a bought brush on our handle)",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "bronze plan steps 1 and 3 (brush out; brush, then the vacuum)",
+  "for": "loosening what is left",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Scraper: acetal blade 16 mm wide (its straight edge fits the 57.1 mm bore), on a 10 mm stem",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "bronze plan step 2 ('a plastic or wooden edge'; stop at the thin grey layer; never the nozzle seat)",
+  "for": "scraping off cracked or lifted coat",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Vacuum grip clamp (aluminium, bonded, 20 mm handle)",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "vacuum SOP: every metal joint <= 0.1 ohm",
+  "for": "the 2F-85 holding the cuff and crevice tool",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Open-topped box, aluminium sheet, 130 x 150 x 193 mm inside, on a 60 mm plinth",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "bronze plan 'Why the box': a few inches taller than the crucible, at least 6 in behind the sash",
+  "for": "still air round the crucible while spraying",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Turntable on a 152 mm lift, both air-driven (air indexer, air cylinder with a mid stop), valves outside the hood",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "ours; air-driven because the propellant pools at the box's bottom (bronze plan)",
+  "for": "turning the crucible between bursts; the hand-over and the plug",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Seat plug: PTFE cone and spigot, 5 mm stem, 18 x 30 x 22 mm handle",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 2,
+  "unit_usd": null,
+  "source": "bronze plan: keep the spray out of the nozzle seat and bore",
+  "for": "masking the seat while spraying",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Spray tool: aluminium cradle and clamp bands for a 68 mm can, 10 mm bore air cylinder on the actuator, 20 mm handle",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "ours; the can's directions as quoted in the bronze plan (6-8 in, light coats, 4 s upside down)",
+  "for": "the 2F-85 shaking and firing the can",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Drying rack: three stainless pins on a plate",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "bronze plan: dry overnight upside down in the running hood",
+  "for": "the overnight dry",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Side light: 10 W LED spot on a post",
+  "maker": "any",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "bronze plan: check the floor and floor-wall corner under a strong side light",
+  "for": "the morning check with the wrist camera",
+  "status": "to buy"
+ },
+ {
+  "item": "Crucible cradle on MiR 1's cabinet top (lined ring)",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "ours; must match atom_crucible.py's cradle",
+  "for": "carrying the crucible between the rePowder and the bench",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Wrist camera Intel RealSense D405 (on the 2F-85)",
+  "maker": "Intel",
+  "part_no": "D405",
+  "qty": 1,
+  "unit_usd": null,
+  "source": "ur_arm.py (round 7): every arm carries one",
+  "for": "the morning check",
+  "status": "lab has (on the arm, in the model)"
+ }
+]

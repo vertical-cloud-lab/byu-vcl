@@ -1,0 +1,7 @@
+{"source": "https://youtu.be/ogSg0j6j2Gw?t=9 (Bruker, S2 PUMA Overview, 0:09: the XY Autochanger, closed)",
+ "video": "ogSg0j6j2Gw", "t": 9.0,
+ "pose": {"lid": 0.0},
+ "points": {"lid top front left": [425, 167], "lid top front right": [850, 170],
+            "lid bottom front left": [425, 392], "lid bottom front right": [853, 392],
+            "screen tl": [576, 440], "screen tr": [747, 438], "screen bl": [577, 580], "screen br": [747, 575],
+            "foot front left": [425, 648], "foot front right": [852, 608]}}

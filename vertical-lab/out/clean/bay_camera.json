@@ -1,0 +1,83 @@
+{
+ "name": "bay_camera",
+ "fps": 15,
+ "n_frames": 499,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/4",
+   "caption": "From an operator's eyes at the opening, looking up under the header: the bay has a roof, and two stream cameras hang from it on short drops, one at the back looking forward, one behind the header looking back. Each is a Pi 5 with an HQ Camera and a Camera Module 3 Wide on a pan-tilt head.",
+   "start_frame": 0,
+   "end_frame": 119
+  },
+  {
+   "label": "2/4",
+   "caption": "What each Wide covers, 102 x 67 degrees: the back one (blue) 94 % of the tray's floor and the arm coming in, the front one (orange) 82 %, the instruments' fronts where the arm works. The top of the back one's picture looks out into the room, so its stream gets a privacy mask there; the front one sees none of it.",
+   "start_frame": 120,
+   "end_frame": 212
+  },
+  {
+   "label": "3/4",
+   "caption": "Into the back unit's Wide.",
+   "start_frame": 213,
+   "end_frame": 245
+  },
+  {
+   "label": "3/4",
+   "caption": "What the back unit's Wide sees: nearly the whole presented tray from behind, 94 % of its floor, and the arm reaching in. Rendered from the camera's own position and aim, 102 degrees across (Raspberry Pi's figures: 102 x 67, 120 diagonal).",
+   "start_frame": 246,
+   "end_frame": 274
+  },
+  {
+   "label": "3/4",
+   "caption": "What the back unit's Wide sees: nearly the whole presented tray from behind, 94 % of its floor, and the arm reaching in. Rendered from the camera's own position and aim, 102 degrees across (Raspberry Pi's figures: 102 x 67, 120 diagonal).",
+   "start_frame": 275,
+   "end_frame": 284
+  },
+  {
+   "label": "3/4",
+   "caption": "What the back unit's Wide sees: nearly the whole presented tray from behind, 94 % of its floor, and the arm reaching in. Rendered from the camera's own position and aim, 102 degrees across (Raspberry Pi's figures: 102 x 67, 120 diagonal).",
+   "start_frame": 285,
+   "end_frame": 302
+  },
+  {
+   "label": "3/4",
+   "caption": "What the back unit's Wide sees: nearly the whole presented tray from behind, 94 % of its floor, and the arm reaching in. Rendered from the camera's own position and aim, 102 degrees across (Raspberry Pi's figures: 102 x 67, 120 diagonal).",
+   "start_frame": 303,
+   "end_frame": 338
+  },
+  {
+   "label": "4/4",
+   "caption": "Now the front unit's Wide, from behind the header.",
+   "start_frame": 339,
+   "end_frame": 374
+  },
+  {
+   "label": "4/4",
+   "caption": "What the front unit's Wide sees, looking back: the instruments' fronts and the gripper standing the vial on the doser's shuttle fork, outside the port in its panel; 82 % of the tray's floor and none of the room. The wrist's own camera (a RealSense D405) sees the last few centimetres.",
+   "start_frame": 375,
+   "end_frame": 403
+  },
+  {
+   "label": "4/4",
+   "caption": "What the front unit's Wide sees, looking back: the instruments' fronts and the gripper standing the vial on the doser's shuttle fork, outside the port in its panel; 82 % of the tray's floor and none of the room. The wrist's own camera (a RealSense D405) sees the last few centimetres.",
+   "start_frame": 404,
+   "end_frame": 413
+  },
+  {
+   "label": "4/4",
+   "caption": "What the front unit's Wide sees, looking back: the instruments' fronts and the gripper standing the vial on the doser's shuttle fork, outside the port in its panel; 82 % of the tray's floor and none of the room. The wrist's own camera (a RealSense D405) sees the last few centimetres.",
+   "start_frame": 414,
+   "end_frame": 435
+  },
+  {
+   "label": "4/4",
+   "caption": "What the front unit's Wide sees, looking back: the instruments' fronts and the gripper standing the vial on the doser's shuttle fork, outside the port in its panel; 82 % of the tray's floor and none of the room. The wrist's own camera (a RealSense D405) sees the last few centimetres.",
+   "start_frame": 436,
+   "end_frame": 498
+  }
+ ]
+}

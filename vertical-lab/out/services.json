@@ -1,0 +1,2428 @@
+{
+ "coupling": {
+  "design": "one plate per tray at its back right corner, facing out through the right-hand side; an actuated dock in the side wall of each slot a tray uses and of the bay; stroke 75 mm across the tray's travel; the plate's face 6 mm inside the tray's side",
+  "plate_mm": {
+   "along_tray": 180.0,
+   "height": 106.0,
+   "centre_from_back": 152.0
+  },
+  "media": [
+   {
+    "key": "power",
+    "what": "mains: L1, L2, N, PE",
+    "coupling": "CT-E3-3 and CT-E3-2+PE, O3 mm, 39 A; PE mates first"
+   },
+   {
+    "key": "data",
+    "what": "Ethernet, Cat 6A",
+    "coupling": "CT-10GBIT-RJ45, 10 Gbit/s"
+   },
+   {
+    "key": "air",
+    "what": "compressed air",
+    "coupling": "SCT03, G1/8, shut-off both sides"
+   },
+   {
+    "key": "n2",
+    "what": "nitrogen",
+    "coupling": "SCT03, G1/8, shut-off both sides"
+   },
+   {
+    "key": "cws",
+    "what": "chilled water in",
+    "coupling": "LCT06, G1/4, shut-off both sides"
+   },
+   {
+    "key": "cwr",
+    "what": "chilled water out",
+    "coupling": "LCT06, G1/4, shut-off both sides"
+   },
+   {
+    "key": "vac",
+    "what": "vacuum, roughing",
+    "coupling": "UCT08/10, 8 mm, open flow; trays B, K, M and the bay; 14 mbar rated"
+   }
+  ],
+  "why_not_the_back_edge": "in a front-column slot and at the opening the back edge faces the shaft; a dock there would sit in the 106-146 mm between the tray and the extractor's platform, in the path of every tray it pulls, and at the opening the shutter is 35 mm behind the tray",
+  "sequence": [
+   "shut and vent air, N2 and water (CombiTac: no mating or parting under pressure)",
+   "UPS takes the load",
+   "dock pulls back 75 mm",
+   "extractor moves the tray",
+   "bay dock pushes in, pins first",
+   "contacts mate, supplies open, back on mains"
+  ],
+  "sources": {
+   "kardex_tray_power": "#53: 'the trays will not retain power while in motion. They will only have power when stored, or again when they arrive at the delivery bay'; the dealer offered 'a quick connect cord' to the device on the tray. Kardex's own Shuttle option list shows no powered-tray or media option (kardex.com/products/vertical-lift/kardex-shuttle).",
+   "combitac_align4": "Staubli CombiTac uniq catalogue (CT-Main-11014009-en) p.80-81: CombiTac align 4, misalignment compensation radial 4 mm, angular +-2 deg; 100,000 mating cycles; the plug side's pins guide, the socket side is conical. p.82: 'the customer must provide a stable guide system, e.g. with mechanical pins'. p.87: largest gap between mated carriers 1-2 mm.",
+   "combitac_power": "CombiTac catalogue p.26: 'O 3 mm power unit up to 39 A', 600 V (pollution degree 2/CAT II).",
+   "combitac_data": "CombiTac catalogue p.46-49: 10 Gbit module, 'Ethernet up to 10 Gbit/s (Cat6a or higher)', RJ45 or M12 X-coded, 100,000 cycles, 14 N sliding force, 22 mm wide.",
+   "combitac_air": "CombiTac catalogue p.61-69: RCT06 pneumatic, 6 mm bore, shut-off on one side, 15 bar; 'Connecting and disconnecting under pressure is prohibited.'",
+   "combitac_fluid": "CombiTac catalogue p.70-75: SCT03 (G1/8) and LCT06 (G1/4), 'leakproof, shut-off on both sides', 15 bar; LCT06 8.48 L/min at 5 m/s, counter force 135 N at 10 bar; pressure drop 0.2-0.3 bar. Fluid couplings 'can also be used for pneumatic applications'.",
+   "odu_dock": "ODU-MAC Silver-Line P4+ docking frame: 'axial 1mm, radial +/- 4mm', floating, 100,000 cycles (ODU via adsgroup.org.uk).",
+   "harting_dock": "Harting Han 6 Mod Docking Frame 09140061716: floating +-2 mm, lock-in +-4 mm, >=10,000 cycles (harting.com).",
+   "cpc_everis": "CPC Everis BLQ6 blind-mate liquid coupling: Cv ~2.2, vacuum to 8.3 bar, 'disconnect under pressure without drips' (cpcworldwide.com; search snippet, page not opened)."
+  }
+ },
+ "cameras": {
+  "per_tray": {
+   "A": 2,
+   "B": 1,
+   "C": 2,
+   "D": 3,
+   "E": 3,
+   "F": 2
+  },
+  "bay": 1,
+  "unit": {
+   "models": "robot-arms PR #10 (branch claude/issue-239-20260926-2347), piper-camera-mount/cad/piper_mount.py: make_pi5_local (Pi 5 board, holes, connectors), make_hq_camera_local (HQ board, CS seat 14.43 mm, O36 back-focus ring, O34.8 housing, tripod mount and lock block off Raspberry Pi's drawing RP-008200-DS-1), make_cm_camera_local (Camera Module 3 board 25 x 23.862, housing 10.8, lens 8.3 mm proud); lenses.py: the 16 mm C-mount lens, O39 x 50 mm, 133.7 g, 22.2 x 16.7 deg on the HQ, with its 5 mm C-CS adapter.",
+   "mount": "robot-arms PR #40 (branch claude/issue-24-20261021-2053), docs/issue-24/camera-fixtures: 2020 posts in printed 90 x 90 mm feet with 50 mm sockets, wedges and Pi 5 plates on M5 drop-in T-nuts in the slot, a Camera Module 3 case on M2 standoffs, ribbon clips; one Pi per camera post, so a 200-300 mm ribbon is enough.",
+   "earlier_unit": "DAL PR #189 (atomizer-viewport-cameras): the front unit pairs an HQ Camera (M12) with a 16 mm M12 lens (about O16 x 18 mm) and a Camera Module 3 Wide side by side, boards 2 mm apart, HQ lens 15 mm left of the axis and the Wide's 18.5 mm right; Pi 5 4 GB with Active Cooler and 27 W PSU; black PETG; the top unit rides a 2020 extrusion arm. DAL #147: 1/4-20 insert to a bought arm rather than a printed ball joint; cameras within the 200/300/500 mm ribbons of the board.",
+   "adjust": {
+    "height": "block on the post's T-slot, two M5 drop-in T-nuts",
+    "pan": "yoke on an M6 bolt through the block's arm, up to 75 deg each way",
+    "tilt": "head between the yoke's arms, two thumb knobs, 15 deg up to 65 down"
+   }
+  },
+  "clearances": {
+   "tray_units": {
+    "A0": {
+     "top_over_floor_mm": 687.9,
+     "post_yaw_deg": 90,
+     "pan_deg": 37.6,
+     "tilt_down_deg": 55.4
+    },
+    "A1": {
+     "top_over_floor_mm": 671.1,
+     "post_yaw_deg": 90,
+     "pan_deg": -15.1,
+     "tilt_down_deg": 3.8
+    },
+    "B0": {
+     "top_over_floor_mm": 678.0,
+     "post_yaw_deg": -90,
+     "pan_deg": -41.2,
+     "tilt_down_deg": 20.3
+    },
+    "C0": {
+     "top_over_floor_mm": 671.5,
+     "post_yaw_deg": 90,
+     "pan_deg": 45.6,
+     "tilt_down_deg": 5.3
+    },
+    "C1": {
+     "top_over_floor_mm": 682.2,
+     "post_yaw_deg": 90,
+     "pan_deg": 54.4,
+     "tilt_down_deg": 29.6
+    },
+    "D0": {
+     "top_over_floor_mm": 674.3,
+     "post_yaw_deg": 270,
+     "pan_deg": -49.6,
+     "tilt_down_deg": 13.5
+    },
+    "D1": {
+     "top_over_floor_mm": 671.9,
+     "post_yaw_deg": 270,
+     "pan_deg": -63.0,
+     "tilt_down_deg": 6.7
+    },
+    "D2": {
+     "top_over_floor_mm": 687.6,
+     "post_yaw_deg": 90,
+     "pan_deg": -58.6,
+     "tilt_down_deg": 64.6
+    },
+    "E0": {
+     "top_over_floor_mm": 680.4,
+     "post_yaw_deg": 270,
+     "pan_deg": -44.7,
+     "tilt_down_deg": 25.4
+    },
+    "E1": {
+     "top_over_floor_mm": 687.1,
+     "post_yaw_deg": 0,
+     "pan_deg": -71.0,
+     "tilt_down_deg": 47.1
+    },
+    "E2": {
+     "top_over_floor_mm": 679.4,
+     "post_yaw_deg": 180,
+     "pan_deg": 18.8,
+     "tilt_down_deg": 23.2
+    },
+    "F0": {
+     "top_over_floor_mm": 671.7,
+     "post_yaw_deg": 90,
+     "pan_deg": 44.1,
+     "tilt_down_deg": 5.8
+    },
+    "F1": {
+     "top_over_floor_mm": 687.6,
+     "post_yaw_deg": 0,
+     "pan_deg": 0.0,
+     "tilt_down_deg": 65.0
+    }
+   },
+   "limit_mm": 856.5,
+   "envelope_top_mm": 1733.5,
+   "bay_units": {
+    "back": {
+     "lowest_mm": 1766.5,
+     "over_envelope_mm": 33.0,
+     "highest_mm": 1910.0,
+     "roof_mm": 1910.0,
+     "x_mm": [
+      -64,
+      64
+     ],
+     "y_mm": [
+      -705,
+      -579
+     ],
+     "to_shutter_mm": 10.0,
+     "to_side_walls_mm": 1186.0,
+     "x": 0.0,
+     "y": -645.0,
+     "yaw": 0.0,
+     "tilt": 64.0,
+     "where": "ceiling, middle back"
+    },
+    "front": {
+     "lowest_mm": 1766.5,
+     "over_envelope_mm": 33.0,
+     "highest_mm": 1910.0,
+     "roof_mm": 1910.0,
+     "x_mm": [
+      -64,
+      64
+     ],
+     "y_mm": [
+      -1416,
+      -1288
+     ],
+     "to_shutter_mm": 718.6,
+     "to_side_walls_mm": 1186.0,
+     "x": 0.0,
+     "y": -1350.0,
+     "yaw": 180.0,
+     "tilt": 60.8,
+     "where": "ceiling, middle front"
+    }
+   },
+   "tray_units_to_instruments": {
+    "A0": {
+     "gap_mm": 396,
+     "nearest": "cubxl",
+     "inside_rim": true
+    },
+    "A1": {
+     "gap_mm": 42,
+     "nearest": "cubxl",
+     "inside_rim": true
+    },
+    "B0": {
+     "gap_mm": 224,
+     "nearest": "carousel",
+     "inside_rim": true
+    },
+    "C0": {
+     "gap_mm": 42,
+     "nearest": "h2d",
+     "inside_rim": true
+    },
+    "C1": {
+     "gap_mm": 45,
+     "nearest": "a1mini",
+     "inside_rim": true
+    },
+    "D0": {
+     "gap_mm": 21,
+     "nearest": "xrd",
+     "inside_rim": true
+    },
+    "D1": {
+     "gap_mm": 27,
+     "nearest": "xrd",
+     "inside_rim": true
+    },
+    "D2": {
+     "gap_mm": 21,
+     "nearest": "UPS",
+     "inside_rim": true
+    },
+    "E0": {
+     "gap_mm": 0,
+     "nearest": "pip",
+     "inside_rim": true
+    },
+    "E1": {
+     "gap_mm": 66,
+     "nearest": "mastersizer",
+     "inside_rim": true
+    },
+    "E2": {
+     "gap_mm": 0,
+     "nearest": "mastersizer",
+     "inside_rim": true
+    },
+    "F0": {
+     "gap_mm": 76,
+     "nearest": "polisher",
+     "inside_rim": true
+    },
+    "F1": {
+     "gap_mm": 84,
+     "nearest": "UPS",
+     "inside_rim": true
+    }
+   },
+   "head": {
+    "rises_over_tilt_axis_mm": 47.9,
+    "reaches_below_mm": 68.4,
+    "gap_to_yoke_base_at_max_tilt_mm": 15.8,
+    "tilt_max_deg": 65.0
+   }
+  },
+  "bay_cameras": {
+   "back": {
+    "where": "ceiling, middle back",
+    "pan_axis_xy": [
+     0.0,
+     -645.0
+    ],
+    "shelf_top_z": 1772.5,
+    "roof_z": 1910.0,
+    "yaw_deg": 0.0,
+    "tilt_deg": 64.0,
+    "tilt_axis": [
+     0,
+     -658,
+     1840
+    ],
+    "mount": "hung from the bay's roof: a 2020 drop with a printed shelf at its foot, the yoke on the shelf (round 14; rounds 7-13: a 2020 bar across the back of the bay)",
+    "arm": {
+     "poses_checked": 320,
+     "smallest_gap_mm": 315,
+     "at_pose": "grid 25 218 250",
+     "highest_joint_there_mm": 1378,
+     "capsule_radius_mm": 75.0,
+     "note": "reach.py's poses; the arm as capsules round its joint origins, the 2F-85 to the TCP"
+    }
+   },
+   "front": {
+    "where": "ceiling, middle front",
+    "pan_axis_xy": [
+     0.0,
+     -1350.0
+    ],
+    "shelf_top_z": 1772.5,
+    "roof_z": 1910.0,
+    "yaw_deg": 180.0,
+    "tilt_deg": 60.8,
+    "tilt_axis": [
+     0,
+     -1337,
+     1840
+    ],
+    "mount": "hung from the bay's roof: a 2020 drop with a printed shelf at its foot, the yoke on the shelf (round 14; rounds 7-13: a 2020 bar across the back of the bay)",
+    "arm": {
+     "poses_checked": 320,
+     "smallest_gap_mm": 180,
+     "at_pose": "multi-doser shuttle fork (tray B)",
+     "highest_joint_there_mm": 1579,
+     "capsule_radius_mm": 75.0,
+     "note": "reach.py's poses; the arm as capsules round its joint origins, the 2F-85 to the TCP"
+    }
+   }
+  },
+  "fov": {
+   "wide": "102 x 67 deg (Camera Module 3 Wide)",
+   "hq_16mm": "22.2 x 16.7 deg: Raspberry Pi's figure for its 16 mm C-mount lens on the HQ Camera (robot-arms lenses.py)"
+  },
+  "bay_view": {
+   "back": {
+    "wide": {
+     "share_of_tray": 0.942,
+     "axis_hits": [
+      24,
+      -1140
+     ],
+     "axis_hits_from_tray_centre_mm": [
+      24,
+      -110
+     ],
+     "distance_mm": 1028,
+     "lens_at": [
+      24,
+      -689,
+      1781
+     ],
+     "sees_room": 0.28,
+     "missed_y_range": [
+      -1087,
+      -612
+     ]
+    },
+    "hq": {
+     "share_of_tray": 0.066,
+     "axis_hits": [
+      -15,
+      -1138
+     ],
+     "axis_hits_from_tray_centre_mm": [
+      -15,
+      -108
+     ],
+     "distance_mm": 1028,
+     "lens_at": [
+      -15,
+      -687,
+      1781
+     ],
+     "sees_room": 0.0,
+     "missed_y_range": [
+      -1462,
+      -612
+     ]
+    },
+    "tray_y_range": [
+     -1462.0,
+     -598.0
+    ],
+    "where": "ceiling, middle back",
+    "yaw": 0.0,
+    "tilt": 64.0
+   },
+   "front": {
+    "wide": {
+     "share_of_tray": 0.824,
+     "axis_hits": [
+      -24,
+      -785
+     ],
+     "axis_hits_from_tray_centre_mm": [
+      -24,
+      245
+     ],
+     "distance_mm": 1061,
+     "lens_at": [
+      -24,
+      -1303,
+      1783
+     ],
+     "sees_room": 0.0,
+     "missed_y_range": [
+      -1462,
+      -887
+     ]
+    },
+    "hq": {
+     "share_of_tray": 0.068,
+     "axis_hits": [
+      15,
+      -787
+     ],
+     "axis_hits_from_tray_centre_mm": [
+      15,
+      243
+     ],
+     "distance_mm": 1060,
+     "lens_at": [
+      15,
+      -1305,
+      1783
+     ],
+     "sees_room": 0.0,
+     "missed_y_range": [
+      -1462,
+      -612
+     ]
+    },
+    "tray_y_range": [
+     -1462.0,
+     -598.0
+    ],
+    "where": "ceiling, middle front",
+    "yaw": 180.0,
+    "tilt": 60.8
+   }
+  },
+  "views": {
+   "method": "the tray presented, the share of each camera's rectilinear picture (Wide 102 x 67 deg, HQ with the 16 mm lens 22.2 x 16.7 deg) whose rays leave through the opening into the room before they meet the tray's floor; nothing else counts as cover",
+   "units": {
+    "A0": {
+     "wide_sees_room": 0.0,
+     "hq_sees_room": 0.0,
+     "hq_to_aim_mm": 229,
+     "post_yaw_deg": 90,
+     "pan_deg": 37.6,
+     "tilt_down_deg": 55.4,
+     "round5": {
+      "post_xy": [
+       -760.0,
+       320.0
+      ],
+      "wide_sees_room": 0.36,
+      "hq_sees_room": 0.117
+     },
+     "post_xy": [
+      -1060.0,
+      -10.0
+     ],
+     "aim": [
+      -850.0,
+      100.0,
+      400.0
+     ]
+    },
+    "A1": {
+     "wide_sees_room": 0.257,
+     "hq_sees_room": 0.0,
+     "hq_to_aim_mm": 584,
+     "post_yaw_deg": 90,
+     "pan_deg": -15.1,
+     "tilt_down_deg": 3.8,
+     "round5": {
+      "post_xy": [
+       380.0,
+       350.0
+      ],
+      "wide_sees_room": 0.35,
+      "hq_sees_room": 0.398
+     },
+     "post_xy": [
+      210.0,
+      275.0
+     ],
+     "aim": [
+      916.0,
+      102.0,
+      600.0
+     ]
+    },
+    "B0": {
+     "wide_sees_room": 0.019,
+     "hq_sees_room": 0.0,
+     "hq_to_aim_mm": 633,
+     "post_yaw_deg": -90,
+     "pan_deg": -41.2,
+     "tilt_down_deg": 20.3,
+     "round5": {
+      "post_xy": [
+       480.0,
+       320.0
+      ],
+      "wide_sees_room": 0.597,
+      "hq_sees_room": 0.971
+     },
+     "post_xy": [
+      920.0,
+      -220.0
+     ],
+     "aim": [
+      350.0,
+      220.0,
+      400.0
+     ]
+    },
+    "C0": {
+     "wide_sees_room": 0.0,
+     "hq_sees_room": 0.0,
+     "hq_to_aim_mm": 399,
+     "post_yaw_deg": 90,
+     "pan_deg": 45.6,
+     "tilt_down_deg": 5.3,
+     "round5": {
+      "post_xy": [
+       -1150.0,
+       -330.0
+      ],
+      "wide_sees_room": 0.218,
+      "hq_sees_room": 0.0
+     },
+     "post_xy": [
+      -960.0,
+      -340.0
+     ],
+     "aim": [
+      -560.0,
+      0.0,
+      600.0
+     ]
+    },
+    "C1": {
+     "wide_sees_room": 0.0,
+     "hq_sees_room": 0.0,
+     "hq_to_aim_mm": 251,
+     "post_yaw_deg": 90,
+     "pan_deg": 54.4,
+     "tilt_down_deg": 29.6,
+     "round5": {
+      "post_xy": [
+       380.0,
+       320.0
+      ],
+      "wide_sees_room": 0.2,
+      "hq_sees_room": 0.0
+     },
+     "post_xy": [
+      125.0,
+      -235.0
+     ],
+     "aim": [
+      360.0,
+      0.0,
+      486.0
+     ]
+    },
+    "D0": {
+     "wide_sees_room": 0.0,
+     "hq_sees_room": 0.0,
+     "hq_to_aim_mm": 333,
+     "post_yaw_deg": 270,
+     "pan_deg": -49.6,
+     "tilt_down_deg": 13.5,
+     "round5": {
+      "post_xy": [
+       -1150.0,
+       361.0
+      ],
+      "wide_sees_room": 0.406,
+      "hq_sees_room": 0.658
+     },
+     "post_xy": [
+      -225.0,
+      -305.0
+     ],
+     "aim": [
+      -552.0,
+      0.0,
+      550.0
+     ]
+    },
+    "D1": {
+     "wide_sees_room": 0.0,
+     "hq_sees_room": 0.0,
+     "hq_to_aim_mm": 305,
+     "post_yaw_deg": 270,
+     "pan_deg": -63.0,
+     "tilt_down_deg": 6.7,
+     "round5": {
+      "post_xy": [
+       -290.0,
+       -345.0
+      ],
+      "wide_sees_room": 0.262,
+      "hq_sees_room": 0.0
+     },
+     "post_xy": [
+      300.0,
+      -340.0
+     ],
+     "aim": [
+      60.0,
+      0.0,
+      600.0
+     ]
+    },
+    "D2": {
+     "wide_sees_room": 0.146,
+     "hq_sees_room": 0.0,
+     "hq_to_aim_mm": 525,
+     "post_yaw_deg": 90,
+     "pan_deg": -58.6,
+     "tilt_down_deg": 64.6,
+     "round5": {
+      "post_xy": [
+       560.0,
+       320.0
+      ],
+      "wide_sees_room": 0.25,
+      "hq_sees_room": 0.0
+     },
+     "post_xy": [
+      860.0,
+      185.0
+     ],
+     "aim": [
+      1066.0,
+      -43.0,
+      109.0
+     ]
+    },
+    "E0": {
+     "wide_sees_room": 0.0,
+     "hq_sees_room": 0.0,
+     "hq_to_aim_mm": 454,
+     "post_yaw_deg": 270,
+     "pan_deg": -44.7,
+     "tilt_down_deg": 25.4,
+     "round5": {
+      "post_xy": [
+       -1150.0,
+       361.0
+      ],
+      "wide_sees_room": 0.407,
+      "hq_sees_room": 0.769
+     },
+     "post_xy": [
+      -470.0,
+      -340.0
+     ],
+     "aim": [
+      -880.0,
+      0.0,
+      420.0
+     ]
+    },
+    "E1": {
+     "wide_sees_room": 0.204,
+     "hq_sees_room": 0.0,
+     "hq_to_aim_mm": 334,
+     "post_yaw_deg": 0,
+     "pan_deg": -71.0,
+     "tilt_down_deg": 47.1,
+     "round5": {
+      "post_xy": [
+       -570.0,
+       320.0
+      ],
+      "wide_sees_room": 0.336,
+      "hq_sees_room": 0.049
+     },
+     "post_xy": [
+      170.0,
+      360.0
+     ],
+     "aim": [
+      -100.0,
+      200.0,
+      350.0
+     ]
+    },
+    "E2": {
+     "wide_sees_room": 0.0,
+     "hq_sees_room": 0.0,
+     "hq_to_aim_mm": 274,
+     "post_yaw_deg": 180,
+     "pan_deg": 18.8,
+     "tilt_down_deg": 23.2,
+     "round5": {
+      "post_xy": [
+       90.0,
+       361.0
+      ],
+      "wide_sees_room": 0.318,
+      "hq_sees_room": 0.164
+     },
+     "post_xy": [
+      965.0,
+      -375.0
+     ],
+     "aim": [
+      860.0,
+      0.0,
+      509.0
+     ]
+    },
+    "F0": {
+     "wide_sees_room": 0.0,
+     "hq_sees_room": 0.0,
+     "hq_to_aim_mm": 362,
+     "post_yaw_deg": 90,
+     "pan_deg": 44.1,
+     "tilt_down_deg": 5.8,
+     "round5": {
+      "post_xy": [
+       -1150.0,
+       320.0
+      ],
+      "wide_sees_room": 0.42,
+      "hq_sees_room": 0.6
+     },
+     "post_xy": [
+      -960.0,
+      -305.0
+     ],
+     "aim": [
+      -578.0,
+      0.0,
+      600.0
+     ]
+    },
+    "F1": {
+     "wide_sees_room": 0.219,
+     "hq_sees_room": 0.0,
+     "hq_to_aim_mm": 362,
+     "post_yaw_deg": 0,
+     "pan_deg": 0.0,
+     "tilt_down_deg": 65.0,
+     "round5": {
+      "post_xy": [
+       -170.0,
+       350.0
+      ],
+      "wide_sees_room": 0.446,
+      "hq_sees_room": 0.782
+     },
+     "post_xy": [
+      680.0,
+      130.0
+     ],
+     "aim": [
+      680.0,
+      -60.0,
+      230.0
+     ]
+    }
+   }
+  }
+ },
+ "docks_and_lift": {
+  "method": "every part as its bounding box (a lower bound on each gap); the extractor at every height from 0 to 3000 mm in 10 mm steps; each slide in 121 steps",
+  "lift": {
+   "empty": {
+    "open engaged": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 820.0
+    },
+    "open pulled back": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 820.0
+    },
+    "F1 engaged": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 1910.0
+    },
+    "F1 pulled back": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 1910.0
+    },
+    "F2 engaged": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 2640.0
+    },
+    "F2 pulled back": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 2640.0
+    },
+    "R1 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 60.0
+    },
+    "R1 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 60.0
+    },
+    "R2 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 810.0
+    },
+    "R2 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 810.0
+    },
+    "R3 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 1560.0
+    },
+    "R3 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 1560.0
+    },
+    "R4 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 2460.0
+    },
+    "R4 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 2460.0
+    }
+   },
+   "A": {
+    "open engaged": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 820.0
+    },
+    "open pulled back": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 820.0
+    },
+    "F1 engaged": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 1910.0
+    },
+    "F1 pulled back": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 1910.0
+    },
+    "F2 engaged": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 2640.0
+    },
+    "F2 pulled back": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 2640.0
+    },
+    "R1 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 60.0
+    },
+    "R1 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 60.0
+    },
+    "R2 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 810.0
+    },
+    "R2 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 810.0
+    },
+    "R3 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 1560.0
+    },
+    "R3 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 1560.0
+    },
+    "R4 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 2460.0
+    },
+    "R4 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 2460.0
+    }
+   },
+   "B": {
+    "open engaged": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 820.0
+    },
+    "open pulled back": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 820.0
+    },
+    "F1 engaged": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 1910.0
+    },
+    "F1 pulled back": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 1910.0
+    },
+    "F2 engaged": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 2640.0
+    },
+    "F2 pulled back": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 2640.0
+    },
+    "R1 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 60.0
+    },
+    "R1 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 60.0
+    },
+    "R2 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 810.0
+    },
+    "R2 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 810.0
+    },
+    "R3 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 1560.0
+    },
+    "R3 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 1560.0
+    },
+    "R4 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 2460.0
+    },
+    "R4 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 2460.0
+    }
+   },
+   "C": {
+    "open engaged": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 820.0
+    },
+    "open pulled back": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 820.0
+    },
+    "F1 engaged": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 1910.0
+    },
+    "F1 pulled back": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 1910.0
+    },
+    "F2 engaged": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 2640.0
+    },
+    "F2 pulled back": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 2640.0
+    },
+    "R1 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 60.0
+    },
+    "R1 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 60.0
+    },
+    "R2 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 810.0
+    },
+    "R2 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 810.0
+    },
+    "R3 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 1560.0
+    },
+    "R3 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 1560.0
+    },
+    "R4 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 2460.0
+    },
+    "R4 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 2460.0
+    }
+   },
+   "D": {
+    "open engaged": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 820.0
+    },
+    "open pulled back": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 820.0
+    },
+    "F1 engaged": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 1910.0
+    },
+    "F1 pulled back": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 1910.0
+    },
+    "F2 engaged": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 2640.0
+    },
+    "F2 pulled back": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 2640.0
+    },
+    "R1 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 60.0
+    },
+    "R1 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 60.0
+    },
+    "R2 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 810.0
+    },
+    "R2 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 810.0
+    },
+    "R3 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 1560.0
+    },
+    "R3 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 1560.0
+    },
+    "R4 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 2460.0
+    },
+    "R4 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 2460.0
+    }
+   },
+   "E": {
+    "open engaged": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 820.0
+    },
+    "open pulled back": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 820.0
+    },
+    "F1 engaged": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 1910.0
+    },
+    "F1 pulled back": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 1910.0
+    },
+    "F2 engaged": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 2640.0
+    },
+    "F2 pulled back": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 2640.0
+    },
+    "R1 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 60.0
+    },
+    "R1 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 60.0
+    },
+    "R2 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 810.0
+    },
+    "R2 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 810.0
+    },
+    "R3 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 1560.0
+    },
+    "R3 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 1560.0
+    },
+    "R4 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 2460.0
+    },
+    "R4 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 2460.0
+    }
+   },
+   "F": {
+    "open engaged": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 820.0
+    },
+    "open pulled back": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 820.0
+    },
+    "F1 engaged": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 1910.0
+    },
+    "F1 pulled back": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 1910.0
+    },
+    "F2 engaged": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 2640.0
+    },
+    "F2 pulled back": {
+     "gap_mm": 96.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "dock frame",
+     "lift_z": 2640.0
+    },
+    "R1 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 60.0
+    },
+    "R1 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 60.0
+    },
+    "R2 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 810.0
+    },
+    "R2 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 810.0
+    },
+    "R3 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 1560.0
+    },
+    "R3 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 1560.0
+    },
+    "R4 engaged": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 2460.0
+    },
+    "R4 pulled back": {
+     "gap_mm": 683.0,
+     "moving": "extractor: extractor carriages #2",
+     "dock": "supply vac",
+     "lift_z": 2460.0
+    }
+   }
+  },
+  "slide": {
+   "tray A out of R2": {
+    "gap_mm": 18.6,
+    "tray_part": "tray pan",
+    "dock_part": "F end 0 pin cap"
+   },
+   "tray B out of R3": {
+    "gap_mm": 18.6,
+    "tray_part": "tray pan",
+    "dock_part": "F end 0 pin cap"
+   },
+   "tray C out of F1": {
+    "gap_mm": 18.6,
+    "tray_part": "tray pan",
+    "dock_part": "F end 0 pin cap"
+   },
+   "tray D out of R1": {
+    "gap_mm": 18.6,
+    "tray_part": "tray pan",
+    "dock_part": "F end 0 pin cap"
+   },
+   "tray E out of R4": {
+    "gap_mm": 18.6,
+    "tray_part": "tray pan",
+    "dock_part": "F end 0 pin cap"
+   },
+   "tray F out of F2": {
+    "gap_mm": 18.6,
+    "tray_part": "tray pan",
+    "dock_part": "F end 0 pin cap"
+   },
+   "tray A into the bay": {
+    "gap_mm": 18.6,
+    "tray_part": "tray pan",
+    "dock_part": "F end 1 pin cap"
+   },
+   "tray B into the bay": {
+    "gap_mm": 18.6,
+    "tray_part": "tray pan",
+    "dock_part": "F end 1 pin cap"
+   },
+   "tray C into the bay": {
+    "gap_mm": 18.6,
+    "tray_part": "tray pan",
+    "dock_part": "F end 1 pin cap"
+   },
+   "tray D into the bay": {
+    "gap_mm": 18.6,
+    "tray_part": "tray pan",
+    "dock_part": "F end 1 pin cap"
+   },
+   "tray E into the bay": {
+    "gap_mm": 18.6,
+    "tray_part": "tray pan",
+    "dock_part": "F end 1 pin cap"
+   },
+   "tray F into the bay": {
+    "gap_mm": 18.6,
+    "tray_part": "tray pan",
+    "dock_part": "F end 1 pin cap"
+   }
+  },
+  "plate_inserts_to_carriages_mm": {
+   "now": 11.0,
+   "with_the_face_flush": 5.0
+  },
+  "bay_dock_to_shutter_mm": 20.6,
+  "smallest": {
+   "lift_mm": 96.0,
+   "lift_case": "A, F1 engaged",
+   "slide_mm": 18.6,
+   "slide_case": "tray A into the bay"
+  },
+  "walls": "each dock's head passes through a window in its side wall (a column's perforated wall, or the bay's slatted one); the window takes out the tray supports 25-100 mm over the slot on that side, which only a tray stored in that slot would use"
+ },
+ "heat": {
+  "trays": {
+   "A": {
+    "slot": "R2",
+    "shuttle": 1,
+    "items": {
+     "ot2": {
+      "w": 220,
+      "typical_w": 120,
+      "backed": true,
+      "kind": "published",
+      "source": "https://docs.opentrons.com/ot-2/system-description/specs/; https://docs.opentrons.com/ot-2/installation/requirements/; https://sandbox.docs.opentrons.com/docs-ot2-install-relocate/ot-2/installation/first-run"
+     },
+     "cubxl": {
+      "w": 100,
+      "typical_w": 30,
+      "backed": true,
+      "kind": "estimate",
+      "source": "https://manuals.plus/genmitsu/4030-v1-proverxl-spindle-set-manual; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/CLAUDE.md?plain=1#L233"
+     },
+     "ezstat": {
+      "w": 30,
+      "typical_w": 10,
+      "backed": true,
+      "kind": "estimate",
+      "source": "https://www.environmental-expert.com/products/potentiostat-galvanostat-1085908"
+     },
+     "ezware_pc": {
+      "w": 150,
+      "typical_w": 40,
+      "backed": true,
+      "kind": "estimate",
+      "source": "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/CLAUDE.md?plain=1#L233"
+     },
+     "cubxl_pi": {
+      "w": 27,
+      "typical_w": 5,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/CLAUDE.md?plain=1#L233"
+     },
+     "pi_unit": {
+      "w": 54,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     },
+     "ups loss": {
+      "w": 37.9,
+      "typical_w": 37.9,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert GXT5LI-1500LVRT2UXL: efficiency 89% at 221 W (ups.CATALOGUE)"
+     }
+    },
+    "total_w": 679,
+    "idle_w": 259,
+    "ups": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+    "ups_ok": true,
+    "backed_rated_w": 641,
+    "backed_typical_w": 221,
+    "unbacked_rated_w": 0,
+    "estimated_share": 0.41
+   },
+   "B": {
+    "slot": "R3",
+    "shuttle": 1,
+    "items": {
+     "carousel": {
+      "w": 395,
+      "typical_w": 25,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.meanwell.com/Upload/PDF/LRS-350/LRS-350-SPEC.PDF; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/multidoser/chain-carousel-v5/layout.py#L717-L725; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "balance": {
+      "w": 11,
+      "typical_w": 11,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.aandd.jp/products/manual/balances/hr-i.pdf"
+     },
+     "vacuum_press": {
+      "w": 400,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "estimate",
+      "source": "https://specac.com/product/autotouch-press-high-throughput-xrf-press/"
+     },
+     "vacuum_pump": {
+      "w": 550,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "published",
+      "source": "https://www.ajvs.com/library/Edwards_RV_Series_Brochure.pdf; https://www.manualslib.com/manual/2427823/Edwards-Rv3.html?page=22; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/notes/vacuum_press.md?plain=1#L87-L88"
+     },
+     "pi_unit": {
+      "w": 27,
+      "typical_w": 4,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     },
+     "ups loss": {
+      "w": 4.3,
+      "typical_w": 4.3,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert PSI5-800SRT2ULIN: efficiency 97% at 48 W (ups.CATALOGUE)"
+     }
+    },
+    "total_w": 1447,
+    "idle_w": 52,
+    "ups": "Vertiv Liebert PSI5-800SRT2ULIN",
+    "ups_ok": true,
+    "backed_rated_w": 493,
+    "backed_typical_w": 48,
+    "unbacked_rated_w": 950,
+    "estimated_share": 0.28
+   },
+   "C": {
+    "slot": "F1",
+    "shuttle": 1,
+    "items": {
+     "h2d": {
+      "w": 1320,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "published",
+      "source": "https://materialpro3d.cz/user/related_files/h2d_spec.pdf; https://forum.bambulab.com/t/why-does-the-h2d-have-such-high-standby-power-consumption/172758; https://forum.bambulab.com/t/powerloss-recovery-issues/258431"
+     },
+     "a1mini": {
+      "w": 150,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "published",
+      "source": "https://www.3dprintergear.com.au/assets/files/A1%20Mini%20TDS.pdf; https://wiki.bambulab.com/en/a1-mini/manual/faq"
+     },
+     "pi_unit": {
+      "w": 54,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     },
+     "ups loss": {
+      "w": 4.1,
+      "typical_w": 4.1,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert PSI5-800SRT2ULIN: efficiency 97% at 16 W (ups.CATALOGUE)"
+     }
+    },
+    "total_w": 1588,
+    "idle_w": 20,
+    "ups": "Vertiv Liebert PSI5-800SRT2ULIN",
+    "ups_ok": true,
+    "backed_rated_w": 114,
+    "backed_typical_w": 16,
+    "unbacked_rated_w": 1470,
+    "estimated_share": 0.0
+   },
+   "D": {
+    "slot": "R1",
+    "shuttle": 1,
+    "items": {
+     "sem": {
+      "w": 500,
+      "typical_w": 200,
+      "backed": true,
+      "kind": "published",
+      "source": "https://hte.hitachi-hightech.com/hubfs/Product%20Page%20-%20TM4000/Hitachi_TM4000_Series_III_Brochure.pdf?hsLang=en; https://matcl.umd.edu/files/2022/06/TM400PlusII-2.pdf; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "sem_pc": {
+      "w": 200,
+      "typical_w": 60,
+      "backed": true,
+      "kind": "estimate",
+      "source": "https://hte.hitachi-hightech.com/hubfs/Product%20Page%20-%20TM4000/Hitachi_TM4000_Series_III_Brochure.pdf?hsLang=en"
+     },
+     "eds": {
+      "w": 400,
+      "typical_w": 60,
+      "backed": true,
+      "kind": "published",
+      "source": "https://matcl.umd.edu/files/2022/06/TM400PlusII-2.pdf"
+     },
+     "xrd": {
+      "w": 1100,
+      "typical_w": 150,
+      "backed": true,
+      "kind": "published",
+      "source": "https://resources.rigaku.com/hubfs/2024%20Rigaku%20Global%20Site/Resource%20Hub/Knowledge%20Library/Brochures/BR_23_MiniFlex_Rev0723_226325528_SinglePgs_low-res.pdf?hsLang=en; https://www.depts.ttu.edu/coe/research/mcc/brochures/MiniFlex6G.pdf; https://answers.uillinois.edu/97837"
+     },
+     "xrd_pc": {
+      "w": 200,
+      "typical_w": 50,
+      "backed": true,
+      "kind": "published",
+      "source": "https://resources.rigaku.com/hubfs/2024%20Rigaku%20Global%20Site/Resource%20Hub/Knowledge%20Library/Brochures/BR_23_MiniFlex_Rev0723_226325528_SinglePgs_low-res.pdf?hsLang=en"
+     },
+     "pi_unit": {
+      "w": 81,
+      "typical_w": 12,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     },
+     "ups loss": {
+      "w": 59.4,
+      "typical_w": 59.4,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert GXT5LI-3000LVRT2UXL: efficiency 91% at 540 W (ups.CATALOGUE)"
+     }
+    },
+    "total_w": 2600,
+    "idle_w": 599,
+    "ups": "Vertiv Liebert GXT5LI-3000LVRT2UXL",
+    "ups_ok": true,
+    "backed_rated_w": 2541,
+    "backed_typical_w": 540,
+    "unbacked_rated_w": 0,
+    "estimated_share": 0.08
+   },
+   "E": {
+    "slot": "R4",
+    "shuttle": 1,
+    "items": {
+     "pip": {
+      "w": 200,
+      "typical_w": 80,
+      "backed": true,
+      "kind": "estimate",
+      "source": "https://plastometrex.com/products/plx-benchtop; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "nanoindenter": {
+      "w": 300,
+      "typical_w": 120,
+      "backed": true,
+      "kind": "estimate",
+      "source": "https://www.kla.com/products/instruments/nanoindenters/imicro; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146; https://arxiv.org/pdf/1709.07714"
+     },
+     "mastersizer": {
+      "w": 200,
+      "typical_w": 65,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.malvernpanalytical.com/br/assets/MRK1872-07-EN_MS3000_Broch_BrandUpdate_LR_web_tcm55-17232.pdf; https://ougfc.montana.edu/eal-lres/documents/Mastersizer-3000-user-manual-English-MAN0474-2-1.pdf; https://brand.malvernpanalytical.com/prototype/product"
+     },
+     "mastersizer_pc": {
+      "w": 150,
+      "typical_w": 40,
+      "backed": true,
+      "kind": "estimate",
+      "source": "https://www.malvernpanalytical.com/br/assets/MRK1872-07-EN_MS3000_Broch_BrandUpdate_LR_web_tcm55-17232.pdf"
+     },
+     "ms_extractor": {
+      "w": 1200,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "estimate",
+      "source": "https://ougfc.montana.edu/eal-lres/documents/Mastersizer-3000-user-manual-English-MAN0474-2-1.pdf"
+     },
+     "pi_unit": {
+      "w": 81,
+      "typical_w": 12,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     },
+     "ups loss": {
+      "w": 42.1,
+      "typical_w": 42.1,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert GXT5LI-1500LVRT2UXL: efficiency 89% at 325 W (ups.CATALOGUE)"
+     }
+    },
+    "total_w": 2233,
+    "idle_w": 367,
+    "ups": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+    "ups_ok": true,
+    "backed_rated_w": 991,
+    "backed_typical_w": 325,
+    "unbacked_rated_w": 1200,
+    "estimated_share": 0.83
+   },
+   "F": {
+    "slot": "F2",
+    "shuttle": 1,
+    "items": {
+     "polisher": {
+      "w": 740,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "snippet",
+      "source": "https://eu.leco.com/product/px400-px500-grinder-polisher-series; https://pdf.directindustry.com/pdf/leco/px300-grinder-polisher/114499-752979.html; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "furnace": {
+      "w": 2800,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "published",
+      "source": "https://nabertherm.com/en/products/industrie/thermprozesstechnik/prozesse-unter-luft/forced-convection-furnaces/forced; https://nabertherm.com/sites/default/files/noindex/2024-05/M03.0022_Englisch_2024-04.pdf; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/notes/services.md?plain=1#L139-L165"
+     },
+     "mounting_press": {
+      "w": 1400,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "estimate",
+      "source": "https://pdf.directindustry.com/pdf/leco/mx400/114499-936234.html; https://www.labcompare.com/5207-Laboratory-Press/14224274-MX400-Mounting-Press/"
+     },
+     "quench_tank": {
+      "w": 60,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "estimate",
+      "source": ""
+     },
+     "pi_unit": {
+      "w": 54,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     },
+     "ups loss": {
+      "w": 4.1,
+      "typical_w": 4.1,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert PSI5-800SRT2ULIN: efficiency 97% at 16 W (ups.CATALOGUE)"
+     }
+    },
+    "total_w": 5118,
+    "idle_w": 20,
+    "ups": "Vertiv Liebert PSI5-800SRT2ULIN",
+    "ups_ok": true,
+    "backed_rated_w": 114,
+    "backed_typical_w": 16,
+    "unbacked_rated_w": 5000,
+    "estimated_share": 0.29
+   },
+   "K": {
+    "slot": "2R1",
+    "shuttle": 2,
+    "items": {
+     "glovebox_tray": {
+      "w": 30,
+      "typical_w": 20,
+      "backed": true,
+      "kind": "estimate",
+      "source": "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/notes/instruments_r7.md?plain=1#L21-L47"
+     },
+     "o2_analyzer": {
+      "w": 20,
+      "typical_w": 15,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.chromservis.eu/media/0/05_pdf/Catalogues/Teledyne_3000TAXL_UK.pdf"
+     },
+     "h2o_sensor": {
+      "w": 0.5,
+      "typical_w": 0.5,
+      "backed": true,
+      "kind": "snippet",
+      "source": "https://www.processsensing.com/docs/datasheet/Michell_Instruments_Easidew_TX_I.S._Datasheet.pdf"
+     },
+     "gb_valves": {
+      "w": 40,
+      "typical_w": 0,
+      "backed": true,
+      "kind": "estimate",
+      "source": ""
+     },
+     "gb_antechamber_pump": {
+      "w": 550,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "estimate",
+      "source": "https://www.ajvs.com/library/Edwards_RV_Series_Brochure.pdf"
+     },
+     "gb_balance": {
+      "w": 11,
+      "typical_w": 11,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.aandd.jp/products/manual/balances/hr-i.pdf"
+     },
+     "gb_capper": {
+      "w": 60,
+      "typical_w": 10,
+      "backed": true,
+      "kind": "estimate",
+      "source": "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/notes/instruments_r7.md?plain=1#L21-L47"
+     },
+     "vhx": {
+      "w": 430,
+      "typical_w": 120,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.keyence.com/products/microscope/digital-microscope/vhx-7000/models/vhx-7000/; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/notes/instruments_r7.md?plain=1#L21-L47"
+     },
+     "vhx_stand": {
+      "w": 130,
+      "typical_w": 20,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.keyence.com/products/microscope/digital-microscope/vhx-7000/models/vhx-s750e/"
+     },
+     "ea300": {
+      "w": 0,
+      "typical_w": 0,
+      "backed": true,
+      "kind": "estimate",
+      "source": "https://www.keyence.com/products/microscope/elemental-analyzer/ea-300/models/ea-300"
+     },
+     "pikvm": {
+      "w": 12,
+      "typical_w": 5,
+      "backed": true,
+      "kind": "published",
+      "source": "https://docs.pikvm.org/v4/v4mini_datasheet.pdf"
+     },
+     "pi_unit": {
+      "w": 27,
+      "typical_w": 4,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     },
+     "ups loss": {
+      "w": 37.6,
+      "typical_w": 37.6,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert GXT5LI-1500LVRT2UXL: efficiency 89% at 214 W (ups.CATALOGUE)"
+     }
+    },
+    "total_w": 1408,
+    "idle_w": 252,
+    "ups": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+    "ups_ok": true,
+    "backed_rated_w": 820,
+    "backed_typical_w": 214,
+    "unbacked_rated_w": 550,
+    "estimated_share": 0.48
+   },
+   "L": {
+    "slot": "2R2",
+    "shuttle": 2,
+    "items": {
+     "tensile_h": {
+      "w": 500,
+      "typical_w": 40,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.zwickroell.com/fileadmin/content/Files/SharePoint/user_upload/PI_EN/02_396_zwickiLine_Z0_5_up_to_Z5_0_Materials_Testing_Machine_PI_EN.pdf"
+     },
+     "zwick_pc": {
+      "w": 150,
+      "typical_w": 40,
+      "backed": true,
+      "kind": "estimate",
+      "source": "https://www.zwickroell.com/fileadmin/content/Files/SharePoint/user_upload/PI_EN/02_396_zwickiLine_Z0_5_up_to_Z5_0_Materials_Testing_Machine_PI_EN.pdf"
+     },
+     "hardness": {
+      "w": 90,
+      "typical_w": 40,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.mitutoyo.com/webfoo/wp-content/uploads/K_section.pdf"
+     },
+     "avpak_pc": {
+      "w": 150,
+      "typical_w": 40,
+      "backed": true,
+      "kind": "estimate",
+      "source": "https://www.mitutoyo.com/webfoo/wp-content/uploads/K_section.pdf"
+     },
+     "pi_unit": {
+      "w": 54,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     },
+     "ups loss": {
+      "w": 36.1,
+      "typical_w": 36.1,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert GXT5LI-1500LVRT2UXL: efficiency 89% at 176 W (ups.CATALOGUE)"
+     }
+    },
+    "total_w": 1040,
+    "idle_w": 212,
+    "ups": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+    "ups_ok": true,
+    "backed_rated_w": 1004,
+    "backed_typical_w": 176,
+    "unbacked_rated_w": 0,
+    "estimated_share": 0.29
+   },
+   "M": {
+    "slot": "2R3",
+    "shuttle": 2,
+    "items": {
+     "xrf": {
+      "w": 600,
+      "typical_w": 120,
+      "backed": true,
+      "kind": "published",
+      "source": "https://technology-products.dksh.com/product/bruker-s2-puma-series-2-high-end-versatile-benchtop-edxrf/; https://www.bruker.com/en/products-and-solutions/elemental-analyzers/xrf-spectrometers/s2-puma-series2/other-applications.html"
+     },
+     "xrf_vacuum_pump": {
+      "w": 300,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "estimate",
+      "source": "https://www.bruker.com/en/products-and-solutions/elemental-analyzers/xrf-spectrometers/s2-puma-series2/other-applications.html"
+     },
+     "fumehood_tray": {
+      "w": 35,
+      "typical_w": 35,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.sentryair.com/dfhapp.htm"
+     },
+     "cnc": {
+      "w": 430,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "published",
+      "source": "https://www.makera.com/blogs/article/carvera-carvera-air-which-desktop-cnc-is-right-for-you; https://eu.makera.com/pages/cnc-comparison; https://carvera-community.gitbook.io/docs/anatomy-of-a-carvera"
+     },
+     "pi_unit": {
+      "w": 54,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     },
+     "ups loss": {
+      "w": 35.9,
+      "typical_w": 35.9,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert GXT5LI-1500LVRT2UXL: efficiency 89% at 171 W (ups.CATALOGUE)"
+     }
+    },
+    "total_w": 1515,
+    "idle_w": 207,
+    "ups": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+    "ups_ok": true,
+    "backed_rated_w": 749,
+    "backed_typical_w": 171,
+    "unbacked_rated_w": 730,
+    "estimated_share": 0.2
+   },
+   "H": {
+    "slot": "2R4",
+    "shuttle": 2,
+    "items": {
+     "stencil": {
+      "w": 240,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "published",
+      "source": "https://pentalogix.com/pdf/SPR_45VA_Stencil_Printers.pdf"
+     },
+     "lumenpnp": {
+      "w": 300,
+      "typical_w": 15,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.opulo.io/products/lumenpnp-24v-6a-power-supply; https://cdn.shopify.com/s/files/1/0570/4256/7355/files/Opulo_Power_Supply_Datasheet-24V_6A.pdf?v=1723229996; https://www.opulo.io/products/vacuum-pump-and-valve-set"
+     },
+     "lumenpnp_pc": {
+      "w": 100,
+      "typical_w": 25,
+      "backed": true,
+      "kind": "estimate",
+      "source": ""
+     },
+     "reflow": {
+      "w": 1500,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "published",
+      "source": "https://taianpuhui.en.made-in-china.com/product/GXLmWKoTvtUI/China-Desktop-Reflow-Oven-Puhui-T962A.html; https://wiki.bitraf.no/w/images/1/18/T962A_INFRARED_IC_HEATER_User_Manual.pdf"
+     },
+     "pi_unit": {
+      "w": 54,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     },
+     "ups loss": {
+      "w": 4.3,
+      "typical_w": 4.3,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert PSI5-800SRT2ULIN: efficiency 97% at 56 W (ups.CATALOGUE)"
+     }
+    },
+    "total_w": 2258,
+    "idle_w": 60,
+    "ups": "Vertiv Liebert PSI5-800SRT2ULIN",
+    "ups_ok": true,
+    "backed_rated_w": 514,
+    "backed_typical_w": 56,
+    "unbacked_rated_w": 1740,
+    "estimated_share": 0.04
+   },
+   "G": {
+    "slot": "2F1",
+    "shuttle": 2,
+    "items": {
+     "form4": {
+      "w": 960,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "published",
+      "source": "https://formlabs.com/3d-printers/resin/tech-specs/; https://formlabs.com/support/Choosing-an-Uninterruptible-Power-Supply-UPS-for-your-Formlabs-printer/"
+     },
+     "form_wash": {
+      "w": 50,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "published",
+      "source": "https://formlabs.com/store/form-wash/"
+     },
+     "form_cure": {
+      "w": 1800,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "estimate",
+      "source": "https://formlabs.com/store/form-cure/; https://formlabs.com/global/products/form-cure/"
+     },
+     "pi_unit": {
+      "w": 54,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     },
+     "ups loss": {
+      "w": 4.1,
+      "typical_w": 4.1,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert PSI5-800SRT2ULIN: efficiency 97% at 16 W (ups.CATALOGUE)"
+     }
+    },
+    "total_w": 2928,
+    "idle_w": 20,
+    "ups": "Vertiv Liebert PSI5-800SRT2ULIN",
+    "ups_ok": true,
+    "backed_rated_w": 114,
+    "backed_typical_w": 16,
+    "unbacked_rated_w": 2810,
+    "estimated_share": 0.61
+   },
+   "I": {
+    "slot": "2F2",
+    "shuttle": 2,
+    "items": {
+     "snowpod": {
+      "w": 2000,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "estimate",
+      "source": "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/fab_metal.py#L438-L441; https://makers101.com/snowpod-desktop-metal-3d-printer/"
+     },
+     "nitropod": {
+      "w": 500,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "estimate",
+      "source": "https://www.3dnatives.com/en/desktop-metal-3d-printer-snowpod-22102026/"
+     },
+     "pi_unit": {
+      "w": 54,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     },
+     "ups loss": {
+      "w": 4.1,
+      "typical_w": 4.1,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert PSI5-800SRT2ULIN: efficiency 97% at 16 W (ups.CATALOGUE)"
+     }
+    },
+    "total_w": 2618,
+    "idle_w": 20,
+    "ups": "Vertiv Liebert PSI5-800SRT2ULIN",
+    "ups_ok": true,
+    "backed_rated_w": 114,
+    "backed_typical_w": 16,
+    "unbacked_rated_w": 2500,
+    "estimated_share": 0.95
+   }
+  },
+  "vlm": {
+   "trays": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+   ],
+   "enclosure_m": [
+    2.83,
+    3.12,
+    9.15
+   ],
+   "surface_m2": 117.8,
+   "scenarios": {
+    "everything on at its rating": {
+     "w": 13665,
+     "rise_k_unventilated": 21.1,
+     "airflow_m3h_for_5k": 8158,
+     "airflow_m3h_for_10k": 4079
+    },
+    "printing in storage (tray C) and the furnace holding (tray F at a third of 2.8 kW)": {
+     "w": 3720,
+     "rise_k_unventilated": 5.7,
+     "airflow_m3h_for_5k": 2221,
+     "airflow_m3h_for_10k": 1110
+    },
+    "idle: every backed branch at its typical draw, heaters off, plus the UPSs' own losses": {
+     "w": 1317,
+     "rise_k_unventilated": 2.0,
+     "airflow_m3h_for_5k": 786,
+     "airflow_m3h_for_10k": 393
+    }
+   },
+   "method": "rise with no ventilation = W / (5.5 W/m2K x surface): the usual figure for painted sheet steel in still air, an estimate for a machine this size; airflow = W / (rho cp dT), air at 1.2 kg/m3 and 1005 J/kg K"
+  },
+  "vlm2": {
+   "trays": [
+    "K",
+    "L",
+    "M",
+    "H",
+    "G",
+    "I"
+   ],
+   "enclosure_m": [
+    2.83,
+    3.12,
+    9.15
+   ],
+   "surface_m2": 117.8,
+   "scenarios": {
+    "everything on at its rating": {
+     "w": 11767,
+     "rise_k_unventilated": 18.2,
+     "airflow_m3h_for_5k": 7025,
+     "airflow_m3h_for_10k": 3513
+    },
+    "two Form 4s and the Carvera working in storage, the rest idle": {
+     "w": 2161,
+     "rise_k_unventilated": 3.3,
+     "airflow_m3h_for_5k": 1290,
+     "airflow_m3h_for_10k": 645
+    },
+    "idle: every backed branch at its typical draw, heaters off, plus the UPSs' own losses": {
+     "w": 771,
+     "rise_k_unventilated": 1.2,
+     "airflow_m3h_for_5k": 460,
+     "airflow_m3h_for_10k": 230
+    }
+   },
+   "method": "rise with no ventilation = W / (5.5 W/m2K x surface): the usual figure for painted sheet steel in still air, an estimate for a machine this size; airflow = W / (rho cp dT), air at 1.2 kg/m3 and 1005 J/kg K"
+  },
+  "utilities": {
+   "ups": {
+    "per_tray": {
+     "A": {
+      "model": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+      "backed_rated_w": 641,
+      "backed_typical_w": 221
+     },
+     "B": {
+      "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+      "backed_rated_w": 493,
+      "backed_typical_w": 48
+     },
+     "C": {
+      "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+      "backed_rated_w": 114,
+      "backed_typical_w": 16
+     },
+     "D": {
+      "model": "Vertiv Liebert GXT5LI-3000LVRT2UXL",
+      "backed_rated_w": 2541,
+      "backed_typical_w": 540
+     },
+     "E": {
+      "model": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+      "backed_rated_w": 991,
+      "backed_typical_w": 325
+     },
+     "F": {
+      "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+      "backed_rated_w": 114,
+      "backed_typical_w": 16
+     },
+     "K": {
+      "model": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+      "backed_rated_w": 820,
+      "backed_typical_w": 214
+     },
+     "L": {
+      "model": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+      "backed_rated_w": 1004,
+      "backed_typical_w": 176
+     },
+     "M": {
+      "model": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+      "backed_rated_w": 749,
+      "backed_typical_w": 171
+     },
+     "H": {
+      "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+      "backed_rated_w": 514,
+      "backed_typical_w": 56
+     },
+     "G": {
+      "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+      "backed_rated_w": 114,
+      "backed_typical_w": 16
+     },
+     "I": {
+      "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+      "backed_rated_w": 114,
+      "backed_typical_w": 16
+     }
+    },
+    "where": "on every powered tray, back right, standing on its side in a bolted cradle (ups.py)",
+    "transit_s": "about 6 s from R2 to the opening: 2 x 1030 mm at 0.7 m/s (3 s), 246 mm at 2 m/s (0.1 s), plus the shutter and accelerations (not published); R4 adds about 0.8 s",
+    "sizing": "the smallest unit that carries the tray's backed branch at its rated draw and runs at least 10 min at its typical draw; heaters and big motors on the unbacked branch",
+    "source": "ups.CATALOGUE (makers' datasheets), out/ups.json"
+   },
+   "n2": {
+    "model": "Parker Balston UHPN2-1100",
+    "size_mm": [
+     305.0,
+     406.0,
+     889.0
+    ],
+    "fits_tray": false,
+    "where": "beside the VLM; N2 through the docks",
+    "source": "Parker Balston UHPN2-1100: 35 in H x 12 in W x 16 in D (889 x 305 x 406 mm), 50 kg (VWR), 120 VAC 60 Hz, 500-1100 cc/min at 99.9999 %, needs compressed air at 60-125 psig, no compressor of its own (govsci.com, gmi-inc.com, marshallscientific.com; search snippets). Peak Precision Nitrogen 1000: 1000 cc/min, 26 kg, no compressor (Peak's sheet, snippet)."
+   },
+   "chiller": {
+    "model": "Thermo Scientific ThermoFlex 900",
+    "cooling_w": 900,
+    "heat_to_room": "900 W plus its own input, which was not found",
+    "where": "beside the VLM; water through the docks, so its heat stays out of the enclosure",
+    "source": "Thermo Scientific ThermoFlex 900: up to 900 W of cooling at a +20 C setpoint and 25 C ambient (60 Hz), 5-40 C, pump 15.1 L/min at 4.1 bar (thermofisher.com TF900, snippet). Its size and electrical input were not found."
+   }
+  },
+  "ask_kardex": [
+   "The heat a tray may give off in a slot, and in total, and the interior temperature the drives and controls are rated for.",
+   "Whether a column can be ventilated (a filtered fan and an outlet on the roof), and whether a furnace at 650 C may run inside at all.",
+   "The extractor's repeatability at a slot, for a dock that takes 4 mm of misalignment.",
+   "Whether the side walls can take a window and a dock behind the supports at a slot, and the space between the column wall and the cladding (about 108 mm in the model).",
+   "Whether power to a slot can stay on while a tray is stored, and what they would fit (the dealer offered a quick-connect cord)."
+  ]
+ }
+}

@@ -1,0 +1,65 @@
+{
+ "name": "instruments/mastersizer",
+ "fps": 8,
+ "n_frames": 192,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/9",
+   "caption": "The Aero S's clear cover lifts off and is set aside.",
+   "start_frame": 0,
+   "end_frame": 18
+  },
+  {
+   "label": "2/9",
+   "caption": "A few grams of atomized powder go into its hopper, over the vibrating tray.",
+   "start_frame": 19,
+   "end_frame": 36
+  },
+  {
+   "label": "3/9",
+   "caption": "The hopper's gap sets the feed.",
+   "start_frame": 37,
+   "end_frame": 50
+  },
+  {
+   "label": "4/9",
+   "caption": "The cover goes back on.",
+   "start_frame": 51,
+   "end_frame": 62
+  },
+  {
+   "label": "5/9",
+   "caption": "Air on; the bench drawn see-through. The background is measured with the cell empty: the laser's beam expanded, then focused by the lens so it converges through the cell onto the focal-plane detector.",
+   "start_frame": 63,
+   "end_frame": 87
+  },
+  {
+   "label": "6/9",
+   "caption": "The tray vibrates the powder into the venturi; the air disperses it and carries it through the cell. The obscuration, the share of the beam the particles take out, rises.",
+   "start_frame": 88,
+   "end_frame": 112
+  },
+  {
+   "label": "7/9",
+   "caption": "Large particles scatter light at small angles, onto the inner arcs; small ones scatter wide, to the large-angle and back-scatter detectors, where the blue LED's shorter wavelength resolves the finest.",
+   "start_frame": 113,
+   "end_frame": 145
+  },
+  {
+   "label": "8/9",
+   "caption": "The scattering pattern, fitted with Mie theory, gives the volume-weighted size distribution, 0.01 um to 3.5 mm, in seconds; the extractor draws the powder away.",
+   "start_frame": 146,
+   "end_frame": 176
+  },
+  {
+   "label": "9/9",
+   "caption": "Done: the beam off, the bench closed.",
+   "start_frame": 177,
+   "end_frame": 191
+  }
+ ]
+}

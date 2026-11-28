@@ -1,0 +1,47 @@
+{
+ "file": "out/mp4/atom_reel.mp4",
+ "duration_s": 991.8,
+ "chapters": [
+  {
+   "clip": "atom_cameras",
+   "title": "The melt and the stream, watched",
+   "start_s": 0.0
+  },
+  {
+   "clip": "atom_latch",
+   "title": "The furnace latch, unclamped and clamped",
+   "start_s": 107.7
+  },
+  {
+   "clip": "atom_container",
+   "title": "The powder down and the container off",
+   "start_s": 213.4
+  },
+  {
+   "clip": "atom_vacuum",
+   "title": "Vacuuming the chamber",
+   "start_s": 266.9
+  },
+  {
+   "clip": "atom_plate",
+   "title": "Swapping the plate",
+   "start_s": 411.4
+  },
+  {
+   "clip": "atom_crucible_out",
+   "title": "Taking the furnace apart",
+   "start_s": 563.3
+  },
+  {
+   "clip": "atom_bn",
+   "title": "Cleaning the crucible and recoating it with BN",
+   "start_s": 683.4
+  },
+  {
+   "clip": "atom_crucible_in",
+   "title": "The rebuild, and the graphite nut from below",
+   "start_s": 842.5
+  }
+ ],
+ "missing": []
+}

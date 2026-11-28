@@ -1,0 +1,6 @@
+{"source": "https://youtu.be/C4IBBj20OpE?t=85 (Keyence, VHX-7000N Series, 1:25: the EA-300 configuration from the front right; the stand. A composited product shot: a check, not fitted)",
+ "video": "C4IBBj20OpE", "t": 85.0, "camera": "C4IBBj20OpE@85-stand",
+ "pose": {"head": 0.0},
+ "holdout": true,
+ "points": {"base logo": [275, 585], "knob end": [360, 552],
+            "EA top front right": [298, 140], "EA top back right": [367, 157]}}

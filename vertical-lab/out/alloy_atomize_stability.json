@@ -1,0 +1,295 @@
+{
+ "with_ballast": {
+  "arm1_lever_open": {
+   "mass_kg": 302.8,
+   "cog_mm": [
+    -8,
+    24,
+    384
+   ],
+   "force_point_mm": [
+    -495,
+    632,
+    1222
+   ],
+   "force_dir": [
+    -0.936,
+    0.0,
+    -0.353
+   ],
+   "edges": {
+    "+x": {
+     "restoring_Nm": 988.7,
+     "lever_mm": -1432.7,
+     "tips_at_N": null
+    },
+    "-x": {
+     "restoring_Nm": 941.8,
+     "lever_mm": 1203.4,
+     "tips_at_N": 783.0
+    },
+    "+y": {
+     "restoring_Nm": 597.4,
+     "lever_mm": 143.5,
+     "tips_at_N": 4162.0
+    },
+    "-y": {
+     "restoring_Nm": 739.1,
+     "lever_mm": -302.2,
+     "tips_at_N": null
+    }
+   },
+   "tips_at_N": 783.0,
+   "tips_about": "-x",
+   "slides_at_N": 952.0
+  },
+  "arm1_lever_shut": {
+   "mass_kg": 302.8,
+   "cog_mm": [
+    -8,
+    24,
+    384
+   ],
+   "force_point_mm": [
+    -495,
+    632,
+    1222
+   ],
+   "force_dir": [
+    0.936,
+    0.0,
+    0.353
+   ],
+   "edges": {
+    "+x": {
+     "restoring_Nm": 988.7,
+     "lever_mm": 1432.7,
+     "tips_at_N": 690.0
+    },
+    "-x": {
+     "restoring_Nm": 941.8,
+     "lever_mm": -1203.4,
+     "tips_at_N": null
+    },
+    "+y": {
+     "restoring_Nm": 597.4,
+     "lever_mm": -143.5,
+     "tips_at_N": null
+    },
+    "-y": {
+     "restoring_Nm": 739.1,
+     "lever_mm": 302.2,
+     "tips_at_N": 2445.0
+    }
+   },
+   "tips_at_N": 690.0,
+   "tips_about": "+x",
+   "slides_at_N": 952.0
+  },
+  "arm2_lid": {
+   "mass_kg": 299.8,
+   "cog_mm": [
+    20,
+    32,
+    388
+   ],
+   "force_point_mm": [
+    635,
+    591,
+    1451
+   ],
+   "force_dir": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "edges": {
+    "+x": {
+     "restoring_Nm": 896.0,
+     "lever_mm": 310.4,
+     "tips_at_N": 2887.0
+    },
+    "-x": {
+     "restoring_Nm": 1015.4,
+     "lever_mm": -960.4,
+     "tips_at_N": null
+    },
+    "+y": {
+     "restoring_Nm": 566.5,
+     "lever_mm": 366.4,
+     "tips_at_N": 1546.0
+    },
+    "-y": {
+     "restoring_Nm": 756.8,
+     "lever_mm": -816.4,
+     "tips_at_N": null
+    }
+   },
+   "tips_at_N": 1546.0,
+   "tips_about": "+y",
+   "slides_at_N": null
+  }
+ },
+ "without_ballast": {
+  "arm1_lever_open": {
+   "mass_kg": 171.5,
+   "cog_mm": [
+    -14,
+    42,
+    432
+   ],
+   "force_point_mm": [
+    -495,
+    632,
+    1222
+   ],
+   "force_dir": [
+    -0.936,
+    0.0,
+    -0.353
+   ],
+   "edges": {
+    "+x": {
+     "restoring_Nm": 570.3,
+     "lever_mm": -1432.7,
+     "tips_at_N": null
+    },
+    "-x": {
+     "restoring_Nm": 523.3,
+     "lever_mm": 1203.4,
+     "tips_at_N": 435.0
+    },
+    "+y": {
+     "restoring_Nm": 307.7,
+     "lever_mm": 143.5,
+     "tips_at_N": 2144.0
+    },
+    "-y": {
+     "restoring_Nm": 449.4,
+     "lever_mm": -302.2,
+     "tips_at_N": null
+    }
+   },
+   "tips_at_N": 435.0,
+   "tips_about": "-x",
+   "slides_at_N": 539.0
+  },
+  "arm1_lever_shut": {
+   "mass_kg": 171.5,
+   "cog_mm": [
+    -14,
+    42,
+    432
+   ],
+   "force_point_mm": [
+    -495,
+    632,
+    1222
+   ],
+   "force_dir": [
+    0.936,
+    0.0,
+    0.353
+   ],
+   "edges": {
+    "+x": {
+     "restoring_Nm": 570.3,
+     "lever_mm": 1432.7,
+     "tips_at_N": 398.0
+    },
+    "-x": {
+     "restoring_Nm": 523.3,
+     "lever_mm": -1203.4,
+     "tips_at_N": null
+    },
+    "+y": {
+     "restoring_Nm": 307.7,
+     "lever_mm": -143.5,
+     "tips_at_N": null
+    },
+    "-y": {
+     "restoring_Nm": 449.4,
+     "lever_mm": 302.2,
+     "tips_at_N": 1487.0
+    }
+   },
+   "tips_at_N": 398.0,
+   "tips_about": "+x",
+   "slides_at_N": 539.0
+  },
+  "arm2_lid": {
+   "mass_kg": 168.5,
+   "cog_mm": [
+    36,
+    58,
+    441
+   ],
+   "force_point_mm": [
+    635,
+    591,
+    1451
+   ],
+   "force_dir": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "edges": {
+    "+x": {
+     "restoring_Nm": 477.5,
+     "lever_mm": 310.4,
+     "tips_at_N": 1539.0
+    },
+    "-x": {
+     "restoring_Nm": 596.9,
+     "lever_mm": -960.4,
+     "tips_at_N": null
+    },
+    "+y": {
+     "restoring_Nm": 276.8,
+     "lever_mm": 366.4,
+     "tips_at_N": 755.0
+    },
+    "-y": {
+     "restoring_Nm": 467.1,
+     "lever_mm": -816.4,
+     "tips_at_N": null
+    }
+   },
+   "tips_at_N": 755.0,
+   "tips_about": "+y",
+   "slides_at_N": null
+  }
+ },
+ "loads_N": {
+  "lever": 100.0,
+  "lever_stiff": 200.0,
+  "lid_knob": 58
+ },
+ "note": "tips_at_N / slides_at_N: alloy_atomize.stability(): the force at the tool, in that direction, that would tip the MiR250 about its weakest edge / slide it on its drive wheels. Lever: arm 1 at its grasp on the lever, the force along the free end's path at dead centre. Round 14: no press on the lid (Work.press False).",
+ "masses_kg": {
+  "mir250": 97.0,
+  "ur10e": 33.3,
+  "control_box": 12.0,
+  "cabinet": 25.0,
+  "gripper": 1.2,
+  "on_top": 3.0,
+  "ballast": 131.3,
+  "ballast_plate_mm": {
+   "L": 760.0,
+   "W": 550.0,
+   "T": 40.0
+  }
+ },
+ "payload_kg": {
+  "mir250_1": 205.8,
+  "mir250_2": 202.8
+ },
+ "payload_limit_kg": 250.0,
+ "wheels_mm": [
+  325.0,
+  225.0
+ ],
+ "drive_share": 0.5,
+ "mu": 0.6
+}

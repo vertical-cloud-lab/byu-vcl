@@ -1,0 +1,89 @@
+{
+ "name": "base_cameras_vlm",
+ "fps": 10,
+ "n_frames": 246,
+ "size": [
+  1920,
+  1080
+ ],
+ "substeps": [
+  {
+   "label": "1/5",
+   "caption": "Three cameras on the mobile base, after robot-arms PR 40's cell: one on each end of the cabinet, 0.88 m up, and one on a mast at the back-left corner, 1.75 m up. Each is a Raspberry Pi Camera Module 3 Wide with its own Pi 5, aimed for good by a printed wedge; the mast's Pi rides in its camera's box, the side cameras' on the cabinet's ends.",
+   "start_frame": 0,
+   "end_frame": 61
+  },
+  {
+   "label": "2/5",
+   "caption": "The mast camera, from behind and above the arm's shoulder: the whole arm, the presented tray and what the gripper holds, from outside. The wrist camera sees 7-50 cm in front of the gripper, and the bay camera only works here; this one goes to every station with the arm, with the same view every time.",
+   "start_frame": 62,
+   "end_frame": 79
+  },
+  {
+   "label": "2/5",
+   "caption": "The mast camera, from behind and above the arm's shoulder: the whole arm, the presented tray and what the gripper holds, from outside. The wrist camera sees 7-50 cm in front of the gripper, and the bay camera only works here; this one goes to every station with the arm, with the same view every time.",
+   "start_frame": 80,
+   "end_frame": 96
+  },
+  {
+   "label": "2/5",
+   "caption": "The mast camera, from behind and above the arm's shoulder: the whole arm, the presented tray and what the gripper holds, from outside. The wrist camera sees 7-50 cm in front of the gripper, and the bay camera only works here; this one goes to every station with the arm, with the same view every time.",
+   "start_frame": 97,
+   "end_frame": 107
+  },
+  {
+   "label": "2/5",
+   "caption": "The mast camera, from behind and above the arm's shoulder: the whole arm, the presented tray and what the gripper holds, from outside. The wrist camera sees 7-50 cm in front of the gripper, and the bay camera only works here; this one goes to every station with the arm, with the same view every time.",
+   "start_frame": 108,
+   "end_frame": 114
+  },
+  {
+   "label": "3/5",
+   "caption": "The left side camera, low on the cabinet's end, looking forward past the arm: with the right one, a pair 0.74 m apart that sees the work in front of the arm from 50-60 degrees apart, as robot-arms PR 40's side cameras do (70 there): AprilTags on the station's face, and the gripper's fingertips, in 3-D, before and while the arm moves.",
+   "start_frame": 115,
+   "end_frame": 132
+  },
+  {
+   "label": "3/5",
+   "caption": "The left side camera, low on the cabinet's end, looking forward past the arm: with the right one, a pair 0.74 m apart that sees the work in front of the arm from 50-60 degrees apart, as robot-arms PR 40's side cameras do (70 there): AprilTags on the station's face, and the gripper's fingertips, in 3-D, before and while the arm moves.",
+   "start_frame": 133,
+   "end_frame": 142
+  },
+  {
+   "label": "3/5",
+   "caption": "The left side camera, low on the cabinet's end, looking forward past the arm: with the right one, a pair 0.74 m apart that sees the work in front of the arm from 50-60 degrees apart, as robot-arms PR 40's side cameras do (70 there): AprilTags on the station's face, and the gripper's fingertips, in 3-D, before and while the arm moves.",
+   "start_frame": 143,
+   "end_frame": 162
+  },
+  {
+   "label": "4/5",
+   "caption": "The right side camera: the other half of the pair, and the aisle on this side. All three keep recording through a protective stop: they run on the MiR250's isolated 24 V output, which stays on in an emergency or protective stop (MiR250 electrical interface).",
+   "start_frame": 163,
+   "end_frame": 180
+  },
+  {
+   "label": "4/5",
+   "caption": "The right side camera: the other half of the pair, and the aisle on this side. All three keep recording through a protective stop: they run on the MiR250's isolated 24 V output, which stays on in an emergency or protective stop (MiR250 electrical interface).",
+   "start_frame": 181,
+   "end_frame": 191
+  },
+  {
+   "label": "4/5",
+   "caption": "The right side camera: the other half of the pair, and the aisle on this side. All three keep recording through a protective stop: they run on the MiR250's isolated 24 V output, which stays on in an emergency or protective stop (MiR250 electrical interface).",
+   "start_frame": 192,
+   "end_frame": 197
+  },
+  {
+   "label": "5/5",
+   "caption": "Back out: the vial is on the doser's shuttle and the arm goes home. None of the three is a safety device: the MiR250's scanners and the UR10e's own limits stay the safety functions.",
+   "start_frame": 198,
+   "end_frame": 205
+  },
+  {
+   "label": "5/5",
+   "caption": "Back out: the vial is on the doser's shuttle and the arm goes home. None of the three is a safety device: the MiR250's scanners and the UR10e's own limits stay the safety functions.",
+   "start_frame": 206,
+   "end_frame": 245
+  }
+ ]
+}

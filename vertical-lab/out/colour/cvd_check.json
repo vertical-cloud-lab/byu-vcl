@@ -1,0 +1,366 @@
+{
+ "method": "sRGB targets simulated for full protan, deutan and tritan dichromacy (Machado et al. 2009 via colorspacious, severity 100), colour difference in CAM02-UCS; pass >= 20, needs a second cue 12-20, fail < 12",
+ "palettes": {
+  "alloy family": [
+   {
+    "a": "Al",
+    "b": "Cu",
+    "normal": 64.7,
+    "protan": 56.9,
+    "deutan": 64.4,
+    "tritan": 53.5,
+    "worst": "tritan",
+    "grade": "pass"
+   },
+   {
+    "a": "Al",
+    "b": "next",
+    "normal": 46.2,
+    "protan": 40.8,
+    "deutan": 42.2,
+    "tritan": 43.8,
+    "worst": "protan",
+    "grade": "pass"
+   },
+   {
+    "a": "Al",
+    "b": "general",
+    "normal": 46.5,
+    "protan": 48.1,
+    "deutan": 44.5,
+    "tritan": 46.3,
+    "worst": "deutan",
+    "grade": "pass"
+   },
+   {
+    "a": "Cu",
+    "b": "next",
+    "normal": 38.7,
+    "protan": 37.6,
+    "deutan": 38.5,
+    "tritan": 35.4,
+    "worst": "tritan",
+    "grade": "pass"
+   },
+   {
+    "a": "Cu",
+    "b": "general",
+    "normal": 72.5,
+    "protan": 67.7,
+    "deutan": 73.5,
+    "tritan": 70.6,
+    "worst": "protan",
+    "grade": "pass"
+   },
+   {
+    "a": "next",
+    "b": "general",
+    "normal": 35.6,
+    "protan": 30.1,
+    "deutan": 35.0,
+    "tritan": 37.2,
+    "worst": "protan",
+    "grade": "pass"
+   }
+  ],
+  "alloy family in use": [
+   {
+    "a": "Al",
+    "b": "Cu",
+    "normal": 64.7,
+    "protan": 56.9,
+    "deutan": 64.4,
+    "tritan": 53.5,
+    "worst": "tritan",
+    "grade": "pass"
+   }
+  ],
+  "floor": [
+   {
+    "a": "aisle edge",
+    "b": "equipment place",
+    "normal": 37.7,
+    "protan": 38.7,
+    "deutan": 36.5,
+    "tritan": 26.7,
+    "worst": "tritan",
+    "grade": "pass"
+   },
+   {
+    "a": "aisle edge",
+    "b": "safety equipment",
+    "normal": 45.4,
+    "protan": 30.7,
+    "deutan": 39.9,
+    "tritan": 51.4,
+    "worst": "protan",
+    "grade": "pass"
+   },
+   {
+    "a": "equipment place",
+    "b": "safety equipment",
+    "normal": 57.5,
+    "protan": 51.1,
+    "deutan": 53.1,
+    "tritan": 54.3,
+    "worst": "protan",
+    "grade": "pass"
+   }
+  ],
+  "lights": [
+   {
+    "a": "running",
+    "b": "abnormal / upkeep",
+    "normal": 41.0,
+    "protan": 23.7,
+    "deutan": 33.4,
+    "tritan": 45.6,
+    "worst": "protan",
+    "grade": "pass"
+   },
+   {
+    "a": "running",
+    "b": "waiting for a person",
+    "normal": 48.7,
+    "protan": 50.7,
+    "deutan": 48.6,
+    "tritan": 13.1,
+    "worst": "tritan",
+    "grade": "needs a second cue"
+   },
+   {
+    "a": "running",
+    "b": "fault",
+    "normal": 63.1,
+    "protan": 27.7,
+    "deutan": 12.6,
+    "tritan": 67.5,
+    "worst": "deutan",
+    "grade": "needs a second cue"
+   },
+   {
+    "a": "running",
+    "b": "idle",
+    "normal": 46.6,
+    "protan": 38.3,
+    "deutan": 39.7,
+    "tritan": 42.2,
+    "worst": "protan",
+    "grade": "pass"
+   },
+   {
+    "a": "abnormal / upkeep",
+    "b": "waiting for a person",
+    "normal": 75.0,
+    "protan": 69.6,
+    "deutan": 76.6,
+    "tritan": 50.6,
+    "worst": "tritan",
+    "grade": "pass"
+   },
+   {
+    "a": "abnormal / upkeep",
+    "b": "fault",
+    "normal": 51.9,
+    "protan": 48.7,
+    "deutan": 33.8,
+    "tritan": 40.2,
+    "worst": "deutan",
+    "grade": "pass"
+   },
+   {
+    "a": "abnormal / upkeep",
+    "b": "idle",
+    "normal": 36.0,
+    "protan": 36.3,
+    "deutan": 34.9,
+    "tritan": 20.7,
+    "worst": "tritan",
+    "grade": "pass"
+   },
+   {
+    "a": "waiting for a person",
+    "b": "fault",
+    "normal": 71.3,
+    "protan": 52.7,
+    "deutan": 58.0,
+    "tritan": 68.2,
+    "worst": "protan",
+    "grade": "pass"
+   },
+   {
+    "a": "waiting for a person",
+    "b": "idle",
+    "normal": 57.1,
+    "protan": 52.6,
+    "deutan": 59.5,
+    "tritan": 49.1,
+    "worst": "tritan",
+    "grade": "pass"
+   },
+   {
+    "a": "fault",
+    "b": "idle",
+    "normal": 63.0,
+    "protan": 63.7,
+    "deutan": 49.7,
+    "tritan": 60.7,
+    "worst": "deutan",
+    "grade": "pass"
+   }
+  ],
+  "safety (reference)": [
+   {
+    "a": "danger, fire equipment, stop",
+    "b": "warning, dangerous machine parts",
+    "normal": 30.3,
+    "protan": 31.7,
+    "deutan": 24.6,
+    "tritan": 17.1,
+    "worst": "tritan",
+    "grade": "needs a second cue"
+   },
+   {
+    "a": "danger, fire equipment, stop",
+    "b": "caution, physical hazard",
+    "normal": 53.0,
+    "protan": 50.4,
+    "deutan": 36.1,
+    "tritan": 38.5,
+    "worst": "deutan",
+    "grade": "pass"
+   },
+   {
+    "a": "danger, fire equipment, stop",
+    "b": "safety equipment, first aid",
+    "normal": 58.9,
+    "protan": 19.8,
+    "deutan": 6.9,
+    "tritan": 62.5,
+    "worst": "deutan",
+    "grade": "FAIL"
+   },
+   {
+    "a": "danger, fire equipment, stop",
+    "b": "mandatory, information",
+    "normal": 63.5,
+    "protan": 41.4,
+    "deutan": 51.8,
+    "tritan": 63.9,
+    "worst": "protan",
+    "grade": "pass"
+   },
+   {
+    "a": "danger, fire equipment, stop",
+    "b": "radiation (trefoil, XRD and XRF)",
+    "normal": 23.9,
+    "protan": 35.0,
+    "deutan": 34.7,
+    "tritan": 13.9,
+    "worst": "tritan",
+    "grade": "needs a second cue"
+   },
+   {
+    "a": "warning, dangerous machine parts",
+    "b": "caution, physical hazard",
+    "normal": 24.7,
+    "protan": 19.4,
+    "deutan": 11.9,
+    "tritan": 23.1,
+    "worst": "deutan",
+    "grade": "FAIL"
+   },
+   {
+    "a": "warning, dangerous machine parts",
+    "b": "safety equipment, first aid",
+    "normal": 51.5,
+    "protan": 12.8,
+    "deutan": 29.1,
+    "tritan": 58.9,
+    "worst": "protan",
+    "grade": "needs a second cue"
+   },
+   {
+    "a": "warning, dangerous machine parts",
+    "b": "mandatory, information",
+    "normal": 71.9,
+    "protan": 58.5,
+    "deutan": 68.9,
+    "tritan": 60.3,
+    "worst": "protan",
+    "grade": "pass"
+   },
+   {
+    "a": "warning, dangerous machine parts",
+    "b": "radiation (trefoil, XRD and XRF)",
+    "normal": 46.4,
+    "protan": 57.2,
+    "deutan": 51.2,
+    "tritan": 20.5,
+    "worst": "tritan",
+    "grade": "pass"
+   },
+   {
+    "a": "caution, physical hazard",
+    "b": "safety equipment, first aid",
+    "normal": 45.4,
+    "protan": 30.7,
+    "deutan": 39.9,
+    "tritan": 51.4,
+    "worst": "protan",
+    "grade": "pass"
+   },
+   {
+    "a": "caution, physical hazard",
+    "b": "mandatory, information",
+    "normal": 75.4,
+    "protan": 70.0,
+    "deutan": 76.5,
+    "tritan": 54.7,
+    "worst": "tritan",
+    "grade": "pass"
+   },
+   {
+    "a": "caution, physical hazard",
+    "b": "radiation (trefoil, XRD and XRF)",
+    "normal": 64.8,
+    "protan": 70.9,
+    "deutan": 59.1,
+    "tritan": 40.3,
+    "worst": "tritan",
+    "grade": "pass"
+   },
+   {
+    "a": "safety equipment, first aid",
+    "b": "mandatory, information",
+    "normal": 46.1,
+    "protan": 47.8,
+    "deutan": 45.2,
+    "tritan": 10.8,
+    "worst": "tritan",
+    "grade": "FAIL"
+   },
+   {
+    "a": "safety equipment, first aid",
+    "b": "radiation (trefoil, XRD and XRF)",
+    "normal": 61.7,
+    "protan": 45.3,
+    "deutan": 27.9,
+    "tritan": 57.8,
+    "worst": "deutan",
+    "grade": "pass"
+   },
+   {
+    "a": "mandatory, information",
+    "b": "radiation (trefoil, XRD and XRF)",
+    "normal": 48.3,
+    "protan": 10.2,
+    "deutan": 18.9,
+    "tritan": 56.9,
+    "worst": "protan",
+    "grade": "FAIL"
+   }
+  ],
+  "ok": true
+ }
+}

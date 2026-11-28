@@ -1,0 +1,608 @@
+{
+ "abc": {
+  "model": "Amerex B456",
+  "rating": "4-A:80-B:C",
+  "source": "Amerex's catalogue, ABC dry chemical table (p. 16) and brackets (p. 19), via webstaurantstore.com's copies: B456, 10 lb ABC, UL 4-A:80-B:C, 20 H x 7.75 W x 5 D in, cylinder 5 in, 18 lb shipping, 195 psig, 15-21 ft, 22 s, aluminium valve, hose and nozzle, the 801 wall bracket; $92.99 (Webstaurant). The valve, lever and hose shapes are Amerex's family look (safety.B570's), not measured",
+  "top_mm": 1200.0,
+  "top_ok": true,
+  "check": {
+   "worst_walk_m": 18.99,
+   "worst_at": [
+    7100.0,
+    -13000.0
+   ],
+   "nfpa10_75ft": true,
+   "hoods_m": {
+    "fumehood": 9.77,
+    "icpms": 0.86
+   },
+   "hoods_50ft": true,
+   "apart": [
+    {
+     "at": [
+      -11833.0,
+      -3714.0
+     ],
+     "nearest_class_d_m": 4.57,
+     "ok": true
+    },
+    {
+     "at": [
+      11833.0,
+      -6457.0
+     ],
+     "nearest_class_d_m": 4.53,
+     "ok": true
+    },
+    {
+     "at": [
+      -28.0,
+      2800.0
+     ],
+     "nearest_class_d_m": 4.33,
+     "ok": true
+    }
+   ],
+   "powder": {
+    "glovebox": {
+     "class_d_m": 0.89,
+     "abc_m": 5.05,
+     "ok": true
+    },
+    "repowder": {
+     "class_d_m": 2.23,
+     "abc_m": 8.52,
+     "ok": true
+    },
+    "sieve_cell": {
+     "class_d_m": 3.95,
+     "abc_m": 9.34,
+     "ok": true
+    },
+    "vlm": {
+     "class_d_m": 1.99,
+     "abc_m": 7.34,
+     "ok": true
+    },
+    "vlm2": {
+     "class_d_m": 1.93,
+     "abc_m": 7.42,
+     "ok": true
+    },
+    "aconity": {
+     "class_d_m": 1.69,
+     "abc_m": 10.72,
+     "ok": true
+    },
+    "packaging": {
+     "class_d_m": 1.06,
+     "abc_m": 12.78,
+     "ok": true
+    },
+    "ded": {
+     "class_d_m": 1.29,
+     "abc_m": 10.78,
+     "ok": true
+    },
+    "eos_m400": {
+     "class_d_m": 0.5,
+     "abc_m": 6.61,
+     "ok": true
+    }
+   },
+   "apart_ok": true,
+   "left_out_m": {
+    "behind the Meltio cell": 26.93,
+    "south of the Meltio cell": 26.93
+   },
+   "cells": 26471,
+   "floor_m2": 265.0
+  },
+  "fewest": {
+   "n": 2,
+   "worst_m": 16.6,
+   "at": [
+    [
+     -11833.0,
+     -6457.0,
+     90.0
+    ],
+    [
+     5458.0,
+     2800.0,
+     0.0
+    ]
+   ]
+  }
+ },
+ "shower": {
+  "model": "Guardian G1902",
+  "source": "Guardian Equipment G1902 spec sheet (rev. 0615, cooneybrothers.com's copy; dimensions +-1/4 in; 'tested to and comply with ANSI Z358.1-2014'): the shower arm's centre line 89 in up, the actuating arm 5-3/4 in over it; a 10 in orange ABS showerhead, its underside 84 in up, its centre 24 in from the pipe; a 1 in stay-open brass ball valve, a stainless actuating arm and 29 in pull rod with a triangle handle 23-1/2 in under the arm; two GS-Plus eyewash heads 6-1/2 in apart, their tops 37-1/2 in up, in an 11-1/8 in stainless bowl 9-1/4 in from the pipe; a 1/2 in ball valve 6 in beside the bowl with a cast aluminium flag handle 5 in beyond it; schedule 40 galvanized pipe with orange polyethylene covers on the vertical runs; 1-1/4 in NPT top or side inlet, waste outlet 9-1/4 in up; a 9 in cast aluminium floor flange; 20 gpm; its green ANSI sign included; $967.75 (Webstaurant)",
+  "ansi": {
+   "travel_s": 10.0,
+   "travel_m": 16.8,
+   "adjacent_m": 3.0,
+   "head_min": 2082.7999999999997,
+   "head_max": 2438.3999999999996,
+   "spray_d": 508.0,
+   "spray_clear": 406.4,
+   "eye_min": 838.1999999999999,
+   "eye_max": 1346.1999999999998,
+   "actuator_max": 1752.6,
+   "shower_gpm": 20.0,
+   "eye_gpm": 0.4,
+   "minutes": 15,
+   "tepid_f": [
+    60,
+    100
+   ],
+   "source": "ANSI/ISEA Z358.1-2014 (Bradley's quick compliance guide; Minnesota DLI): reached within 10 s (about 55 ft, 16.8 m, at a normal walk), on the same level, unobstructed; immediately adjacent where the hazard is a strong acid or caustic (Appendix B5, read here as within 3 m); the shower's column of water 82-96 in up, 20 in across at 60 in, its centre at least 16 in from any obstruction, 20 gpm for 15 min; the eyewash's heads 33-53 in up, 0.4 gpm for 15 min; tepid water, 60-100 F; the actuator at most 69 in up, on in 1 s; a highly visible sign; activated weekly"
+  },
+  "check": {
+   "fumehood": {
+    "at": [
+     450.0,
+     -7300.0
+    ],
+    "walk_m": 1.22,
+    "within_10s": true,
+    "adjacent_3m": true,
+    "head_mm": 2134,
+    "head_ok": true,
+    "eyewash_mm": 952,
+    "eyewash_ok": true,
+    "handle_mm": 1664,
+    "handle_ok": true,
+    "nearest_powder": [
+     "ded",
+     2.33
+    ],
+    "icpms_suggested": false
+   },
+   "icpms": {
+    "at": [
+     11015.0,
+     -5750.0
+    ],
+    "walk_m": 0.95,
+    "within_10s": true,
+    "adjacent_3m": true,
+    "head_mm": 2134,
+    "head_ok": true,
+    "eyewash_mm": 952,
+    "eyewash_ok": true,
+    "handle_mm": 1664,
+    "handle_ok": true,
+    "nearest_powder": [
+     "packaging",
+     3.07
+    ],
+    "icpms_suggested": true
+   }
+  }
+ },
+ "o2": {
+  "model": "PureAire 99028",
+  "source": "PureAire Monitoring Systems' O2 deficiency monitor with remote sensor (99028/99121/99117; its product page and manual): zirconium oxide sensor, 0-25 % O2, over 10 years' life, responds within 1 s; 3/4 in backlit LCD; alarms at 19.5 % and 18.0 %, two 2 A relays and a fault relay, a 90 dB horn built in, 4-20 mA, 24 VDC; a 6.5 x 4.5 x 3.25 in polycarbonate enclosure (the product page; the manual says 5.125 x 3.15 x 3.00 in); the sensor on a 10, 20 or 30 ft cable; $2,375-2,755. Its horn/strobe, P/N 42002, 24 VDC, $220-315. The sensor head's and the strobe's sizes aren't published: ours",
+  "alarms": [
+   19.5,
+   18.0
+  ],
+  "osha": 19.5,
+  "sensor_mm": {
+   "argon": 304.79999999999995,
+   "nitrogen": 1524.0
+  },
+  "check": {
+   "argon cylinders": {
+    "at": [
+     -9500.0,
+     -700.0
+    ],
+    "gas": "argon",
+    "sensor_mm": 304.79999999999995,
+    "from_source_m": 0.54,
+    "density_vs_air": 1.38,
+    "icpms_suggested": false
+   },
+   "glovebox": {
+    "at": [
+     -7950.0,
+     -500.0
+    ],
+    "gas": "argon",
+    "sensor_mm": 304.79999999999995,
+    "from_source_m": 0.86,
+    "density_vs_air": 1.38,
+    "icpms_suggested": false
+   },
+   "repowder": {
+    "at": [
+     -3440.0,
+     -350.0
+    ],
+    "gas": "argon",
+    "sensor_mm": 304.79999999999995,
+    "from_source_m": 0.28,
+    "density_vs_air": 1.38,
+    "icpms_suggested": false
+   },
+   "aconity": {
+    "at": [
+     7500.0,
+     0.0
+    ],
+    "gas": "argon",
+    "sensor_mm": 304.79999999999995,
+    "from_source_m": 0.63,
+    "density_vs_air": 1.38,
+    "icpms_suggested": false
+   },
+   "ded": {
+    "at": [
+     4100.0,
+     -7350.0
+    ],
+    "gas": "argon",
+    "sensor_mm": 304.79999999999995,
+    "from_source_m": 0.31,
+    "density_vs_air": 1.38,
+    "icpms_suggested": false
+   },
+   "eos_m400": {
+    "at": [
+     -7000.0,
+     -9300.0
+    ],
+    "gas": "argon",
+    "sensor_mm": 304.79999999999995,
+    "from_source_m": 2.49,
+    "density_vs_air": 1.38,
+    "icpms_suggested": false
+   },
+   "icpms": {
+    "at": [
+     9300.0,
+     -7500.0
+    ],
+    "gas": "argon",
+    "sensor_mm": 304.79999999999995,
+    "from_source_m": 0.55,
+    "density_vs_air": 1.38,
+    "icpms_suggested": true
+   },
+   "n2 generator": {
+    "at": [
+     1415.0,
+     -300.0
+    ],
+    "gas": "nitrogen",
+    "sensor_mm": 1524.0,
+    "from_source_m": 0.81,
+    "density_vs_air": 0.97,
+    "icpms_suggested": false
+   }
+  }
+ },
+ "places": [
+  {
+   "station": "building",
+   "kind": "abc",
+   "at": [
+    -11833.0,
+    -3714.0
+   ],
+   "face": 90.0,
+   "covers": "the aisle's west end (rack W's upright)",
+   "solid": [
+    -11833,
+    -11646,
+    -3844,
+    -3584
+   ],
+   "hits": [],
+   "ok": true
+  },
+  {
+   "station": "building",
+   "kind": "abc",
+   "at": [
+    11833.0,
+    -6457.0
+   ],
+   "face": -90.0,
+   "covers": "the south-east (rack E's upright), by the ICP-MS station",
+   "solid": [
+    11646,
+    11833,
+    -6587,
+    -6327
+   ],
+   "hits": [],
+   "ok": true
+  },
+  {
+   "station": "building",
+   "kind": "abc",
+   "at": [
+    -28.0,
+    2800.0
+   ],
+   "face": 0.0,
+   "covers": "behind the Shuttles (rack N's upright)",
+   "solid": [
+    -158,
+    102,
+    2613,
+    2800
+   ],
+   "hits": [],
+   "ok": true
+  },
+  {
+   "station": "fumehood",
+   "kind": "shower",
+   "at": [
+    450.0,
+    -7300.0
+   ],
+   "face": 180.0,
+   "covers": "the ducted fume hood (Weck's reagent: KMnO4 and NaOH)",
+   "solid": [
+    161,
+    574,
+    -7424,
+    -6563
+   ],
+   "hits": [],
+   "ok": true
+  },
+  {
+   "station": "icpms",
+   "kind": "shower",
+   "at": [
+    11015.0,
+    -5750.0
+   ],
+   "face": 180.0,
+   "covers": "the ICP-MS station's hood (HNO3, HCl), at its suggested spot",
+   "solid": [
+    10726,
+    11139,
+    -5874,
+    -5013
+   ],
+   "hits": [],
+   "ok": true,
+   "icpms": true
+  },
+  {
+   "station": "argon cylinders",
+   "kind": "o2",
+   "at": [
+    -9500.0,
+    -700.0
+   ],
+   "face": 0.0,
+   "covers": "the argon cylinder manifold",
+   "solid": [
+    -9602,
+    -9398,
+    -883,
+    -598
+   ],
+   "hits": [],
+   "ok": true,
+   "gas": "argon"
+  },
+  {
+   "station": "glovebox",
+   "kind": "o2",
+   "at": [
+    -7950.0,
+    -500.0
+   ],
+   "face": 0.0,
+   "covers": "the glovebox's argon",
+   "solid": [
+    -8052,
+    -7848,
+    -683,
+    -398
+   ],
+   "hits": [],
+   "ok": true,
+   "gas": "argon"
+  },
+  {
+   "station": "repowder",
+   "kind": "o2",
+   "at": [
+    -3440.0,
+    -350.0
+   ],
+   "face": 0.0,
+   "covers": "the rePowder's argon (behind it, where the line comes down)",
+   "solid": [
+    -3542,
+    -3338,
+    -533,
+    -248
+   ],
+   "hits": [],
+   "ok": true,
+   "gas": "argon"
+  },
+  {
+   "station": "aconity",
+   "kind": "o2",
+   "at": [
+    7500.0,
+    0.0
+   ],
+   "face": 0.0,
+   "covers": "the Aconity MIDI's argon (behind it, where the line comes down)",
+   "solid": [
+    7398,
+    7602,
+    -183,
+    102
+   ],
+   "hits": [],
+   "ok": true,
+   "gas": "argon"
+  },
+  {
+   "station": "ded",
+   "kind": "o2",
+   "at": [
+    4100.0,
+    -7350.0
+   ],
+   "face": 180.0,
+   "covers": "the DED's argon (behind it, where the line comes down)",
+   "solid": [
+    3998,
+    4202,
+    -7452,
+    -7167
+   ],
+   "hits": [],
+   "ok": true,
+   "gas": "argon"
+  },
+  {
+   "station": "eos_m400",
+   "kind": "o2",
+   "at": [
+    -7000.0,
+    -9300.0
+   ],
+   "face": 180.0,
+   "covers": "the EOS M 400-4's argon",
+   "solid": [
+    -7102,
+    -6898,
+    -9402,
+    -9117
+   ],
+   "hits": [],
+   "ok": true,
+   "gas": "argon"
+  },
+  {
+   "station": "icpms",
+   "kind": "o2",
+   "at": [
+    9300.0,
+    -7500.0
+   ],
+   "face": 0.0,
+   "covers": "the ICP-MS station's 180 L liquid argon dewar",
+   "solid": [
+    9198,
+    9402,
+    -7683,
+    -7398
+   ],
+   "hits": [],
+   "ok": true,
+   "gas": "argon",
+   "icpms": true
+  },
+  {
+   "station": "n2 generator",
+   "kind": "o2wall",
+   "at": [
+    1415.0,
+    -300.0
+   ],
+   "face": 90.0,
+   "covers": "the N2 generator between the Shuttles (on Shuttle 1's side, in front of it)",
+   "solid": [
+    1415,
+    1578,
+    -393,
+    -207
+   ],
+   "hits": [],
+   "ok": true,
+   "gas": "nitrogen"
+  }
+ ],
+ "nfpa10": {
+  "travel_A": 22860.0,
+  "travel_B80": 15240.0,
+  "top_max": 1524.0,
+  "apart_m": 3.0,
+  "source": "NFPA 10 (2022) Table 6.2.1.1 (Class A, ordinary hazard: 75 ft of travel, 11,250 ft2 per unit, 1,500 ft2 per A) and Table 6.3.1.1 (Class B, extra hazard: an 80-B unit within 50 ft); 6.1.3.8.1 (40 lb or less: top at most 5 ft up). Kept 3 m from any Class D unit: ours"
+ },
+ "bom": {
+  "rows": [
+   {
+    "item": "Amerex B456, 10 lb ABC, with its 801 wall bracket",
+    "qty": 3,
+    "unit_usd": 92.99,
+    "source": "Webstaurant"
+   },
+   {
+    "item": "Rack-upright clamp plate and U-bolts for it (ours)",
+    "qty": 3,
+    "unit_usd": 25.0,
+    "source": "estimate"
+   },
+   {
+    "item": "FIRE EXTINGUISHER sign, 7 x 10 in, and an ABC / NOT FOR METAL FIRES placard",
+    "qty": 3,
+    "unit_usd": 30.0,
+    "source": "estimate"
+   },
+   {
+    "item": "Guardian G1902 combination drench shower and eyewash, its sign",
+    "qty": 2,
+    "unit_usd": 967.75,
+    "source": "Webstaurant"
+   },
+   {
+    "item": "Thermostatic mixing valve (Guardian G3800LF, now the G6040) in a surface cabinet",
+    "qty": 2,
+    "unit_usd": 994.0,
+    "source": "the G6040's sale price (list $1,603)"
+   },
+   {
+    "item": "Plumbing: hot and cold water to each shower, a floor drain under it (a contractor's quote)",
+    "qty": 2,
+    "unit_usd": null,
+    "source": "not priced"
+   },
+   {
+    "item": "PureAire 99028 O2 deficiency monitor with remote sensor",
+    "qty": 8,
+    "unit_usd": 2375.0,
+    "source": "PureAire ($2,375-2,755)"
+   },
+   {
+    "item": "PureAire 42002 horn/strobe",
+    "qty": 8,
+    "unit_usd": 220.0,
+    "source": "PureAire ($220-315)"
+   },
+   {
+    "item": "O2 monitor post: strut, base, anchors, conduit (ours)",
+    "qty": 7,
+    "unit_usd": 120.0,
+    "source": "estimate"
+   },
+   {
+    "item": "CAUTION ARGON / NITROGEN IN USE sign, 7 x 10 in",
+    "qty": 8,
+    "unit_usd": 20.0,
+    "source": "estimate"
+   }
+  ],
+  "total_usd": 26127.47,
+  "note": "the ICP-MS station's shower and O2 monitor are counted; they go in with the station",
+  "upkeep": "showers: activated weekly, inspected yearly (ANSI Z358.1); O2 monitors: calibrated and their alarms tested as PureAire's manual says; ABC units: monthly checks, yearly service, a 6-year maintenance and a 12-year hydrostatic test (NFPA 10)"
+ },
+ "places_ok": true
+}

@@ -1,0 +1,1787 @@
+{
+ "what": "Round 2 (2026-11-22): each call name and spare said by the narration voice in two carrier sentences, transcribed back, and judged in its slot. Made by name_tts.py (kept outside the repo) from longform.py's own narration path: SAY/IPA -> phonemes() -> Kokoro; a fix is a SAY or IPA entry, applied in memory only. Round 1's check of the people's names is this file at commit 1acf876.",
+ "date": "2026-11-22",
+ "voice": "Kokoro v1.0 af_heart, speed 0.96",
+ "recognizers": [
+  "faster-whisper base.en",
+  "faster-whisper small.en"
+ ],
+ "recognizer_settings": "int8 on CPU, language en, beam_size 5, word_timestamps, 24 -> 16 kHz (as longform.narration_check)",
+ "carriers": {
+  "sentence1": "Next, the arm takes the bar to {Name}.",
+  "sentence2": "{Name} has finished, so the robot comes back."
+ },
+ "rule": "Both sentences and both recognizers must hear the name in its slot (the words after the last 'to' in sentence 1, before 'has' in sentence 2, normalised with longform._norm): exactly, with the same letters split differently, as a listed spelling variant, or with difflib ratio >= 0.85. heard_as_other_word: a slot that is another everyday word (wordfreq zipf >= 3). misspelt: heard as a non-word or a different spelling.",
+ "variants": {
+  "topaz": [
+   "topas"
+  ],
+  "galena": [
+   "galina"
+  ],
+  "pearl": [
+   "purl"
+  ],
+  "freddy": [
+   "freddie"
+  ],
+  "elsie": [
+   "elsey",
+   "elsy"
+  ],
+  "nebo": [
+   "nebbo"
+  ],
+  "lapis": [
+   "lapus"
+  ],
+  "tigereye": [
+   "tiger eye",
+   "tigers eye",
+   "tiger's eye"
+  ],
+  "fumarole": [
+   "fumarol"
+  ]
+ },
+ "fixes": {
+  "halite": {
+   "ipa": "hˈeɪlaɪt"
+  },
+  "olivine": {
+   "ipa": "ˈɑːlɪvˌiːn"
+  },
+  "basalt": {
+   "ipa": "bəsˈɔːlt"
+  },
+  "unimate": {
+   "ipa": "jˈuːnɪmˌeɪt"
+  },
+  "genghis": {
+   "ipa": "ɡˈɛŋɡɪs"
+  },
+  "cascade": {
+   "ipa": "kæskˈeɪd"
+  }
+ },
+ "ogg": "names.ogg: every name in both sentences, in this file's order",
+ "summary": {
+  "ok": [
+   "aquamarine",
+   "halite",
+   "sandstone",
+   "shale",
+   "pyrite",
+   "quartz",
+   "marble",
+   "sapphire",
+   "opal",
+   "obsidian",
+   "fossil",
+   "agate",
+   "tigereye",
+   "rift",
+   "topaz",
+   "fluorite",
+   "garnet",
+   "galena",
+   "gypsum",
+   "pearl",
+   "dune",
+   "magma",
+   "pumice",
+   "boulder",
+   "pebble",
+   "chimney",
+   "flint",
+   "basalt",
+   "lava",
+   "ruby",
+   "borax",
+   "elsie",
+   "freddy",
+   "nebo",
+   "unimate",
+   "genghis",
+   "cascade",
+   "lonepeak",
+   "turquoise",
+   "citrine",
+   "whetstone"
+  ],
+  "misspelt": [
+   "talc",
+   "geode",
+   "olivine",
+   "lapis"
+  ],
+  "heard_as_other_word": [
+   "mica",
+   "emery",
+   "cinder",
+   "timp"
+  ]
+ },
+ "rows": [
+  {
+   "name": "aquamarine",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to Aquamarine.",
+     "slot": "aquamarine"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to Aquamarine.",
+     "slot": "aquamarine"
+    },
+    "base.en s2": {
+     "text": "Aquamarine has finished, so the robot comes back.",
+     "slot": "aquamarine"
+    },
+    "small.en s2": {
+     "text": "Aquamarine has finished, so the robot comes back.",
+     "slot": "aquamarine"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tʊ ˈækwɐmɚɹˌiːn.",
+   "phonemes2": "ˈækwɐmɚɹˌiːn hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "halite",
+   "fix": {
+    "ipa": "hˈeɪlaɪt"
+   },
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to halite.",
+     "slot": "halite"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to halite.",
+     "slot": "halite"
+    },
+    "base.en s2": {
+     "text": "Halite has finished, so the robot comes back.",
+     "slot": "halite"
+    },
+    "small.en s2": {
+     "text": "Halite has finished, so the robot comes back.",
+     "slot": "halite"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː hˈeɪlaɪt .",
+   "phonemes2": "hˈeɪlaɪt hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "talc",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to talc.",
+     "slot": "talc"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to talc.",
+     "slot": "talc"
+    },
+    "base.en s2": {
+     "text": "Talka's finished, so the robot comes back.",
+     "slot": "talkas"
+    },
+    "small.en s2": {
+     "text": "Talc has finished, so the robot comes back.",
+     "slot": "talc"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "miss",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə tˈælk.",
+   "phonemes2": "tˈælk hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "misspelt"
+  },
+  {
+   "name": "sandstone",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to sandstone.",
+     "slot": "sandstone"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to sandstone.",
+     "slot": "sandstone"
+    },
+    "base.en s2": {
+     "text": "Sandstone has finished, so the robot comes back.",
+     "slot": "sandstone"
+    },
+    "small.en s2": {
+     "text": "Sandstone has finished, so the robot comes back.",
+     "slot": "sandstone"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə sˈændstoʊn.",
+   "phonemes2": "sˈændstoʊn hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "shale",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to shale.",
+     "slot": "shale"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to shale.",
+     "slot": "shale"
+    },
+    "base.en s2": {
+     "text": "Shale has finished, so the robot comes back.",
+     "slot": "shale"
+    },
+    "small.en s2": {
+     "text": "Shale has finished, so the robot comes back.",
+     "slot": "shale"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə ʃˈeɪl.",
+   "phonemes2": "ʃˈeɪl hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "mica",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to Micah.",
+     "slot": "micah"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to Micah.",
+     "slot": "micah"
+    },
+    "base.en s2": {
+     "text": "Micah has finished, so the robot comes back.",
+     "slot": "micah"
+    },
+    "small.en s2": {
+     "text": "Micah has finished, so the robot comes back.",
+     "slot": "micah"
+    }
+   },
+   "verdict": {
+    "base.en s1": "different_word",
+    "small.en s1": "different_word",
+    "base.en s2": "different_word",
+    "small.en s2": "different_word"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə mˈaɪkə.",
+   "phonemes2": "mˈaɪkə hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "heard_as_other_word"
+  },
+  {
+   "name": "pyrite",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to pyrite.",
+     "slot": "pyrite"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to pyrite.",
+     "slot": "pyrite"
+    },
+    "base.en s2": {
+     "text": "Pyrite has finished, so the robot comes back.",
+     "slot": "pyrite"
+    },
+    "small.en s2": {
+     "text": "Pyrite has finished, so the robot comes back.",
+     "slot": "pyrite"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə pˈaɪɹaɪt.",
+   "phonemes2": "pˈaɪɹaɪt hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "quartz",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to quartz.",
+     "slot": "quartz"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to quartz.",
+     "slot": "quartz"
+    },
+    "base.en s2": {
+     "text": "Quartz has finished, so the robot comes back.",
+     "slot": "quartz"
+    },
+    "small.en s2": {
+     "text": "Quartz has finished, so the robot comes back.",
+     "slot": "quartz"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə kwˈɔːɹts.",
+   "phonemes2": "kwˈɔːɹts hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "marble",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to marble.",
+     "slot": "marble"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to marble.",
+     "slot": "marble"
+    },
+    "base.en s2": {
+     "text": "Marble has finished, so the robot comes back.",
+     "slot": "marble"
+    },
+    "small.en s2": {
+     "text": "Marble has finished, so the robot comes back.",
+     "slot": "marble"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə mˈɑːɹbəl.",
+   "phonemes2": "mˈɑːɹbəl hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "sapphire",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to sapphire.",
+     "slot": "sapphire"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to sapphire.",
+     "slot": "sapphire"
+    },
+    "base.en s2": {
+     "text": "Sapphire has finished, so the robot comes back.",
+     "slot": "sapphire"
+    },
+    "small.en s2": {
+     "text": "Sapphire has finished, so the robot comes back.",
+     "slot": "sapphire"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə sˈæfaɪɚ.",
+   "phonemes2": "sˈæfaɪɚ hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "opal",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to opal.",
+     "slot": "opal"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to opal.",
+     "slot": "opal"
+    },
+    "base.en s2": {
+     "text": "Opal has finished, so the robot comes back.",
+     "slot": "opal"
+    },
+    "small.en s2": {
+     "text": "Opal has finished, so the robot comes back.",
+     "slot": "opal"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tʊ ˈoʊpəl.",
+   "phonemes2": "ˈoʊpəl hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "emery",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to Emory.",
+     "slot": "emory"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to Emory.",
+     "slot": "emory"
+    },
+    "base.en s2": {
+     "text": "Emery has finished, so the robot comes back.",
+     "slot": "emery"
+    },
+    "small.en s2": {
+     "text": "Emery has finished, so the robot comes back.",
+     "slot": "emery"
+    }
+   },
+   "verdict": {
+    "base.en s1": "miss",
+    "small.en s1": "miss",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tʊ ˈɛmɚɹi.",
+   "phonemes2": "ˈɛmɚɹi hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "heard_as_other_word"
+  },
+  {
+   "name": "obsidian",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to obsidian.",
+     "slot": "obsidian"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to obsidian.",
+     "slot": "obsidian"
+    },
+    "base.en s2": {
+     "text": "Obsidian has finished, so the robot comes back.",
+     "slot": "obsidian"
+    },
+    "small.en s2": {
+     "text": "Obsidian has finished, so the robot comes back.",
+     "slot": "obsidian"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tʊ əbsˈɪdiən.",
+   "phonemes2": "əbsˈɪdiən hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "fossil",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to fossil.",
+     "slot": "fossil"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to fossil.",
+     "slot": "fossil"
+    },
+    "base.en s2": {
+     "text": "Fossil has finished, so the robot comes back.",
+     "slot": "fossil"
+    },
+    "small.en s2": {
+     "text": "Fossil has finished, so the robot comes back.",
+     "slot": "fossil"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə fˈɑːsəl.",
+   "phonemes2": "fˈɑːsəl hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "agate",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to agate.",
+     "slot": "agate"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to agate.",
+     "slot": "agate"
+    },
+    "base.en s2": {
+     "text": "Agate has finished, so the robot comes back.",
+     "slot": "agate"
+    },
+    "small.en s2": {
+     "text": "Agate has finished, so the robot comes back.",
+     "slot": "agate"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tʊ ˈæɡeɪt.",
+   "phonemes2": "ˈæɡeɪt hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "tigereye",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to tiger eye.",
+     "slot": "tiger eye"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to tigereye.",
+     "slot": "tigereye"
+    },
+    "base.en s2": {
+     "text": "Tiger Eye has finished, so the robot comes back.",
+     "slot": "tiger eye"
+    },
+    "small.en s2": {
+     "text": "Tiger Eye has finished, so the robot comes back.",
+     "slot": "tiger eye"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə tˈaɪɡɚɹˌaɪ.",
+   "phonemes2": "tˈaɪɡɚɹˌaɪ hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "rift",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to rift.",
+     "slot": "rift"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to rift.",
+     "slot": "rift"
+    },
+    "base.en s2": {
+     "text": "Rift is finished, so the robot comes back.",
+     "slot": "rift"
+    },
+    "small.en s2": {
+     "text": "Rift is finished, so the robot comes back.",
+     "slot": "rift"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə ɹˈɪft.",
+   "phonemes2": "ɹˈɪft hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "topaz",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to topas.",
+     "slot": "topas"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to Topaz.",
+     "slot": "topaz"
+    },
+    "base.en s2": {
+     "text": "Topaz has finished, so the robot comes back.",
+     "slot": "topaz"
+    },
+    "small.en s2": {
+     "text": "Topaz has finished, so the robot comes back.",
+     "slot": "topaz"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə tˈoʊpæz.",
+   "phonemes2": "tˈoʊpæz hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "fluorite",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to Fleurite.",
+     "slot": "fleurite"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to fluorite.",
+     "slot": "fluorite"
+    },
+    "base.en s2": {
+     "text": "Fluorite is finished, so the robot comes back.",
+     "slot": "fluorite"
+    },
+    "small.en s2": {
+     "text": "Fluorite has finished, so the robot comes back.",
+     "slot": "fluorite"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə flˈʊɹɹaɪt.",
+   "phonemes2": "flˈʊɹɹaɪt hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "garnet",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to garnet.",
+     "slot": "garnet"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to garnet.",
+     "slot": "garnet"
+    },
+    "base.en s2": {
+     "text": "Garnet has finished, so the robot comes back.",
+     "slot": "garnet"
+    },
+    "small.en s2": {
+     "text": "Garnet has finished, so the robot comes back.",
+     "slot": "garnet"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə ɡˈɑːɹnɪt.",
+   "phonemes2": "ɡˈɑːɹnɪt hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "galena",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to Galena.",
+     "slot": "galena"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to Galena.",
+     "slot": "galena"
+    },
+    "base.en s2": {
+     "text": "Galena has finished, so the robot comes back.",
+     "slot": "galena"
+    },
+    "small.en s2": {
+     "text": "Galina has finished, so the robot comes back.",
+     "slot": "galina"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə ɡɐlˈiːnə.",
+   "phonemes2": "ɡɐlˈiːnə hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "gypsum",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to gypsum.",
+     "slot": "gypsum"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to gypsum.",
+     "slot": "gypsum"
+    },
+    "base.en s2": {
+     "text": "Gypsum has finished, so the robot comes back.",
+     "slot": "gypsum"
+    },
+    "small.en s2": {
+     "text": "Gypsum has finished, so the robot comes back.",
+     "slot": "gypsum"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə dʒˈɪpsəm.",
+   "phonemes2": "dʒˈɪpsəm hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "cinder",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to center.",
+     "slot": "center"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to cinder.",
+     "slot": "cinder"
+    },
+    "base.en s2": {
+     "text": "Cinder has finished, so the robot comes back.",
+     "slot": "cinder"
+    },
+    "small.en s2": {
+     "text": "Cinder has finished, so the robot comes back.",
+     "slot": "cinder"
+    }
+   },
+   "verdict": {
+    "base.en s1": "miss",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə sˈɪndɚ.",
+   "phonemes2": "sˈɪndɚ hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "heard_as_other_word"
+  },
+  {
+   "name": "pearl",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to purl.",
+     "slot": "purl"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to purl.",
+     "slot": "purl"
+    },
+    "base.en s2": {
+     "text": "Pearl has finished, so the robot comes back.",
+     "slot": "pearl"
+    },
+    "small.en s2": {
+     "text": "Pearl has finished, so the robot comes back.",
+     "slot": "pearl"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə pˈɜːl.",
+   "phonemes2": "pˈɜːl hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "dune",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to dune.",
+     "slot": "dune"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to Dune.",
+     "slot": "dune"
+    },
+    "base.en s2": {
+     "text": "Dune has finished so the robot comes back.",
+     "slot": "dune"
+    },
+    "small.en s2": {
+     "text": "Dune has finished, so the robot comes back.",
+     "slot": "dune"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə dˈuːn.",
+   "phonemes2": "dˈuːn hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "magma",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to magma.",
+     "slot": "magma"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to magma.",
+     "slot": "magma"
+    },
+    "base.en s2": {
+     "text": "Magma has finished, so the robot comes back.",
+     "slot": "magma"
+    },
+    "small.en s2": {
+     "text": "Magma has finished, so the robot comes back.",
+     "slot": "magma"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə mˈæɡmə.",
+   "phonemes2": "mˈæɡmə hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "geode",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to geode.",
+     "slot": "geode"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to geode.",
+     "slot": "geode"
+    },
+    "base.en s2": {
+     "text": "Geote has finished, so the robot comes back.",
+     "slot": "geote"
+    },
+    "small.en s2": {
+     "text": "Geode has finished, so the robot comes back.",
+     "slot": "geode"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "miss",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə dʒˈiːoʊd.",
+   "phonemes2": "dʒˈiːoʊd hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "misspelt"
+  },
+  {
+   "name": "pumice",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to pumice.",
+     "slot": "pumice"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to pumice.",
+     "slot": "pumice"
+    },
+    "base.en s2": {
+     "text": "Pumice is finished, so the robot comes back.",
+     "slot": "pumice"
+    },
+    "small.en s2": {
+     "text": "Pumice has finished, so the robot comes back.",
+     "slot": "pumice"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə pjˈuːmɪs.",
+   "phonemes2": "pjˈuːmɪs hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "boulder",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to bolder.",
+     "slot": "bolder"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to Boulder.",
+     "slot": "boulder"
+    },
+    "base.en s2": {
+     "text": "Boulder has finished, so the robot comes back.",
+     "slot": "boulder"
+    },
+    "small.en s2": {
+     "text": "Boulder has finished, so the robot comes back.",
+     "slot": "boulder"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə bˈoʊldɚ.",
+   "phonemes2": "bˈoʊldɚ hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "pebble",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to pebble.",
+     "slot": "pebble"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to pebble.",
+     "slot": "pebble"
+    },
+    "base.en s2": {
+     "text": "Pebble has finished, so the robot comes back.",
+     "slot": "pebble"
+    },
+    "small.en s2": {
+     "text": "Pebble has finished, so the robot comes back.",
+     "slot": "pebble"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə pˈɛbəl.",
+   "phonemes2": "pˈɛbəl hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "chimney",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to chimney.",
+     "slot": "chimney"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to chimney.",
+     "slot": "chimney"
+    },
+    "base.en s2": {
+     "text": "Chimney has finished, so the robot comes back.",
+     "slot": "chimney"
+    },
+    "small.en s2": {
+     "text": "Chimney has finished, so the robot comes back.",
+     "slot": "chimney"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə tʃˈɪmni.",
+   "phonemes2": "tʃˈɪmni hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "olivine",
+   "fix": {
+    "ipa": "ˈɑːlɪvˌiːn"
+   },
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to olivine.",
+     "slot": "olivine"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to olivine.",
+     "slot": "olivine"
+    },
+    "base.en s2": {
+     "text": "Oliveen has finished, so the robot comes back.",
+     "slot": "oliveen"
+    },
+    "small.en s2": {
+     "text": "Ollivine has finished, so the robot comes back.",
+     "slot": "ollivine"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "miss",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː ˈɑːlɪvˌiːn .",
+   "phonemes2": "ˈɑːlɪvˌiːn hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "misspelt"
+  },
+  {
+   "name": "flint",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to flint.",
+     "slot": "flint"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to flint.",
+     "slot": "flint"
+    },
+    "base.en s2": {
+     "text": "Flint has finished, so the robot comes back.",
+     "slot": "flint"
+    },
+    "small.en s2": {
+     "text": "Flint has finished, so the robot comes back.",
+     "slot": "flint"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə flˈɪnt.",
+   "phonemes2": "flˈɪnt hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "basalt",
+   "fix": {
+    "ipa": "bəsˈɔːlt"
+   },
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to basalt.",
+     "slot": "basalt"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to basalt.",
+     "slot": "basalt"
+    },
+    "base.en s2": {
+     "text": "Basalt has finished, so the robot comes back.",
+     "slot": "basalt"
+    },
+    "small.en s2": {
+     "text": "Basalt has finished, so the robot comes back.",
+     "slot": "basalt"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː bəsˈɔːlt .",
+   "phonemes2": "bəsˈɔːlt hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "lava",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to lava.",
+     "slot": "lava"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to lava.",
+     "slot": "lava"
+    },
+    "base.en s2": {
+     "text": "Lava has finished, so the robot comes back.",
+     "slot": "lava"
+    },
+    "small.en s2": {
+     "text": "Lava has finished, so the robot comes back.",
+     "slot": "lava"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə lˈɑːvə.",
+   "phonemes2": "lˈɑːvə hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "ruby",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to Ruby.",
+     "slot": "ruby"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to Ruby.",
+     "slot": "ruby"
+    },
+    "base.en s2": {
+     "text": "Ruby has finished, so the robot comes back.",
+     "slot": "ruby"
+    },
+    "small.en s2": {
+     "text": "Ruby has finished, so the robot comes back.",
+     "slot": "ruby"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə ɹˈuːbi.",
+   "phonemes2": "ɹˈuːbi hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "borax",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to borax.",
+     "slot": "borax"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to borax.",
+     "slot": "borax"
+    },
+    "base.en s2": {
+     "text": "Borax is finished, so the robot comes back.",
+     "slot": "borax"
+    },
+    "small.en s2": {
+     "text": "Borax is finished, so the robot comes back.",
+     "slot": "borax"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə bˈɔːɹæks.",
+   "phonemes2": "bˈɔːɹæks hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "elsie",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to Elsie.",
+     "slot": "elsie"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to Elsie.",
+     "slot": "elsie"
+    },
+    "base.en s2": {
+     "text": "Elsie has finished, so the robot comes back.",
+     "slot": "elsie"
+    },
+    "small.en s2": {
+     "text": "Elsie has finished, so the robot comes back.",
+     "slot": "elsie"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tʊ ˈɛlsi.",
+   "phonemes2": "ˈɛlsi hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "freddy",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to Freddie.",
+     "slot": "freddie"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to Freddie.",
+     "slot": "freddie"
+    },
+    "base.en s2": {
+     "text": "Freddy has finished, so the robot comes back.",
+     "slot": "freddy"
+    },
+    "small.en s2": {
+     "text": "Freddy has finished, so the robot comes back.",
+     "slot": "freddy"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə fɹˈɛdi.",
+   "phonemes2": "fɹˈɛdi hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "timp",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to temp.",
+     "slot": "temp"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to temp.",
+     "slot": "temp"
+    },
+    "base.en s2": {
+     "text": "Timp is finished, so the robot comes back.",
+     "slot": "timp"
+    },
+    "small.en s2": {
+     "text": "Timp has finished, so the robot comes back.",
+     "slot": "timp"
+    }
+   },
+   "verdict": {
+    "base.en s1": "miss",
+    "small.en s1": "miss",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə tˈɪmp.",
+   "phonemes2": "tˈɪmp hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "heard_as_other_word"
+  },
+  {
+   "name": "nebo",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to Nebo.",
+     "slot": "nebo"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to Nebo.",
+     "slot": "nebo"
+    },
+    "base.en s2": {
+     "text": "Nebo has finished, so the robot comes back.",
+     "slot": "nebo"
+    },
+    "small.en s2": {
+     "text": "Nebo has finished, so the robot comes back.",
+     "slot": "nebo"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə nˈiːboʊ.",
+   "phonemes2": "nˈiːboʊ hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "unimate",
+   "fix": {
+    "ipa": "jˈuːnɪmˌeɪt"
+   },
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to unimate.",
+     "slot": "unimate"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to Unimate.",
+     "slot": "unimate"
+    },
+    "base.en s2": {
+     "text": "Unimate has finished, so the robot comes back.",
+     "slot": "unimate"
+    },
+    "small.en s2": {
+     "text": "Unimate has finished, so the robot comes back.",
+     "slot": "unimate"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː jˈuːnɪmˌeɪt .",
+   "phonemes2": "jˈuːnɪmˌeɪt hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "genghis",
+   "fix": {
+    "ipa": "ɡˈɛŋɡɪs"
+   },
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to Genghis.",
+     "slot": "genghis"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to Genghis.",
+     "slot": "genghis"
+    },
+    "base.en s2": {
+     "text": "Genghis has finished, so the robot comes back.",
+     "slot": "genghis"
+    },
+    "small.en s2": {
+     "text": "Genghis has finished, so the robot comes back.",
+     "slot": "genghis"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː ɡˈɛŋɡɪs .",
+   "phonemes2": "ɡˈɛŋɡɪs hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "cascade",
+   "fix": {
+    "ipa": "kæskˈeɪd"
+   },
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to cascade.",
+     "slot": "cascade"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to cascade.",
+     "slot": "cascade"
+    },
+    "base.en s2": {
+     "text": "Cascade has finished, so the robot comes back.",
+     "slot": "cascade"
+    },
+    "small.en s2": {
+     "text": "Cascade has finished, so the robot comes back.",
+     "slot": "cascade"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː kæskˈeɪd .",
+   "phonemes2": "kæskˈeɪd hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "lonepeak",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to Lone Peak.",
+     "slot": "lone peak"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to Lone Peak.",
+     "slot": "lone peak"
+    },
+    "base.en s2": {
+     "text": "Lone Peak has finished, so the robot comes back.",
+     "slot": "lone peak"
+    },
+    "small.en s2": {
+     "text": "Lone Peak has finished, so the robot comes back.",
+     "slot": "lone peak"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə lˈoʊnpiːk.",
+   "phonemes2": "lˈoʊnpiːk hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "lapis",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to lapis.",
+     "slot": "lapis"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to Lappie's.",
+     "slot": "lappies"
+    },
+    "base.en s2": {
+     "text": "Lapis is finished, so the robot comes back.",
+     "slot": "lapis"
+    },
+    "small.en s2": {
+     "text": "Lapis has finished, so the robot comes back.",
+     "slot": "lapis"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "miss",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə lˈæpiz.",
+   "phonemes2": "lˈæpiz hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "misspelt"
+  },
+  {
+   "name": "turquoise",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to turquoise.",
+     "slot": "turquoise"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to turquoise.",
+     "slot": "turquoise"
+    },
+    "base.en s2": {
+     "text": "Turquoise has finished, so the robot comes back.",
+     "slot": "turquoise"
+    },
+    "small.en s2": {
+     "text": "Turquoise has finished, so the robot comes back.",
+     "slot": "turquoise"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə tˈɜːkwɔɪs.",
+   "phonemes2": "tˈɜːkwɔɪs hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "citrine",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to citrine.",
+     "slot": "citrine"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to citrine.",
+     "slot": "citrine"
+    },
+    "base.en s2": {
+     "text": "Citrine has finished, so the robot comes back.",
+     "slot": "citrine"
+    },
+    "small.en s2": {
+     "text": "Citrine has finished, so the robot comes back.",
+     "slot": "citrine"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə sˈɪtɹiːn.",
+   "phonemes2": "sˈɪtɹiːn hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  },
+  {
+   "name": "whetstone",
+   "fix": null,
+   "heard": {
+    "base.en s1": {
+     "text": "Next, the arm takes the bar to wetstone.",
+     "slot": "wetstone"
+    },
+    "small.en s1": {
+     "text": "Next, the arm takes the bar to whetstone.",
+     "slot": "whetstone"
+    },
+    "base.en s2": {
+     "text": "Wetstone has finished, so the robot comes back.",
+     "slot": "wetstone"
+    },
+    "small.en s2": {
+     "text": "Wetstone has finished, so the robot comes back.",
+     "slot": "wetstone"
+    }
+   },
+   "verdict": {
+    "base.en s1": "ok",
+    "small.en s1": "ok",
+    "base.en s2": "ok",
+    "small.en s2": "ok"
+   },
+   "phonemes1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə wˈɛtstoʊn.",
+   "phonemes2": "wˈɛtstoʊn hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk.",
+   "result": "ok"
+  }
+ ],
+ "first_try": {
+  "note": "The first full run, before any fix, on the list as it then was (fumarole for the fume hood, chert as a spare): 31 of 49 heard right.",
+  "heard_as_other_word": [
+   "halite",
+   "mica",
+   "emery",
+   "cinder",
+   "timp",
+   "unimate",
+   "chert"
+  ],
+  "misspelt": [
+   "talc",
+   "topaz",
+   "galena",
+   "pearl",
+   "geode",
+   "fumarole",
+   "olivine",
+   "basalt",
+   "genghis",
+   "cascade",
+   "lapis"
+  ]
+ },
+ "candidates_tried": {
+  "fumarole": {
+   "result": "misspelt",
+   "fix": {
+    "ipa": "fjˈuːmɚɹˌoʊl"
+   },
+   "heard": {
+    "base.en s1": "fumeral",
+    "small.en s1": "fumarole",
+    "base.en s2": "fumeral",
+    "small.en s2": "fumeral"
+   }
+  },
+  "peridot": {
+   "result": "misspelt",
+   "fix": null,
+   "heard": {
+    "base.en s1": "paradot",
+    "small.en s1": "peridot",
+    "base.en s2": "peridot",
+    "small.en s2": "peridot"
+   }
+  },
+  "spinel": {
+   "result": "heard_as_other_word",
+   "fix": null,
+   "heard": {
+    "base.en s1": "spindle",
+    "small.en s1": "spindle",
+    "base.en s2": "spinel",
+    "small.en s2": "spindle"
+   }
+  },
+  "amethyst": {
+   "result": "ok",
+   "fix": null,
+   "heard": {
+    "base.en s1": "amethyst",
+    "small.en s1": "amethyst",
+    "base.en s2": "amethyst",
+    "small.en s2": "amethyst"
+   }
+  },
+  "jasper": {
+   "result": "ok",
+   "fix": null,
+   "heard": {
+    "base.en s1": "jasper",
+    "small.en s1": "jasper",
+    "base.en s2": "jasper",
+    "small.en s2": "jasper"
+   }
+  },
+  "beryl": {
+   "result": "heard_as_other_word",
+   "fix": null,
+   "heard": {
+    "base.en s1": "barrel",
+    "small.en s1": "barrel",
+    "base.en s2": "barrel",
+    "small.en s2": "barrel"
+   }
+  },
+  "chimney": {
+   "result": "ok",
+   "fix": null,
+   "heard": {
+    "base.en s1": "chimney",
+    "small.en s1": "chimney",
+    "base.en s2": "chimney",
+    "small.en s2": "chimney"
+   }
+  },
+  "geyser": {
+   "result": "ok",
+   "fix": {
+    "ipa": "ɡˈaɪzɚ"
+   },
+   "heard": {
+    "base.en s1": "geyser",
+    "small.en s1": "geyser",
+    "base.en s2": "geyser",
+    "small.en s2": "geyser"
+   }
+  },
+  "vent": {
+   "result": "ok",
+   "fix": null,
+   "heard": {
+    "base.en s1": "vent",
+    "small.en s1": "vent",
+    "base.en s2": "vent",
+    "small.en s2": "vent"
+   }
+  },
+  "chert": {
+   "result": "heard_as_other_word",
+   "heard": {
+    "base.en s1": "shirt",
+    "small.en s1": "church",
+    "base.en s2": "chirt"
+   }
+  }
+ }
+}

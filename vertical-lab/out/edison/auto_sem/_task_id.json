@@ -1,0 +1,5 @@
+{
+ "task_id": "1f55fe26-3499-4af8-815f-9eadd578d2c0",
+ "job": "LITERATURE",
+ "query": "How do automated or robotic workflows load metallographic samples into scanning electron microscopes (tabletop SEMs such as Hitachi TM4000 or Phenom, and floor SEMs)? What sample holders, stubs and multi-sample holders are used, and how is an electrically conductive path made from the polished surface of a non-conductive mount (Bakelite/epoxy) to the stage: conductive (carbon/copper-filled) mounting resins, copper tape wrapped from top to bottom, silver paint, drilled holes with a screw or spring contact, or carbon coating? Which approaches are used or recommended for robotic/autonomous labs, and with what reported success?"
+}

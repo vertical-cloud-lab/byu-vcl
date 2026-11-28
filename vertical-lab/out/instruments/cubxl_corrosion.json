@@ -1,0 +1,83 @@
+{
+ "name": "instruments/cubxl_corrosion",
+ "fps": 12,
+ "n_frames": 1215,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/12",
+   "caption": "Copper corrosion on the CubXL, as DAL's copper screen lays it out (PR #180): four stations, S1 C71500 Cu-Ni, S2 C95800 NAB, S3 a DED pad, S4 a PTFE blank; Ben's 9-vial holder of stocks; three cups; 2 x 8 ICP-MS tubes; tip racks. On the head: the capper, the P20, a P300 34 mm in front of it (proposed, notes/cubxl_pipettes.md) and a camera.",
+   "start_frame": 0,
+   "end_frame": 39
+  },
+  {
+   "label": "2/12",
+   "caption": "1 The P300 (20-300 µL) takes a 300 µL tip from its rack at the deck's front left. One tip on the head at a time: the two pipettes share one Z axis.",
+   "start_frame": 40,
+   "end_frame": 73
+  },
+  {
+   "label": "3/12",
+   "caption": "2 The capper lifts the seawater cap. The P300 builds S1's well from 135 µL of ASW in one transfer (the P20 alone took 7), dispensed from above the meniscus; the cap goes back. The tip only ever touches ASW, so it goes back to its rack for the next well.",
+   "start_frame": 74,
+   "end_frame": 204
+  },
+  {
+   "label": "4/12",
+   "caption": "3 Sulfide last, with the P20 (1-20 µL): a 20 µL tip, 15 µL of the 10 mg/L S stock, 150 µL at 1 mg/L S. Then the P300 mixes the well, 3 strokes of 80 µL with a fresh tip: H2S leaves a sulfide layer at the top far faster than it reaches the metal.",
+   "start_frame": 205,
+   "end_frame": 420
+  },
+  {
+   "label": "5/12",
+   "caption": "4 The head camera checks for liquid outside the O-ring (2 min).",
+   "start_frame": 421,
+   "end_frame": 449
+  },
+  {
+   "label": "6/12",
+   "caption": "5 The capper carries the electrode cap (leak-free Ag/AgCl reference, Pt coil counter) from its park cup and sets it over S1's boss: no O-ring, two small lid magnets hold it. No tip on.",
+   "start_frame": 450,
+   "end_frame": 501
+  },
+  {
+   "label": "7/12",
+   "caption": "6 Cap on, head free: OCP 20 min, EIS at OCP 10 min, LPR ±10 mV, rest 5 min, a +50 mV hold for 10 min, OCP 5 min. EIS needs the requested potentiostat: the EZstat Pro has none, so until then OCP runs 30 min.",
+   "start_frame": 502,
+   "end_frame": 599
+  },
+  {
+   "label": "8/12",
+   "caption": "7 The magnet lifts the cap off S1. It is dipped in DI water, then seawater, and parked.",
+   "start_frame": 600,
+   "end_frame": 674
+  },
+  {
+   "label": "9/12",
+   "caption": "8 The P300 moves the well's 150 µL to tube 1 in one transfer (the P20 took 8). A fresh tip adds 150 µL of DI water from above, rinses S1 twice and carries the rinse to the tube: 3 transfers where the P20 took 24.",
+   "start_frame": 675,
+   "end_frame": 1002
+  },
+  {
+   "label": "10/12",
+   "caption": "9 Acidify at once: the capper opens the acid vial and the night's one acid tip adds 20 µL of 1 M HNO3 from above the rim with the P20: 320 µL at 62 mM HNO3. The acid tip goes back to rack 2.",
+   "start_frame": 1003,
+   "end_frame": 1130
+  },
+  {
+   "label": "11/12",
+   "caption": "10 The head camera images the spot. Next: S2. With the P300 the head works about 9 min a spot, against 22.5 with the P20 alone (CubXL step times, notes/cubxl_pipettes.md).",
+   "start_frame": 1131,
+   "end_frame": 1167
+  },
+  {
+   "label": "12/12",
+   "caption": "Cyclic polarization runs only on selected spots, and last on each: fill to EIS, then the scan, then its own tube. On every spot it would swamp the tube's copper (3.4 mC against the hold's 0.2-2.8 mC).",
+   "start_frame": 1168,
+   "end_frame": 1214
+  }
+ ]
+}

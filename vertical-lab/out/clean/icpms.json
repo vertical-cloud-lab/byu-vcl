@@ -1,0 +1,377 @@
+{
+ "name": "icpms",
+ "fps": 15,
+ "n_frames": 1490,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/8",
+   "caption": "An ICP-MS station of the lab's own (its spot on the floor is still open): its concentrated acids stay in a metal-free polypropylene fume hood, off every tray. Beside it an Agilent 7850 ICP-MS with its SPS 4 autosampler, the chiller and forepump under the bench, and liquid argon in a 180 L dewar.",
+   "start_frame": 0,
+   "end_frame": 123
+  },
+  {
+   "label": "2/8",
+   "caption": "A MiR250 + UR12e brings the CubXL's night from tray A: 9 capped 0.5 mL tubes of 320 µL, in the CubXL's rack on a carrier (ours). The arm wears a PTFE-laminate cover: it is IP54 itself, and UR asks for a cover where liquids are about.",
+   "start_frame": 124,
+   "end_frame": 222
+  },
+  {
+   "label": "3/8",
+   "caption": "The right half of the sash opens: on two tracks, three panels slide behind the first. The arm works through the opening, as a person does.",
+   "start_frame": 223,
+   "end_frame": 261
+  },
+  {
+   "label": "4/8",
+   "caption": "The arm takes the carrier by its handle (ours) and sets it on the dilutor's deck, 250 mm inside the sash. It carries capped tubes in and only dilute acid out, never an open concentrated acid.",
+   "start_frame": 262,
+   "end_frame": 288
+  },
+  {
+   "label": "4/8",
+   "caption": "The arm takes the carrier by its handle (ours) and sets it on the dilutor's deck, 250 mm inside the sash. It carries capped tubes in and only dilute acid out, never an open concentrated acid.",
+   "start_frame": 289,
+   "end_frame": 300
+  },
+  {
+   "label": "4/8",
+   "caption": "The arm takes the carrier by its handle (ours) and sets it on the dilutor's deck, 250 mm inside the sash. It carries capped tubes in and only dilute acid out, never an open concentrated acid.",
+   "start_frame": 301,
+   "end_frame": 306
+  },
+  {
+   "label": "4/8",
+   "caption": "The arm takes the carrier by its handle (ours) and sets it on the dilutor's deck, 250 mm inside the sash. It carries capped tubes in and only dilute acid out, never an open concentrated acid.",
+   "start_frame": 307,
+   "end_frame": 318
+  },
+  {
+   "label": "4/8",
+   "caption": "The arm takes the carrier by its handle (ours) and sets it on the dilutor's deck, 250 mm inside the sash. It carries capped tubes in and only dilute acid out, never an open concentrated acid.",
+   "start_frame": 319,
+   "end_frame": 360
+  },
+  {
+   "label": "4/8",
+   "caption": "The arm takes the carrier by its handle (ours) and sets it on the dilutor's deck, 250 mm inside the sash. It carries capped tubes in and only dilute acid out, never an open concentrated acid.",
+   "start_frame": 361,
+   "end_frame": 374
+  },
+  {
+   "label": "4/8",
+   "caption": "The arm takes the carrier by its handle (ours) and sets it on the dilutor's deck, 250 mm inside the sash. It carries capped tubes in and only dilute acid out, never an open concentrated acid.",
+   "start_frame": 375,
+   "end_frame": 380
+  },
+  {
+   "label": "4/8",
+   "caption": "The arm takes the carrier by its handle (ours) and sets it on the dilutor's deck, 250 mm inside the sash. It carries capped tubes in and only dilute acid out, never an open concentrated acid.",
+   "start_frame": 381,
+   "end_frame": 392
+  },
+  {
+   "label": "4/8",
+   "caption": "The arm takes the carrier by its handle (ours) and sets it on the dilutor's deck, 250 mm inside the sash. It carries capped tubes in and only dilute acid out, never an open concentrated acid.",
+   "start_frame": 393,
+   "end_frame": 432
+  },
+  {
+   "label": "5/8",
+   "caption": "Inside, an acid-rated dilutor (QPrep class), not the OT-2, makes the dilution: PFA probe and lines, no metal or PEEK where the acid goes. Its head (ours) lifts the first tube's cap and takes 100 µL into 900 µL of 2 % nitric acid with an internal standard, tenfold, in the autosampler rack; then the cap goes back.",
+   "start_frame": 433,
+   "end_frame": 456
+  },
+  {
+   "label": "5/8",
+   "caption": "Inside, an acid-rated dilutor (QPrep class), not the OT-2, makes the dilution: PFA probe and lines, no metal or PEEK where the acid goes. Its head (ours) lifts the first tube's cap and takes 100 µL into 900 µL of 2 % nitric acid with an internal standard, tenfold, in the autosampler rack; then the cap goes back.",
+   "start_frame": 457,
+   "end_frame": 471
+  },
+  {
+   "label": "5/8",
+   "caption": "Inside, an acid-rated dilutor (QPrep class), not the OT-2, makes the dilution: PFA probe and lines, no metal or PEEK where the acid goes. Its head (ours) lifts the first tube's cap and takes 100 µL into 900 µL of 2 % nitric acid with an internal standard, tenfold, in the autosampler rack; then the cap goes back.",
+   "start_frame": 472,
+   "end_frame": 483
+  },
+  {
+   "label": "5/8",
+   "caption": "Inside, an acid-rated dilutor (QPrep class), not the OT-2, makes the dilution: PFA probe and lines, no metal or PEEK where the acid goes. Its head (ours) lifts the first tube's cap and takes 100 µL into 900 µL of 2 % nitric acid with an internal standard, tenfold, in the autosampler rack; then the cap goes back.",
+   "start_frame": 484,
+   "end_frame": 491
+  },
+  {
+   "label": "5/8",
+   "caption": "Inside, an acid-rated dilutor (QPrep class), not the OT-2, makes the dilution: PFA probe and lines, no metal or PEEK where the acid goes. Its head (ours) lifts the first tube's cap and takes 100 µL into 900 µL of 2 % nitric acid with an internal standard, tenfold, in the autosampler rack; then the cap goes back.",
+   "start_frame": 492,
+   "end_frame": 514
+  },
+  {
+   "label": "5/8",
+   "caption": "Inside, an acid-rated dilutor (QPrep class), not the OT-2, makes the dilution: PFA probe and lines, no metal or PEEK where the acid goes. Its head (ours) lifts the first tube's cap and takes 100 µL into 900 µL of 2 % nitric acid with an internal standard, tenfold, in the autosampler rack; then the cap goes back.",
+   "start_frame": 515,
+   "end_frame": 526
+  },
+  {
+   "label": "5/8",
+   "caption": "Inside, an acid-rated dilutor (QPrep class), not the OT-2, makes the dilution: PFA probe and lines, no metal or PEEK where the acid goes. Its head (ours) lifts the first tube's cap and takes 100 µL into 900 µL of 2 % nitric acid with an internal standard, tenfold, in the autosampler rack; then the cap goes back.",
+   "start_frame": 527,
+   "end_frame": 547
+  },
+  {
+   "label": "5/8",
+   "caption": "Inside, an acid-rated dilutor (QPrep class), not the OT-2, makes the dilution: PFA probe and lines, no metal or PEEK where the acid goes. Its head (ours) lifts the first tube's cap and takes 100 µL into 900 µL of 2 % nitric acid with an internal standard, tenfold, in the autosampler rack; then the cap goes back.",
+   "start_frame": 548,
+   "end_frame": 567
+  },
+  {
+   "label": "5/8",
+   "caption": "Inside, an acid-rated dilutor (QPrep class), not the OT-2, makes the dilution: PFA probe and lines, no metal or PEEK where the acid goes. Its head (ours) lifts the first tube's cap and takes 100 µL into 900 µL of 2 % nitric acid with an internal standard, tenfold, in the autosampler rack; then the cap goes back.",
+   "start_frame": 568,
+   "end_frame": 576
+  },
+  {
+   "label": "5/8",
+   "caption": "Inside, an acid-rated dilutor (QPrep class), not the OT-2, makes the dilution: PFA probe and lines, no metal or PEEK where the acid goes. Its head (ours) lifts the first tube's cap and takes 100 µL into 900 µL of 2 % nitric acid with an internal standard, tenfold, in the autosampler rack; then the cap goes back.",
+   "start_frame": 577,
+   "end_frame": 597
+  },
+  {
+   "label": "5/8",
+   "caption": "Inside, an acid-rated dilutor (QPrep class), not the OT-2, makes the dilution: PFA probe and lines, no metal or PEEK where the acid goes. Its head (ours) lifts the first tube's cap and takes 100 µL into 900 µL of 2 % nitric acid with an internal standard, tenfold, in the autosampler rack; then the cap goes back.",
+   "start_frame": 598,
+   "end_frame": 612
+  },
+  {
+   "label": "5/8",
+   "caption": "Inside, an acid-rated dilutor (QPrep class), not the OT-2, makes the dilution: PFA probe and lines, no metal or PEEK where the acid goes. Its head (ours) lifts the first tube's cap and takes 100 µL into 900 µL of 2 % nitric acid with an internal standard, tenfold, in the autosampler rack; then the cap goes back.",
+   "start_frame": 613,
+   "end_frame": 622
+  },
+  {
+   "label": "5/8",
+   "caption": "The same for the other 8 tubes, about 40 s each (an estimate), then the head parks.",
+   "start_frame": 623,
+   "end_frame": 654
+  },
+  {
+   "label": "6/8",
+   "caption": "The hot block digests chips or powder of each build in nitric and hydrochloric acid, aqua regia for the copper alloys. With no HF, silicon over about 1 % won't dissolve, so Si comes from the XRF.",
+   "start_frame": 655,
+   "end_frame": 726
+  },
+  {
+   "label": "7/8",
+   "caption": "The filled autosampler rack (dilute acid, open tubes) rides on the MiR to the SPS 4, whose lid lifts (the actuator is ours): the arm sets the rack on its tray.",
+   "start_frame": 727,
+   "end_frame": 756
+  },
+  {
+   "label": "7/8",
+   "caption": "The filled autosampler rack (dilute acid, open tubes) rides on the MiR to the SPS 4, whose lid lifts (the actuator is ours): the arm sets the rack on its tray.",
+   "start_frame": 757,
+   "end_frame": 768
+  },
+  {
+   "label": "7/8",
+   "caption": "The filled autosampler rack (dilute acid, open tubes) rides on the MiR to the SPS 4, whose lid lifts (the actuator is ours): the arm sets the rack on its tray.",
+   "start_frame": 769,
+   "end_frame": 774
+  },
+  {
+   "label": "7/8",
+   "caption": "The filled autosampler rack (dilute acid, open tubes) rides on the MiR to the SPS 4, whose lid lifts (the actuator is ours): the arm sets the rack on its tray.",
+   "start_frame": 775,
+   "end_frame": 786
+  },
+  {
+   "label": "7/8",
+   "caption": "The filled autosampler rack (dilute acid, open tubes) rides on the MiR to the SPS 4, whose lid lifts (the actuator is ours): the arm sets the rack on its tray.",
+   "start_frame": 787,
+   "end_frame": 822
+  },
+  {
+   "label": "7/8",
+   "caption": "The filled autosampler rack (dilute acid, open tubes) rides on the MiR to the SPS 4, whose lid lifts (the actuator is ours): the arm sets the rack on its tray.",
+   "start_frame": 823,
+   "end_frame": 834
+  },
+  {
+   "label": "7/8",
+   "caption": "The filled autosampler rack (dilute acid, open tubes) rides on the MiR to the SPS 4, whose lid lifts (the actuator is ours): the arm sets the rack on its tray.",
+   "start_frame": 835,
+   "end_frame": 840
+  },
+  {
+   "label": "7/8",
+   "caption": "The filled autosampler rack (dilute acid, open tubes) rides on the MiR to the SPS 4, whose lid lifts (the actuator is ours): the arm sets the rack on its tray.",
+   "start_frame": 841,
+   "end_frame": 852
+  },
+  {
+   "label": "7/8",
+   "caption": "The filled autosampler rack (dilute acid, open tubes) rides on the MiR to the SPS 4, whose lid lifts (the actuator is ours): the arm sets the rack on its tray.",
+   "start_frame": 853,
+   "end_frame": 885
+  },
+  {
+   "label": "7/8",
+   "caption": "The filled autosampler rack (dilute acid, open tubes) rides on the MiR to the SPS 4, whose lid lifts (the actuator is ours): the arm sets the rack on its tray.",
+   "start_frame": 886,
+   "end_frame": 940
+  },
+  {
+   "label": "7/8",
+   "caption": "The filled autosampler rack (dilute acid, open tubes) rides on the MiR to the SPS 4, whose lid lifts (the actuator is ours): the arm sets the rack on its tray.",
+   "start_frame": 941,
+   "end_frame": 964
+  },
+  {
+   "label": "7/8",
+   "caption": "The filled autosampler rack (dilute acid, open tubes) rides on the MiR to the SPS 4, whose lid lifts (the actuator is ours): the arm sets the rack on its tray.",
+   "start_frame": 965,
+   "end_frame": 994
+  },
+  {
+   "label": "7/8",
+   "caption": "The filled autosampler rack (dilute acid, open tubes) rides on the MiR to the SPS 4, whose lid lifts (the actuator is ours): the arm sets the rack on its tray.",
+   "start_frame": 995,
+   "end_frame": 1006
+  },
+  {
+   "label": "7/8",
+   "caption": "The filled autosampler rack (dilute acid, open tubes) rides on the MiR to the SPS 4, whose lid lifts (the actuator is ours): the arm sets the rack on its tray.",
+   "start_frame": 1007,
+   "end_frame": 1012
+  },
+  {
+   "label": "7/8",
+   "caption": "The filled autosampler rack (dilute acid, open tubes) rides on the MiR to the SPS 4, whose lid lifts (the actuator is ours): the arm sets the rack on its tray.",
+   "start_frame": 1013,
+   "end_frame": 1024
+  },
+  {
+   "label": "7/8",
+   "caption": "The filled autosampler rack (dilute acid, open tubes) rides on the MiR to the SPS 4, whose lid lifts (the actuator is ours): the arm sets the rack on its tray.",
+   "start_frame": 1025,
+   "end_frame": 1063
+  },
+  {
+   "label": "7/8",
+   "caption": "The filled autosampler rack (dilute acid, open tubes) rides on the MiR to the SPS 4, whose lid lifts (the actuator is ours): the arm sets the rack on its tray.",
+   "start_frame": 1064,
+   "end_frame": 1081
+  },
+  {
+   "label": "7/8",
+   "caption": "The filled autosampler rack (dilute acid, open tubes) rides on the MiR to the SPS 4, whose lid lifts (the actuator is ours): the arm sets the rack on its tray.",
+   "start_frame": 1082,
+   "end_frame": 1087
+  },
+  {
+   "label": "7/8",
+   "caption": "The filled autosampler rack (dilute acid, open tubes) rides on the MiR to the SPS 4, whose lid lifts (the actuator is ours): the arm sets the rack on its tray.",
+   "start_frame": 1088,
+   "end_frame": 1105
+  },
+  {
+   "label": "7/8",
+   "caption": "The filled autosampler rack (dilute acid, open tubes) rides on the MiR to the SPS 4, whose lid lifts (the actuator is ours): the arm sets the rack on its tray.",
+   "start_frame": 1106,
+   "end_frame": 1141
+  },
+  {
+   "label": "7/8",
+   "caption": "The filled autosampler rack (dilute acid, open tubes) rides on the MiR to the SPS 4, whose lid lifts (the actuator is ours): the arm sets the rack on its tray.",
+   "start_frame": 1142,
+   "end_frame": 1166
+  },
+  {
+   "label": "8/8",
+   "caption": "Its rack set, the MiR250 leaves for its next job, and the SPS 4 starts on the rack.",
+   "start_frame": 1167,
+   "end_frame": 1254
+  },
+  {
+   "label": "8/8",
+   "caption": "The SPS 4 feeds the 7850, whose aerosol dilution takes salty samples up to 25 % dissolved solids. It needs 20 L/min of argon (a 180 L dewar lasts about five days of plasma), 30 A at 208 V and an exhaust drop of its own. About $160-220k for the ICP-MS; the hood, dilutor and cover have no public price.",
+   "start_frame": 1255,
+   "end_frame": 1269
+  },
+  {
+   "label": "8/8",
+   "caption": "The SPS 4 feeds the 7850, whose aerosol dilution takes salty samples up to 25 % dissolved solids. It needs 20 L/min of argon (a 180 L dewar lasts about five days of plasma), 30 A at 208 V and an exhaust drop of its own. About $160-220k for the ICP-MS; the hood, dilutor and cover have no public price.",
+   "start_frame": 1270,
+   "end_frame": 1285
+  },
+  {
+   "label": "8/8",
+   "caption": "The SPS 4 feeds the 7850, whose aerosol dilution takes salty samples up to 25 % dissolved solids. It needs 20 L/min of argon (a 180 L dewar lasts about five days of plasma), 30 A at 208 V and an exhaust drop of its own. About $160-220k for the ICP-MS; the hood, dilutor and cover have no public price.",
+   "start_frame": 1286,
+   "end_frame": 1294
+  },
+  {
+   "label": "8/8",
+   "caption": "The SPS 4 feeds the 7850, whose aerosol dilution takes salty samples up to 25 % dissolved solids. It needs 20 L/min of argon (a 180 L dewar lasts about five days of plasma), 30 A at 208 V and an exhaust drop of its own. About $160-220k for the ICP-MS; the hood, dilutor and cover have no public price.",
+   "start_frame": 1295,
+   "end_frame": 1309
+  },
+  {
+   "label": "8/8",
+   "caption": "The SPS 4 feeds the 7850, whose aerosol dilution takes salty samples up to 25 % dissolved solids. It needs 20 L/min of argon (a 180 L dewar lasts about five days of plasma), 30 A at 208 V and an exhaust drop of its own. About $160-220k for the ICP-MS; the hood, dilutor and cover have no public price.",
+   "start_frame": 1310,
+   "end_frame": 1325
+  },
+  {
+   "label": "8/8",
+   "caption": "The SPS 4 feeds the 7850, whose aerosol dilution takes salty samples up to 25 % dissolved solids. It needs 20 L/min of argon (a 180 L dewar lasts about five days of plasma), 30 A at 208 V and an exhaust drop of its own. About $160-220k for the ICP-MS; the hood, dilutor and cover have no public price.",
+   "start_frame": 1326,
+   "end_frame": 1334
+  },
+  {
+   "label": "8/8",
+   "caption": "The SPS 4 feeds the 7850, whose aerosol dilution takes salty samples up to 25 % dissolved solids. It needs 20 L/min of argon (a 180 L dewar lasts about five days of plasma), 30 A at 208 V and an exhaust drop of its own. About $160-220k for the ICP-MS; the hood, dilutor and cover have no public price.",
+   "start_frame": 1335,
+   "end_frame": 1349
+  },
+  {
+   "label": "8/8",
+   "caption": "The SPS 4 feeds the 7850, whose aerosol dilution takes salty samples up to 25 % dissolved solids. It needs 20 L/min of argon (a 180 L dewar lasts about five days of plasma), 30 A at 208 V and an exhaust drop of its own. About $160-220k for the ICP-MS; the hood, dilutor and cover have no public price.",
+   "start_frame": 1350,
+   "end_frame": 1365
+  },
+  {
+   "label": "8/8",
+   "caption": "The SPS 4 feeds the 7850, whose aerosol dilution takes salty samples up to 25 % dissolved solids. It needs 20 L/min of argon (a 180 L dewar lasts about five days of plasma), 30 A at 208 V and an exhaust drop of its own. About $160-220k for the ICP-MS; the hood, dilutor and cover have no public price.",
+   "start_frame": 1366,
+   "end_frame": 1374
+  },
+  {
+   "label": "8/8",
+   "caption": "The SPS 4 feeds the 7850, whose aerosol dilution takes salty samples up to 25 % dissolved solids. It needs 20 L/min of argon (a 180 L dewar lasts about five days of plasma), 30 A at 208 V and an exhaust drop of its own. About $160-220k for the ICP-MS; the hood, dilutor and cover have no public price.",
+   "start_frame": 1375,
+   "end_frame": 1389
+  },
+  {
+   "label": "8/8",
+   "caption": "The SPS 4 feeds the 7850, whose aerosol dilution takes salty samples up to 25 % dissolved solids. It needs 20 L/min of argon (a 180 L dewar lasts about five days of plasma), 30 A at 208 V and an exhaust drop of its own. About $160-220k for the ICP-MS; the hood, dilutor and cover have no public price.",
+   "start_frame": 1390,
+   "end_frame": 1405
+  },
+  {
+   "label": "8/8",
+   "caption": "The SPS 4 feeds the 7850, whose aerosol dilution takes salty samples up to 25 % dissolved solids. It needs 20 L/min of argon (a 180 L dewar lasts about five days of plasma), 30 A at 208 V and an exhaust drop of its own. About $160-220k for the ICP-MS; the hood, dilutor and cover have no public price.",
+   "start_frame": 1406,
+   "end_frame": 1414
+  },
+  {
+   "label": "8/8",
+   "caption": "The SPS 4 feeds the 7850, whose aerosol dilution takes salty samples up to 25 % dissolved solids. It needs 20 L/min of argon (a 180 L dewar lasts about five days of plasma), 30 A at 208 V and an exhaust drop of its own. About $160-220k for the ICP-MS; the hood, dilutor and cover have no public price.",
+   "start_frame": 1415,
+   "end_frame": 1489
+  }
+ ]
+}

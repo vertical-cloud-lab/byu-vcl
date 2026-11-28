@@ -1,0 +1,221 @@
+{
+ "key": "st10",
+ "work_width_px": 480,
+ "free": {
+  "H": 60.0,
+  "base_h": 13.0,
+  "pend_d": 13.0,
+  "conv_top": 13.0,
+  "feed_l": 13.0,
+  "W": 60.0,
+  "base_x0": 60.0,
+  "base_x1": 60.0,
+  "pend_x0": 60.0,
+  "pend_x1": 60.0,
+  "pend_z0": 60.0,
+  "pend_z1": 60.0,
+  "scr_x0": 60.0,
+  "scr_x1": 60.0,
+  "scr_z0": 60.0,
+  "scr_z1": 60.0,
+  "panel_x0": 60.0,
+  "win_x0": 60.0,
+  "win_w": 60.0,
+  "win_z0": 60.0,
+  "win_z1": 60.0,
+  "conv_x1": 60.0,
+  "lcov_w": 250.0,
+  "lcov_z0": 250.0,
+  "lcov_z1": 250.0,
+  "conv_head": 250.0,
+  "conv_low": 250.0,
+  "feed_z0": 250.0,
+  "feed_z1": 250.0,
+  "feed_lid": 250.0
+ },
+ "params": {
+  "H": 1715.9,
+  "base_h": 675.9,
+  "pend_d": 204.8,
+  "conv_top": 1576.0,
+  "feed_l": 2104.0,
+  "W": 2133.4,
+  "base_x0": 1.3,
+  "base_x1": 2078.1,
+  "pend_x0": 1488.6,
+  "pend_x1": 1971.3,
+  "pend_z0": 1032.0,
+  "pend_z1": 1655.4,
+  "scr_x0": 1609.9,
+  "scr_x1": 1936.9,
+  "scr_z0": 1368.9,
+  "scr_z1": 1622.7,
+  "panel_x0": 803.6,
+  "win_x0": 262.9,
+  "win_w": 239.7,
+  "win_z0": 1155.1,
+  "win_z1": 1500.9,
+  "conv_x1": 3184.1,
+  "lcov_w": 250.9,
+  "lcov_z0": 737.9,
+  "lcov_z1": 1212.3,
+  "conv_head": 321.0,
+  "conv_low": 500.0,
+  "feed_z0": 737.7,
+  "feed_z1": 1245.0,
+  "feed_lid": 187.3
+ },
+ "start": {
+  "H": 1795.0,
+  "base_h": 676.0,
+  "pend_d": 205.0,
+  "conv_top": 1576.0,
+  "feed_l": 2104.0,
+  "W": 2160.0,
+  "base_x0": 40.0,
+  "base_x1": 2087.0,
+  "pend_x0": 1492.0,
+  "pend_x1": 1969.0,
+  "pend_z0": 1032.0,
+  "pend_z1": 1667.0,
+  "scr_x0": 1620.0,
+  "scr_x1": 1937.0,
+  "scr_z0": 1376.0,
+  "scr_z1": 1604.0,
+  "panel_x0": 767.0,
+  "win_x0": 235.0,
+  "win_w": 238.0,
+  "win_z0": 1143.0,
+  "win_z1": 1486.0,
+  "conv_x1": 3138.0,
+  "lcov_w": 130.0,
+  "lcov_z0": 800.0,
+  "lcov_z1": 1290.0,
+  "conv_head": 343.0,
+  "conv_low": 300.0,
+  "feed_z0": 700.0,
+  "feed_z1": 1150.0,
+  "feed_lid": 100.0
+ },
+ "changed_mm": {
+  "H": -79.1,
+  "W": -26.6,
+  "base_x0": -38.7,
+  "base_x1": -8.9,
+  "pend_z1": -11.6,
+  "scr_x0": -10.1,
+  "scr_z0": -7.1,
+  "scr_z1": 18.7,
+  "panel_x0": 36.6,
+  "win_x0": 27.9,
+  "win_z0": 12.1,
+  "win_z1": 14.9,
+  "conv_x1": 46.1,
+  "lcov_w": 120.9,
+  "lcov_z0": -62.1,
+  "lcov_z1": -77.7,
+  "conv_head": -22.0,
+  "conv_low": 200.0,
+  "feed_z0": 37.7,
+  "feed_z1": 95.0,
+  "feed_lid": 87.3
+ },
+ "rounds": [
+  {
+   "concord_2020_0009": [
+    0.7655,
+    13.78
+   ],
+   "haas_demo_0012": [
+    0.8597,
+    5.44
+   ]
+  },
+  {
+   "concord_2020_0009": [
+    0.7657,
+    14.07
+   ],
+   "haas_demo_0012": [
+    0.8655,
+    5.04
+   ]
+  },
+  {
+   "concord_2020_0009": [
+    0.774,
+    13.12
+   ],
+   "haas_demo_0012": [
+    0.8704,
+    4.83
+   ]
+  }
+ ],
+ "views": {
+  "concord_2020_0009": {
+   "source": "https://youtu.be/EwjfuTWPSV8?t=9 (Concord Machine Tools, 2020 Haas ST10 CNC Lathe For Sale, 0:09: a 2020 ST-10 with auto door and the Haas Bar Feeder, from the front right, wide angle)",
+   "size": [
+    1280,
+    720
+   ],
+   "camera": [
+    1.7122188669971365,
+    0.3729005122745093,
+    -0.36901918772302506,
+    -753.1215937526166,
+    1051.1399712240707,
+    2208.975348512096,
+    6.186611494195997,
+    -0.11468463334390469
+   ],
+   "focal_px": 486.2,
+   "k1": -0.1147,
+   "hfov_deg": 105.6,
+   "picks_rms_px": 9.3,
+   "iou_drawing_model_at_pick_camera": 0.7359,
+   "outline_px_drawing_model_at_pick_camera": 42.37,
+   "iou_fitted": 0.774,
+   "outline_px_fitted": 34.99,
+   "parts": "all"
+  },
+  "haas_demo_0012": {
+   "source": "https://youtu.be/iF57Px06xck?t=12 (Haas Automation, Haas ST-10 Demo, 0:12: the ST-10 from the front, in Haas's showroom)",
+   "size": [
+    1280,
+    720
+   ],
+   "camera": [
+    1.6105898103998721,
+    0.051546536813176946,
+    -0.03236941038829332,
+    87.98486681562112,
+    1113.9269019608548,
+    4209.549700102678,
+    6.996002546667622,
+    0.0
+   ],
+   "focal_px": 1092.3,
+   "k1": 0.0,
+   "hfov_deg": 60.7,
+   "picks_rms_px": 12.5,
+   "iou_drawing_model_at_pick_camera": 0.8141,
+   "outline_px_drawing_model_at_pick_camera": 22.68,
+   "iou_fitted": 0.8704,
+   "outline_px_fitted": 12.89,
+   "parts": [
+    "skin",
+    "surround",
+    "base",
+    "feet",
+    "lcov",
+    "cabinet",
+    "pendant",
+    "screen",
+    "conveyor",
+    "door",
+    "glass"
+   ]
+  }
+ }
+}

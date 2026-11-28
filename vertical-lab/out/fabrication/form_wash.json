@@ -1,0 +1,41 @@
+{
+ "name": "fabrication/form_wash",
+ "fps": 15,
+ "n_frames": 183,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/5",
+   "caption": "The lid lifts on its rear hinge, to 714 mm.",
+   "start_frame": 0,
+   "end_frame": 37
+  },
+  {
+   "label": "2/5",
+   "caption": "The Form 4's build platform goes onto the elevator, parts face down.",
+   "start_frame": 38,
+   "end_frame": 72
+  },
+  {
+   "label": "3/5",
+   "caption": "Lid shut.",
+   "start_frame": 73,
+   "end_frame": 94
+  },
+  {
+   "label": "4/5",
+   "caption": "The elevator lowers the parts into the IPA and the impeller under them stirs it.",
+   "start_frame": 95,
+   "end_frame": 147
+  },
+  {
+   "label": "5/5",
+   "caption": "Washed: the elevator lifts the parts out of the solvent to drip dry.",
+   "start_frame": 148,
+   "end_frame": 182
+  }
+ ]
+}

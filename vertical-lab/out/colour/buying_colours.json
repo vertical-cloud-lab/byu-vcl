@@ -1,0 +1,192 @@
+{
+ "method": "each swatch's approximate sRGB simulated for full protan, deutan and tritan dichromacy (as colour_coding.check), CAM02-UCS difference to the scheme's other colours, worst case; pass >= 20, needs a second cue 12-20, fail < 12",
+ "swatches": {
+  "Al: RAL 5015 sky blue (#2271B3)": {
+   "Cu orange": {
+    "worst": 53.6,
+    "vision": "tritan",
+    "grade": "pass"
+   },
+   "reserved brown": {
+    "worst": 41.0,
+    "vision": "protan",
+    "grade": "pass"
+   },
+   "black neutral": {
+    "worst": 44.8,
+    "vision": "deutan",
+    "grade": "pass"
+   }
+  },
+  "Al: Pantone 300 C (#005EB8)": {
+   "Cu orange": {
+    "worst": 55.3,
+    "vision": "tritan",
+    "grade": "pass"
+   },
+   "reserved brown": {
+    "worst": 42.2,
+    "vision": "tritan",
+    "grade": "pass"
+   },
+   "black neutral": {
+    "worst": 41.8,
+    "vision": "tritan",
+    "grade": "pass"
+   }
+  },
+  "Al: RAL 5017 traffic blue (#063971)": {
+   "Cu orange": {
+    "worst": 63.2,
+    "vision": "tritan",
+    "grade": "pass"
+   },
+   "reserved brown": {
+    "worst": 37.1,
+    "vision": "protan",
+    "grade": "pass"
+   },
+   "black neutral": {
+    "worst": 24.8,
+    "vision": "tritan",
+    "grade": "pass"
+   }
+  },
+  "Al: RAL 5005 signal blue (#1E2460)": {
+   "Cu orange": {
+    "worst": 67.8,
+    "vision": "tritan",
+    "grade": "pass"
+   },
+   "reserved brown": {
+    "worst": 39.2,
+    "vision": "protan",
+    "grade": "pass"
+   },
+   "black neutral": {
+    "worst": 18.4,
+    "vision": "tritan",
+    "grade": "needs a second cue"
+   }
+  },
+  "Cu: Pantone 1375 C (#FF9E1B)": {
+   "Al blue": {
+    "worst": 54.6,
+    "vision": "tritan",
+    "grade": "pass"
+   },
+   "reserved brown": {
+    "worst": 35.3,
+    "vision": "tritan",
+    "grade": "pass"
+   },
+   "black neutral": {
+    "worst": 69.2,
+    "vision": "protan",
+    "grade": "pass"
+   }
+  },
+  "Cu: RAL 1028 melon yellow (#F4A900)": {
+   "Al blue": {
+    "worst": 53.5,
+    "vision": "tritan",
+    "grade": "pass"
+   },
+   "reserved brown": {
+    "worst": 37.5,
+    "vision": "tritan",
+    "grade": "pass"
+   },
+   "black neutral": {
+    "worst": 71.4,
+    "vision": "protan",
+    "grade": "pass"
+   }
+  },
+  "Cu: safety orange (ANSI Z535.1) (#FF7900)": {
+   "Al blue": {
+    "worst": 52.8,
+    "vision": "protan",
+    "grade": "pass"
+   },
+   "reserved brown": {
+    "worst": 29.3,
+    "vision": "protan",
+    "grade": "pass"
+   },
+   "black neutral": {
+    "worst": 59.4,
+    "vision": "protan",
+    "grade": "pass"
+   }
+  },
+  "Cu: RAL 2003 pastel orange (#FF7514)": {
+   "Al blue": {
+    "worst": 52.4,
+    "vision": "protan",
+    "grade": "pass"
+   },
+   "reserved brown": {
+    "worst": 28.4,
+    "vision": "protan",
+    "grade": "pass"
+   },
+   "black neutral": {
+    "worst": 58.4,
+    "vision": "protan",
+    "grade": "pass"
+   }
+  },
+  "Cu: RAL 2000 yellow orange (#ED760E)": {
+   "Al blue": {
+    "worst": 51.8,
+    "vision": "protan",
+    "grade": "pass"
+   },
+   "reserved brown": {
+    "worst": 26.9,
+    "vision": "protan",
+    "grade": "pass"
+   },
+   "black neutral": {
+    "worst": 56.9,
+    "vision": "protan",
+    "grade": "pass"
+   }
+  },
+  "Cu: Pantone 021 C (#FE5000)": {
+   "Al blue": {
+    "worst": 49.5,
+    "vision": "protan",
+    "grade": "pass"
+   },
+   "reserved brown": {
+    "worst": 19.9,
+    "vision": "protan",
+    "grade": "needs a second cue"
+   },
+   "black neutral": {
+    "worst": 49.8,
+    "vision": "protan",
+    "grade": "pass"
+   }
+  },
+  "Cu: RAL 2004 pure orange (#F44611)": {
+   "Al blue": {
+    "worst": 48.7,
+    "vision": "protan",
+    "grade": "pass"
+   },
+   "reserved brown": {
+    "worst": 16.8,
+    "vision": "protan",
+    "grade": "needs a second cue"
+   },
+   "black neutral": {
+    "worst": 46.6,
+    "vision": "protan",
+    "grade": "pass"
+   }
+  }
+ }
+}

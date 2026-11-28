@@ -1,0 +1,182 @@
+[
+ {
+  "item": "Stack wrench: two coaxial 17 mm heads (fixed counter-hold + driven slotted ring), C-frame, handle",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "ours (notes/atom_plate.md, 'Tool')",
+  "for": "breaking loose and torquing the upper sonotrode to 50 N m with the reaction inside the tool",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Gearmotor + slip clutch (or a small DC nutrunner spindle) set to 50 N m, 24 V",
+  "maker": "to choose",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "ours: 50 N m from DAL 253 step 13 / 178 step 5",
+  "for": "the stack wrench's drive",
+  "status": "to buy"
+ },
+ {
+  "item": "Stack wrench holder on MiR 2's cabinet top",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "ours",
+  "for": "parking the wrench where the arm can pick it",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Per-alloy plate rack, 5 labelled slots",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "ours; DAL 178 'Cleaning and maintenance': label plates, one alloy per plate (OCT2a 02:24)",
+  "for": "storing plates by alloy, picked and returned by the arm",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Plate ID labels (engraved or tag)",
+  "maker": "to choose",
+  "part_no": null,
+  "qty": 10,
+  "unit_usd": null,
+  "source": "DAL 178: 'Label them: on Oct 2 nobody could tell the plates apart'",
+  "for": "the plate log",
+  "status": "to buy"
+ },
+ {
+  "item": "Upper sonotrode tray (2 sockets)",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "ours",
+  "for": "the upper sonotrode while the plate is changed",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Mo gauge plate (a retired plate cut short)",
+  "maker": "lab",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": 0.0,
+  "source": "DAL #164 (Gage, 2026-10-21: 'Shortened a retired plate to use as a guide')",
+  "for": "setting the plate's height (253 step 15)",
+  "status": "lab has"
+ },
+ {
+  "item": "Gauge plate holder",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "ours",
+  "for": "the arm's pick of the gauge plate",
+  "status": "ours: to make"
+ },
+ {
+  "item": "IPA dropper bottle, 30 mL",
+  "maker": "to choose",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "DAL 253 step 16 (a few drops of IPA); 178 step 10 (water)",
+  "for": "the wet test",
+  "status": "to buy"
+ },
+ {
+  "item": "Isopropyl alcohol",
+  "maker": "lab",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "DAL 253 steps 3, 16, 18",
+  "for": "the wet test and wiping the seals",
+  "status": "lab has"
+ },
+ {
+  "item": "Dropper holder",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "ours",
+  "for": "the arm's pick of the dropper",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Wipe pad on a stem (foam pad, lint-free wipe folded over)",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "ours; DAL 253 step 18 'Wipe the seals with IPA'",
+  "for": "wiping the door seal and its face",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Lint-free wipes",
+  "maker": "to choose",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "DAL 178_equipment",
+  "for": "the wipe pad",
+  "status": "lab has"
+ },
+ {
+  "item": "Laser module in a printed holder, in the sealing rod's place",
+  "maker": "to choose",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "DAL #164 (Bartosz's laser down the nozzle, T5 63:28; the runs plan's G0 step)",
+  "for": "the landing check (253 step 17)",
+  "status": "to buy"
+ },
+ {
+  "item": "Carbon-fibre plates, W plasma-coated (one new per Cu run)",
+  "maker": "AMAZEMET",
+  "part_no": null,
+  "qty": 4,
+  "unit_usd": null,
+  "source": "DAL 253 'Copper Alloys' step 2; 178 plate table (T9 38:35); price range $10-80 (SP 09:33)",
+  "for": "NAB / 630 bronze runs",
+  "status": "to buy"
+ },
+ {
+  "item": "Carbon-fibre plates, bare",
+  "maker": "AMAZEMET",
+  "part_no": null,
+  "qty": 2,
+  "unit_usd": null,
+  "source": "DAL 178 plate table (T5 11:53: up to ~10 processes)",
+  "for": "Al runs",
+  "status": "lab has"
+ },
+ {
+  "item": "Upper sonotrode, W-Ni-Fe, 19.9 x 56.6 mm",
+  "maker": "AMAZEMET",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "#261 measurements",
+  "for": "the stack (already on the machine)",
+  "status": "lab has"
+ },
+ {
+  "item": "Torque wrench (the lab's, for the bench and to check the stack wrench's clutch)",
+  "maker": "lab",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": null,
+  "source": "DAL 178 step 5 (T5 16:59, T7 38:33)",
+  "for": "calibrating the clutch at 50 N m",
+  "status": "lab has"
+ }
+]
