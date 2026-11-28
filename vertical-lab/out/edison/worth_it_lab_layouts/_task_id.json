@@ -1,0 +1,6 @@
+{
+ "task_id": "28953e7c-70d9-4388-8c1a-7d74f4609498",
+ "job": "LITERATURE",
+ "query": "Published descriptions of facility-scale automated, self-driving or cloud laboratories (Emerald Cloud Lab and the Carnegie Mellon cloud lab, Strateos, the Acceleration Consortium, Ginkgo Bioworks' foundry and its reconfigurable automation carts, Automata LINQ, the A-Lab at Berkeley, Argonne's Polybot, the Liverpool autonomous labs, Samsung ASTRAL, BAM, IBM RoboRXN, biofoundries): how the instruments are arranged (benches served by people, benches served by mobile robots, rails or linear tracks, arm-centred workcells, conveyors or magnetic transport, vertical stacking or storage), floor area and number of instruments, what limits throughput (instrument time, transport, sample preparation, human decisions, maintenance), measured utilization, and lessons reported about layout choice, reconfigurability and serving several users at once.",
+ "submitted_utc": "2026-11-27T06:17:15Z"
+}

@@ -21,6 +21,11 @@ BoTorch policies (GP-BO, SAASBO, BOFN), the conventional lab, DAL #256's schedul
 [on YouTube](https://www.youtube.com/watch?v=Pz7hxqfODmE)). Everything in it is simulated. The package is
 self-contained in [`twin/`](twin/README.md), with its outputs in `out/twin/` and `out/twin2/`.
 
+**Is the vertical part worth it?** [`notes/vertical_lab_worth_it.md`](notes/vertical_lab_worth_it.md) (#407) sets
+the instruments on VLM trays against the same instruments on benches served by mobile manipulators, with outside
+users, from the twin's event logs, vendor figures and the literature. Its answer is not for the lab the twin
+simulates; the note names the conditions under which it would be.
+
 ## Round 15: everything brought together, one lab in every clip, re-rendered at 720p (2026-11-23)
 
 Sterling on #318 (2026-11-23): "pull in the latest results from all the other relevant PRs (use gh api to retrieve

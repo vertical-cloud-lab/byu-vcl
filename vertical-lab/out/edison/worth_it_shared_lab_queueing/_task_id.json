@@ -1,0 +1,6 @@
+{
+ "task_id": "846e5e7a-1f9b-4dff-a00a-88244a988110",
+ "job": "LITERATURE",
+ "query": "Queueing and scheduling in shared automated laboratories and in flexible job shops with transport robots: how waiting time and throughput depend on the number of transport robots or AGVs, on a single shared transfer point, and on instruments that block for hours; effect of adding external or multi-user load to an automated lab or cloud lab (utilization against waiting, scheduling policies, priority between internal and external work); evidence on whether transport or instrument time is the bottleneck in laboratory automation, and published rules for sizing the number of mobile robots.",
+ "submitted_utc": "2026-11-27T06:17:17Z"
+}
