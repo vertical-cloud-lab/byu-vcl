@@ -20,6 +20,14 @@
   composition's features once and encodes only the three settings that change (the same numbers as
   ``Space.encode``: a test checks it), and ``_p_powder`` predicts the trials of ``PP_CHUNK`` candidates in one call
   (the same draws in the same order; a batched prediction can differ from 64 single ones in the last bit).
+* **Batched GP predictions** (Sterling, PR 427, 2026-11-28: "Predict in 64-point calls ... It changes last digits,
+  and I accept that. Make it round 6's default"). Every node of these policies predicts at most ``PREDICT_CHUNK`` (64)
+  points per posterior call (``gp.Node.chunk``). gpytorch computes the joint predictive covariance of all the points
+  in a call, of which the policies use the diagonal: the atomize search's calls over 16 candidates x 64 settings
+  (1,024 points), the network's draws over up to 384 candidates, in 24 sample batches. In 64-point calls that work
+  is M x 64 instead of M x M. The results are the same up to the last bits (a point's prediction depends on what
+  else is in its call), so the rows, the GP check's reference and the timings are made with it. Rounds 2-5's nodes
+  have no ``chunk`` and compute what they did.
 """
 from __future__ import annotations
 
@@ -54,9 +62,13 @@ class _Trials:
 class _Six:
     N_NET = 384
     N_RAND = 96
+    PREDICT_CHUNK = 64                               # points per GP posterior call (twin/opt/gp.py ``Node.predict``)
 
     def __init__(self, key, seed=0, crucible=None):
         super().__init__(key, seed, crucible)
+        for nodes in self.nodes.values():
+            for nd in nodes:
+                nd.chunk = self.PREDICT_CHUNK
         self._pre = np.random.default_rng(seed * 131 + (5 if self.al else 6))
         self._px = {}
         self._six, self._six_key, self._sf = {}, None, {}
