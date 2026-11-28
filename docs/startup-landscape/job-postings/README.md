@@ -1,6 +1,6 @@
 # Job postings: the actual roles and descriptions
 
-Historical job postings survive, mostly with their full descriptions. This folder holds **811 postings from 23 companies, 757 of them with the full description**. They run from March 2014 to 10 October 2026; 318 had closed by then, 264 of those with their description intact.
+Historical job postings survive, mostly with their full descriptions. This folder holds **972 postings from 23 companies, 907 of them with the full description**. They run from March 2014 to 28 November 2026; 485 had closed by then, 421 of those with their description intact. On 10 October it held 811 (757 with descriptions). [What changed by 28 November](#what-changed-by-28-november) covers the refresh.
 
 The first version of this folder covered 15 companies and found only careers-page captures, or nothing, for the other ten. A second pass found postings for eight of those ten: it followed each careers page to the board behind it, and it checked the job boards that universities and investors run. [The ten companies the first pass missed](#the-ten-companies-the-first-pass-missed) covers how, and what those postings show. Only Mattiq and Intrepid Labs still have none.
 
@@ -118,6 +118,31 @@ For closed postings, the time between first and last sighting varies mostly by c
 | Orbital (hardware postings) | 251 | |
 
 These spans follow the archive's crawl dates, so they are rough. [roles.md](roles.md#what-the-closed-postings-add) has more on what the closed postings show.
+
+## What changed by 28 November
+
+**How the refresh was done:**
+- Every live board was read again on 28 November and compared posting by posting with 10 October. Each snapshot is kept as `data/job_postings_raw/<company>.live-<date>.json`, so a posting seen in October but gone now is dated, not lost.
+- The Wayback history was re-read for captures since the last run.
+- Headed Chrome, its traffic sent out through the CubXL Pi, added two kinds of source:
+  - **LinkedIn's public job search** for 24 companies, read logged out by company ID. Where a company has a board of its own, LinkedIn lists the same roles. It added only two postings, both with full descriptions: Matlantis' [Senior Solutions Scientist](matlantis.md) in Cambridge, MA (posted 25 November) and Telescope's [Product Manager](telescope-innovations.md) in Vancouver (16 November).
+  - **Atinary's Zoho Recruit pages,** which load client-side. They hold three roles with descriptions: a full-stack developer, an AI-for-chemistry scientist and a marketing associate, all near Lausanne.
+
+**What moved:**
+- **[CuspAI](cuspai.md)** went from 14 to 27 open roles. The new ones run the AI Materials Foundry (ecosystem and programme managers), build product (scientific product managers, one in Singapore; platform, performance and security engineers) and train models (research engineers for generative and materials foundation models). A lab-integration software engineer is the first sign of lab work at a company that has no lab.
+- **[Lila](lila-sciences.md)** opened a co-op programme: 21 of its 50 new postings are co-ops, across materials, robotics, SCADA, IT/OT security and finance.
+- **[Radical AI](radical-ai.md)** went from 9 to 16: a thin-film materials scientist, a laboratory technician, and ML, robotics and perception engineers.
+- **Some boards emptied:**
+  - [Dunia](dunia-innovations.md): its February batch of 11 has closed.
+  - [Chemify](chemify.md): down from 32 to 12, with nothing new.
+  - [Citrine](citrine-informatics.md): only a general application is left.
+- **[Periodic](periodic-labs.md) posted nothing new.** Six roles closed, including the condensed-matter theorist and two lab-hardware roles.
+
+**Corrections:**
+- **Chemify's closed vacancies.** Nine links on its careers page lead to PeopleHR's "This vacancy has now been closed". They are now read as closed.
+- **Entalpic's draft rows.** Its Notion database holds eleven untitled rows ("Internship:", "(CDI)") that the public page hides. They are no longer counted.
+- **The title classifier.** It filed Lila's AI-safety research roles under lab automation, because their titles contain "safety", and did the same for an equipment-accounting manager. Both are now classified correctly, which moves some October figures below slightly.
+- **DP Technology.** 31 new Chinese titles were translated.
 
 ## The ten companies the first pass missed
 

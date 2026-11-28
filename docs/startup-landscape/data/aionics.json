@@ -87,7 +87,7 @@
    "new_postings": 0,
    "method": "job_postings.jsonl",
    "note": "postings first seen 2026-10-01 to 2026-11-28 (live boards and Wayback)",
-   "source": "https://aionics.io/"
+   "source": "https://www.linkedin.com/jobs/search?f_C=65616801&geoId=92000000&location=Worldwide"
   }
  ],
  "current_openings": {
@@ -95,8 +95,8 @@
   "count": 0,
   "by_function": {},
   "titles": [],
-  "source": "https://aionics.io/",
-  "basis": "company job board (live snapshot)",
+  "source": "https://www.linkedin.com/jobs/search?f_C=65616801&geoId=92000000&location=Worldwide",
+  "basis": "LinkedIn public job search, logged out, by company ID",
   "previous": {
    "date": "2026-10-10",
    "count": 0,

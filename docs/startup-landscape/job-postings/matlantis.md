@@ -2,12 +2,13 @@
 
 Back to [all companies](README.md) · [company profile](../companies/matlantis.md)
 
-**2 postings recovered**, 2 with the full description; 0 still open on 2026-11-28. First seen 2023-06-07, latest 2024-03-04. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**3 postings recovered**, 3 with the full description; 1 still open on 2026-11-28. First seen 2023-06-07, latest 2026-11-25. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
 | 2023-06-07 | 2024-08-05 | [MATLANTIS](#matlantis-2023-06-07) | business-ops |  |  | BS |  |  | [Wayback](https://web.archive.org/web/20230607220522/https://matlantis.com/careers/cs-engineer) [Wayback](https://web.archive.org/web/20230607223349/https://matlantis.com/careers/sales) |
 | 2024-03-04 | 2025-05-16 | [Customer Success Engineer](#customer-success-engineer-2024-03-04) | software-eng |  |  |  |  |  | [Wayback](https://web.archive.org/web/20240304040648/https://matlantis.com/careers/cs-engineer-2) |
+| 2026-11-25 | open | [Senior Solutions Scientist](#senior-solutions-scientist-2026-11-25) | materials-science | Software Development | Cambridge, MA |  |  | $150–180K | [live](https://www.linkedin.com/jobs/view/senior-solutions-scientist-at-matlantis-4494930272) |
 
 ## Careers-page captures
 
@@ -145,6 +146,48 @@ Work schedule
 - Compensation based on experience, performance, ability, and contribution
 - Reviewed twice a year
 - In addition to base salary, bonus based on company performance and individual performance (twice a year, in April and October)
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="senior-solutions-scientist-2026-11-25"></a>
+
+### Senior Solutions Scientist (2026-11-25)
+
+2026-11-25 → open · materials-science · Cambridge, MA · $150–180K · [source](https://www.linkedin.com/jobs/view/senior-solutions-scientist-at-matlantis-4494930272)
+
+<details><summary>Description</summary>
+
+**Position Overview**
+We seek a passionate full-time technical professional to help drive our customers' success using Matlantis™, our flexible and scalable SaaS platform. Join a team dedicated to delivering outstanding customer experience.
+
+With the mission of "accelerating materials discovery for a sustainable future", Matlantis Inc. provides Matlantis™, a versatile calculation engine, to help customers accelerate the development of new materials and elucidate their mechanisms.
+
+Matlantis Inc. offers Matlantis™ as SaaS. We sell software licenses and help our customers achieve meaningful results using Matlantis™. We also carry out simulation projects on customers' behalf, delivering answers to their R&D questions on a defined scope and schedule. We provide support for how to use Matlantis™ and conduct professional technical explanations, such as discussions on modeling and simulation methods and case validations. Moreover, we support promoting customers' digital transformation (DX).
+
+Since starting our business in July 2021, we have received interest from customers in various industries. We are addressing cutting-edge challenges in all aspects, including target materials, phenomena, and computational methods.
+
+We look forward to applications from enthusiastic individuals who want to learn and advance their work in this challenging environment.
+
+Essential Duties and Responsibilities
+
+Establishing a presence in the industry: Participate in conferences and exhibitions, gain leads through presentations, showcase technical capabilities, and promote building personal networks.
+
+Pre-sales activities/clarifying technical issues for potential customers: Provide technical explanations of the product to potential customers. Through effective dialogue, customers'
+
+problems are identified, and hypotheses for solving them are developed.
+
+Leading customer success meetings: Understand customers' challenges and propose and discuss the most effective simulation technologies and workflows tailored to their needs.
+
+Leading customer-funded simulation projects: Own each project from scoping to final report. Define the scope, schedule, and deliverables with the customer, build the models and run the calculations on Matlantis™, and deliver simulation-based answers to the customer's R&D questions with technical interpretation and recommendations for next steps. Manage project progress and communicate it to the customer and internal stakeholders.
+
+Collaboration with the product development team: Act as a bridge to accurately convey customer feedback to the product development team and reflect it in product improvements. Go
+
+beyond simple information sharing by understanding and communicating underlying needs.
+
+Research and implementation of computational chemistry methods: For various materials, you will research and implement physical and chemical simulation methods (such as molecular
+
 
 *(truncated: full text in `data/job_postings.jsonl`)*
 

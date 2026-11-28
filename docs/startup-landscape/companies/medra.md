@@ -38,7 +38,7 @@ The only SEC Form D mentioning Medra belongs to an SPV, *V360 Holdings LLC Serie
 
 ## Team size over time
 
-No datapoint was found. Wayback and LinkedIn-band checks were not run because of time and budget limits.
+LinkedIn members: 22 (Feb 2025), 31 (Jan 2026), 60 (Jul 2026), 77 (Oct 2026) (see the [28 November update](#update-2026-11-28) above).
 
 ## Leadership and key hires
 

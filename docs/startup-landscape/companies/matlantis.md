@@ -13,6 +13,8 @@ What changed between the first snapshot (2026-10-10) and 2026-11-28. The method 
 | --- | --- | --- | --- |
 | 2025-07-16 | 31 | 11-50 | [Wayback](https://web.archive.org/web/20250716130306/https://www.linkedin.com/company/matlantis/) |
 
+**Openings.** 1 open on 2026-11-28 on [LinkedIn's public job search](https://www.linkedin.com/jobs/search?f_C=82798077&geoId=92000000&location=Worldwide&original_referer=).
+
 **LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=82798077&geoId=92000000&location=Worldwide&original_referer=), 2026-11-28): 1 posting: Senior Solutions Scientist (Cambridge, MA, posted 2026-11-25, 59 applicants).
 
 - Posted a Senior Solutions Scientist role on LinkedIn for its Cambridge, MA office (25 November, 59 applicants by 28 November). The office opened in 2024-09. This is the first US posting in the survey's record for Matlantis; its Japanese hiring runs through BizReach and its own careers page. ([source](https://www.linkedin.com/jobs/search?f_C=82798077&geoId=92000000&location=Worldwide))

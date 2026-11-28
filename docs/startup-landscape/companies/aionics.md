@@ -16,7 +16,7 @@ What changed between the first snapshot (2026-10-10) and 2026-11-28. The method 
 | 2026-02-27 | 15 | 11-50 | [Wayback](https://web.archive.org/web/20260227150005/https://www.linkedin.com/company/aionics) |
 | 2026-06-26 | 12 | 11-50 | [Wayback](https://web.archive.org/web/20260626032834/https://www.linkedin.com/company/aionics) |
 
-**Openings.** 0 open on 2026-11-28 on [its job board](https://aionics.io/), against 0 on 2026-10-10. 0 new, 0 closed.
+**Openings.** 0 open on 2026-11-28 on [LinkedIn's public job search](https://www.linkedin.com/jobs/search?f_C=65616801&geoId=92000000&location=Worldwide), against 0 on 2026-10-10. 0 new, 0 closed.
 
 **LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=65616801&geoId=92000000&location=Worldwide), 2026-11-28): no postings.
 
@@ -35,7 +35,7 @@ Total ≈ $11.3M. No Series A was found (issuer: Aionics Holdings Inc., CIK 2023
 
 ## Team size over time
 
-No counts collected. The [site](https://aionics.io/) cites a 2024 Fast Company award in the under-50-employees category, which implies fewer than 50 staff in 2024 (an inference).
+LinkedIn members fell from 17 (Nov 2025) to 12 (Jun 2026) (see the [28 November update](#update-2026-11-28) above). Before that, the [site](https://aionics.io/) cites a 2024 Fast Company award in the under-50-employees category, which implies fewer than 50 staff in 2024 (an inference).
 
 ## Leadership and key hires
 
@@ -56,7 +56,7 @@ Current (2026-10-09): none shown on the [site](https://aionics.io/), and no publ
 
 ## Turnover
 
-- Possible CEO change: Austin Sendek is on the 2024 Form D and its October 2025 amendment, but absent from the [March 2026 Form D](https://www.sec.gov/Archives/edgar/data/2023133/000202313326000001/primary_doc.xml), where Viswanathan is the only officer. This is not confirmed by news.
+- Possible CEO change: Austin Sendek is on the 2024 Form D and its October 2025 amendment, but absent from the [March 2026 Form D](https://www.sec.gov/Archives/edgar/data/2023133/000202313326000001/primary_doc.xml), where Viswanathan is the only officer. This is not confirmed by news. **Confirmed 2026-11-28:** the leadership page listed Sendek as CEO in its [5 Dec 2025 capture](https://web.archive.org/web/20251205022648/https://aionics.io/about); by the [9 Mar 2026 capture](https://web.archive.org/web/20260309085556/https://aionics.io/about) it lists co-founder Venkat Viswanathan as CEO and no longer lists Sendek. No announcement was found.
 
 ## Hiring vs. funding
 

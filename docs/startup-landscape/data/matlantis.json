@@ -57,7 +57,7 @@
   "postings": [
     {
       "period": "2026Q4",
-      "new_postings": 0,
+      "new_postings": 1,
       "method": "job_postings.jsonl",
       "note": "postings first seen 2026-10-01 to 2026-11-28 (live boards and Wayback)",
       "source": "https://www.linkedin.com/jobs/search?f_C=82798077&geoId=92000000&location=Worldwide&original_referer="

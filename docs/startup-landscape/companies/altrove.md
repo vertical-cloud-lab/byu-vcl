@@ -7,7 +7,7 @@ Paris, France · founded 2024 · self-driving lab (AI + automated synthesis) · 
 
 What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
 
-**Openings.** 0 open on 2026-11-28 on [its job board](https://www.linkedin.com/jobs/search?f_C=103460693&geoId=92000000&location=Worldwide), against 1 on 2026-10-10. 0 new, 1 closed.
+**Openings.** 0 open on 2026-11-28 on [LinkedIn's public job search](https://www.linkedin.com/jobs/search?f_C=103460693&geoId=92000000&location=Worldwide), against 1 on 2026-10-10. 0 new, 1 closed.
 - Closed since 2026-10-10: Logistics and Admin Assistant.
 
 **LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=103460693&geoId=92000000&location=Worldwide), 2026-11-28): no postings.

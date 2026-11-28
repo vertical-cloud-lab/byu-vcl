@@ -86,7 +86,8 @@ def current_openings(d, rows, li, date):
     snaps = sorted(f for f in os.listdir(RAW) if f.startswith(slug + ".live-"))
     prev = d.get("current_openings") or {}
     new = None
-    getro_only = snaps and {r.get("vendor") for r in json.load(open(os.path.join(RAW, snaps[-1]), encoding="utf-8"))} <= {"getro"}
+    open_vendors = {r.get("vendor") for r in (_snapshot(slug, date) or {}).values()}
+    getro_only = snaps and open_vendors <= {"getro"}
     if getro_only and li:
         snaps = []  # an investor's portfolio board keeps closed roles; LinkedIn's search is the better count here
     if snaps and snaps[-1] == f"{slug}.live-{date}.json":
@@ -95,8 +96,12 @@ def current_openings(d, rows, li, date):
         src = prev.get("source") or next((s for r in rows if r["open_now"] for s in r["sources"]), None)
         if slug == "atinary":
             src = "https://atinary.com/careers/"
+        vendors = {r.get("vendor") for r in (_snapshot(slug, date) or {}).values()}
+        basis = "company job board (live snapshot)"
+        if vendors == {"linkedin"}:  # no board of its own: the postings come from LinkedIn's public search
+            basis, src = "LinkedIn public job search, logged out, by company ID", (li or {}).get("search_url") or src
         new = {"date": date, "count": len(titles), "by_function": _by_function(titles),
-               "titles": titles, "source": src, "basis": "company job board (live snapshot)"}
+               "titles": titles, "source": src, "basis": basis}
     elif li:
         cards = li.get("cards") or []
         new = {"date": date, "count": len(cards), "by_function": {}, "titles": [c["title"] for c in cards],
@@ -236,9 +241,10 @@ def profile_block(d, pages, li, news, date, prev_date):
         now_r, before_r = real(now), real(before or {})
         added = [_clean_title(now_r[k]["title"]) for k in now_r if k not in before_r]
         gone = [_clean_title(before_r[k]["title"]) for k in before_r if k not in now_r]
-        txt = (f"**Openings.** {len(now_r)} open on {date} on [its job board]({op.get('source')}), against "
+        where = "LinkedIn's public job search" if "LinkedIn" in (op.get("basis") or "") else "its job board"
+        txt = (f"**Openings.** {len(now_r)} open on {date} on [{where}]({op.get('source')}), against "
                f"{len(before_r)} on {prev_date}." if before is not None else
-               f"**Openings.** {len(now_r)} open on {date} on [its job board]({op.get('source')}).")
+               f"**Openings.** {len(now_r)} open on {date} on [{where}]({op.get('source')}).")
         lines.append(txt + (f" {len(added)} new, {len(gone)} closed." if before is not None else ""))
         if before is not None and len(added) + len(gone) <= 60:
             if added:

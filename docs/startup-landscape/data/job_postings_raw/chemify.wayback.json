@@ -224,14 +224,77 @@
     "last": "20260401182813",
     "n": 1,
     "original": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=138b2564-a877-4ce7-84dd-d7136720aa99"
+   },
+   {
+    "urlkey": "net,peoplehr,chemifyltd)/pages/jobboard/opening.aspx?v=03dbc4ce-fa64-471d-8ee8-fa76fac920af",
+    "first": "20261027080211",
+    "last": "20261027080211",
+    "n": 1,
+    "original": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=03dbc4ce-fa64-471d-8ee8-fa76fac920af"
+   },
+   {
+    "urlkey": "net,peoplehr,chemifyltd)/pages/jobboard/opening.aspx?v=4663d6ac-6826-4150-adbb-462952b0d62b",
+    "first": "20261027080211",
+    "last": "20261027080211",
+    "n": 1,
+    "original": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=4663d6ac-6826-4150-adbb-462952b0d62b"
+   },
+   {
+    "urlkey": "net,peoplehr,chemifyltd)/pages/jobboard/opening.aspx?v=170b7df3-d9cd-4c96-9793-f91c42283bd9",
+    "first": "20261105030923",
+    "last": "20261105030923",
+    "n": 1,
+    "original": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=170b7df3-d9cd-4c96-9793-f91c42283bd9"
+   },
+   {
+    "urlkey": "net,peoplehr,chemifyltd)/pages/jobboard/opening.aspx?v=3388ae22-606d-489e-b24c-e1f6c08d10c9",
+    "first": "20261105030923",
+    "last": "20261105030923",
+    "n": 1,
+    "original": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=3388ae22-606d-489e-b24c-e1f6c08d10c9"
+   },
+   {
+    "urlkey": "net,peoplehr,chemifyltd)/pages/jobboard/opening.aspx?v=9387d502-11b9-42d9-9221-34a9cfaab01d",
+    "first": "20261105030923",
+    "last": "20261105030923",
+    "n": 1,
+    "original": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=9387d502-11b9-42d9-9221-34a9cfaab01d"
+   },
+   {
+    "urlkey": "net,peoplehr,chemifyltd)/pages/jobboard/opening.aspx?v=946e4048-c264-4e91-8eff-753690a0a8ab",
+    "first": "20261105030923",
+    "last": "20261105030923",
+    "n": 1,
+    "original": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=946e4048-c264-4e91-8eff-753690a0a8ab"
+   },
+   {
+    "urlkey": "net,peoplehr,chemifyltd)/pages/jobboard/opening.aspx?v=af1017a4-542d-4c51-ba80-be95d180fd6f",
+    "first": "20261105030923",
+    "last": "20261105030923",
+    "n": 1,
+    "original": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=af1017a4-542d-4c51-ba80-be95d180fd6f"
+   },
+   {
+    "urlkey": "net,peoplehr,chemifyltd)/pages/jobboard/opening.aspx?v=af5bd889-8d86-41ab-8ca0-d8d8dbb3004f",
+    "first": "20261105030923",
+    "last": "20261105030923",
+    "n": 1,
+    "original": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=af5bd889-8d86-41ab-8ca0-d8d8dbb3004f"
+   },
+   {
+    "urlkey": "net,peoplehr,chemifyltd)/pages/jobboard/opening.aspx?v=c24a1bdb-8779-4ab5-9e80-ce369ed3bd03",
+    "first": "20261105030923",
+    "last": "20261105030923",
+    "n": 1,
+    "original": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=c24a1bdb-8779-4ab5-9e80-ce369ed3bd03"
    }
   ],
   "www.chemify.io/careers": [
    {
     "urlkey": "io,chemify)/careers",
     "first": "20251122111057",
-    "last": "20260608050933",
-    "n": 13,
+    "last": "20261105030910",
+    "n": 15,
     "original": "https://www.chemify.io/careers"
    }
   ]
@@ -248,6 +311,14 @@
    ],
    [
     "20260401094404",
+    "https://www.chemify.io/careers"
+   ],
+   [
+    "20260713122359",
+    "https://www.chemify.io/careers"
+   ],
+   [
+    "20261105030910",
     "https://www.chemify.io/careers"
    ]
   ]
@@ -652,6 +723,86 @@
    "location": "Glasgow",
    "text": "About Chemify\nChemify is revolutionising chemistry. We are creating a future where the synthesis of previously unimaginable molecules, drugs, and materials is instantly accessible. By combining AI, robotics, and the world’s largest continually expanding database of chemical programs, we are accelerating chemical discovery to improve quality of life and extend the reach of humanity.\nSenior ML Infrastructure Engineer\nWe are hiring a Senior ML Infrastructure Engineer to build, enable and operate the core platform that powers Chemify’s machine learning and scientific AI computing workloads. This role sits at the intersection of distributed systems engineering, machine learning infrastructure, scientific computing, and platform engineering.\nYou will build and operate the operational backbone of the ML platform, ensuring that pipelines run reliably across Kubernetes clusters, on‑premise GPU infrastructure, and serverless compute environments. The systems you build will support ML engineers and computational chemists running workloads from large‑scale model training to molecular simulation.\nIf you enjoy building complex technical systems at the intersection of ML and scientific computing, working on platform problems that combine distributed systems, cloud and on‑premise GPU infrastructure, and real-world scientific workloads, you’ll thrive here.\nKey Responsibilities\n- ML Pipeline Orchestration : implement routing logic dispatching workloads to appropriate compute backends; maintain workflow reliability including retries, dependency management, and failure recovery.\n- ML Pipeline Orchestration : implement routing logic dispatching workloads to appropriate compute backends; maintain workflow reliability including retries, dependency management, and failure recovery.\n- Linux Administration : Server administration and support including security and scaling.\n- Kubernetes Platform Operations : Operate clusters for ML training, inference, and batch workloads; maintain container build pipelines and GitOps deployment workflows; optimise cluster scheduling, autoscaling, and GPU utilisation.\n- HPC / GPU Compute Integration : Integrate orchestration systems with HPC job schedulers; maintain execution paths for workloads running on GPU clusters; ensure artifacts and results from HPC jobs are captured and versioned.\n- Model & Experiment Lifecycle : Operate model registry and experiment tracking platforms; ensure training runs are reproducible and linked to code and datasets; support promotion of models from staging to production.\n- Data Versioning & Pipeline Traceability : Implement dataset versioning and lineage tracking across ML pipelines; ensure predictions are traceable to model versions and datasets; maintain reproducible ML training pipelines.\n- Platform Tooling & Developer Experience : Develop platform CLI tools and pipeline templates; maintain base container images used for ML workloads; improve developer workflows for ML engineers and scientists.\n- Observability, Security & Governance : Implement monitoring, logging, and alerting across orchestration systems; maintain infrastructure as code for platform resources; ensure workloads are traceable to source code, container images, and execution environments. What You’ll Bring\n- Degree in Science, Engineering or related field (or equivalent practical experience).\n- Strong Python engineering skills.\n- Experience operating workflow orchestration platforms.\n- Strong Kubernetes platform experience.\n- Experience with containerisation and CI/CD pipelines .\n- Experience with cloud infrastructure such as AWS & GCP .\n- Experience operating distributed systems in production.\n- Strong Linux systems engineering skills. Beneficial Skills\n- Argo Workflows or Kubernetes workflow engines.\n- SLURM or other HPC job schedulers.\n- ML experiment tracking tools such as Weights & Biases or MLflow.\n- Data versioning or lakehouse technologies such as LakeFS, Iceberg, or Delta Lake.\n- Scientific computing environments.\n- Internal developer platform or CLI tooling experience.\n- Experience in Cyber Security and operating in regulated environments.",
    "posting_id": "daf6755c-c68a-46fe-b98a-0bd6319fdb93"
+  },
+  {
+   "company": "chemify",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20261105030910/https://www.chemify.io/careers",
+   "url": "https://www.chemify.io/careers",
+   "first_seen": "20261105030910",
+   "last_seen": "20261105030910",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "chemify",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20261105030923/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=170b7df3-d9cd-4c96-9793-f91c42283bd9",
+   "url": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=170b7df3-d9cd-4c96-9793-f91c42283bd9",
+   "first_seen": "20261105030923",
+   "last_seen": "20261105030923",
+   "n_captures": 1,
+   "title": "Engineering Ops Shift Supervisor",
+   "team": "Engineering Operations",
+   "location": "Glasgow, United Kingdom",
+   "text": "The Role\nChemify is expanding its Engineering Operations team to support the development, commissioning, and maintenance of robotic chemistry platforms across our Chemifarms in Glasgow and beyond. This lab-based role, reporting to the Engineering Operations Manager, involves close collaboration with software engineers, chemists, and automation specialists. Occasional travel may be required. This role requires an early/late 2 shift, 7-day working pattern.\nWe welcome candidates with a broad range of experience; the appointment level will reflect the successful applicant’s background. We’re looking for someone enthusiastic, service-minded, and eager to help build world leading high throughput chemistry infrastructure.\nKey Responsibilities\nTechnical\n· Commission and integrate new robotic hardware into production.\n· Develop and optimise automated synthesis workflows.\n· Perform preventative and reactive maintenance on chemistry platforms and lab instruments.\n· Administrate the company’s computerised maintenance management system (CMMS) (MaintainX), ensuring continual compliance with procedures and a high quality of data capture.\n· Create and contribute to Engineering Operations SOPs.\n· Lead the support of chemistry operations working closely with the chemistry team to understand requirements and prevent failed reactions.\nOperational & Cross-Functional\n· Line management responsibility for maintenance shift team.\n· Ensure consistent maintenance standards across Chemify sites.\n· Collaborate with chemists, automation engineers, software developers, and manufacturing teams.\n· Identify opportunities to improve workflows, platform reliability, and uptime.\n· Support service delivery by minimising downtime and improving response times.\n· Contribute to wider company initiatives.\nMinimum Qualifications\n· BSc or equivalent experience in a technical discipline.\n· 2 years+ experience in an industrial environment.\n· Strong communication skills and ability to work in multidisciplinary teams.\n· Problem-solving- attitude and willingness to learn.\nEssential Experience\nExperience in at least one of the following is required:\n· Maintenance of scientific/industrial instrumentation.\n· Robotics (mechanical, fluidic, pneumatic, or electromechanical).\n· Test and validation programme execution.\n· Synthetic organic chemistry\nDesired Skills & Attributes\n· Use of a CMMS to manage maintenance activities.\n· Troubleshooting of automated or robotic systems.\n· Knowledge of lab safety and documentation best practices.\n· Ability to work to performance targets.\n· Customer service- mindset with a proactive approach.\n· Interest in automation technologies and continuous improvement.",
+   "posting_id": "170b7df3-d9cd-4c96-9793-f91c42283bd9"
+  },
+  {
+   "company": "chemify",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260201111322/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=3ebf499e-c459-4743-853a-f33bb29aa439",
+   "url": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=3ebf499e-c459-4743-853a-f33bb29aa439",
+   "first_seen": "20260201111322",
+   "last_seen": "20260201111322",
+   "n_captures": 1,
+   "title": "Production Chemist (Dispensary)",
+   "team": "Dispensary",
+   "location": "Glasgow, United Kingdom",
+   "text": "About Chemify\nChemify is revolutionising chemistry. We are creating a future where the synthesis of previously unimaginable molecules, drugs, and materials is instantly accessible. By combining AI, robotics, and the world’s largest continually expanding database of chemical programs, we are accelerating chemical discovery to improve quality of life and extend the reach of humanity.\nLocation\nThis role will be based at the company’s manufacturing site at OakBank Industrial Estate, Garscube Road, Glasgow, G20 7LU.\nPRINCIPAL OBJECTIVES:\nReporting to the Dispensary/ Inventory and Materials Manager, the main tasks of this role (along with the wider dispensary team) are to be a key member of the team in efficiently executing critical manufacturing and development tasks to ensure high-quality, reproducible, high-throughput and safe chemical manufacturing. The Production Chemist’s main task is to create and maintain best-in-class laboratory spaces and work closely with the operations and chemistry teams to ensure their productivity and efficiency. While working within the laboratory the Production Chemist must be observant of safety standards and operating procedures. To participate in the development of new systems and processes; maintaining standards conducive with safe laboratory working, writing SOPs, documenting changes.\nThe role of the dispensary team includes, but is not limited to, to maintain Chemify’s chemical inventory by following procedure(s) and SOPs pertinent to inventory use, dispensing the appropriate amount of requested chemicals as per SOPs and passing on to the synthesis team to conduct the next step of a work order. This is a critical functionality within the operations framework that directly impacts our downstream processes.\nSUMMARY OF DUTIES AND RESPONSIBILITIES:\n- Support their manager by carrying out their assigned responsibilities and duties in a timely manner and in the improvement, design and build of (new) processes to support Chemify’s product development needs.\n- Support the goal of ensuring customer satisfaction.\n- Will demonstrate broad levels of competence in a range of relevant scientific disciplines but will generally have a specialisation within the company and will act as a key resource within this field.\n- Be able to assimilate complex concepts with ease and manage projects/ processes requiring a wide range of different techniques.\n- It is expected that individuals will, from time to time, be required to assist with certain procedures that are outside the definition of their grading. As part of internal training and on-going development programmes, employees may be required to perform duties that are defined for a higher level for training purposes prior to achieving promotion. In this instance, full training and supervision will be provided for that employee to ensure that no work is compromised. Duties may be assigned by the line manager and/or CEO/COO/CTO, as appropriate.\n- Be a contributing member of the Operations team, working one of several shift patterns (early, late, nightshift, weekend)\n- Maintaining laboratory housekeeping (glassware, working areas)\n- Maintaining laboratory equipment\n- Take-on growing responsibilities during the transformation of the company from an R&D-stage organization to an operational powerhouse\n- Communicating with laboratory management team to schedule maintenance tasks\n- Preparation of stock solutions according to laboratory procedures\n- Decanting/weighing of raw materials and final compounds\n- Working with engineering technicians to ensure cross-disciplinary tasks completed\n- Taking the initiative to suggest improvements to working practices\n- Accurate and timely documentation of completed tasks using our own digital laboratory notebook\nSUMMARY OF COMPLIANCE RESPONSIBILITIES:\n- Health and Safety\n- Comply with the company H&S Policy at all times.\n- Follow and abide by all H&S regulations and report any deviations or improvements to the H&S Representatives/H&S Committee/Executive team.\n- Participate in the creation of risk assessments and other safety documentation to ensure safe working practices are maintained in the laboratory and engineering workspace and proactively ensure these are understood prior to carrying out any laboratory work.\n- Ensure that safe working practices are maintained in the laboratory and engineering workspace.\nQuality\n- Comply with the company Quality Policy at all times.\n- Work with the quality group and other operations groups at Chemify to maintain a Quality Management System (QMS) that supports company growth, instils a culture of process and control across all systems and sites, works to Good Scientific Practices and is compliant with relevant ISO standards (such as ISO 9001:2015).\n- Along with the Quality Unit, participate in investigations and review information and draw conclusions in support of Corrective and Preventative Action Plans (CAPA), customer complaints etc.\n- Support their manager and the Quality unit to carry out timely investigation of client complaints and prepare reports and/or return products, as required.\n- Participate in regulatory body and client inspections/audits of Chemify.\n- Respond in a timely manner to self-inspection findings following audits by the Quality unit.\n- Improve and support the implementation of Good Scientific policies, procedures and systems, including the creation of SOPs and working forms.\n- Promote the use of the process approach and risk-based thinking within the work of their team and throughout Chemify.\n- Engage with clients (via Business development team) to ensure that experiments are designed and implemented to meet client needs and those of appropriate regulations.\n- Participate in Quality Improvement activities and communicate the importance of the QMS with their team.\nQUALIFICATIONS AND COMPETENCE REQUIREMENTS:\nEssential Qualification/ Experience/ Knowledge:\n- Minimum Higher or Advanced Higher in Chemistry and HNC/HND in a Science Subject with practical laboratory experience.\n- ​ The candidate ideally has previous work or study experience in a technical role within a laboratory environment\n- Able to work as part of a diverse team, interfacing with several technical and non-technical disciplines, across sites.\n- Please note that this role requires applicants to already have the legal right to live and work in the UK\n- Safety-conscious\n- Strong work ethic\n- Good timekeeping and discipline\n- Good numeracy and literacy\n- Enthusiasm to learn new approaches and concepts and to work within a laboratory environment\n- Problem-solving skills and ability to follow procedures\n- Oral and written communication skills (English fluency)\n- Experience handling chemicals",
+   "posting_id": "3ebf499e-c459-4743-853a-f33bb29aa439"
+  },
+  {
+   "company": "chemify",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260302082524/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=73eaa73f-79b9-4613-ac1c-1cf6a0ac6acf",
+   "url": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=73eaa73f-79b9-4613-ac1c-1cf6a0ac6acf",
+   "first_seen": "20260302082524",
+   "last_seen": "20260302082524",
+   "n_captures": 1,
+   "title": "Senior Analytical Technician",
+   "team": "Chemistry- Product Operations",
+   "location": "Glasgow, United Kingdom",
+   "text": "About Chemify\nChemify is creating a future where important molecules, drugs and currently unimaginable new materials are instantly accessible; thereby radically increasing the speed of innovation, quality of life, and reach of humanity. The company is building the infrastructure to digitize chemistry for the design, discovery and synthesis of new molecules with the desired function and properties instantly and on-demand. Chemify has built a platform that combines purpose-built programming languages, robotics, AI, and the world’s largest and continuously growing database of chemical programs to accelerate chemical discovery to new, transformative heights.\nChemify is supported by some of the best investors from Silicon Valley and across the world, including Triatomic Capital, BlueYard ventures, DCVC, Founders Fund, and others.\nJob Purpose\nAs a Senior Analytical Technician , you will provide the organization with expert insights and know-how for the analytical data acquisition with NMR and UPLC-MS. Ideally you bring knowledge and experience of sample preparation troubleshooting and running of UPLC-MS/LCMS and/or NMR systems. You will help develop the world’s most advanced automated chemical manufacturing lab, collaborating with software and engineering teams to troubleshoot and improve our proprietary technology. We value a flat structure where every member takes ownership and influences our scientific direction.\nLocation\nThis role will be based at one of our sites in Glasgow.\nShift Pattern\nThis role will involve working one of several shifts (e.g. early, late, nightshift, weekend).\nNumber of Positions\nWe are looking to fill one position with start dates between February and April 2026.\nWho we are looking for\nThe ideal candidate will be a smart, enthusiastic, energetic, reliable, consistent and ambitious individual excited to wear many hats and contribute to the overall success of the company as the needs evolve. ​\nWe welcome applications from candidates with Bachelors/Masters qualifications in Applied Sciences/Chemistry degrees who has at least 3 years of industrial experience in analytical laboratory and a desire to work in a high-throughput manufacturing environment.\nKey Responsibilities\n- Own daily operation of analytical instruments (UPLC, NMR, TLC), ensuring systems are running reliably and ready for use.\n- Prepare samples, mobile phases, and buffers, while also improving how these are prepared to increase consistency and efficiency.\n- Lead instrument maintenance including routine care, performance checks, and coordination of vendor service.\n- Troubleshoot instrument and method issues, identify root causes, and implement fixes to prevent repeat problems.\n- Train junior technicians on instruments, sample prep, and lab procedures.\n- Ensure accurate documentation and data integrity, following lab standards and helping improve SOPs when needed.\n- Help plan lab readiness for changing priorities, new projects, or increased sample volume.​\nQualifications and Experience\n- Minimum Bachelor’s/Master’s degree in a scientific field preferably in analytical chemistry/chemistry\n- The candidate should have previous industrial experience of at least 3 years in a technical role within a laboratory environment, including handling of analytical instruments UPLC-MS/UHPLC-MS, NMR, LC-MS systems\n- Good numeracy, literacy and attention to detail\n- Ability to follow defined procedures accurately\n- Oral and written communication skills (English fluency)\nUK Right to Work\nPlease note that the company are unable to sponsor visas for this role.",
+   "posting_id": "73eaa73f-79b9-4613-ac1c-1cf6a0ac6acf"
+  },
+  {
+   "company": "chemify",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260401182813/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=138b2564-a877-4ce7-84dd-d7136720aa99",
+   "url": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=138b2564-a877-4ce7-84dd-d7136720aa99",
+   "first_seen": "20260401182813",
+   "last_seen": "20260401182813",
+   "n_captures": 1,
+   "title": "Staff Product Designer",
+   "team": "IT",
+   "location": "Glasgow",
+   "text": "Chemify is revolutionising chemistry. We are creating a future where the synthesis of previously unimaginable molecules, drugs, and materials is instantly accessible. By combining AI, robotics, and the world’s largest continually expanding database of chemical programs, we are accelerating chemical discovery to improve quality of life and extend the reach of humanity.\nThe role\nWe are looking for our first dedicated product designer to join the engineering team at Chemify, someone who thrives on complexity and is energised by making technical systems more approachable.\nThe product surface spans AI-driven molecular design tools, robotic manufacturing workflows, scientific data systems, and operational dashboards. We have built something that works, your job is to make it feel inevitable: coherent, fast, and designed around how scientists actually think.\nThis is not a role where you will polish buttons on a mature product. You will design how humans interact with chemistry automation, working alongside software engineers, synthetic chemists, robotics engineers, and drug discovery scientists.\nIf you enjoy evolving complex systems into highly optimised, automated experiences and are energised by working closely with scientists using cutting-edge technologies, we would love to welcome you to our team.\nKey responsibilities\n• Simplify a complex platform. We have multiple product surfaces built by engineers solving urgent problems. You will bring coherence: a unified design language, consistent interaction patterns, and an information architecture that scales.\n• Design for process, not just data. The platform is shifting from a world where scientists manage parameters and results, to one where they manage intent and oversee workflow automation. You will design interfaces that make that shift feel natural, trustworthy, and in control, enabling scientists to focus on the work they find most engaging.\n• Work at the intersection of everything. Any given week might involve prototyping an AI drug design workflow, simplifying a graph visualisation, or mapping data flows with our platform architects.\n• Build the design practice. You will establish how design works at Chemify: research methods, design systems, prototyping workflows, and how design integrates with our engineering and science teams.\n• Contribute to team-wide initiatives including design reviews, architecture discussions, and process improvements.\nWhat you will bring\n• 7+ years designing complex software products, ideally B2B SaaS with technical users. • A track record of working embedded with engineers and domain experts, earning trust quickly through listening, sharp questions, and designs that demonstrate you understood the strategic outcomes required.\n• The ability to elegantly handle complexity. You see ahead how a change in one workflow affects multiple others. You think in states, transitions, and edge cases, not just happy paths.\n• Experience evolving early-stage complexity into scalable clarity. You know the difference between cosmetic simplification and genuine architectural improvement.\n• The ability to own the full design process end to end, from user research and discovery through to prototyping and production, this is not about handing over wireframes.\n• Comfort with ambiguity and fast iterations, learning velocity over perfection.\n• High EQ: we are cross-functional by design, and everyone here is a natural team player who can improve best practices.\nBeneficial skills\n• A background in scientific software, lab automation, chemistry or AI drug discovery is a differentiator for us. Domain knowledge is not required and can be developed on the job, but curiosity about how the physical world works is essential.\n• Experience as the first or founding designer at a scaling company.\n• Familiarity with design systems at scale.\nWhy join Chemify?\nImpact. Your design decisions affect which molecules get synthesised, how efficiently our facility operates, and whether a drug candidate moves forward. The feedback loop between your work and physical reality is unusually short.\nAutonomy. Reporting directly to the VP Software Engineering, you will have real influence over how design operates across the entire platform, from day one.\nAmbition. We are Series B, scaling rapidly, tackling problems at the frontier of robotics, AI, and chemistry. You will be shaping a product category that barely exists yet.",
+   "posting_id": "138b2564-a877-4ce7-84dd-d7136720aa99"
+  },
+  {
+   "company": "chemify",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260713122359/https://www.chemify.io/careers",
+   "url": "https://www.chemify.io/careers",
+   "first_seen": "20260713122359",
+   "last_seen": "20260713122359",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
   }
  ],
  "spans": {
@@ -846,6 +997,60 @@
    "last": "20260401182813",
    "n": 1,
    "url": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=138b2564-a877-4ce7-84dd-d7136720aa99"
+  },
+  "03dbc4ce-fa64-471d-8ee8-fa76fac920af": {
+   "first": "20261027080211",
+   "last": "20261027080211",
+   "n": 1,
+   "url": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=03dbc4ce-fa64-471d-8ee8-fa76fac920af"
+  },
+  "4663d6ac-6826-4150-adbb-462952b0d62b": {
+   "first": "20261027080211",
+   "last": "20261027080211",
+   "n": 1,
+   "url": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=4663d6ac-6826-4150-adbb-462952b0d62b"
+  },
+  "170b7df3-d9cd-4c96-9793-f91c42283bd9": {
+   "first": "20261105030923",
+   "last": "20261105030923",
+   "n": 1,
+   "url": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=170b7df3-d9cd-4c96-9793-f91c42283bd9"
+  },
+  "3388ae22-606d-489e-b24c-e1f6c08d10c9": {
+   "first": "20261105030923",
+   "last": "20261105030923",
+   "n": 1,
+   "url": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=3388ae22-606d-489e-b24c-e1f6c08d10c9"
+  },
+  "9387d502-11b9-42d9-9221-34a9cfaab01d": {
+   "first": "20261105030923",
+   "last": "20261105030923",
+   "n": 1,
+   "url": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=9387d502-11b9-42d9-9221-34a9cfaab01d"
+  },
+  "946e4048-c264-4e91-8eff-753690a0a8ab": {
+   "first": "20261105030923",
+   "last": "20261105030923",
+   "n": 1,
+   "url": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=946e4048-c264-4e91-8eff-753690a0a8ab"
+  },
+  "af1017a4-542d-4c51-ba80-be95d180fd6f": {
+   "first": "20261105030923",
+   "last": "20261105030923",
+   "n": 1,
+   "url": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=af1017a4-542d-4c51-ba80-be95d180fd6f"
+  },
+  "af5bd889-8d86-41ab-8ca0-d8d8dbb3004f": {
+   "first": "20261105030923",
+   "last": "20261105030923",
+   "n": 1,
+   "url": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=af5bd889-8d86-41ab-8ca0-d8d8dbb3004f"
+  },
+  "c24a1bdb-8779-4ab5-9e80-ce369ed3bd03": {
+   "first": "20261105030923",
+   "last": "20261105030923",
+   "n": 1,
+   "url": "https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=c24a1bdb-8779-4ab5-9e80-ce369ed3bd03"
   }
  }
 }

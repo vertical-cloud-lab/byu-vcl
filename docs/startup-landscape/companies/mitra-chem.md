@@ -34,12 +34,13 @@ What changed between the first snapshot (2026-10-10) and 2026-11-28. The method 
 | 2021-11-17 | Series A | 20.0 | entity: Mitra Future Technologies | not stated | [Energetica India](https://www.energetica-india.net/keyword/mitra-chem) |
 | 2023-08 | Series B, first close | 40.0 | $40M of a $60M round | General Motors | [Orrick](https://www.orrick.com/en/News/2023/08/Enabling-Mass-Market-Electrification-For-EVs-Energy-Storage-and-Beyond), [ESG Today](https://www.esgtoday.com/gm-leads-60-million-capital-raise-for-battery-tech-startup-mitra-chem/) |
 | 2024-09 | DOE MESC grant (with Michigan, up to $125M) | 100.0 | AmPLIFI LFP cathode plant, Muskegon MI | US DOE | [Metal Tech News](https://metaltechnews.com/story/2024/09/25/tech-bytes/doe-and-michigan-fund-mitra-chem-cathodes/1959.html) |
+| 2025-05-23 | Series B extension (Form D) | 15.6 | $15.6M sold of a $50.0M offering; entity: Mitra Future Technologies, Inc. | not stated | [SEC Form D](https://www.sec.gov/Archives/edgar/data/1887663/000188766325000002/primary_doc.xml) |
 
-Confirmed equity is about $60M, though a [Stanford GSB case](https://www.gsb.stanford.edu/faculty-research/case-studies/mitra-chem-charging-ahead-battery-materials-manufacturing) says $80M total. The ~$100M is a grant selection, not equity. Reports of a 2025 Series B extension conflict ($16M vs $50M) and are excluded.
+Confirmed equity is about $60M, though a [Stanford GSB case](https://www.gsb.stanford.edu/faculty-research/case-studies/mitra-chem-charging-ahead-battery-materials-manufacturing) says $80M total. The ~$100M is a grant selection, not equity. A [2025 Form D](https://www.sec.gov/Archives/edgar/data/1887663/000188766325000002/primary_doc.xml) settles the conflicting reports of a 2025 Series B extension ($16M vs $50M). Filed under the legal name Mitra Future Technologies, Inc., it records $15.6M sold of a $50.0M equity offering, first sale 23 May 2025. It also lists two directors who are not on the team page: Jiang-Ling Du and Chamath Palihapitiya.
 
 ## Team size over time
 
-No total-headcount datapoints were collected (skipped for time). The live [team page](https://www.mitrachem.com/team) shows leadership and board only (11 people). Third-party estimates of ~55-61 were not used.
+LinkedIn members fell from 67 (Sep 2024) to 46 (Oct 2026) (see the [28 November update](#update-2026-11-28) above). The live [team page](https://www.mitrachem.com/team) shows leadership and board only (11 people). Third-party estimates of ~55-61 were not used.
 
 ## Leadership and key hires
 
@@ -63,7 +64,7 @@ Current (2026-10-09, [careers page](https://www.mitrachem.com/join-us), on Trine
 
 ## Turnover
 
-No departures or layoffs found in a single news search. Coverage is thin.
+No departures or layoffs were announced, but LinkedIn members fell by a third between September 2024 and October 2026 (67 → 46). Coverage is still thin.
 
 ## Hiring vs. funding
 
@@ -71,5 +72,5 @@ There is no headcount or posting data to relate to the $20M Series A (2021), the
 
 ## Coverage and caveats
 
-- EDGAR full-text search for "Mitra Chem" Form D returned nothing. The legal name, Mitra Future Technologies, was not searched.
+- EDGAR full-text search for "Mitra Chem" Form D returns nothing; the filings are under the legal name, Mitra Future Technologies, Inc. (CIK 1887663): Form Ds in 2021, 2023 and 2025.
 - Thin coverage: funding, the live leadership page and current openings only. Start dates are unknown for leaders other than the founders.

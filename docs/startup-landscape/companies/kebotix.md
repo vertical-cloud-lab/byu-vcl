@@ -30,7 +30,7 @@ Total ≈ $23.7M.
 
 ## Team size over time
 
-No datapoints collected: team pages, archived LinkedIn and OpenAlex were skipped for time.
+LinkedIn members: 11 (Apr 2024), then 9 (Aug 2024). Later captures show only the 11–50 band (see the [28 November update](#update-2026-11-28) above). Team pages and OpenAlex were not checked.
 
 ## Leadership and key hires
 

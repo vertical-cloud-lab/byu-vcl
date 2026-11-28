@@ -2,7 +2,7 @@
 
 Back to [all companies](README.md) · [company profile](../companies/chemify.md)
 
-**54 postings recovered**, 54 with the full description; 12 still open on 2026-11-28. First seen 2025-11-22, latest 2026-09-26. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**55 postings recovered**, 55 with the full description; 12 still open on 2026-11-28. First seen 2025-11-22, latest 2026-11-05. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
@@ -17,7 +17,7 @@ Back to [all companies](README.md) · [company profile](../companies/chemify.md)
 | 2025-12-29 | 2025-12-29 | [Senior Data Scientist - AI/ML (CADD)](#senior-data-scientist-ai-ml-cadd-2025-12-29) | ml-research | Cheminformatics | Glasgow, United Kingdom | PhD/MS | 5 |  | [Wayback](https://web.archive.org/web/20251229175205/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=6b531d7d-7098-4a19-9bb3-a8487b741d11) |
 | 2025-12-29 | 2025-12-29 | [Senior DevOps Engineer](#senior-devops-engineer-2025-12-29) | software-eng | Software | Glasgow, United Kingdom | BS | 5 |  | [Wayback](https://web.archive.org/web/20251229175228/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=3a59972c-aae9-4382-a537-efe462be3d67) |
 | 2026-01-16 | open | [Project Manager](#project-manager-2026-01-16) | business-ops | Projects | Glasgow, United Kingdom |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=8b897cea-5b23-41e9-8f3b-55334ece1fd4) |
-| 2026-01-29 | 2026-10-10 | [Production Chemist (Dispensary)](#production-chemist-dispensary-2026-01-29) | materials-science |  |  |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=3ebf499e-c459-4743-853a-f33bb29aa439) |
+| 2026-01-29 | 2026-10-10 | [Production Chemist (Dispensary)](#production-chemist-dispensary-2026-01-29) | materials-science | Dispensary | Glasgow, United Kingdom |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=3ebf499e-c459-4743-853a-f33bb29aa439) [Wayback](https://web.archive.org/web/20260201111322/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=3ebf499e-c459-4743-853a-f33bb29aa439) |
 | 2026-02-01 | 2026-02-01 | [Associate / Senior Associate - Strategy & Business Operations](#associate-senior-associate-strategy-business-operations-2026-02-01) | business-ops | Business Development | Any, United States Of America | BS | 1 |  | [Wayback](https://web.archive.org/web/20260201093736/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=553d0004-8050-46ec-98e9-0417f5bbd4e7) |
 | 2026-02-01 | 2026-02-01 | [Customer Success Director, USA](#customer-success-director-usa-2026-02-01) | leadership | Business Development | Any, United States - Remote | PhD/MS | 6 |  | [Wayback](https://web.archive.org/web/20260201123203/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=9d7a715c-a702-4a5e-8471-7220b7b3c7d0) |
 | 2026-02-01 | 2026-02-01 | [Engineering Operations Engineer/Technician](#engineering-operations-engineer-technician-2026-02-01) | lab-automation | Engineering Operations | Glasgow, United Kingdom | BS | 2 |  | [Wayback](https://web.archive.org/web/20260201094250/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=ce9d1be6-49a1-48b4-908a-5e239efe0879) |
@@ -25,21 +25,21 @@ Back to [all companies](README.md) · [company profile](../companies/chemify.md)
 | 2026-02-01 | 2026-02-01 | [Operations Development Expert](#operations-development-expert-2026-02-01) | business-ops | Projects | Glasgow, United Kingdom |  |  |  | [Wayback](https://web.archive.org/web/20260201114936/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=10546142-16b9-42be-9621-3148d2726ce4) |
 | 2026-02-01 | open | [Production Chemist](#production-chemist-2026-02-01) | materials-science | Operations | Glasgow, United Kingdom |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=b8e7d01d-30ce-4050-aa97-2992f5ad28ab) |
 | 2026-02-03 | open | [Analytical Technician](#analytical-technician-2026-02-03) | lab-automation | Chemistry- Product Operations | Glasgow, United Kingdom |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=a024d53d-87b5-49f6-aa74-f29d592a2096) |
-| 2026-02-03 | 2026-10-10 | [Senior/ Staff Analytical Technician](#senior-staff-analytical-technician-2026-02-03) | lab-automation |  |  |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=73eaa73f-79b9-4613-ac1c-1cf6a0ac6acf) |
+| 2026-02-03 | 2026-10-10 | [Senior/ Staff Analytical Technician](#senior-staff-analytical-technician-2026-02-03) | lab-automation | Chemistry- Product Operations | Glasgow, United Kingdom |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=73eaa73f-79b9-4613-ac1c-1cf6a0ac6acf) [Wayback](https://web.archive.org/web/20260302082524/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=73eaa73f-79b9-4613-ac1c-1cf6a0ac6acf) |
 | 2026-03-01 | 2026-03-01 | [Chemistry Procurement & Inventory Specialist (Product Operations)](#chemistry-procurement-inventory-specialist-product-operations-2026-03-01) | business-ops | Supply Chain | Glasgow, United Kingdom | PhD/MS/BS |  |  | [Wayback](https://web.archive.org/web/20260301123348/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=09a82aa6-2405-4177-86f4-e3a7488fdfd2) |
 | 2026-03-01 | 2026-03-01 | [Operational Finance Analyst](#operational-finance-analyst-2026-03-01) | business-ops | Finance | Glasgow, United Kingdom | MS |  |  | [Wayback](https://web.archive.org/web/20260301105720/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=4f8407c7-b405-4328-a8d0-12dddbdd49ee) |
 | 2026-03-01 | 2026-03-01 | [Principal Data Architect](#principal-data-architect-2026-03-01) | software-eng | IT | Glasgow or London (King’s Cross), United | BS | 8 |  | [Wayback](https://web.archive.org/web/20260301103529/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=e51a8114-537d-45c7-98ec-fe976abb998a) |
 | 2026-03-01 | 2026-03-01 | [Purification Technician/Senior Purification Technician](#purification-technician-senior-purification-technician-2026-03-01) | lab-automation | Chemistry- Product Operations | Glasgow, United Kingdom |  |  |  | [Wayback](https://web.archive.org/web/20260301105421/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=404dbf21-6abb-4386-96ec-f2994db1578f) |
 | 2026-03-01 | 2026-03-01 | [Synthetic Chemist](#synthetic-chemist-2026-03-01) | materials-science | Chemistry- Product Operations | Glasgow | PhD/MS | 2 |  | [Wayback](https://web.archive.org/web/20260301214412/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=acde067e-2a0f-448a-a9f4-2f7ffa544de4) |
 | 2026-03-03 | 2026-03-03 | [Principal Architect – Robotics & Hardware Abstraction](#principal-architect-robotics-hardware-abstraction-2026-03-03) | software-eng | IT | Glasgow or London (King’s Cross), United |  |  |  | [Wayback](https://web.archive.org/web/20260303051436/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=afbda2d3-3e50-4fbd-8e41-a190af8b9305) |
-| 2026-03-20 | 2026-10-10 | [Staff Product Designer](#staff-product-designer-2026-03-20) | business-ops |  |  |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=138b2564-a877-4ce7-84dd-d7136720aa99) |
+| 2026-03-20 | 2026-10-10 | [Staff Product Designer](#staff-product-designer-2026-03-20) | business-ops | IT | Glasgow |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=138b2564-a877-4ce7-84dd-d7136720aa99) [Wayback](https://web.archive.org/web/20260401182813/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=138b2564-a877-4ce7-84dd-d7136720aa99) |
 | 2026-04-01 | 2026-04-01 | [Executive Assistant](#executive-assistant-2026-04-01) | business-ops | Business Support | Glasgow, United Kingdom | BS |  |  | [Wayback](https://web.archive.org/web/20260401103803/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=11c4d103-d07a-422f-8c66-5359783d530a) |
 | 2026-04-01 | 2026-04-01 | [Senior ML Infrastructure Engineer](#senior-ml-infrastructure-engineer-2026-04-01) | ml-research | IT | Glasgow |  |  |  | [Wayback](https://web.archive.org/web/20260401134621/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=daf6755c-c68a-46fe-b98a-0bd6319fdb93) |
 | 2026-05-14 | 2026-10-10 | [Senior / Staff Machine Learning Scientist](#senior-staff-machine-learning-scientist-2026-05-14) | ml-research | Design Retro & Advanced ML | Glasgow or Remote, United Kingdom | PhD |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=c32c8ec9-0784-4cbd-8273-cf593f08e8cc) [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=c32c8ec9-0784-4cbd-8273-cf593f08e8cc) |
 | 2026-05-14 | 2026-10-10 | [Senior / Staff Machine Learning Scientist USA](#senior-staff-machine-learning-scientist-usa-2026-05-14) | ml-research |  |  |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=95e3c8d3-83ef-4535-93d1-cd8ec43c19f4) |
 | 2026-05-14 | 2026-10-10 | [Staff CADD Scientist USA](#staff-cadd-scientist-usa-2026-05-14) | materials-science | Design Retro & Advanced ML | San Francisco (Hybrid) or Remote from Bo | PhD | 8 |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=fc48c004-2509-49f6-9067-ef3aa17fd640) |
-| 2026-06-02 | 2026-10-10 | [Product Operations Manager - Synthetic Chemistry](#product-operations-manager-synthetic-chemistry-2026-06-02) | materials-science | Chemistry- Product Operations | Glasgow, United Kingdom |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=c24a1bdb-8779-4ab5-9e80-ce369ed3bd03) [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=c24a1bdb-8779-4ab5-9e80-ce369ed3bd03) |
-| 2026-06-28 | 2026-10-10 | [Tech Director, CTO Office](#tech-director-cto-office-2026-06-28) | leadership | CTO Office | Glasgow, United Kingdom |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=af1017a4-542d-4c51-ba80-be95d180fd6f) [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=af1017a4-542d-4c51-ba80-be95d180fd6f) |
+| 2026-06-02 | 2026-11-05 | [Product Operations Manager - Synthetic Chemistry](#product-operations-manager-synthetic-chemistry-2026-06-02) | materials-science | Chemistry- Product Operations | Glasgow, United Kingdom |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=c24a1bdb-8779-4ab5-9e80-ce369ed3bd03) [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=c24a1bdb-8779-4ab5-9e80-ce369ed3bd03) |
+| 2026-06-28 | 2026-11-05 | [Tech Director, CTO Office](#tech-director-cto-office-2026-06-28) | leadership | CTO Office | Glasgow, United Kingdom |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=af1017a4-542d-4c51-ba80-be95d180fd6f) [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=af1017a4-542d-4c51-ba80-be95d180fd6f) |
 | 2026-07-07 | 2026-10-10 | [Engineering Project Manager](#engineering-project-manager-2026-07-07) | lab-automation | Hardware Engineering | Glasgow, UK |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=0fa2633b-43f9-4553-b36f-6f1cc5b5d3d7) |
 | 2026-07-07 | open | [Lead Full Stack SW Engineer](#lead-full-stack-sw-engineer-2026-07-07) | software-eng | Hardware Engineering | San Fransisco, US |  | 8 |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=fc23e611-5771-4450-83b5-9f0672fd1759) |
 | 2026-07-13 | 2026-10-10 | [Health & Safety Advisor](#health-safety-advisor-2026-07-13) | lab-automation | Health and Safety | Glasgow, United Kingdom |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=66dcb85a-0211-4d48-85d5-b006e6f3ceb8) [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=66dcb85a-0211-4d48-85d5-b006e6f3ceb8) |
@@ -47,23 +47,24 @@ Back to [all companies](README.md) · [company profile](../companies/chemify.md)
 | 2026-07-15 | open | [Senior Firmware Engineer](#senior-firmware-engineer-2026-07-15) | lab-automation | Hardware Engineering | Glasgow, UK |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=41df023c-eb30-4c49-a32a-42c19a436465) |
 | 2026-07-15 | open | [Senior Full Stack Software Engineer](#senior-full-stack-software-engineer-2026-07-15) | software-eng | Hardware Engineering | Glasgow, UK |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=cf62767d-6745-4a60-8b0c-a75d599186d8) [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=8f24fb3f-3618-452b-8403-e938d1ccdaf0) |
 | 2026-07-15 | 2026-10-10 | [Senior Manufacturing Engineer](#senior-manufacturing-engineer-2026-07-15) | lab-automation | Hardware Engineering | Glasgow, UK |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=5e02ba06-cd4a-4be3-8755-0ca32be7c259) [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=5e02ba06-cd4a-4be3-8755-0ca32be7c259) |
-| 2026-07-22 | 2026-10-10 | [Senior Manager, Operations Dev](#senior-manager-operations-dev-2026-07-22) | business-ops | Projects | Health Innovation Hub |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=af5bd889-8d86-41ab-8ca0-d8d8dbb3004f) [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=af5bd889-8d86-41ab-8ca0-d8d8dbb3004f) |
+| 2026-07-22 | 2026-11-05 | [Senior Manager, Operations Dev](#senior-manager-operations-dev-2026-07-22) | business-ops | Projects | Health Innovation Hub |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=af5bd889-8d86-41ab-8ca0-d8d8dbb3004f) [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=af5bd889-8d86-41ab-8ca0-d8d8dbb3004f) |
 | 2026-08-06 | open | [CADD Scientist / Senior CADD Scientist](#cadd-scientist-senior-cadd-scientist-2026-08-06) | materials-science |  | Glasgow, United Kingdom | PhD |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=946e4048-c264-4e91-8eff-753690a0a8ab) |
 | 2026-08-06 | open | [Senior Software Engineer](#senior-software-engineer-2026-08-06) | software-eng | Unified Data Platform | Glasgow, United Kingdom |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=3388ae22-606d-489e-b24c-e1f6c08d10c9) |
 | 2026-08-10 | 2026-10-10 | [Laboratory Coordinator](#laboratory-coordinator-2026-08-10) | lab-automation |  |  |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=49c0344b-ac4d-4dc5-bfb9-73d9f5b9d1c6) |
 | 2026-08-26 | 2026-10-10 | [Management Accountant](#management-accountant-2026-08-26) | business-ops |  |  |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=9218b4e1-fe29-4339-b4ab-d80b783ab5f6) |
 | 2026-08-31 | 2026-10-10 | [Payroll Clerk](#payroll-clerk-2026-08-31) | business-ops | Finance | Glasgow, United Kingdom |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=b43eb88d-9af9-427f-86eb-503d8527f2e5) |
-| 2026-09-02 | 2026-10-10 | [Business Support Assistant](#business-support-assistant-2026-09-02) | business-ops | People Operations | Glasgow, United Kingdom |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=9387d502-11b9-42d9-9221-34a9cfaab01d) [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=9387d502-11b9-42d9-9221-34a9cfaab01d) |
+| 2026-09-02 | 2026-11-05 | [Business Support Assistant](#business-support-assistant-2026-09-02) | business-ops | People Operations | Glasgow, United Kingdom |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=9387d502-11b9-42d9-9221-34a9cfaab01d) [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=9387d502-11b9-42d9-9221-34a9cfaab01d) |
 | 2026-09-25 | open | [Senior Product Owner](#senior-product-owner-2026-09-25) | business-ops | Software | Glasgow, United Kingdom |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=f5a5b82f-0033-4314-973f-97d0381695fa) |
-| 2026-09-25 | 2026-10-10 | [Synthetic Chemist](#synthetic-chemist-2026-09-25) | materials-science | Chemistry - ChemDev | Glasgow, United Kingdom |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=4663d6ac-6826-4150-adbb-462952b0d62b) [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=4663d6ac-6826-4150-adbb-462952b0d62b) |
+| 2026-09-25 | 2026-10-27 | [Synthetic Chemist](#synthetic-chemist-2026-09-25) | materials-science | Chemistry - ChemDev | Glasgow, United Kingdom |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=4663d6ac-6826-4150-adbb-462952b0d62b) [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=4663d6ac-6826-4150-adbb-462952b0d62b) |
 | 2026-09-26 | open | [Automation Scientist](#automation-scientist-2026-09-26) | lab-automation | Engineering | Glasgow, United Kingdom | PhD/MS |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=6606cff1-deca-4355-8705-65766307d6bd) |
 | 2026-09-26 | open | [Mechanical Engineer](#mechanical-engineer-2026-09-26) | lab-automation | Engineering | Glasgow, United Kingdom |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=03dbc4ce-fa64-471d-8ee8-fa76fac920af) |
 | 2026-09-26 | 2026-10-10 | [Mechatronics Engineer](#mechatronics-engineer-2026-09-26) | lab-automation |  |  |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=70405670-01ed-4efe-8b9e-e0159646585f) |
 | 2026-09-26 | 2026-10-10 | [Senior Mechanical Engineer](#senior-mechanical-engineer-2026-09-26) | lab-automation | Engineering | Glasgow, United Kingdom |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=fc57b631-50a6-41dc-9e74-a9e6c15f81af) [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=fc57b631-50a6-41dc-9e74-a9e6c15f81af) |
+| 2026-11-05 | 2026-11-05 | [Engineering Ops Shift Supervisor](#engineering-ops-shift-supervisor-2026-11-05) | software-eng | Engineering Operations | Glasgow, United Kingdom | BS |  |  | [Wayback](https://web.archive.org/web/20261105030923/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=170b7df3-d9cd-4c96-9793-f91c42283bd9) |
 
 ## Careers-page captures
 
-3 archived captures of the company's careers page, or of its page on a job board. Their text is not reproduced here: where they list openings, those are in the table above or sat in embedded widgets the archive did not capture, and some pages feature named staff, whom this survey does not name. The captures: [2025-11-22](https://web.archive.org/web/20251122111057/https://www.chemify.io/careers), [2026-01-01](https://web.archive.org/web/20260101093842/https://www.chemify.io/careers), [2026-04-01](https://web.archive.org/web/20260401094404/https://www.chemify.io/careers).
+5 archived captures of the company's careers page, or of its page on a job board. Their text is not reproduced here: where they list openings, those are in the table above or sat in embedded widgets the archive did not capture, and some pages feature named staff, whom this survey does not name. The captures: [2025-11-22](https://web.archive.org/web/20251122111057/https://www.chemify.io/careers), [2026-01-01](https://web.archive.org/web/20260101093842/https://www.chemify.io/careers), [2026-04-01](https://web.archive.org/web/20260401094404/https://www.chemify.io/careers), [2026-07-13](https://web.archive.org/web/20260713122359/https://www.chemify.io/careers), [2026-11-05](https://web.archive.org/web/20261105030910/https://www.chemify.io/careers).
 
 ## Descriptions
 
@@ -504,7 +505,7 @@ What you’ll bring
 
 ### Production Chemist (Dispensary) (2026-01-29)
 
-2026-01-29 → 2026-10-10 · materials-science · location not stated · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=3ebf499e-c459-4743-853a-f33bb29aa439)
+2026-01-29 → 2026-10-10 · materials-science · Glasgow, United Kingdom · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=3ebf499e-c459-4743-853a-f33bb29aa439)
 
 <details><summary>Description</summary>
 
@@ -819,7 +820,7 @@ Please note that the company are unable to sponsor visas for this role.
 
 ### Senior/ Staff Analytical Technician (2026-02-03)
 
-2026-02-03 → 2026-10-10 · lab-automation · location not stated · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=73eaa73f-79b9-4613-ac1c-1cf6a0ac6acf)
+2026-02-03 → 2026-10-10 · lab-automation · Glasgow, United Kingdom · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=73eaa73f-79b9-4613-ac1c-1cf6a0ac6acf)
 
 <details><summary>Description</summary>
 
@@ -1084,7 +1085,7 @@ You are a rare hybrid: equally at home deep in embedded C++ as you are designing
 
 ### Staff Product Designer (2026-03-20)
 
-2026-03-20 → 2026-10-10 · business-ops · location not stated · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=138b2564-a877-4ce7-84dd-d7136720aa99)
+2026-03-20 → 2026-10-10 · business-ops · Glasgow · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=138b2564-a877-4ce7-84dd-d7136720aa99)
 
 <details><summary>Description</summary>
 
@@ -1317,7 +1318,7 @@ You are a rare hybrid: a deeply credible computational chemist who is equally co
 
 ### Product Operations Manager - Synthetic Chemistry (2026-06-02)
 
-2026-06-02 → 2026-10-10 · materials-science · Glasgow, United Kingdom · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=c24a1bdb-8779-4ab5-9e80-ce369ed3bd03)
+2026-06-02 → 2026-11-05 · materials-science · Glasgow, United Kingdom · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=c24a1bdb-8779-4ab5-9e80-ce369ed3bd03)
 
 <details><summary>Description</summary>
 
@@ -1349,7 +1350,7 @@ This vacancy has now been closed. Thank you for your interest.
 
 ### Tech Director, CTO Office (2026-06-28)
 
-2026-06-28 → 2026-10-10 · leadership · Glasgow, United Kingdom · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=af1017a4-542d-4c51-ba80-be95d180fd6f)
+2026-06-28 → 2026-11-05 · leadership · Glasgow, United Kingdom · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=af1017a4-542d-4c51-ba80-be95d180fd6f)
 
 <details><summary>Description</summary>
 
@@ -1661,7 +1662,7 @@ This vacancy has now been closed. Thank you for your interest.
 
 ### Senior Manager, Operations Dev (2026-07-22)
 
-2026-07-22 → 2026-10-10 · business-ops · Health Innovation Hub · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=af5bd889-8d86-41ab-8ca0-d8d8dbb3004f)
+2026-07-22 → 2026-11-05 · business-ops · Health Innovation Hub · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=af5bd889-8d86-41ab-8ca0-d8d8dbb3004f)
 
 <details><summary>Description</summary>
 
@@ -1857,7 +1858,7 @@ A recognised payroll qualification, such as a CIPP or IAB payroll qualification,
 
 ### Business Support Assistant (2026-09-02)
 
-2026-09-02 → 2026-10-10 · business-ops · Glasgow, United Kingdom · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=9387d502-11b9-42d9-9221-34a9cfaab01d)
+2026-09-02 → 2026-11-05 · business-ops · Glasgow, United Kingdom · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=9387d502-11b9-42d9-9221-34a9cfaab01d)
 
 <details><summary>Description</summary>
 
@@ -1919,7 +1920,7 @@ This role combines product direction with hands-on product ownership, and is bui
 
 ### Synthetic Chemist (2026-09-25)
 
-2026-09-25 → 2026-10-10 · materials-science · Glasgow, United Kingdom · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=4663d6ac-6826-4150-adbb-462952b0d62b)
+2026-09-25 → 2026-10-27 · materials-science · Glasgow, United Kingdom · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=4663d6ac-6826-4150-adbb-462952b0d62b)
 
 <details><summary>Description</summary>
 
@@ -2079,6 +2080,56 @@ Job Openings
 -
 Chemify Ltd
 This vacancy has now been closed. Thank you for your interest.
+
+</details>
+
+<a id="engineering-ops-shift-supervisor-2026-11-05"></a>
+
+### Engineering Ops Shift Supervisor (2026-11-05)
+
+2026-11-05 → 2026-11-05 · software-eng · Glasgow, United Kingdom · [source](https://web.archive.org/web/20261105030923/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=170b7df3-d9cd-4c96-9793-f91c42283bd9)
+
+<details><summary>Description</summary>
+
+**The Role**
+Chemify is expanding its Engineering Operations team to support the development, commissioning, and maintenance of robotic chemistry platforms across our Chemifarms in Glasgow and beyond. This lab-based role, reporting to the Engineering Operations Manager, involves close collaboration with software engineers, chemists, and automation specialists. Occasional travel may be required. This role requires an early/late 2 shift, 7-day working pattern.
+We welcome candidates with a broad range of experience; the appointment level will reflect the successful applicant’s background. We’re looking for someone enthusiastic, service-minded, and eager to help build world leading high throughput chemistry infrastructure.
+
+**Key Responsibilities**
+Technical
+· Commission and integrate new robotic hardware into production.
+· Develop and optimise automated synthesis workflows.
+· Perform preventative and reactive maintenance on chemistry platforms and lab instruments.
+· Administrate the company’s computerised maintenance management system (CMMS) (MaintainX), ensuring continual compliance with procedures and a high quality of data capture.
+· Create and contribute to Engineering Operations SOPs.
+· Lead the support of chemistry operations working closely with the chemistry team to understand requirements and prevent failed reactions.
+Operational & Cross-Functional
+· Line management responsibility for maintenance shift team.
+· Ensure consistent maintenance standards across Chemify sites.
+· Collaborate with chemists, automation engineers, software developers, and manufacturing teams.
+· Identify opportunities to improve workflows, platform reliability, and uptime.
+· Support service delivery by minimising downtime and improving response times.
+· Contribute to wider company initiatives.
+
+**Minimum Qualifications**
+· BSc or equivalent experience in a technical discipline.
+· 2 years+ experience in an industrial environment.
+· Strong communication skills and ability to work in multidisciplinary teams.
+· Problem-solving- attitude and willingness to learn.
+Essential Experience
+Experience in at least one of the following is required:
+· Maintenance of scientific/industrial instrumentation.
+· Robotics (mechanical, fluidic, pneumatic, or electromechanical).
+· Test and validation programme execution.
+· Synthetic organic chemistry
+
+**Desired Skills & Attributes**
+· Use of a CMMS to manage maintenance activities.
+· Troubleshooting of automated or robotic systems.
+· Knowledge of lab safety and documentation best practices.
+· Ability to work to performance targets.
+· Customer service- mindset with a proactive approach.
+· Interest in automation technologies and continuous improvement.
 
 </details>
 

@@ -2,7 +2,7 @@
 
 Back to [all companies](README.md) · [company profile](../companies/dunia-innovations.md)
 
-**17 postings recovered**, 17 with the full description; 3 still open on 2026-11-28. First seen 2025-07-01, latest 2026-06-17. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**18 postings recovered**, 18 with the full description; 3 still open on 2026-11-28. First seen 2025-07-01, latest 2026-07-13. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
@@ -10,11 +10,11 @@ Back to [all companies](README.md) · [company profile](../companies/dunia-innov
 | 2025-07-29 | 2026-10-10 | [Business Development Manager](#business-development-manager-2025-07-29) | business-ops |  | Berlin | PhD/MS | 3 |  | [live](https://dunia.jobs.personio.com/job/2267425?language=en) [Wayback](https://web.archive.org/web/20250916072721/https://dunia.jobs.personio.com/job/2267425?language=en) |
 | 2026-02-02 | open | [Head of AI Research](#head-of-ai-research-2026-02-02) | leadership |  | Berlin | PhD |  |  | [live](https://dunia.jobs.personio.com/job/2516220?language=en) |
 | 2026-02-02 | open | [Materials Informatics Scientist (Evaluation-focused)](#materials-informatics-scientist-evaluation-focused-2026-02-02) | materials-science |  | Berlin | PhD/MS |  |  | [live](https://dunia.jobs.personio.com/job/2516249?language=en) |
-| 2026-02-04 | 2026-10-10 | [Chemical Data Scientist](#chemical-data-scientist-2026-02-04) | ml-research |  | Berlin | PhD/MS | 3 |  | [live](https://dunia.jobs.personio.com/job/2519182?language=en) |
-| 2026-02-04 | 2026-10-10 | [Lab Operations & Procurement Manager](#lab-operations-procurement-manager-2026-02-04) | business-ops |  | Berlin |  |  |  | [live](https://dunia.jobs.personio.com/job/2519192?language=en) |
-| 2026-02-04 | 2026-10-10 | [Lab Technicians](#lab-technicians-2026-02-04) | lab-automation |  | Berlin |  |  |  | [live](https://dunia.jobs.personio.com/job/2519206?language=en) |
-| 2026-02-04 | 2026-10-10 | [Research Scientist, Thermocatalysis](#research-scientist-thermocatalysis-2026-02-04) | materials-science |  | Berlin | PhD | 3 |  | [live](https://dunia.jobs.personio.com/job/2519204?language=en) |
-| 2026-02-04 | 2026-10-10 | [Software Engineer, Infrastructure](#software-engineer-infrastructure-2026-02-04) | software-eng |  | Berlin |  | 2 |  | [live](https://dunia.jobs.personio.com/job/2519188?language=en) |
+| 2026-02-04 | 2026-10-10 | [Chemical Data Scientist](#chemical-data-scientist-2026-02-04) | ml-research |  | Berlin | PhD/MS | 3 |  | [live](https://dunia.jobs.personio.com/job/2519182?language=en) [Wayback](https://web.archive.org/web/20260410192243/https://dunia.jobs.personio.com/job/2519182?language=en) |
+| 2026-02-04 | 2026-10-10 | [Lab Operations & Procurement Manager](#lab-operations-procurement-manager-2026-02-04) | business-ops |  | Berlin |  |  |  | [live](https://dunia.jobs.personio.com/job/2519192?language=en) [Wayback](https://web.archive.org/web/20260410185734/https://dunia.jobs.personio.com/job/2519192?language=en&utm_source=Kindred+Capital+job+board&utm_medium=getro.com&gh_src=Kindred+Capital+job+board) |
+| 2026-02-04 | 2026-10-10 | [Lab Technicians](#lab-technicians-2026-02-04) | lab-automation |  | Berlin |  |  |  | [live](https://dunia.jobs.personio.com/job/2519206?language=en) [Wayback](https://web.archive.org/web/20260410190928/https://dunia.jobs.personio.com/job/2519206?language=en) |
+| 2026-02-04 | 2026-10-10 | [Research Scientist, Thermocatalysis](#research-scientist-thermocatalysis-2026-02-04) | materials-science |  | Berlin | PhD | 3 |  | [live](https://dunia.jobs.personio.com/job/2519204?language=en) [Wayback](https://web.archive.org/web/20260410190613/https://dunia.jobs.personio.com/job/2519204?language=en&utm_source=Kindred+Capital+job+board&utm_medium=getro.com&gh_src=Kindred+Capital+job+board) |
+| 2026-02-04 | 2026-10-10 | [Software Engineer, Infrastructure](#software-engineer-infrastructure-2026-02-04) | software-eng |  | Berlin |  | 2 |  | [live](https://dunia.jobs.personio.com/job/2519188?language=en) [Wayback](https://web.archive.org/web/20260410194255/https://dunia.jobs.personio.com/job/2519188?language=en&utm_source=Kindred+Capital+job+board&utm_medium=getro.com&gh_src=Kindred+Capital+job+board) |
 | 2026-02-06 | 2026-10-10 | [ML Engineer, Agents & Reasoning](#ml-engineer-agents-reasoning-2026-02-06) | ml-research |  | Berlin |  | 4 |  | [live](https://dunia.jobs.personio.com/job/2521701?language=en) [Wayback](https://web.archive.org/web/20260310155616/https://dunia.jobs.personio.com/job/2521701?language=en) |
 | 2026-02-06 | 2026-10-10 | [ML Researcher, Representation Learning](#ml-researcher-representation-learning-2026-02-06) | ml-research |  | Berlin | PhD | 4 |  | [live](https://dunia.jobs.personio.com/job/2521638?language=en) [Wayback](https://web.archive.org/web/20260310153052/https://dunia.jobs.personio.com/job/2521638?language=en) |
 | 2026-02-06 | 2026-10-10 | [Manufacturing Systems Engineer](#manufacturing-systems-engineer-2026-02-06) | software-eng |  | Berlin |  |  |  | [live](https://dunia.jobs.personio.com/job/2521931?language=en) [Wayback](https://web.archive.org/web/20260310161640/https://dunia.jobs.personio.com/job/2521931?language=en) |
@@ -23,6 +23,7 @@ Back to [all companies](README.md) · [company profile](../companies/dunia-innov
 | 2026-04-10 | 2026-05-14 | [Head of People](#head-of-people-2026-04-10) | leadership |  |  |  |  |  | [Wayback](https://web.archive.org/web/20260410191200/https://dunia.jobs.personio.com/job/2515890) |
 | 2026-04-10 | 2026-07-13 | [Partnership Manager](#partnership-manager-2026-04-10) | business-ops |  |  |  | 5 |  | [Wayback](https://web.archive.org/web/20260410203801/https://dunia.jobs.personio.com/job/2516252) |
 | 2026-06-17 | 2026-06-17 | [Bilanzbuchhalter/in (IHK) / Finance Manager (m/w/d) — 20 Std./Woche, hybrid](#bilanzbuchhalter-in-ihk-finance-manager-m-w-d-20-std-woche-hybrid-2026-06-17) | business-ops |  |  |  |  |  | [Wayback](https://web.archive.org/web/20260617195805/https://dunia.jobs.personio.com/job/2630177) |
+| 2026-07-13 | 2026-07-13 | [Finance Manager (m/w/d) — 20 Std./Woche, hybrid](#finance-manager-m-w-d-20-std-woche-hybrid-2026-07-13) | business-ops |  |  |  |  |  | [Wayback](https://web.archive.org/web/20260713130437/https://dunia.jobs.personio.com/job/2688916) |
 
 ## Descriptions
 
@@ -721,6 +722,47 @@ Grow what works
 ### Bilanzbuchhalter/in (IHK) / Finance Manager (m/w/d) — 20 Std./Woche, hybrid (2026-06-17)
 
 2026-06-17 → 2026-06-17 · business-ops · location not stated · [source](https://web.archive.org/web/20260617195805/https://dunia.jobs.personio.com/job/2630177)
+
+<details><summary>Description</summary>
+
+Ihre Aufgaben
+Die Rolle
+Du verantwortest die operative Finance-Funktion von A bis Z: Buchhaltung, Fördermitteldokumentation, Rechnungsmanagement und Monatsabschluss. Du arbeitest direkt mit unserer Fractional CFO (2 Tage/Woche) zusammen und berichtest an den COO. Hands-on — du bist die Person, die wirklich weiß, wo jeder Euro steckt.
+Deine Aufgaben
+- Finanzbuchhaltung in DATEV — du buchst selbst bzw. verantwortest die geplante Automatisierung der Buchungen
+- Verantwortung für den gesamten Rechnungs- und Zahlungsprozess: Erfassen, kategorisieren, freigeben und Zahlungen initiieren
+- Finanzielle Dokumentation und Berichterstattung für öffentliche Förderprogramme: Kostenzuordnung, Mittelanforderungen, Budgetabweichungsberichte (IBB, PTJ, EU)
+- Pflege des Anlagenregisters inkl. Abschreibungsplanung (CAPEX-intensives Umfeld)
+- Monatsabschluss: Abstimmungen, Ausgabenkategorisierung, Cash-Flow-Input
+- Potenziell Lohnbuchhaltung
+- Weiterentwicklung und Teilautomatisierung von Finance-Prozessen
+Ihr Profil
+- Abschluss als Bilanzbuchhalter/in (IHK) oder vergleichbare Qualifikation; alternativ betriebswirtschaftliches Studium mit mind. 4 Jahren Buchhaltungspraxis
+- DATEV-Kenntnisse — du führst die Buchungen eigenständig durch
+- Fundierte HGB-Kenntnisse; Jahresabschlusserfahrung ist ein Plus
+- Erfahrung mit der finanziellen Abwicklung öffentlicher Förderprogramme (IBB, PTJ, EU) — großes Plus, kein Muss
+- Sehr gute Deutschkenntnisse (C2), gutes Englisch (interne Kommunikation auf Englisch)
+- Startup-Mentalität: Dinge ändern sich, du findest Lösungen
+- Erfahrung  in Lohnbuchhaltung ist ein Plus
+Warum wir?
+- Vollständige Verantwortung für die Finance-Funktion — keine Hierarchieebenen dazwischen
+- Kleines, internationales Team Wachsendes Unternehmen und damit die Möglichkeit, mit dem Unternehmen zu wachsen
+- Hybrides Arbeiten möglich (alle ~2 Monate Präsenz vor Ort wünschenswert)
+- Kompetitives Gehalt plus Deutschlandticket oder Mitgliedschaft bei Urban Sports
+- Direkte Zusammenarbeit mit einer erfahrenen Fractional CFO
+Über uns
+Dunia bedeutet „Welt" in über 20 Sprachen – und spiegelt unseren Anspruch wider, Technologien zu entwickeln, die weltweit Wohlstand schaffen. Durch die Kombination von Physik, KI und Automatisierung beschleunigen wir die Materialentdeckung für Energiesysteme und Industrieanwendungen der nächsten Generation. Unsere Arbeit trägt dazu bei, Energie zugänglicher und Materialien erschwinglicher und widerstandsfähiger zu machen – und verändert, wie Wissenschaft von der Idee zur Wirkung gelangt. Werde Teil unseres Teams und arbeite an Problemen, bei denen Fortschritt sich wirklich verzinst.
+Noch nicht überzeugt? →  Schau dir dieses Video an
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="finance-manager-m-w-d-20-std-woche-hybrid-2026-07-13"></a>
+
+### Finance Manager (m/w/d) — 20 Std./Woche, hybrid (2026-07-13)
+
+2026-07-13 → 2026-07-13 · business-ops · location not stated · [source](https://web.archive.org/web/20260713130437/https://dunia.jobs.personio.com/job/2688916)
 
 <details><summary>Description</summary>
 

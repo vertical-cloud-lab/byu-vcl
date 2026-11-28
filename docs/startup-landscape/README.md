@@ -205,7 +205,7 @@ Lila's comparable lab roles are much lower: senior research associate (automated
   - Its team page has held at about 90–108 people for six years.
   - A WARN notice covered 30 jobs when it moved from South San Francisco to Austin (2023).
   - Laboratory-operations staff fell from 40 to 6 between 2020 and 2026, while scientific development held at about 30.
-- **CEO changes:** Mattiq's CEO changed. Aionics's CEO is absent from its 2026 Form D, with no announcement found.
+- **CEO changes:** Mattiq's CEO changed. At Aionics, co-founder Venkat Viswanathan replaced Austin Sendek as CEO between the December 2025 and March 2026 captures of its leadership page, with no announcement found.
 - **Chemify:** it has gone through two CTOs since 2024.
 - **Lila:** five of the 15 leaders on its launch team page are missing from the current one (including its Chief Scientist). Some may have changed roles rather than left.
 - **Pivots:** Orbital (to data-centre hardware) and Tetsuwan (to a browser-accessible biology cloud lab).

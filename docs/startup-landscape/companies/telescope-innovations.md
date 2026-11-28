@@ -15,7 +15,8 @@ What changed between the first snapshot (2026-10-10) and 2026-11-28. The method 
 | 2026-04-03 | 27 | 11-50 | [Wayback](https://web.archive.org/web/20260403173553/https://www.linkedin.com/company/telescope-innovations) |
 | 2026-08-19 | 28 | 11-50 | [Wayback](https://web.archive.org/web/20260819123801/https://www.linkedin.com/company/telescope-innovations) |
 
-**Openings.** 0 open on 2026-11-28 on [its job board](https://www.linkedin.com/jobs/search?f_C=76182686&geoId=92000000&location=Worldwide&original_referer=), against 0 on 2026-10-10. 0 new, 0 closed.
+**Openings.** 1 open on 2026-11-28 on [LinkedIn's public job search](https://www.linkedin.com/jobs/search?f_C=76182686&geoId=92000000&location=Worldwide&original_referer=), against 0 on 2026-10-10. 1 new, 0 closed.
+- New since 2026-10-10: Product Manager.
 
 **LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=76182686&geoId=92000000&location=Worldwide&original_referer=), 2026-11-28): 1 posting: Product Manager (Vancouver, British Columbia, Canada, posted 2026-11-16, 95 applicants).
 
@@ -37,7 +38,7 @@ The February 2025 placement was paused for "tariff uncertainty and public market
 
 ## Team size over time
 
-Not collected. The quarterly MD&A and annual filings on SEDAR+ are the place to look.
+LinkedIn members: 21 (Dec 2024), 27 (Apr 2026), 28 (Aug 2026) (see the [28 November update](#update-2026-11-28) above). The quarterly MD&A and annual filings on SEDAR+ are the place to look.
 
 ## Leadership and key hires
 

@@ -32,7 +32,7 @@ All three rows are SEC Form D records (CIK 1843720). The total is about USD 18.6
 
 ## Team size over time
 
-No staff headcount series could be built. The Wayback query for the team page timed out, so only the floors below are available.
+LinkedIn members held at 18–19 from January 2024 to January 2025 (see the [28 November update](#update-2026-11-28) above). No other staff headcount series could be built. The Wayback query for the team page timed out, so only the floors below are available.
 
 | Date | Count | Method | Note | Source |
 | --- | --- | --- | --- | --- |

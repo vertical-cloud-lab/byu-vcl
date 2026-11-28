@@ -26,7 +26,7 @@ A claimed USD 3M seed in April 2024 (USD 5.7M total) appears only on [StartupInt
 
 ## Team size over time
 
-No datapoint was found. Wayback and LinkedIn-band checks were not run because of time and budget limits.
+No datapoint was found. The Wayback Machine has no captures of its LinkedIn company page.
 
 ## Leadership and key hires
 
