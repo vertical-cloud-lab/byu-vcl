@@ -1,0 +1,170 @@
+{
+ "read_utc": "2026-11-26T19:12:14Z",
+ "source": "https://makerworld.com/api/v1/design-service/design/1366309",
+ "design_id": 1366309,
+ "title": "Articulated Rexagon (Trex + Dragon ) Flexi",
+ "model_url": "https://makerworld.com/en/models/1366309-articulated-rexagon-trex-dragon-flexi",
+ "designer": "PinkyWings",
+ "designer_url": "https://makerworld.com/en/@pinkywings",
+ "license": "Standard Digital File License",
+ "license_text": "You shall not share, sub-license, sell, rent, host, transfer, or distribute in any way the digital or 3D printed versions of this object, nor any other derivative work of this object in its digital or physical format (including - but not limited to - remixes of this object, and hosting on other digital platforms). The objects may not be used without permission in any way whatsoever in which you charge money, or collect fees.",
+ "makerworld_exclusive": true,
+ "published_utc": "2025-04-28T23:07:59Z",
+ "counts": {
+  "printCount": 4967,
+  "downloadCount": 8619,
+  "likeCount": 3826,
+  "collectionCount": 7960
+ },
+ "model_files": [
+  "rexagon 2 color (H2D) By Pinkywings.3mf",
+  "Rexagon 2 color By Pinkywings.3mf",
+  "Rexagon 3 color By Pinkywings.3mf"
+ ],
+ "profiles": [
+  {
+   "instance_id": 1412012,
+   "title": "Rexagon 3 color 0.2mm layer, 2 walls, 5% infill",
+   "by": "PinkyWings",
+   "made_for": "A1",
+   "nozzle_mm": 0.4,
+   "also_compatible": [
+    "X1",
+    "H2D",
+    "X1 Carbon",
+    "P1S",
+    "A1 mini",
+    "P1P",
+    "X1E",
+    "H2D Pro",
+    "H2S",
+    "P2S",
+    "H2C",
+    "X2D",
+    "A2L",
+    "H3C",
+    "P3C"
+   ],
+   "settings": {
+    "layerHeight": "0.2",
+    "wallLoops": "2",
+    "sparseInfillDensity": "5%"
+   },
+   "needs_ams": true,
+   "filaments": [
+    {
+     "type": "PLA",
+     "colour": "#000000",
+     "g": 22.0
+    },
+    {
+     "type": "PLA",
+     "colour": "#FF8000",
+     "g": 24.0
+    },
+    {
+     "type": "PLA",
+     "colour": "#FFFFFF",
+     "g": 10.0
+    }
+   ],
+   "plates": 1,
+   "filament_g": 56.0,
+   "cost_usd": 1.06,
+   "usd_per_kg": 18.99,
+   "prediction_s": 21157,
+   "print_time": "5 h 52 min",
+   "over_limits": [],
+   "makerworld_prints": 3177,
+   "makerworld_downloads": 5796
+  },
+  {
+   "instance_id": 1412020,
+   "title": "Rexagon 2 color 0.2mm layer, 2 walls, 5% infill",
+   "by": "PinkyWings",
+   "made_for": "A1",
+   "nozzle_mm": 0.4,
+   "also_compatible": [
+    "X1 Carbon",
+    "X1E",
+    "P1P",
+    "A1 mini",
+    "X1",
+    "H2D",
+    "P1S",
+    "H2D Pro",
+    "H2S",
+    "P2S",
+    "H2C",
+    "X2D",
+    "A2L",
+    "H3C",
+    "P3C"
+   ],
+   "settings": {
+    "layerHeight": "0.2",
+    "wallLoops": "2",
+    "sparseInfillDensity": "5%"
+   },
+   "needs_ams": true,
+   "filaments": [
+    {
+     "type": "PLA",
+     "colour": "#000000",
+     "g": 18.0
+    },
+    {
+     "type": "PLA",
+     "colour": "#FF8000",
+     "g": 24.0
+    }
+   ],
+   "plates": 1,
+   "filament_g": 42.0,
+   "cost_usd": 0.8,
+   "usd_per_kg": 18.99,
+   "prediction_s": 14934,
+   "print_time": "4 h 08 min",
+   "over_limits": [],
+   "makerworld_prints": 955,
+   "makerworld_downloads": 1304
+  },
+  {
+   "instance_id": 1412023,
+   "title": "(H2D) rexagon 2 color 0.2mm layer, 2 walls, 5% infill",
+   "by": "PinkyWings",
+   "made_for": "H2D",
+   "nozzle_mm": 0.4,
+   "also_compatible": [
+    "H2D Pro"
+   ],
+   "settings": {
+    "layerHeight": "0.2",
+    "wallLoops": "2",
+    "sparseInfillDensity": "5%"
+   },
+   "needs_ams": true,
+   "filaments": [
+    {
+     "type": "PLA",
+     "colour": "#000000",
+     "g": 11.0
+    },
+    {
+     "type": "PLA",
+     "colour": "#FF8000",
+     "g": 9.0
+    }
+   ],
+   "plates": 1,
+   "filament_g": 20.0,
+   "cost_usd": 0.38,
+   "usd_per_kg": 18.99,
+   "prediction_s": 5776,
+   "print_time": "1 h 36 min",
+   "over_limits": [],
+   "makerworld_prints": 198,
+   "makerworld_downloads": 514
+  }
+ ]
+}

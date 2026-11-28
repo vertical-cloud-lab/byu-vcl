@@ -1,0 +1,593 @@
+[
+ {
+  "slug": "flexi-leaf-dragon-large",
+  "file": "3mf/flexi-leaf-dragon-large_A1mini_PLA.gcode.3mf",
+  "presets": {
+   "machine": "Bambu Lab A1 mini 0.4 nozzle",
+   "process": "0.20mm Standard @BBL A1M",
+   "filament": "Bambu PLA Basic @BBL A1M"
+  },
+  "set_on_top_of_presets": {
+   "curr_bed_type": "Textured PEI Plate",
+   "filament_colour": "#0A2989",
+   "brim_type": "no_brim"
+  },
+  "transform": null,
+  "extents_on_bed_mm": [
+   168.7,
+   162.5,
+   23.5
+  ],
+  "return_code": 0,
+  "error_string": "Success.",
+  "filament_g": 71.8,
+  "filament_m": 23.7,
+  "cost_usd": 1.36,
+  "usd_per_kg": 18.99,
+  "prediction_s": 16655,
+  "print_time": "4 h 37 min",
+  "plates": 1,
+  "layers": 117,
+  "max_z_mm": 23.4,
+  "toolpath_outside_bed": false,
+  "support_used": false,
+  "slicer_warnings": [
+   "It seems object flexi-leaf-dragon-large_1 has floating regions. Please re-orient the object or enable support generation."
+  ],
+  "gcode_warnings": [
+   "not_support_traditional_timelapse",
+   "not_support_traditional_timelapse"
+  ],
+  "thumbnail": "thumbs/flexi-leaf-dragon-large.png",
+  "over_limits": [],
+  "bambu_studio": "02.08.02.61"
+ },
+ {
+  "slug": "flexi-leaf-dragon-medium",
+  "file": "3mf/flexi-leaf-dragon-medium_A1mini_PLA.gcode.3mf",
+  "presets": {
+   "machine": "Bambu Lab A1 mini 0.4 nozzle",
+   "process": "0.20mm Standard @BBL A1M",
+   "filament": "Bambu PLA Basic @BBL A1M"
+  },
+  "set_on_top_of_presets": {
+   "curr_bed_type": "Textured PEI Plate",
+   "filament_colour": "#0A2989",
+   "brim_type": "no_brim"
+  },
+  "transform": null,
+  "extents_on_bed_mm": [
+   147.5,
+   145.5,
+   23.5
+  ],
+  "return_code": 0,
+  "error_string": "Success.",
+  "filament_g": 46.4,
+  "filament_m": 15.31,
+  "cost_usd": 0.88,
+  "usd_per_kg": 18.99,
+  "prediction_s": 10738,
+  "print_time": "2 h 58 min",
+  "plates": 1,
+  "layers": 117,
+  "max_z_mm": 23.4,
+  "toolpath_outside_bed": false,
+  "support_used": false,
+  "slicer_warnings": [
+   "It seems object flexi-leaf-dragon-medium_1 has floating regions. Please re-orient the object or enable support generation."
+  ],
+  "gcode_warnings": [
+   "not_support_traditional_timelapse",
+   "not_support_traditional_timelapse"
+  ],
+  "thumbnail": "thumbs/flexi-leaf-dragon-medium.png",
+  "over_limits": [],
+  "bambu_studio": "02.08.02.61"
+ },
+ {
+  "slug": "tessa-t-rex",
+  "file": "3mf/tessa-t-rex_A1mini_PLA.gcode.3mf",
+  "presets": {
+   "machine": "Bambu Lab A1 mini 0.4 nozzle",
+   "process": "0.20mm Standard @BBL A1M",
+   "filament": "Bambu PLA Basic @BBL A1M"
+  },
+  "set_on_top_of_presets": {
+   "curr_bed_type": "Textured PEI Plate",
+   "filament_colour": "#0A2989",
+   "brim_type": "no_brim"
+  },
+  "transform": null,
+  "extents_on_bed_mm": [
+   59.1,
+   131.5,
+   27.8
+  ],
+  "return_code": 0,
+  "error_string": "Success.",
+  "filament_g": 37.4,
+  "filament_m": 12.33,
+  "cost_usd": 0.71,
+  "usd_per_kg": 18.99,
+  "prediction_s": 5992,
+  "print_time": "1 h 39 min",
+  "plates": 1,
+  "layers": 139,
+  "max_z_mm": 27.8,
+  "toolpath_outside_bed": false,
+  "support_used": false,
+  "slicer_warnings": [],
+  "gcode_warnings": [
+   "not_support_traditional_timelapse",
+   "not_support_traditional_timelapse"
+  ],
+  "thumbnail": "thumbs/tessa-t-rex.png",
+  "over_limits": [],
+  "bambu_studio": "02.08.02.61"
+ },
+ {
+  "slug": "articulated-shark",
+  "file": "3mf/articulated-shark_A1mini_PLA.gcode.3mf",
+  "presets": {
+   "machine": "Bambu Lab A1 mini 0.4 nozzle",
+   "process": "0.16mm Optimal @BBL A1M",
+   "filament": "Bambu PLA Basic @BBL A1M"
+  },
+  "set_on_top_of_presets": {
+   "curr_bed_type": "Textured PEI Plate",
+   "filament_colour": "#0A2989",
+   "brim_type": "no_brim"
+  },
+  "transform": null,
+  "extents_on_bed_mm": [
+   53.3,
+   150.0,
+   37.0
+  ],
+  "return_code": 0,
+  "error_string": "Success.",
+  "filament_g": 21.9,
+  "filament_m": 7.22,
+  "cost_usd": 0.42,
+  "usd_per_kg": 18.99,
+  "prediction_s": 4725,
+  "print_time": "1 h 18 min",
+  "plates": 1,
+  "layers": 231,
+  "max_z_mm": 37.0,
+  "toolpath_outside_bed": false,
+  "support_used": false,
+  "slicer_warnings": [],
+  "gcode_warnings": [
+   "not_support_traditional_timelapse",
+   "not_support_traditional_timelapse"
+  ],
+  "thumbnail": "thumbs/articulated-shark.png",
+  "over_limits": [],
+  "bambu_studio": "02.08.02.61"
+ },
+ {
+  "slug": "flexi-snake-spiral",
+  "file": "3mf/flexi-snake-spiral_A1mini_PLA.gcode.3mf",
+  "presets": {
+   "machine": "Bambu Lab A1 mini 0.4 nozzle",
+   "process": "0.20mm Standard @BBL A1M",
+   "filament": "Bambu PLA Basic @BBL A1M"
+  },
+  "set_on_top_of_presets": {
+   "curr_bed_type": "Textured PEI Plate",
+   "filament_colour": "#0A2989",
+   "brim_type": "no_brim"
+  },
+  "transform": null,
+  "extents_on_bed_mm": [
+   148.7,
+   132.9,
+   22.8
+  ],
+  "return_code": 0,
+  "error_string": "Success.",
+  "filament_g": 38.8,
+  "filament_m": 12.79,
+  "cost_usd": 0.74,
+  "usd_per_kg": 18.99,
+  "prediction_s": 6536,
+  "print_time": "1 h 48 min",
+  "plates": 1,
+  "layers": 114,
+  "max_z_mm": 22.8,
+  "toolpath_outside_bed": false,
+  "support_used": false,
+  "slicer_warnings": [
+   "It seems object flexi-snake-spiral_1 has floating cantilever. Please re-orient the object or enable support generation."
+  ],
+  "gcode_warnings": [
+   "not_support_traditional_timelapse",
+   "not_support_traditional_timelapse"
+  ],
+  "thumbnail": "thumbs/flexi-snake-spiral.png",
+  "over_limits": [],
+  "bambu_studio": "02.08.02.61"
+ },
+ {
+  "slug": "articulated-octopus",
+  "file": "3mf/articulated-octopus_A1mini_PLA.gcode.3mf",
+  "presets": {
+   "machine": "Bambu Lab A1 mini 0.4 nozzle",
+   "process": "0.20mm Standard @BBL A1M",
+   "filament": "Bambu PLA Basic @BBL A1M"
+  },
+  "set_on_top_of_presets": {
+   "curr_bed_type": "Textured PEI Plate",
+   "filament_colour": "#0A2989",
+   "brim_type": "no_brim"
+  },
+  "transform": {
+   "rotate_z_deg": 59
+  },
+  "extents_on_bed_mm": [
+   169.3,
+   169.2,
+   32.8
+  ],
+  "return_code": 0,
+  "error_string": "Success.",
+  "filament_g": 62.9,
+  "filament_m": 20.74,
+  "cost_usd": 1.19,
+  "usd_per_kg": 18.99,
+  "prediction_s": 17752,
+  "print_time": "4 h 55 min",
+  "plates": 1,
+  "layers": 164,
+  "max_z_mm": 32.8,
+  "toolpath_outside_bed": false,
+  "support_used": false,
+  "slicer_warnings": [],
+  "gcode_warnings": [
+   "not_support_traditional_timelapse",
+   "not_support_traditional_timelapse"
+  ],
+  "thumbnail": "thumbs/articulated-octopus.png",
+  "over_limits": [],
+  "bambu_studio": "02.08.02.61"
+ },
+ {
+  "slug": "flexi-holding-cat",
+  "file": "3mf/flexi-holding-cat_A1mini_PLA.gcode.3mf",
+  "presets": {
+   "machine": "Bambu Lab A1 mini 0.4 nozzle",
+   "process": "0.20mm Standard @BBL A1M",
+   "filament": "Bambu PLA Basic @BBL A1M"
+  },
+  "set_on_top_of_presets": {
+   "curr_bed_type": "Textured PEI Plate",
+   "filament_colour": "#0A2989",
+   "brim_type": "no_brim"
+  },
+  "transform": null,
+  "extents_on_bed_mm": [
+   91.5,
+   29.8,
+   16.7
+  ],
+  "return_code": 0,
+  "error_string": "Success.",
+  "filament_g": 10.5,
+  "filament_m": 3.45,
+  "cost_usd": 0.2,
+  "usd_per_kg": 18.99,
+  "prediction_s": 2232,
+  "print_time": "0 h 37 min",
+  "plates": 1,
+  "layers": 83,
+  "max_z_mm": 16.6,
+  "toolpath_outside_bed": false,
+  "support_used": false,
+  "slicer_warnings": [],
+  "gcode_warnings": [
+   "not_support_traditional_timelapse",
+   "not_support_traditional_timelapse"
+  ],
+  "thumbnail": "thumbs/flexi-holding-cat.png",
+  "over_limits": [],
+  "bambu_studio": "02.08.02.61"
+ },
+ {
+  "slug": "planetary-gear-fidget",
+  "file": "3mf/planetary-gear-fidget_A1mini_PLA.gcode.3mf",
+  "presets": {
+   "machine": "Bambu Lab A1 mini 0.4 nozzle",
+   "process": "0.20mm Standard @BBL A1M",
+   "filament": "Bambu PLA Basic @BBL A1M"
+  },
+  "set_on_top_of_presets": {
+   "curr_bed_type": "Textured PEI Plate",
+   "filament_colour": "#0A2989",
+   "brim_type": "no_brim"
+  },
+  "transform": null,
+  "extents_on_bed_mm": [
+   100.0,
+   100.0,
+   15.0
+  ],
+  "return_code": 0,
+  "error_string": "Success.",
+  "filament_g": 50.3,
+  "filament_m": 16.59,
+  "cost_usd": 0.95,
+  "usd_per_kg": 18.99,
+  "prediction_s": 9766,
+  "print_time": "2 h 42 min",
+  "plates": 1,
+  "layers": 75,
+  "max_z_mm": 15.0,
+  "toolpath_outside_bed": false,
+  "support_used": false,
+  "slicer_warnings": [],
+  "gcode_warnings": [
+   "not_support_traditional_timelapse",
+   "not_support_traditional_timelapse"
+  ],
+  "thumbnail": "thumbs/planetary-gear-fidget.png",
+  "over_limits": [],
+  "bambu_studio": "02.08.02.61"
+ },
+ {
+  "slug": "gear-shift-fidget",
+  "file": "3mf/gear-shift-fidget_A1mini_PLA.gcode.3mf",
+  "presets": {
+   "machine": "Bambu Lab A1 mini 0.4 nozzle",
+   "process": "0.20mm Standard @BBL A1M",
+   "filament": "Bambu PLA Basic @BBL A1M"
+  },
+  "set_on_top_of_presets": {
+   "curr_bed_type": "Textured PEI Plate",
+   "filament_colour": "#0A2989",
+   "brim_type": "no_brim"
+  },
+  "transform": null,
+  "extents_on_bed_mm": [
+   33.0,
+   33.0,
+   39.7
+  ],
+  "return_code": 0,
+  "error_string": "Success.",
+  "filament_g": 7.7,
+  "filament_m": 2.55,
+  "cost_usd": 0.15,
+  "usd_per_kg": 18.99,
+  "prediction_s": 1967,
+  "print_time": "0 h 32 min",
+  "plates": 1,
+  "layers": 198,
+  "max_z_mm": 39.6,
+  "toolpath_outside_bed": false,
+  "support_used": false,
+  "slicer_warnings": [],
+  "gcode_warnings": [
+   "not_support_traditional_timelapse",
+   "not_support_traditional_timelapse"
+  ],
+  "thumbnail": "thumbs/gear-shift-fidget.png",
+  "over_limits": [],
+  "bambu_studio": "02.08.02.61"
+ },
+ {
+  "slug": "infinity-cube",
+  "file": "3mf/infinity-cube_A1mini_PLA.gcode.3mf",
+  "presets": {
+   "machine": "Bambu Lab A1 mini 0.4 nozzle",
+   "process": "0.20mm Standard @BBL A1M",
+   "filament": "Bambu PLA Basic @BBL A1M"
+  },
+  "set_on_top_of_presets": {
+   "curr_bed_type": "Textured PEI Plate",
+   "filament_colour": "#0A2989",
+   "brim_type": "no_brim"
+  },
+  "transform": null,
+  "extents_on_bed_mm": [
+   81.5,
+   47.0,
+   20.0
+  ],
+  "return_code": 0,
+  "error_string": "Success.",
+  "filament_g": 32.2,
+  "filament_m": 10.64,
+  "cost_usd": 0.61,
+  "usd_per_kg": 18.99,
+  "prediction_s": 4729,
+  "print_time": "1 h 18 min",
+  "plates": 1,
+  "layers": 100,
+  "max_z_mm": 20.0,
+  "toolpath_outside_bed": false,
+  "support_used": false,
+  "slicer_warnings": [],
+  "gcode_warnings": [
+   "not_support_traditional_timelapse",
+   "not_support_traditional_timelapse"
+  ],
+  "thumbnail": "thumbs/infinity-cube.png",
+  "over_limits": [],
+  "bambu_studio": "02.08.02.61"
+ },
+ {
+  "slug": "ultimate-fidget-cube",
+  "file": "3mf/ultimate-fidget-cube_A1mini_PLA.gcode.3mf",
+  "presets": {
+   "machine": "Bambu Lab A1 mini 0.4 nozzle",
+   "process": "0.20mm Standard @BBL A1M",
+   "filament": "Bambu PLA Basic @BBL A1M"
+  },
+  "set_on_top_of_presets": {
+   "curr_bed_type": "Textured PEI Plate",
+   "filament_colour": "#0A2989",
+   "brim_type": "no_brim"
+  },
+  "transform": null,
+  "extents_on_bed_mm": [
+   57.3,
+   57.3,
+   19.9
+  ],
+  "return_code": 0,
+  "error_string": "Success.",
+  "filament_g": 38.7,
+  "filament_m": 12.76,
+  "cost_usd": 0.73,
+  "usd_per_kg": 18.99,
+  "prediction_s": 6212,
+  "print_time": "1 h 43 min",
+  "plates": 1,
+  "layers": 99,
+  "max_z_mm": 19.8,
+  "toolpath_outside_bed": false,
+  "support_used": false,
+  "slicer_warnings": [],
+  "gcode_warnings": [
+   "not_support_traditional_timelapse",
+   "not_support_traditional_timelapse"
+  ],
+  "thumbnail": "thumbs/ultimate-fidget-cube.png",
+  "over_limits": [],
+  "bambu_studio": "02.08.02.61"
+ },
+ {
+  "slug": "cubic-marble-maze",
+  "file": "3mf/cubic-marble-maze_A1mini_PLA.gcode.3mf",
+  "presets": {
+   "machine": "Bambu Lab A1 mini 0.4 nozzle",
+   "process": "0.20mm Standard @BBL A1M",
+   "filament": "Bambu PLA Basic @BBL A1M"
+  },
+  "set_on_top_of_presets": {
+   "curr_bed_type": "Textured PEI Plate",
+   "filament_colour": "#0A2989",
+   "brim_type": "no_brim",
+   "line_width": "0.5",
+   "outer_wall_line_width": "0.5",
+   "inner_wall_line_width": "0.5",
+   "sparse_infill_line_width": "0.5",
+   "internal_solid_infill_line_width": "0.5",
+   "top_surface_line_width": "0.5",
+   "initial_layer_line_width": "0.5"
+  },
+  "transform": null,
+  "extents_on_bed_mm": [
+   58.9,
+   63.9,
+   59.5
+  ],
+  "return_code": 0,
+  "error_string": "Success.",
+  "filament_g": 29.9,
+  "filament_m": 9.86,
+  "cost_usd": 0.57,
+  "usd_per_kg": 18.99,
+  "prediction_s": 4894,
+  "print_time": "1 h 21 min",
+  "plates": 1,
+  "layers": 297,
+  "max_z_mm": 59.4,
+  "toolpath_outside_bed": false,
+  "support_used": false,
+  "slicer_warnings": [],
+  "gcode_warnings": [
+   "not_support_traditional_timelapse",
+   "not_support_traditional_timelapse"
+  ],
+  "thumbnail": "thumbs/cubic-marble-maze.png",
+  "over_limits": [],
+  "bambu_studio": "02.08.02.61"
+ },
+ {
+  "slug": "worry-stone",
+  "file": "3mf/worry-stone_A1mini_PLA.gcode.3mf",
+  "presets": {
+   "machine": "Bambu Lab A1 mini 0.4 nozzle",
+   "process": "0.20mm Standard @BBL A1M",
+   "filament": "Bambu PLA Basic @BBL A1M"
+  },
+  "set_on_top_of_presets": {
+   "curr_bed_type": "Textured PEI Plate",
+   "filament_colour": "#0A2989",
+   "brim_type": "no_brim"
+  },
+  "transform": null,
+  "extents_on_bed_mm": [
+   40.0,
+   40.0,
+   9.7
+  ],
+  "return_code": 0,
+  "error_string": "Success.",
+  "filament_g": 7.7,
+  "filament_m": 2.54,
+  "cost_usd": 0.15,
+  "usd_per_kg": 18.99,
+  "prediction_s": 1865,
+  "print_time": "0 h 31 min",
+  "plates": 1,
+  "layers": 49,
+  "max_z_mm": 9.8,
+  "toolpath_outside_bed": false,
+  "support_used": false,
+  "slicer_warnings": [],
+  "gcode_warnings": [
+   "not_support_traditional_timelapse",
+   "not_support_traditional_timelapse"
+  ],
+  "thumbnail": "thumbs/worry-stone.png",
+  "over_limits": [],
+  "bambu_studio": "02.08.02.61"
+ },
+ {
+  "slug": "phone-stand",
+  "file": "3mf/phone-stand_A1mini_PLA.gcode.3mf",
+  "presets": {
+   "machine": "Bambu Lab A1 mini 0.4 nozzle",
+   "process": "0.20mm Standard @BBL A1M",
+   "filament": "Bambu PLA Basic @BBL A1M"
+  },
+  "set_on_top_of_presets": {
+   "curr_bed_type": "Textured PEI Plate",
+   "filament_colour": "#0A2989",
+   "brim_type": "no_brim"
+  },
+  "transform": {
+   "rotate_y_deg": 90
+  },
+  "extents_on_bed_mm": [
+   72.4,
+   72.5,
+   60.0
+  ],
+  "return_code": 0,
+  "error_string": "Success.",
+  "filament_g": 28.5,
+  "filament_m": 9.41,
+  "cost_usd": 0.54,
+  "usd_per_kg": 18.99,
+  "prediction_s": 4662,
+  "print_time": "1 h 17 min",
+  "plates": 1,
+  "layers": 300,
+  "max_z_mm": 60.0,
+  "toolpath_outside_bed": false,
+  "support_used": false,
+  "slicer_warnings": [],
+  "gcode_warnings": [
+   "not_support_traditional_timelapse",
+   "not_support_traditional_timelapse"
+  ],
+  "thumbnail": "thumbs/phone-stand.png",
+  "over_limits": [],
+  "bambu_studio": "02.08.02.61"
+ }
+]
