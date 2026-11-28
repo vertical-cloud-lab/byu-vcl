@@ -1,0 +1,13 @@
+12 ids, 0 already done, 12 to run (0 carried on from a checkpoint)
+  arms r6_vertical_parallel_pkgfn3_lean_s1: stopped at day 551 and saved to out/twin6/checkpoints/r6_vertical_parallel_pkgfn3_lean_s1.ckpt.xz (30.7 MB); the next job given this id carries it on
+  arms r6_conventional_external_pkgfn3_lean_s1: not started (the job's time is up)
+  arms r6_conventional_external_pkgfn3_reorder_s1: not started (the job's time is up)
+  arms r6_conventional_external_bofn3_lean_s1: not started (the job's time is up)
+  arms r6_conventional_external_bofn3_reorder_s1: not started (the job's time is up)
+  arms r6_vertical_parallel_fast_lean_s1: not started (the job's time is up)
+  arms r6_vertical_parallel_fast_reorder_s1: not started (the job's time is up)
+  arms r6_conventional_external_fast_lean_s1: not started (the job's time is up)
+  arms r6_conventional_external_fast_reorder_s1: not started (the job's time is up)
+  arms r6_vertical_parallel_bofn3_lean_s1: stopped at day 510 and saved to out/twin6/checkpoints/r6_vertical_parallel_bofn3_lean_s1.ckpt.xz (38.1 MB); the next job given this id carries it on
+  arms r6_vertical_parallel_pkgfn3_reorder_s1: stopped at day 579 and saved to out/twin6/checkpoints/r6_vertical_parallel_pkgfn3_reorder_s1.ckpt.xz (34.0 MB); the next job given this id carries it on
+  arms r6_vertical_parallel_bofn3_reorder_s1: stopped at day 528 and saved to out/twin6/checkpoints/r6_vertical_parallel_bofn3_reorder_s1.ckpt.xz (42.2 MB); the next job given this id carries it on

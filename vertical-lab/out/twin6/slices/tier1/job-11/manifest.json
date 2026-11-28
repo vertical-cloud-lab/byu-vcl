@@ -1,0 +1,23 @@
+{
+ "plan": "tier1",
+ "job": 11,
+ "slice": "tier1-11",
+ "runs": {
+  "r6_vertical_parallel_pkgfn3_lean_s4": "no row, no checkpoint",
+  "r6_vertical_parallel_pkgfn3_reorder_s4": "no row, no checkpoint",
+  "r6_vertical_parallel_bofn3_lean_s4": "no row, no checkpoint",
+  "r6_vertical_parallel_bofn3_reorder_s4": "no row, no checkpoint",
+  "r6_conventional_external_pkgfn3_lean_s4": "no row, no checkpoint",
+  "r6_conventional_external_pkgfn3_reorder_s4": "no row, no checkpoint",
+  "r6_conventional_external_bofn3_lean_s4": "no row, no checkpoint",
+  "r6_conventional_external_bofn3_reorder_s4": "no row, no checkpoint",
+  "r6_vertical_parallel_fast_lean_s4": "no row, no checkpoint",
+  "r6_vertical_parallel_fast_reorder_s4": "no row, no checkpoint",
+  "r6_conventional_external_fast_lean_s4": "no row, no checkpoint",
+  "r6_conventional_external_fast_reorder_s4": "no row, no checkpoint"
+ },
+ "checkpoints": {},
+ "errors": [],
+ "n_rows": 0,
+ "n_waiting": 12
+}
