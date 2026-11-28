@@ -26,7 +26,15 @@
    }
   ],
   "jobs.lever.co/mitrachem": [],
-  "app.trinethire.com/companies/913890-mitra-chem/jobs/": []
+  "app.trinethire.com/companies/913890-mitra-chem/jobs/": [
+   {
+    "urlkey": "com,trinethire,app)/companies/913890-mitra-chem/jobs/120523-engineer-i?gh_src=stanford+climate+venture+job+board&utm_medium=getro.com&utm_source=stanford+climate+venture+job+board",
+    "first": "20260721105139",
+    "last": "20260721105139",
+    "n": 1,
+    "original": "https://app.trinethire.com/companies/913890-mitra-chem/jobs/120523-engineer-i?utm_source=Stanford+Climate+Venture+job+board&utm_medium=getro.com&gh_src=Stanford+Climate+Venture+job+board"
+   }
+  ]
  },
  "board_captures": {
   "mitrachem.com/join-us": [
@@ -306,6 +314,19 @@
    "title": "Careers",
    "text": "",
    "generic": true
+  },
+  {
+   "company": "mitra-chem",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260721105139/https://app.trinethire.com/companies/913890-mitra-chem/jobs/120523-engineer-i?utm_source=Stanford+Climate+Venture+job+board&utm_medium=getro.com&gh_src=Stanford+Climate+Venture+job+board",
+   "url": "https://app.trinethire.com/companies/913890-mitra-chem/jobs/120523-engineer-i?utm_source=Stanford+Climate+Venture+job+board&utm_medium=getro.com&gh_src=Stanford+Climate+Venture+job+board",
+   "first_seen": "20260721105139",
+   "last_seen": "20260721105139",
+   "n_captures": 1,
+   "title": "120523 Engineer I",
+   "text": "Mitra Chem is rewriting how the world makes battery materials.  We're an AI-native company building the iron-based cathodes — starting with LFP — that will power the next generation of lithium-ion batteries, and we're doing it on a timeline no one else can match. By fusing high-throughput experimentation with proprietary machine learning, we take materials from lab to giga scale more than 90% faster than the industry standard.\nWe've raised nearly $100M to date, with additional support from the U.S. Department of Energy and the State of Michigan, and we're led by some of the foremost minds in electrochemistry and AI.\nClimate change and U.S. energy security are at an inflection point. Join us to be part of the battery revolution!\nWe are seeking a motivated and meticulous Engineer I // Laboratory Technician to join our team. This role is ideal for a recent graduate with a background in Science or Engineering who is looking to transition their academic lab experience into a professional setting.\nThe successful candidate will be responsible for the precise synthesis and measurement of materials essential to our daily operations. You will work under the guidance of senior scientists to ensure that all experimental and production inputs meet our rigorous standards for quality and accuracy.\nKey responsibilities:\n-\nMaterial synthesis: Weigh precursors and run synthesis equipment including bead mills, spray dryers, and furnaces\n-\nMaterials characterization: Measure key materials properties using techniques such as X-ray diffraction, SEM, and press density\n-\nBattery fabrication: build batteries to qualify materials\n-\nData Documentation: Maintain clear, organized records of all precursor weights, process parameters, and measurements in the Laboratory Information Management Systems (LIMS)\n-\nSafety & Compliance: Adhere strictly to safety protocols (PPE, chemical handling, and waste disposal) and maintain a clean, organized workspace.\nQualifications:\nEducation: Bachelor’s Degree (B.S.) in Chemistry, Biology, Physics, Chemical Engineering, Materials Science or a related scientific/technical field.\nExperience & Technical Skills:\n-\nDemonstrated experience (through coursework or internships) in using analytical balances and other laboratory equipment\n-\nHigh degree of accuracy in performing repetitive tasks and handling small quantities of material.\n-\nAbility to document procedures and results clearly and concisely\n-\nStrong grasp of basic lab mathematics, including dilutions, molarity calculations, and metric unit conversions.\nSoft Skills:\n-\nA \"growth mindset\" with a desire to learn complex laboratory techniques.\n-\nExceptional attention to detail: you believe that 0.001g matters.\n-\nStrong organizational skills and the ability to manage multiple tasks in a fast-paced environment.\nBenefits:\n-\nCompetitive compensation package including company equity\n-\nComprehensive benefits including health, vision and dental insurance, Tax-free spending accounts, along with life and disability insurances\n-\n401k matching and savings programs\n-\nFlexible time off with company holidays\n-\nFree daily lunch and snacks\nMitra Chem is an equal opportunity employer and makes employment decisions on the basis of merit. Company policy prohibits discrimination based on race, color, ancestry, national origin, religion or religious creed, sex (including pregnancy, childbirth, or related medical conditions), sexual orientation, gender, gender identity, gender expression, age, marital status, status as a protected veteran, physical or mental disability, medical condition, genetic information or characteristics (or those of a family member) or any other consideration made unlawful by applicable federal, state or local laws. We take steps to provide our employees, applicants, and others with whom we do business with an environment that is free of any form of discrimination and harassment (including harassment based on any of these characteristics). Mitra Future Technologies, Inc. is committed to providing reasonable accommodations for qualified individuals with disabilities and disabled veterans in our job application procedures. If you need assistance or accommodation due to a disability, please contact us at careers(at)mitrachem.com.",
+   "generic": true,
+   "posting_id": "120523"
   }
  ],
  "spans": {
@@ -314,6 +335,12 @@
    "last": "20211019143746",
    "n": 1,
    "url": "https://mitrachem.com/job/battery-materials-scientist/"
+  },
+  "120523": {
+   "first": "20260721105139",
+   "last": "20260721105139",
+   "n": 1,
+   "url": "https://app.trinethire.com/companies/913890-mitra-chem/jobs/120523-engineer-i?utm_source=Stanford+Climate+Venture+job+board&utm_medium=getro.com&gh_src=Stanford+Climate+Venture+job+board"
   }
  }
 }

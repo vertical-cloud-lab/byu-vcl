@@ -1,6 +1,6 @@
 # Job postings: the actual roles and descriptions
 
-Historical job postings survive, mostly with their full descriptions. This folder holds **972 postings from 23 companies, 907 of them with the full description**. They run from March 2014 to 28 November 2026; 485 had closed by then, 421 of those with their description intact. On 10 October it held 811 (757 with descriptions). [What changed by 28 November](#what-changed-by-28-november) covers the refresh.
+Historical job postings survive, mostly with their full descriptions. This folder holds **974 postings from 23 companies, 909 of them with the full description**. They run from March 2014 to 28 November 2026; 489 had closed by then, 425 of those with their description intact. On 10 October it held 811 (757 with descriptions). [What changed by 28 November](#what-changed-by-28-november) covers the refresh.
 
 The first version of this folder covered 15 companies and found only careers-page captures, or nothing, for the other ten. A second pass found postings for eight of those ten: it followed each careers page to the board behind it, and it checked the job boards that universities and investors run. [The ten companies the first pass missed](#the-ten-companies-the-first-pass-missed) covers how, and what those postings show. Only Mattiq and Intrepid Labs still have none.
 

@@ -2,11 +2,12 @@
 
 Back to [all companies](README.md) · [company profile](../companies/mitra-chem.md)
 
-**3 postings recovered**, 3 with the full description; 2 still open on 2026-11-28. First seen 2021-08-11, latest 2026-10-10. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**4 postings recovered**, 4 with the full description; 2 still open on 2026-11-28. First seen 2021-08-11, latest 2026-10-10. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
 | 2021-08-11 | 2021-10-19 | [Battery Materials Scientist](#battery-materials-scientist-2021-08-11) | materials-science |  |  |  |  |  | [Wayback](https://web.archive.org/web/20211019143746/https://mitrachem.com/job/battery-materials-scientist/) |
+| 2026-07-21 | 2026-07-21 | [120523 Engineer I](#120523-engineer-i-2026-07-21) | software-eng |  |  | BS |  |  | [Wayback](https://web.archive.org/web/20260721105139/https://app.trinethire.com/companies/913890-mitra-chem/jobs/120523-engineer-i?utm_source=Stanford+Climate+Venture+job+board&utm_medium=getro.com&gh_src=Stanford+Climate+Venture+job+board) |
 | 2026-10-10 | open | [114753 General Application](#114753-general-application-2026-10-10) | general-application |  |  |  |  |  | [live](https://app.trinethire.com/companies/913890-mitra-chem/jobs/114753-general-application) |
 | 2026-10-10 | open | [123697 Lab Technician](#123697-lab-technician-2026-10-10) | lab-automation |  |  | MS |  |  | [live](https://app.trinethire.com/companies/913890-mitra-chem/jobs/123697-lab-technician) |
 
@@ -28,6 +29,49 @@ Role-specific sections only (responsibilities, requirements, pay): the company p
 
 Mitra Chem is a Silicon Valley startup working at the intersection of machine learning and battery development. We live at the cutting-edge of battery technology and aim to deliver world-class materials for the EV market within the next few years. Our goal is to be the first lithium-ion battery materials manufacturer to shorten the lab-to-production timeline by >90% through accelerated R&D and vertically integrated process optimization. We will first focus on Li-ion battery cathodes, converting them from commodity chemicals into a product platform, customized for different applications. We are setting up a state-of-the-art 10,000 sq ft industrial R&D center (located on the San Francisco Peninsula). Join our team to be a part of the growing battery revolution.
 We are looking for a Battery Materials Scientist to design, develop and scale-up production of innovative materials, leveraging Mitra Chem’s accelerated R&D infrastructure.
+
+</details>
+
+<a id="120523-engineer-i-2026-07-21"></a>
+
+### 120523 Engineer I (2026-07-21)
+
+2026-07-21 → 2026-07-21 · software-eng · location not stated · [source](https://web.archive.org/web/20260721105139/https://app.trinethire.com/companies/913890-mitra-chem/jobs/120523-engineer-i?utm_source=Stanford+Climate+Venture+job+board&utm_medium=getro.com&gh_src=Stanford+Climate+Venture+job+board)
+
+<details><summary>Description</summary>
+
+**Key responsibilities**
+-
+Material synthesis: Weigh precursors and run synthesis equipment including bead mills, spray dryers, and furnaces
+-
+Materials characterization: Measure key materials properties using techniques such as X-ray diffraction, SEM, and press density
+-
+Battery fabrication: build batteries to qualify materials
+-
+Data Documentation: Maintain clear, organized records of all precursor weights, process parameters, and measurements in the Laboratory Information Management Systems (LIMS)
+-
+Safety & Compliance: Adhere strictly to safety protocols (PPE, chemical handling, and waste disposal) and maintain a clean, organized workspace.
+
+**Qualifications**
+Education: Bachelor’s Degree (B.S.) in Chemistry, Biology, Physics, Chemical Engineering, Materials Science or a related scientific/technical field.
+
+**Experience & Technical Skills**
+-
+Demonstrated experience (through coursework or internships) in using analytical balances and other laboratory equipment
+-
+High degree of accuracy in performing repetitive tasks and handling small quantities of material.
+-
+Ability to document procedures and results clearly and concisely
+-
+Strong grasp of basic lab mathematics, including dilutions, molarity calculations, and metric unit conversions.
+
+**Soft Skills**
+-
+A "growth mindset" with a desire to learn complex laboratory techniques.
+-
+Exceptional attention to detail: you believe that 0.001g matters.
+-
+Strong organizational skills and the ability to manage multiple tasks in a fast-paced environment.
 
 </details>
 

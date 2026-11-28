@@ -247,9 +247,10 @@ def timeline_grid(cos):
                     ha="center", color=MUTED, fontsize=7)
     for ax in list(axes.flat)[n:]:
         ax.axis("off")
-    fig.suptitle("Team size over time (blue: counted or stated; orange: LinkedIn members; hollow: partial or aggregator; "
-                 "bars: size band) against funding (dark lines: equity; light: grants, debt, contracts)",
-                 x=0.01, ha="left", fontsize=9.5, fontweight="bold")
+    fig.suptitle("Team size over time against funding\n"
+                 "blue: counted or stated · orange: LinkedIn members · hollow: partial or aggregator · bars: size band · "
+                 "dark lines: equity · light lines: grants, debt, contracts",
+                 x=0.01, ha="left", fontsize=10, fontweight="bold")
     import textwrap
     fig.text(0.01, 0.003, "\n".join(textwrap.wrap(
         "Sources per company in docs/startup-landscape/companies/. Panels sorted by capital raised. "
@@ -257,7 +258,7 @@ def timeline_grid(cos):
         f"plus one logged-out view of Periodic Labs' page on {TODAY:%-d %b %Y}. "
         "No whole-company team size found for: " + ", ".join(left_out) + ".", 210)),
         fontsize=7, color=MUTED, va="bottom")
-    fig.tight_layout(rect=(0, 0.02, 1, 0.97))
+    fig.tight_layout(rect=(0, 0.02, 1, 0.955))
     fig.savefig(os.path.join(OUT, "figures", "team_size_vs_funding_timeline.png"), dpi=170)
     plt.close(fig)
 

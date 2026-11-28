@@ -21,10 +21,10 @@ Seven weeks after the first snapshot, the survey was refreshed with the tool the
   - Emerald Cloud Lab, Orbital and Chemify gain a LinkedIn series beside their team-page or registry counts.
   - Radical AI, Tetsuwan and Deep Principle still have none.
   - All are in [`data/linkedin_company_pages.json`](data/linkedin_company_pages.json).
-- **Live job boards, read again and compared with 10 October.** The postings folder now holds 968 postings, 903 with full descriptions, up from 811 and 757.
+- **Live job boards, read again and compared with 10 October.** The postings folder now holds 974 postings, 909 with full descriptions, up from 811 and 757.
 - **LinkedIn's public job search for 24 companies,** by company ID ([`data/linkedin_jobs.json`](data/linkedin_jobs.json)).
   - Where a company runs its own board, LinkedIn lists the same roles.
-  - It added postings only for Matlantis and Telescope, which have none of their own.
+  - It added postings only for Matlantis and Telescope, which have no job board this survey can read.
 - **Client-side careers pages, rendered in the browser:**
   - **Atinary:** three Zoho Recruit postings, with full descriptions.
   - **Entalpic:** a Notion board showing four roles. Eleven untitled drafts in its database are hidden from visitors and are no longer counted.
