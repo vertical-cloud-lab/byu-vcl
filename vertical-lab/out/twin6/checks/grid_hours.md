@@ -6,15 +6,17 @@ Made by `python out/twin6/checks/grid_hours.py` from `smoke.json`. CPU-hours of 
 |---|---|---|---|---|---|---|
 | conventional | BOFN and pKGFN | 320 | 0.5-0.5 | 1.6 | 165 | 165 |
 | conventional | heuristic and funnel | 160 | 0.3-0.3 | 1.3 | 54 | 54 |
-| automated | BOFN and pKGFN | 608 | 3.3-5.5 | 7.0 | 2,027 | 3,358 |
+| automated | BOFN and pKGFN | 608 | 5.2-7.7 | 12.2 | 3,174 | 4,672 |
 | automated | heuristic and funnel | 304 | 0.4-0.4 | 1.3 | 111 | 111 |
-| all | | 1,392 | | | 2,358 | 3,689 |
+| all | | 1,392 | | | 3,505 | 5,004 |
 
-**Runner-hours at four runs a runner: 590 (low) to 922 (high).**
+**Runner-hours at four runs a runner: 876 (low) to 1,251 (high)** with the engine the timing runs used (568ab5f); **813 to 1,157 with this engine** (the automated lab's BOFN and pKGFN at 0.92 of their time: 4.8-7.1 CPU-hours a run on average). Core-hours: 3,251 to 4,630.
+
+**In 6-hour jobs** (`ids --hours 5.2`, four runs at a time, a run still going at 5.2 hours carried on by the next job from a checkpoint): about 21 CPU-hours of runs a job, so 156 to 223 jobs for the grid with this engine. A job's CPU-hours are worth 40 of the conventional lab's BOFN and pKGFN runs; 61 of the conventional lab's heuristic and funnel runs; 2.9-4.3 of the automated lab's BOFN and pKGFN runs; 57 of the automated lab's heuristic and funnel runs (on average; a run longer than 5.2 CPU-hours always spans two jobs).
 
 Extrapolated two-year runs:
 
-* `r6_vertical_parallel_bofn3_reorder`: day 410 reached at 3,622 CPU s, 27.38 CPU s a day over the last 50 days, rising 0.1759 a day: two years 12,384-21,391 CPU s (3.4-5.9 h)
-* `r6_vertical_parallel_bofn3_reorder_hpc16`: day 420 reached at 3,590 CPU s, 32.32 CPU s a day over the last 50 days, rising 0.187 a day: two years 13,609-22,596 CPU s (3.8-6.3 h)
-* `r6_vertical_parallel_pkgfn3_reorder`: day 410 reached at 3,565 CPU s, 26.48 CPU s a day over the last 50 days, rising 0.136 a day: two years 12,037-19,000 CPU s (3.3-5.3 h)
-* `r6_vertical_parallel_pkgfn3_reorder_hpc16`: day 410 reached at 3,359 CPU s, 31.51 CPU s a day over the last 50 days, rising 0.2164 a day: two years 13,444-24,524 CPU s (3.7-6.8 h)
+* `r6_vertical_parallel_bofn3_reorder`: day 500 reached at 7,343 CPU s, 42.99 CPU s a day over the last 50 days, rising 0.1322 a day: two years 17,230-20,726 CPU s (4.8-5.8 h)
+* `r6_vertical_parallel_bofn3_reorder_hpc16`: day 510 reached at 7,691 CPU s, 43.99 CPU s a day over the last 50 days, rising 0.0341 a day: two years 17,370-18,195 CPU s (4.8-5.1 h)
+* `r6_vertical_parallel_pkgfn3_reorder`: day 480 reached at 7,356 CPU s, 60.73 CPU s a day over the last 50 days, rising 0.563 a day: two years 22,539-40,131 CPU s (6.3-11.1 h)
+* `r6_vertical_parallel_pkgfn3_reorder_hpc16`: day 500 reached at 7,487 CPU s, 50.6 CPU s a day over the last 50 days, rising 0.2369 a day: two years 19,126-25,391 CPU s (5.3-7.1 h)

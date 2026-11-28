@@ -157,7 +157,7 @@ def table():
                  f"{c['T1_day']} / {c['T2_day']} | {a['tested']} / {c['tested']} | {a['best_new']} / {c['best_new']} | "
                  f"{', '.join(r['used']) or '-'} | {r['code'].get('twin_dirty')} |")
     stopped = json.loads((HERE / "timing6_stopped.json").read_text()) if (HERE / "timing6_stopped.json").exists() else {}
-    run = [k for k in prog if k not in done and k not in stopped]
+    run = [k for k in prog if k not in done and max(q["day"] for q in prog[k]) >= 100 and not k.startswith("pilot")]
     if run:
         L += ["", "**Not finished** (the cost so far, from the progress file, and the two years extrapolated: `low` at "
                   "the latest 50 days' rate, `high` with that rate still rising at its slope over the last 100 days):",

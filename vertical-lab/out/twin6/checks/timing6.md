@@ -12,22 +12,32 @@ Made by `python out/twin6/checks/timing6.py table` from `timing6.jsonl` and `tim
 | pre conventional pkgfn3 s0 1x | 160 | 20 | 46 | 12.17 | 16 | None / None | None / None | 1 / 0 | 0.0 / 0.0 | - | False |
 | vertical fast 64x | 730 | 1,299 | 4,502 | 12.25 | 0 | 56.65 / None | 330.133 / 379.441 | 348 / 253 | 0.63 / 0.7346 | edm, instron | False |
 | pre vertical fast s0 1x | 160 | 7 | 20 | 11.91 | 0 | 56.65 / None | None / None | 16 / 0 | 0.4245 / 0.0 | edm, instron | False |
+| pilot conventional bofn3 s0 1x | 300 | 76 | 238 | 11.15 | 37 | None / None | 209.171 / 209.171 | 5 / 2 | 0.0 / 0.6937 | - | False |
+| pilot conventional fast s0 1x | 300 | 15 | 72 | 10.54 | 0 | 81.656 / 130.4 | None / None | 35 / 2 | 0.7028 / 0.354 | - | False |
+| pilot vertical bofn3 s0 64x | 300 | 1,054 | 4,847 | 11.33 | 72 | 245.454 / 245.454 | None / None | 33 / 1 | 0.7687 / 0.3926 | edm, instron | False |
+| pilot vertical bofn3 s1 64x | 300 | 1,685 | 7,252 | 11.41 | 141 | 179.728 / 185.053 | 289.282 / 289.282 | 20 / 5 | 0.7922 / 0.669 | edm, instron | False |
+| pilot vertical bofn3 s0 16x | 300 | 742 | 3,174 | 9.67 | 78 | 245.4 / 245.4 | None / None | 43 / 2 | 0.807 / 0.4117 | edm, instron | False |
+| pilot vertical bofn3 s1 16x | 300 | 1,747 | 7,126 | 7.49 | 152 | 182.525 / 182.525 | 239.414 / None | 62 / 2 | 0.8085 / 0.603 | edm, instron | False |
+| pilot vertical bofn3 s0 4x | 300 | 607 | 2,691 | 8.49 | 79 | 231.4 / 245.688 | None / None | 41 / 1 | 0.7431 / 0.0 | edm, instron | False |
+| pilot vertical bofn3 s0 1x | 300 | 544 | 2,250 | 6.5 | 63 | 151.65 / 185.65 | None / None | 18 / 2 | 0.7493 / 0.3948 | edm, instron | False |
+| pilot vertical fast s0 1x | 300 | 25 | 120 | 11.74 | 0 | 56.65 / None | None / None | 110 / 2 | 0.5453 / 0.4134 | edm, instron | False |
 
 **Not finished** (the cost so far, from the progress file, and the two years extrapolated: `low` at the latest 50 days' rate, `high` with that rate still rising at its slope over the last 100 days):
 
 | Run | Last day reached | CPU s so far | Wall s so far | CPU s a simulated day, last 50 days | Its rise a day | Two years, low | Two years, high |
 |---|---|---|---|---|---|---|---|
-| pilot vertical bofn3 s0 16x | 250 | 357 | 1,519 | 4.0 | 0.062 | 2,254 | 9,410 |
-| pilot vertical bofn3 s0 64x | 230 | 564 | 2,750 | 3.7 | 0.027 | 2,407 | 5,833 |
-| pilot vertical bofn3 s1 16x | 210 | 325 | 1,387 | 4.4 | 0.057 | 2,602 | 10,278 |
-| pilot vertical bofn3 s1 64x | 200 | 512 | 2,400 | 4.4 | 0.037 | 2,840 | 8,050 |
-| vertical bofn3 16x | 420 | 3,590 | 6,730 | 32.3 | 0.187 | 13,609 | 22,596 |
-| vertical bofn3 64x | 410 | 3,622 | 6,778 | 27.4 | 0.176 | 12,384 | 21,391 |
-| vertical pkgfn3 16x | 420 | 3,807 | 7,092 | 36.1 | 0.260 | 14,999 | 27,477 |
-| vertical pkgfn3 64x | 410 | 3,565 | 6,689 | 26.5 | 0.136 | 12,037 | 19,000 |
+| vertical bofn3 16x | 510 | 7,691 | 13,592 | 44.0 | 0.034 | 17,370 | 18,195 |
+| vertical bofn3 64x | 500 | 7,343 | 13,163 | 43.0 | 0.132 | 17,230 | 20,726 |
+| vertical pkgfn3 16x | 500 | 7,487 | 13,432 | 50.6 | 0.237 | 19,126 | 25,391 |
+| vertical pkgfn3 64x | 480 | 7,356 | 13,274 | 60.7 | 0.563 | 22,539 | 40,131 |
 
 * **vertical bofn3 64x lean**: stopped at day 10 at 21:39 UTC: the automated lab's GP runs proved to take several CPU-hours each, so the CPU went to the runs asked for.
 * **vertical bofn3 64x wait**: stopped at day 20 at 21:39 UTC, for the same reason.
+* **vertical bofn3 64x**: stopped at day 500 at 00:48 UTC on 2026-11-28, when the job that timed it had to finish; its two years are extrapolated from its cost curve.
+* **vertical pkgfn3 64x**: stopped at day 480 at 00:48 UTC on 2026-11-28, when the job that timed it had to finish; its two years are extrapolated from its cost curve.
+* **vertical bofn3 16x**: stopped at day 510 at 00:48 UTC on 2026-11-28, when the job that timed it had to finish; its two years are extrapolated from its cost curve.
+* **vertical pkgfn3 16x**: stopped at day 500 at 00:48 UTC on 2026-11-28, when the job that timed it had to finish; its two years are extrapolated from its cost curve.
+* **pilot vertical bofn3 s1 1x**: stopped at day 250 at 00:48 UTC on 2026-11-28, when the job that timed it had to finish; the pilot's other runs finished.
 
 CPU seconds by simulated day (every 100 days), all runs:
 
@@ -36,18 +46,24 @@ CPU seconds by simulated day (every 100 days), all runs:
 | conventional bofn3 64x | 171 | 405 | 660 | 904 | 1,167 | 1,418 | 1,680 |
 | conventional fast 64x | 160 | 327 | 492 | 655 | 817 | 976 | 1,136 |
 | conventional pkgfn3 64x | 172 | 418 | 683 | 946 | 1,224 | 1,523 | 1,794 |
-| pilot vertical bofn3 s0 16x | 56 | 159 |  |  |  |  |  |
-| pilot vertical bofn3 s0 64x | 184 | 441 |  |  |  |  |  |
-| pilot vertical bofn3 s1 16x | 50 | 287 |  |  |  |  |  |
-| pilot vertical bofn3 s1 64x | 175 | 512 |  |  |  |  |  |
+| pilot conventional bofn3 s0 1x | 7 | 32 | 77 |  |  |  |  |
+| pilot conventional fast s0 1x | 6 | 11 | 16 |  |  |  |  |
+| pilot vertical bofn3 s0 16x | 56 | 159 | 743 |  |  |  |  |
+| pilot vertical bofn3 s0 1x | 19 | 110 | 546 |  |  |  |  |
+| pilot vertical bofn3 s0 4x | 24 | 104 | 608 |  |  |  |  |
+| pilot vertical bofn3 s0 64x | 184 | 441 | 1,055 |  |  |  |  |
+| pilot vertical bofn3 s1 16x | 50 | 287 | 1,747 |  |  |  |  |
+| pilot vertical bofn3 s1 1x | 11 | 205 |  |  |  |  |  |
+| pilot vertical bofn3 s1 64x | 175 | 512 | 1,686 |  |  |  |  |
+| pilot vertical fast s0 1x | 6 | 12 | 26 |  |  |  |  |
 | pre conventional bofn3 s0 1x | 7 |  |  |  |  |  |  |
 | pre conventional fast s0 1x | 5 |  |  |  |  |  |  |
 | pre conventional pkgfn3 s0 1x | 8 |  |  |  |  |  |  |
 | pre vertical fast s0 1x | 6 |  |  |  |  |  |  |
-| vertical bofn3 16x | 49 | 141 | 644 | 2,946 |  |  |  |
-| vertical bofn3 64x | 170 | 421 | 1,195 | 3,295 |  |  |  |
+| vertical bofn3 16x | 49 | 141 | 644 | 2,946 | 7,244 |  |  |
+| vertical bofn3 64x | 170 | 421 | 1,195 | 3,295 | 7,343 |  |  |
 | vertical bofn3 64x lean |  |  |  |  |  |  |  |
 | vertical bofn3 64x wait |  |  |  |  |  |  |  |
 | vertical fast 64x | 160 | 328 | 503 | 686 | 869 | 1,050 | 1,242 |
-| vertical pkgfn3 16x | 49 | 142 | 670 | 2,993 |  |  |  |
+| vertical pkgfn3 16x | 49 | 142 | 670 | 2,993 | 7,487 |  |  |
 | vertical pkgfn3 64x | 170 | 414 | 1,085 | 3,315 |  |  |  |

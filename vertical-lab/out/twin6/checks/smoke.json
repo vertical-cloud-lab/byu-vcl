@@ -1411,19 +1411,19 @@
    },
    "full": {
     "seconds": null,
-    "cpu_seconds": 21391,
+    "cpu_seconds": 20726,
     "days": 730,
     "scale": 64,
     "source": "checks/timing6_progress.jsonl",
     "extrapolated": {
-     "from_day": 410,
-     "cpu_at_day": 3622.2,
-     "rate": 27.38,
-     "slope": 0.1759,
-     "low": 12384,
-     "high": 21391
+     "from_day": 500,
+     "cpu_at_day": 7342.8,
+     "rate": 42.99,
+     "slope": 0.1322,
+     "low": 17230,
+     "high": 20726
     },
-    "how": "extrapolated from day 410 of a two-year run (seed 0): the cautious end, 12,384-21,391 s"
+    "how": "extrapolated from day 500 of a two-year run (seed 0): the cautious end, 17,230-20,726 s"
    }
   },
   "r6_vertical_parallel_bofn3_reorder_atom-3h": {
@@ -1625,19 +1625,19 @@
    },
    "full": {
     "seconds": null,
-    "cpu_seconds": 22596,
+    "cpu_seconds": 18195,
     "days": 730,
     "scale": 16,
     "source": "checks/timing6_progress.jsonl",
     "extrapolated": {
-     "from_day": 420,
-     "cpu_at_day": 3590.4,
-     "rate": 32.32,
-     "slope": 0.187,
-     "low": 13609,
-     "high": 22596
+     "from_day": 510,
+     "cpu_at_day": 7691.0,
+     "rate": 43.99,
+     "slope": 0.0341,
+     "low": 17370,
+     "high": 18195
     },
-    "how": "extrapolated from day 420 of a two-year run (seed 0): the cautious end, 13,609-22,596 s"
+    "how": "extrapolated from day 510 of a two-year run (seed 0): the cautious end, 17,370-18,195 s"
    }
   },
   "r6_vertical_parallel_bofn3_reorder_hpc256": {
@@ -2595,19 +2595,19 @@
    },
    "full": {
     "seconds": null,
-    "cpu_seconds": 19000,
+    "cpu_seconds": 40131,
     "days": 730,
     "scale": 64,
     "source": "checks/timing6_progress.jsonl",
     "extrapolated": {
-     "from_day": 410,
-     "cpu_at_day": 3564.7,
-     "rate": 26.48,
-     "slope": 0.136,
-     "low": 12037,
-     "high": 19000
+     "from_day": 480,
+     "cpu_at_day": 7355.7,
+     "rate": 60.73,
+     "slope": 0.563,
+     "low": 22539,
+     "high": 40131
     },
-    "how": "extrapolated from day 410 of a two-year run (seed 0): the cautious end, 12,037-19,000 s"
+    "how": "extrapolated from day 480 of a two-year run (seed 0): the cautious end, 22,539-40,131 s"
    }
   },
   "r6_vertical_parallel_pkgfn3_reorder_atom-3h": {
@@ -2809,19 +2809,19 @@
    },
    "full": {
     "seconds": null,
-    "cpu_seconds": 24524,
+    "cpu_seconds": 25391,
     "days": 730,
     "scale": 16,
     "source": "checks/timing6_progress.jsonl",
     "extrapolated": {
-     "from_day": 410,
-     "cpu_at_day": 3359.3,
-     "rate": 31.51,
-     "slope": 0.2164,
-     "low": 13444,
-     "high": 24524
+     "from_day": 500,
+     "cpu_at_day": 7487.2,
+     "rate": 50.6,
+     "slope": 0.2369,
+     "low": 19126,
+     "high": 25391
     },
-    "how": "extrapolated from day 410 of a two-year run (seed 0): the cautious end, 13,444-24,524 s"
+    "how": "extrapolated from day 500 of a two-year run (seed 0): the cautious end, 19,126-25,391 s"
    }
   },
   "r6_vertical_parallel_pkgfn3_reorder_hpc256": {
@@ -3059,12 +3059,12 @@
  "what": "seed 0 of each group of the grid, timed on the runner that built it (twin/bench6.py smoke); 'short' is a shortened run (it shows the group runs and what it costs a day), 'full' a two-year run; twin/bench6.py timings() turns them into seconds for two years",
  "stream_cost": {
   "fast": {
-   "conventional": 0.02511,
-   "vertical": 0.02506
+   "conventional": 0.02502,
+   "vertical": 0.02501
   },
   "gp": {
-   "conventional": 0.02776,
-   "vertical": 0.02679
+   "conventional": 0.0278,
+   "vertical": 0.02601
   }
  },
  "stream_cost_pairs": {
@@ -3072,12 +3072,20 @@
    {
     "k": 0.02511,
     "how": "fast s0: day 150 at 1x (pre conventional fast s0 1x) and 64x (conventional fast 64x)"
+   },
+   {
+    "k": 0.02493,
+    "how": "fast s0: day 150 at 1x (pilot conventional fast s0 1x) and 64x (conventional fast 64x)"
    }
   ],
   "fast/vertical": [
    {
     "k": 0.02506,
     "how": "fast s0: day 150 at 1x (pre vertical fast s0 1x) and 64x (vertical fast 64x)"
+   },
+   {
+    "k": 0.02497,
+    "how": "fast s0: day 150 at 1x (pilot vertical fast s0 1x) and 64x (vertical fast 64x)"
    }
   ],
   "gp/conventional": [
@@ -3088,6 +3096,10 @@
    {
     "k": 0.0278,
     "how": "pkgfn3 s0: day 150 at 1x (pre conventional pkgfn3 s0 1x) and 64x (conventional pkgfn3 64x)"
+   },
+   {
+    "k": 0.02782,
+    "how": "bofn3 s0: day 150 at 1x (pilot conventional bofn3 s0 1x) and 64x (conventional bofn3 64x)"
    }
   ],
   "gp/vertical": [
@@ -3114,6 +3126,46 @@
    {
     "k": 0.02749,
     "how": "bofn3 s1: day 150 at 16x (pilot vertical bofn3 s1 16x) and 64x (pilot vertical bofn3 s1 64x)"
+   },
+   {
+    "k": 0.02426,
+    "how": "bofn3 s0: day 150 at 4x (pilot vertical bofn3 s0 4x) and 64x (vertical bofn3 64x)"
+   },
+   {
+    "k": 0.01689,
+    "how": "bofn3 s0: day 150 at 4x (pilot vertical bofn3 s0 4x) and 16x (vertical bofn3 16x)"
+   },
+   {
+    "k": 0.02661,
+    "how": "bofn3 s0: day 150 at 4x (pilot vertical bofn3 s0 4x) and 64x (pilot vertical bofn3 s0 64x)"
+   },
+   {
+    "k": 0.02244,
+    "how": "bofn3 s0: day 150 at 4x (pilot vertical bofn3 s0 4x) and 16x (pilot vertical bofn3 s0 16x)"
+   },
+   {
+    "k": 0.0237,
+    "how": "bofn3 s0: day 150 at 1x (pilot vertical bofn3 s0 1x) and 64x (vertical bofn3 64x)"
+   },
+   {
+    "k": 0.01604,
+    "how": "bofn3 s0: day 150 at 1x (pilot vertical bofn3 s0 1x) and 16x (vertical bofn3 16x)"
+   },
+   {
+    "k": 0.02595,
+    "how": "bofn3 s0: day 150 at 1x (pilot vertical bofn3 s0 1x) and 64x (pilot vertical bofn3 s0 64x)"
+   },
+   {
+    "k": 0.02049,
+    "how": "bofn3 s0: day 150 at 1x (pilot vertical bofn3 s0 1x) and 16x (pilot vertical bofn3 s0 16x)"
+   },
+   {
+    "k": 0.02725,
+    "how": "bofn3 s1: day 150 at 1x (pilot vertical bofn3 s1 1x) and 64x (pilot vertical bofn3 s1 64x)"
+   },
+   {
+    "k": 0.02649,
+    "how": "bofn3 s1: day 150 at 1x (pilot vertical bofn3 s1 1x) and 16x (pilot vertical bofn3 s1 16x)"
    }
   ]
  },

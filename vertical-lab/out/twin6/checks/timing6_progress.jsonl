@@ -841,3 +841,22 @@
 {"label": "pilot conventional fast s0 1x", "day": 280, "wall": 70.6, "cpu": 15.2, "load1": 10.67}
 {"label": "pilot conventional fast s0 1x", "day": 290, "wall": 73.0, "cpu": 15.8, "load1": 10.67}
 {"label": "pilot conventional fast s0 1x", "day": 300, "wall": 74.6, "cpu": 16.2, "load1": 10.54}
+{"label": "pilot vertical bofn3 s1 1x", "day": 200, "wall": 650.5, "cpu": 205.0, "load1": 8.35}
+{"label": "vertical bofn3 16x", "day": 480, "wall": 11957.1, "cpu": 6333.2, "load1": 8.29}
+{"label": "vertical pkgfn3 16x", "day": 480, "wall": 11998.5, "cpu": 6300.8, "load1": 8.06}
+{"label": "vertical bofn3 64x", "day": 480, "wall": 12023.5, "cpu": 6403.8, "load1": 8.49}
+{"label": "pilot vertical bofn3 s1 1x", "day": 210, "wall": 766.0, "cpu": 238.9, "load1": 8.38}
+{"label": "pilot vertical bofn3 s1 1x", "day": 220, "wall": 969.0, "cpu": 301.3, "load1": 7.97}
+{"label": "vertical pkgfn3 64x", "day": 470, "wall": 12341.7, "cpu": 6583.2, "load1": 7.42}
+{"label": "vertical bofn3 16x", "day": 490, "wall": 12462.5, "cpu": 6740.6, "load1": 7.68}
+{"label": "vertical bofn3 64x", "day": 490, "wall": 12575.6, "cpu": 6845.8, "load1": 8.16}
+{"label": "pilot vertical bofn3 s1 1x", "day": 230, "wall": 1292.5, "cpu": 393.3, "load1": 8.29}
+{"label": "pilot vertical bofn3 s1 16x", "day": 300, "wall": 7129.9, "cpu": 1747.3, "load1": 7.49}
+{"label": "vertical pkgfn3 16x", "day": 490, "wall": 12741.1, "cpu": 6894.6, "load1": 7.49}
+{"label": "pilot vertical bofn3 s1 1x", "day": 240, "wall": 1619.5, "cpu": 494.5, "load1": 6.83}
+{"label": "vertical bofn3 16x", "day": 500, "wall": 13072.7, "cpu": 7244.2, "load1": 7.19}
+{"label": "vertical bofn3 64x", "day": 500, "wall": 13163.2, "cpu": 7342.8, "load1": 6.82}
+{"label": "vertical pkgfn3 64x", "day": 480, "wall": 13274.5, "cpu": 7355.7, "load1": 7.0}
+{"label": "pilot vertical bofn3 s1 1x", "day": 250, "wall": 1999.1, "cpu": 618.8, "load1": 7.0}
+{"label": "vertical pkgfn3 16x", "day": 500, "wall": 13431.7, "cpu": 7487.2, "load1": 7.37}
+{"label": "vertical bofn3 16x", "day": 510, "wall": 13592.3, "cpu": 7691.0, "load1": 7.19}

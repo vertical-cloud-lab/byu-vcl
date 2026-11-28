@@ -24,7 +24,7 @@ which the commands set themselves) and the hash seed.
 ```bash
 set -e
 cd vertical-lab
-test "$(git rev-parse HEAD:vertical-lab/twin)" = 469478fe0ee785ef82279ac84b186f656ac4a5de   # the engine the grid was
+test "$(git rev-parse HEAD:vertical-lab/twin)" = 701dea1607dbe0558bd2932c0989e098344f34c6   # the engine the grid was
                                                           # built, timed and checked with (stop if it isn't)
 export PIP_TIMEOUT=600 PIP_RETRIES=2
 pip install --index-url https://download.pytorch.org/whl/cpu torch==2.15.0 && pip install -r out/twin6/requirements.txt
@@ -47,10 +47,11 @@ carried on is the same run: the GP check's three runs stopped half way in one fr
 and compared with the reference in row, event log and GP state. A slice's jobs can run on different CPUs, as long as
 each passes the GP check. Set H to the job's limit less set-up, the GP check and a margin: 5.2 for a 6-hour job.
 
-The `twin/` tree above differs from the one the GP check's reference was made with (`aa296e7`, commit `568ab5f`) only
-in the grid's planning code (`bench6.timings`, `variant_ratios`, CPU seconds in each row's `timing`), its tests and
-its README: no simulation code. Change anything in `twin/` and the reference, the timings and this hash all have to be
-made again.
+The `twin/` tree above (`701dea1`) is the engine the GP check matched the reference with at `74254fe`
+(`gpcheck_check_74254fe.json`, `gpcheck_resume.json`), apart from `twin/README.md`. The reference itself was made at
+`568ab5f` (tree `aa296e7`), before the checkpoints and the faster trial settings; a 300-day run of the automated lab's
+BOFN and pKGFN on both engines gives the same row, event log and GP state (`checks/identity6.jsonl`). Change anything
+in `twin/` and the checks, the timings and this hash all have to be made again.
 
 **How long a slice takes.** A run of the automated lab with BOFN or pKGFN costs several CPU-hours (`left.md`,
 `checks/timing6.md`); with four at a time on four vCPUs, a slice's longest run sets its length. `slices 0` keeps each
