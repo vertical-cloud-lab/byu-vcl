@@ -126,6 +126,7 @@ Lila's comparable lab roles are much lower: senior research associate (automated
 
 ## Contents
 
+- [`related.md`](related.md): issues and pull requests in byu-vcl and digital-alloy-lab that this survey builds on, overlaps with or could feed.
 - [`summary.md`](summary.md): the one-row-per-company table, generated from the data.
 - [`companies/`](companies/): one profile per company, with every row linked to its source:
   - funding rounds,
