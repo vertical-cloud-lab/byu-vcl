@@ -14,7 +14,7 @@ from jobs import DOCS, RAW, _root
 
 OUT = os.path.join(DOCS, "job-postings")
 FUNCTIONS = analyze.FUNCTIONS
-TODAY = "2026-10-10"
+TODAY = "2026-11-28"  # newest live snapshot; earlier ones are kept as dated evidence
 
 # --- what a description asks for ------------------------------------------------------
 
@@ -191,6 +191,13 @@ def merge():
     by = defaultdict(lambda: defaultdict(list))
     careers_pages = defaultdict(list)
     spans = {}
+    # Each live snapshot is its own file (<slug>.live-<date>.json). A posting counts as open only if the
+    # company's newest snapshot has it; one seen live only in an earlier snapshot closed in between.
+    latest = defaultdict(str)
+    for path in glob.glob(os.path.join(RAW, "*.live-*.json")):
+        for r in json.load(open(path, encoding="utf-8")):
+            slug = os.path.basename(path).split(".")[0]
+            latest[slug] = max(latest[slug], r.get("seen") or "")
     for path in sorted(glob.glob(os.path.join(RAW, "*.json"))):
         slug = os.path.basename(path).split(".")[0]
         data = json.load(open(path, encoding="utf-8"))
@@ -240,17 +247,19 @@ def merge():
             # A WordPress job post stays published after the role closes (Aionics still serves its
             # 2021 internships), so it is read like an archived page, not as an open posting.
             # A posting a board still serves after it closed (Getro keeps expired roles) is read the same way.
-            live = [r for r in recs if r.get("basis") == "live" and r.get("vendor") != "wordpress" and not r.get("closed")]
+            on_board = [r for r in recs if r.get("basis") == "live" and r.get("vendor") != "wordpress" and not r.get("closed")]
+            live = [r for r in on_board if (r.get("seen") or TODAY) >= latest[slug]]
+            earlier = [r for r in on_board if (r.get("seen") or TODAY) < latest[slug]]
             pages = [r for r in recs if (r.get("basis") == "wayback" and not r.get("listing_only"))
                      or r.get("vendor") == "wordpress" or r.get("closed")]
             lists = [r for r in recs if r.get("listing_only")]
-            titles = [norm_title(r.get("title"), slug) for r in live + pages + lists if r.get("title")]
+            titles = [norm_title(r.get("title"), slug) for r in live + earlier + pages + lists if r.get("title")]
             titles = [t for t in titles if t and not GENERIC_TITLE.match(t) and not NOT_A_JOB.search(t)]
             if not titles:
                 continue
             title = Counter(titles).most_common(1)[0][0]
-            texts = [r for r in live + pages if (r.get("text") or "").strip()]
-            best = max(texts, key=lambda r: (r.get("basis") == "live", len(r["text"]))) if texts else {}
+            texts = [r for r in live + earlier + pages if (r.get("text") or "").strip()]
+            best = max(texts, key=lambda r: (r.get("basis") == "live", r.get("seen") or "", len(r["text"]))) if texts else {}
             dates = []
             for r in recs:
                 for f in ("published",):
@@ -270,12 +279,14 @@ def merge():
             if sp:
                 dates += [ts_date(sp["first"]), ts_date(sp["last"])]
             dates = sorted(d for d in dates if d)
+            dates += [r["seen"] for r in earlier if r.get("seen")]
+            dates.sort()
             if live:
                 dates.append(live[0].get("seen") or TODAY)
             first = dates[0] if dates else None
             last = max(dates) if dates else None
             def pick(f):
-                for r in live + pages + lists:
+                for r in live + earlier + pages + lists:
                     if r.get(f):
                         return r[f]
                 return None
@@ -284,7 +295,7 @@ def merge():
             if not sal:
                 sal = salary_from_text(pay_text, best.get("text") if texts else "")
             sources = []
-            for r in live:
+            for r in live or earlier[-1:]:
                 if r.get("url"):
                     sources.append(r["url"])
             sources += [r["url"] for r in pages if r.get("closed") and r.get("url")][:1]
@@ -298,8 +309,8 @@ def merge():
                 "company": slug, "posting_id": pid if not pid.startswith("title:") else None, "title": title,
                 "function": analyze.classify(title), "seniority": seniority(title),
                 "team": pick("team"), "location": pick("location"), "employment_type": pick("employment_type"),
-                "first_seen": first, "last_seen": last, "open_on_2026_10_10": bool(live),
-                "basis": "+".join(sorted({"live" if live else "", "wayback" if pages or lists else ""} - {""})),
+                "first_seen": first, "last_seen": last, "open_now": bool(live),
+                "basis": "+".join(sorted({"live" if live or earlier else "", "wayback" if pages or lists else ""} - {""})),
                 "salary": sal, "pay_text": pay_text if not sal else None,
                 "degrees_mentioned": degrees(rt), "years_min": years_min(rt),
                 "skills": [k for k, rx in SKILLS.items() if rx.search(rt)],
@@ -422,12 +433,12 @@ def dedupe(rows):
         cur = None
         for r in rs:
             if cur and cur["last_seen"] and r["first_seen"] and _days(cur["last_seen"], r["first_seen"]) <= 45:
-                keep, other = (cur, r) if (cur["has_description"], cur["open_on_2026_10_10"]) >= \
-                    (r["has_description"], r["open_on_2026_10_10"]) else (r, cur)
+                keep, other = (cur, r) if (cur["has_description"], cur["open_now"]) >= \
+                    (r["has_description"], r["open_now"]) else (r, cur)
                 merged = dict(keep)
                 merged["first_seen"] = min(cur["first_seen"], r["first_seen"])
                 merged["last_seen"] = max(cur["last_seen"], r["last_seen"])
-                merged["open_on_2026_10_10"] = cur["open_on_2026_10_10"] or r["open_on_2026_10_10"]
+                merged["open_now"] = cur["open_now"] or r["open_now"]
                 merged["basis"] = "+".join(sorted(set(cur["basis"].split("+")) | set(r["basis"].split("+"))))
                 merged["sources"] = list(dict.fromkeys(keep["sources"] + other["sources"]))
                 for f in ("team", "location", "salary", "pay_text", "employment_type"):
@@ -474,7 +485,7 @@ def descriptions(rows):
         src = r["sources"][0] if r["sources"] else ""
         if r["text_source"] and r["text_source"] != "live":
             src = r["text_source"]
-        when = f'{r["first_seen"]} → {"open" if r["open_on_2026_10_10"] else r["last_seen"]}'
+        when = f'{r["first_seen"]} → {"open" if r["open_now"] else r["last_seen"]}'
         lines += [f'<a id="{anchor(r)}"></a>', "", f'### {r["title"]} ({r["first_seen"]})', "",
                   f'{when} · {r["function"]} · {r["location"] or "location not stated"}'
                   + (f' · {money(r["salary"])}' if r["salary"] else "") + f" · {link(src, 'source')}", "",
@@ -487,7 +498,7 @@ def company_page(slug, rows, careers, meta, split=False):
     lines = [f"# {name}: job postings and descriptions", "",
              f"Back to [all companies](README.md) · [company profile](../companies/{slug}.md)", ""]
     n_text = sum(r["has_description"] for r in rows)
-    live = sum(r["open_on_2026_10_10"] for r in rows)
+    live = sum(r["open_now"] for r in rows)
     span = [r["first_seen"] for r in rows if r["first_seen"]]
     lines.append(f"**{len(rows)} postings recovered**, {n_text} with the full description; {live} still open on "
                  f"{TODAY}. First seen {min(span) if span else 'n/a'}, latest {max(span) if span else 'n/a'}. "
@@ -498,7 +509,7 @@ def company_page(slug, rows, careers, meta, split=False):
     for r in rows:
         title = f'[{r["title"]}]({desc_file(slug, r, split)}#{anchor(r)})' if r["has_description"] else r["title"]
         src = " ".join(link(u, "live" if "web.archive.org" not in u else "Wayback") for u in r["sources"][:2])
-        last = "open" if r["open_on_2026_10_10"] else (r["last_seen"] or "")
+        last = "open" if r["open_now"] else (r["last_seen"] or "")
         lines.append(f'| {r["first_seen"] or ""} | {last} | {title} | {r["function"]} | {(r["team"] or "")[:40]} | '
                      f'{(r["location"] or "")[:40]} | {"/".join(r["degrees_mentioned"])} | {r["years_min"] or ""} | '
                      f'{money(r["salary"]) or (r["pay_text"] or "")[:40]} | {src} |')
@@ -596,7 +607,7 @@ def summary(rows, by_co, careers, meta):
          "The findings are in [README.md](README.md); each company's postings and descriptions are on its own page.", "",
          "![Job postings by first-seen date and function](../figures/postings_timeline_by_function.png)", "",
          "## Coverage", "",
-         "| Company | Postings | With description | Open on 2026-10-10 | First seen | Last first-seen | Evidence |",
+         f"| Company | Postings | With description | Open on {TODAY} | First seen | Last first-seen | Evidence |",
          "|---|---|---|---|---|---|---|"]
     for slug in sorted(by_co, key=lambda c: -len(by_co[c])):
         rs = [r for r in by_co[slug] if r["function"] != "general-application"]
@@ -606,7 +617,7 @@ def summary(rows, by_co, careers, meta):
         basis = Counter(b for r in rs for b in r["basis"].split("+"))
         name = meta.get(slug, {}).get("company", slug)
         L.append(f'| [{name}]({slug}.md) | {len(rs)} | {sum(r["has_description"] for r in rs)} | '
-                 f'{sum(r["open_on_2026_10_10"] for r in rs)} | {fs[0] if fs else ""} | {fs[-1] if fs else ""} | '
+                 f'{sum(r["open_now"] for r in rs)} | {fs[0] if fs else ""} | {fs[-1] if fs else ""} | '
                  + ", ".join(f"{k} {v}" for k, v in sorted(basis.items())) + " |")
     for slug in sorted(set(careers) - set(by_co)):
         name = meta.get(slug, {}).get("company", slug)

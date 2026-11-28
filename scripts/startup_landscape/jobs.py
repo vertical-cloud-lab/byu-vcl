@@ -10,7 +10,7 @@ gives the title, team, location, pay and the full description even where the
 page looks like a JavaScript shell. The archived copies are gzip-encoded as
 originally served; ``fetch.get`` decodes them.
 
-    python scripts/startup_landscape/jobs.py live                 # current boards
+    python scripts/startup_landscape/jobs.py live                 # current boards -> <slug>.live-<date>.json
     python scripts/startup_landscape/jobs.py history periodic-labs  # Wayback, one company
     python scripts/startup_landscape/jobs.py build                # data/job_postings.jsonl + docs
 
@@ -724,7 +724,9 @@ def live_notion(spec):
             row = (rm.get(rid, {}).get("value") or {})
             row = row.get("value", row)
             title = _notion_title(row)
-            if not title:
+            # Untitled template rows ("Internship: ", "(CDI)") sit in the database but the public
+            # page's view hides them; checked against the page rendered in a browser, 2026-11-28.
+            if not re.sub(r"(?i)internship\s*:?|\((?:cdi|cdd)\)|[\s:–—-]", "", title or ""):
                 continue
             page = _notion_blocks(site, rid)
             lines = []
@@ -755,8 +757,8 @@ def cmd_live(slugs, date):
                     rows.append({"company": slug, "vendor": vendor, "basis": "live", "seen": date, **p})
             except Exception as err:  # noqa: BLE001
                 print(f"{slug} {vendor}: {err}", file=sys.stderr)
-        if rows:
-            with open(os.path.join(RAW, f"{slug}.live.json"), "w", encoding="utf-8") as fh:
+        if rows:  # one file per snapshot date; jobs_report treats the newest as "open now"
+            with open(os.path.join(RAW, f"{slug}.live-{date}.json"), "w", encoding="utf-8") as fh:
                 json.dump(rows, fh, indent=1, ensure_ascii=False)
         print(slug, len(rows), "live postings")
 
@@ -791,7 +793,7 @@ def _root(url):
     return u.replace(":80", "")
 
 
-def cmd_history(slug, max_pages):
+def cmd_history(slug, max_pages, refresh=False):
     """Wayback: every posting URL under the company's board prefixes with its first
     and last capture, the parsed posting from its earliest capture, and the board
     page itself once a quarter (which lists titles never captured on their own)."""
@@ -806,7 +808,7 @@ def cmd_history(slug, max_pages):
             json.dump(done, fh, indent=1, ensure_ascii=False)
 
     for pattern in BOARDS[slug]["pattern"]:
-        if pattern in caps:
+        if pattern in caps and not refresh:  # --refresh re-reads the index to pick up captures since the last run
             continue
         try:
             caps[pattern] = fetch.cdx_urls(pattern + "*")
@@ -816,9 +818,9 @@ def cmd_history(slug, max_pages):
         save()
         print(pattern, len(caps[pattern]), "urls", flush=True)
     live_ids = set()
-    lp = os.path.join(RAW, f"{slug}.live.json")
-    if os.path.exists(lp):
-        live_ids = {str(r.get("posting_id") or "").lower() for r in json.load(open(lp, encoding="utf-8"))}
+    snaps = sorted(glob.glob(os.path.join(RAW, f"{slug}.live-*.json")))
+    if snaps:  # the newest snapshot: postings open now have their text from the board's API
+        live_ids = {str(r.get("posting_id") or "").lower() for r in json.load(open(snaps[-1], encoding="utf-8"))}
     by_key, roots = defaultdict(list), set()
     for pattern, rows in caps.items():
         for r in rows:
@@ -841,7 +843,7 @@ def cmd_history(slug, max_pages):
         todo.append((k in live_ids, first, k, rows[0]["original"], first, last, n))
     # Board pages, one capture per quarter.
     for root in sorted(roots):
-        if root not in board_caps:
+        if root not in board_caps or refresh:
             try:
                 rows = fetch.cdx(root, filters=("statuscode:200",), collapse="timestamp:6")
             except Exception as err:  # noqa: BLE001
@@ -857,6 +859,8 @@ def cmd_history(slug, max_pages):
             todo.append((False, ts, None, orig, ts, ts, 1))
     save()
     todo.sort(key=lambda t: (t[0], t[1]))
+    if refresh:  # newest captures first, so a small --max-pages goes to what changed since the last run
+        todo.sort(key=lambda t: (t[0], t[1] < "20261010", "~" if t[1] >= "20261010" else t[1]))
     seen = {(p.get("posting_id") or "") + "|" + p["capture"] for p in done["postings"]}
     fetched = 0
     for is_live, ts, k, url, first, last, n in todo:
@@ -924,10 +928,11 @@ def main():
     sub = ap.add_subparsers(dest="cmd", required=True)
     lv = sub.add_parser("live")
     lv.add_argument("slugs", nargs="*")
-    lv.add_argument("--date", default="2026-10-10")
+    lv.add_argument("--date", default=__import__("datetime").date.today().isoformat())
     hi = sub.add_parser("history")
     hi.add_argument("slug")
     hi.add_argument("--max-pages", type=int, default=400)
+    hi.add_argument("--refresh", action="store_true", help="re-read the Wayback index for captures since the last run")
     rp = sub.add_parser("reparse", help="re-run the parsers over cached captures")
     rp.add_argument("slugs", nargs="+")
     sub.add_parser("build")
@@ -935,7 +940,7 @@ def main():
     if a.cmd == "live":
         cmd_live(a.slugs or [s for s, b in BOARDS.items() if b.get("live")], a.date)
     elif a.cmd == "history":
-        cmd_history(a.slug, a.max_pages)
+        cmd_history(a.slug, a.max_pages, a.refresh)
     elif a.cmd == "reparse":
         for slug in a.slugs:
             cmd_reparse(slug)
