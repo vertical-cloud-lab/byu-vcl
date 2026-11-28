@@ -89,6 +89,10 @@ the button and the PiSugar.
    attach anything to the respirator itself.
 6. **Gloved presses.** Check that the record button works through nitrile gloves, and that
    donning and doffing a lab coat with the headset on never presses it by accident.
+7. **Jitter** ([`STABILIZATION.md`](STABILIZATION.md)). Record the same bench task with the
+   headset and with the chest camera. Make a steadied copy of the headset's clip with vid.stab,
+   and with Gyroflow if the gyro is fitted, and compare all three. Try capping the exposure with
+   `--shutter` under the lab's lights, and look for smeared frames during quick head turns.
 
 ## Phase 1: the recorder service
 
@@ -113,6 +117,10 @@ the button and the PiSugar.
   - the tail of `rpicam-vid`'s log
 
   The PiSugar's clock keeps the times right offline.
+- **With the optional gyro:** two more files next to the clip, so a steadied copy can be made
+  later ([`STABILIZATION.md`](STABILIZATION.md)). They are `<id>.gcsv`, the IMU samples in
+  Gyroflow's format, and `<id>.pts`, each frame's time from `rpicam-vid --save-pts`. Start the
+  IMU log just before `rpicam-vid`.
 - **Naming.** Use `<device>-<UTC start, YYYYmmddTHHMMSSZ>`, so names sort and never collide.
 - **A spoken tag.** Ask wearers to say the experiment or issue at the start, for example "this is
   for issue 231". Phase 4 picks it up from the transcript.
@@ -264,6 +272,10 @@ secrets.
   the headset.
 - **Transcribing on the headset**, if the network is unreliable. That means a Pi 5 and its weight
   and heat; see [`BOM.md`](BOM.md#options).
+- **Steadied copies for training videos** ([`STABILIZATION.md`](STABILIZATION.md)). On the lab
+  machine that archives the original, make a steadied copy with Gyroflow (if the gyro is fitted)
+  or ffmpeg's vid.stab, and upload it as a second video that names the original's hash. The
+  original stays the record.
 
 ## Order of work
 
