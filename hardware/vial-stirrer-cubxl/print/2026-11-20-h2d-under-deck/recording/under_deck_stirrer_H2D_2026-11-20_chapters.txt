@@ -1,0 +1,8 @@
+0:00 Bambu Studio on the runner, logged out (the login is cut)
+0:14 Device page: Thumbelina busy, Tinkerbell PLA only, H2D idle with an empty plate; HMS, Printer Parts
+1:19 Prepare: Sync info, left 0.4 mm nozzle; 2 collars + 2 frames; 4 walls, 30 %, tree supports; slice, arrange, slice
+3:03 Fresh frame on the Device page, Send dialog, Send at 19:40:28 UTC
+3:54 Uploaded; the H2D homes, checks the bed; live view
+5:10 Start-up: bed check, heating, levelling, flow calibration
+5:22 Layers 1-100: frames to layer 44, then the collars' fingers
+6:36 Finished at 21:03 UTC: the bed lowers, two frames and two collars on the plate

@@ -1,0 +1,4 @@
+frame.stl        bounds z -13.33 .. -4.00, volume 7583.0 mm3
+frame_no_pads    bounds z -12.83 .. -4.00, volume 7510.0 mm3, watertight True, bodies 1
+removed: 73.0 mm3 = 146 mm2 of pads x 0.5 mm
+on the bed: 1778 mm2; overhang steeper than 45 deg above the bed: 0.0 mm2

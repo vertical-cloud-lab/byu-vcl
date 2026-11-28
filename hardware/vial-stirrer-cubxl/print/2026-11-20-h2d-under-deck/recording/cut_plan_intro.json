@@ -1,0 +1,16 @@
+{
+ "day": "2026-11-20",
+ "parts": [
+  {"from": "19:23:22", "to": "19:23:50", "speed": 2, "label": "Bambu Studio on the runner, logged out (the login is cut)"},
+  {"from": "19:25:05", "to": "19:28:20", "speed": 3, "label": "Device page: Thumbelina busy, Tinkerbell PLA only, H2D idle with an empty plate; HMS, Printer Parts"},
+  {"from": "19:28:20", "to": "19:38:45", "speed": 6, "label": "Prepare: Sync info, left 0.4 mm nozzle; 2 collars + 2 frames; 4 walls, 30 %, tree supports; slice, arrange, slice"},
+  {"from": "19:38:45", "to": "19:40:28", "speed": 2, "label": "Fresh frame on the Device page, Send dialog, Send at 19:40:28 UTC"},
+  {"from": "19:40:28", "to": "19:43:00", "speed": 2, "label": "Uploaded; the H2D homes, checks the bed; live view"}
+ ],
+ "blur": [
+  ["19:25:40", "19:28:20", [[744, 196, 554, 280], [1174, 136, 124, 658]]],
+  ["19:38:45", "19:39:40", [[744, 196, 554, 280], [1174, 136, 124, 658]]],
+  ["19:40:50", "19:42:28", [[744, 196, 554, 280], [1174, 136, 124, 658]]],
+  ["19:42:28", "19:43:00", [[700, 136, 598, 230], [1174, 136, 124, 658]]]
+ ]
+}

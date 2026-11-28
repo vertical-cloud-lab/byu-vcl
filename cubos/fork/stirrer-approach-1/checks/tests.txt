@@ -1,0 +1,19 @@
+# CubOS test suites, run on a GitHub runner on 2026-11-26 with Python 3.13.18, pydantic 2.14.4
+
+## upstream main 6e5cffe, no stirrer (baseline)
+3779 passed, 34 skipped, 14 subtests passed in 24.12s
+
+## fork series (6e5cffe + 2 commits, HEAD 12ece77): packages/core
+3818 passed, 34 skipped, 14 subtests passed in 24.52s
+
+## fork series: services/api
+371 passed in 19.37s
+
+## fork series: services/sila
+84 passed in 11.09s
+
+## fork series: the stirrer tests alone (packages/core/tests/instruments/stirrer)
+39 passed in 0.06s
+
+## the Pi's CubOS (496819c + 4 patches) + the 11-17 stirrer patch + the rename: packages/core
+2585 passed, 17 skipped, 21 subtests passed in 21.06s

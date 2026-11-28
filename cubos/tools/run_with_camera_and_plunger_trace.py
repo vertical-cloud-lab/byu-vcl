@@ -43,6 +43,37 @@ def traced(self, code, *args, **kwargs):
 
 _ot.OpentronsPipette._send_command = traced
 
+# Stirrer commands (30 set/stop, 31 status), when CubOS has the stirrer
+# (cubos/patches/stirrer-approach-1.patch). Its status poller calls the same
+# method from its own thread, so the readings between steps land here too.
+STIR = []
+try:
+    from cubos.instruments.stirrer.vendors import pawduino as _stir
+except ImportError:                              # CubOS without the stirrer
+    _stir = None
+if _stir is not None:
+    _orig_stir = _stir.PawduinoStirrer._send_command
+
+    def traced_stir(self, code, *args, **kwargs):
+        t0 = time.time()
+        t_sent = datetime.datetime.now(datetime.timezone.utc)   # when it was sent
+        exc = reply = None
+        try:
+            reply = _orig_stir(self, code, *args, **kwargs)
+        except Exception as e:                   # noqa: BLE001
+            exc = repr(e)
+            raise
+        finally:
+            rec = {"t": t_sent.isoformat(timespec="milliseconds"),
+                   "code": code, "args": [repr(a) for a in args],
+                   "dt_s": round(time.time() - t0, 3),
+                   "reply": reply, "error": exc}
+            STIR.append(rec)
+            print(f"@@STIR {json.dumps(rec)}", flush=True)
+        return reply
+
+    _stir.PawduinoStirrer._send_command = traced_stir
+
 # Step timing. Installed before the camera harness wraps the same method, so
 # the harness's capture runs after this wrapper has returned.
 from cubos.protocol_engine import runtime as _rt                # noqa: E402
@@ -87,4 +118,9 @@ finally:
     with open(out, "w") as fh:
         json.dump(STEPS, fh, indent=2)
     print(f"@@STEP-TRACE {len(STEPS)} step(s) -> {out}", flush=True)
+    if _stir is not None:
+        out = os.environ.get("STIR_TRACE_OUT", "/tmp/stir_trace.json")
+        with open(out, "w") as fh:
+            json.dump(list(STIR), fh, indent=2)
+        print(f"@@STIR-TRACE {len(STIR)} command(s) -> {out}", flush=True)
 sys.exit(rc)

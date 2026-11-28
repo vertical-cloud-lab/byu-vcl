@@ -1,0 +1,83 @@
+# cub_xl_ben_3_instrument_stirrer.yaml -- cub_xl_ben_3_instrument.yaml (Ben's
+# 2026-10-02 gantry file, the one the 2026-11-05 stir trial ran on) plus the
+# stir module as a CubOS instrument: approach 1 of #133, implemented in
+# cubos/patches/stirrer-approach-1.patch.
+#
+# `stirrer_1` is an ordinary entry under `instruments:`. Its registry type,
+# `stirrer`, is `mount: deck`, so it has no offset_x / offset_y / depth (the
+# loader refuses them), and bounds, home-pose and calibration skip it. Where
+# its body sits on the deck is in the deck file, as a wall.
+#
+# The port is exactly the same string as the capper's and the pipette's.
+# PawduinoLink shares one link per port *string* (no realpath), so a by-id
+# path here and /dev/ttyACM0 above would open the Uno twice, and the second
+# open resets the board mid-run. Move all three to the by-id path together,
+# or none.
+#
+# status_poll_s: while the stirrer runs, read the firmware's `31` status this
+# often and log it, so the run log shows the speed between protocol steps.
+
+serial_port: /dev/ttyUSB0
+gantry_type: cub_xl
+cnc:
+  factory_z_travel_mm: 124.0
+  calibration_block_height_mm: 35.0
+  y_axis_motion: head
+  safe_z: 115.0
+working_volume:
+  x_min: 0.0
+  x_max: 361.0
+  y_min: 0.0
+  y_max: 278.0
+  z_min: 0.0
+  z_max: 122.0
+origin_policy: deck_origin
+grbl_settings:
+  dir_invert_mask: 1
+  status_report: 0
+  soft_limits: true
+  homing_enable: true
+  homing_dir_mask: 0
+  homing_pull_off: 3.0
+  steps_per_mm_x: 400.0
+  steps_per_mm_y: 400.0
+  steps_per_mm_z: 400.0
+  max_travel_x: 364.0
+  max_travel_y: 281.0
+  max_travel_z: 125.0
+instruments:
+  vial_capper_decapper:
+    type: capper
+    vendor: pawduino
+    offset_x: 0.0
+    offset_y: 0.0
+    depth: -16.0
+    capture_retries: 2
+    capture_settle_s: 1
+    engage_depth_mm: 15
+    offline: false
+    park_position:
+    - 236
+    - 25
+    port: /dev/ttyACM0
+  pipette:
+    type: pipette
+    vendor: opentrons
+    offset_x: 55.0
+    offset_y: 11.0
+    depth: 0.0
+    pipette_model: p20_single_gen2
+    port: /dev/ttyACM0
+    offline: false
+  camera_3:
+    type: camera
+    vendor: mount_only
+    offset_x: -40.0
+    offset_y: 10.0
+    depth: -110.0
+  stirrer_1:
+    type: stirrer
+    vendor: pawduino
+    port: /dev/ttyACM0
+    offline: false
+    status_poll_s: 1.0

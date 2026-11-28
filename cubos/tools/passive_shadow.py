@@ -109,8 +109,12 @@ def record_moves(gantry_yaml: str, deck_yaml: str, protocol_yaml: str) -> list[d
                 "moving_key": moving_key,
                 "gantry": [x - instr.offset_x, y - instr.offset_y, z + depth],
                 "travel_z": (travel_z + depth) if travel_z is not None else None,
-                "depths": {n: i.effective_depth for n, i in self.instruments.items()},
-                "offsets": {n: [i.offset_x, i.offset_y] for n, i in self.instruments.items()},
+                # Head-mounted tools only: a deck-mounted instrument (the
+                # stirrer, mount: deck) does not ride along with the head.
+                "depths": {n: i.effective_depth for n, i in self.instruments.items()
+                           if getattr(i, "mount", "head") != "deck"},
+                "offsets": {n: [i.offset_x, i.offset_y] for n, i in self.instruments.items()
+                            if getattr(i, "mount", "head") != "deck"},
                 "step": step[0],
                 "command": step[1],
             }
@@ -192,6 +196,12 @@ def deck_obstacles(deck_yaml: str, cap_height: float) -> list[dict]:
 
 def analyse(events, obstacles, *, tip_stuck: bool) -> list[dict]:
     open_vials: set[str] = set()
+    # Rack slots whose tip is on the pipette: from the end of the pick_up_tip
+    # that took it until a drop_tip puts one back. Without this, the next
+    # step's first move, which lifts the pipette straight out of that slot,
+    # is flagged against the very tip the pipette is carrying whenever that
+    # step moves another tool (e.g. a decap right after the pickup).
+    taken_tips: set[str] = set()
     findings = []
     pose = None
     for event in events:
@@ -199,11 +209,12 @@ def analyse(events, obstacles, *, tip_stuck: bool) -> list[dict]:
         if pose is None:
             pose = target
         moving = event["instrument"]
+        live = [o for o in obstacles if o["label"] not in taken_tips]
         # The passive instruments are every mounted tool this move does not
         # name -- resolved by identity when the trace was taken, so it does
         # not depend on class names matching config keys.
         for passive in [k for k in event["offsets"] if k != event["moving_key"]]:
-            _sweep(event, pose, passive, obstacles, open_vials, findings,
+            _sweep(event, pose, passive, live, open_vials, findings,
                    tip_stuck=tip_stuck, moving=moving)
         pose = target
         command = (event["command"] or "").lower()
@@ -211,6 +222,15 @@ def analyse(events, obstacles, *, tip_stuck: bool) -> list[dict]:
             open_vials |= _vials_at(obstacles, target)
         elif command == "cap":
             open_vials -= _vials_at(obstacles, target)
+        elif command in ("pick_up_tip", "drop_tip") and event["moving_key"] in event["offsets"]:
+            ox, oy = event["offsets"][event["moving_key"]]
+            slots = {o["label"] for o in obstacles if o["kind"] == "tip"
+                     and abs(o["x"] - (target[0] + ox)) < 1e-3
+                     and abs(o["y"] - (target[1] + oy)) < 1e-3}
+            if command == "pick_up_tip":
+                taken_tips |= slots
+            else:
+                taken_tips -= slots
     return findings
 
 

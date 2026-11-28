@@ -1,0 +1,38 @@
+frame v1: valid True,   7582.3 mm3, x -24.50..24.50, y -22.00..22.00, z -13.33..-4.00
+frame v2: valid True,   7258.4 mm3, x -24.50..24.50, y -22.00..22.00, z -12.83..-4.00
+
+1. The bore round the magnet carrier (Ø19 x 3.23 mm, on the fan's hub)
+  v1: bore Ø20.6, carrier to the frame 0.80 mm all round
+  v2: bore Ø22, carrier to the frame 1.50 mm all round
+  ok  v2: carrier to the frame, a side                                          1.50 mm   (need >= 1.5)
+
+2. The Hall sensor (US1881, 3.05 x 4.06 x 1.52 mm)
+  v1: body x -13.35..-10.30, z -10.60..-9.08; overlap with the frame 0.000 mm3; to the carrier 0.80 mm; nearest corner r 10.50
+  v2: body x -14.10..-11.05, z -11.43..-9.91; overlap with the frame 0.000 mm3; to the carrier 1.55 mm; nearest corner r 11.23
+  ok  v2: sensor body overlapping the frame (must be 0), as -overlap           -0.00 mm3   (need >= 0)
+  ok  v2: sensor's top edge behind the bore wall, at y = 0                      0.05 mm   (need >= 0)
+  ok  v2: sensor to the carrier                                                 1.55 mm   (need >= 1.5)
+  v2 hole: x -22.9 to -19.6, y +-2.6, through the plate (3.3 x 5.2 mm, R0.8)
+  ok  v2 hole: room round the body going through edge first, across its thickness (a side)    0.89 mm   (need >= 0.5)
+  ok  v2 hole: ... and across its width (a side)                                0.57 mm   (need >= 0.4)
+  ok  v2 hole: even face first, across its length (a side)                      0.12 mm   (need >= 0.1)
+  ok  below it: the gap between the fan's -X side and the base's -X wall        2.90 mm   (need >= 2.32)
+  ok  v2: the hole's outer edge against the base's inner wall face (0 = flush)    0.00 mm   (need >= 0)
+  ok  v2: plastic under the sensor's pocket                                     1.40 mm   (need >= 1.2)
+  ok  v2: plastic under the lead groove                                         1.80 mm   (need >= 1.2)
+  ok  v2: step that stops the body sliding out along the groove                 0.40 mm   (need >= 0.4)
+  ok  v2: groove width over the leads' 2.97 mm span                             0.63 mm   (need >= 0.4)
+  ok  v2: frame wall outside the hole                                           1.60 mm   (need >= 1.5)
+  ok  v2: sensor's top face below the deck's underside                          0.91 mm   (need >= 0.5)
+
+3. The Hall signal (model of ../analysis/field_check.py, bar under a 9 mm deck)
+  v1: top edge at r 10.30, marked face at z 22.23 (stirrer frame): 15.7 mT with the bar, 18.3 without (the US1881 trips by 9.5)
+  v2: top edge at r 11.05, marked face at z 21.40 (stirrer frame): 11.9 mT with the bar, 14.0 without (the US1881 trips by 9.5)
+  ok  v2: worst case, with the bar                                             11.88 mT   (need >= 11)
+
+4. Neighbours: v2's outline, bosses and screws are v1's, so the side-by-side check holds; frame to frame:
+  ok  v2 frame to a v2 neighbour, X, +50                                        1.00 mm   (need >= 0.9)
+  ok  v2 frame to a v2 neighbour, Y, +45                                        1.00 mm   (need >= 0.9)
+  ok  v2 frame to a v2 neighbour, diagonal                                      5.56 mm   (need >= 0.9)
+
+0 check(s) failed

@@ -1,0 +1,5 @@
+             connect          dt=  3.766s  ok
+23:17:35.740 STATUS           dt=  0.008s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+23:17:35.747 cap sensor       dt=  0.004s  OK:{"value1":0}
+23:17:35.751 EMAG_OFF         dt=  0.004s  OK:{"msg":"Electromagnet off"}
+23:17:35.756 STIR_STATUS      dt=  0.012s  OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":0,"left_s":-1}

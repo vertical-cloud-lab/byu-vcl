@@ -1,0 +1,238 @@
+From 12ece772161ed44d0d6c6f26c6f781978410ea6f Mon Sep 17 00:00:00 2001
+From: "claude[bot]" <41898282+claude[bot]@users.noreply.github.com>
+Date: Thu, 26 Nov 2026 06:14:11 +0000
+Subject: [PATCH 2/2] Skip deck-mounted instruments in motion planning and
+ offset calibration
+
+Three head-geometry paths that are newer than the CubOS the CubXL runs
+(496819c), so the first form of the stirrer change never met them:
+
+- routing._build_scene_from_context builds a tool envelope for every
+  instrument and, on a planning-enabled deck, refuses to run if one lacks a
+  motion_envelope. A deck-mounted instrument has neither, so only head
+  instruments are now required and built.
+- gantry.offset_calibration.calibrate_instrument_offsets needs a capture of
+  every instrument except lighting. A stirrer can't be brought to the mark,
+  so deck-mounted entries are now left out, and one can't be the reference.
+- build_instrumented_gantry refuses a motion_envelope on a deck-mounted
+  instrument, as the loader already refuses its offsets and depth.
+
+Refs vertical-cloud-lab/byu-vcl#133
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ .../src/cubos/gantry/instrument_loader.py     | 29 ++++++--
+ .../src/cubos/gantry/offset_calibration.py    | 25 ++++++-
+ .../core/src/cubos/protocol_engine/routing.py | 12 +++-
+ .../tests/instruments/stirrer/test_stirrer.py | 67 +++++++++++++++++++
+ 4 files changed, 124 insertions(+), 9 deletions(-)
+
+diff --git a/packages/core/src/cubos/gantry/instrument_loader.py b/packages/core/src/cubos/gantry/instrument_loader.py
+index 8f33fce..bc71314 100644
+--- a/packages/core/src/cubos/gantry/instrument_loader.py
++++ b/packages/core/src/cubos/gantry/instrument_loader.py
+@@ -10,7 +10,7 @@ from typing import Any, Dict, Mapping, TYPE_CHECKING
+ 
+ from pydantic import ValidationError
+ 
+-from cubos.instruments.base_instrument import BaseInstrument
++from cubos.instruments.base_instrument import BaseInstrument, is_deck_mounted_instrument
+ from cubos.instruments.registry import (
+     get_instrument_class,
+     get_mount,
+@@ -119,6 +119,23 @@ def _reject_head_geometry(name: str, type_key: str, kwargs: Mapping[str, Any]) -
+         )
+ 
+ 
++def _reject_deck_mounted_envelopes(
++    instruments: Mapping[str, BaseInstrument],
++    motion_envelopes: Mapping[str, Any] | None,
++) -> None:
++    """A motion_envelope describes a tool on the head: refuse one on a deck instrument."""
++    deck_mounted = sorted(
++        name for name in (motion_envelopes or {})
++        if name in instruments and is_deck_mounted_instrument(instruments[name])
++    )
++    if deck_mounted:
++        raise ValueError(
++            f"Instrument(s) {', '.join(deck_mounted)} are deck-mounted, so they "
++            "have no motion_envelope; remove it. Their place on the deck "
++            "belongs in the deck file."
++        )
++
++
+ def _drop_retired_fields(name: str, type_key: str, kwargs: Dict[str, Any]) -> None:
+     for field, reason in _RETIRED_INSTRUMENT_FIELDS.get(type_key, {}).items():
+         if field in kwargs:
+@@ -170,12 +187,14 @@ def build_instrumented_gantry(
+     motion_envelopes: Mapping[str, Mapping[str, Any]] | None = None,
+ ) -> InstrumentedGantry:
+     """Build an InstrumentedGantry from parsed instrument config entries."""
++    instruments = _instantiate_instruments(
++        instrument_configs,
++        mock_mode=mock_mode,
++    )
++    _reject_deck_mounted_envelopes(instruments, motion_envelopes)
+     return InstrumentedGantry(
+         controller=gantry,
+-        instruments=_instantiate_instruments(
+-            instrument_configs,
+-            mock_mode=mock_mode,
+-        ),
++        instruments=instruments,
+         expected_grbl_settings=expected_grbl_settings,
+         safe_z=safe_z,
+         motion_envelopes=motion_envelopes,
+diff --git a/packages/core/src/cubos/gantry/offset_calibration.py b/packages/core/src/cubos/gantry/offset_calibration.py
+index 06750f0..801c3f0 100644
+--- a/packages/core/src/cubos/gantry/offset_calibration.py
++++ b/packages/core/src/cubos/gantry/offset_calibration.py
+@@ -34,9 +34,17 @@ def calibrate_instrument_offsets(
+     next_config = deepcopy(dict(config))
+     instruments = next_config.get("instruments", {})
+     reference = instruments.get(reference_instrument)
+-    if not reference or reference.get("type") in {"camera", "lighting"}:
++    if (
++        not reference
++        or reference.get("type") in {"camera", "lighting"}
++        or _is_deck_mounted_entry(reference)
++    ):
+         raise ValueError("Choose an already calibrated contact instrument as reference.")
+-    required = {name for name, entry in instruments.items() if entry.get("type") != "lighting"}
++    # Deck-mounted instruments (a stirrer) have no head offsets to measure.
++    required = {
++        name for name, entry in instruments.items()
++        if entry.get("type") != "lighting" and not _is_deck_mounted_entry(entry)
++    }
+     if set(captures) != required:
+         raise ValueError("Record every contact instrument and camera at the same fixed mark.")
+ 
+@@ -79,3 +87,16 @@ def calibrate_instrument_offsets(
+             for field in ("offset_x", "offset_y", "depth"):
+                 entry[field] = camera.get(field, 0)
+     return next_config
++
++
++def _is_deck_mounted_entry(entry: Mapping[str, Any]) -> bool:
++    """True when a gantry YAML entry's type is registered ``mount: deck``."""
++    from cubos.instruments.registry import is_deck_mounted
++
++    type_key = entry.get("type") if isinstance(entry, Mapping) else None
++    if not type_key:
++        return False
++    try:
++        return is_deck_mounted(str(type_key))
++    except ValueError:                  # unknown type: let validation report it
++        return False
+diff --git a/packages/core/src/cubos/protocol_engine/routing.py b/packages/core/src/cubos/protocol_engine/routing.py
+index baff9e0..0b18219 100644
+--- a/packages/core/src/cubos/protocol_engine/routing.py
++++ b/packages/core/src/cubos/protocol_engine/routing.py
+@@ -8,6 +8,7 @@ from typing import Any, Iterable, Mapping
+ 
+ from cubos.deck.labware.tip_rack import TipRack, resolve_tip_rack_slot
+ from cubos.deck.labware.well_plate import WellPlate
++from cubos.instruments.base_instrument import is_deck_mounted_instrument
+ from cubos.instruments.camera.interface import CameraInstrument
+ from cubos.motion_planning import (
+     AABB,
+@@ -990,12 +991,19 @@ def _build_scene_from_context(
+ 
+     envelopes: list[ToolEnvelope] = []
+     configured = getattr(context.gantry, "motion_envelopes", {})
+-    missing = sorted(set(context.gantry.instruments) - set(configured))
++    # Deck-mounted instruments (a stirrer) never ride on the head: they have
++    # no envelope and are not part of the moving tool geometry.
++    head_tools = {
++        name: instrument
++        for name, instrument in context.gantry.instruments.items()
++        if not is_deck_mounted_instrument(instrument)
++    }
++    missing = sorted(set(head_tools) - set(configured))
+     if missing:
+         raise InvalidGeometryError(
+             f"Planning-enabled gantry is missing motion_envelope for mounted tools {missing}."
+         )
+-    for name, instrument in context.gantry.instruments.items():
++    for name, instrument in head_tools.items():
+         raw = configured[name]
+         tcp = Point3D(instrument.offset_x, instrument.offset_y, -instrument.depth)
+         envelopes.append(ToolEnvelope(
+diff --git a/packages/core/tests/instruments/stirrer/test_stirrer.py b/packages/core/tests/instruments/stirrer/test_stirrer.py
+index 9a124f5..baeadd6 100644
+--- a/packages/core/tests/instruments/stirrer/test_stirrer.py
++++ b/packages/core/tests/instruments/stirrer/test_stirrer.py
+@@ -285,3 +285,70 @@ class TestStirCommand:
+         assert "stop" in stir_summary({"instrument": "s", "rpm": 0})
+         assert "no wait" in stir_summary({"instrument": "s", "rpm": 600,
+                                           "seconds": 90, "wait": False})
++
++
++class TestPlannerAndOffsetCalibration:
++    """Head-geometry code that is newer than approach 1's first draft."""
++
++    _BOX = {"offset": {"x": -5, "y": -5, "z": 0}, "size": {"x": 10, "y": 10, "z": 20}}
++
++    def test_planner_scene_skips_deck_mounted(self):
++        from types import SimpleNamespace
++
++        from cubos.protocol_engine.routing import _build_scene_from_context
++
++        context = SimpleNamespace(
++            gantry_config=SimpleNamespace(working_volume=SimpleNamespace(
++                x_min=0, x_max=300, y_min=0, y_max=200, z_min=0, z_max=120,
++            )),
++            deck=SimpleNamespace(labware={}, motion_planning={}),
++            gantry=SimpleNamespace(
++                instruments={"cam": MountOnlyCamera(offline=True), "stirrer_1": MockStirrer()},
++                motion_envelopes={"cam": {"box": self._BOX}},   # none for the stirrer
++            ),
++        )
++        scene = _build_scene_from_context(context)
++        assert [tool.name for tool in scene.tool_envelopes] == ["cam"]
++
++    def test_loader_rejects_motion_envelope_on_deck_instrument(self):
++        from cubos.gantry.instrument_loader import build_instrumented_gantry
++
++        with pytest.raises(ValueError, match="deck-mounted"):
++            build_instrumented_gantry(
++                {"stirrer_1": {"type": "stirrer", "vendor": "mock"}},
++                None,
++                motion_envelopes={"stirrer_1": {"box": self._BOX}},
++            )
++
++    @staticmethod
++    def _offset_config():
++        return {
++            "instruments": {
++                "pipette": {"type": "pipette", "vendor": "opentrons", "offset_x": 55,
++                            "offset_y": 11, "depth": 0},
++                "camera": {"type": "camera", "vendor": "mount_only", "offset_x": -40,
++                           "offset_y": 10, "depth": -110},
++                "stirrer_1": {"type": "stirrer", "vendor": "pawduino", "port": "/dev/ttyACM0"},
++            },
++        }
++
++    def test_offset_calibration_needs_no_capture_for_deck_mounted(self):
++        from cubos.gantry.offset_calibration import calibrate_instrument_offsets
++
++        config = self._offset_config()
++        captures = {
++            "pipette": {"x": 100, "y": 50, "z": 20},
++            "camera": {"x": 90, "y": 55, "z": 40, "stand_off_mm": 30},
++        }
++        result = calibrate_instrument_offsets(config, "pipette", captures)
++        assert result["instruments"]["stirrer_1"] == config["instruments"]["stirrer_1"]
++        assert result["instruments"]["camera"]["offset_x"] == 65
++
++    def test_deck_mounted_cannot_be_offset_reference(self):
++        from cubos.gantry.offset_calibration import calibrate_instrument_offsets
++
++        with pytest.raises(ValueError, match="reference"):
++            calibrate_instrument_offsets(
++                self._offset_config(), "stirrer_1",
++                {"pipette": {"x": 1, "y": 1, "z": 1}, "stirrer_1": {"x": 1, "y": 1, "z": 1}},
++            )
+-- 
+2.56.1
+

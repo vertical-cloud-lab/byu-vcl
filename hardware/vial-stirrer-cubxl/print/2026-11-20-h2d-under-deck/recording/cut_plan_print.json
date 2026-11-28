@@ -1,0 +1,12 @@
+{
+ "day": "2026-11-20",
+ "parts": [
+  {"from": "19:43:00", "to": "19:49:20", "speed": 30, "label": "Start-up: bed check, heating, levelling, flow calibration"},
+  {"from": "19:49:20", "to": "21:03:30", "speed": 60, "label": "Layers 1-100: frames to layer 44, then the collars' fingers"},
+  {"from": "21:03:30", "to": "21:04:20", "speed": 2, "label": "Finished at 21:03 UTC: the bed lowers, two frames and two collars on the plate"}
+ ],
+ "blur": [
+  ["19:43:00", "21:03:34", [[700, 136, 598, 230], [1174, 136, 124, 658]]],
+  ["21:03:34", "21:04:20", [[744, 186, 554, 330], [1174, 136, 124, 658]]]
+ ]
+}

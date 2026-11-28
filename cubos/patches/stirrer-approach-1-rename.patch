@@ -1,0 +1,380 @@
+diff --git a/packages/core/src/cubos/instruments/stirrer/interface.py b/packages/core/src/cubos/instruments/stirrer/interface.py
+index 88fb612..4e87f8c 100644
+--- a/packages/core/src/cubos/instruments/stirrer/interface.py
++++ b/packages/core/src/cubos/instruments/stirrer/interface.py
+@@ -3,9 +3,21 @@
+ A stirrer is **deck-mounted**: it sits under labware on the deck and never
+ rides on the gantry head. Its registry entry says ``mount: deck``, so the
+ head-geometry code (bounds and home-pose validation, calibration, motion
+-targets) skips it, and its gantry YAML entry carries a driver and a port but
+-no ``offset_x``/``offset_y``/``depth``. Where it is on the deck, as an
+-obstacle, belongs in the deck file.
++targets and planning) skips it, and its gantry YAML entry carries a driver
++and a port but no ``offset_x``/``offset_y``/``depth``/``motion_envelope``.
++Where it is on the deck, as an obstacle, belongs in the deck file.
++
++Every vendor implements two high-level calls:
++
++* :meth:`StirrerInstrument.set_stirrer_params` sets the target speed and,
++  optionally, how long to stir (``rpm`` 0 stops);
++* :meth:`StirrerInstrument.get_stirrer_params` reads back the target, the
++  ramped setpoint, the measured speed, the drive duty, the stall flag and
++  the time left.
++
++On the PANDA Arduino these are firmware commands ``30`` and ``31``
++(``vendors/pawduino.py``). :meth:`StirrerInstrument.stop` and
++:meth:`StirrerInstrument.wait_until_stopped` are built on them.
+ 
+ Sequencing belongs to the ``stir`` protocol command. As a fail-safe,
+ ``InstrumentedGantry.disconnect_instruments`` stops every stirrer at the end
+@@ -48,19 +60,16 @@ class StirrerInstrument(BaseInstrument):
+         )
+ 
+     @abstractmethod
+-    def set_speed(self, rpm: float, seconds: Optional[float] = None) -> float:
++    def set_stirrer_params(self, rpm: float, seconds: Optional[float] = None) -> float:
+         """Stir at *rpm*; with *seconds*, the stirrer stops itself after that long.
+ 
+-        ``rpm`` 0 stops. Returns the target speed actually set.
++        ``rpm`` 0 stops (and takes no ``seconds``). Returns the target speed
++        actually set (after the vendor's clamp; 0 when stopped).
+         """
+ 
+     @abstractmethod
+-    def stop(self) -> None:
+-        """Stop stirring."""
+-
+-    @abstractmethod
+-    def status(self) -> StirrerStatus:
+-        """Return the current speed reading."""
++    def get_stirrer_params(self) -> StirrerStatus:
++        """Read the target, setpoint, measured speed, duty, stall flag and time left."""
+ 
+     @abstractmethod
+     def wait_until_stopped(self, timeout: float) -> StirrerStatus:
+@@ -69,7 +78,11 @@ class StirrerInstrument(BaseInstrument):
+         Raises :class:`StirrerTimeoutError` if it is still running then.
+         """
+ 
+-    def validate_speed(self, rpm: float, seconds: Optional[float] = None) -> None:
++    def stop(self) -> None:
++        """Stop stirring: ``set_stirrer_params(0)``."""
++        self.set_stirrer_params(0)
++
++    def validate_stirrer_params(self, rpm: float, seconds: Optional[float] = None) -> None:
+         """Shared range checks, so a bad step fails in ``--mock`` too."""
+         try:
+             rpm = float(rpm)
+diff --git a/packages/core/src/cubos/instruments/stirrer/vendors/mock.py b/packages/core/src/cubos/instruments/stirrer/vendors/mock.py
+index 0995d06..90de8fc 100644
+--- a/packages/core/src/cubos/instruments/stirrer/vendors/mock.py
++++ b/packages/core/src/cubos/instruments/stirrer/vendors/mock.py
+@@ -43,18 +43,15 @@ class MockStirrer(StirrerInstrument):
+     def health_check(self) -> bool:
+         return True
+ 
+-    def set_speed(self, rpm: float, seconds: Optional[float] = None) -> float:
+-        self.validate_speed(rpm, seconds)
+-        self.actuation_log.append(
+-            f"set_speed {float(rpm):g}" + (f" {float(seconds):g}s" if seconds else "")
+-        )
+-        return self._sim.set(float(rpm), float(seconds) if seconds else None)
+-
+-    def stop(self) -> None:
+-        self.actuation_log.append("stop")
+-        self._sim.stop()
+-
+-    def status(self) -> StirrerStatus:
++    def set_stirrer_params(self, rpm: float, seconds: Optional[float] = None) -> float:
++        self.validate_stirrer_params(rpm, seconds)
++        entry = f"set_stirrer_params {float(rpm):g}"
++        if seconds is not None:
++            entry += f" {float(seconds):g}s"
++        self.actuation_log.append(entry)
++        return self._sim.set(float(rpm), float(seconds) if seconds is not None else None)
++
++    def get_stirrer_params(self) -> StirrerStatus:
+         return self._sim.status()
+ 
+     def wait_until_stopped(self, timeout: float) -> StirrerStatus:
+diff --git a/packages/core/src/cubos/instruments/stirrer/vendors/pawduino.py b/packages/core/src/cubos/instruments/stirrer/vendors/pawduino.py
+index a8317eb..b0fa716 100644
+--- a/packages/core/src/cubos/instruments/stirrer/vendors/pawduino.py
++++ b/packages/core/src/cubos/instruments/stirrer/vendors/pawduino.py
+@@ -1,13 +1,16 @@
+ """Pawduino magnetic stirrer: the VCL stir module on the PANDA Arduino.
+ 
+-Firmware commands (byu-vcl ``cubos/firmware/panda-arduino-stirrer.patch``):
++The two high-level calls each send one firmware command (byu-vcl
++``cubos/firmware/panda-arduino-stirrer.patch``):
+ 
+-* ``30,<rpm>[,<seconds>]`` -- stir at *rpm* (the firmware clamps 100-2000);
+-  with *seconds* the firmware stops itself after that long. ``30,0`` stops.
+-  Replies ``OK:{"msg":"Stirring","v":[<rpm set>,<seconds>]}`` or
++* :meth:`PawduinoStirrer.set_stirrer_params` sends ``30,<rpm>[,<seconds>]``:
++  stir at *rpm* (the firmware clamps 100-2000); with *seconds* the firmware
++  stops itself after that long. ``30,0`` stops. Replies
++  ``OK:{"msg":"Stirring","v":[<rpm set>,<seconds>]}`` or
+   ``OK:{"msg":"Stirrer off"}``.
+-* ``31`` -- status: ``OK:{"target","setpoint","rpm","duty","stalled","left_s"}``
+-  (``left_s`` is -1 when the stir is untimed).
++* :meth:`PawduinoStirrer.get_stirrer_params` sends ``31``, which replies
++  ``OK:{"target","setpoint","rpm","duty","stalled","left_s"}`` (``left_s``
++  is -1 when the stir is untimed).
+ 
+ Speed control is closed-loop in the firmware (Hall sensor, setpoint ramp,
+ start kick, stall recovery), so the host only sets targets and reads status.
+@@ -117,7 +120,7 @@ class PawduinoStirrer(StirrerInstrument):
+         # A known state, and proof that this firmware has the stir commands.
+         try:
+             self._send_command(_CMD_STIR, 0)
+-            status = self.status()
++            status = self.get_stirrer_params()
+         except (StirrerCommandError, StirrerTimeoutError) as exc:
+             self._release_link()
+             raise StirrerConnectionError(
+@@ -150,12 +153,20 @@ class PawduinoStirrer(StirrerInstrument):
+ 
+     # -- StirrerInstrument interface ----------------------------------------
+ 
+-    def set_speed(self, rpm: float, seconds: Optional[float] = None) -> float:
+-        self.validate_speed(rpm, seconds)
++    def set_stirrer_params(self, rpm: float, seconds: Optional[float] = None) -> float:
++        """Firmware command ``30,<rpm>[,<seconds>]``; ``30,0`` when *rpm* is 0."""
++        self.validate_stirrer_params(rpm, seconds)
+         rpm = float(rpm)
+         seconds = float(seconds) if seconds is not None else None
+         if rpm == 0:
+-            self.stop()
++            self._stop_poller()
++            if self._offline:
++                self._sim.stop()
++            else:
++                self._send_command(_CMD_STIR, 0)
++            self.logger.info("Stirrer stopped")
++            if not self._offline:
++                self._log_status(self.get_stirrer_params())
+             return 0.0
+         if self._offline:
+             target = self._sim.set(rpm, seconds)
+@@ -174,17 +185,8 @@ class PawduinoStirrer(StirrerInstrument):
+         self._start_poller()
+         return target
+ 
+-    def stop(self) -> None:
+-        self._stop_poller()
+-        if self._offline:
+-            self._sim.stop()
+-        else:
+-            self._send_command(_CMD_STIR, 0)
+-        self.logger.info("Stirrer stopped")
+-        if not self._offline:
+-            self._log_status(self.status())
+-
+-    def status(self) -> StirrerStatus:
++    def get_stirrer_params(self) -> StirrerStatus:
++        """Firmware command ``31``: the stirrer's current status."""
+         if self._offline:
+             status = self._sim.status()
+         else:
+@@ -195,13 +197,13 @@ class PawduinoStirrer(StirrerInstrument):
+     def wait_until_stopped(self, timeout: float) -> StirrerStatus:
+         if self._offline:
+             self._sim.finish_timed_run()
+-            return self.status()
++            return self.get_stirrer_params()
+         # This loop reads and logs the status itself, so the poller would
+         # only double the reads.
+         self._stop_poller()
+         deadline = time.monotonic() + timeout
+         while True:
+-            status = self.status()
++            status = self.get_stirrer_params()
+             self._log_status(status)
+             if not status.running:
+                 return status
+@@ -245,7 +247,7 @@ class PawduinoStirrer(StirrerInstrument):
+     def _poll(self) -> None:
+         while not self._poll_stop.wait(self._status_poll_s):
+             try:
+-                status = self.status()
++                status = self.get_stirrer_params()
+             except Exception as exc:                     # noqa: BLE001
+                 self.logger.warning("Stirrer status poll failed: %s", exc)
+                 continue
+diff --git a/packages/core/src/cubos/protocol_engine/commands/stir.py b/packages/core/src/cubos/protocol_engine/commands/stir.py
+index d16ab20..3746aae 100644
+--- a/packages/core/src/cubos/protocol_engine/commands/stir.py
++++ b/packages/core/src/cubos/protocol_engine/commands/stir.py
+@@ -1,9 +1,10 @@
+ """Protocol command: run a magnetic stirrer.
+ 
+-Built on the vendor-agnostic ``StirrerInstrument`` surface. The stirrer is
+-deck-mounted (approach 1): the step names the stirrer, not the vial on it,
+-so the protocol author decides what is being stirred. Stirrers the protocol
+-leaves running, the run teardown stops
++Built on the vendor-agnostic ``StirrerInstrument`` surface: each step is one
++``set_stirrer_params`` call, and a blocking step then waits on
++``get_stirrer_params``. The stirrer is deck-mounted (approach 1): the step
++names the stirrer, not the vial on it, so the protocol author decides what is
++being stirred. Stirrers the protocol leaves running, the run teardown stops
+ (``InstrumentedGantry.disconnect_instruments``).
+ 
+     - stir:
+@@ -83,9 +84,9 @@ def stir(
+         if float(rpm) == 0:
+             if seconds is not None:
+                 raise ProtocolExecutionError("stir: `seconds` needs a non-zero rpm.")
+-            stirrer.stop()
++            stirrer.set_stirrer_params(0)
+             return
+-        stirrer.set_speed(rpm, seconds)
++        stirrer.set_stirrer_params(rpm, seconds)
+         if blocking:
+             status = stirrer.wait_until_stopped(float(seconds) + _WAIT_MARGIN_S)
+             if status.stalled:
+diff --git a/packages/core/tests/instruments/stirrer/test_stirrer.py b/packages/core/tests/instruments/stirrer/test_stirrer.py
+index 69246b0..9a124f5 100644
+--- a/packages/core/tests/instruments/stirrer/test_stirrer.py
++++ b/packages/core/tests/instruments/stirrer/test_stirrer.py
+@@ -125,11 +125,11 @@ class TestGantryHandling:
+ 
+     def test_disconnect_stops_stirrers(self):
+         stirrer = MockStirrer()
+-        stirrer.set_speed(600)
++        stirrer.set_stirrer_params(600)
+         gantry = InstrumentedGantry(controller=None, instruments={"stirrer_1": stirrer})
+         gantry.disconnect_instruments()
+-        assert stirrer.actuation_log[-1] == "stop"
+-        assert not stirrer.status().running
++        assert stirrer.actuation_log[-1] == "set_stirrer_params 0"
++        assert not stirrer.get_stirrer_params().running
+ 
+     def test_disconnect_proceeds_when_stop_fails(self):
+         stirrer = MockStirrer()
+@@ -147,14 +147,14 @@ class TestGantryHandling:
+ 
+ 
+ class TestPawduinoStirrer:
+-    def test_set_speed_sends_30_with_seconds(self):
++    def test_set_stirrer_params_sends_30_with_seconds(self):
+         stirrer, ser = _linked_stirrer(['OK:{"msg":"Stirring","v":[600.00,90.00]}'])
+-        assert stirrer.set_speed(600, 90) == 600.0
++        assert stirrer.set_stirrer_params(600, 90) == 600.0
+         assert _sent(ser) == ["30,600.0,90.0"]
+ 
+-    def test_set_speed_untimed(self):
++    def test_set_stirrer_params_untimed(self):
+         stirrer, ser = _linked_stirrer(['OK:{"msg":"Stirring","v":[400.00,0.00]}'])
+-        stirrer.set_speed(400)
++        stirrer.set_stirrer_params(400)
+         assert _sent(ser) == ["30,400.0"]
+ 
+     def test_stop_sends_30_0_then_reads_status(self):
+@@ -162,14 +162,25 @@ class TestPawduinoStirrer:
+         stirrer.stop()
+         assert _sent(ser) == ["30,0", "31"]
+ 
+-    def test_status_parsed(self):
++    def test_get_stirrer_params_sends_31_and_parses(self):
+         stirrer, _ = _linked_stirrer([STATUS_RUNNING])
+-        status = stirrer.status()
++        status = stirrer.get_stirrer_params()
+         assert status.target_rpm == 600 and status.rpm == 290.0
+         assert status.duty == pytest.approx(0.412)
+         assert status.seconds_left is None and not status.stalled
+         assert status.running
+ 
++    def test_set_stirrer_params_zero_sends_30_0_then_31(self):
++        stirrer, ser = _linked_stirrer(['OK:{"msg":"Stirrer off"}', STATUS_STOPPED])
++        assert stirrer.set_stirrer_params(0) == 0.0
++        assert _sent(ser) == ["30,0", "31"]
++
++    def test_zero_rpm_takes_no_seconds(self):
++        stirrer, ser = _linked_stirrer([])
++        with pytest.raises(StirrerConfigError, match="non-zero rpm"):
++            stirrer.set_stirrer_params(0, 30)
++        assert _sent(ser) == []
++
+     def test_timed_status_has_seconds_left(self):
+         s = parse_status('OK:{"target":600,"setpoint":600,"rpm":612.0,'
+                          '"duty":0.5,"stalled":0,"left_s":42}')
+@@ -179,13 +190,13 @@ class TestPawduinoStirrer:
+     def test_out_of_range_rpm_rejected_before_sending(self, rpm):
+         stirrer, ser = _linked_stirrer([])
+         with pytest.raises(StirrerConfigError):
+-            stirrer.set_speed(rpm)
++            stirrer.set_stirrer_params(rpm)
+         assert _sent(ser) == []
+ 
+     def test_seconds_must_be_positive(self):
+         stirrer, _ = _linked_stirrer([])
+         with pytest.raises(StirrerConfigError):
+-            stirrer.set_speed(600, 0)
++            stirrer.set_stirrer_params(600, 0)
+ 
+     def test_connect_refuses_firmware_without_stir_commands(self, monkeypatch):
+         stirrer = PawduinoStirrer(port="/dev/ttyACM0")
+@@ -205,37 +216,52 @@ class TestPawduinoStirrer:
+     def test_offline_simulates(self):
+         stirrer = PawduinoStirrer(offline=True)
+         stirrer.connect()
+-        stirrer.set_speed(600, 30)
+-        assert stirrer.status().running
++        stirrer.set_stirrer_params(600, 30)
++        assert stirrer.get_stirrer_params().running
+         assert not stirrer.wait_until_stopped(40).running
+         stirrer.disconnect()
+ 
+ 
++class TestHighLevelCalls:
++    """Alex's naming (#133): set_stirrer_params / get_stirrer_params wrap 30 / 31."""
++
++    def test_interface_declares_both(self):
++        abstract = StirrerInstrument.__abstractmethods__
++        assert {"set_stirrer_params", "get_stirrer_params"} <= abstract
++
++    def test_stop_is_set_stirrer_params_zero(self):
++        stirrer = MockStirrer()
++        stirrer.set_stirrer_params(600)
++        stirrer.stop()
++        assert stirrer.actuation_log == ["set_stirrer_params 600", "set_stirrer_params 0"]
++        assert not stirrer.get_stirrer_params().running
++
++
+ class TestStirCommand:
+     def test_untimed_stir_does_not_block(self):
+         stirrer = MockStirrer()
+         stir(_context({"stirrer_1": stirrer}), instrument="stirrer_1", rpm=600)
+-        assert stirrer.actuation_log == ["set_speed 600"]
+-        assert stirrer.status().running
++        assert stirrer.actuation_log == ["set_stirrer_params 600"]
++        assert stirrer.get_stirrer_params().running
+ 
+     def test_timed_stir_blocks_by_default(self):
+         stirrer = MockStirrer()
+         stir(_context({"stirrer_1": stirrer}), instrument="stirrer_1", rpm=600, seconds=60)
+-        assert stirrer.actuation_log == ["set_speed 600 60s", "wait_until_stopped"]
+-        assert not stirrer.status().running
++        assert stirrer.actuation_log == ["set_stirrer_params 600 60s", "wait_until_stopped"]
++        assert not stirrer.get_stirrer_params().running
+ 
+     def test_timed_stir_without_wait(self):
+         stirrer = MockStirrer()
+         stir(_context({"stirrer_1": stirrer}), instrument="stirrer_1",
+              rpm=600, seconds=90, wait=False)
+-        assert stirrer.actuation_log == ["set_speed 600 90s"]
+-        assert stirrer.status().running
++        assert stirrer.actuation_log == ["set_stirrer_params 600 90s"]
++        assert stirrer.get_stirrer_params().running
+ 
+     def test_rpm_zero_stops(self):
+         stirrer = MockStirrer()
+-        stirrer.set_speed(600)
++        stirrer.set_stirrer_params(600)
+         stir(_context({"stirrer_1": stirrer}), instrument="stirrer_1", rpm=0)
+-        assert stirrer.actuation_log[-1] == "stop"
++        assert stirrer.actuation_log[-1] == "set_stirrer_params 0"
+ 
+     def test_wait_needs_seconds(self):
+         with pytest.raises(ProtocolExecutionError, match="needs `seconds`"):
