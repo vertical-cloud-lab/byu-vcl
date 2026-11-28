@@ -191,7 +191,7 @@ Shuttles would hold 16 trays there.
 | Site | Miles | Size (ft²) | Clear | Status | Listing (brokers) |
 |---|---|---|---|---|---|
 | **Payson Central Tech Bldg 1**, 900 N, Payson | about 15 | 102,527, leased whole | **36-40 ft** ("Ideal for Racking") | available now; Light Industrial-Manufacturing; $0.90-1.00/ft² NNN | [CommercialCafe](https://www.commercialcafe.com/commercial-property/us/ut/payson/payson-central-tech-building-1/) (Brandon D. Fugal, Connor Weldon) |
-| **Spanish Fork Skypark**, 6000 S 650 W | about 9 | from 28,224, three buildings | **40 ft, 36 ft and 32 ft** (snippet) | not stated | [LoopNet](https://loopnet.com/Listing/6000-S-650-W-Spanish-Fork-UT/27805280) (blocked; snippet only) |
+| **Spanish Fork Skypark**, 6000 S 650 W | not placed | from 28,224, three buildings | **40 ft, 36 ft and 32 ft** (snippet) | not stated | [LoopNet](https://loopnet.com/Listing/6000-S-650-W-Spanish-Fork-UT/27805280) (blocked; snippet only) |
 | 1664 N 400 E, Vineyard (pin P10) | 7.3 | 27,332 free span, whole building | 28 ft | for sale or lease; built 2010; six 14 × 12 ft grade-level doors; a $6,990,000 asking price appears only on CommercialCafe's Utah County sale list | [CommercialCafe](https://www.commercialcafe.com/commercial-property/us/ut/vineyard/1664-n-400-e-for-lease/) (Colliers: Rusty Bollow, Bobby Stevens, Ethan Wallace) |
 
 - **These are the first listings near BYU above 36 ft.** The README's "nothing available near BYU is over 36 ft"
@@ -352,7 +352,7 @@ campus. Research Park itself has office and lab space but no high bay, and its r
 ## 5. If we were to ask about three (and one more)
 
 1. **Mountain Point Bldg 3, Bluffdale, for the height** (draft 1 to Colliers). Ask:
-   - whether a 9,158 ft² end bay is still free, with its exterior wall and room for an argon pad;
+   - whether a 9,158 ft² bay is still free, ideally an end bay with an exterior wall and room for an argon pad;
    - how many of the 2,400 A the landlord would allocate (350-400 A at 480 V);
    - the zoning, the slab and the roof.
 2. **Hobble Creek Business Park, Springville, nearest BYU** (draft 1 to Newmark, or draft 12). Ask:
@@ -364,9 +364,10 @@ campus. Research Park itself has office and lab space but no high bay, and its r
    - its power;
    - whether the landlord allows hazardous materials;
    - whether Salt Lake City would read atomizing and printing as R&D in MU-11 (draft 3, adapted).
-4. **Also: for speed, the Orem sublease; for a crane bay close to BYU, R&H Provo.** The sublease is built and available, with an upgrade to
-   power the first need. R&H is 1.9 miles from BYU, zoned M-2, with a crane bay of unknown height. Ask Colliers for the
-   bay's eave and hook height, and whether part could be leased.
+4. **Also: for speed, the Orem sublease; for a crane bay close to BYU, R&H Provo.**
+   - **The sublease** is built and available now, but its 400 A at 208 V needs an upgrade before the cooling and fans.
+   - **R&H** is 1.9 miles from BYU, zoned M-2, with a crane bay of unknown height. Ask Colliers for the bay's eave and
+     hook height, and whether part could be leased.
 
 **For the purpose-built high bay later,** Provo's Airport Industrial zone (55 ft) joins Eagle Mountain's industrial
 land ([README](README.md#land-for-a-purpose-built-building-with-a-high-bay)) as a place where 51-53 ft clear is
@@ -379,8 +380,9 @@ labs, or a shared research building, could host a pilot cell while a building is
 
 - **Searches:** web searches across CommercialCafe, CommercialSearch, CBRE and broker pages, city and University
   pages, and FAA and airport documents. The listings this page leans on were re-read on their own pages on 2026-11-28:
-  Hobble Creek Bldg 1, the Orem sublease, Ironworks Bldg 2, 1664 N 400 E, Payson Central Tech, R&H Provo, Skyline
-  Bldg 1, the Titanium Additive Manufacturing Research Center, the Research Park article and Provo's AI zone.
+  Hobble Creek Bldg 1, the Orem sublease, Ironworks Bldg 2, 1664 N 400 E, Payson Central Tech, R&H Provo, Mountain
+  Point Bldg 3, Axia, Skyline Bldg 1, the Titanium Additive Manufacturing Research Center, the Research Park article and
+  Provo's AI zone.
 - **Blocked:**
   - LoopNet, Showcase and CityFeet returned HTTP 403, so their listings appear only as snippets.
   - **Crexi showed a Cloudflare check,** to the runner and this time also through the CubXL Pi's tunnel, so it wasn't
@@ -394,7 +396,7 @@ labs, or a shared research building, could host a pilot cell while a building is
   - any listing that says its slab may be cut, or that offers a gas pad. One (450 E 2200 S) says "No Hazardous
     Materials".
 - **Estimates (*ours*):** the three buildings in the figure and their rooms, the services to ask for, and the
-  suite's share of Hobble Creek's 2,000 A.
+  suites' shares of Hobble Creek's 2,000 A and Mountain Point's 2,400 A.
 - **Files:**
   - [`small_footprint.py`](small_footprint.py) draws the figure, reusing [`footprint.py`](footprint.py).
   - [`small_map.py`](small_map.py) draws the maps from [`out/small/sites.tsv`](out/small/sites.tsv), on OpenStreetMap
