@@ -785,8 +785,9 @@ def plan(groups, name, jobs=None, speeds=None, hours=PLAN_HOURS, workers=4, over
     tiers) packed into jobs by LPT on their estimated seconds (``timings``), each job a list of run ids that one
     runner works through with ``ids --hours``, wave after wave, a run longer than a wave carried over by checkpoint.
     ``speeds``: {label: how many times slower than the runner the seconds were measured on}; the number of jobs, unless
-    given, is the fewest that need no more waves, at every speed, than the longest run does on its own (and no more
-    than ``concurrency``, so that a wave's jobs all run at once). Written to ``out/twin6/slices/<name>.json``."""
+    given, is the one (up to ``concurrency``, so that a wave's jobs all run at once) with the fewest waves at the
+    speeds together, then the least wall-clock, then the fewest jobs: a public repository's runners cost nothing, and
+    a wave can't be shorter than its longest run's share. Written to ``out/twin6/slices/<name>.json``."""
     tm = timings()
     todo = order(_left())
     want = set(groups)
@@ -806,9 +807,9 @@ def plan(groups, name, jobs=None, speeds=None, hours=PLAN_HOURS, workers=4, over
         bins = _lpt(est, n)
         ev = {sp: _plan_eval(bins, f, workers, hours, overhead, concurrency) for sp, f in speeds.items()}
         cand[n] = (bins, ev)
-    if jobs is None:
-        ok = [n for n, (_, ev) in cand.items() if all(ev[sp]["waves"] == floor[sp] for sp in speeds)]
-        jobs = min(ok) if ok else min(cand, key=lambda n: (max(cand[n][1][sp]["waves"] for sp in speeds), n))
+    if jobs is None:                       # the fewest waves, then the least wall-clock (to 0.1 h), then fewest jobs
+        jobs = min(cand, key=lambda n: (sum(cand[n][1][sp]["waves"] for sp in speeds),
+                                        round(sum(cand[n][1][sp]["wall_h"] for sp in speeds), 1), n))
     if jobs not in cand:
         bins = _lpt(est, jobs)
         cand[jobs] = (bins, {sp: _plan_eval(bins, f, workers, hours, overhead, concurrency) for sp, f in speeds.items()})

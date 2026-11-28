@@ -9,8 +9,8 @@ and this runner's speed against the one round 6 was timed on.
 * **What it changes**: the automated lab's BOFN and pKGFN two-year runs are priced by extrapolating round 6's timing
   runs, made on the engine before the batching (``timing6.md``; ``smoke.json`` records them as ``extrapolated``).
   Their seconds before the cell (day 200 of the timing run's curve, where the GP calls are few and small) are kept and
-  the rest is multiplied by the policy's ``r`` at the latest day measured: ``new = pre + (old - pre) x r``, for the low
-  and high ends alike. The conventional lab's BOFN and pKGFN keep their measured two-year seconds (small nodes and a
+  the rest is multiplied by 0.92 (the faster trial settings of 74254fe, on which the A/B ran) and by the policy's ``r``
+  at the latest day measured: ``new = pre + (old - pre) x 0.92 x r``, for the low and high ends alike. The conventional lab's BOFN and pKGFN keep their measured two-year seconds (small nodes and a
   small share of GP work: the saving there is smaller and wasn't measured), so they are, if anything, high.
 * **This runner's speed** (``speed``): the same code on this runner and on the EPYC 9V45 that timed round 6, every vCPU
   busy on both: the unbatched timing runs (``timing6b_progress.jsonl``, the engine before the batching) and the
@@ -28,6 +28,10 @@ NEW = HERE / "timing6b_progress.jsonl"
 CAL = HERE / "timing6b_calib.jsonl"
 SMOKE = HERE / "smoke.json"
 PRE_D = 200
+# the engine at 74254fe (the atomize search's trial settings 28x faster, byte for byte) took 0.92 of the timing runs'
+# engine's time late in a run (grid_hours.py ``NEW_ENGINE``, notes section 10); the A/B measures the batching on
+# that engine, so the two compound
+TRIALS = 0.92
 GROUPS = {"r6_vertical_parallel_bofn3_reorder": ("bofn3", "vertical bofn3 64x"),
           "r6_vertical_parallel_pkgfn3_reorder": ("pkgfn3", "vertical pkgfn3 64x"),
           "r6_vertical_parallel_bofn3_reorder_hpc16": ("bofn3", "vertical bofn3 16x"),
@@ -93,9 +97,10 @@ def main():
                      f"{x['ratio']:.3f} |")
     use = {pol: xs[-1]["ratio"] for pol, xs in rs.items() if xs}
     L += ["", "**The grid's seconds** (`smoke.json`, two-year CPU seconds on the 9V45, which `status` and `plan` "
-              "read): `new = pre + (old - pre) x r`, `pre` the timing run's CPU seconds at day 200, `r` the policy's "
-              "ratio at the latest day measured.", "",
-          "| Group | r | Before the batching, low-high | Batched, low-high |", "|---|---|---|---|"]
+              "read): `new = pre + (old - pre) x 0.92 x r`: `old` the extrapolation of round 6's timing run on the "
+              "engine it used (568ab5f), `pre` its CPU seconds at day 200, 0.92 the faster trial settings (74254fe, "
+              "notes section 10), `r` the batching's ratio for the policy at the latest day measured.", "",
+          "| Group | r | The timing runs' engine (568ab5f), low-high | Batched, low-high |", "|---|---|---|---|"]
     for g, (pol, label) in GROUPS.items():
         f = (rec["groups"].get(g) or {}).get("full")
         if not f or "extrapolated" not in f or pol not in use:
@@ -104,12 +109,13 @@ def main():
                                         cpu_seconds=f["cpu_seconds"], how=f["how"])
         pre = old_curve.get(label, {}).get(PRE_D, 0.0)
         r = use[pol]
-        lo, hi = (round(pre + (ex[k] - pre) * r) for k in ("low", "high"))
+        lo, hi = (round(pre + (ex[k] - pre) * TRIALS * r) for k in ("low", "high"))
         f["unbatched"] = ex
-        f["batched"] = dict(ratio=r, pre_cell_cpu=pre, low=lo, high=hi, source="checks/timing6b_ab.jsonl")
+        f["batched"] = dict(ratio=r, trials=TRIALS, pre_cell_cpu=pre, low=lo, high=hi,
+                            source="checks/timing6b_ab.jsonl")
         f["cpu_seconds"] = hi
-        f["how"] = (f"{ex['how'].split(':')[0]}, on the engine before the batching, x {r:.3f} after day {PRE_D} "
-                    f"(64-point GP calls, measured; checks/batch.md): {lo:,}-{hi:,} s")
+        f["how"] = (f"{ex['how'].split(':')[0]} on the timing runs' engine, x {TRIALS} (the faster trial settings) "
+                    f"x {r:.3f} (64-point GP calls, measured) after day {PRE_D} (checks/batch.md): {lo:,}-{hi:,} s")
         L.append(f"| `{g}` | {r:.3f} | {ex['low']:,}-{ex['high']:,} | {lo:,}-{hi:,} |")
     SMOKE.write_text(json.dumps(rec, indent=1) + "\n")
     L += ["", "**This runner's speed against the 9V45** (CPU seconds here over CPU seconds there for the same code and "

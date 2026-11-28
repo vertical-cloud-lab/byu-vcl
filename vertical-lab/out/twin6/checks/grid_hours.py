@@ -24,6 +24,13 @@ HERE = Path(__file__).resolve().parent
 # (checks/profile/profile.md). The two years are priced at 0.92 of the timing runs' for the automated lab's BOFN and
 # pKGFN (the late runs' share, the cautious one); the other policies and the conventional lab are left as measured.
 NEW_ENGINE = {("vertical", "BOFN and pKGFN"): 0.92}
+# Batched GP predictions (PR 427, 2026-11-28): checks/batch_merge.py puts the faster trial settings and the batching's
+# measured saving into smoke.json itself (``full.batched``), so this script then applies neither again.
+BATCHED = False
+
+
+def _batched(rec):
+    return any("batched" in ((e.get("full") or {})) for e in rec["groups"].values())
 
 
 def totals(rec):
@@ -54,14 +61,19 @@ def _rng(a, b):
 
 
 def main():
+    global BATCHED
     rec = json.loads((HERE / "smoke.json").read_text())
+    if _batched(rec):
+        BATCHED = True
+        NEW_ENGINE.clear()
     low = copy.deepcopy(rec)
     ext = []
     for g, e in low["groups"].items():
         x = (e.get("full") or {}).get("extrapolated")
         if x:
-            e["full"]["cpu_seconds"] = x["low"]
-            ext.append((g, x))
+            b = e["full"].get("batched")
+            e["full"]["cpu_seconds"] = b["low"] if b else x["low"]
+            ext.append((g, dict(x, batched=b)))
     hi, lo = totals(rec), totals(low)
     L = ["# Round 6: what the grid costs", "",
          "Made by `python out/twin6/checks/grid_hours.py` from `smoke.json`. CPU-hours of two-year runs on the runner "
@@ -90,6 +102,30 @@ def main():
         N["hi"] += f * hi[key]["sec"] / 3600
     gp = hi[("vertical", "BOFN and pKGFN")]
     n_gp = gp["runs"] - gp["unknown"]
+    if BATCHED:
+        L += ["", f"**Runner-hours at four runs a runner: {S['lo'] / 4:,.0f} (low) to {S['hi'] / 4:,.0f} (high)** with "
+                  f"this engine (the faster trial settings and 64-point GP calls, measured: checks/batch.md; the "
+                  f"automated lab's BOFN and pKGFN at {lo[('vertical', 'BOFN and pKGFN')]['sec'] / max(n_gp, 1) / 3600:.1f}"
+                  f"-{gp['sec'] / max(n_gp, 1) / 3600:.1f} CPU-hours a run on average), on the 9V45. Core-hours: "
+                  f"{S['lo']:,.0f} to {S['hi']:,.0f}.",
+              "", "**In 6-hour jobs** (`ids --hours 5.2`, four runs at a time, a run still going at 5.2 hours carried "
+                  f"on by the next job from a checkpoint): about {4 * 5.2:.0f} CPU-hours of runs a job, so "
+                  f"{S['lo'] / (4 * 5.2):,.0f} to {S['hi'] / (4 * 5.2):,.0f} jobs for the grid on 9V45s, about twice "
+                  "as many on EPYC 7763s (checks/batch.md). "
+                  + "A job's CPU-hours are worth " + "; ".join(
+                      f"{_rng(per_job(hi, key), per_job(lo, key))} of the "
+                      f"{'automated' if key[0] == 'vertical' else 'conventional'} lab's {key[1]} runs"
+                      for key in sorted(hi)) + " on a 9V45 (on average; a run longer than 5.2 CPU-hours spans two "
+                  "jobs or more).", "", "Extrapolated two-year runs:", ""]
+        for g, x in ext:
+            b = x["batched"] or {}
+            L.append(f"* `{g}`: day {x['from_day']} reached at {x['cpu_at_day']:,.0f} CPU s on the timing runs' "
+                     f"engine, {x['rate']} CPU s a day over the last 50 days, rising {x['slope']} a day: two years "
+                     f"{x['low']:,}-{x['high']:,} CPU s there; batched {b.get('low', 0):,}-{b.get('high', 0):,} "
+                     f"({b.get('low', 0) / 3600:.1f}-{b.get('high', 0) / 3600:.1f} h)")
+        (HERE / "grid_hours.md").write_text("\n".join(L) + "\n")
+        print("\n".join(L))
+        return
     L += ["", f"**Runner-hours at four runs a runner: {S['lo'] / 4:,.0f} (low) to {S['hi'] / 4:,.0f} (high)** with the "
               f"engine the timing runs used (568ab5f); **{N['lo'] / 4:,.0f} to {N['hi'] / 4:,.0f} with this engine** "
               f"(the automated lab's BOFN and pKGFN at {NEW_ENGINE[('vertical', 'BOFN and pKGFN')]:.2f} of their "
