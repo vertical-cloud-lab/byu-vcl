@@ -1,0 +1,105 @@
+{
+ "buildings": {
+  "3k": {
+   "building_ft": [
+    74.0,
+    41.0
+   ],
+   "building_ft2": 3034,
+   "lab_bbox_m": [
+    21.4,
+    10.3
+   ],
+   "rooms_ft2": {
+    "gas and powder cabinets, eyewash, panels, chiller": 414
+   }
+  },
+  "6k": {
+   "building_ft": [
+    100.0,
+    60.0
+   ],
+   "building_ft2": 6000,
+   "lab_bbox_m": [
+    23.3,
+    14.0
+   ],
+   "rooms_ft2": {
+    "powder room (outside wall; H room if over the limits)": 440,
+    "plant: chiller, air, N$_2$, 400 V transformer": 360,
+    "receiving": 400,
+    "control room, lockers": 388,
+    "workshop": 274,
+    "staging": 251
+   }
+  },
+  "10k": {
+   "building_ft": [
+    125.0,
+    80.0
+   ],
+   "building_ft2": 10000,
+   "lab_bbox_m": [
+    23.3,
+    14.0
+   ],
+   "rooms_ft2": {
+    "powder room (outside wall)": 1008,
+    "plant and electrical": 1050,
+    "control room, offices": 840,
+    "workshop": 720,
+    "receiving and staging": 840
+   }
+  }
+ },
+ "trays": [
+  {
+   "case": "as in #318",
+   "clear_ft": null,
+   "unit_mm": 3950.0,
+   "trays_per_unit": 7,
+   "trays_two_units": 14
+  },
+  {
+   "case": "18 ft",
+   "clear_ft": 18,
+   "unit_mm": 5000.0,
+   "trays_per_unit": 11,
+   "trays_two_units": 22
+  },
+  {
+   "case": "24 ft",
+   "clear_ft": 24,
+   "unit_mm": 6800.0,
+   "trays_per_unit": 17,
+   "trays_two_units": 34
+  },
+  {
+   "case": "32 ft",
+   "clear_ft": 32,
+   "unit_mm": 9200.0,
+   "trays_per_unit": 24,
+   "trays_two_units": 48
+  },
+  {
+   "case": "36 ft",
+   "clear_ft": 36,
+   "unit_mm": 10500.0,
+   "trays_per_unit": 29,
+   "trays_two_units": 58
+  },
+  {
+   "case": "51 ft",
+   "clear_ft": 51.2,
+   "unit_mm": 15150.0,
+   "trays_per_unit": 44,
+   "trays_two_units": 88
+  }
+ ],
+ "array_ft2": 956,
+ "array_m": [
+  11.9,
+  7.4
+ ],
+ "clear_for_array_ft": 51.2
+}
