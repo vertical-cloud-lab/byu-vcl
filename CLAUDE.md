@@ -55,36 +55,10 @@ finished work stops landing.
 
 ## Edison Scientific
 
-When waiting on an Edison task in GitHub Actions, NEVER run the polling script in the background (run_in_background, nohup, &, or the Monitor tool) — the runner is destroyed the moment you post your final comment, killing background processes; Monitor counts as background and dies the same way. Also be aware that the agent harness BLOCKS the shell `sleep` builtin in foreground Bash calls (the error message suggests Monitor — do NOT follow that suggestion, it recreates the background-death failure; this killed several past sessions). The pattern that works: put the wait INSIDE a single blocking Python call — Python-side `time.sleep` is not blocked — and run it as ONE foreground Bash call with an explicit long timeout (max 3600000 ms). Run exactly this (adjust only the task-id path):
-
-```bash
-# ONE foreground Bash tool call with timeout: 3600000
-python - <<'EOF'
-import json, os, time
-from edison_client import EdisonClient
-
-client = EdisonClient(api_key=os.environ["EDISON_PLATFORM_API_KEY"])
-task_id = json.load(open("outputs/<...>/_task_id.json"))["task_id"]
-while True:
-    task = client.get_task(task_id=task_id, verbose=True)
-    status = str(task.status)
-    print("status:", status, flush=True)
-    if status in {"success", "fail", "failed", "cancelled", "error"}:
-        break
-    time.sleep(240)
-EOF
-```
-
-Equivalently, run a repo script whose own `while ... time.sleep(...)` loop does the waiting (e.g. `python scripts/explore_case_studies.py stage8-wait`) as a single long-timeout Bash call. Do not post your final comment until results are fetched and committed, or ~45 minutes of wall-clock have elapsed — in which case commit the task-id file and state that a follow-up @claude comment is needed to fetch. If you need to upload files, use analysis query type. See the docs: https://edisonscientific.gitbook.io/edison-cookbook/edison-client. Here is the endpoint you should use: https://api.platform.edisonscientific.com. The API key is `EDISON_PLATFORM_API_KEY`. Don't expose this secret, e.g., by echoing or grepping it. Pass the API key in explicitly:
-
-```
-from edison_client import EdisonClient, JobNames
-client = EdisonClient(api_key=EDISON_PLATFORM_API_KEY)
-```
-
-Whenever you retrieve results (either during the current agent session or during the next session), make sure to fetch and commit all artifacts associated with a trajectory.
-
-If using Edison Analysis, refer to https://docs.edisonscientific.com/edison-client/file-management#upload for instructions on how to upload files. If able to use Context7, to better inform use of EdisonClient, see https://context7.com/future-house/edison-client-docs/llms.txt?tokens=10000
+Load the `edison-scientific` skill for any Edison task. In GitHub Actions, NEVER wait on an
+Edison task in the background (run_in_background, nohup, &, or the Monitor tool): the runner
+is destroyed the moment you post your final comment. The harness also blocks a foreground
+shell `sleep`; the skill has the one foreground pattern that works.
 
 
 ## Tailscale → Raspberry Pi connection
@@ -184,39 +158,11 @@ the same tag scope, then update the secrets on both repos.
 | `TS_OAUTH_CLIENT_ID` | OAuth client ID, paired with the secret below. |
 | `TS_OAUTH_SECRET` | OAuth client secret, scope limited to `tag:stream-cam-test`. Never pass it to `tailscale up` yourself — the CLI can echo it (see the Tailscale section above). |
 
-**MongoDB Atlas** — org *Vertical Cloud Lab @ BYU*, project `byu-vcl`, cluster `alloy`
-(M0 free, AWS Oregon). The database user is scoped `readWrite` on the `digital-wetlab`
-database only, so it cannot read the alloy lab's data in the same cluster.
-
-| Secret | Purpose |
-| --- | --- |
-| `MONGODB_URI` | Full `mongodb+srv://` string with the password already substituted. |
-| `MONGODB_BLINDED_URI` | Same string but keeping the literal `<db_password>` placeholder. This is the `blinded_connection_string` convention the OT-2-LCM Hugging Face Space expects — pair it with `MONGODB_PASSWORD`. |
-| `MONGODB_USERNAME` | `digital-wetlab-rw`. |
-| `MONGODB_PASSWORD` | Substituted into `MONGODB_BLINDED_URI`. |
-| `MONGODB_DATABASE` | `digital-wetlab`. Collections: `sensor-data`, `ot2-runs`. |
-
-**HiveMQ Cloud** — free Serverless cluster, TLS on 8883 (WebSocket 8884). The free tier has
-no per-topic permissions: every credential is `PUBLISH_SUBSCRIBE` across all topics, so
-topic isolation is a convention, not an enforced boundary. Credentials are split per client
-only so that one can be rotated without disturbing the others.
-
-| Secret | Purpose |
-| --- | --- |
-| `MQTT_BROKER`, `MQTT_PORT`, `MQTT_WEBSOCKET_PORT` | Broker host and ports. |
-| `MQTT_USERNAME` / `MQTT_PASSWORD` | `vcl-agent` — CI and local debugging. |
-| `MQTT_PICOW_USERNAME` / `MQTT_PICOW_PASSWORD` | `picow-color-sensor` — goes in the Pico W's on-device `my_secrets.py`. |
-| `MQTT_HF_SPACE_USERNAME` / `MQTT_HF_SPACE_PASSWORD` | `hf-space` — the Hugging Face Space subscriber. |
-| `MQTT_OT2_USERNAME` / `MQTT_OT2_PASSWORD` | `ot2-robot`. |
-
-Topic scheme, matching `AccelerationConsortium/OT-2-LCM`:
-
-```
-command/picow/{PICO_ID}/as7341/read      # ask the sensor for a reading
-color-mixing/picow/{PICO_ID}/as7341      # sensor publishes readings here
-command/ot2/{OT2_SERIAL}/pipette         # OT-2 commands
-status/ot2/{OT2_SERIAL}/complete         # OT-2 completion status
-```
+**MongoDB Atlas** (`MONGODB_URI`, `MONGODB_BLINDED_URI`, `MONGODB_USERNAME`,
+`MONGODB_PASSWORD`, `MONGODB_DATABASE`) and **HiveMQ Cloud** (`MQTT_BROKER`, `MQTT_PORT`,
+`MQTT_WEBSOCKET_PORT`, and a `MQTT_*_USERNAME` / `MQTT_*_PASSWORD` pair per client: agent,
+Pico W, HF Space, OT-2) back the OT-2 color-mixing stack. The cluster, the scopes, which
+credential goes where and the topic scheme are in the `hf-spaces-mqtt` skill.
 
 **Batch-posting comments as a bot.** `post-queued-comments.yml` (`workflow_dispatch`, dry-run
 by default) posts a reviewed `queue.json` of comments and new issues, so meeting follow-ups can
@@ -278,202 +224,37 @@ same `allowed_bots: vcl-bot` and sender-filter lines in its `claude.yml`.
 | `A1_MINI_IP` / `A1_MINI_ACCESS_CODE` / `A1_MINI_SERIAL` | The same for the Bambu Lab A1 mini. |
 | `BAMBU_USERNAME` / `BAMBU_PASSWORD` / `BAMBU_TOTP_SEED` | Bambu Lab cloud account login and its authenticator seed. **Not** in `claude.yml`: environment secrets of `bambu-print`, used only by `claude-print.yml` (`@claude-print`, each run approved by a member of `bambu-print-approvers`). See [Printing on the lab's Bambu Lab printers](#printing-on-the-labs-bambu-lab-printers-claude-print). |
 | `CUBXL_PI_PASSWORD` | Sudo password for the Pi 5 that fronts the CubXL, separate from the stream-cam Pis. `CUBXL_PI_USERNAME` and `CUBXL_PI_HOSTNAME` are repo **variables**, not secrets. The username has to be, since its value is three characters and appears as a substring of `byu-vcl` — exactly the masking trap noted above. The hostname is one by choice: a tailnet name confers no access on its own, and it already appears in that Pi's tag name in `claude.yml`, so keeping it secret bought nothing but inconsistency. |
-| `POTENTIOSTAT_PC_USERNAME` / `POTENTIOSTAT_PC_PASSWORD` | Windows account on the Windows 7 PC that runs EZware for the CubXL's EZstat Pro ([#231](https://github.com/vertical-cloud-lab/byu-vcl/issues/231)), for Remote Desktop (tcp:3389) to `192.168.231.10`. The PC runs no Tailscale and has no gateway; it sits on a point-to-point Ethernet link to the CubXL Pi, which advertises that one address as a subnet route. Only people are granted that route — devices are not, and CI runners carry `tag:rpi-5-des4`, so they deliberately cannot. From a CI session, reach the PC from the CubXL Pi itself, which is on the link directly: SSH in and run the RDP client there, passing the credentials over stdin or env, never as arguments. The Pi has FreeRDP 3 and Xvfb (`apt install --no-install-recommends freerdp3-x11 xvfb`, 2026-10-21). Feed every argument through `xfreerdp3 /args-from:stdin`, one per line, since it cannot be combined with other arguments. Include `/tls:seclevel:0`: without it OpenSSL 3 refuses Windows 7's TLS and the handshake fails with `ERRCONNECT_TLS_CONNECT_FAILED`, before any password is sent. FreeRDP prints a parse error for that line but applies it. `/cert:tofu` pins the PC's self-signed certificate in `~/.config/freerdp/server/`. To check the login without disturbing the PC, add `/sec:nla /auth-only`: it authenticates and stops before creating a session. A full session takes over the PC's only desktop on Windows 7 and locks out whoever is at the console, mid-experiment perhaps. |
+| `POTENTIOSTAT_PC_USERNAME` / `POTENTIOSTAT_PC_PASSWORD` | Windows account on the Windows 7 PC that runs EZware for the CubXL's EZstat Pro ([#231](https://github.com/vertical-cloud-lab/byu-vcl/issues/231)), for Remote Desktop. Reachable only from the CubXL Pi; load the `cubxl-pi` skill for the route and the `xfreerdp3` recipe. Pass the credentials over stdin or env, never as arguments. A full session takes over the PC's only desktop on Windows 7 and locks out whoever is at the console, mid-experiment perhaps, so check a login with `/sec:nla /auth-only` unless a session is really needed. |
 
 **Onshape browser work:** see [Onshape: signing in through the browser](#onshape-signing-in-through-the-browser-onshape_username--onshape_password)
 below, which also covers the approval-gated admin account (`@claude-onshape-admin`).
 
-**Hugging Face Space secrets are a separate place to keep in sync.** A duplicated
-light-mixing / OT-2-LCM Space reads its own settings, not GitHub's, and expects these exact
-names: `blinded_connection_string`, `MONGODB_PASSWORD`, `MQTT_BROKER`, `MQTT_PORT`,
-`MQTT_USERNAME`, `MQTT_PASSWORD`, and `YT_API_KEY`. Set them with `add_space_secret` using
-`HF_TOKEN` so the two sides cannot drift.
+**Hugging Face Space secrets are a separate place to keep in sync** (a Space reads its own
+settings, not GitHub's): the `hf-spaces-mqtt` skill has the exact names and how to set them
+with `HF_TOKEN`.
 
-**The OT-2 lid camera Pi left on 2026-11-10.** The Pi 5 + HQ Camera behind
-`RPI_STREAM_CAM_HOSTNAME` (also the OT-2's network link, the CubOS Pi and the `~/ytframes`
-host) now belongs to the Borys lab at the University of Utah and is on their tailnet. It
-streams to their channel, not ours. Its VCL files were archived to Sterling's OneDrive
-(*VCL Pi archives*) and removed from the Pi. `RPI_STREAM_CAM_HOSTNAME`, `_USERNAME` and
-`_PASSWORD` therefore point at nothing until a replacement Pi is set up and they are
-updated. Until then **the OT-2 has no network link and no overhead camera.** The rebuild
-(parts, steps, and the Pi-only scripts salvaged from it) is tracked in
-[vertical-cloud-lab/digital-wetlab](https://github.com/vertical-cloud-lab/digital-wetlab).
+**Lab hardware notes live in skills.** Load the matching one before touching the device:
 
-**Reaching the OT-2.** The robot is not on the tailnet. It was wired directly to the Pi
-behind `RPI_STREAM_CAM_HOSTNAME` (not `OT2_STREAM_CAM_HOSTNAME`, which is the atomizer-room
-Zero 2 W) and answered only on the link-local address
-`http://169.254.51.252:31950`, so every OT-2 HTTP API call has to be made *from that Pi* —
-you cannot reach the robot from a runner or a laptop. `~/ot2ctl.py` on that Pi is a thin
-wrapper over the maintenance-run API and is the quickest way to see the call pattern. Send
-`Opentrons-Version: 3` on every request. `GET /health` is read-only and safe; anything under
-`/maintenance_runs` moves real hardware.
+- `ot2-color-sensor`: the OT-2 and the Pico W color sensor (firmware facts, `mpremote`,
+  the MicroPython version, checking the MQTT path).
+- `cubxl-pi`: the CubXL Pi, its USB serial devices and the potentiostat PC.
+- `tailscale-policy`: the CI OAuth client's tags, the policy repo, grants, SSH check mode and
+  rule order.
 
-**Reaching the CubXL Pi.** A Pi 5 on the tailnet at `CUBXL_PI_HOSTNAME`, reachable over
-Tailscale SSH as `CUBXL_PI_USERNAME` the same way the stream-cam Pis are. It is the access
-point Ben Whitney uses by commenting `@claude` on this repo: the runner joins the tailnet
-and SSHes in, so what matters is the *runner's* tag, not a user identity. The policy file
-grants SSH **within** each tag, so the runner has to carry the Pi's tag to reach the Pi.
-Because the source is a tagged node the rule is `"action": "accept"` — [check mode cannot be
-used from a tagged device](https://tailscale.com/kb/1193/tailscale-ssh), as there is no
-human to re-authenticate. Ben also has a direct user-scoped rule, which works the moment he
-joins the tailnet; that path needs no CI at all.
+Rules that hold even without the skill:
 
-**An OAuth client with several tags must request every one of them.** The CI credential is
-authorized for two tags, and asking for a subset is refused outright with `requested tags
-[...] are invalid or not permitted` — the same error you get for a tag the client does not
-own at all, which makes it look like a permissions problem rather than an all-or-nothing
-one. That is why `claude.yml` passes `tags: tag:stream-cam-test,tag:rpi-5-des4` as a pair;
-dropping either one breaks the join for both. Tags are fixed when a client is created —
-the console offers only create, revoke and delete — so widening a client's reach means
-minting a **new** client and rotating `TS_OAUTH_CLIENT_ID`/`TS_OAUTH_SECRET` in both GitHub
-and `.claude/settings.local.json`. Two small console quirks cost real time: credential
-descriptions are capped at 50 characters and reject anything non-alphanumeric (no hyphens),
-and the same alphanumeric rule applies to auth-key descriptions created through the API.
+- **The OT-2 has no network link and no overhead camera since 2026-11-10.** The Pi behind
+  `RPI_STREAM_CAM_HOSTNAME` went to the Borys lab, so `RPI_STREAM_CAM_HOSTNAME`, `_USERNAME`
+  and `_PASSWORD` point at nothing until a replacement Pi is set up.
+- **On the OT-2 HTTP API, `GET /health` is read-only and safe; anything under
+  `/maintenance_runs` moves real hardware.**
+- **Address serial devices by USB serial or `/dev/serial/by-id/` path, never by
+  `/dev/ttyACM0` / `/dev/ttyUSB0` or `mpremote`'s bare auto-connect.** Enumeration order
+  changes, and the first ACM device may be an Arduino driving real gantry hardware.
+- **The tailnet policy lives in `vertical-cloud-lab/tailscale-policy`.** Edit it by PR
+  (merging applies it); console edits get overwritten. `grants` must never be narrower than
+  the `ssh` block, or SSH breaks with no useful error.
 
-**The policy file lives in `vertical-cloud-lab/tailscale-policy`, not the console.**
-`policy.hujson` there is the source of truth: a pull request runs
-`tailscale/gitops-acl-action` in `test` mode to validate it, and merging to `main` runs
-`apply`, which replaces the live policy. Auth is OIDC workload identity, so there is no
-long-lived secret. Edit by PR; editing in the admin console just gets overwritten by the
-next merge.
-
-`grants` was `src: ["*"], dst: ["*"], ip: ["*"]` until 12 September 2026 — every node could
-reach every other node on every port, which made the `ssh` block the only real boundary
-despite governing Tailscale SSH alone. It now mirrors the `ssh` block: people reach
-everything, devices reach only their own tag group, and only on `tcp:22`. Tailscale needs
-**both** a grant and an `ssh` rule for a connection, so `grants` must never be narrower than
-`ssh` or SSH breaks with no useful error.
-
-`tcp:22` is backed by an inventory, not a guess: `ss -tulnH` on every Pi (12 September 2026)
-found SSH to be the only service bound to a tailnet-facing address. The stream cams *push*
-RTMP to YouTube and serve nothing; CubOS listens on `127.0.0.1:8742` only; code-server on the
-powder doser likewise. So a service that starts listening on a Pi is **unreachable from
-other devices, CI runners included, until a port is added to that tag's grant** — deliberate,
-and the reason to bind new services to loopback unless they genuinely need the tailnet.
-Humans keep `"*"`. `cb154-01`, the CAEDM workstation in CB154, is deliberately outside all
-of this: it carries `tag:caedm`, which no `ssh` rule and no device grant reference, so
-Tailscale SSH to it is denied by policy even though the daemon still advertises it. Its
-accounts are personal and university-managed, and tailnet identity must not stand in for
-CAEDM's own login. `sudo tailscale set --ssh=false` on the machine itself is the remaining
-belt-and-braces step.
-
-Check mode on the stream cams is per user, per device, for the policy's `checkPeriod`
-(default 12h): the first SSH prints a `login.tailscale.com/a/...` URL and holds the session
-open until it is approved in a browser, after which further sessions in the window go
-straight through. Running the SSH in the background with output to a file, then opening the
-URL from the file, is what makes that workable from an agent session.
-
-**SSH rules are first-match-wins, and the general `check` rule sits at the top.** A specific
-`accept` rule further down does not override it: any `autogroup:member` reaching a device
-tagged `tag:tailscale-ssh` gets check mode, whatever later rules say. Adding
-`tag:tailscale-ssh` to a Pi that already had a user-scoped `accept` rule is therefore enough
-to put browser re-authentication back in front of it — which is what happened to the CubXL
-Pi. It also makes the `williamulbz@github` → `tag:tailscale-ssh` rule dead code. Tagged
-sources are unaffected, so CI never sees check mode. If a named user should skip the
-prompt, their rule has to move *above* the check rule.
-
-The Pi itself: Debian 13 (trixie) on arm64, Tailscale 1.86.2 with `--ssh`, one
-`sudo`-capable user (in `dialout`, so serial ports need no sudo). It is joined over **wifi
-only** (`eth0` is down), so moving it out of range of that SSID takes it off the tailnet
-until it is given credentials for the new network. Its tailnet name and IP survive the move;
-nothing else does.
-
-**The CubXL hardware is attached; the software is not (as of 12 September 2026).** Two USB
-serial devices, both part of the CubXL:
-
-| Device | USB ID | Stable path |
-| --- | --- | --- |
-| Arduino Uno R3, serial `03535343335351018130` | `2341:0043` | `/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_03535343335351018130-if00` |
-| CH340 USB–serial converter | `1a86:7523` | `/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0` |
-
-**Address them by the `by-id` path, never by `/dev/ttyACM0` or `/dev/ttyUSB0`.** Those names
-are assigned in enumeration order and swap if a board is re-plugged or a third device
-appears — the same trap CLAUDE.md already documents for the stream-cam Pi, where a bare
-`mpremote` auto-connect opened a REPL against the wrong board. The CH340 exposes no unique
-serial, so its `by-id` path stops being unique the moment a second CH340 is plugged in; if
-that ever happens, distinguish them by USB port path (`/dev/serial/by-path/`) instead.
-
-Nothing CubXL-specific is installed yet: no non-stock services, nothing listening beyond
-`sshd` and `tailscaled`, an empty home directory. When software does land, remember the
-tailnet grant to this Pi is `tcp:22` only — a control service bound to `0.0.0.0` is
-unreachable from CI until its port is added to the `tag:rpi-5-des4` grant, and the safer
-default is to bind it to `127.0.0.1` and reach it over SSH.
-
-**Reaching the Pico W.** The sensor board plugged into the OT-2 lid camera Pi (gone since 2026-11-10; see
-"Reaching the OT-2") over USB and is
-driven with `mpremote`, installed there as a venv at `~/.venvs/mpremote/bin/mpremote`
-(1.29.0 + pyserial). It went in as a venv rather than apt so it needs no sudo and touches
-nothing system-wide; that Pi also runs CubOS gantry work, so keep changes to it contained.
-
-**Always address the board by USB serial, never by device path:**
-
-```bash
-~/.venvs/mpremote/bin/mpremote connect id:e6647c15673a2438 fs ls
-```
-
-An Arduino (`2341:0043`) already owns `/dev/ttyACM0` on that Pi, so the Pico comes up as
-`ttyACM1` — and `mpremote`'s bare auto-connect grabs the *first* ACM device. Targeting a
-path, or letting it auto-detect, opens a REPL against the Arduino instead, which may be
-driving real gantry hardware. Match on `2e8a` / the serial and nothing else.
-
-Two more gotchas. Connecting with `mpremote` interrupts whatever `main.py` is running and
-its buffered `log.txt` is lost, so an empty log after a reset means "I interrupted it", not
-"it never ran" — to watch a boot, `mpremote ... run <local copy of main.py>` and read the
-stream instead. And the reference `main.py` calls `connectWiFi(..., country="CA")`; for US
-operation that should be `"US"`, since the country code governs the usable 2.4 GHz channels.
-
-**The sensor firmware's own facts, read from source** (upstream
-[`wireless-color-sensor`](https://github.com/AccelerationConsortium/wireless-color-sensor),
-`sensor_file/`, which is what our Pico W runs). Three of these were guessed wrong on #197
-before anyone read the code:
-
-- **`R`/`Y`/`B` in the MQTT command payload are paint dispense volumes in microlitres, not
-  LED colours.** `OT2mqtt.py` aspirates them from vials `B1`/`B2`/`B3` with `R+Y+B <= 300`
-  because the pipette is a P300. The sensor board never reads them. So `sensor_read.read(
-  rgb=...)` controls nothing and never did.
-- **There is a controllable white LED on the AS7341** — `lib/as7341.py` `set_led_current()`,
-  4-20 mA, wrapped as a `Sensor.LED` property. It is off because `main.py`'s
-  `read_sensor_data()` has `# sensor.LED = True` / `# sensor.LED = False` commented out.
-  Do not "fix" this without reading
-  [ac-dev-lab#87](https://github.com/AccelerationConsortium/ac-dev-lab/issues/87) first: it
-  was tried upstream and rejected for saturating the enclosure walls and making similar
-  colours *less* distinguishable.
-- **One reading is two SMUX integrations**, `F1F4CN` then `F5F8CN`, and `Clear` is sampled
-  in both and discarded in both. At the shipped `Sensor(atime=200, astep=999, gain=128)`
-  that is 558.8 ms per cycle, 1.118 s per reading — about 80% of the measured ~1.42 s MQTT
-  round trip. Gain 128x against a 512x maximum, and the largest channel ever recorded here
-  is 3216 of 65535 full scale, so there is real headroom.
-
-**Prior art: this has worked before, upstream, twice.** See
-`wireless-color-sensor/ot2/accuracy-provenance.md` for the sourced ledger — the quantified
-success is a per-well white reference taking repeatability from 6-7% RSD to 1.2-2.3%
-([ac-dev-lab#152](https://github.com/AccelerationConsortium/ac-dev-lab/issues/152)), and
-the second is a light panel under the plate plus per-well blank normalisation
-([ac-dev-lab#552](https://github.com/AccelerationConsortium/ac-dev-lab/issues/552)). Check
-that file before re-deriving an accuracy fix from scratch; #197 re-derived the per-position
-blank independently over several sessions.
-
-**MicroPython 1.29.0 or newer is required.** On 1.26–1.28 the RP2040 hardware I2C driver has
-a regression: `i2c.scan()` ACKs the AS7341 at `0x39`, but every register read or write
-returns `OSError: [Errno 5] EIO`, at any bus speed, with or without a repeated START. It
-cost real time to find because it looks exactly like a wiring or power fault, and because it
-reproduces on *every* board — two different Pico Ws, two different sensors and two different
-base boards all failed identically. That cross-board consistency is the tell: a shared
-firmware bug, not a shared hardware fault. Bit-banged `SoftI2C` works on the same pins on the
-affected versions and is the fallback if an older build is ever unavoidable. See
-[micropython#19087](https://github.com/micropython/micropython/issues/19087) and
-[micropython#18257](https://github.com/micropython/micropython/issues/18257).
-
-**Do not judge the sensor from a board plugged into the Pi.** `main.py` prints continuously
-(`waiting for connection...`, `Elapsed: Ns`, `RAM free ...`). With USB enumerated but nothing
-reading the serial port, the RP2040 CDC TX buffer fills and `print()` blocks, so `main.py`
-starts and then wedges before it ever reaches the broker. Under `mpremote run` a host is
-draining the buffer, so the same code runs fine — which makes this look like an intermittent
-network problem. On mains or battery power with no USB host, MicroPython discards stdout and
-it behaves normally. Verify the MQTT path with the board on its own power, not on the Pi.
-
-Board backups (including the pre-existing `my_secrets.py`) are on the Pi under
-`~/pico-backups/<timestamp>/`, and the board keeps its own `my_secrets.py.bak`.
 
 ## Printing on the lab's Bambu Lab printers (`@claude-print`)
 
@@ -565,91 +346,14 @@ gets that login:
   environment of every repo that has one: byu-vcl, robot-arms, powder-doser,
   tensegrity-optimization, caliber, digital-wetlab and digital-alloy-lab.
 
-## Hugging Face Spaces
+## Hugging Face Spaces, stream cameras and the livestream archive
 
-`byu-vcl/OT-2-LCM` and `byu-vcl/light-mixing`, both **private**, `cpu-basic`, duplicated
-from the Acceleration Consortium originals. Their secrets live in the Space's own settings,
-not in GitHub, so the two places have to be kept in sync by hand — set them with
-`HfApi.add_space_secret` using `HF_TOKEN` rather than clicking through the UI.
-
-The Space reads `blinded_connection_string`, `MONGODB_PASSWORD`, `MONGODB_DATABASE`,
-`MQTT_BROKER`, `MQTT_PORT`, `MQTT_USERNAME`, `MQTT_PASSWORD`, and `YT_API_KEY`. Its MQTT
-credential is `hf-space`, deliberately separate from the device and CI credentials.
-
-Three edits were needed on top of the duplicate, and they will need re-applying if the
-Spaces are ever re-duplicated from upstream:
-
-- `app.py` — `OT2_SERIAL` and `PICO_ID` were hardcoded to the AC's own devices. They now
-  read from env, defaulting to ours.
-- `DB_utils.py` — every collection was opened on database `LCM-OT-2-SLD`. Our database user
-  is scoped `readWrite` on `digital-wetlab` alone, so left alone *every write would fail
-  authorization*. It now reads `MONGODB_DATABASE`.
-- `app.py` — the YouTube lookup is now fail-soft. `yt_utils.get_latest_video_id` calls
-  `raise_for_status()`, and `app.py` called it at import time, so a missing or invalid
-  `YT_API_KEY` took the **whole Space down at startup** rather than merely hiding the video.
-
-**YouTube.** Channel `UCZ5KNGkEEqDsRVn0Nlfn0IA` ("BYU VCL Hardware Streams"), OT-2 playlist
-`PLdKz1vXA-rfQ` ("OT-2 Livestreams Playlist"). Both are stored as Space *variables*, not
-secrets, since they are public identifiers. `YT_FALLBACK_VIDEO_ID` is the embed shown when
-the API is unavailable. Note the playlist ID is unusually short — that is genuine, not a
-truncation.
-
-**The `picam-ot2` camera now shows the atomizer room, not the OT-2.** As of 2026-10-01 that
-camera (the Pi behind `OT2_STREAM_CAM_HOSTNAME`) streams 144p at 2 fps under workflow
-`atomizer`. Since 19:55 MDT it is also pixelated on the Pi (`PIXELATE_BLOCKS` in its
-`my_secrets.py`, another local `device.py` patch), so that it shows activity rather than
-detail: 32×18 solid blocks at first, 128×72 (2×2 px at 144p) since 22:59 MDT. The overlay is
-drawn afterwards and stays sharp. Its broadcasts
-are titled *atomizer stream picam-ot2, …* and go into the *atomizer Livestreams Playlist*
-(`PLeosQpHvsjiY`), not the OT-2 playlist above. Its settings, change log
-and the archive tooling's 720p assumptions are in [`docs/stream-cams.md`](docs/stream-cams.md),
-along with how the Lambda matches a workflow name to playlists. The match is by substring,
-which matters before renaming one.
-
-**On that camera, the overlay is only a clock from 2026-10-01 18:52 MDT.** Without
-`rpicam-vid --flush`, ffmpeg received frames in 4 KB batches. At 240p and 2 fps the overlay
-stood still for 3–4 s, then jumped, and a third of the frames were copies. The Pi's
-`device.py` now has `--flush` and `-flags low_delay`, a local patch like `SENSOR_MODE`,
-which leaves the overlay about one frame behind capture. Any picam at a low resolution or
-frame rate needs the same patch, and it is worth upstreaming to `ac-training-lab`.
-
-**Reading the livestream archive back.** Two things cost a session to find, both in
-`wireless-color-sensor/ot2/`:
-
-- **YouTube will not do player extraction from a GitHub Actions runner.** `yt-dlp` on a
-  runner returns *"Sign in to confirm you're not a bot"* for `--dump-json`, `-g` and any
-  download, with or without a JS runtime. The channel/playlist *listing* works fine from
-  anywhere — only the player is blocked. Run the fetching half from a stream-cam Pi's
-  residential IP (it was the OT-2 lid camera Pi, gone since 2026-11-10; `grab.py` is
-  preserved in digital-wetlab, so set it up again on whichever Pi replaces it): `~/.venvs/ytframes/bin/yt-dlp --js-runtimes node` (node is present; deno
-  is not), with a static ffmpeg in `~/ytframes/bin`. That ffmpeg **cannot resolve DNS** —
-  statically linked glibc has no NSS — so fetch HLS segments with urllib/curl and only ever
-  hand ffmpeg a local file. `~/ytframes/grab.py` does exactly that and is the thing to
-  reuse.
-- **The archive timeline is not wall clock.** `release_timestamp` is where video offset 0
-  sits at the very start, but for `bQDrYpT3vaE` everything from the third hour onward is
-  **67 s later** than `release + offset` — a step, not a drift, i.e. an archive
-  concatenated across a stall. At ~18 s per scan position that is more than one
-  measurement, so a link computed from the metadata alone points at the wrong reading.
-  Verify instead: the stream burns `%Y-%m-%d_%H-%M-%S` in **lab local time (UTC−6)** into
-  the top-left of every frame, so `frames_from_stream.py` grabs, OCRs the overlay
-  (`tesseract --psm 7`), and re-grabs shifted by the error. Treat that overlay as the
-  clock, not the metadata.
-
-**Sensor readings carry their own time now.** `sensor_read.read()` returns
-`t_request_utc`/`t_response_utc`; before 2026-09-09 the only recoverable instant was the
-epoch-ms that `experiment_id` happens to embed. The MongoDB `timestamp` field used to be
-`utcnow()` at *insert*, shared by every document of a run and up to three minutes after the
-reading it described; it is now the reading's own response time, with the write time kept
-separately as `stored_at`. Old documents in `digital-wetlab.sensor-data` still have the
-insert-time value — reconstruct from `experiment_id` instead.
-
-**Not yet provisioned** — `YT_API_KEY` (a YouTube Data API v3 key from the Google Cloud
-console; until it exists the Space falls back to a fixed embed instead of tracking the
-current stream), `ONEDRIVE_EDIT_LINK_URL` (the password is stored without the link it
-unlocks), and a Box share link for image backup. Note that sandbox is a wholly separate instance with its own
-account, its own token, *and its own base URL* (`sandbox.zenodo.org/api`) — code that only
-swaps the token will still write to production.
+`byu-vcl/OT-2-LCM` and `byu-vcl/light-mixing` are **private** Spaces duplicated from the
+Acceleration Consortium originals, with local code edits that must be re-applied after any
+re-duplication: load the `hf-spaces-mqtt` skill before changing them or their secrets.
+Stream cameras, the YouTube playlist IDs, the overlay patch and **reading the livestream
+archive back** (`yt-dlp` is bot-blocked on Actions runners; the archive timeline is not wall
+clock) are in the `stream-cams` skill.
 
 ## Onshape: signing in through the browser (`ONSHAPE_USERNAME` / `ONSHAPE_PASSWORD`)
 
@@ -666,59 +370,20 @@ the company has used up its yearly allowance
 ([powder-doser PR 200](https://github.com/vertical-cloud-lab/powder-doser/pull/200#issuecomment-6596401552)).
 Until that resets, the browser is the only way to export a private document.
 
-**The route that works** is the one byu-vcl used on 2026-09-26
-([PR 234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5842335279)):
-headed Chrome on a virtual display on the runner, with its traffic sent out through a lab Pi
-over an SSH SOCKS tunnel, so that Onshape sees the BYU network instead of a datacenter. Its
-rig script is on that PR's branch; fetch it pinned, into `/tmp`, never into this checkout:
-
-```bash
-B=https://raw.githubusercontent.com/vertical-cloud-lab/byu-vcl/49677cfff31a67765d9182c01765bfa994a7545d/ot2-overhead-camera/lid-mount/onshape
-mkdir -p /tmp/onshape-rig/record /tmp/onshape-rig/pi
-curl -fsSL "$B/record/rig.sh" -o /tmp/onshape-rig/record/rig.sh && chmod +x /tmp/onshape-rig/record/rig.sh
-curl -fsSL "$B/pi/xshot.py" -o /tmp/onshape-rig/pi/xshot.py
-/tmp/onshape-rig/record/rig.sh start
-/tmp/onshape-rig/record/rig.sh check    # the tunnel's exit network (ASN and org only), and a screenshot of the display
-```
-
-`rig.sh start` brings up Xvfb on `:99`, the tunnel on `127.0.0.1:1080` and Chrome with DevTools
-on `127.0.0.1:9222`. Attach with Playwright's `chromium.connect_over_cdp("http://127.0.0.1:9222")`.
-
-The tunnel goes through the CubXL Pi (`CUBXL_PI_USERNAME` / `CUBXL_PI_HOSTNAME`), as on
-2026-09-26. The Pi only relays traffic: nothing is installed or written on it. If it is off
-the tailnet, any other Pi this run can reach will do (set `PI_USER` and `PI_HOST`).
-
-Signing in ([`sign_in()` in `onshape_ui.py`](https://github.com/vertical-cloud-lab/byu-vcl/blob/49677cf/ot2-overhead-camera/lid-mount/onshape/onshape_ui.py#L255-L276), selectors checked live):
-
-1. Go to `https://cad.onshape.com/signin`. Click `input[name='username']`, type the e-mail and
-   click `button.continue-button`.
-2. Click `input[name='password']`, type the password and click `button.os-signin-button`.
-3. Wait up to 60 s for the URL to contain `/documents`.
+**Load the `onshape-browser` skill before any browser work in Onshape**: the SOCKS-tunnel
+rig, the sign-in selectors, exporting, sketching on the canvas, and cleanup. These rules
+always apply:
 
 - **Read the values from the environment inside the script.** Never print them, pass them as
-  command-line arguments, or take a screenshot while the form is filled in. Only take
-  screenshots after you reach `/documents`.
-- **Stop at the first failure: don't retry in a loop.** That covers a reCAPTCHA, a code
-  prompt (`input[name='totpCode']`) and an error message. Take one screenshot, then report
-  what you saw. Repeated failed sign-ins can lock the account, and every repo uses it.
-- **To export,** use Onshape's own Export dialog (right-click the part or tab, then *Export*).
-  The browser saves the file, so set a download directory under `/tmp`. Driving that dialog
-  in headless Chrome worked on
-  [digital-alloy-lab PR 174](https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/174#issuecomment-6532349145).
-- **Sketching and modelling are WebGL on a canvas.** DOM selectors don't reach the geometry,
-  so use pointer moves and drags at screen coordinates, with a screenshot between moves.
-  byu-vcl's `onshape_ui.py` has the techniques that worked.
-- **Keep sessions short.** Do only what the request needs. Onshape's terms forbid automated
-  access (§4(a)(ix)), so use the REST API whenever it can do the job.
+  command-line arguments, or take a screenshot while the form is filled in.
+- **Stop at the first failure: don't retry in a loop** (a reCAPTCHA, a code prompt or an
+  error message). Repeated failed sign-ins can lock the account, and every repo uses it.
+- **Keep sessions short.** Onshape's terms forbid automated access (§4(a)(ix)), so use the
+  REST API whenever it can do the job.
 - **Only open Onshape in the tunnelled browser.** The tunnel relays everything the browser
   loads, so any other site would reach the Pi's network too.
-- **Clean up every time:** sign out from Onshape's user menu (*Sign out*). The redirect
-  lags by a few seconds: wait about 5 s before checking that `/documents` sends you to
-  `/signin`, or check that `/api/v6/users/sessioninfo` returns 204. Then run `rig.sh stop`,
-  which deletes the browser profile, **in a Bash call of its own**. Its `pkill -f` patterns
-  also match any shell whose command line contains the same text, so a `pgrep` naming the
-  profile path in the same call gets that shell killed (digital-alloy-lab PR 180, 2026-11-10).
-  Never save cookies or storage state outside `/tmp`, and never commit them.
+- **Sign out and stop the rig every time.** Never save cookies or storage state outside
+  `/tmp`, and never commit them.
 
 ### `@claude-onshape-admin`: the Onshape admin account
 
@@ -740,7 +405,7 @@ Use the admin account only for what the member account can't do: company members
 and permissions, making a document public or transferring it, restoring from the trash, and
 similar settings. Make only the change Sterling asked for. Never delete documents or folders,
 remove members, or touch the plan or billing unless he asked for that exact change. Sign in the
-same way as above, with the `ONSHAPE_ADMIN_*` values, and sign out at the end.
+same way as the member account (the `onshape-browser` skill), with the `ONSHAPE_ADMIN_*` values, and sign out at the end.
 
 - **The sign-in has one extra step.** The account also belongs to BYU's enterprise Onshape, so
   after the e-mail step Onshape asks where to sign in. Click *My Account → Continue to
