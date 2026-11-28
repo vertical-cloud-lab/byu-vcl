@@ -31,10 +31,21 @@ pip install --index-url https://download.pytorch.org/whl/cpu torch==2.15.0 && pi
 K=1                                                       # this slice's number
 python -m twin.gpcheck6 --out out/twin6/slices/gpcheck-slice-$K.json      # first: exit 0 if this CPU computes what
                                                                           # the reference CPU did (5-15 minutes)
-python -m twin.bench6 ids out/twin6/slices/slice-$K.txt --slice $K --workers 4   # a file of run ids, one a line,
-                                                          # or the ids themselves: ids r6_vertical_parallel_bofn3_reorder_s0 ...
+python -m twin.bench6 ids out/twin6/slices/slice-$K.txt --slice $K --workers 4 --hours 5.2   # a file of run ids,
+                                                          # one a line, or the ids themselves; --hours: see below
 git add -f out/twin6/runs/*.slice-$K.jsonl out/twin6/events out/twin6/slices/gpcheck-slice-$K.json
+git add -f out/twin6/checkpoints                          # runs stopped at the time limit, if any (next section)
 ```
+
+**Runs longer than a job: checkpoints.** With `--hours H`, a run still going H hours after `ids` started stops at its
+next simulated day, is saved to `out/twin6/checkpoints/<run id>.ckpt.xz` (twin/ckpt6.py: about 1 MB at day 100,
+more as its GP nodes fill), and gets no row. Runs that haven't started by then aren't started. Give the next job the
+same run ids, with the checkpoints in place (commit them with `git add -f`, or carry them as a workflow artifact), and
+each stopped run carries on from its day, first, to the row an unbroken run gives; its row records each job's share
+(`timing.segments`: the CPU, CPU seconds and days of each). `python -m twin.gpcheck6 resume` is the test that a run
+carried on is the same run: the GP check's three runs stopped half way in one fresh interpreter, carried on in another,
+and compared with the reference in row, event log and GP state. A slice's jobs can run on different CPUs, as long as
+each passes the GP check. Set H to the job's limit less set-up, the GP check and a margin: 5.2 for a 6-hour job.
 
 The `twin/` tree above differs from the one the GP check's reference was made with (`aa296e7`, commit `568ab5f`) only
 in the grid's planning code (`bench6.timings`, `variant_ratios`, CPU seconds in each row's `timing`), its tests and

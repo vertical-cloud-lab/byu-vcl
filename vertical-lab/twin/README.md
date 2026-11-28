@@ -249,6 +249,7 @@ pKGFN rows reproduce on any CPU; and runs copper's optimizers without their cap 
 | BOFN and pKGFN without their money rules, with a cut of a large pool before the network values it | `opt/net6.py` |
 | The pin that reproduces on any CPU, and the GP determinism check | `repro.py`, `gpcheck6.py` |
 | The grid, the slice tools (`ids`, `slices`, `fold`), timings (`smoke`, `timings`, `variant_ratios`; each run's CPU seconds), `status` | `bench6.py` |
+| Checkpoints: a run stopped at a job's limit (`ids --hours H`), saved and carried on by the next job to the row an unbroken run gives (`gpcheck6 resume` tests it) | `ckpt6.py`, `round6.py` (`Twin6.run_async`, `_loop`), `bench6.py` (`simulate`, `run_one`) |
 
 ```bash
 cd vertical-lab
@@ -257,7 +258,8 @@ pip install --index-url https://download.pytorch.org/whl/cpu torch==2.15.0 && pi
 python -m pytest -q twin/tests/test_round6.py twin/tests/test_market6.py
 python -m twin.gpcheck6                                   # the GP determinism check: exit 0 if this CPU matches
 python -m twin.bench6 status                              # runs and seeds per arm, core-hours left
-python -m twin.bench6 ids out/twin6/slices/slice-1.txt --slice 1   # what a compute slice runs
+python -m twin.bench6 ids out/twin6/slices/slice-1.txt --slice 1 --hours 5.2   # what a compute slice runs
+python -m twin.gpcheck6 resume                          # a run stopped, saved and carried on is the same run
 ```
 
 Round 5's code is unchanged: round 6 subclasses `Facility5`, `Campaign5` and `Twin5`, and `net3`'s policies.
