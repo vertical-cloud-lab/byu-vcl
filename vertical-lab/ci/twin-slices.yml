@@ -108,6 +108,16 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ inputs.branch }}
+      # first, so that a job that fails later still uploads them again for the next wave (or a re-run of this job)
+      - name: Restore this job's checkpoints from the previous wave
+        if: inputs.resume_run_id != ''
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: ckpt-${{ needs.plan.outputs.name }}-${{ matrix.job }}
+          path: vertical-lab/out/twin6/checkpoints
+          run-id: ${{ inputs.resume_run_id }}
+          github-token: ${{ github.token }}
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
@@ -121,21 +131,12 @@ jobs:
           pip install -r out/twin6/requirements.txt
           nproc
           grep -m1 "model name" /proc/cpuinfo
-      - name: Restore this job's checkpoints from the previous wave
-        if: inputs.resume_run_id != ''
-        continue-on-error: true
-        uses: actions/download-artifact@v4
-        with:
-          name: ckpt-${{ needs.plan.outputs.name }}-${{ matrix.job }}
-          path: vertical-lab/out/twin6/checkpoints
-          run-id: ${{ inputs.resume_run_id }}
-          github-token: ${{ github.token }}
       - name: Rerun the committed GP rows (stop on any difference)
         working-directory: vertical-lab
         run: |
           ls -la out/twin6/checkpoints 2>/dev/null || echo "no checkpoints to carry on"
           mkdir -p "out/twin6/slices/$NAME/job-$JOB"
-          python ci/twin_slices.py done > "$RUNNER_TEMP/done_before.txt"
+          python ci/twin_slices.py done-ids > "$RUNNER_TEMP/done_before.txt"
           TWIN_WORKERS=4 python -m twin.gpcheck6 --out "out/twin6/slices/$NAME/job-$JOB/gpcheck.json"
       - name: The slice (python -m twin.bench6 ids ... --hours 5.2)
         id: slice

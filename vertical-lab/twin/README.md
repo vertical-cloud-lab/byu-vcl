@@ -247,8 +247,9 @@ pKGFN rows reproduce on any CPU; and runs copper's optimizers without their cap 
 | The HPC stream at scale, without keeping every candidate in memory | `round6.py` (`Twin6._stream_tick`, `_keep_visible`, `Campaign6._forget`, `_restore`) |
 | Idle stretches with causes, counting a partner's sessions offered | `round6.py` (`idle_report6`, `_could_start`) |
 | BOFN and pKGFN without their money rules, with a cut of a large pool before the network values it | `opt/net6.py` |
-| The pin that reproduces on any CPU, and the GP determinism check | `repro.py`, `gpcheck6.py` |
-| The grid, the slice tools (`ids`, `slices`, `fold`), timings (`smoke`, `timings`, `variant_ratios`; each run's CPU seconds), `status` | `bench6.py` |
+| Batched GP predictions: round 6's BOFN and pKGFN predict at most 64 points per posterior call (PR 427, 2026-11-28); rounds 2-5's nodes don't | `opt/gp.py` (`Node.predict`, `Node.chunk`), `opt/net6.py` (`PREDICT_CHUNK`) |
+| The pin that reproduces on any CPU, and the GP determinism check (the kernel probe, three short runs, and two late runs from committed day-300 checkpoints of the main arm, which reach the network's valuation) | `repro.py`, `gpcheck6.py` |
+| The grid, the slice tools (`ids`, `slices`, `fold`), timings (`smoke`, `timings`, `variant_ratios`; each run's CPU seconds), `status`, and a workflow's plan (`plan`: LPT into jobs, each job's waves simulated) | `bench6.py`; the workflow `../ci/twin-slices.yml` and its helper `../ci/twin_slices.py` |
 | Checkpoints: a run stopped at a job's limit (`ids --hours H`), saved and carried on by the next job to the row an unbroken run gives (`gpcheck6 resume` tests it) | `ckpt6.py`, `round6.py` (`Twin6.run_async`, `_loop`), `bench6.py` (`simulate`, `run_one`) |
 
 ```bash
@@ -260,6 +261,8 @@ python -m twin.gpcheck6                                   # the GP determinism c
 python -m twin.bench6 status                              # runs and seeds per arm, core-hours left
 python -m twin.bench6 ids out/twin6/slices/slice-1.txt --slice 1 --hours 5.2   # what a compute slice runs
 python -m twin.gpcheck6 resume                          # a run stopped, saved and carried on is the same run
+python -m twin.bench6 plan tier1 --name tier1 --speed 9V45=1 --speed 7763=F   # the workflow's plan (F: out/twin6/checks/batch.md)
+bash ci/test_twin_slices.sh                               # the workflow's steps on two short runs, and its fold
 ```
 
 Round 5's code is unchanged: round 6 subclasses `Facility5`, `Campaign5` and `Twin5`, and `net3`'s policies.

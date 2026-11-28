@@ -419,3 +419,55 @@ def test_trials_are_the_unvectorized_trials():
                 assert list(a) == list(b) and all(type(a[x]) is type(b[x]) and a[x] == b[x] for x in a)
                 assert all(math.copysign(1.0, a[x]) == math.copysign(1.0, b[x]) for x in a
                            if isinstance(a[x], float))
+
+
+def test_round6_policies_predict_in_64_point_calls():
+    """Batched GP predictions (PR 427, 2026-11-28): every node of round 6's BOFN and pKGFN predicts at most 64 points
+    per posterior call, along the points axis of a 2-D or 3-D input; the pieces give the same numbers as one call up
+    to the last bits; round 3's policies (and so rounds 3-5) have no ``chunk`` and make one call."""
+    from twin.opt import gp as GP
+    from twin.opt import net3 as N3
+    for name in ("bofn3", "pkgfn3"):
+        for k, pol in B6.make_policies(name, 0).items():
+            assert pol.nodes and all(nd.chunk == 64 for nodes in pol.nodes.values() for nd in nodes)
+    old = N3.make("bofn3", "onr_cu", 0)
+    assert all(getattr(nd, "chunk", None) is None for nodes in old.nodes.values() for nd in nodes)
+    rng = np.random.default_rng(3)
+    X = rng.uniform(size=(120, 6))
+    y = np.sin(X @ rng.normal(size=6)) + 0.05 * rng.normal(size=120)
+    nd = GP.Node("gp", 8)
+    nd.fit(X, y)
+    sizes = []
+    orig = GP.Node._predict
+    try:
+        GP.Node._predict = lambda self, Q, _o=orig: (sizes.append(np.shape(Q)), _o(self, Q))[1]
+        for shape in ((200, 6), (5, 150, 6), (64, 6), (10, 6)):
+            Q = rng.uniform(size=shape)
+            nd.chunk = None
+            sizes.clear()
+            m0, s0 = nd.predict(Q)
+            assert sizes == [shape]
+            nd.chunk = 64
+            sizes.clear()
+            m1, s1 = nd.predict(Q)
+            n = shape[-2]
+            assert [s[-2] for s in sizes] == [min(64, n - i) for i in range(0, n, 64)]
+            assert all(s[:-2] == shape[:-2] for s in sizes)
+            assert m1.shape == m0.shape and s1.shape == s0.shape
+            assert np.allclose(m0, m1, rtol=0, atol=1e-11) and np.allclose(s0, s1, rtol=0, atol=1e-11)
+            if n <= 64:
+                assert m0.tobytes() == m1.tobytes() and s0.tobytes() == s1.tobytes()   # one call: the same bits
+    finally:
+        GP.Node._predict = orig
+
+
+def test_job_waves_and_the_plan():
+    """bench6.job_waves, the arithmetic of a plan (twin/bench6.py plan): runs carried over from a checkpoint go first,
+    then the longest first, ``workers`` at a time; a run still going at the limit carries on next wave."""
+    assert B6.job_waves([10, 3, 3, 1], workers=4, hours=5.2) == [5.2, 4.8]
+    assert B6.job_waves([10, 3, 3, 1], workers=2, hours=5.2) == [5.2, 4.8]     # 0.8 h of a 3 carried, then the 1
+    w = B6.job_waves([1.0] * 9, workers=4, hours=5.2)
+    assert w == [3.0]
+    assert len(B6.job_waves([12.0], workers=4, hours=5.2)) == 3                 # a 12-hour run spans three jobs
+    bins = B6._lpt([(5.0, "a", 1), (4.0, "a", 2), (3.0, "a", 3), (3.0, "a", 4), (1.0, "a", 5)], 2)
+    assert [b[0] for b in bins] == [8.0, 8.0]

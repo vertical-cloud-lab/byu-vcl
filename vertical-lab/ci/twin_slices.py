@@ -5,7 +5,7 @@ library only, so the plan and fold steps need no numerical packages. Run from ``
                                                        # row on this checkout (the workflow's matrix)
     python ci/twin_slices.py ids PLAN JOB              # the job's run ids, one a line (for ``bench6 ids``)
     python ci/twin_slices.py check-tree PLAN           # exit 1 unless twin/ at HEAD is the tree the plan was made for
-    python ci/twin_slices.py done                      # the run ids with a row on this checkout, one a line
+    python ci/twin_slices.py done-ids                  # the run ids with a row on this checkout, one a line
     python ci/twin_slices.py manifest PLAN JOB LOG STAGE [BEFORE]   # after ``bench6 ids``: what became of each of
                                                        # the job's runs (row, checkpoint and its day, not started,
                                                        # neither), and the files to upload, staged under STAGE
@@ -118,7 +118,7 @@ def cmd_manifest(path, job, log, stage, before=None):
     stopped at, not started, or neither: an error, or the job ended first), from the files ``ids`` left and its log,
     written with the files to upload to ``stage`` (``runs/``, ``events/`` and ``slices/<plan>/job-<job>/`` as under
     out/twin6): the job's slice files, the event logs of its runs that got their row in this wave, its GP check, its
-    log and the manifest. ``before``: the run ids that had rows before the wave (``done``), to tell the new rows from
+    log and the manifest. ``before``: the run ids that had rows before the wave (``done-ids``), to tell the new rows from
     an earlier wave's in the same slice file. Checkpoints of runs that have a row are removed."""
     plan = load_plan(path)
     name = plan_name(plan, path)
@@ -295,7 +295,7 @@ def main(argv):
         return cmd_ids(argv[1], int(argv[2])) or 0
     if c == "check-tree":
         return cmd_check_tree(argv[1])
-    if c == "done":
+    if c == "done-ids":
         return cmd_done() or 0
     if c == "manifest":
         return cmd_manifest(argv[1], int(argv[2]), argv[3], argv[4], argv[5] if len(argv) > 5 else None) or 0
