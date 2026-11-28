@@ -1,0 +1,25 @@
+scen	item	conn_kva	run_kw	basis
+A	Two Kardex Shuttle XP 500s	17.2	2	8.6 kVA each at most (Kardex); running ours
+A	Trays A-F (12 powered trays' first six)	7.0	2.3	#318 services.json: 7015 W everything on; 2277 W printing + furnace holding
+A	Trays G-M	7.0	3	2.7 kW rated in #318 + 4 kW ours for the unrated items
+A	rePowder and its chiller	29.5	12	two 32 A plugs (400 V 3-ph + 230 V); 10 kW coil; running ours
+A	Aconity MIDI and its chiller	17.5	8	208 V 3-ph 32 A (11.5 kVA) + ~15 kW chiller, input ours 6 kVA
+A	InssTek MX-Lab DED	4.4	1	220 V 20 A; running ours
+A	FANUC wire EDM	13	6	13 kVA (snippet); running ours
+A	Instron 68FM-100 and hot chamber	7.2	3	4.2 kVA (maker, snippet) + chamber 3 kVA ours
+A	Instron 68SC-2	1.4	0.5	1400 VA max
+A	Inert glovebox	2	1	not found; ours
+A	Two MiR chargers	3.8	2	1.9 kW each
+A	Air compressor, N2 generator, ThermoFlex chiller	5.5	3	not found or not sized; ours (3.7 + 0.3 + 1.5)
+A	Hood, sieve cell, packaging, network, lift table	1.5	1	ours
+B	EOS M 400-4	45	22	45 kW max, 22 kW typical (EOS)
+B	Meltio robot cell	20	7	20 kW peak, 7 kW average (Meltio)
+B	Bigger compressor for the EOS	4	2	ours
+C	Shuttle 3	8.6	1	same as the others
+C	Five three-each trays	4.3	2	three_each.md option 1: 4330 W
+C	Shuttle 3 roof fan, third MiR charger	2.4	1	ours; MiR 1.9 kW
+D	Two more rePowders	59	24	as above
+D	Three more MIDIs	52.5	24	as above
+D	Seven cobots in five floor cells	4.3	2.5	UR10e 615 W max, 350 W typical
+D	2nd furnace, CubXL, sieve-wash, hot frame, MiR unit	12.2	6	2.8 + 0.1 + 0.2 + 7.2 + 1.9
+D	Bigger compressor	4	2	ours
