@@ -123,3 +123,13 @@
 {"label": "vertical pkgfn3 64x batched", "day": 330, "wall": 2713.3, "cpu": 2050.8, "load1": 9.89}
 {"label": "vertical pkgfn3 64x unbatched", "day": 280, "wall": 2268.0, "cpu": 1590.8, "load1": 10.06}
 {"label": "vertical bofn3 64x unbatched", "day": 280, "wall": 2361.8, "cpu": 1663.2, "load1": 8.99}
+{"label": "vertical bofn3 64x batched", "day": 330, "wall": 2895.9, "cpu": 2174.5, "load1": 7.12}
+{"label": "vertical pkgfn3 64x unbatched", "day": 290, "wall": 2484.7, "cpu": 1736.2, "load1": 8.91}
+{"label": "vertical pkgfn3 64x batched", "day": 340, "wall": 3046.0, "cpu": 2259.7, "load1": 10.46}
+{"label": "vertical bofn3 64x unbatched", "day": 290, "wall": 2763.0, "cpu": 1869.9, "load1": 14.22}
+{"label": "vertical pkgfn3 64x unbatched", "day": 300, "wall": 3048.9, "cpu": 1956.1, "load1": 12.31}
+{"label": "vertical bofn3 64x batched", "day": 340, "wall": 3522.3, "cpu": 2428.4, "load1": 11.65}
+{"label": "vertical pkgfn3 64x batched", "day": 350, "wall": 3617.9, "cpu": 2485.6, "load1": 10.19}
+{"label": "vertical bofn3 64x unbatched", "day": 300, "wall": 3240.5, "cpu": 2085.0, "load1": 8.52}
+{"label": "vertical bofn3 64x batched", "day": 350, "wall": 3937.9, "cpu": 2681.7, "load1": 8.73}
+{"label": "vertical pkgfn3 64x unbatched", "day": 310, "wall": 3569.7, "cpu": 2264.5, "load1": 9.86}

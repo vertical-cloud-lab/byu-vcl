@@ -93,8 +93,9 @@ jobs:
     needs: plan
     if: needs.plan.outputs.jobs != '[]'
     runs-on: ubuntu-latest
-    # 6 h is a hosted job's limit: set-up and the GP check (about 10-15 min), 5.2 h of runs, saving and uploading
-    timeout-minutes: 350
+    # 6 h is a hosted job's limit: set-up and the GP check (about 10-20 min), 5.2 h of runs, each run's last simulated
+    # day and its save, the uploads
+    timeout-minutes: 355
     strategy:
       fail-fast: false
       max-parallel: ${{ inputs.max_parallel != '' && fromJSON(inputs.max_parallel) || 256 }}
@@ -140,7 +141,7 @@ jobs:
           TWIN_WORKERS=4 python -m twin.gpcheck6 --out "out/twin6/slices/$NAME/job-$JOB/gpcheck.json"
       - name: The slice (python -m twin.bench6 ids ... --hours 5.2)
         id: slice
-        timeout-minutes: 330
+        timeout-minutes: 325
         working-directory: vertical-lab
         run: |
           python ci/twin_slices.py ids "$PLAN" "$JOB" > "$RUNNER_TEMP/ids.txt"
