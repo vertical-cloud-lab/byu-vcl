@@ -7,7 +7,8 @@ analysis of the video and its conclusions then land on GitHub. Asked for by @gag
 camera. The first part of that issue, a survey of commercial smart glasses, is
 [`docs/provenance-eyes.md`](../../docs/provenance-eyes.md). Its closest off-the-shelf match to
 this build is Mentra Live ($449), though, like all glasses, it can't be worn with a full-face
-respirator ([`PPE.md`](PPE.md)).
+respirator ([`PPE.md`](PPE.md)). [`docs/pov-cameras.md`](../../docs/pov-cameras.md) maps every
+page on this topic, including the earlier chest-mount and camera-glasses pages from #290.
 
 **Status: designed, not built.** The model below is a concept: parts are placed at their real
 sizes and weights, but the printed enclosures are envelopes, not print-ready parts. Nothing has
@@ -136,6 +137,7 @@ path, in six phases with the commands for each, is in [`SOFTWARE.md`](SOFTWARE.m
 | Path | What |
 | --- | --- |
 | [`PPE.md`](PPE.md) | Full-face respirators and lab coats: what they rule out, the v2 checks, how to wear it |
+| [`STABILIZATION.md`](STABILIZATION.md) | Head-camera jitter: when to use a head or a chest camera, and how to steady head footage |
 | [`cad/layout.py`](cad/layout.py) | Head form, band geometry, pod positions and part masses (plain Python); `use("v1")` or `use("v2")` |
 | [`cad/build_headset.py`](cad/build_headset.py) | Builds the scene in Blender, with a generic full-face respirator, lab coat and bench for context; renders `img/`, exports `stl/` |
 | [`cad/respirator_check.md`](cad/respirator_check.md) | Written by the build: gaps to the facepiece and the coat collar, and how much of the camera's view the respirator blocks |
@@ -160,6 +162,10 @@ python3 mass_budget.py                                            # balance tabl
   models, speech through the facepiece, and EHS sign-off. See [`PPE.md`](PPE.md#still-to-check).
 - **Weights we estimated:** the PiSugar 3 and its cell, the printed pods and the headgear. None of
   them is published.
+- **Jitter.** A head camera turns with every glance, so its footage shakes more than a chest
+  camera's (Sterling, on #342). Keep the original as the record and make a steadied copy for
+  training videos. An optional gyro in the camera head lets Gyroflow do that from measured
+  motion. See [`STABILIZATION.md`](STABILIZATION.md).
 - **Heat:** the Zero 2 W sits at the hairline and dissipates about 2 W while encoding, roughly a
   headlamp's worth. Check the enclosure's temperature against the skin during a 30-minute
   recording, and move the Pi to the back if it is uncomfortable. A respirator adds its own heat,

@@ -10,14 +10,30 @@ Prices, ratings and stock below were read from Amazon US on **2026-10-22**, from
 (see [How this was gathered](#how-this-was-gathered)). Specs Amazon doesn't list come from the
 makers or from reviews, linked where they're used. Nothing here has been bought, worn or tested.
 
+> **Update, 2026-11-28.** #290 was closed as a duplicate of
+> [#342](https://github.com/vertical-cloud-lab/byu-vcl/issues/342), which took this page further.
+> Three findings from there change how to read it:
+>
+> - **No glasses can be worn with a full-face respirator.** The arms would cross the facepiece's
+>   seal, so on respirator days every pair below is out
+>   ([`PPE.md`](../hardware/provenance-eyes/PPE.md)).
+> - **The Vuzix Blade 2 is discontinued.** CDW says it "was discontinued on July 12, 2024"
+>   ([CDW](https://www.cdw.com/product/vuzix-blade-2-smart-glasses-40-gb/7254638)), so the
+>   prices in the table below are probably old stock.
+> - **Getting the video and logs off the device** is compared in
+>   [`provenance-eyes.md`](provenance-eyes.md). Meta's glasses offer no logs, and their
+>   developer toolkit streams at most 720×1280.
+>
+> [`pov-cameras.md`](pov-cameras.md) maps all the pages on this topic.
+
 ## Short version
 
 **None of the Meta-style camera glasses is safety eyewear.** Ray-Ban Meta, Oakley Meta, Meta
 Ray-Ban Display, HTC Vive Eagle and Rokid all sell consumer glasses, and none of them claims
 ANSI Z87.1. Where the lab requires Z87.1 eye protection, they can only be worn *under* goggles.
 The smart glasses that *are* certified safety eyewear with a camera are enterprise products,
-from about $1,300 (Vuzix) to €2,275 (Iristick). In between are $80 camera glasses whose listings
-claim Z87.1, which nobody has checked.
+from about $1,300 (Vuzix, since found to be discontinued) to €2,275 (Iristick). In between are
+$80 camera glasses whose listings claim Z87.1, which nobody has checked.
 
 What fits depends on the eye protection the work needs:
 
@@ -77,7 +93,7 @@ clips, and one $90 pair lets you set the clip length anywhere from 15 s to 12 mi
 | --- | --- | --- | --- | --- | --- |
 | [Iristick.G3](https://iristick.com/) | EN 16321, ANSI Z87 | two cameras, centred between the eyes | 95 g | €2,275 excl. VAT, "while stock lasts" ([pricing](https://iristick.com/pricing/)) | Runs from an iPhone or Android phone over USB-C. Remote-assist app free; Teams €365/yr; SDK €1,000/yr. Six-week trial €1,000. |
 | Iristick.G2 (earlier model) | "certified safety glasses" ([2021 spec sheet](https://www.quad.de/media/66/97/03/1653403744/spec-sheet-Iristick.G2-EU-industry.pdf)) | camera plus optical zoom | 78 g (same sheet) | €1,975 | |
-| [Vuzix Blade 2](https://vuzix.com/products/vuzix-blade-2-smart-glasses) | ANSI Z87.1 | 8 MP autofocus, 1080p30 | not published | $1,289.99 ([ChannelXR](https://channelxr.com/products/vuzix-blade-2-smart-glasses)); $1,299.99 MSRP ([SHI](https://www.shi.com/product/45587499/Vuzix-Blade-2-Smart-glasses)) | Standalone Android 11, with a see-through display. Amazon's listing for the earlier Z87.1 Blade ([B08K9D97CK](https://www.amazon.com/dp/B08K9D97CK)) now returns "Page Not Found". |
+| [Vuzix Blade 2](https://vuzix.com/products/vuzix-blade-2-smart-glasses) | ANSI Z87.1 | 8 MP autofocus, 1080p30 | not published | $1,289.99 ([ChannelXR](https://channelxr.com/products/vuzix-blade-2-smart-glasses)); $1,299.99 MSRP ([SHI](https://www.shi.com/product/45587499/Vuzix-Blade-2-Smart-glasses)) | **Discontinued** on 2024-07-12 per [CDW](https://www.cdw.com/product/vuzix-blade-2-smart-glasses-40-gb/7254638) (found on #342), so these prices are probably old stock. Standalone Android 11, with a see-through display. Amazon's listing for the earlier Z87.1 Blade ([B08K9D97CK](https://www.amazon.com/dp/B08K9D97CK)) now returns "Page Not Found". |
 | [RealWear Navigator 520](https://shop.realwear.com/pages/realwear-navigator-520-specifications) | none itself; worn with safety glasses or a hard hat | 48 MP, 1080p60 | 270 g | [Amazon](https://www.amazon.com/dp/B0BZ3QN297): currently unavailable | Voice-controlled headset with a display arm. Heavier on the head than anything else here. |
 | [Vuzix M400 Starter Kit](https://www.amazon.com/dp/B087QSPFT9) | none on the listing (the kit includes "Safety Glasses Frames") | monocular camera and display | not listed | Amazon: currently unavailable | Clips onto the included frames, a headband or a hat. |
 
@@ -144,7 +160,7 @@ over it has to be tried on.
 
 ## The AR part: displays, and getting video into our own software
 
-- **Displays.** Meta Ray-Ban Display, Rokid Glasses, Vuzix Blade 2 and RealWear show text in
+- **Displays.** Meta Ray-Ban Display, Rokid Glasses, Vuzix Blade 2 (discontinued) and RealWear show text in
   your field of view, which could put protocol steps in view while your hands are busy. None of
   the consumer ones is safety eyewear, and Meta caps a *recording of the display* at one minute
   ([Meta help](https://www.meta.com/help/ai-glasses/951708387778102/)).

@@ -12,6 +12,23 @@ figure. Nothing has been bought or tested here yet.
 For camera glasses, and for smart glasses that are also safety eyewear, see
 [smart-safety-glasses.md](smart-safety-glasses.md).
 
+> **Update, 2026-11-28.** #290 was closed as a duplicate of
+> [#342](https://github.com/vertical-cloud-lab/byu-vcl/issues/342), which moved on to head-worn
+> cameras. [`pov-cameras.md`](pov-cameras.md) maps all the pages on this topic. Three things
+> found since bear on this page:
+>
+> - **The chest is the steadier place for training footage.** A head camera turns with every
+>   glance, so it shakes more, as Sterling noted on #342. It is the more faithful record of what
+>   the wearer saw. [`STABILIZATION.md`](../hardware/provenance-eyes/STABILIZATION.md) covers
+>   when to use which, and how to steady head footage.
+> - **Lab coats.** Anything on the chest has to move every time a coat goes on or off. Clipped
+>   to the coat, it leaves with the coat; under the coat, it is covered
+>   ([`PPE.md`](../hardware/provenance-eyes/PPE.md#lab-coats)). A harness or neck mount comes
+>   off and goes back on with each change. The magnetic pendant is the quickest: lift the camera
+>   off, change the coat, put it back.
+> - **Full-face respirators** don't get in the way of a chest camera, but they rule out every
+>   pair of camera glasses.
+
 ## Short version
 
 **There is no lighter neck mount.** Every phone neck mount checked lists about 190–310 g before the

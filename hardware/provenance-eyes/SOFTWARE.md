@@ -144,8 +144,9 @@ charging; the PiSugar reports this over I2C.
    **Always pass `privacy`.** Since 2 November 2026, uploads from unverified API projects are no
    longer forced to private, and an upload with no `privacyStatus` now defaults to **public**
    ([revision history](https://developers.google.com/youtube/v3/revision_history)). The helper
-   already defaults to `private`. This also makes the line in `youtube/README.md` about uploads
-   being "locked private anyway" out of date. Uploads now have their own quota, 100 a day by
+   itself has defaulted to `public` since 2026-11-19
+   ([#355](https://github.com/vertical-cloud-lab/byu-vcl/pull/355)), so a call without
+   `privacy` publishes the clip. Uploads now have their own quota, 100 a day by
    default ([quota](https://developers.google.com/youtube/v3/determine_quota_cost)).
 3. **The analysis bundle**, a few MB:
    - **Audio:** `ffmpeg -i <id>.mkv -vn -ac 1 -ar 16000 -c:a flac audio.flac`.

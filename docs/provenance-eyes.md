@@ -8,10 +8,12 @@ replaces the chest camera for recording lab procedures, with three hard requirem
    into our own code without going through a vendor's app by hand.
 3. **Automated upload** to our database (MongoDB `digital-wetlab`) and to YouTube.
 
-This follows [#290](https://github.com/vertical-cloud-lab/byu-vcl/issues/290). There,
-[`smart-safety-glasses.md`](https://github.com/vertical-cloud-lab/byu-vcl/blob/aa9ff51/docs/smart-safety-glasses.md)
-(on an unmerged branch) compared safety ratings, weights and Amazon prices. This page asks the
-question that doc didn't: **which devices let us get at the data?**
+This follows [#290](https://github.com/vertical-cloud-lab/byu-vcl/issues/290), which was closed
+on 2026-11-28 as a duplicate of this issue. There,
+[`wearable-camera-mounts.md`](wearable-camera-mounts.md) compared chest and neck mounts for a
+phone, and [`smart-safety-glasses.md`](smart-safety-glasses.md) compared safety ratings, weights
+and Amazon prices of camera glasses. This page asks the question those docs didn't: **which
+devices let us get at the data?** [`pov-cameras.md`](pov-cameras.md) maps all of these pages.
 
 Researched on **2026-11-12** from makers' pages, developer docs and press. Nothing has been bought,
 worn or tested. See [How this was gathered](#how-this-was-gathered) for which facts were
@@ -43,6 +45,16 @@ two conditions:
 
 The details, with the full table, are in
 [`hardware/provenance-eyes/PPE.md`](../hardware/provenance-eyes/PPE.md#the-commercial-options-under-the-same-two-conditions).
+
+## Update, 2026-11-28: head-camera jitter
+
+Sterling noted on #342 that a head camera shows "a lot more movement / jitter" than the chest
+camera, which matters for training material, though it is "obviously more faithful to what the
+user experiences".
+[`hardware/provenance-eyes/STABILIZATION.md`](../hardware/provenance-eyes/STABILIZATION.md)
+covers what to do about it, for the Pi build and for the devices on this page. In short: keep the
+shaky original as the record, make a steadied copy for viewing, and film training videos with a
+steady second camera as well.
 
 ## Short version
 
@@ -124,7 +136,8 @@ Three kinds of device turned up:
 - **Unknowns to ask Iristick:** whether the SDK records the mic together with the camera stream,
   or we have to mux them ourselves; and whether the glasses show up as a standard USB (UVC)
   camera, which would let an existing streaming app use them without the SDK. Neither is documented.
-- **Trying it:** #290's doc found a six-week trial for €1,000, which is deducted if you buy.
+- **Trying it:** [#290's doc](smart-safety-glasses.md#certified-safety-eyewear-with-a-camera-enterprise)
+  found a six-week trial for €1,000, which is deducted if you buy.
 - **Older model:** the Iristick.G2 (€1,975, with 6x optical zoom and a hot-swap battery) is "no
   longer made, while stock lasts".
 
@@ -211,7 +224,8 @@ days. Its OS, MentraOS, is open source under
 The examples run video at 1280×720 and 30 fps. Mentra's docs also describe installing software
 with ADB. The catches: about **1 h of recording per charge**, no safety rating, no prescription
 option, and a small startup vendor. It's the cheapest way to prove the whole pipeline. For splash work it
-would have to go under over-the-glasses goggles, which is untested (see #290's doc).
+would have to go under over-the-glasses goggles, which is untested
+(see [`smart-safety-glasses.md`](smart-safety-glasses.md#goggles-that-fit-over-glasses)).
 
 ### Idea 1: Meta glasses
 
@@ -262,7 +276,7 @@ provenance record.
 | --- | --- | --- | --- | --- |
 | [Vuzix M400](https://www.vuzix.com/collections/smart-glasses) | $1,499.99 | none; Vuzix's $29.99 safety-frame kit has no Z87.1 statement found | Android 13, ADB (off by default, [switch on](https://support.vuzix.com/docs/enable-adb-debugging-on-the-vuzix-m400-m4000)), standard camera APIs | cheapest open Android with 4K autofocus and 3 noise-cancelling mics. Monocular display arm. Vuzix had $17.3M cash against a $7.7M quarterly loss ([Q2 2026](https://www.sec.gov/Archives/edgar/data/0001463972/000110465926097887/tm2623396d1_ex99-1.htm)) |
 | Vuzix LX1 | $2,199.99, sold out | none | Android 15, ADB | as M400, 10 h battery |
-| Vuzix Shield / Blade 2 | about $2,500 / about $1,300 | ANSI Z87.1 | Android 11 | Shield's 2026 availability unverified. **Blade 2 was listed discontinued by CDW in July 2024**, so treat #290's reseller price as old stock |
+| Vuzix Shield / Blade 2 | about $2,500 / about $1,300 | ANSI Z87.1 | Android 11 | Shield's 2026 availability unverified. **Blade 2 was listed discontinued by [CDW](https://www.cdw.com/product/vuzix-blade-2-smart-glasses-40-gb/7254638) on 2024-07-12**, so treat the reseller price in [`smart-safety-glasses.md`](smart-safety-glasses.md#certified-safety-eyewear-with-a-camera-enterprise) as old stock |
 | RealWear Navigator 520 | about $2,700–3,150 | none | as Arc 3 | heavier boom headset; Arc 3 is the better fit |
 | [RayNeo X3 Pro](https://rayneo.gitbook.io/rayneo-devdoc/chang-jian-wen-ti/adb-tiao-shi/adb-lian-jie-ji-tou-ping) | $1,299 | none | Android, ADB switch | only about 30–36 min of video per charge |
 | [Viture Helix](https://www.prnewswire.com/news-releases/viture-unveils-helix-the-first-ai-safety-glasses-built-on-nvidias-xr-ai-solution-at-awe-2026-302802005.html) | from $600 | "engineered to ANSI Z87.1-2025", certification pending | no SDK; streams to a hosted AI service | **watch**: aimed at wet labs, pilots at Stanford and Princeton, ships Q1 2027 |
@@ -288,7 +302,7 @@ changes from device to device.
 ```
  glasses ──(adb pull / our SDK app / phone gallery)──► lab PC or Pi ──► sha256 + ffprobe
     │                                                       │
-    │                                                       ├─► youtube/yt_service.py upload  (private, upload-only token)
+    │                                                       ├─► youtube/yt_service.py upload  (--privacy set, upload-only token)
     │                                                       │        └─ returns video_id ─┐
     │                                                       └─► MongoDB digital-wetlab ◄──┘  one metadata document per clip
     │
@@ -297,8 +311,11 @@ changes from device to device.
 
 - **YouTube, recorded.** [`youtube/yt_service.py`](../youtube/yt_service.py) already does
   resumable uploads to the lab channel with the upload-only token, for example
-  `python youtube/yt_service.py upload clip.mp4 --title "..."`. Uploads land as private, which
-  is the right default for footage of people at work.
+  `python youtube/yt_service.py upload clip.mp4 --title "..." --privacy unlisted`. **Always pass
+  `--privacy`.** Since 2026-11-19 ([#355](https://github.com/vertical-cloud-lab/byu-vcl/pull/355))
+  the helper defaults to `public`, and YouTube no longer forces API uploads to private, so a
+  clip uploaded without it goes out public. Unlisted or private is the right setting for
+  footage of people at work.
 - **YouTube, live.** The stream cams get a broadcast and an RTMP ingest URL from
   [streamingLambda](https://github.com/vertical-cloud-lab/streamingLambda) and push to it with
   ffmpeg ([`stream-cams.md`](stream-cams.md)). Any device above that accepts a custom RTMP URL
