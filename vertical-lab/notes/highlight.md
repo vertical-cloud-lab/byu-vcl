@@ -10,8 +10,12 @@ and its outputs stay where they were, in [`out/highlight/`](../out/highlight/).
 ## The 2026-11-28 edition: the alloy route, the real atomizer, what's new, the twin
 
 - The cut: [`out/highlight/2026-11-28/vertical_lab_highlight_2026-11-28.mp4`](../out/highlight/2026-11-28/vertical_lab_highlight_2026-11-28.mp4),
-  3:37, 1280 × 720 at 30 fps, silent, 18 shots, a YouTube chapter for each. Its record (every part's times and source,
-  the MP4's sha256, the upload) is [`highlight.json`](../out/highlight/2026-11-28/highlight.json).
+  3:37, 1280 × 720 at 30 fps, silent, 18 shots, a YouTube chapter for each. On YouTube, **public, subscribers
+  notified**: [b3kamYpyCpo](https://www.youtube.com/watch?v=b3kamYpyCpo) (uploaded 2026-11-28 08:40 UTC, processed in
+  HD). Its record (every part's times and source, the MP4's sha256, the upload) is
+  [`highlight.json`](../out/highlight/2026-11-28/highlight.json), and the description as uploaded is
+  [`youtube_description.txt`](../out/highlight/2026-11-28/youtube_description.txt). The first edition's unlisted
+  upload (lnpVq8JvnJM) is untouched: the run's YouTube token can upload but not edit or delete.
 - The stills: [`out/highlight/2026-11-28/stills/`](../out/highlight/2026-11-28/stills/), one 1280 × 720 PNG per shot,
   each the cut's own frame with its band; [`highlight_sheet.png`](../out/highlight/2026-11-28/highlight_sheet.png)
   puts them side by side.
