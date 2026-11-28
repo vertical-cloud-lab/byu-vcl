@@ -50,15 +50,18 @@ code; the support rooms are one illustrative way to use the rest of the floor.
     10,000 ft² adds the 50 ft array if there is a high bay. In a small building height is the only way to add trays:
     two Shuttles hold 14 at 3.95 m, 40 at 28 ft clear and 58 at 36 ft.
   - **Small spaces top out at 28 ft** near Provo and near the U, and are often wired for only 200-400 A at 208 V.
-  - **Best fits:** Hobble Creek Business Park, Springville (28 ft, 2,000 A at 480 V in the building, 4.6 mi from
-    BYU), and Skyline Commerce Center Bldg 1 in Salt Lake City (9,563 ft², 28 ft, 3.8 mi from the U of U).
+    Axia (Herriman) now offers only a 28,177 ft² suite.
+  - **Best fits:** Mountain Point Bldg 3, Bluffdale, the one 36 ft suite in the size range (from 9,158 ft²,
+    2,400 A at 480/277 V, halfway between the universities); Hobble Creek Business Park, Springville (28 ft,
+    2,000 A at 480 V in the building, 4.6 mi from BYU); and Skyline Commerce Center Bldg 1 in Salt Lake City
+    (9,563 ft², 28 ft, 3.8 mi from the U of U).
   - **Hangars are out** (FAA policy), but Provo's Airport Industrial zone allows 55 ft buildings off the airfield.
   - **The U** already runs metal powder, laser powder-bed printing and an H-occupancy gas room: a precedent and a
     possible partner. Research Park has no high bay and caps height at 45 ft (snippet).
 - **Height decides only whether the trays could go into the tall array.**
   - **The 50 ft array** needs about **51-53 ft clear** (depending on the sprinklers), but nothing available near BYU
     is over **36 ft**, except two large buildings listing 36-40 ft found on 2026-11-28 (Payson Central Tech, and
-    Spanish Fork Skypark in a snippet; [`small-high-bay.md`](small-high-bay.md#taller-but-bigger-than-10000-ft)).
+    Spanish Fork Skypark in a snippet; [`small-high-bay.md`](small-high-bay.md#taller-but-bigger-than-10000-square-feet)).
   - **Three ways round it:** an 11 ft (3.4 m) pit in a 40 ft clear building, a high bay in a purpose-built building, or
     more, shorter units (13 units at 10.5 m under 36 ft, or 15 at 9.2 m under 32 ft) for the same 352 trays.
   - **Area is easy:** the #318 floor fits in about 3,500 ft² and the array in under 1,000 ft². 20,000 ft² is enough
@@ -272,7 +275,7 @@ Read on 2026-11-12 from public listings. **Nobody was contacted.**
 - **Listings change weekly:** "available" means listed on that date.
 
 **No available building near BYU is taller than 36 ft clear,** apart from two large ones at 36-40 ft found later
-([`small-high-bay.md`](small-high-bay.md#taller-but-bigger-than-10000-ft)). So the 50 ft array needs a pit, a
+([`small-high-bay.md`](small-high-bay.md#taller-but-bigger-than-10000-square-feet)). So the 50 ft array needs a pit, a
 purpose-built high bay, or the shorter units in the [table above](#height). The last column applies that table.
 
 ### Lease (the short-term path), Lehi first
@@ -543,9 +546,9 @@ checked against a flyer; Crexi hides the rest behind a sign-in, which wasn't use
    the later, purpose-built building, which is where a high bay fits naturally.
 6. **Before signing for a building,** get a written use determination from the city (draft 3) and a code review from
    a fire-protection engineer (draft 10). [`zoning-and-safety.md`](zoning-and-safety.md) lists what else to check.
-7. **For a smaller first step** ([`small-high-bay.md`](small-high-bay.md#4-if-we-were-to-ask-about-three)), ask
-   about Hobble Creek (Springville) and Skyline Commerce Center Bldg 1 (Salt Lake City), and the bay height of R&H
-   Provo (drafts 1 and 12). Ask the U about partnering (draft 13).
+7. **For a smaller first step** ([`small-high-bay.md`](small-high-bay.md#5-if-we-were-to-ask-about-three-and-one-more)), ask
+   about Mountain Point Bldg 3 (Bluffdale, 36 ft, from 9,158 ft²), Hobble Creek (Springville) and Skyline Commerce
+   Center Bldg 1 (Salt Lake City), and the bay height of R&H Provo (drafts 1 and 12). Ask the U about partnering (draft 13).
 8. **Fill the gaps:** costs of H rooms and high-bay premiums, Provo's tariff, the codes for American Fork and other
    cities (HTTP 403 here), and the LoopNet listings that refuse both the runner and the Pi.
 

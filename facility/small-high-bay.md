@@ -23,7 +23,10 @@ options of 3,000-10,000 ft², keep the high ceiling, and look at places close to
   - **Ten a day doesn't fit.** Its lab floor alone is 7,500-9,500 ft².
 - **Height is worth more in a small building.** Two Shuttles on the same 220 ft² hold 14 trays at #318's 3.95 m, 40
   at 28 ft clear, 58 at 36 ft and 88 at 51 ft. A small building can't add trays any other way.
-- **But small spaces top out at 28 ft,** near Provo and near the U alike. Every 32-40 ft building is a big one: two
+- **Halfway between, one suite fits the size and keeps 36 ft:** **Mountain Point Business Center Bldg 3, Bluffdale**,
+  from 9,158 ft², 36 ft clear, 2,400 A at 480/277 V, 14 × 16 ft grade-level doors, about 27 road miles from each
+  university (28-45 min midday).
+- **Otherwise small spaces top out at 28 ft,** near Provo and near the U alike. Every 32-40 ft building is a big one: two
   near Provo list 36-40 ft (Payson Central Tech, published; Spanish Fork Skypark, snippet), the first listings above
   36 ft near BYU in any pass, and both far over 10,000 ft².
 - **Power is the catch in small units.** Condos and subleases have 200-400 A at 208 V. Round 11 wants about 520 A at
@@ -39,8 +42,8 @@ options of 3,000-10,000 ft², keep the high ceiling, and look at places close to
 - **Near the U, best fit:** **Skyline Commerce Center Bldg 1, Ste 600** (3.8 mi from Warnock): 9,563 ft², 28 ft, a
   12 × 14 ft drive-in door, available December 2026. Its MU-11 zoning permits R&D but not manufacturing. Nothing
   within 6 miles is over 32 ft, and the 32 ft spaces are all 19,000 ft² or more.
-- **Research Park** is U land with a 45 ft height cap (snippet), office and lab space only, and uses limited to R&D and
-  labs.
+- **Research Park** is U land with a 45 ft height cap (snippet), office and lab space only, and uses limited to R&D,
+  labs and offices.
 - **Part of the U:** the U already runs metal powder and laser powder-bed printers (Zak Fang's lab and the Titanium
   Additive Manufacturing Research Center with IperionX), and the Nanofab has an H-occupancy gas room. That makes it a
   precedent and a possible partner, but none of it is a high bay to lease.
@@ -68,7 +71,7 @@ So in 3,000-10,000 ft², the support rooms shrink or move to campus, and the flo
 
 | Building (ours) | What it holds | What goes elsewhere, or is left out | Service to ask for (from `needs.md`) |
 |---|---|---|---|
-| **About 3,000 ft²** (74 × 41 ft in the figure) | Round 11's floor, with gas and powder cabinets, an eyewash, panels and the chiller along one wall | The EOS and the Meltio cell. Offices, receiving and the workshop, on campus. A powder room: the powder stays in cabinets, under the code's limits | about 230 A at 480 V (520 A at 208 V) |
+| **About 3,000 ft²** (74 × 41 ft in the figure) | Round 11's floor, with gas and powder cabinets, an eyewash, panels and the chiller along one wall | The EOS and the Meltio cell. Offices, receiving and the workshop, on campus. A powder room: stock stays in cabinets and the jar store under the code's limits (below) | about 230 A at 480 V (520 A at 208 V) |
 | **About 6,000 ft²** (100 × 60 ft) | Adds the EOS and the Meltio cell, a 440 ft² powder room on an outside wall, a plant room (chiller, air, N₂, the 400 V transformer), receiving behind a grade-level door, a control room, a workshop and staging | Offices | about 350 A at 480 V |
 | **About 10,000 ft²** (125 × 80 ft) | The same, with bigger powder and plant rooms, a small office, and the 50 ft array: eight 15.15 m Shuttles, 352 trays, 956 ft² under 51-53 ft clear. Under 36 ft, 13 units of 10.5 m hold the same trays in 1,672 ft² | Most offices | about 350 A plus the array. The eight Shuttles alone are up to 69 kVA (8.6 kVA each); the trays' draw isn't in `needs.md`. Ask for 600 A (ours) |
 | Ten a day | Doesn't fit. Its lab floor alone is 7,500-9,500 ft², and `needs.md` puts the building at 20,000-25,000 ft² | | about 600 A, ask for 800 A |
@@ -92,8 +95,9 @@ sprinklers, holds:
   buys trays, not floor.
 - **In a small building that matters more than in a big one.** A 20,000 ft² building can add trays by adding Shuttles
   on the floor; a 3,000-6,000 ft² building can't spare the floor.
-- **36 ft is the usual top for these buildings** (Gage's Newmark contact, and every listing found so far). Above that
-  means a pit, a high bay, or a building that was never a warehouse.
+- **36 ft is the usual top for warehouses here** (Gage's Newmark contact). The only taller listings found are two big
+  buildings at 36-40 ft ([§2](#taller-but-bigger-than-10000-square-feet)). Above that means a pit, a high bay, or a building
+  that was never a warehouse.
 
 ### What changes when the building is small
 
@@ -108,9 +112,12 @@ sprinklers, holds:
   - **Without sprinklers the powder limits don't double:** 125 lb of flammable solids per control area, 250 lb in
     cabinets; 50 and 100 lb if the powder tests as water-reactive Class 2
     ([README](README.md#codes-that-decide-the-building)).
-  - **A full jar store is about 80 kg (176 lb)** ([`needs.md`](needs.md#what-decides-between-them)). That fits one
-    control area in cabinets as a flammable solid, sprinklered or not. As water-reactive Class 2 it needs a sprinklered
-    building (200 lb in cabinets) or two control areas. A ground floor may have four, behind 1-hour fire barriers.
+  - **A full jar store is about 80 kg (176 lb)** ([`needs.md`](needs.md#what-decides-between-them)), and #318 keeps
+    it in the Shuttles' jar trays, which aren't hazardous-materials cabinets. Without cabinets, one control area holds
+    125 lb of flammable solids unsprinklered or 250 lb sprinklered (50 or 100 lb if water-reactive Class 2).
+  - **So a sprinklered building takes the full store** as a flammable solid in one control area. An unsprinklered one,
+    or a water-reactive result, means a smaller store, stock moved into cabinets, or an H room. A ground floor may have
+    four control areas behind 1-hour fire barriers, but one Shuttle can't be split between them.
   - **The 18 in in the height table assumes sprinklers.** Without them a unit could go a little taller, but the fire
     marshal may treat a tall Shuttle as high-piled storage (IFC Chapter 32), which brings fire protection of its own.
     A question for draft 10.
@@ -118,22 +125,24 @@ sprinklers, holds:
   landlord's insurance and the other leases may limit hazardous materials. An end unit gives the outside wall a powder
   room needs (25 % of its perimeter) and a place for the argon pad.
 - **Doors.** The EOS and the Meltio cell need a grade-level door about 12 ft tall
-  ([`needs.md`](needs.md#8-floor-weight-doors-and-logistics)). The 3,000 ft² version has neither, so a 10 ft door does.
+  ([`needs.md`](needs.md#8-floor-weight-doors-and-logistics)). The 3,000 ft² version has neither; its biggest
+  one-piece item is the wire EDM, which a 9 × 10 ft door takes.
 - **Argon.** Round 11's roughly 5 m³ a day is 15-20 cylinders a month, past the point where suppliers suggest
-  microbulk. A 1,500 L tank sits on a 7 × 7 ft pad, at least 5 ft from lot lines and 10 ft from doors and air intakes
+  microbulk. A 1,500 L tank sits on a 7 × 7 ft pad, at least 5 ft from lot lines and 10 ft from exits and air intakes
   ([README](README.md#codes-that-decide-the-building)). In a multi-tenant park that means the truck court, with the
   landlord's consent.
 
 ## 2. Closer to Provo
 
 Read on 2026-11-28 from public listings. Miles are straight lines from BYU, from US Census or OpenStreetMap geocodes
-([`out/small/sites.tsv`](out/small/sites.tsv)); "about" means the pin is only to the street, or the agent's estimate.
+([`out/small/sites.tsv`](out/small/sites.tsv)); "about" means the pin is only to the street, or the distance is estimated from the address.
 
 ![Smaller high-bay candidates around Provo, on OpenStreetMap](out/small/map_provo.png)
 
-**No 3,000-10,000 ft² space near Provo advertises more than 28 ft clear.** Every building listed at 32-40 ft is a large
-distribution building, leased whole or in suites of 26,000 ft² and more. Gage's Newmark contact said 36 ft is usually
-the most; in small units the top is 28 ft.
+**No 3,000-10,000 ft² space near Provo advertises more than 28 ft clear.** Every building near Provo listed at 32-40 ft
+is a large distribution building, leased whole or in suites of about 22,000 ft² and more (Hamilton Commerce Center's
+bays at 32 ft, Springville). Gage's Newmark contact said 36 ft is usually the most; in small units near Provo the top
+is 28 ft. The one suite in the size range at 36 ft is halfway to Salt Lake City ([§4](#4-halfway-between-the-one-36-ft-suite-in-the-size-range)).
 
 ### Small-bay industrial and flex, tallest first
 
@@ -177,7 +186,7 @@ Shuttles would hold 16 trays there.
 - **The Orem sublease is the quickest:** 10,573 ft² at 26 ft, available, with an office and mezzanine built. Power
   (400 A at 208 V) would need an upgrade for anything past the machines.
 
-### Taller, but bigger than 10,000 ft²
+### Taller, but bigger than 10,000 square feet
 
 | Site | Miles | Size (ft²) | Clear | Status | Listing (brokers) |
 |---|---|---|---|---|---|
@@ -200,8 +209,8 @@ Crane bays are often tall, but none of these gives an eave or hook height. Ask.
 | P8 | East Bay Industrial Warehouse, 701 S 100 E, Provo | 1.7 | 21,457 | "overhead cranes", 7 grade-level doors, 480 V three-phase | not stated | [CommercialCafe](https://www.commercialcafe.com/commercial-property/us/ut/provo/east-bay-industrial-warehouse/) (Richard Dodge) |
 | | 1005 S Main, Lindon | about 8 | 48,500 | an overhead crane (snippet) | not stated | [CommercialCafe](https://www.commercialcafe.com/commercial-property/us/ut/lindon/industrial-flex/) |
 
-- **With 225 E 900 S, the two in Provo are the closest industrial buildings to BYU found in any pass,** all under 2
-  miles. Both are bigger than 10,000 ft², but R&H's M-2 zoning and a crane bay make it worth a call about the bay's
+- **With 225 E 900 S, the two in Provo are the closest industrial buildings to BYU with any sign of height,** all
+  under 2 miles. Both are bigger than 10,000 ft², but R&H's M-2 zoning and a crane bay make it worth a call about the bay's
   height and whether part of it could be leased.
 
 ### Airport hangars: not for a lab
@@ -324,18 +333,38 @@ campus. Research Park itself has office and lab space but no high bay, and its r
 | BioFire | Research Park | 285,000 ft² building | [KSL](https://www.ksl.com/article/44286776/biofire-opens-new-utah-facility-with-multinational-partner) |
 | ARUP Laboratories | Research Park | 750,000 ft² | [ARUP](https://www.aruplab.com/news/03-17-2021/arup-has-long-history-and-largest-presence-research-park) |
 
-## 4. If we were to ask about three
+## 4. Halfway between: the one 36 ft suite in the size range
 
-1. **Hobble Creek Business Park, Springville** (draft 1 to Newmark, or draft 12). Ask:
+| Site | Miles | Space (ft²) | Clear | Power | Doors | Status | Listing (brokers) |
+|---|---|---|---|---|---|---|---|
+| **Mountain Point Business Center Bldg 3**, 860 W 14600 S, Bluffdale (Point of the Mountain; pin 14 on the [region map](sites.md#where-the-sites-are)) | 21.5 from BYU, 19.8 from Warnock (straight); 26.7 and 27.1 by road | 27,081, **divisible from 9,158** | **36 ft** | **2,400 A, 480/277 V, 3-ph** | three 14 × 16 ft grade-level, four 9 × 10 ft dock-high | "Under Construction", available "Immediate"; rate on request; page updated 2026-11-25 | [CommercialCafe](https://www.commercialcafe.com/commercial-property/us/ut/bluffdale/mountain-point-business-center-building-3-for-lease/) (Colliers: Tom Freeman, Travis Healey, Jeremy Jensen, Jeremy Terry) |
+
+- **It meets the brief on size, height and doors.** At 36 ft, two 10.5 m Shuttles hold 58 trays on the floor #318's
+  pair takes, and 13 of them hold the array's 352 trays in 1,672 ft². A 9,158 ft² suite has room for the 6,000 ft²
+  version in the figure, plus 3,000 ft² to spare.
+- **Power:** by floor area a 9,158 ft² suite's share of the 2,400 A is about 220 A at 480 V, about round 11's need. Ask
+  for 350-400 A.
+- **Travel** ([`travel-times.md`](travel-times.md)): 28-40 min to the BYU Engineering Building and 30-45 min to the
+  U of U's Warnock building at midday, 30-80 min at rush hour. No transit route.
+- **Axia Business Park, Herriman,** the other 36 ft building in the README's list, now offers only one 28,177 ft²
+  suite (page updated 2026-11-25), so it has left the size range.
+
+## 5. If we were to ask about three (and one more)
+
+1. **Mountain Point Bldg 3, Bluffdale, for the height** (draft 1 to Colliers). Ask:
+   - whether a 9,158 ft² end bay is still free, with its exterior wall and room for an argon pad;
+   - how many of the 2,400 A the landlord would allocate (350-400 A at 480 V);
+   - the zoning, the slab and the roof.
+2. **Hobble Creek Business Park, Springville, nearest BYU** (draft 1 to Newmark, or draft 12). Ask:
    - which bays are left;
    - whether the landlord would allocate 300-400 A at 480 V to one;
    - the zoning, door sizes, slab and roof;
    - whether an end bay is free, for the powder room and an argon pad.
-2. **Skyline Commerce Center Bldg 1, Ste 600, Salt Lake City** (draft 1 to CBRE). Ask:
+3. **Skyline Commerce Center Bldg 1, Ste 600, Salt Lake City, nearest the U** (draft 1 to CBRE). Ask:
    - its power;
    - whether the landlord allows hazardous materials;
    - whether Salt Lake City would read atomizing and printing as R&D in MU-11 (draft 3, adapted).
-3. **For speed, the Orem sublease; for height, R&H Provo.** The sublease is built and available, with an upgrade to
+4. **Also: for speed, the Orem sublease; for a crane bay close to BYU, R&H Provo.** The sublease is built and available, with an upgrade to
    power the first need. R&H is 1.9 miles from BYU, zoned M-2, with a crane bay of unknown height. Ask Colliers for the
    bay's eave and hook height, and whether part could be leased.
 

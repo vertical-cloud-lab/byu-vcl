@@ -36,8 +36,8 @@ the same site numbers as the maps.
   everything above.
 - **Sterling (2026-11-28): smaller, 3,000-10,000 ft², closer to Provo and close to or part of the U of U, keeping the
   high ceiling.** Answered in [`small-high-bay.md`](small-high-bay.md), with its own figure and maps. Small spaces top
-  out at 28 ft; the best fits are Hobble Creek Business Park in Springville and Skyline Commerce Center Bldg 1 in Salt
-  Lake City. Drafts 12-14.
+  out at 28 ft, except Mountain Point Bldg 3 (14) in Bluffdale, divisible from 9,158 ft² at 36 ft. The other best fits
+  are Hobble Creek Business Park in Springville and Skyline Commerce Center Bldg 1 in Salt Lake City. Drafts 12-14.
 
 ## Height is a variable, not a cut-off
 
