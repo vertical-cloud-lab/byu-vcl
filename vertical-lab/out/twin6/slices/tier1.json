@@ -1,0 +1,1581 @@
+{
+ "name": "tier1",
+ "what": "round 6's compute plan 'tier1': the runs of tier1 packed into 16 jobs by LPT on their estimated CPU seconds (twin/bench6.py plan); each job is one runner working through its run ids with `ids --hours 5.2`, a wave at a time, a run still going at 5.2 h carried on by the same job of the next wave from its checkpoint. Everything is simulated.",
+ "made_by": "python -m twin.bench6 plan tier1 --name tier1 --jobs 16",
+ "twin_tree": "e3d828cf5b4fd49d09f06172ce20ae16321c97fb",
+ "commit": "494c065ecbaa0a183cd1d24e4d560b1a85e79fb0",
+ "twin_dirty": false,
+ "hours": 5.2,
+ "workers": 4,
+ "overhead_h": 0.25,
+ "concurrency": 20,
+ "speeds": {
+  "9V45": 1.0,
+  "7763": 2.1
+ },
+ "n_runs": 192,
+ "cpu_hours": 484.3,
+ "expected": {
+  "9V45": {
+   "waves": 2,
+   "wall_h": 9.35,
+   "runner_h": 149.6,
+   "per_wave": [
+    {
+     "jobs": 16,
+     "wall_h": 5.45,
+     "runner_h": 87.2
+    },
+    {
+     "jobs": 16,
+     "wall_h": 3.9,
+     "runner_h": 62.4
+    }
+   ],
+   "least_waves": 2
+  },
+  "7763": {
+   "waves": 4,
+   "wall_h": 19.59,
+   "runner_h": 313.4,
+   "per_wave": [
+    {
+     "jobs": 16,
+     "wall_h": 5.45,
+     "runner_h": 87.2
+    },
+    {
+     "jobs": 16,
+     "wall_h": 5.45,
+     "runner_h": 87.2
+    },
+    {
+     "jobs": 16,
+     "wall_h": 5.45,
+     "runner_h": 87.2
+    },
+    {
+     "jobs": 16,
+     "wall_h": 3.24,
+     "runner_h": 51.8
+    }
+   ],
+   "least_waves": 4
+  }
+ },
+ "alternatives": {
+  "6": {
+   "9V45": {
+    "waves": 4,
+    "wall_h": 21.26,
+    "runner_h": 127.5
+   },
+   "7763": {
+    "waves": 9,
+    "wall_h": 44.79,
+    "runner_h": 268.7
+   }
+  },
+  "7": {
+   "9V45": {
+    "waves": 4,
+    "wall_h": 19.01,
+    "runner_h": 133.0
+   },
+   "7763": {
+    "waves": 8,
+    "wall_h": 39.83,
+    "runner_h": 278.5
+   }
+  },
+  "8": {
+   "9V45": {
+    "waves": 3,
+    "wall_h": 15.88,
+    "runner_h": 127.1
+   },
+   "7763": {
+    "waves": 7,
+    "wall_h": 33.53,
+    "runner_h": 268.2
+   }
+  },
+  "9": {
+   "9V45": {
+    "waves": 3,
+    "wall_h": 14.36,
+    "runner_h": 128.8
+   },
+   "7763": {
+    "waves": 6,
+    "wall_h": 30.08,
+    "runner_h": 269.7
+   }
+  },
+  "10": {
+   "9V45": {
+    "waves": 3,
+    "wall_h": 14.18,
+    "runner_h": 141.8
+   },
+   "7763": {
+    "waves": 6,
+    "wall_h": 29.71,
+    "runner_h": 297.1
+   }
+  },
+  "11": {
+   "9V45": {
+    "waves": 3,
+    "wall_h": 14.18,
+    "runner_h": 149.0
+   },
+   "7763": {
+    "waves": 6,
+    "wall_h": 29.71,
+    "runner_h": 311.4
+   }
+  },
+  "12": {
+   "9V45": {
+    "waves": 2,
+    "wall_h": 10.69,
+    "runner_h": 128.3
+   },
+   "7763": {
+    "waves": 5,
+    "wall_h": 22.65,
+    "runner_h": 271.8
+   }
+  },
+  "13": {
+   "9V45": {
+    "waves": 2,
+    "wall_h": 10.01,
+    "runner_h": 130.0
+   },
+   "7763": {
+    "waves": 4,
+    "wall_h": 20.97,
+    "runner_h": 272.5
+   }
+  },
+  "14": {
+   "9V45": {
+    "waves": 2,
+    "wall_h": 9.66,
+    "runner_h": 133.4
+   },
+   "7763": {
+    "waves": 4,
+    "wall_h": 20.24,
+    "runner_h": 279.5
+   }
+  },
+  "15": {
+   "9V45": {
+    "waves": 2,
+    "wall_h": 9.66,
+    "runner_h": 141.6
+   },
+   "7763": {
+    "waves": 4,
+    "wall_h": 20.24,
+    "runner_h": 296.6
+   }
+  },
+  "16": {
+   "9V45": {
+    "waves": 2,
+    "wall_h": 9.35,
+    "runner_h": 149.6
+   },
+   "7763": {
+    "waves": 4,
+    "wall_h": 19.59,
+    "runner_h": 313.4
+   }
+  },
+  "17": {
+   "9V45": {
+    "waves": 2,
+    "wall_h": 9.35,
+    "runner_h": 159.0
+   },
+   "7763": {
+    "waves": 4,
+    "wall_h": 19.59,
+    "runner_h": 333.1
+   }
+  },
+  "18": {
+   "9V45": {
+    "waves": 2,
+    "wall_h": 9.35,
+    "runner_h": 168.3
+   },
+   "7763": {
+    "waves": 4,
+    "wall_h": 19.59,
+    "runner_h": 352.6
+   }
+  },
+  "19": {
+   "9V45": {
+    "waves": 2,
+    "wall_h": 9.35,
+    "runner_h": 177.6
+   },
+   "7763": {
+    "waves": 4,
+    "wall_h": 19.59,
+    "runner_h": 372.0
+   }
+  },
+  "20": {
+   "9V45": {
+    "waves": 2,
+    "wall_h": 9.35,
+    "runner_h": 187.0
+   },
+   "7763": {
+    "waves": 4,
+    "wall_h": 19.59,
+    "runner_h": 391.7
+   }
+  }
+ },
+ "jobs": [
+  {
+   "job": 1,
+   "est_cpu_h": 30.27,
+   "n_runs": 12,
+   "waves": {
+    "9V45": 2,
+    "7763": 4
+   },
+   "runs": [
+    "r6_vertical_parallel_pkgfn3_lean_s0",
+    "r6_vertical_parallel_pkgfn3_reorder_s0",
+    "r6_vertical_parallel_bofn3_lean_s0",
+    "r6_vertical_parallel_bofn3_reorder_s0",
+    "r6_conventional_external_pkgfn3_lean_s0",
+    "r6_conventional_external_pkgfn3_reorder_s0",
+    "r6_conventional_external_bofn3_lean_s0",
+    "r6_conventional_external_bofn3_reorder_s0",
+    "r6_vertical_parallel_fast_lean_s0",
+    "r6_vertical_parallel_fast_reorder_s0",
+    "r6_conventional_external_fast_lean_s0",
+    "r6_conventional_external_fast_reorder_s0"
+   ]
+  },
+  {
+   "job": 2,
+   "est_cpu_h": 30.27,
+   "n_runs": 12,
+   "waves": {
+    "9V45": 2,
+    "7763": 4
+   },
+   "runs": [
+    "r6_vertical_parallel_pkgfn3_lean_s1",
+    "r6_vertical_parallel_pkgfn3_reorder_s1",
+    "r6_vertical_parallel_bofn3_lean_s1",
+    "r6_vertical_parallel_bofn3_reorder_s1",
+    "r6_conventional_external_pkgfn3_lean_s1",
+    "r6_conventional_external_pkgfn3_reorder_s1",
+    "r6_conventional_external_bofn3_lean_s1",
+    "r6_conventional_external_bofn3_reorder_s1",
+    "r6_vertical_parallel_fast_lean_s1",
+    "r6_vertical_parallel_fast_reorder_s1",
+    "r6_conventional_external_fast_lean_s1",
+    "r6_conventional_external_fast_reorder_s1"
+   ]
+  },
+  {
+   "job": 3,
+   "est_cpu_h": 30.27,
+   "n_runs": 12,
+   "waves": {
+    "9V45": 2,
+    "7763": 4
+   },
+   "runs": [
+    "r6_vertical_parallel_pkgfn3_lean_s10",
+    "r6_vertical_parallel_pkgfn3_reorder_s10",
+    "r6_vertical_parallel_bofn3_lean_s10",
+    "r6_vertical_parallel_bofn3_reorder_s10",
+    "r6_conventional_external_pkgfn3_lean_s10",
+    "r6_conventional_external_pkgfn3_reorder_s10",
+    "r6_conventional_external_bofn3_lean_s10",
+    "r6_conventional_external_bofn3_reorder_s10",
+    "r6_vertical_parallel_fast_lean_s10",
+    "r6_vertical_parallel_fast_reorder_s10",
+    "r6_conventional_external_fast_lean_s10",
+    "r6_conventional_external_fast_reorder_s10"
+   ]
+  },
+  {
+   "job": 4,
+   "est_cpu_h": 30.27,
+   "n_runs": 12,
+   "waves": {
+    "9V45": 2,
+    "7763": 4
+   },
+   "runs": [
+    "r6_vertical_parallel_pkgfn3_lean_s11",
+    "r6_vertical_parallel_pkgfn3_reorder_s11",
+    "r6_vertical_parallel_bofn3_lean_s11",
+    "r6_vertical_parallel_bofn3_reorder_s11",
+    "r6_conventional_external_pkgfn3_lean_s11",
+    "r6_conventional_external_pkgfn3_reorder_s11",
+    "r6_conventional_external_bofn3_lean_s11",
+    "r6_conventional_external_bofn3_reorder_s11",
+    "r6_vertical_parallel_fast_lean_s11",
+    "r6_vertical_parallel_fast_reorder_s11",
+    "r6_conventional_external_fast_lean_s11",
+    "r6_conventional_external_fast_reorder_s11"
+   ]
+  },
+  {
+   "job": 5,
+   "est_cpu_h": 30.27,
+   "n_runs": 12,
+   "waves": {
+    "9V45": 2,
+    "7763": 4
+   },
+   "runs": [
+    "r6_vertical_parallel_pkgfn3_lean_s12",
+    "r6_vertical_parallel_pkgfn3_reorder_s12",
+    "r6_vertical_parallel_bofn3_lean_s12",
+    "r6_vertical_parallel_bofn3_reorder_s12",
+    "r6_conventional_external_pkgfn3_lean_s12",
+    "r6_conventional_external_pkgfn3_reorder_s12",
+    "r6_conventional_external_bofn3_lean_s12",
+    "r6_conventional_external_bofn3_reorder_s12",
+    "r6_vertical_parallel_fast_lean_s12",
+    "r6_vertical_parallel_fast_reorder_s12",
+    "r6_conventional_external_fast_lean_s12",
+    "r6_conventional_external_fast_reorder_s12"
+   ]
+  },
+  {
+   "job": 6,
+   "est_cpu_h": 30.27,
+   "n_runs": 12,
+   "waves": {
+    "9V45": 2,
+    "7763": 4
+   },
+   "runs": [
+    "r6_vertical_parallel_pkgfn3_lean_s13",
+    "r6_vertical_parallel_pkgfn3_reorder_s13",
+    "r6_vertical_parallel_bofn3_lean_s13",
+    "r6_vertical_parallel_bofn3_reorder_s13",
+    "r6_conventional_external_pkgfn3_lean_s13",
+    "r6_conventional_external_pkgfn3_reorder_s13",
+    "r6_conventional_external_bofn3_lean_s13",
+    "r6_conventional_external_bofn3_reorder_s13",
+    "r6_vertical_parallel_fast_lean_s13",
+    "r6_vertical_parallel_fast_reorder_s13",
+    "r6_conventional_external_fast_lean_s13",
+    "r6_conventional_external_fast_reorder_s13"
+   ]
+  },
+  {
+   "job": 7,
+   "est_cpu_h": 30.27,
+   "n_runs": 12,
+   "waves": {
+    "9V45": 2,
+    "7763": 4
+   },
+   "runs": [
+    "r6_vertical_parallel_pkgfn3_lean_s14",
+    "r6_vertical_parallel_pkgfn3_reorder_s14",
+    "r6_vertical_parallel_bofn3_lean_s14",
+    "r6_vertical_parallel_bofn3_reorder_s14",
+    "r6_conventional_external_pkgfn3_lean_s14",
+    "r6_conventional_external_pkgfn3_reorder_s14",
+    "r6_conventional_external_bofn3_lean_s14",
+    "r6_conventional_external_bofn3_reorder_s14",
+    "r6_vertical_parallel_fast_lean_s14",
+    "r6_vertical_parallel_fast_reorder_s14",
+    "r6_conventional_external_fast_lean_s14",
+    "r6_conventional_external_fast_reorder_s14"
+   ]
+  },
+  {
+   "job": 8,
+   "est_cpu_h": 30.27,
+   "n_runs": 12,
+   "waves": {
+    "9V45": 2,
+    "7763": 4
+   },
+   "runs": [
+    "r6_vertical_parallel_pkgfn3_lean_s15",
+    "r6_vertical_parallel_pkgfn3_reorder_s15",
+    "r6_vertical_parallel_bofn3_lean_s15",
+    "r6_vertical_parallel_bofn3_reorder_s15",
+    "r6_conventional_external_pkgfn3_lean_s15",
+    "r6_conventional_external_pkgfn3_reorder_s15",
+    "r6_conventional_external_bofn3_lean_s15",
+    "r6_conventional_external_bofn3_reorder_s15",
+    "r6_vertical_parallel_fast_lean_s15",
+    "r6_vertical_parallel_fast_reorder_s15",
+    "r6_conventional_external_fast_lean_s15",
+    "r6_conventional_external_fast_reorder_s15"
+   ]
+  },
+  {
+   "job": 9,
+   "est_cpu_h": 30.27,
+   "n_runs": 12,
+   "waves": {
+    "9V45": 2,
+    "7763": 4
+   },
+   "runs": [
+    "r6_vertical_parallel_pkgfn3_lean_s2",
+    "r6_vertical_parallel_pkgfn3_reorder_s2",
+    "r6_vertical_parallel_bofn3_lean_s2",
+    "r6_vertical_parallel_bofn3_reorder_s2",
+    "r6_conventional_external_pkgfn3_lean_s2",
+    "r6_conventional_external_pkgfn3_reorder_s2",
+    "r6_conventional_external_bofn3_lean_s2",
+    "r6_conventional_external_bofn3_reorder_s2",
+    "r6_vertical_parallel_fast_lean_s2",
+    "r6_vertical_parallel_fast_reorder_s2",
+    "r6_conventional_external_fast_lean_s2",
+    "r6_conventional_external_fast_reorder_s2"
+   ]
+  },
+  {
+   "job": 10,
+   "est_cpu_h": 30.27,
+   "n_runs": 12,
+   "waves": {
+    "9V45": 2,
+    "7763": 4
+   },
+   "runs": [
+    "r6_vertical_parallel_pkgfn3_lean_s3",
+    "r6_vertical_parallel_pkgfn3_reorder_s3",
+    "r6_vertical_parallel_bofn3_lean_s3",
+    "r6_vertical_parallel_bofn3_reorder_s3",
+    "r6_conventional_external_pkgfn3_lean_s3",
+    "r6_conventional_external_pkgfn3_reorder_s3",
+    "r6_conventional_external_bofn3_lean_s3",
+    "r6_conventional_external_bofn3_reorder_s3",
+    "r6_vertical_parallel_fast_lean_s3",
+    "r6_vertical_parallel_fast_reorder_s3",
+    "r6_conventional_external_fast_lean_s3",
+    "r6_conventional_external_fast_reorder_s3"
+   ]
+  },
+  {
+   "job": 11,
+   "est_cpu_h": 30.27,
+   "n_runs": 12,
+   "waves": {
+    "9V45": 2,
+    "7763": 4
+   },
+   "runs": [
+    "r6_vertical_parallel_pkgfn3_lean_s4",
+    "r6_vertical_parallel_pkgfn3_reorder_s4",
+    "r6_vertical_parallel_bofn3_lean_s4",
+    "r6_vertical_parallel_bofn3_reorder_s4",
+    "r6_conventional_external_pkgfn3_lean_s4",
+    "r6_conventional_external_pkgfn3_reorder_s4",
+    "r6_conventional_external_bofn3_lean_s4",
+    "r6_conventional_external_bofn3_reorder_s4",
+    "r6_vertical_parallel_fast_lean_s4",
+    "r6_vertical_parallel_fast_reorder_s4",
+    "r6_conventional_external_fast_lean_s4",
+    "r6_conventional_external_fast_reorder_s4"
+   ]
+  },
+  {
+   "job": 12,
+   "est_cpu_h": 30.27,
+   "n_runs": 12,
+   "waves": {
+    "9V45": 2,
+    "7763": 4
+   },
+   "runs": [
+    "r6_vertical_parallel_pkgfn3_lean_s5",
+    "r6_vertical_parallel_pkgfn3_reorder_s5",
+    "r6_vertical_parallel_bofn3_lean_s5",
+    "r6_vertical_parallel_bofn3_reorder_s5",
+    "r6_conventional_external_pkgfn3_lean_s5",
+    "r6_conventional_external_pkgfn3_reorder_s5",
+    "r6_conventional_external_bofn3_lean_s5",
+    "r6_conventional_external_bofn3_reorder_s5",
+    "r6_vertical_parallel_fast_lean_s5",
+    "r6_vertical_parallel_fast_reorder_s5",
+    "r6_conventional_external_fast_lean_s5",
+    "r6_conventional_external_fast_reorder_s5"
+   ]
+  },
+  {
+   "job": 13,
+   "est_cpu_h": 30.27,
+   "n_runs": 12,
+   "waves": {
+    "9V45": 2,
+    "7763": 4
+   },
+   "runs": [
+    "r6_vertical_parallel_pkgfn3_lean_s6",
+    "r6_vertical_parallel_pkgfn3_reorder_s6",
+    "r6_vertical_parallel_bofn3_lean_s6",
+    "r6_vertical_parallel_bofn3_reorder_s6",
+    "r6_conventional_external_pkgfn3_lean_s6",
+    "r6_conventional_external_pkgfn3_reorder_s6",
+    "r6_conventional_external_bofn3_lean_s6",
+    "r6_conventional_external_bofn3_reorder_s6",
+    "r6_vertical_parallel_fast_lean_s6",
+    "r6_vertical_parallel_fast_reorder_s6",
+    "r6_conventional_external_fast_lean_s6",
+    "r6_conventional_external_fast_reorder_s6"
+   ]
+  },
+  {
+   "job": 14,
+   "est_cpu_h": 30.27,
+   "n_runs": 12,
+   "waves": {
+    "9V45": 2,
+    "7763": 4
+   },
+   "runs": [
+    "r6_vertical_parallel_pkgfn3_lean_s7",
+    "r6_vertical_parallel_pkgfn3_reorder_s7",
+    "r6_vertical_parallel_bofn3_lean_s7",
+    "r6_vertical_parallel_bofn3_reorder_s7",
+    "r6_conventional_external_pkgfn3_lean_s7",
+    "r6_conventional_external_pkgfn3_reorder_s7",
+    "r6_conventional_external_bofn3_lean_s7",
+    "r6_conventional_external_bofn3_reorder_s7",
+    "r6_vertical_parallel_fast_lean_s7",
+    "r6_vertical_parallel_fast_reorder_s7",
+    "r6_conventional_external_fast_lean_s7",
+    "r6_conventional_external_fast_reorder_s7"
+   ]
+  },
+  {
+   "job": 15,
+   "est_cpu_h": 30.27,
+   "n_runs": 12,
+   "waves": {
+    "9V45": 2,
+    "7763": 4
+   },
+   "runs": [
+    "r6_vertical_parallel_pkgfn3_lean_s8",
+    "r6_vertical_parallel_pkgfn3_reorder_s8",
+    "r6_vertical_parallel_bofn3_lean_s8",
+    "r6_vertical_parallel_bofn3_reorder_s8",
+    "r6_conventional_external_pkgfn3_lean_s8",
+    "r6_conventional_external_pkgfn3_reorder_s8",
+    "r6_conventional_external_bofn3_lean_s8",
+    "r6_conventional_external_bofn3_reorder_s8",
+    "r6_vertical_parallel_fast_lean_s8",
+    "r6_vertical_parallel_fast_reorder_s8",
+    "r6_conventional_external_fast_lean_s8",
+    "r6_conventional_external_fast_reorder_s8"
+   ]
+  },
+  {
+   "job": 16,
+   "est_cpu_h": 30.27,
+   "n_runs": 12,
+   "waves": {
+    "9V45": 2,
+    "7763": 4
+   },
+   "runs": [
+    "r6_vertical_parallel_pkgfn3_lean_s9",
+    "r6_vertical_parallel_pkgfn3_reorder_s9",
+    "r6_vertical_parallel_bofn3_lean_s9",
+    "r6_vertical_parallel_bofn3_reorder_s9",
+    "r6_conventional_external_pkgfn3_lean_s9",
+    "r6_conventional_external_pkgfn3_reorder_s9",
+    "r6_conventional_external_bofn3_lean_s9",
+    "r6_conventional_external_bofn3_reorder_s9",
+    "r6_vertical_parallel_fast_lean_s9",
+    "r6_vertical_parallel_fast_reorder_s9",
+    "r6_conventional_external_fast_lean_s9",
+    "r6_conventional_external_fast_reorder_s9"
+   ]
+  }
+ ],
+ "runs": {
+  "r6_vertical_parallel_pkgfn3_lean_s0": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_pkgfn3_lean_s1": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_pkgfn3_lean_s10": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_pkgfn3_lean_s11": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_pkgfn3_lean_s12": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_pkgfn3_lean_s13": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_pkgfn3_lean_s14": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_pkgfn3_lean_s15": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_pkgfn3_lean_s2": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_pkgfn3_lean_s3": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_pkgfn3_lean_s4": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_pkgfn3_lean_s5": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_pkgfn3_lean_s6": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_pkgfn3_lean_s7": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_pkgfn3_lean_s8": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_pkgfn3_lean_s9": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_s0": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "extrapolated from day 480 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.861 (64-point GP calls, measured) after day 200 (checks/batch.md): 17,934-31,864 s"
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_s1": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "extrapolated from day 480 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.861 (64-point GP calls, measured) after day 200 (checks/batch.md): 17,934-31,864 s"
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_s10": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "extrapolated from day 480 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.861 (64-point GP calls, measured) after day 200 (checks/batch.md): 17,934-31,864 s"
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_s11": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "extrapolated from day 480 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.861 (64-point GP calls, measured) after day 200 (checks/batch.md): 17,934-31,864 s"
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_s12": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "extrapolated from day 480 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.861 (64-point GP calls, measured) after day 200 (checks/batch.md): 17,934-31,864 s"
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_s13": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "extrapolated from day 480 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.861 (64-point GP calls, measured) after day 200 (checks/batch.md): 17,934-31,864 s"
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_s14": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "extrapolated from day 480 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.861 (64-point GP calls, measured) after day 200 (checks/batch.md): 17,934-31,864 s"
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_s15": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "extrapolated from day 480 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.861 (64-point GP calls, measured) after day 200 (checks/batch.md): 17,934-31,864 s"
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_s2": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "extrapolated from day 480 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.861 (64-point GP calls, measured) after day 200 (checks/batch.md): 17,934-31,864 s"
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_s3": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "extrapolated from day 480 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.861 (64-point GP calls, measured) after day 200 (checks/batch.md): 17,934-31,864 s"
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_s4": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "extrapolated from day 480 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.861 (64-point GP calls, measured) after day 200 (checks/batch.md): 17,934-31,864 s"
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_s5": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "extrapolated from day 480 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.861 (64-point GP calls, measured) after day 200 (checks/batch.md): 17,934-31,864 s"
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_s6": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "extrapolated from day 480 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.861 (64-point GP calls, measured) after day 200 (checks/batch.md): 17,934-31,864 s"
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_s7": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "extrapolated from day 480 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.861 (64-point GP calls, measured) after day 200 (checks/batch.md): 17,934-31,864 s"
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_s8": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "extrapolated from day 480 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.861 (64-point GP calls, measured) after day 200 (checks/batch.md): 17,934-31,864 s"
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_s9": {
+   "experiment": "arms",
+   "est_cpu_s": 31864,
+   "how": "extrapolated from day 480 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.861 (64-point GP calls, measured) after day 200 (checks/batch.md): 17,934-31,864 s"
+  },
+  "r6_vertical_parallel_bofn3_lean_s0": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_bofn3_lean_s1": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_bofn3_lean_s10": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_bofn3_lean_s11": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_bofn3_lean_s12": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_bofn3_lean_s13": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_bofn3_lean_s14": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_bofn3_lean_s15": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_bofn3_lean_s2": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_bofn3_lean_s3": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_bofn3_lean_s4": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_bofn3_lean_s5": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_bofn3_lean_s6": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_bofn3_lean_s7": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_bofn3_lean_s8": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_bofn3_lean_s9": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_bofn3_reorder_s0": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "extrapolated from day 500 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.860 (64-point GP calls, measured) after day 200 (checks/batch.md): 13,727-16,494 s"
+  },
+  "r6_vertical_parallel_bofn3_reorder_s1": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "extrapolated from day 500 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.860 (64-point GP calls, measured) after day 200 (checks/batch.md): 13,727-16,494 s"
+  },
+  "r6_vertical_parallel_bofn3_reorder_s10": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "extrapolated from day 500 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.860 (64-point GP calls, measured) after day 200 (checks/batch.md): 13,727-16,494 s"
+  },
+  "r6_vertical_parallel_bofn3_reorder_s11": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "extrapolated from day 500 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.860 (64-point GP calls, measured) after day 200 (checks/batch.md): 13,727-16,494 s"
+  },
+  "r6_vertical_parallel_bofn3_reorder_s12": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "extrapolated from day 500 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.860 (64-point GP calls, measured) after day 200 (checks/batch.md): 13,727-16,494 s"
+  },
+  "r6_vertical_parallel_bofn3_reorder_s13": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "extrapolated from day 500 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.860 (64-point GP calls, measured) after day 200 (checks/batch.md): 13,727-16,494 s"
+  },
+  "r6_vertical_parallel_bofn3_reorder_s14": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "extrapolated from day 500 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.860 (64-point GP calls, measured) after day 200 (checks/batch.md): 13,727-16,494 s"
+  },
+  "r6_vertical_parallel_bofn3_reorder_s15": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "extrapolated from day 500 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.860 (64-point GP calls, measured) after day 200 (checks/batch.md): 13,727-16,494 s"
+  },
+  "r6_vertical_parallel_bofn3_reorder_s2": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "extrapolated from day 500 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.860 (64-point GP calls, measured) after day 200 (checks/batch.md): 13,727-16,494 s"
+  },
+  "r6_vertical_parallel_bofn3_reorder_s3": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "extrapolated from day 500 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.860 (64-point GP calls, measured) after day 200 (checks/batch.md): 13,727-16,494 s"
+  },
+  "r6_vertical_parallel_bofn3_reorder_s4": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "extrapolated from day 500 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.860 (64-point GP calls, measured) after day 200 (checks/batch.md): 13,727-16,494 s"
+  },
+  "r6_vertical_parallel_bofn3_reorder_s5": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "extrapolated from day 500 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.860 (64-point GP calls, measured) after day 200 (checks/batch.md): 13,727-16,494 s"
+  },
+  "r6_vertical_parallel_bofn3_reorder_s6": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "extrapolated from day 500 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.860 (64-point GP calls, measured) after day 200 (checks/batch.md): 13,727-16,494 s"
+  },
+  "r6_vertical_parallel_bofn3_reorder_s7": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "extrapolated from day 500 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.860 (64-point GP calls, measured) after day 200 (checks/batch.md): 13,727-16,494 s"
+  },
+  "r6_vertical_parallel_bofn3_reorder_s8": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "extrapolated from day 500 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.860 (64-point GP calls, measured) after day 200 (checks/batch.md): 13,727-16,494 s"
+  },
+  "r6_vertical_parallel_bofn3_reorder_s9": {
+   "experiment": "arms",
+   "est_cpu_s": 16494,
+   "how": "extrapolated from day 500 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.860 (64-point GP calls, measured) after day 200 (checks/batch.md): 13,727-16,494 s"
+  },
+  "r6_conventional_external_pkgfn3_lean_s0": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_pkgfn3_lean_s1": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_pkgfn3_lean_s10": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_pkgfn3_lean_s11": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_pkgfn3_lean_s12": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_pkgfn3_lean_s13": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_pkgfn3_lean_s14": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_pkgfn3_lean_s15": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_pkgfn3_lean_s2": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_pkgfn3_lean_s3": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_pkgfn3_lean_s4": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_pkgfn3_lean_s5": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_pkgfn3_lean_s6": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_pkgfn3_lean_s7": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_pkgfn3_lean_s8": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_pkgfn3_lean_s9": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_pkgfn3_reorder_s0": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_pkgfn3_reorder_s1": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_pkgfn3_reorder_s10": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_pkgfn3_reorder_s11": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_pkgfn3_reorder_s12": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_pkgfn3_reorder_s13": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_pkgfn3_reorder_s14": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_pkgfn3_reorder_s15": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_pkgfn3_reorder_s2": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_pkgfn3_reorder_s3": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_pkgfn3_reorder_s4": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_pkgfn3_reorder_s5": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_pkgfn3_reorder_s6": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_pkgfn3_reorder_s7": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_pkgfn3_reorder_s8": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_pkgfn3_reorder_s9": {
+   "experiment": "arms",
+   "est_cpu_s": 1882,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_bofn3_lean_s0": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_bofn3_lean_s1": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_bofn3_lean_s10": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_bofn3_lean_s11": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_bofn3_lean_s12": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_bofn3_lean_s13": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_bofn3_lean_s14": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_bofn3_lean_s15": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_bofn3_lean_s2": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_bofn3_lean_s3": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_bofn3_lean_s4": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_bofn3_lean_s5": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_bofn3_lean_s6": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_bofn3_lean_s7": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_bofn3_lean_s8": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_bofn3_lean_s9": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_bofn3_reorder_s0": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_bofn3_reorder_s1": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_bofn3_reorder_s10": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_bofn3_reorder_s11": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_bofn3_reorder_s12": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_bofn3_reorder_s13": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_bofn3_reorder_s14": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_bofn3_reorder_s15": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_bofn3_reorder_s2": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_bofn3_reorder_s3": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_bofn3_reorder_s4": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_bofn3_reorder_s5": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_bofn3_reorder_s6": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_bofn3_reorder_s7": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_bofn3_reorder_s8": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_bofn3_reorder_s9": {
+   "experiment": "arms",
+   "est_cpu_s": 1755,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_vertical_parallel_fast_lean_s0": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_fast_lean_s1": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_fast_lean_s10": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_fast_lean_s11": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_fast_lean_s12": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_fast_lean_s13": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_fast_lean_s14": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_fast_lean_s15": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_fast_lean_s2": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_fast_lean_s3": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_fast_lean_s4": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_fast_lean_s5": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_fast_lean_s6": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_fast_lean_s7": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_fast_lean_s8": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_fast_lean_s9": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_vertical_parallel_fast_reorder_s0": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_vertical_parallel_fast_reorder_s1": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_vertical_parallel_fast_reorder_s10": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_vertical_parallel_fast_reorder_s11": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_vertical_parallel_fast_reorder_s12": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_vertical_parallel_fast_reorder_s13": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_vertical_parallel_fast_reorder_s14": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_vertical_parallel_fast_reorder_s15": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_vertical_parallel_fast_reorder_s2": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_vertical_parallel_fast_reorder_s3": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_vertical_parallel_fast_reorder_s4": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_vertical_parallel_fast_reorder_s5": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_vertical_parallel_fast_reorder_s6": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_vertical_parallel_fast_reorder_s7": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_vertical_parallel_fast_reorder_s8": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_vertical_parallel_fast_reorder_s9": {
+   "experiment": "arms",
+   "est_cpu_s": 1299,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_fast_lean_s0": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_fast_lean_s1": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_fast_lean_s10": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_fast_lean_s11": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_fast_lean_s12": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_fast_lean_s13": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_fast_lean_s14": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_fast_lean_s15": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_fast_lean_s2": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_fast_lean_s3": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_fast_lean_s4": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_fast_lean_s5": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_fast_lean_s6": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_fast_lean_s7": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_fast_lean_s8": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_fast_lean_s9": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "its arms group's two years at 64x"
+  },
+  "r6_conventional_external_fast_reorder_s0": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_fast_reorder_s1": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_fast_reorder_s10": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_fast_reorder_s11": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_fast_reorder_s12": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_fast_reorder_s13": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_fast_reorder_s14": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_fast_reorder_s15": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_fast_reorder_s2": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_fast_reorder_s3": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_fast_reorder_s4": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_fast_reorder_s5": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_fast_reorder_s6": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_fast_reorder_s7": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_fast_reorder_s8": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "measured (two years, seed 0)"
+  },
+  "r6_conventional_external_fast_reorder_s9": {
+   "experiment": "arms",
+   "est_cpu_s": 1187,
+   "how": "measured (two years, seed 0)"
+  }
+ },
+ "note": "Seconds: CPU seconds on the EPYC 9V45 that timed round 6 (left.md); 7763: this job's runner, 2.1 x slower for the same code (checks/batch.md). Overhead: set-up, the GP check and uploads, 0.25 h a job. Wall-clock: the jobs of a wave at once, plus the time between a wave's end and the next dispatch, not counted."
+}

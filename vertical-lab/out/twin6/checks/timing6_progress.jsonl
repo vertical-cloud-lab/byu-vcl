@@ -1,0 +1,862 @@
+{"label": "vertical bofn3 64x", "day": 10, "wall": 33.8, "cpu": 15.6, "load1": 6.77}
+{"label": "vertical pkgfn3 16x", "day": 40, "wall": 34.5, "cpu": 16.6, "load1": 6.77}
+{"label": "vertical bofn3 16x", "day": 40, "wall": 35.6, "cpu": 16.9, "load1": 6.77}
+{"label": "vertical pkgfn3 16x", "day": 50, "wall": 39.5, "cpu": 20.2, "load1": 7.03}
+{"label": "vertical bofn3 16x", "day": 50, "wall": 40.0, "cpu": 20.5, "load1": 7.03}
+{"label": "vertical bofn3 16x", "day": 60, "wall": 45.0, "cpu": 24.1, "load1": 7.42}
+{"label": "vertical pkgfn3 16x", "day": 60, "wall": 46.3, "cpu": 23.8, "load1": 7.79}
+{"label": "vertical bofn3 16x", "day": 70, "wall": 50.4, "cpu": 28.0, "load1": 7.79}
+{"label": "vertical pkgfn3 16x", "day": 70, "wall": 52.7, "cpu": 27.6, "load1": 7.89}
+{"label": "vertical bofn3 64x", "day": 20, "wall": 56.9, "cpu": 31.4, "load1": 8.14}
+{"label": "vertical pkgfn3 64x", "day": 20, "wall": 60.5, "cpu": 31.4, "load1": 8.14}
+{"label": "vertical bofn3 16x", "day": 80, "wall": 64.5, "cpu": 35.3, "load1": 8.29}
+{"label": "vertical pkgfn3 16x", "day": 80, "wall": 65.7, "cpu": 35.1, "load1": 8.29}
+{"label": "vertical bofn3 16x", "day": 90, "wall": 78.6, "cpu": 44.2, "load1": 8.89}
+{"label": "vertical pkgfn3 16x", "day": 90, "wall": 79.2, "cpu": 43.9, "load1": 8.89}
+{"label": "vertical bofn3 64x", "day": 30, "wall": 80.2, "cpu": 46.6, "load1": 8.89}
+{"label": "vertical pkgfn3 64x", "day": 30, "wall": 85.1, "cpu": 46.5, "load1": 9.38}
+{"label": "vertical bofn3 16x", "day": 100, "wall": 86.5, "cpu": 48.9, "load1": 9.51}
+{"label": "conventional fast 64x", "day": 10, "wall": 71.6, "cpu": 14.9, "load1": 9.51}
+{"label": "vertical pkgfn3 16x", "day": 100, "wall": 88.6, "cpu": 48.7, "load1": 9.51}
+{"label": "vertical fast 64x", "day": 10, "wall": 74.2, "cpu": 15.0, "load1": 9.51}
+{"label": "conventional pkgfn3 64x", "day": 10, "wall": 80.2, "cpu": 16.3, "load1": 9.9}
+{"label": "conventional bofn3 64x", "day": 10, "wall": 82.7, "cpu": 16.3, "load1": 9.9}
+{"label": "vertical bofn3 16x", "day": 110, "wall": 99.3, "cpu": 57.2, "load1": 9.9}
+{"label": "vertical pkgfn3 16x", "day": 110, "wall": 101.9, "cpu": 57.0, "load1": 9.99}
+{"label": "vertical bofn3 64x", "day": 40, "wall": 104.4, "cpu": 61.7, "load1": 9.99}
+{"label": "vertical pkgfn3 64x", "day": 40, "wall": 107.6, "cpu": 61.7, "load1": 10.15}
+{"label": "vertical bofn3 16x", "day": 120, "wall": 110.6, "cpu": 63.9, "load1": 10.15}
+{"label": "vertical pkgfn3 16x", "day": 120, "wall": 114.7, "cpu": 63.8, "load1": 10.38}
+{"label": "vertical bofn3 16x", "day": 130, "wall": 127.4, "cpu": 73.7, "load1": 10.37}
+{"label": "vertical pkgfn3 64x", "day": 50, "wall": 129.7, "cpu": 77.4, "load1": 10.37}
+{"label": "vertical bofn3 64x", "day": 50, "wall": 130.6, "cpu": 77.5, "load1": 10.37}
+{"label": "vertical pkgfn3 16x", "day": 130, "wall": 131.2, "cpu": 73.6, "load1": 10.58}
+{"label": "vertical bofn3 16x", "day": 140, "wall": 135.4, "cpu": 79.2, "load1": 10.58}
+{"label": "vertical pkgfn3 16x", "day": 140, "wall": 138.3, "cpu": 78.9, "load1": 10.45}
+{"label": "vertical bofn3 16x", "day": 150, "wall": 146.7, "cpu": 86.1, "load1": 10.67}
+{"label": "vertical pkgfn3 16x", "day": 150, "wall": 147.4, "cpu": 85.7, "load1": 10.67}
+{"label": "vertical pkgfn3 64x", "day": 60, "wall": 154.4, "cpu": 92.4, "load1": 10.54}
+{"label": "vertical bofn3 64x", "day": 60, "wall": 156.2, "cpu": 92.8, "load1": 10.58}
+{"label": "vertical bofn3 16x", "day": 160, "wall": 163.3, "cpu": 96.0, "load1": 10.61}
+{"label": "vertical pkgfn3 16x", "day": 160, "wall": 164.3, "cpu": 95.6, "load1": 10.61}
+{"label": "conventional fast 64x", "day": 20, "wall": 148.7, "cpu": 30.6, "load1": 10.61}
+{"label": "vertical fast 64x", "day": 20, "wall": 150.5, "cpu": 30.5, "load1": 10.64}
+{"label": "conventional pkgfn3 64x", "day": 20, "wall": 158.3, "cpu": 32.4, "load1": 10.51}
+{"label": "conventional bofn3 64x", "day": 20, "wall": 159.7, "cpu": 32.3, "load1": 10.51}
+{"label": "vertical pkgfn3 64x", "day": 70, "wall": 177.4, "cpu": 108.4, "load1": 10.63}
+{"label": "vertical bofn3 16x", "day": 170, "wall": 178.6, "cpu": 104.6, "load1": 10.63}
+{"label": "vertical pkgfn3 16x", "day": 170, "wall": 181.5, "cpu": 104.4, "load1": 10.66}
+{"label": "vertical bofn3 64x", "day": 70, "wall": 182.4, "cpu": 109.0, "load1": 10.66}
+{"label": "vertical bofn3 16x", "day": 180, "wall": 194.2, "cpu": 115.3, "load1": 10.72}
+{"label": "vertical pkgfn3 16x", "day": 180, "wall": 200.2, "cpu": 115.0, "load1": 10.74}
+{"label": "vertical bofn3 16x", "day": 190, "wall": 205.8, "cpu": 124.5, "load1": 10.92}
+{"label": "vertical pkgfn3 16x", "day": 190, "wall": 214.3, "cpu": 124.5, "load1": 11.01}
+{"label": "vertical bofn3 64x", "day": 80, "wall": 216.2, "cpu": 129.6, "load1": 10.93}
+{"label": "vertical pkgfn3 64x", "day": 80, "wall": 216.9, "cpu": 129.1, "load1": 10.93}
+{"label": "vertical bofn3 16x", "day": 200, "wall": 231.1, "cpu": 141.3, "load1": 11.24}
+{"label": "vertical fast 64x", "day": 30, "wall": 226.6, "cpu": 46.4, "load1": 11.29}
+{"label": "vertical bofn3 64x", "day": 90, "wall": 243.5, "cpu": 149.5, "load1": 11.29}
+{"label": "conventional fast 64x", "day": 30, "wall": 229.6, "cpu": 46.5, "load1": 11.29}
+{"label": "vertical pkgfn3 16x", "day": 200, "wall": 247.7, "cpu": 142.1, "load1": 11.26}
+{"label": "vertical bofn3 16x", "day": 210, "wall": 252.9, "cpu": 154.1, "load1": 11.08}
+{"label": "vertical pkgfn3 64x", "day": 90, "wall": 253.2, "cpu": 149.6, "load1": 11.08}
+{"label": "conventional pkgfn3 64x", "day": 30, "wall": 240.2, "cpu": 48.7, "load1": 10.92}
+{"label": "conventional bofn3 64x", "day": 30, "wall": 241.3, "cpu": 48.6, "load1": 10.92}
+{"label": "vertical pkgfn3 16x", "day": 210, "wall": 269.8, "cpu": 155.3, "load1": 10.77}
+{"label": "vertical bofn3 64x", "day": 100, "wall": 271.9, "cpu": 169.8, "load1": 10.63}
+{"label": "vertical pkgfn3 64x", "day": 100, "wall": 281.1, "cpu": 169.6, "load1": 10.68}
+{"label": "vertical bofn3 16x", "day": 220, "wall": 298.4, "cpu": 180.3, "load1": 10.69}
+{"label": "vertical bofn3 64x", "day": 110, "wall": 304.6, "cpu": 190.6, "load1": 10.79}
+{"label": "vertical pkgfn3 64x", "day": 110, "wall": 312.8, "cpu": 190.5, "load1": 11.13}
+{"label": "vertical pkgfn3 16x", "day": 220, "wall": 314.4, "cpu": 186.0, "load1": 11.13}
+{"label": "vertical fast 64x", "day": 40, "wall": 304.0, "cpu": 62.2, "load1": 11.36}
+{"label": "conventional fast 64x", "day": 40, "wall": 313.4, "cpu": 62.5, "load1": 11.15}
+{"label": "vertical pkgfn3 64x", "day": 120, "wall": 341.3, "cpu": 211.1, "load1": 11.56}
+{"label": "vertical bofn3 64x", "day": 120, "wall": 341.8, "cpu": 211.6, "load1": 11.56}
+{"label": "conventional pkgfn3 64x", "day": 40, "wall": 328.7, "cpu": 66.5, "load1": 11.56}
+{"label": "conventional bofn3 64x", "day": 40, "wall": 329.8, "cpu": 66.4, "load1": 11.56}
+{"label": "vertical bofn3 16x", "day": 230, "wall": 371.4, "cpu": 229.2, "load1": 11.08}
+{"label": "vertical pkgfn3 64x", "day": 130, "wall": 376.4, "cpu": 234.3, "load1": 10.91}
+{"label": "vertical bofn3 64x", "day": 130, "wall": 379.5, "cpu": 234.8, "load1": 10.91}
+{"label": "vertical pkgfn3 16x", "day": 230, "wall": 381.3, "cpu": 224.3, "load1": 10.92}
+{"label": "vertical fast 64x", "day": 50, "wall": 383.4, "cpu": 78.2, "load1": 10.94}
+{"label": "vertical pkgfn3 64x", "day": 140, "wall": 401.1, "cpu": 251.8, "load1": 10.86}
+{"label": "vertical bofn3 16x", "day": 240, "wall": 407.0, "cpu": 252.7, "load1": 10.87}
+{"label": "conventional fast 64x", "day": 50, "wall": 391.2, "cpu": 78.4, "load1": 10.87}
+{"label": "vertical bofn3 64x", "day": 140, "wall": 408.6, "cpu": 252.7, "load1": 10.87}
+{"label": "conventional bofn3 64x", "day": 50, "wall": 411.3, "cpu": 82.9, "load1": 10.91}
+{"label": "conventional pkgfn3 64x", "day": 50, "wall": 411.7, "cpu": 83.0, "load1": 10.91}
+{"label": "vertical pkgfn3 16x", "day": 240, "wall": 433.6, "cpu": 253.3, "load1": 10.92}
+{"label": "vertical pkgfn3 64x", "day": 150, "wall": 434.0, "cpu": 273.3, "load1": 10.92}
+{"label": "vertical bofn3 64x", "day": 150, "wall": 440.6, "cpu": 274.0, "load1": 10.92}
+{"label": "vertical fast 64x", "day": 60, "wall": 459.9, "cpu": 94.2, "load1": 11.26}
+{"label": "vertical bofn3 64x", "day": 160, "wall": 477.6, "cpu": 299.9, "load1": 11.26}
+{"label": "vertical pkgfn3 64x", "day": 160, "wall": 480.1, "cpu": 298.2, "load1": 11.26}
+{"label": "conventional fast 64x", "day": 60, "wall": 465.7, "cpu": 94.1, "load1": 11.24}
+{"label": "conventional bofn3 64x", "day": 60, "wall": 487.4, "cpu": 98.8, "load1": 11.3}
+{"label": "conventional pkgfn3 64x", "day": 60, "wall": 490.8, "cpu": 99.1, "load1": 11.36}
+{"label": "vertical bofn3 16x", "day": 250, "wall": 507.9, "cpu": 318.7, "load1": 11.36}
+{"label": "vertical bofn3 64x", "day": 170, "wall": 512.4, "cpu": 323.8, "load1": 11.25}
+{"label": "vertical pkgfn3 16x", "day": 250, "wall": 514.5, "cpu": 301.8, "load1": 11.25}
+{"label": "vertical pkgfn3 64x", "day": 170, "wall": 516.3, "cpu": 323.7, "load1": 11.07}
+{"label": "vertical fast 64x", "day": 70, "wall": 545.6, "cpu": 109.9, "load1": 12.62}
+{"label": "conventional fast 64x", "day": 70, "wall": 552.8, "cpu": 110.0, "load1": 12.73}
+{"label": "vertical pkgfn3 64x", "day": 180, "wall": 574.7, "cpu": 350.7, "load1": 12.83}
+{"label": "vertical bofn3 16x", "day": 260, "wall": 575.4, "cpu": 352.5, "load1": 12.83}
+{"label": "vertical bofn3 64x", "day": 180, "wall": 587.5, "cpu": 356.1, "load1": 13.36}
+{"label": "conventional bofn3 64x", "day": 70, "wall": 593.7, "cpu": 115.6, "load1": 13.67}
+{"label": "vertical pkgfn3 16x", "day": 260, "wall": 613.2, "cpu": 347.6, "load1": 13.53}
+{"label": "conventional pkgfn3 64x", "day": 70, "wall": 597.9, "cpu": 115.9, "load1": 13.53}
+{"label": "vertical pkgfn3 64x", "day": 190, "wall": 638.0, "cpu": 377.1, "load1": 13.76}
+{"label": "vertical bofn3 64x", "day": 190, "wall": 648.0, "cpu": 381.9, "load1": 13.79}
+{"label": "vertical fast 64x", "day": 80, "wall": 664.8, "cpu": 126.3, "load1": 13.85}
+{"label": "conventional fast 64x", "day": 80, "wall": 671.1, "cpu": 126.2, "load1": 13.95}
+{"label": "vertical pkgfn3 64x", "day": 200, "wall": 718.4, "cpu": 414.2, "load1": 14.38}
+{"label": "vertical bofn3 16x", "day": 270, "wall": 727.5, "cpu": 416.6, "load1": 14.33}
+{"label": "vertical bofn3 64x", "day": 200, "wall": 729.5, "cpu": 421.2, "load1": 14.33}
+{"label": "conventional bofn3 64x", "day": 80, "wall": 715.1, "cpu": 132.4, "load1": 14.22}
+{"label": "conventional pkgfn3 64x", "day": 80, "wall": 717.9, "cpu": 132.9, "load1": 14.22}
+{"label": "vertical pkgfn3 64x", "day": 210, "wall": 764.1, "cpu": 435.2, "load1": 14.25}
+{"label": "vertical bofn3 64x", "day": 210, "wall": 790.0, "cpu": 446.6, "load1": 14.17}
+{"label": "vertical pkgfn3 16x", "day": 270, "wall": 793.4, "cpu": 421.5, "load1": 14.23}
+{"label": "vertical fast 64x", "day": 90, "wall": 786.3, "cpu": 143.2, "load1": 14.13}
+{"label": "conventional fast 64x", "day": 90, "wall": 787.8, "cpu": 142.7, "load1": 14.13}
+{"label": "vertical bofn3 16x", "day": 280, "wall": 842.3, "cpu": 465.7, "load1": 14.33}
+{"label": "conventional bofn3 64x", "day": 90, "wall": 852.4, "cpu": 151.5, "load1": 14.72}
+{"label": "conventional pkgfn3 64x", "day": 90, "wall": 854.6, "cpu": 152.0, "load1": 14.72}
+{"label": "vertical pkgfn3 64x", "day": 220, "wall": 894.9, "cpu": 488.3, "load1": 14.64}
+{"label": "vertical fast 64x", "day": 100, "wall": 905.2, "cpu": 160.0, "load1": 14.61}
+{"label": "vertical pkgfn3 16x", "day": 280, "wall": 922.1, "cpu": 473.5, "load1": 14.61}
+{"label": "conventional fast 64x", "day": 100, "wall": 907.0, "cpu": 159.8, "load1": 14.61}
+{"label": "vertical bofn3 64x", "day": 220, "wall": 942.4, "cpu": 508.6, "load1": 14.63}
+{"label": "vertical pkgfn3 64x", "day": 230, "wall": 996.2, "cpu": 536.0, "load1": 14.65}
+{"label": "conventional bofn3 64x", "day": 100, "wall": 998.2, "cpu": 171.4, "load1": 14.67}
+{"label": "conventional pkgfn3 64x", "day": 100, "wall": 999.5, "cpu": 172.1, "load1": 14.67}
+{"label": "vertical bofn3 16x", "day": 290, "wall": 1033.2, "cpu": 539.9, "load1": 14.56}
+{"label": "conventional fast 64x", "day": 110, "wall": 1021.3, "cpu": 176.2, "load1": 14.59}
+{"label": "vertical fast 64x", "day": 110, "wall": 1024.5, "cpu": 176.7, "load1": 14.59}
+{"label": "vertical pkgfn3 64x", "day": 240, "wall": 1046.9, "cpu": 557.2, "load1": 14.19}
+{"label": "vertical bofn3 64x", "day": 230, "wall": 1077.6, "cpu": 574.8, "load1": 12.94}
+{"label": "vertical bofn3 64x", "day": 240, "wall": 1121.4, "cpu": 604.0, "load1": 11.81}
+{"label": "conventional fast 64x", "day": 120, "wall": 1107.0, "cpu": 193.3, "load1": 11.81}
+{"label": "vertical fast 64x", "day": 120, "wall": 1107.3, "cpu": 193.3, "load1": 11.81}
+{"label": "vertical pkgfn3 16x", "day": 290, "wall": 1127.9, "cpu": 568.4, "load1": 11.75}
+{"label": "vertical pkgfn3 64x", "day": 250, "wall": 1132.3, "cpu": 612.7, "load1": 11.93}
+{"label": "conventional bofn3 64x", "day": 110, "wall": 1120.5, "cpu": 195.6, "load1": 11.77}
+{"label": "conventional pkgfn3 64x", "day": 110, "wall": 1129.0, "cpu": 196.5, "load1": 11.63}
+{"label": "vertical bofn3 64x", "day": 250, "wall": 1198.1, "cpu": 650.4, "load1": 12.7}
+{"label": "conventional fast 64x", "day": 130, "wall": 1192.2, "cpu": 209.8, "load1": 12.75}
+{"label": "vertical fast 64x", "day": 130, "wall": 1199.6, "cpu": 210.4, "load1": 12.85}
+{"label": "vertical bofn3 16x", "day": 300, "wall": 1217.6, "cpu": 644.1, "load1": 12.86}
+{"label": "conventional bofn3 64x", "day": 120, "wall": 1236.7, "cpu": 216.2, "load1": 13.55}
+{"label": "conventional pkgfn3 64x", "day": 120, "wall": 1253.0, "cpu": 217.4, "load1": 13.65}
+{"label": "vertical bofn3 64x", "day": 260, "wall": 1283.0, "cpu": 688.6, "load1": 13.49}
+{"label": "conventional fast 64x", "day": 140, "wall": 1302.1, "cpu": 227.3, "load1": 13.19}
+{"label": "vertical pkgfn3 16x", "day": 300, "wall": 1318.9, "cpu": 669.8, "load1": 13.19}
+{"label": "vertical pkgfn3 64x", "day": 260, "wall": 1328.1, "cpu": 712.6, "load1": 13.09}
+{"label": "vertical fast 64x", "day": 140, "wall": 1312.6, "cpu": 227.8, "load1": 13.09}
+{"label": "conventional bofn3 64x", "day": 130, "wall": 1372.8, "cpu": 238.3, "load1": 12.91}
+{"label": "vertical bofn3 16x", "day": 310, "wall": 1407.2, "cpu": 734.0, "load1": 12.94}
+{"label": "conventional pkgfn3 64x", "day": 130, "wall": 1393.5, "cpu": 239.5, "load1": 12.94}
+{"label": "conventional fast 64x", "day": 150, "wall": 1410.9, "cpu": 244.2, "load1": 12.7}
+{"label": "vertical fast 64x", "day": 150, "wall": 1418.1, "cpu": 244.6, "load1": 12.72}
+{"label": "vertical pkgfn3 16x", "day": 310, "wall": 1503.9, "cpu": 757.1, "load1": 13.44}
+{"label": "vertical pkgfn3 64x", "day": 270, "wall": 1505.5, "cpu": 800.0, "load1": 13.44}
+{"label": "conventional fast 64x", "day": 160, "wall": 1510.2, "cpu": 260.9, "load1": 12.91}
+{"label": "conventional bofn3 64x", "day": 140, "wall": 1511.3, "cpu": 259.6, "load1": 12.91}
+{"label": "vertical bofn3 64x", "day": 270, "wall": 1528.1, "cpu": 799.6, "load1": 12.91}
+{"label": "vertical fast 64x", "day": 160, "wall": 1517.4, "cpu": 261.5, "load1": 12.68}
+{"label": "conventional pkgfn3 64x", "day": 140, "wall": 1521.1, "cpu": 260.6, "load1": 12.39}
+{"label": "conventional fast 64x", "day": 170, "wall": 1596.0, "cpu": 277.6, "load1": 11.69}
+{"label": "vertical fast 64x", "day": 170, "wall": 1599.1, "cpu": 278.1, "load1": 11.69}
+{"label": "vertical pkgfn3 64x", "day": 280, "wall": 1628.5, "cpu": 874.5, "load1": 11.7}
+{"label": "vertical bofn3 64x wait", "day": 0, "wall": 7.4, "cpu": 1.2, "load1": 11.8}
+{"label": "vertical bofn3 64x lean", "day": 0, "wall": 7.6, "cpu": 1.2, "load1": 11.8}
+{"label": "conventional bofn3 64x", "day": 150, "wall": 1618.3, "cpu": 280.3, "load1": 11.8}
+{"label": "conventional pkgfn3 64x", "day": 150, "wall": 1627.1, "cpu": 281.4, "load1": 12.14}
+{"label": "conventional fast 64x", "day": 180, "wall": 1681.7, "cpu": 293.9, "load1": 12.77}
+{"label": "vertical fast 64x", "day": 180, "wall": 1687.1, "cpu": 294.6, "load1": 12.79}
+{"label": "vertical bofn3 64x wait", "day": 10, "wall": 86.0, "cpu": 15.8, "load1": 12.81}
+{"label": "vertical bofn3 64x lean", "day": 10, "wall": 92.0, "cpu": 17.0, "load1": 12.92}
+{"label": "vertical bofn3 16x", "day": 320, "wall": 1759.0, "cpu": 922.6, "load1": 13.04}
+{"label": "vertical pkgfn3 64x", "day": 290, "wall": 1778.0, "cpu": 962.0, "load1": 13.01}
+{"label": "conventional bofn3 64x", "day": 160, "wall": 1762.4, "cpu": 307.3, "load1": 13.01}
+{"label": "conventional fast 64x", "day": 190, "wall": 1770.4, "cpu": 310.7, "load1": 12.99}
+{"label": "vertical fast 64x", "day": 190, "wall": 1775.3, "cpu": 311.5, "load1": 12.91}
+{"label": "vertical bofn3 64x", "day": 280, "wall": 1794.0, "cpu": 945.1, "load1": 12.91}
+{"label": "conventional pkgfn3 64x", "day": 160, "wall": 1778.0, "cpu": 309.2, "load1": 12.91}
+{"label": "vertical pkgfn3 16x", "day": 320, "wall": 1798.2, "cpu": 929.0, "load1": 12.92}
+{"label": "conventional fast 64x", "day": 200, "wall": 1853.9, "cpu": 327.3, "load1": 13.41}
+{"label": "vertical fast 64x", "day": 200, "wall": 1860.4, "cpu": 328.4, "load1": 13.58}
+{"label": "conventional bofn3 64x", "day": 170, "wall": 1889.9, "cpu": 333.0, "load1": 13.44}
+{"label": "conventional pkgfn3 64x", "day": 170, "wall": 1893.6, "cpu": 332.9, "load1": 13.32}
+{"label": "vertical fast 64x", "day": 210, "wall": 1937.0, "cpu": 345.0, "load1": 13.42}
+{"label": "conventional fast 64x", "day": 210, "wall": 1939.0, "cpu": 344.3, "load1": 13.42}
+{"label": "vertical pkgfn3 64x", "day": 300, "wall": 1966.8, "cpu": 1085.1, "load1": 13.55}
+{"label": "vertical bofn3 64x", "day": 290, "wall": 2011.1, "cpu": 1074.6, "load1": 13.28}
+{"label": "conventional bofn3 64x", "day": 180, "wall": 2001.1, "cpu": 354.2, "load1": 13.61}
+{"label": "conventional fast 64x", "day": 220, "wall": 2013.2, "cpu": 360.4, "load1": 13.52}
+{"label": "vertical fast 64x", "day": 220, "wall": 2023.2, "cpu": 362.2, "load1": 13.44}
+{"label": "conventional pkgfn3 64x", "day": 180, "wall": 2046.5, "cpu": 363.2, "load1": 13.15}
+{"label": "vertical bofn3 16x", "day": 330, "wall": 2073.0, "cpu": 1113.8, "load1": 13.21}
+{"label": "conventional fast 64x", "day": 230, "wall": 2098.5, "cpu": 377.3, "load1": 13.33}
+{"label": "conventional bofn3 64x", "day": 190, "wall": 2104.0, "cpu": 375.7, "load1": 13.14}
+{"label": "vertical fast 64x", "day": 230, "wall": 2112.6, "cpu": 379.7, "load1": 13.11}
+{"label": "conventional pkgfn3 64x", "day": 190, "wall": 2166.8, "cpu": 388.0, "load1": 12.76}
+{"label": "vertical pkgfn3 16x", "day": 330, "wall": 2191.2, "cpu": 1167.8, "load1": 12.86}
+{"label": "conventional fast 64x", "day": 240, "wall": 2180.6, "cpu": 394.0, "load1": 13.17}
+{"label": "vertical bofn3 64x", "day": 300, "wall": 2207.7, "cpu": 1194.7, "load1": 13.07}
+{"label": "vertical fast 64x", "day": 240, "wall": 2201.3, "cpu": 396.9, "load1": 13.06}
+{"label": "vertical pkgfn3 64x", "day": 310, "wall": 2267.8, "cpu": 1259.2, "load1": 13.05}
+{"label": "conventional bofn3 64x", "day": 200, "wall": 2252.0, "cpu": 405.3, "load1": 13.05}
+{"label": "conventional fast 64x", "day": 250, "wall": 2262.7, "cpu": 411.0, "load1": 13.04}
+{"label": "vertical fast 64x", "day": 250, "wall": 2279.7, "cpu": 414.0, "load1": 13.03}
+{"label": "conventional pkgfn3 64x", "day": 200, "wall": 2320.0, "cpu": 418.0, "load1": 13.5}
+{"label": "vertical bofn3 64x wait", "day": 20, "wall": 735.8, "cpu": 31.8, "load1": 13.32}
+{"label": "conventional fast 64x", "day": 260, "wall": 2344.9, "cpu": 427.4, "load1": 13.32}
+{"label": "vertical bofn3 16x", "day": 340, "wall": 2382.1, "cpu": 1313.3, "load1": 13.2}
+{"label": "vertical fast 64x", "day": 260, "wall": 2367.4, "cpu": 431.8, "load1": 13.2}
+{"label": "conventional bofn3 64x", "day": 210, "wall": 2372.8, "cpu": 429.4, "load1": 13.18}
+{"label": "vertical bofn3 64x", "day": 310, "wall": 2430.0, "cpu": 1332.9, "load1": 13.25}
+{"label": "conventional fast 64x", "day": 270, "wall": 2426.3, "cpu": 444.7, "load1": 13.11}
+{"label": "conventional pkgfn3 64x", "day": 210, "wall": 2451.1, "cpu": 444.3, "load1": 13.26}
+{"label": "vertical fast 64x", "day": 270, "wall": 2452.3, "cpu": 449.5, "load1": 13.26}
+{"label": "conventional fast 64x", "day": 280, "wall": 2476.7, "cpu": 460.4, "load1": 12.79}
+{"label": "conventional bofn3 64x", "day": 220, "wall": 2487.9, "cpu": 459.7, "load1": 12.59}
+{"label": "vertical pkgfn3 16x", "day": 340, "wall": 2507.6, "cpu": 1351.0, "load1": 12.62}
+{"label": "vertical fast 64x", "day": 280, "wall": 2495.3, "cpu": 466.8, "load1": 12.49}
+{"label": "conventional fast 64x", "day": 290, "wall": 2511.7, "cpu": 476.7, "load1": 12.38}
+{"label": "conventional pkgfn3 64x", "day": 220, "wall": 2519.0, "cpu": 471.7, "load1": 12.43}
+{"label": "vertical fast 64x", "day": 290, "wall": 2534.6, "cpu": 484.2, "load1": 12.33}
+{"label": "conventional bofn3 64x", "day": 230, "wall": 2546.3, "cpu": 486.9, "load1": 12.12}
+{"label": "conventional fast 64x", "day": 300, "wall": 2548.5, "cpu": 492.5, "load1": 12.12}
+{"label": "vertical pkgfn3 64x", "day": 320, "wall": 2569.1, "cpu": 1414.8, "load1": 12.11}
+{"label": "vertical fast 64x", "day": 300, "wall": 2580.0, "cpu": 502.6, "load1": 11.86}
+{"label": "conventional pkgfn3 64x", "day": 230, "wall": 2584.2, "cpu": 499.7, "load1": 11.95}
+{"label": "conventional fast 64x", "day": 310, "wall": 2585.5, "cpu": 509.0, "load1": 11.96}
+{"label": "conventional bofn3 64x", "day": 240, "wall": 2617.8, "cpu": 516.1, "load1": 11.85}
+{"label": "conventional fast 64x", "day": 320, "wall": 2620.6, "cpu": 524.7, "load1": 11.86}
+{"label": "vertical fast 64x", "day": 310, "wall": 2623.3, "cpu": 519.8, "load1": 11.86}
+{"label": "conventional pkgfn3 64x", "day": 240, "wall": 2645.2, "cpu": 524.6, "load1": 12.05}
+{"label": "conventional fast 64x", "day": 330, "wall": 2660.8, "cpu": 540.8, "load1": 11.95}
+{"label": "vertical fast 64x", "day": 320, "wall": 2662.6, "cpu": 536.6, "load1": 11.95}
+{"label": "conventional bofn3 64x", "day": 250, "wall": 2676.1, "cpu": 540.9, "load1": 12.26}
+{"label": "conventional pkgfn3 64x", "day": 250, "wall": 2694.6, "cpu": 546.5, "load1": 12.62}
+{"label": "conventional fast 64x", "day": 340, "wall": 2696.7, "cpu": 556.6, "load1": 12.49}
+{"label": "vertical fast 64x", "day": 330, "wall": 2705.5, "cpu": 553.8, "load1": 12.33}
+{"label": "conventional fast 64x", "day": 350, "wall": 2739.4, "cpu": 573.3, "load1": 12.41}
+{"label": "conventional bofn3 64x", "day": 260, "wall": 2745.7, "cpu": 569.6, "load1": 12.43}
+{"label": "vertical fast 64x", "day": 340, "wall": 2759.7, "cpu": 574.4, "load1": 12.52}
+{"label": "conventional pkgfn3 64x", "day": 260, "wall": 2766.5, "cpu": 575.5, "load1": 12.59}
+{"label": "conventional fast 64x", "day": 360, "wall": 2780.2, "cpu": 589.7, "load1": 12.58}
+{"label": "vertical bofn3 64x", "day": 320, "wall": 2813.0, "cpu": 1498.7, "load1": 12.63}
+{"label": "conventional bofn3 64x", "day": 270, "wall": 2809.0, "cpu": 594.3, "load1": 12.53}
+{"label": "vertical fast 64x", "day": 350, "wall": 2811.1, "cpu": 594.3, "load1": 12.49}
+{"label": "conventional fast 64x", "day": 370, "wall": 2826.0, "cpu": 606.4, "load1": 12.45}
+{"label": "conventional pkgfn3 64x", "day": 270, "wall": 2845.8, "cpu": 604.4, "load1": 12.32}
+{"label": "vertical bofn3 16x", "day": 350, "wall": 2872.1, "cpu": 1532.1, "load1": 12.27}
+{"label": "vertical fast 64x", "day": 360, "wall": 2856.3, "cpu": 612.3, "load1": 12.27}
+{"label": "conventional fast 64x", "day": 380, "wall": 2868.1, "cpu": 622.3, "load1": 12.47}
+{"label": "conventional bofn3 64x", "day": 280, "wall": 2872.6, "cpu": 619.9, "load1": 12.67}
+{"label": "vertical fast 64x", "day": 370, "wall": 2901.0, "cpu": 630.9, "load1": 12.52}
+{"label": "conventional pkgfn3 64x", "day": 280, "wall": 2903.6, "cpu": 628.8, "load1": 12.52}
+{"label": "conventional fast 64x", "day": 390, "wall": 2910.3, "cpu": 639.4, "load1": 12.48}
+{"label": "conventional bofn3 64x", "day": 290, "wall": 2914.4, "cpu": 637.7, "load1": 12.36}
+{"label": "vertical fast 64x", "day": 380, "wall": 2944.0, "cpu": 648.5, "load1": 12.29}
+{"label": "conventional fast 64x", "day": 400, "wall": 2946.9, "cpu": 655.2, "load1": 12.19}
+{"label": "conventional pkgfn3 64x", "day": 290, "wall": 2966.5, "cpu": 656.6, "load1": 11.92}
+{"label": "conventional bofn3 64x", "day": 300, "wall": 2971.6, "cpu": 660.4, "load1": 11.77}
+{"label": "vertical fast 64x", "day": 390, "wall": 2984.4, "cpu": 666.5, "load1": 11.81}
+{"label": "conventional fast 64x", "day": 410, "wall": 2986.9, "cpu": 671.7, "load1": 11.9}
+{"label": "conventional fast 64x", "day": 420, "wall": 3024.4, "cpu": 688.0, "load1": 11.83}
+{"label": "vertical fast 64x", "day": 400, "wall": 3027.7, "cpu": 685.5, "load1": 11.84}
+{"label": "conventional pkgfn3 64x", "day": 300, "wall": 3031.2, "cpu": 683.0, "load1": 11.78}
+{"label": "conventional bofn3 64x", "day": 310, "wall": 3040.4, "cpu": 690.5, "load1": 11.71}
+{"label": "vertical pkgfn3 16x", "day": 350, "wall": 3067.5, "cpu": 1584.2, "load1": 11.88}
+{"label": "conventional fast 64x", "day": 430, "wall": 3058.2, "cpu": 704.4, "load1": 11.81}
+{"label": "vertical fast 64x", "day": 410, "wall": 3071.6, "cpu": 703.4, "load1": 11.77}
+{"label": "vertical pkgfn3 64x", "day": 330, "wall": 3100.9, "cpu": 1639.5, "load1": 11.58}
+{"label": "conventional fast 64x", "day": 440, "wall": 3094.6, "cpu": 720.3, "load1": 11.65}
+{"label": "conventional pkgfn3 64x", "day": 310, "wall": 3099.9, "cpu": 710.5, "load1": 11.67}
+{"label": "conventional bofn3 64x", "day": 320, "wall": 3106.8, "cpu": 718.6, "load1": 11.72}
+{"label": "vertical fast 64x", "day": 420, "wall": 3115.9, "cpu": 722.3, "load1": 11.6}
+{"label": "conventional fast 64x", "day": 450, "wall": 3133.1, "cpu": 736.7, "load1": 11.47}
+{"label": "vertical fast 64x", "day": 430, "wall": 3162.7, "cpu": 740.9, "load1": 11.42}
+{"label": "conventional pkgfn3 64x", "day": 320, "wall": 3166.8, "cpu": 739.5, "load1": 11.31}
+{"label": "conventional bofn3 64x", "day": 330, "wall": 3172.6, "cpu": 746.2, "load1": 11.28}
+{"label": "conventional fast 64x", "day": 460, "wall": 3175.3, "cpu": 753.0, "load1": 11.28}
+{"label": "vertical bofn3 64x", "day": 330, "wall": 3206.0, "cpu": 1669.6, "load1": 11.14}
+{"label": "vertical fast 64x", "day": 440, "wall": 3210.5, "cpu": 759.9, "load1": 11.31}
+{"label": "conventional fast 64x", "day": 470, "wall": 3215.9, "cpu": 769.4, "load1": 11.37}
+{"label": "conventional bofn3 64x", "day": 340, "wall": 3237.8, "cpu": 773.9, "load1": 11.4}
+{"label": "conventional fast 64x", "day": 480, "wall": 3252.1, "cpu": 785.2, "load1": 11.46}
+{"label": "conventional pkgfn3 64x", "day": 330, "wall": 3253.3, "cpu": 774.8, "load1": 11.46}
+{"label": "vertical fast 64x", "day": 450, "wall": 3253.5, "cpu": 777.9, "load1": 11.46}
+{"label": "conventional fast 64x", "day": 490, "wall": 3286.5, "cpu": 801.1, "load1": 11.38}
+{"label": "conventional bofn3 64x", "day": 350, "wall": 3288.4, "cpu": 794.7, "load1": 11.38}
+{"label": "vertical fast 64x", "day": 460, "wall": 3296.4, "cpu": 797.0, "load1": 11.32}
+{"label": "conventional pkgfn3 64x", "day": 340, "wall": 3315.4, "cpu": 800.5, "load1": 11.18}
+{"label": "conventional fast 64x", "day": 500, "wall": 3325.1, "cpu": 817.2, "load1": 11.31}
+{"label": "vertical fast 64x", "day": 470, "wall": 3340.6, "cpu": 814.7, "load1": 11.49}
+{"label": "conventional bofn3 64x", "day": 360, "wall": 3352.4, "cpu": 823.9, "load1": 11.49}
+{"label": "vertical bofn3 16x", "day": 360, "wall": 3378.2, "cpu": 1747.9, "load1": 11.49}
+{"label": "conventional fast 64x", "day": 510, "wall": 3363.0, "cpu": 833.2, "load1": 11.49}
+{"label": "conventional pkgfn3 64x", "day": 350, "wall": 3369.0, "cpu": 824.6, "load1": 11.54}
+{"label": "vertical fast 64x", "day": 480, "wall": 3383.5, "cpu": 832.3, "load1": 11.64}
+{"label": "conventional fast 64x", "day": 520, "wall": 3399.9, "cpu": 849.3, "load1": 11.58}
+{"label": "conventional bofn3 64x", "day": 370, "wall": 3405.0, "cpu": 846.1, "load1": 11.53}
+{"label": "conventional pkgfn3 64x", "day": 360, "wall": 3427.5, "cpu": 851.6, "load1": 11.55}
+{"label": "conventional fast 64x", "day": 530, "wall": 3430.2, "cpu": 864.7, "load1": 11.55}
+{"label": "vertical fast 64x", "day": 490, "wall": 3431.6, "cpu": 850.5, "load1": 11.5}
+{"label": "conventional bofn3 64x", "day": 380, "wall": 3445.7, "cpu": 863.8, "load1": 11.47}
+{"label": "conventional fast 64x", "day": 540, "wall": 3470.7, "cpu": 880.7, "load1": 11.58}
+{"label": "vertical pkgfn3 64x", "day": 340, "wall": 3491.4, "cpu": 1811.1, "load1": 11.58}
+{"label": "vertical fast 64x", "day": 500, "wall": 3476.5, "cpu": 868.8, "load1": 11.54}
+{"label": "conventional bofn3 64x", "day": 390, "wall": 3484.1, "cpu": 880.1, "load1": 11.49}
+{"label": "conventional pkgfn3 64x", "day": 370, "wall": 3503.7, "cpu": 885.3, "load1": 11.48}
+{"label": "conventional fast 64x", "day": 550, "wall": 3510.6, "cpu": 896.7, "load1": 11.49}
+{"label": "vertical fast 64x", "day": 510, "wall": 3514.2, "cpu": 886.9, "load1": 11.49}
+{"label": "vertical pkgfn3 16x", "day": 360, "wall": 3539.3, "cpu": 1783.6, "load1": 11.41}
+{"label": "conventional bofn3 64x", "day": 400, "wall": 3541.6, "cpu": 904.0, "load1": 11.59}
+{"label": "conventional pkgfn3 64x", "day": 380, "wall": 3543.2, "cpu": 904.5, "load1": 11.59}
+{"label": "conventional fast 64x", "day": 560, "wall": 3545.2, "cpu": 912.4, "load1": 11.59}
+{"label": "vertical fast 64x", "day": 520, "wall": 3552.3, "cpu": 904.4, "load1": 11.58}
+{"label": "conventional fast 64x", "day": 570, "wall": 3584.0, "cpu": 928.4, "load1": 11.8}
+{"label": "vertical fast 64x", "day": 530, "wall": 3589.5, "cpu": 922.0, "load1": 11.74}
+{"label": "conventional bofn3 64x", "day": 410, "wall": 3596.1, "cpu": 926.4, "load1": 11.77}
+{"label": "conventional pkgfn3 64x", "day": 390, "wall": 3599.3, "cpu": 927.4, "load1": 11.77}
+{"label": "conventional fast 64x", "day": 580, "wall": 3622.3, "cpu": 944.1, "load1": 11.84}
+{"label": "vertical fast 64x", "day": 540, "wall": 3633.8, "cpu": 940.5, "load1": 11.79}
+{"label": "conventional bofn3 64x", "day": 420, "wall": 3640.6, "cpu": 946.4, "load1": 11.73}
+{"label": "conventional pkgfn3 64x", "day": 400, "wall": 3642.5, "cpu": 946.5, "load1": 11.67}
+{"label": "conventional fast 64x", "day": 590, "wall": 3661.7, "cpu": 959.8, "load1": 11.68}
+{"label": "vertical fast 64x", "day": 550, "wall": 3679.5, "cpu": 959.9, "load1": 11.69}
+{"label": "vertical bofn3 64x", "day": 340, "wall": 3696.2, "cpu": 1875.4, "load1": 11.69}
+{"label": "conventional pkgfn3 64x", "day": 410, "wall": 3682.0, "cpu": 964.7, "load1": 11.64}
+{"label": "conventional fast 64x", "day": 600, "wall": 3695.6, "cpu": 975.9, "load1": 11.44}
+{"label": "conventional bofn3 64x", "day": 430, "wall": 3702.8, "cpu": 974.2, "load1": 11.24}
+{"label": "vertical fast 64x", "day": 560, "wall": 3724.1, "cpu": 977.9, "load1": 11.24}
+{"label": "conventional fast 64x", "day": 610, "wall": 3731.0, "cpu": 991.8, "load1": 11.43}
+{"label": "conventional pkgfn3 64x", "day": 420, "wall": 3734.4, "cpu": 986.6, "load1": 11.43}
+{"label": "conventional fast 64x", "day": 620, "wall": 3764.8, "cpu": 1007.6, "load1": 11.39}
+{"label": "conventional bofn3 64x", "day": 440, "wall": 3765.7, "cpu": 1000.6, "load1": 11.44}
+{"label": "vertical fast 64x", "day": 570, "wall": 3765.7, "cpu": 995.8, "load1": 11.44}
+{"label": "conventional fast 64x", "day": 630, "wall": 3798.5, "cpu": 1023.2, "load1": 11.55}
+{"label": "conventional pkgfn3 64x", "day": 430, "wall": 3805.4, "cpu": 1015.4, "load1": 11.59}
+{"label": "vertical fast 64x", "day": 580, "wall": 3806.8, "cpu": 1013.4, "load1": 11.54}
+{"label": "conventional bofn3 64x", "day": 450, "wall": 3818.3, "cpu": 1023.4, "load1": 11.46}
+{"label": "conventional fast 64x", "day": 640, "wall": 3837.7, "cpu": 1038.9, "load1": 11.46}
+{"label": "vertical fast 64x", "day": 590, "wall": 3848.4, "cpu": 1031.4, "load1": 11.32}
+{"label": "conventional fast 64x", "day": 650, "wall": 3873.8, "cpu": 1055.0, "load1": 11.37}
+{"label": "conventional bofn3 64x", "day": 460, "wall": 3876.2, "cpu": 1050.4, "load1": 11.5}
+{"label": "conventional pkgfn3 64x", "day": 440, "wall": 3885.7, "cpu": 1048.2, "load1": 11.43}
+{"label": "vertical fast 64x", "day": 600, "wall": 3890.8, "cpu": 1049.8, "load1": 11.39}
+{"label": "vertical bofn3 16x", "day": 370, "wall": 3913.9, "cpu": 1974.5, "load1": 11.36}
+{"label": "conventional fast 64x", "day": 660, "wall": 3911.5, "cpu": 1070.4, "load1": 11.49}
+{"label": "vertical pkgfn3 64x", "day": 350, "wall": 3931.3, "cpu": 1997.2, "load1": 11.49}
+{"label": "conventional bofn3 64x", "day": 470, "wall": 3916.4, "cpu": 1069.5, "load1": 11.53}
+{"label": "vertical fast 64x", "day": 610, "wall": 3936.1, "cpu": 1068.1, "load1": 11.6}
+{"label": "conventional fast 64x", "day": 670, "wall": 3950.2, "cpu": 1086.3, "load1": 11.51}
+{"label": "conventional pkgfn3 64x", "day": 450, "wall": 3954.5, "cpu": 1078.1, "load1": 11.47}
+{"label": "conventional bofn3 64x", "day": 480, "wall": 3973.8, "cpu": 1095.3, "load1": 11.48}
+{"label": "vertical fast 64x", "day": 620, "wall": 3980.9, "cpu": 1086.1, "load1": 11.48}
+{"label": "conventional fast 64x", "day": 680, "wall": 3989.5, "cpu": 1102.3, "load1": 11.77}
+{"label": "conventional pkgfn3 64x", "day": 460, "wall": 4005.3, "cpu": 1099.6, "load1": 11.74}
+{"label": "vertical fast 64x", "day": 630, "wall": 4024.4, "cpu": 1103.5, "load1": 12.27}
+{"label": "conventional fast 64x", "day": 690, "wall": 4032.6, "cpu": 1119.0, "load1": 12.61}
+{"label": "conventional bofn3 64x", "day": 490, "wall": 4042.6, "cpu": 1123.9, "load1": 12.53}
+{"label": "vertical pkgfn3 16x", "day": 370, "wall": 4059.7, "cpu": 2001.6, "load1": 12.53}
+{"label": "vertical fast 64x", "day": 640, "wall": 4079.1, "cpu": 1124.7, "load1": 12.64}
+{"label": "conventional fast 64x", "day": 700, "wall": 4082.5, "cpu": 1136.4, "load1": 12.67}
+{"label": "conventional pkgfn3 64x", "day": 470, "wall": 4091.6, "cpu": 1133.0, "load1": 12.57}
+{"label": "conventional fast 64x", "day": 710, "wall": 4130.4, "cpu": 1154.5, "load1": 12.31}
+{"label": "vertical fast 64x", "day": 650, "wall": 4138.5, "cpu": 1147.3, "load1": 12.65}
+{"label": "conventional bofn3 64x", "day": 500, "wall": 4156.1, "cpu": 1166.6, "load1": 13.03}
+{"label": "vertical bofn3 64x", "day": 350, "wall": 4186.1, "cpu": 2077.6, "load1": 13.03}
+{"label": "conventional fast 64x", "day": 720, "wall": 4179.2, "cpu": 1172.6, "load1": 13.03}
+{"label": "conventional pkgfn3 64x", "day": 480, "wall": 4179.5, "cpu": 1168.3, "load1": 13.03}
+{"label": "vertical fast 64x", "day": 660, "wall": 4188.5, "cpu": 1167.6, "load1": 12.95}
+{"label": "conventional bofn3 64x", "day": 510, "wall": 4213.0, "cpu": 1186.9, "load1": 12.69}
+{"label": "conventional fast 64x", "day": 730, "wall": 4218.8, "cpu": 1188.2, "load1": 12.63}
+{"label": "conventional pkgfn3 64x", "day": 490, "wall": 4234.4, "cpu": 1190.4, "load1": 12.57}
+{"label": "pilot vertical bofn3 s0 64x", "day": 0, "wall": 8.7, "cpu": 1.2, "load1": 12.57}
+{"label": "vertical fast 64x", "day": 670, "wall": 4236.0, "cpu": 1185.9, "load1": 12.61}
+{"label": "conventional bofn3 64x", "day": 520, "wall": 4274.4, "cpu": 1209.0, "load1": 12.87}
+{"label": "vertical fast 64x", "day": 680, "wall": 4285.1, "cpu": 1204.4, "load1": 12.81}
+{"label": "conventional pkgfn3 64x", "day": 500, "wall": 4312.7, "cpu": 1224.1, "load1": 12.54}
+{"label": "vertical fast 64x", "day": 690, "wall": 4330.5, "cpu": 1223.5, "load1": 12.42}
+{"label": "conventional bofn3 64x", "day": 530, "wall": 4340.5, "cpu": 1236.8, "load1": 12.83}
+{"label": "pilot vertical bofn3 s0 64x", "day": 10, "wall": 115.3, "cpu": 17.1, "load1": 12.76}
+{"label": "vertical fast 64x", "day": 700, "wall": 4372.8, "cpu": 1241.6, "load1": 13.08}
+{"label": "conventional bofn3 64x", "day": 540, "wall": 4389.6, "cpu": 1257.2, "load1": 13.08}
+{"label": "conventional pkgfn3 64x", "day": 510, "wall": 4392.3, "cpu": 1253.5, "load1": 13.07}
+{"label": "vertical fast 64x", "day": 710, "wall": 4414.4, "cpu": 1260.6, "load1": 12.78}
+{"label": "conventional pkgfn3 64x", "day": 520, "wall": 4445.5, "cpu": 1276.1, "load1": 12.58}
+{"label": "conventional bofn3 64x", "day": 550, "wall": 4453.2, "cpu": 1285.0, "load1": 12.49}
+{"label": "vertical fast 64x", "day": 720, "wall": 4459.9, "cpu": 1280.1, "load1": 12.45}
+{"label": "pilot vertical bofn3 s0 64x", "day": 20, "wall": 238.3, "cpu": 35.0, "load1": 12.42}
+{"label": "vertical fast 64x", "day": 730, "wall": 4510.4, "cpu": 1299.6, "load1": 12.27}
+{"label": "conventional bofn3 64x", "day": 560, "wall": 4519.6, "cpu": 1310.4, "load1": 12.23}
+{"label": "pilot vertical bofn3 s1 64x", "day": 0, "wall": 7.0, "cpu": 1.2, "load1": 12.19}
+{"label": "vertical pkgfn3 64x", "day": 360, "wall": 4545.7, "cpu": 2240.9, "load1": 12.19}
+{"label": "conventional pkgfn3 64x", "day": 530, "wall": 4535.3, "cpu": 1314.6, "load1": 12.18}
+{"label": "vertical bofn3 16x", "day": 380, "wall": 4576.1, "cpu": 2251.7, "load1": 12.46}
+{"label": "pilot vertical bofn3 s0 64x", "day": 30, "wall": 353.9, "cpu": 51.7, "load1": 12.33}
+{"label": "conventional bofn3 64x", "day": 570, "wall": 4581.2, "cpu": 1336.3, "load1": 12.38}
+{"label": "conventional pkgfn3 64x", "day": 540, "wall": 4600.5, "cpu": 1342.6, "load1": 12.38}
+{"label": "vertical bofn3 64x", "day": 360, "wall": 4616.8, "cpu": 2253.2, "load1": 12.38}
+{"label": "pilot vertical bofn3 s1 64x", "day": 10, "wall": 115.9, "cpu": 17.0, "load1": 12.36}
+{"label": "conventional bofn3 64x", "day": 580, "wall": 4653.9, "cpu": 1367.0, "load1": 12.42}
+{"label": "conventional pkgfn3 64x", "day": 550, "wall": 4680.2, "cpu": 1375.7, "load1": 12.2}
+{"label": "pilot vertical bofn3 s0 64x", "day": 40, "wall": 463.1, "cpu": 68.2, "load1": 12.33}
+{"label": "conventional bofn3 64x", "day": 590, "wall": 4698.1, "cpu": 1388.4, "load1": 12.35}
+{"label": "vertical pkgfn3 16x", "day": 380, "wall": 4751.2, "cpu": 2288.1, "load1": 12.51}
+{"label": "conventional pkgfn3 64x", "day": 560, "wall": 4747.8, "cpu": 1406.1, "load1": 12.46}
+{"label": "pilot vertical bofn3 s1 64x", "day": 20, "wall": 235.0, "cpu": 34.9, "load1": 12.34}
+{"label": "conventional bofn3 64x", "day": 600, "wall": 4762.9, "cpu": 1417.6, "load1": 12.21}
+{"label": "pilot vertical bofn3 s0 64x", "day": 50, "wall": 574.0, "cpu": 85.4, "load1": 12.48}
+{"label": "conventional pkgfn3 64x", "day": 570, "wall": 4814.6, "cpu": 1438.1, "load1": 12.57}
+{"label": "conventional bofn3 64x", "day": 610, "wall": 4819.7, "cpu": 1444.5, "load1": 12.52}
+{"label": "pilot vertical bofn3 s1 64x", "day": 30, "wall": 339.4, "cpu": 52.7, "load1": 12.26}
+{"label": "conventional pkgfn3 64x", "day": 580, "wall": 4881.1, "cpu": 1474.4, "load1": 11.5}
+{"label": "conventional bofn3 64x", "day": 620, "wall": 4882.4, "cpu": 1480.8, "load1": 11.5}
+{"label": "pilot vertical bofn3 s0 64x", "day": 60, "wall": 663.8, "cpu": 101.8, "load1": 11.46}
+{"label": "conventional pkgfn3 64x", "day": 590, "wall": 4920.2, "cpu": 1496.5, "load1": 10.79}
+{"label": "conventional bofn3 64x", "day": 630, "wall": 4927.0, "cpu": 1509.0, "load1": 10.67}
+{"label": "pilot vertical bofn3 s1 64x", "day": 40, "wall": 416.8, "cpu": 69.2, "load1": 10.65}
+{"label": "conventional bofn3 64x", "day": 640, "wall": 4953.1, "cpu": 1524.1, "load1": 10.36}
+{"label": "conventional pkgfn3 64x", "day": 600, "wall": 4965.5, "cpu": 1523.1, "load1": 10.3}
+{"label": "vertical pkgfn3 64x", "day": 370, "wall": 4991.1, "cpu": 2465.0, "load1": 10.1}
+{"label": "pilot vertical bofn3 s0 64x", "day": 70, "wall": 751.3, "cpu": 118.9, "load1": 9.93}
+{"label": "conventional bofn3 64x", "day": 650, "wall": 4989.8, "cpu": 1543.7, "load1": 10.02}
+{"label": "pilot vertical bofn3 s1 64x", "day": 50, "wall": 502.6, "cpu": 85.8, "load1": 10.22}
+{"label": "conventional pkgfn3 64x", "day": 610, "wall": 5023.6, "cpu": 1554.9, "load1": 10.22}
+{"label": "conventional bofn3 64x", "day": 660, "wall": 5032.0, "cpu": 1567.0, "load1": 10.34}
+{"label": "vertical bofn3 64x", "day": 370, "wall": 5082.3, "cpu": 2487.5, "load1": 10.79}
+{"label": "conventional bofn3 64x", "day": 670, "wall": 5081.7, "cpu": 1594.2, "load1": 11.2}
+{"label": "conventional pkgfn3 64x", "day": 620, "wall": 5088.9, "cpu": 1586.6, "load1": 11.27}
+{"label": "pilot vertical bofn3 s0 64x", "day": 80, "wall": 871.1, "cpu": 140.8, "load1": 11.3}
+{"label": "pilot vertical bofn3 s1 64x", "day": 60, "wall": 601.8, "cpu": 102.2, "load1": 11.15}
+{"label": "conventional bofn3 64x", "day": 680, "wall": 5141.0, "cpu": 1622.9, "load1": 11.1}
+{"label": "conventional pkgfn3 64x", "day": 630, "wall": 5144.9, "cpu": 1618.0, "load1": 11.1}
+{"label": "conventional pkgfn3 64x", "day": 640, "wall": 5178.6, "cpu": 1636.1, "load1": 10.78}
+{"label": "conventional bofn3 64x", "day": 690, "wall": 5208.5, "cpu": 1655.1, "load1": 10.79}
+{"label": "conventional pkgfn3 64x", "day": 650, "wall": 5210.2, "cpu": 1654.5, "load1": 10.79}
+{"label": "pilot vertical bofn3 s1 64x", "day": 70, "wall": 692.0, "cpu": 119.2, "load1": 10.81}
+{"label": "pilot vertical bofn3 s0 64x", "day": 90, "wall": 995.7, "cpu": 162.3, "load1": 10.92}
+{"label": "conventional pkgfn3 64x", "day": 660, "wall": 5242.1, "cpu": 1673.4, "load1": 10.66}
+{"label": "conventional bofn3 64x", "day": 700, "wall": 5257.0, "cpu": 1680.5, "load1": 10.58}
+{"label": "pilot vertical bofn3 s1 64x", "day": 80, "wall": 776.3, "cpu": 135.9, "load1": 10.29}
+{"label": "conventional pkgfn3 64x", "day": 670, "wall": 5297.3, "cpu": 1706.2, "load1": 10.29}
+{"label": "vertical bofn3 16x", "day": 390, "wall": 5322.7, "cpu": 2636.9, "load1": 10.32}
+{"label": "conventional bofn3 64x", "day": 710, "wall": 5309.1, "cpu": 1712.0, "load1": 10.32}
+{"label": "pilot vertical bofn3 s0 64x", "day": 100, "wall": 1099.0, "cpu": 183.5, "load1": 10.76}
+{"label": "conventional pkgfn3 64x", "day": 680, "wall": 5350.4, "cpu": 1735.6, "load1": 10.64}
+{"label": "conventional bofn3 64x", "day": 720, "wall": 5351.8, "cpu": 1735.1, "load1": 10.59}
+{"label": "pilot vertical bofn3 s1 64x", "day": 90, "wall": 857.6, "cpu": 152.9, "load1": 10.45}
+{"label": "conventional bofn3 64x", "day": 730, "wall": 5385.3, "cpu": 1755.8, "load1": 10.5}
+{"label": "pilot vertical bofn3 s0 16x", "day": 0, "wall": 4.7, "cpu": 1.1, "load1": 10.42}
+{"label": "conventional pkgfn3 64x", "day": 690, "wall": 5398.2, "cpu": 1764.2, "load1": 10.39}
+{"label": "vertical pkgfn3 16x", "day": 390, "wall": 5416.5, "cpu": 2640.4, "load1": 10.39}
+{"label": "vertical pkgfn3 64x", "day": 380, "wall": 5430.9, "cpu": 2706.9, "load1": 10.15}
+{"label": "pilot vertical bofn3 s0 16x", "day": 10, "wall": 28.7, "cpu": 5.9, "load1": 9.98}
+{"label": "pilot vertical bofn3 s0 64x", "day": 110, "wall": 1195.6, "cpu": 205.5, "load1": 9.98}
+{"label": "pilot vertical bofn3 s0 16x", "day": 20, "wall": 52.2, "cpu": 10.8, "load1": 10.12}
+{"label": "conventional pkgfn3 64x", "day": 700, "wall": 5443.9, "cpu": 1793.9, "load1": 10.11}
+{"label": "vertical bofn3 64x", "day": 380, "wall": 5467.3, "cpu": 2703.1, "load1": 10.02}
+{"label": "pilot vertical bofn3 s0 16x", "day": 30, "wall": 71.1, "cpu": 14.8, "load1": 9.85}
+{"label": "pilot vertical bofn3 s1 64x", "day": 100, "wall": 956.0, "cpu": 174.7, "load1": 9.89}
+{"label": "pilot vertical bofn3 s0 16x", "day": 40, "wall": 91.6, "cpu": 19.1, "load1": 9.89}
+{"label": "conventional pkgfn3 64x", "day": 710, "wall": 5493.8, "cpu": 1824.0, "load1": 9.62}
+{"label": "pilot vertical bofn3 s0 16x", "day": 50, "wall": 113.0, "cpu": 23.5, "load1": 9.6}
+{"label": "pilot vertical bofn3 s0 16x", "day": 60, "wall": 132.9, "cpu": 27.8, "load1": 9.78}
+{"label": "pilot vertical bofn3 s0 64x", "day": 120, "wall": 1299.9, "cpu": 227.9, "load1": 9.78}
+{"label": "pilot vertical bofn3 s0 16x", "day": 70, "wall": 155.5, "cpu": 32.5, "load1": 10.14}
+{"label": "conventional pkgfn3 64x", "day": 720, "wall": 5545.7, "cpu": 1856.6, "load1": 10.14}
+{"label": "pilot vertical bofn3 s1 64x", "day": 110, "wall": 1050.0, "cpu": 196.3, "load1": 10.28}
+{"label": "pilot vertical bofn3 s0 16x", "day": 80, "wall": 190.3, "cpu": 40.7, "load1": 10.23}
+{"label": "conventional pkgfn3 64x", "day": 730, "wall": 5589.4, "cpu": 1882.7, "load1": 10.28}
+{"label": "pilot vertical bofn3 s1 16x", "day": 0, "wall": 5.1, "cpu": 1.2, "load1": 10.31}
+{"label": "pilot vertical bofn3 s0 16x", "day": 90, "wall": 227.0, "cpu": 50.6, "load1": 10.32}
+{"label": "pilot vertical bofn3 s1 16x", "day": 10, "wall": 22.1, "cpu": 5.7, "load1": 10.29}
+{"label": "pilot vertical bofn3 s0 64x", "day": 130, "wall": 1410.3, "cpu": 252.8, "load1": 10.21}
+{"label": "pilot vertical bofn3 s1 16x", "day": 20, "wall": 43.0, "cpu": 10.6, "load1": 10.21}
+{"label": "pilot vertical bofn3 s0 16x", "day": 100, "wall": 251.8, "cpu": 56.0, "load1": 10.21}
+{"label": "pilot vertical bofn3 s1 16x", "day": 30, "wall": 59.6, "cpu": 15.3, "load1": 10.32}
+{"label": "pilot vertical bofn3 s1 64x", "day": 120, "wall": 1143.3, "cpu": 219.7, "load1": 10.5}
+{"label": "pilot vertical bofn3 s1 16x", "day": 40, "wall": 80.5, "cpu": 19.7, "load1": 10.49}
+{"label": "pilot vertical bofn3 s0 16x", "day": 110, "wall": 290.5, "cpu": 65.0, "load1": 10.29}
+{"label": "pilot vertical bofn3 s1 16x", "day": 50, "wall": 96.8, "cpu": 23.9, "load1": 10.0}
+{"label": "pilot vertical bofn3 s0 16x", "day": 120, "wall": 315.9, "cpu": 72.0, "load1": 9.85}
+{"label": "pilot vertical bofn3 s1 16x", "day": 60, "wall": 113.0, "cpu": 28.1, "load1": 9.7}
+{"label": "pilot vertical bofn3 s0 64x", "day": 140, "wall": 1493.3, "cpu": 271.8, "load1": 9.52}
+{"label": "pilot vertical bofn3 s1 16x", "day": 70, "wall": 132.6, "cpu": 32.6, "load1": 9.29}
+{"label": "pilot vertical bofn3 s1 16x", "day": 80, "wall": 152.3, "cpu": 36.9, "load1": 9.24}
+{"label": "pilot vertical bofn3 s0 16x", "day": 130, "wall": 359.8, "cpu": 82.6, "load1": 9.24}
+{"label": "pilot vertical bofn3 s1 64x", "day": 130, "wall": 1243.7, "cpu": 242.8, "load1": 9.35}
+{"label": "pilot vertical bofn3 s1 16x", "day": 90, "wall": 172.0, "cpu": 42.3, "load1": 9.4}
+{"label": "pilot vertical bofn3 s0 16x", "day": 140, "wall": 385.6, "cpu": 88.6, "load1": 9.61}
+{"label": "vertical bofn3 16x", "day": 400, "wall": 5811.2, "cpu": 2945.9, "load1": 9.7}
+{"label": "pilot vertical bofn3 s1 16x", "day": 100, "wall": 208.2, "cpu": 50.2, "load1": 9.82}
+{"label": "pilot vertical bofn3 s0 16x", "day": 150, "wall": 416.5, "cpu": 96.1, "load1": 9.82}
+{"label": "pilot vertical bofn3 s0 64x", "day": 150, "wall": 1594.3, "cpu": 295.2, "load1": 9.87}
+{"label": "vertical pkgfn3 64x", "day": 390, "wall": 5853.3, "cpu": 2995.5, "load1": 9.47}
+{"label": "pilot vertical bofn3 s1 16x", "day": 110, "wall": 245.5, "cpu": 58.8, "load1": 9.47}
+{"label": "pilot vertical bofn3 s0 16x", "day": 160, "wall": 461.7, "cpu": 106.9, "load1": 9.54}
+{"label": "vertical bofn3 64x", "day": 390, "wall": 5872.6, "cpu": 2986.6, "load1": 9.61}
+{"label": "pilot vertical bofn3 s1 64x", "day": 140, "wall": 1337.1, "cpu": 266.1, "load1": 9.61}
+{"label": "pilot vertical bofn3 s1 16x", "day": 120, "wall": 289.0, "cpu": 68.9, "load1": 9.92}
+{"label": "pilot vertical bofn3 s0 16x", "day": 170, "wall": 499.8, "cpu": 116.3, "load1": 10.01}
+{"label": "vertical pkgfn3 16x", "day": 400, "wall": 5932.3, "cpu": 2992.7, "load1": 9.77}
+{"label": "pilot vertical bofn3 s1 16x", "day": 130, "wall": 324.9, "cpu": 77.3, "load1": 9.77}
+{"label": "pilot vertical bofn3 s0 64x", "day": 160, "wall": 1702.7, "cpu": 322.0, "load1": 9.49}
+{"label": "pilot vertical bofn3 s0 16x", "day": 180, "wall": 550.0, "cpu": 128.2, "load1": 9.49}
+{"label": "pilot vertical bofn3 s1 16x", "day": 140, "wall": 358.6, "cpu": 85.7, "load1": 9.45}
+{"label": "pilot vertical bofn3 s1 64x", "day": 150, "wall": 1449.4, "cpu": 292.9, "load1": 9.57}
+{"label": "pilot vertical bofn3 s0 16x", "day": 190, "wall": 589.8, "cpu": 137.2, "load1": 9.41}
+{"label": "pilot vertical bofn3 s1 16x", "day": 150, "wall": 396.3, "cpu": 95.0, "load1": 9.19}
+{"label": "pilot vertical bofn3 s1 16x", "day": 160, "wall": 443.2, "cpu": 106.5, "load1": 9.64}
+{"label": "pilot vertical bofn3 s0 64x", "day": 170, "wall": 1821.0, "cpu": 350.2, "load1": 9.78}
+{"label": "pilot vertical bofn3 s0 16x", "day": 200, "wall": 675.9, "cpu": 159.4, "load1": 9.99}
+{"label": "pilot vertical bofn3 s1 64x", "day": 160, "wall": 1544.6, "cpu": 316.4, "load1": 9.99}
+{"label": "pre conventional bofn3 s0 1x", "day": 0, "wall": 2.7, "cpu": 1.0, "load1": 10.45}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 0, "wall": 2.7, "cpu": 1.0, "load1": 10.45}
+{"label": "pre vertical fast s0 1x", "day": 0, "wall": 2.8, "cpu": 1.0, "load1": 10.45}
+{"label": "pre conventional fast s0 1x", "day": 0, "wall": 2.9, "cpu": 1.0, "load1": 10.45}
+{"label": "pre conventional fast s0 1x", "day": 10, "wall": 4.8, "cpu": 1.6, "load1": 10.74}
+{"label": "pre vertical fast s0 1x", "day": 10, "wall": 4.9, "cpu": 1.7, "load1": 10.74}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 10, "wall": 5.5, "cpu": 2.0, "load1": 10.74}
+{"label": "pre conventional fast s0 1x", "day": 20, "wall": 5.4, "cpu": 1.9, "load1": 10.74}
+{"label": "pre conventional bofn3 s0 1x", "day": 10, "wall": 5.6, "cpu": 1.9, "load1": 10.74}
+{"label": "pre vertical fast s0 1x", "day": 20, "wall": 5.9, "cpu": 2.0, "load1": 10.74}
+{"label": "pre conventional fast s0 1x", "day": 30, "wall": 5.9, "cpu": 2.2, "load1": 10.74}
+{"label": "pre conventional bofn3 s0 1x", "day": 20, "wall": 6.4, "cpu": 2.3, "load1": 10.74}
+{"label": "pre conventional fast s0 1x", "day": 40, "wall": 6.4, "cpu": 2.5, "load1": 10.74}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 20, "wall": 6.7, "cpu": 2.3, "load1": 10.74}
+{"label": "pre conventional bofn3 s0 1x", "day": 30, "wall": 6.9, "cpu": 2.5, "load1": 10.74}
+{"label": "pre conventional fast s0 1x", "day": 50, "wall": 6.8, "cpu": 2.8, "load1": 10.74}
+{"label": "pre conventional fast s0 1x", "day": 60, "wall": 7.1, "cpu": 3.1, "load1": 10.74}
+{"label": "pre vertical fast s0 1x", "day": 30, "wall": 7.2, "cpu": 2.3, "load1": 10.74}
+{"label": "pre conventional fast s0 1x", "day": 70, "wall": 7.5, "cpu": 3.4, "load1": 10.74}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 30, "wall": 7.7, "cpu": 2.6, "load1": 10.74}
+{"label": "pre vertical fast s0 1x", "day": 40, "wall": 8.0, "cpu": 2.7, "load1": 10.74}
+{"label": "pre conventional fast s0 1x", "day": 80, "wall": 8.2, "cpu": 3.8, "load1": 10.74}
+{"label": "pre vertical fast s0 1x", "day": 50, "wall": 9.2, "cpu": 3.0, "load1": 10.74}
+{"label": "pre conventional bofn3 s0 1x", "day": 40, "wall": 9.7, "cpu": 3.8, "load1": 11.08}
+{"label": "pre conventional fast s0 1x", "day": 90, "wall": 9.7, "cpu": 4.3, "load1": 11.08}
+{"label": "pre conventional bofn3 s0 1x", "day": 50, "wall": 10.1, "cpu": 4.1, "load1": 11.08}
+{"label": "pre vertical fast s0 1x", "day": 60, "wall": 10.5, "cpu": 3.5, "load1": 11.08}
+{"label": "pre conventional bofn3 s0 1x", "day": 60, "wall": 10.6, "cpu": 4.4, "load1": 11.08}
+{"label": "pre conventional fast s0 1x", "day": 100, "wall": 10.8, "cpu": 4.8, "load1": 11.08}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 40, "wall": 11.2, "cpu": 3.9, "load1": 11.08}
+{"label": "pre conventional bofn3 s0 1x", "day": 70, "wall": 11.5, "cpu": 4.7, "load1": 11.08}
+{"label": "pre vertical fast s0 1x", "day": 70, "wall": 11.7, "cpu": 3.9, "load1": 11.08}
+{"label": "pre conventional fast s0 1x", "day": 110, "wall": 11.8, "cpu": 5.2, "load1": 11.08}
+{"label": "pre conventional bofn3 s0 1x", "day": 80, "wall": 12.3, "cpu": 5.1, "load1": 11.08}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 50, "wall": 12.4, "cpu": 4.3, "load1": 11.08}
+{"label": "pre conventional fast s0 1x", "day": 120, "wall": 12.8, "cpu": 5.7, "load1": 11.08}
+{"label": "pre vertical fast s0 1x", "day": 80, "wall": 13.1, "cpu": 4.4, "load1": 11.08}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 60, "wall": 13.3, "cpu": 4.6, "load1": 11.08}
+{"label": "pre conventional fast s0 1x", "day": 130, "wall": 13.7, "cpu": 6.1, "load1": 11.08}
+{"label": "pre conventional bofn3 s0 1x", "day": 90, "wall": 14.5, "cpu": 6.2, "load1": 11.08}
+{"label": "pre conventional fast s0 1x", "day": 140, "wall": 14.4, "cpu": 6.4, "load1": 11.08}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 70, "wall": 14.6, "cpu": 5.0, "load1": 11.47}
+{"label": "pre vertical fast s0 1x", "day": 90, "wall": 14.7, "cpu": 4.9, "load1": 11.47}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 80, "wall": 15.8, "cpu": 5.4, "load1": 11.47}
+{"label": "pre conventional fast s0 1x", "day": 150, "wall": 16.1, "cpu": 6.9, "load1": 11.47}
+{"label": "pre conventional bofn3 s0 1x", "day": 100, "wall": 16.6, "cpu": 7.4, "load1": 11.47}
+{"label": "pre vertical fast s0 1x", "day": 100, "wall": 16.6, "cpu": 5.5, "load1": 11.47}
+{"label": "pre conventional fast s0 1x", "day": 160, "wall": 17.6, "cpu": 7.4, "load1": 11.47}
+{"label": "pre vertical fast s0 1x", "day": 110, "wall": 17.8, "cpu": 5.9, "load1": 11.47}
+{"label": "pre vertical fast s0 1x", "day": 120, "wall": 18.7, "cpu": 6.3, "load1": 11.47}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 90, "wall": 19.1, "cpu": 6.5, "load1": 11.47}
+{"label": "pre vertical fast s0 1x", "day": 130, "wall": 19.8, "cpu": 6.7, "load1": 11.91}
+{"label": "pilot vertical bofn3 s0 16x", "day": 210, "wall": 733.7, "cpu": 171.9, "load1": 11.91}
+{"label": "pre vertical fast s0 1x", "day": 140, "wall": 21.0, "cpu": 7.3, "load1": 11.91}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 100, "wall": 22.3, "cpu": 7.8, "load1": 11.91}
+{"label": "pre vertical fast s0 1x", "day": 150, "wall": 22.3, "cpu": 7.8, "load1": 11.91}
+{"label": "pre vertical fast s0 1x", "day": 160, "wall": 23.3, "cpu": 8.4, "load1": 11.91}
+{"label": "pre conventional bofn3 s0 1x", "day": 110, "wall": 23.7, "cpu": 10.9, "load1": 11.91}
+{"label": "pre conventional bofn3 s0 1x", "day": 120, "wall": 26.5, "cpu": 12.1, "load1": 12.08}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 110, "wall": 29.7, "cpu": 11.3, "load1": 12.24}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 120, "wall": 32.4, "cpu": 12.6, "load1": 12.24}
+{"label": "pilot vertical bofn3 s1 16x", "day": 170, "wall": 540.2, "cpu": 127.7, "load1": 12.24}
+{"label": "pre conventional bofn3 s0 1x", "day": 130, "wall": 33.8, "cpu": 15.4, "load1": 12.24}
+{"label": "pre conventional bofn3 s0 1x", "day": 140, "wall": 35.9, "cpu": 16.6, "load1": 12.3}
+{"label": "pre conventional bofn3 s0 1x", "day": 150, "wall": 38.7, "cpu": 18.3, "load1": 12.3}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 130, "wall": 39.6, "cpu": 15.8, "load1": 12.35}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 140, "wall": 42.6, "cpu": 17.0, "load1": 12.35}
+{"label": "pre conventional bofn3 s0 1x", "day": 160, "wall": 43.7, "cpu": 20.5, "load1": 12.35}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 150, "wall": 45.2, "cpu": 18.7, "load1": 12.17}
+{"label": "pre conventional pkgfn3 s0 1x", "day": 160, "wall": 49.0, "cpu": 20.9, "load1": 12.17}
+{"label": "pilot vertical bofn3 s0 64x", "day": 180, "wall": 1961.0, "cpu": 379.5, "load1": 11.4}
+{"label": "vertical bofn3 16x", "day": 410, "wall": 6249.3, "cpu": 3249.3, "load1": 10.78}
+{"label": "pilot vertical bofn3 s0 16x", "day": 220, "wall": 867.0, "cpu": 203.1, "load1": 10.83}
+{"label": "pilot vertical bofn3 s1 64x", "day": 170, "wall": 1742.6, "cpu": 361.9, "load1": 10.71}
+{"label": "pilot vertical bofn3 s0 64x", "day": 190, "wall": 2063.9, "cpu": 405.9, "load1": 10.6}
+{"label": "vertical bofn3 64x", "day": 400, "wall": 6320.6, "cpu": 3294.9, "load1": 10.54}
+{"label": "vertical pkgfn3 64x", "day": 400, "wall": 6331.3, "cpu": 3314.7, "load1": 10.46}
+{"label": "pilot vertical bofn3 s1 16x", "day": 180, "wall": 736.5, "cpu": 173.9, "load1": 10.51}
+{"label": "pilot vertical bofn3 s0 16x", "day": 230, "wall": 1004.9, "cpu": 236.6, "load1": 10.23}
+{"label": "pilot vertical bofn3 s0 64x", "day": 200, "wall": 2214.5, "cpu": 441.4, "load1": 9.92}
+{"label": "vertical pkgfn3 16x", "day": 410, "wall": 6475.7, "cpu": 3359.3, "load1": 10.09}
+{"label": "pilot vertical bofn3 s0 16x", "day": 240, "wall": 1133.1, "cpu": 266.9, "load1": 10.36}
+{"label": "pilot vertical bofn3 s0 64x", "day": 210, "wall": 2314.7, "cpu": 463.9, "load1": 10.27}
+{"label": "pilot vertical bofn3 s1 64x", "day": 180, "wall": 2036.2, "cpu": 429.0, "load1": 10.26}
+{"label": "pilot vertical bofn3 s1 16x", "day": 190, "wall": 1004.5, "cpu": 238.4, "load1": 10.41}
+{"label": "vertical pkgfn3 64x", "day": 410, "wall": 6689.3, "cpu": 3564.7, "load1": 9.91}
+{"label": "pilot vertical bofn3 s1 64x", "day": 190, "wall": 2179.6, "cpu": 461.3, "load1": 9.84}
+{"label": "vertical bofn3 16x", "day": 420, "wall": 6730.5, "cpu": 3590.4, "load1": 9.72}
+{"label": "vertical bofn3 64x", "day": 410, "wall": 6778.3, "cpu": 3622.2, "load1": 9.86}
+{"label": "pilot vertical bofn3 s0 64x", "day": 220, "wall": 2551.7, "cpu": 518.7, "load1": 9.66}
+{"label": "pilot vertical bofn3 s1 16x", "day": 200, "wall": 1216.3, "cpu": 287.1, "load1": 9.3}
+{"label": "pilot vertical bofn3 s0 16x", "day": 250, "wall": 1518.9, "cpu": 357.0, "load1": 9.78}
+{"label": "pilot vertical bofn3 s1 64x", "day": 200, "wall": 2400.1, "cpu": 512.5, "load1": 9.65}
+{"label": "pilot vertical bofn3 s0 64x", "day": 230, "wall": 2750.5, "cpu": 563.8, "load1": 9.8}
+{"label": "pilot vertical bofn3 s1 16x", "day": 210, "wall": 1387.0, "cpu": 325.4, "load1": 9.81}
+{"label": "vertical pkgfn3 16x", "day": 420, "wall": 7092.1, "cpu": 3806.8, "load1": 10.15}
+{"label": "pilot vertical bofn3 s0 64x", "day": 240, "wall": 2907.6, "cpu": 600.1, "load1": 10.08}
+{"label": "pilot vertical bofn3 s0 16x", "day": 260, "wall": 1765.0, "cpu": 415.7, "load1": 10.33}
+{"label": "pilot vertical bofn3 s1 16x", "day": 220, "wall": 1583.3, "cpu": 372.3, "load1": 10.62}
+{"label": "vertical pkgfn3 64x", "day": 420, "wall": 7195.5, "cpu": 3917.0, "load1": 10.62}
+{"label": "pilot vertical bofn3 s1 64x", "day": 210, "wall": 2708.4, "cpu": 584.9, "load1": 10.35}
+{"label": "vertical bofn3 64x", "day": 420, "wall": 7294.9, "cpu": 3997.8, "load1": 9.85}
+{"label": "vertical bofn3 16x", "day": 430, "wall": 7404.5, "cpu": 4083.5, "load1": 9.87}
+{"label": "pilot vertical bofn3 s0 64x", "day": 250, "wall": 3194.6, "cpu": 669.0, "load1": 10.09}
+{"label": "pilot vertical bofn3 s0 16x", "day": 270, "wall": 2049.1, "cpu": 482.4, "load1": 10.21}
+{"label": "pilot vertical bofn3 s0 64x", "day": 260, "wall": 3307.9, "cpu": 694.6, "load1": 10.1}
+{"label": "pilot vertical bofn3 s1 64x", "day": 220, "wall": 3052.3, "cpu": 665.9, "load1": 10.39}
+{"label": "vertical pkgfn3 16x", "day": 430, "wall": 7594.3, "cpu": 4153.3, "load1": 10.43}
+{"label": "pilot vertical bofn3 s0 64x", "day": 270, "wall": 3516.1, "cpu": 742.7, "load1": 9.92}
+{"label": "pilot vertical bofn3 s0 16x", "day": 280, "wall": 2358.3, "cpu": 551.0, "load1": 9.92}
+{"label": "vertical pkgfn3 64x", "day": 430, "wall": 7776.5, "cpu": 4319.1, "load1": 9.86}
+{"label": "vertical bofn3 64x", "day": 430, "wall": 7824.4, "cpu": 4388.4, "load1": 9.99}
+{"label": "pilot vertical bofn3 s1 16x", "day": 230, "wall": 2220.4, "cpu": 521.3, "load1": 10.07}
+{"label": "pilot vertical bofn3 s1 64x", "day": 230, "wall": 3428.3, "cpu": 753.4, "load1": 10.33}
+{"label": "vertical bofn3 16x", "day": 440, "wall": 8014.9, "cpu": 4527.7, "load1": 10.12}
+{"label": "pilot vertical bofn3 s0 16x", "day": 290, "wall": 2727.3, "cpu": 638.7, "load1": 9.72}
+{"label": "pilot vertical bofn3 s0 64x", "day": 280, "wall": 3962.0, "cpu": 847.4, "load1": 9.94}
+{"label": "vertical pkgfn3 16x", "day": 440, "wall": 8204.7, "cpu": 4586.4, "load1": 9.94}
+{"label": "pilot vertical bofn3 s1 16x", "day": 240, "wall": 2704.7, "cpu": 631.5, "load1": 10.1}
+{"label": "vertical bofn3 64x", "day": 440, "wall": 8377.4, "cpu": 4790.5, "load1": 10.25}
+{"label": "pilot vertical bofn3 s1 64x", "day": 240, "wall": 3890.2, "cpu": 861.2, "load1": 10.22}
+{"label": "vertical pkgfn3 64x", "day": 440, "wall": 8440.1, "cpu": 4788.5, "load1": 10.18}
+{"label": "pilot vertical bofn3 s0 16x", "day": 300, "wall": 3178.9, "cpu": 743.1, "load1": 9.67}
+{"label": "pilot vertical bofn3 s0 4x", "day": 0, "wall": 4.9, "cpu": 1.2, "load1": 9.45}
+{"label": "pilot vertical bofn3 s0 4x", "day": 10, "wall": 15.6, "cpu": 3.4, "load1": 9.45}
+{"label": "pilot vertical bofn3 s0 64x", "day": 290, "wall": 4367.3, "cpu": 942.1, "load1": 9.45}
+{"label": "pilot vertical bofn3 s0 4x", "day": 20, "wall": 20.2, "cpu": 4.7, "load1": 9.34}
+{"label": "pilot vertical bofn3 s0 4x", "day": 30, "wall": 26.1, "cpu": 6.0, "load1": 9.39}
+{"label": "pilot vertical bofn3 s0 4x", "day": 40, "wall": 33.2, "cpu": 8.1, "load1": 9.44}
+{"label": "pilot vertical bofn3 s0 4x", "day": 50, "wall": 37.6, "cpu": 9.5, "load1": 9.56}
+{"label": "pilot vertical bofn3 s0 4x", "day": 60, "wall": 43.8, "cpu": 10.9, "load1": 9.6}
+{"label": "pilot vertical bofn3 s0 4x", "day": 70, "wall": 47.3, "cpu": 12.1, "load1": 9.63}
+{"label": "pilot vertical bofn3 s0 4x", "day": 80, "wall": 64.5, "cpu": 17.5, "load1": 9.61}
+{"label": "pilot vertical bofn3 s0 4x", "day": 90, "wall": 86.1, "cpu": 22.7, "load1": 9.97}
+{"label": "vertical bofn3 16x", "day": 450, "wall": 8681.5, "cpu": 5004.0, "load1": 9.97}
+{"label": "pilot vertical bofn3 s0 4x", "day": 100, "wall": 92.9, "cpu": 24.1, "load1": 10.05}
+{"label": "pilot vertical bofn3 s0 4x", "day": 110, "wall": 126.8, "cpu": 31.6, "load1": 9.74}
+{"label": "vertical pkgfn3 16x", "day": 450, "wall": 8722.2, "cpu": 4957.1, "load1": 9.74}
+{"label": "pilot vertical bofn3 s0 4x", "day": 120, "wall": 145.9, "cpu": 35.9, "load1": 9.9}
+{"label": "pilot vertical bofn3 s1 16x", "day": 250, "wall": 3139.7, "cpu": 735.2, "load1": 10.0}
+{"label": "pilot vertical bofn3 s0 4x", "day": 130, "wall": 175.0, "cpu": 43.8, "load1": 10.08}
+{"label": "pilot vertical bofn3 s0 4x", "day": 140, "wall": 194.2, "cpu": 48.1, "load1": 10.19}
+{"label": "pilot vertical bofn3 s0 4x", "day": 150, "wall": 223.7, "cpu": 55.7, "load1": 9.89}
+{"label": "pilot vertical bofn3 s0 4x", "day": 160, "wall": 256.0, "cpu": 64.5, "load1": 9.79}
+{"label": "pilot vertical bofn3 s0 4x", "day": 170, "wall": 290.4, "cpu": 72.1, "load1": 9.9}
+{"label": "pilot vertical bofn3 s0 4x", "day": 180, "wall": 329.2, "cpu": 81.4, "load1": 10.57}
+{"label": "vertical bofn3 64x", "day": 450, "wall": 8948.3, "cpu": 5193.5, "load1": 10.54}
+{"label": "pilot vertical bofn3 s1 64x", "day": 250, "wall": 4431.7, "cpu": 994.1, "load1": 10.69}
+{"label": "pilot vertical bofn3 s0 4x", "day": 190, "wall": 376.8, "cpu": 91.8, "load1": 10.69}
+{"label": "pilot vertical bofn3 s0 4x", "day": 200, "wall": 429.9, "cpu": 104.2, "load1": 11.26}
+{"label": "pilot vertical bofn3 s0 4x", "day": 210, "wall": 475.5, "cpu": 113.0, "load1": 11.3}
+{"label": "pilot vertical bofn3 s0 64x", "day": 300, "wall": 4855.2, "cpu": 1054.6, "load1": 11.33}
+{"label": "pilot vertical bofn3 s0 1x", "day": 0, "wall": 7.6, "cpu": 1.4, "load1": 11.08}
+{"label": "pilot vertical bofn3 s0 1x", "day": 10, "wall": 15.5, "cpu": 2.8, "load1": 10.99}
+{"label": "pilot vertical bofn3 s0 1x", "day": 20, "wall": 16.8, "cpu": 3.2, "load1": 10.99}
+{"label": "pilot vertical bofn3 s0 1x", "day": 30, "wall": 18.8, "cpu": 3.6, "load1": 11.07}
+{"label": "pilot vertical bofn3 s0 1x", "day": 40, "wall": 25.8, "cpu": 5.0, "load1": 10.98}
+{"label": "pilot vertical bofn3 s0 1x", "day": 50, "wall": 27.4, "cpu": 5.4, "load1": 10.98}
+{"label": "pilot vertical bofn3 s0 1x", "day": 60, "wall": 28.5, "cpu": 5.8, "load1": 11.07}
+{"label": "pilot vertical bofn3 s0 1x", "day": 70, "wall": 30.4, "cpu": 6.3, "load1": 11.07}
+{"label": "pilot vertical bofn3 s0 1x", "day": 80, "wall": 48.4, "cpu": 10.5, "load1": 11.49}
+{"label": "pilot vertical bofn3 s0 1x", "day": 90, "wall": 69.6, "cpu": 14.6, "load1": 11.35}
+{"label": "pilot vertical bofn3 s0 4x", "day": 220, "wall": 599.3, "cpu": 138.7, "load1": 11.27}
+{"label": "pilot vertical bofn3 s0 1x", "day": 100, "wall": 89.4, "cpu": 19.0, "load1": 11.33}
+{"label": "vertical pkgfn3 64x", "day": 450, "wall": 9216.8, "cpu": 5297.3, "load1": 11.32}
+{"label": "pilot vertical bofn3 s0 1x", "day": 110, "wall": 112.5, "cpu": 24.1, "load1": 11.3}
+{"label": "pilot vertical bofn3 s1 16x", "day": 260, "wall": 3621.6, "cpu": 843.6, "load1": 11.1}
+{"label": "pilot vertical bofn3 s0 1x", "day": 120, "wall": 137.3, "cpu": 29.4, "load1": 11.01}
+{"label": "pilot vertical bofn3 s0 1x", "day": 130, "wall": 162.5, "cpu": 35.8, "load1": 11.02}
+{"label": "pilot vertical bofn3 s0 1x", "day": 140, "wall": 177.3, "cpu": 39.2, "load1": 10.94}
+{"label": "vertical pkgfn3 16x", "day": 460, "wall": 9317.2, "cpu": 5352.2, "load1": 10.76}
+{"label": "pilot vertical bofn3 s0 1x", "day": 150, "wall": 223.7, "cpu": 50.0, "load1": 10.61}
+{"label": "pilot vertical bofn3 s0 4x", "day": 230, "wall": 752.2, "cpu": 173.0, "load1": 11.07}
+{"label": "pilot vertical bofn3 s0 1x", "day": 160, "wall": 261.5, "cpu": 59.2, "load1": 10.85}
+{"label": "pilot vertical bofn3 s0 4x", "day": 240, "wall": 781.6, "cpu": 180.1, "load1": 10.86}
+{"label": "vertical bofn3 16x", "day": 460, "wall": 9412.1, "cpu": 5491.3, "load1": 10.94}
+{"label": "pilot vertical bofn3 s0 1x", "day": 170, "wall": 328.6, "cpu": 73.7, "load1": 10.94}
+{"label": "pilot vertical bofn3 s0 1x", "day": 180, "wall": 376.5, "cpu": 84.3, "load1": 10.62}
+{"label": "pilot vertical bofn3 s0 1x", "day": 190, "wall": 424.1, "cpu": 94.3, "load1": 11.11}
+{"label": "vertical bofn3 64x", "day": 460, "wall": 9573.4, "cpu": 5580.3, "load1": 11.78}
+{"label": "pilot vertical bofn3 s0 1x", "day": 200, "wall": 505.1, "cpu": 110.1, "load1": 12.48}
+{"label": "pilot vertical bofn3 s0 4x", "day": 250, "wall": 1035.6, "cpu": 230.8, "load1": 12.38}
+{"label": "pilot vertical bofn3 s0 1x", "day": 210, "wall": 554.9, "cpu": 119.1, "load1": 11.71}
+{"label": "pilot vertical bofn3 s1 64x", "day": 260, "wall": 5279.9, "cpu": 1171.2, "load1": 11.59}
+{"label": "pilot vertical bofn3 s0 1x", "day": 220, "wall": 715.4, "cpu": 151.3, "load1": 11.57}
+{"label": "pilot vertical bofn3 s0 4x", "day": 260, "wall": 1275.6, "cpu": 279.6, "load1": 11.27}
+{"label": "pilot vertical bofn3 s0 1x", "day": 230, "wall": 855.5, "cpu": 180.3, "load1": 11.21}
+{"label": "vertical pkgfn3 16x", "day": 470, "wall": 10039.6, "cpu": 5794.7, "load1": 10.48}
+{"label": "pilot vertical bofn3 s0 1x", "day": 240, "wall": 964.3, "cpu": 205.2, "load1": 10.9}
+{"label": "vertical pkgfn3 64x", "day": 460, "wall": 10127.1, "cpu": 5857.3, "load1": 10.74}
+{"label": "vertical bofn3 16x", "day": 470, "wall": 10148.9, "cpu": 5935.1, "load1": 10.81}
+{"label": "vertical bofn3 64x", "day": 470, "wall": 10158.7, "cpu": 5956.7, "load1": 10.69}
+{"label": "pilot vertical bofn3 s1 16x", "day": 270, "wall": 4556.8, "cpu": 1047.3, "load1": 10.71}
+{"label": "pilot vertical bofn3 s0 4x", "day": 270, "wall": 1580.8, "cpu": 349.5, "load1": 10.98}
+{"label": "pilot vertical bofn3 s1 64x", "day": 270, "wall": 5649.1, "cpu": 1252.8, "load1": 10.91}
+{"label": "pilot vertical bofn3 s0 1x", "day": 250, "wall": 1095.3, "cpu": 234.9, "load1": 12.51}
+{"label": "pilot vertical bofn3 s0 1x", "day": 260, "wall": 1229.8, "cpu": 258.3, "load1": 12.02}
+{"label": "pilot vertical bofn3 s0 4x", "day": 280, "wall": 1927.5, "cpu": 413.9, "load1": 11.2}
+{"label": "pilot vertical bofn3 s0 1x", "day": 270, "wall": 1585.9, "cpu": 329.5, "load1": 11.0}
+{"label": "pilot vertical bofn3 s1 64x", "day": 280, "wall": 6264.4, "cpu": 1374.6, "load1": 9.83}
+{"label": "pilot vertical bofn3 s1 16x", "day": 280, "wall": 5223.3, "cpu": 1179.9, "load1": 9.37}
+{"label": "pilot vertical bofn3 s0 4x", "day": 290, "wall": 2290.1, "cpu": 495.9, "load1": 10.07}
+{"label": "pilot vertical bofn3 s0 1x", "day": 280, "wall": 2035.1, "cpu": 438.1, "load1": 10.34}
+{"label": "pilot vertical bofn3 s1 64x", "day": 290, "wall": 6742.2, "cpu": 1508.6, "load1": 8.85}
+{"label": "pilot vertical bofn3 s0 4x", "day": 300, "wall": 2696.2, "cpu": 608.4, "load1": 8.49}
+{"label": "pilot vertical bofn3 s1 1x", "day": 0, "wall": 1.9, "cpu": 1.0, "load1": 8.21}
+{"label": "pilot vertical bofn3 s1 1x", "day": 10, "wall": 3.6, "cpu": 2.2, "load1": 8.21}
+{"label": "pilot vertical bofn3 s1 1x", "day": 20, "wall": 4.9, "cpu": 3.3, "load1": 8.21}
+{"label": "pilot vertical bofn3 s0 1x", "day": 290, "wall": 2189.0, "cpu": 496.1, "load1": 8.11}
+{"label": "pilot vertical bofn3 s1 1x", "day": 30, "wall": 5.7, "cpu": 3.8, "load1": 8.11}
+{"label": "pilot vertical bofn3 s1 1x", "day": 40, "wall": 6.2, "cpu": 4.2, "load1": 8.11}
+{"label": "pilot vertical bofn3 s1 1x", "day": 50, "wall": 6.8, "cpu": 4.6, "load1": 8.11}
+{"label": "pilot vertical bofn3 s1 1x", "day": 60, "wall": 7.1, "cpu": 4.9, "load1": 8.11}
+{"label": "pilot vertical bofn3 s1 1x", "day": 70, "wall": 7.7, "cpu": 5.4, "load1": 8.11}
+{"label": "pilot vertical bofn3 s1 1x", "day": 80, "wall": 8.6, "cpu": 5.9, "load1": 8.11}
+{"label": "pilot vertical bofn3 s1 1x", "day": 90, "wall": 10.1, "cpu": 7.0, "load1": 8.11}
+{"label": "pilot vertical bofn3 s1 1x", "day": 100, "wall": 16.4, "cpu": 10.6, "load1": 7.71}
+{"label": "pilot vertical bofn3 s1 1x", "day": 110, "wall": 21.2, "cpu": 13.9, "load1": 7.65}
+{"label": "pilot vertical bofn3 s1 1x", "day": 120, "wall": 32.4, "cpu": 21.3, "load1": 7.24}
+{"label": "pilot vertical bofn3 s1 1x", "day": 130, "wall": 37.7, "cpu": 25.2, "load1": 7.14}
+{"label": "pilot vertical bofn3 s1 1x", "day": 140, "wall": 44.7, "cpu": 29.9, "load1": 7.05}
+{"label": "pilot vertical bofn3 s1 1x", "day": 150, "wall": 53.6, "cpu": 35.4, "load1": 6.89}
+{"label": "pilot vertical bofn3 s1 1x", "day": 160, "wall": 70.6, "cpu": 47.0, "load1": 6.5}
+{"label": "pilot vertical bofn3 s0 1x", "day": 300, "wall": 2257.6, "cpu": 545.9, "load1": 6.5}
+{"label": "pilot conventional bofn3 s0 1x", "day": 0, "wall": 1.2, "cpu": 0.9, "load1": 6.46}
+{"label": "pilot conventional bofn3 s0 1x", "day": 10, "wall": 2.1, "cpu": 1.8, "load1": 6.46}
+{"label": "pilot conventional bofn3 s0 1x", "day": 20, "wall": 2.4, "cpu": 2.1, "load1": 6.46}
+{"label": "pilot conventional bofn3 s0 1x", "day": 30, "wall": 2.7, "cpu": 2.3, "load1": 6.46}
+{"label": "pilot conventional bofn3 s0 1x", "day": 40, "wall": 4.4, "cpu": 3.4, "load1": 6.35}
+{"label": "pilot conventional bofn3 s0 1x", "day": 50, "wall": 5.0, "cpu": 3.7, "load1": 6.35}
+{"label": "pilot conventional bofn3 s0 1x", "day": 60, "wall": 5.4, "cpu": 4.0, "load1": 6.35}
+{"label": "pilot conventional bofn3 s0 1x", "day": 70, "wall": 5.7, "cpu": 4.3, "load1": 6.35}
+{"label": "pilot conventional bofn3 s0 1x", "day": 80, "wall": 6.3, "cpu": 4.7, "load1": 6.35}
+{"label": "pilot conventional bofn3 s0 1x", "day": 90, "wall": 8.3, "cpu": 5.7, "load1": 6.4}
+{"label": "pilot conventional bofn3 s0 1x", "day": 100, "wall": 10.6, "cpu": 6.9, "load1": 6.4}
+{"label": "pilot conventional bofn3 s0 1x", "day": 110, "wall": 14.9, "cpu": 10.3, "load1": 6.29}
+{"label": "pilot vertical bofn3 s1 1x", "day": 170, "wall": 93.6, "cpu": 61.7, "load1": 6.29}
+{"label": "pilot conventional bofn3 s0 1x", "day": 120, "wall": 16.8, "cpu": 11.5, "load1": 6.29}
+{"label": "pilot conventional bofn3 s0 1x", "day": 130, "wall": 20.4, "cpu": 14.6, "load1": 6.26}
+{"label": "pilot conventional bofn3 s0 1x", "day": 140, "wall": 22.0, "cpu": 15.8, "load1": 6.26}
+{"label": "pilot conventional bofn3 s0 1x", "day": 150, "wall": 24.8, "cpu": 17.4, "load1": 6.24}
+{"label": "pilot conventional bofn3 s0 1x", "day": 160, "wall": 28.4, "cpu": 19.7, "load1": 6.14}
+{"label": "pilot conventional bofn3 s0 1x", "day": 170, "wall": 32.5, "cpu": 22.4, "load1": 6.14}
+{"label": "pilot conventional bofn3 s0 1x", "day": 180, "wall": 38.8, "cpu": 26.4, "load1": 6.05}
+{"label": "pilot conventional bofn3 s0 1x", "day": 190, "wall": 41.3, "cpu": 28.7, "load1": 6.05}
+{"label": "pilot conventional bofn3 s0 1x", "day": 200, "wall": 44.9, "cpu": 32.2, "load1": 5.88}
+{"label": "pilot conventional bofn3 s0 1x", "day": 210, "wall": 52.4, "cpu": 36.9, "load1": 6.13}
+{"label": "pilot vertical bofn3 s1 1x", "day": 180, "wall": 153.8, "cpu": 91.8, "load1": 7.89}
+{"label": "pilot conventional bofn3 s0 1x", "day": 220, "wall": 83.2, "cpu": 43.3, "load1": 8.38}
+{"label": "pilot conventional bofn3 s0 1x", "day": 230, "wall": 106.7, "cpu": 48.0, "load1": 9.49}
+{"label": "pilot conventional bofn3 s0 1x", "day": 240, "wall": 127.5, "cpu": 52.5, "load1": 10.01}
+{"label": "pilot conventional bofn3 s0 1x", "day": 250, "wall": 149.7, "cpu": 57.4, "load1": 10.23}
+{"label": "pilot conventional bofn3 s0 1x", "day": 260, "wall": 157.5, "cpu": 59.0, "load1": 10.45}
+{"label": "pilot conventional bofn3 s0 1x", "day": 270, "wall": 176.3, "cpu": 62.8, "load1": 10.86}
+{"label": "pilot vertical bofn3 s1 16x", "day": 290, "wall": 5945.2, "cpu": 1426.0, "load1": 10.88}
+{"label": "pilot conventional bofn3 s0 1x", "day": 280, "wall": 193.8, "cpu": 66.8, "load1": 10.98}
+{"label": "pilot conventional bofn3 s0 1x", "day": 290, "wall": 224.1, "cpu": 73.7, "load1": 11.09}
+{"label": "pilot conventional bofn3 s0 1x", "day": 300, "wall": 239.6, "cpu": 76.7, "load1": 11.15}
+{"label": "pilot vertical fast s0 1x", "day": 0, "wall": 6.4, "cpu": 1.2, "load1": 11.12}
+{"label": "pilot vertical fast s0 1x", "day": 10, "wall": 11.0, "cpu": 2.0, "load1": 11.19}
+{"label": "pilot vertical fast s0 1x", "day": 20, "wall": 11.9, "cpu": 2.3, "load1": 11.18}
+{"label": "pilot vertical fast s0 1x", "day": 30, "wall": 12.6, "cpu": 2.6, "load1": 11.18}
+{"label": "pilot vertical fast s0 1x", "day": 40, "wall": 14.7, "cpu": 3.0, "load1": 11.18}
+{"label": "pilot vertical fast s0 1x", "day": 50, "wall": 16.9, "cpu": 3.4, "load1": 11.16}
+{"label": "pilot vertical fast s0 1x", "day": 60, "wall": 18.0, "cpu": 3.8, "load1": 11.16}
+{"label": "pilot vertical fast s0 1x", "day": 70, "wall": 19.2, "cpu": 4.2, "load1": 11.16}
+{"label": "pilot vertical fast s0 1x", "day": 80, "wall": 19.7, "cpu": 4.7, "load1": 11.16}
+{"label": "pilot vertical fast s0 1x", "day": 90, "wall": 21.9, "cpu": 5.2, "load1": 11.07}
+{"label": "pilot vertical fast s0 1x", "day": 100, "wall": 24.7, "cpu": 5.8, "load1": 11.07}
+{"label": "pilot vertical fast s0 1x", "day": 110, "wall": 27.6, "cpu": 6.3, "load1": 10.98}
+{"label": "pilot vertical fast s0 1x", "day": 120, "wall": 30.0, "cpu": 6.8, "load1": 10.98}
+{"label": "pilot vertical fast s0 1x", "day": 130, "wall": 32.8, "cpu": 7.3, "load1": 10.9}
+{"label": "pilot vertical fast s0 1x", "day": 140, "wall": 36.9, "cpu": 8.0, "load1": 10.91}
+{"label": "pilot vertical fast s0 1x", "day": 150, "wall": 39.3, "cpu": 8.6, "load1": 10.91}
+{"label": "pilot vertical fast s0 1x", "day": 160, "wall": 43.2, "cpu": 9.3, "load1": 10.92}
+{"label": "pilot vertical fast s0 1x", "day": 170, "wall": 47.1, "cpu": 10.0, "load1": 10.93}
+{"label": "pilot vertical fast s0 1x", "day": 180, "wall": 50.7, "cpu": 10.6, "load1": 10.93}
+{"label": "pilot vertical fast s0 1x", "day": 190, "wall": 54.0, "cpu": 11.2, "load1": 10.93}
+{"label": "pilot vertical fast s0 1x", "day": 200, "wall": 57.6, "cpu": 11.9, "load1": 10.78}
+{"label": "pilot vertical fast s0 1x", "day": 210, "wall": 61.0, "cpu": 12.6, "load1": 10.78}
+{"label": "pilot vertical fast s0 1x", "day": 220, "wall": 65.1, "cpu": 13.4, "load1": 11.04}
+{"label": "pilot vertical fast s0 1x", "day": 230, "wall": 69.3, "cpu": 14.3, "load1": 11.03}
+{"label": "pilot vertical fast s0 1x", "day": 240, "wall": 75.3, "cpu": 15.4, "load1": 11.11}
+{"label": "pilot vertical fast s0 1x", "day": 250, "wall": 82.3, "cpu": 17.0, "load1": 11.17}
+{"label": "pilot vertical fast s0 1x", "day": 260, "wall": 89.9, "cpu": 18.5, "load1": 11.24}
+{"label": "pilot vertical bofn3 s1 1x", "day": 190, "wall": 417.1, "cpu": 146.2, "load1": 11.3}
+{"label": "pilot vertical fast s0 1x", "day": 270, "wall": 99.6, "cpu": 20.7, "load1": 11.36}
+{"label": "pilot vertical fast s0 1x", "day": 280, "wall": 109.8, "cpu": 23.0, "load1": 11.46}
+{"label": "pilot vertical fast s0 1x", "day": 290, "wall": 120.5, "cpu": 25.1, "load1": 11.54}
+{"label": "pilot vertical fast s0 1x", "day": 300, "wall": 126.3, "cpu": 26.3, "load1": 11.74}
+{"label": "pilot conventional fast s0 1x", "day": 0, "wall": 2.6, "cpu": 1.1, "load1": 11.7}
+{"label": "pilot conventional fast s0 1x", "day": 10, "wall": 5.7, "cpu": 1.7, "load1": 11.73}
+{"label": "pilot conventional fast s0 1x", "day": 20, "wall": 7.7, "cpu": 2.2, "load1": 11.73}
+{"label": "pilot conventional fast s0 1x", "day": 30, "wall": 10.0, "cpu": 2.6, "load1": 11.75}
+{"label": "pilot conventional fast s0 1x", "day": 40, "wall": 11.3, "cpu": 2.9, "load1": 11.75}
+{"label": "pilot conventional fast s0 1x", "day": 50, "wall": 13.3, "cpu": 3.4, "load1": 11.75}
+{"label": "pilot conventional fast s0 1x", "day": 60, "wall": 15.4, "cpu": 3.8, "load1": 11.77}
+{"label": "pilot conventional fast s0 1x", "day": 70, "wall": 17.8, "cpu": 4.2, "load1": 11.77}
+{"label": "pilot conventional fast s0 1x", "day": 80, "wall": 21.2, "cpu": 4.8, "load1": 11.79}
+{"label": "pilot conventional fast s0 1x", "day": 90, "wall": 24.5, "cpu": 5.4, "load1": 11.81}
+{"label": "pilot conventional fast s0 1x", "day": 100, "wall": 27.9, "cpu": 6.0, "load1": 11.81}
+{"label": "pilot conventional fast s0 1x", "day": 110, "wall": 30.8, "cpu": 6.6, "load1": 11.82}
+{"label": "pilot conventional fast s0 1x", "day": 120, "wall": 33.8, "cpu": 7.1, "load1": 11.76}
+{"label": "pilot conventional fast s0 1x", "day": 130, "wall": 36.4, "cpu": 7.7, "load1": 11.76}
+{"label": "pilot conventional fast s0 1x", "day": 140, "wall": 39.3, "cpu": 8.2, "load1": 11.54}
+{"label": "pilot conventional fast s0 1x", "day": 150, "wall": 41.0, "cpu": 8.6, "load1": 11.54}
+{"label": "pilot conventional fast s0 1x", "day": 160, "wall": 44.4, "cpu": 9.2, "load1": 11.41}
+{"label": "pilot vertical bofn3 s1 64x", "day": 300, "wall": 7258.7, "cpu": 1686.0, "load1": 11.41}
+{"label": "pilot conventional fast s0 1x", "day": 170, "wall": 47.6, "cpu": 9.8, "load1": 11.41}
+{"label": "pilot conventional fast s0 1x", "day": 180, "wall": 49.8, "cpu": 10.3, "load1": 11.3}
+{"label": "pilot conventional fast s0 1x", "day": 190, "wall": 51.7, "cpu": 10.8, "load1": 11.3}
+{"label": "pilot conventional fast s0 1x", "day": 200, "wall": 54.5, "cpu": 11.4, "load1": 11.35}
+{"label": "pilot conventional fast s0 1x", "day": 210, "wall": 57.3, "cpu": 11.9, "load1": 11.35}
+{"label": "pilot conventional fast s0 1x", "day": 220, "wall": 60.2, "cpu": 12.5, "load1": 11.17}
+{"label": "pilot conventional fast s0 1x", "day": 230, "wall": 62.4, "cpu": 13.0, "load1": 11.17}
+{"label": "pilot conventional fast s0 1x", "day": 240, "wall": 64.6, "cpu": 13.5, "load1": 10.99}
+{"label": "pilot conventional fast s0 1x", "day": 250, "wall": 66.4, "cpu": 14.0, "load1": 10.99}
+{"label": "pilot conventional fast s0 1x", "day": 260, "wall": 67.7, "cpu": 14.4, "load1": 10.99}
+{"label": "pilot conventional fast s0 1x", "day": 270, "wall": 68.8, "cpu": 14.8, "load1": 10.67}
+{"label": "pilot conventional fast s0 1x", "day": 280, "wall": 70.6, "cpu": 15.2, "load1": 10.67}
+{"label": "pilot conventional fast s0 1x", "day": 290, "wall": 73.0, "cpu": 15.8, "load1": 10.67}
+{"label": "pilot conventional fast s0 1x", "day": 300, "wall": 74.6, "cpu": 16.2, "load1": 10.54}
+{"label": "pilot vertical bofn3 s1 1x", "day": 200, "wall": 650.5, "cpu": 205.0, "load1": 8.35}
+{"label": "vertical bofn3 16x", "day": 480, "wall": 11957.1, "cpu": 6333.2, "load1": 8.29}
+{"label": "vertical pkgfn3 16x", "day": 480, "wall": 11998.5, "cpu": 6300.8, "load1": 8.06}
+{"label": "vertical bofn3 64x", "day": 480, "wall": 12023.5, "cpu": 6403.8, "load1": 8.49}
+{"label": "pilot vertical bofn3 s1 1x", "day": 210, "wall": 766.0, "cpu": 238.9, "load1": 8.38}
+{"label": "pilot vertical bofn3 s1 1x", "day": 220, "wall": 969.0, "cpu": 301.3, "load1": 7.97}
+{"label": "vertical pkgfn3 64x", "day": 470, "wall": 12341.7, "cpu": 6583.2, "load1": 7.42}
+{"label": "vertical bofn3 16x", "day": 490, "wall": 12462.5, "cpu": 6740.6, "load1": 7.68}
+{"label": "vertical bofn3 64x", "day": 490, "wall": 12575.6, "cpu": 6845.8, "load1": 8.16}
+{"label": "pilot vertical bofn3 s1 1x", "day": 230, "wall": 1292.5, "cpu": 393.3, "load1": 8.29}
+{"label": "pilot vertical bofn3 s1 16x", "day": 300, "wall": 7129.9, "cpu": 1747.3, "load1": 7.49}
+{"label": "vertical pkgfn3 16x", "day": 490, "wall": 12741.1, "cpu": 6894.6, "load1": 7.49}
+{"label": "pilot vertical bofn3 s1 1x", "day": 240, "wall": 1619.5, "cpu": 494.5, "load1": 6.83}
+{"label": "vertical bofn3 16x", "day": 500, "wall": 13072.7, "cpu": 7244.2, "load1": 7.19}
+{"label": "vertical bofn3 64x", "day": 500, "wall": 13163.2, "cpu": 7342.8, "load1": 6.82}
+{"label": "vertical pkgfn3 64x", "day": 480, "wall": 13274.5, "cpu": 7355.7, "load1": 7.0}
+{"label": "pilot vertical bofn3 s1 1x", "day": 250, "wall": 1999.1, "cpu": 618.8, "load1": 7.0}
+{"label": "vertical pkgfn3 16x", "day": 500, "wall": 13431.7, "cpu": 7487.2, "load1": 7.37}
+{"label": "vertical bofn3 16x", "day": 510, "wall": 13592.3, "cpu": 7691.0, "load1": 7.19}

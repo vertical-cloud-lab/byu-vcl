@@ -1,0 +1,3229 @@
+{
+ "groups": {
+  "r6_conventional_external_bofn3_lean": {
+   "experiment": "arms",
+   "short": {
+    "seconds": 10.0,
+    "cpu_seconds": 4.7,
+    "loadavg_end": [
+     12.83,
+     10.15,
+     5.66
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_bofn3_lean_dec-none": {
+   "experiment": "dec_none",
+   "short": {
+    "seconds": 12.6,
+    "cpu_seconds": 4.8,
+    "loadavg_end": [
+     13.85,
+     11.36,
+     6.58
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_bofn3_lean_dec-slow": {
+   "experiment": "dec_slow",
+   "short": {
+    "seconds": 12.1,
+    "cpu_seconds": 5.1,
+    "loadavg_end": [
+     14.3,
+     12.08,
+     7.21
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_bofn3_reorder": {
+   "experiment": "arms",
+   "short": {
+    "seconds": 11.4,
+    "cpu_seconds": 4.7,
+    "loadavg_end": [
+     12.73,
+     10.09,
+     5.61
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   },
+   "full": {
+    "seconds": 5377.2,
+    "cpu_seconds": 1754.9,
+    "loadavg_end": [
+     10.5,
+     10.88,
+     11.49
+    ],
+    "days": 730,
+    "scale": 64,
+    "gp_fits": 65,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "source": "checks/timing6.jsonl",
+    "targets": {
+     "flaime_al": {
+      "T1": 234.4,
+      "T2": 273.4
+     },
+     "onr_cu": {
+      "T1": 250.004,
+      "T2": 250.004
+     }
+    },
+    "best_new": {
+     "flaime_al": 0.7228,
+     "onr_cu": 0.682
+    }
+   }
+  },
+  "r6_conventional_external_bofn3_reorder_dec-none": {
+   "experiment": "dec_none",
+   "short": {
+    "seconds": 11.7,
+    "cpu_seconds": 4.9,
+    "loadavg_end": [
+     13.92,
+     11.33,
+     6.54
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_bofn3_reorder_dec-slow": {
+   "experiment": "dec_slow",
+   "short": {
+    "seconds": 13.9,
+    "cpu_seconds": 5.0,
+    "loadavg_end": [
+     14.32,
+     12.04,
+     7.17
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_bofn3_reorder_hpc1": {
+   "experiment": "hpc",
+   "short": {
+    "seconds": 1.6,
+    "cpu_seconds": 0.7,
+    "loadavg_end": [
+     14.67,
+     13.04,
+     8.27
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 1,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_bofn3_reorder_hpc16": {
+   "experiment": "hpc",
+   "short": {
+    "seconds": 4.6,
+    "cpu_seconds": 1.7,
+    "loadavg_end": [
+     14.69,
+     13.24,
+     8.54
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 16,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_bofn3_reorder_hpc256": {
+   "experiment": "hpc256",
+   "short": {
+    "seconds": 42.1,
+    "cpu_seconds": 17.4,
+    "loadavg_end": [
+     14.59,
+     13.62,
+     9.16
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 256,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_bofn3_reorder_hpc4": {
+   "experiment": "hpc",
+   "short": {
+    "seconds": 2.9,
+    "cpu_seconds": 1.0,
+    "loadavg_end": [
+     14.4,
+     13.08,
+     8.39
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 4,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_fast_lean": {
+   "experiment": "arms",
+   "short": {
+    "seconds": 10.3,
+    "cpu_seconds": 4.2,
+    "loadavg_end": [
+     12.28,
+     9.87,
+     5.47
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_fast_lean_dec-none": {
+   "experiment": "dec_none",
+   "short": {
+    "seconds": 8.7,
+    "cpu_seconds": 4.1,
+    "loadavg_end": [
+     13.81,
+     11.13,
+     6.38
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_fast_lean_dec-slow": {
+   "experiment": "dec_slow",
+   "short": {
+    "seconds": 11.8,
+    "cpu_seconds": 4.6,
+    "loadavg_end": [
+     14.33,
+     11.89,
+     7.01
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_fast_reorder": {
+   "experiment": "arms",
+   "short": {
+    "seconds": 10.7,
+    "cpu_seconds": 4.2,
+    "loadavg_end": [
+     11.79,
+     9.66,
+     5.33
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   },
+   "full": {
+    "seconds": 4211.0,
+    "cpu_seconds": 1187.2,
+    "loadavg_end": [
+     12.63,
+     12.21,
+     11.98
+    ],
+    "days": 730,
+    "scale": 64,
+    "gp_fits": 0,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "source": "checks/timing6.jsonl",
+    "targets": {
+     "flaime_al": {
+      "T1": 85.358,
+      "T2": 134.4
+     },
+     "onr_cu": {
+      "T1": 249.1,
+      "T2": 499.548
+     }
+    },
+    "best_new": {
+     "flaime_al": 0.7028,
+     "onr_cu": 0.6915
+    }
+   }
+  },
+  "r6_conventional_external_fast_reorder_dec-none": {
+   "experiment": "dec_none",
+   "short": {
+    "seconds": 7.5,
+    "cpu_seconds": 4.0,
+    "loadavg_end": [
+     13.79,
+     11.08,
+     6.33
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_fast_reorder_dec-slow": {
+   "experiment": "dec_slow",
+   "short": {
+    "seconds": 12.8,
+    "cpu_seconds": 4.6,
+    "loadavg_end": [
+     14.33,
+     11.89,
+     7.01
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_fast_reorder_hpc1": {
+   "experiment": "hpc",
+   "short": {
+    "seconds": 1.2,
+    "cpu_seconds": 0.5,
+    "loadavg_end": [
+     14.64,
+     13.0,
+     8.23
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 1,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_fast_reorder_hpc16": {
+   "experiment": "hpc",
+   "short": {
+    "seconds": 3.1,
+    "cpu_seconds": 1.4,
+    "loadavg_end": [
+     14.64,
+     13.18,
+     8.47
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 16,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_fast_reorder_hpc256": {
+   "experiment": "hpc256",
+   "short": {
+    "seconds": 42.3,
+    "cpu_seconds": 15.7,
+    "loadavg_end": [
+     14.68,
+     13.45,
+     8.86
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 256,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_fast_reorder_hpc4": {
+   "experiment": "hpc",
+   "short": {
+    "seconds": 1.9,
+    "cpu_seconds": 0.6,
+    "loadavg_end": [
+     14.56,
+     13.07,
+     8.33
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 4,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_pkgfn3_lean": {
+   "experiment": "arms",
+   "short": {
+    "seconds": 12.6,
+    "cpu_seconds": 4.8,
+    "loadavg_end": [
+     13.57,
+     10.5,
+     5.87
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_pkgfn3_lean_dec-none": {
+   "experiment": "dec_none",
+   "short": {
+    "seconds": 15.1,
+    "cpu_seconds": 5.1,
+    "loadavg_end": [
+     14.37,
+     11.72,
+     6.85
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_pkgfn3_lean_dec-slow": {
+   "experiment": "dec_slow",
+   "short": {
+    "seconds": 11.3,
+    "cpu_seconds": 4.8,
+    "loadavg_end": [
+     14.21,
+     12.2,
+     7.35
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_pkgfn3_reorder": {
+   "experiment": "arms",
+   "short": {
+    "seconds": 13.4,
+    "cpu_seconds": 4.8,
+    "loadavg_end": [
+     13.57,
+     10.5,
+     5.87
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   },
+   "full": {
+    "seconds": 5581.5,
+    "cpu_seconds": 1881.7,
+    "loadavg_end": [
+     10.28,
+     10.46,
+     11.18
+    ],
+    "days": 730,
+    "scale": 64,
+    "gp_fits": 71,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "source": "checks/timing6.jsonl",
+    "targets": {
+     "flaime_al": {
+      "T1": 213.525,
+      "T2": 213.525
+     },
+     "onr_cu": {
+      "T1": 251.033,
+      "T2": 251.033
+     }
+    },
+    "best_new": {
+     "flaime_al": 0.7726,
+     "onr_cu": 0.682
+    }
+   }
+  },
+  "r6_conventional_external_pkgfn3_reorder_dec-none": {
+   "experiment": "dec_none",
+   "short": {
+    "seconds": 12.9,
+    "cpu_seconds": 5.0,
+    "loadavg_end": [
+     14.35,
+     11.63,
+     6.77
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_pkgfn3_reorder_dec-slow": {
+   "experiment": "dec_slow",
+   "short": {
+    "seconds": 11.7,
+    "cpu_seconds": 4.9,
+    "loadavg_end": [
+     14.21,
+     12.2,
+     7.35
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_pkgfn3_reorder_hpc1": {
+   "experiment": "hpc",
+   "short": {
+    "seconds": 2.2,
+    "cpu_seconds": 0.8,
+    "loadavg_end": [
+     14.56,
+     13.07,
+     8.33
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 1,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_pkgfn3_reorder_hpc16": {
+   "experiment": "hpc",
+   "short": {
+    "seconds": 4.6,
+    "cpu_seconds": 1.7,
+    "loadavg_end": [
+     14.63,
+     13.25,
+     8.57
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 16,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_pkgfn3_reorder_hpc256": {
+   "experiment": "hpc256",
+   "short": {
+    "seconds": 41.2,
+    "cpu_seconds": 17.3,
+    "loadavg_end": [
+     14.59,
+     13.62,
+     9.16
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 256,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_conventional_external_pkgfn3_reorder_hpc4": {
+   "experiment": "hpc",
+   "short": {
+    "seconds": 2.4,
+    "cpu_seconds": 1.0,
+    "loadavg_end": [
+     14.61,
+     13.15,
+     8.44
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 4,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_external_bofn3_reorder": {
+   "experiment": "plans",
+   "short": {
+    "seconds": 11.2,
+    "cpu_seconds": 4.8,
+    "loadavg_end": [
+     13.69,
+     10.82,
+     6.12
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_external_fast_reorder": {
+   "experiment": "plans",
+   "short": {
+    "seconds": 9.9,
+    "cpu_seconds": 4.4,
+    "loadavg_end": [
+     13.67,
+     10.67,
+     6.0
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_external_pkgfn3_reorder": {
+   "experiment": "plans",
+   "short": {
+    "seconds": 12.9,
+    "cpu_seconds": 4.9,
+    "loadavg_end": [
+     13.74,
+     10.93,
+     6.21
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_bofn3_lean": {
+   "experiment": "arms",
+   "short": {
+    "seconds": 12.6,
+    "cpu_seconds": 4.8,
+    "loadavg_end": [
+     12.5,
+     9.96,
+     5.52
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_bofn3_lean_atom-3h": {
+   "experiment": "atom",
+   "short": {
+    "seconds": 11.0,
+    "cpu_seconds": 4.8,
+    "loadavg_end": [
+     14.13,
+     12.37,
+     7.56
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_bofn3_lean_atom-slow": {
+   "experiment": "atom",
+   "short": {
+    "seconds": 13.0,
+    "cpu_seconds": 5.0,
+    "loadavg_end": [
+     14.27,
+     12.6,
+     7.82
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_bofn3_lean_dec-none": {
+   "experiment": "dec_none",
+   "short": {
+    "seconds": 13.2,
+    "cpu_seconds": 4.9,
+    "loadavg_end": [
+     14.0,
+     11.3,
+     6.51
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_bofn3_lean_dec-slow": {
+   "experiment": "dec_slow",
+   "short": {
+    "seconds": 10.8,
+    "cpu_seconds": 4.9,
+    "loadavg_end": [
+     14.27,
+     11.99,
+     7.13
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_bofn3_lean_late240": {
+   "experiment": "crucibles_late",
+   "short": {
+    "seconds": 10.7,
+    "cpu_seconds": 5.0,
+    "loadavg_end": [
+     14.72,
+     12.87,
+     8.06
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_bofn3_reorder": {
+   "experiment": "arms",
+   "short": {
+    "seconds": 12.5,
+    "cpu_seconds": 4.9,
+    "loadavg_end": [
+     12.5,
+     9.96,
+     5.52
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   },
+   "full": {
+    "seconds": null,
+    "cpu_seconds": 16494,
+    "days": 730,
+    "scale": 64,
+    "source": "checks/timing6_progress.jsonl",
+    "extrapolated": {
+     "from_day": 500,
+     "cpu_at_day": 7342.8,
+     "rate": 42.99,
+     "slope": 0.1322,
+     "low": 17230,
+     "high": 20726
+    },
+    "how": "extrapolated from day 500 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.860 (64-point GP calls, measured) after day 200 (checks/batch.md): 13,727-16,494 s",
+    "unbatched": {
+     "low": 17230,
+     "high": 20726,
+     "cpu_seconds": 20726,
+     "how": "extrapolated from day 500 of a two-year run (seed 0): the cautious end, 17,230-20,726 s"
+    },
+    "batched": {
+     "ratio": 0.8604,
+     "trials": 0.92,
+     "pre_cell_cpu": 421.2,
+     "low": 13727,
+     "high": 16494,
+     "source": "checks/timing6b_ab.jsonl"
+    }
+   }
+  },
+  "r6_vertical_parallel_bofn3_reorder_atom-3h": {
+   "experiment": "atom",
+   "short": {
+    "seconds": 11.2,
+    "cpu_seconds": 5.0,
+    "loadavg_end": [
+     14.23,
+     12.34,
+     7.5
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_bofn3_reorder_atom-slow": {
+   "experiment": "atom",
+   "short": {
+    "seconds": 13.5,
+    "cpu_seconds": 5.1,
+    "loadavg_end": [
+     14.2,
+     12.56,
+     7.78
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_bofn3_reorder_dec-none": {
+   "experiment": "dec_none",
+   "short": {
+    "seconds": 11.7,
+    "cpu_seconds": 4.8,
+    "loadavg_end": [
+     13.91,
+     11.19,
+     6.42
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_bofn3_reorder_dec-slow": {
+   "experiment": "dec_slow",
+   "short": {
+    "seconds": 13.3,
+    "cpu_seconds": 4.9,
+    "loadavg_end": [
+     14.22,
+     11.91,
+     7.04
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_bofn3_reorder_hpc1": {
+   "experiment": "hpc",
+   "short": {
+    "seconds": 2.4,
+    "cpu_seconds": 1.1,
+    "loadavg_end": [
+     14.64,
+     13.0,
+     8.23
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 1,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_bofn3_reorder_hpc16": {
+   "experiment": "hpc",
+   "short": {
+    "seconds": 4.3,
+    "cpu_seconds": 1.8,
+    "loadavg_end": [
+     14.75,
+     13.23,
+     8.51
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 16,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   },
+   "full": {
+    "seconds": null,
+    "cpu_seconds": 14432,
+    "days": 730,
+    "scale": 16,
+    "source": "checks/timing6_progress.jsonl",
+    "extrapolated": {
+     "from_day": 510,
+     "cpu_at_day": 7691.0,
+     "rate": 43.99,
+     "slope": 0.0341,
+     "low": 17370,
+     "high": 18195
+    },
+    "how": "extrapolated from day 510 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.860 (64-point GP calls, measured) after day 200 (checks/batch.md): 13,779-14,432 s",
+    "unbatched": {
+     "low": 17370,
+     "high": 18195,
+     "cpu_seconds": 18195,
+     "how": "extrapolated from day 510 of a two-year run (seed 0): the cautious end, 17,370-18,195 s"
+    },
+    "batched": {
+     "ratio": 0.8604,
+     "trials": 0.92,
+     "pre_cell_cpu": 141.3,
+     "low": 13779,
+     "high": 14432,
+     "source": "checks/timing6b_ab.jsonl"
+    }
+   }
+  },
+  "r6_vertical_parallel_bofn3_reorder_hpc256": {
+   "experiment": "hpc256",
+   "short": {
+    "seconds": 38.8,
+    "cpu_seconds": 17.5,
+    "loadavg_end": [
+     14.68,
+     13.45,
+     8.86
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 256,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_bofn3_reorder_hpc4": {
+   "experiment": "hpc",
+   "short": {
+    "seconds": 3.2,
+    "cpu_seconds": 1.2,
+    "loadavg_end": [
+     14.44,
+     13.07,
+     8.36
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 4,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_bofn3_reorder_late240": {
+   "experiment": "crucibles_late",
+   "short": {
+    "seconds": 6.9,
+    "cpu_seconds": 5.0,
+    "loadavg_end": [
+     14.52,
+     12.8,
+     8.01
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_bofn3_reorder_noused": {
+   "experiment": "noused",
+   "short": {
+    "seconds": 9.7,
+    "cpu_seconds": 4.9,
+    "loadavg_end": [
+     14.85,
+     12.99,
+     8.18
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_fast_lean": {
+   "experiment": "arms",
+   "short": {
+    "seconds": 10.6,
+    "cpu_seconds": 4.2,
+    "loadavg_end": [
+     11.79,
+     9.66,
+     5.33
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_fast_lean_atom-3h": {
+   "experiment": "atom",
+   "short": {
+    "seconds": 10.8,
+    "cpu_seconds": 4.2,
+    "loadavg_end": [
+     14.17,
+     12.29,
+     7.46
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_fast_lean_atom-slow": {
+   "experiment": "atom",
+   "short": {
+    "seconds": 9.7,
+    "cpu_seconds": 4.3,
+    "loadavg_end": [
+     14.15,
+     12.5,
+     7.71
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_fast_lean_dec-none": {
+   "experiment": "dec_none",
+   "short": {
+    "seconds": 10.8,
+    "cpu_seconds": 4.2,
+    "loadavg_end": [
+     13.76,
+     10.98,
+     6.25
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_fast_lean_dec-slow": {
+   "experiment": "dec_slow",
+   "short": {
+    "seconds": 10.4,
+    "cpu_seconds": 4.2,
+    "loadavg_end": [
+     14.58,
+     11.81,
+     6.91
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_fast_lean_late240": {
+   "experiment": "crucibles_late",
+   "short": {
+    "seconds": 6.3,
+    "cpu_seconds": 4.1,
+    "loadavg_end": [
+     14.38,
+     12.68,
+     7.9
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_fast_reorder": {
+   "experiment": "arms",
+   "short": {
+    "seconds": 11.6,
+    "cpu_seconds": 4.2,
+    "loadavg_end": [
+     11.79,
+     9.66,
+     5.33
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   },
+   "full": {
+    "seconds": 4502.4,
+    "cpu_seconds": 1298.7,
+    "loadavg_end": [
+     12.25,
+     12.39,
+     12.14
+    ],
+    "days": 730,
+    "scale": 64,
+    "gp_fits": 0,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "source": "checks/timing6.jsonl",
+    "targets": {
+     "flaime_al": {
+      "T1": 56.65,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": 330.133,
+      "T2": 379.441
+     }
+    },
+    "best_new": {
+     "flaime_al": 0.63,
+     "onr_cu": 0.7346
+    }
+   }
+  },
+  "r6_vertical_parallel_fast_reorder_atom-3h": {
+   "experiment": "atom",
+   "short": {
+    "seconds": 11.7,
+    "cpu_seconds": 4.3,
+    "loadavg_end": [
+     14.18,
+     12.26,
+     7.42
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_fast_reorder_atom-slow": {
+   "experiment": "atom",
+   "short": {
+    "seconds": 7.9,
+    "cpu_seconds": 4.2,
+    "loadavg_end": [
+     14.17,
+     12.47,
+     7.67
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_fast_reorder_dec-none": {
+   "experiment": "dec_none",
+   "short": {
+    "seconds": 11.0,
+    "cpu_seconds": 4.3,
+    "loadavg_end": [
+     13.76,
+     10.98,
+     6.25
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_fast_reorder_dec-slow": {
+   "experiment": "dec_slow",
+   "short": {
+    "seconds": 10.9,
+    "cpu_seconds": 4.2,
+    "loadavg_end": [
+     14.37,
+     11.72,
+     6.85
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_fast_reorder_hpc1": {
+   "experiment": "hpc",
+   "short": {
+    "seconds": 0.9,
+    "cpu_seconds": 0.5,
+    "loadavg_end": [
+     14.78,
+     13.0,
+     8.21
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 1,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_fast_reorder_hpc16": {
+   "experiment": "hpc",
+   "short": {
+    "seconds": 2.7,
+    "cpu_seconds": 1.4,
+    "loadavg_end": [
+     14.64,
+     13.18,
+     8.47
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 16,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_fast_reorder_hpc256": {
+   "experiment": "hpc256",
+   "short": {
+    "seconds": 38.7,
+    "cpu_seconds": 15.8,
+    "loadavg_end": [
+     14.74,
+     13.44,
+     8.83
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 256,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_fast_reorder_hpc4": {
+   "experiment": "hpc",
+   "short": {
+    "seconds": 2.0,
+    "cpu_seconds": 0.7,
+    "loadavg_end": [
+     14.56,
+     13.07,
+     8.33
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 4,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_fast_reorder_late240": {
+   "experiment": "crucibles_late",
+   "short": {
+    "seconds": 9.8,
+    "cpu_seconds": 4.1,
+    "loadavg_end": [
+     14.38,
+     12.68,
+     7.9
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_fast_reorder_noused": {
+   "experiment": "noused",
+   "short": {
+    "seconds": 8.4,
+    "cpu_seconds": 4.3,
+    "loadavg_end": [
+     14.92,
+     12.97,
+     8.14
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_pkgfn3_lean": {
+   "experiment": "arms",
+   "short": {
+    "seconds": 12.7,
+    "cpu_seconds": 4.8,
+    "loadavg_end": [
+     13.36,
+     10.41,
+     5.81
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_pkgfn3_lean_atom-3h": {
+   "experiment": "atom",
+   "short": {
+    "seconds": 12.7,
+    "cpu_seconds": 4.9,
+    "loadavg_end": [
+     14.18,
+     12.44,
+     7.64
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_pkgfn3_lean_atom-slow": {
+   "experiment": "atom",
+   "short": {
+    "seconds": 13.7,
+    "cpu_seconds": 4.9,
+    "loadavg_end": [
+     14.43,
+     12.72,
+     7.93
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_pkgfn3_lean_dec-none": {
+   "experiment": "dec_none",
+   "short": {
+    "seconds": 11.6,
+    "cpu_seconds": 4.9,
+    "loadavg_end": [
+     13.95,
+     11.46,
+     6.67
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_pkgfn3_lean_dec-slow": {
+   "experiment": "dec_slow",
+   "short": {
+    "seconds": 11.4,
+    "cpu_seconds": 5.1,
+    "loadavg_end": [
+     14.23,
+     12.17,
+     7.31
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_pkgfn3_lean_late240": {
+   "experiment": "crucibles_late",
+   "short": {
+    "seconds": 9.9,
+    "cpu_seconds": 4.9,
+    "loadavg_end": [
+     14.92,
+     12.97,
+     8.14
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_pkgfn3_reorder": {
+   "experiment": "arms",
+   "short": {
+    "seconds": 12.0,
+    "cpu_seconds": 4.7,
+    "loadavg_end": [
+     12.83,
+     10.15,
+     5.66
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   },
+   "full": {
+    "seconds": null,
+    "cpu_seconds": 31864,
+    "days": 730,
+    "scale": 64,
+    "source": "checks/timing6_progress.jsonl",
+    "extrapolated": {
+     "from_day": 480,
+     "cpu_at_day": 7355.7,
+     "rate": 60.73,
+     "slope": 0.563,
+     "low": 22539,
+     "high": 40131
+    },
+    "how": "extrapolated from day 480 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.861 (64-point GP calls, measured) after day 200 (checks/batch.md): 17,934-31,864 s",
+    "unbatched": {
+     "low": 22539,
+     "high": 40131,
+     "cpu_seconds": 40131,
+     "how": "extrapolated from day 480 of a two-year run (seed 0): the cautious end, 22,539-40,131 s"
+    },
+    "batched": {
+     "ratio": 0.8607,
+     "trials": 0.92,
+     "pre_cell_cpu": 414.2,
+     "low": 17934,
+     "high": 31864,
+     "source": "checks/timing6b_ab.jsonl"
+    }
+   }
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_atom-3h": {
+   "experiment": "atom",
+   "short": {
+    "seconds": 10.0,
+    "cpu_seconds": 4.9,
+    "loadavg_end": [
+     14.2,
+     12.42,
+     7.6
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_atom-slow": {
+   "experiment": "atom",
+   "short": {
+    "seconds": 10.8,
+    "cpu_seconds": 4.9,
+    "loadavg_end": [
+     14.27,
+     12.6,
+     7.82
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_dec-none": {
+   "experiment": "dec_none",
+   "short": {
+    "seconds": 11.0,
+    "cpu_seconds": 4.9,
+    "loadavg_end": [
+     13.86,
+     11.4,
+     6.62
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_dec-slow": {
+   "experiment": "dec_slow",
+   "short": {
+    "seconds": 10.1,
+    "cpu_seconds": 5.2,
+    "loadavg_end": [
+     14.27,
+     12.11,
+     7.24
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_hpc1": {
+   "experiment": "hpc",
+   "short": {
+    "seconds": 2.3,
+    "cpu_seconds": 1.1,
+    "loadavg_end": [
+     14.61,
+     13.05,
+     8.3
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 1,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_hpc16": {
+   "experiment": "hpc",
+   "short": {
+    "seconds": 3.6,
+    "cpu_seconds": 1.8,
+    "loadavg_end": [
+     14.69,
+     13.24,
+     8.54
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 16,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   },
+   "full": {
+    "seconds": null,
+    "cpu_seconds": 20135,
+    "days": 730,
+    "scale": 16,
+    "source": "checks/timing6_progress.jsonl",
+    "extrapolated": {
+     "from_day": 500,
+     "cpu_at_day": 7487.2,
+     "rate": 50.6,
+     "slope": 0.2369,
+     "low": 19126,
+     "high": 25391
+    },
+    "how": "extrapolated from day 500 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.861 (64-point GP calls, measured) after day 200 (checks/batch.md): 15,174-20,135 s",
+    "unbatched": {
+     "low": 19126,
+     "high": 25391,
+     "cpu_seconds": 25391,
+     "how": "extrapolated from day 500 of a two-year run (seed 0): the cautious end, 19,126-25,391 s"
+    },
+    "batched": {
+     "ratio": 0.8607,
+     "trials": 0.92,
+     "pre_cell_cpu": 142.1,
+     "low": 15174,
+     "high": 20135,
+     "source": "checks/timing6b_ab.jsonl"
+    }
+   }
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_hpc256": {
+   "experiment": "hpc256",
+   "short": {
+    "seconds": 37.2,
+    "cpu_seconds": 17.3,
+    "loadavg_end": [
+     14.56,
+     13.59,
+     9.13
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 256,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_hpc4": {
+   "experiment": "hpc",
+   "short": {
+    "seconds": 3.6,
+    "cpu_seconds": 1.2,
+    "loadavg_end": [
+     14.4,
+     13.08,
+     8.39
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 4,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_late240": {
+   "experiment": "crucibles_late",
+   "short": {
+    "seconds": 9.4,
+    "cpu_seconds": 4.8,
+    "loadavg_end": [
+     14.72,
+     12.87,
+     8.06
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_noused": {
+   "experiment": "noused",
+   "short": {
+    "seconds": 11.1,
+    "cpu_seconds": 5.0,
+    "loadavg_end": [
+     14.67,
+     13.04,
+     8.27
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "624ee116741fa919815868acfebe796d6dceefc7",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_wait_bofn3_reorder": {
+   "experiment": "plans",
+   "short": {
+    "seconds": 10.5,
+    "cpu_seconds": 4.1,
+    "loadavg_end": [
+     13.53,
+     10.7,
+     6.03
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_wait_fast_reorder": {
+   "experiment": "plans",
+   "short": {
+    "seconds": 9.8,
+    "cpu_seconds": 4.2,
+    "loadavg_end": [
+     13.64,
+     10.62,
+     5.96
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  },
+  "r6_vertical_wait_pkgfn3_reorder": {
+   "experiment": "plans",
+   "short": {
+    "seconds": 10.1,
+    "cpu_seconds": 3.9,
+    "loadavg_end": [
+     13.69,
+     10.82,
+     6.12
+    ],
+    "days": 3,
+    "gp_fits": 0,
+    "scale": 64,
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "concurrent": 3,
+    "commit": "568ab5f1b30cbae7498c37b1ccc3e73c2feccc76",
+    "twin_dirty": false,
+    "best_new": {
+     "flaime_al": 0.0,
+     "onr_cu": 0.0
+    },
+    "targets": {
+     "flaime_al": {
+      "T1": null,
+      "T2": null
+     },
+     "onr_cu": {
+      "T1": null,
+      "T2": null
+     }
+    }
+   }
+  }
+ },
+ "what": "seed 0 of each group of the grid, timed on the runner that built it (twin/bench6.py smoke); 'short' is a shortened run (it shows the group runs and what it costs a day), 'full' a two-year run; twin/bench6.py timings() turns them into seconds for two years",
+ "stream_cost": {
+  "fast": {
+   "conventional": 0.02502,
+   "vertical": 0.02501
+  },
+  "gp": {
+   "conventional": 0.0278,
+   "vertical": 0.02601
+  }
+ },
+ "stream_cost_pairs": {
+  "fast/conventional": [
+   {
+    "k": 0.02511,
+    "how": "fast s0: day 150 at 1x (pre conventional fast s0 1x) and 64x (conventional fast 64x)"
+   },
+   {
+    "k": 0.02493,
+    "how": "fast s0: day 150 at 1x (pilot conventional fast s0 1x) and 64x (conventional fast 64x)"
+   }
+  ],
+  "fast/vertical": [
+   {
+    "k": 0.02506,
+    "how": "fast s0: day 150 at 1x (pre vertical fast s0 1x) and 64x (vertical fast 64x)"
+   },
+   {
+    "k": 0.02497,
+    "how": "fast s0: day 150 at 1x (pilot vertical fast s0 1x) and 64x (vertical fast 64x)"
+   }
+  ],
+  "gp/conventional": [
+   {
+    "k": 0.02772,
+    "how": "bofn3 s0: day 150 at 1x (pre conventional bofn3 s0 1x) and 64x (conventional bofn3 64x)"
+   },
+   {
+    "k": 0.0278,
+    "how": "pkgfn3 s0: day 150 at 1x (pre conventional pkgfn3 s0 1x) and 64x (conventional pkgfn3 64x)"
+   },
+   {
+    "k": 0.02782,
+    "how": "bofn3 s0: day 150 at 1x (pilot conventional bofn3 s0 1x) and 64x (conventional bofn3 64x)"
+   }
+  ],
+  "gp/vertical": [
+   {
+    "k": 0.02606,
+    "how": "pkgfn3 s0: day 150 at 16x (vertical pkgfn3 16x) and 64x (vertical pkgfn3 64x)"
+   },
+   {
+    "k": 0.0261,
+    "how": "bofn3 s0: day 150 at 16x (vertical bofn3 16x) and 64x (vertical bofn3 64x)"
+   },
+   {
+    "k": 0.02904,
+    "how": "bofn3 s0: day 150 at 16x (vertical bofn3 16x) and 64x (pilot vertical bofn3 s0 64x)"
+   },
+   {
+    "k": 0.02471,
+    "how": "bofn3 s0: day 150 at 16x (pilot vertical bofn3 s0 16x) and 64x (vertical bofn3 64x)"
+   },
+   {
+    "k": 0.02765,
+    "how": "bofn3 s0: day 150 at 16x (pilot vertical bofn3 s0 16x) and 64x (pilot vertical bofn3 s0 64x)"
+   },
+   {
+    "k": 0.02749,
+    "how": "bofn3 s1: day 150 at 16x (pilot vertical bofn3 s1 16x) and 64x (pilot vertical bofn3 s1 64x)"
+   },
+   {
+    "k": 0.02426,
+    "how": "bofn3 s0: day 150 at 4x (pilot vertical bofn3 s0 4x) and 64x (vertical bofn3 64x)"
+   },
+   {
+    "k": 0.01689,
+    "how": "bofn3 s0: day 150 at 4x (pilot vertical bofn3 s0 4x) and 16x (vertical bofn3 16x)"
+   },
+   {
+    "k": 0.02661,
+    "how": "bofn3 s0: day 150 at 4x (pilot vertical bofn3 s0 4x) and 64x (pilot vertical bofn3 s0 64x)"
+   },
+   {
+    "k": 0.02244,
+    "how": "bofn3 s0: day 150 at 4x (pilot vertical bofn3 s0 4x) and 16x (pilot vertical bofn3 s0 16x)"
+   },
+   {
+    "k": 0.0237,
+    "how": "bofn3 s0: day 150 at 1x (pilot vertical bofn3 s0 1x) and 64x (vertical bofn3 64x)"
+   },
+   {
+    "k": 0.01604,
+    "how": "bofn3 s0: day 150 at 1x (pilot vertical bofn3 s0 1x) and 16x (vertical bofn3 16x)"
+   },
+   {
+    "k": 0.02595,
+    "how": "bofn3 s0: day 150 at 1x (pilot vertical bofn3 s0 1x) and 64x (pilot vertical bofn3 s0 64x)"
+   },
+   {
+    "k": 0.02049,
+    "how": "bofn3 s0: day 150 at 1x (pilot vertical bofn3 s0 1x) and 16x (pilot vertical bofn3 s0 16x)"
+   },
+   {
+    "k": 0.02725,
+    "how": "bofn3 s1: day 150 at 1x (pilot vertical bofn3 s1 1x) and 64x (pilot vertical bofn3 s1 64x)"
+   },
+   {
+    "k": 0.02649,
+    "how": "bofn3 s1: day 150 at 1x (pilot vertical bofn3 s1 1x) and 16x (pilot vertical bofn3 s1 16x)"
+   }
+  ]
+ },
+ "stream_cost_note": "CPU seconds per simulated day per unit of HPC scale, the median over pairs of runs that differ only in scale (the larger at least 16x), from checks/timing6.jsonl and timing6_progress.jsonl (out/twin6/checks/smoke_merge.py)"
+}

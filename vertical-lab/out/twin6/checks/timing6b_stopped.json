@@ -1,0 +1,6 @@
+{
+ "vertical bofn3 64x unbatched": "stopped at day 350 at 03:51 UTC on 2026-11-28: it ran beside the batched runs on the engine before the batching (chunk None) to keep all four vCPUs busy, as in a slice, and to compare this runner with the 9V45 on the same code; the day-400 A/B needed the CPU",
+ "vertical pkgfn3 64x unbatched": "stopped at day 350 at 03:51 UTC on 2026-11-28, for the same reason",
+ "vertical bofn3 64x batched": "stopped at day 400 (its last progress line; saved at day 400 for the A/B) at 03:53 UTC on 2026-11-28, to leave the CPU to the day-400 A/B and finish the job; its two years are priced from round 6's timing run times the measured ratios (checks/batch.md)",
+ "vertical pkgfn3 64x batched": "stopped at day 400 at 03:53 UTC on 2026-11-28, for the same reason"
+}

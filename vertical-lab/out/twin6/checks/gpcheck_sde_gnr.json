@@ -1,0 +1,182 @@
+{
+ "what": "twin/gpcheck6.py: the kernel probe and short BOFN and pKGFN runs under TWIN_PIN=portable; sha256 of each probe group, and of each run's row, event log and GP state",
+ "pin": "portable",
+ "env": {
+  "python": "3.14.4",
+  "cpu": "AMD EPYC 9V74 80-Core Processor",
+  "avx512": true,
+  "pin": "portable",
+  "pin_late": false,
+  "hash_pinned": true,
+  "numpy": "2.5.5",
+  "scipy": "1.18.1",
+  "torch": "2.15.0+cpu",
+  "botorch": "0.18.1",
+  "gpytorch": "1.15.2",
+  "linear_operator": "0.6.1",
+  "blas": [
+   {
+    "api": "openblas",
+    "version": "0.3.31.dev",
+    "arch": "Haswell",
+    "threads": 1
+   },
+   {
+    "api": "openmp",
+    "version": null,
+    "arch": null,
+    "threads": 1
+   },
+   {
+    "api": "openblas",
+    "version": "0.3.34.237.2",
+    "arch": "Haswell",
+    "threads": 1
+   }
+  ],
+  "torch_cpu": "AVX2",
+  "torch_threads": 1,
+  "cpu_vendor": "AuthenticAMD",
+  "glibc": "glibc-2.43",
+  "numpy_simd": {
+   "baseline": [
+    "X86_V2"
+   ],
+   "enabled": [
+    "X86_V3"
+   ],
+   "off": [
+    "X86_V4",
+    "AVX512_ICL",
+    "AVX512_SPR"
+   ]
+  },
+  "pin_env": {
+   "ATEN_CPU_CAPABILITY": "avx2",
+   "MKL_CBWR": "COMPATIBLE",
+   "MKL_DYNAMIC": "FALSE",
+   "MKL_ENABLE_INSTRUCTIONS": "AVX2",
+   "MKL_NUM_THREADS": "1",
+   "NPY_DISABLE_CPU_FEATURES": "X86_V4,AVX512_ICL,AVX512_SPR",
+   "NPY_ENABLE_CPU_FEATURES": null,
+   "OMP_DYNAMIC": "FALSE",
+   "OMP_NUM_THREADS": "1",
+   "ONEDNN_MAX_CPU_ISA": "AVX2",
+   "OPENBLAS_CORETYPE": "Haswell",
+   "OPENBLAS_L2_SIZE": "256",
+   "OPENBLAS_NUM_THREADS": "1",
+   "PYTHONHASHSEED": "0"
+  },
+  "mkl": {
+   "version": "oneMKL 2024.0 Update 2 Product build 20240605",
+   "branch": "Intel(R) Architecture processors",
+   "cnr": "COMPATIBLE",
+   "threads": 1
+  }
+ },
+ "problems": [],
+ "code": {
+  "commit": "330d5aa765432d31f1556cf06da75501e3f28dc3",
+  "twin_tree": "2057dcf652bde2b5a7e6df6b99f948a1427f2730",
+  "twin_dirty": false
+ },
+ "probe": {
+  "gp_fit": "69d9348c8ce9c6d47332e50cde0d1cf5631c1127e8654c18439e4dace2ae2985",
+  "numpy_blas": "e4f7b9afd421d4c5c42b61287a8ed93ee521b9db5dc7ff8d752d5ffe866a0e40",
+  "numpy_math": "77f46d64266b12cd59842695e3258a9ce4bc230504d548dff5154b6dfe2fd77f",
+  "numpy_reduce": "007eb7cd461c79d11f67c2c6ccbb1ede6ff3f97f6f31f9ce79560561f1e46d84",
+  "scipy": "81db52e4e22b43851363bc252e31be8bac0301e615d9e74a0f8086f0c4624871",
+  "torch_blas": "8f887b2e2a4771e4bf0535a238f780a511121aec3903e117df6cc9a130e69bac",
+  "torch_math": "ddb6e49ff850454dbb64ca3ce8fe0b0bb245fdbefe0468c0c050f32983f91378"
+ },
+ "probe_seconds": 160.9,
+ "errors": {},
+ "wrap": "/tmp/repro6/sde/sde-external-9.58.0-2025-06-16-lin/sde64 -gnr --",
+ "runs": {
+  "conventional_bofn3": {
+   "run_id": "r6_conventional_external_bofn3_lean_s0_hpc4",
+   "days": 220,
+   "engine": "twin.bench6",
+   "row": "6939db0a8379256102988ee33de900e711a85fe71b6d071cae147acd0da92e5a",
+   "log": "0788aa0940954f95ff6afe19f1686c167ff1f811e8ea3d519d3ce3fa85428daf",
+   "gp": "f7bed992e516a0fb16a489ecbe93e41c1a243c9ed13f17b72bf58cec871ffb86",
+   "gp_nodes_fitted": {
+    "flaime_al": 3,
+    "onr_cu": 4
+   },
+   "gp_fits": 9,
+   "n_bookings": 1346,
+   "n_results": 75,
+   "torch_rng_used": false,
+   "seconds": 473.1
+  },
+  "conventional_pkgfn3": {
+   "run_id": "r6_conventional_external_pkgfn3_lean_s0_hpc4",
+   "days": 220,
+   "engine": "twin.bench6",
+   "row": "67e90432729721986ef61eaaf341db0f5d974e2acc28073b60f9cfda265bcb6d",
+   "log": "b12b0aae065ae61acfdddaa31a841761dc49ec491c6bcdbd08e9c45336023201",
+   "gp": "f7bed992e516a0fb16a489ecbe93e41c1a243c9ed13f17b72bf58cec871ffb86",
+   "gp_nodes_fitted": {
+    "flaime_al": 3,
+    "onr_cu": 4
+   },
+   "gp_fits": 9,
+   "n_bookings": 1346,
+   "n_results": 75,
+   "torch_rng_used": false,
+   "seconds": 511.3
+  },
+  "automated_bofn3": {
+   "run_id": "r6_vertical_parallel_bofn3_reorder_s0_hpc4",
+   "days": 200,
+   "engine": "twin.bench6",
+   "row": "5d633d6a6406bead885d1d74b5a06e85e3741bbb2e70d2573276fc42a6a8657e",
+   "log": "99ab4b0d9b838fb244de62ca6ae3f9de1d010cae241d69c932b7b0776193936d",
+   "gp": "b77c825438a85f8e456789f73fc5c9fa12546d6ae7f51c2eef34fea9f1a7f551",
+   "gp_nodes_fitted": {
+    "flaime_al": 3,
+    "onr_cu": 4
+   },
+   "gp_fits": 12,
+   "n_bookings": 1568,
+   "n_results": 571,
+   "torch_rng_used": false,
+   "seconds": 475.0
+  }
+ },
+ "engine": "twin.bench6",
+ "seconds": 1731.4,
+ "compared_with": "out/twin6/checks/gpcheck.json",
+ "comparison": {
+  "probe": {
+   "gp_fit": true,
+   "numpy_blas": true,
+   "numpy_math": true,
+   "numpy_reduce": true,
+   "scipy": true,
+   "torch_blas": true,
+   "torch_math": true
+  },
+  "runs": {
+   "conventional_bofn3": {
+    "row": true,
+    "log": true,
+    "gp": true
+   },
+   "conventional_pkgfn3": {
+    "row": true,
+    "log": true,
+    "gp": true
+   },
+   "automated_bofn3": {
+    "row": true,
+    "log": true,
+    "gp": true
+   }
+  },
+  "engine_same": true,
+  "versions_differ": {},
+  "match": true
+ }
+}

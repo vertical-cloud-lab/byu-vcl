@@ -1,0 +1,40 @@
+{
+ "plan": "tier1",
+ "job": 15,
+ "slice": "tier1-15",
+ "runs": {
+  "r6_vertical_parallel_pkgfn3_lean_s8": "row",
+  "r6_vertical_parallel_pkgfn3_reorder_s8": "checkpoint",
+  "r6_vertical_parallel_bofn3_lean_s8": "checkpoint",
+  "r6_vertical_parallel_bofn3_reorder_s8": "checkpoint",
+  "r6_conventional_external_pkgfn3_lean_s8": "row",
+  "r6_conventional_external_pkgfn3_reorder_s8": "checkpoint",
+  "r6_conventional_external_bofn3_lean_s8": "not started",
+  "r6_conventional_external_bofn3_reorder_s8": "not started",
+  "r6_vertical_parallel_fast_lean_s8": "not started",
+  "r6_vertical_parallel_fast_reorder_s8": "not started",
+  "r6_conventional_external_fast_lean_s8": "not started",
+  "r6_conventional_external_fast_reorder_s8": "not started"
+ },
+ "checkpoints": {
+  "r6_conventional_external_pkgfn3_reorder_s8": {
+   "day": 400.0,
+   "bytes": 9752280
+  },
+  "r6_vertical_parallel_bofn3_lean_s8": {
+   "day": 567.0,
+   "bytes": 38225416
+  },
+  "r6_vertical_parallel_bofn3_reorder_s8": {
+   "day": 682.0,
+   "bytes": 45156532
+  },
+  "r6_vertical_parallel_pkgfn3_reorder_s8": {
+   "day": 693.0,
+   "bytes": 40578836
+  }
+ },
+ "errors": [],
+ "n_rows": 2,
+ "n_waiting": 10
+}

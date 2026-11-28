@@ -1,0 +1,5 @@
+runs/*.jsonl
+!runs/*.slice-*.jsonl
+runs/*.errors.jsonl
+run*.log
+checkpoints/

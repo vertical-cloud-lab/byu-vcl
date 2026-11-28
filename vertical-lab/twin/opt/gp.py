@@ -122,7 +122,23 @@ class Node:
         self.model, self.n = m, len(y)
 
     def predict(self, X):
-        """Posterior mean and standard deviation (original units) at X (..., d)."""
+        """Posterior mean and standard deviation (original units) at X (..., d).
+
+        Round 6 (``chunk``, set on the network policies' nodes by twin/opt/net6.py; None everywhere else, so rounds
+        2-5 compute exactly what they did): the points are predicted at most ``chunk`` at a time along the points
+        axis (``X[..., i:i + chunk, :]``, each piece its own posterior call). gpytorch builds the joint predictive
+        covariance of every point in a call and the policies use only its diagonal, so a call over M points costs
+        M x M work on top of the M solves; 64-point calls cut that to M x 64. The means and variances are the same
+        numbers up to the last bits (a point's result depends on what else is in its call), so round 6's rows are
+        made with it and not without."""
+        X = np.asarray(X, float)
+        c = getattr(self, "chunk", None)
+        if c and X.ndim >= 2 and X.shape[-2] > c:
+            parts = [self._predict(np.ascontiguousarray(X[..., i:i + c, :])) for i in range(0, X.shape[-2], c)]
+            return np.concatenate([m for m, _ in parts], axis=-1), np.concatenate([s for _, s in parts], axis=-1)
+        return self._predict(X)
+
+    def _predict(self, X):
         Xt = torch.as_tensor(np.asarray(X, float), dtype=DT)
         with torch.no_grad():
             post = self.model.posterior(Xt)

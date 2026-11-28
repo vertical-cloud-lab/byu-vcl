@@ -1,0 +1,770 @@
+# Digital twin, round 6: money tracked, the used market, crucibles, the HPC at scale (the engine and the grid)
+
+Sterling, on PR 405 (2026-11-27 17:46 UTC): "Twin round 6. Branch from this PR's head … This job builds and validates
+the engine and the grid. Don't run the full grid here." Six changes: money isn't limited for either lab, it's tracked;
+used equipment from the real market (issue 424); pre-coated crucibles modelled explicitly; far more HPC candidates
+than 4×; BOFN and pKGFN rows that reproduce on any CPU; copper's optimizers without the cap on blend screens. Every
+sensitivity is run with BOFN and pKGFN as well as the cheap policies. Everything else is round 5's
+([`twin_round5.md`](twin_round5.md)).
+
+This round's job built the engine and the grid and checked them. **It made no row of the grid.** The grid runs in
+compute slices afterwards (section 8). Everything here is simulated: synthetic truths, simulated instruments,
+assumed prices, capacities, lead times and schedules.
+
+**In short.**
+
+<!-- SUMMARY -->
+
+## 1. Money tracked, not limited
+
+Every rule that stopped spending is gone, in both labs and for every policy (`twin/round6.py` `GATES_REMOVED`, each
+with where it lived):
+
+| Rule removed | Where it was |
+|---|---|
+| the budget: an action dearer than the money left was refused | `Campaign.submit3` |
+| the spending plan (round 5 had already set it to the whole budget) | `Campaign.submit3`, `Campaign.plan` |
+| round 4's reserve for the coming week's standing partner slots | `Campaign4.reserve` |
+| round 5's money kept for the work in progress: a new composition waited until the lots already made could be paid through their next steps | `Campaign5.wip_reserve` |
+| the stock heuristic's three money rules (no item stocked beyond the days the money lasts; never the money kept for work in progress; stock at most 20 % of the money left) | `Campaign5._reorder` |
+| the run loop: a campaign with no money was not asked, and after a refusal the rest of a decision's actions were held back | `Twin5.run_async` |
+| the policies' check that money is left for a new design ($1,500 aluminium, $3,000 copper) | `policies2.Base2.can_start_new` |
+| BOFN's and pKGFN's cap on copper's blend screens (a quarter of the money spent plus $2,500) | `net3.Net3._screen_share_ok` |
+
+What still limits work is what limits it in a lab (`GATES_KEPT`): stations, robots, people and their hours, a
+crucible for each atomizer run, stock and its lead times, decision windows and sign-offs (round 5), and round 4's
+WIP limit before the first fabrication step (it counts lots against two weeks of that step's capacity, not dollars).
+
+**Tracked instead.** Every dollar a campaign spends is booked with a category as it is spent (`Campaign6.charge`,
+`_route`): stock ordered into the stores, consumables (the lab's own stations' fees and each action's supplies),
+partners and services (partners' sessions, BYU core facilities, outside services), and the scale-up stages after
+discovery (a line of their own, as in rounds 4-5). The lab's own money is booked on a cash basis
+(`Twin6._spend_events`): capital bought new, capital bought used (with any refurbishment), the facility (the space's
+fit-out, then each item's service contract, utilities and floor space from the day it is online) and labour (the fixed
+staff from day 0, and hands-on hours at the student rate). A test checks that the categories add up to the ledger,
+dollar for dollar. Each row reports:
+
+* cumulative spend by week for each campaign and for the lab, by category (`r6.spend`);
+* spend to each target, campaign money alone and with the lab's fixed costs shared 2 : 1 between the campaigns as
+  round 5's budgets were (`campaigns.<k>.spend_to_target`);
+* per new alloy tested, without and with fixed costs (`campaigns.<k>.per_alloy`).
+
+Round 5's budgets stay in the rows as a reference line (`reference_usd`), not a limit. All the money is still there at
+t = 0, the facility is ready between day 60 and day 100 (drawn per seed), and equipment is ordered on day 0 and
+installed once the space is ready.
+
+## 2. Used equipment from the market
+
+The engine reads the per-station summary of issue 424's survey, `out/twin6/market/summary.csv`, written by that
+branch's `twin/market6.py` (`round6.load_market`, `used_params`, `build_schedule6`). For each station the survey
+lists, its own numbers replace round 5's stand-ins field by field: whether a used market exists and is cheaper than
+new (`used_ok`, replacing round 5's `USED_OK`), the delivered price as a fraction of new (`price_frac`), the lead from
+BYU's purchase order to the unit on site and its spread (`lead_w`, `lead_sigma`), the chance a unit arrives faulty or
+needs refurbishment (`p_fault`), the refurbishment's time, spread and cost (`refurb_w`, `refurb_sigma`,
+`refurb_frac`), and the extra commissioning a used unit needs (`extra_com_w`). A field the survey leaves empty keeps
+round 5's number. The survey writes a row for each station and, for a station that is several machines (the
+machining cell, the prep line), one for each machine too; only the station's own row is read, since it already
+combines its machines. Round 5's rule then decides: buy used when that saves at least 14 expected days against the
+space's readiness, with the fault risk priced in. Every row records where its numbers came from
+(`r6.used.source`) and the summary's sha256 (`r6.used.file_sha256`), so rows made before and after the file lands
+can't be mixed by accident.
+
+**The survey landed (PR 429, merged here on 2026-11-27) and is wired in.** Its per-station summary,
+[`out/twin6/market/summary.csv`](../out/twin6/market/summary.csv), comes from 1,181 listings on LabX, Machinio,
+Machineseeker, Exapro, GovDeals, AllSurplus, Public Surplus, DOTmed, Federal Equipment and Marshall Scientific
+([its README](../out/twin6/market/README.md)). eBay, BidSpotter, EquipNet and Surplus Record blocked or challenged
+the survey's browser, so they're not in it. Every row of the grid records the file's sha256 (`51ba653a…`).
+
+**One fix was needed to read it.** A station bought partly used is on site when its last part is. The survey gives
+that lead as `lead_w_with_new_parts`: the later of the used parts' lead (`lead_w`) and the new parts' lead. The
+engine read `lead_w` alone. That would have had the doser on site in 2 weeks while its carousel, bought new, takes
+14, and the machining cell in 3 while its baths, dryer and integration take 20. The same applied to the floor unit,
+the mobile units, the ICP-MS, the sieve cell and the VHX. The engine now reads `lead_w_with_new_parts` where the survey
+gives it, as the survey's own `market6.used_params` does. A test checks that the two readers agree on all eight
+numbers and `used_ok` for every station the lab builds
+(`test_engine_reads_the_committed_survey_as_market6_does`).
+
+**What it changes** ([`out/twin6/checks/used_market.md`](../out/twin6/checks/used_market.md), the 16 seeds' build-out
+both ways, made by `checks/used_market.py`):
+
+* **Two stations are bought used: the EDM and the Instron frame**, in every seed. A used unit saves 32 and 21.5
+  expected days, at 20 % and 12 % of the new price delivered, against round 5's stand-in of 45 %. Each arrives
+  faulty in some seeds (the EDM in 5 of 16, the Instron in 2), at 31 % and 29 % odds from the listings' mix of
+  conditions.
+* **The environmental chamber and the nanoindenter are now bought new.** Round 5's stand-ins bought both used. The
+  survey found 4 and 3 listings, too few to count on (`thin`), so they arrive after their 16-week leads.
+* **Every other station with a real market saves fewer than 14 expected days**, round 5's threshold, so it's bought
+  new. Most of these have leads of 8-12 weeks that the space's readiness (day 60-100) hides. The rest are partly
+  used and wait for their new parts anyway.
+* **The cell is integrated on the same day in all 16 seeds** (median day 201), and the last station is online on
+  the same day (median 247). Capital is $4.68M rather than $4.66M (medians).
+
+**Stations the lab buys with no used market it would buy from** (`round6.no_used_market()`; every row records each
+station's verdict in `r6.used.stations`):
+
+| Station | Survey's verdict | Listings |
+|---|---|---|
+| Plastometrex PLX-Benchtop (PIP) | none: made since 2019, no used unit found | 0 |
+| KLA iMicro nanoindenter | thin | 3 |
+| Instron 3119-608 environmental chamber | thin | 4 |
+| Makera Carvera desktop CNC | none | 0 |
+| Aconity3D AconityMIDI+ LPBF | none like for like (82 other LPBF machines listed) | 82 |
+| InssTek MX-Lab DED | none like for like | 4 |
+| Kardex Shuttle XP 500 | thin: common in Europe, prices on request, almost none in the US | 35 |
+| EBSD detector | thin | 2 |
+| AZtecOne EDS for the TM4000 | thin | 1 |
+| Cameras, UPSs | not surveyed: commodity, bought new | 0 |
+
+The fit-out (`services`) is building work, and the conventional lab buys nothing: it works with the equipment it
+has. Its stations are in the survey for the economics only.
+
+## 3. Pre-coated crucibles
+
+Round 5 derived the automated atomizer's cycle (about 2.2 h per aluminium composition) assuming spare pre-coated
+crucibles: each is out of service about 14-16 h for its clean, BN respray and overnight dry, so a 2-3 h cycle needs
+6-8 per alloy family in rotation, and with one per family the lab manages about one run a day. Round 6 models them
+(`CRUCIBLES`, `CruciblePool`, `ResourceAtom6`):
+
+* **How many.** The automated lab: as many as keep the atomizer at its cycle, (run + 15 h) / run rounded up: 8 for
+  aluminium (2.2 h) and 6 for copper (3.4 h). The conventional lab: 3 a family (two attended starts a day and a
+  spare). Both start with one a family, what the lab has now.
+* **Bought at t = 0**, after BYU's two-week purchase order, at a lead drawn per seed and family (a 21-day median, a
+  geometric spread of 1.8), paid on delivery as a stores order.
+* **Price and lead** (stand-ins until a vendor quotes for the rePOWDER's own geometry; `CRUCIBLE_SOURCE`): no vendor
+  sells a factory BN-coated graphite crucible of this size, and AMAZEMET's spares have no public price or lead time.
+  A stock graphite bottom-pour crucible of about 200 mL with its sealing rod is $198 (MTI EQ-GR6083-LD), plain
+  220-250 mL crucibles $90-170; coated in house with ZYP BN aerosol ($45 a can, about $1 a coat). Stock items ship in
+  1-5 working days; graphite machined to print takes 7-12 days at one shop and 6-8 weeks at others. **$200 each, 21
+  days.** Whether a third-party crucible fits the rePOWDER is unverified.
+* **Turnaround and life.** After each run a crucible is out of service 15 h (cleaned, resprayed, dried), whoever does
+  it. Each melt wears 1/12 of an aluminium crucible and 1/6 of a copper one (the twin's rates since round 1), drawn
+  from the stores, which reorder them like any other item.
+* **The atomizer's rate.** A run needs a crucible of its family. Until the pool arrives there is one a family, about
+  one run a day; after it arrives, and once the cell is integrated, the automated atomizer runs at the derived cycle.
+  Before the cell, people run it, at most 8 a week, as in round 5.
+
+**The day the derived cycle starts**, per seed (`r6.crucibles.families.<k>.derived_cycle_start_d`; computed here from
+each seed's build-out and crucible draws, the same as the runs will record):
+
+| Seed | Space ready | Cell integrated | Aluminium's pool in | Copper's pool in | Derived cycle starts | With the pool 240 days late (Al / Cu) |
+|---|---|---|---|---|---|---|
+| 0 | 67 | 212 | 43 | 22 | 212 (the cell) | 283 / 262 |
+| 1 | 67 | 161 | 32 | 50 | 161 (the cell) | 272 / 290 |
+| 2 | 90 | 206 | 43 | 31 | 206 (the cell) | 283 / 271 |
+| 3 | 77 | 171 | 63 | 32 | 171 (the cell) | 303 / 272 |
+| 4 | 77 | 201 | 62 | 76 | 201 (the cell) | 302 / 316 |
+| 5 | 88 | 248 | 51 | 43 | 248 (the cell) | 291 / 283 |
+| 6 | 65 | 194 | 35 | 64 | 194 (the cell) | 275 / 304 |
+| 7 | 89 | 246 | 49 | 20 | 246 (the cell) | 289 / 260 |
+| 8 | 61 | 200 | 60 | 55 | 200 (the cell) | 300 / 295 |
+| 9 | 64 | 233 | 25 | 27 | 233 (the cell) | 265 / 267 |
+| 10 | 100 | 191 | 34 | 28 | 191 (the cell) | 274 / 268 |
+| 11 | 84 | 194 | 140 | 40 | 194 (the cell) | 380 / 280 |
+| 12 | 91 | 208 | 75 | 36 | 208 (the cell) | 315 / 276 |
+| 13 | 78 | 191 | 41 | 33 | 191 (the cell) | 281 / 273 |
+| 14 | 100 | 212 | 32 | 41 | 212 (the cell) | 272 / 281 |
+| 15 | 90 | 185 | 34 | 31 | 185 (the cell) | 274 / 271 |
+
+Days from t = 0. At the nominal lead the pools are in on day 20-140, months before the cell (day 161-248), so **the cell, not the crucibles, sets the day the derived cycle starts in every seed**. The crucibles bind only when they are late: in the grid's `crucibles_late` arms the pool arrives 240 days after its lead time, on day 260-380, and the automated atomizer runs at one crucible a family, about one run a day each, from the cell until then.
+
+## 4. The HPC stream at scale
+
+Round 5's stream (Sterling's note 4): a stand-in allocation of 256 cores at 0.05 core-hours a candidate evaluates
+about 123,000 candidates a day for each campaign (89.7 million over the two years), outside the money and outside
+the acquisition's cost. The policies saw 64 new ones a day, as open-CALPHAD results, with the newest 128 unexplored
+kept visible; round 5's `hpc_more` showed 4× as many changed no target with the cheap policies.
+
+**Round 6 scales what the policies see** (`hpc.scale`: 64 × scale new candidates a day, the newest 128 × scale
+kept), without keeping every candidate ever simulated in memory (`Twin6._stream_tick`): a candidate that has left the
+visible pool with nothing started on it is dropped a day later and can be rebuilt from its batch's seed if a policy
+still asks for it; one a policy starts stays visible with its simulation. At large pools, BOFN and pKGFN value at
+most 384 free candidates a decision: the 288 best by the funnel's own screen and proxy (what round 3's networks
+already use as their prior before they have data) and 96 drawn at random from the rest (`opt/net6.py`).
+
+**What uses the stream.** The heuristic on aluminium doesn't: it starts from the reference alloys and then mutates
+the best alloy measured, so the stream's scale reaches it only through the stations it shares with copper. The funnel
+on copper ranks every visible candidate by its proxy whenever it rebuilds its shortlist. BOFN and pKGFN draw every new
+design from the visible pool.
+
+**What a candidate costs the simulation.** About 0.25 ms each to sample, simulate and index (profiled at 16×, 60
+days: `Space.sample` 87 µs, the open-CALPHAD Scheil model 65-125 µs, `design_id` 30 µs), plus what the policies spend
+looking at a larger pool. At the allocation's full capacity, about 123,000 a day for each campaign, the stream alone
+would take about 60 s per simulated day: some 12 hours per two-year run, for 1,392 runs. **The full capacity can't be
+simulated with this stream.** What would make it possible: a vectorized sampler and Scheil model for the stream
+(both are per-candidate Python today), or a library of candidates simulated once and shared by every run, with each
+day's visible pool drawn as the top of a random draw of the day's size (a sketch, not built).
+
+**The first job's pilot** (made by `out/twin6/checks/hpc_pilot.py`: the stocked arm of each lab, the same seeds at
+each scale, 365 days for the heuristic and the funnel). **Its data file, `hpc_pilot.jsonl`, was never committed**: the
+first job's retry ran out of time before pushing it, and with it went the `smoke.json` it fed. The bullets below are
+as that job wrote them and can't be rechecked from the repository. The grid's `hpc` and `hpc256` experiments measure
+the same thing on 16 seeds. The second job reran BOFN's part of the pilot (below), and measured the stream's cost
+again from its own runs. A few seeds can show only large changes: a run's path parts from the same seed's at another
+scale as soon as one decision differs.
+
+**What the first job's pilot showed** (as it recorded it).
+
+* **The heuristic on aluminium doesn't change with scale** beyond the seed-to-seed spread, as expected: it never
+  looks at the stream.
+* **The conventional lab's copper does.** With the funnel it reached copper's first target within the year in 0 of 4
+  seeds at 1× and 4×, 1 of 4 at 16× and 2 of 2 at 64×, and its best new copper alloy rose from 0.38 to 0.67 (medians).
+  That lab tests about two copper alloys a year (Utah's monthly MX-Lab session), so which two it picks matters most,
+  and a larger pool gives its proxy better ones to pick. The automated lab tests about 20 a year, and its copper
+  outcomes don't move with scale in four seeds.
+* **So outcomes have not stopped changing at 64×**, and the effect is larger in the conventional lab than in the
+  automated one: a comparison at a smaller scale would favour the automated lab.
+* **The stream's cost is linear in scale:** about 0.035 s of runtime per simulated day per unit of scale with the
+  heuristic and the funnel, and about 0.05 with BOFN (the median over the pilot's pairs of runs that differ only in
+  scale). The second job's measurement, in CPU seconds, is below and in `smoke.json` (`stream_cost`).
+
+**BOFN's pilot, rerun** (the second job; [`out/twin6/checks/timing6.md`](../out/twin6/checks/timing6.md), the `pilot`
+lines of `timing6.jsonl`): the automated lab stocked, 300 days, seeds 0 and 1 at 1×, 16× and 64× and seed 0 at 4×.
+
+| Policy | Days | Lab | Scale | Seeds | Al T1 | Al T2 | Al best | Al tested | Cu T1 | Cu T2 | Cu best | Cu tested | CPU s per run | extra CPU s a day |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| bofn3 | 300 | conventional | 1x | 1 | - (0/1) | - (0/1) | 0.0 | 5 | 209.2 (1/1) | 209.2 (1/1) | 0.6937 | 2 | 75.8 |  |
+| bofn3 | 300 | vertical | 1x | 1 (seed 1 stopped at day 250) | 151.7 (1/1) | 185.7 (1/1) | 0.7493 | 18 | - (0/1) | - (0/1) | 0.3948 | 2 | 544.5 |  |
+| bofn3 | 300 | vertical | 4x | 1 | 231.4 (1/1) | 245.7 (1/1) | 0.7431 | 41 | - (0/1) | - (0/1) | 0.0 | 1 | 607.3 | 0.21 |
+| bofn3 | 300 | vertical | 16x | 2 | 214.0 (2/2) | 214.0 (2/2) | 0.8077 | 52.5 | - (1/2) | - (0/2) | 0.5073 | 2.0 | 1244.4 | 2.33 |
+| bofn3 | 300 | vertical | 64x | 2 | 212.6 (2/2) | 215.3 (2/2) | 0.7805 | 26.5 | - (1/2) | - (1/2) | 0.5308 | 3.0 | 1369.2 | 2.75 |
+| fast | 300 | conventional | 1x | 1 | 81.7 (1/1) | 130.4 (1/1) | 0.7028 | 35 | - (0/1) | - (0/1) | 0.354 | 2 | 15.2 |  |
+| fast | 300 | vertical | 1x | 1 | 56.6 (1/1) | - (0/1) | 0.5453 | 110 | - (0/1) | - (0/1) | 0.4134 | 2 | 25.2 |  |
+
+Medians over the seeds; a target's cell is the median day (a seed that doesn't reach it counts as later than the horizon) and the seeds that reached it. 'extra s a day': the run's seconds over the same policy's and lab's at 1x, per simulated day (CPU seconds). Seeds are paired across scales (the same truths, build-outs and draws), but a run's path parts as soon as one decision differs, so with a few seeds only large changes show.
+
+**What BOFN's pilot shows** (1-2 seeds, so only large changes would show, and a run's path parts from the same seed's
+at another scale as soon as one decision differs):
+
+* **Aluminium doesn't move with scale.** It reaches both targets around day 150-250 at every scale, with best new
+  alloys of 0.74-0.81.
+* **Copper's best new alloy within 300 days rises with scale**: 0.39 at 1× (one seed), 0.51 at 16× and 0.53 at 64×
+  (medians of two seeds), with its first target reached in one of two seeds at 16× and at 64×. At 4× the one seed tested
+  only one copper alloy. This is the same direction as the first job's funnel in the conventional lab: copper, which
+  tests few alloys, is where a larger pool of candidates matters, and 64× hasn't shown where that stops.
+* **The cost** is read off the cost curves, not these totals: after the cell the runs part, and their work differs by
+  more than the stream's cost does (the stream's own cost is measured before the cell; section 8).
+
+**The main arms run at 64×** (`bench6.HPC_SCALE`): 4,096 new candidates a day for each campaign, the newest 8,192
+visible. The first job chose it as the largest scale at which a two-year run stays workable, from runs that hadn't
+reached the second year. Measured in the second job (CPU time, section 8): a two-year run at 64× costs 20-22 minutes
+with the heuristic and the funnel, about half an hour with BOFN or pKGFN in the conventional lab, and several hours with
+BOFN or pKGFN in the automated lab. Almost all of that is the networks' own work, which the scale barely touches; the
+stream itself costs about 20 minutes at 64× and 80 at 256×. The grid's `hpc` experiment runs the stocked arms at 1×, 4×
+and 16× (tier 2), and `hpc256` at 256× (tier 5, last), each with all three policies and 16 seeds, so where outcomes
+stop changing is measured on the grid's own seeds. A one-line change (`HPC_SCALE = 16`) would save only the stream's
+difference, about 15 minutes for each of the 1,008 runs at the main scale (some 250 core-hours, under a tenth
+of the grid), at the cost of the
+conventional lab's copper.
+
+## 5. BOFN and pKGFN rows that reproduce on any CPU
+
+Round 5 found that its BOFN and pKGFN rows, made under `TWIN_PIN=avx2`, reran bit for bit between the EPYC 9V45 and
+9V74 and not on an EPYC 7763 or a Xeon 6975P-C; the heuristic's and the funnel's rows reran everywhere. Three
+libraries still chose their arithmetic by the CPU (details and numbers in
+[`out/twin6/checks/pin_search/`](../out/twin6/checks/pin_search/README.md)):
+
+1. **numpy's own float64 kernels.** numpy dispatches `exp`, `log`, `power`, `expm1` and `log1p` to AVX-512 code on a
+   CPU that has it, and to AVX2 code otherwise. The two disagree in the last bit for 4.6 % of `exp`'s results and
+   5.3 % of `power`'s. The network policies compute their utilities with these; the heuristic, the funnel, the truth
+   and the instruments use Python's `math`, which is why only BOFN's and pKGFN's rows differed. The EPYC 7763 has no
+   AVX-512.
+2. **MKL inside torch** takes a different code branch on a non-Intel CPU whatever `MKL_ENABLE_INSTRUCTIONS` says,
+   and the two branches differ in matrix products, Cholesky factors, triangular solves and the vector math behind
+   `torch.exp`, `erf` and `tanh`. The Xeon is the Intel CPU.
+3. **OpenBLAS's blocking** (numpy's and scipy's). `OPENBLAS_CORETYPE=Haswell` fixes the kernels, not how a product is
+   blocked, which OpenBLAS sets from the L2 cache it finds. At exactly 1,024 KB, the EPYC 9V45's and 9V74's, it blocks
+   differently from every other size tried, so products and factorizations of size 300 or so differ. Under the Haswell
+   kernels that blocking also crashes numpy on a 64 × 384 by 384 × 64 product. This one was found in this job.
+
+**`TWIN_PIN=portable`** (`twin/repro.py`) is round 5's `avx2` (OpenBLAS's Haswell kernels, torch's AVX2 kernels,
+MKL capped at AVX2, one thread everywhere, `PYTHONHASHSEED=0`) plus `NPY_DISABLE_CPU_FEATURES=X86_V4,AVX512_ICL,
+AVX512_SPR` (numpy's AVX2 kernels on every CPU), `MKL_CBWR=COMPATIBLE` with `MKL_DYNAMIC` and `OMP_DYNAMIC` off
+(MKL's conditional numerical reproducibility, the one branch Intel documents for all Intel and compatible CPUs),
+`OPENBLAS_L2_SIZE=256` (Haswell's own L2) and oneDNN capped at AVX2 (a precaution). `bench6` and `gpcheck6` set it
+themselves and refuse to make kept rows under any other. Each row records what is in force, as the libraries
+themselves report it: numpy's enabled kernels, MKL's branch, CNR state and threads, OpenBLAS's kernels and threads,
+torch's capability and threads (`env`); `repro.problems6` lists anything that isn't.
+
+**The GP determinism check** (`python -m twin.gpcheck6`, `twin/gpcheck6.py`; the reference is
+[`out/twin6/checks/gpcheck.json`](../out/twin6/checks/gpcheck.json), made on an EPYC 9V45 from `568ab5f`, the engine with
+the used market wired in, with a clean `twin/`. The first reference, made on an EPYC 9V74 from `330d5aa` before the
+merge, is in git history). Each part runs in a fresh interpreter under the pin, with every variable that could steer the
+libraries removed first:
+
+* **a kernel probe**: fixed inputs through every numerical building block the network policies use, hashed in seven
+  groups: numpy's math, its reductions and BLAS, scipy (its own OpenBLAS, L-BFGS-B, special functions), torch's math
+  (MKL's vector math and ATen) and BLAS and LAPACK (at the sizes a GP fit uses), and whole GP fits (BoTorch's
+  `SingleTaskGP`, marginal likelihood, gradient, fitted hyperparameters, posterior). A group that differs names the
+  library that still follows the CPU;
+* **three short runs on the grid's engine**: BOFN and pKGFN in the conventional lab (220 days), and BOFN in the
+  automated lab (200 days), at a pool of 4× round 5's candidates, so that BOFN's cut of a large pool runs too. Each
+  is hashed three ways: the row (apart from timing and provenance), the event log, and **the GP state**, every node's
+  fitted hyperparameters and scaling and the policy's last posterior means as exact floats. The GP state is the
+  sensitive part. In a 150-day run a last-bit difference in a fit changes the GP state at once and no decision yet,
+  so a check of the row and log alone would pass on a machine whose two-year rows then differ.
+
+It takes about 2 minutes with four workers (`TWIN_WORKERS=4`), 5 with one. Exit 0: every probe group and every run's
+row, log and GP state match. Exit 1: something differs (it prints what). Exit 2: the pin isn't in force. Each slice
+runs it first and commits its record (`out/twin6/slices/gpcheck-slice-<k>.json`), so the slices' mix of CPUs is the
+test.
+
+**What was shown here, and what wasn't.** This runner is an AMD EPYC 9V74. For Intel CPUs, Intel's Software
+Development Emulator (SDE 9.58) runs the same binaries while presenting another CPU's identity and instruction set:
+`-hsw` (Haswell, AVX2 only, 256 KB of L2) and `-gnr` (Granite Rapids, the Xeon 6975P-C's family).
+
+* **Before the OpenBLAS fix** (the first attempt's measurements, [`pin_search/`](../out/twin6/checks/pin_search/README.md)):
+  150-day automated-lab BOFN runs had the same rows and event logs under every setting (no decision had changed
+  yet), but their GP states told them apart. Under `avx2` the native EPYC, emulated Haswell and emulated Granite
+  Rapids gave three different GP states; with numpy's kernels and MKL's branch pinned, all three gave the same. The
+  kernel probe still differed in numpy's BLAS and in scipy between the native EPYC and both emulated CPUs, which
+  agreed with each other: that was OpenBLAS's blocking.
+* **With the full pin, on this runner**: the probe matches the emulated Haswell's and Granite Rapids' in all seven
+  groups.
+* **The whole check under emulated Granite Rapids** (`TWIN_GPCHECK_WRAP="sde64 -gnr --" python -m twin.gpcheck6`):
+  **it matches the reference in every part**, the seven probe groups and all three runs' rows, event logs and GP
+  states ([`gpcheck_sde_gnr.json`](../out/twin6/checks/gpcheck_sde_gnr.json)). Under the emulator it took 29 minutes.
+  That was against the first reference, before the used market was merged.
+* **On a second native CPU, after the merge.** The second job ran on an EPYC 9V45. Against the first reference (the
+  9V74's, before the merge) the 9V45 matched all seven probe groups, and the three runs' event logs and GP states
+  ([`gpcheck_9v45_vs_ref_330d5aa.json`](../out/twin6/checks/gpcheck_9v45_vs_ref_330d5aa.json)). Only the rows
+  differed, because round 6's rows now record each station's market verdict (`r6.used.stations`). The new reference
+  was then written on the 9V45; the check and the write, run eight minutes apart, gave identical hashes in every
+  part. The 9V45 and 9V74 share the 1,024 KB L2 that OpenBLAS blocks by, so this is not the cross-family test the
+  slices will be.
+
+The emulator presents another CPU's identity, instruction set and cache sizes to the libraries, not another chip's
+silicon. A real Intel runner and a real EPYC 7763 are the test that counts, and the slices will be it. If a slice's
+check fails, its record names the group that differs.
+
+**Rows made under `portable` are round 6's own**: not round 5's, not round 3's. Round 5's rows were made under
+`avx2` and still reproduce under `avx2` on the CPUs they did.
+
+## 6. Copper's optimizers without the cap on blend screens
+
+Round 5 named the optimizers' cap on copper's blend screens (a quarter of the money spent so far plus $2,500;
+`net3.Net3._screen_share_ok`) as the likely cause of copper's stretches with free capacity and nothing started, and
+didn't confirm it. Round 6 removes the cap with the other money rules (section 1).
+
+**The check** ([`out/twin6/checks/copper_idle.md`](../out/twin6/checks/copper_idle.md), made by
+`out/twin6/checks/copper_idle.py`): the arms and seeds in which round 5 flagged a copper stretch, rerun on round 6's
+engine for the days that cover them, each twice: with round 6's policy (no cap), and with the cap put back and
+nothing else changed (`bofn3cap`, `pkgfn3cap` in `twin/opt/net6.py`, check-only variants that the grid never runs).
+Round 6 also changed the rule that flags a stretch. Round 5 called the first fabrication step free when it was busy
+less than half of every hour of the stretch, which counts the weeks between a partner's monthly sessions as free
+capacity; round 6 counts the sessions offered and not used (`round6._could_start`). So both rules are applied to the
+same stretches, to keep a change of rule from passing as a change of policy. The check ran at 16× round 5's
+candidates (the main scale when it started), for 260 days in the conventional lab and 170 in the automated one.
+
+Flagged stretches at copper's first fabrication step (round 6's rule / round 5's rule):
+
+| Lab | Policy | Stock | Seed | Days | Round 5 flagged | Flagged, cap (r6 rule / r5 rule) | Flagged, no cap (r6 rule / r5 rule) | Blend screens, cap / no cap | Lots, cap / no cap |
+|---|---|---|---|---|---|---|---|---|---|
+| conventional | bofn3 | lean | 0 | 260 | 2 | 1 / 1 | 0 / 0 | 6 / 6 | 5 / 5 |
+| conventional | bofn3 | lean | 4 | 260 | 2 | 1 / 2 | 0 / 0 | 7 / 7 | 5 / 5 |
+| conventional | bofn3 | reorder | 0 | 260 | 1 | 0 / 0 | 0 / 0 | 6 / 6 | 6 / 6 |
+| conventional | bofn3 | reorder | 2 | 260 | 1 | 0 / 0 | 0 / 0 | 6 / 6 | 6 / 6 |
+| conventional | pkgfn3 | reorder | 0 | 260 | 1 | 0 / 0 | 0 / 0 | 6 / 6 | 6 / 6 |
+| conventional | pkgfn3 | reorder | 2 | 260 | 1 | 0 / 0 | 0 / 0 | 6 / 6 | 6 / 6 |
+| vertical | bofn3 | reorder | 0 | 170 | 3 | 0 / 0 | 0 / 0 | 5 / 5 | 4 / 4 |
+| vertical | bofn3 | reorder | 1 | 170 | 2 | 0 / 0 | 0 / 0 | 4 / 4 | 7 / 7 |
+| vertical | pkgfn3 | reorder | 0 | 170 | 3 | 0 / 0 | 0 / 0 | 5 / 5 | 4 / 4 |
+| vertical | pkgfn3 | reorder | 1 | 170 | 2 | 0 / 0 | 0 / 0 | 4 / 4 | 7 / 7 |
+
+**What it shows.**
+
+* **Without the cap no stretch is flagged in any case, by either rule** (0 of 10 runs).
+* **The cap was the cause where copper spends slowly**: in the conventional lab ordering metal as it goes, putting the
+  cap back brings round 5's stretches back (days 0-53 and 0-57 for seed 0, 0-81 and 0-43 for seed 4, against round 5's
+  0-53 and 0-22/23-64, 0-81 and 0-43/44-78). With the cap, BOFN asked for a new copper design 255 and 334 times in
+  260 days and was turned away by its own cap nearly every time; without it, 38 and 24 times. The count shows as
+  `new_low_ei` in those rows: net3 returns before it counts the eligible candidates (the check-only variants now
+  count it as `new_capped`).
+* **Elsewhere the cap never bound in round 6.** In the conventional lab with stock and in the automated lab, the run
+  with the cap put back is the same as the run without it, call for call and dollar for dollar: buying stock and
+  running the lab raise the money spent, and the cap rises with it. Round 5's stretches there came from its other
+  money rules (the money kept for work in progress, the stock heuristic's money rules, the budget), which round 6 has
+  also removed.
+* Where the cap bound, it delayed copper's work rather than stopping it: by day 260 the same blend screens and lots
+  were made with and without it, but with it copper had spent less ($37,900 against $45,900 for seed 0; the same
+  $25,800 for seed 4) and its first weeks were idle.
+
+## 7. Speed
+
+Without money gates the automated lab works for the full two years, so BOFN's and pKGFN's runs do more than round
+5's (which idled after day 371-434). A profile of the first attempt's automated-lab BOFN run (300 days, stocked,
+seed 0: 778 s under the profiler) put **92 % of its time in proposing, 86 % in valuing new designs**
+(`net3._cands_new`) and **66 % in the atomize node's search over 64 settings for each candidate**
+(`policies2.atomizer_settings`, 120,000 calls): each trial's features rebuilt from the whole design (7.8 million
+`atom_x` calls, 8.1 million `Space.encode` calls, 32 million `np.clip` calls) and one GP prediction per candidate
+(130,000 `posterior` calls). Round 6 (`opt/net6.py`, the network policies only) builds a composition's features once
+and encodes only the three settings that change, which gives the same numbers as `Space.encode`, and predicts the 64
+trials of 16 candidates in one call, with the same random draws in the same order. A test checks that the faster
+search makes the same choices from the same draws and leaves the generator in the same state
+(`test_faster_atomizer_search_is_the_same_search`). A batched prediction can differ from 64 single ones in the last
+bit, which is why round 6's BOFN rows are not round 5's even apart from the engine.
+
+**Measured** ([`out/twin6/checks/speed/`](../out/twin6/checks/speed/README.md), runs side by side on this runner):
+the faster search made the same automated-lab BOFN run (200 days) 6 % faster, 219 s against 234 s, with identical
+results run for run. It is a modest gain: early in a run the atomize node has little data and the search is a
+smaller share. MKL's reproducible mode (`MKL_CBWR=COMPATIBLE`, section 5) costs about as much the other way: a
+conventional-lab BOFN run over 220 days took 90.5 s with it and 85.5 s without, with the same results; MKL's
+GP-sized factorizations alone take 2-4 times as long under it, but they are a small part of a run.
+
+**What a two-year run costs, and why** (the second job;
+[`out/twin6/checks/timing6.md`](../out/twin6/checks/timing6.md), made by `checks/timing6.py`). Each timing run records
+its own CPU seconds (`time.process_time`), and every 10 simulated days its cost so far. A run's CPU seconds are what it
+costs a slice that runs one run per vCPU, whatever else the runner was doing alongside. This runner, a 4-vCPU EPYC
+9V45 (two cores, two threads each), ran 8-12 runs at once to fit the checks into one job, so wall seconds say little.
+
+* **Before the cell, every policy costs 1.5-2.5 CPU seconds a simulated day at 64×**, most of it the HPC stream.
+* **After the cell (day 211 in seed 0), the automated lab's BOFN and pKGFN climb steeply**: about 2 CPU seconds a day
+  around day 210, 4-10 by day 250-300 and 15-22 by day 320-350. In round 5 the automated lab idled once its money ran out (day
+  371-434), which capped this; in round 6 it works for the full two years.
+* **The conventional lab's BOFN and pKGFN stay at 2.5-3 a day**: it tests a few alloys a year, so its GP nodes stay
+  small. The heuristic and the funnel stay at 1.6-2 a day in both labs.
+
+**Where the time goes** (a sampling profile, `py-spy`, of two live runs, automated BOFN at 16× and pKGFN at 64×, two
+minutes each at day ~340): **GP prediction takes 73 % and 59 %** (`Node.predict`, BoTorch's posterior), proposing new
+designs 94 % and 84 % in all. **The atomize node's search over 64 settings, batched over 16 candidates
+(`_Six._p_powder`), takes about half of all the time.** Each GP node keeps at most 600 points (`gp.Node.max_n`: the
+newest 300 and 300 drawn from the rest), so the cost per prediction stops growing once a node is full. The cost
+per simulated day should then level off at what the lab's throughput asks of it.
+
+**A speed-up that wasn't made.** The batched search asks the GP for a joint posterior over 1,024 points (64 settings
+× 16 candidates) and then uses only its diagonal. gpytorch computes the whole 1,024 × 1,024 predictive covariance to
+get it. Measured on a GP the size of a full node (600 points, 9 inputs, this runner, one thread): 189 ms a call;
+16 calls of 64 points, round 5's way, take 112 ms; a batch of 1,024 one-point posteriors takes 207 ms. With 300 points
+the same calls take 80, 40 and 60 ms. Predicting in 64-point calls would make the search about 1.7× faster at a
+full node, roughly 15-20 % of a whole run. It would also change the predicted means and variances in the last bits
+(up to 5e-14 apart). That would change the rows, the GP check's reference and every timing above, so **it was not
+done here**: it's an option to take before the slices start, not after.
+
+
+## 8. The grid, and how to run it
+
+`twin/bench6.py`. The arms are round 5's: `vertical` (the automated lab, built from day 0 while experiments run on
+every route) and `conventional` (existing equipment, core facilities and partners, run by people), each `reorder`
+(the reorder-point heuristic) or `lean` (each charge's metal ordered when needed). `fast` runs the heuristic on
+aluminium and the funnel on copper; `bofn3` and `pkgfn3` run time-aware BOFN or pKGFN on both campaigns. Every
+experiment runs all three, 16 seeds an arm (12 is the floor a comparison is reported from).
+
+| Experiment | What | Arms | Runs |
+|---|---|---|---|
+| `arms` | like with like four ways (both labs, both stock rules) | 12 | 192 |
+| `plans` | round 4's other two plans for the automated lab: waiting for the cell, external routes only (parallel is `arms`), stocked | 6 | 96 |
+| `dec_none`, `dec_slow` | decision windows: no delay, slow (nominal is `arms`), the four arms | 24 | 384 |
+| `atom` | the automated atomizer's cycle at 3 h and slow, 5.5 h (derived is `arms`), the automated lab both ways | 12 | 192 |
+| `crucibles_late` | the crucible pool 240 days late, the automated lab both ways | 6 | 96 |
+| `noused` | every station bought new, the automated lab stocked | 3 | 48 |
+| `hpc` | the HPC stream at 1×, 4× and 16× (the main arms run at 64×), both labs stocked | 18 | 288 |
+| `hpc256` | the HPC stream at 256×, both labs stocked, on its own and last | 6 | 96 |
+| all | | 87 | 1,392 |
+
+**What the grid costs** ([`out/twin6/checks/grid_hours.md`](../out/twin6/checks/grid_hours.md), per group in
+[`out/twin6/left.md`](../out/twin6/left.md); `smoke.json` holds what they're made from). CPU-hours of two-year runs on
+the 4-vCPU EPYC 9V45 that timed them (two vCPUs a core), every vCPU busy, as in a slice.
+
+* **Measured to day 730**, at 64×: the heuristic and the funnel (1,299 CPU s in the automated lab, 1,187 in the
+  conventional lab), and the conventional lab's BOFN and pKGFN (1,755 and 1,882).
+* **Extrapolated**: the automated lab's BOFN and pKGFN at 64× and 16× ran to day 480-510 and were stopped there.
+  By then they cost 43-44 (BOFN) and 51-61 (pKGFN) CPU s a simulated day, still rising. Two years: 4.8-5.8 CPU-hours with BOFN and 6.3-11.1 with pKGFN at 64×, 4.8-5.1 and 5.3-7.1 at 16×, on the engine before the faster trial settings. `status` and `slices` use the
+  high end.
+* **Moved between scales** by the stream's cost, measured before the cell from pairs of runs that differ only in
+  scale: 0.025 CPU s a simulated day per unit of scale with the heuristic and the funnel, 0.027 with BOFN and pKGFN in
+  the automated lab, 0.028 in the conventional lab. That is about 1,200 CPU s a two-year run at 64× and 4,900 at 256×.
+* **Everything else is priced as its arms group**: lean stock, the decision windows, the atomizer's cycle, late
+  crucibles and all-new equipment. The automated lab's other two plans use round 5's ratios. Two-year runs of the lean
+  arm and the wait plan with BOFN were started to measure this, and stopped to leave the CPU to the rest.
+
+| Lab | Policies | Runs | CPU-hours a run, low-high (mean) | Longest run, high (h) | Core-hours, low | Core-hours, high |
+|---|---|---|---|---|---|---|
+| conventional | BOFN and pKGFN | 320 | 0.5-0.5 | 1.6 | 165 | 165 |
+| conventional | heuristic and funnel | 160 | 0.3-0.3 | 1.3 | 54 | 54 |
+| automated | BOFN and pKGFN | 608 | 5.2-7.7 | 12.2 | 3,174 | 4,672 |
+| automated | heuristic and funnel | 304 | 0.4-0.4 | 1.3 | 111 | 111 |
+| all | | 1,392 | | | 3,505 | 5,004 |
+
+On this engine (the automated lab's BOFN and pKGFN at 0.92 of the timing runs' time, section 10): **3,251-4,630 core-hours, about 813-1,157 runner-hours**; 4.8-7.1 CPU-hours a run for the automated lab's BOFN and pKGFN on average.
+
+**The automated lab's BOFN and pKGFN are 90-93 % of the cost**: 608 of the 1,392 runs, each several CPU-hours. At the
+high end a single one of these runs takes longer than a GitHub-hosted job's six hours, so a slice can't count on
+finishing its runs in one job. **Checkpoints remove that limit** (section 10): `ids --hours 5.2` stops what is still going and the
+next job carries it on. What remains is the total: 813-1,157 runner-hours, 156-223 six-hour jobs.
+
+**The order of work** (`TIERS`): tier 1 is `arms`; tier 2 what it rests on (`plans`, `hpc`); tier 3 `noused` and
+`crucibles_late`; tier 4 the decision windows and the atomizer's cycle; tier 5 `hpc256`. Within a tier the first 12
+seeds of every arm come before the last four.
+
+**Rows.** One JSON line per run: the configuration; for each campaign the best new alloy over time, the day and money
+to each target (campaign money alone and with the lab's fixed costs), per new alloy, counters, the policy's own
+counts; round 4's record (`r4`) and round 6's (`r6`: money by category and week, used purchases and their source,
+the atomizer's runs, crucibles and the day the derived cycle starts, decisions, stock, shared stations, idle
+stretches with causes, the HPC stream); the sha256 of the event log; and the provenance: the CPU, kernels, versions
+and pin (`env`), and the commit with the tree hash of `twin/` at the start and the end of the run and whether `twin/`
+differed from it at either point (`code`). Event logs are kept for `arms` and for seeds 0-1 of everything else.
+
+**A compute slice** (out/twin6/README.md has the whole procedure):
+
+```bash
+set -e                                                    # Python 3.14.4, a 4-vCPU x86-64 runner
+cd vertical-lab
+test "$(git rev-parse HEAD:vertical-lab/twin)" = 701dea1607dbe0558bd2932c0989e098344f34c6   # the engine checked here
+export PIP_TIMEOUT=600 PIP_RETRIES=2
+pip install --index-url https://download.pytorch.org/whl/cpu torch==2.15.0 && pip install -r out/twin6/requirements.txt
+K=1
+python -m twin.gpcheck6 --out out/twin6/slices/gpcheck-slice-$K.json            # exit 0 before any row is made
+python -m twin.bench6 ids out/twin6/slices/slice-$K.txt --slice $K --workers 4 --hours 5.2   # or the ids
+```
+
+`python -m twin.bench6 slices 0` writes the lists (`out/twin6/slices/slice-<k>.txt`), as many as keep each at or
+under 16 core-hours, the longest runs first; `fold` brings the slices' rows in; `status` writes
+[`out/twin6/left.md`](../out/twin6/left.md).
+
+## 9. What this job did not do
+
+* **The grid itself**, as asked: no row of it was made. `python -m twin.bench6 status` lists every run as left.
+* **The HPC at its full capacity** (about 123,000 candidates a day for each campaign, 1,920× round 5's) can't be
+  simulated with this stream: about 12 hours of stream per two-year run (section 4). The grid goes to 256×.
+* **Real Intel and EPYC 7763 runners.** The pin was shown on an AMD EPYC 9V74 and a 9V45 and under an emulated
+  Granite Rapids and Haswell, not on those CPUs themselves; the slices' GP checks will be the test (section 5).
+* **pKGFN in the HPC pilot**, and BOFN in the conventional lab's pilot beyond the stream's cost: BOFN in the automated
+  lab stood for the network policies. The grid's `hpc` and `hpc256` experiments run all three policies in both labs.
+* **The first job's pilot data** (`hpc_pilot.jsonl`, and the `smoke.json` it fed) was never committed, so its
+  findings on the heuristic and the funnel (section 4) can't be rechecked; the second job reran BOFN's part.
+* **A finished two-year run of the automated lab with BOFN or pKGFN.** They cost several CPU-hours each and didn't
+  reach day 730 in the second job; their two-year cost is extrapolated from how far they got (section 8).
+* **Two-year runs of the variants the grid prices by ratio** (lean stock, and the wait and external plans, with BOFN
+  or pKGFN): they were started and stopped to leave the CPU to the runs asked for. Lean stock is priced as stocked
+  and the plans by round 5's ratios (`bench6.variant_ratios` uses a measured ratio as soon as `smoke.json` has a
+  two-year run of the variant). Every row of the grid records its own CPU seconds (`timing.cpu_seconds`), so the
+  first slices' rows will show each group's real cost.
+* **The copper check at the main scale.** It ran at 16× (and two cases at 1×), not 64×.
+* **The analysis module** for round 6's rows (round 5's `like5.py` reads round 5's record, `r5`; round 6's rows carry
+  `r6`, with money by category instead of a budget, and the crucible item renamed `crucible_coated`). It belongs with
+  the grid's results.
+* **Fixed costs.** Round 5's economics charged the automated lab's fixed costs in full from day 0. Round 6's spend
+  tracking books each item's service, utilities and space from the day it is online, and the space's own from the day
+  it is ready, so that limit is gone from the rows; the analysis still has to use it.
+
+## 10. Sterling's note at 22:46: bring the cost down without changing a result, and checkpoints
+
+> the automated lab's GP runs are the grid's whole cost [...] bring that down without changing any result [...] Rows
+> must stay byte-identical [...] Checkpoint and resume [...] Don't change the model to save time [...] If the cost
+> can't come down enough, give me the numbers and I'll decide.
+
+**Checkpoints: done, and tested to be the same run.** `twin/ckpt6.py`, `Twin6.run_async`, `bench6.simulate`:
+* **What is saved.** A run stops at a simulated day's boundary. The checkpoint holds the twin, pickled with
+  cloudpickle, including its loop's own state (the event queue, the bookings that end, the results held for a person,
+  the hour). It also holds the state of Python's, numpy's and torch's global generators, the GP fits so far, and the
+  commit and tree it started from. `itertools.count`, which Python 3.14 can't pickle, is saved as its next value.
+* **Size and use.** A checkpoint is 0.7-0.8 MB at day 100-110 (xz) and grows as the nodes fill. `python -m twin.bench6
+  ids ... --hours H` stops every run still going H hours in and saves it to `out/twin6/checkpoints/`; the next job
+  given the same ids carries them on first. A run's row records each job's share (`timing.segments`).
+* **The test** (`python -m twin.gpcheck6 resume`,
+  [`out/twin6/checks/gpcheck_resume.json`](../out/twin6/checks/gpcheck_resume.json)). Each of the GP check's three runs
+  is stopped half way and saved in one fresh interpreter, then carried on in a second. **All three match the
+  reference, made by unbroken runs, in row, event log and GP state.** Unit tests also stop a run twice (days 17 and
+  29) and carry it on to day 40 with the same row and log, and `ids` was run end to end on a grid run (stopped at day
+  125 by `--hours`, carried on by a second `ids` to its row, with both jobs' shares recorded).
+
+**Speed: what can come down without changing a bit, and what can't.** A late run's time (the profiles at day 340-390,
+section 7) is about 70 % GP prediction, 12 % hyperparameter fitting, 8 % building the atomize search's trial
+settings, and the rest the simulation itself.
+* **The trial settings: 28× faster, byte for byte.** The search drew 63 × 3 random numbers one at a time and built 64
+  dicts per candidate, of which one is used. It now draws them in one call (numpy gives the same numbers in the same
+  order and ends in the same state), converts the linear settings with array arithmetic (the same IEEE operations),
+  and builds the one dict asked for: 0.76 → 0.03 ms a design. `test_trials_are_the_unvectorized_trials` compares it
+  byte for byte with the loop it replaced.
+* **GP prediction can't be cached or re-batched without changing bits.**
+  - *Caching.* Between two refreshes of the new-designs list the inputs change: the prescreen redraws its random 96 of
+    the pool, the stream adds candidates every day, and the PIP node's inputs are the DED node's random draws. So a
+    call is almost never repeated exactly.
+  - *Re-batching.* A prediction's last bits depend on what else is in its batch: 16 calls of 64 points give means up
+    to 5e-14 away from one call of 1,024 (measured), so per-point caching and smaller calls both change rows. The
+    split would save about 15-20 % of a run, and it's yours to take or leave, not done.
+  - *Fitting.* A node refits its hyperparameters only when its data grow, and the fit is the result.
+* **Measured on identical work** ([`out/twin6/checks/identity6.jsonl`](../out/twin6/checks/identity6.jsonl), made by
+  `checks/identity6.py`): the automated lab's BOFN and pKGFN for 300 days at 16×
+  (seed 0: the cell is integrated on day 211, so copper's network and the atomize search run for 89 days), each in
+  a fresh interpreter on the engine before the change (`568ab5f`) and after it (`74254fe`). **The same row, event log
+  and GP state, byte for byte**, in 701 → 605 CPU seconds with BOFN (−13.7 %) and 835 → 727 with pKGFN (−12.9 %).
+  The GP determinism check on the new engine matches the reference in every part
+  ([`gpcheck_check_74254fe.json`](../out/twin6/checks/gpcheck_check_74254fe.json)), and so does the checkpoint check.
+  Later in a run, when GP prediction takes more of the time, the saving is smaller: the trial settings were about 8 %
+  of the day-390 profile, so the grid is priced at 0.92 of the old engine's time for these runs.
+
+**The numbers for the decision** ([`grid_hours.md`](../out/twin6/checks/grid_hours.md), section 8):
+* **Seconds per simulated day**, late in a two-year run of the automated lab (day 480-510): about 43 CPU s with
+  BOFN and 51-61 with pKGFN on the timing runs' engine, so about 40 and 47-56 on this one; 1.5-3 with every other
+  policy and lab. Before the cell, every policy costs 1.5-2.5 a day at 64×, most of it the stream.
+* **CPU-hours a two-year run** on this engine: 4.4-5.3 with BOFN and 5.8-10.2 with pKGFN in the automated lab at
+  64× (4.4-4.7 and 4.9-6.5 at 16×; the ends of the extrapolation from day 480-510, × 0.92), about 0.5 with BOFN or pKGFN in the conventional lab, 0.3-0.4
+  with the heuristic and the funnel; 4.8-7.1 averaged over the automated lab's 608 network runs.
+* **Runs in one 6-hour job** (four vCPUs, `--hours 5.2`, about 21 CPU-hours): 2.9-4.3 of the automated lab's BOFN or
+  pKGFN runs, 40 of the conventional lab's, 57-61 of the heuristic's and the funnel's. A run longer than 5.2 hours
+  always spans two jobs, which checkpoints now allow.
+* **The grid**: **3,251-4,630 core-hours, 813-1,157 runner-hours, 156-223 six-hour jobs**, of which the automated
+  lab's BOFN and pKGFN are 90-93 %.
+
+Nothing in the model was changed to save time: the seeds, the horizon, the candidate stream and the caps are as
+they were. What would cut the cost further changes results, and is Sterling's to decide: predicting in 64-point
+calls (15-20 % of a run, last-bit differences), fewer candidates valued per decision, fewer draws through the network
+or a smaller cap on a node's data (more, and the policies change), or 12 seeds instead of 16 for the automated lab's
+network arms (a quarter of their cost).
+
+
+## 11. Tier 1 on Actions: batched GP predictions, the plan and the workflow (PR 427, 2026-11-28)
+
+Sterling, on PR 427 (2026-11-28 01:55 UTC): "Round 6, next step: run the main arms (tier 1) on a plain Actions
+workflow, with batched GP predictions. … Predict in 64-point calls, as your note proposed (15-20 % faster). It changes
+last digits, and I accept that. Make it round 6's default." This job made the change, remade the checks, re-timed
+the runs that cost the most, planned tier 1 and wrote the workflow. **It made no row of the grid.**
+
+**The change** (`twin/opt/gp.py` `Node.predict`, `twin/opt/net6.py` `PREDICT_CHUNK`). Every GP node of round 6's BOFN
+and pKGFN predicts at most 64 points per posterior call, along the points axis of its input (the atomize search's
+1,024 points, 16 candidates x 64 settings; the network's draws over up to 384 candidates, in 24 sample batches).
+gpytorch builds the joint predictive covariance of every point in a call and the policies use its diagonal, so a call
+over M points did M x M work on top of its M solves. Rounds 2-5's nodes have no `chunk` and compute what they did. On a
+300-point node (this runner, one thread): 1,024 points 174 -> 70 ms, 24 x 384 points 807 -> 427 ms, and means and
+standard deviations move by up to 8e-14 (`test_round6_policies_predict_in_64_point_calls`).
+
+**What it saves, on identical work** ([`out/twin6/checks/batch.md`](../out/twin6/checks/batch.md), made by
+`checks/batch_merge.py` from `timing6b_ab.jsonl`). The same saved state of the main arm (seed 0, 64x) carried on for the
+same ten simulated days with 64-point calls and without, side by side on this runner:
+
+| Policy | From day | 64-point calls, CPU s | One call, CPU s | Saving | Processes sharing the 4 vCPUs |
+|---|---|---|---|---|---|
+| BOFN | 300 | 153 | 203 | 24 % | 4-6 |
+| BOFN | 300 | 158 | 231 | 32 % | 10-14 |
+| BOFN | 350 | 226 | 294 | 23 % | 10-12 |
+| BOFN | 400 | 348 | 405 | 14 % | 2-3 |
+| pKGFN | 300 | 171 | 249 | 31 % | 3-5 |
+| pKGFN | 300 | 181 | 303 | 40 % | 9-14 |
+| pKGFN | 350 | 276 | 365 | 24 % | 8-11 |
+| pKGFN | 400 | 360 | 418 | 14 % | 5-6 |
+
+Two things move it. **The day**: under a slice's load (four processes on four vCPUs) the saving is 24-31 % at day 300
+and 14 % at day 400; as a run goes on, the large calls are a smaller share of a decision's work (the parts in
+progress, the fits and the simulation itself all grow). **The load**: on a runner with more processes than vCPUs the
+saving looks larger (32-40 % at day 300), because the dense covariance work suffers most from sharing a core. Most
+of a two-year run's cost comes after day 400, so the grid is priced with day 400's ratio, 0.86 for both policies:
+the note's 15-20 % is about right for a whole run, and twice that early on. If the saving fell to nothing after day
+400, a two-year run would cost up to about 13-14 % more than priced.
+
+**The GP check couldn't see it, and now can.** Remade on the batched engine, the reference's hashes for the three short
+runs came out byte for byte the old reference's. None of those 200-220-day runs gets as far as a network valuation
+(every node that a valuation needs ready), so they never made a GP call over 64 points that mattered: the batching,
+and the network's work that is most of a grid run's, were outside the check. `gpcheck6` now also runs **two late
+runs**: the committed checkpoints of the main BOFN and pKGFN arm at day 300 (`out/twin6/checks/late/`, 13.3 and 8.5 MB,
+made by the timing runs below, 89 days after the cell) carried on for two simulated days, hashed by event log, GP
+state and what the network computed (every listed candidate's utility draws, value and chance of powder). In those
+two days they make 2,852 and 5,377 posterior calls, 208 and 242 of them over 64 points, with all ten nodes of each
+campaign fitted. `write` refuses a late run that makes none.
+* **The reference** ([`gpcheck.json`](../out/twin6/checks/gpcheck.json)): made on this runner, an AMD EPYC 7763, at
+  `3136810`. The old one is kept as `gpcheck_ref_568ab5f_9v45.json`.
+* **The checkpoint-resume check** ([`gpcheck_resume.json`](../out/twin6/checks/gpcheck_resume.json)): all five runs
+  match in every part: the three short runs stopped half way, and the late runs stopped at day 301, each saved in
+  one fresh interpreter and carried on in another.
+* **The check on the final engine** (`twin/` tree `e3d828c`, commit `e173728`, the tree the plan and the slice
+  procedure pin; [`gpcheck_check_e173728.json`](../out/twin6/checks/gpcheck_check_e173728.json)): exit 0, every
+  probe group, the three short runs and both late runs.
+* **This runner against the 9V45 reference, before the change** ([`gpcheck_7763_vs_ref_701dea1.json`](../out/twin6/checks/gpcheck_7763_vs_ref_701dea1.json)):
+  every probe group and all three runs' row, log and GP state match. Round 5's `avx2` rows differed between exactly
+  these two CPUs; under `portable` they agree, the first test of the pin on a real EPYC 7763 (section 9 listed it as
+  not done).
+
+**The pin is `portable`, not `avx2`.** Sterling's request named `TWIN_PIN=avx2`. Round 6's pin is `portable`:
+`avx2`'s kernels plus the three fixes section 5 found. `bench6 ids` refuses any other pin, and under `avx2` alone round
+5's rows differed between an EPYC 7763 and a 9V45, both CPUs that GitHub's 4-vCPU runners have. The workflow sets
+`TWIN_PIN: portable`.
+
+**The re-timing** (`checks/timing6b.py`, `timing6b_progress.jsonl`). Seed 0 of `r6_vertical_parallel_bofn3_reorder` and
+`..._pkgfn3_reorder` (two years, 64x) on the batched engine, with the same two runs on the engine before it beside
+them, so that all four vCPUs were busy as in a slice, saved every 50 days from day 200 on.
+
+CPU seconds so far, every vCPU of this runner busy (four to twelve processes on its four):
+
+| Run (seed 0, 64x) | day 100 | day 200 | day 250 | day 300 | day 350 | day 400 | Last day | CPU s a day, last 50 days |
+|---|---|---|---|---|---|---|---|---|
+| BOFN, batched (this runner, EPYC 7763) | 296 | 628 | 947 | 1,622 | 2,682 | 4,229 | 400 | 30.9 |
+| BOFN, before the batching (this runner) | 365 | 838 | 1,212 | 2,085 | 3,604 |  | 350 | 30.4 |
+| BOFN, round 6's timing run (EPYC 9V45, 568ab5f) | 170 | 421 | 650 | 1,195 | 2,078 | 3,295 | 500 | 43.0 |
+| pKGFN, batched (this runner) | 279 | 594 | 894 | 1,448 | 2,486 | 4,102 | 400 | 32.3 |
+| pKGFN, before the batching (this runner) | 365 | 828 | 1,162 | 1,956 | 3,491 |  | 350 | 30.7 |
+| pKGFN, round 6's timing run (EPYC 9V45, 568ab5f) | 170 | 414 | 613 | 1,085 | 1,997 | 3,315 | 480 | 60.7 |
+
+The batched runs stopped at day 400 and the others at day 350, so that the job could finish
+(`timing6b_stopped.json`). Two things make whole runs a poor measure of the saving, and the A/B above the right one.
+The pairs part company once a decision turns on a last bit. And a process that shares a core does less work per CPU
+second: the batched runs ran their first 200 days with fewer neighbours than the unbatched ones, and identical work
+cost them 628 CPU s against 838. The batched runs' own curves, extrapolated from day 400 the way round 6's were from
+day 480-510 (`timing6.extrapolate`: low at the last 50 days' rate, high with it still rising), give 14,400-27,100 CPU s
+(BOFN) and 14,800-26,800 (pKGFN) for two years on this runner, about 7,000-13,100 on a 9V45. That is at or below what
+the grid is priced at (below): the cost a day was still climbing steeply at day 400 (on the old engine, 11 CPU s a
+day at day 300 and 43-61 at day 480-510 on the 9V45), and an extrapolation from earlier on that climb runs low. So the
+grid keeps round 6's day-480-510 extrapolations as its basis, times the measured savings.
+
+**GitHub's runners differ by about 2x.** The same code costs this EPYC 7763 about twice the CPU seconds per simulated
+day that it cost the EPYC 9V45 round 6 was timed on, every vCPU busy on both (`batch.md`): 2.0-2.3 for the unbatched
+runs before the cell, falling to 1.75 by day 300-350, where the 9V45 ran the slower engine (568ab5f, without the
+faster trial settings); 2.09 over 200 days for the heuristic and funnel, which use no GP and are the same code in
+both engines. The grid's seconds stay the 9V45's, and the plan gives waves for both CPUs, the 7763 at 2.1x.
+
+**The seconds per group** ([`left.md`](../out/twin6/left.md), `python -m twin.bench6 status`). The automated lab's BOFN
+and pKGFN are priced from round 6's timing runs, as before, times 0.92 (the faster trial settings, section 10) and
+times the batching's measured ratio after day 200 (`batch_merge.py`, into `smoke.json`); the groups priced from them
+follow. The conventional lab's BOFN and pKGFN keep their measured two-year seconds (their nodes are small and the
+saving there wasn't measured), so they are, if anything, high.
+
+| Group (tier 1) | CPU s a run on a 9V45, before (701dea1) | Batched | How |
+|---|---|---|---|
+| automated lab, BOFN, stocked and lean | 19,068 | **16,494** (4.6 h) | round 6's timing run, extrapolated from day 500, x 0.92 x 0.860 after day 200 |
+| automated lab, pKGFN, stocked and lean | 36,920 | **31,864** (8.9 h) | from day 480, x 0.92 x 0.861 after day 200 |
+| conventional lab, BOFN / pKGFN | 1,755 / 1,882 | 1,755 / 1,882 | measured two-year runs, left as they were |
+| automated / conventional lab, heuristic and funnel | 1,299 / 1,187 | 1,299 / 1,187 | measured, no GP |
+
+The low ends (the latest rate held) are 13,727 and 17,934 CPU s. **Tier 1: 484 CPU-hours** (595 before, 552 with the
+0.92). **The whole grid: 2,864-4,051 core-hours, 716-1,013 runner-hours on 9V45s** (3,251-4,630 and 813-1,157
+before), about twice that on 7763s ([`grid_hours.md`](../out/twin6/checks/grid_hours.md)).
+
+**Tier 1's plan** ([`out/twin6/slices/tier1.json`](../out/twin6/slices/tier1.json), `python -m twin.bench6 plan`). The 12
+`arms` groups x 16 seeds (192 runs) packed into jobs by LPT on those seconds, each job simulated as `ids --hours 5.2`
+works through it, wave after wave, a run longer than a wave carried over by checkpoint
+([`slices/README.md`](../out/twin6/slices/README.md)):
+
+| | On 9V45s | On 7763s (2.1x) |
+|---|---|---|
+| Jobs (each 12 runs: 2 of the automated lab's pKGFN, 2 of its BOFN, 8 cheap; 30.3 CPU-hours on a 9V45) | 16 | 16 |
+| Waves | **2** | **4** |
+| Wall-clock (each wave's jobs at once, 0.25 h of set-up and check a job) | **9.3 h** | **19.6 h** |
+| Runner-hours | 150 | 313 |
+
+Plus the time between one wave's end and the next dispatch. A wave's jobs can land on either CPU, and a run carried
+over may change CPU between waves, which the GP check allows: expect between the two columns. The longest run sets the
+waves: pKGFN at 8.9 h on a 9V45 needs two, at 18.6 h on a 7763 four. With 13 jobs instead of 16 the waves are the same
+and the wall-clock 0.7-1.4 h longer (`alternatives` in the plan); more than 16 gains nothing. `max_parallel` caps how
+many run at once, to leave runners for the organization's other workflows.
+
+**The workflow** ([`ci/twin-slices.yml`](../ci/twin-slices.yml), for Sterling to move to `.github/workflows/`; helper
+[`ci/twin_slices.py`](../ci/twin_slices.py)). `workflow_dispatch` with the branch, the plan and optionally the previous
+wave's run id; a matrix over the plan's jobs that still have runs without a row. Each job checks that `twin/` is the
+plan's engine, installs the pinned packages, restores its checkpoints from the previous wave's artifacts, reruns the
+committed GP rows (`gpcheck6`: the probe, the three short runs and the two late runs, side by side; any difference
+stops the job before it makes a row), runs `bench6 ids <its runs> --slice tier1-<k> --workers 4 --hours 5.2`, and
+uploads its rows, event logs, check and manifest, and its checkpoints. A last job merges every job's rows into
+`runs/arms.slice-tier1-<k>.jsonl` (one row per run id), commits them with the event logs, checks and manifests in one
+push, and lists the runs still waiting on a checkpoint. `GITHUB_TOKEN` only (`contents: write`, `actions: read`), no
+Claude. actionlint passes.
+
+**Tested here** (`ci/test_twin_slices.sh`, [`slices/workflow_test/`](../out/twin6/slices/workflow_test/)): a plan of two
+jobs, each one short run (40 days; the automated lab's BOFN and the conventional lab's heuristic and funnel, seed 5),
+through the workflow's own commands. Wave 1 stopped both runs by `--hours` at day 2 and saved them; wave 2 restored
+the checkpoints and carried them on to their rows; **both rows and event logs are the ones unbroken runs give**, with
+both jobs' shares in `timing.segments`. The fold on those artifacts plus fabricated ones (a job whose run waits on a
+checkpoint, a job that left no manifest, a row that comes twice) kept each row once, listed the waiting run with its
+day and the job with no manifest, and changed nothing when run a second time. The rows record `twin/` as changed
+during the test, correctly: the plan's selection rule was committed while it ran, and the simulation's code was not
+touched (the unbroken runs, made afterwards on the final tree, give the same rows). The round-6 test suite passes (24
+tests, two of them new: the batched predictions, and a plan's wave arithmetic; and `test_market6`), and actionlint
+passes the workflow. Not tested here: the Actions-specific parts (artifact upload and download across runs, the
+matrix, the push), which only a run of the workflow can show.

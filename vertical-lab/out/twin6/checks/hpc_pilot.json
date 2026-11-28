@@ -1,0 +1,298 @@
+[
+ {
+  "policy": "bofn3",
+  "days": 300,
+  "lab": "conventional",
+  "scale": 1,
+  "seeds": [
+   0
+  ],
+  "seconds_median": 75.8,
+  "campaigns": {
+   "flaime_al": {
+    "T1_day": {
+     "reached": 0,
+     "of": 1,
+     "median_day": null
+    },
+    "T2_day": {
+     "reached": 0,
+     "of": 1,
+     "median_day": null
+    },
+    "best_new_median": 0.0,
+    "tested_median": 5,
+    "visible_median": 19202
+   },
+   "onr_cu": {
+    "T1_day": {
+     "reached": 1,
+     "of": 1,
+     "median_day": 209.2
+    },
+    "T2_day": {
+     "reached": 1,
+     "of": 1,
+     "median_day": 209.2
+    },
+    "best_new_median": 0.6937,
+    "tested_median": 2,
+    "visible_median": 18603
+   }
+  }
+ },
+ {
+  "policy": "bofn3",
+  "days": 300,
+  "lab": "vertical",
+  "scale": 1,
+  "seeds": [
+   0
+  ],
+  "seconds_median": 544.5,
+  "campaigns": {
+   "flaime_al": {
+    "T1_day": {
+     "reached": 1,
+     "of": 1,
+     "median_day": 151.7
+    },
+    "T2_day": {
+     "reached": 1,
+     "of": 1,
+     "median_day": 185.7
+    },
+    "best_new_median": 0.7493,
+    "tested_median": 18,
+    "visible_median": 19202
+   },
+   "onr_cu": {
+    "T1_day": {
+     "reached": 0,
+     "of": 1,
+     "median_day": null
+    },
+    "T2_day": {
+     "reached": 0,
+     "of": 1,
+     "median_day": null
+    },
+    "best_new_median": 0.3948,
+    "tested_median": 2,
+    "visible_median": 18543
+   }
+  }
+ },
+ {
+  "policy": "bofn3",
+  "days": 300,
+  "lab": "vertical",
+  "scale": 4,
+  "seeds": [
+   0
+  ],
+  "seconds_median": 607.3,
+  "campaigns": {
+   "flaime_al": {
+    "T1_day": {
+     "reached": 1,
+     "of": 1,
+     "median_day": 231.4
+    },
+    "T2_day": {
+     "reached": 1,
+     "of": 1,
+     "median_day": 245.7
+    },
+    "best_new_median": 0.7431,
+    "tested_median": 41,
+    "visible_median": 76810
+   },
+   "onr_cu": {
+    "T1_day": {
+     "reached": 0,
+     "of": 1,
+     "median_day": null
+    },
+    "T2_day": {
+     "reached": 0,
+     "of": 1,
+     "median_day": null
+    },
+    "best_new_median": 0.0,
+    "tested_median": 1,
+    "visible_median": 74326
+   }
+  }
+ },
+ {
+  "policy": "bofn3",
+  "days": 300,
+  "lab": "vertical",
+  "scale": 16,
+  "seeds": [
+   0,
+   1
+  ],
+  "seconds_median": 1244.4,
+  "campaigns": {
+   "flaime_al": {
+    "T1_day": {
+     "reached": 2,
+     "of": 2,
+     "median_day": 214.0
+    },
+    "T2_day": {
+     "reached": 2,
+     "of": 2,
+     "median_day": 214.0
+    },
+    "best_new_median": 0.8077,
+    "tested_median": 52.5,
+    "visible_median": 307241.5
+   },
+   "onr_cu": {
+    "T1_day": {
+     "reached": 1,
+     "of": 2,
+     "median_day": null
+    },
+    "T2_day": {
+     "reached": 0,
+     "of": 2,
+     "median_day": null
+    },
+    "best_new_median": 0.5073,
+    "tested_median": 2.0,
+    "visible_median": 295064.0
+   }
+  }
+ },
+ {
+  "policy": "bofn3",
+  "days": 300,
+  "lab": "vertical",
+  "scale": 64,
+  "seeds": [
+   0,
+   1
+  ],
+  "seconds_median": 1369.2,
+  "campaigns": {
+   "flaime_al": {
+    "T1_day": {
+     "reached": 2,
+     "of": 2,
+     "median_day": 212.6
+    },
+    "T2_day": {
+     "reached": 2,
+     "of": 2,
+     "median_day": 215.3
+    },
+    "best_new_median": 0.7805,
+    "tested_median": 26.5,
+    "visible_median": 1228956.5
+   },
+   "onr_cu": {
+    "T1_day": {
+     "reached": 1,
+     "of": 2,
+     "median_day": null
+    },
+    "T2_day": {
+     "reached": 1,
+     "of": 2,
+     "median_day": null
+    },
+    "best_new_median": 0.5308,
+    "tested_median": 3.0,
+    "visible_median": 1157871.0
+   }
+  }
+ },
+ {
+  "policy": "fast",
+  "days": 300,
+  "lab": "conventional",
+  "scale": 1,
+  "seeds": [
+   0
+  ],
+  "seconds_median": 15.2,
+  "campaigns": {
+   "flaime_al": {
+    "T1_day": {
+     "reached": 1,
+     "of": 1,
+     "median_day": 81.7
+    },
+    "T2_day": {
+     "reached": 1,
+     "of": 1,
+     "median_day": 130.4
+    },
+    "best_new_median": 0.7028,
+    "tested_median": 35,
+    "visible_median": 19202
+   },
+   "onr_cu": {
+    "T1_day": {
+     "reached": 0,
+     "of": 1,
+     "median_day": null
+    },
+    "T2_day": {
+     "reached": 0,
+     "of": 1,
+     "median_day": null
+    },
+    "best_new_median": 0.354,
+    "tested_median": 2,
+    "visible_median": 18556
+   }
+  }
+ },
+ {
+  "policy": "fast",
+  "days": 300,
+  "lab": "vertical",
+  "scale": 1,
+  "seeds": [
+   0
+  ],
+  "seconds_median": 25.2,
+  "campaigns": {
+   "flaime_al": {
+    "T1_day": {
+     "reached": 1,
+     "of": 1,
+     "median_day": 56.6
+    },
+    "T2_day": {
+     "reached": 0,
+     "of": 1,
+     "median_day": null
+    },
+    "best_new_median": 0.5453,
+    "tested_median": 110,
+    "visible_median": 19202
+   },
+   "onr_cu": {
+    "T1_day": {
+     "reached": 0,
+     "of": 1,
+     "median_day": null
+    },
+    "T2_day": {
+     "reached": 0,
+     "of": 1,
+     "median_day": null
+    },
+    "best_new_median": 0.4134,
+    "tested_median": 2,
+    "visible_median": 18556
+   }
+  }
+ }
+]

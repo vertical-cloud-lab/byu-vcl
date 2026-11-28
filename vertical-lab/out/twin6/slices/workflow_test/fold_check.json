@@ -1,0 +1,20 @@
+{
+ "rows_per_file": {
+  "arms.slice-test2-1.jsonl": 1,
+  "arms.slice-test2-2.jsonl": 1,
+  "arms.slice-test2-3.jsonl": 1
+ },
+ "folded_twice_same": true,
+ "events": [
+  "r6_conventional_external_fast_reorder_s5.json.xz",
+  "r6_vertical_parallel_bofn3_reorder_s5.json.xz",
+  "r6_vertical_parallel_fast_reorder_s9.json.xz"
+ ],
+ "waiting_listed": true,
+ "no_manifest_listed": true,
+ "manifests": [
+  "out/twin6/slices/test2/job-1/manifest.json",
+  "out/twin6/slices/test2/job-2/manifest.json",
+  "out/twin6/slices/test2/job-3/manifest.json"
+ ]
+}

@@ -1,0 +1,17 @@
+{
+ "plan": "test2",
+ "job": 1,
+ "slice": "test2-1",
+ "runs": {
+  "r6_vertical_parallel_bofn3_reorder_s5": "checkpoint"
+ },
+ "checkpoints": {
+  "r6_vertical_parallel_bofn3_reorder_s5": {
+   "day": 2.0,
+   "bytes": 4211260
+  }
+ },
+ "errors": [],
+ "n_rows": 0,
+ "n_waiting": 1
+}

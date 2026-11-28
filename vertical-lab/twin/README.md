@@ -229,3 +229,40 @@ reproduces bit for bit only on some CPU models (the notes' "Reproducibility").
 
 Round 4's code is unchanged but for a hook (`Facility4.schedule`): round 5 subclasses `Facility4`, `Campaign4` and
 `Twin4`.
+
+## Round 6 (2026-11-27): money tracked instead of limited, the used market, crucibles, the HPC at scale
+
+Round 5 gave each campaign two years' money at t = 0; the automated lab spent it in ten to fourteen months and then
+sat idle. Round 6 removes every rule that stops spending and records every dollar by category instead; takes used
+prices, lead times and fault risks per station from a survey of listings when it is there; models the atomizer's
+coated crucibles; scales the simulated candidates the policies see; pins what round 5's pin missed, so that BOFN and
+pKGFN rows reproduce on any CPU; and runs copper's optimizers without their cap on blend screens. The write-up is
+[`../notes/twin_round6.md`](../notes/twin_round6.md). The grid is run in compute slices, not by the job that built it.
+
+| Piece | Code |
+|---|---|
+| No money gates (the list), every dollar by category, spend to each target and per alloy | `round6.py` (`GATES_REMOVED`, `GATES_KEPT`, `Campaign6.charge`, `Campaign6._route`, `Twin6.spend_report`, `spend_at`) |
+| Used equipment from `out/twin6/market/summary.csv` (issue 424's survey, `market6.py`), round 5's stand-ins without it; a station bought partly used waits for its new parts; the stations with no used market | `round6.py` (`load_market`, `used_params`, `used_rule6`, `build_schedule6`, `no_used_market`), `market6.py` |
+| Crucibles: a pool per alloy family, its lead time, turnaround and wear; the day the derived cycle starts | `round6.py` (`CRUCIBLES`, `ITEM`, `CruciblePool`, `ResourceAtom6`, `Facility6.derived_start_h`) |
+| The HPC stream at scale, without keeping every candidate in memory | `round6.py` (`Twin6._stream_tick`, `_keep_visible`, `Campaign6._forget`, `_restore`) |
+| Idle stretches with causes, counting a partner's sessions offered | `round6.py` (`idle_report6`, `_could_start`) |
+| BOFN and pKGFN without their money rules, with a cut of a large pool before the network values it | `opt/net6.py` |
+| Batched GP predictions: round 6's BOFN and pKGFN predict at most 64 points per posterior call (PR 427, 2026-11-28); rounds 2-5's nodes don't | `opt/gp.py` (`Node.predict`, `Node.chunk`), `opt/net6.py` (`PREDICT_CHUNK`) |
+| The pin that reproduces on any CPU, and the GP determinism check (the kernel probe, three short runs, and two late runs from committed day-300 checkpoints of the main arm, which reach the network's valuation) | `repro.py`, `gpcheck6.py` |
+| The grid, the slice tools (`ids`, `slices`, `fold`), timings (`smoke`, `timings`, `variant_ratios`; each run's CPU seconds), `status`, and a workflow's plan (`plan`: LPT into jobs, each job's waves simulated) | `bench6.py`; the workflow `../ci/twin-slices.yml` and its helper `../ci/twin_slices.py` |
+| Checkpoints: a run stopped at a job's limit (`ids --hours H`), saved and carried on by the next job to the row an unbroken run gives (`gpcheck6 resume` tests it) | `ckpt6.py`, `round6.py` (`Twin6.run_async`, `_loop`), `bench6.py` (`simulate`, `run_one`) |
+
+```bash
+cd vertical-lab
+export PIP_TIMEOUT=600 PIP_RETRIES=2
+pip install --index-url https://download.pytorch.org/whl/cpu torch==2.15.0 && pip install -r out/twin6/requirements.txt
+python -m pytest -q twin/tests/test_round6.py twin/tests/test_market6.py
+python -m twin.gpcheck6                                   # the GP determinism check: exit 0 if this CPU matches
+python -m twin.bench6 status                              # runs and seeds per arm, core-hours left
+python -m twin.bench6 ids out/twin6/slices/slice-1.txt --slice 1 --hours 5.2   # what a compute slice runs
+python -m twin.gpcheck6 resume                          # a run stopped, saved and carried on is the same run
+python -m twin.bench6 plan tier1 --name tier1 --speed 9V45=1 --speed 7763=F   # the workflow's plan (F: out/twin6/checks/batch.md)
+bash ci/test_twin_slices.sh                               # the workflow's steps on two short runs, and its fold
+```
+
+Round 5's code is unchanged: round 6 subclasses `Facility5`, `Campaign5` and `Twin5`, and `net3`'s policies.

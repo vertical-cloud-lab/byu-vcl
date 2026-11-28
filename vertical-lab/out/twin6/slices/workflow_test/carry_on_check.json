@@ -1,0 +1,30 @@
+{
+ "r6_vertical_parallel_bofn3_reorder_s5": {
+  "row_same": true,
+  "events_same": true,
+  "segments": [
+   [
+    0.0,
+    2.0
+   ],
+   [
+    2.0,
+    40.0
+   ]
+  ]
+ },
+ "r6_conventional_external_fast_reorder_s5": {
+  "row_same": true,
+  "events_same": true,
+  "segments": [
+   [
+    0.0,
+    2.0
+   ],
+   [
+    2.0,
+    40.0
+   ]
+  ]
+ }
+}

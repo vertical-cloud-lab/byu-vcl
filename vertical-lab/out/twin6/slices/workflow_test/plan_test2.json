@@ -1,0 +1,20 @@
+{
+ "name": "test2",
+ "twin_tree": "b6b0f78c3808de8642304c32e418e98611dcf969",
+ "hours": 5.2,
+ "workers": 4,
+ "jobs": [
+  {
+   "job": 1,
+   "runs": [
+    "r6_vertical_parallel_bofn3_reorder_s5"
+   ]
+  },
+  {
+   "job": 2,
+   "runs": [
+    "r6_conventional_external_fast_reorder_s5"
+   ]
+  }
+ ]
+}

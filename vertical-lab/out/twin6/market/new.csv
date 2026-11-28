@@ -1,0 +1,64 @@
+lab,station,component,item,qty,new_usd_each,new_source,vendor_lead_w,vendor_lead_text,lead_source,twin_lead_w,twin_install_w,twin_com_w,wt,used_market,pool,note
+vertical,sem,,Hitachi TM4000PlusII benchtop SEM,1,100000,"twin/econ.py at 4bb91b1: USDA-ARS $98,900 with set-up and training (2021)",,quote only (no lead published),,10,1,1,bench_sens,,,
+vertical,eds,,Oxford Instruments AZtecOne EDS for the TM4000,1,55000,twin/econ.py at 4bb91b1,,quote only,,10,0,1,bench_sens,,,
+vertical,ebsd,,EBSD detector on the SEM,1,120000,twin/econ.py at 4bb91b1,,quote only,,16,1,2,bench_sens,,,needs a full-size SEM with a 70 degree tilt
+vertical,xrd,,Rigaku MiniFlex 600-C benchtop XRD with prep station,1,105000,twin/econ.py at 4bb91b1,,quote only,,10,1,1,bench_sens,,,
+vertical,xrf,,Bruker S2 PUMA Series 2 EDXRF with XY autochanger,1,120000,twin/econ.py at 4bb91b1,,quote only,,12,1,4,bench_sens,,,
+vertical,mastersizer,,Malvern Mastersizer 3000 with Aero S,1,110000,twin/econ.py at 4bb91b1,,quote only,,10,1,1,bench_sens,,,
+vertical,hardness,,Mitutoyo HM-220 micro-Vickers with AVPAK,1,70000,"twin/econ.py at 4bb91b1: HM-220 Type B $58,385 list (Penn Tool Co)",,quote only,,8,0,1,bench,,,
+vertical,nanoindenter,,KLA iMicro nanoindenter,1,250000,"twin/econ.py at 4bb91b1: Navy $248,751 (2025)",,quote only,,16,1,2,bench_sens,,,
+vertical,pip,,Plastometrex PLX-Benchtop,1,130000,"twin/econ.py at 4bb91b1: NASA $127,500 (2025)",,quote only,,12,0,1,bench,,,made since 2019; no used units found
+vertical,vhx,microscope,Keyence VHX-7000 with VHX-S750E stand,1,95000,half of econ's $190k: VHX-7000 $67-118k in federal awards 2020-23,,quote only,,6,0,1,bench,,,
+vertical,vhx,libs,Keyence EA-300 LIBS head,1,95000,"half of econ's $190k: an EA-300-class head at Warsaw, PLN 385,012 (2025)",,quote only,,6,0,1,bench,,,
+vertical,polish,polisher,LECO PX500 grinder/polisher,1,22904,"twin/econ.py at 4bb91b1: PX500A2 $22,904 (Navy 2021)",,quote only,,8,1,1,bench,,,
+vertical,polish,press,LECO MX400 mounting press,1,19250,"twin/econ.py at 4bb91b1: mounting presses $15.9-22.6k (DLA 2024, Army 2025), midpoint",,quote only,,8,1,1,bench,,,
+vertical,polish,saw,sectioning saw,1,12846,"the rest of econ's $55,000 (estimate)",,quote only,,8,1,1,bench,,,
+vertical,furnaces,,Nabertherm NAT 15/65 forced-convection furnace,2,20000,"twin/econ.py at 4bb91b1 (estimate); Fisher UK lists the NA 15/65 at GBP 5,025-5,671 (about $6.6-7.5k, undated)",,quote only (Fisher UK's last estimated ship date is in 2024),https://www.fishersci.co.uk/shop/products/forced-convection-chamber-furnace-na-15-65-5/p-7236198,8,0,1,bench_heavy,,,
+vertical,sieve_cell,shaker,Retsch AS 200 sieve shaker with sieves,1,6700,"twin/econ.py at 4bb91b1: USAF, three for $19,968 (2022); AS 200 basic $3,689 new at Certified MTP",5,"estimated shipment 4 to 6 weeks (Certified MTP, US)",https://certifiedmtp.com/retsch-as-200-basic-sieve-shaker,12,1,2,bench,,,
+vertical,sieve_cell,rest,"tipper, wash module, downdraft enclosure",1,53300,"the rest of econ's $60,000",,custom,,12,1,2,bench,no,,custom: new only
+vertical,doser,press,Specac Atlas Autotouch 15T with vacuum dies,1,41385,"twin/econ.py at 4bb91b1: about EUR 37,660 at VWR, at 1.0989 USD/EUR",,quote only,,16,1,3,bench,,,
+vertical,doser,balance,A&D HR-202i semi-micro balance,1,3500,estimate,,,,16,1,3,bench,,,
+vertical,doser,pump,Edwards RV3 rotary vane pump,1,3000,estimate,,,,16,1,3,bench,,,
+vertical,doser,carousel,multi-doser carousel,1,2362,notes/multidoser.md BoM,,custom,,16,1,3,bench,no,,custom: new only
+vertical,glovebox,,Inert PureLab HE glovebox with purifier,1,55000,"twin/econ.py at 4bb91b1: National Archives $54,848 with installation (2023)",,quote only,,12,1,1,floor,,,
+vertical,hoods,hood,Labconco Protector XStream 6 ft ducted hood,2,14088,"Zoro, Labconco 110610000 (72 in) $14,087.99",1.5,an 8 ft Protector XStream ships in 7-14 days (Calpac); 6 ft 'call for lead time' (GovSci),https://www.calpaclab.com/8-protector-xstream-laboratory-hood-100-115v-50-60hz-custom-options-available/lc-110810000,10,1,0,floor,,,
+vertical,hoods,install,"ducting, exhaust fan, controls, certification",2,20912,"the rest of econ's $35,000 a hood, installed",,,,10,1,0,floor,no,,the same used or new
+vertical,icpms,instrument,Agilent 7850 ICP-MS,1,190000,"twin/econ.py at 4bb91b1: 7850 $160-220k (LabX 2026 buyer's guide), midpoint",,quote only,,14,1,3,floor_sens,,,
+vertical,icpms,autosampler,Agilent SPS 4 autosampler,1,12305,"twin/econ.py at 4bb91b1: $12,305 list (2017)",,quote only,,14,1,3,bench,,,
+vertical,icpms,rest,"trace-metals hood, hot block, dilutor, chiller",1,57695,"the rest of econ's $260,000",,,,14,1,3,floor,no,,new only
+vertical,instron,,Instron 68FM-100 floor frame with grips and extensometer,1,175000,"twin/econ.py at 4bb91b1: USAF $145,607 (2022) to Navy $207,865 (2024)",,quote only,,16,2,2,floor_heavy,,,
+vertical,chamber,,Instron 3119-608 environmental chamber (to 600 C),1,50000,twin/econ.py at 4bb91b1 (estimate),,quote only,,16,0,1,bench_heavy,,,
+vertical,zwick,,ZwickRoell zwickiLine Z5.0 TN,1,35000,twin/econ.py at 4bb91b1 (assumed),,quote only,,10,1,1,bench,,,
+vertical,edm,,FANUC ROBOCUT wire EDM,1,230000,"twin/econ.py at 4bb91b1: NASA C600iC-ADV $220,362 (2026)",,quote only ('contact a ROBOCUT application expert'),https://www.fanucamerica.com/products/robocut,18,2,3,machine,,,
+vertical,machining,lathe,Haas ST-10 turning centre,1,64995,"Haas list, 'starting at $64,995' (haascnc.com, read 2026-11-27)",1,"16 available; 1 week, built to order (haascnc.com ST-10 page, read 2026-11-27)",https://www.haascnc.com/machines/lathes/st/models/standard/st-10.html,22,2,4,machine,,,
+vertical,machining,bar_feeder,Haas Bar Feeder V2,1,16000,notes/machining.md: $12-20k (estimate),,,,22,2,4,machine_light,,,
+vertical,machining,robot_arm,UR10e / UR12e on a pedestal,1,51746,"notes/machining.md: $50,818-52,674 (distributor listings 2026)",1,"about 7 days (Funduinoshop, EU); non-stock e-Series 'usually ships in 4 weeks' (Motion World, US)",https://funduinoshop.com/en/robotics/universal-robots/ur12e/universal-robots-ur12e,22,2,4,machine_light,,units:arm,
+vertical,machining,rest,"baths, dryer, weigh module, gauge, auto door, MQL, pedestal, integration",1,142259,"the rest of econ's $275,000",,custom,,22,2,4,machine,no,,custom: new only
+vertical,carvera,,Makera Carvera desktop CNC,1,5799,"list $5,799",1.4,"in stock in the US warehouse, ships within 7 business days (makera.com, read 2026-11-27)",https://www.makera.com/products/carvera,3,0,0,bench,,,
+vertical,units,mir,MiR250 AMR,2,62000,"twin/econ.py at 4bb91b1: MiR250 $59-65k (US distributors, 2026)",,quote only,,14,1,4,machine_light,,,
+vertical,units,arm,UR12e cobot arm,2,45000,"twin/econ.py at 4bb91b1: about $45k (Vention list $44,636)",1,"about 7 days (Funduinoshop, EU); non-stock 4 weeks (Motion World, US)",https://vention.io/parts/universal-robots-ur12e-collaborative-robot-arm-3443,14,1,4,machine_light,,machining:robot_arm,
+vertical,units,gripper,Robotiq 2F-85 gripper,2,5500,twin/econ.py at 4bb91b1: $5-6k,,,,14,1,4,parcel,,,
+vertical,units,rest,"cabinet, cameras, Class D unit, integration",2,27500,"the rest of econ's $140,000 a unit",,,,14,1,4,machine_light,no,,new only
+vertical,floor_unit,mir,MiR250 AMR,1,62000,as the units',,quote only,,14,1,2,machine_light,,units:mir,
+vertical,floor_unit,arm,UR12e cobot arm,1,45000,as the units',1,as the units',,14,1,2,machine_light,,units:arm+machining:robot_arm,
+vertical,floor_unit,gripper,Robotiq 2F-85 gripper,1,5500,as the units',,,,14,1,2,parcel,,units:gripper,
+vertical,floor_unit,vacuum,Nilfisk CFM 118EXP explosion-proof vacuum,1,12000,estimate,,quote only,,14,1,2,bench_heavy,,,
+vertical,floor_unit,rest,hose reel and integration,1,30500,"the rest of econ's $155,000",,,,14,1,2,machine_light,no,,new only
+vertical,shuttle,,"Kardex Shuttle XP 500, 9.15 m, 2450 x 864 mm trays",2,210000,twin/econ.py at 4bb91b1: $6-8k per vertical foot (Kardex),5,"Kardex QuickShip 4-6 weeks for standard sizes, custom longer (PR 331)",https://www.kardex.com/en-us/blog/how-much-does-a-vertical-lift-module-cost,14,2,2,vlm,,,
+vertical,couplings,,Staubli CombiTac dock and tray plate,14,4000,twin/econ.py at 4bb91b1 (estimate),,,,8,1,1,parcel,,,
+vertical,midi,,Aconity3D AconityMIDI+ LPBF,1,700000,"twin/econ.py at 4bb91b1: Forschungszentrum Juelich EUR 675,390 (2026)",,quote only (lead not found),,18,2,6,machine,,,
+vertical,mxlab,,InssTek MX-Lab blown-powder DED,1,300000,twin/econ.py at 4bb91b1: EUR 200-242k awards (2024-25) plus shipping,,quote only (lead not found),,26,2,6,machine,,,
+both,repowder,,AMAZEMET rePowder ultrasonic atomizer,1,350000,"twin/econ.py at 4bb91b1: NASA $286,720 (2023) to Aalen EUR 407,700 (2025)",,quote only,,,,,machine,,,owned: neither lab buys it in rounds 4-5 (the existing atomizer is used from day 0)
+vertical,ups,,UPSs on the powered trays,1,22000,twin/econ.py at 4bb91b1,,,,6,0,0,parcel,no,,"commodity, bought new; not surveyed"
+vertical,cameras,,"tray, bay and security cameras with Pi 5s",1,18900,twin/econ.py at 4bb91b1,,,,4,0,0,parcel,no,,"commodity, bought new; not surveyed"
+vertical,services,,"fit-out: gas lines, N2 generator, chillers, power, dust collection, network",1,450000,twin/econ.py at 4bb91b1,,,,16,0,2,floor,no,,"building work, not used equipment"
+conventional,sieve,,Retsch AS 200 sieve shaker and a set of sieves,1,8000,twin/econ.py at 4bb91b1: USAF (2022),5,"estimated shipment 4 to 6 weeks (Certified MTP, US)",https://certifiedmtp.com/retsch-as-200-basic-sieve-shaker,,,,bench,,sieve_cell:shaker,the conventional lab's
+conventional,doser_conv,press,manual hydraulic press with vacuum die,1,9000,"estimate (econ's $18,000 for the set)",,,,,,,bench,,doser:press,the conventional lab's
+conventional,doser_conv,balance,analytical balance,1,4000,estimate,,,,,,,bench,,doser:balance,the conventional lab's
+conventional,doser_conv,doser,powder doser,1,5000,estimate,,,,,,,bench,no,,the conventional lab's
+conventional,furnace,,"box furnace (about 1,200 C) and a forced-convection ageing oven",1,30000,twin/econ.py at 4bb91b1 (estimate),,,,,,,bench_heavy,,furnaces,the conventional lab's
+conventional,density,,density balance kit and a stereo microscope,1,12000,twin/econ.py at 4bb91b1 (estimate),,,,,,,bench,,,the conventional lab's
+conventional,glovebox_conv,,glovebox with purifier,1,55000,as the vertical lab's,,,,,,,floor,,glovebox,the conventional lab's: the same listings as the vertical lab's
+conventional,hood,hood,ducted fume hood,1,14088,as the vertical lab's hood,,,,,,,floor,,hoods:hood,the conventional lab's
+conventional,hood,install,"ducting, fan, certification",1,20912,as the vertical lab's,,,,,,,floor,no,,the conventional lab's
+conventional,cubxl,,"CubXL gantry, EZstat Pro, OT-2 (DAL's own)",1,35000,twin/econ.py at 4bb91b1,,,,0,0,0,bench,no,,owned
