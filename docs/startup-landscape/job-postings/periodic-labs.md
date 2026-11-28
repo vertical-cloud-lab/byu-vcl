@@ -2,7 +2,7 @@
 
 Back to [all companies](README.md) · [company profile](../companies/periodic-labs.md)
 
-**59 postings recovered**, 56 with the full description; 34 still open on 2026-10-10. First seen 2025-09-18, latest 2026-10-07. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**59 postings recovered**, 56 with the full description; 28 still open on 2026-11-28. First seen 2025-09-18, latest 2026-10-07. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
@@ -24,47 +24,47 @@ Back to [all companies](README.md) · [company profile](../companies/periodic-la
 | 2025-10-17 | 2026-02-15 | Research Engineer - Posttraining | ml-research | Bits: LLMs, machine learning, infra, etc | Menlo Park, Remote |  |  |  | [Wayback](https://web.archive.org/web/20260215134441/https://jobs.ashbyhq.com/periodic-labs) |
 | 2025-10-22 | 2026-05-19 | [Lead IT Engineer](#lead-it-engineer-2025-10-22) | software-eng | Bits: Research, LLMs, machine learning,  | Menlo Park | BS |  | $200–250K | [Wayback](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/0eaf63d2-bc48-4f05-8ce8-8dcd1fc7158c?employmentType=FullTime) |
 | 2025-10-31 | open | [Research Scientist, Thin Films](#research-scientist-thin-films-2025-10-31) | materials-science | Science | Menlo Park, CA | PhD/BS | 5 | $250–350K | [live](https://jobs.ashbyhq.com/periodic-labs/7f36ea6e-3e67-40df-82c6-5540859a2ac5) [Wayback](https://web.archive.org/web/20260416225009/https://jobs.ashbyhq.com/periodic-labs/7f36ea6e-3e67-40df-82c6-5540859a2ac5?departmentId=a18cbbfb-4bc3-4f60-be38-fe177745ad16) |
-| 2025-11-12 | open | [Research Scientist, Condensed Matter Theory](#research-scientist-condensed-matter-theory-2025-11-12) | materials-science | Science | Menlo Park, CA; Montreal, Canada | PhD/BS |  | $225–325K | [live](https://jobs.ashbyhq.com/periodic-labs/01d2c4b2-d848-4426-ad5f-7f1052db3a63) [Wayback](https://web.archive.org/web/20260309120218/https://jobs.ashbyhq.com/periodic-labs/01d2c4b2-d848-4426-ad5f-7f1052db3a63) |
+| 2025-11-12 | 2026-11-14 | [Research Scientist, Condensed Matter Theory](#research-scientist-condensed-matter-theory-2025-11-12) | materials-science | Science | Menlo Park, CA; Montreal, Canada | PhD/BS |  | $225–325K | [live](https://jobs.ashbyhq.com/periodic-labs/01d2c4b2-d848-4426-ad5f-7f1052db3a63) [Wayback](https://web.archive.org/web/20260309120218/https://jobs.ashbyhq.com/periodic-labs/01d2c4b2-d848-4426-ad5f-7f1052db3a63) |
 | 2025-11-13 | open | [Product Engineer](#product-engineer-2025-11-13) | software-eng | Engineering | Menlo Park, CA | BS |  | $250–350K | [live](https://jobs.ashbyhq.com/periodic-labs/d88a6590-a2fa-48c5-86bc-61612b5bb0bc) [Wayback](https://web.archive.org/web/20260326152758/https://jobs.ashbyhq.com/periodic-labs/d88a6590-a2fa-48c5-86bc-61612b5bb0bc?departmentId=6cd1bfc2-3e28-45b7-849f-619cdd1f0847) |
 | 2025-12-03 | open | [Computational Scientist, Structural & Thermal](#computational-scientist-structural-thermal-2025-12-03) | materials-science | Science | Menlo Park, CA | PhD/BS |  | $250–350K | [live](https://jobs.ashbyhq.com/periodic-labs/0d96f03c-8f08-44ae-a7cb-8c4bbc80976c) [Wayback](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/0d96f03c-8f08-44ae-a7cb-8c4bbc80976c?employmentType=FullTime) |
 | 2026-02-10 | open | [Software Engineer](#software-engineer-2026-02-10) | software-eng | Science | Menlo Park, CA | BS |  | $250–350K | [live](https://jobs.ashbyhq.com/periodic-labs/1d6ade4f-ae4c-4bde-baf7-82c401063e42) [Wayback](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/1d6ade4f-ae4c-4bde-baf7-82c401063e42?employmentType=FullTime) |
-| 2026-03-10 | open | [Research Associate - Thin Films (Fixed Term)](#research-associate-thin-films-fixed-term-2026-03-10) | materials-science | Science | Menlo Park, CA | PhD |  | $180–225K | [live](https://jobs.ashbyhq.com/periodic-labs/98837207-657f-4116-a112-d8dc6184b49e) [Wayback](https://web.archive.org/web/20260416225018/https://jobs.ashbyhq.com/periodic-labs/98837207-657f-4116-a112-d8dc6184b49e?departmentId=a18cbbfb-4bc3-4f60-be38-fe177745ad16) |
+| 2026-03-10 | open | [Research Associate - Thin Films (Fixed Term)](#research-associate-thin-films-fixed-term-2026-03-10) | materials-science | Science | Menlo Park, CA | PhD |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/98837207-657f-4116-a112-d8dc6184b49e) [Wayback](https://web.archive.org/web/20260416225018/https://jobs.ashbyhq.com/periodic-labs/98837207-657f-4116-a112-d8dc6184b49e?departmentId=a18cbbfb-4bc3-4f60-be38-fe177745ad16) |
 | 2026-03-26 | 2026-07-25 | [Process Development Engineer](#process-development-engineer-2026-03-26) | lab-automation | Atoms: Research Lab, physics, chemistry | Menlo Park | PhD/MS/BS |  | $175–275K | [Wayback](https://web.archive.org/web/20260514180037/https://jobs.ashbyhq.com/periodic-labs/77f48dbb-a1b7-4f2c-9434-06be4a6c0d3e) |
 | 2026-03-30 | 2026-05-19 | [Research Scientist, Materials Synthesis](#research-scientist-materials-synthesis-2026-03-30) | materials-science | Atoms: Research Lab, physics, chemistry | Menlo Park | PhD/BS | 5 | $160–220K | [Wayback](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/dfd4f94a-7b94-4877-96d2-9a91c0f0780a?employmentType=FullTime) |
 | 2026-04-15 | 2026-07-25 | [Lead Security Engineer](#lead-security-engineer-2026-04-15) | software-eng | Bits: Research, LLMs, machine learning,  | Menlo Park | BS |  | $200–250K | [Wayback](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/32f7c36e-3730-4cbf-8d99-39ec11f7c1f2?employmentType=FullTime) |
 | 2026-04-22 | 2026-05-19 | [Business Operations Associate](#business-operations-associate-2026-04-22) | business-ops | Business | Menlo Park | PhD | 7 | $180–200K | [Wayback](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/75660686-5b6f-430b-bc8f-83e29c635669?employmentType=FullTime) |
-| 2026-04-23 | 2026-05-19 | [Forward Deployed Engineer - LLM Systems](#forward-deployed-engineer-llm-systems-2026-04-23) | ml-research | Bits: Research, LLMs, machine learning,  | Menlo Park | BS |  | $350–400K | [Wayback](https://web.archive.org/web/20260428022744/https://jobs.ashbyhq.com/periodic-labs/dbac407f-a408-44a3-9e7a-895d42649edc) |
+| 2026-04-23 | 2026-07-17 | [Forward Deployed Engineer - LLM Systems](#forward-deployed-engineer-llm-systems-2026-04-23) | ml-research | Bits: Research, LLMs, machine learning,  | Menlo Park | BS |  | $350–400K | [Wayback](https://web.archive.org/web/20260428022744/https://jobs.ashbyhq.com/periodic-labs/dbac407f-a408-44a3-9e7a-895d42649edc) |
 | 2026-04-25 | open | [Founding HR Leader](#founding-hr-leader-2026-04-25) | leadership | Business and Operations | Menlo Park, CA | BS | 15 | $350–450K | [live](https://jobs.ashbyhq.com/periodic-labs/c398af52-085d-427c-8c0f-8537cfd96ff3) [Wayback](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/c398af52-085d-427c-8c0f-8537cfd96ff3?employmentType=FullTime) |
 | 2026-04-25 | 2026-05-19 | [Strategic Finance Lead](#strategic-finance-lead-2026-04-25) | business-ops | Business | Menlo Park | BS |  | $220–350K | [Wayback](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/7d7bcca9-60d2-4afe-b8e4-7d1354fec7e0?employmentType=FullTime) |
 | 2026-04-25 | 2026-05-19 | [Technical Sourcer - physical sciences](#technical-sourcer-physical-sciences-2026-04-25) | business-ops | Business | Menlo Park, Remote | BS | 5 | $200–250K | [Wayback](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/c8a1217f-034c-4b56-a7f1-59b974da0055?employmentType=FullTime) |
-| 2026-04-29 | open | [ML Systems Engineer](#ml-systems-engineer-2026-04-29) | ml-research | Engineering | Menlo Park, CA | BS |  | $250–350K | [live](https://jobs.ashbyhq.com/periodic-labs/d9180228-c113-4d5f-a4d6-793994e50b7c) [Wayback](https://web.archive.org/web/20260516172510/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-04-29 | 2026-10-12 | [ML Systems Engineer](#ml-systems-engineer-2026-04-29) | ml-research | Engineering | Menlo Park, CA | BS |  | $250–350K | [live](https://jobs.ashbyhq.com/periodic-labs/d9180228-c113-4d5f-a4d6-793994e50b7c) [Wayback](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/d9180228-c113-4d5f-a4d6-793994e50b7c?employmentType=FullTime) |
 | 2026-04-30 | 2026-05-16 | Supercompute Engineer | software-eng | Bits: Research, LLMs, machine learning,  | Menlo Park |  |  |  | [Wayback](https://web.archive.org/web/20260516172510/https://jobs.ashbyhq.com/periodic-labs) |
 | 2026-05-05 | open | [Research Scientist, Data](#research-scientist-data-2026-05-05) | ml-research | Science | Menlo Park, CA | BS |  | $250–350K | [live](https://jobs.ashbyhq.com/periodic-labs/d039ec58-a97d-47e1-b1e5-db003d772f77) [Wayback](https://web.archive.org/web/20260516172510/https://jobs.ashbyhq.com/periodic-labs) |
 | 2026-05-08 | open | [Process Engineer, Powder](#process-engineer-powder-2026-05-08) | lab-automation | Science | Menlo Park, CA | BS |  | $225–300K | [live](https://jobs.ashbyhq.com/periodic-labs/21b61a4d-92ff-4f98-9a7c-251f02966988) [Wayback](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/21b61a4d-92ff-4f98-9a7c-251f02966988?employmentType=FullTime) |
 | 2026-05-21 | open | [Procurement & Finance Operations Manager](#procurement-finance-operations-manager-2026-05-21) | business-ops | Business and Operations | Menlo Park, CA | BS | 5 | $225–275K | [live](https://jobs.ashbyhq.com/periodic-labs/e58cc4ac-39a8-4f46-a660-4cab443922cc) [Wayback](https://web.archive.org/web/20260725114625/https://jobs.ashbyhq.com/periodic-labs) |
 | 2026-05-26 | open | [Research Intern, Thin Films](#research-intern-thin-films-2026-05-26) | materials-science | Science | Menlo Park, CA | PhD/MS/BS |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/2cfb099d-42f1-4dff-93f4-1862b13f914a) [Wayback](https://web.archive.org/web/20260725114625/https://jobs.ashbyhq.com/periodic-labs) |
-| 2026-06-03 | open | [Forward Deployed Engineer, Physics & Simulation](#forward-deployed-engineer-physics-simulation-2026-06-03) | materials-science | Engineering | Menlo Park, CA | BS |  | $250–350K | [live](https://jobs.ashbyhq.com/periodic-labs/1bab7e17-20fd-4b82-a152-98b96375a626) [Wayback](https://web.archive.org/web/20260725114625/https://jobs.ashbyhq.com/periodic-labs) |
-| 2026-06-11 | open | [Senior Equipment Maintenance Technician](#senior-equipment-maintenance-technician-2026-06-11) | lab-automation | Science | Menlo Park, CA | BS | 5 | $120–165K | [live](https://jobs.ashbyhq.com/periodic-labs/b1ad8632-f489-4922-8805-42d84711cda1) [Wayback](https://web.archive.org/web/20260725114625/https://jobs.ashbyhq.com/periodic-labs) |
-| 2026-07-16 | open | [Laboratory Technician](#laboratory-technician-2026-07-16) | lab-automation | Science | Menlo Park, CA | BS |  | $100–130K | [live](https://jobs.ashbyhq.com/periodic-labs/50a878d1-f9a6-4234-950d-f18d73c65c47) [Wayback](https://web.archive.org/web/20260725114625/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-06-03 | 2026-11-01 | [Forward Deployed Engineer, Physics & Simulation](#forward-deployed-engineer-physics-simulation-2026-06-03) | materials-science | Engineering | Menlo Park, CA | BS |  | $250–350K | [live](https://jobs.ashbyhq.com/periodic-labs/1bab7e17-20fd-4b82-a152-98b96375a626) [Wayback](https://web.archive.org/web/20260608103159/https://jobs.ashbyhq.com/periodic-labs/1bab7e17-20fd-4b82-a152-98b96375a626) |
+| 2026-06-11 | open | [Senior Equipment Maintenance Technician](#senior-equipment-maintenance-technician-2026-06-11) | lab-automation | Science | Menlo Park, CA |  | 5 |  | [live](https://jobs.ashbyhq.com/periodic-labs/b1ad8632-f489-4922-8805-42d84711cda1) [Wayback](https://web.archive.org/web/20260725114625/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-07-16 | open | [Laboratory Technician](#laboratory-technician-2026-07-16) | lab-automation | Science | Menlo Park, CA | BS |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/50a878d1-f9a6-4234-950d-f18d73c65c47) [Wayback](https://web.archive.org/web/20260725114625/https://jobs.ashbyhq.com/periodic-labs) |
 | 2026-07-25 | 2026-07-25 | Forward Deployed Engineer, Quantum Simulations | materials-science |  | Menlo Park |  |  |  | [Wayback](https://web.archive.org/web/20260725114625/https://jobs.ashbyhq.com/periodic-labs) |
 | 2026-07-25 | open | [Head of Environmental Health & Safety (EHS)](#head-of-environmental-health-safety-ehs-2026-07-25) | leadership | Science | Menlo Park, CA | BS | 10 | $250–325K | [live](https://jobs.ashbyhq.com/periodic-labs/0335ea7e-436c-4e50-a766-6b7d0b75e70a) [Wayback](https://web.archive.org/web/20260725114625/https://jobs.ashbyhq.com/periodic-labs) |
-| 2026-08-05 | open | [Electrical Technician](#electrical-technician-2026-08-05) | lab-automation | Science | Menlo Park, CA |  |  | $124–154K | [live](https://jobs.ashbyhq.com/periodic-labs/caf8f0b8-dbbb-4104-bc7f-e6a7916d7831) |
-| 2026-08-05 | open | [Environmental Health & Safety (EHS) Technician](#environmental-health-safety-ehs-technician-2026-08-05) | lab-automation | Science | Menlo Park, CA | BS | 1 | $96–124K | [live](https://jobs.ashbyhq.com/periodic-labs/60f43e1c-08ac-4701-a7d5-0221e361df4e) |
-| 2026-08-08 | open | [Research Engineer, Semiconductor](#research-engineer-semiconductor-2026-08-08) | materials-science | Science | Menlo Park, CA | PhD/MS |  | $220–300K | [live](https://jobs.ashbyhq.com/periodic-labs/95d290bd-6420-42e8-82a0-f0230722c19c) |
+| 2026-08-05 | 2026-10-12 | [Electrical Technician](#electrical-technician-2026-08-05) | lab-automation | Science | Menlo Park, CA |  |  | $124–154K | [live](https://jobs.ashbyhq.com/periodic-labs/caf8f0b8-dbbb-4104-bc7f-e6a7916d7831) [Wayback](https://web.archive.org/web/20260819221755/https://jobs.ashbyhq.com/periodic-labs/caf8f0b8-dbbb-4104-bc7f-e6a7916d7831?departmentId=a18cbbfb-4bc3-4f60-be38-fe177745ad16&employmentType=FullTime&locationId=905b044e-ad3a-4fc0-9d62-90e6f9904e52) |
+| 2026-08-05 | open | [Environmental Health & Safety (EHS) Technician](#environmental-health-safety-ehs-technician-2026-08-05) | lab-automation | Science | Menlo Park, CA | BS | 1 |  | [live](https://jobs.ashbyhq.com/periodic-labs/60f43e1c-08ac-4701-a7d5-0221e361df4e) [Wayback](https://web.archive.org/web/20261012014809/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-08-08 | open | [Research Engineer, Semiconductor](#research-engineer-semiconductor-2026-08-08) | materials-science | Science | Menlo Park, CA | PhD/MS |  | $220–300K | [live](https://jobs.ashbyhq.com/periodic-labs/95d290bd-6420-42e8-82a0-f0230722c19c) [Wayback](https://web.archive.org/web/20261012014809/https://jobs.ashbyhq.com/periodic-labs) |
 | 2026-08-15 | 2026-08-15 | [Mechanical Engineer](#mechanical-engineer-2026-08-15) | lab-automation | Science | Menlo Park | BS | 2 | $200–300K | [Wayback](https://web.archive.org/web/20260815154438/https://jobs.ashbyhq.com/periodic-labs/fe3b323e-34e8-41fe-9da3-26a8b6b941cd) |
 | 2026-08-15 | 2026-08-15 | [Research Engineer - Midtraining](#research-engineer-midtraining-2026-08-15) | ml-research | Engineering | Menlo Park, CA | BS |  | $250–350K | [Wayback](https://web.archive.org/web/20260815154438/https://jobs.ashbyhq.com/periodic-labs/d3be5ecc-c4d3-4c9e-9a4d-519ab6147474) |
-| 2026-08-15 | open | [Research Engineer, Lab Automation](#research-engineer-lab-automation-2026-08-15) | lab-automation | Science | Menlo Park, CA | PhD |  | $200–250K | [live](https://jobs.ashbyhq.com/periodic-labs/a16ee7dd-021d-4f37-823d-7a8b520c6d8a) |
-| 2026-08-18 | open | [Business Operations, Product & Science](#business-operations-product-science-2026-08-18) | business-ops | Business and Operations | Menlo Park, CA | PhD/BS | 4 | $250–300K | [live](https://jobs.ashbyhq.com/periodic-labs/fd89f03f-545f-4ffb-a051-8581a3ec686a) |
-| 2026-08-18 | open | [Process Technician, Thin Films](#process-technician-thin-films-2026-08-18) | lab-automation | Science | Menlo Park, CA |  | 3 |  | [live](https://jobs.ashbyhq.com/periodic-labs/19e2cc72-0f04-44b3-a9c3-0240a0fb9fe4) |
-| 2026-08-20 | open | [Technical Recruiter](#technical-recruiter-2026-08-20) | business-ops | Business and Operations | Menlo Park, CA | BS |  | $175–275K | [live](https://jobs.ashbyhq.com/periodic-labs/a9b28b1c-8a7f-456d-bea5-f2cb787c4eba) |
-| 2026-09-01 | open | [Research Scientist/Research Engineer, Materials Data](#research-scientist-research-engineer-materials-data-2026-09-01) | materials-science | Science | Menlo Park, CA | PhD | 4 | $250–350K | [live](https://jobs.ashbyhq.com/periodic-labs/c4e0774f-0f3e-4ea7-be27-fb89130c0d01) |
-| 2026-09-04 | open | [Computational Scientist, Differentiable Physics](#computational-scientist-differentiable-physics-2026-09-04) | materials-science | Science | Menlo Park, CA | PhD/BS |  | $250–350K | [live](https://jobs.ashbyhq.com/periodic-labs/ccdb34b1-b67c-4dbf-8acb-fe786f2ab38b) |
-| 2026-09-14 | open | [Equipment Engineer](#equipment-engineer-2026-09-14) | lab-automation | Science | Menlo Park, CA | PhD/MS/BS |  | $200–275K | [live](https://jobs.ashbyhq.com/periodic-labs/489cf02a-3098-4b41-b985-7e718f963ad5) |
-| 2026-09-15 | open | [XRD Facility Manager](#xrd-facility-manager-2026-09-15) | lab-automation | Science | Menlo Park, CA | PhD | 5 |  | [live](https://jobs.ashbyhq.com/periodic-labs/e82a30cb-ad71-402f-b1c2-1b762fc50bfe) |
-| 2026-09-30 | open | [Research Scientist/Research Engineer, Midtraining](#research-scientist-research-engineer-midtraining-2026-09-30) | ml-research | Engineering | Menlo Park, CA | BS |  | $250–350K | [live](https://jobs.ashbyhq.com/periodic-labs/168dbf20-2230-49a0-9f00-f2ff58dad5c8) |
-| 2026-10-01 | open | [Research Scientist, Scaling RL](#research-scientist-scaling-rl-2026-10-01) | ml-research | Engineering | Menlo Park, CA; Montreal, Canada | BS |  | $225–350K | [live](https://jobs.ashbyhq.com/periodic-labs/20b122c9-b8ec-4fb0-aaf4-9b45902affe0) |
-| 2026-10-05 | open | [Controller](#controller-2026-10-05) | business-ops | Business and Operations | Menlo Park, CA | BS | 10 |  | [live](https://jobs.ashbyhq.com/periodic-labs/6c188bbb-1f81-4145-aac3-28cb0e47e3cc) |
-| 2026-10-07 | open | [Process Safety Engineer](#process-safety-engineer-2026-10-07) | lab-automation | Engineering | Menlo Park, CA | BS | 7 | $200–250K | [live](https://jobs.ashbyhq.com/periodic-labs/1d57d49b-e538-4d9a-86d3-6be17339016f) |
+| 2026-08-15 | open | [Research Engineer, Lab Automation](#research-engineer-lab-automation-2026-08-15) | lab-automation | Science | Menlo Park, CA | PhD |  | $200–250K | [live](https://jobs.ashbyhq.com/periodic-labs/a16ee7dd-021d-4f37-823d-7a8b520c6d8a) [Wayback](https://web.archive.org/web/20261012014809/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-08-18 | 2026-10-12 | [Business Operations, Product & Science](#business-operations-product-science-2026-08-18) | business-ops | Business and Operations | Menlo Park, CA | PhD/BS | 4 | $250–300K | [live](https://jobs.ashbyhq.com/periodic-labs/fd89f03f-545f-4ffb-a051-8581a3ec686a) [Wayback](https://web.archive.org/web/20261012014809/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-08-18 | open | [Process Technician, Thin Films](#process-technician-thin-films-2026-08-18) | lab-automation | Science | Menlo Park, CA |  | 3 |  | [live](https://jobs.ashbyhq.com/periodic-labs/19e2cc72-0f04-44b3-a9c3-0240a0fb9fe4) [Wayback](https://web.archive.org/web/20261012014809/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-08-20 | open | [Technical Recruiter](#technical-recruiter-2026-08-20) | business-ops | Business and Operations | Menlo Park, CA | BS |  | $175–275K | [live](https://jobs.ashbyhq.com/periodic-labs/a9b28b1c-8a7f-456d-bea5-f2cb787c4eba) [Wayback](https://web.archive.org/web/20261012014809/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-09-01 | open | [Research Scientist/Research Engineer, Materials Data](#research-scientist-research-engineer-materials-data-2026-09-01) | materials-science | Science | Menlo Park, CA | PhD | 4 | $250–350K | [live](https://jobs.ashbyhq.com/periodic-labs/c4e0774f-0f3e-4ea7-be27-fb89130c0d01) [Wayback](https://web.archive.org/web/20261012014809/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-09-04 | open | [Computational Scientist, Differentiable Physics](#computational-scientist-differentiable-physics-2026-09-04) | materials-science | Science | Menlo Park, CA | PhD/BS |  | $250–350K | [live](https://jobs.ashbyhq.com/periodic-labs/ccdb34b1-b67c-4dbf-8acb-fe786f2ab38b) [Wayback](https://web.archive.org/web/20261012014809/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-09-14 | 2026-10-12 | [Equipment Engineer](#equipment-engineer-2026-09-14) | lab-automation | Science | Menlo Park, CA | PhD/MS/BS |  | $200–275K | [live](https://jobs.ashbyhq.com/periodic-labs/489cf02a-3098-4b41-b985-7e718f963ad5) [Wayback](https://web.archive.org/web/20261012014809/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-09-15 | open | [XRD Facility Manager](#xrd-facility-manager-2026-09-15) | lab-automation | Science | Menlo Park, CA | PhD | 5 |  | [live](https://jobs.ashbyhq.com/periodic-labs/e82a30cb-ad71-402f-b1c2-1b762fc50bfe) [Wayback](https://web.archive.org/web/20261012014809/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-09-30 | open | [Research Scientist/Research Engineer, Midtraining](#research-scientist-research-engineer-midtraining-2026-09-30) | ml-research | Engineering | Menlo Park, CA | BS |  | $250–350K | [live](https://jobs.ashbyhq.com/periodic-labs/168dbf20-2230-49a0-9f00-f2ff58dad5c8) [Wayback](https://web.archive.org/web/20261012014809/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-10-01 | open | [Research Scientist, Scaling RL](#research-scientist-scaling-rl-2026-10-01) | ml-research | Engineering | Menlo Park, CA; Montreal, Canada | PhD/BS | 1 | $225–350K | [live](https://jobs.ashbyhq.com/periodic-labs/20b122c9-b8ec-4fb0-aaf4-9b45902affe0) [Wayback](https://web.archive.org/web/20261012014809/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-10-05 | open | [Controller](#controller-2026-10-05) | business-ops | Business and Operations | Menlo Park, CA | BS | 10 |  | [live](https://jobs.ashbyhq.com/periodic-labs/6c188bbb-1f81-4145-aac3-28cb0e47e3cc) [Wayback](https://web.archive.org/web/20261012014809/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-10-07 | open | [Process Safety Engineer](#process-safety-engineer-2026-10-07) | lab-automation | Engineering | Menlo Park, CA | BS | 7 | $200–250K | [live](https://jobs.ashbyhq.com/periodic-labs/1d57d49b-e538-4d9a-86d3-6be17339016f) [Wayback](https://web.archive.org/web/20261012014809/https://jobs.ashbyhq.com/periodic-labs) |
 
 ## Descriptions
 
@@ -553,7 +553,7 @@ We’re building a team of the world’s best — the scientists, engineers, and
 
 ### Research Scientist, Condensed Matter Theory (2025-11-12)
 
-2025-11-12 → open · materials-science · Menlo Park, CA; Montreal, Canada · $225–325K · [source](https://jobs.ashbyhq.com/periodic-labs/01d2c4b2-d848-4426-ad5f-7f1052db3a63)
+2025-11-12 → 2026-11-14 · materials-science · Menlo Park, CA; Montreal, Canada · $225–325K · [source](https://jobs.ashbyhq.com/periodic-labs/01d2c4b2-d848-4426-ad5f-7f1052db3a63)
 
 <details><summary>Description</summary>
 
@@ -683,15 +683,15 @@ You do not need experience in every area below. Depth in one or more may help us
 
 ### Research Associate - Thin Films (Fixed Term) (2026-03-10)
 
-2026-03-10 → open · materials-science · Menlo Park, CA · $180–225K · [source](https://jobs.ashbyhq.com/periodic-labs/98837207-657f-4116-a112-d8dc6184b49e)
+2026-03-10 → open · materials-science · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/98837207-657f-4116-a112-d8dc6184b49e)
 
 <details><summary>Description</summary>
 
 **About the Role**
 Join our world-class team of scientists and engineers building a lab where AI and automation speed up physical R&D.
 Periodic Labs is developing AI that can both simulate science and verify its predictions to train on the full scientific method. A key challenge is the gap between bulk materials discovery and thin-film form: materials our AI predicts and our powder lab synthesizes must ultimately be validated as scalable thin films to be relevant to semiconductor, memory, and advanced materials applications. We are building a dedicated thin-film lab while generating early data at partner facilities.
-We're looking for a hands-on Research Associate in Thin Films to run advanced deposition and nanofabrication processes, generate high-quality experimental data, and collaborate closely with our AI and materials teams. This is a 12-month fixed-term position with the potential to convert to full time.
-In the near term you will operate at external partner facilities before Periodic’s own tools come online. As the in-house lab is commissioned, you will transition to running experiments on deposition and metrology suite.
+We're looking for a hands-on Postdoctoral Associate in Thin Films to run advanced deposition and nanofabrication processes, generate high-quality experimental data, and collaborate closely with our AI and materials teams. This is a 12-month fixed-term position with the potential to convert to full time.
+In the near term you will operate at external partner facilities before Periodic’s own tools come online. As the in-house lab is commissioned, you will transition to running experiments on our deposition and metrology suite.
 What You’ll Do
 - As a process module owner, you will execute thin-film deposition and related nanofabrication processes.
 - Prepare substrates, manage process flows, and maintain detailed experimental records that meet the metadata and data quality standards for AI training. Every experiment you run is a potential data point for our models - documentation quality matters as much as deposition quality.
@@ -840,7 +840,7 @@ What You’ll Do
 
 ### Forward Deployed Engineer - LLM Systems (2026-04-23)
 
-2026-04-23 → 2026-05-19 · ml-research · Menlo Park · $350–400K · [source](https://web.archive.org/web/20260428022744/https://jobs.ashbyhq.com/periodic-labs/dbac407f-a408-44a3-9e7a-895d42649edc)
+2026-04-23 → 2026-07-17 · ml-research · Menlo Park · $350–400K · [source](https://web.archive.org/web/20260428022744/https://jobs.ashbyhq.com/periodic-labs/dbac407f-a408-44a3-9e7a-895d42649edc)
 
 <details><summary>Description</summary>
 
@@ -969,7 +969,7 @@ What You’ll Do
 
 ### ML Systems Engineer (2026-04-29)
 
-2026-04-29 → open · ml-research · Menlo Park, CA · $250–350K · [source](https://jobs.ashbyhq.com/periodic-labs/d9180228-c113-4d5f-a4d6-793994e50b7c)
+2026-04-29 → 2026-10-12 · ml-research · Menlo Park, CA · $250–350K · [source](https://jobs.ashbyhq.com/periodic-labs/d9180228-c113-4d5f-a4d6-793994e50b7c)
 
 <details><summary>Description</summary>
 
@@ -1135,7 +1135,7 @@ What You’ll Do
 
 ### Forward Deployed Engineer, Physics & Simulation (2026-06-03)
 
-2026-06-03 → open · materials-science · Menlo Park, CA · $250–350K · [source](https://jobs.ashbyhq.com/periodic-labs/1bab7e17-20fd-4b82-a152-98b96375a626)
+2026-06-03 → 2026-11-01 · materials-science · Menlo Park, CA · $250–350K · [source](https://jobs.ashbyhq.com/periodic-labs/1bab7e17-20fd-4b82-a152-98b96375a626)
 
 <details><summary>Description</summary>
 
@@ -1170,7 +1170,7 @@ What You’ll Do
 
 ### Senior Equipment Maintenance Technician (2026-06-11)
 
-2026-06-11 → open · lab-automation · Menlo Park, CA · $120–165K · [source](https://jobs.ashbyhq.com/periodic-labs/b1ad8632-f489-4922-8805-42d84711cda1)
+2026-06-11 → open · lab-automation · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/b1ad8632-f489-4922-8805-42d84711cda1)
 
 <details><summary>Description</summary>
 
@@ -1181,6 +1181,7 @@ This is an ideal role for someone who enjoys solving practical problems, working
 **What You'll Do**
 Equipment Maintenance & Reliability
 - Execute preventative maintenance programs for laboratory equipment using MaintainX CMMS; develop and improve maintenance procedures, inspection checklists, and work order templates
+- Semiconductor maintenance experience with Thin film, PVD, ALD high vacuum equipment and associated metrology tools
 - Perform routine inspections, cleaning, calibration checks, and equipment upkeep across mechanical, electrical, pneumatic, gas, vacuum, and fluid handling systems
 - Take initiative to troubleshoot to component level and repair equipment; identify recurring failure modes and implement corrective actions to improve uptime
 - Coordinate service visits and maintenance activities with equipment vendors
@@ -1196,8 +1197,6 @@ Utilities & Infrastructure
 Equipment Installation & Commissioning
 - Support installation and startup of new laboratory equipment; coordinate utility hookups including power, water, gas, vacuum, and networking
 - Procure, install supporting infrastructure including tubing, fittings, pumps, sensors, gas regulators, and instrumentation
-- Perform installation verification and commissioning activities; document as-built configurations and equipment changes
-Automation & Controls Support
 
 *(truncated: full text in `data/job_postings.jsonl`)*
 
@@ -1207,7 +1206,7 @@ Automation & Controls Support
 
 ### Laboratory Technician (2026-07-16)
 
-2026-07-16 → open · lab-automation · Menlo Park, CA · $100–130K · [source](https://jobs.ashbyhq.com/periodic-labs/50a878d1-f9a6-4234-950d-f18d73c65c47)
+2026-07-16 → open · lab-automation · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/50a878d1-f9a6-4234-950d-f18d73c65c47)
 
 <details><summary>Description</summary>
 
@@ -1265,7 +1264,7 @@ What You’ll Do
 
 ### Electrical Technician (2026-08-05)
 
-2026-08-05 → open · lab-automation · Menlo Park, CA · $124–154K · [source](https://jobs.ashbyhq.com/periodic-labs/caf8f0b8-dbbb-4104-bc7f-e6a7916d7831)
+2026-08-05 → 2026-10-12 · lab-automation · Menlo Park, CA · $124–154K · [source](https://jobs.ashbyhq.com/periodic-labs/caf8f0b8-dbbb-4104-bc7f-e6a7916d7831)
 
 <details><summary>Description</summary>
 
@@ -1315,7 +1314,7 @@ Mechanics
 
 ### Environmental Health & Safety (EHS) Technician (2026-08-05)
 
-2026-08-05 → open · lab-automation · Menlo Park, CA · $96–124K · [source](https://jobs.ashbyhq.com/periodic-labs/60f43e1c-08ac-4701-a7d5-0221e361df4e)
+2026-08-05 → open · lab-automation · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/60f43e1c-08ac-4701-a7d5-0221e361df4e)
 
 <details><summary>Description</summary>
 
@@ -1497,7 +1496,7 @@ Mechanics
 
 ### Business Operations, Product & Science (2026-08-18)
 
-2026-08-18 → open · business-ops · Menlo Park, CA · $250–300K · [source](https://jobs.ashbyhq.com/periodic-labs/fd89f03f-545f-4ffb-a051-8581a3ec686a)
+2026-08-18 → 2026-10-12 · business-ops · Menlo Park, CA · $250–300K · [source](https://jobs.ashbyhq.com/periodic-labs/fd89f03f-545f-4ffb-a051-8581a3ec686a)
 
 <details><summary>Description</summary>
 
@@ -1646,7 +1645,7 @@ Mechanics
 
 ### Equipment Engineer (2026-09-14)
 
-2026-09-14 → open · lab-automation · Menlo Park, CA · $200–275K · [source](https://jobs.ashbyhq.com/periodic-labs/489cf02a-3098-4b41-b985-7e718f963ad5)
+2026-09-14 → 2026-10-12 · lab-automation · Menlo Park, CA · $200–275K · [source](https://jobs.ashbyhq.com/periodic-labs/489cf02a-3098-4b41-b985-7e718f963ad5)
 
 <details><summary>Description</summary>
 
@@ -1761,6 +1760,7 @@ We're training frontier models to develop deep scientific knowledge and reasonin
 - Strong attention to detail and rigorous approach to answer questions scientifically.
 - Coming up with small-scale RL setups that transfers to large-scale training runs.
 - Comfort working across a complex training stack to implement, debug, and test new research ideas.
+- We are open to offering a 1 year post-doc for this profile. Early career (final year PhD students) are encouraged to apply.
 Mechanics
 Minimum education: Bachelor’s degree or similar experience
 Location: Menlo Park, CA or Montreal, Canada

@@ -2,23 +2,24 @@
 
 Back to [all companies](README.md) · [company profile](../companies/dunia-innovations.md)
 
-**16 postings recovered**, 16 with the full description; 13 still open on 2026-10-10. First seen 2025-07-29, latest 2026-06-17. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**17 postings recovered**, 17 with the full description; 3 still open on 2026-11-28. First seen 2025-07-01, latest 2026-06-17. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
-| 2025-07-29 | open | [Business Development Manager](#business-development-manager-2025-07-29) | business-ops |  | Berlin | PhD/MS | 3 |  | [live](https://dunia.jobs.personio.com/job/2267425?language=en) |
+| 2025-07-01 | open | [Spontaneous application](#spontaneous-application-2025-07-01) | general-application |  | Berlin |  |  |  | [live](https://dunia.jobs.personio.com/job/2205674?language=en) [Wayback](https://web.archive.org/web/20250916072056/https://dunia.jobs.personio.com/job/2205674?language=en) |
+| 2025-07-29 | 2026-10-10 | [Business Development Manager](#business-development-manager-2025-07-29) | business-ops |  | Berlin | PhD/MS | 3 |  | [live](https://dunia.jobs.personio.com/job/2267425?language=en) |
 | 2026-02-02 | open | [Head of AI Research](#head-of-ai-research-2026-02-02) | leadership |  | Berlin | PhD |  |  | [live](https://dunia.jobs.personio.com/job/2516220?language=en) |
 | 2026-02-02 | open | [Materials Informatics Scientist (Evaluation-focused)](#materials-informatics-scientist-evaluation-focused-2026-02-02) | materials-science |  | Berlin | PhD/MS |  |  | [live](https://dunia.jobs.personio.com/job/2516249?language=en) |
-| 2026-02-04 | open | [Chemical Data Scientist](#chemical-data-scientist-2026-02-04) | ml-research |  | Berlin | PhD/MS | 3 |  | [live](https://dunia.jobs.personio.com/job/2519182?language=en) |
-| 2026-02-04 | open | [Lab Operations & Procurement Manager](#lab-operations-procurement-manager-2026-02-04) | business-ops |  | Berlin |  |  |  | [live](https://dunia.jobs.personio.com/job/2519192?language=en) |
-| 2026-02-04 | open | [Lab Technicians](#lab-technicians-2026-02-04) | lab-automation |  | Berlin |  |  |  | [live](https://dunia.jobs.personio.com/job/2519206?language=en) |
-| 2026-02-04 | open | [Research Scientist, Thermocatalysis](#research-scientist-thermocatalysis-2026-02-04) | materials-science |  | Berlin | PhD | 3 |  | [live](https://dunia.jobs.personio.com/job/2519204?language=en) |
-| 2026-02-04 | open | [Software Engineer, Infrastructure](#software-engineer-infrastructure-2026-02-04) | software-eng |  | Berlin |  | 2 |  | [live](https://dunia.jobs.personio.com/job/2519188?language=en) |
-| 2026-02-06 | open | [ML Engineer, Agents & Reasoning](#ml-engineer-agents-reasoning-2026-02-06) | ml-research |  | Berlin |  | 4 |  | [live](https://dunia.jobs.personio.com/job/2521701?language=en) |
-| 2026-02-06 | open | [ML Researcher, Representation Learning](#ml-researcher-representation-learning-2026-02-06) | ml-research |  | Berlin | PhD | 4 |  | [live](https://dunia.jobs.personio.com/job/2521638?language=en) |
-| 2026-02-06 | open | [Manufacturing Systems Engineer](#manufacturing-systems-engineer-2026-02-06) | software-eng |  | Berlin |  |  |  | [live](https://dunia.jobs.personio.com/job/2521931?language=en) |
-| 2026-02-06 | open | [Quantum Chemistry Specialist](#quantum-chemistry-specialist-2026-02-06) | materials-science |  | Berlin | PhD | 3 |  | [live](https://dunia.jobs.personio.com/job/2521891?language=en) |
-| 2026-02-06 | open | [Reliability & Test Engineer](#reliability-test-engineer-2026-02-06) | software-eng |  | Berlin |  | 5 |  | [live](https://dunia.jobs.personio.com/job/2521947?language=en) |
+| 2026-02-04 | 2026-10-10 | [Chemical Data Scientist](#chemical-data-scientist-2026-02-04) | ml-research |  | Berlin | PhD/MS | 3 |  | [live](https://dunia.jobs.personio.com/job/2519182?language=en) |
+| 2026-02-04 | 2026-10-10 | [Lab Operations & Procurement Manager](#lab-operations-procurement-manager-2026-02-04) | business-ops |  | Berlin |  |  |  | [live](https://dunia.jobs.personio.com/job/2519192?language=en) |
+| 2026-02-04 | 2026-10-10 | [Lab Technicians](#lab-technicians-2026-02-04) | lab-automation |  | Berlin |  |  |  | [live](https://dunia.jobs.personio.com/job/2519206?language=en) |
+| 2026-02-04 | 2026-10-10 | [Research Scientist, Thermocatalysis](#research-scientist-thermocatalysis-2026-02-04) | materials-science |  | Berlin | PhD | 3 |  | [live](https://dunia.jobs.personio.com/job/2519204?language=en) |
+| 2026-02-04 | 2026-10-10 | [Software Engineer, Infrastructure](#software-engineer-infrastructure-2026-02-04) | software-eng |  | Berlin |  | 2 |  | [live](https://dunia.jobs.personio.com/job/2519188?language=en) |
+| 2026-02-06 | 2026-10-10 | [ML Engineer, Agents & Reasoning](#ml-engineer-agents-reasoning-2026-02-06) | ml-research |  | Berlin |  | 4 |  | [live](https://dunia.jobs.personio.com/job/2521701?language=en) |
+| 2026-02-06 | 2026-10-10 | [ML Researcher, Representation Learning](#ml-researcher-representation-learning-2026-02-06) | ml-research |  | Berlin | PhD | 4 |  | [live](https://dunia.jobs.personio.com/job/2521638?language=en) |
+| 2026-02-06 | 2026-10-10 | [Manufacturing Systems Engineer](#manufacturing-systems-engineer-2026-02-06) | software-eng |  | Berlin |  |  |  | [live](https://dunia.jobs.personio.com/job/2521931?language=en) |
+| 2026-02-06 | 2026-10-10 | [Quantum Chemistry Specialist](#quantum-chemistry-specialist-2026-02-06) | materials-science |  | Berlin | PhD | 3 |  | [live](https://dunia.jobs.personio.com/job/2521891?language=en) |
+| 2026-02-06 | 2026-10-10 | [Reliability & Test Engineer](#reliability-test-engineer-2026-02-06) | software-eng |  | Berlin |  | 5 |  | [live](https://dunia.jobs.personio.com/job/2521947?language=en) |
 | 2026-04-10 | 2026-05-14 | [Head of People](#head-of-people-2026-04-10) | leadership |  |  |  |  |  | [Wayback](https://web.archive.org/web/20260410191200/https://dunia.jobs.personio.com/job/2515890) |
 | 2026-04-10 | 2026-06-17 | [Partnership Manager](#partnership-manager-2026-04-10) | business-ops |  |  |  | 5 |  | [Wayback](https://web.archive.org/web/20260410203801/https://dunia.jobs.personio.com/job/2516252) |
 | 2026-06-17 | 2026-06-17 | [Bilanzbuchhalter/in (IHK) / Finance Manager (m/w/d) — 20 Std./Woche, hybrid](#bilanzbuchhalter-in-ihk-finance-manager-m-w-d-20-std-woche-hybrid-2026-06-17) | business-ops |  |  |  |  |  | [Wayback](https://web.archive.org/web/20260617195805/https://dunia.jobs.personio.com/job/2630177) |
@@ -27,11 +28,30 @@ Back to [all companies](README.md) · [company profile](../companies/dunia-innov
 
 Role-specific sections only (responsibilities, requirements, pay): the company pitch, benefits and equal-opportunity text are dropped, and so are email addresses and phone numbers.
 
+<a id="spontaneous-application-2025-07-01"></a>
+
+### Spontaneous application (2025-07-01)
+
+2025-07-01 → open · general-application · Berlin · [source](https://dunia.jobs.personio.com/job/2205674?language=en)
+
+<details><summary>Description</summary>
+
+**Your mission**
+Tell us how you can help advance Dunia's mission with your skills and superpowers!
+
+**Your profile**
+- Design your own perks
+- Mentorship to help you grow into the roles you want
+- Awesome colleagues & regular company events
+- Flexible working hours & hybrid working
+
+</details>
+
 <a id="business-development-manager-2025-07-29"></a>
 
 ### Business Development Manager (2025-07-29)
 
-2025-07-29 → open · business-ops · Berlin · [source](https://dunia.jobs.personio.com/job/2267425?language=en)
+2025-07-29 → 2026-10-10 · business-ops · Berlin · [source](https://dunia.jobs.personio.com/job/2267425?language=en)
 
 <details><summary>Description</summary>
 
@@ -158,7 +178,7 @@ Communicate truth clearly
 
 ### Chemical Data Scientist (2026-02-04)
 
-2026-02-04 → open · ml-research · Berlin · [source](https://dunia.jobs.personio.com/job/2519182?language=en)
+2026-02-04 → 2026-10-10 · ml-research · Berlin · [source](https://dunia.jobs.personio.com/job/2519182?language=en)
 
 <details><summary>Description</summary>
 
@@ -201,7 +221,7 @@ Influence the system, not just the analysis
 
 ### Lab Operations & Procurement Manager (2026-02-04)
 
-2026-02-04 → open · business-ops · Berlin · [source](https://dunia.jobs.personio.com/job/2519192?language=en)
+2026-02-04 → 2026-10-10 · business-ops · Berlin · [source](https://dunia.jobs.personio.com/job/2519192?language=en)
 
 <details><summary>Description</summary>
 
@@ -260,7 +280,7 @@ You ensure equipment is operational on time and at spec.
 
 ### Lab Technicians (2026-02-04)
 
-2026-02-04 → open · lab-automation · Berlin · [source](https://dunia.jobs.personio.com/job/2519206?language=en)
+2026-02-04 → 2026-10-10 · lab-automation · Berlin · [source](https://dunia.jobs.personio.com/job/2519206?language=en)
 
 <details><summary>Description</summary>
 
@@ -302,7 +322,7 @@ Grow your technical craft
 
 ### Research Scientist, Thermocatalysis (2026-02-04)
 
-2026-02-04 → open · materials-science · Berlin · [source](https://dunia.jobs.personio.com/job/2519204?language=en)
+2026-02-04 → 2026-10-10 · materials-science · Berlin · [source](https://dunia.jobs.personio.com/job/2519204?language=en)
 
 <details><summary>Description</summary>
 
@@ -344,7 +364,7 @@ Operate with rigor and discipline
 
 ### Software Engineer, Infrastructure (2026-02-04)
 
-2026-02-04 → open · software-eng · Berlin · [source](https://dunia.jobs.personio.com/job/2519188?language=en)
+2026-02-04 → 2026-10-10 · software-eng · Berlin · [source](https://dunia.jobs.personio.com/job/2519188?language=en)
 
 <details><summary>Description</summary>
 
@@ -384,7 +404,7 @@ The full loop: software → compute → science
 
 ### ML Engineer, Agents & Reasoning (2026-02-06)
 
-2026-02-06 → open · ml-research · Berlin · [source](https://dunia.jobs.personio.com/job/2521701?language=en)
+2026-02-06 → 2026-10-10 · ml-research · Berlin · [source](https://dunia.jobs.personio.com/job/2521701?language=en)
 
 <details><summary>Description</summary>
 
@@ -432,7 +452,7 @@ Ship reliable, production-grade systems
 
 ### ML Researcher, Representation Learning (2026-02-06)
 
-2026-02-06 → open · ml-research · Berlin · [source](https://dunia.jobs.personio.com/job/2521638?language=en)
+2026-02-06 → 2026-10-10 · ml-research · Berlin · [source](https://dunia.jobs.personio.com/job/2521638?language=en)
 
 <details><summary>Description</summary>
 
@@ -477,7 +497,7 @@ Push representation learning forward
 
 ### Manufacturing Systems Engineer (2026-02-06)
 
-2026-02-06 → open · software-eng · Berlin · [source](https://dunia.jobs.personio.com/job/2521931?language=en)
+2026-02-06 → 2026-10-10 · software-eng · Berlin · [source](https://dunia.jobs.personio.com/job/2521931?language=en)
 
 <details><summary>Description</summary>
 
@@ -520,7 +540,7 @@ Embed data and learning into manufacturing
 
 ### Quantum Chemistry Specialist (2026-02-06)
 
-2026-02-06 → open · materials-science · Berlin · [source](https://dunia.jobs.personio.com/job/2521891?language=en)
+2026-02-06 → 2026-10-10 · materials-science · Berlin · [source](https://dunia.jobs.personio.com/job/2521891?language=en)
 
 <details><summary>Description</summary>
 
@@ -565,7 +585,7 @@ Operate in a real system
 
 ### Reliability & Test Engineer (2026-02-06)
 
-2026-02-06 → open · software-eng · Berlin · [source](https://dunia.jobs.personio.com/job/2521947?language=en)
+2026-02-06 → 2026-10-10 · software-eng · Berlin · [source](https://dunia.jobs.personio.com/job/2521947?language=en)
 
 <details><summary>Description</summary>
 

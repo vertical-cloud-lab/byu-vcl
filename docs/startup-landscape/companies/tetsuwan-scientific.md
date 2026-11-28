@@ -2,6 +2,16 @@
 
 San Francisco, CA, US · founded 2023 (Entrepreneur First says 2024) · self-driving lab (AI-scientist software on retrofitted liquid handlers, bio labs) · active · <https://www.tetsuwan.com>
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**Openings.** 2 open on 2026-11-28 on [its job board](https://jobs.ashbyhq.com/tetsuwan), against 2 on 2026-10-10. 0 new, 0 closed.
+
+**LinkedIn job search** ([logged out, by name](https://www.linkedin.com/jobs/search?keywords=%22Tetsuwan%20Scientific%22&location=Worldwide&geoId=92000000), 2026-11-28): no postings.
+<!-- /refresh:2026-11-28 -->
+
 ## Funding timeline
 
 Total verified: USD 2.7M. No SEC Form D was found.

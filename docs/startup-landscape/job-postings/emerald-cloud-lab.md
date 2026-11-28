@@ -2,7 +2,7 @@
 
 Back to [all companies](README.md) · [company profile](../companies/emerald-cloud-lab.md)
 
-**43 postings recovered**, 28 with the full description; 7 still open on 2026-10-10. First seen 2014-03-26, latest 2026-10-01. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**49 postings recovered**, 34 with the full description; 9 still open on 2026-11-28. First seen 2014-03-26, latest 2026-11-25. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
@@ -44,11 +44,17 @@ Back to [all companies](README.md) · [company profile](../companies/emerald-clo
 | 2025-01-14 | 2025-01-14 | Staff Software Engineer (Front-End) | software-eng |  |  |  |  |  | [Wayback](https://web.archive.org/web/20250114100654/https://emeraldcloudlab.bamboohr.com/careers/164) |
 | 2025-03-10 | open | [Laboratory Operations Shift Manager](#laboratory-operations-shift-manager-2025-03-10) | lab-automation | Lab Training & Supervision | Austin, Texas | MS/BS | 1 |  | [live](https://emeraldcloudlab.bamboohr.com/careers/166) |
 | 2025-05-12 | 2025-05-12 | Operations Team Lead | business-ops |  |  |  |  |  | [Wayback](https://web.archive.org/web/20250512153513/https://emeraldcloudlab.bamboohr.com/careers/145?utm_source=Alumni+Ventures+job+board&utm_medium=getro.com&gh_src=Alumni+Ventures+job+board) |
-| 2026-05-01 | open | [Sr. Manager, Manufacturing Operations](#sr-manager-manufacturing-operations-2026-05-01) | business-ops | Ops Administration | Austin, Texas | MS/BS | 5 |  | [live](https://emeraldcloudlab.bamboohr.com/careers/202) |
-| 2026-06-08 | open | [Scientific Operations Engineer I](#scientific-operations-engineer-i-2026-06-08) | software-eng | Scientific Operations | Austin, Texas |  | 5 |  | [live](https://emeraldcloudlab.bamboohr.com/careers/107) |
-| 2026-08-18 | open | [Staff Backend Engineer](#staff-backend-engineer-2026-08-18) | software-eng | Platform Engineering |  |  | 8 |  | [live](https://emeraldcloudlab.bamboohr.com/careers/211) |
+| 2026-05-01 | 2026-10-10 | [Sr. Manager, Manufacturing Operations](#sr-manager-manufacturing-operations-2026-05-01) | business-ops | Ops Administration | Austin, Texas | MS/BS | 5 |  | [live](https://emeraldcloudlab.bamboohr.com/careers/202) |
+| 2026-06-08 | 2026-10-10 | [Scientific Operations Engineer I](#scientific-operations-engineer-i-2026-06-08) | software-eng | Scientific Operations | Austin, Texas |  | 5 |  | [live](https://emeraldcloudlab.bamboohr.com/careers/107) |
+| 2026-08-18 | 2026-10-10 | [Staff Backend Engineer](#staff-backend-engineer-2026-08-18) | software-eng | Platform Engineering |  |  | 8 |  | [live](https://emeraldcloudlab.bamboohr.com/careers/211) |
 | 2026-09-28 | open | [Legal Counsel](#legal-counsel-2026-09-28) | business-ops | Legal | Austin, Texas |  | 3 |  | [live](https://emeraldcloudlab.bamboohr.com/careers/215) |
-| 2026-10-01 | open | [Scientific Infrastructure Engineer III](#scientific-infrastructure-engineer-iii-2026-10-01) | software-eng | Scientific Infrastructure |  | PhD | 2 |  | [live](https://emeraldcloudlab.bamboohr.com/careers/216) |
+| 2026-10-01 | 2026-10-10 | [Scientific Infrastructure Engineer III](#scientific-infrastructure-engineer-iii-2026-10-01) | software-eng | Scientific Infrastructure |  | PhD | 2 |  | [live](https://emeraldcloudlab.bamboohr.com/careers/216) |
+| 2026-11-03 | open | [Construction Project Director](#construction-project-director-2026-11-03) | leadership | Construction | Austin, Texas | BS | 5 |  | [live](https://emeraldcloudlab.bamboohr.com/careers/218) |
+| 2026-11-06 | open | [Senior Backend Engineer](#senior-backend-engineer-2026-11-06) | software-eng | Platform Engineering |  |  | 8 |  | [live](https://emeraldcloudlab.bamboohr.com/careers/219) |
+| 2026-11-10 | open | [Director, Compliance & Quality Systems](#director-compliance-quality-systems-2026-11-10) | leadership | Quality & Compliance |  | PhD/MS/BS |  |  | [live](https://emeraldcloudlab.bamboohr.com/careers/220) |
+| 2026-11-18 | open | [Alliance Manager](#alliance-manager-2026-11-18) | business-ops | Customer Account Management |  |  |  |  | [live](https://emeraldcloudlab.bamboohr.com/careers/221) |
+| 2026-11-20 | open | [Senior HR Generalist](#senior-hr-generalist-2026-11-20) | business-ops | Human Resources | Austin, Texas | BS |  |  | [live](https://emeraldcloudlab.bamboohr.com/careers/213) |
+| 2026-11-25 | open | [FP&A Manager](#fp-a-manager-2026-11-25) | business-ops | Finance & Accounting | Austin, Texas | BS |  |  | [live](https://emeraldcloudlab.bamboohr.com/careers/222) |
 
 ## Careers-page captures
 
@@ -711,7 +717,7 @@ General Duties and Responsibilities
 
 ### Sr. Manager, Manufacturing Operations (2026-05-01)
 
-2026-05-01 → open · business-ops · Austin, Texas · [source](https://emeraldcloudlab.bamboohr.com/careers/202)
+2026-05-01 → 2026-10-10 · business-ops · Austin, Texas · [source](https://emeraldcloudlab.bamboohr.com/careers/202)
 
 <details><summary>Description</summary>
 
@@ -757,7 +763,7 @@ Cross-Functional Collaboration
 
 ### Scientific Operations Engineer I (2026-06-08)
 
-2026-06-08 → open · software-eng · Austin, Texas · [source](https://emeraldcloudlab.bamboohr.com/careers/107)
+2026-06-08 → 2026-10-10 · software-eng · Austin, Texas · [source](https://emeraldcloudlab.bamboohr.com/careers/107)
 
 <details><summary>Description</summary>
 
@@ -795,7 +801,7 @@ www.emeraldcloudlab.com
 
 ### Staff Backend Engineer (2026-08-18)
 
-2026-08-18 → open · software-eng · location not stated · [source](https://emeraldcloudlab.bamboohr.com/careers/211)
+2026-08-18 → 2026-10-10 · software-eng · location not stated · [source](https://emeraldcloudlab.bamboohr.com/careers/211)
 
 <details><summary>Description</summary>
 
@@ -867,7 +873,7 @@ Potential Supplemental Responsibilities
 
 ### Scientific Infrastructure Engineer III (2026-10-01)
 
-2026-10-01 → open · software-eng · location not stated · [source](https://emeraldcloudlab.bamboohr.com/careers/216)
+2026-10-01 → 2026-10-10 · software-eng · location not stated · [source](https://emeraldcloudlab.bamboohr.com/careers/216)
 
 <details><summary>Description</summary>
 
@@ -895,6 +901,225 @@ You might resonate with ECL if...
 
 **About ECL**
 https://www.emeraldcloudlab.com
+
+</details>
+
+<a id="construction-project-director-2026-11-03"></a>
+
+### Construction Project Director (2026-11-03)
+
+2026-11-03 → open · leadership · Austin, Texas · [source](https://emeraldcloudlab.bamboohr.com/careers/218)
+
+<details><summary>Description</summary>
+
+**Key Responsibilities**
+Austin Facility Expansion
+- Oversee day-to-day construction of the Austin facility expansion, directing general contractors, subcontractors, and vendors
+- Work with the VP of Special Projects to manage project schedule and budget
+- Coordinate with Owners-Rep to represent Emerald at regular owner-architect-contractor (OAC) meetings and report progress, risks, and mitigation plans to senior leadership
+- Coordinate design reviews, RFIs, submittals, and value-engineering efforts with the architect, engineers, and internal stakeholders
+- Manage QA and QC, incl. punch lists, commissioning, closeout documentation, and turnover to operations, with special attention to Change Control and Risk Assessment in a GMP lab
+- Capture lessons learned from the Austin build and feed them back into the company’s architectural program and construction standards
+Client Construction Support
+- Serve as the primary point of contact for clients building facilities based on ECL's architectural program, from pre-construction through commissioning
+- Guide clients and their internal teams on correct implementation of the program
+- Review client drawings, specifications, schedules, and submittals for conformance with the program
+- Conduct site visits and progress reviews at client projects
+- Develop and maintain client-facing resources (implementation guides, checklists, standard details, etc.)
+- Identify opportunities to supply company-fabricated MEP equipment to client projects, working with sales and leadership on scoping and proposals
+Offsite Fixture Fabrication
+- Identify domestic contract manufacturers with the necessary capabilities to fabricate large MEP fixtures based on ECL's existing designs, and coordinate with internal stakeholders to select the best one
+- Manage relationship with selected contract manufacturer
+- Develop cost-effective logistics options to transport fixtures to construction sites
+- Coordinate with site general contractors – whether our own or client – to have the appropriate trades available to install required fixtures
+- Liaise with contract manufacturer, in-house design, and on-site installers to improve and refine the design and fabrication of the fixtures
+General
+- Collaborate with internal teams and executive leadership on long-term facility and growth planning
+- Champion continuous improvement in construction methods, standardization, and prefabrication
+
+**Qualifications**
+Required
+- Bachelor's degree in Construction Management or a related field, and  5+ years of experience; OR, High school diploma or equivalent, and  10+ years of experience
+- At least 5 years of commercial/industrial construction management experience
+- Experience leading at least one $10,000,000+ construction project
+- Experience managing ground-up or major construction from pre-construction through closeout
+- Strong working knowledge of MEP systems and their design, installation, and commissioning
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="senior-backend-engineer-2026-11-06"></a>
+
+### Senior Backend Engineer (2026-11-06)
+
+2026-11-06 → open · software-eng · location not stated · [source](https://emeraldcloudlab.bamboohr.com/careers/219)
+
+<details><summary>Description</summary>
+
+**About the Role**
+We are seeking a Senior Platform Software Engineer to join our platform team and help build the services that power the future of scientific research. You will develop and maintain critical APIs and services that enable scientists to orchestrate complex experiments remotely. This role offers the unique opportunity to solve challenging problems at the intersection of cloud computing, laboratory automation, and scientific instrumentation.
+You will join a small, high-impact team where ownership and leadership are essential. As a team member helping to build the Engineering team as well as the product, you will also be encouraged to contribute to the software engineering practices we maintain in our own work, and which we bring to ECL as a whole. We strive to be continually critical of our process, cutting cruft and homing in on performance multipliers (such as continuous integration and agile development practices).
+
+**In this role you will**
+- Design and develop highly scalable backend services, ensuring performance and security
+- Collaborate with designers, scientists and engineers to deliver products solving real challenges experienced in labs by our users
+- Help set technical and product direction, collaborating with the team to determine the future of the product, what features to build, and how to build them
+- Ensure continual, high-availability operation of our services using modern reliability practices, including detailed observability and participation in an on-call rotation
+- Participate in code reviews and troubleshoot any performance or security issues
+- Advocate for healthy and maintainable software practices
+-
+Examples of projects
+- Improving our hybrid object / graph multi-tenant data store that supports describing all standard biology and chemistry experiments in code
+- Develop new services to gather real time data from sensors in our lab and make them available to operators for live feedback and to our cloud for further processing and aggregation
+- Building a service to safely distribute and execute simulation, analysis, and testing code in SLL
+- Working closely with our Scientific Development team in developing and optimizing data storage, retrieval and search functions in SLL
+Our Tech Stack
+Our backend services are written in Go, Python or Rust, and deployed on AWS infrastructure in Docker containers, with container orchestration through Kubernetes. Our applications are web apps (React / HTML5 / CSS3) running on the desktop through NW.js , across Windows and Mac OS. Our source code control is on Github, with integration with Travis CI for continuous testing. The Symbolic Lab Language is written in the Wolfram Language.
+More broadly, developing the software to enable cloud-based science is an expansive, diverse challenge. A core component of our job is consistently determining the right tools for the job at hand, and diving in to learn these new technologies along the way.
+
+**Requirements**
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="director-compliance-quality-systems-2026-11-10"></a>
+
+### Director, Compliance & Quality Systems (2026-11-10)
+
+2026-11-10 → open · leadership · location not stated · [source](https://emeraldcloudlab.bamboohr.com/careers/220)
+
+<details><summary>Description</summary>
+
+**Role Summary**
+The Director, Compliance & Quality Systems owns ECL's Quality Management System (QMS). You will play an key role in finalizing the design, build, and implementation of the ECL QMS—a critical step toward GMP compliance—and you'll lead ECL through its first client audits and regulatory inspections. Once the QMS is established, you will oversee everyday operations and continuous compliance.
+ECL operates from a single site today and will expand to additional sites in the near future .  You'll ensure the QMS is designed to scale, so all sites launch with the same quality standard. You'll build and lead a focused team to drive GMP compliance.
+This hands-on leadership role offers the opportunity to shape ECL's QMS, embedding quality processes directly into ECL's novel software-driven laboratory platform. We're looking for a leader with deep complia nce expertise, as well as the  curiosity and agility to reimagine how those requirements are met in a software-driven, connected environment.
+
+**QMS Ownership**
+- Own ECL's QMS processes end to end: document control, deviations, OOS, CAPA, change control, risk management, equipment qualification, supplier quality and GMP training
+- Monitor QMS execution at current and future sites through quality metrics, periodic reviews, and internal audits
+- Ensure the ECL QMS meets client quality requirements and the terms of each Quality Agreement, and that required client notifications are communicated accurately and on time
+- Ensure quality and compliance requirements are embedded in ECL's single software platform
+- Run Quality Management Reviews and report quality performance, risks, and resource needs to the executive team
+
+**Regulatory Intelligence and Readiness**
+- Track changes in applicable regulations, guidance and standards and assess their impact on ECL operations and client work
+- Monitor inspection trends, warning letters and enforcement themes, & translate them into concrete readiness actions
+- Represent ECL's quality and compliance position with external stakeholders
+Audits and Inspections
+- Own the internal audit program, extending it to each new site as it opens
+- Coordinate responses to observations and findings and track them to on-time closure
+- Maintain continuous inspection readiness
+- Manage client quality agreements and support client qualification questionnaires and due diligence
+Supplier Quality
+- Own supplier quality program: risk-based supplier selection, qualification, approved supplier list and ongoing performance monitoring
+- Plan and conduct supplier audits; manage supplier corrective actions and change notifications
+- Establish and maintain quality agreements with critical suppliers of instruments, reagents, consumables and services
+Training
+- Own the GMP training program at current and future sites
+- Deliver quality, data integrity, and inspection-readiness training, u pdating  content as regulations and procedures change
+Leadership
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="alliance-manager-2026-11-18"></a>
+
+### Alliance Manager (2026-11-18)
+
+2026-11-18 → open · business-ops · location not stated · [source](https://emeraldcloudlab.bamboohr.com/careers/221)
+
+<details><summary>Description</summary>
+
+**Core Responsibilities**
+- Own and oversee ECL's strategic customer relationships following contract execution, ensuring strong customer engagement, satisfaction, retention, and long-term partnership development
+- Drive revenue performance across existing customer accounts, maintaining accountability for achieving contractual revenue expectations and identifying opportunities to improve account performance
+- Monitor customer utilization, recognized revenue, and commercial commitments, partnering with Finance and internal stakeholders to identify revenue gaps, mitigate risks, and develop actionable strategies to achieve account objectives
+- Identify and advance new business opportunities within existing customer organizations, including expansion into additional departments, business units, and research programs, with a focus on generating incremental revenue
+- Cultivate and maintain relationships with key customer stakeholders, including scientific leadership, operational decision-makers, and executive sponsors, to strengthen partnerships and support account expansion
+- Provide full leadership and oversight of ECL's Technical Account Management team, including establishing performance expectations, setting priorities, coaching and  development, performance management, and ensuring accountability for customer success objectives.
+- Oversee customer onboarding, platform adoption, and ongoing account engagement through the Technical Account Management team, ensuring customers effectively leverage ECL's capabilities and receive consistent support
+- Serve as a senior escalation point for strategic customer matters, coordinating with Scientific, Engineering, Operations, and other internal teams to resolve challenges, manage customer expectations, and protect the overall customer relationship
+- Partner with Business Development on account expansion initiatives, providing customer insights, supporting commercial discussions, and contributing to proposals and contract negotiations as appropriate, while Business Development retains primary ownership of commercial agreements
+- Develop and maintain account strategies, performance metrics, and reporting practices that provide leadership with visibility into revenue performance, customer relationship health, expansion opportunities, and potential risks
+- Identify and implement improvements to account management practices, internal coordination, and customer engagement strategies to strengthen the overall customer experience and support ECL's continued growth
+
+**Qualifications**
+- Advanced degree in Chemistry, Biology, Pharmaceutical Sciences (specifically in product development or quality), or a related scientific discipline preferred; equivalent relevant industry experience may be considered
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="senior-hr-generalist-2026-11-20"></a>
+
+### Senior HR Generalist (2026-11-20)
+
+2026-11-20 → open · business-ops · Austin, Texas · [source](https://emeraldcloudlab.bamboohr.com/careers/213)
+
+<details><summary>Description</summary>
+
+**About the Role**
+Emerald Cloud Laboratory (ECL) is seeking an experienced, hands-on HR Generalist to support employees and managers in a fast-paced startup environment.
+Reporting to the Head of HR, you’ll manage day-to-day HR operations, including employee relations, manager support, benefits, leaves, onboarding, offboarding, compliance, and employee documentation. The ideal candidate is approachable, organized, responsive, and comfortable handling sensitive matters with sound judgment and confidentiality.
+What You’ll Do
+- Serve as a trusted HR resource for employees and managers.
+- Manage employee relations concerns, workplace investigations, and conflict resolution.
+- Coach managers on performance, documentation, corrective action, and terminations.
+- Coordinate onboarding, offboarding, and employee changes.
+- Maintain accurate HRIS data and confidential employee records.
+- Support benefits, open enrollment, leaves, and workplace accommodations.
+- Partner with payroll to ensure employee information is accurate and timely.
+- Interpret and consistently apply employment laws and company policies.
+- Support performance reviews, employee engagement, reporting, and HR projects.
+- Identify risks and escalate significant concerns to the Head of HR.
+What You’ll Bring
+- Six or more years of progressive HR experience, preferably in an HR Generalist role.
+- Strong employee relations, investigation, and manager-coaching experience.
+- Experience with benefits, leaves, onboarding, offboarding, HRIS administration, and payroll support.
+- Working knowledge of federal, state, and local employment laws.
+- Strong communication, organization, judgment, and confidentiality.
+- Experience in a startup, biotechnology, scientific, or technical environment is preferred.
+- Bachelor’s degree in Human Resources, Business, or a related field is preferred.
+- Ability to work in the Austin office one day per week.
+If you’re a solutions-oriented HR professional who enjoys supporting employees and partnering with managers, we’d love to hear from you!
+
+</details>
+
+<a id="fp-a-manager-2026-11-25"></a>
+
+### FP&A Manager (2026-11-25)
+
+2026-11-25 → open · business-ops · Austin, Texas · [source](https://emeraldcloudlab.bamboohr.com/careers/222)
+
+<details><summary>Description</summary>
+
+**Job Description – FP&A Manager**
+Emerald Cloud Lab (ECL) is the world's leading remote life sciences laboratory, allowing scientists to run experiments 24/7/365, from anywhere in the world, revolutionizing the approach to lab work for research, product development and QC testing. The entire lab is driven through a single software interface, forming one continuous workflow from test design to execution in the lab and analysis of resulting data. Scientific methods are translated into code, then executed in our state-of-the art laboratory. With ECL handling the manual completion of experiments, scientists can spend more time on the science - designing experiments and interpreting results.
+
+**About the Role**
+The FP&A Manager will join our tight-knit, high-impact Finance team, owning forecasting, cost modeling, capacity planning, and more for both Emerald’s internal operations and Emerald’s clients. We’re looking for an FP&A Manager who brings agility and collaborative acumen to their role: you’re as comfortable working deeply in Excel work to build pricing models as you are having strategic conversations with executive leadership and clients. As a senior individual contributor, the FP&A Manager will work with expertise, autonomy, and a high level of attention to detail.
+This role can be performed remotely in the United States, or as a hybrid role based in our Austin flagship facility.
+
+**Key Responsibilities**
+Client Forecast Models and Pricing
+- Build client estimates for new opportunities, translating scope (number of methods, run volumes, instruments, timelines) into cost, price and margin
+- Partner with sales, operations and scientific teams to gather scope assumptions and pressure-test them
+- Support term sheet and contract negotiations with pricing analysis: rate cards, price-reset mechanics, escalators, pass-through costs and fee structures
+- Maintain a library of standard pricing and cost templates so estimates are fast and consistent with enterprise financial returns requirements
+Cost Modeling
+- Build and maintain unit cost models, including labor, materials, instrument support, maintenance and calibration, and facility and overhead allocations
+- Benchmark labor costs against relevant market rates and track how automation and cost effiencey change cost per run over time
+- Model the cost of standing up capacity: lab hubs, instrument fleets, staffing ramps and new geographies (including international locations)
+Capacity planning
+- Build and own ECL's capacity model: instrument hours, utilization, staffing by role and shift, and throughput per method and run
+- Turn client forecasts and the sales pipeline into capacity needs (headcount, instruments, lab space) and the timing to have them in place
+- Tie capacity to pricing: confirm we can deliver the volumes we quote in sales models and contracts, and show how utilization drives unit cost and margin
+
+*(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
 

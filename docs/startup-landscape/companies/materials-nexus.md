@@ -2,6 +2,24 @@
 
 London, UK · founded 2020 · AI-for-materials (computational) · active · [materialsnexus.com](https://www.materialsnexus.com)
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**Team size on LinkedIn.** People listing the company, read from the company page (LinkedIn's 'View all N employees'); this counts alumni who never updated their profile and misses staff without one.
+
+| Date | Members | Band | Source |
+| --- | --- | --- | --- |
+| 2025-01-23 | 22 | 11-50 | [Wayback](https://web.archive.org/web/20250123140825/https://www.linkedin.com/company/materials-nexus) |
+| 2025-01-23 | 22 | 11-50 | [Wayback](https://web.archive.org/web/20250123164848/https://www.linkedin.com/company/materials-nexus/) |
+
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=79745357&geoId=92000000&location=Worldwide), 2026-11-28): no postings.
+
+- Non-executive director Iván Markman resigned from the board on 6 November 2026, 15 months after joining (Companies House). Co-founders Jonathan Bean and Robert Forrest are now the only directors. ([source](https://find-and-update.company-information.service.gov.uk/company/13057449/officers))
+- Now trades as MatNex: materialsnexus.com/careers redirects to matnex.ai/careers, which says it hires selectively and lists no vacancies. ([source](https://matnex.ai/careers))
+<!-- /refresh:2026-11-28 -->
+
 ## Funding timeline
 
 | Date | Round | Amount (USD M) | Original | Lead investors | Source |

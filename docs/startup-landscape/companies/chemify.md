@@ -2,6 +2,25 @@
 
 Glasgow, UK (subsidiary Chemify US Inc.; Silicon Valley facility planned) · incorporated 2019, spun out of the University of Glasgow 2022 · self-driving lab ("Chemifarm" automated synthesis) · active · [chemify.io](https://www.chemify.io)
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**Team size on LinkedIn.** People listing the company, read from the company page (LinkedIn's 'View all N employees'); this counts alumni who never updated their profile and misses staff without one.
+
+| Date | Members | Band | Source |
+| --- | --- | --- | --- |
+| 2023-08-04 | 37 | 2-10 | [Wayback](https://web.archive.org/web/20230804180310/https://www.linkedin.com/company/chemify-limited/) |
+| 2024-08-15 | 79 | 51-200 | [Wayback](https://web.archive.org/web/20240815162711/https://www.linkedin.com/company/chemify-limited/) |
+| 2026-10-06 | 210 | 51-200 | [Wayback](https://web.archive.org/web/20261006201403/https://www.linkedin.com/company/chemify-limited/) |
+
+**Openings.** 12 open on 2026-11-28 on [its job board](https://www.chemify.io/careers), against 32 on 2026-10-10. 0 new, 20 closed.
+- Closed since 2026-10-10: Business Support Assistant; Engineering Project Manager; Health & Safety Advisor; Laboratory Coordinator; Management Accountant; Mechatronics Engineer; Payroll Clerk; Product Operations Manager - Synthetic Chemistry; Production Chemist (Dispensary); Senior / Staff Machine Learning Scientist; Senior / Staff Machine Learning Scientist USA; Senior Full Stack Software Engineer; Senior Manager, Operations Dev; Senior Manufacturing Engineer; Senior Mechanical Engineer; Senior/ Staff Analytical Technician; Staff CADD Scientist USA; Staff Product Designer; Synthetic Chemist; Tech Director, CTO Office.
+
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=82235193&geoId=92000000&location=Worldwide), 2026-11-28): 5 postings: Senior Product Owner (Glasgow, Scotland, United Kingdom, posted 2026-11-13); Product Operations Manager - Synthetic Chemistry (Glasgow, Scotland, United Kingdom, posted 2026-11-05); Cyber Security Engineer (Infrastructure & OT) (Glasgow, Scotland, United Kingdom, posted 2026-11-09); Senior Manager of Facilities and Property Services (Glasgow, Scotland, United Kingdom, posted 2026-11-19); Engineering Operations Shift Supervisor (Greater Glasgow Area, posted 2026-11-05).
+<!-- /refresh:2026-11-28 -->
+
 ## Funding timeline
 
 | Date | Round | Amount (USD M) | Original | Lead investors | Source |

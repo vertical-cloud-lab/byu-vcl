@@ -430,6 +430,28 @@ Hermite 是我们自主研发的 AI 药物研发平台，集成分子模拟、�
 
 </details>
 
+<a id="north-china-key-account-manager-ai-drug-r-d-systems-2026-08-03"></a>
+
+### North China Key Account Manager (AI Drug R&D Systems) (2026-08-03)
+
+2026-08-03 → open · ml-research · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7669687056771287302/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+岗位职责：
+1.客户拓展与线索挖掘:面向华北区域头部药企、CRO/CDMO、国家级科研院所及重点实验室开发新客户，挖掘药物研发(分子设计、临床研究)各环节数字化、智能化需求，拓展 FDE 智能系统、智能 Agent 产品与 AI 药物发现服务销售机会，搭建优质客户线索池；
+3.客户关系深度运营：跟进交付反馈，促成增购/复购，建立长期战略合作；组织行业沙龙、培训等活动，提升公司 AI 药物研发产品在华北区域生物医药领域的品牌影响力；
+满意度
+
+**Requirements (职位要求)**
+任职要求：
+1.本科及以上；生物医药、药学、生物信息、计算化学等相关专业优先。
+2.3 年以上 To B 销售/商务经验（生物医药、科研服务、工业软件或 AI 科技背景均可）。
+3.熟悉药物研发全流程，懂药企/CRO/科研机构的采购决策与审批逻辑。
+
+</details>
+
 <a id="b2b-ai-product-manager-2026-08-05"></a>
 
 ### B2B AI Product Manager (2026-08-05)
@@ -445,6 +467,36 @@ Hermite 是我们自主研发的 AI 药物研发平台，集成分子模拟、�
 1.3 年以上产品经理工作经验，熟悉大模型、Agent 等 AI 技术在产品中的应用。
 2.有 B 端产品经验者优先，熟悉企业级 SaaS 产品的商业化链路。
 3.具备科研背景（理工科硕士及以上优先）或对科研工作流有深入理解，能与科学家用户有效对话。
+
+</details>
+
+<a id="multi-cloud-ai-infrastructure-engineer-sa-2026-08-17"></a>
+
+### Multi-Cloud AI Infrastructure Engineer (SA) (2026-08-17)
+
+2026-08-17 → open · ml-research · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7674974930328897843/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+1.多云资源管理：负责阿里云、火山引擎、腾讯云等公有云资源的统一管理与日常运维，涵盖计算、GPU、存储、网络、容器等基础设施，保障平台稳定运行；
+2.Kubernetes 与 GPU 管理：负责 K8s 集群运维、资源调度优化及故障排查，提升 GPU 资源利用率和集群稳定性，支撑 AI 训练与推理业务；
+3.云成本治理（FinOps）：负责多云账单分析、成本分摊、资源利用率统计及预算管理，识别资源浪费，推动云资源成本优化；
+5.云平台安全管理：负责云账号、IAM 权限、密钥及资源配额管理，落实最小权限原则，保障云平台资源与访问安全；
+6.AI 平台运维支持：负责 AI 训练、推理及大模型服务相关基础设施的运维支持，包括资源规划、模型 API 管理、调用成本分析及故障处理。
+
+**Requirements (职位要求)**
+1.本科及以上学历，5 年以上云平台、云原生或基础设施运维相关工作经验，具备独立负责生产环境运维的能力；
+2.熟悉 Kubernetes 核心机制，具备生产环境 K8s 集群管理、资源调度、性能优化及故障排查经验；
+4.熟悉 Linux、Docker、网络及存储等基础技术，具备 Shell、Python 等自动化脚本开发能力；
+6.熟悉 Prometheus、Grafana 等监控工具，具备监控告警体系建设及线上问题排查能力；
+7.具备良好的责任意识、风险意识和团队协作能力，能够独立处理复杂问题，愿意长期深耕云基础设施及 AI 平台领域。
+三、加分项
+1.有 GPU 集群管理、GPU Binpack、资源调度优化或 GPU 虚拟化实践经验；
+2.熟悉阿里云 PAI、火山引擎 AI 平台、Volcano、Kubeflow 等 AI 基础设施产品；
+3.有多云统一纳管、FinOps 成本治理或大规模云资源成本优化经验；
+4.熟悉 Terraform、Ansible、ArgoCD 等自动化运维工具；
+5.了解 LiteLLM 等大模型网关，具备模型 API、Token 计量、限流及调用成本管理经验。
 
 </details>
 
@@ -474,6 +526,94 @@ Hermite 是我们自主研发的 AI 药物研发平台，集成分子模拟、�
 了解 Agent、LLM、函数调用或 AI 编程工具。
 熟悉 RDKit、SMILES 或化学/材料数据处理。
 对数据质量敏感，能够从反馈中发现问题并推动优化。
+
+</details>
+
+<a id="teaching-and-curriculum-intern-life-sciences-chemistry-materials-mathematics-ai-2026-10-19"></a>
+
+### Teaching and Curriculum Intern (Life Sciences / Chemistry / Materials / Mathematics / AI) (2026-10-19)
+
+2026-10-19 → open · ml-research · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7698292624411347210/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+1. 参与 AI for Science 基础教育与高校课程开发、教材编写；
+3. 配合课程的审核、上线与后续修订；
+4. 完成团队安排的其他教研工作。
+
+**Requirements (职位要求)**
+1. 本科及以上在读，生命科学 / 化学 / 材料 / 数学 / 人工智能（计算机、统计等）相关方向；
+3. 表达能力强：书面文字准确简洁，能把专业内容讲给非本专业的本科生听懂；口头讲解有条理，能当面讲清自己的思路并回应追问；
+4. 有机器学习 / AI 基础，能用 Python 做建模或复现实验（熟悉 PyTorch 更佳；数学方向有 Python 编程基础即可）；
+优先条件
+1. 有教学、助教、家教或课程开发经验者优先；
+5. 数学方向：大学数学基础扎实，有 Python 编程基础，会使用 AI 工具；
+你会获得
+1.参与 AI4S 教学产品从 0 到 1 的课程体系建设，直接影响真实的基础教育与高校教学场景；
+2.与领域讲师、高校 PI、产业专家一起打磨课程，当面听到他们对你做的内容的意见；
+3.对 AI4S 工具链与真实科研工作流有系统认知与实践机会。
+
+</details>
+
+<a id="multi-cloud-ai-compute-platform-r-d-engineer-2026-10-23"></a>
+
+### Multi-Cloud AI Compute Platform R&D Engineer (2026-10-23)
+
+2026-10-23 → open · ml-research · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7699799034928449834/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+1. 负责多云 AI 算力平台的设计与研发，基于 Go 构建统一资源管理服务，对接阿里云、火山引擎、腾讯云 OpenAPI，实现 GPU、容器、存储等资源的纳管与自动化编排。
+2. 深度开发 Kubernetes 平台能力：编写 CRD/Operator/Controller，扩展调度器（Volcano、Kueue 等），实现 AI 训练/推理任务的队列、配额、抢占与 GPU binpack、混部等调度策略。
+3. 研发 FinOps 成本治理系统，实现多云账单拆分、成本归因、闲置识别与利用率分析，输出成本报表，支撑预算管控。
+4. 构建多云统一可观测平台与统一大模型网关，实现跨集群监控、容量与成本大盘，以及模型路由、限流、Token 计量与额度管控。
+
+**Requirements (职位要求)**
+1. 本科及以上学历，计算机相关专业，3 年以上后端开发或云原生平台研发经验。
+2. 精通 Go（或 Java/Python 并愿意转 Go），有扎实的分布式系统、API 设计与工程能力。
+3. 深入理解 K8s 核心机制，熟练使用 client-go/controller-runtime，有 Operator 或调度器扩展的实际开发经验。
+4. 有阿里云、火山引擎、腾讯云中至少两家的 API 集成开发经验，具备 GPU 调度、资源隔离相关实践。
+5. 熟悉 Prometheus 生态或计量计费类系统开发，了解 AI 训练/推理任务特点，具备复杂线上问题的定位与修复能力。
+加分项
+1. 有 Volcano、Kueue、HAMi 等开源项目贡献或深度二次开发经验；
+2. 有阿里云 PAI、火山引擎机器学习平台集成经验，或大规模 GPU 集群调度/成本治理落地经验；
+3. 有 LLM 网关、Token 计量计费系统研发经验。
+
+</details>
+
+<a id="drug-r-d-project-ai-agent-intern-2026-11-03"></a>
+
+### Drug R&D Project AI Agent Intern (2026-11-03)
+
+2026-11-03 → open · ml-research · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7703872914059610406/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+- 参与药物研发及生物医药项目管理 Agent 的设计、开发、测试和迭代。
+- 使用大模型、RAG、工具调用和工作流编排，实现信息提取、任务规划、进度跟踪与报告生成。
+- 整理、清洗和结构化项目文档、研发资料及业务数据，建设 Agent 可使用的知识与案例体系。
+- 对接飞书等协作工具及相关业务系统，探索 Agent 在真实研发流程中的应用。
+- 建设测试案例和评测集，分析 Agent 的错误、边界与人工介入原因，持续优化工作流。
+- 编写测试、技术文档和使用说明，沉淀可复用的 Agent 能力。
+
+**Requirements (职位要求)**
+- 熟悉 Python，能够完成数据处理、API 调用和基础服务开发。
+- 使用过大模型 API 或 Agent 框架，理解 Prompt、RAG、工具调用等基本概念。
+- 熟悉 Git，具备基本的软件工程、测试和文档意识。
+- 每周实习不少于3天，可连续实习3个月以上。
+加分项
+- 有 AI Agent、知识库、工作流编排或模型评测经验。
+- 了解药物研发、计算化学、CADD或生物信息学。
+- 熟悉飞书开放平台、多维表格或企业协作系统。
+- 熟悉 TypeScript、FastAPI或前端开发。
+- 有相关项目、开源代码、竞赛或技术文章。
+你将获得
+- 参与 AI Agent 与药物研发结合的前沿实践。
+- 完整经历 Agent 从原型、评测到实际应用的过程。
+- 探索可规模化的新一代生物医药研发协作模式。
 
 </details>
 

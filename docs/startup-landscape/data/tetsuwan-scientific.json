@@ -28,19 +28,38 @@
       "new_postings": 2,
       "method": "ats",
       "source": "https://jobs.ashbyhq.com/tetsuwan"
+    },
+    {
+      "period": "2026Q4",
+      "new_postings": 0,
+      "method": "job_postings.jsonl",
+      "note": "postings first seen 2026-10-01 to 2026-11-28 (live boards and Wayback)",
+      "source": "https://jobs.ashbyhq.com/tetsuwan"
     }
   ],
   "current_openings": {
-    "date": "2026-10-09",
+    "date": "2026-11-28",
     "count": 2,
     "by_function": {
-      "software-eng": 2
+      "software-eng": 1,
+      "business-ops": 1
     },
     "titles": [
       "Software Engineer",
       "Product Designer"
     ],
-    "source": "https://jobs.ashbyhq.com/tetsuwan"
+    "source": "https://jobs.ashbyhq.com/tetsuwan",
+    "basis": "company job board (live snapshot)",
+    "previous": {
+      "date": "2026-10-10",
+      "count": 2,
+      "by_function": {
+        "software-eng": 1,
+        "business-ops": 1
+      },
+      "source": "https://jobs.ashbyhq.com/tetsuwan",
+      "note": "recounted from the 2026-10-10 live snapshot"
+    }
   },
   "people": [
     {

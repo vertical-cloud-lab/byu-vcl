@@ -2,6 +2,22 @@
 
 Tokyo, Japan · founded 2021 · AI-for-materials (computational) · active · [matlantis.com](https://matlantis.com/en/)
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**Team size on LinkedIn.** People listing the company, read from the company page (LinkedIn's 'View all N employees'); this counts alumni who never updated their profile and misses staff without one.
+
+| Date | Members | Band | Source |
+| --- | --- | --- | --- |
+| 2025-07-16 | 31 | 11-50 | [Wayback](https://web.archive.org/web/20250716130306/https://www.linkedin.com/company/matlantis/) |
+
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=82798077&geoId=92000000&location=Worldwide&original_referer=), 2026-11-28): 1 posting: Senior Solutions Scientist (Cambridge, MA, posted 2026-11-25, 59 applicants).
+
+- Posted a Senior Solutions Scientist role on LinkedIn for its Cambridge, MA office (25 November, 59 applicants by 28 November). The office opened in 2024-09. This is the first US posting in the survey's record for Matlantis; its Japanese hiring runs through BizReach and its own careers page. ([source](https://www.linkedin.com/jobs/search?f_C=82798077&geoId=92000000&location=Worldwide))
+<!-- /refresh:2026-11-28 -->
+
 A joint venture of Preferred Networks (PFN) and ENEOS that sells Matlantis, a universal atomistic simulator built on the PFP neural-network potential, as cloud SaaS. Mitsubishi Corporation joined as a shareholder in 2024. The company was renamed from PFCC on 2025-07-01.
 
 ## Funding timeline

@@ -96,6 +96,16 @@
       "source": "https://web.archive.org/web/20161023220617/http://www.citrine.io:80/team"
     },
     {
+      "date": "2020-12-31",
+      "value": 17,
+      "low": null,
+      "high": null,
+      "method": "openalex",
+      "note": "distinct authors with Citrine affiliation in 2020 (peak); 2016:7, 2018:7, 2021:13, 2023:13, 2025:4",
+      "source": "https://api.openalex.org/authors?filter=affiliations.institution.id:I4210143896",
+      "partial": true
+    },
+    {
       "date": "2021-02-10",
       "value": null,
       "low": null,
@@ -148,16 +158,6 @@
       "method": "linkedin-band",
       "note": "band 51-200; 68 employees on LinkedIn",
       "source": "https://web.archive.org/web/20260721211735/https://www.linkedin.com/company/citrine-informatics"
-    },
-    {
-      "date": "2020-12-31",
-      "value": 17,
-      "low": null,
-      "high": null,
-      "method": "openalex",
-      "note": "distinct authors with Citrine affiliation in 2020 (peak); 2016:7, 2018:7, 2021:13, 2023:13, 2025:4",
-      "source": "https://api.openalex.org/authors?filter=affiliations.institution.id:I4210143896",
-      "partial": true
     }
   ],
   "postings": [
@@ -212,26 +212,29 @@
     {
       "period": "2026Q4",
       "new_postings": 1,
-      "method": "wayback-cdx",
-      "source": "https://web.archive.org/web/20261003112309/https://ats.rippling.com/citrine-informatics/jobs/3418abba-4de2-4a0a-8dc3-9ad403db68f1"
+      "method": "job_postings.jsonl",
+      "note": "postings first seen 2026-10-01 to 2026-11-28 (live boards and Wayback)",
+      "source": "https://ats.rippling.com/citrine-informatics/jobs"
     }
   ],
   "current_openings": {
-    "date": "2026-10-09",
-    "count": 5,
-    "by_function": {
-      "ml-research": 1,
-      "materials-science": 1,
-      "business-ops": 3
-    },
-    "titles": [
-      "Data & Artificial Intelligence Research Engineer, L4",
-      "Materials Informatics Consultant III (Germany)",
-      "Customer Success Manager, L3 (Germany)",
-      "Business Operations Manager, L3",
-      "General Opportunities (talent pool)"
-    ],
-    "source": "https://ats.rippling.com/citrine-informatics/jobs"
+    "date": "2026-11-28",
+    "count": 0,
+    "by_function": {},
+    "titles": [],
+    "source": "https://ats.rippling.com/citrine-informatics/jobs",
+    "basis": "company job board (live snapshot)",
+    "previous": {
+      "date": "2026-10-10",
+      "count": 4,
+      "by_function": {
+        "business-ops": 2,
+        "materials-science": 1,
+        "software-eng": 1
+      },
+      "source": "https://ats.rippling.com/citrine-informatics/jobs",
+      "note": "recounted from the 2026-10-10 live snapshot"
+    }
   },
   "people": [
     {

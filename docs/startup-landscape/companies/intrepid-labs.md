@@ -2,6 +2,26 @@
 
 Toronto, Canada · founded 2023 · self-driving lab · active · [intrepidlabs.tech](https://www.intrepidlabs.tech)
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**Team size on LinkedIn.** People listing the company, read from the company page (LinkedIn's 'View all N employees'); this counts alumni who never updated their profile and misses staff without one.
+
+| Date | Members | Band | Source |
+| --- | --- | --- | --- |
+| 2024-01-21 | 3 | 2-10 | [Wayback](https://web.archive.org/web/20240121013254/https://www.linkedin.com/company/intrepid-labs-ai) |
+| 2024-02-13 | 3 | 2-10 | [Wayback](https://web.archive.org/web/20240213125634/https://www.linkedin.com/company/intrepid-labs-ai) |
+| 2025-02-18 | 9 | 2-10 | [Wayback](https://web.archive.org/web/20250218095351/https://www.linkedin.com/company/intrepid-labs-ai) |
+| 2025-05-18 | 11 | 2-10 | [Wayback](https://web.archive.org/web/20250518143309/https://www.linkedin.com/company/intrepid-labs-ai) |
+| 2025-09-11 | 20 | 11-50 | [Wayback](https://web.archive.org/web/20250911042006/https://www.linkedin.com/company/intrepid-labs-ai) |
+
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=97449139&geoId=92000000&location=Worldwide), 2026-11-28): no postings.
+
+- The redesigned site leads with AI-driven drug formulation for pharma partners and cites a multi-year licensing agreement with Quotient Sciences. It has no careers page, and LinkedIn lists no openings. ([source](https://www.intrepidlabs.tech/))
+<!-- /refresh:2026-11-28 -->
+
 A University of Toronto spinout whose Valiant platform is an AI and robotics self-driving lab for drug-formulation development. Valiant combines the Andromeda active-learning engine, Eunomia orchestration and Robotica hardware.
 
 ## Funding timeline

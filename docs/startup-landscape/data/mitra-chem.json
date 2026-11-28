@@ -41,20 +41,117 @@
    "source": "https://metaltechnews.com/story/2024/09/25/tech-bytes/doe-and-michigan-fund-mitra-chem-cathodes/1959.html"
   }
  ],
- "headcount": [],
- "postings": [],
+ "headcount": [
+  {
+   "date": "2023-11-14",
+   "value": 58,
+   "low": 11,
+   "high": 50,
+   "method": "linkedin-band",
+   "note": "LinkedIn 'View all 58 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+   "source": "https://web.archive.org/web/20231114201416/https://www.linkedin.com/company/mitrachem/",
+   "added": "2026-11-28"
+  },
+  {
+   "date": "2024-09-22",
+   "value": 67,
+   "low": 11,
+   "high": 50,
+   "method": "linkedin-band",
+   "note": "LinkedIn 'View all 67 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+   "source": "https://web.archive.org/web/20240922041908/https://www.linkedin.com/company/mitrachem/",
+   "added": "2026-11-28"
+  },
+  {
+   "date": "2025-02-17",
+   "value": 64,
+   "low": 11,
+   "high": 50,
+   "method": "linkedin-band",
+   "note": "LinkedIn 'View all 64 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+   "source": "https://web.archive.org/web/20250217154636/https://www.linkedin.com/company/mitrachem",
+   "added": "2026-11-28"
+  },
+  {
+   "date": "2025-03-20",
+   "value": 63,
+   "low": 11,
+   "high": 50,
+   "method": "linkedin-band",
+   "note": "LinkedIn 'View all 63 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+   "source": "https://web.archive.org/web/20250320100610/https://www.linkedin.com/company/mitrachem",
+   "added": "2026-11-28"
+  },
+  {
+   "date": "2025-08-28",
+   "value": 60,
+   "low": 11,
+   "high": 50,
+   "method": "linkedin-band",
+   "note": "LinkedIn 'View all 60 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+   "source": "https://web.archive.org/web/20250828203210/https://www.linkedin.com/company/mitrachem",
+   "added": "2026-11-28"
+  },
+  {
+   "date": "2026-05-19",
+   "value": 56,
+   "low": 11,
+   "high": 50,
+   "method": "linkedin-band",
+   "note": "LinkedIn 'View all 56 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+   "source": "https://web.archive.org/web/20260519052417/https://www.linkedin.com/company/mitrachem/",
+   "added": "2026-11-28"
+  },
+  {
+   "date": "2026-08-28",
+   "value": 51,
+   "low": 11,
+   "high": 50,
+   "method": "linkedin-band",
+   "note": "LinkedIn 'View all 51 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+   "source": "https://web.archive.org/web/20260828020226/https://www.linkedin.com/company/mitrachem",
+   "added": "2026-11-28"
+  },
+  {
+   "date": "2026-10-27",
+   "value": 46,
+   "low": 11,
+   "high": 50,
+   "method": "linkedin-band",
+   "note": "LinkedIn 'View all 46 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+   "source": "https://web.archive.org/web/20261027210555/https://www.linkedin.com/company/mitrachem/",
+   "added": "2026-11-28"
+  }
+ ],
+ "postings": [
+  {
+   "period": "2026Q4",
+   "new_postings": 1,
+   "method": "job_postings.jsonl",
+   "note": "postings first seen 2026-10-01 to 2026-11-28 (live boards and Wayback)",
+   "source": "https://www.mitrachem.com/join-us"
+  }
+ ],
  "current_openings": {
-  "date": "2026-10-09",
-  "count": 2,
+  "date": "2026-11-28",
+  "count": 1,
   "by_function": {
-   "lab-automation": 1,
-   "business-ops": 1
+   "lab-automation": 1
   },
   "titles": [
-   "Laboratory Technician (Mountain View)",
-   "General Application"
+   "123697 Lab Technician"
   ],
-  "source": "https://www.mitrachem.com/join-us"
+  "source": "https://www.mitrachem.com/join-us",
+  "basis": "company job board (live snapshot)",
+  "previous": {
+   "date": "2026-10-10",
+   "count": 1,
+   "by_function": {
+    "lab-automation": 1
+   },
+   "source": "https://www.mitrachem.com/join-us",
+   "note": "recounted from the 2026-10-10 live snapshot"
+  }
  },
  "people": [
   {

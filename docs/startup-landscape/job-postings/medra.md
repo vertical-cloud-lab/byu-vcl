@@ -2,43 +2,47 @@
 
 Back to [all companies](README.md) · [company profile](../companies/medra.md)
 
-**33 postings recovered**, 27 with the full description; 15 still open on 2026-10-10. First seen 2025-09-17, latest 2026-10-01. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**33 postings recovered**, 28 with the full description; 15 still open on 2026-11-28. First seen 2025-09-17, latest 2026-10-13. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
-| 2025-09-17 | open | [Full Stack Software Engineer](#full-stack-software-engineer-2025-09-17) | software-eng | Engineering | San Francisco |  |  | $170–210K | [live](https://jobs.ashbyhq.com/medraai/4b14a964-094b-4bb8-9e92-d0ae183b8e1b) [Wayback](https://web.archive.org/web/20260202230824/https://jobs.ashbyhq.com/medraai) |
-| 2025-09-17 | open | [Robotics Software Engineer](#robotics-software-engineer-2025-09-17) | lab-automation | Engineering | San Francisco | PhD/MS/BS | 4 |  | [live](https://jobs.ashbyhq.com/medraai/d320da8d-ef93-46c3-ba46-6b0f45bd6ff8) [Wayback](https://web.archive.org/web/20260202230824/https://jobs.ashbyhq.com/medraai) |
-| 2025-10-02 | 2026-02-20 | [Full Stack Software Engineer - Winter 2026 Internship](#full-stack-software-engineer-winter-2026-internship-2025-10-02) | software-eng | Internships | San Francisco |  |  |  | [Wayback](https://web.archive.org/web/20260220101906/https://jobs.ashbyhq.com/medraai/42c557ea-eca8-4b36-b573-1e509ca8f090) |
+| 2025-09-17 | open | [Full Stack Software Engineer](#full-stack-software-engineer-2025-09-17) | software-eng | Engineering | San Francisco |  |  | $175–215K | [live](https://jobs.ashbyhq.com/medraai/4b14a964-094b-4bb8-9e92-d0ae183b8e1b) [Wayback](https://web.archive.org/web/20260202230824/https://jobs.ashbyhq.com/medraai) |
+| 2025-09-17 | open | [Robotics Software Engineer](#robotics-software-engineer-2025-09-17) | lab-automation | Engineering | San Francisco | PhD/MS/BS | 4 | $148–227K | [live](https://jobs.ashbyhq.com/medraai/d320da8d-ef93-46c3-ba46-6b0f45bd6ff8) [Wayback](https://web.archive.org/web/20260202230824/https://jobs.ashbyhq.com/medraai) |
+| 2025-10-02 | 2026-07-17 | [Full Stack Software Engineer - Winter 2026 Internship](#full-stack-software-engineer-winter-2026-internship-2025-10-02) | software-eng | Internships | San Francisco |  |  |  | [Wayback](https://web.archive.org/web/20260220101906/https://jobs.ashbyhq.com/medraai/42c557ea-eca8-4b36-b573-1e509ca8f090) |
 | 2025-10-02 | 2026-02-02 | Robotics Software Engineer - Winter 2026 Internship | lab-automation | Engineering | San Francisco |  |  |  | [Wayback](https://web.archive.org/web/20260202230824/https://jobs.ashbyhq.com/medraai) |
-| 2025-10-03 | open | [Mechanical Engineer](#mechanical-engineer-2025-10-03) | lab-automation | Engineering | San Francisco | MS/BS |  | $110–200K | [live](https://jobs.ashbyhq.com/medraai/171c1758-4a70-471c-8372-b27dbae52f4a) [Wayback](https://web.archive.org/web/20260202230824/https://jobs.ashbyhq.com/medraai) |
-| 2025-10-13 | 2026-02-02 | Mechanical Engineer - Winter 2026 Internship | lab-automation | Engineering | San Francisco |  |  |  | [Wayback](https://web.archive.org/web/20260202230824/https://jobs.ashbyhq.com/medraai) |
-| 2025-10-23 | 2026-02-17 | [Forward Deployed Robotics Engineer](#forward-deployed-robotics-engineer-2025-10-23) | lab-automation | Engineering | San Francisco | MS/BS | 1 |  | [Wayback](https://web.archive.org/web/20260217123635/https://jobs.ashbyhq.com/medraai/bb4edbb0-f01a-4f58-be4e-f8749794a3d5) |
+| 2025-10-03 | open | [Mechanical Engineer](#mechanical-engineer-2025-10-03) | lab-automation | Engineering | San Francisco | MS/BS |  | $82–198K | [live](https://jobs.ashbyhq.com/medraai/171c1758-4a70-471c-8372-b27dbae52f4a) [Wayback](https://web.archive.org/web/20260202230824/https://jobs.ashbyhq.com/medraai) |
+| 2025-10-13 | open | [Mechanical Engineer - Winter 2026 Internship](#mechanical-engineer-winter-2026-internship-2025-10-13) | lab-automation | Internships | San Francisco |  |  | $10–11K | [live](https://jobs.ashbyhq.com/medraai/2a005e91-4b62-4182-a7f3-40900f1ff9ac) [Wayback](https://web.archive.org/web/20260202230824/https://jobs.ashbyhq.com/medraai) |
+| 2025-10-23 | open | [Forward Deployed Robotics Engineer](#forward-deployed-robotics-engineer-2025-10-23) | lab-automation | Engineering | San Francisco |  |  | $148–227K | [live](https://jobs.ashbyhq.com/medraai/bb4edbb0-f01a-4f58-be4e-f8749794a3d5) [Wayback](https://web.archive.org/web/20260217123635/https://jobs.ashbyhq.com/medraai/bb4edbb0-f01a-4f58-be4e-f8749794a3d5) |
 | 2025-10-28 | 2026-04-16 | Full Stack Software Engineer - Summer 2026 Internship | software-eng | Internships | San Francisco |  |  |  | [Wayback](https://web.archive.org/web/20260416031643/https://jobs.ashbyhq.com/medraai) |
 | 2025-10-28 | 2026-02-17 | [Robotics Software Engineer - Summer 2026 Internship](#robotics-software-engineer-summer-2026-internship-2025-10-28) | lab-automation | Internships | San Francisco |  |  |  | [Wayback](https://web.archive.org/web/20260217121222/https://jobs.ashbyhq.com/medraai/09be971f-2d35-4d50-9bca-f6b575a3e4d5) |
-| 2025-11-20 | 2026-07-10 | [Engagement Manager](#engagement-manager-2025-11-20) | business-ops | Operations | San Francisco |  | 3 |  | [Wayback](https://web.archive.org/web/20260217105817/https://jobs.ashbyhq.com/medraai/aa42ec6a-95c9-402c-a2da-e9d6daa78bae) |
+| 2025-11-20 | open | [Engagement Manager](#engagement-manager-2025-11-20) | business-ops | GTM | San Francisco |  | 3 | $140–220K | [live](https://jobs.ashbyhq.com/medraai/5e943078-2070-49d7-9cb4-0202cecba60b) [Wayback](https://web.archive.org/web/20260717211635/https://jobs.ashbyhq.com/medraai) |
 | 2025-12-11 | 2026-02-17 | [AI Product Engineer (Applied AI)](#ai-product-engineer-applied-ai-2025-12-11) | ml-research | Engineering | San Francisco |  | 3 |  | [Wayback](https://web.archive.org/web/20260216235142/https://jobs.ashbyhq.com/medraai/59fefef3-506e-4566-a2ae-b4ce5aa40e21) |
-| 2025-12-11 | 2026-04-16 | [Designer](#designer-2025-12-11) | business-ops | Engineering | San Francisco |  |  |  | [Wayback](https://web.archive.org/web/20260217115739/https://jobs.ashbyhq.com/medraai/157476f2-45e5-4702-a46e-e085cf0b2384) |
+| 2025-12-11 | 2026-08-08 | [Designer](#designer-2025-12-11) | business-ops | Engineering | San Francisco |  |  |  | [Wayback](https://web.archive.org/web/20260217115739/https://jobs.ashbyhq.com/medraai/157476f2-45e5-4702-a46e-e085cf0b2384) |
 | 2025-12-11 | 2026-02-17 | [General Software Engineer](#general-software-engineer-2025-12-11) | software-eng | Engineering | San Francisco |  | 5 |  | [Wayback](https://web.archive.org/web/20260217111817/https://jobs.ashbyhq.com/medraai/b531c338-9d3d-4658-977a-4cc60dac0610) |
 | 2025-12-11 | 2026-02-17 | Head of Deployments | leadership | Engineering | San Francisco |  |  |  | [Wayback](https://web.archive.org/web/20260202230824/https://jobs.ashbyhq.com/medraai) |
 | 2025-12-11 | 2026-02-17 | [Lead Scientist, Protein Engineering](#lead-scientist-protein-engineering-2025-12-11) | materials-science | Science | San Francisco | PhD | 3 |  | [Wayback](https://web.archive.org/web/20260217111253/https://jobs.ashbyhq.com/medraai/0faf2270-a4de-4f08-9096-ed7a384210f4) |
 | 2025-12-11 | 2026-02-17 | [Machine Learning Scientist](#machine-learning-scientist-2025-12-11) | ml-research | Science | San Francisco | PhD/MS |  |  | [Wayback](https://web.archive.org/web/20260217123131/https://jobs.ashbyhq.com/medraai/30d82d00-e964-4711-ac5f-289157c5bed8) |
-| 2025-12-11 | open | [Tech Lead Manager - Full Stack](#tech-lead-manager-full-stack-2025-12-11) | software-eng | Engineering | San Francisco |  |  |  | [live](https://jobs.ashbyhq.com/medraai/b67c2035-8e7d-44cb-9b54-8dac5824f31a) [Wayback](https://web.archive.org/web/20260202230824/https://jobs.ashbyhq.com/medraai) |
+| 2025-12-11 | open | [Tech Lead Manager - Full Stack](#tech-lead-manager-full-stack-2025-12-11) | software-eng | Engineering | San Francisco |  |  | $180–300K | [live](https://jobs.ashbyhq.com/medraai/b67c2035-8e7d-44cb-9b54-8dac5824f31a) [Wayback](https://web.archive.org/web/20260202230824/https://jobs.ashbyhq.com/medraai) |
 | 2025-12-17 | 2026-02-17 | [Business Operations](#business-operations-2025-12-17) | business-ops | Operations | San Francisco |  | 1 |  | [Wayback](https://web.archive.org/web/20260217120534/https://jobs.ashbyhq.com/medraai/372d4b93-d18e-4c64-b13f-69fc1980d81d) |
-| 2026-01-07 | open | [Robotics Manufacturing Technician](#robotics-manufacturing-technician-2026-01-07) | lab-automation | Engineering | San Francisco |  |  |  | [live](https://jobs.ashbyhq.com/medraai/b82e3301-0bd8-4208-9498-fdc542d9e0b9) [Wayback](https://web.archive.org/web/20260202230824/https://jobs.ashbyhq.com/medraai) |
+| 2026-01-07 | 2026-10-13 | [Robotics Manufacturing Technician](#robotics-manufacturing-technician-2026-01-07) | lab-automation | Engineering | San Francisco |  |  |  | [live](https://jobs.ashbyhq.com/medraai/b82e3301-0bd8-4208-9498-fdc542d9e0b9) [Wayback](https://web.archive.org/web/20260217120945/https://jobs.ashbyhq.com/medraai/b82e3301-0bd8-4208-9498-fdc542d9e0b9) |
 | 2026-02-13 | 2026-04-16 | Founding Recruiter | business-ops | Operations | San Francisco |  |  |  | [Wayback](https://web.archive.org/web/20260416031643/https://jobs.ashbyhq.com/medraai) |
-| 2026-02-17 | open | [Scientist, Biology](#scientist-biology-2026-02-17) | materials-science | Science | San Francisco | PhD/MS | 3 | $140–175K | [live](https://jobs.ashbyhq.com/medraai/f1c3a0b6-1f65-4640-8be9-39841c32198e) [Wayback](https://web.archive.org/web/20260416031643/https://jobs.ashbyhq.com/medraai) |
+| 2026-02-17 | open | [Scientist, Biology](#scientist-biology-2026-02-17) | materials-science | Science | San Francisco | PhD/MS | 3 | $135–170K | [live](https://jobs.ashbyhq.com/medraai/f1c3a0b6-1f65-4640-8be9-39841c32198e) [Wayback](https://web.archive.org/web/20260416031643/https://jobs.ashbyhq.com/medraai) |
 | 2026-04-05 | 2026-04-16 | Research Associate - General Biology | materials-science | Science | San Francisco |  |  |  | [Wayback](https://web.archive.org/web/20260416031643/https://jobs.ashbyhq.com/medraai) |
-| 2026-04-09 | open | [Research Associate - Foundry](#research-associate-foundry-2026-04-09) | materials-science | Science | San Francisco | MS/BS |  |  | [live](https://jobs.ashbyhq.com/medraai/eabc0734-62bf-43b9-aafe-aace259e82fe) [Wayback](https://web.archive.org/web/20260416031643/https://jobs.ashbyhq.com/medraai) |
-| 2026-04-10 | open | [Business Operations](#business-operations-2026-04-10) | business-ops | Operations | San Francisco |  |  | $90–180K | [live](https://jobs.ashbyhq.com/medraai/13e93fc3-fd20-4e7c-a748-00ccbc2a7f79) [Wayback](https://web.archive.org/web/20260416031643/https://jobs.ashbyhq.com/medraai) |
+| 2026-04-09 | open | [Research Associate - Foundry](#research-associate-foundry-2026-04-09) | materials-science | Science | San Francisco | MS/BS |  | $85–115K | [live](https://jobs.ashbyhq.com/medraai/eabc0734-62bf-43b9-aafe-aace259e82fe) [Wayback](https://web.archive.org/web/20260416031643/https://jobs.ashbyhq.com/medraai) |
+| 2026-04-10 | 2026-10-10 | [Business Operations](#business-operations-2026-04-10) | business-ops | Operations | San Francisco |  |  | $90–180K | [live](https://jobs.ashbyhq.com/medraai/13e93fc3-fd20-4e7c-a748-00ccbc2a7f79) [Wayback](https://web.archive.org/web/20260721135245/https://jobs.ashbyhq.com/medraai/13e93fc3-fd20-4e7c-a748-00ccbc2a7f79) |
 | 2026-04-23 | 2026-06-11 | [Systems Test Engineer - Summer 2026 Internship](#systems-test-engineer-summer-2026-internship-2026-04-23) | software-eng | Internships | Boston |  | 1 |  | [Wayback](https://web.archive.org/web/20260611100703/https://jobs.ashbyhq.com/medraai/e101fbcf-5d99-4c7e-8ec3-125a1b638905) |
-| 2026-04-28 | open | [Scientific Operations](#scientific-operations-2026-04-28) | business-ops | Science | San Francisco | MS/BS |  |  | [live](https://jobs.ashbyhq.com/medraai/f9e3c4ae-010b-4903-97a4-0bccdbc74624) |
-| 2026-04-30 | open | [Scientist, Cell Biology & Antibody Engineering](#scientist-cell-biology-antibody-engineering-2026-04-30) | materials-science | Science | San Francisco | PhD/MS/BS | 2 | $140–175K | [live](https://jobs.ashbyhq.com/medraai/9a0e875e-b40f-4caa-9ab9-49c3a8f51684) |
-| 2026-05-21 | 2026-06-11 | [Office Manager](#office-manager-2026-05-21) | business-ops | Operations | San Francisco |  |  | $70–90K | [Wayback](https://web.archive.org/web/20260611104107/https://jobs.ashbyhq.com/medraai/6cb15bd8-98d8-462b-8ba1-7b1f4e8e9b40) |
-| 2026-07-27 | open | [Systems Test Engineer - Contract](#systems-test-engineer-contract-2026-07-27) | software-eng | Engineering | San Francisco |  | 1 |  | [live](https://jobs.ashbyhq.com/medraai/cfaca7f4-d35b-4b5e-a5f4-5dd08abc8b5d) |
-| 2026-08-04 | open | [Scientist, Biophysical Characterization (SPR/BLI)](#scientist-biophysical-characterization-spr-bli-2026-08-04) | materials-science | Science | San Francisco | PhD/MS/BS | 2 |  | [live](https://jobs.ashbyhq.com/medraai/b6979689-9465-46ae-8026-6af2819f5fa1) |
-| 2026-08-31 | open | [Research Associate, Protein Purification & Quality Control](#research-associate-protein-purification-quality-control-2026-08-31) | materials-science | Science | San Francisco | MS/BS |  |  | [live](https://jobs.ashbyhq.com/medraai/3adae454-8f38-40af-825b-fea9a7da9a10) |
-| 2026-09-08 | open | [Engagement Manager](#engagement-manager-2026-09-08) | business-ops | GTM | San Francisco |  | 3 | $140–215K | [live](https://jobs.ashbyhq.com/medraai/5e943078-2070-49d7-9cb4-0202cecba60b) |
-| 2026-10-01 | open | [Research Engineer, Post-training](#research-engineer-post-training-2026-10-01) | ml-research | Engineering | San Francisco |  |  |  | [live](https://jobs.ashbyhq.com/medraai/7b68aa54-c168-41c8-a817-f80f8ff16119) |
+| 2026-04-28 | 2026-10-13 | [Scientific Operations](#scientific-operations-2026-04-28) | business-ops | Science | San Francisco | MS/BS |  |  | [live](https://jobs.ashbyhq.com/medraai/f9e3c4ae-010b-4903-97a4-0bccdbc74624) [Wayback](https://web.archive.org/web/20260611101500/https://jobs.ashbyhq.com/medraai/f9e3c4ae-010b-4903-97a4-0bccdbc74624) |
+| 2026-04-30 | open | [Scientist, Cell Biology & Antibody Engineering](#scientist-cell-biology-antibody-engineering-2026-04-30) | materials-science | Science | San Francisco | PhD/MS/BS | 2 | $135–170K | [live](https://jobs.ashbyhq.com/medraai/9a0e875e-b40f-4caa-9ab9-49c3a8f51684) [Wayback](https://web.archive.org/web/20260717211635/https://jobs.ashbyhq.com/medraai) |
+| 2026-05-21 | 2026-07-17 | [Office Manager](#office-manager-2026-05-21) | business-ops | Operations | San Francisco |  |  | $70–90K | [Wayback](https://web.archive.org/web/20260611104107/https://jobs.ashbyhq.com/medraai/6cb15bd8-98d8-462b-8ba1-7b1f4e8e9b40) |
+| 2026-07-27 | open | [Systems Test Engineer - Contract](#systems-test-engineer-contract-2026-07-27) | software-eng | Engineering | San Francisco |  | 1 | $115–153K | [live](https://jobs.ashbyhq.com/medraai/cfaca7f4-d35b-4b5e-a5f4-5dd08abc8b5d) [Wayback](https://web.archive.org/web/20261013160727/https://jobs.ashbyhq.com/medraai) |
+| 2026-08-04 | open | [Scientist, Biophysical Characterization (SPR/BLI)](#scientist-biophysical-characterization-spr-bli-2026-08-04) | materials-science | Science | San Francisco | PhD/MS/BS | 2 | $135–170K | [live](https://jobs.ashbyhq.com/medraai/b6979689-9465-46ae-8026-6af2819f5fa1) [Wayback](https://web.archive.org/web/20261013160727/https://jobs.ashbyhq.com/medraai) |
+| 2026-08-31 | open | [Research Associate, Protein Purification & Quality Control](#research-associate-protein-purification-quality-control-2026-08-31) | materials-science | Science | San Francisco | MS/BS |  | $85–115K | [live](https://jobs.ashbyhq.com/medraai/3adae454-8f38-40af-825b-fea9a7da9a10) [Wayback](https://web.archive.org/web/20261013160727/https://jobs.ashbyhq.com/medraai) |
+| 2026-10-01 | open | [Research Engineer, Post-training](#research-engineer-post-training-2026-10-01) | ml-research | Engineering | San Francisco |  |  | $170–350K | [live](https://jobs.ashbyhq.com/medraai/7b68aa54-c168-41c8-a817-f80f8ff16119) [Wayback](https://web.archive.org/web/20261013160727/https://jobs.ashbyhq.com/medraai) |
+| 2026-10-13 | open | [Recruiting Coordinator](#recruiting-coordinator-2026-10-13) | business-ops | Operations | San Francisco |  | 2 | $75–100K | [live](https://jobs.ashbyhq.com/medraai/7095cccf-4e5a-459b-a922-9fee8136fc71) [Wayback](https://web.archive.org/web/20261013160727/https://jobs.ashbyhq.com/medraai) |
+
+## Careers-page captures
+
+7 archived captures of the company's careers page, or of its page on a job board. Their text is not reproduced here: where they list openings, those are in the table above or sat in embedded widgets the archive did not capture, and some pages feature named staff, whom this survey does not name. The captures: [2025-02-16](https://web.archive.org/web/20250216012846/https://www.medra.ai/careers), [2025-04-25](https://web.archive.org/web/20250425014529/https://www.medra.ai/careers), [2025-09-17](https://web.archive.org/web/20250917060432/https://www.medra.ai/careers), [2026-01-08](https://web.archive.org/web/20260108190418/https://www.medra.ai/careers), [2026-04-16](https://web.archive.org/web/20260416031643/https://www.medra.ai/careers), [2026-09-10](https://web.archive.org/web/20260910083204/https://www.medra.ai/careers), [2026-10-27](https://web.archive.org/web/20261027221507/https://www.medra.ai/careers).
 
 ## Descriptions
 
@@ -48,7 +52,7 @@ Role-specific sections only (responsibilities, requirements, pay): the company p
 
 ### Full Stack Software Engineer (2025-09-17)
 
-2025-09-17 → open · software-eng · San Francisco · $170–210K · [source](https://jobs.ashbyhq.com/medraai/4b14a964-094b-4bb8-9e92-d0ae183b8e1b)
+2025-09-17 → open · software-eng · San Francisco · $175–215K · [source](https://jobs.ashbyhq.com/medraai/4b14a964-094b-4bb8-9e92-d0ae183b8e1b)
 
 <details><summary>Description</summary>
 
@@ -78,7 +82,7 @@ We shipped our first production system over a year ago, recently raised a $52M S
 
 ### Robotics Software Engineer (2025-09-17)
 
-2025-09-17 → open · lab-automation · San Francisco · [source](https://jobs.ashbyhq.com/medraai/d320da8d-ef93-46c3-ba46-6b0f45bd6ff8)
+2025-09-17 → open · lab-automation · San Francisco · $148–227K · [source](https://jobs.ashbyhq.com/medraai/d320da8d-ef93-46c3-ba46-6b0f45bd6ff8)
 
 <details><summary>Description</summary>
 
@@ -114,7 +118,7 @@ We shipped our first production system over a year ago, recently raised a $52M S
 
 ### Full Stack Software Engineer - Winter 2026 Internship (2025-10-02)
 
-2025-10-02 → 2026-02-20 · software-eng · San Francisco · [source](https://web.archive.org/web/20260220101906/https://jobs.ashbyhq.com/medraai/42c557ea-eca8-4b36-b573-1e509ca8f090)
+2025-10-02 → 2026-07-17 · software-eng · San Francisco · [source](https://web.archive.org/web/20260220101906/https://jobs.ashbyhq.com/medraai/42c557ea-eca8-4b36-b573-1e509ca8f090)
 
 <details><summary>Description</summary>
 
@@ -145,9 +149,12 @@ This position is 100% in-person, you must be able to come on-site to our San Fra
 
 ### Mechanical Engineer (2025-10-03)
 
-2025-10-03 → open · lab-automation · San Francisco · $110–200K · [source](https://jobs.ashbyhq.com/medraai/171c1758-4a70-471c-8372-b27dbae52f4a)
+2025-10-03 → open · lab-automation · San Francisco · $82–198K · [source](https://jobs.ashbyhq.com/medraai/171c1758-4a70-471c-8372-b27dbae52f4a)
 
 <details><summary>Description</summary>
+
+**What We're Building**
+At Medra, our mission is to use AI, robotics, and biology to accelerate life science research, with the ultimate goal of eradicating disease. We have been quietly building the foundational layers of our Physical AI Scientist platform:
 
 **The Team**
 - We're a team of passionate, mission-driven engineers and scientists from companies like Tesla, Amazon, SpaceX, and Neuralink. We're collaborative and love moving fast, both with our product and on team trips skiing or go-karting!
@@ -182,48 +189,75 @@ We are looking for a Mechanical Engineer to help make our vision a reality. As o
 
 </details>
 
+<a id="mechanical-engineer-winter-2026-internship-2025-10-13"></a>
+
+### Mechanical Engineer - Winter 2026 Internship (2025-10-13)
+
+2025-10-13 → open · lab-automation · San Francisco · $10–11K · [source](https://jobs.ashbyhq.com/medraai/2a005e91-4b62-4182-a7f3-40900f1ff9ac)
+
+<details><summary>Description</summary>
+
+**About the Role**
+Paid Winter 2026 Internship (Jan. - Apr., dates flexible). Candidates must work full-time, in-person at our San Francisco office located in the Mission.
+
+**In this role, you will**
+- Intern in our Mechanical Engineering team, focusing on building the tools used across our product to accelerate science
+
+**Let's talk if you have**
+- Strong mechanical intuition and hardware debugging and assembly skills
+- Passion for the gritty details of part design, material selection, and manufacturing techniques
+- Experience with mechanical engineering tools and best practices in production to design components, produce drawings, and build assemblies
+- Experience designing, building, testing, and scaling hardware
+- A hacker’s mindset - getting quickly to a good-enough solution
+- Are hands-on and willing to cross discipline boundaries to solve a problem
+- Know your way around rapid prototyping technology
+- A willingness to wear many hats / a flexible attitude towards responsibilities and scope
+
+**Nice to have**
+- Experience managing PLM/document control systems
+- Mechatronics and circuit design background
+- Knowledge of robotics, motion control, camera, force/torque sensors
+- Experience or familiarity with robot arm manipulators
+- Experience with robotics in a laboratory or manufacturing environment
+- Experience writing code for robotics systems
+This position is 100% in-person, you must be able to come on-site to our San Francisco office.
+
+</details>
+
 <a id="forward-deployed-robotics-engineer-2025-10-23"></a>
 
 ### Forward Deployed Robotics Engineer (2025-10-23)
 
-2025-10-23 → 2026-02-17 · lab-automation · San Francisco · [source](https://web.archive.org/web/20260217123635/https://jobs.ashbyhq.com/medraai/bb4edbb0-f01a-4f58-be4e-f8749794a3d5)
+2025-10-23 → open · lab-automation · San Francisco · $148–227K · [source](https://jobs.ashbyhq.com/medraai/bb4edbb0-f01a-4f58-be4e-f8749794a3d5)
 
 <details><summary>Description</summary>
 
 **In this role, you will**
-- Operate like the technical co-founder of a small startup within Medra, owning end-to-end delivery of high-impact customer projects
-- Work with partner scientists at customer labs to quickly bring them solutions that meet their needs and get projects over the finish line
-- Set technical strategy and define the roadmap to meet customers’ most critical scientific challenges.
-- Travel to the customer sites 30% of the time for hands on support and troubleshooting
-- Clearly communicate project progress with the team and quickly request assistance when necessary
-- Develop robotic solutions to manipulate and control biology tools designed for humans
+- Operate like the technical co-founder of a small startup within Medra, owning end-to-end delivery of high-impact customer projects and defining the roadmap to meet customers’ most critical scientific challenges
+- Translate scientific workflows into technical requirements, support system architecture from conception to delivery, and develop interfaces between robots, instruments, and software
+- Design, build, and test scientific workflows on our Physical AI Scientist platform, combining existing capabilities with new production software and instrument integrations
+- Make implementation tradeoffs with robotics and software engineers, deciding where to reuse existing capabilities and where a customer requirement needs new engineering
 - Integrate, test, and debug software solutions in simulation and on physical robots
-- Besides your focus on robustness and performance, you’ll be expected to identify opportunities for simplification, and to design for scalability
-- Take ownership of complex robotics projects from conception to delivery, demonstrating strategic judgment, technical creativity, and hands-on execution
-- This position is in-person, you must be able to come on-site to our San Francisco office . We do not offer hybrid roles. We do offer relocation benefits for applicants who need to relocate.
+- Work with forward deployed scientists through integration testing, water runs, customer-site bring-up, and scientific validation, resolving engineering blockers along the way
+- Diagnose failures across software, instrument behavior, robotics, and customer infrastructure, and work with specialist engineers to resolve them
+- Extend deployed systems to support new instruments, consumables, and workflows, rolling out releases with appropriate verification and clear operating guidance
+- Bring deployment learnings back into the platform by generalizing integrations and sharing reusable tests, diagnostics, and tooling with other deployment teams
+- Clearly explain technical decisions, limitations, and risks to customers and teammates
+- Travel to customer sites approximately 30% of the time for hands-on deployment and support
+- This position is 100% in-person, you must be able to come on-site to our San Francisco office. We do not offer hybrid roles at Medra. We do offer relocation benefits for applicants that need to relocate.
 
-**Let's talk if you have**
-- 1-3 years of experience designing and work with robotics systems
-- Proven ability to think strategically, solve complex problems creatively, and communicate effectively with diverse stakeholders, including scientists and senior executives
-- Experience writing code for robotics systems
-- Strong mechanical intuition and hardware debugging and assembly skills
-- Experience with mechanical engineering tools and best practices in production
-- A willingness to split your time between hardware and software work
-- A hacker’s mindset - getting quickly to a good-enough solution
-- Experience with Python and a desire to improve your software skills
-- Experience or familiarity with robot arm manipulators
-- A willingness to wear many hats / a flexible attitude towards responsibilities and scope
-- Entrepreneurial drive and a desire to have broad ownership, operating with significant autonomy akin to a startup CTO
-- BS/MS in Mechanical Engineering, Robotics, Mechatronics, Electrical Engineering, Aeronautical Engineering or a related discipline, or equivalent experience
+**Let’s talk if you have**
+- Strong software engineering fundamentals and experience shipping production code
+- Demonstrated systems thinking: designing, implementing, testing, or debugging interfaces in a production system
+- Experience delivering technical solutions with customers or users, from an ambiguous problem to a working solution in use
+- A penchant for customer-facing engineering: you enjoy working directly with users, making technical decisions, and being accountable for the result
+- A track record of learning unfamiliar technologies quickly and making sound decisions with incomplete information
+- Clear written and verbal communication, including the ability to explain technical tradeoffs and surface problems early
+- Interest in developing depth in robotics, automation, and physical AI, with a willingness to work directly with physical systems
 
 **Bonus points if you have**
-- Experience with software engineering tools and best practices in production
-- Experience in startup environments, technical leadership roles, or demonstrated interest in entrepreneurship and strategic technical roles.
-- Experience with robotics in a laboratory or manufacturing environment
-- Experience with robotic simulation systems such as MuJoCo
-- Experience designing, building, and testing hardware
-- Understanding of software communication protocols (ZMQ, Redis, gRPC, etc…)
-- Contribution to software for a hardware product that shipped
+- Experience shipping a product that combines software and hardware
+- Forward deployed engineering experience, or another engineering role with direct responsibility for customer implementations
 
 *(truncated: full text in `data/job_postings.jsonl`)*
 
@@ -262,7 +296,7 @@ This position is 100% in-person, you must be able to come on-site to our San Fra
 
 ### Engagement Manager (2025-11-20)
 
-2025-11-20 → 2026-07-10 · business-ops · San Francisco · [source](https://web.archive.org/web/20260217105817/https://jobs.ashbyhq.com/medraai/aa42ec6a-95c9-402c-a2da-e9d6daa78bae)
+2025-11-20 → open · business-ops · San Francisco · $140–220K · [source](https://jobs.ashbyhq.com/medraai/5e943078-2070-49d7-9cb4-0202cecba60b)
 
 <details><summary>Description</summary>
 
@@ -324,7 +358,7 @@ This position is 100% in-person, you must be able to come on-site to our San Fra
 
 ### Designer (2025-12-11)
 
-2025-12-11 → 2026-04-16 · business-ops · San Francisco · [source](https://web.archive.org/web/20260217115739/https://jobs.ashbyhq.com/medraai/157476f2-45e5-4702-a46e-e085cf0b2384)
+2025-12-11 → 2026-08-08 · business-ops · San Francisco · [source](https://web.archive.org/web/20260217115739/https://jobs.ashbyhq.com/medraai/157476f2-45e5-4702-a46e-e085cf0b2384)
 
 <details><summary>Description</summary>
 
@@ -434,9 +468,12 @@ We're seeking an exceptional antibody or protein scientist to drive the scientif
 
 ### Tech Lead Manager - Full Stack (2025-12-11)
 
-2025-12-11 → open · software-eng · San Francisco · [source](https://jobs.ashbyhq.com/medraai/b67c2035-8e7d-44cb-9b54-8dac5824f31a)
+2025-12-11 → open · software-eng · San Francisco · $180–300K · [source](https://jobs.ashbyhq.com/medraai/b67c2035-8e7d-44cb-9b54-8dac5824f31a)
 
 <details><summary>Description</summary>
+
+**What We're Building**
+At Medra, our mission is to use AI, robotics, and biology to accelerate life science research, with the ultimate goal of eradicating disease. We have been quietly building the foundational layers of our Physical AI Scientist platform:
 
 **The Team**
 - We're a team of passionate, mission-driven engineers and scientists from companies like Tesla, Amazon, SpaceX, and Neuralink. We're collaborative and love moving fast, both with our product and on team trips skiing or go-karting!
@@ -507,7 +544,7 @@ The Business Operations role is dynamic, offering intense learning and growth op
 
 ### Robotics Manufacturing Technician (2026-01-07)
 
-2026-01-07 → open · lab-automation · San Francisco · [source](https://jobs.ashbyhq.com/medraai/b82e3301-0bd8-4208-9498-fdc542d9e0b9)
+2026-01-07 → 2026-10-13 · lab-automation · San Francisco · [source](https://jobs.ashbyhq.com/medraai/b82e3301-0bd8-4208-9498-fdc542d9e0b9)
 
 <details><summary>Description</summary>
 
@@ -544,9 +581,12 @@ We are looking for a Manufacturing Technician to help scale our production. As o
 
 ### Scientist, Biology (2026-02-17)
 
-2026-02-17 → open · materials-science · San Francisco · $140–175K · [source](https://jobs.ashbyhq.com/medraai/f1c3a0b6-1f65-4640-8be9-39841c32198e)
+2026-02-17 → open · materials-science · San Francisco · $135–170K · [source](https://jobs.ashbyhq.com/medraai/f1c3a0b6-1f65-4640-8be9-39841c32198e)
 
 <details><summary>Description</summary>
+
+**What We’re Building**
+At Medra, our mission is to use AI, robotics, and biology to accelerate life science research, with the ultimate goal of eradicating disease. We have been quietly building the foundational layers of our Physical AI Scientist platform:
 
 **The Team**
 • We're a team of passionate, mission-driven engineers and scientists from companies like Tesla, Amazon, SpaceX, and Neuralink. We're collaborative and love moving fast, both with our product and on team trips skiing or go-karting!
@@ -565,9 +605,6 @@ We’re looking for someone who acts with urgency and thrives under pressure. Th
 - Keep detailed experimental records and documentation (SOPs) for all workflows
 - Communicate results clearly, succinctly, and on-time
 
-**Let’s Talk If You Have**
-- Master's degree + 3 years of experience OR PhD in biological sciences or related field
-- Deep scientific expertise as evidenced by a track record of top-tier publications / presentations
 
 *(truncated: full text in `data/job_postings.jsonl`)*
 
@@ -577,7 +614,7 @@ We’re looking for someone who acts with urgency and thrives under pressure. Th
 
 ### Research Associate - Foundry (2026-04-09)
 
-2026-04-09 → open · materials-science · San Francisco · [source](https://jobs.ashbyhq.com/medraai/eabc0734-62bf-43b9-aafe-aace259e82fe)
+2026-04-09 → open · materials-science · San Francisco · $85–115K · [source](https://jobs.ashbyhq.com/medraai/eabc0734-62bf-43b9-aafe-aace259e82fe)
 
 <details><summary>Description</summary>
 
@@ -608,7 +645,7 @@ What You Bring to the Team
 
 ### Business Operations (2026-04-10)
 
-2026-04-10 → open · business-ops · San Francisco · $90–180K · [source](https://jobs.ashbyhq.com/medraai/13e93fc3-fd20-4e7c-a748-00ccbc2a7f79)
+2026-04-10 → 2026-10-10 · business-ops · San Francisco · $90–180K · [source](https://jobs.ashbyhq.com/medraai/13e93fc3-fd20-4e7c-a748-00ccbc2a7f79)
 
 <details><summary>Description</summary>
 
@@ -650,6 +687,9 @@ We're a startup doing the work of a company five times our size. There are no es
 
 <details><summary>Description</summary>
 
+**What We’re Building**
+At Medra, our mission is to use AI, robotics, and biology to accelerate life science research, with the ultimate goal of eradicating disease. We have been quietly building the foundational layers of our Physical AI Scientist platform:
+
 **The Team**
 • We're a team of passionate, mission-driven engineers and scientists from companies like Tesla, Amazon, SpaceX, and Neuralink. We're collaborative and love moving fast, both with our product and on team trips skiing or go-karting!
 
@@ -685,9 +725,12 @@ This is a high-impact role where your reliability directly enables cutting-edge 
 
 ### Scientific Operations (2026-04-28)
 
-2026-04-28 → open · business-ops · San Francisco · [source](https://jobs.ashbyhq.com/medraai/f9e3c4ae-010b-4903-97a4-0bccdbc74624)
+2026-04-28 → 2026-10-13 · business-ops · San Francisco · [source](https://jobs.ashbyhq.com/medraai/f9e3c4ae-010b-4903-97a4-0bccdbc74624)
 
 <details><summary>Description</summary>
+
+**What We’re Building**
+At Medra, our mission is to use AI, robotics, and biology to accelerate life science research, with the ultimate goal of eradicating disease. We have been quietly building the foundational layers of our Physical AI Scientist platform:
 
 **The Team**
 • We're a team of passionate, mission-driven engineers and scientists from companies like Tesla, Amazon, SpaceX, and Neuralink. We're collaborative and love moving fast, both with our product and on team trips skiing or go-karting!
@@ -717,10 +760,6 @@ The Scientific Operations role is a highly operational role responsible for the 
 - Excellent written and verbal communication
 
 **Bonus Points If You Have**
-- Prior experience as a bench scientist
-- Experience supporting multi-customer or contract research environments
-- Experience scaling a lab through a buildout or growth phase
-- LIMS or ELN implementation experience
 
 *(truncated: full text in `data/job_postings.jsonl`)*
 
@@ -730,9 +769,12 @@ The Scientific Operations role is a highly operational role responsible for the 
 
 ### Scientist, Cell Biology & Antibody Engineering (2026-04-30)
 
-2026-04-30 → open · materials-science · San Francisco · $140–175K · [source](https://jobs.ashbyhq.com/medraai/9a0e875e-b40f-4caa-9ab9-49c3a8f51684)
+2026-04-30 → open · materials-science · San Francisco · $135–170K · [source](https://jobs.ashbyhq.com/medraai/9a0e875e-b40f-4caa-9ab9-49c3a8f51684)
 
 <details><summary>Description</summary>
+
+**What We’re Building**
+At Medra, our mission is to use AI, robotics, and biology to accelerate life science research, with the ultimate goal of eradicating disease. We have been quietly building the foundational layers of our Physical AI Scientist platform:
 
 **The Team**
 • We're a team of passionate, mission-driven engineers and scientists from companies like Tesla, Amazon, SpaceX, and Neuralink. We're collaborative and love moving fast, both with our product and on team trips skiing or go-karting!
@@ -752,8 +794,6 @@ This is a role for someone who blends scientific judgment with hands-on craft �
 - Maintain rigorous experimental records in electronic lab notebooks (ELN) and communicate results clearly to internal and external stakeholders
 
 **Let’s Talk If You Have**
-- Ph.D. in cell biology, immunology, biochemistry, or a related discipline with 2+ years of industry experience, or a B.S./M.S. with 6+ years of deep, hands-on industry experience.
-- Strong background in mammalian cell culture and sterile technique, with a track record of maintaining healthy, reproducible cell lines for assay work
 
 *(truncated: full text in `data/job_postings.jsonl`)*
 
@@ -763,9 +803,12 @@ This is a role for someone who blends scientific judgment with hands-on craft �
 
 ### Office Manager (2026-05-21)
 
-2026-05-21 → 2026-06-11 · business-ops · San Francisco · $70–90K · [source](https://web.archive.org/web/20260611104107/https://jobs.ashbyhq.com/medraai/6cb15bd8-98d8-462b-8ba1-7b1f4e8e9b40)
+2026-05-21 → 2026-07-17 · business-ops · San Francisco · $70–90K · [source](https://web.archive.org/web/20260611104107/https://jobs.ashbyhq.com/medraai/6cb15bd8-98d8-462b-8ba1-7b1f4e8e9b40)
 
 <details><summary>Description</summary>
+
+**What We’re Building**
+At Medra, our mission is to use AI, robotics, and biology to accelerate life science research, with the ultimate goal of eradicating disease. We have been quietly building the foundational layers of our Physical AI Scientist platform:
 
 **The Team**
 • We're a team of passionate, mission-driven engineers and scientists from companies like Tesla, Amazon, SpaceX, and Neuralink. We're collaborative and love moving fast, both with our product and on team trips skiing or go-karting!
@@ -798,11 +841,6 @@ This person will play a critical role in shaping the employee experience and hel
 - Comfortable being hands-on with day-to-day office needs
 - Clear communicator with strong interpersonal skills
 - Positive, service-oriented mindset with a willingness to jump in wherever needed
-- Handy, practical, and scrappy approach to problem-solving
-
-**(OPTIONAL) Bonus Points If You Have**
-- Experience with facilities coordination
-- Experience planning office events or team gatherings
 
 *(truncated: full text in `data/job_postings.jsonl`)*
 
@@ -812,9 +850,12 @@ This person will play a critical role in shaping the employee experience and hel
 
 ### Systems Test Engineer - Contract (2026-07-27)
 
-2026-07-27 → open · software-eng · San Francisco · [source](https://jobs.ashbyhq.com/medraai/cfaca7f4-d35b-4b5e-a5f4-5dd08abc8b5d)
+2026-07-27 → open · software-eng · San Francisco · $115–153K · [source](https://jobs.ashbyhq.com/medraai/cfaca7f4-d35b-4b5e-a5f4-5dd08abc8b5d)
 
 <details><summary>Description</summary>
+
+**What We’re Building**
+At Medra, our mission is to use AI, robotics, and biology to accelerate life science research, with the ultimate goal of eradicating disease. We have been quietly building the foundational layers of our Physical AI Scientist platform:
 
 **The Team**
 • We're a team of passionate, mission-driven engineers and scientists from companies like Tesla, Amazon, SpaceX, and Neuralink. We're collaborative and love moving fast, both with our product and on team trips skiing or go-karting!
@@ -824,6 +865,8 @@ We're looking for a Systems Test Engineer to be our front line of robot uptime a
 This is a high-impact role where your reliability directly enables cutting-edge biological research.
 
 **In this role, you will**
+- Run scheduled experiments, monitor automated runs in progress, and keep the platform loaded, supplied, and productive so it never sits idle
+- Operate liquid handlers, magnetic particle processors, and plate-based workstations: load decks, launch methods, and recover from routine errors
 - Maintain robot uptime and reliability across daily protocol runs, ensuring the system performs at peak efficiency
 - Diagnose and resolve operational issues onsite using SOPs, playbooks, and your own intuition for the system
 - Escalate complex issues to the engineering team with clear, structured incident reports including relevant metadata
@@ -834,16 +877,17 @@ This is a high-impact role where your reliability directly enables cutting-edge 
 - Collaborate cross-functionally with customer scientists to coordinate run schedules and communicate system status
 
 **Let's talk if you have**
-- Background in robotics, automation, or mechatronics
+- Background in robotics, computer science, automation, or mechatronics
 - Comfort around automation equipment — you should be able to follow SOPs, troubleshoot basic hardware/software issues, and know when to escalate
 - Strong written communication — you'll be filing incident reports and coordinating with software and hardware engineers daily
 - A dependable, detail-oriented approach with a bias toward documenting what you see and proactively flagging potential issues
+- Availability to work night and/or weekend shifts on a regular basis
 - Willingness to be on-call or adjust schedule to support critical customer runs when needed
 
 **(OPTIONAL) Bonus points if you have**
 - Familiarity with life science lab equipment
-- Experience with observability or monitoring tools (dashboards, alerting systems, log analysis)
-- 1+ years of experience in a manufacturing support, field engineering, QA, or production support roles
+
+*(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
 
@@ -851,7 +895,7 @@ This is a high-impact role where your reliability directly enables cutting-edge 
 
 ### Scientist, Biophysical Characterization (SPR/BLI) (2026-08-04)
 
-2026-08-04 → open · materials-science · San Francisco · [source](https://jobs.ashbyhq.com/medraai/b6979689-9465-46ae-8026-6af2819f5fa1)
+2026-08-04 → open · materials-science · San Francisco · $135–170K · [source](https://jobs.ashbyhq.com/medraai/b6979689-9465-46ae-8026-6af2819f5fa1)
 
 <details><summary>Description</summary>
 
@@ -881,7 +925,7 @@ What You Bring to the Team
 
 ### Research Associate, Protein Purification & Quality Control (2026-08-31)
 
-2026-08-31 → open · materials-science · San Francisco · [source](https://jobs.ashbyhq.com/medraai/3adae454-8f38-40af-825b-fea9a7da9a10)
+2026-08-31 → open · materials-science · San Francisco · $85–115K · [source](https://jobs.ashbyhq.com/medraai/3adae454-8f38-40af-825b-fea9a7da9a10)
 
 <details><summary>Description</summary>
 
@@ -907,50 +951,11 @@ What You Bring to the Team
 
 </details>
 
-<a id="engagement-manager-2026-09-08"></a>
-
-### Engagement Manager (2026-09-08)
-
-2026-09-08 → open · business-ops · San Francisco · $140–215K · [source](https://jobs.ashbyhq.com/medraai/5e943078-2070-49d7-9cb4-0202cecba60b)
-
-<details><summary>Description</summary>
-
-**In this role, you will**
-- Own the customer relationship from pre-sale through post-sale, deployment, & expansion
-- Embed with customer teams to assess key pain points, understand scientific workflows, & identify critical requirements
-- Translate business objectives into a clear roadmap for deployment at our customers, mapping out milestones, dependencies, and success criteria
-- Dynamically move between high-level strategy and execution-level detail to plan and understand how day-to-day engineering activities map to overall goals, make complex technical trade-offs, and proactively forecast roadblocks
-- Operate with extreme ownership and set the pace for the team to ensure we ship on time
-- Design, track, and optimize customer success metrics to build the business case
-- Build deep relationships with executive sponsors and act as a strategic thought partner on their science and AI strategy
-- Develop scalable playbooks for customer engagement and integrate feedback into product development efforts
-
-**Let's talk if you have**
-- Technical background in Bioengineering / Biological Engineering / Chemical Engineering / Computational Biology / Biological Sciences / related field
-- 3+ years customer-facing experience in management or strategy consulting, BD in biopharma / biotech, technical deployments, or other strategic roles
-- 3+ years of experience working in a biological research lab, across academia or industry, and technical fluency of scientific wet lab workflows
-- A deep interest in the life sciences and a demonstrated eagerness to learn quickly
-- Track record of successfully leading complex, high-stakes customer engagements that relied on fast decision-making and tight coordination internally and externally
-- Experience thriving in cross-functional collaboration, effectively working with teams across Engineering, Product, & Sales
-- Customer obsession and a passion for deeply understanding user needs and delivering impactful solutions
-- A bias for action, solving immediate customer challenges while also focusing on scalable, repeatable processes
-- Strong communicator with executive presence & relationship-building capability,
-- Exceptional ability to translate complex technical concepts into clear business value
-- Excel in ambiguous environments where there is minimal structure and no playbook
-- Low-ego, high agency, team-first, and first-principles mindset
-
-**Bonus points for**
-- Past experience working at early-stage, high-growth startups.
-- Past experience working with robotics, hardware, or software engineers.
-This position is 100% in-person, you must be able to come on-site to our San Francisco office. We offer relocation benefits for applicants who need to relocate. Travel is required, up to 25-50%.
-
-</details>
-
 <a id="research-engineer-post-training-2026-10-01"></a>
 
 ### Research Engineer, Post-training (2026-10-01)
 
-2026-10-01 → open · ml-research · San Francisco · [source](https://jobs.ashbyhq.com/medraai/7b68aa54-c168-41c8-a817-f80f8ff16119)
+2026-10-01 → open · ml-research · San Francisco · $170–350K · [source](https://jobs.ashbyhq.com/medraai/7b68aa54-c168-41c8-a817-f80f8ff16119)
 
 <details><summary>Description</summary>
 
@@ -973,6 +978,36 @@ We shipped our first production system over a year ago, recently raised a $52M S
 - Ability to own the post-training stack end-to-end: data pipelines, harnesses, RL environments, and agentic evaluations, even when things are loosely defined
 - Proficiency in Python and familiarity with at least one deep learning framework (e.g., PyTorch, JAX)
 - Experience with LLMs, post-training, reinforcement learning, or agentic systems
+
+</details>
+
+<a id="recruiting-coordinator-2026-10-13"></a>
+
+### Recruiting Coordinator (2026-10-13)
+
+2026-10-13 → open · business-ops · San Francisco · $75–100K · [source](https://jobs.ashbyhq.com/medraai/7095cccf-4e5a-459b-a922-9fee8136fc71)
+
+<details><summary>Description</summary>
+
+**What We're Building**
+The Team: We’re a team of passionate, mission-driven engineers from companies like Tesla, Amazon, SpaceX, and Neuralink. We’re collaborative and love moving fast, both with our product and on team trips skiing or go-karting!
+
+**In this role, you will**
+- Own end-to-end interview scheduling and coordination for all roles and stages, expertly managing complex calendars, resolving conflicts, and ensuring every slot runs on time
+- Greet and manage all candidate walk-ins with warmth and professionalism, handling on-site logistics and delivering an outstanding first impression
+- Serve as our Ashby power user, deeply optimizing pipelines, workflows, reporting, automations, and data integrity so the team can hire faster
+- Fluently leverage AI tools every day to automate repetitive tasks, improve candidate communications, enhance sourcing/screening support, and generate actionable insights
+- Maintain a healthy, accurate hiring pipeline and proactively surface issues or opportunities to keep requisitions on track
+- Partner closely with recruiters and hiring managers to deliver a seamless, high-quality candidate experience from first contact through offer
+
+**What you bring**
+- 2–4 years of direct experience as a Recruiting Coordinator (previous RC experience is required, we’re targeting someone who has already done this role successfully)
+- Deep, hands-on mastery of Ashby
+- Strong AI fluency and real enthusiasm for using modern AI tools to make recruiting faster, smarter, and more scalable
+- Proven comfort with in-person work and high-volume candidate walk-ins. You’re confident, organized, and genuinely enjoy being the face of the recruiting process
+- Exceptional organizational skills, attention to detail, and the ability to juggle multiple calendars and priorities without dropping a ball
+- Warm, professional communication style and a proactive, solutions-oriented mindset that keeps the entire team moving
+We’re looking for someone who has already been a Recruiting Coordinator and is ready to level up our operations in a dynamic, on-site environment. If you love owning the details, making processes better every day, and playing a key role in building great teams, we’d love to meet you.
 
 </details>
 

@@ -305,9 +305,9 @@ FDE（Forward Deployed Engineer）是工业大模型落地最后一公里核心�
 
 </details>
 
-<a id="competition-only-research-agent-full-stack-engineer-intern-2026-09-14"></a>
+<a id="competition-only-research-agent-full-stack-development-intern-2026-09-14"></a>
 
-### [Competition only] Research Agent Full-Stack Engineer / Intern (2026-09-14)
+### [Competition only] Research Agent Full-Stack Development Intern (2026-09-14)
 
 2026-09-14 → open · general-application · Beijing, Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7685369734024595739/detail)
 

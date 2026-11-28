@@ -9,18 +9,169 @@
   "status": "active",
   "website": "https://www.medra.ai",
   "funding": [
-    {"date": "2025-09-11", "round": "Seed (announced on leaving stealth)", "amount_usd_m": 11.0, "original_amount": "USD 11M", "type": "equity", "lead_investors": ["Lux Capital", "Neo", "NFDG"], "source": "https://dealroom.co/companies/medra-/"},
-    {"date": "2025-12-11", "round": "Series A", "amount_usd_m": 52.0, "original_amount": "USD 52M", "type": "equity", "lead_investors": ["Human Capital"], "source": "https://www.businesswire.com/news/home/20251211748411/en/Medra-Raises-%2452-Million-Series-A-to-Build-Physical-AI"}
+    {
+      "date": "2025-09-11",
+      "round": "Seed (announced on leaving stealth)",
+      "amount_usd_m": 11.0,
+      "original_amount": "USD 11M",
+      "type": "equity",
+      "lead_investors": [
+        "Lux Capital",
+        "Neo",
+        "NFDG"
+      ],
+      "source": "https://dealroom.co/companies/medra-/"
+    },
+    {
+      "date": "2025-12-11",
+      "round": "Series A",
+      "amount_usd_m": 52.0,
+      "original_amount": "USD 52M",
+      "type": "equity",
+      "lead_investors": [
+        "Human Capital"
+      ],
+      "source": "https://www.businesswire.com/news/home/20251211748411/en/Medra-Raises-%2452-Million-Series-A-to-Build-Physical-AI"
+    }
   ],
-  "headcount": [],
+  "headcount": [
+    {
+      "date": "2025-02-01",
+      "value": 22,
+      "low": 2,
+      "high": 10,
+      "method": "linkedin-band",
+      "note": "LinkedIn 'View all 22 employees'; band 2-10 employees; LinkedIn company page as captured by the Wayback Machine",
+      "source": "https://web.archive.org/web/20250201010514/https://www.linkedin.com/company/medra-ai",
+      "added": "2026-11-28"
+    },
+    {
+      "date": "2026-01-01",
+      "value": 31,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn 'View all 31 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+      "source": "https://web.archive.org/web/20260101094840/https://www.linkedin.com/company/medra-ai",
+      "added": "2026-11-28"
+    },
+    {
+      "date": "2026-02-02",
+      "value": 29,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn 'View all 29 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+      "source": "https://web.archive.org/web/20260202105315/https://www.linkedin.com/company/medra-ai",
+      "added": "2026-11-28"
+    },
+    {
+      "date": "2026-07-07",
+      "value": 60,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn 'View all 60 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+      "source": "https://web.archive.org/web/20260707002205/https://www.linkedin.com/company/medra-ai",
+      "added": "2026-11-28"
+    },
+    {
+      "date": "2026-08-17",
+      "value": 71,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn 'View all 71 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+      "source": "https://web.archive.org/web/20260817181440/https://www.linkedin.com/company/medra-ai",
+      "added": "2026-11-28"
+    },
+    {
+      "date": "2026-10-15",
+      "value": 77,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn 'View all 77 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+      "source": "https://web.archive.org/web/20261015143217/https://www.linkedin.com/company/medra-ai",
+      "added": "2026-11-28"
+    }
+  ],
   "postings": [
-    {"period": "2026Q2", "new_postings": 6, "method": "ats", "source": "https://jobs.ashbyhq.com/medraai"},
-    {"period": "2026Q3", "new_postings": 7, "method": "ats", "source": "https://jobs.ashbyhq.com/medraai"},
-    {"period": "2026Q4", "new_postings": 2, "method": "ats", "source": "https://jobs.ashbyhq.com/medraai"}
+    {
+      "period": "2026Q2",
+      "new_postings": 6,
+      "method": "ats",
+      "source": "https://jobs.ashbyhq.com/medraai"
+    },
+    {
+      "period": "2026Q3",
+      "new_postings": 7,
+      "method": "ats",
+      "source": "https://jobs.ashbyhq.com/medraai"
+    },
+    {
+      "period": "2026Q4",
+      "new_postings": 2,
+      "method": "job_postings.jsonl",
+      "note": "postings first seen 2026-10-01 to 2026-11-28 (live boards and Wayback)",
+      "source": "https://jobs.ashbyhq.com/medraai"
+    }
   ],
-  "current_openings": {"date": "2026-10-09", "count": 15, "by_function": {"materials-science": 6, "software-eng": 3, "lab-automation": 3, "business-ops": 2, "ml-research": 1}, "titles": ["Scientist, Biology", "Scientist, Cell Biology & Antibody Engineering", "Scientist, Biophysical Characterization (SPR/BLI)", "Research Associate - Foundry", "Research Associate, Protein Purification & Quality Control", "Scientific Operations", "Robotics Software Engineer", "Tech Lead Manager - Full Stack", "Full Stack Software Engineer", "Mechanical Engineer", "Robotics Manufacturing Technician", "Systems Test Engineer - Contract", "Research Engineer, Post-training", "Engagement Manager", "Business Operations"], "source": "https://jobs.ashbyhq.com/medraai"},
+  "current_openings": {
+    "date": "2026-11-28",
+    "count": 15,
+    "by_function": {
+      "materials-science": 5,
+      "lab-automation": 4,
+      "software-eng": 3,
+      "business-ops": 2,
+      "ml-research": 1
+    },
+    "titles": [
+      "Robotics Software Engineer",
+      "Mechanical Engineer - Winter 2026 Internship",
+      "Forward Deployed Robotics Engineer",
+      "Tech Lead Manager - Full Stack",
+      "Scientist, Biology",
+      "Research Associate - Foundry",
+      "Full Stack Software Engineer",
+      "Mechanical Engineer",
+      "Recruiting Coordinator",
+      "Scientist, Cell Biology & Antibody Engineering",
+      "Systems Test Engineer",
+      "Engagement Manager",
+      "Scientist, Biophysical Characterization (SPR/BLI)",
+      "Research Associate, Protein Purification & Quality Control",
+      "Research Engineer, Post-training"
+    ],
+    "source": "https://jobs.ashbyhq.com/medraai",
+    "basis": "company job board (live snapshot)",
+    "previous": {
+      "date": "2026-10-10",
+      "count": 15,
+      "by_function": {
+        "materials-science": 5,
+        "lab-automation": 3,
+        "software-eng": 3,
+        "business-ops": 3,
+        "ml-research": 1
+      },
+      "source": "https://jobs.ashbyhq.com/medraai",
+      "note": "recounted from the 2026-10-10 live snapshot"
+    }
+  },
   "people": [
-    {"name": "Michelle Lee", "title": "Founder & CEO", "function": "leadership", "seniority": "founder", "start": "2022", "start_basis": "Founding year per most profiles (Dealroom says 2021); CEO in Series A release", "end": null, "background": "PhD robotics, Stanford; left an incoming NYU assistant-professor post to found Medra; earlier NVIDIA, SpaceX, McKinsey (as summarized from public profiles)", "source": "https://www.businesswire.com/news/home/20251211748411/en/Medra-Raises-%2452-Million-Series-A-to-Build-Physical-AI"}
+    {
+      "name": "Michelle Lee",
+      "title": "Founder & CEO",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2022",
+      "start_basis": "Founding year per most profiles (Dealroom says 2021); CEO in Series A release",
+      "end": null,
+      "background": "PhD robotics, Stanford; left an incoming NYU assistant-professor post to found Medra; earlier NVIDIA, SpaceX, McKinsey (as summarized from public profiles)",
+      "source": "https://www.businesswire.com/news/home/20251211748411/en/Medra-Raises-%2452-Million-Series-A-to-Build-Physical-AI"
+    }
   ],
   "staff_roles": [],
   "departures": [],

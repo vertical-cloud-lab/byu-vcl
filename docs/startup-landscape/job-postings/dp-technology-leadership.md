@@ -6,7 +6,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### AI4S Key Account Director (2024-02-19)
 
-2024-02-19 → open · leadership · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7337275820023564571/detail)
+2024-02-19 → 2026-10-10 · leadership · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7337275820023564571/detail)
 
 <details><summary>Description</summary>
 
@@ -29,7 +29,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Strategic Account Director, New Energy (2024-02-19)
 
-2024-02-19 → open · leadership · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7337256205280250121/detail)
+2024-02-19 → 2026-10-10 · leadership · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7337256205280250121/detail)
 
 <details><summary>Description</summary>
 
@@ -74,7 +74,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Head of Education-Sector Commercialization (2025-02-21)
 
-2025-02-21 → open · leadership · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7473855679277025577/detail)
+2025-02-21 → 2026-10-10 · leadership · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7473855679277025577/detail)
 
 <details><summary>Description</summary>
 
@@ -91,7 +91,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Sales Director (2025-04-23)
 
-2025-04-23 → open · leadership · Beijing, Shanghai, Shenzhen · [source](https://dptechnology.jobs.feishu.cn/index/position/7496463974633638198/detail)
+2025-04-23 → 2026-10-10 · leadership · Beijing, Shanghai, Shenzhen · [source](https://dptechnology.jobs.feishu.cn/index/position/7496463974633638198/detail)
 
 <details><summary>Description</summary>
 
@@ -234,6 +234,49 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 加分项
 • 有AI for Science或数据驱动电池研发经验者优先。
 • 持有相关专利或发表过高质量论文者优先。
+
+</details>
+
+<a id="head-of-internal-information-security-2026-10-21"></a>
+
+### Head of Internal Information Security (2026-10-21)
+
+2026-10-21 → open · leadership · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7698953392379382057/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+2.负责敏感数据防泄漏（DLP）建设与运营，落地敏感文件管控、溯源与文档权限治理；对安全事件组织排查与溯源取证和定位；
+
+**Requirements (职位要求)**
+1.本科及以上学历，信息安全 / 计算机 / 网络通信等相关专业优先；
+2.八年及以上企业信息安全 / IT 安全领域工作经验，具备甲方侧（企业内部）落地经历（非仅乙方方案输出）；
+4.至少深度掌握以下一个核心产品域并有实际部署运营经验：DLP / 数据防泄漏、UEBA / 内部威胁检测、终端与网络准入（SASE / 零信任）、上网行为与审计；
+
+</details>
+
+<a id="head-of-autonomous-drug-discovery-laboratory-2026-11-10"></a>
+
+### Head of Autonomous Drug-Discovery Laboratory (2026-11-10)
+
+2026-11-10 → open · leadership · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7706397683280382218/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+1、研发组织与科学管理：
+2、实验能力与集成需求：
+3、验证与验收：
+4、智能化应用与设计协同：
+5、团队建设与平台运营：
+
+**Requirements (职位要求)**
+1、学历背景：
+药物化学、有机化学、药学、生物学或相关专业硕士及以上学历，博士优先。
+2、工作与管理经验：
+3、科学与项目经验：
+4、平台实践：
+5、跨领域协作：
 
 </details>
 

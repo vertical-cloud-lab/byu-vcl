@@ -2,6 +2,22 @@
 
 Cambridge, MA, US · founded 2023 (stealth until March 2025) · self-driving lab ("AI Science Factories") · active · [lila.ai](https://www.lila.ai)
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**Team size on LinkedIn.** People listing the company, read from the company page (LinkedIn's 'View all N employees'); this counts alumni who never updated their profile and misses staff without one.
+
+| Date | Members | Band | Source |
+| --- | --- | --- | --- |
+| 2026-10-27 | 567 | 201-500 | [Wayback](https://web.archive.org/web/20261027050333/https://www.linkedin.com/company/lila-sciences) |
+
+**Openings.** 113 open on 2026-11-28 on [its job board](https://job-boards.greenhouse.io/lilasciences), against 107 on 2026-10-10. 52 new, 46 closed.
+
+- Two of the 33 leaders on the 24 September team page are no longer listed: Jack Milwid (Office of the CEO) and Chris O'Donnell (Chief Government Affairs Officer). Chris Fussell moved from President, Operations to Vice Chair, and Jon Hennek from Chief Revenue & Product Officer to Chief Product Officer. ([source](https://www.lila.ai/team))
+<!-- /refresh:2026-11-28 -->
+
 ## Funding timeline
 
 | Date | Round | Amount (USD M) | Lead / notable investors | Source |

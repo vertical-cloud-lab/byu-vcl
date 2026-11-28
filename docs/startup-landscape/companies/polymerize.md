@@ -2,6 +2,16 @@
 
 Singapore · founded 2020 · materials informatics software · active · [polymerize.io](https://www.polymerize.io)
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**LinkedIn job search** ([logged out, by name](https://www.linkedin.com/jobs/search?keywords=%22Polymerize%22&location=Worldwide&geoId=92000000), 2026-11-28): no postings.
+
+- Its careers page (company-pages/careers, live in May 2026) now returns 404, and LinkedIn's job search finds no Polymerize postings. ([source](https://polymerize.io/company-pages/careers))
+<!-- /refresh:2026-11-28 -->
+
 A cloud materials-informatics platform for polymer and chemical R&D. It covers data management, ML property prediction and formulation optimisation.
 
 ## Funding timeline

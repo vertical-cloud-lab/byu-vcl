@@ -138,7 +138,7 @@ A Note to Agencies
 
 ### Principal Technical Program Manager, App (2025-12-22)
 
-2025-12-22 → open · business-ops · Cambridge, MA USA · $204–270K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4087979009)
+2025-12-22 → 2026-10-10 · business-ops · Cambridge, MA USA · $204–270K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4087979009)
 
 <details><summary>Description</summary>
 
@@ -337,7 +337,7 @@ Quality and trust
 
 ### Manager / Senior Manager, Multimedia (2026-02-27)
 
-2026-02-27 → open · business-ops · Cambridge, MA USA · $108–186K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4157130009)
+2026-02-27 → open · business-ops · Cambridge, MA USA · $108–187K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4157130009)
 
 <details><summary>Description</summary>
 
@@ -370,7 +370,7 @@ Content asset management & archiving
 - Familiarity or comfort with scientific/technical topics. Background in science, biology, AI/ML, robotics, or software is a plus.
 
 **Compensation**
-$108,000 — $186,000 USD
+$108,000 — $186,667 USD
 
 </details>
 
@@ -493,7 +493,7 @@ What You'll Be Building
 
 ### Manager, Revenue Accounting (2026-03-27)
 
-2026-03-27 → open · business-ops · Cambridge, MA USA · $126–186K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4195605009)
+2026-03-27 → open · business-ops · Cambridge, MA USA · $108–187K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4195605009)
 
 <details><summary>Description</summary>
 
@@ -527,43 +527,6 @@ Cross-Functional Partnership
 - 4–7+ years of accounting experience with meaningful exposure to revenue recognition and ASC 606
 - Strong working knowledge of ASC 606; demonstrated ability to apply it to complex, real-world revenue arrangements
 - Proven experience operationalizing revenue processes: billing, revenue tracking, reconciliations, and close activities
-
-*(truncated: full text in `data/job_postings.jsonl`)*
-
-</details>
-
-<a id="manager-senior-manager-finance-fixed-asset-accounting-2026-03-29"></a>
-
-### Manager / Senior Manager, Finance, Fixed Asset Accounting (2026-03-29)
-
-2026-03-29 → open · business-ops · Cambridge, MA USA; San Francisco, CA USA · $108–187K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4195640009)
-
-<details><summary>Description</summary>
-
-**Your Impact at LILA**
-As the Fixed Asset Accounting Manager at Lila, you'll play a critical role in building and scaling the Company's fixed asset, lease, and capital project accounting infrastructure during a period of rapid growth and innovation. You will own the end-to-end accounting lifecycle for capital assets—from acquisition and capitalization through depreciation, impairment, retirement, and audit support—while partnering closely with Procurement, Facilities, Lab Operations, and Finance.
-This role will be instrumental in establishing best-in-class asset accounting processes, ensuring accurate financial reporting, supporting strategic capital investments, and maintaining compliance with U.S. GAAP. You will help build the operational and accounting foundation that supports Lila's expanding laboratory, facilities, and scientific equipment footprint.
-What You'll Be Building
-Fixed Asset Accounting & Reporting
-- Own the fixed asset accounting function, including capitalization, depreciation, disposals, transfers, impairments, and reconciliations.
-- Manage the monthly fixed asset close process and prepare supporting journal entries and account reconciliations.
-- Maintain accurate fixed asset records and ensure compliance with capitalization policies and U.S. GAAP.
-- Review capital expenditures and determine appropriate accounting treatment.
-- Support accounting for laboratory equipment, capital leases, leasehold improvements, construction-in-progress projects, and capital infrastructure investments.
-- Maintain asset records necessary to support depreciation calculations and fixed asset reporting.
-Asset Governance & Lifecycle Controls
-- Partner with Procurement, Facilities, and Lab Operations to ensure complete and accurate asset data is captured during purchasing and onboarding.
-- Oversee asset identification and tracking standards, including asset tagging and inventory control processes.
-- Maintain accurate records of asset ownership, location, lifecycle status, and supporting documentation.
-- Coordinate periodic physical inventories and asset verification procedures and investigate discrepancies.
-- Ensure consistency of asset information across ERP, procurement, and asset management systems.
-Lease & Capital Project Accounting
-- Support accounting for operating and finance leases under ASC 842.
-- Maintain lease inventories and support tracking of lease commencement dates, renewal options, expiration dates, and lease modifications.
-- Partner with Facilities and Procurement to monitor leasehold improvement projects and capital construction activities.
-- Oversee construction-in-progress (CIP) tracking and coordinate timely capitalization upon project completion.
-- Assist with technical accounting analyses related to capital assets, lease arrangements, and complex capital projects.
-Audit, Compliance & Internal Controls
 
 *(truncated: full text in `data/job_postings.jsonl`)*
 
@@ -670,7 +633,7 @@ What You'll Be Building
 
 ### Chemistry Technical Program Manager (2026-04-24)
 
-2026-04-24 → open · business-ops · Cambridge, MA USA · $128–172K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4204188009)
+2026-04-24 → 2026-10-10 · business-ops · Cambridge, MA USA · $128–172K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4204188009)
 
 <details><summary>Description</summary>
 
@@ -889,7 +852,7 @@ What You'll Be Building
 
 ### Technical Program Manager, AISF (2026-07-09)
 
-2026-07-09 → open · business-ops · Cambridge, MA USA · $128–170K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4289723009)
+2026-07-09 → 2026-10-10 · business-ops · Cambridge, MA USA · $128–170K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4289723009)
 
 <details><summary>Description</summary>
 
@@ -950,7 +913,7 @@ What You'll Be Building
 
 ### Research Product Manager, Post Training (2026-07-17)
 
-2026-07-17 → open · business-ops · Cambridge, MA USA; San Francisco, CA USA · $204–310K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4310498009)
+2026-07-17 → 2026-10-10 · business-ops · Cambridge, MA USA; San Francisco, CA USA · $204–310K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4310498009)
 
 <details><summary>Description</summary>
 
@@ -984,7 +947,7 @@ What You'll Be Building
 
 ### Manager / Senior Manager, Enterprise GTM, Chemicals (2026-08-03)
 
-2026-08-03 → open · business-ops · Cambridge, MA USA · $108–187K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4353659009)
+2026-08-03 → 2026-10-10 · business-ops · Cambridge, MA USA · $108–187K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4353659009)
 
 <details><summary>Description</summary>
 
@@ -1012,7 +975,7 @@ What You'll Be Building
 
 ### Research Product Manager, Fine-tuning (2026-08-03)
 
-2026-08-03 → open · business-ops · Cambridge, MA USA; San Francisco, CA USA · $204–310K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4339607009)
+2026-08-03 → 2026-10-10 · business-ops · Cambridge, MA USA; San Francisco, CA USA · $204–310K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4339607009)
 
 <details><summary>Description</summary>
 
@@ -1076,7 +1039,7 @@ What You'll Be Building
 
 ### Senior Manager, Scientific Discovery Capacity Planning (2026-08-14)
 
-2026-08-14 → open · business-ops · Cambridge, MA USA · $140–173K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4359834009)
+2026-08-14 → open · business-ops · Cambridge, MA USA · $140–187K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4359834009)
 
 <details><summary>Description</summary>
 
@@ -1110,7 +1073,7 @@ What You'll Be Building
 
 ### Senior Product Designer II / Staff Product Designer (2026-09-11)
 
-2026-09-11 → open · business-ops · Cambridge, MA USA · $180–256K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4376188009)
+2026-09-11 → 2026-10-10 · business-ops · Cambridge, MA USA · $180–256K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4376188009)
 
 <details><summary>Description</summary>
 
@@ -1184,6 +1147,377 @@ What You'll Be Building
 
 **Compensation**
 $88,000 — $126,000 USD
+
+</details>
+
+<a id="specialist-senior-procurement-specialist-2026-10-19"></a>
+
+### Specialist / Senior Procurement Specialist (2026-10-19)
+
+2026-10-19 → open · business-ops · Cambridge, MA USA · $68–117K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4420037009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+We are looking for a Procurement Specialist to run the buying desk for our fast-paced, AI-driven research and development organization at Lila Sciences.
+Reporting to the Senior Manager, Procurement, this is a hands-on role for someone who wants to own throughput. You will keep the ordering process real time and efficient, and you will own vendor onboarding for the suppliers behind those orders.
+This is the first dedicated buying desk at Lila. You will define how it runs rather than inherit it, working closely with scientists, lab managers and technical teams across the organization.
+What You'll Be Building
+- Own requisition-to-purchase-order execution end to end: review, clarify, place, confirm, close
+- Serve as the primary procurement partner for assigned research and operating teams
+- Sequence the daily queue on impact, not on who applied the most pressure
+- Hold order accuracy: correct coding, approval path, sound terms, honest lead times
+- Grow catalog and punch-out coverage so routine buying becomes self-service
+- Own supplier onboarding and offboarding, and keep the vendor master clean and current
+- Resolve supplier delivery, quality and pricing issues before they reach the requester
+- Partner with FP&A on budget checks, project coding and month-end accruals
+- Bachelor's degree in Business, Supply Chain, Life Sciences or a related field, or equivalent practical experience
+- Three or more years of procurement, purchasing or procurement operations experience, ideally supporting research organizations
+- Experience with a major procurement platform such as Coupa, Ariba or Jaggaer. Coupa strongly preferred
+- Hands-on supplier onboarding experience: qualification, screening, compliance documentation, vendor master management
+- Proven ability to sequence a queue that arrives already overloaded, where most requests are marked urgent
+- Accuracy under volume, and a service instinct paired with the judgement to refuse non-compliant orders
+- Ability to travel up to 10%
+
+**Bonus Points For**
+- Experience coordinating with demand or materials planning
+- Experience in biotech, pharma, diagnostics or research-driven startups
+- Familiarity with CRO and CDMO engagements and lab operations
+- Experience sourcing scientific materials, equipment and research services
+- Professional certifications such as CPSM, CPM or CSCP
+
+**Compensation**
+$68,000 — $117,333 USD
+
+</details>
+
+<a id="technical-recruiter-ai-research-2026-10-22"></a>
+
+### Technical Recruiter, AI Research (2026-10-22)
+
+2026-10-22 → open · business-ops · Cambridge, MA USA; San Francisco, CA USA · $160–215K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423474009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+As an AI Research Recruiter at Lila Sciences, you will partner directly with our AI research and engineering teams to identify, engage, and hire the researchers and engineers building our AI-driven platform. This is a strategic, full-cycle role: you'll shape hiring plans with research leadership, build Lila's reputation in the AI research community, and go deep in high-signal technical channels to reach talent that isn't sitting on a job board.
+What You'll Be Building
+- Develop and execute strategic recruiting plans for AI/ML research and engineering roles, from hiring-manager intake through screen, interview loop management, offer strategy, and close.
+- Partner with AI Research hiring managers and interview panels to translate team needs into sourcing strategy, candidate personas, and role calibration.
+- Build and sustain a high-trust network of ML researchers and applied scientists across subfields (LLM, RL, Generative AI) through consistent relationship-building, community presence, and non-traditional discovery loops (research publications, GitHub, conferences, open-source).
+- Partner with leadership and cross-functional stakeholders to map long-term AI/ML talent strategy and balance hiring priorities across research teams.
+- Build and iterate on recruiting processes that maintain a high, consistent talent bar while actively removing bias from the hiring process.
+- Strengthen Lila's employer brand within the ML research and scientific community — representing our mission, culture, and technical work to candidates with strong options elsewhere.
+- Stay current on sourcing techniques, interview innovation, and AI/ML talent-market trends; bring new approaches back to the team.
+- Maintain operational rigor: pipeline hygiene, recruiting metrics (time-to-fill, slate quality, source efficacy), and clear communication with candidates and hiring teams.
+- 5+ years of full-cycle recruiting experience supporting technical research teams, with a track record of recruiting AI/ML research talent specifically.
+- Strong existing network in the ML research community (NeurIPS, ICML, top CS/ML programs).
+- Proven ability to attract passive candidates from leading academic institutions and frontier labs, and to scale a high-performing technical hiring function.
+- Strong technical aptitude — comfortable understanding and evaluating ML/research qualifications alongside hiring teams.
+- Excellent negotiation, communication, and stakeholder-management skills with senior technical leaders.
+- Comfortable operating with autonomy and juggling shifting priorities in a fast-moving environment.
+
+**Bonus Points For**
+- Hands-on experience with agentic recruiting tools/workflows (automations, enrichment/triage helpers) to improve candidate discovery.
+- Experience recruiting at a deep-tech or frontier AI research organization.
+- International recruiting experience across multiple regions.
+
+**Compensation**
+$160,000 — $215,000 USD
+
+</details>
+
+<a id="co-op-reaction-prediction-benchmarking-2026-10-26"></a>
+
+### Co-Op, Reaction Prediction & Benchmarking (2026-10-26)
+
+2026-10-26 → open · business-ops · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4465064009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Develop and evaluate machine learning methods supporting small molecule design and synthesis. Working with public and internal chemistry datasets, the co-op will pursue a focused research project in either reaction prediction and benchmarking or molecular property prediction for medicinal chemistry optimization.
+Potential projects include building benchmarks to assess reaction prediction models and reaction plausibility, or developing and fine-tuning molecular property predictors using project-specific data. The primary project will be selected based on the candidate’s interests, experience, and team priorities. Expected outputs include reproducible data and evaluation workflows, benchmark results, and research recommendations to inform future model development and integration.
+What You'll Be Building
+- Plan and execute a Co-Op project in conjunction with the Molecular Intelligence team
+- Pursuing a graduate degree (MSc, PhD) in Chemistry, Computer Science, Physics, or similar
+
+**Bonus Points For**
+- Python (data processing, model training, and evaluation)
+- Familiarity with cheminformatics libraries (RDKit or similar)
+- Basic machine learning (supervised learning, model evaluation metrics)
+- Familiarity with chemistry concepts through coursework or research experience
+- Bonus: experience with molecular property prediction, multi-task learning, self-supervised pre-training, or model fine-tuning
+- Bonus: familiarity with reaction data formats, reaction SMARTS, or reaction databases (e.g., Pistachio, Reaxys, SciFinder)
+- Bonus: background or interest in organic or medicinal chemistry
+
+</details>
+
+<a id="manager-senior-technical-program-manager-2026-10-26"></a>
+
+### Manager / Senior Technical Program Manager (2026-10-26)
+
+2026-10-26 → open · business-ops · Cambridge, MA USA · $180–256K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4455695009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+The Scientific System of Record (SSR) team builds the memory layer for Lila's operations. Our two core platforms, the Design Registry and LIMS, capture experimental design, samples, processes, and provenance across Lila's scientific workflows.
+As a Senior Technical Program Manager on SSR, you will operate at the intersection of engineering execution and organizational strategy. You will partner with an Engineering Director to scale engineering processes, drive cross-functional alignment across multiple engineering teams, and manage complex, multi-stakeholder programs that span cross-cutting scientific domains.
+You will build and improve how the team operates, not only track and deliver against it.
+What You'll Be Building
+- Own end-to-end program management across Designs & Schemas, LIMS, Build & Order, Project Management, and ELN
+- Align requirements, dependencies, and timelines on cross-cutting programs spanning life sciences, formulations, and chemistry
+- Communicate scope, tradeoffs, risks, and timelines to technical and scientific stakeholders, resolving blockers early
+- Partner with the Engineering Director to design, operationalize, and improve engineering processes at scale
+- Scale agile practices across SSR: Jira hygiene, sprint planning discipline, and backlog management
+- Define release gates, support intake processes, and operational dashboards that drive continuous improvement
+- 5+ years in technical program management, managing complex, multi-team programs in a fast-moving engineering environment
+- Demonstrated ability to design processes from scratch and operationalize them at scale
+- Strong technical fluency with APIs, data models, schemas, and system integrations
+- Experience managing cross-functional dependencies across engineering teams and scientific stakeholders
+- Commitment to work from our Alewife (Cambridge, MA) or San Francisco office 3-5 days per week
+
+**Bonus Points For**
+- Background in biology, chemistry, materials science, or another experimental science
+- Experience with LIMS, ELNs, scientific registries, laboratory informatics, or scientific data platforms
+- Experience modeling samples, protocols, lineage, provenance, or inventory
+- Experience integrating scientific systems with automation or data infrastructure, including event-driven architectures
+
+**Compensation**
+$180,000 — $256,000 USD
+
+</details>
+
+<a id="senior-manager-scientific-system-of-record-2026-10-26"></a>
+
+### Senior Manager, Scientific System of Record (2026-10-26)
+
+2026-10-26 → open · business-ops · Cambridge, MA USA · $192–256K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4378747009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+We are seeking a Senior Manager, Scientific System of Record to lead the team building the user-facing surfaces and core applications that form Lila’s laboratory information management system (LIMS).
+You will lead a team of engineers responsible for building the systems that scientists, technicians, and AI agents use to plan, execute, capture, and understand scientific work. You’ll work closely with scientists, product leaders, ML researchers, data engineers, automation engineers, and platform teams to turn complex laboratory workflows into intuitive, reliable, and scalable software.
+The Scientific System of Record team builds the memory layer for Lila’s operations. It connects scientific intent to physical reality by capturing experimental plans, samples, protocols, executions, results, and operational context, creating the foundation for reproducibility and closing the Design-Build-Test-Learn loop.
+As the Sr. Manager leading the LIMS surfaces, you will set technical direction, grow the team, shape the roadmap, and ensure we deliver software that is exceptional to use and trustworthy as the system of record for Lila’s scientific operations.
+What You'll Be Building
+- Lead development of interfaces and applications for samples, experiments, protocols, workflows, results, and lab operations.
+- Set technical direction across front-end, backend, APIs, and data architecture.
+- Build and lead a high-performing engineering team through hiring, coaching, mentorship, and career development.
+- Partner with product and scientific stakeholders to define priorities and translate ambiguity into engineering plans.
+- Ensure LIMS surfaces integrate with automation, data, ML, and platform systems.
+- Establish engineering practices for correctness, auditability, traceability, provenance, and reliability.
+- Align engineering, science, product, automation, and operations teams to drive initiatives into production.
+- Bachelor’s or Master’s degree in Computer Science, Engineering, or a related field, or equivalent experience.
+- 8+ years of software engineering experience, including leading engineering teams and delivering production software.
+- 3+ years of engineering management experience, with a track record of hiring, developing, and retaining engineers.
+- Strong technical depth in full-stack application development and architecture.
+- Experience designing and operating APIs, databases, and distributed production systems.
+- Experience building products for complex, workflow-driven, or data-intensive environments.
+- Strong product sense and ability to translate scientific and operational needs into intuitive software.
+- Excellent communication skills across technical, scientific, and cross-functional audiences.
+
+**Bonus Points For**
+- Experience with TypeScript, React, and Python.
+- Experience designing systems that support auditability, traceability, reproducibility, data provenance, or regulated workflows.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="co-op-electron-microscopy-2026-10-28"></a>
+
+### Co-Op, Electron Microscopy (2026-10-28)
+
+2026-10-28 → open · business-ops · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4469144009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila Sciences is seeking a Co-Op, Electron Microscopy to join the Materials Science team within the Autonomous Science Platform. This co-op supports advanced SEM characterization workflows across powdered materials and thin films, working alongside synthesis, characterization, and ML scientists to turn physical experiments into high-quality data.
+The work is hands-on and instrument-heavy: acquiring imaging and compositional data, refining methods, and iterating on protocols that feed Lila's materials discovery platform. It suits a PhD student who wants depth in microstructural analysis and sees how characterization data drives AI-guided materials research.
+What You'll Be Building
+- Design and execute SEM-based characterization workflows across diverse chemistries and form factors
+- Operate electron microscopy instrumentation under the guidance of staff scientists
+- Partner with experimental scientists and engineers to optimize protocols and inform downstream analysis
+- Troubleshoot instrumentation and workflow issues that affect data quality
+- Capture imaging and analysis results in clear, reusable laboratory records
+- Follow safety and compliance standards for instrument and sample handling
+- Currently enrolled in a PhD in Materials Science, Physics, or a related field
+- Strong background in SEM-based microstructural analysis
+- Hands-on expertise with EDS, EBSD, and FIB (focused ion beam)
+- Experience characterizing powdered materials and thin films
+- Demonstrated ability to operate and troubleshoot advanced SEM systems
+- Strong organizational skills and attention to detail
+
+**Bonus Points For**
+- Experience with image analysis tools such as ImageJ or Python-based pipelines
+- Familiarity with complementary techniques such as XRD or XRF
+- Interest in automation and integration of microscopy with AI workflows
+- Prior work characterizing nanoscale defects and interfaces
+
+</details>
+
+<a id="co-op-finance-2026-10-28"></a>
+
+### Co-Op, Finance (2026-10-28)
+
+2026-10-28 → open · business-ops · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4469146009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila Sciences Finance is building AI into how the function works, not as a side experiment but as an embedded capability across Strategic Finance, FP&A, Procurement, and Accounting. We need someone to help us go from informal experimentation to shipped tools the team actually uses.
+This co-op will work across the Finance organization to identify high-impact AI use cases, prototype working tools against our internal data, and measure the time and accuracy gains those tools produce. You will partner directly with finance stakeholders, get up to speed on the team's existing finance tech stack, build proof-of-concept tools with LLM APIs, and help us turn successful pilots into a playbook the broader Finance team can scale.
+This is a hands-on role at the intersection of applied AI and corporate finance. The work you ship will go into use immediately.
+What You'll Be Building
+- Ramp quickly on the Finance team's existing tech stack across ERP, FP&A, expense, and procurement systems
+- Partner with FP&A, Procurement, Accounting, and Strategic Finance to identify high-value AI use cases
+- Prototype tools using LLM APIs against Finance workflows and internal data sources from existing systems
+- Measure time savings, accuracy gains, and adoption impact of each prototype
+- Scope ambiguous problems into shippable proof-of-concept tools
+- Document what works and capture best practices for broader Finance team adoption
+- Support the rollout of successful pilots from prototype to team-wide use
+- Hands-on experience using an LLM API (Anthropic, OpenAI, or similar) to build something beyond chat
+- Finance or business coursework sufficient to partner credibly with FP&A, Procurement, and Accounting stakeholders
+- Comfort ramping quickly on unfamiliar business software and integrating against it
+- Strong written communication
+- Ability to scope ambiguous problems into shippable prototypes
+- Currently pursuing an undergraduate or master's degree
+- Available for the full January to June term
+
+**Bonus Points For**
+- Exposure to forecasting, variance analysis, or financial reporting workflows
+- Prior hands-on use of ERP, FP&A, expense, or procurement platforms
+- Experience working with internal datasets or data pipelines
+- Familiarity with evaluating and measuring AI tool impact
+
+</details>
+
+<a id="co-op-structuring-scientific-data-for-discovery-2026-10-28"></a>
+
+### Co-Op, Structuring Scientific Data for Discovery (2026-10-28)
+
+2026-10-28 → open · business-ops · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4469150009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila Sciences builds AI systems that accelerate discovery across the physical and life sciences. Our team turns unstructured scientific knowledge, including literature, patents, and technical reports, into structured signals that power downstream Lila applications.
+As a Data Extraction Co-Op, you will work alongside research scientists and engineers on a focused sub-problem in this stack. You will fine-tune and evaluate models for scientific knowledge extraction and retrieval, build pipelines for messy real-world data, and ship work that flows into production systems.
+What You'll Be Building
+- Fine-tune and evaluate language, multimodal, or specialized models for scientific data extraction
+- Build retrieval and RAG pipelines surfacing relevant documents, tables, and figures
+- Generate and validate structured datasets extracted from scientific literature and patents
+- Run end-to-end pipelines and analyze results against clear evaluation criteria
+- Document findings and present them to the team
+- Contribute to a publication or open-source project where the work supports it
+- Pursuing a Bachelor's, Master's, or PhD in CS, chemistry, materials science, physics, biology, or chemical engineering
+- Solid foundation in machine learning fundamentals and Python
+- Familiarity with NLP or computer vision concepts
+- Curiosity about scientific data and willingness to learn quickly in a research setting
+- Clear written and verbal communication
+
+**Bonus Points For**
+- Coursework or projects involving multimodal models or document understanding (OCR, table and figure extraction)
+- Experience with LLM applications, embeddings, or retrieval systems (chunking, reranking, vector search)
+- Experience building evaluation sets or annotation workflows
+- Experience working with messy real-world data
+- Interest in scientific document parsing
+
+</details>
+
+<a id="co-op-bayesian-methods-for-complex-decision-making-2026-10-30"></a>
+
+### Co-Op, Bayesian Methods for Complex Decision Making (2026-10-30)
+
+2026-10-30 → open · business-ops · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4469148009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila Sciences builds AI systems that accelerate discovery across the physical and life sciences. Within Physical Sciences AI, we work with experimental teams to build autonomous discovery agents that decide which experiments Lila's AI Science Factories should run next.
+Real scientific campaigns rarely look like textbook optimization problems. A single campaign can mix large discrete choices (which components, which recipe) with continuous settings (amounts, temperatures, times), pursue several objectives under hard constraints, and draw on evidence from literature and characterization data. Every experiment costs real time and materials. Off-the-shelf methods often struggle here, and they ignore the domain structure that could guide the search.
+As a Bayesian Methods Co-Op, you will work alongside research scientists and engineers on a focused project within one broad question: how AI systems can make better experimental decisions. Depending on your background, that could mean building agents that choose the next experiment, testing when in-context learners can be trusted as decision-makers, or developing Bayesian strategies for tight experimental budgets. Your methods will be tested against live campaigns.
+What You'll Be Building
+- Design and benchmark experiment-selection strategies that balance exploration and exploitation under realistic budgets
+- Build autonomous discovery agents that propose the next experiment from surrogate models
+- Develop in-context learning approaches inspired by Bayesian inference, evaluating calibration and robustness
+- Run retrospective and live evaluations on active campaign data with clear baselines and metrics
+- Present findings to ML and experimental teams, with the option to contribute to a publication
+- Pursuing a Master's or PhD in statistics, ML, CS, operations research, applied math, or a quantitative science
+- Solid grounding in Bayesian inference and decision making, including priors and posterior predictive distributions
+- Research experience in Gaussian processes, Bayesian optimization, bandits, reinforcement learning, or probabilistic modeling
+- Strong Python skills with PyTorch and probabilistic libraries such as Pyro, PyMC, or BoTorch
+- Comfort working with small, noisy, and heterogeneous datasets
+- Clear communication with both ML and experimental collaborators
+
+**Bonus Points For**
+- Applying these methods to real problems in materials science, chemistry, or another physical science
+- Familiarity with in-context learning as implicit Bayesian inference, meta-learning, or prior-data fitted networks
+- Optimization over categorical or combinatorial spaces, including mixed-variable, multi-objective, or batch settings
+- Reinforcement learning for sequential decision making or Bayesian experimental design
+- Training models on multimodal scientific data such as text, images, spectra, or simulations
+
+</details>
+
+<a id="co-op-editorial-content-2026-10-30"></a>
+
+### Co-Op, Editorial Content (2026-10-30)
+
+2026-10-30 → open · business-ops · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4472542009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+The Editorial Content Co-Op joins Lila's Communications team to help tell the story of the company's scientific work across life sciences, materials science, and AI research. Output is published on lila.ai/news and Lila's social channels.
+The co-op writes and produces content end to end: drafting articles and social copy, interviewing scientists about their work, scripting and producing short-form video, and building visuals that make complex science legible. They also contribute to content planning and launch strategy, and support occasional team events.
+This is a good fit for a candidate who writes clearly about scientific subjects and wants real newsroom-style reps alongside working scientists. The co-op works directly with the editorial team, all former journalists, and reports to the hiring manager. The term runs January through May, based on site in Cambridge at our One Charles Park and Alewife offices.
+If you do not check every box below but bring strong curiosity, grit, and the ability to thrive in a fast-paced environment, we would love to hear from you.
+What You'll Be Building
+- Draft articles, explainers, and social copy about Lila's scientific work
+- Interview scientists and engineers, then turn those conversations into accurate stories
+- Assist in producing short-form video, from concept through script and final cut
+- Assist in building visuals and graphics that make scientific concepts legible to general readers
+- Contribute to the editorial calendar and launch plans for upcoming content
+- Fact-check drafts with internal experts before publication
+- Support occasional team events, including on-site coverage and recaps
+- Enrolled in a degree program or recently graduated
+- Strong writing samples in science, technology, or news reporting
+- Ability to explain scientific subjects accurately to non-expert readers
+- Comfort interviewing subject-matter experts and working from primary sources
+- Precision with sourcing, fact-checking, and style consistency
+- Available for the full January through May term, on site in Cambridge
+
+**Bonus Points For**
+- Coursework in biology, chemistry, materials science, physics, or computer science
+- Experience with video production and editing tools
+- Familiarity with design tools for graphics, diagrams, or data visuals
+- Student newspaper, magazine, or science communication experience
+
+</details>
+
+<a id="co-op-agentic-and-generative-protein-design-2026-11-02"></a>
+
+### Co-op, Agentic and Generative Protein Design (2026-11-02)
+
+2026-11-02 → open · business-ops · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4462613009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Our team works on AI methods for therapeutic protein design, with a tight loop between computation and the wet lab. A co-op could take on either of two tracks, or a mix of both. (1) Generative models and protein design pipelines: build, benchmark, and improve methods for designing proteins (such as antibodies and minibinders), with candidates tested in our lab so results are grounded in experimental data. (2) AI agents for protein design campaigns: build and evaluate agents that help plan campaign strategy (target and epitope selection, choosing methods and settings), execute campaigns (launching design and filtering runs, diagnosing failures, adapting the next round), and reason over biological priors from the literature alongside the outputs of domain-specific models. Either way, the co-op would own a well-scoped project, ship code and analyses that feed real design decisions and scientific outcomes.
+What You'll Be Building
+- Develop, evaluate, and apply agentic systems for protein design and/or deep generative models for protein design.
+- Strong python and and computational science background.
+- Experience with coding agents.
+- Experience with machine learning for molecular design
+
+**Bonus Points For**
+- Experience with customizing agents, building harnesses, or using agents for scientific applications
+- Solid technical understand and experience with generative models.
 
 </details>
 

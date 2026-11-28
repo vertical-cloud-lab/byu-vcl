@@ -2,7 +2,7 @@
 
 Back to [all companies](README.md) · [company profile](../companies/entalpic.md)
 
-**12 postings recovered**, 8 with the full description; 5 still open on 2026-10-10. First seen 2025-03-21, latest 2026-09-28. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**14 postings recovered**, 10 with the full description; 5 still open on 2026-11-28. First seen 2025-03-21, latest 2026-11-04. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
@@ -14,10 +14,12 @@ Back to [all companies](README.md) · [company profile](../companies/entalpic.md
 | 2025-04-13 | 2025-04-13 | Senior ML Engineer (CDI) | ml-research |  |  |  |  |  | [Wayback](https://web.archive.org/web/20250413171433/https://entalpic.notion.site/Senior-ML-Engineer-CDI-779445894c6c4499a6eb98d68429add1?pvs=25) |
 | 2025-04-14 | 2025-04-14 | DevOps Software Engineering Intern (Internship) | software-eng |  |  |  |  |  | [Wayback](https://web.archive.org/web/20250414145331/https://entalpic.notion.site/DevOps-Software-Engineering-Intern-Internship-1910f8fed0d180a5b08cc71679ed479e?pvs=25) |
 | 2026-02-23 | open | Stay up to date for any new positions ! | general-application |  |  |  |  |  | [live](https://entalpic.notion.site/3100f8fed0d18025bc0ff6420f0815e1) |
+| 2026-05-05 | open | [Computational Chemist — Surface Chemistry (CDI)](#computational-chemist-surface-chemistry-cdi-2026-05-05) | materials-science |  |  |  |  |  | [live](https://entalpic.notion.site/3570f8fed0d18061b10bda1e613c9e22) |
 | 2026-06-24 | open | [Computational Chemist — Electronic & Functional Materials (CDI)](#computational-chemist-electronic-functional-materials-cdi-2026-06-24) | materials-science |  |  |  |  |  | [live](https://entalpic.notion.site/3890f8fed0d180c3ad49db1919db523b) |
-| 2026-07-30 | open | [Scientific Software Developer](#scientific-software-developer-2026-07-30) | software-eng |  |  |  |  |  | [live](https://entalpic.notion.site/3ad0f8fed0d180508d92cc980405f18d) |
-| 2026-09-24 | open | [Application Lead (Vapor Deposition Precursor Chemistry)](#application-lead-vapor-deposition-precursor-chemistry-2026-09-24) | materials-science |  |  |  |  |  | [live](https://entalpic.notion.site/3e50f8fed0d1808f9934efbaadc6720f) |
+| 2026-07-30 | 2026-10-10 | [Scientific Software Developer](#scientific-software-developer-2026-07-30) | software-eng |  |  |  |  |  | [live](https://entalpic.notion.site/3ad0f8fed0d180508d92cc980405f18d) |
+| 2026-09-24 | 2026-10-10 | [Application Lead (Vapor Deposition Precursor Chemistry)](#application-lead-vapor-deposition-precursor-chemistry-2026-09-24) | materials-science |  |  |  |  |  | [live](https://entalpic.notion.site/3e50f8fed0d1808f9934efbaadc6720f) |
 | 2026-09-28 | open | [Scientific Software Engineer, AI for Materials](#scientific-software-engineer-ai-for-materials-2026-09-28) | ml-research |  |  | PhD/MS | 2 |  | [live](https://entalpic.notion.site/3e90f8fed0d18075ae95da4592fa335f) |
+| 2026-11-04 | open | [Internship: HPC for Computational Chemistry](#internship-hpc-for-computational-chemistry-2026-11-04) | materials-science |  |  | MS |  |  | [live](https://entalpic.notion.site/40e0f8fed0d180e3b160c91d851b9063) |
 
 ## Descriptions
 
@@ -147,6 +149,30 @@ This position directly supports the company’s mission of discovering materials
 
 </details>
 
+<a id="computational-chemist-surface-chemistry-cdi-2026-05-05"></a>
+
+### Computational Chemist — Surface Chemistry (CDI) (2026-05-05)
+
+2026-05-05 → open · materials-science · location not stated · [source](https://entalpic.notion.site/3570f8fed0d18061b10bda1e613c9e22)
+
+<details><summary>Description</summary>
+
+**Bonus Skills**
+- Experience modeling phase behavior and material properties of alloys.
+- Experience modeling electronic transport at surfaces, including solvated surfaces.
+- Familiarity with reaction network generation or automated transition state search tools.
+📅 Recruitment Process
+- Research interview covering computational chemistry and machine learning
+- Coding interview
+🏆 Compensation & Benefits
+- A competitive salary
+- Dynamic work environment: strong preference for in-person collaboration at our Paris offices, with flexibility for occasional remote work
+ℹ️ Information
+- Location: Paris, France
+- Reporting to: Team Lead (Computational Chemistry)
+
+</details>
+
 <a id="computational-chemist-electronic-functional-materials-cdi-2026-06-24"></a>
 
 ### Computational Chemist — Electronic & Functional Materials (CDI) (2026-06-24)
@@ -165,17 +191,11 @@ This position directly supports the company’s mission of discovering materials
 📅 Recruitment Process
 - Technical interview covering computational chemistry and machine learning
 - Coding interview
-- Final interview with the CSO
 🏆 Compensation & Benefits
-We are a no-nonsense startup, where we favor a sustainable culture promoting work-life balance and good compensation over football tables and free food. We offer:
 - A competitive salary
 - Dynamic work environment: preference for in-person collaboration at our Paris offices, with flexibility for hybrid / remote work
-- A relocation package and thorough visa support
-- Professional development: access to conferences, internal learning sessions, and compute resources
-Entalpic is dedicated to equal opportunity employment and fosters an environment that is open and respectful of diversity. All applicants are encouraged to apply, even if you don't meet all the requirements above. If you have a passion for our mission and believe you can contribute, we want to hear from you.
 ℹ️ Information
 - Location: Paris, France
-- Start: As soon as possible
 - Reporting to: Chief Science Officer (CSO)
 
 </details>
@@ -184,7 +204,7 @@ Entalpic is dedicated to equal opportunity employment and fosters an environment
 
 ### Scientific Software Developer (2026-07-30)
 
-2026-07-30 → open · software-eng · location not stated · [source](https://entalpic.notion.site/3ad0f8fed0d180508d92cc980405f18d)
+2026-07-30 → 2026-10-10 · software-eng · location not stated · [source](https://entalpic.notion.site/3ad0f8fed0d180508d92cc980405f18d)
 
 <details><summary>Description</summary>
 
@@ -195,17 +215,11 @@ Entalpic is dedicated to equal opportunity employment and fosters an environment
 📅 Recruitment Process
 - Technical interview about your previous experience
 - Coding interview
-- Final interview with the CSO
 🏆 Compensation & Benefits
-We are a no-nonsense startup, where we favor a sustainable culture promoting work-life balance and good compensation over football tables and free food. We offer:
 - A competitive salary
 - Dynamic work environment: strong preference for in-person collaboration at our Paris offices, with flexibility remote friendly status
-- A relocation package and thorough visa support
-- Professional development: access to conferences, internal learning sessions, and compute resources
-Entalpic is dedicated to equal opportunity employment and fosters an environment that is open and respectful of diversity. All applicants are encouraged to apply, even if you don't meet all the requirements above. If you have a passion for our mission and believe you can contribute, we want to hear from you.
 ℹ️ Information
 - Location: Paris, France
-- Start: As soon as possible
 - Reporting to: Chief Science Officer (CSO)
 
 </details>
@@ -214,7 +228,7 @@ Entalpic is dedicated to equal opportunity employment and fosters an environment
 
 ### Application Lead (Vapor Deposition Precursor Chemistry) (2026-09-24)
 
-2026-09-24 → open · materials-science · location not stated · [source](https://entalpic.notion.site/3e50f8fed0d1808f9934efbaadc6720f)
+2026-09-24 → 2026-10-10 · materials-science · location not stated · [source](https://entalpic.notion.site/3e50f8fed0d1808f9934efbaadc6720f)
 
 <details><summary>Description</summary>
 
@@ -224,17 +238,11 @@ Entalpic is dedicated to equal opportunity employment and fosters an environment
 📅 Recruitment Process
 - Technical interview on your precursor chemistry and process expertise
 - Case discussion on a real Entalpic problem (data quality / experimental strategy)
-- Final interview with the CSO
 🏆 Compensation & Benefits
-We are a no-nonsense startup, where we favor a sustainable culture promoting work-life balance and good compensation over football tables and free food. We offer:
 - A competitive salary
 - Dynamic work environment: strong preference for in-person collaboration at our Paris offices, with flexibility for occasional remote work
-- A relocation package and thorough visa support
-- Professional development: access to conferences, internal learning sessions, and compute resources
-Entalpic is dedicated to equal opportunity employment and fosters an environment that is open and respectful of diversity. All applicants are encouraged to apply, even if you don't meet all the requirements above. If you have a passion for our mission and believe you can contribute, we want to hear from you.
 ℹ️ Information
 - Location: Paris, France
-- Start: As soon as possible
 
 </details>
 
@@ -268,6 +276,43 @@ Your mission will be to define how scientific information should be represented,
 **Bonus skills**
 - Experience with thin-film deposition processes (ALD, ALE, ASD), inorganic molecules or device qualification metrics.
 - Experience with LLMs, agentic systems, or scientific information extraction.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="internship-hpc-for-computational-chemistry-2026-11-04"></a>
+
+### Internship: HPC for Computational Chemistry (2026-11-04)
+
+2026-11-04 → open · materials-science · location not stated · [source](https://entalpic.notion.site/40e0f8fed0d180e3b160c91d851b9063)
+
+<details><summary>Description</summary>
+
+‣ About Entalpic
+Entalpic is a French deep tech startup accelerating R&D for advanced materials and specialty chemicals. Using a proprietary AI platform that combines generative models, atomistic simulations and experimental feedback, Entalpic helps industrial partners, primarily in semiconductors, accelerate high-throughput screening and discovery of ALD (Atomic Layer Deposition) precursors, thin films, and manufacturing processes, working in close collaboration with existing industrial labs.
+🚀 Mission Highlights
+As a HPC for Computational Chemistry Intern at Entalpic, you will work at the intersection of quantum chemistry and high-performance computing. Your role centres on a systematic evaluation of industry-standard DFT software (VASP and Quantum ESPRESSO) for surface chemistry simulations.
+You will be a key contributor to our core computational pipeline, helping determine optimal simulation strategies, benchmarking computational efficiency, and expanding upon open-source tools to develop custom features for our specialized R&D needs.
+✨ Role & Responsibilities
+This internship directly supports the company's mission of optimizing our computational workflows for discovering materials and processes to improve efficiency. You will be responsible for:
+- Code Benchmarking & Parameter Mapping — Identify and standardize equivalent input parameters to ensure rigorous comparisons between VASP and Quantum ESPRESSO.
+- Surface Reaction Simulation — Test both codes on representative surface systems.
+- Hardware & Speed Profiling — Execute benchmark runs across distinct hardware setups (CPU clusters, highly parallelized nodes, GPUs) to compare computational speed, memory footprint, and parallel scaling as system size increases.
+- Feature & Development Assessment — Evaluate built-in features critical for surface chemistry and assess the open-source codebase for the viability of implementing custom, in-house modules.
+- Workflow Automation — Develop a standardized library of translation scripts (Python/Bash) to easily convert parameters and automate job submissions between the two computational environments.
+🤓 Expertise & Skills
+- Currently pursuing a Master’s degree (or equivalent) in Physics, Chemistry, Materials Science, Computational Engineering, or a closely related field.
+- Proficiency in scripting languages (Python, Bash) for workflow automation and data analysis.
+- Familiarity with Linux/Unix environments and High-Performance Computing (HPC) job schedulers (e.g., Slurm).
+- Prior hands-on experience with Density Functional Theory (DFT) calculations or simulation packages is a plus.
+- Interest in computational chemistry, surface science, software benchmarking, and scientific software development.
+📅 Recruitment Process
+- Technical interview
+- Final interview
+🏆 Compensation & Benefits
+- Competitive salary + full reimbursement of your transport card
+- Flexible work environment: Remote-Friendly with a minimum of 3 days in Paris offices per week (Station F)
 
 *(truncated: full text in `data/job_postings.jsonl`)*
 

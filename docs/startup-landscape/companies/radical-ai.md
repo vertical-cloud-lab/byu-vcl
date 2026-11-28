@@ -2,6 +2,18 @@
 
 New York (Brooklyn Navy Yard), US · founded ~2024 (unverified) · self-driving lab for inorganic materials · active · [radical-ai.com](https://www.radical-ai.com)
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**Openings.** 16 open on 2026-11-28 on [its job board](https://www.radical-ai.com/), against 9 on 2026-10-10. 9 new, 2 closed.
+- New since 2026-10-10: Applied Scientist - Scientific Modeling and Experiment Selection; Laboratory Technician; Machine Learning Engineer; Materials Scientist – Thin Film Deposition; Perception Engineer; Robotics Engineer; Software Engineer, Robotics Platform; Technical Product Manager - Robotics and Automation (Core Platform); Technical Product Manager — Software and Agents (Core Platform).
+- Closed since 2026-10-10: Automation Technician; Mechanical Engineering - Design.
+
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=102137070&geoId=92000000&location=Worldwide), 2026-11-28): 11 postings: Technical Product Manager — Software and Agents (Core Platform) (New York, NY, posted 2026-11-09); Materials Scientist – Thin Film Deposition (New York, NY, posted 2026-11-12); Technical Product Manager - Robotics and Automation (Core Platform) (New York, NY, posted 2026-10-15); Software Engineer, Robotics Platform (New York, NY, posted 2026-10-23); Software Engineer, Agent Platform (New York, NY, posted 2026-11-23); Software Engineer, Core Infrastructure (New York, NY, posted 2026-10-06); ML Research Engineer (New York, NY, posted 2026-11-18); Perception Engineer (New York, NY, posted 2026-10-23); Machine Learning Engineer (New York, NY, posted 2026-11-18); Software Engineer, Product (New York, NY, posted 2026-11-25); Laboratory Technician (New York, NY, posted 2026-11-12).
+<!-- /refresh:2026-11-28 -->
+
 This is a partial profile, written at the end of the time budget.
 
 ## Funding timeline

@@ -2,7 +2,7 @@
 
 Back to [all companies](README.md) · [company profile](../companies/radical-ai.md)
 
-**32 postings recovered**, 32 with the full description; 9 still open on 2026-10-10. First seen 2024-08-22, latest 2026-10-02. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**41 postings recovered**, 41 with the full description; 16 still open on 2026-11-28. First seen 2024-08-22, latest 2026-11-12. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
@@ -32,12 +32,21 @@ Back to [all companies](README.md) · [company profile](../companies/radical-ai.
 | 2026-06-04 | 2026-07-15 | [Product Manager](#product-manager-2026-06-04) | business-ops |  | New York, NY, USA |  |  | $195–265K | [live](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655549) |
 | 2026-06-04 | 2026-07-12 | [Senior Product Designer](#senior-product-designer-2026-06-04) | business-ops |  | New York, NY, USA |  | 4 | $157–206K | [live](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655550) |
 | 2026-08-19 | open | [Head of Software Engineering](#head-of-software-engineering-2026-08-19) | leadership | Engineering | Brooklyn, NY |  | 5 | $237–340K | [live](https://app.nodi.global/jobs/public/9bbdef83-7745-4853-9401-2e5577df3ae3) |
-| 2026-08-21 | open | [Automation Technician](#automation-technician-2026-08-21) | lab-automation | Hardware | Brooklyn Navy Yard |  |  | $66–103K | [live](https://app.nodi.global/jobs/public/5e6d0a4e-c594-494f-8507-35976506f7e5) |
-| 2026-08-21 | open | [Mechanical Engineering - Design](#mechanical-engineering-design-2026-08-21) | lab-automation | Hardware | Brooklyn Navy Yard | BS | 3 | $140–185K | [live](https://app.nodi.global/jobs/public/b2fa9303-6ec7-4cea-9dad-5cfe8b05aeaa) |
+| 2026-08-21 | 2026-10-10 | [Automation Technician](#automation-technician-2026-08-21) | lab-automation | Hardware | Brooklyn Navy Yard |  |  | $66–103K | [live](https://app.nodi.global/jobs/public/5e6d0a4e-c594-494f-8507-35976506f7e5) |
+| 2026-08-21 | 2026-10-10 | [Mechanical Engineering - Design](#mechanical-engineering-design-2026-08-21) | lab-automation | Hardware | Brooklyn Navy Yard | BS | 3 | $140–185K | [live](https://app.nodi.global/jobs/public/b2fa9303-6ec7-4cea-9dad-5cfe8b05aeaa) |
 | 2026-09-17 | open | [ML Research Engineer](#ml-research-engineer-2026-09-17) | ml-research | AI / ML | Brooklyn, NY |  |  | $235–295K | [live](https://app.nodi.global/jobs/public/454e1ac7-116f-4c4a-b872-146c04fc682a) |
-| 2026-09-18 | open | [Software Engineer, Full Stack](#software-engineer-full-stack-2026-09-18) | software-eng | Engineering | Brooklyn Navy Yard |  | 5 | $165–265K | [live](https://app.nodi.global/jobs/public/1de1fd23-e074-4d59-9078-9b5801c8acae) |
-| 2026-10-02 | open | [Software Engineer, Agent Platform](#software-engineer-agent-platform-2026-10-02) | software-eng | Engineering | Brooklyn Navy Yard |  | 7 | $165–295K | [live](https://app.nodi.global/jobs/public/a73c5b6d-39c1-490e-8fd6-7ed74537b571) |
-| 2026-10-02 | open | [Software Engineer, Core Infrastructure](#software-engineer-core-infrastructure-2026-10-02) | software-eng | Engineering | Brooklyn Navy Yard |  | 7 | $210–295K | [live](https://app.nodi.global/jobs/public/9f1b5385-c530-4c0e-9cfd-860b22d440d8) |
+| 2026-09-18 | open | [Software Engineer, Product](#software-engineer-product-2026-09-18) | software-eng | Engineering | Brooklyn, NY |  | 5 | $165–265K | [live](https://app.nodi.global/jobs/public/1de1fd23-e074-4d59-9078-9b5801c8acae) |
+| 2026-10-02 | open | [Software Engineer, Agent Platform](#software-engineer-agent-platform-2026-10-02) | software-eng | Engineering | Brooklyn, NY |  | 7 | $165–295K | [live](https://app.nodi.global/jobs/public/a73c5b6d-39c1-490e-8fd6-7ed74537b571) |
+| 2026-10-02 | open | [Software Engineer, Core Infrastructure](#software-engineer-core-infrastructure-2026-10-02) | software-eng | Engineering | Brooklyn, NY |  | 7 | $210–295K | [live](https://app.nodi.global/jobs/public/9f1b5385-c530-4c0e-9cfd-860b22d440d8) |
+| 2026-10-12 | open | [Applied Scientist - Scientific Modeling and Experiment Selection](#applied-scientist-scientific-modeling-and-experiment-selection-2026-10-12) | materials-science | AI / ML | Brooklyn, NY | PhD | 4 | $235–295K | [live](https://app.nodi.global/jobs/public/18dcd10c-c483-43db-80d5-e839ce412a70) |
+| 2026-10-15 | open | [Technical Product Manager - Robotics and Automation (Core Platform)](#technical-product-manager-robotics-and-automation-core-platform-2026-10-15) | lab-automation | Product Management | Brooklyn, NY |  |  | $195–265K | [live](https://app.nodi.global/jobs/public/fc9777e4-40f2-4213-9b47-2e838cd59a29) |
+| 2026-10-15 | open | [Technical Product Manager — Software and Agents (Core Platform)](#technical-product-manager-software-and-agents-core-platform-2026-10-15) | software-eng | Product Management | Brooklyn, NY |  |  | $195–265K | [live](https://app.nodi.global/jobs/public/57a5088d-fb88-4545-922f-052bfa8e7091) |
+| 2026-10-23 | open | [Perception Engineer](#perception-engineer-2026-10-23) | software-eng | Robotics Engineering | Brooklyn, NY |  | 5 | $195–250K | [live](https://app.nodi.global/jobs/public/5765f5fd-465a-4116-9f77-4057026a6cb2) |
+| 2026-10-23 | open | [Robotics Engineer](#robotics-engineer-2026-10-23) | lab-automation | Robotics Engineering | Brooklyn, NY |  | 4 | $185–237K | [live](https://app.nodi.global/jobs/public/3bb38a62-c9fa-4ee0-b6fe-444710a1dbb3) |
+| 2026-10-23 | open | [Software Engineer, Robotics Platform](#software-engineer-robotics-platform-2026-10-23) | software-eng | Robotics Engineering | Brooklyn, NY |  | 5 | $200–280K | [live](https://app.nodi.global/jobs/public/c2381ad4-0b19-4131-9904-7778dc68a5be) |
+| 2026-10-26 | open | [Machine Learning Engineer](#machine-learning-engineer-2026-10-26) | ml-research | AI / ML | Brooklyn, NY |  |  | $190–245K | [live](https://app.nodi.global/jobs/public/c9a7ff5f-5f6a-45e0-846d-4c3a387011eb) |
+| 2026-11-12 | open | [Laboratory Technician](#laboratory-technician-2026-11-12) | lab-automation | Materials | Brooklyn, New York, United States | MS/BS |  | $75–115K | [live](https://app.nodi.global/jobs/public/c714ca56-4d4b-4845-a597-31efbb6f2bd9) |
+| 2026-11-12 | open | [Materials Scientist – Thin Film Deposition](#materials-scientist-thin-film-deposition-2026-11-12) | materials-science | Materials | Brooklyn, New York, United States | PhD/MS/BS |  | $150–195K | [live](https://app.nodi.global/jobs/public/9df6e5c4-0118-4b77-bb94-424d9defbc66) |
 
 ## Careers-page captures
 
@@ -464,6 +473,7 @@ Pluses
 <details><summary>Description</summary>
 
 What We Offer
+- Medical, dental, and vision insurance for you and your family, covered at 100%
 - Flexible PTO and 14+ company holidays per year
 - 401K
 
@@ -807,22 +817,22 @@ We're looking for a Head of Software Engineering to build and lead the software 
 You'll report to our President and Co-Founder, and work closely with cross-functional stakeholders across science, hardware, and product. The immediate mandate is to stabilize and grow a talented but lean team during a period of rapid hiring and technical expansion — including near-term customer deployments that involve significant architectural challenges.
 This is not a role for someone who wants to delegate the hard technical problems. It's for someone who wants to be in the middle of them, and who's comfortable making calls with incomplete information.
 
-**Lead the team**
+**Lead the Team**
 - Hire, develop, and retain a high-caliber software engineering team
 - Establish the rhythms that make the team hum: standups, planning, retrospectives, code review culture
 - Be the person your engineers grow with — technically and professionally
 
-**Stay technical**
+**Stay Technical**
 - Conduct daily code reviews; ship production code weekly, with a bias toward shipping over perfecting
 - Drive and participate meaningfully in architectural discussions and decisions
 - Maintain deep enough fluency with the stack to debug production issues, challenge proposals, and earn your engineers' respect
 
-**Shape the roadmap**
+**Shape the Roadmap**
 - Build and own the long-term software development roadmap, in close partnership with our co-founder and the product team
 - Translate ambiguous business and scientific requirements into clear technical strategy
 - Navigate the tradeoffs between speed, correctness, and scale in a high-stakes, rapidly evolving environment — and default to speed when the tradeoff is close
 
-**Manage up and across**
+**Manage Up and Across**
 - Be a credible technical voice in leadership discussions — someone who can whiteboard a system design as easily as they can present a roadmap
 - Interface with product, science, and hardware stakeholders effectively; understand what "customer-centric" actually means in a deep-tech context
 
@@ -835,7 +845,7 @@ This is not a role for someone who wants to delegate the hard technical problems
 - Proven ability to establish processes that make teams faster without creating bureaucracy
 - Based in — or willing to relocate to — New York City; this role requires regular in-person presence with the team
 
-**Not the right fit if**
+**Not the Right Fit If**
 
 *(truncated: full text in `data/job_postings.jsonl`)*
 
@@ -845,7 +855,7 @@ This is not a role for someone who wants to delegate the hard technical problems
 
 ### Automation Technician (2026-08-21)
 
-2026-08-21 → open · lab-automation · Brooklyn Navy Yard · $66–103K · [source](https://app.nodi.global/jobs/public/5e6d0a4e-c594-494f-8507-35976506f7e5)
+2026-08-21 → 2026-10-10 · lab-automation · Brooklyn Navy Yard · $66–103K · [source](https://app.nodi.global/jobs/public/5e6d0a4e-c594-494f-8507-35976506f7e5)
 
 <details><summary>Description</summary>
 
@@ -889,7 +899,7 @@ $66,000 – $103,000. Compensation varies based on experience and scope. We offe
 
 ### Mechanical Engineering - Design (2026-08-21)
 
-2026-08-21 → open · lab-automation · Brooklyn Navy Yard · $140–185K · [source](https://app.nodi.global/jobs/public/b2fa9303-6ec7-4cea-9dad-5cfe8b05aeaa)
+2026-08-21 → 2026-10-10 · lab-automation · Brooklyn Navy Yard · $140–185K · [source](https://app.nodi.global/jobs/public/b2fa9303-6ec7-4cea-9dad-5cfe8b05aeaa)
 
 <details><summary>Description</summary>
 
@@ -961,41 +971,39 @@ The profile is engineering-first, ML-strong, and research-capable. You should be
 
 </details>
 
-<a id="software-engineer-full-stack-2026-09-18"></a>
+<a id="software-engineer-product-2026-09-18"></a>
 
-### Software Engineer, Full Stack (2026-09-18)
+### Software Engineer, Product (2026-09-18)
 
-2026-09-18 → open · software-eng · Brooklyn Navy Yard · $165–265K · [source](https://app.nodi.global/jobs/public/1de1fd23-e074-4d59-9078-9b5801c8acae)
+2026-09-18 → open · software-eng · Brooklyn, NY · $165–265K · [source](https://app.nodi.global/jobs/public/1de1fd23-e074-4d59-9078-9b5801c8acae)
 
 <details><summary>Description</summary>
 
-**The opportunity**
-We're looking for a mid-level to senior Full Stack Engineer to build the software that powers materials discovery, from the interfaces scientists use down to the services and data models behind them.
-Reporting to the Director of Digital Experience and work closely with the rest of the software engineering team, most of your time will be spent on the frontend: crafting the interfaces scientists and engineers use to navigate vast datasets, turn dense experimental results into charts and interactive graphics they can actually reason about, interact with AI agents, and monitor autonomous lab experiments, all in real time. But we want you to be able to ship a feature end to end. In practice that means adding an RPC to Cortex (our Go backend), evolving the protobuf schema that Cortex shares with every client, and updating the data model in MongoDB, without waiting in line behind a specific backend engineer.
-This is not a design role, but you'll collaborate closely with product managers and designers to translate research workflows into intuitive, performant interfaces.
+**The Opportunity**
+We're looking for a mid-level to senior Software Engineer to build the product that powers materials discovery. You'll own features from the first conversation with a scientist to production: the interfaces they work in, the services behind them, and the data models underneath.
+You'll work side by side with product managers, designers, and the rest of the software engineering team. Most of your time will go to the frontend: building the tools scientists and engineers use to navigate vast datasets, turn dense experimental results into charts and graphics they can reason about, work with AI agents, and monitor autonomous lab experiments in real time. When a feature needs more, you'll take it the rest of the way yourself. That could mean adding an RPC to Cortex (our Go backend), evolving the shared protobuf schema, or updating the MongoDB data model, without waiting on a backend handoff.
+This is an engineering role with a strong product mindset. You'll help shape what we build by understanding research workflows, weighing tradeoffs, and shipping things people actually use.
 
-**What you'll do**
-Frontend
-- Build and maintain complex, data-rich web applications using Svelte and SvelteKit
-- Implement high-fidelity UI from Figma designs with meticulous attention to detail
-- Build data visualizations for scientific research and analysis
+**What You'll Do**
+Build the Product
+- Own a feature end to end: scope it with product and design, build it across the stack, and ship it
+- Turn research workflows into intuitive, performant interfaces, working closely with product managers and designers
+- Build and maintain complex, data-rich web applications in Svelte and SvelteKit, implementing high-fidelity designs from Figma with meticulous attention to detail
+- Create data visualizations that help scientists explore and interpret experimental results
 - Architect performant frontend systems that handle async data loading, real-time reactivity, and large-scale state management
-- Integrate frontend experiences with AI agent capabilities (tool calls, streaming responses, etc.)
-Backend and data
+- Design AI-agent experiences (tool calls, streaming responses) that fit into real scientific workflows
+Build What's Underneath
 - Extend Cortex, our Go backend, with new RPC endpoints and business logic, including server-streaming endpoints that push live lab state to the UI as experiments run
-- Design and evolve the protobuf schemas that define the contract between the backend and every client, keeping changes backward-compatible as generated code lands in TypeScript, Go, and Python
+- Design and evolve the protobuf schemas that define the contract between the backend and every client, keeping changes backward compatible as generated code lands in TypeScript, Go, and Python
 - Model and update data in MongoDB: document schemas, indexes, and versioned migrations run against production data
-- Own features end to end, from schema through service, API, and UI, rather than handing off at the API boundary
-Across the stack
+Ship with Quality
 - Write automated tests on both sides of the API and contribute to CI/CD pipelines
+- Use user feedback, usage, and performance data to decide, with product managers, what to improve next
 
-**Required qualifications**
-Core frontend expertise
+**Required Qualifications**
+Product Engineering Fundamentals
 - At least 5 years of professional experience with TypeScript, HTML, and CSS (ideally Tailwind), with a solid grasp of responsive and mobile-first design
 - Strong experience with modern frontend frameworks and reactive state management (Svelte/SvelteKit preferred; React or Vue acceptable if eager to learn Svelte)
-- Comfortable with modern build tooling (Vite, ESBuild, Rollup), Node.js, debugging, and performant frontend architecture (async data loading, security, Sentry)
-- Hands-on data visualization experience, ideally with D3 or low-level SVG/canvas graphics for custom scientific charts
-Backend and data fundamentals
 
 *(truncated: full text in `data/job_postings.jsonl`)*
 
@@ -1005,16 +1013,16 @@ Backend and data fundamentals
 
 ### Software Engineer, Agent Platform (2026-10-02)
 
-2026-10-02 → open · software-eng · Brooklyn Navy Yard · $165–295K · [source](https://app.nodi.global/jobs/public/a73c5b6d-39c1-490e-8fd6-7ed74537b571)
+2026-10-02 → open · software-eng · Brooklyn, NY · $165–295K · [source](https://app.nodi.global/jobs/public/a73c5b6d-39c1-490e-8fd6-7ed74537b571)
 
 <details><summary>Description</summary>
 
-**The opportunity**
+**The Opportunity**
 We're looking for a Software Engineer to build the agent platform that powers materials discovery, from the AI agents that design and run experiments to the applications scientists and customers use to work with them.
 You'll report to the Director of Software Engineering and work closely with the rest of the software engineering team. Your time splits between two kinds of work. The first is our agentic system: the agents that run campaigns and propose experiments, plus the evals and infrastructure that make them reliable in production. The second is shipping features end to end: giving an agent a new capability, evolving the campaign data model in Cortex (our Go backend), and building the screens in Tetra (our customer app) or Sentinel (our lab control panel) where people can review and steer the result.
 This is not a research role, but you'll work side by side with materials scientists, roboticists and hardware engineers to turn prototypes into production systems that run in our lab.
 
-**What you'll do**
+**What You'll Do**
 Agentic System
 - Build the agents that design materials discovery campaigns, proposing novel compositions that are made and measured in our lab
 - Build the tools and workflows behind them, such as scientific literature search, simulations and data analysis in a sandbox
@@ -1029,16 +1037,16 @@ Data Layer
 - Evolve the Cortex data model for campaigns and experiments: protobuf schemas, MongoDB documents and migrations
 - Build the pipelines that ingest and process scientific documents for our agents
 - Ship each feature across every layer it touches: the data model, the agent, the API and the UI
-Across the stack
+Across the Stack
 - Write automated tests and evals on both sides of the API and contribute to CI/CD pipelines
 
-**Required qualifications**
-Core agent and backend expertise
+**Required Qualifications**
+Core Agent and Backend Expertise
 - At least 7 years of professional experience building production backend systems
 - Hands-on experience building and operating LLM-based agents or workflows in production: tool calling, structured outputs, context management, streaming and handling model failures
 - Understanding of agentic design patterns, such as designer-critic loops and multi-agent systems
 - Experience measuring agent quality with evals, test sets or LLM judges, and using the results to decide what to change
-Frontend, backend and data fundamentals
+Frontend, Backend, and Data Fundamentals
 
 *(truncated: full text in `data/job_postings.jsonl`)*
 
@@ -1048,34 +1056,34 @@ Frontend, backend and data fundamentals
 
 ### Software Engineer, Core Infrastructure (2026-10-02)
 
-2026-10-02 → open · software-eng · Brooklyn Navy Yard · $210–295K · [source](https://app.nodi.global/jobs/public/9f1b5385-c530-4c0e-9cfd-860b22d440d8)
+2026-10-02 → open · software-eng · Brooklyn, NY · $210–295K · [source](https://app.nodi.global/jobs/public/9f1b5385-c530-4c0e-9cfd-860b22d440d8)
 
 <details><summary>Description</summary>
 
-**The opportunity**
+**The Opportunity**
 We're looking for a senior Software Engineer to own the core infrastructure behind our self-driving lab: the execution planner that orchestrates the physical lab, the backend services and APIs that manage its data, and the compute infrastructure that powers our agents and scientific simulations. The software you'll own moves real samples through a working lab, so the bar for correctness and reliability is high.
 You'll report to the Director of Software Engineering and work closely with the rest of the software engineering team, the roboticists, and hardware engineers who build the lab. As a senior engineer, you'll set the technical direction for these systems and lead the projects that change them.
 
-**What you'll do**
-Lab orchestration
+**What You'll Do**
+Lab Orchestration
 - Own the execution planner that schedules every sample's path through the lab. It resolves conflicts and batches samples across actions that range from a two-second arm move to a multi-day anneal
 - Own the service that decides which software can use which instrument, and move it to durable execution so restarts and upgrades don't interrupt experiments
 - Build simulation and debugging tools to test planner changes and replay problems from production
-Backend services and APIs
+Backend Services and APIs
 - Own the Go services and gRPC APIs that track every sample, experiment and campaign, and the services that run simulation and training jobs on our clusters
 - Prepare the lab backend to run more than one lab and to deploy without downtime
-Application and compute infrastructure
+Application and Compute Infrastructure
 - Run our Kubernetes clusters on AWS, at Voltage Park and in our lab, defined in Pulumi and deployed with ArgoCD
 - Schedule shared GPUs so that simulation and ML training jobs from every team keep them busy
 
-**Required qualifications**
-Core backend and infrastructure expertise
+**Required Qualifications**
+Core Backend and Infrastructure Expertise
 - At least 7 years of professional experience building and operating production backend systems
 - Strong server-side experience in Go or Rust
 - Experience building fault-tolerant distributed systems that handle concurrency, timeouts, retries and safe rollback
 - Experience running Kubernetes in production with infrastructure as code (Pulumi preferred), and comfort debugging Linux hosts and networks
 - Working knowledge of gRPC and Protocol Buffers, and of MongoDB or another document store
-Communication and collaboration
+Communication and Collaboration
 - Clear, precise communicator, especially when working across disciplines
 - You've led a large technical project from design to production, and you go learn what you don't know
 - You take ownership and find problems before they find users
@@ -1084,6 +1092,348 @@ Pluses
 - Scheduling and planning algorithms, such as multi-agent path finding
 - Experience with Restate for durable execution or Ray for distributed compute
 - Experience running storage and observability on bare-metal Kubernetes, with tools such as Longhorn, OpenTelemetry, Prometheus and Grafana
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="applied-scientist-scientific-modeling-and-experiment-selection-2026-10-12"></a>
+
+### Applied Scientist - Scientific Modeling and Experiment Selection (2026-10-12)
+
+2026-10-12 → open · materials-science · Brooklyn, NY · $235–295K · [source](https://app.nodi.global/jobs/public/18dcd10c-c483-43db-80d5-e839ce412a70)
+
+<details><summary>Description</summary>
+
+**The Role**
+A model predicts a material will work. We run the experiment. It doesn’t.
+Was the model wrong? Is a variable missing? Are we outside its valid regime? Was the experiment noisy? What should we run next to find out?
+You will make our scientific agent better at deciding which experiment to run next. You will build and adapt predictive physics, chemistry, and materials models, test them against laboratory evidence, investigate failures, and turn what you learn into better decisions. You will report to the Principal AI Scientist, Agentic.
+The data is sparse and noisy. Experiments cost real time and money. We value getting ideas into meaningful tests quickly and learning from the results.
+Campaign scientists run the physical experiments. ML engineers build the agent and infrastructure. You own the scientific modeling and experiment-selection logic between them.
+
+**The loop**
+model → prediction → experiment → evidence → update → next experiment
+
+**What You'll Work On**
+- Build models that change experimental decisions. Select, develop, or adapt predictive scientific models for specific campaign tasks, starting with clear assumptions and simple baselines.
+- Calibrate models for their intended use. Assess predictions and uncertainty against reference data. Establish where a model is reliable, where it extrapolates, and when its outputs need additional verification.
+- Automate model-improvement experiments. Build reproducible workflows that compare model variants, parameters, calibration methods, and data choices within defined scientific constraints and compute budgets.
+- Validate before agent integration. Evaluate candidate improvements on held-out data. Define acceptance criteria for predictive performance, uncertainty, robustness, and computational cost.
+- Decide what experiment should come next. Use predictions, uncertainty, evidence, constraints, and cost to select promising or informative experiments.
+- Investigate disagreements between models and the laboratory. Identify competing explanations and design tests that distinguish model limitations from missing variables, measurement noise, or execution problems.
+- Turn scientific models into usable agent tools. Work with engineers to make inputs, units, assumptions, outputs, and failure conditions explicit. Define when the agent should query a model, seek additional evidence, or escalate to a scientist.
+- Learn from every outcome. Preserve and interpret positive, negative, and inconclusive results, and use them to guide model updates and subsequent decisions.
+
+**What We're Looking For**
+We care most about whether you can independently move through:
+problem → hypothesis → model → code → experiment → evidence → next decision
+
+**Required**
+- Deep quantitative scientific training and 4+ years of hands-on experience, including doctoral research, adapting, or validating predictive physics, chemistry, or materials models against experimental evidence.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="technical-product-manager-robotics-and-automation-core-platform-2026-10-15"></a>
+
+### Technical Product Manager - Robotics and Automation (Core Platform) (2026-10-15)
+
+2026-10-15 → open · lab-automation · Brooklyn, NY · $195–265K · [source](https://app.nodi.global/jobs/public/fc9777e4-40f2-4213-9b47-2e838cd59a29)
+
+<details><summary>Description</summary>
+
+**The Role**
+We are looking for a Technical Product Manager to own the robotics and autonomy layer of our self-driving lab: the Workcells, instruments, control software, sim environment, and perception workflows that turn an AI decision into a physical experiment and a trustworthy result. The faster and more reliably the lab runs, the faster our customers get answers.
+There is no established PM playbook for an autonomous materials lab, and we are not looking for someone to follow one. You will report to our Co-founder and President and work directly with robotics, hardware, and software engineers, and the scientists who depend on the lab. You will spend real time on the lab floor. Those conversations are substantive and sometimes contentious. This is a team with strong opinions and the technical depth to back them up.
+This is not a coordination role. You will define what the lab must be able to do, make the tradeoffs between throughput, reliability, flexibility, and cost, and hold the thread from requirements through design, build, and deployment. That means defending a product position when engineers push back, knowing when to stand firm and when to update your view, and earning credibility through judgment rather than authority. If your instinct is to track a schedule rather than own an outcome, or to defer rather than decide, this is not the right fit.
+What You'll Own
+
+**Workcells and Hardware**
+- The Workcell roadmap: which experiments the lab can run, which instruments and robots get added, and what gets built versus bought.
+- Requirements for new Workcells and instrument integrations, from first customer problem through design review, build, commissioning, and handoff to operations.
+- Hardware lifecycle decisions: prototype, pilot, and production readiness, with clear exit criteria at each stage.
+
+**Autonomy and Control**
+- The software that runs the physical lab: scheduling, orchestration, robot and instrument control, sample handling, and error recovery.
+- How much autonomy the lab has and where a human stays in the loop. You set the standard for when the system may act without a person.
+- Calibration, traceability, and data quality at the point where physical measurements become data.
+
+**Operations and Performance**
+- The metrics that define lab performance: throughput, uptime, experiment success rate, time to result, and cost per experiment.
+- Reliability: failure modes, diagnostics, monitoring, and maintainability, in partnership with the engineers and operators who run the lab every day.
+- Safety and compliance requirements for hazardous materials, high-temperature and high-pressure processes, and robot and operator interaction.
+
+**Cross-Functional**
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="technical-product-manager-software-and-agents-core-platform-2026-10-15"></a>
+
+### Technical Product Manager — Software and Agents (Core Platform) (2026-10-15)
+
+2026-10-15 → open · software-eng · Brooklyn, NY · $195–265K · [source](https://app.nodi.global/jobs/public/57a5088d-fb88-4545-922f-052bfa8e7091)
+
+<details><summary>Description</summary>
+
+**The Role**
+We are looking for a Technical Product Manager to own the agentic and core software and infrastructure layers of our core platform. Your job is to turn agents, scientific models, data, and experimental workflows into a coherent product that takes customers from research goals to results. That means defining how users direct and inspect the system's work, how agents plan and execute research, and how the platform learns from each experiment to deliver better decisions and better outcomes.
+There is no established PM playbook for this role, and we are not looking for someone to follow one. You will report to our Co-founder and President and work directly with software engineers, ML researchers, and materials scientists. Those conversations are substantive and sometimes contentious. This is a team with strong opinions and the technical depth to back them up.
+This is not a coordination role. You will own the roadmap of our agentic and core software layers: what agents should be able to do, how users direct and inspect their work, and how the platform's data, models, and workflows come together as a coherent product. You will set priorities, define what makes a capability useful and reliable enough to deploy, and own the path from research prototype to production. That means defending a product position when engineers and researchers push back, knowing when to stand firm and when to update your view, and earning credibility through judgment rather than authority. If your instinct is to manage a backlog rather than own an outcome, or to defer rather than decide, this is not the right fit.
+What You'll Own
+
+**The Core Platform**
+- The core platform roadmap: the shared software, data, and infrastructure that every agent, model, and Workcell depends on. You decide what belongs in the core, what stays at the edges, and what we build versus adopt.
+- Core services and APIs: workflow orchestration, experiment and sample records, data access, and the contracts that let agents, models, and the lab work together. You define them so teams build on the core instead of around it.
+- The data foundation: how lab, simulation, and literature data are captured, structured, versioned, and made usable by agents, models, and scientists.
+- Reliability and scale: performance, observability, security, and the bar a capability must clear before it becomes part of the core.
+
+**Agents on the Core**
+- What agents can do on the platform: the tools and services they can call, how they plan and execute research, and where a human approves or steps in.
+- How users direct and inspect the system's work: setting research goals, reviewing agent plans and decisions, and tracing any result back to its data, model, and experiment.
+- Evaluation: the metrics, benchmarks, and acceptance criteria that show whether an agent or model improves real lab outcomes, not just demo or offline performance.
+
+**Models and the Learning Loop**
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="perception-engineer-2026-10-23"></a>
+
+### Perception Engineer (2026-10-23)
+
+2026-10-23 → open · software-eng · Brooklyn, NY · $195–250K · [source](https://app.nodi.global/jobs/public/5765f5fd-465a-4116-9f77-4057026a6cb2)
+
+<details><summary>Description</summary>
+
+**The Role**
+As a Perception Engineer in the Robotics and Automation group at Radical AI, you will design, deploy, and scale robust vision-guided automation in fast-moving lab environments.
+Your expertise will shape both the physical and systemic implementation of lab automation. You will collaborate closely with Roboticists, Mechatronics, Mechanical Engineers, and Material Scientists to meet rigorous and sometimes dynamic design requirements at an unprecedented deployment speed—bringing open-mindedness and creative fearlessness to ship world-class technology on timelines most teams consider impossible. Not you.
+
+**What You'll Do**
+- Design, implement, and deploy 2D and 3D vision systems for robotic manipulation, inspection, state verification, and sensor fusion
+- Develop vision-guided automation solutions integrating cameras, lighting, optics, and robots in laboratory and industrial environments
+- Implement perception pipelines for object detection, segmentation, pose estimation, and feature extraction
+- Work on classical detection algorithms as well as training and deploying state-of-the-art vision models
+- Own camera calibration and system-level accuracy validation
+- Integrate vision outputs with robot motion planning, grasping, and task execution
+- Collaborate with software, mechatronics, and mechanical teams to translate experimental and operational needs into automated solutions
+- Contribute to technical direction, architecture decisions, and best practices across the robotics, perception, and automation software stack
+
+**What We're Looking For**
+Required
+- Degree in Robotics, Computer Vision, Electrical Engineering, Computer Science, or a related field
+- 5+ years of experience designing and deploying machine vision systems in robotics or automation environments
+- Strong hands-on experience with 2D/3D cameras, lenses, lighting, and optics
+- Proficiency in Python and/or C++ for production software development
+- Experience integrating vision systems with industrial robots and motion platforms
+- Experience solving novel computer vision problems
+- Experience with simulation, sim2real and domain randomization in a computer vision domain
+- Experience with robotic control frameworks (e.g., ROS/ROS2 or equivalent custom systems)
+- Ability to work independently in a hands-on, development-oriented environment.
+
+**Nice to Have**
+- Deep robotics automation experience outside of vision
+- Hands on experience developing and integrating VLA models for robotics
+- Experience deploying ML and multimodal models on robotic platforms
+- Ability to develop novel algorithms for state estimation of fluids and particle flows
+- Experience in laboratory automation, materials science, or scientific instrumentation
+- Prior startup experience or ownership of systems from early prototype through production
+
+**Compensation and Benefits**
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="robotics-engineer-2026-10-23"></a>
+
+### Robotics Engineer (2026-10-23)
+
+2026-10-23 → open · lab-automation · Brooklyn, NY · $185–237K · [source](https://app.nodi.global/jobs/public/3bb38a62-c9fa-4ee0-b6fe-444710a1dbb3)
+
+<details><summary>Description</summary>
+
+**The Role**
+As a Robotics Software Engineer in the Robotics and Automation group at Radical AI, you will design, develop, and deploy the software that enables robots and automated workcells to execute materials research workflows reliably and autonomously. You will own robotic task execution, motion and manipulation software, and reusable control capabilities that can be deployed across laboratory systems.
+Your experience and vision will shape both the physical and systematic implementation of lab automation
+You will work closely with perception, simulation, systems software, mechatronics, mechanical engineering, and materials science to meet rigorous and sometimes dynamic design requirements at an unprecedented deployment speed.
+
+**What You'll Do**
+- Architect and implement reusable software for robot motion, manipulation, workcell control, and autonomous task execution.
+- Develop robust state machines, task sequencing, interlocks, and fault detection and recovery for flexible robotic workcells.
+- Integrate robotic arms, grippers, sensors, vision outputs, and lab equipment into coordinated automated workflows.
+- Implement motion planning, grasping, calibration, and execution logic for variable sample geometries and changing laboratory workflows.
+- Develop interfaces to higher-level orchestration services for scheduling, execution status, commands, and experimental data capture.
+- Use simulation and hardware-in-the-loop testing to validate robot behaviors before physical deployment.
+- Debug and optimize robotic performance, throughput, reliability, and recoverability on deployed hardware.
+- Contribute to architecture, code quality, testing practices, and mentorship across the robotics software stack.
+
+**What We're Looking For**
+Required
+- Degree in Robotics, Computer Vision, Electrical Engineering, Computer Science, or a related field
+- 4+ years of professional software engineering experience with substantial hands-on robotics or automation development.
+- Strong Python and C++ skills
+- Experience with ROS/ROS2
+- Practical understanding of robot kinematics, motion planning, state machines, and real-time or near-real-time control.
+- Experience integrating and debugging physical robots, sensors, actuators, and industrial equipment.
+- Ability to work independently in a hands-on, development-oriented environment.
+- Strong communication skills and ability to collaborate across engineering and scientific disciplines.
+
+**Nice to Have**
+- Experience with Universal Robots, industrial robot APIs, MoveIt, or other manipulation frameworks.
+- Experience with learning-based robotics approaches (RL, IL, VLAs, etc.) and computer vision applied to robotics
+- Experience with autonomous mobile manipulation, AMRs, or material handling systems.
+- Experience using hardware-in-the-loop environments for validation.
+- Experience in laboratory automation, scientific instrumentation, and/or early-stage startups.
+
+**Compensation and Benefits**
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="software-engineer-robotics-platform-2026-10-23"></a>
+
+### Software Engineer, Robotics Platform (2026-10-23)
+
+2026-10-23 → open · software-eng · Brooklyn, NY · $200–280K · [source](https://app.nodi.global/jobs/public/c2381ad4-0b19-4131-9904-7778dc68a5be)
+
+<details><summary>Description</summary>
+
+**The Role**
+As a Software Engineer, Robotics Platform in the Robotics and Automation group at Radical AI, you will architect our robotics and simulation infrastructure that accelerates the development, validation, and deployment of intelligent robotic systems in our self-driving laboratories.
+You will work closely with software, robotics, perception, mechatronics, mechanical engineering, and materials science to meet rigorous and sometimes dynamic design requirements at an unprecedented deployment speed.
+
+**What You'll Do**
+- Build the simulation infrastructure that facilitates our robotics team: robots, lab instruments, fixtures, sensors, and material-handling systems.
+- Handle containerization for deployed and simulated systems
+- Build and maintain infrastructure to support roboticists (e.g. on-demand GPU infrastructure)
+- Build evals for robotics systems, including benchmarks for classical and learning-based methods
+- Simulate RGB, depth, and other sensor data; generate synthetic datasets for object detection, segmentation, pose estimation, and scene understanding.
+- Integrate simulation with ROS2 and for software-in-the-loop testing, regression testing, and deployment validation.
+- Build reusable scenarios and automated tests for perception, task planning, robot behaviors, and failure recovery.
+- Contribute to technical direction, architecture decisions, and best practices across the simulation and robotics platform.
+
+**What We're Looking For**
+Required
+- Degree in Computer Science, Robotics, Computer Vision, Electrical Engineering, or equivalent experience
+- 5+ years of experience developing platform infrastructure, robotics simulation, robotic perception, or autonomy software, including substantial hands-on simulation work
+- Experience with containerization (e.g. Docker, Podman) and orchestration (e.g. Kubernetes), and CI/CD pipelines.
+- Experience with a modern robotics simulation platform such as Isaac Sim, MuJoCo, or Gazebo.
+- Proficiency in Python and/or C++ for production software development
+- Ability to work independently in a hands-on, development-oriented environment.
+
+**Nice to Have**
+- Understanding of robot kinematics, motion planning, rigid-body physics, collision detection, and sensor modeling.
+- Experience integrating machine learning frameworks (PyTorch, TensorFlow, Isaac Lab, or similar) into simulation pipelines for policy training, synthetic data generation, and autonomous behavior development.
+- Experience with sim-to-real validation, synthetic data, or domain randomization.
+- Experience with 2D/3D perception, camera geometry, calibration, and pose estimation.
+- Experience with robotic control frameworks (e.g., ROS/ROS2 or equivalent custom systems)
+- Experience deploying learned perception or multimodal models on physical robots.
+- Experience with laboratory automation, materials science, or scientific instrumentation.
+
+**Compensation and Benefits**
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="machine-learning-engineer-2026-10-26"></a>
+
+### Machine Learning Engineer (2026-10-26)
+
+2026-10-26 → open · ml-research · Brooklyn, NY · $190–245K · [source](https://app.nodi.global/jobs/public/c9a7ff5f-5f6a-45e0-846d-4c3a387011eb)
+
+<details><summary>Description</summary>
+
+**The Role**
+We're looking for a generalist Machine Learning Engineer to turn ML research into capabilities that hold up in production, inside the platform that runs our autonomous lab. A model that can't be trained reliably, served efficiently, and trusted by the scientists using it doesn't count. Your job is to make sure it does.
+You'll work side by side with our ML Researchers: designing experiments together, building training pipelines, evaluating models, and taking what works into production. You'll own the engineering that makes that possible, from data preparation and reproducible training to inference performance, product integration, and monitoring after release. Nobody hands you a spec; you'll help decide what's worth building, then build it.
+This is a hands-on role across the full ML lifecycle. One week you're in the weeds with a researcher, debugging a training run or implementing a new approach. The next you're standing up a serving endpoint, running down a production failure, or rebuilding the pipeline that gets the next model into users' hands.
+This is not a research role, and it's not a pure infrastructure role. We need strong software engineering fundamentals, real experience training and deploying models, and the judgment to trade model quality against reliability, latency, and cost, and to defend those calls when researchers push back. If your instinct is to hand off a model rather than own how it performs, or to wait for clear requirements before moving, this isn't the right fit. Success is simple: research improvements become measurable improvements in Radical's product.
+
+**What You'll Work On**
+- Partner with ML Researchers. Turn research ideas into working implementations, co-design experiments, and surface engineering constraints before they become blockers.
+- Build and run training pipelines. Own the workflows for training and fine-tuning models: datasets, configurations, failure triage, and compute efficiency.
+- Make experiments reproducible. Track code, data, environments, and model artifacts so any result can be reproduced and built on with confidence.
+- Evaluate models for product use. Build the datasets and tests that measure model quality, expose failure modes, and decide, with evidence, whether a candidate is ready to ship.
+- Deploy and integrate models. Turn research code into tested, maintainable components and services, and work with product and platform engineers to put them into real scientific workflows.
+- Improve inference performance. Profile and optimize latency, throughput, memory, and cost without giving up the quality the product depends on.
+- Own performance after launch. Monitor model and service behavior, run down regressions, keep releases and rollbacks safe, and feed what you learn into the next round of research.
+- Improve how the team ships ML. Build the shared tooling and automation that shrink the path from a promising experiment to a dependable product capability.
+
+**What We're Looking For**
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="laboratory-technician-2026-11-12"></a>
+
+### Laboratory Technician (2026-11-12)
+
+2026-11-12 → open · lab-automation · Brooklyn, New York, United States · $75–115K · [source](https://app.nodi.global/jobs/public/c714ca56-4d4b-4845-a597-31efbb6f2bd9)
+
+<details><summary>Description</summary>
+
+**The Role**
+As a Laboratory Technician at Radical AI, you will support the daily operation of our materials research labs, helping scientists prepare materials, execute experiments, characterize samples, and generate reliable experimental data. Your work will include ceramics processing, thin film deposition, mechanical testing, and electronic materials characterization.
+You will bring a foundation in materials science and an interest in understanding how materials are made, measured, and evaluated. Working closely with scientists and engineers, you will translate experimental plans into careful, repeatable laboratory work, maintain equipment, and help troubleshoot practical problems as they arise.
+You will also contribute to the development of our self-driving lab by helping establish consistent procedures, testing automated workflows, and identifying opportunities to improve experimental reliability and throughput.
+
+**What You'll Do**
+- Prepare materials and specimens for processing, characterization, and testing, including weighing, mixing, sectioning, mounting, grinding, polishing, and cleaning as needed.
+- Support materials synthesis and processing experiments, including powder preparation, forming, sintering, and thin film deposition.
+- Conduct mechanical testing, such as hardness, tensile, compression, or nanomechanical measurements, following established procedures.
+- Support electronic materials testing, including electrical resistance, resistivity, and other measurements defined by individual research programs.
+- Operate materials characterization equipment, such as XRD, XRF, and SEM, following training and established methods.
+- Maintain accurate sample records, experimental data, and observations, ensuring traceability from preparation through testing. Identify unexpected results or inconsistencies and communicate them to the research team.
+- Perform routine equipment checks, cleaning, calibration verification, and preventive maintenance, and help troubleshoot instrument or workflow issues.
+- Track laboratory consumables, maintain organized work areas, and follow and help improve standard operating procedures and laboratory safety practices.
+- Collaborate with scientists, software developers, and automation engineers to test new workflows and improve the reliability of automated sample handling, processing, and measurement.
+
+**What We're Looking For**
+Required
+- Bachelor's degree in Materials Science, Materials Engineering, Ceramic Engineering, or a closely related field.
+- Exposure to thin film deposition, mechanical testing, and electronic materials testing through academic, research, or industrial laboratory work.
+- Practical experience preparing samples and operating laboratory equipment, with mechanical aptitude and the ability to follow procedures and troubleshoot routine problems.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="materials-scientist-thin-film-deposition-2026-11-12"></a>
+
+### Materials Scientist – Thin Film Deposition (2026-11-12)
+
+2026-11-12 → open · materials-science · Brooklyn, New York, United States · $150–195K · [source](https://app.nodi.global/jobs/public/9df6e5c4-0118-4b77-bb94-424d9defbc66)
+
+<details><summary>Description</summary>
+
+**The Role**
+As a Materials Scientist – Thin Film Deposition at Radical AI, you will lead the development and operation of our thin film deposition self-driving lab. You will own the physical vapor deposition (PVD) platform and the research workflows built around it, from chamber operation and process development to characterization, troubleshooting, and automation support.
+You will develop a deep, quantitative understanding of how the tool operates, how deposition conditions influence film growth, and how those conditions translate into material structure and performance. Your work will span electronic thin films, including interconnect materials, conductive layers, thermal materials, and dielectrics, as well as hard and wear resistant coatings, including reactively sputtered nitrides, carbides, and oxides.
+You will work closely with our team of computational and experimental materials scientists, robotics and automation engineers, software developers, and laboratory technicians to build reliable, repeatable workflows that connect synthesis, characterization, and experimental planning. This role combines experimental research with complete technical ownership of the deposition platform and a direct role in making it autonomous.
+
+**What You'll Do**
+- Own the PVD platform, including chamber operation, process setup, calibration, troubleshooting, maintenance coordination, and assessment of tool performance.
+- Develop, execute, and optimize sputtering and reactive sputtering processes for thin films and hard coatings.
+- Establish a detailed understanding of how chamber condition, target behavior, vacuum, gas chemistry, power, and substrate conditions affect deposition rate, thickness, uniformity, composition, microstructure, and properties.
+- Design and conduct experimental campaigns that connect deposition conditions to material behavior and identify opportunities to improve performance.
+- Characterize thin film composition, structure, morphology, electrical behavior, and mechanical properties, and use those results to guide process development and subsequent experiments.
+- Write and maintain repeatable deposition programs and scripts for experimental execution, data collection, and routine analysis.
+- Collaborate with robotics, automation, and software teams to integrate deposition and characterization tools into an autonomous experimental workflow.
+- Establish operating procedures, process checks, and documentation that support reproducible results and reliable operation across users and experimental campaigns.
+- Drive research forward independently, coordinate experimental work with laboratory technicians, and communicate findings and recommendations across scientific and engineering teams.
+
+**What We're Looking For**
+Required
+- Bachelor's degree or higher in Materials Science, Materials Engineering, Physics, or a closely related field, with relevant research or professional experience in thin film deposition and characterization.
 
 *(truncated: full text in `data/job_postings.jsonl`)*
 

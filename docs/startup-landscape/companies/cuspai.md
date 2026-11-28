@@ -2,6 +2,28 @@
 
 Cambridge, UK (staff also in Amsterdam, Berlin, London, Singapore and the US West Coast) · founded 2024 · AI-for-materials (computational) · active · [cusp.ai](https://www.cusp.ai)
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**Team size on LinkedIn.** People listing the company, read from the company page (LinkedIn's 'View all N employees'); this counts alumni who never updated their profile and misses staff without one.
+
+| Date | Members | Band | Source |
+| --- | --- | --- | --- |
+| 2025-09-01 | 35 | 11-50 | [Wayback](https://web.archive.org/web/20250901175352/https://www.linkedin.com/company/cusp-ai) |
+| 2025-10-05 | 41 | 11-50 | [Wayback](https://web.archive.org/web/20251005005549/https://www.linkedin.com/company/cusp-ai) |
+| 2025-11-29 | 43 | 11-50 | [Wayback](https://web.archive.org/web/20251129094853/https://www.linkedin.com/company/cusp-ai) |
+| 2026-10-06 | 95 | 51-200 | [Wayback](https://web.archive.org/web/20261006201326/https://www.linkedin.com/company/cusp-ai) |
+| 2026-11-13 | 100 | 51-200 | [Wayback](https://web.archive.org/web/20261113044226/https://www.linkedin.com/company/cusp-ai/) |
+
+**Openings.** 27 open on 2026-11-28 on [its job board](https://jobs.ashbyhq.com/cuspai), against 14 on 2026-10-10. 18 new, 5 closed.
+- New since 2026-10-10: Application Scientist; Ecosystem Manager, AI Materials Foundry; Events Lead; Foundry Technical Program Manager (Materials Foundry); Labs Ecosystem Manager; Materials Knowledge Architect; Partnerships Manager; Performance Engineer; Platform Engineer; Product Engineer; Product Marketing Lead; Research Engineer (Generative Models); Research Engineer (Materials Foundation Models); Scientific Product Manager; Scientific Product Manager, Singapore; Scientific Software Engineer (Lab Integration); Security Engineer.
+- Closed since 2026-10-10: MLFF Distillation & GCMC Integration - Internship; Scientific Developer Relations Manager; Senior Talent Partner (Singapore); Strategic Partnerships Manager (Platform Partnerships); Technical Program Manager (Science).
+
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=104208189&geoId=92000000&location=Worldwide), 2026-11-28): 60 postings: Platform Engineer (Amsterdam, North Holland, Netherlands, posted 2026-10-23); Scientific Product Manager, Singapore (Singapore, Singapore, posted 2026-10-23); Research Engineer (Materials Foundation Models) (Amsterdam, North Holland, Netherlands, posted 2026-10-14); Data Engineer (Cambridge, England, United Kingdom, posted 2026-06-12); Materials Knowledge Architect (London, England, United Kingdom, posted 2026-10-23); Materials Knowledge Architect (Amsterdam, North Holland, Netherlands, posted 2026-10-23); Materials Knowledge Architect (Cambridge, England, United Kingdom, posted 2026-10-23); Platform Engineer (London, England, United Kingdom, posted 2026-10-23); Data Engineer (Amsterdam, North Holland, Netherlands, posted 2026-06-12); Data Engineer (London, England, United Kingdom, posted 2026-10-23); Foundry Technical Program Manager (Materials Foundry) (Cambridge, England, United Kingdom, posted 2026-11-24); Platform Engineer (Cambridge, England, United Kingdom, posted 2026-10-23) and 48 more.
+<!-- /refresh:2026-11-28 -->
+
 ## Funding timeline
 
 | Date | Round | Amount (USD M) | Original | Lead investors | Source |

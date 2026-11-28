@@ -2,6 +2,21 @@
 
 Cambridge, MA, US · founded 2017 · self-driving lab · active (low visibility) · [kebotix.com](https://www.kebotix.com/)
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**Team size on LinkedIn.** People listing the company, read from the company page (LinkedIn's 'View all N employees'); this counts alumni who never updated their profile and misses staff without one.
+
+| Date | Members | Band | Source |
+| --- | --- | --- | --- |
+| 2024-04-21 | 11 | 11-50 | [Wayback](https://web.archive.org/web/20240421102016/https://www.linkedin.com/company/kebotix) |
+| 2024-08-16 | 9 | 11-50 | [Wayback](https://web.archive.org/web/20240816131509/https://www.linkedin.com/company/kebotix/) |
+
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=11817157&geoId=92000000&location=Worldwide), 2026-11-28): no postings.
+<!-- /refresh:2026-11-28 -->
+
 ## Funding timeline
 
 | Date | Round | USD M | Detail | Leads | Source |

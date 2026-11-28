@@ -2,7 +2,7 @@
 
 Back to [all companies](README.md) · [company profile](../companies/orbital-materials.md)
 
-**38 postings recovered**, 25 with the full description; 7 still open on 2026-10-10. First seen 2024-10-02, latest 2026-09-08. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**45 postings recovered**, 30 with the full description; 8 still open on 2026-11-28. First seen 2024-10-02, latest 2026-11-25. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
@@ -20,16 +20,16 @@ Back to [all companies](README.md) · [company profile](../companies/orbital-mat
 | 2025-06-10 | 2025-09-08 | Sales Director - EMEA | leadership | Operations & Management | London, UK |  |  |  | [Wayback](https://web.archive.org/web/20250908194607/https://jobs.ashbyhq.com/orbitalmaterials) |
 | 2025-06-26 | 2025-09-08 | Researcher (Electrical & Controls) | lab-automation | Mechanical & Chemical Engineering | San Francisco, CA |  |  |  | [Wayback](https://web.archive.org/web/20250908194607/https://jobs.ashbyhq.com/orbitalmaterials) |
 | 2025-09-02 | 2026-05-11 | [Senior Mechanical Engineer](#senior-mechanical-engineer-2025-09-02) | lab-automation | Mechanical & Chemical Engineering | Canada |  |  |  | [Wayback](https://web.archive.org/web/20250908013920/https://jobs.ashbyhq.com/orbitalmaterials/827c397e-9e0e-47c5-8475-1b7beb105f9f) |
-| 2025-09-04 | 2026-06-18 | [Frontend Engineer - AI Tools and Data Visualisation](#frontend-engineer-ai-tools-and-data-visualisation-2025-09-04) | software-eng | Software & AI | London, UK |  | 5 |  | [Wayback](https://web.archive.org/web/20250919214448/https://jobs.ashbyhq.com/orbitalmaterials/0ed09160-916a-49da-a832-f1d8ff2e7118) |
-| 2025-09-09 | 2025-11-14 | [Chief Financial Officer](#chief-financial-officer-2025-09-09) | leadership | Executive Team | London, UK |  |  |  | [Wayback](https://web.archive.org/web/20251107220545/https://jobs.ashbyhq.com/orbitalmaterials/77f2d3df-fcf0-4fc3-96b4-ecfd1b5a95ac?utm_source=Toyota+Ventures+job+board&utm_medium=getro.com&gh_src=Toyota+Ventures+job+board) |
-| 2025-10-07 | 2026-04-16 | [Quality Manager](#quality-manager-2025-10-07) | business-ops | Operations | Canada |  |  |  | [Wayback](https://web.archive.org/web/20251210173848/https://jobs.ashbyhq.com/orbitalmaterials/0a48812f-c412-4f78-9d02-b72fb9a2fa4b?utm_source=Toyota+Ventures+job+board&utm_medium=getro.com&gh_src=Toyota+Ventures+job+board) |
+| 2025-09-04 | 2026-06-18 | [Frontend Software Engineer](#frontend-software-engineer-2025-09-04) | software-eng | Software & AI | London, UK |  | 5 |  | [Wayback](https://web.archive.org/web/20250919214448/https://jobs.ashbyhq.com/orbitalmaterials/0ed09160-916a-49da-a832-f1d8ff2e7118) |
+| 2025-09-09 | 2026-07-18 | [Chief Financial Officer](#chief-financial-officer-2025-09-09) | leadership | Executive Team | London, UK |  |  |  | [Wayback](https://web.archive.org/web/20251107220545/https://jobs.ashbyhq.com/orbitalmaterials/77f2d3df-fcf0-4fc3-96b4-ecfd1b5a95ac?utm_source=Toyota+Ventures+job+board&utm_medium=getro.com&gh_src=Toyota+Ventures+job+board) |
+| 2025-10-07 | 2026-08-12 | [Quality Manager](#quality-manager-2025-10-07) | business-ops | Operations | Canada |  |  |  | [Wayback](https://web.archive.org/web/20251210173848/https://jobs.ashbyhq.com/orbitalmaterials/0a48812f-c412-4f78-9d02-b72fb9a2fa4b?utm_source=Toyota+Ventures+job+board&utm_medium=getro.com&gh_src=Toyota+Ventures+job+board) |
 | 2025-10-28 | 2026-01-19 | [Corporate Counsel](#corporate-counsel-2025-10-28) | business-ops | Legal & Compliance | London, UK | MS |  |  | [Wayback](https://web.archive.org/web/20251210172405/https://jobs.ashbyhq.com/orbitalmaterials/df4c3e22-4594-40bf-8e8d-8c449f9b0d4d?utm_source=Toyota+Ventures+job+board&utm_medium=getro.com&gh_src=Toyota+Ventures+job+board) |
-| 2025-10-31 | 2026-01-19 | [AI Technical Lead](#ai-technical-lead-2025-10-31) | ml-research | Software & AI | London, UK |  | 5 |  | [Wayback](https://web.archive.org/web/20251031182346/https://jobs.ashbyhq.com/orbitalmaterials/4c5b715d-4584-4fe6-a6e0-3e716b3eb029) |
-| 2025-12-02 | 2026-04-16 | [Electrical Engineer](#electrical-engineer-2025-12-02) | lab-automation | Mechanical Engineering | Canada | BS | 5 |  | [Wayback](https://web.archive.org/web/20260114170406/https://jobs.ashbyhq.com/orbitalmaterials/08612b34-3917-4ce7-8056-ecb0777d93bc) |
+| 2025-10-31 | 2026-07-14 | [AI Technical Lead](#ai-technical-lead-2025-10-31) | ml-research | Software & AI | London, UK |  | 5 |  | [Wayback](https://web.archive.org/web/20251031182346/https://jobs.ashbyhq.com/orbitalmaterials/4c5b715d-4584-4fe6-a6e0-3e716b3eb029) |
+| 2025-12-02 | 2026-07-17 | [Electrical Engineer](#electrical-engineer-2025-12-02) | lab-automation | Mechanical Engineering | Canada | BS | 5 |  | [Wayback](https://web.archive.org/web/20260114170406/https://jobs.ashbyhq.com/orbitalmaterials/08612b34-3917-4ce7-8056-ecb0777d93bc) |
 | 2025-12-11 | open | [Machine Learning Research Engineer](#machine-learning-research-engineer-2025-12-11) | ml-research | AI | London, UK |  |  |  | [live](https://jobs.ashbyhq.com/orbitalindustries/0405b3d7-c134-43e4-a7af-a9763a5bf3d9) [Wayback](https://web.archive.org/web/20260416114311/https://jobs.ashbyhq.com/orbitalindustries) |
 | 2025-12-18 | 2026-02-15 | [Director of Marketing](#director-of-marketing-2025-12-18) | leadership | Commercial & Marketing | London, UK |  |  |  | [Wayback](https://web.archive.org/web/20260209144357/https://jobs.ashbyhq.com/orbitalmaterials/84078dfe-2752-4ab7-a9ec-c95021e80ed9?utm_source=Impact+Ventures+job+board&utm_medium=getro.com&gh_src=Impact+Ventures+job+board) |
 | 2025-12-24 | 2026-04-16 | [Sales Director (North America)](#sales-director-north-america-2025-12-24) | leadership | Commercial & Marketing | USA (Remote) |  |  |  | [Wayback](https://web.archive.org/web/20260209135805/https://jobs.ashbyhq.com/orbitalmaterials/2859ce93-de39-4a8b-bb39-efec9a56ada3?utm_source=Impact+Ventures+job+board&utm_medium=getro.com&gh_src=Impact+Ventures+job+board) |
-| 2026-01-06 | 2026-04-16 | [Content Manager](#content-manager-2026-01-06) | business-ops | Commercial & Marketing | London, UK |  |  |  | [Wayback](https://web.archive.org/web/20260129135326/https://jobs.ashbyhq.com/orbitalmaterials/3bb84f46-0cd4-4744-9624-2968ab70fbb1) |
+| 2026-01-06 | 2026-08-12 | [Content Manager](#content-manager-2026-01-06) | business-ops | Commercial & Marketing | London, UK |  |  |  | [Wayback](https://web.archive.org/web/20260129135326/https://jobs.ashbyhq.com/orbitalmaterials/3bb84f46-0cd4-4744-9624-2968ab70fbb1) |
 | 2026-01-24 | 2026-02-15 | AI Residency Program | ml-research | Software & AI | London, UK |  |  |  | [Wayback](https://web.archive.org/web/20260215203223/https://jobs.ashbyhq.com/orbitalmaterials) |
 | 2026-02-10 | 2026-04-16 | Strategy | business-ops | Operations | London, UK |  |  |  | [Wayback](https://web.archive.org/web/20260215203223/https://jobs.ashbyhq.com/orbitalmaterials) |
 | 2026-02-16 | 2026-04-16 | Senior Machine Learning Researcher | ml-research | Software & AI | London, UK |  |  |  | [Wayback](https://web.archive.org/web/20260416114311/https://jobs.ashbyhq.com/orbitalindustries) |
@@ -38,12 +38,19 @@ Back to [all companies](README.md) · [company profile](../companies/orbital-mat
 | 2026-03-24 | 2026-04-16 | Financial Controller | business-ops | Finance | London, UK |  |  |  | [Wayback](https://web.archive.org/web/20260416114311/https://jobs.ashbyhq.com/orbitalindustries) |
 | 2026-04-07 | 2026-06-13 | [Talent Partner](#talent-partner-2026-04-07) | business-ops | People & Talent | San Francisco, CA | PhD/MS/BS |  |  | [Wayback](https://web.archive.org/web/20260519032418/https://jobs.ashbyhq.com/orbitalindustries/0dbdfd09-a93c-4b0d-9878-22758bc87532?utm_source=Radical+Ventures+job+board&utm_medium=getro.com&gh_src=Radical+Ventures+job+board) |
 | 2026-04-08 | 2026-04-16 | Product Director | leadership | Direct-to-Chip | San Francisco, CA |  |  |  | [Wayback](https://web.archive.org/web/20260416114311/https://jobs.ashbyhq.com/orbitalindustries) |
-| 2026-08-11 | open | [Prototype Researcher](#prototype-researcher-2026-08-11) | lab-automation | Direct-to-Chip | San Francisco, CA |  |  |  | [live](https://jobs.ashbyhq.com/orbitalindustries/00042379-3532-42df-a20f-c71b57cca97c) |
+| 2026-04-22 | 2026-08-12 | [Senior Mechanical Engineer (Modular Data Center)](#senior-mechanical-engineer-modular-data-center-2026-04-22) | lab-automation | EPCM | London, UK |  | 7 |  | [Wayback](https://web.archive.org/web/20260812114928/https://jobs.ashbyhq.com/orbitalindustries/afe3fcce-e5ed-48c4-abf2-41c20ca703ab) |
+| 2026-06-02 | 2026-07-15 | Modular Data Center Sales Executive | business-ops | Commercial & Marketing | USA (Remote) |  |  |  | [Wayback](https://web.archive.org/web/20260715135706/https://jobs.ashbyhq.com/orbitalindustries) |
+| 2026-07-09 | 2026-08-12 | Thermal Engineer | software-eng | Direct-to-Chip | San Francisco, CA |  |  |  | [Wayback](https://web.archive.org/web/20260715135706/https://jobs.ashbyhq.com/orbitalindustries) |
+| 2026-07-14 | 2026-08-12 | [AI Residency Programme](#ai-residency-programme-2026-07-14) | ml-research | AI | London, UK | PhD |  |  | [Wayback](https://web.archive.org/web/20260812115656/https://jobs.ashbyhq.com/orbitalindustries/837b7e29-b89a-4ea4-b90d-48d8782f48b8) |
+| 2026-07-14 | open | [Senior Backend Engineer](#senior-backend-engineer-2026-07-14) | software-eng | AI | London, UK |  |  |  | [live](https://jobs.ashbyhq.com/orbitalindustries/1f9f61ca-6b41-4628-a663-5f6d1a15f51b) [Wayback](https://web.archive.org/web/20260715135706/https://jobs.ashbyhq.com/orbitalindustries) |
+| 2026-08-11 | 2026-10-10 | [Prototype Researcher](#prototype-researcher-2026-08-11) | lab-automation | Direct-to-Chip | San Francisco, CA |  |  |  | [live](https://jobs.ashbyhq.com/orbitalindustries/00042379-3532-42df-a20f-c71b57cca97c) |
 | 2026-08-11 | open | [Test Engineer](#test-engineer-2026-08-11) | software-eng | Direct-to-Chip | San Francisco, CA |  |  |  | [live](https://jobs.ashbyhq.com/orbitalindustries/582e63ce-7b5d-437e-91f2-ec6854f341eb) |
-| 2026-08-25 | open | [Forward Deployed Engineer](#forward-deployed-engineer-2026-08-25) | software-eng | AI | London, UK |  |  |  | [live](https://jobs.ashbyhq.com/orbitalindustries/f61de282-ee9a-4849-a0de-6c9f13328bf7) |
-| 2026-08-25 | open | [Senior Backend Engineer](#senior-backend-engineer-2026-08-25) | software-eng | AI | London, UK |  |  |  | [live](https://jobs.ashbyhq.com/orbitalindustries/1f9f61ca-6b41-4628-a663-5f6d1a15f51b) |
+| 2026-08-12 | 2026-08-12 | [Associate General Counsel](#associate-general-counsel-2026-08-12) | business-ops | Operations | London, UK | MS |  |  | [Wayback](https://web.archive.org/web/20260812114226/https://jobs.ashbyhq.com/orbitalindustries/21a7fd30-f58e-4248-85e2-fab5d212a480) |
+| 2026-08-25 | open | [Deployment Strategist](#deployment-strategist-2026-08-25) | business-ops | AI | London, UK |  |  |  | [live](https://jobs.ashbyhq.com/orbitalindustries/f61de282-ee9a-4849-a0de-6c9f13328bf7) |
 | 2026-08-26 | open | [Forward Deployed Engineering Lead](#forward-deployed-engineering-lead-2026-08-26) | software-eng | AI | London, UK |  |  |  | [live](https://jobs.ashbyhq.com/orbitalindustries/47c0edc0-7f3f-4aac-85a8-fe32a3628ab4) |
 | 2026-09-08 | open | [Communications Lead](#communications-lead-2026-09-08) | business-ops | Commercial & Marketing | London, UK |  |  |  | [live](https://jobs.ashbyhq.com/orbitalindustries/2b27aad7-9860-4141-9b02-5d6634472c40) |
+| 2026-11-17 | open | [Founding Sales (Science)](#founding-sales-science-2026-11-17) | business-ops | Commercial & Marketing | London, UK |  |  |  | [live](https://jobs.ashbyhq.com/orbitalindustries/3eda16d8-6a7f-490b-9258-266cafa24a0d) [live](https://jobs.ashbyhq.com/orbitalindustries/e0c2ef03-8989-43e5-b729-44dd05abc3e8) |
+| 2026-11-25 | open | [Supply Chain Manager](#supply-chain-manager-2026-11-25) | business-ops | Data Center | San Francisco, CA |  |  |  | [live](https://jobs.ashbyhq.com/orbitalindustries/af400f36-1ceb-4d38-a6ef-4aacf6dbad91) |
 
 ## Descriptions
 
@@ -321,9 +328,9 @@ What We’re Looking For
 
 </details>
 
-<a id="frontend-engineer-ai-tools-and-data-visualisation-2025-09-04"></a>
+<a id="frontend-software-engineer-2025-09-04"></a>
 
-### Frontend Engineer - AI Tools and Data Visualisation (2025-09-04)
+### Frontend Software Engineer (2025-09-04)
 
 2025-09-04 → 2026-06-18 · software-eng · London, UK · [source](https://web.archive.org/web/20250919214448/https://jobs.ashbyhq.com/orbitalmaterials/0ed09160-916a-49da-a832-f1d8ff2e7118)
 
@@ -358,7 +365,7 @@ What We’re Looking For
 
 ### Chief Financial Officer (2025-09-09)
 
-2025-09-09 → 2025-11-14 · leadership · London, UK · [source](https://web.archive.org/web/20251107220545/https://jobs.ashbyhq.com/orbitalmaterials/77f2d3df-fcf0-4fc3-96b4-ecfd1b5a95ac?utm_source=Toyota+Ventures+job+board&utm_medium=getro.com&gh_src=Toyota+Ventures+job+board)
+2025-09-09 → 2026-07-18 · leadership · London, UK · [source](https://web.archive.org/web/20251107220545/https://jobs.ashbyhq.com/orbitalmaterials/77f2d3df-fcf0-4fc3-96b4-ecfd1b5a95ac?utm_source=Toyota+Ventures+job+board&utm_medium=getro.com&gh_src=Toyota+Ventures+job+board)
 
 <details><summary>Description</summary>
 
@@ -384,7 +391,7 @@ What We’re Looking For
 
 ### Quality Manager (2025-10-07)
 
-2025-10-07 → 2026-04-16 · business-ops · Canada · [source](https://web.archive.org/web/20251210173848/https://jobs.ashbyhq.com/orbitalmaterials/0a48812f-c412-4f78-9d02-b72fb9a2fa4b?utm_source=Toyota+Ventures+job+board&utm_medium=getro.com&gh_src=Toyota+Ventures+job+board)
+2025-10-07 → 2026-08-12 · business-ops · Canada · [source](https://web.archive.org/web/20251210173848/https://jobs.ashbyhq.com/orbitalmaterials/0a48812f-c412-4f78-9d02-b72fb9a2fa4b?utm_source=Toyota+Ventures+job+board&utm_medium=getro.com&gh_src=Toyota+Ventures+job+board)
 
 <details><summary>Description</summary>
 
@@ -448,7 +455,7 @@ What We’re Looking For
 
 ### AI Technical Lead (2025-10-31)
 
-2025-10-31 → 2026-01-19 · ml-research · London, UK · [source](https://web.archive.org/web/20251031182346/https://jobs.ashbyhq.com/orbitalmaterials/4c5b715d-4584-4fe6-a6e0-3e716b3eb029)
+2025-10-31 → 2026-07-14 · ml-research · London, UK · [source](https://web.archive.org/web/20251031182346/https://jobs.ashbyhq.com/orbitalmaterials/4c5b715d-4584-4fe6-a6e0-3e716b3eb029)
 
 <details><summary>Description</summary>
 
@@ -490,7 +497,7 @@ Nice to see
 
 ### Electrical Engineer (2025-12-02)
 
-2025-12-02 → 2026-04-16 · lab-automation · Canada · [source](https://web.archive.org/web/20260114170406/https://jobs.ashbyhq.com/orbitalmaterials/08612b34-3917-4ce7-8056-ecb0777d93bc)
+2025-12-02 → 2026-07-17 · lab-automation · Canada · [source](https://web.archive.org/web/20260114170406/https://jobs.ashbyhq.com/orbitalmaterials/08612b34-3917-4ce7-8056-ecb0777d93bc)
 
 <details><summary>Description</summary>
 
@@ -634,7 +641,7 @@ What We’re Looking For
 
 ### Content Manager (2026-01-06)
 
-2026-01-06 → 2026-04-16 · business-ops · London, UK · [source](https://web.archive.org/web/20260129135326/https://jobs.ashbyhq.com/orbitalmaterials/3bb84f46-0cd4-4744-9624-2968ab70fbb1)
+2026-01-06 → 2026-08-12 · business-ops · London, UK · [source](https://web.archive.org/web/20260129135326/https://jobs.ashbyhq.com/orbitalmaterials/3bb84f46-0cd4-4744-9624-2968ab70fbb1)
 
 <details><summary>Description</summary>
 
@@ -735,11 +742,107 @@ What We’re Looking For
 
 </details>
 
+<a id="senior-mechanical-engineer-modular-data-center-2026-04-22"></a>
+
+### Senior Mechanical Engineer (Modular Data Center) (2026-04-22)
+
+2026-04-22 → 2026-08-12 · lab-automation · London, UK · [source](https://web.archive.org/web/20260812114928/https://jobs.ashbyhq.com/orbitalindustries/afe3fcce-e5ed-48c4-abf2-41c20ca703ab)
+
+<details><summary>Description</summary>
+
+**Role Overview**
+Orbital is seeking a highly skilled and innovative Senior Mechanical Engineer to design and optimize advanced Modular Data Centers.
+This is a Senior role within the MDC function that combines strategic input and involves hands-on participation in cutting-edge research, including design and layout of mechanical systems for data center equipment and actively participating in and conducting lab experiments to verify the validity and performance of our modular data centers.
+
+**Key Responsibilities**
+A lead role within Orbital for Modular Data Center design, manufacturing and deployment. As a subject matter expert, you’ll interface with existing and potential clients configuring modular deployments to best suit their needs and suggest improvements.
+Design for Modular Data Centers
+- Selection of coils, heat exchangers, chillers, compressors, pumps and other supporting components
+- Working with key stakeholders to recommend designs for performance, manufacturability, and ease of deployment
+- Compare the impact on overall efficiency of the data center of different refrigerants for the ambient design condition
+- Select compressors, expansion valves, and other supporting systems
+Coordination, Review and Approval of Technical Reports and Documentation
+- Review internal engineering work as well as external contractors such as CFD and FEA analysis
+- As the team continues to grow, this role will be responsible for the direction of intermediate engineers, drafters and designers from various disciplines that will be added to the MDC team.
+Miscellaneous
+- Participate in the evaluation and selection of potential contract manufacturers
+- Assist in supporting internal and external manufacturing operations including integrating feedback from various stakeholders to continuously improve our modular products
+- Lead role in bringing new and innovative ways to design and manufacture products
+What We’re Looking For
+- Professional engineering designation with 7+ years of experience in the design, selection, and/or manufacturing of mechanical and electrical systems for data centers, HVAC, and large-scale cooling applications
+- Deep understanding of modular data center architecture — including mechanical/electrical subsystems, applicable codes, data center tiers, and best practices for efficiency and reliability
+- Expertise in chiller and refrigeration system selection, design and optimization
+- Experience with simulation tools (e.g. CFD, FEA) for thermal and fluid dynamics, and hands-on lab experience designing and executing experiments to validate mechanical system performance
+- Ability to interpret experimental data and translate findings into actionable design improvements
+
+</details>
+
+<a id="ai-residency-programme-2026-07-14"></a>
+
+### AI Residency Programme (2026-07-14)
+
+2026-07-14 → 2026-08-12 · ml-research · London, UK · [source](https://web.archive.org/web/20260812115656/https://jobs.ashbyhq.com/orbitalindustries/837b7e29-b89a-4ea4-b90d-48d8782f48b8)
+
+<details><summary>Description</summary>
+
+Orbital is an AI-first industrial company building hardware from the atoms up. Our goal is to lead an industrial renaissance to advance critical technologies and secure our planet for generations to come.
+We’re starting with critical hardware for AI data centers to make them more performant and sustainable. Every Orbital product is invented with our AI platform — uniting AI-automated hardware engineering with AI-designed material science to achieve breakthrough real-world performance.
+Working at Orbital means working in tightly integrated, vertically integrated teams. We’re looking for people who have a love of physical technology, curiosity in AI and a desire to learn.
+The AI Residency program is an 18 month program targeting people with exceptional technical backgrounds but no professional or PhD experience in AI. This program is suitable for recent graduates in technical disciplines. As part of this program you will work on high impact AI projects at Orbital. Some example projects:
+- Reinforcement Learning with Verifiable Rewards (RLVR), post-training for engineering and materials discovery tasks
+- Building evolutionary systems that compose LLMs at test-time to solve scientific problems
+- Distributed training of large scale simulation/generative models of 3D systems
+
+**This is a unique opportunity because**
+- Orbital is a world leading research lab in AI for industrial engineering and materials discovery. You will work at the cutting edge of research in LLMs and AI more broadly applied to sciences
+- Orbital is committed to open science. We publish and release the details of our work. This gives people who work for us an ability to build a profile in machine learning
+- Orbital is committed to open source. You will get an opportunity to have concrete demonstrations of the excellence of your software engineering and other work
+- Orbital is building technologies that have a physical, positive impact on the world. We build physical technologies. You can feel and touch the outcome of your work, and see these products make a difference in the world
+What We’re Looking For
+- Strong mathematics and statistical knowledge, especially linear algebra
+- Strong algorithms and data structures knowledge
+- Strong programming skills and familiarity with high performance computing concepts
+- Examples of outstanding technical achievements
+- There is no requirement to have worked in AI or machine learning before
+- Upon reading Hamming's You and Your Research, you resonate with quotes such as:
+- "Yes, I would like to do first-class work"
+- "You should do your job in such a fashion that others can build on top of it, so they will indeed say, 'Yes, I've stood on so and so's shoulders and I saw further.'"
+- "Instead of attacking isolated problems, I made the resolution that I would never again solve an isolated problem except as characteristic of a class"
+
+</details>
+
+<a id="senior-backend-engineer-2026-07-14"></a>
+
+### Senior Backend Engineer (2026-07-14)
+
+2026-07-14 → open · software-eng · London, UK · [source](https://jobs.ashbyhq.com/orbitalindustries/1f9f61ca-6b41-4628-a663-5f6d1a15f51b)
+
+<details><summary>Description</summary>
+
+**The role**
+Physical engineering is one of the hardest domains for AI. Designs have to meet standards, calculations must be deterministic and checkable, and a wrong number can end up in a power system or a data centre. CurieOS is built to let agents do real engineering work and to show exactly how every output was produced.
+The platform team builds the foundation that every workflow, agent and product on CurieOS depends on, and runs it in production for people who need to trust it. Your work sets the floor for how reliable our AI is, and the ceiling for what it can do.
+This is a small team, and you'll shape what we build as well as how. You'll see the results of those decisions in production within days. If you want a narrow, well-defined slice of a large system, this isn't the role. If you want to own a platform while it scales, it is.
+How we work
+We build with agents, not just for them. Everyone on the team works with the latest frontier models and coding agents every day, and token budgets won't hold you back. Part of what we build is CurieOS's ability to work on itself: triaging defects, proposing fixes and opening pull requests for engineers to review. So engineers here spend more of their time on design, review and judgement, and less on typing. If you already work this way, you'll feel at home. If you want to see how far it can go, this is the place to find out.
+You'll also work alongside our AI researchers, turning cutting-edge research and evals into things that run in the platform and in production.
+
+**What you'll work on first**
+In your first six months you'll work across the parts of CurieOS that customers have to be able to trust. Like everyone on the team you'll touch most of them, and go deepest where your interests take you:
+- Tenancy, isolation and identity. How CurieOS keeps each customer separate, from shared multi-tenant accounts to dedicated single-tenant deployments. That covers data isolation, SSO and access control. You'll also be an engineering voice in customer security reviews.
+- Release and production. How changes get to production safely: release gates, staged rollouts and rollback, automated smoke tests, on-call and incident response. We ship often, and you'll build what lets us keep doing that without breaking what customers rely on.
+- Agent quality in production. Measuring how well agents perform on real customer workflows, working with our researchers to bring the latest evals into the platform, and using those measurements to decide what is good enough to release. A model or prompt change should have to pass the same gate as a code change.
+- Observability and cost. Knowing the platform is healthy and what it costs. That means SLOs, tracing and alerting, plus cost telemetry and usage metering for every workflow and every customer, so we can see where model and compute spend goes and make deliberate choices about it.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
 <a id="prototype-researcher-2026-08-11"></a>
 
 ### Prototype Researcher (2026-08-11)
 
-2026-08-11 → open · lab-automation · San Francisco, CA · [source](https://jobs.ashbyhq.com/orbitalindustries/00042379-3532-42df-a20f-c71b57cca97c)
+2026-08-11 → 2026-10-10 · lab-automation · San Francisco, CA · [source](https://jobs.ashbyhq.com/orbitalindustries/00042379-3532-42df-a20f-c71b57cca97c)
 
 <details><summary>Description</summary>
 
@@ -811,77 +914,74 @@ What We’re Looking For
 
 </details>
 
-<a id="forward-deployed-engineer-2026-08-25"></a>
+<a id="associate-general-counsel-2026-08-12"></a>
 
-### Forward Deployed Engineer (2026-08-25)
+### Associate General Counsel (2026-08-12)
 
-2026-08-25 → open · software-eng · London, UK · [source](https://jobs.ashbyhq.com/orbitalindustries/f61de282-ee9a-4849-a0de-6c9f13328bf7)
+2026-08-12 → 2026-08-12 · business-ops · London, UK · [source](https://web.archive.org/web/20260812114226/https://jobs.ashbyhq.com/orbitalindustries/21a7fd30-f58e-4248-85e2-fab5d212a480)
 
 <details><summary>Description</summary>
 
 **Role Overview**
-Orbital's AI software platform, CurieOS, is used by scientists and engineers to design and build products serving critical industries. Powering this software are our world leading AI models in advanced materials, hardware engineering and simulation.
-As a Forward Deployed Engineer at Orbital you will deliver CurieOS into customer environments hands-on, writing production code, designing architectures, building integrations and solving problems across the full breadth of industrial R&D. You will embed with customer teams, translate ambiguous high-value problems into working systems, and build solutions that become part of how their scientists and engineers work day-to-day.
-First and foremost, we want to work with someone with a love of craftsmanship, continual learning and building systems that scale.
+In this role, you’ll lead Orbital’s legal function and be responsible for setting Company’s legal strategy and managing Orbital’s legal risks to support and accelerate Orbital’s growth globally, working closely with the executive team. You’ll provide a broad range of legal support including on issues related to commercial law, corporate finance, employment law, IP, technology and commercial vendor and supply contracts.
 
 **Key Responsibilities**
-Deliver deployments hands-on, across the breadth of industrial R&D
-- Deliver complex customer deployments hands-on, writing production code, designing architectures, building integrations and debugging issues across CurieOS and customer systems
-- Design and build systems that connect heterogeneous software, data and physical infrastructure, from simulation campaigns and digital twins to lab instruments, test rigs and CAD/PLM systems
-- Build solutions that become embedded in how customer scientists and engineers work day-to-day
-Build and deploy
-- Embed with customer teams to understand ambiguous, high-value R&D problems, challenge assumptions and identify where CurieOS can deliver meaningful impact
-- Translate those problems into a technical approach, milestones and acceptance criteria, making pragmatic architecture and scope trade-offs as you learn
-- Build evaluation loops with customer scientists and engineers, defining workflow-specific benchmarks and acceptance criteria that prove the system works in their world
-- Own your engagement from initial technical discovery through implementation, production deployment and adoption, including technical quality
-- Track KPIs per engagement (screening throughput, design-cycle reduction, experiments avoided) and communicate progress and outcomes to customer stakeholders
-Learn and adapt
-- Rapidly upskill across unfamiliar scientific and engineering domains by collaborating with domain experts, no prior chemistry, materials, or engineering experience required
-- Codify successful approaches into reusable integration patterns, tooling and playbooks so every engagement makes the next one faster
-- Feed field signal to the platform engineering team to shape the CurieOS roadmap
+Strategic Counsel
+- Advise company management on complex matters across contractual, regulatory, compliance, financial, and legal areas, delivering concise, clear guidance on risk and the practical path forward.
+Contract Management
+- Structure, review, and negotiate the full range of commercial agreements that support Orbital’s operations — master service agreements , sales orders, change orders, commercial lease documents, vendor and supply contracts, and more. Delivery is central to this role: turning matters around cleanly and on time is part of the job..
+- Support corporate governance and foundational legal matters, including employment law and market finance, and develop contract procedures and templates that improve how the business operates.
+Employment and HR matters
+- Advising on hiring, termination, workplace policies and employment related issues.
+Corporate Governance
+- Advising the execs on legal matters, preparing board materials, supporting due diligence, maintaining corporate records, advising on fiduciary duties, and helping with matters like entity management and corporate structuring.
+IP Strategy & Regulatory Compliance
+- Develop and execute our IP strategy, directing external counsel where appropriate while retaining ownership of the strategy.
+Legal Infrastructure
+- Build the legal infrastructure. Review all existing contracts and arrangements. Design and implement robust, scalable contract procedures, templates and workflows that let Orbital move faster as it grows.
 What We’re Looking For
-- Strong software engineering fundamentals and a track record of independently building, shipping and operating production software
-- A track record of succeeding in ambiguous, fast-moving environments where requirements evolve through direct iteration with users
-
-*(truncated: full text in `data/job_postings.jsonl`)*
+- UK or US qualified. US commercial experience is a strong plus; a bar admission isn't required.
+- Leading law firm background preferred. Exceptional in-house candidates from top-tier technology companies will also be considered.
+- Proven track record structuring, negotiating, and closing complex technology and commercial transactions.
+- Technology sector experience preferred including but not limited to Hardware, data centers, AI or mission critical industries. A science background or IP experience is useful but not essential.
+- The judgment and confidence to own decisions and work independently - comfortable setting direction, not waiting for it.
+- Clear, direct communication. You can make complex legal concepts land with engineers, executives, and commercial teams alike.
 
 </details>
 
-<a id="senior-backend-engineer-2026-08-25"></a>
+<a id="deployment-strategist-2026-08-25"></a>
 
-### Senior Backend Engineer (2026-08-25)
+### Deployment Strategist (2026-08-25)
 
-2026-08-25 → open · software-eng · London, UK · [source](https://jobs.ashbyhq.com/orbitalindustries/1f9f61ca-6b41-4628-a663-5f6d1a15f51b)
+2026-08-25 → open · business-ops · London, UK · [source](https://jobs.ashbyhq.com/orbitalindustries/f61de282-ee9a-4849-a0de-6c9f13328bf7)
 
 <details><summary>Description</summary>
 
+**Role Overview**
+Orbital Industries' AI software platform, CurieOS, is used by scientists and engineers to design and build products serving critical industries. Powering this software are our own frontier AI models in advanced materials, hardware engineering and simulation.
+As a Deployment Strategist at Orbital Industries, you will work with chemistry, materials and pharma customers to find out where CurieOS can create real value, then build the solutions that deliver it. You will dig into each customer's problems, understand their science and their business, and turn what you learn into applications on CurieOS that their scientists and engineers use every day.
+The role combines consultancy and product building. You will spend your time with customer R&D teams and decision-makers, framing problems, shaping solutions and measuring the business impact they deliver. We want someone who is commercially sharp, scientifically grounded and motivated by results customers can see.
+
 **Key Responsibilities**
-Build and operate core backend systems
-- Design and implement APIs, services and data pipelines that power CurieOS, with a focus on reliability, performance and clean abstractions
-- Build and maintain integrations between our AI models, scientific tools and internal workflows
-- Own the full lifecycle of backend features from design through deployment, monitoring and iteration
-Drive engineering quality
-- Write well-tested, maintainable code and contribute to a culture of high engineering standards through code review, documentation and technical discussion
-- Improve system observability, reliability and performance — instrument, monitor and optimise the systems you build
-- Make pragmatic technical decisions that balance speed of delivery with long-term maintainability
-Collaborate across the team
-- Work closely with ML researchers, product engineers and domain experts (materials scientists, hardware engineers) to understand their needs and translate them into robust backend solutions
-- Contribute to architectural decisions and help shape the technical direction of the platform
-- Share knowledge, mentor peers and help establish best practices as the team grows
+Understand the customer and their problem space
+- Embed with customer R&D teams in chemistry, materials and pharma to understand their workflows, constraints and commercial priorities
+- Question customers rigorously: challenge assumptions, get to the root of the problem and identify where CurieOS can have the most impact
+- Build trusted relationships with scientists, R&D leaders and business stakeholders, acting as their strategic partner throughout the engagement
+Design and build solutions customers believe in
+- Translate customer needs into clear solution designs, then build applications and workflows on CurieOS that solve them
+- Bring strong UX sensibility to everything you build, so solutions are intuitive and fit naturally into how scientists and engineers work
+- Iterate closely with customers until they agree the solution is right, working with Orbital Industries' engineering and research teams where deeper technical work is needed
+Drive and measure business impact
+- Own each engagement end-to-end, from scoping and success criteria through delivery and adoption
+- Define and track the business outcomes that matter to the customer, such as time-to-discovery, experiments avoided, design-cycle reduction and cost savings, and communicate results to senior stakeholders
+- Find opportunities to expand engagements, partnering with the commercial team to grow accounts
+- Turn what works into repeatable playbooks and solution templates, and feed customer insight back into the CurieOS roadmap
 What We’re Looking For
-- Backend engineering experience with strong programming skills
-- Proven experience designing, building and operating backend systems in production — APIs, data pipelines, event-driven architectures or similar
-- Strong fundamentals in at least one backend language (e.g. Python, Go, Rust, Java/Kotlin) and comfort working across the stack when needed
-- Experience with databases (relational and/or graph), message queues, caching layers and cloud infrastructure
-- A track record of shipping and iterating on software that real users depend on, with a strong sense of what makes systems reliable and maintainable
-- The ability to reason about system design, data modelling and engineering trade-offs — and to communicate these effectively
-- An ability to debug complex distributed systems through meticulous attention to detail, structured investigation and carefully chosen instrumentation
-- A genuine interest in building software that enables breakthrough scientific and industrial applications
-- Upon reading Hamming's You and Your Research, you resonate with quotes such as:
-- "Yes, I would like to do first-class work"
-- "You should do your job in such a fashion that others can build on top of it, so they will indeed say, 'Yes, I've stood on so and so's shoulders and I saw further.'"
-- "Instead of attacking isolated problems, I made the resolution that I would never again solve an isolated problem except as characteristic of a class"
-Bonus : Previous experience working in an AI/ML environment, familiarity with the workflows, tooling and pace of AI teams is a real advantage. Experience with graph databases, knowledge graphs or scientific data platforms. Experience with infrastructure-as-code, containerisation (Docker/Kubernetes) or CI/CD pipelines.
+- A grounding in chemistry, materials science or pharma, whether through study, research or industry work, with enough depth to engage credibly with customers
+- A track record of building solutions for industry and measuring their business impact
+- Strong consultative skills: you can question customers, frame ambiguous problems and guide stakeholders to a solution they agree on
+
+*(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
 
@@ -958,6 +1058,68 @@ Social Media Strategy
 Website messaging
 
 *(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="founding-sales-science-2026-11-17"></a>
+
+### Founding Sales (Science) (2026-11-17)
+
+2026-11-17 → open · business-ops · London, UK · [source](https://jobs.ashbyhq.com/orbitalindustries/3eda16d8-6a7f-490b-9258-266cafa24a0d)
+
+<details><summary>Description</summary>
+
+**Role Overview**
+We're hiring Founding Sales (Science) to win and grow enterprise customers for CurieOS across the scientific sector.
+This is a senior individual contributor role. You'll own the full sales cycle, from first conversation to signed enterprise license. You'll sell to a specific group of buyers: scientific R&D organisations (chemicals, advanced materials, life sciences and energy). Most employ thousands of people.
+CurieOS is an operating system for science and engineering. Scientists and engineers give it multi-step, goal-driven instructions. CurieOS then runs literature review, atomistic simulation with Orb, data analysis, engineering design and hardware specification. BASF already licenses CurieOS for catalyst R&D in automotive emissions.
+Timing matters. Large R&D and engineering organisations are deciding now how agentic AI fits into their work, and interest in CurieOS from leading companies is strong. You'll convert this opportunity into enterprise contracts by building pipeline, developing strategic relationships and closing complex deals. You'll bring the experience to qualify, price, negotiate and grow enterprise platform partnerships.
+You'll be one of the first dedicated commercial hires for CurieOS. You'll work directly with the founders, GTM and Product teams, and our own scientists and engineers who use and build CurieOS every day.
+
+**Key Responsibilities**
+Win New Enterprise Customers
+- Own the full sales cycle, from prospecting and discovery through technical evaluation, pilot and close
+- Convert inbound interest from the largest enterprises in our sectors, and build outbound pipeline into the next tier of target accounts
+- Close six- and seven-figure platform agreements, managing buying committees across R&D, engineering, IT security, procurement and legal
+Sell Across Key Customers
+- Sell to scientific R&D buyers: computational chemists, materials scientists and R&D directors at chemicals, materials, life sciences and energy companies.
+- Open new customers with a focused first deployment in R&D, then expand across the business to the engineering teams that turn those materials into products.
+- Show buyers clearly why an agentic operating system built for science and engineering does what general-purpose AI assistants cannot
+Run Technical Evaluations That Convert
+- Agree pilot success criteria, owners and timelines with the customer before work begins
+- Lead technical discovery and demos yourself, and work with our forward-deployed engineers and scientists on drive adoption
+- Clear security and data-governance reviews, covering IP protection, data residency and model governance
+Set the Standard for Enterprise Sales
+- Bring the enterprise sales discipline a fast-moving team needs: qualification, forecasting, pricing, contracting and pilot structure. Build the CurieOS sales playbook as you go
+- Expand first deployments into multi-team and multi-site enterprise licenses
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="supply-chain-manager-2026-11-25"></a>
+
+### Supply Chain Manager (2026-11-25)
+
+2026-11-25 → open · business-ops · San Francisco, CA · [source](https://jobs.ashbyhq.com/orbitalindustries/af400f36-1ceb-4d38-a6ef-4aacf6dbad91)
+
+<details><summary>Description</summary>
+
+**Role Overview**
+We are hiring a Supply Chain Manager to manage the end-to-end sourcing and delivery operations. You will coordinate our global network of OEMs, fabricators, and critical equipment suppliers to move designs from engineering into production scale.
+This role spans specialty cooling fluids and cold plates,through to critical power, cooling equipment . You will actively use and help build AI-enabled supply chain tools in CurieOS, feeding real-world supplier constraints, lead times, and manufacturing data back into our team to accelerate every build cycle.
+
+**Key Responsibilities**
+- Unified Sourcing & Vendor Orchestration: Build and manage a resilient global supplier ecosystem spanning our full technology stack from DTC liquid cooling hardware (cold plates, CDUs, manifolds and proprietary coolants) to long-lead data center power, cooling, and modular equipment (CRAHs, switchgear, UPS, PDUs, and prefabricated modules).
+- Engineering-to-Scale Execution : Partner directly with thermal, mechanical, and manufacturing teams to bridge early prototypes, test rigs, and machine shops into volume OEM production.
+- Delivery & Production Scheduling: Own vendor capacity planning and global logistics to hit PO-to-deployment timelines.
+- Procurement Operations & Compliance: Own day-to-day purchasing execution, including RFQs, Purchase Orders, NDAs, and vendor onboarding, while driving competitive quoting, cost tracking, dual-sourcing options, and technical compliance (such as UL/ETL certifications) alongside legal and leadership.
+What We’re Looking For
+- You have helped get physical products made, whether in supply chain, operations, manufacturing or product development.
+- You are comfortable managing product BOMs and contract manufacturers
+- You are experienced in procuring long-lead equipment, reviewing vendor submittals, and coordinating site deliveries.
+- You are able to read engineering drawings and BOMs, track UL/ETL and quality milestones, and run tight RFQ-to-PO workflows with OEMs and specialty fabricators
+- You thrive in a startup and already use AI in your daily work.
 
 </details>
 

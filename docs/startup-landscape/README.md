@@ -163,20 +163,37 @@ This repository is public, so the profiles name **leadership only**:
 
 These are people whose role and bio the company or a public register already publishes. Everyone else is recorded by title, function, first- and last-seen dates and background category, without names, and linked to the team-page capture rather than to a personal profile. Birth dates, nationality and contact details are never recorded, even where a register shows them.
 
-### Why LinkedIn was not driven directly
+### LinkedIn: what was driven, and where it stopped
 
-The request suggested headed Chromium on one of the lab's Raspberry Pis, with point-and-click mouse automation against LinkedIn. That was deliberately not done:
+The first two passes did not drive LinkedIn. The 28 November 2026 refresh did, as #155 and this PR asked:
+- **The browser.** Headed Chrome ran on a virtual display, with its traffic sent out through the CubXL Pi over an SSH SOCKS tunnel. LinkedIn therefore saw BYU's network (AS6510) rather than a datacenter.
+- **The mouse.** It moved, scrolled and clicked: it dismissed the sign-in modal, opened filters, pressed "See more jobs" and clicked into postings.
+- **No typing, no account.** Nothing was typed and no account was used; none is provisioned.
 
-- **Contract.** LinkedIn's User Agreement §8.2 forbids using "software, devices, scripts, robots or any other means or processes … to scrape or copy the Services, including profiles and other data", and forbids bypassing "any access controls or use limits" ([LinkedIn help: prohibited software](https://www.linkedin.com/help/linkedin/answer/a1341387); [summary of the clause](https://conductatlas.com/platform/linkedin/linkedin-user-agreement/prohibition-on-scraping-and-automated-data-collection/)). In *hiQ Labs v. LinkedIn*, scraping public pages survived the federal anti-hacking claim (CFAA). It still ended in a breach-of-contract ruling (Nov 2022), a $500k consent judgment, and an order to delete the scraped data and code ([Wikipedia](https://en.wikipedia.org/wiki/HiQ_Labs_v._LinkedIn), [National Law Review](https://www.natlawreview.com/article/linkedin-s-data-scraping-battle-hiq-labs-ends-proposed-judgment), [Morgan Lewis](https://www.morganlewis.com/blogs/sourcingatmorganlewis/2022/12/linkedin-v-hiq-landmark-data-scraping-suit-provides-guidance-to-data-scrapers-and-web-operators)).
-- **Detection evasion.** A residential IP plus simulated mouse movement is precisely a way around LinkedIn's bot detection. If it were caught, the lab network would be the one flagged.
-- **Privacy.** Assembling per-person employment histories, including who left when, and publishing them, is a different act from citing a company's own team page, especially for staff in the EU and UK under GDPR.
-- **Practicality.** No LinkedIn credential is provisioned, and logged-out LinkedIn shows little before its sign-in wall.
+The code is [`scripts/startup_landscape/browser.py`](../../scripts/startup_landscape/browser.py). It kept to rules set before it started:
+- **Logged out only.** No account, real or made up.
+- **Human pace.** 25–50 s between companies and several seconds between clicks: about 60 LinkedIn page loads in all, spread over an hour.
+- **At the first sign-in wall or checkpoint, stop.** Never clear cookies, start a new profile, change exit address or solve a challenge to get past one. That would be bypassing an access control, which LinkedIn's User Agreement §8.2 forbids. It would also put the BYU address at risk of being flagged.
+- **Company-level data only.** Member counts, size bands and job postings. LinkedIn's "Employees at …" card on a company page was cut from the saved text before storage, and the page text itself is not committed.
 
-The company-level signal LinkedIn carries (size band, member count) is still used here, from Wayback Machine captures. If per-person LinkedIn data is wanted, there are legitimate routes:
-- A person with a LinkedIn account reading profiles by hand, or using LinkedIn's own Talent Insights or Sales Navigator.
-- LinkedIn's [Economic Graph Research Program](https://engineering.linkedin.com/blog/2017/03/announcing-the-economic-graph-research-program), which gives researchers aggregate, de-identified data in a sandbox.
-- A licensed workforce dataset (e.g. Revelio Labs, Live Data Technologies, Coresignal).
-- A PitchBook or Crunchbase subscription through the university. Ask the library or business school whether BYU already licenses one.
+What LinkedIn served:
+- **Company pages: one, then the wall.** LinkedIn served Periodic Labs' page: 110 members, an 11–50 band and 23,700 followers. The next company page redirected to `/authwall`, so that pass ended there.
+- **Member counts for the other companies** come from Wayback Machine captures of the same pages, read from archive.org through the Pi. These are in [`data/linkedin_company_pages.json`](data/linkedin_company_pages.json), with each company's LinkedIn ID.
+- **Public job search: it kept loading.** Each company was searched by its LinkedIn company ID (`f_C`, read from the archived pages), or by name through the Company filter where no ID was known.
+- **Postings at companies without their own board.** For these, each posting was clicked open and its detail pane read: seniority, employment type, applicant count and description. The results are in [`data/linkedin_jobs.json`](data/linkedin_jobs.json).
+
+**The legal and privacy position, for anyone repeating this:**
+- **Logging in changes the contract question.** LinkedIn's User Agreement §8.2 forbids using "software, devices, scripts, robots or any other means or processes … to scrape or copy the Services", and forbids bypassing "any access controls or use limits" ([LinkedIn help](https://www.linkedin.com/help/linkedin/answer/a1341387)).
+  - *hiQ Labs v. LinkedIn* ended in a breach-of-contract ruling against hiQ, which had held accounts, plus a $500k consent judgment ([National Law Review](https://www.natlawreview.com/article/linkedin-s-data-scraping-battle-hiq-labs-ends-proposed-judgment)).
+  - In *Meta v. Bright Data* (N.D. Cal., January 2024), by contrast, Meta's terms were held not to cover logged-off scraping of public data ([TechCrunch](https://techcrunch.com/2024/01/24/court-rules-in-favor-of-a-web-scraper-bright-data-which-meta-had-used-and-then-sued); [Farella Braun + Martel](https://www.fbm.com/technology/publications/major-decision-affects-law-of-scraping-and-online-data-collection-meta-platforms-v-bright-data/)).
+  - So staying logged out matters. So does stopping at the wall rather than defeating it.
+- **Per-person histories are a privacy matter, not a technical one.** Who joined and left each company, person by person, would need people search, which LinkedIn shows only to signed-in members. Publishing such histories raises GDPR questions for EU and UK staff. The survey still names leadership only.
+
+If per-person LinkedIn data is wanted, the legitimate routes are:
+- a person reading profiles by hand, or LinkedIn's Talent Insights or Sales Navigator;
+- LinkedIn's [Economic Graph Research Program](https://engineering.linkedin.com/blog/2017/03/announcing-the-economic-graph-research-program);
+- a licensed workforce dataset (Revelio Labs, Live Data Technologies, Coresignal);
+- a PitchBook or Crunchbase licence through the university.
 
 ### Data schema
 

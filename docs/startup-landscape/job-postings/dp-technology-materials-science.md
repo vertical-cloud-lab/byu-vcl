@@ -55,7 +55,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Materials Design Researcher (2023-05-25)
 
-2023-05-25 → open · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7236948900812114214/detail)
+2023-05-25 → 2026-10-10 · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7236948900812114214/detail)
 
 <details><summary>Description</summary>
 
@@ -75,7 +75,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Algorithm Applied Scientist (2023-12-26)
 
-2023-12-26 → open · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7316743275628792100/detail)
+2023-12-26 → 2026-10-10 · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7316743275628792100/detail)
 
 <details><summary>Description</summary>
 
@@ -96,19 +96,23 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Battery Simulation AI4S Development Intern (2024-03-12)
 
-2024-03-12 → open · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7345451879922796809/detail)
+2024-03-12 → open · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7489794569421801782/detail)
 
 <details><summary>Description</summary>
 
-**Job description (职位描述)**
-电芯是一个跨尺度+多物理场融合的复杂系统，对电池工作和老化机理的模拟仿真有利于加速电芯的开发。您将基于AI For Science的研发范式，从AI+物理模型、AI+数据模型等多方面的先进算法和工程化实践，来系统性的支持电芯的研发。
+**Job Description**
+A battery cell is a complex system involving multi-scale and multi-physics phenomena. Simulation of battery operation and aging mechanisms facilitates accelerated battery development. Based on the AI for Science (AI4S) research paradigm, you will systematically support battery cell R&D using advanced algorithms and engineering approaches, including AI-driven physical and data models.
 
-**岗位职责**
-5. 开发AI先进算法，融合上述跨尺度模型、或者多物理场模型相结合，加速复杂电芯的快速仿真建模。
+**Responsibilities**
+1.Develop thermal-mechanical-electrochemical multi-physics coupled models and 3D heterogeneous models for battery cells. Continuously refine and optimize models via experimental design, analysis, and validation from both parametric and mechanistic viewpoints.
+2.Develop Discrete Element Method (DEM) or Coarse-Grained Molecular Dynamics (CGMD) algorithms to simulate electrode manufacturing processes and establish microstructural models of battery electrodes.
+3.Develop multi-scale material-cell models by exploring coupling mechanisms among microscopic phase-field models, process-related DEM simulations, and macro-scale multi-physics models, and perform subsequent analytical validationsDevelop physical and data-driven models, along with parameter identification algorithms (e.g., electrochemical and mechanistic models), to accurately characterize battery aging processes.
+4.Develop AI-driven algorithms to integrate multi-scale and multi-physics models, enabling rapid simulation and modeling of complex battery systems.
 
-**Requirements (职位要求)**
-2. 至少熟练使用一款电芯仿真软件（COMSOL、AutoLion、star-CCM+），能够独立进行电化学模型、电热模型、多物理场模型等建模仿真工作，熟悉参数优化的各类算法，形成标准化、流程化的工作流；
-3. 在电化学、材料科学、力学有较为扎实的理论基础，并熟练掌握1种以上编程语言（python、C++），具有较强的程序开发能力和数值计算分析能力，能够快速实现和验证前沿文献中的电池模型。
+**Requirements**
+1.Knowledge of commercial battery chemistries, cell design, and manufacturing processes. Familiarity with cell testing protocols and characterization methods for extracting model parameters.
+2.Proficient in at least one battery simulation software (e.g., COMSOL, AutoLion, Star-CCM+). Able to independently conduct electrochemical, electro-thermal, and multi-physics modeling and simulation. Familiar with parameter optimization algorithms and capable of developing standardized, streamlined workflows.
+3.A solid theoretical foundation in electrochemistry, materials science, and mechanics. Proficient in at least one programming language (e.g., Python or C++), with strong software development and numerical analysis skills to rapidly implement and validate state-of-the-art battery models from literature.
 
 </details>
 
@@ -116,7 +120,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Senior Battery AI4S Development Researcher (2024-03-12)
 
-2024-03-12 → open · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7345428615377537318/detail)
+2024-03-12 → 2026-10-10 · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7345428615377537318/detail)
 
 <details><summary>Description</summary>
 
@@ -138,7 +142,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Senior Battery Simulation AI4S Development Researcher (2024-03-12)
 
-2024-03-12 → open · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7345434572710562057/detail)
+2024-03-12 → 2026-10-10 · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7345434572710562057/detail)
 
 <details><summary>Description</summary>
 
@@ -158,7 +162,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Senior Materials-Industry AI4S Development Researcher (2024-03-12)
 
-2024-03-12 → open · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7345430112500779314/detail)
+2024-03-12 → 2026-10-10 · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7345430112500779314/detail)
 
 <details><summary>Description</summary>
 
@@ -180,7 +184,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Senior Solid-State Battery AI4S Development Researcher (2024-03-12)
 
-2024-03-12 → open · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7345435440352823578/detail)
+2024-03-12 → 2026-10-10 · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7345435440352823578/detail)
 
 <details><summary>Description</summary>
 
@@ -200,7 +204,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Solid-State Battery AI4S Development Intern (2024-03-12)
 
-2024-03-12 → open · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7345456000998345011/detail)
+2024-03-12 → open · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/305722/position/7514676008390265127/detail)
 
 <details><summary>Description</summary>
 
@@ -222,7 +226,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### AI4S Battery Simulation Development Engineer (2024-07-02)
 
-2024-07-02 → open · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7386941138638817572/detail)
+2024-07-02 → 2026-10-10 · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7386941138638817572/detail)
 
 <details><summary>Description</summary>
 
@@ -242,7 +246,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Solid-State Battery AI4S Development Researcher (2024-07-02)
 
-2024-07-02 → open · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7386937894273403172/detail)
+2024-07-02 → 2026-10-10 · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7386937894273403172/detail)
 
 <details><summary>Description</summary>
 
@@ -418,7 +422,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Intelligent Electrolyte R&D Intern (2025-11-11)
 
-2025-11-11 → open · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7571469350953126187/detail)
+2025-11-11 → 2026-10-10 · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7571469350953126187/detail)
 
 <details><summary>Description</summary>
 
@@ -757,7 +761,7 @@ AI/计算机背景，同时做过材料、化学、实验数据相关项目；
 4.建库与录入：对接LIMS/ELN，把每批检测的原始数据、QC指标（如对照化合物Km/Vmax、批间CV、批内Z’ 等）结构化记录，保证数据可追溯、可复算；
 5.数据判读与质量把关：对每批检测结果做初步药代动力学判读（如t1/2、CLint、IC50/EC50、Papp），标记异常批次并触发复测，为pre-PCC成药性打分提供合格数据；
 6.与Bioassay科学家、细胞培养技术员协同，共享自动化平台机时排产，保证ADME飞轮在化学组产出命中化合物的间隙持续吃满产能；
-7.按年底12/30最小闭环验收节点产出ADME数据汇总，支持锚定项目（如ITK阳性对照soquelitinib）的成药性评估进度。
+7.按年底12/30最小闭环验收节点产出ADME数据汇总，支持锚定项目的成药性评估进度。
 
 **Requirements (职位要求)**
 1.硕士或以上学历，药物代谢动力学（DMPK）、药剂学、药理学或相关专业，博士优先；
@@ -907,6 +911,112 @@ AI/计算机背景，同时做过材料、化学、实验数据相关项目；
 4.熟悉自动化实验室/Lab of the Future（LOTF）环境下的assay运行模式；
 5.有帮助团队从0到1把新引入assay在自动化平台上跑通的经历，而非只在成熟产线上做质量监控；
 7.具备基础的统计学素养，能独立判断Z-score、异常值剔除等数据处理逻辑是否合理；
+
+</details>
+
+<a id="organic-synthesis-scientist-d2b-validation-2026-10-13"></a>
+
+### Organic Synthesis Scientist (D2B Validation) (2026-10-13)
+
+2026-10-13 → open · materials-science · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7696047428957030706/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+D2B（Direct-to-Biology）指化合物在满足质量标准后，可直接进入生物活性测试的研发模式。
+你将负责
+4.判读粗品 LC-MS 结果，判断产物是否符合直接进入生物测试的质量要求，并识别异常或失败原因；
+
+**Requirements (职位要求)**
+我们希望你具备
+1.有机化学、药物化学、合成化学或相关方向博士学位，欢迎应届毕业生，无全职工作经验要求；
+4.能够独立解读 LC-MS 结果，判断粗品质量并定位常见失败模式；
+加分项
+1.有 CRO、制药企业或相关科研项目中的合成、工艺或药物化学实践经历；
+2.有类似物库合成、SAR 拓展、高通量合成或免纯化直接测试相关经验；
+4.熟悉常见药物化学反应及其适用边界，例如催化偶联、CuAAC 反应和酰胺缩合反应等；
+5.具备实验数据整理、Excel 或 Python 基础，英文文献阅读能力良好。
+你将获得
+1.参与 AI4S 自动化实验室从建设到稳定运行的机会；
+2.负责从反应验证到批量放大的完整实践闭环；
+
+</details>
+
+<a id="ai4s-electrolyte-development-intern-2026-11-12"></a>
+
+### AI4S Electrolyte Development Intern (2026-11-12)
+
+2026-11-12 → open · materials-science · Yibin · [source](https://dptechnology.jobs.feishu.cn/index/position/7707087618123729193/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+岗位简介
+面向电解液新材料发现，结合机器学习、分子/配方模拟与自动化工站，构建“AI预测—实验验证—数据反馈”的闭环研发流程，加速电解液新材料与配方的筛选和优化。
+
+岗位职责
+1. 跟踪电解液、电池材料及AI4S相关文献与专利，参与构建电解液材料/配方数据库；
+2. 基于分子描述符、配方参数及实验数据，开展性质预测、配方筛选、主动学习/贝叶斯优化等AI模型训练与评估；
+
+**Requirements (职位要求)**
+任职要求
+1. 硕士研究生及以上在读，计算材料、计算物理、计算化学等相关背景；
+2. 具备机器学习基础，熟悉Python及常用数据分析/机器学习框架（如scikit-learn、PyTorch等）；
+3. 了解分子模拟或计算化学方法（如DFT、MD等）者优先；
+6. 能稳定实习不少于3个月。
+
+加分项
+- 有自动化工站、LIMS、实验数据平台或Linux/HPC使用经验；
+- 在相关方向发表过论文或拥有项目成果。
+
+</details>
+
+<a id="ai4s-organic-synthesis-intern-2026-11-12"></a>
+
+### AI4S Organic Synthesis Intern (2026-11-12)
+
+2026-11-12 → open · materials-science · Yibin · [source](https://dptechnology.jobs.feishu.cn/index/position/7707095124417071403/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+岗位简介
+AI辅助添加剂设计方向，结合AI模型进行电解液功能添加剂的分子设计、筛选与合成，完成结构表征、电解液配制及电化学性能评测，参与“AI设计—有机合成—性能反馈”的研发闭环。
+岗位职责
+1. 跟踪电解液功能添加剂、有机电化学及AI辅助分子设计相关文献与专利；
+2. 结合AI模型/分子生成与筛选工具，参与功能添加剂的候选分子设计与优先级评估；
+5. 规范记录实验数据，协助整理表征与评测结果，并反馈至AI模型迭代；
+
+**Requirements (职位要求)**
+任职要求
+1. 硕士研究生及以上在读，有机化学、有机电化学等相关背景；
+3. 熟悉NMR、GC-MS、HPLC、LC-MS等常用表征手段及谱图解析；
+4. 具备电化学测试基础，了解CV、LSV、EIS或电池充放电测试者优先；
+5. 对AI辅助分子设计、数据分析或Python工具有兴趣，具备基础数据处理能力；
+7. 能稳定实习不少于3个月。
+
+加分项
+- 熟悉含氟、含硫、含磷等功能添加剂或成膜添加剂；
+- 在相关方向发表过论文或拥有完整合成项目经验。
+
+</details>
+
+<a id="organic-synthesis-engineer-organic-lithium-salts-2026-11-18"></a>
+
+### Organic Synthesis Engineer (Organic Lithium Salts) (2026-11-18)
+
+2026-11-18 → open · materials-science · Yibin · [source](https://dptechnology.jobs.feishu.cn/index/position/7709440055642982699/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+岗位职责
+3. 结构表征与纯度放行。 用NMR（¹H、¹³C、⁷Li等）、FTIR、TGA-MS、元素分析、离子色谱等手段完成结构确认和残留定量；对空气敏感样品建立手套箱内取样、密封制样和表征的规范流程。表征结论需明确回答：目标结构是否成立、锂含量是否与理论一致、关键残留是否在放行阈值以内。
+
+**Requirements (职位要求)**
+1.有机化学、合成化学或相关专业硕士及以上学历；3年以上有机合成实操工作经验，其中至少1年涉及空气/水分敏感化合物（有机锂试剂、强碱、金属有机物种）的合成与纯化。有牺牲型锂盐、电池功能有机分子（成膜添加剂、氧化还原媒介）或含锂有机盐合成经验者优先。
+3.无水无氧操作能力： 熟练使用Schlenk线、手套箱和高真空操作，理解有机锂盐对氮气、水分和玻璃器皿表面吸附水的敏感性。能设计从克级到百克级仍可维持惰性气氛的操作方案，并对操作中可能引入的微量水分/氧气有识别和排查能力。
+4.纯化与表征的工程判断： 能独立设计重结晶、沉淀等可放大的纯化路径，并预判放大后晶型、粒径和收率的变化；熟练解读NMR、FTIR、TGA-MS、元素分析数据，能将“纯度99%”拆解为“哪些残留、各自多少、是否在扣电和浆料中构成风险”。
 
 </details>
 

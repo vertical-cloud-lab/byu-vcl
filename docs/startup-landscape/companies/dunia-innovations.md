@@ -2,6 +2,17 @@
 
 Berlin, Germany · founded 2022 · self-driving lab · active · [dunia.ai](https://dunia.ai)
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**Openings.** 2 open on 2026-11-28 on [its job board](https://dunia.jobs.personio.com/), against 13 on 2026-10-10. 0 new, 11 closed.
+- Closed since 2026-10-10: Business Development Manager; Chemical Data Scientist; Lab Operations & Procurement Manager; Lab Technicians; ML Engineer, Agents & Reasoning; ML Researcher, Representation Learning; Manufacturing Systems Engineer; Quantum Chemistry Specialist; Reliability & Test Engineer; Research Scientist, Thermocatalysis; Software Engineer, Infrastructure.
+
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=86248775&geoId=92000000&location=Worldwide), 2026-11-28): 3 postings: Spontaneous application (Berlin, Berlin, Germany, posted 2026-11-02); Materials Informatics Scientist (Evaluation-focused) (Berlin, Berlin, Germany, posted 2026-02-02); Head of AI Research (Berlin, Berlin, Germany, posted 2026-02-02).
+<!-- /refresh:2026-11-28 -->
+
 ## Funding timeline
 
 | Date | Round | Amount (USD M) | Original | Type | Lead investors | Source |

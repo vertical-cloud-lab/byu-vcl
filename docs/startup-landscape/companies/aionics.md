@@ -2,6 +2,25 @@
 
 Palo Alto, CA, US · founded 2020 · AI-for-materials (computational) · active · [aionics.io](https://aionics.io)
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**Team size on LinkedIn.** People listing the company, read from the company page (LinkedIn's 'View all N employees'); this counts alumni who never updated their profile and misses staff without one.
+
+| Date | Members | Band | Source |
+| --- | --- | --- | --- |
+| 2025-11-27 | 17 | 11-50 | [Wayback](https://web.archive.org/web/20251127100723/https://www.linkedin.com/company/aionics) |
+| 2026-01-28 | 15 | 11-50 | [Wayback](https://web.archive.org/web/20260128091408/https://www.linkedin.com/company/aionics) |
+| 2026-02-27 | 15 | 11-50 | [Wayback](https://web.archive.org/web/20260227150005/https://www.linkedin.com/company/aionics) |
+| 2026-06-26 | 12 | 11-50 | [Wayback](https://web.archive.org/web/20260626032834/https://www.linkedin.com/company/aionics) |
+
+**Openings.** 0 open on 2026-11-28 on [its job board](https://aionics.io/), against 0 on 2026-10-10. 0 new, 0 closed.
+
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=65616801&geoId=92000000&location=Worldwide), 2026-11-28): no postings.
+<!-- /refresh:2026-11-28 -->
+
 ## Funding timeline
 
 | Date | Round | USD M | Detail | Leads | Source |

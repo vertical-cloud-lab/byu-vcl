@@ -62,26 +62,37 @@
     {
       "period": "2026Q4",
       "new_postings": 1,
-      "method": "ats",
+      "method": "job_postings.jsonl",
+      "note": "postings first seen 2026-10-01 to 2026-11-28 (live boards and Wayback)",
       "source": "https://atinary.com/careers/"
     }
   ],
   "current_openings": {
-    "date": "2026-10-09",
-    "count": 4,
+    "date": "2026-11-28",
+    "count": 3,
     "by_function": {
+      "business-ops": 1,
       "ml-research": 1,
-      "lab-automation": 1,
-      "software-eng": 1,
-      "business-ops": 1
+      "software-eng": 1
     },
     "titles": [
-      "AI for Chemistry Scientist (Lausanne)",
-      "Lab Technician (Boston)",
-      "Full Stack Developer (Lausanne)",
-      "Marketing & Social Media Associate (Lausanne)"
+      "Marketing & Social Media Associate",
+      "AI for Chemistry Scientist",
+      "Full Stack Developer"
     ],
-    "source": "https://atinary.com/careers/"
+    "source": "https://atinary.com/careers/",
+    "basis": "company job board (live snapshot)",
+    "previous": {
+      "date": "2026-10-09",
+      "count": 4,
+      "by_function": {
+        "ml-research": 1,
+        "lab-automation": 1,
+        "software-eng": 1,
+        "business-ops": 1
+      },
+      "source": "https://atinary.com/careers/"
+    }
   },
   "people": [
     {

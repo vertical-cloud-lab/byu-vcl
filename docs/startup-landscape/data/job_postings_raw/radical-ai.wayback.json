@@ -833,8 +833,8 @@
    {
     "urlkey": "com,alleycorp,jobs)/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee",
     "first": "20260414162446",
-    "last": "20260414162446",
-    "n": 1,
+    "last": "20260717090224",
+    "n": 2,
     "original": "https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee"
    },
    {
@@ -927,6 +927,27 @@
     "last": "20260422184010",
     "n": 1,
     "original": "https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/73774119-ai-research-scientist-agentic-systems"
+   },
+   {
+    "urlkey": "com,alleycorp,jobs)/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655547-director-of-software-engineering",
+    "first": "20260714032641",
+    "last": "20260714032641",
+    "n": 1,
+    "original": "https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655547-director-of-software-engineering"
+   },
+   {
+    "urlkey": "com,alleycorp,jobs)/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655550-senior-product-designer",
+    "first": "20260720013033",
+    "last": "20260720013033",
+    "n": 1,
+    "original": "https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655550-senior-product-designer"
+   },
+   {
+    "urlkey": "com,alleycorp,jobs)/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655549-product-manager",
+    "first": "20260720124028",
+    "last": "20260720124028",
+    "n": 1,
+    "original": "https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655549-product-manager"
    }
   ]
  },
@@ -948,6 +969,10 @@
   "jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee": [
    [
     "20260414162446",
+    "https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee"
+   ],
+   [
+    "20260717090224",
     "https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee"
    ]
   ]
@@ -2119,6 +2144,182 @@
    "org": "Radical Ai",
    "text": "Radical AI, Inc. is an artificial intelligence company that is accelerating scientific research & development. We are at the forefront of innovation in the field of materials R&D, a critical driver for advancing our most cutting-edge industries and shaping the future. Breaking away from the traditionally slow and costly R&D process, Radical AI leverages artificial intelligence and machine learning to pioneer generative materials science. This innovative field blends AI, engineering, and materials science, revolutionizing how materials are created and discovered. Radical AI's approach speeds up R&D and addresses global challenges, setting new benchmarks in technology and sustainability.\nThe opportunity\nThe vision for this opportunity is to create an intelligent system that operates in an experimental material science setting. Your core responsibility will be to lead the development of an agentic system for materials development, enhancing reasoning and planning throughout the development process, encompassing data acquisition, model evaluation, pre- and post-training, supervised fine-tuning, reward modeling, and reinforcement learning to drive overall performance of the system.\nYour expertise will contribute to the broader research community through publications in top-tier AI/ML venues like NeurIPS, ICML, and ICLR, alongside active participation in conferences and workshops. This role offers the unique opportunity to mentor and guide junior members of our technical team and research interns, fostering a culture of growth and innovation.\nPositions are available at various levels of seniority: Senior, Staff, and Principal.\nMission\n- Drive the development of a system that can pursue complex, multi-objective goals in materials design with limited direct supervision, leveraging agents and multi-agents that can interact with third-party and in-house integrations, including APIs, code interpreters, and hardware components.\n- Leverage various LLM architectures and models to balance reasoning and continuous adaptation towards intelligent decision-making.\n- Synthesize large-scale, high-quality (multi-modal) data through methods such as rewriting, augmentation, and generation to improve the abilities of models in various stages.\n- Work in collaboration with various teams, in particular the experimental materials science team.\n- Develop and apply reliable evaluation methods to analyze model performance at different stages, uncover the mechanisms and origins of their capabilities, and leverage these insights to enhance model development.\n- Contribute to the AI and materials science research community through publications and active engagement in top-tier AI/ML venues like NeurIPS, ICML, ICLR, and our company blog, alongside active participation in conferences and workshops.\n- The ability to tackle challenging problems with new and different ideas, creativity and contrarian thinking.\n- Mentor and guide junior team members and interns, promoting an environment of continuous learning and innovation.\nAbout you\n- Ph.D., M.S., or B.S. in Computer Science, AI, Machine Learning, Applied Maths, or a closely related field, with a strong focus on LLMs.\n- At least 3 years of research experience in AI, with a proven track record of designing agentic systems.\n- Familiarity with large-scale model training.\n- Proficiency in Python and relevant ML libraries (e.g., PyTorch).\n- Strong publication record in top-tier AI/ML conferences or journals.\n- Excellent collaboration and communication skills, capable of articulating complex technical ideas clearly and effectively.\nPluses\n- Passionate about leveraging ML for science related problems and a commitment to doing world-class research.\n- Domain knowledge of materials and/or molecules.\n- Familiarity with large-scale model training.\n- Experience with LLM engineering.\n- Active involvement in the AI research community, with contributions beyond publications, such as organizing workshops or giving talks at conferences.\nWhat we offer\n- A competitive compensation package also includes the best in benefits:\n- Medical, dental, and vision insurance for you and your family\n- Mental health and wellness support\n- Unlimited PTO and 14+ company holidays per year\n- 401K\n- Work closely with a team on the cutting edge of AI research.\n- A mission: an opportunity to fundamentally change the way humanity makes progress through materials science discovery.\nSalary Description\nCompetitive salary + Equity + Benefits; base pay offered may vary depending on job-related knowledge, skills, and experience.\nDisclosure\nRadical AI is committed to equal employment opportunity regardless of race, color, ancestry, national origin, religion, sex, age, sexual orientation, gender identity and expression, marital status, disability, or veteran status.",
    "posting_id": "73774119"
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250105193730/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250105193730",
+   "last_seen": "20250105193730",
+   "n_captures": 1,
+   "posting_id": "025709b9-d365-4909-aecb-aba5669703da",
+   "title": "AI Research Scientist - GNN / Foundation Models",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250105193730/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250105193730",
+   "last_seen": "20250105193730",
+   "n_captures": 1,
+   "posting_id": "f3f758ea-25bf-4756-ae6c-af1d0d9b586a",
+   "title": "AI Research Scientist - Agentic Systems",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250105193730/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250105193730",
+   "last_seen": "20250105193730",
+   "n_captures": 1,
+   "posting_id": "0ed60b43-a021-480d-aaff-9a38a69dc793",
+   "title": "AI Research Scientist - Generative Models",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250105193730/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250105193730",
+   "last_seen": "20250105193730",
+   "n_captures": 1,
+   "posting_id": "078f84f2-0e62-4d51-8d2f-ce898ef9ea6e",
+   "title": "ML Engineer",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250409152802/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250409152802",
+   "last_seen": "20250409152802",
+   "n_captures": 1,
+   "posting_id": "025709b9-d365-4909-aecb-aba5669703da",
+   "title": "AI Research Scientist - GNN / Foundation Models",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250409152802/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250409152802",
+   "last_seen": "20250409152802",
+   "n_captures": 1,
+   "posting_id": "f3f758ea-25bf-4756-ae6c-af1d0d9b586a",
+   "title": "AI Research Scientist - Agentic Systems",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250409152802/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250409152802",
+   "last_seen": "20250409152802",
+   "n_captures": 1,
+   "posting_id": "0ed60b43-a021-480d-aaff-9a38a69dc793",
+   "title": "AI Research Scientist - Generative Models",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250409152802/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250409152802",
+   "last_seen": "20250409152802",
+   "n_captures": 1,
+   "posting_id": "078f84f2-0e62-4d51-8d2f-ce898ef9ea6e",
+   "title": "ML Engineer",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250409152802/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250409152802",
+   "last_seen": "20250409152802",
+   "n_captures": 1,
+   "posting_id": "33655210-ec96-4f14-9baa-ea3d9a26cd6e",
+   "title": "Mechanical Engineer",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250409152802/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250409152802",
+   "last_seen": "20250409152802",
+   "n_captures": 1,
+   "posting_id": "c0b925f5-4d08-495d-b58c-35d7f62bd06c",
+   "title": "Mechatronics Engineer",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250409152802/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250409152802",
+   "last_seen": "20250409152802",
+   "n_captures": 1,
+   "posting_id": "56ec9525-fab1-4f88-a465-36fb5a76aba4",
+   "title": "Material Scientist",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
   }
  ],
  "spans": {
@@ -2295,6 +2496,24 @@
    "last": "20260422184010",
    "n": 1,
    "url": "https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/73774119-ai-research-scientist-agentic-systems"
+  },
+  "81655547": {
+   "first": "20260714032641",
+   "last": "20260714032641",
+   "n": 1,
+   "url": "https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655547-director-of-software-engineering"
+  },
+  "81655550": {
+   "first": "20260720013033",
+   "last": "20260720013033",
+   "n": 1,
+   "url": "https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655550-senior-product-designer"
+  },
+  "81655549": {
+   "first": "20260720124028",
+   "last": "20260720124028",
+   "n": 1,
+   "url": "https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655549-product-manager"
   }
  }
 }

@@ -2,13 +2,13 @@
 
 Back to [all companies](README.md) · [company profile](../companies/mitra-chem.md)
 
-**3 postings recovered**, 3 with the full description; 2 still open on 2026-10-10. First seen 2021-08-11, latest 2026-10-10. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**3 postings recovered**, 3 with the full description; 2 still open on 2026-11-28. First seen 2021-08-11, latest 2026-10-10. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
 | 2021-08-11 | 2021-10-19 | [Battery Materials Scientist](#battery-materials-scientist-2021-08-11) | materials-science |  |  |  |  |  | [Wayback](https://web.archive.org/web/20211019143746/https://mitrachem.com/job/battery-materials-scientist/) |
-| 2026-10-10 | open | [General Application](#general-application-2026-10-10) | general-application |  |  |  |  |  | [live](https://app.trinethire.com/companies/913890-mitra-chem/jobs/114753-general-application) |
-| 2026-10-10 | open | [Lab Technician](#lab-technician-2026-10-10) | lab-automation |  |  | MS |  |  | [live](https://app.trinethire.com/companies/913890-mitra-chem/jobs/123697-lab-technician) |
+| 2026-10-10 | open | [114753 General Application](#114753-general-application-2026-10-10) | general-application |  |  |  |  |  | [live](https://app.trinethire.com/companies/913890-mitra-chem/jobs/114753-general-application) |
+| 2026-10-10 | open | [123697 Lab Technician](#123697-lab-technician-2026-10-10) | lab-automation |  |  | MS |  |  | [live](https://app.trinethire.com/companies/913890-mitra-chem/jobs/123697-lab-technician) |
 
 ## Careers-page captures
 
@@ -31,9 +31,9 @@ We are looking for a Battery Materials Scientist to design, develop and scale-up
 
 </details>
 
-<a id="general-application-2026-10-10"></a>
+<a id="114753-general-application-2026-10-10"></a>
 
-### General Application (2026-10-10)
+### 114753 General Application (2026-10-10)
 
 2026-10-10 → open · general-application · location not stated · [source](https://app.trinethire.com/companies/913890-mitra-chem/jobs/114753-general-application)
 
@@ -46,9 +46,9 @@ We have set up a state-of-the-art 15,000 sq ft industrial R&D center in Mountain
 
 </details>
 
-<a id="lab-technician-2026-10-10"></a>
+<a id="123697-lab-technician-2026-10-10"></a>
 
-### Lab Technician (2026-10-10)
+### 123697 Lab Technician (2026-10-10)
 
 2026-10-10 → open · lab-automation · location not stated · [source](https://app.trinethire.com/companies/913890-mitra-chem/jobs/123697-lab-technician)
 

@@ -2,6 +2,28 @@
 
 Menlo Park, CA, US · founded 2025 · self-driving lab (frontier "AI scientist" models plus autonomous labs) · active · [periodic.com](https://periodic.com)
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**Team size on LinkedIn.** People listing the company, read from the company page (LinkedIn's 'View all N employees'); this counts alumni who never updated their profile and misses staff without one.
+
+| Date | Members | Band | Source |
+| --- | --- | --- | --- |
+| 2025-11-05 | 32 | 11-50 | [Wayback](https://web.archive.org/web/20251105090423/https://www.linkedin.com/company/periodic-labs) |
+| 2025-11-29 | 32 | 11-50 | [Wayback](https://web.archive.org/web/20251129071150/https://www.linkedin.com/company/periodic-labs) |
+| 2026-01-04 | 36 | 11-50 | [Wayback](https://web.archive.org/web/20260104231001/https://www.linkedin.com/company/periodic-labs) |
+| 2026-06-21 | 70 | 11-50 | [Wayback](https://web.archive.org/web/20260621231632/https://www.linkedin.com/company/periodic-labs) |
+| 2026-07-30 | 82 | 11-50 | [Wayback](https://web.archive.org/web/20260730050259/https://www.linkedin.com/company/periodic-labs) |
+| 2026-11-28 | 110 | 11-50 | [LinkedIn, logged out](https://www.linkedin.com/company/periodic-labs/) |
+
+**Openings.** 27 open on 2026-11-28 on [its job board](https://jobs.ashbyhq.com/periodic-labs), against 33 on 2026-10-10. 0 new, 6 closed.
+- Closed since 2026-10-10: Business Operations, Product & Science; Electrical Technician; Equipment Engineer; Forward Deployed Engineer, Physics & Simulation; ML Systems Engineer; Research Scientist, Condensed Matter Theory.
+
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=108918379&geoId=92000000&location=Worldwide), 2026-11-28): 25 postings: Don't See Your Role? Apply Here! (Menlo Park, CA, posted 2026-09-11); Technical Recruiter (Menlo Park, CA, posted 2026-08-21); Computational Scientist, Differentiable Physics (Menlo Park, CA, posted 2026-09-04); Research Scientist/Research Engineer, Midtraining (Menlo Park, CA, posted 2026-09-30); Research Scientist/Research Engineer, Materials Data (Menlo Park, CA, posted 2026-09-01); Research Scientist, Data (Montreal, Quebec, Canada, posted 2026-08-22); XRD Facility Manager (Menlo Park, CA, posted 2026-09-15); Software Engineer (Menlo Park, CA, posted 2026-02-11); Research Scientist, Data (Menlo Park, CA, posted 2026-08-22); Procurement & Finance Operations Manager (Menlo Park, CA, posted 2026-05-21); Product Engineer (Menlo Park, CA, posted 2026-06-21); Controller (Menlo Park, CA, posted 2026-10-06) and 13 more.
+<!-- /refresh:2026-11-28 -->
+
 ## Funding timeline
 
 | Date | Round | Amount (USD M) | Lead / notable investors | Source |

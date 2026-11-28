@@ -2,6 +2,16 @@
 
 Beijing, China · founded 2018 · AI-for-materials (computational) · active · [dp.tech](https://www.dp.tech/en)
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**Openings.** 258 open on 2026-11-28 on [its job board](https://dptechnology.jobs.feishu.cn/index), against 286 on 2026-10-10. 29 new, 57 closed.
+
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=74674216&geoId=92000000&location=Worldwide), 2026-11-28): no postings.
+<!-- /refresh:2026-11-28 -->
+
 AI-for-Science platform company: Deep Potential and Uni-Mol models, the Bohrium research cloud, the Hermite drug-design and Piloteye battery-design platforms, and the Uni-Lab lab operating system.
 
 ## Funding timeline

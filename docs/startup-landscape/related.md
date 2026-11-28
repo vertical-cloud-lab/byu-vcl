@@ -40,7 +40,7 @@ These are the threads in this repo (byu-vcl) and in [digital-alloy-lab](https://
 ## Methods
 
 - **[byu-vcl#234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234)** (PR): the rig that runs headed Chrome on the runner and sends its traffic out through a lab Pi (`rig.sh`). [`CLAUDE.md`](https://github.com/vertical-cloud-lab/byu-vcl/blob/53c1db1/CLAUDE.md#onshape-signing-in-through-the-browser-onshape_username--onshape_password) documents it for Onshape. It is the tool behind the 2026-11-28 request on this PR to update the survey with headed Chromium on the Pi. #380 asked for the same approach for its own searches.
-- **[DAL#57](https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/57)** (PR): a list of metal-AM contacts, cross-referenced against an exported LinkedIn connections CSV. That is a way to use LinkedIn data without scraping (a user's own data export). It bears on [why LinkedIn was not driven directly](README.md#why-linkedin-was-not-driven-directly).
+- **[DAL#57](https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/57)** (PR): a list of metal-AM contacts, cross-referenced against an exported LinkedIn connections CSV. That is a way to use LinkedIn data without scraping (a user's own data export). It bears on [how LinkedIn was used](README.md#linkedin-what-was-driven-and-where-it-stopped).
 
 ## Not related, despite the title
 

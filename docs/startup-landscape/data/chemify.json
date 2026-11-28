@@ -85,6 +85,16 @@
       "source": "https://find-and-update.company-information.service.gov.uk/company/SC645290/filing-history/MzM5MDg0ODY1NWFkaXF6a2N4/document?format=pdf&download=0"
     },
     {
+      "date": "2023-08-04",
+      "value": 37,
+      "low": 2,
+      "high": 10,
+      "method": "linkedin-band",
+      "note": "LinkedIn 'View all 37 employees'; band 2-10 employees; LinkedIn company page as captured by the Wayback Machine",
+      "source": "https://web.archive.org/web/20230804180310/https://www.linkedin.com/company/chemify-limited/",
+      "added": "2026-11-28"
+    },
+    {
       "date": "2023-12-31",
       "value": 38,
       "low": null,
@@ -92,6 +102,16 @@
       "method": "registry",
       "note": "average monthly employees incl. directors, FY2023",
       "source": "https://find-and-update.company-information.service.gov.uk/company/SC645290/filing-history/MzQzNjUzNDgyN2FkaXF6a2N4/document?format=pdf&download=0"
+    },
+    {
+      "date": "2024-08-15",
+      "value": 79,
+      "low": 51,
+      "high": 200,
+      "method": "linkedin-band",
+      "note": "LinkedIn 'View all 79 employees'; band 51-200 employees; LinkedIn company page as captured by the Wayback Machine",
+      "source": "https://web.archive.org/web/20240815162711/https://www.linkedin.com/company/chemify-limited/",
+      "added": "2026-11-28"
     },
     {
       "date": "2024-12-31",
@@ -119,6 +139,16 @@
       "method": "press",
       "note": "'about 150' Scottish workforce, to treble to ~450 in three years with the grants (government insider via Sky News / Dealroom); The Scotsman gives 200",
       "source": "https://dealroom.co/news/150875-chemify-lands-22m-state-grant-one-of-the-uks-largest-for-an-ai-startup/"
+    },
+    {
+      "date": "2026-10-06",
+      "value": 210,
+      "low": 51,
+      "high": 200,
+      "method": "linkedin-band",
+      "note": "LinkedIn 'View all 210 employees'; band 51-200 employees; LinkedIn company page as captured by the Wayback Machine",
+      "source": "https://web.archive.org/web/20261006201403/https://www.linkedin.com/company/chemify-limited/",
+      "added": "2026-11-28"
     },
     {
       "date": "2026-10-09",
@@ -154,54 +184,54 @@
       "new_postings": 21,
       "method": "ats",
       "source": "https://www.chemify.io/careers"
+    },
+    {
+      "period": "2026Q4",
+      "new_postings": 0,
+      "method": "job_postings.jsonl",
+      "note": "postings first seen 2026-10-01 to 2026-11-28 (live boards and Wayback)",
+      "source": "https://www.chemify.io/careers"
     }
   ],
   "current_openings": {
-    "date": "2026-10-09",
-    "count": 33,
+    "date": "2026-11-28",
+    "count": 12,
     "by_function": {
-      "ml-research": 4,
-      "materials-science": 7,
-      "lab-automation": 6,
-      "software-eng": 8,
-      "business-ops": 8
+      "software-eng": 5,
+      "lab-automation": 3,
+      "business-ops": 2,
+      "materials-science": 2
     },
     "titles": [
-      "Automation Scientist",
-      "Senior Mechanical Engineer",
-      "Mechatronics Engineer",
       "Mechanical Engineer",
-      "Synthetic Chemist",
-      "Senior Product Owner",
-      "Business Support Assistant",
-      "Senior Full Stack Software Engineer",
-      "Payroll Clerk",
-      "Management Accountant",
-      "Laboratory Coordinator",
-      "CADD Scientist / Senior CADD Scientist",
       "Senior Software Engineer",
-      "Tech Director, CTO Office",
-      "Senior Manufacturing Engineer",
-      "Senior Manager, Operations Dev",
-      "Senior Full Stack SW Engineer",
       "Senior Firmware Engineer",
-      "Production Chemist",
-      "Lead Full Stack SW Engineer",
-      "Junior Full Stack Engineer",
-      "Health & Safety Advisor",
-      "Engineering Project Manager",
-      "Product Operations Manager - Synthetic Chemistry",
-      "Staff CADD Scientist USA",
-      "Senior / Staff Machine Learning Scientist USA",
-      "Senior / Staff Machine Learning Scientist",
-      "Staff Product Designer",
-      "Senior/ Staff Analytical Technician",
+      "Automation Scientist",
+      "Project Manager",
+      "CADD Scientist / Senior CADD Scientist",
       "Analytical Technician",
-      "Purification Technician/Senior / Staff Purification Technician",
-      "Production Chemist (Dispensary)",
-      "Project Manager"
+      "Junior Full Stack Engineer",
+      "Production Chemist",
+      "Senior Full Stack Software Engineer",
+      "Senior Product Owner",
+      "Lead Full Stack SW Engineer"
     ],
-    "source": "https://www.chemify.io/careers"
+    "source": "https://www.chemify.io/careers",
+    "basis": "company job board (live snapshot)",
+    "previous": {
+      "date": "2026-10-10",
+      "count": 32,
+      "by_function": {
+        "lab-automation": 8,
+        "software-eng": 8,
+        "business-ops": 7,
+        "materials-science": 6,
+        "ml-research": 2,
+        "leadership": 1
+      },
+      "source": "https://www.chemify.io/careers",
+      "note": "recounted from the 2026-10-10 live snapshot"
+    }
   },
   "people": [
     {

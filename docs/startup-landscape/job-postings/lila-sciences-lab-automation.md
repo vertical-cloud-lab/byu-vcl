@@ -409,7 +409,7 @@ A Note to Agencies
 
 ### Principal Software Engineer, Instrument Simulations (2026-03-20)
 
-2026-03-20 → open · lab-automation · Cambridge, MA USA · $204–270K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4186530009)
+2026-03-20 → open · lab-automation · Cambridge, MA USA · $204–272K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4186530009)
 
 <details><summary>Description</summary>
 
@@ -472,6 +472,42 @@ What You'll Be Building
 - Experience working directly with end-users (e.g., scientists, laboratory technicians), using feedback to drive product improvements.
 - Experience with hardware integration and device driver development , especially in robotics or automation contexts.
 - Proficiency with version control systems, especially Git .
+
+</details>
+
+<a id="manager-senior-manager-capital-equipment-accounting-2026-03-29"></a>
+
+### Manager / Senior Manager, Capital Equipment Accounting (2026-03-29)
+
+2026-03-29 → open · lab-automation · Cambridge, MA USA; San Francisco, CA USA · $108–187K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4195640009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila is seeking a Manager / Senior Manager, Capital Equipment Accounting to own the accounting for the Company's rapidly growing base of capital assets—the laboratory equipment and facilities buildouts, among other things, that power Lila's operations. As we scale, you will help ensure the operational scalability and financial accuracy of the asset base that underpins our success.
+You will own the end-to-end capex function, including managing the fixed assets and leased ROU assets lifecycle—from acquisition through capitalization, depreciation, impairment, retirement, and audit—working closely with Procurement, Facilities, Lab Operations, and Finance. You will apply deep technical accounting expertise under ASC 360 and ASC 842 and build the processes, controls, and systems that support this function.
+What You'll Own
+Fixed Asset & Leased Equipment Accounting
+- Own end-to-end capex accounting under ASC 360 from timely placement in service, to depreciation, transfers, disposals, and impairments.
+- Support accounting for finance leases under ASC 842, including commencement, renewals, modifications, and related leasehold improvements.
+- Maintain accurate asset records and lease inventories.
+- Assist with technical accounting analyses related to capital assets, lease arrangements, and complex capital projects.
+- Partner with Facilities and Procurement to monitor leasehold improvement projects and capital construction activities.
+- Manage the monthly fixed asset and leased equipment close process and prepare supporting journal entries, account reconciliations, rollforwards, and flux analyses.
+- Ensure compliance with U.S. GAAP and company accounting policies.
+Operations, Governance, & Controls
+- Develop and maintain accounting policies, procedures, and internal controls related to fixed assets and capital expenditures.
+- Assist with asset tracking, tagging, and periodic physical inventories and ensure consistency of data across ERP, procurement, and asset management systems.
+- Prepare audit schedules and support internal and external audit requests related to fixed assets, leases, and capital projects.
+- Bachelor's degree in Accounting or Finance; CPA or equivalent preferred.
+- 6+ years of progressive accounting experience, including public accounting and/or industry experience in a capital-intensive environment.
+- Strong technical knowledge of U.S. GAAP, particularly ASC 360 (property, plant, and equipment) and ASC 842 (leases).
+- Hands-on experience owning a significant capex portfolio in a high-growth environment.
+- Experience supporting laboratory, manufacturing, research, or facility-intensive operations.
+- Experience with ERP systems (NetSuite preferred) and strong analytical skills, including comfort working with large, complex datasets.
+- A track record of building scalable processes and controls in fast-moving environments.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
 
@@ -756,7 +792,7 @@ What You'll Be Building
 
 ### Shift Supervisor, Research Operations (2026-07-01)
 
-2026-07-01 → open · lab-automation · Cambridge, MA USA · $119–182K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4277904009)
+2026-07-01 → 2026-10-10 · lab-automation · Cambridge, MA USA · $119–182K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4277904009)
 
 <details><summary>Description</summary>
 
@@ -786,7 +822,7 @@ What You'll Be Building
 
 ### Controls Engineer II, Sustaining Engineering (2026-07-20)
 
-2026-07-20 → open · lab-automation · Cambridge, MA USA · $94–139K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4294210009)
+2026-07-20 → 2026-10-10 · lab-automation · Cambridge, MA USA · $94–139K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4294210009)
 
 <details><summary>Description</summary>
 
@@ -869,7 +905,7 @@ $136,800 — $217,866 USD
 
 ### Senior Human Factors Engineer I/II, Robotics (2026-08-10)
 
-2026-08-10 → open · lab-automation · Cambridge, MA USA · $144–240K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4332442009)
+2026-08-10 → 2026-10-10 · lab-automation · Cambridge, MA USA · $144–240K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4332442009)
 
 <details><summary>Description</summary>
 
@@ -905,7 +941,7 @@ $144,000 — $240,000 USD
 
 ### Senior Software Engineer I/II, Test Robotics (2026-08-10)
 
-2026-08-10 → open · lab-automation · Cambridge, MA USA · $144–240K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4332043009)
+2026-08-10 → 2026-10-10 · lab-automation · Cambridge, MA USA · $144–240K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4332043009)
 
 <details><summary>Description</summary>
 
@@ -940,7 +976,7 @@ $144,000 — $240,000 USD
 
 ### Engineer I, Research Operations (2nd Shift) (2026-09-08)
 
-2026-09-08 → open · lab-automation · Cambridge, MA USA · $76–101K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4386306009)
+2026-09-08 → 2026-10-10 · lab-automation · Cambridge, MA USA · $76–101K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4386306009)
 
 <details><summary>Description</summary>
 
@@ -969,7 +1005,7 @@ What You'll Be Building
 
 ### Robotics Operations Engineer I, First Shift (2026-09-22)
 
-2026-09-22 → open · lab-automation · Cambridge, MA USA · $76–109K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4410043009)
+2026-09-22 → 2026-10-10 · lab-automation · Cambridge, MA USA · $76–109K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4410043009)
 
 <details><summary>Description</summary>
 
@@ -1010,7 +1046,7 @@ $75,600 — $109,200 USD
 
 ### Lab Operations Specialist (2026-09-28)
 
-2026-09-28 → open · lab-automation · Cambridge, MA USA · $68–103K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4395906009)
+2026-09-28 → 2026-10-10 · lab-automation · Cambridge, MA USA · $68–103K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4395906009)
 
 <details><summary>Description</summary>
 
@@ -1118,7 +1154,7 @@ $108,000 — $170,000 USD
 
 ### Senior / Principal Chemist, AI Safety (2026-10-05)
 
-2026-10-05 → open · lab-automation · Cambridge, MA USA; London, UK; San Francisco, CA USA · $148–208K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423500009)
+2026-10-05 → open · lab-automation · Cambridge, MA USA; London, UK; San Francisco, CA USA · $268–384K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423500009)
 
 <details><summary>Description</summary>
 
@@ -1222,7 +1258,7 @@ What You'll Be Building
 
 ### Senior Engineer II, Robotics Mechanical Design (2026-10-09)
 
-2026-10-09 → open · lab-automation · Cambridge, MA USA · $137–191K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4412075009)
+2026-10-09 → 2026-10-10 · lab-automation · Cambridge, MA USA · $137–191K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4412075009)
 
 <details><summary>Description</summary>
 
@@ -1295,6 +1331,363 @@ Individual contribution
 
 **Compensation**
 $136,800 — $217,866 USD
+
+</details>
+
+<a id="manager-senior-manager-ai-safety-data-and-evaluation-program-2026-10-16"></a>
+
+### Manager / Senior Manager, AI Safety Data and Evaluation Program (2026-10-16)
+
+2026-10-16 → open · lab-automation · Cambridge, MA USA; London, UK; San Francisco, CA USA · $180–256K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423490009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+We're building a talent-dense, high-agency AI safety team at Lila that will engage all core teams within the organization (science, model training, lab integration, etc.), to identify and mitigate risks from scientific superintelligence while retaining the core scientific discovery capabilities of the stack. The initial focus of this team will be to build and implement a bespoke safety strategy for Lila, tailored to its specific goals and deployment strategies. This will involve technical safety strategy development, broader ecosystem engagement, safety-focused evaluations, safety systems to mitigate risks, and a research agenda that explores longer-term needs such as oversight of superintelligent scientific systems.
+High-quality safety depends on the right expertise, consistent and repeatable workflows and high levels of interpretability. At Lila Sciences, you will turn scientific risk questions into well-run expert-data and evaluation programs to build this evidence-base.
+You will bring a strong working understanding of AI safety and scientific misuse risks to connect internal risk mapping and threat modeling with expertise across Lila and external specialists. Your primary responsibilities will be program execution and data quality: organizing contributors, running red-teaming and evaluation campaigns, and ensuring their outputs meet agreed standards. You will also be responsible for gathering targeted high-impact feedback from partners in the AI Safety community on our different aspects of our approach to Safety. You will work closely with scientists who frame the research questions and interpret their significance, while creating the operational conditions for their expertise to have an impact. Ultimately, you will play a key role in generating the evidence that informs safety decisions made by senior leadership at Lila.
+What You'll Be Building
+- Translate agreed scientific briefs into executable plans covering tasks, contributor needs, instructions, milestones, quality standards and delivery expectations.
+- Source and coordinate external experts with scientific colleagues, and organize access to relevant expertise within Lila.
+- Manage contributor onboarding, task assignment, training and support so specialists can contribute effectively and consistently.
+- Run expert-data collection, annotation, red-teaming and evaluation programs, tracking progress and resolving delivery problems.
+- Establish quality controls covering completeness, consistency, provenance and adherence to rubrics; coordinate calibration, review, disagreement resolution and rework with scientific owners.
+- Maintain clear records, versioned guidance and usable datasets, and improve workflows based on quality findings and researcher feedback.
+- Identify questions that require scientific judgment and bring them to the appropriate specialists, ensuring decisions are reflected in program materials and subsequent work.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="staff-principal-research-engineer-ai-safety-mitigations-2026-10-16"></a>
+
+### Staff / Principal Research Engineer, AI Safety Mitigations (2026-10-16)
+
+2026-10-16 → open · lab-automation · Cambridge, MA USA; London, UK; San Francisco, CA USA · $224–336K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423492009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+We're building a talent-dense, high-agency AI safety team at Lila that will engage all core teams within the organization (science, model training, lab integration, etc.), to identify and mitigate risks from scientific superintelligence while retaining the core scientific discovery capabilities of the stack. The initial focus of this team will be to build and implement a bespoke safety strategy for Lila, tailored to its specific goals and deployment strategies. This will involve technical safety strategy development, broader ecosystem engagement, safety-focused evaluations, safety systems to mitigate risks, and a research agenda that explores longer-term needs such as oversight of superintelligent scientific systems.
+At Lila Sciences, you will develop and test safeguards that reduce societal risks from increasingly capable closed loop scientific AI. This is a high-priority individual contributor role for an engineer who has built safety interventions within the development and deployment of frontier models and wants to apply that experience to scientific models, agents, tools and laboratory-connected workflows.
+You will work with domain scientists, risk researchers, evaluators and engineering teams to turn risk findings and policy requirements into effective interventions. The work spans research and implementation: developing approaches, testing their limits and helping integrate reliable safeguards into the systems where they are needed. We are open to different levels of seniority and depth across mitigation approaches.
+What You'll Be Building
+- Translate scientific risk assessments, dual-use policy boundaries and evaluation findings into concrete mitigation designs and testable requirements.
+- Develop and implement safeguards suited to the problem, potentially spanning model training, classifiers, monitoring, access controls and runtime interventions.
+- Build experiments that measure risk reduction, robustness and effects on legitimate scientific use, alongside practical performance constraints.
+- Use adversarial findings and observed failures to improve safeguards, working closely with automated-safety and scientific evaluation researchers.
+- Work directly with model-training, post-training, inference and platform teams to integrate mitigations into model development, release evaluation and large-scale serving systems, with appropriate instrumentation and reproducible testing.
+- Investigate regressions, distribution shifts and emerging misuse patterns, and use the evidence to guide further development.
+- Hands-on experience developing and validating safety interventions for frontier models within training, post-training or large-scale inference systems, with contributions to model development or release cycles.
+- Depth in at least one relevant area, such as safety post-training, model-level classifiers, safeguards integrated into inference, or abuse monitoring and enforcement across a model-serving platform.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="staff-principal-security-engineer-ai-safety-and-security-2026-10-16"></a>
+
+### Staff / Principal Security Engineer, AI Safety and Security (2026-10-16)
+
+2026-10-16 → open · lab-automation · Cambridge, MA USA; London, UK; San Francisco, CA USA · $192–306K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4429015009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila is developing AI systems for scientific discovery, connecting advanced models with scientific tools and automated laboratories. As these systems become more capable, we need to understand how they could be misused or compromised, which protections matter most, and how to establish that those protections work together.
+We're hiring an experienced security practitioner to lead this work at the boundary between AI safety and security. You will investigate real systems, develop threat models, test important assumptions and recommend the protections needed for particular capabilities and deployments. Your work will address both dangerous misuse and the protection of sensitive models, data and research.
+This is an opportunity to help shape a developing area of AI safety through security practice. You will combine technical investigation with careful analysis and clear writing, working closely with our established Security team, researchers and engineers to turn findings into implemented improvements.
+You will bring security depth and develop your understanding of model capabilities, evaluations and safeguards through that work. Prior experience in AI safety is welcome, but not required.
+What You'll Be Building
+- Threat-model consequential systems and capabilities. Investigate how dangerous misuse or compromise could occur across models, deployed services and scientific workflows. Identify the relevant actors, access routes and failure paths, and the protections that could interrupt them.
+- Test the assumptions behind our defenses. Examine architectures, code, configurations and operational evidence. Run focused adversarial tests, build prototypes and investigate weaknesses, including situations where several protections depend on the same underlying system.
+- Shape the protections needed for safe deployment. Turn dangerous-capability assessments into concrete security requirements. Assess how compromise of models, sensitive assets or supporting systems changes the safety assessment, drawing on personnel, physical and other security specialists where relevant.
+- Make evidence-based recommendations. Define what evidence would demonstrate that important controls and safeguards work together. Combine findings from model evaluations and security testing, explain the remaining uncertainty, and recommend improvements or conditions for use.
+- Carry findings through to practical improvements. Work with Security, Safety and engineering owners to prioritize changes, specify acceptance criteria and verify the results. Make clear recommendations about which gaps require attention first and why.
+- Anticipate what more capable systems will require. Identify where changes in capability, access or deployment call for stronger protections. Help teams plan security work with long lead times, and update assessments as systems change or new evidence emerges.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="staff-software-engineer-ai-safety-2026-10-16"></a>
+
+### Staff Software Engineer, AI Safety (2026-10-16)
+
+2026-10-16 → open · lab-automation · Cambridge, MA USA; London, UK; San Francisco, CA USA · $192–288K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423484009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+We're building a talent-dense, high-agency AI safety team at Lila that will engage all core teams within the organization (science, model training, lab integration, etc.), to identify and mitigate risks from scientific superintelligence while retaining the core scientific discovery capabilities of the stack. The initial focus of this team will be to build and implement a bespoke safety strategy for Lila, tailored to its specific goals and deployment strategies. This will involve technical safety strategy development, broader ecosystem engagement, safety-focused evaluations, safety systems to mitigate risks, and a research agenda that explores longer-term needs such as oversight of superintelligent scientific systems.
+At Lila's AI Safety team, you will build the shared software that helps our team understand and reduce societal risks from scientific AI. Working with researchers, domain scientists and program colleagues, you will turn needs across threat modeling, evaluations, red teaming and mitigation development into reliable tools and systems. You will own engineering work from scoping and prototyping through deployment and ongoing improvement, supporting research across scientific models, agents and automated experimentation.
+What You'll Be Building
+- Build reusable services, libraries and model/tool integrations that make evaluations, red-teaming campaigns and mitigation experiments repeatable.
+- Develop applications that help researchers and scientific experts organize evidence, inspect results, review data and investigate failures.
+- Work with safety colleagues to understand research needs and identify shared engineering needs, prioritize useful improvements and turn evolving research workflows into maintainable software.
+- Build data pipelines and experiment records that preserve datasets, taxonomies, model versions, configurations and results, making findings traceable and comparisons reproducible.
+- Own the reliability and usability of shared safety tools through testing, debugging, monitoring, documentation and continued improvement.
+- Collaborate across LILA with our core AI and software engineering teams to share tooling, align on infrastructure, and avoid duplication.
+- A track record of independently delivering and maintaining production software, including projects with ambiguous or changing requirements.
+- Strong Python and backend engineering skills, with experience designing APIs, working with databases and building dependable data or execution pipelines.
+- Experience translating the needs of researchers, domain experts or other technical users into usable tools, and comfort working across services and interfaces.
+- Sound engineering judgment in system design, testing and debugging, including practical decisions about reliability, performance and complexity.
+- Engineering experience in AI research, AI safety, scientific computing or other settings with rapidly evolving experimental workflows.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="research-scientist-research-engineer-automated-safety-2026-10-21"></a>
+
+### Research Scientist / Research Engineer, Automated Safety (2026-10-21)
+
+2026-10-21 → open · lab-automation · Cambridge, MA USA; London, UK; San Francisco, CA USA · $180–298K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423488009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+We're building a talent-dense, high-agency AI safety team at Lila that will engage all core teams within the organization (science, model training, lab integration, etc.), to identify and mitigate risks from scientific superintelligence while retaining the core scientific discovery capabilities of the stack. The initial focus of this team will be to build and implement a bespoke safety strategy for Lila, tailored to its specific goals and deployment strategies. This will involve technical safety strategy development, broader ecosystem engagement, safety-focused evaluations, safety systems to mitigate risks, and a research agenda that explores longer-term needs such as oversight of superintelligent scientific systems.
+As scientific AI systems become more capable and autonomous, their safety assessment and safeguards must develop alongside them. At Lila Sciences, you will help build the research methods and tools that make this possible, so that more and more decision-enablers can be automated safely. This will move us closer to the vision of a safety and security apparatus that is robust to a fully autonomous scientific engine.
+Your initial focus will be misuse: developing flexible and automated red-teaming approaches that test safety-relevant scientific capabilities and the robustness of safeguards. You will also contribute to safety automation beyond red teaming, helping the team evaluate, monitor and respond to risks across increasingly autonomous scientific workflows. You will own reusable research methods and assessment tools, working with mitigation engineers who implement protective mechanisms. We welcome Research Scientists and Research Engineers; responsibilities can span or evolve between the two profiles.
+What You'll Be Building
+- Develop and run capability evaluations of scientific models, agents and tool-mediated workflows (including simulated lab environments), working with domain experts to make tests scientifically meaningful.
+- Create methods or systems that explore diverse failure modes, adapt tests as evidence emerges and support systematic investigation beyond fixed benchmarks.
+- Build reproducible experiments and evaluation tools that capture relevant behavior, outcomes and the evidence needed to interpret findings.
+- Measure the quality and coverage of automated assessments, including failure cases in the evaluators themselves.
+- Develop broader safety automation, across threat model management, evidence triage, regression testing, monitoring workflows or tools that help researchers assess and respond to risks.
+- Collaborate with risk researchers and mitigation engineers to translate findings into improved assessments and safeguards, and verify whether those changes work.
+- Strong empirical judgment, practical programming ability and experience working with modern AI systems.
+- The ability to investigate ambiguous failures, design informative comparisons and communicate limitations clearly.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="senior-principal-computational-biologist-ai-safety-2026-10-21"></a>
+
+### Senior / Principal Computational Biologist, AI Safety (2026-10-21)
+
+2026-10-21 → open · lab-automation · Cambridge, MA USA; London, UK; San Francisco, CA USA · $268–384K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423494009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+We're building a talent-dense, high-agency AI safety team at Lila that will engage all core teams within the organization (science, model training, lab integration, etc.), to identify and mitigate risks from scientific superintelligence while retaining the core scientific discovery capabilities of the stack. The initial focus of this team will be to build and implement a bespoke safety strategy for Lila, tailored to its specific goals and deployment strategies. This will involve technical safety strategy development, broader ecosystem engagement, safety-focused evaluations, safety systems to mitigate risks, and a research agenda that explores longer-term needs such as oversight of superintelligent scientific systems.
+You will conduct original computational biology research for AI safety and build an integrated understanding of biological risks. You will investigate how capabilities across large language models, specialized biological models, agents and automated laboratories combine to change what is biologically feasible. Our work spans protein and nucleic-acid design, cellular systems and biological delivery; we welcome other specialisms that bring relevant scientific depth and risk judgment.
+What You'll Be Building
+- Formulate and pursue original computational biology research questions relevant to safety, developing computational approaches and designing and running studies that generate new evidence about biological capabilities, risks and safeguards.
+- Build and update an integrated picture of risks, examining how capabilities across LLMs, specialized biological models, agents and automated laboratories interact within scientific workflows and change practical constraints.
+- Combine your research with literature, model assessments, experimental findings and expert input to judge biological feasibility, uncertainty and the significance of emerging capabilities for misuse.
+- Identify gaps in expertise, frame questions for external specialists and critically integrate their findings with support from the expert-program team.
+- Translate scientific risk judgments into dual-use policy boundaries, evaluation priorities and mitigation requirements that preserve beneficial biological research.
+- Work with threat modelers, automated-safety researchers, experimental scientists and mitigation engineers to design informative evaluations and red-teaming studies, test assumptions and assess safeguards.
+- Deep expertise (a PhD, or comparable experience) in computational biology or a related quantitative biological discipline, with a record of original research from question formulation and computational study design through to defensible findings.
+- Substantive experience assessing biological dual-use risks, with a strong understanding of relevant harmful applications, including pathogen- or toxin-related risks or other consequential biological misuse.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="senior-principal-materials-scientist-ai-safety-2026-10-21"></a>
+
+### Senior / Principal Materials Scientist, AI Safety (2026-10-21)
+
+2026-10-21 → open · lab-automation · Cambridge, MA USA; London, UK; San Francisco, CA USA · $268–384K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423496009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+We're building a talent-dense, high-agency AI safety team at Lila that will engage all core teams within the organization (science, model training, lab integration, etc.), to identify and mitigate risks from scientific superintelligence while retaining the core scientific discovery capabilities of the stack. The initial focus of this team will be to build and implement a bespoke safety strategy for Lila, tailored to its specific goals and deployment strategies. This will involve technical safety strategy development, broader ecosystem engagement, safety-focused evaluations, safety systems to mitigate risks, and a research agenda that explores longer-term needs such as oversight of superintelligent scientific systems.
+We are seeking a materials scientist to map risk across the material sciences domain: you will connect deep materials expertise with dual-use risk assessment to help safeguard increasingly capable scientific AI. You will investigate how advances in materials research could change harmful capabilities, including established and emerging threats.
+What You'll Be Building
+- Map misuse risks by connecting material properties, processing and functional performance (across a range of materials domains) to harmful applications, including emerging or overlooked uses of scientific advances.
+- Assess how physical feasibility, processing complexity, manufacturing requirements and actors' resources affect the plausibility and likelihood of misuse, including which constraints AI could change.
+- Distinguish established capabilities, plausible future developments and weakly supported hypotheses, revising assessments as evidence changes across models, tools and automated laboratories.
+- Identify gaps in expertise, commission targeted scientific input with the expert-program team, and integrate specialist findings into a coherent assessment of the risk landscape.
+- Translate dual-use judgments into policy boundaries, evaluation priorities and mitigation requirements that support beneficial materials research.
+- Work with threat modelers, evaluation researchers and engineering and experimental colleagues to assess capabilities, interpret red-team findings and evaluate safeguards.
+- Deep expertise (a PhD, or comparable experience) in materials science or a closely related discipline, with a strong grasp of the relationships between structure, properties, processing and applications. Relevant backgrounds include particulate, porous and formulated systems; and structural and functional materials, including thin films, electrochemical materials and metals and alloys.
+- Substantive experience assessing dual-use risks in a relevant area, with a strong understanding of harmful applications such as nuclear proliferation, radiological misuse, weapons-related capabilities (e.g. energetics) or other consequential materials risks.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="co-op-automated-systems-engineer-2026-10-26"></a>
+
+### Co-Op, Automated Systems Engineer (2026-10-26)
+
+2026-10-26 → open · lab-automation · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4462594009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila Sciences is looking for a hands-on engineering co-op to help build and test the automated systems that run our laboratory workflows. Reporting to a senior manager on the Automated Systems Engineering team and paired with a day-to-day mentor, you will work alongside engineers and scientists on real workcells that are being deployed.
+This is a lab-floor role. You will spend your time integrating instruments and troubleshooting systems that run live experiments. By the end of the co-op you should own a meaningful piece of a system and understand how scientific goals turn into working hardware.
+Along the way you will see how scientific objectives become scoped technical requirements, how science, hardware, controls, and software teams coordinate interfaces on a shared system, and how automated experiments generate the structured, high-quality data that feeds AI-driven experimental design. You will also get hands-on time with emerging lab technology, including machine vision, advanced sensors, and automated scheduling software.
+What You'll Be Building
+- Support cross-functional requirements gathering and project documentation using established team templates and execution guidelines.
+- Assist in converting manual scientific protocols into automation concept designs through process mapping, step timing, and identification of automation candidates.
+- Research new instruments and technologies, and help evaluate them for physical integration capability and fit with scientific workflows.
+- Contribute to concept design documentation, system architecture diagrams, and interface definitions for workcell- and instrument-level projects.
+- Maintain and update the federated factory layout model, producing layout drawings and 3D models that account for robotics envelopes, human ergonomics, and hazard zones.
+- Support feasibility assessments for proposed automation opportunities and help document lab automation best practices and lessons learned.
+- Currently enrolled in a Bachelor’s or Master’s program in Biomedical Engineering or Bioengineering, with coursework or lab experience in the life sciences
+- Available for a full-time co-op term (typically 4 to 6 months) on-site in Cambridge
+- Working knowledge of Python through coursework, projects, or prior internships
+- Curiosity, attention to detail, and willingness to ask questions and work through unfamiliar problems
+- Clear communication and comfort working with people across different technical backgrounds
+
+**Bonus Points For**
+- Wet lab exposure through coursework, undergraduate research, or a prior role involving pipetting, sample handling, or assay work
+- Familiarity with CAD and some experience with rapid prototyping or 3D printing
+- Experience with automated liquid handlers (Hamilton, Tecan, Opentrons) or robotic arms
+- Coursework or project experience with control systems, PID loops, or microcontrollers
+- Prior robotics competition, research lab, or iGEM-style team experience
+
+</details>
+
+<a id="co-op-mechatronics-engineer-2026-10-26"></a>
+
+### Co-op, Mechatronics Engineer (2026-10-26)
+
+2026-10-26 → open · lab-automation · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4465068009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila is seeking a Co-op, Mechatronics Engineer to join the Hardware & Controls Engineering team in Alewife for the January through May term. You will work on the systems that make autonomous science possible: automated workcells, custom instrumentation, sensing hardware, motion systems, and integrated lab equipment.
+This is a hands-on engineering role for someone who wants to build real hardware in a fast-moving R&D environment. You will move between mechanical design, electrical integration, prototyping, testing, documentation, and troubleshooting, working alongside engineers and scientists to turn lab needs into reliable engineering systems.
+Your work will support the next generation of lab automation at Lila, helping improve the reliability, scalability, and performance of systems used across our scientific programs. You will leave the term with practical experience across the full mechatronics stack, from concept and CAD through build, test, and iteration.
+What You'll Be Building
+- Design and build mechanical and electromechanical components for automated lab systems.
+- Support integration of sensors, actuators, motion systems, and control hardware.
+- Create CAD models, drawings, prototypes, fixtures, and test setups.
+- Assemble, debug, and iterate on hardware for workcells and custom instrumentation.
+- Run tests, document results, and communicate design changes clearly.
+- Collaborate with engineers and scientists to translate lab workflows into reliable systems.
+- Contribute to improvements that increase system reliability, usability, and maintainability.
+- Currently pursuing a degree in Mechanical Engineering, Electrical Engineering, Mechatronics, Robotics, or a related field.
+- Experience with CAD design, prototyping, fabrication, or hands-on engineering projects.
+- Foundational understanding of mechanical systems, electrical systems, sensors, actuators, or controls.
+- Comfortable building, testing, debugging, and documenting physical systems.
+- Strong problem-solving skills and attention to detail in hands-on technical work.
+- Clear communication skills and ability to collaborate across engineering and scientific teams.
+- Curiosity about lab automation, instrumentation, robotics, or autonomous science.
+
+**Bonus Points For**
+- Experience with SolidWorks or another parametric CAD tool.
+- Exposure to electrical wiring, instrumentation, controls, or data acquisition systems.
+- Experience with robotics, lab automation, industrial automation, or motion systems.
+- Familiarity with 3D printing, machining, sheet metal, or rapid prototyping methods.
+- Previous internship, co-op, lab, project team, or R&D experience.
+
+</details>
+
+<a id="co-op-robot-perception-state-estimation-2026-10-27"></a>
+
+### Co-Op, Robot Perception & State Estimation (2026-10-27)
+
+2026-10-27 → open · lab-automation · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4467398009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+As a Co-Op on the Production Robotics team at Lila Sciences, you will help build the algorithms and software that let our robots know where they are and what they are looking at, so they can run scientific workflows reliably inside the AI Science Factories (AISFs). The team develops the state estimation, perception, and testing infrastructure that general-purpose robotic skills depend on.
+Your work will sit at the intersection of estimation, computer vision, and robotics software. You will help improve how our mobile bases estimate their position and motion, develop camera-based detection and localization of AprilTags and lab instruments, and strengthen the simulation-based testing and CI that validate changes before they reach hardware. Expect a mix of writing production-quality software, applying math to real sensor data, and debugging real-world behavior on physical robots.
+You will work alongside robotics engineers, AI researchers, and software engineers, with day-to-day support from the Production Robotics team. The output is software that runs in production lab environments and directly accelerates the rate at which Lila can run experiments.
+What You'll Be Building
+- Fuse multi-sensor data to improve mobile base state estimation
+- Build camera-based AprilTag and instrument detection and localization for robot manipulation and navigation
+- Develop new robot capabilities in ROS 2 (Jazzy)
+- Expand simulation-based tests and CI pipelines so changes are validated before deployment on hardware
+- Evaluate estimation and perception performance on real robot data and contribute fixes back to the codebase
+- Ship production code alongside robotics, software, and AI engineers
+- Document algorithms, test approaches, and integration patterns for the rest of the team
+- In-progress Master's (preferred) or strong senior-year Bachelor's in Robotics, Computer Science, Electrical Engineering, or a related field, with a controls/estimation leaning
+- Proficiency in Python and/or C++, with coursework or project experience writing well-tested code
+- Familiarity with state estimation and sensor fusion (e.g., Kalman filtering)
+- Strong foundation in linear algebra and probability
+- Comfort with Git and Linux development environments
+- Strong communication skills and ability to work effectively across a multidisciplinary team
+- Available for the full spring co-op term
+
+**Bonus Points For**
+- Experience with ROS 2 (Jazzy preferred) or another robotics framework
+- Hands-on experience with camera systems and computer vision (e.g., OpenCV, AprilTags, camera calibration)
+- Experience with simulation-based testing and CI (e.g., Gazebo, GitHub Actions)
+- Experience integrating software with sensors, actuators, or other physical systems
+- Coursework or projects in localization, SLAM, or robot control
+
+</details>
+
+<a id="manager-senior-robotics-operations-manager-2026-11-16"></a>
+
+### Manager / Senior Robotics Operations Manager (2026-11-16)
+
+2026-11-16 → open · lab-automation · Cambridge, MA USA · $180–298K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4467396009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+The Robotics Operations Manager builds and leads the team that keeps Lila's production robot fleet running safely and reliably. You will own how we find, train, and grow Robotics Operations Engineers and technicians, turning strong mechatronics and robotics fundamentals into confident, production-ready operators.
+You will also run day-to-day fleet operations across shifts, serving as the escalation point for live issues and the bridge between the people on the floor and our robotics software and hardware teams. This role is hands-on and sits in a lab production environment. The schedule is mostly standard hours, with some early-shift overlap for training and handoffs.
+What You'll Be Building
+Build the team
+- Partner with Talent to define the profile, interview loop, and hiring bar for Robotics Operations Engineers and technicians, and act as hiring manager for the team.
+- Build sourcing pipelines with technical colleges, mechatronics and robotics programs, and co-op, internship, and apprenticeship pathways.
+- Design skills-based assessments, such as hands-on troubleshooting exercises, that recognize practical training alongside years on the job.
+Build the training program
+- Design and run an onboarding curriculum that takes new team members from robotics fundamentals to independent, production-ready operation, and maintain the SOPs, runbooks, and training materials behind it with robotics software and hardware engineers.
+- Cover the core skills of the role: safe intervention (pause, stop, reset), mechanical and electrical troubleshooting, ROS2 fundamentals and introspection tools, log and sensor review, robot swap procedures, and incident documentation.
+- Define competency levels and sign-off criteria for independent operation and shift coverage, measure the program (time to independent operation, incident rates, retention), and build growth paths from technician to engineer.
+Lead fleet operations
+- Own operational readiness and shift coverage for the production robot fleet as operating hours expand.
+- Serve as the escalation point for live incidents, stay hands-on in live operations and maintenance, and lead post-incident reviews with logs, video, and reproduction steps captured.
+- Track fleet health (uptime, incident frequency, time to recovery, maintenance actions) and turn recurring failure patterns into prioritized requests for robotics software and hardware teams.
+- Manage the team: set goals, hold regular 1:1s, give timely feedback, and address performance directly.
+- 5+ years of experience operating, deploying, or maintaining robotic or automated systems in production, lab, or manufacturing environments, through a degree, technical program, or equivalent hands-on experience.
+- Experience training, mentoring, or leading technicians or engineers, formally or informally, with evidence of getting people to independent competence.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="lab-operations-manager-2026-11-23"></a>
+
+### Lab Operations Manager (2026-11-23)
+
+2026-11-23 → open · lab-automation · Cambridge, MA USA · $108–144K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4509101009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila Sciences has created the world’s first Operating System for Science, powered by Scientific Superintelligence™. Lila generates hypotheses, designs and runs experiments, and learns from new data in real time. The result is faster discovery for every field where breakthrough science matters, from human health to climate and sustainability. Learn more about this mission at www.lila.ai .
+At Lila, every breakthrough begins as a question. That same spirit of curiosity fuels our technology, propels our people, and defines how our team works and grows. We are uniquely cross-functional and collaborative: scientists and engineers, technologists and experimentalists work side by side to turn questions into ideas, and ideas into breakthroughs. We seek individuals with an inclusive mindset and a diversity of thought, because we know that experience comes in many forms, skills are transferable, and passion goes a long way.
+If this sounds like an environment you’d love to work in, even if you only have some of the experience listed below, we encourage you to apply.
+Lab Operations is the operational backbone that lets science move quickly. As Lab Operations Manager, you lead lab operations for our Physical Sciences teams at our Alewife campus in Cambridge, MA. You own the labs end to end, including equipment, space, materials, and logistics, so experimental and automation teams can run without interruption.
+You lead a team of Lab Operations specialists and service providers. You set priorities, build processes, and develop your people. You drive the standup of new lab spaces and partner closely with Facilities, EH&S, Procurement, and scientific leaders across sites.
+What You'll Be Building
+- Lead, hire, and develop a team of Lab Operations specialists and service providers.
+- Own daily lab operations for Physical Sciences labs, including the service ticket queue and coverage.
+- Drive new lab space standup: equipment installs, facility connections, relocations, and space readiness.
+- Own the equipment install and preventive maintenance schedule across the site.
+- Manage inventory for consumables, gases, chemicals, and cold storage.
+- Build and manage vendor relationships for supplies, gases, waste, and equipment service.
+- Partner with Facilities, EH&S, and Procurement to keep labs safe, compliant, and ready.
+- Identify process and coverage gaps, and lead lab efficiency improvements.
+- 5+ years in lab operations, lab management, or a related lab support role.
+- 2+ years managing people, including direct reports in a lab or operations setting.
+- Hands-on experience standing up or relocating lab spaces and equipment.
+- Experience managing vendors, service contracts, and equipment PM programs.
+- Working knowledge of lab safety, chemical handling, and hazardous waste requirements.
+- Ability to lift up to 40 lbs and work on your feet in a lab environment.
+
+**Bonus Points For**
+- Bachelor’s degree in a scientific field.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
 

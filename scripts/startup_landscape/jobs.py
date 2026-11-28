@@ -529,6 +529,8 @@ def live_peoplehr(careers_url):
             print("skip", url, err, file=sys.stderr)
             continue
         rec = {**peoplehr(body), "posting_id": guid, "url": url}
+        if "vacancy has now been closed" in (rec.get("text") or ""):
+            rec["closed"] = True  # the careers page still links it, but PeopleHR says it has closed
         title, when = listed.get(guid, (None, None))
         if title:
             rec["title"] = title

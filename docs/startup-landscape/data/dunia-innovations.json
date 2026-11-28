@@ -63,34 +63,42 @@
       "new_postings": 12,
       "method": "ats",
       "source": "https://dunia.jobs.personio.com/"
+    },
+    {
+      "period": "2026Q4",
+      "new_postings": 0,
+      "method": "job_postings.jsonl",
+      "note": "postings first seen 2026-10-01 to 2026-11-28 (live boards and Wayback)",
+      "source": "https://dunia.jobs.personio.com/"
     }
   ],
   "current_openings": {
-    "date": "2026-10-09",
-    "count": 13,
+    "date": "2026-11-28",
+    "count": 2,
     "by_function": {
-      "ml-research": 5,
-      "materials-science": 2,
-      "lab-automation": 4,
-      "software-eng": 1,
-      "business-ops": 1
+      "leadership": 1,
+      "materials-science": 1
     },
     "titles": [
       "Head of AI Research",
-      "ML Researcher, Representation Learning",
-      "ML Engineer, Agents & Reasoning",
-      "Materials Informatics Scientist (Evaluation-focused)",
-      "Chemical Data Scientist",
-      "Quantum Chemistry Specialist",
-      "Research Scientist, Thermocatalysis",
-      "Lab Technicians",
-      "Lab Operations & Procurement Manager",
-      "Manufacturing Systems Engineer",
-      "Reliability & Test Engineer",
-      "Software Engineer, Infrastructure",
-      "Business Development Manager"
+      "Materials Informatics Scientist (Evaluation-focused)"
     ],
-    "source": "https://dunia.jobs.personio.com/"
+    "source": "https://dunia.jobs.personio.com/",
+    "basis": "company job board (live snapshot)",
+    "previous": {
+      "date": "2026-10-10",
+      "count": 13,
+      "by_function": {
+        "ml-research": 3,
+        "software-eng": 3,
+        "materials-science": 3,
+        "lab-automation": 2,
+        "business-ops": 1,
+        "leadership": 1
+      },
+      "source": "https://dunia.jobs.personio.com/",
+      "note": "recounted from the 2026-10-10 live snapshot"
+    }
   },
   "people": [
     {

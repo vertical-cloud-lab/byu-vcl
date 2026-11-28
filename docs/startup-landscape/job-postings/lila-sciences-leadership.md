@@ -17,16 +17,11 @@ We are hiring a product leader with real fluency in drug discovery and developme
 What You'll Be Building
 -
 Set the long-term product vision, roadmap, and portfolio priorities for Lila's therapeutics products; spanning antibodies, nucleic acids, targeted delivery, in vivo cell therapy, and small molecules.
--
-Translate frontier platform capability into commercial therapeutic programs, defining target product profiles (TPPs) across design, expression and synthesis, characterization, developability, and scale-up for pharma and biotech partners.
--
-Drive product execution from concept to launch across science, ML, automation, data engineering, and software.
--
-Represent product to executives, scientific leaders, partners, and customers as the senior external voice for the domain.
--
-Own commercial outcomes end-to-end: opportunity shaping, proposal development, deal closure, and revenue for the domain.
--
-Define success metrics and milestones (technical, product, commercial) and report progress clearly to leadership.
+- Translate frontier platform capability into commercial therapeutic programs, defining target product profiles (TPPs) across design, expression and synthesis, characterization, developability, and scale-up for pharma and biotech partners.
+- Drive product execution from concept to launch across science, ML, automation, data engineering, and software.
+- Represent product to executives, scientific leaders, partners, and customers as the senior external voice for the domain.
+- Own commercial outcomes end-to-end: opportunity shaping, proposal development, deal closure, and revenue for the domain.
+- Define success metrics and milestones (technical, product, commercial) and report progress clearly to leadership.
 - MS, PhD, or equivalent experience in biochemistry, protein science, medicinal chemistry, chemical biology, or related field
 - Deep understanding of drug discovery and development workflows; as well as the assays and methods that drive decision-making
 - Track record of advancing therapeutic programs from molecules toward the clinic, or of building the platforms and products that others used to do so.
@@ -189,7 +184,7 @@ What You'll Be Building
 
 ### Associate Director/Director, Commercial Counsel (2026-03-09)
 
-2026-03-09 → open · leadership · Cambridge, MA USA; San Francisco, CA USA · $232–327K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4174259009)
+2026-03-09 → open · leadership · Cambridge, MA USA; San Francisco, CA USA · $232–360K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4174259009)
 
 <details><summary>Description</summary>
 
@@ -216,7 +211,7 @@ What You'll Be Building
 - Track record of building legal infrastructure or scalable processes from scratch
 
 **Compensation**
-$232,000 — $327,000 USD
+$232,000 — $360,000 USD
 
 </details>
 
@@ -341,7 +336,7 @@ Institution Building — Help stand up Lila's federal capture function, includin
 
 ### Senior Director, Data Platform Engineering (2026-04-01)
 
-2026-04-01 → open · leadership · San Francisco, CA USA · $300–390K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4202443009)
+2026-04-01 → 2026-10-10 · leadership · San Francisco, CA USA · $300–390K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4202443009)
 
 <details><summary>Description</summary>
 
@@ -539,7 +534,7 @@ Program Management
 
 ### Chief of Staff to the CEO (2026-06-21)
 
-2026-06-21 → open · leadership · Cambridge, MA USA · $250–350K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4285660009)
+2026-06-21 → 2026-10-10 · leadership · Cambridge, MA USA · $250–350K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4285660009)
 
 <details><summary>Description</summary>
 
@@ -564,7 +559,7 @@ What You'll Be Building
 
 ### Director/Senior Director, Molecular Discovery (2026-06-22)
 
-2026-06-22 → open · leadership · Cambridge, MA USA; London, UK; San Francisco, CA USA · $202–323K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4273680009)
+2026-06-22 → 2026-10-10 · leadership · Cambridge, MA USA; London, UK; San Francisco, CA USA · $202–323K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4273680009)
 
 <details><summary>Description</summary>
 
@@ -591,7 +586,7 @@ What You'll Be Building
 
 ### Senior Director / Vice President, Chemistry Experiment (2026-07-02)
 
-2026-07-02 → open · leadership · Cambridge, MA USA · $204–346K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4300718009)
+2026-07-02 → 2026-10-10 · leadership · Cambridge, MA USA · $204–346K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4300718009)
 
 <details><summary>Description</summary>
 
@@ -622,7 +617,7 @@ Chemistry Strategy & Innovation
 
 ### Senior Director, Software Development, Test Automation (2026-07-09)
 
-2026-07-09 → open · leadership · San Francisco, CA USA · $300–390K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4294875009)
+2026-07-09 → open · leadership · San Francisco, CA USA · $260–390K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4294875009)
 
 <details><summary>Description</summary>
 
@@ -712,7 +707,7 @@ What You'll Be Building
 
 ### Director / Senior Director, Origins (2026-07-23)
 
-2026-07-23 → open · leadership · Cambridge, MA USA · $168–272K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4314463009)
+2026-07-23 → 2026-10-10 · leadership · Cambridge, MA USA · $168–272K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4314463009)
 
 <details><summary>Description</summary>
 
@@ -778,7 +773,7 @@ What You'll Be Building
 
 ### Director, Materials AISF Program Lead (2026-08-06)
 
-2026-08-06 → open · leadership · Cambridge, MA USA · $320–380K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4287216009)
+2026-08-06 → open · leadership · Cambridge, MA USA · $198–285K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4287216009)
 
 <details><summary>Description</summary>
 
@@ -809,7 +804,7 @@ What You'll Be Building
 - Experience working across shared resources and multiple concurrent programs.
 
 **Compensation**
-$320,000 — $380,000 USD
+$197,600 — $284,667 USD
 
 </details>
 
@@ -843,7 +838,7 @@ What You'll Be Building
 
 ### Associate Director, App (2026-08-27)
 
-2026-08-27 → open · leadership · Cambridge, MA USA; San Francisco, CA USA · $204–306K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4371404009)
+2026-08-27 → 2026-10-10 · leadership · Cambridge, MA USA; San Francisco, CA USA · $204–306K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4371404009)
 
 <details><summary>Description</summary>
 
@@ -873,7 +868,7 @@ What You'll Be Building
 
 ### Principal Scientist / Associate Director, Soft Materials Experimentation (2026-09-24)
 
-2026-09-24 → open · leadership · Cambridge, MA USA · $156–214K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4403708009)
+2026-09-24 → 2026-10-10 · leadership · Cambridge, MA USA · $156–214K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4403708009)
 
 <details><summary>Description</summary>
 
@@ -1007,6 +1002,194 @@ What You'll Be Building
 
 **Compensation**
 $168,000 — $238,000 USD
+
+</details>
+
+<a id="associate-director-director-inference-engineering-2026-10-26"></a>
+
+### Associate Director/Director, Inference Engineering (2026-10-26)
+
+2026-10-26 → open · leadership · Cambridge, MA USA; San Francisco, CA USA · $204–348K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4459902009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila is hiring an Associate Director/Director, Inference Engineering to lead the team responsible for Lila's model serving platform: the inference APIs, serving frameworks, request routing, batching strategies, and deployment systems that bring models reliably to production.
+You will define how Lila serves models at scale, balancing latency, throughput, quality, and cost, and act as the technical authority connecting research and ML to production-grade serving capabilities. The work spans people leadership, service ownership, cross-functional partnership, and deep technical judgment in modern LLM serving.
+What You'll Be Building
+- Own the inference service end to end: API contracts, latency SLAs, throughput guarantees, rate limits
+- Drive serving architecture decisions: batching, KV cache, speculative decoding, quantization, multi-node deployment
+- Establish SLOs for latency, throughput, and availability, plus on-call and postmortem practices
+- Partner with ML, research, and product engineering to make new models production-ready
+- Build systems for model onboarding, deployment safety, evaluation gates, and observability
+- Build, mentor, and retain a high-performing engineering team, and own the serving roadmap
+- Deep understanding of the inference stack for large language models, including serving frameworks (e.g., vLLM, TensorRT-LLM, TGI), batching strategies, memory constraints, and latency/throughput tradeoffs
+- Experience owning a customer- or product-facing API service end to end, including SLAs, incident response, and service reliability in fast-moving environments
+- Track record hiring, mentoring, and retaining senior technical talent, and scaling engineering organizations through rapid growth
+- Strong technical judgment across latency, throughput, reliability, cost, and delivery speed
+- Demonstrated ability to set technical strategy and execute as priorities change
+- Ability to align ML, research, product engineering, and executive stakeholders with competing priorities
+
+**Bonus Points For**
+- Hands-on experience with speculative decoding, quantization (AWQ, GPTQ, FP8), or model parallelism strategies
+- Experience with serving evaluation: output quality regression testing, A/B routing, and shadow deployments
+- Familiarity with GPU capacity planning, instance provisioning, utilization, and cloud cost modeling
+- Prior work in AI/ML startups or research-heavy organizations
+
+**Compensation**
+$204,000 — $348,000 USD
+
+</details>
+
+<a id="associate-director-director-frontier-and-ai-product-counsel-2026-10-28"></a>
+
+### Associate Director/Director, Frontier and AI Product Counsel (2026-10-28)
+
+2026-10-28 → open · leadership · Cambridge, MA USA; San Francisco, CA USA · $232–360K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4429017009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+As Associate Director/Director, Frontier and AI Product Counsel at Lila Sciences, you will be the dedicated legal partner to the teams building Scientific Superintelligence™ — our AI research organization, our AI Science Factory™ platform, and the data, safety, and security functions that support them. You will own the legal questions that come with training frontier models on scientific data and running experiments autonomously: where data comes from and what we can do with it, how rights are allocated when we discover something alongside a partner, what we can publish or open-source, and how we build, evaluate, and release capable systems responsibly.
+This is deliberately a build role, not a maintenance role. Much of this work has no settled precedent and no off-the-shelf playbook — you will frequently be designing the framework rather than applying one. You'll partner daily with scientists, ML researchers, platform engineers, and our safety and security teams, and closely with our privacy, commercial, and go-to-market colleagues as the platform is deployed, and you'll be the person who translates between technical reality and legal risk in both directions.
+This role reports to the Vice President, Associate General Counsel, Product and is scoped for an experienced attorney with 7–12 years of experience who wants to work at the intersection of law, AI, and science, and who is energized rather than unsettled by novel questions. You should be comfortable with ambiguity, opinionated about risk, and willing to sit with a research team long enough to actually understand what they're building.
+What You'll Be Building
+Data and model development
+- Advise research and data teams on permissible data usage across the training pipeline, and build the provenance and acquisition frameworks that govern what goes into Lila's models
+- Serve as a subject matter expert on copyright, licensing, privacy, and contractual restrictions as applied to training data — public, licensed, synthetic, open-source, and partner-contributed alike
+- Support structuring and negotiation of data licensing, material transfer, consortium, and research collaboration agreements with academic, clinical, and industry partners, including how rights in data, models, and derived outputs are allocated
+Release and disclosure
+- Advise on release decisions for models, agents, tools, and datasets, including open-weight strategy and the application of open-source licenses to incoming and outgoing code, data, and model artifacts
+- Coordinate legal readiness for model and platform launches — model documentation and system cards, capability evaluations, and review of pre-release and internal-only models
+- Support publication and disclosure review, balancing scientific openness against partner obligations and safety considerations
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="director-senior-director-intellectual-property-life-sciences-2026-11-05"></a>
+
+### Director / Senior Director, Intellectual Property, Life Sciences (2026-11-05)
+
+2026-11-05 → open · leadership · Cambridge, MA USA; San Francisco, CA USA · $262–400K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4477305009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila Sciences is building an autonomous scientific platform and applying it across therapeutics, materials, and other scientific domains. Our life sciences programs run from early research through candidate selection, often in collaboration with external partners, which makes strong intellectual property work essential.
+We are looking for a life sciences patent lawyer to own IP strategy for these programs end to end. This is not a docket-management role. You will decide what gets filed and how it is claimed, and you will help shape the IP positions that support our commercial agreements.
+The work spans both halves of a life sciences IP practice that are often split between two people: building and prosecuting a global patent portfolio, and advising on the IP terms of collaborations, licensing, and financings. If you have done both and want to do them for a single company rather than a client list, this role is built for you.
+You will be the senior life sciences voice on a small, high-leverage team, with real scope to build.
+What You'll Be Building
+- Own global patent strategy for therapeutic programs, including composition-of-matter, formulation, delivery, method-of-use, and platform claims.
+- Direct outside counsel on drafting and prosecution across major jurisdictions; set claim strategy rather than relay it.
+- Design claim architecture that protects programs at each stage of their life cycle.
+- Lead patentability, validity, and freedom-to-operate analyses; translate findings into go/no-go and design-around recommendations.
+- Serve as IP lead on collaboration, option, license, and services agreements, including the IP terms that follow from them.
+- Run IP due diligence for financings and partner transactions, including portfolio schedules, chain of title, and license obligations.
+- Advise on inbound licenses for third-party software, data, models, and research tools, and build the clearance process that supports compliant use.
+- Mentor junior legal team members and, over time, build and manage the life sciences IP function.
+- J.D. and active bar admission, with USPTO registration.
+- 12+ years of substantive patent experience in the life sciences, in a law firm, in-house, or a combination.
+- Technical degree in chemistry, biochemistry, molecular or cellular biology, immunology, or a closely related field.
+- Demonstrated ownership of global patent portfolios for biopharmaceutical products, with direct responsibility for claim strategy.
+- Experience across a range of therapeutic modalities.
+- Track record producing patentability, validity, and FTO assessments that supported real business decisions.
+- Experience advising on IP aspects of collaborations, licensing, acquisitions, or financings, including diligence and negotiating provisions.
+
+**Bonus Points For**
+- Experience with option-based or milestone-based collaboration structures.
+- Experience maintaining portfolio positions across related programs and partners.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="director-senior-director-lab-platform-engineering-2026-11-09"></a>
+
+### Director/ Senior Director, Lab Platform Engineering (2026-11-09)
+
+2026-11-09 → open · leadership · Cambridge, MA USA; San Francisco, CA USA · $232–390K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4458156009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila is hiring a Director of Lab Platform Engineering to lead the team that builds and operates the hybrid on-premises and cloud infrastructure behind our automated labs. You will own the platform strategy for a fleet of distributed lab sites and lead the engineers who make new sites come online reliably and repeatably.
+Lab Platform Engineering builds and supports the platforms and software that keep Lila's AI Science Factory™ running: bare metal clusters, cloud infrastructure, secure identity and secrets services, resilient storage, and the APIs and tooling that let scientists and engineers ship software to production. Every robot, instrument, and lab workflow depends on these systems.
+This is a leadership role on a team being built now. You will grow the organization to 10 to 15 engineers, set multi-year technical direction, and partner with robotics, lab operations, research, and security leaders on what the platform needs to support next.
+What You'll Be Building
+- Build and lead a team of 10 to 15 engineers, including managers and tech leads. Hire, develop, and retain engineers at every level.
+- Set multi-year technical vision and strategy for hybrid edge and cloud infrastructure across distributed lab sites.
+- Own platform roadmap and delivery, shipping on a predictable cadence against commitments made to partner teams.
+- Own fleet operations and reliability, including service levels, on-call, and incident response across sites.
+- Own infrastructure budget, capacity planning, and vendor relationships.
+- Partner cross-functionally with robotics, lab operations, research, and security, and communicate platform strategy and tradeoffs to executives.
+- Raise the engineering bar through standards, review practices, and technical thought leadership.
+- 15+ years in software or infrastructure engineering, with 8+ years leading teams, including managing managers or tech leads, or equivalent practical experience.
+- Track record building and scaling a platform or infrastructure organization from a small team upward.
+- Deep technical grounding in hybrid on-premises and cloud infrastructure, including Kubernetes operated at scale outside the public cloud.
+- Experience operating production fleets against explicit reliability targets, with ownership of on-call and incident practice.
+- Ownership of infrastructure budget, capacity planning, and vendor negotiation.
+- Proven cross-functional and executive partnership, including communicating technical tradeoffs to non-engineering leaders.
+- Demonstrated ability to hire and develop senior and principal-level engineers.
+
+**Bonus Points For**
+- Scientific domain: laboratory automation, robotics, or hardware-adjacent platforms; lab software for life sciences or materials science.
+- Distributed and edge systems: multi-site operations, intermittently connected environments, over-the-air software rollout.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="director-senior-director-ai-x-lab-integration-2026-11-10"></a>
+
+### Director / Senior Director, AI x Lab Integration (2026-11-10)
+
+2026-11-10 → open · leadership · Cambridge, MA USA; San Francisco, CA USA · $360–570K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4465079009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila is building a platform where AI and automation co-evolve to accelerate scientific discovery. Within AI Research, the AI x Lab Integration team develops the capabilities that allow reasoning models to translate scientific intent into executable experiments.
+We are seeking a Director, AI x Lab Integration to further grow and lead this team. You will set the research agenda for models that understand the purpose of a protocol, compose experiments against real laboratory constraints, diagnose failures, and adapt protocols as evidence arrives. Your work will help LLMs hone scientific judgment and learn from practical knowledge needed to turn a research question into a reliable experimental workflow.
+This is a hands-on research leadership role. You will recruit exceptional researchers, make consequential technical decisions, and establish rigorous evidence that model improvements transfer to real experiments. You will partner closely with domain scientists and the teams responsible for laboratory execution, data infrastructure, and orchestration.
+What You'll Be Building
+- The lab intelligence research agenda: Lead research across protocol understanding, intent-to-protocol generation, feasibility assessment, protocol repair, failure diagnosis, and adaptation based on experimental results.
+- Learning from scientific expertise: Partner with the scientists to turn expert demonstrations, corrections, and experimental feedback into model improvements that capture tacit scientific knowledge.
+- Post-training methods for laboratory reasoning: Lead research in supervised fine-tuning, reinforcement learning, tool use, and learning from execution feedback. Determine which methods improve scientific validity, execution success, and generalization to unfamiliar protocols and conditions.
+- Rigorous capability evaluation: Establish independent evaluations spanning individual protocol skills, decisions made during a run, and workflows that cross scientific domains. Measure scientific correctness, feasibility, execution outcomes, uncertainty, and the need for human intervention.
+- A high-performing research team: Hire, mentor, and lead scientists and research engineers. Set clear ownership, maintain strong experimental standards, and build a culture of ambitious hypotheses, careful measurement, and rapid learning.
+- PhD in Machine Learning, Computer Science, Robotics, Computational Science, or a related field, or equivalent research and leadership experience.
+- A substantial track record of leading original AI research and translating it into capabilities that work beyond a benchmark.
+- Demonstrated experience developing AI capabilities for automated laboratories, scientific agents, or closed-loop experimentation, with model decisions informed by real experimental results.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="associate-director-agentic-computational-platform-2026-11-23"></a>
+
+### Associate Director, Agentic Computational Platform (2026-11-23)
+
+2026-11-23 → open · leadership · Cambridge, MA USA; San Francisco, CA USA · $288–480K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4472546009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+As Associate Director/Director of Agentic Computational Platform within the Physical Sciences AI division, you will lead and grow the team responsible for the software infrastructure that enables Lila's scientific superintelligence to autonomously construct, execute, and interpret complex physics-based simulations. Beyond your direct team, you will serve as a senior engineering leader across a broader portfolio of cross-disciplinary scientific computing efforts — coordinating strategy across workstreams that extend beyond your reporting structure and partnering closely with research and product leadership to bring Lila's scientific intelligence to customers at scale. This role requires both strong people leadership and the technical credibility to drive alignment and execution across a multi-team engineering portfolio.
+What You'll Be Building
+- Lead, hire, and develop a high-performing team of engineers and scientists; set the bar for technical excellence and foster a culture of collaboration and rapid iteration.
+- Drive engineering strategy and coordination across a portfolio of cross-disciplinary scientific computing workstreams, including teams outside your direct organization; ensure coherent technical direction, shared standards, and well-sequenced delivery across the broader program.
+- Define and own the technical vision and multi-quarter roadmap for your team's core platform capabilities, setting architectural direction for agentic frameworks, integration layers, and heterogeneous compute platforms — in close alignment with Physical Sciences AI research priorities and company goals.
+- Build deep partnerships with AI research, platform, infrastructure, and software teams to translate scientific requirements into production-grade capabilities; serve as a primary point of engineering accountability for cross-team delivery and impact.
+- Own execution across your direct team: prioritize projects, manage trade-offs, remove blockers, and ensure the team ships with high quality and velocity.
+- Represent the broader engineering program to senior leadership and external collaborators; communicate technical strategy, cross-team progress, and business impact clearly.
+- MS/PhD or equivalent experience in Computer Science, ML/AI, Scientific Computing, or a related technical field.
+- Proven experience leading and growing engineering or research teams, including hiring, performance management, and career development.
+- Track record of setting technical vision and delivering complex, multi-year platform or infrastructure initiatives in a fast-moving environment.
+- Strong technical depth in ML-driven pipelines, agentic frameworks, or scientific workflow systems — enough to earn trust across teams, drive sound architectural decisions, and influence engineering direction across a multi-workstream program without direct authority over every contributor.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
 

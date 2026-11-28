@@ -1,0 +1,81 @@
+[
+ {
+  "slug": "materials-nexus",
+  "date": "2026-11-06",
+  "type": "leadership-departure",
+  "person": "Iván Markman",
+  "title": "Non-executive director",
+  "summary": "Non-executive director Iván Markman resigned from the board on 6 November 2026, 15 months after joining (Companies House). Co-founders Jonathan Bean and Robert Forrest are now the only directors.",
+  "source": "https://find-and-update.company-information.service.gov.uk/company/13057449/officers",
+  "verified_by": "registry page read 2026-11-28"
+ },
+ {
+  "slug": "materials-nexus",
+  "date": "2026-11",
+  "type": "other",
+  "summary": "Now trades as MatNex: materialsnexus.com/careers redirects to matnex.ai/careers, which says it hires selectively and lists no vacancies.",
+  "source": "https://matnex.ai/careers",
+  "verified_by": "rendered in headed Chrome 2026-11-28"
+ },
+ {
+  "slug": "lila-sciences",
+  "date": "2026-11",
+  "type": "leadership-departure",
+  "person": "Jack Milwid; Chris O'Donnell",
+  "title": "Office of the CEO; Chief Government Affairs Officer",
+  "summary": "Two of the 33 leaders on the 24 September team page are no longer listed: Jack Milwid (Office of the CEO) and Chris O'Donnell (Chief Government Affairs Officer). Chris Fussell moved from President, Operations to Vice Chair, and Jon Hennek from Chief Revenue & Product Officer to Chief Product Officer.",
+  "source": "https://www.lila.ai/team",
+  "compare": "https://web.archive.org/web/20260924090313/https://www.lila.ai/team",
+  "verified_by": "live page rendered 2026-11-28 vs Wayback capture"
+ },
+ {
+  "slug": "citrine-informatics",
+  "date": "2026-11",
+  "type": "leadership-departure",
+  "person": "Steve Edkins",
+  "title": "Leadership team, Strategy and Operations",
+  "summary": "Steve Edkins (Strategy and Operations), on the leadership page in October 2026, is no longer listed. The other seven leaders remain, and the job board is down to a general-application posting.",
+  "source": "https://citrine.io/about/",
+  "verified_by": "rendered in headed Chrome 2026-11-28"
+ },
+ {
+  "slug": "atinary",
+  "date": "2026-10",
+  "type": "site",
+  "summary": "Atinary's own job ads now describe it as \"Headquartered in Menlo Park, California, with operations in Boston and Lausanne\". The roles themselves are in Epalinges, near Lausanne. The AI for Chemistry Scientist ad says the company has \"recently opened our own autonomous self-driving lab\".",
+  "source": "https://atinary.zohorecruit.eu/jobs/Careers/28643000003457019/AI-for-Chemistry-Scientist",
+  "verified_by": "rendered in headed Chrome 2026-11-28"
+ },
+ {
+  "slug": "mattiq",
+  "date": "2026-11",
+  "type": "pivot",
+  "summary": "The redesigned site sells Mattiq as a source of experimental materials data for AI: \"Mattiq generates the ground truth that turns AI prediction into reality\". It cites 250M material instances and 100K compositions per Megalibrary chip. It no longer leads with electrocatalysts, and it has no careers page.",
+  "source": "https://mattiq.com/",
+  "verified_by": "rendered in headed Chrome 2026-11-28"
+ },
+ {
+  "slug": "intrepid-labs",
+  "date": "2026-11",
+  "type": "other",
+  "summary": "The redesigned site leads with AI-driven drug formulation for pharma partners and cites a multi-year licensing agreement with Quotient Sciences. It has no careers page, and LinkedIn lists no openings.",
+  "source": "https://www.intrepidlabs.tech/",
+  "verified_by": "rendered in headed Chrome 2026-11-28"
+ },
+ {
+  "slug": "polymerize",
+  "date": "2026-11",
+  "type": "other",
+  "summary": "Its careers page (company-pages/careers, live in May 2026) now returns 404, and LinkedIn's job search finds no Polymerize postings.",
+  "source": "https://polymerize.io/company-pages/careers",
+  "verified_by": "rendered in headed Chrome 2026-11-28"
+ },
+ {
+  "slug": "matlantis",
+  "date": "2026-11-25",
+  "type": "site",
+  "summary": "Posted a Senior Solutions Scientist role on LinkedIn for its Cambridge, MA office (25 November, 59 applicants by 28 November). The office opened in 2024-09. This is the first US posting in the survey's record for Matlantis; its Japanese hiring runs through BizReach and its own careers page.",
+  "source": "https://www.linkedin.com/jobs/search?f_C=82798077&geoId=92000000&location=Worldwide",
+  "verified_by": "LinkedIn public job search, logged out, 2026-11-28"
+ }
+]

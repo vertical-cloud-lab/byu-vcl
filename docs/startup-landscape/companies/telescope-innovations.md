@@ -2,6 +2,24 @@
 
 Vancouver, Canada · founding year not verified · self-driving lab (process chemistry) · active, listed on CSE (TELI), OTCQB (TELIF), FSE (4JU) · [telescopeinnovations.com](https://telescopeinnovations.com)
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**Team size on LinkedIn.** People listing the company, read from the company page (LinkedIn's 'View all N employees'); this counts alumni who never updated their profile and misses staff without one.
+
+| Date | Members | Band | Source |
+| --- | --- | --- | --- |
+| 2024-12-17 | 21 | 11-50 | [Wayback](https://web.archive.org/web/20241217023835/https://www.linkedin.com/company/telescope-innovations/) |
+| 2026-04-03 | 27 | 11-50 | [Wayback](https://web.archive.org/web/20260403173553/https://www.linkedin.com/company/telescope-innovations) |
+| 2026-08-19 | 28 | 11-50 | [Wayback](https://web.archive.org/web/20260819123801/https://www.linkedin.com/company/telescope-innovations) |
+
+**Openings.** 0 open on 2026-11-28 on [its job board](https://www.linkedin.com/jobs/search?f_C=76182686&geoId=92000000&location=Worldwide&original_referer=), against 0 on 2026-10-10. 0 new, 0 closed.
+
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=76182686&geoId=92000000&location=Worldwide&original_referer=), 2026-11-28): 1 posting: Product Manager (Vancouver, British Columbia, Canada, posted 2026-11-16, 95 applicants).
+<!-- /refresh:2026-11-28 -->
+
 Minimal pass: funding and leadership only, from the company's own press releases plus two secondary summaries.
 
 ## Funding timeline

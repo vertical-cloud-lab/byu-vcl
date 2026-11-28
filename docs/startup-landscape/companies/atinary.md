@@ -2,6 +2,18 @@
 
 Lausanne (Epalinges), Switzerland, with a US entity and a Boston lab · founded 2019 · self-driving lab (software plus own lab) · active · [atinary.com](https://atinary.com)
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**Openings.** 3 open on 2026-11-28 on [its job board](https://atinary.com/careers/).
+
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=30671436&geoId=92000000&location=Worldwide), 2026-11-28): no postings.
+
+- Atinary's own job ads now describe it as "Headquartered in Menlo Park, California, with operations in Boston and Lausanne". The roles themselves are in Epalinges, near Lausanne. The AI for Chemistry Scientist ad says the company has "recently opened our own autonomous self-driving lab". ([source](https://atinary.zohorecruit.eu/jobs/Careers/28643000003457019/AI-for-Chemistry-Scientist))
+<!-- /refresh:2026-11-28 -->
+
 ## Funding timeline
 
 | Date | Round | Amount (USD M) | Original | Type | Lead investors | Source |

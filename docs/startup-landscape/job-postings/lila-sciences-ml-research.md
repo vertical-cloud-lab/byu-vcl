@@ -127,6 +127,39 @@ A Note to Agencies
 
 </details>
 
+<a id="principal-software-engineer-applied-ai-2025-10-06"></a>
+
+### Principal Software Engineer, Applied AI (2025-10-06)
+
+2025-10-06 → open · ml-research · Cambridge, MA USA; San Francisco, CA USA · $204–310K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4031455009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+We are seeking a Principal Software Engineer to join our Applied AI group and help build the next generation of our AI-driven scientific platform. In this role, you will design and optimize the backend systems, data pipelines, and AI integrations that power intelligent, data-driven applications. You’ll work at the intersection of backend engineering and machine learning, ensuring our platform seamlessly scales and supports cutting-edge applied AI techniques such as Retrieval-Augmented Generation (RAG), agentic AI, and large language model (LLM) integration.
+This role is ideal for someone who thrives in bridging software engineering and applied AI—turning research into production-grade systems that drive real-world scientific discovery. If you are passionate about building performant, elegant systems that make AI useful and impactful, we would love to hear from you!
+What You'll Be Building
+- Applied AI Integration: Design and deploy backend services and data pipelines that directly support advanced AI applications, including LLMs, RAG, and agentic frameworks.
+- API & Service Development: Build high-performance APIs and microservices that enable seamless integration between AI models, scientific tools, and user-facing applications.
+- Data Pipeline Architecture: Architect and manage scalable pipelines capable of handling structured, unstructured, and vectorized data for AI/ML workloads.
+- Database & Knowledge Systems: Implement and optimize SQL, NoSQL, and vector databases to support low-latency AI retrieval and inference workloads.
+- Cloud & Infrastructure: Leverage AWS, Kubernetes, and infrastructure-as-code (Terraform/CloudFormation) to build robust, production-ready AI platforms.
+- Performance & Reliability: Diagnose system bottlenecks, optimize for cost and speed, and ensure the reliability and fault-tolerance of AI-driven workflows.
+- Collaboration: Partner with ML researchers, platform engineers, and scientists to translate models and algorithms into scalable, production-ready systems.
+- Educational Background: Bachelor’s or Master’s in Computer Science, Engineering, or a related field.
+- Backend & Data Expertise: 7+ years of professional experience building and scaling production systems, including APIs, data pipelines, and distributed services.
+- Programming Skills: Strong Python skills (FastAPI, Flask, Django), with solid experience in backend service development.
+- Databases: Proven experience with SQL, NoSQL, and vector databases; skilled in schema design, indexing, and query optimization.
+- Applied AI Systems: Hands-on experience integrating ML models or AI-driven workflows into production services.
+- Cloud & DevOps: Proficiency with AWS, Docker/Kubernetes, CI/CD pipelines, and infrastructure-as-code.
+- Communication & Problem-Solving: Ability to work cross-functionally with diverse teams and explain complex technical concepts to non-experts.
+
+**Bonus Points For**
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
 <a id="product-lead-applied-ai-2025-10-06"></a>
 
 ### Product Lead, Applied AI (2025-10-06)
@@ -158,7 +191,7 @@ What You'll Be Building
 
 ### Senior / Engineer II, AI Lab Research Engineer (2025-10-06)
 
-2025-10-06 → open · ml-research · Cambridge, MA USA; San Francisco, CA USA · $148–240K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4029507009)
+2025-10-06 → 2026-10-10 · ml-research · Cambridge, MA USA; San Francisco, CA USA · $148–240K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4029507009)
 
 <details><summary>Description</summary>
 
@@ -227,44 +260,11 @@ A Note to Agencies
 
 </details>
 
-<a id="senior-software-engineer-applied-ai-2025-10-06"></a>
-
-### Senior Software Engineer, Applied AI (2025-10-06)
-
-2025-10-06 → open · ml-research · Cambridge, MA USA; San Francisco, CA USA · $144–270K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4031455009)
-
-<details><summary>Description</summary>
-
-**Your Impact at LILA**
-We are seeking a Senior Software Engineer to join our Applied AI group and help build the next generation of our AI-driven scientific platform. In this role, you will design and optimize the backend systems, data pipelines, and AI integrations that power intelligent, data-driven applications. You’ll work at the intersection of backend engineering and machine learning, ensuring our platform seamlessly scales and supports cutting-edge applied AI techniques such as Retrieval-Augmented Generation (RAG), agentic AI, and large language model (LLM) integration.
-This role is ideal for someone who thrives in bridging software engineering and applied AI—turning research into production-grade systems that drive real-world scientific discovery. If you are passionate about building performant, elegant systems that make AI useful and impactful, we would love to hear from you!
-What You'll Be Building
-- Applied AI Integration: Design and deploy backend services and data pipelines that directly support advanced AI applications, including LLMs, RAG, and agentic frameworks.
-- API & Service Development: Build high-performance APIs and microservices that enable seamless integration between AI models, scientific tools, and user-facing applications.
-- Data Pipeline Architecture: Architect and manage scalable pipelines capable of handling structured, unstructured, and vectorized data for AI/ML workloads.
-- Database & Knowledge Systems: Implement and optimize SQL, NoSQL, and vector databases to support low-latency AI retrieval and inference workloads.
-- Cloud & Infrastructure: Leverage AWS, Kubernetes, and infrastructure-as-code (Terraform/CloudFormation) to build robust, production-ready AI platforms.
-- Performance & Reliability: Diagnose system bottlenecks, optimize for cost and speed, and ensure the reliability and fault-tolerance of AI-driven workflows.
-- Collaboration: Partner with ML researchers, platform engineers, and scientists to translate models and algorithms into scalable, production-ready systems.
-- Educational Background: Bachelor’s or Master’s in Computer Science, Engineering, or a related field.
-- Backend & Data Expertise: 7+ years of professional experience building and scaling production systems, including APIs, data pipelines, and distributed services.
-- Programming Skills: Strong Python skills (FastAPI, Flask, Django), with solid experience in backend service development.
-- Databases: Proven experience with SQL, NoSQL, and vector databases; skilled in schema design, indexing, and query optimization.
-- Applied AI Systems: Hands-on experience integrating ML models or AI-driven workflows into production services.
-- Cloud & DevOps: Proficiency with AWS, Docker/Kubernetes, CI/CD pipelines, and infrastructure-as-code.
-- Communication & Problem-Solving: Ability to work cross-functionally with diverse teams and explain complex technical concepts to non-experts.
-
-**Bonus Points For**
-
-*(truncated: full text in `data/job_postings.jsonl`)*
-
-</details>
-
 <a id="software-engineer-ai-platform-2025-10-06"></a>
 
 ### Software Engineer, AI Platform (2025-10-06)
 
-2025-10-06 → open · ml-research · Cambridge, MA USA · $148–210K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4031328009)
+2025-10-06 → open · ml-research · Cambridge, MA USA · $144–240K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4031328009)
 
 <details><summary>Description</summary>
 
@@ -291,7 +291,7 @@ What You’ll Be Building
 - Research engineering or scientific software experience.
 
 **Compensation**
-$148,000 — $210,000 USD
+$144,000 — $240,000 USD
 
 </details>
 
@@ -323,6 +323,40 @@ What You'll Be Building
 - Familiarity with  knowledge graph construction  or reasoning systems for science.
 - Experience with noisy or heterogeneous real-world scientific data.
 - Collaborative mindset and passion for advancing AI in the physical sciences.
+
+</details>
+
+<a id="machine-learning-engineer-physical-sciences-ai-2026-02-03"></a>
+
+### Machine Learning Engineer, Physical Sciences AI (2026-02-03)
+
+2026-02-03 → open · ml-research · Cambridge, MA USA; San Francisco, CA USA · $180–298K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4116513009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila's Physical Science AI team uses AI to accelerate discovery in materials and chemistry. It’s a core part of Lila's mission to build Scientific Superintelligence and solve some of humanity’s most important challenges. As a Machine Learning Engineer, you’ll be the bridge between research and production. You’ll take models and agentic workflows built by our scientists and ML researchers and turn them into reliable, scalable systems that run on our platform every day. What matters most is strong software engineering and real experience shipping ML systems to production. A scientific background is a plus, but curiosity and a passion for discovery are what will make you thrive here.
+What You'll Be Building
+- Own models and agentic workflows end to end, from research code to a deployed, monitored service.
+- Build the integration layer that lets AI agents reliably call models, tools, simulations, and data services in production.
+- Make sure models train correctly and that models and agents run efficiently, including profiling memory and compute, catching issues early, and keeping resource usage in check as workloads grow.
+- Design and maintain production AI/ML pipelines (data ingestion, training, evaluation, deployment, monitoring), with testing, observability, CI/CD, and automated evaluations built in so releases are safe and results are trustworthy.
+- Partner with domain scientists, ML researchers, and platform engineers, and help shape the architecture of our AI/ML platform, coding standards, and engineering best practices.
+- BS/MS/PhD in Computer Science, Engineering, or a related quantitative field, or equivalent industry experience.
+- Strong Python software engineering fundamentals (testing, packaging, typing) and experience with machine learning frameworks (e.g., PyTorch, Hugging Face).
+- Experience deploying AI/ML services in cloud-based infrastructure (e.g., FastAPI, containers, orchestration, databases).
+- Hands-on experience bringing models to production (e.g., deep learning models, LLMs, multimodal models, or RAG), with strong debugging, profiling, and optimization skills.
+- Clear communication and collaboration in cross-functional settings.
+
+**Bonus Points For**
+- Contributions to open-source ML or scientific software.
+- Experience or strong interest in building with AI agents (e.g., tool calling, multi-step workflows).
+- Experience with workflow orchestration, data provenance, or large-scale compute environments.
+- Exposure to scientific domains (materials, chemistry, or physics) and their data formats, simulations, or benchmarks.
+- Performance and memory optimization for training or inference (e.g., mixed precision, distributed training, GPU profiling, efficient model serving).
+
+**Compensation**
+$180,000 — $298,000 USD
 
 </details>
 
@@ -358,7 +392,7 @@ What You'll Be Building
 
 ### Product Lead, Software/Applied AI (2026-04-07)
 
-2026-04-07 → open · ml-research · Cambridge, MA USA; San Francisco, CA USA · $180–288K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4182437009)
+2026-04-07 → 2026-10-10 · ml-research · Cambridge, MA USA; San Francisco, CA USA · $180–288K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4182437009)
 
 <details><summary>Description</summary>
 
@@ -410,7 +444,7 @@ Direct experience building software, tools, or platforms specifically designed f
 
 ### Principal Engineer, AI Security (2026-04-16)
 
-2026-04-16 → open · ml-research · Cambridge, MA USA · $255–348K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4210497009)
+2026-04-16 → 2026-10-10 · ml-research · Cambridge, MA USA · $255–348K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4210497009)
 
 <details><summary>Description</summary>
 
@@ -437,7 +471,7 @@ What You'll Be Building
 
 ### Senior / Principal ML Scientist, Foundation Models for Life Sciences (2026-04-27)
 
-2026-04-27 → open · ml-research · San Francisco, CA USA · $268–384K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4222034009)
+2026-04-27 → 2026-10-10 · ml-research · San Francisco, CA USA · $268–384K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4222034009)
 
 <details><summary>Description</summary>
 
@@ -466,7 +500,7 @@ What You'll Be Building
 
 ### ML Scientist, Foundation Models for Life Sciences (2026-04-28)
 
-2026-04-28 → open · ml-research · San Francisco, CA USA · $176–304K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4222051009)
+2026-04-28 → 2026-10-10 · ml-research · San Francisco, CA USA · $176–304K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4222051009)
 
 <details><summary>Description</summary>
 
@@ -740,7 +774,7 @@ What You'll Be Building
 
 ### ML Scientist, Nucleic Acid Design (2026-07-27)
 
-2026-07-27 → open · ml-research · San Francisco, CA USA · $176–304K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4324969009)
+2026-07-27 → 2026-10-10 · ml-research · San Francisco, CA USA · $176–304K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4324969009)
 
 <details><summary>Description</summary>
 
@@ -769,9 +803,9 @@ What You'll Be Building
 
 </details>
 
-<a id="ml-scientist-i-ii-ai-for-protein-engineering-2026-09-15"></a>
+<a id="machine-learning-scientist-ai-for-protein-engineering-2026-09-15"></a>
 
-### ML Scientist I/II, AI for Protein Engineering (2026-09-15)
+### Machine Learning Scientist, AI for Protein Engineering (2026-09-15)
 
 2026-09-15 → open · ml-research · San Francisco, CA USA · $176–304K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4392245009)
 
@@ -804,9 +838,31 @@ What You'll Be Building
 
 </details>
 
-<a id="machine-learning-scientist-i-ii-protein-design-2026-09-15"></a>
+<a id="machine-learning-scientist-bioml-2026-09-15"></a>
 
-### Machine Learning Scientist I / II, Protein Design (2026-09-15)
+### Machine Learning Scientist, BioML (2026-09-15)
+
+2026-09-15 → open · ml-research · San Francisco, CA USA · $228–358K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4395729009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila is building a platform where AI and automation work together to solve the hardest problems in biomedicine. Within Life Sciences AI (LSAI), we are building the loop where AI, automation and experimental biology co-evolve.
+We are seeking a Scientist II/ Senior Scientist, BioML to work at the intersection of mechanistic modeling and experimental design. Helping build the biological mechanism layer of that loop: reasoning systems that take a mechanistic hypothesis apart into what must be true for it to hold, judge what the existing evidence actually settles, and identify what remains open. You will encode what good mechanistic adjudications look like and build the evaluations that measure a system against them.
+Then you will help close the loop: at Lila, when the evidence to ground or test a system does not exist, we generate it. You will design experimental campaigns that anchor these systems in real measurement, and own the analysis of the data that comes back. The core of this role is to decide what is worth measuring and closing that loop.
+The ideal candidate brings strong hands-on experience in computational biology, BioML, or applied ML for biological data, and can partner effectively with experimental scientists, ML researchers, and platform engineers. This person will help define tractable scientific questions, design rigorous analyses, interpret model outputs in biological context, and contribute to workflows that connect computational predictions with experimental decisions.
+This is an individual contributor role for a scientist who wants to drive meaningful applied work in a fast-moving, interdisciplinary environment. The role will emphasize execution, scientific judgment, and cross-functional collaboration rather than group leadership or owning the broader platform direction.
+What You'll Be Building
+- Encode mechanistic reasoning into systems, and build the evaluations that hold them to it. Turn how a good scientist decomposes a hypothesis — what must be established, in what order, what distinguishes the live alternatives — into structured frameworks and reasoning workflows that operate without you in the loop. Define what a good answer is, and score whether a system reached it for the right reason rather than a plausible-sounding one.
+- Analyze the biological data that grounds these systems. Hands-on analysis of single-cell, perturbation, proteomics imaging, and genetic data: build the pipelines that turn raw measurement into model-ready evidence, run the quality control and annotation-stability analyses that determine how much weight a given fact should carry, and produce the quantitative results the reasoning layer depends on.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="machine-learning-scientist-protein-design-2026-09-15"></a>
+
+### Machine Learning Scientist, Protein Design (2026-09-15)
 
 2026-09-15 → open · ml-research · San Francisco, CA USA · $176–304K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4396760009)
 
@@ -896,7 +952,7 @@ What You'll Be Building
 
 ### Senior/Principal ML Scientist, Translational Biology (2026-09-15)
 
-2026-09-15 → open · ml-research · San Francisco, CA USA · $268–384K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4395727009)
+2026-09-15 → 2026-10-10 · ml-research · San Francisco, CA USA · $268–384K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4395727009)
 
 <details><summary>Description</summary>
 
@@ -912,6 +968,43 @@ What You'll Be Building
 - Build the evaluations that hold these systems to account, including outcome-verifiable forecasts of real program progression scored using only information available at the prediction date, with the evidence boundary enforced against contamination. Run them yourself and report honestly when a contribution adds nothing.
 
 *(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="member-of-technical-staff-ai-security-2026-10-01"></a>
+
+### Member of Technical Staff, AI Security (2026-10-01)
+
+2026-10-01 → open · ml-research · Cambridge, MA USA · $252–374K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4403714009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila Sciences is building autonomous systems for scientific discovery, and the AI infrastructure behind that work needs security built in from the start. This role sits on the IT & Security team and owns security engineering for Lila's AI and ML systems, from training and inference pipelines to model registries, MCP servers, and agent runtimes.
+As the senior individual contributor for AI security, you will translate the AI security roadmap into delivered controls, drive vulnerability remediation to closure, and reduce risk across the full AI lifecycle: data, models, pipelines, and agentic systems. The work is hands on, with technical depth across cloud security, supply chain security, and AI-specific threat models.
+The role is deeply cross-functional. You will partner with AI Platform, AI Research, ML Operations, Science, and AI Safety so security shows up at design time rather than after the fact. Success looks like AI infrastructure that stays continuously compliant, measurable reduction in open risk, and engineering teams that treat security as part of how they build.
+What You'll Be Building
+- Turn the AI security roadmap into delivered controls with measurable outcomes
+- Design and implement security controls across training and inference pipelines, model registries, MCP servers, and agent runtimes
+- Keep AI infrastructure continuously compliant against internal standards and applicable frameworks
+- Drive vulnerability remediation across AI infrastructure, models, and dependencies to closure with system owners
+- Reduce risk across data, models, pipelines, and agentic systems through threat modeling, control design, and adversarial assessment
+- Partner with AI Platform, AI Research, ML Operations, Science, and AI Safety so security is embedded at design time
+- Strong background in security engineering, cloud security, or DevSecOps, with hands-on experience securing production infrastructure
+- Working knowledge of AI/ML systems and the ML lifecycle, plus AI-specific risks such as prompt injection, model and data poisoning, insecure agent tooling, and inference-time threats
+- Experience with software supply chain security and dependency and vulnerability management
+- Experience implementing data security controls (classification, data flow mapping, access control, encryption) in cloud environments
+- Proven ability to partner across engineering teams and drive cross-functional remediation to closure
+- Comfort operating with ambiguity in a fast-moving research environment
+
+**Bonus Points For**
+- Hands-on AWS security experience
+- Experience with SBOM tooling at scale
+- Familiarity with AI governance and assurance frameworks such as NIST AI RMF
+- Experience with MAESTRO-style threat modeling for agentic systems
+
+**Compensation**
+$252,000 — $374,000 USD
 
 </details>
 
@@ -947,6 +1040,357 @@ What You'll Be Building
 - Experience adapting models for customer-facing or production workflows, ideally in scientific, technical, or data-intensive domains.
 
 *(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="co-op-ai-nucleic-acid-design-2026-10-27"></a>
+
+### Co-Op, AI Nucleic Acid Design (2026-10-27)
+
+2026-10-27 → open · ml-research · San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4465061009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila Sciences is building scientific superintelligence by pairing large-scale automated experimentation with frontier machine learning. Within Lila, the Life Science AI (LSAI) function researches automated reasoning on biological data, combining state-of-the-art ML with breakthrough biology.
+This co-op sits with the nucleic acid design group in LSAI, which builds models and design strategies for RNA and DNA sequences. You'll join our Nucleic Acid Design team for a 6-month co-op focused on open-ended research questions that could shape how Lila designs nucleic acid sequences in the future.
+You'll work at the intersection of machine learning, sequence modeling and nucleic acid biology, on problems such as UTR design, regulatory element design, and using large reasoning models for scientific discovery. You'll own a defined research project with mentorship from ML scientists, and you'll work closely with experimental scientists to connect your models to real biological data.
+The ideal candidate is curious, comfortable with open-ended problems, and excited to learn both the ML and biology behind sequence-to-function modeling.
+What You'll Be Building
+- Lead a scoped research project in nucleic acid sequence modeling or design.
+- Build ML models on RNA and DNA sequence-function data, including prototyping new methods for property prediction, generative design or candidate selection.
+- Investigate model behavior and propose biological hypotheses about why sequences succeed or fail.
+- Explore how large reasoning models can drive scientific discovery and sequence design, for example by generating hypotheses, reasoning over experimental results or guiding design choices.
+- Collaborate with experimental scientists to understand assays and to propose experiments that test new ideas.
+- Present findings to the team and contribute to research write-ups, and where possible to external publications or presentations.
+- Currently enrolled in an MS or PhD program in machine learning, computational biology, bioengineering, computer science, statistics or a related quantitative field.
+- Hands-on experience building and training ML models, with strong Python skills and experience with PyTorch, JAX or a similar framework.
+- Coursework or research experience with biological sequence data (DNA or RNA).
+- Curiosity about nucleic acid biology, such as RNA biology, gene regulation or sequence-to-function relationships.
+- Available for a full-time, 6-month co-op term onsite in San Francisco.
+
+**Bonus Points For**
+- Experience with sequence-to-function models, genomic language models, or models trained on MPRA, reporter assay or other functional genomics data.
+- Familiarity with RNA secondary structure prediction, UTR or codon design, or inverse design methods.
+- Experience with generative modeling, active learning or Bayesian optimization.
+- Exposure to wet-lab data or collaboration with experimental scientists.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="co-op-ai-driven-equation-discovery-2026-10-30"></a>
+
+### Co-Op, AI-Driven Equation Discovery (2026-10-30)
+
+2026-10-30 → open · ml-research · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4469152009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+The PS AI team sits at the intersection of Physical Sciences R&D and AI/ML. Lila runs high-throughput experiments across electrochemistry, formulations, and advanced materials, generating rich datasets that demand more than black-box models.
+As a Co-Op focused on AI-driven equation discovery, you will develop and benchmark methods that extract interpretable governing equations directly from that data. Discovered equations reveal the underlying physics, make predictions explainable, and serve as mechanistic building blocks for digital twins and closed-loop optimization.
+You will work alongside PS AI researchers and physical scientists, helping shape how Lila turns experimental data into scientific understanding at scale.
+What You'll Be Building
+- Build end-to-end equation discovery pipelines from preprocessing through candidate generation and validation
+- Benchmark symbolic regression methods (SINDy, PDE-FIND, PySR, LLM-guided search) on Lila campaign data
+- Apply equation discovery to live electrochemistry, formulation, and materials datasets
+- Design evaluation harnesses measuring recovery rate, generalization, noise robustness, and physical consistency
+- Embed discovered equations into surrogate models, physics-informed models, and experimental digital twins
+- Translate open scientific questions into concrete problems with datasets, baselines, and success criteria
+- Document and present findings across PS AI and domain science teams
+- Pursuing a Master's or PhD in ML, CS, applied math, physics, materials science, or chemical engineering
+- Strong Python skills with hands-on experience in PyTorch, JAX, or similar
+- Experience applying machine learning to messy, real-world scientific or experimental data
+- Solid grounding in linear algebra, calculus, and probability
+- Comfort reading and implementing methods from ML research papers
+- Ability to frame open-ended scientific questions as concrete ML tasks
+- Clear communication across research, engineering, and physical science teams
+
+**Bonus Points For**
+- Working knowledge of symbolic or sparse regression methods (SINDy, PySR, PDE-FIND, or equivalent)
+- Experience with LLM-guided or agentic symbolic regression (LLM-SR, SR-Scientist, or similar)
+- Background in physics-informed ML, uncertainty quantification, or operator learning (PINNs, neural ODEs, FNO, DeepONet)
+- Exposure to digital twin or closed-loop workflows: model calibration, active learning, Bayesian optimization
+- Domain knowledge in electrochemistry, formulations, superconductors, or materials science
+
+</details>
+
+<a id="co-op-ai-for-protein-design-2026-11-06"></a>
+
+### Co-op, AI for Protein Design (2026-11-06)
+
+2026-11-06 → open · ml-research · San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4480337009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+This PhD-level co-op will join the Life Science AI team to contribute to applied ML research in protein engineering, including generative protein design, antibody engineering, developability, and wet-lab-informed model iteration. Working alongside Lila scientists and ML researchers, the co-op will explore generative and predictive models for protein sequence, structure, and function, analyze biological and experimental datasets to evaluate model outputs, and prototype workflows that connect model predictions, candidate prioritization, and wet-lab feedback. Results will be communicated through code, notebooks, written summaries, and presentations.
+The ideal candidate is a currently enrolled PhD student in CS, ML, computational biology, bioengineering, biophysics, or a related field, with research experience in ML or protein engineering, strong Python skills, and experience with frameworks like PyTorch or JAX. Familiarity with protein language models, diffusion or flow-based models, antibody design, or active learning workflows is a plus.
+The role advances our domain-specific protein design models while the data, methods, and evaluation tools built along the way also strengthen our general AI research model, directly supporting Lila’s mission of combining automated data generation with scientific superintelligence.
+What You'll Be Building
+- Research generative and predictive models for protein and antibody design
+- Analyze experimental datasets to evaluate model outputs and guide design decisions
+- Prototype workflows linking model predictions, candidate prioritization, and wet-lab feedback
+- Build datasets and benchmarks that support both domain-specific and general AI research models
+- Share results through code, notebooks, and presentations
+- Currently enrolled PhD student in CS, ML, computational biology, bioengineering, biophysics, or a related field
+- Research experience in machine learning, computational biology, or protein engineering
+- Strong Python skills and experience with PyTorch, JAX, or similar frameworks
+- Experience working with biological sequence, structure, or assay data
+- Clear communication and comfort collaborating with cross-disciplinary teams
+
+**Bonus Points For**
+- Experience with protein language models, structure prediction, or generative design (diffusion or flow-based models)
+- Familiarity with antibody design, developability, or wet-lab validation concepts
+- Publications, preprints, or open-source work in ML for biology
+
+</details>
+
+<a id="co-op-software-applied-ai-platform-engineer-2026-11-09"></a>
+
+### Co-op, Software, Applied AI Platform Engineer (2026-11-09)
+
+2026-11-09 → open · ml-research · San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4472540009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila Sciences builds AI systems that accelerate discovery across the physical and life sciences. The Platform Engineering team owns the core infrastructure and developer-facing services that power Lila's AI Science Factory™ — including APIs, data pipelines, and the agentic systems that orchestrate scientific workflows at scale.
+This co-op has two focus tracks. Candidates may be matched to one or both based on interest and fit:
+Track 1 — Data Platform: Build pipelines and services that structure scientific knowledge (literature, patents, lab data) into signals that power Lila's AI models and applications.
+Track 2 — Agentic SSR (AI and Server-Side Rendering): Build the server-rendered, agentic layer of the Lila Platform — the infrastructure that enables AI agents to compose and serve dynamic scientific interfaces at runtime.
+In either track, you will ship production code, work alongside research scientists and ML engineers, and contribute to a platform that runs real scientific experiments.
+What You'll Be Building
+Data Platform Track
+- Build and maintain ingestion and transformation pipelines for scientific literature, patents, and lab-generated data
+- Implement structured data extraction workflows, including schema design, validation, and quality evaluation
+- Integrate retrieval and RAG pipelines that surface relevant documents, tables, and figures to downstream Lila applications
+- Generate and validate structured datasets; run end-to-end pipelines and analyze results against clear evaluation criteria
+- Collaborate with research scientists to translate scientific domain requirements into robust data models
+- Document findings and present results to the team; contribute to a publication or open-source project where the work supports it
+Agentic SSR Track
+- Build server-side rendering services and APIs that enable AI agents to compose and deliver dynamic scientific interfaces
+- Implement agentic workflow primitives: task routing, context management, streaming responses, and tool integration
+- Develop platform features end-to-end: schema design, business logic, API surface, and automated tests
+- Instrument code for observability; participate in debugging and root-cause analysis of production issues
+- Improve developer experience through internal tooling, reusable libraries, and documentation
+- Contribute to technical design discussions and code reviews
+- Pursuing a Bachelor's, Master's, or PhD in Computer Science, Software Engineering, or a related field
+- Strong foundation in software engineering fundamentals: data structures, algorithms, and system design
+- Proficiency in Python and/or TypeScript
+- Experience building or consuming REST or GraphQL APIs
+- Familiarity with relational databases and SQL
+- Ability to work independently, take ownership of tasks, and communicate progress clearly
+- Curiosity about scientific data or AI-driven software systems and a willingness to learn quickly
+
+**Bonus Points For**
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="ml-research-engineer-performance-optimization-2026-11-10"></a>
+
+### ML Research Engineer, Performance Optimization (2026-11-10)
+
+2026-11-10 → open · ml-research · Cambridge, MA USA; San Francisco, CA USA · $148–240K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4455701009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila is building a platform where AI and automation co-evolve to accelerate scientific discovery Our AI Research team is looking to hire a ML Research Engineer to maximize iteration speed for mid- and post-training runs on 1T+ parameter LLMs using the latest NVIDIA chips. This involves not only maximizing GPU utilization on an individual training run but also making these optimizations maintainable, reusable, and adaptable so that the rest of the research team always knows how to confidently use the latest optimized stack.
+What You'll Be Building
+- GPU compute performance: profiling, kernel development, long-context handling, memory footprint optimization
+- GPU cluster performance: collective/MoE framework optimization, comm/compute overlap, RDMA/IB/EFA usage, P/D disaggregation
+- Big data handling: manage mid-training scale data across storage, streaming, tokenization, and processing
+- RL pipeline: optimize the async RL cycle, including environment/sandbox interfacing, long rollout handling, large token metadata (such as router replay), and weight sync
+- Setting the performance standard: make sure optimized configurations are tested, accessible, and adaptable to research tasks so that the whole team can work at maximum velocity
+- Establishing the Pareto frontier: communicate with researchers about throughput/accuracy tradeoffs (e.g. lower-precision compute, higher async staleness) to establish optimal points
+- BS/MS in Computer Science or a related quantitative field and 4+ years working as a software engineer or machine learning engineer, or PhD in a relevant research area and 1+ years work experience.
+- Experience with LLM inference libraries such as vLLM and training libraries such as Megatron, including usage and throughput optimization.
+- Experience running LLM inference and/or training at scale across multi-node GPU clusters.
+- Familiarity with core concepts in reinforcement learning.
+- Proven track record of software engineering excellence — clean APIs, well-tested code, thoughtful abstractions.
+- Hands-on experience supporting and maintaining production libraries used by other engineers and researchers.
+- Strong CI/CD skills — experience designing integration test suites, build pipelines, and automated quality gates for multi-package ecosystems.
+- A passion for agentic systems and awareness of cutting-edge approaches in LLM tool use and autonomy.
+
+**Bonus Points For**
+- Experience working with kernel DSLs and frameworks like CUDA, CuTe, CuTile, Triton, etc.
+- Experience with GPU networking frameworks like NCCL and NIXL, as well as fabrics like NVLink, IB, and EFA.
+- Experience with distributed systems or compute frameworks (Ray, Flyte, Airflow, or similar).
+- Familiarity with containerized compute backends (Docker, Modal) and sandbox orchestration.
+- Experience with Ray actors, Ray Serve, or similar actor-model frameworks.
+
+**Compensation**
+$148,000 — $240,000 USD
+
+</details>
+
+<a id="ml-research-scientist-environments-harnesses-2026-11-10"></a>
+
+### ML Research Scientist, Environments & Harnesses (2026-11-10)
+
+2026-11-10 → open · ml-research · Cambridge, MA USA; London, UK; San Francisco, CA USA · $228–304K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4462270009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila is building a platform where AI and automation co-evolve to accelerate scientific discovery. Our AI Research team is looking to hire a ML Research Scientist to focus on synthetic RL environment pipelines and multi-agent harness design. These core pillars enable efficient scaling at training and test time to unlock scientific discovery. Lila’s scale and unique focus on experimental science means solving novel problems and building infrastructure that scales.
+What You'll Be Building
+- Design and prototype new harness capabilities — context compaction strategies, novel tool interfaces, long-horizon planning mechanisms, mult-agent swarms, and other innovations that expand what agents can do.
+- Invent new types of RL environments — explore creative ways to turn scientific workflows, simulators, and real-world tasks into training signal.
+- Build end-to-end pipelines for synthetic environment generation — transforming raw assets (papers, codebases, lab protocols) into validated, versioned training environments at scale.
+- Prototype and validate environment designs — from initial concept through reward shaping, data collection, and integration with the training loop.
+- Push the boundaries of multi-step reasoning — design and implement support for chained tasks, hierarchical goals, and complex evaluation scenarios.
+- PhD (or equivalent experience) in Computer Science or a related quantitative field and two years of industry experience.
+- A strong track record ideating on new harness designs or creating reinforcement learning environments at scale.
+- Strong prototyping and coding skills — comfortable quickly building and iterating on new ideas in Python.
+- Creativity and research intuition — ability to identify promising directions, design experiments, and navigate ambiguity.
+- Familiarity with core concepts and algorithms in reinforcement learning.
+- Solid software engineering fundamentals — clean code, version control, testing, and ability to integrate experimental work into shared infrastructure.
+
+**Bonus Points for**
+- Strong publication track record at conferences such as NeurIPS, ICML, and ICLR.
+- Background in biology, chemistry, or physics — or experience translating domain expertise into computational tasks.
+- Experience building developer-facing libraries, APIs, or frameworks (registries, plugin systems, CLIs).
+- Familiarity with distributed compute (Ray, Modal) or LLM inference systems (vLLM, batching strategies).
+- Experience with async Python, Pydantic, and workflow orchestration frameworks (Flyte, Airflow).
+
+**Compensation**
+$228,000 — $304,000 USD
+
+</details>
+
+<a id="ml-research-scientist-scientific-evaluations-2026-11-10"></a>
+
+### ML Research Scientist, Scientific Evaluations (2026-11-10)
+
+2026-11-10 → open · ml-research · Cambridge, MA USA; London, UK; San Francisco, CA USA · $176–304K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4472554009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila is building a platform where AI and automation co-evolve to accelerate scientific discovery. Our AI Research team is looking to hire a ML Research Scientist to focus on building scientific problems and environments to evaluate frontier LLMs on.
+What You'll Be Building
+- Design and prototype new evals and environments for science — creating high-quality evaluations, identifying environment failures, and patching model capability gaps.
+- Invent new types of RL environments — explore creative ways to turn scientific workflows, simulators, and real-world tasks into training signal.
+- Build end-to-end pipelines for synthetic environment generation — transforming raw assets (papers, codebases, lab protocols) into validated, versioned training environments at scale.
+- Prototype and validate environment designs — from initial concept through reward shaping, data collection, and integration with the training loop.
+- Experience applying ML or computation to biology, chemistry, or material sciences.
+- A strong track record of creating environments or evaluations for model training
+- Experience building large, complex data pipelines for model training or production.
+- Strong prototyping and coding skills — comfortable quickly building and iterating on new ideas in Python.
+- Creativity and research intuition — ability to identify promising directions, design experiments, and navigate ambiguity.
+- Solid software engineering fundamentals — clean code, version control, testing, and ability to integrate experimental work into shared infrastructure.
+
+**Bonus Points For**
+- Demonstrated experience training large language models
+- Strong publication track record at conferences such as NeurIPS, ICML, and ICLR.
+- Strong Python programming skills, including research and production infrastructure
+- Familiarity with distributed compute (Ray, Modal) or LLM inference systems (vLLM, batching strategies).
+- Experience with async Python, Pydantic, and workflow orchestration frameworks (Flyte, Airflow).
+
+**Compensation**
+$176,000 — $304,000 USD
+
+</details>
+
+<a id="machine-learning-research-scientist-open-endedness-2026-11-19"></a>
+
+### Machine Learning Research Scientist, Open-Endedness (2026-11-19)
+
+2026-11-19 → open · ml-research · San Francisco, CA USA · $288–480K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4215959009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila Sciences is seeking a highly experienced, creative, and talented Machine Learning Researcher (Open-Endedness)  to join our team.
+Open-Endedness is an emerging area of machine learning that aims to automate never-ending innovative processes of discovery and exploration.  The Open-Endedness Team, led by Ken Stanley, investigates in particular how a continual chain of deep transformative creativity can be maintained that far exceeds the derivative creativity seen in current models.  In effect, the systems developed on this team will go beyond simply solving problems posed by users, to conceiving the future unimagined directions of science itself.
+To realize this vision, we’re seeking a broad tapestry of ML expertise to facilitate daring and unconventional investigations, including but not exclusive to pre-training, fine-tuning, RLHF, distillation, mechanistic interpretability, Bayesian and statistical methods, and quality diversity (QD) techniques.
+What You'll Be Building
+- Designing, implementing, and modifying generative models (e.g., LLMs, diffusion models, multimodal models) through unconventional pipelines to achieve unconventional behaviors
+- Unconventional evaluation techniques, including subjective evaluation and the evaluation of interestingness
+- Creative approaches to investigating, understanding, and visualizing the internal representations of large models, encompassing mechanistic interpretability but also going in new directions beyond it
+- Quality diversity (QD) algorithms like MAP-Elites, novelty search with local competition, POET, OMNI, minimal criterion novelty search, etc., with LLMs or other large models potentially being updated on the inner loop.
+- Significant ML academic and/or industrial experience in ML, PhD in quantitative disciplines ideal, but will consider self-taught researchers with exceptional achievements
+- Publications in relevant conferences, such as NeurIPS, ICML, AAAI, ICLR, GECCO, ICCC
+- Expertise in ML frameworks (PyTorch/TensorFlow/Jax); and/or QD algorithm implementation; and/or neuroevolution algorithm implementation
+- World-class expertise in at least one research area within ML
+- Experience in training and deploying ML models on distributed computing services (g. AWS/GCP/Azure, or clusters)
+- Excellent communication skills
+
+**Compensation**
+$288,000 — $480,000 USD
+
+</details>
+
+<a id="ml-scientist-retrieval-rag-for-scientific-literature-2026-11-25"></a>
+
+### ML Scientist, Retrieval & RAG for Scientific Literature (2026-11-25)
+
+2026-11-25 → open · ml-research · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4477299009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila is building a platform where AI and automation co-evolve to accelerate scientific discovery. We are hiring an ML Scientist to advance the retrieval and RAG systems behind Lila's scientific literature review, so our AI agents and scientists can find and ground evidence across papers, figures, and tables. You will sit on the Physical Sciences AI team and work alongside engineering and domain scientists to take methods from research into production.
+What You'll Be Building
+- Research, build, and benchmark retrieval and RAG methods for scientific literature review.
+- Develop multimodal retrieval across text, figures, tables, and page images.
+- Train and adapt embedding models for scientific content.
+- Design retrieval and indexing methods that scale with the corpus while holding quality and latency.
+- Build evaluations for retrieval and grounded generation with domain scientists.
+- Move validated methods into production with engineering.
+- PhD in Computer Science, Machine Learning, Information Retrieval, NLP, or a related field, or equivalent research experience. Recent graduates welcome.
+- Deep understanding of core retrieval methods (lexical, dense, hybrid, and re-ranking) and their trade-offs.
+- Hands-on experience training embedding models and building end-to-end RAG systems, including multimodal retrieval.
+- Solid grasp of scalable vector search and indexing.
+- First-author publications at top-tier ML conferences such as NeurIPS, ICML, or ICLR, or at equivalent venues such as JMLR, TMLR, or top-tier NLP and IR conferences (ACL, EMNLP, SIGIR), or equivalent demonstrable research impact.
+- Strong Python and engineering fundamentals; open-source contributions are a plus.
+
+**Bonus Points For**
+- Experience with scientific literature corpora or document parsing.
+- Agentic or multi-step retrieval for complex research questions.
+- Production search systems or vector databases.
+- Background in chemistry, materials science, or biology.
+
+</details>
+
+<a id="scientist-ii-senior-ml-scientist-multimodal-scientific-data-extraction-understanding-2026-11-25"></a>
+
+### Scientist II/ Senior ML Scientist, Multimodal Scientific Data Extraction & Understanding (2026-11-25)
+
+2026-11-25 → open · ml-research · Cambridge, MA USA; San Francisco, CA USA · $228–358K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4477297009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila is building a platform where AI and automation co-evolve to accelerate scientific discovery. We are hiring an ML Scientist to turn unstructured scientific data (papers, figures, tables, spectra, microscopy, and instrument outputs) into structured, actionable insight that Lila's models, agents, and autonomous labs can act on. You will sit on the Physical Sciences AI team and work alongside platform and lab teams to take extraction methods from research into production.
+What You'll Be Building
+- Develop multimodal models that extract entities, measurements, and results from text, tables, figures, and plots.
+- Extend extraction to scientific data streams such as spectra, characterization images, and instrument logs.
+- Build pipelines that turn heterogeneous sources into validated, structured datasets.
+- Apply tabular foundation models to extracted and experimental data for prediction, imputation, and anomaly detection.
+- Add uncertainty and provenance tracking, and build extraction benchmarks with domain scientists.
+- Deploy models into Lila's discovery workflows with platform and lab teams.
+- PhD in Computer Science, Machine Learning, Chemistry, Materials Science, Physics, or a related field, plus about 2 to 4 years of post-PhD experience, or equivalent.
+- Expertise in multimodal ML across text, images, and scientific signals, including vision-language models, document understanding, and multimodal fusion.
+- Track record training and evaluating LLMs or VLMs for information extraction.
+- Experience with noisy, heterogeneous scientific data (units, measurements, spectra) and data pipelines at scale.
+- Sustained publication record, including first-author work, at top-tier ML conferences such as NeurIPS, ICML, or ICLR, or at equivalent venues such as JMLR, TMLR, CVPR, ACL, or EMNLP, or equivalent demonstrable research impact. Papers in physical-science journals or ML-for-science workshops are a plus.
+- Strong Python and engineering fundamentals; open-source contributions are a plus.
+
+**Bonus Points For**
+- Scientific document parsing: OCR, layout, tables, figures, and plot digitization.
+- Characterization data such as XRD, spectroscopy, or electron microscopy.
+- Tabular foundation models and how they compare with classical baselines.
+- Structured output generation and knowledge graph construction.
+- Background in chemistry, materials science, or biology.
+
+**Compensation**
+$228,000 — $358,000 USD
 
 </details>
 

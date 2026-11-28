@@ -2,6 +2,18 @@
 
 Paris, France · founded 2024 (research at Mila from 2022) · AI-for-materials (computational) · active · [entalpic.ai](https://entalpic.ai)
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**Openings.** 4 open on 2026-11-28 on [its job board](https://entalpic.notion.site/Join-Entalpic-9f29b9a69fb840508cd3f9a7c1c0d057), against 4 on 2026-10-10. 2 new, 2 closed.
+- New since 2026-10-10: Computational Chemist — Surface Chemistry (CDI); Internship: HPC for Computational Chemistry.
+- Closed since 2026-10-10: Application Lead (Vapor Deposition Precursor Chemistry); Scientific Software Developer.
+
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=104033114&geoId=92000000&location=Worldwide), 2026-11-28): no postings.
+<!-- /refresh:2026-11-28 -->
+
 ## Funding timeline
 
 | Date | Round | Amount (USD M) | Original | Type | Lead investors | Source |

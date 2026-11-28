@@ -56,6 +56,16 @@
       "source": "https://find-and-update.company-information.service.gov.uk/company/15549537/filing-history/MzQ5MjM2NDQ0NGFkaXF6a2N4/document?format=xhtml&download=1"
     },
     {
+      "date": "2025-09-01",
+      "value": 35,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn 'View all 35 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+      "source": "https://web.archive.org/web/20250901175352/https://www.linkedin.com/company/cusp-ai",
+      "added": "2026-11-28"
+    },
+    {
       "date": "2025-09-10",
       "value": 30,
       "low": null,
@@ -63,6 +73,26 @@
       "method": "press",
       "note": "'about 30 employees' at the Series A",
       "source": "https://fortune.com/2025/09/10/cuspai-raises-100-million-in-new-venture-capital-funding-ai-for-chemistry"
+    },
+    {
+      "date": "2025-10-05",
+      "value": 41,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn 'View all 41 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+      "source": "https://web.archive.org/web/20251005005549/https://www.linkedin.com/company/cusp-ai",
+      "added": "2026-11-28"
+    },
+    {
+      "date": "2025-11-29",
+      "value": 43,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn 'View all 43 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+      "source": "https://web.archive.org/web/20251129094853/https://www.linkedin.com/company/cusp-ai",
+      "added": "2026-11-28"
     },
     {
       "date": "2026-08-27",
@@ -74,6 +104,16 @@
       "source": "https://web.archive.org/web/20260827211002/https://www.linkedin.com/company/cusp-ai/"
     },
     {
+      "date": "2026-10-06",
+      "value": 95,
+      "low": 51,
+      "high": 200,
+      "method": "linkedin-band",
+      "note": "LinkedIn 'View all 95 employees'; band 51-200 employees; LinkedIn company page as captured by the Wayback Machine",
+      "source": "https://web.archive.org/web/20261006201326/https://www.linkedin.com/company/cusp-ai",
+      "added": "2026-11-28"
+    },
+    {
       "date": "2026-10-09",
       "value": 10,
       "low": null,
@@ -82,6 +122,16 @@
       "note": "leadership team only (10 named on cusp.ai); full staff not listed, so this is not a total headcount",
       "source": "https://www.cusp.ai/",
       "partial": true
+    },
+    {
+      "date": "2026-11-13",
+      "value": 100,
+      "low": 51,
+      "high": 200,
+      "method": "linkedin-band",
+      "note": "LinkedIn 'View all 100 employees'; band 51-200 employees; LinkedIn company page as captured by the Wayback Machine",
+      "source": "https://web.archive.org/web/20261113044226/https://www.linkedin.com/company/cusp-ai/",
+      "added": "2026-11-28"
     }
   ],
   "postings": [
@@ -108,34 +158,68 @@
       "new_postings": 11,
       "method": "ats",
       "source": "https://jobs.ashbyhq.com/cuspai"
+    },
+    {
+      "period": "2026Q4",
+      "new_postings": 15,
+      "method": "job_postings.jsonl",
+      "note": "postings first seen 2026-10-01 to 2026-11-28 (live boards and Wayback)",
+      "source": "https://jobs.ashbyhq.com/cuspai"
     }
   ],
   "current_openings": {
-    "date": "2026-10-09",
-    "count": 14,
+    "date": "2026-11-28",
+    "count": 27,
     "by_function": {
-      "ml-research": 2,
-      "materials-science": 2,
-      "software-eng": 1,
-      "business-ops": 9
+      "software-eng": 9,
+      "business-ops": 8,
+      "materials-science": 5,
+      "ml-research": 4,
+      "leadership": 1
     },
     "titles": [
-      "MLFF Distillation & GCMC Integration - Internship (AI/ML, London)",
-      "Applied AI/ML Engineer (Agents) (AI/ML, Amsterdam)",
-      "Application Scientist (AI Materials Science) (Singapore)",
-      "Head of Scientific Applications (Singapore)",
-      "Data Engineer (Platform & Engineering, EMEA)",
-      "Technical Program Manager (AI/ML) (Berlin)",
-      "Technical Program Manager (Science) (London)",
-      "Scientific Developer Relations Manager (London)",
-      "Scientific Developer Relations Manager (Singapore)",
-      "Scientific Developer Relations Manager (West Coast US)",
-      "Ecosystem Manager, AI Materials Foundry (West Coast US)",
-      "Strategic Partnerships Manager (Platform Partnerships) (London)",
-      "Senior Talent Partner (Singapore)",
-      "Talent Acquisition Operations Specialist (Amsterdam)"
+      "Product Engineer",
+      "Technical Program Manager (AI/ML)",
+      "Applied AI/ML Engineer (Agents)",
+      "Scientific Software Engineer (Lab Integration)",
+      "Ecosystem Manager, AI Materials Foundry",
+      "Research Engineer (Materials Foundation Models)",
+      "Research Engineer (Generative Models)",
+      "Scientific Developer Relations Manager",
+      "Scientific Developer Relations Manager",
+      "Ecosystem Manager, AI Materials Foundry",
+      "Scientific Product Manager",
+      "Foundry Technical Program Manager (Materials Foundry)",
+      "Labs Ecosystem Manager",
+      "Partnerships Manager",
+      "Application Scientist, Singapore",
+      "Application Scientist",
+      "Data Engineer",
+      "Scientific Product Manager, Singapore",
+      "Head of Scientific Applications, Singapore",
+      "Materials Knowledge Architect",
+      "Platform Engineer",
+      "Performance Engineer",
+      "Security Engineer",
+      "Product Marketing Lead",
+      "Partnerships Manager",
+      "Events Lead",
+      "Talent Acquisition Operations Specialist"
     ],
-    "source": "https://jobs.ashbyhq.com/cuspai"
+    "source": "https://jobs.ashbyhq.com/cuspai",
+    "basis": "company job board (live snapshot)",
+    "previous": {
+      "date": "2026-10-10",
+      "count": 14,
+      "by_function": {
+        "software-eng": 5,
+        "business-ops": 4,
+        "ml-research": 4,
+        "leadership": 1
+      },
+      "source": "https://jobs.ashbyhq.com/cuspai",
+      "note": "recounted from the 2026-10-10 live snapshot"
+    }
   },
   "people": [
     {

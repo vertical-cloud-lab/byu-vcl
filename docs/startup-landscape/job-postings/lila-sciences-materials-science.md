@@ -422,7 +422,7 @@ What You'll Be Building
 
 ### Senior Scientist, Analytical Chemistry (2026-03-25)
 
-2026-03-25 → 2026-06-10 · materials-science · Cambridge, MA USA · $148–198K · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4192713009)
+2026-03-25 → open · materials-science · Cambridge, MA USA · $148–198K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4192713009)
 
 <details><summary>Description</summary>
 
@@ -780,7 +780,7 @@ What You'll Be Building
 
 ### Scientist, Epitaxial Thin Film Synthesis (2026-06-11)
 
-2026-06-11 → open · materials-science · Cambridge, MA USA · $108–150K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4253548009)
+2026-06-11 → 2026-10-10 · materials-science · Cambridge, MA USA · $108–150K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4253548009)
 
 <details><summary>Description</summary>
 
@@ -817,7 +817,7 @@ What You'll Be Building
 
 ### Senior/Principal Scientist, Small Molecule Therapeutics (2026-07-01)
 
-2026-07-01 → open · materials-science · Cambridge, MA USA · $148–208K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4296054009)
+2026-07-01 → 2026-10-10 · materials-science · Cambridge, MA USA · $148–208K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4296054009)
 
 <details><summary>Description</summary>
 
@@ -844,7 +844,7 @@ What You'll Be Building
 
 ### Associate Scientist/Scientist I, Protein Science Developability (2026-07-20)
 
-2026-07-20 → open · materials-science · Cambridge, MA USA · $88–144K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4299967009)
+2026-07-20 → 2026-10-10 · materials-science · Cambridge, MA USA · $88–144K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4299967009)
 
 <details><summary>Description</summary>
 
@@ -907,7 +907,7 @@ What You'll Be Building
 
 ### Manager / Senior Manager, Enterprise GTM, Materials (2026-08-03)
 
-2026-08-03 → open · materials-science · Cambridge, MA USA · $108–187K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4353656009)
+2026-08-03 → 2026-10-10 · materials-science · Cambridge, MA USA · $108–187K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4353656009)
 
 <details><summary>Description</summary>
 
@@ -935,7 +935,7 @@ What You'll Be Building
 
 ### Scientist II/Senior Scientist, Computational Biophysics (2026-08-03)
 
-2026-08-03 → open · materials-science · Cambridge, MA USA; London, UK; San Francisco, CA USA · $141–218K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4340155009)
+2026-08-03 → 2026-10-10 · materials-science · Cambridge, MA USA; London, UK; San Francisco, CA USA · $141–218K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4340155009)
 
 <details><summary>Description</summary>
 
@@ -963,7 +963,7 @@ What You'll Be Building
 
 ### Research Scientist I/II, Computational Organic Electronics (2026-08-21)
 
-2026-08-21 → open · materials-science · Cambridge, MA USA · $176–304K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4376824009)
+2026-08-21 → 2026-10-10 · materials-science · Cambridge, MA USA · $176–304K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4376824009)
 
 <details><summary>Description</summary>
 
@@ -1066,7 +1066,7 @@ What You'll Be Building
 
 ### Scientist I/II, X-ray Diffraction Characterization (2026-09-14)
 
-2026-09-14 → open · materials-science · Cambridge, MA USA · $108–170K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4378385009)
+2026-09-14 → 2026-10-10 · materials-science · Cambridge, MA USA · $108–170K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4378385009)
 
 <details><summary>Description</summary>
 
@@ -1130,7 +1130,7 @@ What You'll Be Building
 
 ### Scientist II, Silicon Photonics (2026-09-14)
 
-2026-09-14 → open · materials-science · Cambridge, MA USA · $128–170K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4383465009)
+2026-09-14 → 2026-10-10 · materials-science · Cambridge, MA USA · $128–170K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4383465009)
 
 <details><summary>Description</summary>
 
@@ -1154,33 +1154,11 @@ What You'll Be Building
 
 </details>
 
-<a id="scientist-ii-senior-scientist-bioml-2026-09-15"></a>
-
-### Scientist II/ Senior Scientist, BioML (2026-09-15)
-
-2026-09-15 → open · materials-science · San Francisco, CA USA · $228–358K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4395729009)
-
-<details><summary>Description</summary>
-
-**Your Impact at LILA**
-Lila is building a platform where AI and automation work together to solve the hardest problems in biomedicine. Within Life Sciences AI (LSAI), we are building the loop where AI, automation and experimental biology co-evolve.
-We are seeking a Scientist II/ Senior Scientist, BioML to work at the intersection of mechanistic modeling and experimental design. Helping build the biological mechanism layer of that loop: reasoning systems that take a mechanistic hypothesis apart into what must be true for it to hold, judge what the existing evidence actually settles, and identify what remains open. You will encode what good mechanistic adjudications look like and build the evaluations that measure a system against them.
-Then you will help close the loop: at Lila, when the evidence to ground or test a system does not exist, we generate it. You will design experimental campaigns that anchor these systems in real measurement, and own the analysis of the data that comes back. The core of this role is to decide what is worth measuring and closing that loop.
-The ideal candidate brings strong hands-on experience in computational biology, BioML, or applied ML for biological data, and can partner effectively with experimental scientists, ML researchers, and platform engineers. This person will help define tractable scientific questions, design rigorous analyses, interpret model outputs in biological context, and contribute to workflows that connect computational predictions with experimental decisions.
-This is an individual contributor role for a scientist who wants to drive meaningful applied work in a fast-moving, interdisciplinary environment. The role will emphasize execution, scientific judgment, and cross-functional collaboration rather than group leadership or owning the broader platform direction.
-What You'll Be Building
-- Encode mechanistic reasoning into systems, and build the evaluations that hold them to it. Turn how a good scientist decomposes a hypothesis — what must be established, in what order, what distinguishes the live alternatives — into structured frameworks and reasoning workflows that operate without you in the loop. Define what a good answer is, and score whether a system reached it for the right reason rather than a plausible-sounding one.
-- Analyze the biological data that grounds these systems. Hands-on analysis of single-cell, perturbation, proteomics imaging, and genetic data: build the pipelines that turn raw measurement into model-ready evidence, run the quality control and annotation-stability analyses that determine how much weight a given fact should carry, and produce the quantitative results the reasoning layer depends on.
-
-*(truncated: full text in `data/job_postings.jsonl`)*
-
-</details>
-
 <a id="scientist-ii-senior-scientist-solid-state-materials-2026-09-28"></a>
 
 ### Scientist II/Senior Scientist, Solid-State Materials (2026-09-28)
 
-2026-09-28 → open · materials-science · Cambridge, MA USA · $126–198K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4271809009)
+2026-09-28 → open · materials-science · Cambridge, MA USA · $128–198K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4271809009)
 
 <details><summary>Description</summary>
 
@@ -1209,7 +1187,7 @@ What You'll Be Building
 
 ### Associate Scientist/Scientist I, Translational Biology (2026-09-29)
 
-2026-09-29 → open · materials-science · Cambridge, MA USA · $88–144K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4415281009)
+2026-09-29 → 2026-10-10 · materials-science · Cambridge, MA USA · $88–144K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4415281009)
 
 <details><summary>Description</summary>
 
@@ -1222,6 +1200,136 @@ What You'll Be Building
 - Prepare and process tissues from in vitro and in vivo studies for downstream analysis (flow, ELISA, multiplex, qPCR), including homogenization, protein/RNA extraction, and lysate preparation; ensure high viability and yield for cross-species flow readouts.
 - Drive flow-based readouts for LNP and delivery system performance across species and tissues, translating complex cytometry data into actionable insights that shape project direction.
 - Run in vitro assays evaluating LNP and delivery system performance across readouts including IncuCyte, uptake, expression, knockdown, cytotoxicity, and innate immune activation.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="co-op-agentic-simulations-for-materials-science-2026-10-26"></a>
+
+### Co-Op, Agentic Simulations for Materials Science (2026-10-26)
+
+2026-10-26 → open · materials-science · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4465059009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Join our physical sciences team to contribute to developing ML- and agent-driven infrastructure that enables Lila's scientific superintelligence to autonomously construct, execute, and interpret complex physics simulations and apply these to real-world scientific problems in materials science and chemistry. You will work on projects involving one of these areas: enabling AI agents to reason over and orchestrate simulations, developing ML methods to accelerate atomistic simulations, and leveraging agentic simulations for applications in materials discovery.
+What You'll Be Building
+- Contribute to projects involving one of these areas: AI agents for simulations, ML models for atomistic simulations, and in silico materials discovery.
+- Develop methods and workflows for in silico materials discovery that connect physics-based simulations, generative models, and agentic AI systems.
+- Build intelligent pipelines where AI agents can design, launch, interpret, and refine simulations autonomously.
+- Design new methods to accelerate simulations with ML-based surrogate models.
+- Collaborate with computational scientists, machine learning experts, and platform engineers to integrate in silico discovery pipelines into Lila's broader scientific superintelligence ecosystem.
+- Currently enrolled in an MS or PhD program in CS, Materials Science, Chemistry, Chemical Engineering, Physics, or a related field (exceptional BS candidates with research experience considered)
+- Proficiency in Python, deep learning frameworks and end-to-end workflow deployment
+- Evidence of applied ML research work in physical sciences including method development, model training and evaluation, and sound code practices
+- Strong communication and presentation skills, capable of conveying technical information in a clear and thorough manner
+- Eager to work with highly skilled and dynamic teams in a fast-paced, entrepreneurial, and technical setting
+
+**Bonus Points For**
+- Prior experience and publications in one or more of these areas: ML interatomic potential development, LLMs for materials science and chemistry, Generative models for materials, High-throughput computational materials discovery
+- Contributions to open-source simulation or ML infrastructure and software
+- Familiarity with materials science simulation codes and workflow orchestration frameworks
+
+</details>
+
+<a id="co-op-characterization-electrodeposited-material-2026-10-26"></a>
+
+### Co-Op, Characterization Electrodeposited Material (2026-10-26)
+
+2026-10-26 → open · materials-science · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4462616009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila Sciences is hiring a co-op to join the Materials Science team within the Autonomous Science Platform. You will characterize electrodeposited metal films and develop the measurement methods that make those results repeatable. Deposition is handled by other scientists on the team; your focus is measurement, method development, and data quality.
+The role spans electrical, surface, structural, and mechanical techniques: four-point probe for sheet resistance and resistivity, laser confocal metrology for thickness, step height, and roughness, XRD and EBSD for phase, texture, and grain structure, and hardness testing for mechanical properties. Much of the work is standing these methods up: defining sample prep, acquisition settings, and acceptance criteria so results hold across operators and sample batches.
+You will work alongside scientists and engineers in a lab built for high-throughput, automated experimentation, and your protocols will feed directly into how these measurements get scaled.
+What You'll Be Building
+- Develop sample prep and measurement protocols for general characterization tools on electrodeposited films: four-point probe, hardness testing, and SEM/EBSD.
+- Prepare samples for SEM and EBSD (mounting, polishing, surface cleanup)
+- Run four-point probe, laser confocal metrology, and hardness measurements
+- Analyze XRD data (phase ID, texture, peak shift, crystallite size) and EBSD data (grain size, orientation, texture)
+- Validate measurement repeatability and establish data quality criteria
+- Analyze and visualize characterization data, then document methods and failure modes
+- Pursuing a bachelor's, master's, or PhD in Materials Science, Physics, Chemistry, Mechanical/Chemical Engineering, or a related field
+- Hands-on experience operating materials characterization instruments in a lab
+- Hands-on experience with hardness testing (micro- or nano-indentation, or others)
+- Hands-on experience with metallographic or SEM sample prep
+- Experience analyzing XRD data
+- Working knowledge of thin films, metal microstructure, or surface metrology
+- Careful experimental technique and detailed record keeping
+- Available for the full Spring co-op term, January through May
+
+**Bonus Points For**
+- Master's or PhD candidates preferred
+- Python for data analysis and visualization
+- Experience analyzing EBSD data (e.g., MTEX, OIM, AZtec Crystal)
+- Hands-on SEM and/or FIB experience
+- Direct experience with four-point probe, optical profilometry, or laser confocal systems
+- Familiarity with electrodeposited metals or electrochemical materials processing
+- Experience developing or qualifying a new measurement method (e.g., gauge R&R)
+- Exposure to automated or high-throughput laboratory workflows
+
+</details>
+
+<a id="co-op-materials-science-heterogeneous-catalysis-2026-10-26"></a>
+
+### Co-Op, Materials Science, Heterogeneous Catalysis (2026-10-26)
+
+2026-10-26 → open · materials-science · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4465077009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+As a Co-Op in Materials Science, Heterogeneous Catalysis, you will join Lila's Materials Science team at our Alewife site to help build and run high-throughput workflows for catalyst synthesis, characterization, and performance testing.
+You will work hands-on in the lab: preparing catalyst samples, running reactor tests, and analyzing the resulting data for trends in structure, composition, and catalytic performance. You will work alongside scientists, automation engineers, and data scientists, and you will see how experimental work connects to AI-guided materials discovery.
+This is a practical, lab-based co-op suited to a graduate student who wants real ownership of experiments and exposure to automated, data-rich science.
+What You'll Be Building
+- Synthesize heterogeneous catalysts and prepare samples for performance testing
+- Run batch and flow reactor tests, measuring activity, selectivity, and stability
+- Characterize materials using techniques such as XRD, BET, TGA, or chemisorption
+- Analyze experimental data to identify structure and composition trends
+- Support automated and high-throughput synthesis workflows with the engineering team
+- Document protocols and results, and present findings to the team
+- Currently enrolled in a Masters or PhD program in Chemistry, Chemical Engineering, Materials Science, or a related field
+- Hands-on laboratory experience with materials synthesis or catalyst testing
+- Working knowledge of common characterization techniques (XRD, BET, TGA, FTIR, or similar)
+- Ability to handle chemicals safely and follow lab safety protocols
+- Strong attention to detail in experimental execution and record keeping
+- Clear written and verbal communication of experimental results
+
+**Bonus Points For**
+- Experience with batch or flow reactors, or gas sorption measurements
+- Exposure to high-throughput experimentation or lab automation platforms
+- Data analysis or scripting in Python, R, or MATLAB
+- Coursework or research involving zeolites, MOFs, or other porous materials
+
+</details>
+
+<a id="research-scientist-soft-matter-simulations-2026-11-10"></a>
+
+### Research Scientist, Soft Matter Simulations (2026-11-10)
+
+2026-11-10 → open · materials-science · Cambridge, MA USA; San Francisco, CA USA · $176–304K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4465081009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Your role will involve applying soft matter physics and molecular simulation expertise to accelerate the discovery, optimization, and understanding of complex soft matter systems. You will use coarse-grained and atomistic modeling, mesoscale simulation, analytical theory, and agentic AI systems to investigate polymers, colloids, surfactants, gels, liquid crystals, and formulated fluid systems with direct relevance to commercial applications.
+You will work at the intersection of physics-based simulation, AI/ML, and autonomous scientific workflows. The focus is on using computational insight to identify promising formulations and material compositions, explain structure-property relationships, guide optimization campaigns, and help agents reason over simulation and experimental data in scientifically grounded ways. Desired simulation expertise covers atomistic and coarse-grained molecular dynamics, mesoscale approaches such as dissipative particle dynamics, Monte Carlo sampling, and analytical theory including self-consistent field theory, field theoretic simulation, and liquid state theory.
+This is a hands-on research role for someone who can connect deep soft matter and molecular simulation expertise with software development and practical scientific impact. You will collaborate with computational scientists, AI researchers, software engineers, and experimental teams to turn simulations, models, and scientific reasoning into robust software, agentic frameworks, and closed-loop scientific workflows.
+What You'll Be Building
+- Implement, extend, and deploy atomistic, coarse-grained, and mesoscale simulation capabilities for soft matter systems, including MD, DPD, SCFT, Monte Carlo, and liquid state theory
+- Engineer simulation software with modern scientific libraries, emphasizing testing, modularity, and reproducibility at scale on HPC and cloud infrastructure
+- Translate simulation outputs into descriptors and datasets for ML models, and build predictive models to guide formulation selection and optimization
+- Develop and deploy agentic AI systems that leverage simulation capabilities for autonomous scientific discovery and closed-loop experimentation
+- Communicate physical insights, model limitations, and recommendations to computational, ML, and experimental collaborators
+- PhD in chemical engineering, physics, materials science, chemistry, or a related field (or master's with equivalent experience)
+- Strong background in soft matter physics covering polymers, colloids, surfactants, gels, or liquid crystals, with hands-on expertise in atomistic and coarse-grained MD
+- Working knowledge of at least two of: DPD or other mesoscale methods, Monte Carlo, SCFT, field theoretic simulation, or liquid state theory
+- Strong Python scientific software development skills; fluency with modern practices including version control, testing, code review, and packaging
 
 *(truncated: full text in `data/job_postings.jsonl`)*
 

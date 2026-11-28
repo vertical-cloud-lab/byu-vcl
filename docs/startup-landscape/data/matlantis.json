@@ -42,20 +42,46 @@
       "method": "press",
       "note": "Company Deck (published 2026-03-27): 従業員数 46, as of July 2025",
       "source": "https://speakerdeck.com/matlantis/matlantiszhu-shi-hui-she-company-deck"
+    },
+    {
+      "date": "2025-07-16",
+      "value": 31,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn 'View all 31 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+      "source": "https://web.archive.org/web/20250716130306/https://www.linkedin.com/company/matlantis/",
+      "added": "2026-11-28"
     }
   ],
-  "postings": [],
+  "postings": [
+    {
+      "period": "2026Q4",
+      "new_postings": 0,
+      "method": "job_postings.jsonl",
+      "note": "postings first seen 2026-10-01 to 2026-11-28 (live boards and Wayback)",
+      "source": "https://www.linkedin.com/jobs/search?f_C=82798077&geoId=92000000&location=Worldwide&original_referer="
+    }
+  ],
   "current_openings": {
-    "date": "2026-10-09",
-    "count": 2,
+    "date": "2026-11-28",
+    "count": 1,
     "by_function": {
-      "business-ops": 2
+      "materials-science": 1
     },
     "titles": [
-      "Domestic Account Manager",
-      "Product Manager"
+      "Senior Solutions Scientist"
     ],
-    "source": "https://matlantis.com/en/careers/"
+    "source": "https://www.linkedin.com/jobs/search?f_C=82798077&geoId=92000000&location=Worldwide&original_referer=",
+    "basis": "LinkedIn public job search, logged out, by company ID",
+    "previous": {
+      "date": "2026-10-09",
+      "count": 2,
+      "by_function": {
+        "business-ops": 2
+      },
+      "source": "https://matlantis.com/en/careers/"
+    }
   },
   "people": [
     {

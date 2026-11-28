@@ -48,14 +48,50 @@
    "source": "https://www.sec.gov/Archives/edgar/data/1749021/000174902124000001/primary_doc.xml"
   }
  ],
- "headcount": [],
- "postings": [],
+ "headcount": [
+  {
+   "date": "2024-04-21",
+   "value": 11,
+   "low": 11,
+   "high": 50,
+   "method": "linkedin-band",
+   "note": "LinkedIn 'View all 11 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+   "source": "https://web.archive.org/web/20240421102016/https://www.linkedin.com/company/kebotix",
+   "added": "2026-11-28"
+  },
+  {
+   "date": "2024-08-16",
+   "value": 9,
+   "low": 11,
+   "high": 50,
+   "method": "linkedin-band",
+   "note": "LinkedIn 'View all 9 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+   "source": "https://web.archive.org/web/20240816131509/https://www.linkedin.com/company/kebotix/",
+   "added": "2026-11-28"
+  }
+ ],
+ "postings": [
+  {
+   "period": "2026Q4",
+   "new_postings": 0,
+   "method": "job_postings.jsonl",
+   "note": "postings first seen 2026-10-01 to 2026-11-28 (live boards and Wayback)",
+   "source": "https://www.linkedin.com/jobs/search?f_C=11817157&geoId=92000000&location=Worldwide"
+  }
+ ],
  "current_openings": {
-  "date": "2026-10-09",
+  "date": "2026-11-28",
   "count": 0,
   "by_function": {},
   "titles": [],
-  "source": "https://www.kebotix.com/"
+  "source": "https://www.linkedin.com/jobs/search?f_C=11817157&geoId=92000000&location=Worldwide",
+  "basis": "LinkedIn public job search, logged out, by company ID",
+  "previous": {
+   "date": "2026-10-09",
+   "count": 0,
+   "by_function": {},
+   "source": "https://www.kebotix.com/"
+  }
  },
  "people": [
   {

@@ -52,13 +52,31 @@
       "source": "https://web.archive.org/web/20250220101541/https://www.linkedin.com/company/altrove-ai/"
     }
   ],
-  "postings": [],
+  "postings": [
+    {
+      "period": "2026Q4",
+      "new_postings": 0,
+      "method": "job_postings.jsonl",
+      "note": "postings first seen 2026-10-01 to 2026-11-28 (live boards and Wayback)",
+      "source": "https://www.linkedin.com/jobs/search?f_C=103460693&geoId=92000000&location=Worldwide"
+    }
+  ],
   "current_openings": {
-    "date": "2026-10-09",
-    "count": null,
+    "date": "2026-11-28",
+    "count": 0,
     "by_function": {},
     "titles": [],
-    "source": "https://altrove.ai/about"
+    "source": "https://www.linkedin.com/jobs/search?f_C=103460693&geoId=92000000&location=Worldwide",
+    "basis": "LinkedIn public job search, logged out, by company ID",
+    "previous": {
+      "date": "2026-10-10",
+      "by_function": {
+        "business-ops": 1
+      },
+      "source": "https://altrove.ai/about",
+      "count": 1,
+      "note": "recounted from the 2026-10-10 live snapshot"
+    }
   },
   "people": [
     {

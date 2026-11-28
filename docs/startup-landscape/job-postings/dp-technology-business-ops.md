@@ -6,7 +6,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Compliance Manager (2022-02-21)
 
-2022-02-21 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7066999991944464677/detail)
+2022-02-21 → 2026-10-10 · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7066999991944464677/detail)
 
 <details><summary>Description</summary>
 
@@ -44,7 +44,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### AI4S Drug Algorithm Researcher (2022-11-30)
 
-2022-11-30 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7171701166521846053/detail)
+2022-11-30 → 2026-10-10 · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7171701166521846053/detail)
 
 <details><summary>Description</summary>
 
@@ -65,7 +65,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### AI4S Drug Algorithm Researcher (Intern) (2022-11-30)
 
-2022-11-30 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7171703318044133640/detail)
+2022-11-30 → 2026-10-10 · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7171703318044133640/detail)
 
 <details><summary>Description</summary>
 
@@ -85,7 +85,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### AI4S Evangelist (2023-05-04)
 
-2023-05-04 → open · business-ops · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7229217884504525060/detail)
+2023-05-04 → 2026-10-10 · business-ops · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7229217884504525060/detail)
 
 <details><summary>Description</summary>
 
@@ -104,7 +104,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### HR Intern (2023-05-16)
 
-2023-05-16 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7233596458573072672/detail)
+2023-05-16 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/305722/position/7514678232375003431/detail)
 
 <details><summary>Description</summary>
 
@@ -114,7 +114,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 4.协助组织、安排面试及跟进后续环节；
 
 **Requirements (职位要求)**
-1.2027届毕业的同学，对人力资源有充足兴趣；
+3.能连续实习4个月及以上，每周出勤4天及以上。
 
 </details>
 
@@ -122,7 +122,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Key Account Manager, New Energy (2023-07-20)
 
-2023-07-20 → open · business-ops · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7257728424037681447/detail)
+2023-07-20 → 2026-10-10 · business-ops · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7257728424037681447/detail)
 
 <details><summary>Description</summary>
 
@@ -164,7 +164,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### AI4S User Growth Operations Specialist (2023-12-12)
 
-2023-12-12 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7311589854507911465/detail)
+2023-12-12 → 2026-10-10 · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7311589854507911465/detail)
 
 <details><summary>Description</summary>
 
@@ -177,7 +177,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Novel Algorithms Researcher (2023-12-26)
 
-2023-12-26 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7316740954421004583/detail)
+2023-12-26 → 2026-10-10 · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7316740954421004583/detail)
 
 <details><summary>Description</summary>
 
@@ -200,7 +200,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### AI4S Key Account Manager (2024-02-19)
 
-2024-02-19 → open · business-ops · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7337255016418462003/detail)
+2024-02-19 → 2026-10-10 · business-ops · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7337255016418462003/detail)
 
 <details><summary>Description</summary>
 
@@ -223,26 +223,20 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Content Operations Intern (Research) (2024-03-21)
 
-2024-03-21 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7348756420734601491/detail)
+2024-03-21 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/305722/position/7514676103505316106/detail)
 
 <details><summary>Description</summary>
 
 **Job description (职位描述)**
-1. 负责AI科研工具在抖音、小红书、B站、视频号等平台的达人挖掘与筛选，重点拓展科研垂类达人；
-4. 持续关注科研类、AI类内容更新热点，总结平台爆款内容结构，产出可复用的内容脚本与投放经验；
-5. 参与AI科研工具相关内容方向的探索，帮助更多科研用户了解并使用AI工具提升科研效率。
+岗位描述：
+1.负责B站、知乎、视频号、抖音、小红书等新媒体账号的日常维护：包括内容策划编辑、发布、推广及数据评估；
+3.负责拓展抖音/公众号/小红书/B站等平台上相关的KOC、KOL等；
+4.负责拓展及组织校园类活动、讲座等；
+5.以上几项工作内容，不同阶段各有侧重，灵活安排。
 
 **Requirements (职位要求)**
-1. 硕士及以上在读，理工科或科研相关专业背景，深刻理解科研场景和科研痛点；
-2. 每周实习5天及以上，可长期实习；
-3. 抖音、小红书、B站等平台深度用户，对科研工具、效率工具或AI相关内容有兴趣；
-5. 熟练使用常见数据分析工具（如 Excel / Google Sheets / Python / SQL 等至少一种）；
-
-加分项
-1. 有达人挖掘、商务洽谈类实习经验或自媒体运营经验（如抖音、小红书、B站等）；
-2. 对AI for Science或AI工具类产品有持续关注；
-3. 具备 AI 全流程内容创作能力，能独立使用大模型完成选题、撰稿、润色、多平台适配；熟练使用 AI 进行竞品分析、用户洞察与内容策略优化，具备多模态内容生成能力（图文 + 短视频）；
-4. 拥有成熟的 AI 工作流，能在保证质量前提下大幅提升内容产出效率。
+1.本科及以上学历，有科研背景，生化环材等领域课题组成员优先；
+2.每周至少4天，需要到公司现场实习；
 
 </details>
 
@@ -250,7 +244,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Large-Model Algorithm Intern (2024-07-22)
 
-2024-07-22 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7394295650832042266/detail)
+2024-07-22 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/305722/position/7514672699878639922/detail)
 
 <details><summary>Description</summary>
 
@@ -316,12 +310,14 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 <details><summary>Description</summary>
 
 **Job description (职位描述)**
-1. 负责公司知识产权（专利、商标等）全流程管理，结合公司AI for Science核心业务，制定布局策略，挖掘可专利技术点，推动技术成果知识产权化。
-2. 开展知识产权风险预警、FTO分析及侵权监测，规避业务各环节知识产权风险，完善相关管理制度与合规流程。
+1. 负责 AI for Science 相关技术方向的专利布局与申请管理，围绕科学大模型、药物与材料计算设计、分子模拟、自动化实验室等核心业务，推动算法、平台架构及数据处理方法的体系化保护。
+2. 独立牵头 FTO 分析及竞品专利监测，制定并推进海外知识产权布局策略。
 
 **Requirements (职位要求)**
-1. 本科及以上学历，有物理/化学/机械及法学交叉学科背景优先，具备专利代理师资格者优先。
-5. 加分项：有AI for Science相关领域经验、英文能力优秀，或有高新技术企业相关知识产权工作经验。
+1. 本科及以上学历，具备理工科背景，3年以上知产经验。
+2. 熟悉 AI for Science、科学计算、科学软件或自动化实验等领域，能够独立牵头专利布局或 FTO 项目。
+3. 具备专利代理师资格。
+4. 兼具代理机构与科技企业 in-house 经验者优先。
 
 </details>
 
@@ -329,7 +325,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Multimodal Large-Model Algorithm Intern (2024-11-12)
 
-2024-11-12 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7436209213129656587/detail)
+2024-11-12 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/305722/position/7514671978171943204/detail)
 
 <details><summary>Description</summary>
 
@@ -340,7 +336,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 **Requirements (职位要求)**
 1.拥有扎实的编程能力，精通至少一种编程语言；
 3.优秀的文献阅读能力与良好的沟通协作能力；
-4.每周出勤不低于3天，可以base在北京/上海，亦可远程实习。
+4.每周出勤不低于3天。
 
 加分项：
 1.熟悉多模态相关的算法和技术，具备多模态大模型训练经验，如QwenVL、InternVL、KimiVL、Gemma等
@@ -356,11 +352,9 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 <details><summary>Description</summary>
 
 **Job description (职位描述)**
-你的机遇：
 3. 与产品和开发团队紧密合作，参与优化产品的用户界面（UI）和用户体验（UX），提升整体视觉效果；
 
 **Requirements (职位要求)**
-我们期待这样的你：
 1. 研究生在读，视觉传达设计、平面设计、艺术设计等相关专业；
 2. 熟练运用Photoshop、Illustrator、figma等设计软件，具备一定的手绘和创意能力；
 4.可以连续实习3个月及以上，每周到岗3-5天。
@@ -376,7 +370,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### UX Designer (2024-12-30)
 
-2024-12-30 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7454174828062378290/detail)
+2024-12-30 → open · business-ops · Shenzhen · [source](https://dptechnology.jobs.feishu.cn/index/position/7581725280026151209/detail)
 
 <details><summary>Description</summary>
 
@@ -388,7 +382,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 加分项：
 1.有 AI、游戏相关行业工作背景。
 2.多维设计能力：AIGC、插画、C4D等。
-3.有移动端设计经验。
+3.Web、移动、小程序等多端设计适配经验。
 简历投递请附带作品集。
 
 </details>
@@ -808,7 +802,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Life Sciences Strategy and Development Analyst (2025-07-28)
 
-2025-07-28 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7532041537720715583/detail)
+2025-07-28 → 2026-10-10 · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7532041537720715583/detail)
 
 <details><summary>Description</summary>
 
@@ -824,7 +818,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Sales Manager (2025-07-30)
 
-2025-07-30 → open · business-ops · Shenzhen · [source](https://dptechnology.jobs.feishu.cn/index/position/7532754777785239844/detail)
+2025-07-30 → 2026-10-10 · business-ops · Shenzhen · [source](https://dptechnology.jobs.feishu.cn/index/position/7532754777785239844/detail)
 
 <details><summary>Description</summary>
 
@@ -844,7 +838,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### CADD Intern (2025-09-02)
 
-2025-09-02 → open · business-ops · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7545439902394091815/detail)
+2025-09-02 → 2026-10-10 · business-ops · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7545439902394091815/detail)
 
 <details><summary>Description</summary>
 
@@ -877,7 +871,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Multimodal Large-Model Algorithm Intern (Shanghai) (2025-09-19)
 
-2025-09-19 → open · business-ops · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7551731660225808676/detail)
+2025-09-19 → 2026-10-10 · business-ops · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7551731660225808676/detail)
 
 <details><summary>Description</summary>
 
@@ -1185,7 +1179,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Research Agent Product Manager (2025-11-12)
 
-2025-11-12 → open · business-ops · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7571752753119365426/detail)
+2025-11-12 → 2026-10-10 · business-ops · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7571752753119365426/detail)
 
 <details><summary>Description</summary>
 
@@ -1209,7 +1203,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Research Agent Product Intern (2025-11-13)
 
-2025-11-13 → open · business-ops · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7572158696726989098/detail)
+2025-11-13 → 2026-10-10 · business-ops · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7572158696726989098/detail)
 
 <details><summary>Description</summary>
 
@@ -1289,17 +1283,34 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Project Manager (2025-11-29)
 
-2025-11-29 → open · business-ops · Shenzhen · [source](https://dptechnology.jobs.feishu.cn/index/position/7578145452089248036/detail)
+2025-11-29 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7621038264191338778/detail)
 
 <details><summary>Description</summary>
 
 **Job description (职位描述)**
-岗位职责：​
+一、岗位职责
+1. 项目管理与交付：负责 AI4S（AI for Science）相关项目的整体管理与交付，包括需求分析、项目计划制定、资源协调、进度控制及风险管理，确保项目在质量、成本、进度目标内顺利完成。
+2. 需求与方案管理：参与AI4S相关解决方案设计，包括算力平台、AI模型应用、数据平台等相关系统建设，与客户、科研团队、算法团队及工程团队沟通，将科研需求转化为可实施的技术方案与项目计划。
+3. 跨团队协作：负责内外部沟通，协调客户方科研团队、IT团队及公司内部技术团队等多角色协作。
 
 **Requirements (职位要求)**
-任职要求：​
-1.本科及以上学历，5年及以上工作经验，生化环材专业优先；​
-2.掌握项目管理基础知识（PMP／敏捷开发加分）；能使用原型工具输出低保真／高保真原型；具备优秀的PPT制作与汇报能力；​
+二、岗位要求
+1. 本科及以上学历，计算机、人工智能、数学、物理、材料、生物信息等相关专业优先。3年以上项目管理经验，有AI、数据平台或科研项目经验优先。
+2. 了解 AI / 机器学习 / 深度学习基本原理，熟悉 AI平台或算力平台项目，了解 AI4S应用领域，如：材料科学 / 生物医药 / 化学 / 计算物理等。熟悉 Python / AI框架（PyTorch / TensorFlow），HPC / GPU算力平台，Kubernetes / 云计算平台，数据平台或数据治理（不要求写代码，但要能理解技术架构）。
+3. 具备较强的项目推进能力与问题解决能力；具备良好的沟通能力，能够协调科研团队与工程团队；能够在复杂项目环境中进行多任务管理；有大型科研项目 / AI平台项目 / 算力中心项目经验优先。
+4.加分项
+具备以下经验之一优先：
+有AI4S项目经验（AI for Science）
+有高校/科研院所项目经验
+有算力中心/AI平台/HPC项目经验
+有科研软件/仿真软件项目经验
+持有PMP项目管理认证
+
+我们能提供：
+参与前沿AI4S科研项目
+与顶级科研团队合作机会
+接触大规模GPU算力/AI平台/科学计算
+快速成长的技术环境与行业资源
 
 </details>
 
@@ -1307,7 +1318,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Procurement Specialist (2025-12-04)
 
-2025-12-04 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7579839739219757322/detail)
+2025-12-04 → 2026-10-10 · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7579839739219757322/detail)
 
 <details><summary>Description</summary>
 
@@ -1460,7 +1471,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Research Agent Product Manager (International) (2026-01-22)
 
-2026-01-22 → open · business-ops · Beijing, Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7598025293173295423/detail)
+2026-01-22 → 2026-10-10 · business-ops · Beijing, Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7598025293173295423/detail)
 
 <details><summary>Description</summary>
 
@@ -1903,6 +1914,23 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 </details>
 
+<a id="assistant-to-the-president-2026-05-14"></a>
+
+### Assistant to the President (2026-05-14)
+
+2026-05-14 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7639691115671636251/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+6. 其他事务：完成总裁办交办的其他工作。
+
+**Requirements (职位要求)**
+1. 本科及以上学历，化学、物理等基础学科相关专业，或经济管类专业优先，有科研背景优先；
+2. 3年及以上科技型企事业单位总助或科研助理经验，有AI4S相关行业从业经验优先；
+
+</details>
+
 <a id="international-product-intern-2026-05-15"></a>
 
 ### International Product Intern (2026-05-15)
@@ -2161,7 +2189,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Quantum Science Agent Novel Algorithms Intern (2026-07-29)
 
-2026-07-29 → open · business-ops · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7667862790233835819/detail)
+2026-07-29 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7667862790233835819/detail)
 
 <details><summary>Description</summary>
 
@@ -2391,6 +2419,219 @@ POC 与项目交付
 - 有裂变增长、私域运营的可验证案例；
 - 理工科背景，或对 AI for Science 有真实兴趣，能理解学生在化学、数学、医药等场景下的真实需求；
 - 学生阶段有校园组织、社团运营经历。
+
+</details>
+
+<a id="ai4ai-account-sales-2026-10-14"></a>
+
+### AI4AI Account Sales (2026-10-14)
+
+2026-10-14 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7696344107396565299/detail)
+
+<details><summary>Description</summary>
+
+**Requirements (职位要求)**
+1.对模型推理业务有一定的了解，对驾驭工程及智能体等软件有一定的使用经验，如workbuddy，codex等；
+3.对GPU、存储、网络等等硬件的管理调度平台有一定的了解，并对主流厂商的云产品、定价及售卖模式有一定的了解；
+
+</details>
+
+<a id="ai4ai-solutions-2026-10-14"></a>
+
+### AI4AI Solutions (2026-10-14)
+
+2026-10-14 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7696346618064701734/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+2.支持大型项目的解决方案，项目规模超1000万。
+
+**Requirements (职位要求)**
+2.有使用驾驭工程，智能体等AI软件的经验，并对主流的产品和技术优势有比较清晰的认知；
+4.对科学语料的数据加工软件及产品有一定的了解；
+
+</details>
+
+<a id="corporate-culture-and-training-specialist-2026-10-15"></a>
+
+### Corporate Culture and Training Specialist (2026-10-15)
+
+2026-10-15 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7696776009677834559/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+2. 牵头公司级文化活动的全流程策划与执行；
+6. 结合员工调研与业务反馈，识别文化落地和培训运营中的问题，协同业务部门及HR部门推进方案落地和持续改进。
+
+**Requirements (职位要求)**
+1. 统招本科及以上学历，2-3年企业文化活动或培训组织相关工作经验；
+4. 组织协调能力强，能同时管理多个项目节点；
+5. 性格开朗外向，善于活跃气氛，有感染力；
+6. 会视频剪辑或使用AI工具辅助内容创作者优先。
+
+</details>
+
+<a id="brand-content-intern-2026-10-19"></a>
+
+### Brand Content Intern (2026-10-19)
+
+2026-10-19 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7698379278876674347/detail)
+
+<details><summary>Description</summary>
+
+**Requirements (职位要求)**
+1. 理解技术与 AI4S：对科技、科研或 AI 有兴趣，愿意主动了解公司的技术、产品和应用场景；学习能力强，能与产研团队有效沟通。
+4. AI-native，善用工具：乐于尝试 AI 工具，并能用于资料研究、内容整理、创意发散和效率提升；能够核查 AI 生成内容，确保产出准确、可靠。
+加分项
+3. 英文阅读能力较好，能够阅读技术和行业材料；
+4.  熟练使用 PowerPoint、Excel 及常见 AI 工具。
+
+</details>
+
+<a id="design-intern-2026-10-23"></a>
+
+### Design Intern (2026-10-23)
+
+2026-10-23 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7699687197327575359/detail)
+
+<details><summary>Description</summary>
+
+**Requirements (职位要求)**
+1. 本科及以上在读，视觉传达设计、平面设计、艺术设计等相关专业；
+2. 熟练运用Photoshop、Illustrator、figma等设计软件，具备一定的手绘和创意能力；
+4.可以连续实习3个月及以上，每周到岗4-5天。
+加分项：
+1. 有高科技行业品牌设计相关实习经历；
+2. 熟悉3D建模和动画设计软件，如Cinema 4D、Blender等；
+3. 可以使用 Midjourney, Stable Diffusion 等AIGC设计工具辅助创意设计。
+投递请附上相关作品集。
+
+</details>
+
+<a id="receptionist-2026-10-23"></a>
+
+### Receptionist (2026-10-23)
+
+2026-10-23 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7699701132374149385/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+7. 完成上级交办的其他行政支持类工作。
+
+**Requirements (职位要求)**
+1. 本科及以上学历，1 年以上前台或行政相关工作经验，优秀应届生亦可。
+3. 熟练使用 Office（Word / Excel / PPT）及常见办公设备和 IM 工具。
+5. 工作积极主动，注重细节，具备一定保密意识。
+
+</details>
+
+<a id="organizational-development-specialist-2026-10-26"></a>
+
+### Organizational Development Specialist (2026-10-26)
+
+2026-10-26 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7700947697792796970/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+5. 参与其他OD项目支持。
+
+**Requirements (职位要求)**
+1. 本科及以上学历，3年左右组织发展、绩效、人才发展或文化相关工作经验；
+2. 具备COE模块（组织发展/绩效/人才发展/文化等1~2个）的设计或推动经验；
+5. 主动性强，对组织发展工作有热情，抗压能力好。
+
+</details>
+
+<a id="solutions-intern-2026-10-27"></a>
+
+### Solutions Intern (2026-10-27)
+
+2026-10-27 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7701286762811967770/detail)
+
+<details><summary>Description</summary>
+
+**Requirements (职位要求)**
+1.2027年及以后毕业，计算机科学、人工智能、软件工程等相关专业本科及以上在读；
+2.每周实习不少于4天；
+4.有使用Agent、智能体等AI产品的经验，对主流产品的特点有一定认知；
+6.对科学语料数据加工相关工具或产品有基本了解；
+
+</details>
+
+<a id="k12-camp-operations-lead-2026-11-02"></a>
+
+### K12 Camp Operations Lead (2026-11-02)
+
+2026-11-02 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7703500225189202186/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+4. 产出并迭代招生物料与话术（家长沟通、学校/机构方案、FAQ、往期案例），用 AI 批量生产并做版本管理；
+8. 以项目制方式与渠道、销售、内容、产品等板块协同，不靠行政汇报线、用影响力调动资源；每场结项复盘，沉淀 SOP、话术库与供应商库，把打法变成可复用的资产。
+
+**Requirements (职位要求)**
+加分项
+- 用 AI 工具搭过运营工作流（报名自动化、物料量产、数据看板、社群机器人），或理工科背景、对 AI for Science 有真实兴趣。
+
+</details>
+
+<a id="administration-and-hr-intern-2026-11-03"></a>
+
+### Administration and HR Intern (2026-11-03)
+
+2026-11-03 → open · business-ops · Yibin · [source](https://dptechnology.jobs.feishu.cn/index/position/7703824968798243113/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+行政工作
+4.负责来访接待、快递收发、等日常行政事务。
+5.负责行政类费用台账登记、报销及数据统计工作。
+人事工作（辅助）
+8.完成上级交办的其他人事相关工作。
+
+**Requirements (职位要求)**
+1.本科及以上学历在读，行政管理、人力资源、工商管理等相关专业优先。
+2.每周出勤4天以上，实习期不少于3个月。
+3.熟练使用Office办公软件（Word、Excel、PPT），具备基本的文档处理和数据分析能力。
+5.沟通表达能力好，性格开朗，善于与人协作配合。
+
+</details>
+
+<a id="strategy-researcher-semiconductor-materials-2026-11-04"></a>
+
+### Strategy Researcher, Semiconductor Materials (2026-11-04)
+
+2026-11-04 → open · business-ops · Beijing, Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7704241398132508982/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+5. 作为战略BP/管培生，逐步承担跨部门协调和专项推进工作。
+
+**Requirements (职位要求)**
+1. 本科及以上学历，材料、化学、高分子等相关专业背景；
+4. 优秀的对外能力，能够维护外部合作关系；
+6. 有创业公司或业务落地经验优先。
+
+</details>
+
+<a id="administration-supervisor-fit-out-and-asset-management-2026-11-09"></a>
+
+### Administration Supervisor (Fit-Out and Asset Management) (2026-11-09)
+
+2026-11-09 → open · business-ops · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7706139145320794409/detail)
+
+<details><summary>Description</summary>
+
+**Requirements (职位要求)**
+1. 本科及以上学历，行政管理、工程管理、土木工程等相关专业优先；
+6. 工作细致，责任心强，能承受一定工作压力。
 
 </details>
 

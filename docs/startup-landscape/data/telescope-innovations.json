@@ -49,14 +49,65 @@
       "source": "https://finder.techleap.nl/news/feed/telescope-innovations-raises-1-29m-funding"
     }
   ],
-  "headcount": [],
-  "postings": [],
+  "headcount": [
+    {
+      "date": "2024-12-17",
+      "value": 21,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn 'View all 21 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+      "source": "https://web.archive.org/web/20241217023835/https://www.linkedin.com/company/telescope-innovations/",
+      "added": "2026-11-28"
+    },
+    {
+      "date": "2026-04-03",
+      "value": 27,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn 'View all 27 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+      "source": "https://web.archive.org/web/20260403173553/https://www.linkedin.com/company/telescope-innovations",
+      "added": "2026-11-28"
+    },
+    {
+      "date": "2026-08-19",
+      "value": 28,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn 'View all 28 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+      "source": "https://web.archive.org/web/20260819123801/https://www.linkedin.com/company/telescope-innovations",
+      "added": "2026-11-28"
+    }
+  ],
+  "postings": [
+    {
+      "period": "2026Q4",
+      "new_postings": 0,
+      "method": "job_postings.jsonl",
+      "note": "postings first seen 2026-10-01 to 2026-11-28 (live boards and Wayback)",
+      "source": "https://www.linkedin.com/jobs/search?f_C=76182686&geoId=92000000&location=Worldwide&original_referer="
+    }
+  ],
   "current_openings": {
-    "date": "2026-10-09",
-    "count": null,
-    "by_function": {},
-    "titles": [],
-    "source": "https://telescopeinnovations.com"
+    "date": "2026-11-28",
+    "count": 1,
+    "by_function": {
+      "business-ops": 1
+    },
+    "titles": [
+      "Product Manager"
+    ],
+    "source": "https://www.linkedin.com/jobs/search?f_C=76182686&geoId=92000000&location=Worldwide&original_referer=",
+    "basis": "LinkedIn public job search, logged out, by company ID",
+    "previous": {
+      "date": "2026-10-10",
+      "by_function": {},
+      "source": "https://telescopeinnovations.com",
+      "count": 0,
+      "note": "recounted from the 2026-10-10 live snapshot"
+    }
   },
   "people": [
     {

@@ -2,6 +2,19 @@
 
 Redwood City, CA, US · founded 2013 · materials informatics software · active · [citrine.io](https://citrine.io)
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**Openings.** 1 open on 2026-11-28 on [its job board](https://ats.rippling.com/citrine-informatics/jobs), against 5 on 2026-10-10. 0 new, 4 closed.
+- Closed since 2026-10-10: Business Operations Manager, L3; Customer Success Manager, L3; Data & Artificial Intelligence Research Engineer, L4; Materials Informatics Consultant III.
+
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=3288716&geoId=92000000&location=Worldwide), 2026-11-28): no postings.
+
+- Steve Edkins (Strategy and Operations), on the leadership page in October 2026, is no longer listed. The other seven leaders remain, and the job board is down to a general-application posting. ([source](https://citrine.io/about/))
+<!-- /refresh:2026-11-28 -->
+
 ## Funding timeline
 
 | Date | Round | USD M | Detail | Leads | Source |

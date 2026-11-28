@@ -2,6 +2,29 @@
 
 San Francisco, CA, US · founded 2022 (Dealroom: 2021) · self-driving lab ("physical AI scientists" for biopharma) · active · <https://www.medra.ai>
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**Team size on LinkedIn.** People listing the company, read from the company page (LinkedIn's 'View all N employees'); this counts alumni who never updated their profile and misses staff without one.
+
+| Date | Members | Band | Source |
+| --- | --- | --- | --- |
+| 2025-02-01 | 22 | 2-10 | [Wayback](https://web.archive.org/web/20250201010514/https://www.linkedin.com/company/medra-ai) |
+| 2026-01-01 | 31 | 11-50 | [Wayback](https://web.archive.org/web/20260101094840/https://www.linkedin.com/company/medra-ai) |
+| 2026-02-02 | 29 | 11-50 | [Wayback](https://web.archive.org/web/20260202105315/https://www.linkedin.com/company/medra-ai) |
+| 2026-07-07 | 60 | 11-50 | [Wayback](https://web.archive.org/web/20260707002205/https://www.linkedin.com/company/medra-ai) |
+| 2026-08-17 | 71 | 11-50 | [Wayback](https://web.archive.org/web/20260817181440/https://www.linkedin.com/company/medra-ai) |
+| 2026-10-15 | 77 | 11-50 | [Wayback](https://web.archive.org/web/20261015143217/https://www.linkedin.com/company/medra-ai) |
+
+**Openings.** 15 open on 2026-11-28 on [its job board](https://jobs.ashbyhq.com/medraai), against 15 on 2026-10-10. 3 new, 3 closed.
+- New since 2026-10-10: Forward Deployed Robotics Engineer; Mechanical Engineer - Winter 2026 Internship; Recruiting Coordinator.
+- Closed since 2026-10-10: Business Operations; Robotics Manufacturing Technician; Scientific Operations.
+
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=89739944&geoId=92000000&location=Worldwide&original_referer=), 2026-11-28): 15 postings: Scientist, Biophysical Characterization (SPR/BLI) (San Francisco, CA, posted 2026-08-04); Research Engineer, Post-training (San Francisco, CA, posted 2026-10-02); Mechanical Engineer (San Francisco, CA, posted 2026-05-30); Robotics Software Engineer (San Francisco, CA, posted 2026-07-14); Full Stack Software Engineer (San Francisco, CA, posted 2026-07-14); Recruiting Coordinator (San Francisco, CA, posted 2026-10-13); Research Associate, Protein Purification & Quality Control (San Francisco, CA, posted 2026-08-31); Tech Lead Manager - Full Stack (San Francisco, CA, posted 2026-05-12); Scientist, Cell Biology & Antibody Engineering (San Francisco, CA, posted 2026-05-12); Scientist, Biology (San Francisco, CA, posted 2026-10-06); Systems Test Engineer (San Francisco, CA, posted 2026-07-27); Research Associate - Foundry (San Francisco, CA, posted 2026-06-05) and 3 more.
+<!-- /refresh:2026-11-28 -->
+
 ## Funding timeline
 
 Total disclosed: USD 63M. The company has said it has raised more than USD 60M.

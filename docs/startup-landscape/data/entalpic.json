@@ -70,13 +70,41 @@
       "source": "https://entalpic.ai/"
     }
   ],
-  "postings": [],
+  "postings": [
+    {
+      "period": "2026Q4",
+      "new_postings": 1,
+      "method": "job_postings.jsonl",
+      "note": "postings first seen 2026-10-01 to 2026-11-28 (live boards and Wayback)",
+      "source": "https://entalpic.notion.site/Join-Entalpic-9f29b9a69fb840508cd3f9a7c1c0d057"
+    }
+  ],
   "current_openings": {
-    "date": "2026-10-09",
-    "count": null,
-    "by_function": {},
-    "titles": [],
-    "source": "https://entalpic.notion.site/Join-Entalpic-9f29b9a69fb840508cd3f9a7c1c0d057"
+    "date": "2026-11-28",
+    "count": 4,
+    "by_function": {
+      "materials-science": 3,
+      "ml-research": 1
+    },
+    "titles": [
+      "Computational Chemist — Electronic & Functional Materials (CDI)",
+      "Computational Chemist — Surface Chemistry (CDI)",
+      "Scientific Software Engineer, AI for Materials",
+      "Internship: HPC for Computational Chemistry"
+    ],
+    "source": "https://entalpic.notion.site/Join-Entalpic-9f29b9a69fb840508cd3f9a7c1c0d057",
+    "basis": "company job board (live snapshot)",
+    "previous": {
+      "date": "2026-10-10",
+      "by_function": {
+        "materials-science": 2,
+        "software-eng": 1,
+        "ml-research": 1
+      },
+      "source": "https://entalpic.notion.site/Join-Entalpic-9f29b9a69fb840508cd3f9a7c1c0d057",
+      "count": 4,
+      "note": "recounted from the 2026-10-10 live snapshot"
+    }
   },
   "people": [
     {

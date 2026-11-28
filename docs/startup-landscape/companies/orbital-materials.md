@@ -2,6 +2,25 @@
 
 London, UK (operating subsidiary of Orbital Materials Inc., USA) · founded 2022 · AI-for-materials (computational), with a wet lab · active, rebranded 2026 · [orbitalindustries.com](https://www.orbitalindustries.com) (formerly orbitalmaterials.com)
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**Team size on LinkedIn.** People listing the company, read from the company page (LinkedIn's 'View all N employees'); this counts alumni who never updated their profile and misses staff without one.
+
+| Date | Members | Band | Source |
+| --- | --- | --- | --- |
+| 2026-08-27 | 62 | 11-50 | [Wayback](https://web.archive.org/web/20260827211215/https://www.linkedin.com/company/orbitalindustries/) |
+| 2026-10-06 | 65 | 11-50 | [Wayback](https://web.archive.org/web/20261006201852/https://www.linkedin.com/company/orbitalindustries/) |
+
+**Openings.** 9 open on 2026-11-28 on [its job board](https://jobs.ashbyhq.com/orbitalindustries), against 7 on 2026-10-10. 3 new, 1 closed.
+- New since 2026-10-10: Founding Sales (Science); Supply Chain Manager.
+- Closed since 2026-10-10: Prototype Researcher.
+
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=91545263&geoId=92000000&location=Worldwide), 2026-11-28): 10 postings: Supply Chain Manager (Calgary, Alberta, Canada, posted 2026-11-25); Machine Learning Research Engineer (London, England, United Kingdom, posted 2026-11-06); Founding Sales (Science) (San Francisco, CA, posted 2026-11-19); Founding Sales (Science) (London, England, United Kingdom, posted 2026-11-17); Forward Deployed Engineering Lead (London, England, United Kingdom, posted 2026-11-20); Senior/Staff Software Engineer, Platform (London, England, United Kingdom, posted 2026-11-19); Supply Chain Manager (San Francisco, CA, posted 2026-11-25); Deployment Strategist (London, England, United Kingdom, posted 2026-11-21); Test Engineer (San Francisco, CA, posted 2026-11-26); Communications Lead (London, England, United Kingdom, posted 2026-11-12).
+<!-- /refresh:2026-11-28 -->
+
 ## Funding timeline
 
 | Date | Round | Amount (USD M) | Original | Lead investors | Source |

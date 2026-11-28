@@ -2,7 +2,7 @@
 
 Back to [all companies](README.md) · [company profile](../companies/altrove.md)
 
-**6 postings recovered**, 6 with the full description; 1 still open on 2026-10-10. First seen 2025-10-03, latest 2026-09-24. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**6 postings recovered**, 6 with the full description; 0 still open on 2026-11-28. First seen 2025-10-03, latest 2026-09-24. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
@@ -11,7 +11,7 @@ Back to [all companies](README.md) · [company profile](../companies/altrove.md)
 | 2025-10-18 | 2025-11-18 | [Inorganic Materials Engineer - Manufacturing and Process Design](#inorganic-materials-engineer-manufacturing-and-process-design-2025-10-18) | materials-science |  | France |  |  |  | [Wayback](https://web.archive.org/web/20251118043005/https://portfolio.joinef.com/companies/altrove-2/jobs/60756213-inorganic-materials-engineer-manufacturing-and-process-design) |
 | 2026-04-06 | 2026-04-14 | [ML Engineer](#ml-engineer-2026-04-06) | ml-research |  | Paris, France | PhD |  |  | [Wayback](https://web.archive.org/web/20260414160237/https://jobs.cventures.vc/companies/altrove-2/jobs/73499174-ml-engineer) |
 | 2026-04-24 | 2026-06-10 | [CTO Associate](#cto-associate-2026-04-24) | business-ops |  | Paris, France | PhD/MS | 1 |  | [Wayback](https://web.archive.org/web/20260610180229/https://jobs.cventures.vc/companies/altrove-2/jobs/76190843-cto-associate) |
-| 2026-09-24 | open | [Logistics and Admin Assistant](#logistics-and-admin-assistant-2026-09-24) | business-ops |  | Paris, France |  |  |  | [live](https://portfolio.joinef.com/companies/altrove-2/jobs/94646394) |
+| 2026-09-24 | 2026-10-30 | [Logistics and Admin Assistant](#logistics-and-admin-assistant-2026-09-24) | business-ops |  | Paris, France |  |  |  | [live](https://portfolio.joinef.com/companies/altrove-2/jobs/94646394) [live](https://portfolio.joinef.com/companies/altrove-2/jobs/94646394) |
 
 ## Careers-page captures
 
@@ -160,7 +160,7 @@ We are looking for a Research Scientist/Engineer with strong machine learning fu
 
 ### Logistics and Admin Assistant (2026-09-24)
 
-2026-09-24 → open · business-ops · Paris, France · [source](https://portfolio.joinef.com/companies/altrove-2/jobs/94646394)
+2026-09-24 → 2026-10-30 · business-ops · Paris, France · [source](https://portfolio.joinef.com/companies/altrove-2/jobs/94646394)
 
 <details><summary>Description</summary>
 

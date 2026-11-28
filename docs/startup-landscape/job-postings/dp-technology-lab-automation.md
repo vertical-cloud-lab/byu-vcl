@@ -239,6 +239,41 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 </details>
 
+<a id="intelligent-large-facility-fde-delivery-engineer-2026-06-09"></a>
+
+### Intelligent Large-Facility FDE Delivery Engineer (2026-06-09)
+
+2026-06-09 → open · lab-automation · Yibin · [source](https://dptechnology.jobs.feishu.cn/index/position/7649205931373562175/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+负责智能研发大装置交付现场的自动化设备驱动与逻辑控制代码、部署调试、规范提炼、培训支撑与定制化能力落地，该岗位更偏向懂现场、懂实验、懂交付、复合型 FDE 工程师
+二、岗位职责
+1. 现场自动化设备驱动与部署调试
+- 协助完成软件工具、配置流程和使用逻辑的优化。
+2. . 规范提炼与培训支撑
+- 提炼操作规范、使用说明、CheckList 等标准化材料；
+- 支持客户培训和现场使用指导；
+- 协助形成工站使用分级、权限管理和基础认证机制。
+3.. 需求转译与交付协同
+- 将客户现场需求和使用反馈转化为技术语言；
+- 协同内部研发、交付和现场团队推动需求实现；
+
+**Requirements (职位要求)**
+1. 基础要求
+-  电气自动化相关专业，本科及以上学历；
+2.  现场与业务理解能力
+3. 综合能力
+-  能适应一定工作强度和现场交付压力；
+四、加分项
+-  有实验室自动化、智能制造、现场实施或 FDE 相关经验；
+-  有数据分析、可视化、前后端工具开发经验；
+-  有智能体应用、Skill/MCP 对接或 AI 工具开发经验；
+-  有锂电、材料、化学实验或实验室现场支撑经验。
+
+</details>
+
 <a id="wet-lab-r-d-engineer-2026-07-10"></a>
 
 ### Wet-Lab R&D Engineer (2026-07-10)
@@ -422,6 +457,54 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 3.熟悉危化品相关法规、生物安全法、环保要求；
 4.具备BSL-2实验室生物安全管理经验者优先；
 5.持有注册安全工程师（RSE）、安全评价师证优先。
+
+</details>
+
+<a id="ai4s-electrolyte-large-facility-fde-delivery-intern-automation-software-2026-10-21"></a>
+
+### AI4S Electrolyte Large-Facility FDE Delivery Intern (Automation Software) (2026-10-21)
+
+2026-10-21 → open · lab-automation · Yibin · [source](https://dptechnology.jobs.feishu.cn/index/position/7699099980284021042/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+【岗位定位】
+聚焦电池材料研发自动化场景，围绕自动配液、扣电组装、测试柜集成、干湿闭环流程等核心环节，基于 Uni-Lab-OS 平台在客户现场完成大型自动化装置的落地交付。本岗位为FDE交付方向培养岗，以独立主导交付项目为培养目标。我们希望寻找一位具备理工科硕士背景、愿意长期发展的候选人，需同时具备项目推动能力、一定的代码开发能力与电池实验场景理解。
+【岗位职责】
+2. 系统接入与二次开发：基于 Uni-Lab-OS 平台完成设备驱动接入、实验工作流配置与现场功能开发；配合研发团队完成现场问题定位、方案验证与版本迭代。
+7. 规范沉淀与交接：将交付过程中的共性问题固化为可复用的标准化文档（供应商准入检查表、来料合规检查表、验收流程 SOP、清单口径标准等）；配合完成客户操作培训与技术资料交接。
+
+**Requirements (职位要求)**
+【任职要求】
+1. 化学、材料、电化学、自动化、机械、计算机、工业工程等理工科本科级以上学历，电化学与自动化交叉背景优先；
+2. 熟练掌握 Python，具备基础的软件开发与调试能力，能够独立完成脚本开发、API 调用、数据处理与工作流搭建；具备学习并基于 Uni-Lab-OS 平台完成设备接入与二次开发的能力
+3. 对材料研发、化学实验或锂电研发有一定理解；
+
+【加分项】
+2. 具有设备通信协议（Modbus、TCP/IP、OPC UA 等）、上位机软件或实验室自动化平台的开发经验；
+4. 具有多供应商集成项目或客户现场交付经验；
+5. 具有 SOP、验收方案、技术规范等标准化文档的编写经历；
+6. 熟练使用Vibe coding能力。
+
+</details>
+
+<a id="automated-laboratory-operations-and-maintenance-engineer-2026-10-26"></a>
+
+### Automated Laboratory Operations and Maintenance Engineer (2026-10-26)
+
+2026-10-26 → open · lab-automation · Yibin · [source](https://dptechnology.jobs.feishu.cn/index/position/7700799974124751167/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+【岗位职责】
+5、标准化流程与质量管理： 负责实验操作规范（SOP）、工艺参数、设备维护记录和异常处理方法的整理与持续完善，推动实验流程标准化，确保实验数据真实、完整、可追溯。
+7、实验室安全与5S管理： 统筹实验室日常安全管理、5S现场管理及设备清洁维护，熟悉化学品安全操作及废弃物（固废、液废）的分类、收集、暂存与合规处置流程，及时识别并整改安全隐患。
+
+**Requirements (职位要求)**
+1、 本科及以上学历，化学、应用化学、化学工程与工艺、材料科学、电化学、自动化等相关专业；
+4、数据与工艺分析能力： 具备基本的实验数据处理、异常分析及工艺优化能力，能够熟练使用Excel等工具进行数据整理与分析，具备电池测试数据分析及失效分析经验者优先。
 
 </details>
 

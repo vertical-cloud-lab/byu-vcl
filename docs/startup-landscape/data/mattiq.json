@@ -55,6 +55,46 @@
       "partial": true
     },
     {
+      "date": "2024-01-14",
+      "value": 18,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn 'View all 18 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+      "source": "https://web.archive.org/web/20240114191103/https://www.linkedin.com/company/mattiq/",
+      "added": "2026-11-28"
+    },
+    {
+      "date": "2024-09-13",
+      "value": 18,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn 'View all 18 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+      "source": "https://web.archive.org/web/20240913020600/https://www.linkedin.com/company/mattiq/",
+      "added": "2026-11-28"
+    },
+    {
+      "date": "2025-01-30",
+      "value": 19,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn 'View all 19 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+      "source": "https://web.archive.org/web/20250130134322/https://www.linkedin.com/company/mattiq/",
+      "added": "2026-11-28"
+    },
+    {
+      "date": "2025-01-30",
+      "value": 19,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn 'View all 19 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+      "source": "https://web.archive.org/web/20250130154241/https://www.linkedin.com/company/mattiq",
+      "added": "2026-11-28"
+    },
+    {
       "date": "2026-10-09",
       "value": null,
       "low": 5,
@@ -67,11 +107,18 @@
   ],
   "postings": [],
   "current_openings": {
-    "date": "2026-10-09",
+    "date": "2026-11-28",
     "count": 0,
     "by_function": {},
     "titles": [],
-    "source": "https://mattiq.com/"
+    "source": "https://www.linkedin.com/jobs/search?keywords=%22Mattiq%22&location=Worldwide&geoId=92000000",
+    "basis": "LinkedIn public job search, logged out, by name",
+    "previous": {
+      "date": "2026-10-09",
+      "count": 0,
+      "by_function": {},
+      "source": "https://mattiq.com/"
+    }
   },
   "people": [
     {

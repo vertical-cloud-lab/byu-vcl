@@ -2,6 +2,29 @@
 
 Mountain View, CA, US · founded 2021 · AI + high-throughput experimentation · active · [mitrachem.com](https://www.mitrachem.com)
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**Team size on LinkedIn.** People listing the company, read from the company page (LinkedIn's 'View all N employees'); this counts alumni who never updated their profile and misses staff without one.
+
+| Date | Members | Band | Source |
+| --- | --- | --- | --- |
+| 2023-11-14 | 58 | 11-50 | [Wayback](https://web.archive.org/web/20231114201416/https://www.linkedin.com/company/mitrachem/) |
+| 2024-09-22 | 67 | 11-50 | [Wayback](https://web.archive.org/web/20240922041908/https://www.linkedin.com/company/mitrachem/) |
+| 2025-02-17 | 64 | 11-50 | [Wayback](https://web.archive.org/web/20250217154636/https://www.linkedin.com/company/mitrachem) |
+| 2025-03-20 | 63 | 11-50 | [Wayback](https://web.archive.org/web/20250320100610/https://www.linkedin.com/company/mitrachem) |
+| 2025-08-28 | 60 | 11-50 | [Wayback](https://web.archive.org/web/20250828203210/https://www.linkedin.com/company/mitrachem) |
+| 2026-05-19 | 56 | 11-50 | [Wayback](https://web.archive.org/web/20260519052417/https://www.linkedin.com/company/mitrachem/) |
+| 2026-08-28 | 51 | 11-50 | [Wayback](https://web.archive.org/web/20260828020226/https://www.linkedin.com/company/mitrachem) |
+| 2026-10-27 | 46 | 11-50 | [Wayback](https://web.archive.org/web/20261027210555/https://www.linkedin.com/company/mitrachem/) |
+
+**Openings.** 1 open on 2026-11-28 on [its job board](https://www.mitrachem.com/join-us), against 1 on 2026-10-10. 0 new, 0 closed.
+
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=79849770&geoId=92000000&location=Worldwide), 2026-11-28): no postings.
+<!-- /refresh:2026-11-28 -->
+
 ## Funding timeline
 
 | Date | Round | USD M | Detail | Leads | Source |

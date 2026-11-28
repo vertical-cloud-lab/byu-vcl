@@ -1,0 +1,1073 @@
+{
+ "refreshed": "2026-11-28",
+ "how": "LinkedIn company pages. 'wayback': captures of the page in the Wayback Machine, read from archive.org. 'live': the page as LinkedIn served it logged out to headed Chrome on a lab Pi's network, before its sign-in wall stopped the pass. members = 'View all N employees' (people listing the company, alumni who never updated included); size = the company's self-reported band.",
+ "companies": {
+  "aionics": {
+   "linkedin": "aionics",
+   "company_id": "65616801",
+   "observations": [
+    {
+     "date": "2025-11-27",
+     "members": 17,
+     "size": "11-50 employees",
+     "followers": "4,066",
+     "source": "https://web.archive.org/web/20251127100723/https://www.linkedin.com/company/aionics",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-01-28",
+     "members": 15,
+     "size": "11-50 employees",
+     "followers": "4,100",
+     "source": "https://web.archive.org/web/20260128091408/https://www.linkedin.com/company/aionics",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-02-24",
+     "members": 15,
+     "size": "11-50 employees",
+     "followers": "4,116",
+     "source": "https://web.archive.org/web/20260224211208/https://www.linkedin.com/company/aionics/",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-02-24",
+     "members": 15,
+     "size": "11-50 employees",
+     "followers": "4,116",
+     "source": "https://web.archive.org/web/20260224211209/https://www.linkedin.com/company/aionics",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-02-27",
+     "members": 15,
+     "size": "11-50 employees",
+     "followers": "4,118",
+     "source": "https://web.archive.org/web/20260227150005/https://www.linkedin.com/company/aionics",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-06-26",
+     "members": 12,
+     "size": "11-50 employees",
+     "followers": "4,216",
+     "source": "https://web.archive.org/web/20260626032834/https://www.linkedin.com/company/aionics",
+     "how": "wayback"
+    }
+   ]
+  },
+  "altrove": {
+   "linkedin": "altrove-ai",
+   "company_id": "103460693",
+   "observations": [
+    {
+     "date": "2025-02-20",
+     "members": 12,
+     "size": "2-10 employees",
+     "followers": "2,431",
+     "source": "https://web.archive.org/web/20250220101541/https://www.linkedin.com/company/altrove-ai/",
+     "how": "wayback"
+    }
+   ]
+  },
+  "atinary": {
+   "linkedin": "atinary",
+   "company_id": "30671436",
+   "observations": [
+    {
+     "date": "2025-11-03",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "3,874",
+     "source": "https://web.archive.org/web/20251103081650/https://www.linkedin.com/company/atinary",
+     "how": "wayback"
+    }
+   ]
+  },
+  "chemify": {
+   "linkedin": "chemify-limited",
+   "company_id": "82235193",
+   "observations": [
+    {
+     "date": "2023-08-04",
+     "members": 37,
+     "size": "2-10 employees",
+     "followers": "2,075",
+     "source": "https://web.archive.org/web/20230804180310/https://www.linkedin.com/company/chemify-limited/",
+     "how": "wayback"
+    },
+    {
+     "date": "2024-08-15",
+     "members": 79,
+     "size": "51-200 employees",
+     "followers": "2,746",
+     "source": "https://web.archive.org/web/20240815162711/https://www.linkedin.com/company/chemify-limited/",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-10-06",
+     "members": 210,
+     "size": "51-200 employees",
+     "followers": "8,447",
+     "source": "https://web.archive.org/web/20261006201403/https://www.linkedin.com/company/chemify-limited/",
+     "how": "wayback"
+    }
+   ]
+  },
+  "citrine-informatics": {
+   "linkedin": "citrine-informatics",
+   "company_id": "3288716",
+   "observations": [
+    {
+     "date": "2024-02-13",
+     "members": 84,
+     "size": "51-200 employees",
+     "followers": "6,626",
+     "source": "https://web.archive.org/web/20240213193316/https://www.linkedin.com/company/citrine-informatics/",
+     "how": "wayback"
+    },
+    {
+     "date": "2024-12-12",
+     "members": null,
+     "size": "51-200 employees",
+     "followers": "7,612",
+     "source": "https://web.archive.org/web/20241212055339/https://www.linkedin.com/company/citrine-informatics",
+     "how": "wayback"
+    },
+    {
+     "date": "2024-12-14",
+     "members": null,
+     "size": "51-200 employees",
+     "followers": "7,617",
+     "source": "https://web.archive.org/web/20241214044537/https://www.linkedin.com/company/citrine-informatics/",
+     "how": "wayback"
+    },
+    {
+     "date": "2024-12-17",
+     "members": null,
+     "size": "51-200 employees",
+     "followers": "7,617",
+     "source": "https://web.archive.org/web/20241217032848/https://www.linkedin.com/company/citrine-informatics/",
+     "how": "wayback"
+    },
+    {
+     "date": "2024-12-20",
+     "members": null,
+     "size": "51-200 employees",
+     "followers": "7,625",
+     "source": "https://web.archive.org/web/20241220003818/https://www.linkedin.com/company/citrine-informatics/",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-09-09",
+     "members": null,
+     "size": "51-200 employees",
+     "followers": "8,917",
+     "source": "https://web.archive.org/web/20250909082023/https://www.linkedin.com/company/citrine-informatics/",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-09-19",
+     "members": null,
+     "size": "51-200 employees",
+     "followers": "8,954",
+     "source": "https://web.archive.org/web/20250919113901/https://www.linkedin.com/company/citrine-informatics/",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-03-21",
+     "members": null,
+     "size": "51-200 employees",
+     "followers": "9,628",
+     "source": "https://web.archive.org/web/20260321014536/https://www.linkedin.com/company/citrine-informatics/",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-07-21",
+     "members": null,
+     "size": "51-200 employees",
+     "followers": "10,163",
+     "source": "https://web.archive.org/web/20260721211735/https://www.linkedin.com/company/citrine-informatics",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-07-28",
+     "members": null,
+     "size": "51-200 employees",
+     "followers": "10,192",
+     "source": "https://web.archive.org/web/20260728021152/https://www.linkedin.com/company/citrine-informatics",
+     "how": "wayback"
+    }
+   ]
+  },
+  "cuspai": {
+   "linkedin": "cusp-ai",
+   "company_id": "104208189",
+   "observations": [
+    {
+     "date": "2025-09-01",
+     "members": 35,
+     "size": "11-50 employees",
+     "followers": "2,257",
+     "source": "https://web.archive.org/web/20250901175352/https://www.linkedin.com/company/cusp-ai",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-10-03",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "12,063",
+     "source": "https://web.archive.org/web/20251003121037/https://www.linkedin.com/company/cusp-ai/",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-10-05",
+     "members": 41,
+     "size": "11-50 employees",
+     "followers": "12,089",
+     "source": "https://web.archive.org/web/20251005005549/https://www.linkedin.com/company/cusp-ai",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-10-06",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "12,126",
+     "source": "https://web.archive.org/web/20251006235314/https://www.linkedin.com/company/cusp-ai",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-11-29",
+     "members": 43,
+     "size": "11-50 employees",
+     "followers": "13,522",
+     "source": "https://web.archive.org/web/20251129094853/https://www.linkedin.com/company/cusp-ai",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-08-27",
+     "members": null,
+     "size": "51-200 employees",
+     "followers": "27,416",
+     "source": "https://web.archive.org/web/20260827211002/https://www.linkedin.com/company/cusp-ai/",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-08-27",
+     "members": 85,
+     "size": "51-200 employees",
+     "followers": "27,416",
+     "source": "https://web.archive.org/web/20260827211419/https://www.linkedin.com/company/cusp-ai",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-10-06",
+     "members": 95,
+     "size": "51-200 employees",
+     "followers": "28,846",
+     "source": "https://web.archive.org/web/20261006201326/https://www.linkedin.com/company/cusp-ai",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-10-06",
+     "members": null,
+     "size": "51-200 employees",
+     "followers": "28,847",
+     "source": "https://web.archive.org/web/20261006201723/https://www.linkedin.com/company/cusp-ai/",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-11-13",
+     "members": 100,
+     "size": "51-200 employees",
+     "followers": "31,328",
+     "source": "https://web.archive.org/web/20261113044226/https://www.linkedin.com/company/cusp-ai/",
+     "how": "wayback"
+    }
+   ]
+  },
+  "deep-principle": {
+   "linkedin": null,
+   "company_id": null,
+   "observations": []
+  },
+  "dp-technology": {
+   "linkedin": "dptechnology",
+   "company_id": "74674216",
+   "observations": [
+    {
+     "date": "2025-03-11",
+     "members": 74,
+     "size": "201-500 employees",
+     "followers": "1,301",
+     "source": "https://web.archive.org/web/20250311231859/https://www.linkedin.com/company/dptechnology/",
+     "how": "wayback"
+    }
+   ]
+  },
+  "dunia-innovations": {
+   "linkedin": "dunia-innovations",
+   "company_id": "86248775",
+   "observations": [
+    {
+     "date": "2026-03-27",
+     "members": 54,
+     "size": "11-50 employees",
+     "followers": "6,046",
+     "source": "https://web.archive.org/web/20260327025811/https://www.linkedin.com/company/dunia-innovations",
+     "how": "wayback"
+    }
+   ]
+  },
+  "emerald-cloud-lab": {
+   "linkedin": "emerald-cloud-lab",
+   "company_id": "2289338",
+   "observations": [
+    {
+     "date": "2025-01-14",
+     "members": 161,
+     "size": "51-200 employees",
+     "followers": "6,762",
+     "source": "https://web.archive.org/web/20250114100654/https://www.linkedin.com/company/emerald-cloud-lab",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-02-02",
+     "members": null,
+     "size": "51-200 employees",
+     "followers": "6,825",
+     "source": "https://web.archive.org/web/20250202220338/https://www.linkedin.com/company/emerald-cloud-lab/",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-02-06",
+     "members": 159,
+     "size": "51-200 employees",
+     "followers": "6,848",
+     "source": "https://web.archive.org/web/20250206193946/https://www.linkedin.com/company/emerald-cloud-lab",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-02-12",
+     "members": 162,
+     "size": "51-200 employees",
+     "followers": "6,868",
+     "source": "https://web.archive.org/web/20250212073612/https://www.linkedin.com/company/emerald-cloud-lab",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-02-16",
+     "members": 162,
+     "size": "51-200 employees",
+     "followers": "6,884",
+     "source": "https://web.archive.org/web/20250216083014/https://www.linkedin.com/company/emerald-cloud-lab",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-08-27",
+     "members": 167,
+     "size": "51-200 employees",
+     "followers": "7,308",
+     "source": "https://web.archive.org/web/20250827035057/https://www.linkedin.com/company/emerald-cloud-lab",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-11-02",
+     "members": null,
+     "size": "51-200 employees",
+     "followers": "7,454",
+     "source": "https://web.archive.org/web/20251102223752/https://www.linkedin.com/company/emerald-cloud-lab",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-11-22",
+     "members": 173,
+     "size": "51-200 employees",
+     "followers": "7,508",
+     "source": "https://web.archive.org/web/20251122034813/https://www.linkedin.com/company/emerald-cloud-lab",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-02-13",
+     "members": 180,
+     "size": "51-200 employees",
+     "followers": "7,732",
+     "source": "https://web.archive.org/web/20260213031317/https://www.linkedin.com/company/emerald-cloud-lab",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-11-11",
+     "members": 201,
+     "size": "51-200 employees",
+     "followers": "8,354",
+     "source": "https://web.archive.org/web/20261111035115/https://www.linkedin.com/company/emerald-cloud-lab",
+     "how": "wayback"
+    }
+   ]
+  },
+  "entalpic": {
+   "linkedin": "entalpic",
+   "company_id": "104033114",
+   "observations": [
+    {
+     "date": "2025-01-31",
+     "members": 15,
+     "size": "11-50 employees",
+     "followers": "2,295",
+     "source": "https://web.archive.org/web/20250131033718/https://www.linkedin.com/company/entalpic",
+     "how": "wayback"
+    }
+   ]
+  },
+  "intrepid-labs": {
+   "linkedin": "intrepid-labs-ai",
+   "company_id": "97449139",
+   "observations": [
+    {
+     "date": "2024-01-21",
+     "members": 3,
+     "size": "2-10 employees",
+     "followers": "445",
+     "source": "https://web.archive.org/web/20240121013254/https://www.linkedin.com/company/intrepid-labs-ai",
+     "how": "wayback"
+    },
+    {
+     "date": "2024-02-13",
+     "members": 3,
+     "size": "2-10 employees",
+     "followers": "478",
+     "source": "https://web.archive.org/web/20240213125634/https://www.linkedin.com/company/intrepid-labs-ai",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-02-18",
+     "members": 9,
+     "size": "2-10 employees",
+     "followers": "2,066",
+     "source": "https://web.archive.org/web/20250218095351/https://www.linkedin.com/company/intrepid-labs-ai",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-05-13",
+     "members": null,
+     "size": "2-10 employees",
+     "followers": "2,361",
+     "source": "https://web.archive.org/web/20250513232648/https://www.linkedin.com/company/intrepid-labs-ai/",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-05-18",
+     "members": 11,
+     "size": "2-10 employees",
+     "followers": "2,407",
+     "source": "https://web.archive.org/web/20250518143309/https://www.linkedin.com/company/intrepid-labs-ai",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-09-11",
+     "members": 20,
+     "size": "11-50 employees",
+     "followers": "3,574",
+     "source": "https://web.archive.org/web/20250911042006/https://www.linkedin.com/company/intrepid-labs-ai",
+     "how": "wayback"
+    }
+   ]
+  },
+  "kebotix": {
+   "linkedin": "kebotix",
+   "company_id": "11817157",
+   "observations": [
+    {
+     "date": "2024-04-21",
+     "members": 11,
+     "size": "11-50 employees",
+     "followers": "2,381",
+     "source": "https://web.archive.org/web/20240421102016/https://www.linkedin.com/company/kebotix",
+     "how": "wayback"
+    },
+    {
+     "date": "2024-08-16",
+     "members": 9,
+     "size": "11-50 employees",
+     "followers": "2,473",
+     "source": "https://web.archive.org/web/20240816131509/https://www.linkedin.com/company/kebotix/",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-08-28",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "2,775",
+     "source": "https://web.archive.org/web/20250828011120/https://www.linkedin.com/company/kebotix",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-03-21",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "2,974",
+     "source": "https://web.archive.org/web/20260321014549/https://www.linkedin.com/company/kebotix",
+     "how": "wayback"
+    }
+   ]
+  },
+  "lila-sciences": {
+   "linkedin": "lila-sciences",
+   "company_id": "105565838",
+   "observations": [
+    {
+     "date": "2026-10-27",
+     "members": 567,
+     "size": "201-500 employees",
+     "followers": "78,458",
+     "source": "https://web.archive.org/web/20261027050333/https://www.linkedin.com/company/lila-sciences",
+     "how": "wayback"
+    }
+   ]
+  },
+  "materials-nexus": {
+   "linkedin": "materials-nexus",
+   "company_id": "79745357",
+   "observations": [
+    {
+     "date": "2025-01-23",
+     "members": 22,
+     "size": "11-50 employees",
+     "followers": "3,460",
+     "source": "https://web.archive.org/web/20250123140825/https://www.linkedin.com/company/materials-nexus",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-01-23",
+     "members": 22,
+     "size": "11-50 employees",
+     "followers": "3,463",
+     "source": "https://web.archive.org/web/20250123164848/https://www.linkedin.com/company/materials-nexus/",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-04-06",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "3,868",
+     "source": "https://web.archive.org/web/20250406191820/https://www.linkedin.com/company/materials-nexus/",
+     "how": "wayback"
+    }
+   ]
+  },
+  "matlantis": {
+   "linkedin": "matlantis",
+   "company_id": "82798077",
+   "observations": [
+    {
+     "date": "2025-07-16",
+     "members": 31,
+     "size": "11-50 employees",
+     "followers": "1,269",
+     "source": "https://web.archive.org/web/20250716130306/https://www.linkedin.com/company/matlantis/",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-10-20",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "1,529",
+     "source": "https://web.archive.org/web/20251020152937/https://www.linkedin.com/company/matlantis/",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-12-18",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "1,671",
+     "source": "https://web.archive.org/web/20251218000256/https://www.linkedin.com/company/matlantis/",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-02-07",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "1,784",
+     "source": "https://web.archive.org/web/20260207194928/https://www.linkedin.com/company/matlantis/",
+     "how": "wayback"
+    }
+   ]
+  },
+  "mattiq": {
+   "linkedin": "mattiq",
+   "company_id": "75435970",
+   "observations": [
+    {
+     "date": "2024-01-14",
+     "members": 18,
+     "size": "11-50 employees",
+     "followers": "2,491",
+     "source": "https://web.archive.org/web/20240114191103/https://www.linkedin.com/company/mattiq/",
+     "how": "wayback"
+    },
+    {
+     "date": "2024-01-14",
+     "members": 18,
+     "size": "11-50 employees",
+     "followers": "2,491",
+     "source": "https://web.archive.org/web/20240114191113/https://www.linkedin.com/company/mattiq/",
+     "how": "wayback"
+    },
+    {
+     "date": "2024-09-13",
+     "members": 18,
+     "size": "11-50 employees",
+     "followers": "3,046",
+     "source": "https://web.archive.org/web/20240913020600/https://www.linkedin.com/company/mattiq/",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-01-30",
+     "members": 19,
+     "size": "11-50 employees",
+     "followers": "3,151",
+     "source": "https://web.archive.org/web/20250130134322/https://www.linkedin.com/company/mattiq/",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-01-30",
+     "members": 19,
+     "size": "11-50 employees",
+     "followers": "3,152",
+     "source": "https://web.archive.org/web/20250130154241/https://www.linkedin.com/company/mattiq",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-03-09",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "3,224",
+     "source": "https://web.archive.org/web/20250309190336/https://www.linkedin.com/company/mattiq/",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-04-04",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "3,243",
+     "source": "https://web.archive.org/web/20250404011514/https://www.linkedin.com/company/mattiq/",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-04-04",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "3,243",
+     "source": "https://web.archive.org/web/20250404011520/https://www.linkedin.com/company/mattiq",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-09-07",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "3,316",
+     "source": "https://web.archive.org/web/20250907071920/https://www.linkedin.com/company/mattiq/",
+     "how": "wayback"
+    }
+   ]
+  },
+  "medra": {
+   "linkedin": "medra-ai",
+   "company_id": "89739944",
+   "observations": [
+    {
+     "date": "2025-02-01",
+     "members": 22,
+     "size": "2-10 employees",
+     "followers": "846",
+     "source": "https://web.archive.org/web/20250201010514/https://www.linkedin.com/company/medra-ai",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-04-16",
+     "members": null,
+     "size": "2-10 employees",
+     "followers": "951",
+     "source": "https://web.archive.org/web/20250416161609/https://www.linkedin.com/company/medra-ai/",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-01-01",
+     "members": 31,
+     "size": "11-50 employees",
+     "followers": "3,302",
+     "source": "https://web.archive.org/web/20260101094840/https://www.linkedin.com/company/medra-ai",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-02-02",
+     "members": 29,
+     "size": "11-50 employees",
+     "followers": "3,752",
+     "source": "https://web.archive.org/web/20260202105315/https://www.linkedin.com/company/medra-ai",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-04-16",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "4,606",
+     "source": "https://web.archive.org/web/20260416031643/https://www.linkedin.com/company/medra-ai/",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-07-07",
+     "members": 60,
+     "size": "11-50 employees",
+     "followers": "6,062",
+     "source": "https://web.archive.org/web/20260707002205/https://www.linkedin.com/company/medra-ai",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-08-17",
+     "members": 71,
+     "size": "11-50 employees",
+     "followers": "6,470",
+     "source": "https://web.archive.org/web/20260817181440/https://www.linkedin.com/company/medra-ai",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-09-10",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "6,818",
+     "source": "https://web.archive.org/web/20260910083204/https://www.linkedin.com/company/medra-ai/",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-10-15",
+     "members": 77,
+     "size": "11-50 employees",
+     "followers": "7,446",
+     "source": "https://web.archive.org/web/20261015143217/https://www.linkedin.com/company/medra-ai",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-10-27",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "7,596",
+     "source": "https://web.archive.org/web/20261027221506/https://www.linkedin.com/company/medra-ai/",
+     "how": "wayback"
+    }
+   ]
+  },
+  "mitra-chem": {
+   "linkedin": "mitrachem",
+   "company_id": "79849770",
+   "observations": [
+    {
+     "date": "2023-11-14",
+     "members": 58,
+     "size": "11-50 employees",
+     "followers": "6,975",
+     "source": "https://web.archive.org/web/20231114201416/https://www.linkedin.com/company/mitrachem/",
+     "how": "wayback"
+    },
+    {
+     "date": "2024-09-22",
+     "members": 67,
+     "size": "11-50 employees",
+     "followers": "9,996",
+     "source": "https://web.archive.org/web/20240922041908/https://www.linkedin.com/company/mitrachem/",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-02-17",
+     "members": 64,
+     "size": "11-50 employees",
+     "followers": "11,767",
+     "source": "https://web.archive.org/web/20250217154636/https://www.linkedin.com/company/mitrachem",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-03-20",
+     "members": 63,
+     "size": "11-50 employees",
+     "followers": "12,006",
+     "source": "https://web.archive.org/web/20250320100610/https://www.linkedin.com/company/mitrachem",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-08-28",
+     "members": 60,
+     "size": "11-50 employees",
+     "followers": "12,885",
+     "source": "https://web.archive.org/web/20250828203210/https://www.linkedin.com/company/mitrachem",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-05-19",
+     "members": 56,
+     "size": "11-50 employees",
+     "followers": "13,754",
+     "source": "https://web.archive.org/web/20260519052417/https://www.linkedin.com/company/mitrachem/",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-05-19",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "13,754",
+     "source": "https://web.archive.org/web/20260519060049/https://www.linkedin.com/company/mitrachem",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-08-28",
+     "members": 51,
+     "size": "11-50 employees",
+     "followers": "13,908",
+     "source": "https://web.archive.org/web/20260828020226/https://www.linkedin.com/company/mitrachem",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-10-27",
+     "members": 46,
+     "size": "11-50 employees",
+     "followers": "13,982",
+     "source": "https://web.archive.org/web/20261027210555/https://www.linkedin.com/company/mitrachem/",
+     "how": "wayback"
+    }
+   ]
+  },
+  "orbital-materials": {
+   "linkedin": "orbitalindustries",
+   "company_id": "91545263",
+   "observations": [
+    {
+     "date": "2026-08-27",
+     "members": 62,
+     "size": "11-50 employees",
+     "followers": "9,962",
+     "source": "https://web.archive.org/web/20260827211215/https://www.linkedin.com/company/orbitalindustries/",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-10-06",
+     "members": 65,
+     "size": "11-50 employees",
+     "followers": "10,247",
+     "source": "https://web.archive.org/web/20261006201852/https://www.linkedin.com/company/orbitalindustries/",
+     "how": "wayback"
+    }
+   ]
+  },
+  "periodic-labs": {
+   "linkedin": "periodic-labs",
+   "company_id": "108918379",
+   "observations": [
+    {
+     "date": "2025-10-07",
+     "members": 28,
+     "size": "11-50 employees",
+     "followers": "6,016",
+     "source": "https://web.archive.org/web/20251007025933/https://www.linkedin.com/company/periodic-labs/",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-11-05",
+     "members": 32,
+     "size": "11-50 employees",
+     "followers": "8,660",
+     "source": "https://web.archive.org/web/20251105090423/https://www.linkedin.com/company/periodic-labs",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-11-13",
+     "members": 32,
+     "size": "11-50 employees",
+     "followers": "8,931",
+     "source": "https://web.archive.org/web/20251113145254/https://www.linkedin.com/company/periodic-labs",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-11-29",
+     "members": 32,
+     "size": "11-50 employees",
+     "followers": "9,496",
+     "source": "https://web.archive.org/web/20251129071150/https://www.linkedin.com/company/periodic-labs",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-01-04",
+     "members": 36,
+     "size": "11-50 employees",
+     "followers": "10,246",
+     "source": "https://web.archive.org/web/20260104231001/https://www.linkedin.com/company/periodic-labs",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-05-14",
+     "members": 56,
+     "size": "11-50 employees",
+     "followers": "14,249",
+     "source": "https://web.archive.org/web/20260514110648/https://www.linkedin.com/company/periodic-labs",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-06-21",
+     "members": 70,
+     "size": "11-50 employees",
+     "followers": "15,369",
+     "source": "https://web.archive.org/web/20260621231632/https://www.linkedin.com/company/periodic-labs",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-07-30",
+     "members": 82,
+     "size": "11-50 employees",
+     "followers": "17,907",
+     "source": "https://web.archive.org/web/20260730050259/https://www.linkedin.com/company/periodic-labs",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-08-30",
+     "members": 88,
+     "size": "11-50 employees",
+     "followers": "19,368",
+     "source": "https://web.archive.org/web/20260830000733/https://www.linkedin.com/company/periodic-labs",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-10-28",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "22,519",
+     "source": "https://web.archive.org/web/20261028211151/https://www.linkedin.com/company/periodic-labs/",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-11-28",
+     "members": 110,
+     "size": "11-50 employees",
+     "followers": "23,700",
+     "source": "https://www.linkedin.com/company/periodic-labs/",
+     "how": "live"
+    }
+   ]
+  },
+  "polymerize": {
+   "linkedin": null,
+   "company_id": null,
+   "observations": []
+  },
+  "radical-ai": {
+   "linkedin": "radicalai",
+   "company_id": "102137070",
+   "observations": [
+    {
+     "date": "2025-06-17",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "2,140",
+     "source": "https://web.archive.org/web/20250617015427/https://www.linkedin.com/company/radicalai",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-08-27",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "3,446",
+     "source": "https://web.archive.org/web/20250827090347/https://www.linkedin.com/company/radicalai",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-08-28",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "3,461",
+     "source": "https://web.archive.org/web/20250828193512/https://www.linkedin.com/company/radicalai",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-10-03",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "3,712",
+     "source": "https://web.archive.org/web/20251003125424/https://www.linkedin.com/company/radicalai/",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-11-15",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "3,999",
+     "source": "https://web.archive.org/web/20251115123617/https://www.linkedin.com/company/radicalai",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-12-10",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "4,209",
+     "source": "https://web.archive.org/web/20251210083420/https://www.linkedin.com/company/radicalai",
+     "how": "wayback"
+    },
+    {
+     "date": "2025-12-29",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "4,388",
+     "source": "https://web.archive.org/web/20251229214253/https://www.linkedin.com/company/radicalai",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-02-19",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "4,991",
+     "source": "https://web.archive.org/web/20260219064730/https://www.linkedin.com/company/radicalai",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-05-19",
+     "members": null,
+     "size": "11-50 employees",
+     "followers": "6,349",
+     "source": "https://web.archive.org/web/20260519060717/https://www.linkedin.com/company/radicalai",
+     "how": "wayback"
+    }
+   ]
+  },
+  "telescope-innovations": {
+   "linkedin": "telescope-innovations",
+   "company_id": "76182686",
+   "observations": [
+    {
+     "date": "2024-12-17",
+     "members": 21,
+     "size": "11-50 employees",
+     "followers": "932",
+     "source": "https://web.archive.org/web/20241217023835/https://www.linkedin.com/company/telescope-innovations/",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-04-03",
+     "members": 27,
+     "size": "11-50 employees",
+     "followers": "1,437",
+     "source": "https://web.archive.org/web/20260403173553/https://www.linkedin.com/company/telescope-innovations",
+     "how": "wayback"
+    },
+    {
+     "date": "2026-08-19",
+     "members": 28,
+     "size": "11-50 employees",
+     "followers": "1,562",
+     "source": "https://web.archive.org/web/20260819123801/https://www.linkedin.com/company/telescope-innovations",
+     "how": "wayback"
+    }
+   ]
+  },
+  "tetsuwan-scientific": {
+   "linkedin": null,
+   "company_id": null,
+   "observations": []
+  }
+ }
+}

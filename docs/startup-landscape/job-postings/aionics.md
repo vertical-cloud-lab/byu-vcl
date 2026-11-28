@@ -2,7 +2,7 @@
 
 Back to [all companies](README.md) · [company profile](../companies/aionics.md)
 
-**8 postings recovered**, 8 with the full description; 0 still open on 2026-10-10. First seen 2021-07-27, latest 2024-12-18. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**8 postings recovered**, 8 with the full description; 0 still open on 2026-11-28. First seen 2021-07-27, latest 2024-12-18. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|

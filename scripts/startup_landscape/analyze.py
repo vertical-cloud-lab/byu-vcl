@@ -29,7 +29,7 @@ PLAIN = FuncFormatter(lambda v, _: f"{v:g}")
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 OUT = os.path.join(ROOT, "docs", "startup-landscape")
-TODAY = date(2026, 10, 9)
+TODAY = date(2026, 11, 28)  # refresh date; the first snapshot was 2026-10-09
 
 # Reference palette from the dataviz skill; first three categorical slots
 # validate all-pairs (scatter, small multiples), so no chart uses more than three.
@@ -106,6 +106,8 @@ def load():
     for path in sorted(glob.glob(os.path.join(OUT, "data", "*.json"))):
         with open(path) as fh:
             d = json.load(fh)
+        if not isinstance(d, dict) or not d.get("slug"):
+            continue  # translation tables, LinkedIn and news files sit beside the company files
         funding = []
         for f in d.get("funding") or []:
             if not parse_date(f.get("date")):
@@ -221,11 +223,15 @@ def timeline_grid(cos):
         exact = [h for h in co["_headcount"] if not h["_band"] and not h["_weak"]]
         weak = [h for h in co["_headcount"] if not h["_band"] and h["_weak"]]
         bands = [h for h in co["_headcount"] if h["_band"]]
-        if exact:
-            ax.plot([h["_d"] for h in exact], [h["_v"] for h in exact], "-", color=SLOTS[0],
-                    lw=1.1, zorder=3, alpha=0.5)
-            ax.plot([h["_d"] for h in exact], [h["_v"] for h in exact], "o", ms=4.2,
-                    color=SLOTS[0], mec=SURFACE, mew=0.8, zorder=4)
+        # LinkedIn member counts run well above team pages where both exist (alumni who never updated
+        # their profile), so each source gets its own line rather than one zig-zag through both.
+        for series, col in ((([h for h in exact if h.get("method") != "linkedin-band"]), SLOTS[0]),
+                            (([h for h in exact if h.get("method") == "linkedin-band"]), SLOTS[1])):
+            if series:
+                ax.plot([h["_d"] for h in series], [h["_v"] for h in series], "-", color=col,
+                        lw=1.1, zorder=3, alpha=0.5)
+                ax.plot([h["_d"] for h in series], [h["_v"] for h in series], "o", ms=4.2,
+                        color=col, mec=SURFACE, mew=0.8, zorder=4)
         if weak:
             ax.plot([h["_d"] for h in weak], [h["_v"] for h in weak], "o", ms=4.2,
                     mfc=SURFACE, mec=SLOTS[0], mew=1.0, zorder=4)
@@ -241,13 +247,14 @@ def timeline_grid(cos):
                     ha="center", color=MUTED, fontsize=7)
     for ax in list(axes.flat)[n:]:
         ax.axis("off")
-    fig.suptitle("Team size over time (filled: counted or stated; hollow: partial or aggregator; bars: size band) "
-                 "against funding (dark lines: equity; light: grants, debt, contracts)",
-                 x=0.01, ha="left", fontsize=10, fontweight="bold")
+    fig.suptitle("Team size over time (blue: counted or stated; orange: LinkedIn members; hollow: partial or aggregator; "
+                 "bars: size band) against funding (dark lines: equity; light: grants, debt, contracts)",
+                 x=0.01, ha="left", fontsize=9.5, fontweight="bold")
     import textwrap
     fig.text(0.01, 0.003, "\n".join(textwrap.wrap(
         "Sources per company in docs/startup-landscape/companies/. Panels sorted by capital raised. "
-        "LinkedIn points are members listing the company, read from Wayback Machine captures. "
+        "LinkedIn points are members listing the company, read from Wayback Machine captures of the company page, "
+        f"plus one logged-out view of Periodic Labs' page on {TODAY:%-d %b %Y}. "
         "No whole-company team size found for: " + ", ".join(left_out) + ".", 210)),
         fontsize=7, color=MUTED, va="bottom")
     fig.tight_layout(rect=(0, 0.02, 1, 0.97))
@@ -374,6 +381,10 @@ def openings_by_function(cos):
             rows.append((co, [byf.get(f, 0) for f in FUNCTIONS], other))
     if not rows:
         return []
+    # A board far larger than the rest (DP Technology's ~250, a third of them internships) would flatten
+    # every other bar; it is named in a note instead of drawn.
+    off = [r for r in rows if sum(r[1]) + r[2] > 150]
+    rows = [r for r in rows if r not in off]
     rows.sort(key=lambda r: sum(r[1]) + r[2])
     fig, ax = plt.subplots(figsize=(8.5, 0.34 * len(rows) + 1.4))
     for y, (co, vals, other) in enumerate(rows):
@@ -390,13 +401,17 @@ def openings_by_function(cos):
     ax.set_yticklabels([r[0]["_name"] for r in rows], fontsize=7, color=INK2)
     ax.grid(axis="y", visible=False)
     ax.tick_params(length=0)
-    ax.set_xlabel("Open roles on the public job board, 9 Oct 2026")
+    ax.set_xlabel(f"Open roles on the public job board, {TODAY:%-d %b %Y}")
     ax.set_title("What they are hiring for now", loc="left")
     handles = [plt.Rectangle((0, 0), 1, 1, color=c, label=f) for i, (c, f) in enumerate(zip(SLOTS6, FUNCTIONS))
                if any(r[1][i] for r in rows)]
     if any(r[2] for r in rows):
         handles.append(plt.Rectangle((0, 0), 1, 1, color=AXIS, label="unclassified"))
     ax.legend(handles=handles, loc="lower right", fontsize=6.5, ncol=2)
+    if off:
+        ax.text(0.99, 0.01 + 0.03 * len(handles) + 0.12, "Not drawn: " + ", ".join(
+            f'{r[0]["_name"]} ({sum(r[1]) + r[2]} open)' for r in off), transform=ax.transAxes,
+            ha="right", va="bottom", fontsize=6.5, color=MUTED)
     fig.tight_layout()
     fig.savefig(os.path.join(OUT, "figures", "openings_by_function.png"), dpi=170)
     plt.close(fig)
@@ -515,7 +530,7 @@ def posted_pay(cos):
         ax.grid(axis="y", visible=False)
         ax.tick_params(length=0)
         ax.set_xlabel("Posted base salary range, USD thousands per year (each line is one open role)")
-        ax.set_title("What the open roles pay (US postings with a published range, 9 Oct 2026)", loc="left")
+        ax.set_title(f"What the open roles pay (US postings with a published range, {TODAY:%-d %b %Y})", loc="left")
         fig.tight_layout()
         fig.savefig(os.path.join(OUT, "figures", "posted_pay_by_function.png"), dpi=170)
         plt.close(fig)

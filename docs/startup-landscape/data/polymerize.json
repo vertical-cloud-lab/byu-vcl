@@ -9,19 +9,107 @@
   "status": "active",
   "website": "https://www.polymerize.io",
   "funding": [
-    {"date": "2020-10", "round": "Seed", "amount_usd_m": 0.59, "original_amount": "USD 0.59M", "type": "equity", "lead_investors": ["Info Edge Ventures"], "source": "https://www.cbinsights.com/company/polymerize"},
-    {"date": "2022-05-25", "round": "Series A", "amount_usd_m": 4.2, "original_amount": "USD 4.2M", "type": "equity", "lead_investors": ["Elevation Capital"], "source": "https://india.entrepreneur.com/?p=29817"},
-    {"date": "2024-09-24", "round": "Series A-II (strategic)", "amount_usd_m": null, "original_amount": "undisclosed", "type": "equity", "lead_investors": ["Sanyo Trading Co., Ltd."], "source": "https://www.preqin.com/data/profile/asset/polymerize-pte-ltd/705228"},
-    {"date": "2025-03-27", "round": "Strategic (undisclosed)", "amount_usd_m": null, "original_amount": "undisclosed", "type": "equity", "lead_investors": ["SparkLabs (Korea)"], "source": "https://en.wowtale.net/2025/03/27/230695"}
+    {
+      "date": "2020-10",
+      "round": "Seed",
+      "amount_usd_m": 0.59,
+      "original_amount": "USD 0.59M",
+      "type": "equity",
+      "lead_investors": [
+        "Info Edge Ventures"
+      ],
+      "source": "https://www.cbinsights.com/company/polymerize"
+    },
+    {
+      "date": "2022-05-25",
+      "round": "Series A",
+      "amount_usd_m": 4.2,
+      "original_amount": "USD 4.2M",
+      "type": "equity",
+      "lead_investors": [
+        "Elevation Capital"
+      ],
+      "source": "https://india.entrepreneur.com/?p=29817"
+    },
+    {
+      "date": "2024-09-24",
+      "round": "Series A-II (strategic)",
+      "amount_usd_m": null,
+      "original_amount": "undisclosed",
+      "type": "equity",
+      "lead_investors": [
+        "Sanyo Trading Co., Ltd."
+      ],
+      "source": "https://www.preqin.com/data/profile/asset/polymerize-pte-ltd/705228"
+    },
+    {
+      "date": "2025-03-27",
+      "round": "Strategic (undisclosed)",
+      "amount_usd_m": null,
+      "original_amount": "undisclosed",
+      "type": "equity",
+      "lead_investors": [
+        "SparkLabs (Korea)"
+      ],
+      "source": "https://en.wowtale.net/2025/03/27/230695"
+    }
   ],
   "headcount": [
-    {"date": "2026-10-09", "value": null, "low": 11, "high": 50, "method": "other", "note": "third-party aggregator band (FundedIQ); Prospeo gives 21-50 and Owler 25-100. No primary source found", "source": "https://fundediq.co/polymerize-polymerize-io-funding/"}
+    {
+      "date": "2026-10-09",
+      "value": null,
+      "low": 11,
+      "high": 50,
+      "method": "other",
+      "note": "third-party aggregator band (FundedIQ); Prospeo gives 21-50 and Owler 25-100. No primary source found",
+      "source": "https://fundediq.co/polymerize-polymerize-io-funding/"
+    }
   ],
-  "postings": [],
-  "current_openings": {"date": "2026-10-09", "count": null, "by_function": {}, "titles": [], "source": "https://www.polymerize.io/company-pages/careers"},
+  "postings": [
+    {
+      "period": "2026Q4",
+      "new_postings": 0,
+      "method": "job_postings.jsonl",
+      "note": "postings first seen 2026-10-01 to 2026-11-28 (live boards and Wayback)",
+      "source": "https://www.linkedin.com/jobs/search?keywords=%22Polymerize%22&location=Worldwide&geoId=92000000"
+    }
+  ],
+  "current_openings": {
+    "date": "2026-11-28",
+    "count": 0,
+    "by_function": {},
+    "titles": [],
+    "source": "https://www.linkedin.com/jobs/search?keywords=%22Polymerize%22&location=Worldwide&geoId=92000000",
+    "basis": "LinkedIn public job search, logged out, by name",
+    "previous": {
+      "date": "2026-10-09",
+      "by_function": {},
+      "source": "https://www.polymerize.io/company-pages/careers"
+    }
+  },
   "people": [
-    {"name": "Kunal Sandeep", "title": "Co-founder and CEO", "function": "leadership", "seniority": "founder", "start": "2020", "start_basis": "founder; company founded 2020 (Series A coverage)", "end": null, "background": "Repeat SaaS entrepreneur; background in consulting, engineering and product development (Lux Research author bio)", "source": "https://luxresearchinc.com/authors/kunal-sandeep/"},
-    {"name": "Abhijit Salvekar", "title": "Co-founder (CTO per aggregators)", "function": "leadership", "seniority": "founder", "start": "2020", "start_basis": "founder; named co-founder in 2022 Series A coverage", "end": null, "background": "PhD (Dr.); materials scientist with R&D experience in the polymers industry (company about page)", "source": "https://www.polymerize.io/about-us"}
+    {
+      "name": "Kunal Sandeep",
+      "title": "Co-founder and CEO",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2020",
+      "start_basis": "founder; company founded 2020 (Series A coverage)",
+      "end": null,
+      "background": "Repeat SaaS entrepreneur; background in consulting, engineering and product development (Lux Research author bio)",
+      "source": "https://luxresearchinc.com/authors/kunal-sandeep/"
+    },
+    {
+      "name": "Abhijit Salvekar",
+      "title": "Co-founder (CTO per aggregators)",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2020",
+      "start_basis": "founder; named co-founder in 2022 Series A coverage",
+      "end": null,
+      "background": "PhD (Dr.); materials scientist with R&D experience in the polymers industry (company about page)",
+      "source": "https://www.polymerize.io/about-us"
+    }
   ],
   "staff_roles": [],
   "departures": [],

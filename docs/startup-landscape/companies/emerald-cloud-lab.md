@@ -2,6 +2,31 @@
 
 Austin, TX, US (until 2023 South San Francisco) · founded 2010 as Emerald Therapeutics · cloud lab · active · <https://www.emeraldcloudlab.com>
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**Team size on LinkedIn.** People listing the company, read from the company page (LinkedIn's 'View all N employees'); this counts alumni who never updated their profile and misses staff without one.
+
+| Date | Members | Band | Source |
+| --- | --- | --- | --- |
+| 2025-01-14 | 161 | 51-200 | [Wayback](https://web.archive.org/web/20250114100654/https://www.linkedin.com/company/emerald-cloud-lab) |
+| 2025-02-06 | 159 | 51-200 | [Wayback](https://web.archive.org/web/20250206193946/https://www.linkedin.com/company/emerald-cloud-lab) |
+| 2025-02-12 | 162 | 51-200 | [Wayback](https://web.archive.org/web/20250212073612/https://www.linkedin.com/company/emerald-cloud-lab) |
+| 2025-02-16 | 162 | 51-200 | [Wayback](https://web.archive.org/web/20250216083014/https://www.linkedin.com/company/emerald-cloud-lab) |
+| 2025-08-27 | 167 | 51-200 | [Wayback](https://web.archive.org/web/20250827035057/https://www.linkedin.com/company/emerald-cloud-lab) |
+| 2025-11-22 | 173 | 51-200 | [Wayback](https://web.archive.org/web/20251122034813/https://www.linkedin.com/company/emerald-cloud-lab) |
+| 2026-02-13 | 180 | 51-200 | [Wayback](https://web.archive.org/web/20260213031317/https://www.linkedin.com/company/emerald-cloud-lab) |
+| 2026-11-11 | 201 | 51-200 | [Wayback](https://web.archive.org/web/20261111035115/https://www.linkedin.com/company/emerald-cloud-lab) |
+
+**Openings.** 9 open on 2026-11-28 on [its job board](https://www.emeraldcloudlab.com/careers/), against 7 on 2026-10-10. 6 new, 4 closed.
+- New since 2026-10-10: Alliance Manager; Construction Project Director; Director, Compliance & Quality Systems; FP&A Manager; Senior Backend Engineer; Senior HR Generalist.
+- Closed since 2026-10-10: Scientific Infrastructure Engineer III; Scientific Operations Engineer I; Sr. Manager, Manufacturing Operations; Staff Backend Engineer.
+
+**LinkedIn job search** ([logged out, by company ID](https://www.linkedin.com/jobs/search?f_C=2289338&geoId=92000000&location=Worldwide), 2026-11-28): 6 postings: Legal Counsel (Austin, TX, posted 2026-09-29); Construction Project Director (Austin, TX, posted 2026-11-04); Senior HR Generalist (Austin, TX, posted 2026-11-21); Laboratory Operations Shift Manager (Austin, TX, posted 2026-06-11); FP&A Manager (Austin, TX, posted 2026-11-25); Laboratory Operator I, II, & III (Austin, TX, posted 2026-06-11).
+<!-- /refresh:2026-11-28 -->
+
 ## Funding timeline
 
 Only the first three rows are primary records (SEC Form D, issuer *Emerald Therapeutics, Inc.*, CIK 1501852). There has been no Form D since 2014, so later rows come from aggregators and are unverified. Aggregators put total funding at USD 152M (PitchBook) to USD 181.25M (Caplight).

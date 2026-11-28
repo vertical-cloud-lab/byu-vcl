@@ -371,8 +371,9 @@ def export(date):
         obs, fcid = [], None
         for ts, c in sorted(wb.get(slug, {}).get("captures", {}).items()):
             fcid = fcid or c.get("f_C")
-            if c.get("members") or c.get("size"):
-                obs.append({"date": _date(ts), "members": int(c["members"].replace(",", "")) if c.get("members") else None,
+            members = c.get("members") or c.get("employees")  # the first runs called it "employees"
+            if members or c.get("size"):
+                obs.append({"date": _date(ts), "members": int(members.replace(",", "")) if members else None,
                             "size": c.get("size"), "followers": c.get("followers"), "source": c["url"], "how": "wayback"})
         if slug in live:
             r = live[slug]

@@ -199,16 +199,16 @@ What You'll Be Building
 
 </details>
 
-<a id="sr-principal-principal-software-engineer-scientific-system-of-record-2026-03-23"></a>
+<a id="staff-principal-software-engineer-scientific-system-of-record-2026-03-23"></a>
 
-### Sr Principal/ Principal Software Engineer, Scientific System of Record (2026-03-23)
+### Staff/ Principal Software Engineer, Scientific System of Record (2026-03-23)
 
-2026-03-23 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · $204–348K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4193827009)
+2026-03-23 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · $204–310K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4193827009)
 
 <details><summary>Description</summary>
 
 **Your Impact at LILA**
-We are seeking a Senior Principal or Principal Software Engineer, Scientific System of Record  to join our Scientific System of Record Team and help define and build the next-generation AI-driven scientific platform.
+We are seeking a Staff or Principal Software Engineer, Scientific System of Record  to join our Scientific System of Record Team and help define and build the next-generation AI-driven scientific platform.
 In this role, you will serve as a technical leader for systems that connect scientific intent, laboratory execution, data capture, and AI-driven analysis. You will shape the architecture of user interfaces, services, high-performance APIs, databases, and reliability-critical systems that integrate advanced AI frameworks with complex scientific analytics and laboratory workflows.
 You’ll work closely with ML researchers, platform engineers, data engineers, product teams, and scientists to turn complex scientific processes into scalable, elegant software systems. These systems will need to support diverse workloads across structured SQL databases, data lakehouses, workflow engines, and lab execution environments.
 This is an opportunity to set technical direction for a cutting-edge AI platform with real scientific impact. If you are passionate about building high-leverage systems, mentoring strong engineers, and solving ambiguous problems at the intersection of AI, software, and science, we would love to hear from you.
@@ -306,7 +306,7 @@ What You'll Be Building
 
 ### Senior II/ Staff Software Engineer, Platform Operations (2026-04-29)
 
-2026-04-29 → open · software-eng · San Francisco, CA USA · $180–280K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4212473009)
+2026-04-29 → open · software-eng · San Francisco, CA USA · $180–288K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4212473009)
 
 <details><summary>Description</summary>
 
@@ -342,9 +342,9 @@ What You'll Be Building
 
 </details>
 
-<a id="sr-principal-principal-software-engineer-app-2026-05-21"></a>
+<a id="principal-software-engineer-app-2026-05-21"></a>
 
-### Sr Principal/Principal Software Engineer, App (2026-05-21)
+### Principal Software Engineer, App (2026-05-21)
 
 2026-05-21 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · $204–348K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4248036009)
 
@@ -352,7 +352,7 @@ What You'll Be Building
 
 **Your Impact at LILA**
 Scientists shouldn't have to context-switch between a dozen tools to go from hypothesis to result. We're building the platform that makes this a reality — and we need engineers who want to solve problems no one has solved before.
-We're hiring Sr Principal / Principal Software Engineers to design the agents, interfaces, and platform integrations that let researchers seamlessly collaborate with AI.
+We're hiring Principal Software Engineers to design the agents, interfaces, and platform integrations that let researchers seamlessly collaborate with AI.
 
 **About The Team**
 The Application Team sits at the center of LILA — the integration point where Machine Learning, Life Sciences, Physical Sciences, and Software become one AI-native experience that carries a scientist from hypothesis to experiment to breakthrough results.
@@ -381,7 +381,7 @@ What You'll Be Building
 
 ### Staff Software Engineer, Scientific System of Record (2026-05-21)
 
-2026-05-21 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · $144–288K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4248045009)
+2026-05-21 → 2026-10-10 · software-eng · Cambridge, MA USA; San Francisco, CA USA · $144–288K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4248045009)
 
 <details><summary>Description</summary>
 
@@ -448,7 +448,7 @@ What You'll Be Building
 
 ### Senior Software Engineer, Data (2026-05-26)
 
-2026-05-26 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · $144–288K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4250077009)
+2026-05-26 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · $144–270K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4250077009)
 
 <details><summary>Description</summary>
 
@@ -479,7 +479,7 @@ What You'll Be Building
 
 ### Senior Software Engineer, Operations Research (2026-05-26)
 
-2026-05-26 → open · software-eng · Cambridge, MA USA · $180–256K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4246973009)
+2026-05-26 → 2026-10-10 · software-eng · Cambridge, MA USA · $180–256K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4246973009)
 
 <details><summary>Description</summary>
 
@@ -508,7 +508,7 @@ What You'll Be Building
 
 ### Principal Software Engineer, Data (2026-05-29)
 
-2026-05-29 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · $204–348K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4250071009)
+2026-05-29 → 2026-10-10 · software-eng · Cambridge, MA USA; San Francisco, CA USA · $204–348K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4250071009)
 
 <details><summary>Description</summary>
 
@@ -540,7 +540,7 @@ What You'll Be Building
 
 ### Staff Engineer, Data Platform (2026-06-02)
 
-2026-06-02 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · $192–272K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4222065009)
+2026-06-02 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · $192–288K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4222065009)
 
 <details><summary>Description</summary>
 
@@ -620,7 +620,7 @@ You’ll help define the platform primitives that make that possible.
 
 ### Operations and Quality Engineer, Sustaining Engineering (2026-07-01)
 
-2026-07-01 → open · software-eng · Cambridge, MA USA · $94–158K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4277749009)
+2026-07-01 → 2026-10-10 · software-eng · Cambridge, MA USA · $94–158K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4277749009)
 
 <details><summary>Description</summary>
 
@@ -654,7 +654,7 @@ Cross-Functional Standards & Leadership
 
 ### Senior Software Engineer II, Enterprise Platform (2026-07-07)
 
-2026-07-07 → open · software-eng · San Francisco, CA USA · $180–256K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4299652009)
+2026-07-07 → 2026-10-10 · software-eng · San Francisco, CA USA · $180–256K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4299652009)
 
 <details><summary>Description</summary>
 
@@ -678,11 +678,47 @@ Enterprise infrastructure is foundational to making autonomous science deployabl
 
 </details>
 
+<a id="research-engineer-scientific-data-workflow-infrastructure-2026-08-03"></a>
+
+### Research Engineer, Scientific Data & Workflow Infrastructure (2026-08-03)
+
+2026-08-03 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · $148–240K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4286513009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila is building an operating system for science, powered by scientific superintelligence — generating hypotheses, designing and running experiments, and learning from new data in real time to speed up discovery in fields like therapeutics and advanced materials.
+The Molecular Intelligence team builds ML and physics-based infrastructure for drug discovery: biophysics workflows, computational chemistry tools, cofolding models, low-data learning systems, simulation workflows, and agent-usable scientific pipelines. This role sits embedded with scientists, working closely with Lila’s platform teams on the storage, compute, and orchestration layers beneath it. You’ll build the provenance system that connects every scientific input, code version, model, run, and result produced across Lila’s simulation, ML, and agent-driven workflows — so a scientist can find a result months later, trace exactly how it was produced, and reuse it without reconstructing it from logs.
+What You'll Be Building
+- Shared provenance infrastructure — a queryable, trusted record connecting inputs, code/model versions, runs, and outputs across simulation, ML, and agent workflows.
+- Data models and metadata schemas for runs, artifacts, and results that work across heterogeneous scientific tools.
+- Reusable Python libraries and APIs that let tools, pipelines, and AI agents write to and read from shared storage and metadata systems.
+- Structured records from agent activity — turning ephemeral agent traces into durable, queryable data.
+- Production-grade tooling from research prototypes — taking scientific workflows from one-off scripts to scalable, maintainable services.
+- Engineering conventions (CI, testing, packaging, release practices, documentation) that hold up across local, cloud, and GPU compute environments.
+- Strong Python engineering skills with a track record of designing and shipping maintainable systems.
+- Experience with data modeling — schemas, metadata, identifiers, versioning for data that changes over time.
+- Experience designing APIs and building libraries that other engineers or scientists depend on.
+- Experience supporting research workflows (ML experiments, simulations, data pipelines) with a clear sense of what makes results reproducible.
+
+**Bonus Points For**
+- Familiarity with chemistry, computational biophysics, molecular simulation, or drug discovery workflows.
+- Experience with experiment tracking / data lineage tools (MLflow, Weights & Biases, OpenLineage, DVC).
+- Experience with workflow orchestration (Flyte, Ray, Argo, Airflow, Temporal, Dagster).
+- Experience with Kubernetes, containers, and CI/CD at scale.
+- GPU computing experience, ideally at hundreds-to-thousands-of-GPU scale.
+- Experience building tools for LLM agents or automated research workflows.
+
+**Compensation**
+$148,000 — $240,000 USD
+
+</details>
+
 <a id="senior-software-engineer-i-ii-back-end-data-robotics-2026-08-10"></a>
 
 ### Senior Software Engineer I/II, Back-end/Data, Robotics (2026-08-10)
 
-2026-08-10 → open · software-eng · Cambridge, MA USA · $144–240K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4339324009)
+2026-08-10 → 2026-10-10 · software-eng · Cambridge, MA USA · $144–240K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4339324009)
 
 <details><summary>Description</summary>
 
@@ -753,7 +789,7 @@ $144,000 — $240,000 USD
 
 ### Staff Engineer, Enterprise Externalization (2026-09-21)
 
-2026-09-21 → open · software-eng · San Francisco, CA USA · $192–272K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4390579009)
+2026-09-21 → open · software-eng · San Francisco, CA USA · $192–288K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4390579009)
 
 <details><summary>Description</summary>
 
@@ -777,7 +813,7 @@ You’ll help define the platform primitives that make that possible.
 
 ### Global Security Operations Center Manager (2026-09-29)
 
-2026-09-29 → open · software-eng · Cambridge, MA USA · $108–187K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4331069009)
+2026-09-29 → 2026-10-10 · software-eng · Cambridge, MA USA · $108–187K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4331069009)
 
 <details><summary>Description</summary>
 
@@ -801,6 +837,166 @@ What You'll Be Building
 - 5+ years (L5) to 8+ years (L6) of experience in corporate/physical security operations, a GSOC/SOC environment, law enforcement, or military service.
 - Hands-on experience with access control systems and video management systems.
 - Experience monitoring and managing intrusion detection/alarm systems.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="principal-network-engineer-2026-10-19"></a>
+
+### Principal Network Engineer (2026-10-19)
+
+2026-10-19 → open · software-eng · Cambridge, MA USA · $171–231K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4373604009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila's science factories run on a fast-growing, multi-site network that spans corporate offices, autonomous labs, and OT/robotics environments across Cambridge (Alewife), OCP, San Francisco, and London. As Principal Network Engineer, you will be the senior technical owner of that network: building the in-house engineering capability to design, secure, and scale it, while increasing the value and effectiveness of our managed service provider relationships.
+You'll partner closely with Identity, Endpoints, Security, and OT/Controls engineering teams as we build the corporate engineering function. You’ll have real influence over the network architecture decisions that determine how quickly and safely we can bring new labs and AI Science Factories online.
+This is a hands-on, senior IC role for someone who can set technical direction, operate deeply in the details, and shape the network engineering function as it matures.
+What You'll Be Building
+- Own the architecture, design, and roadmap for Lila’s global network, including SD-WAN/SASE, enterprise firewalls, and secure remote access.
+- Lead VLAN, subnet, and segmentation design across corporate IT, lab, and OT environments.
+- Design IT/OT convergence patterns that keep production labs safe, segmented, observable, and reliable.
+- Drive network infrastructure migration and hardening, including firewall-to-SASE cutovers and maintenance windows.
+- Build network visibility, monitoring, and telemetry to detect issues before they affect scientists or lab operations.
+- Establish scalable standards for DNS, IP addressing, and naming conventions across labs, buildings, and geographies.
+- Serve as the senior escalation point for complex network incidents, and create runbooks that help the broader IT team self-serve.
+- Manage network-focused MSPs and vendors while insourcing the highest-value engineering work over time.
+- Mentor other network engineers and represent network engineering in planning for lab buildouts and facility expansions.
+- Advise leadership on network architecture tradeoffs across security, cost, reliability, and delivery speed.
+- Typically 10+ years of progressive network engineering experience, or equivalent depth in designing and operating multi-site networks.
+- Deep hands-on expertise with SD-WAN/SASE platforms such as Cato Networks or similar.
+- Strong experience with enterprise firewalls, routing platforms, switching, VLAN segmentation, and subnetting at scale.
+- Experience securing and connecting both corporate IT and OT, industrial, or lab-instrumentation networks.
+- Practical experience implementing network segmentation, zero-trust concepts, and secure remote access.
+- Proven ability to manage MSPs and vendors while improving technical outcomes and accountability.
+- Strong troubleshooting skills and comfort serving as the senior escalation point for production-impacting network issues.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="staff-principal-engineer-search-retrieval-2026-10-26"></a>
+
+### Staff/Principal Engineer, Search & Retrieval (2026-10-26)
+
+2026-10-26 → open · software-eng · San Francisco, CA USA · $224–336K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4455692009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila Sciences is building the infrastructure for autonomous science: AI systems that design experiments, run them in physical labs, and close the loop across life sciences, chemistry, and materials science. Our platform enables this to operate reliably at scale for external customers who require security, auditability, and operational rigor.
+We're hiring a Staff/Principal Engineer, Search & Retrieval (Enterprise AI) to own how scientists and agents ask questions of scientific knowledge at Lila: published literature and patents, customer-supplied documents, lab protocols, and the structured experimental record.
+Your work will involve building RAG over unstructured text and a scientific knowledge graph that links literature to the structured experimental record.
+Enterprise customers require one retrieval platform that any scientific workload can build on, with tenancy enforced in the index and the graph rather than the application layer. You will own that stack end to end, from ingestion to retrieval to cited answers a scientist can trace back to the evidence.
+This is a deeply technical senior individual contributor role. We move fast, ship often, and look for engineers who do well with ambiguity and enjoy shaping the problem as much as solving it.
+What You'll Be Building
+- Technical leadership across platform engineering, infrastructure, AI/ML, and scientific teams. Broad architectural influence, high autonomy, direct ownership of critical platform systems.
+- Define the shared retrieval foundation. Your architecture decisions become the default for scientific workloads across the company, well beyond the first one you ship.
+- Knowledge graph and graph retrieval. Build one scientific knowledge graph from literature and the structured experimental record. Own graph retrieval and its fusion with vector and lexical search into a single cited answer.
+- Agentic search. Build the autonomous research loop, from query planning through retrieval to traceable reasoning.
+- Retrieval quality. Own the retrieval pipeline end to end and the evaluation harness.
+- Ingestion and extraction. Own the pipeline that turns the many types of scientific data (PDFs, patents, lab protocols, and more) into semantically searchable evidence.
+- 8+ years of software development experience, including production ownership of a search, retrieval, RAG, or knowledge graph system that real users depended on.
+- Production experience building semantic search: embedding models, vector indexes (HNSW/IVF), hybrid lexical and vector retrieval, and reranking. Graph database experience is a strong plus.
+- Track record in high-growth environments where speed-to-value mattered as much as long-term architecture.
+- You can describe how you measured retrieval quality (recall, groundedness, citation accuracy) and how you caught regressions.
+- Hands-on coding in Python and modern backend frameworks (FastAPI, async Python).
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="co-op-scada-engineer-2026-10-30"></a>
+
+### Co-Op, SCADA Engineer (2026-10-30)
+
+2026-10-30 → open · software-eng · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4467407009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila's SCADA system spans cloud and on-premise infrastructure: Ignition gateways on EC2, a historian on RDS PostgreSQL, MQTT brokers, and edge nodes at each site. Today no single view shows the health of all of it, so the team learns about failures from users rather than from monitoring.
+As a co-op on the Hardware & Controls Engineering team, you will build that view: a live connectivity diagram showing how every piece connects and which links are up, backed by dashboards covering database, gateway, and edge node health. The work is read-only end to end, with read-only AWS access and SELECT-only database access, so you can explore the full system safely.
+You will be based at our Alewife site in Cambridge, working alongside controls engineers and the IT/OT team. Expect wide exposure across AWS, Linux, industrial networking, Ignition, and data visualization, and a clear picture of how an industrial SCADA system fits together end to end.
+What You'll Be Building
+- Build a live topology view of edge nodes, brokers, gateways, and databases with per-link status and last-seen timestamps
+- Surface RDS PostgreSQL health: CPU, memory, storage growth, connection counts, replication lag, and slow queries
+- Dashboard Ignition gateway and EC2 metrics, including JVM heap, tag quality, Sparkplug birth and death rates, and scan timing
+- Monitor on-premise edge nodes for reachability, uptime, resource use, and last publish time
+- Integrate existing sources (CloudWatch, Performance Insights, Ignition gateway metrics, broker status) into one interface
+- Document the setup so the team can extend and maintain it after the term ends
+- Pursuing a bachelor's or master's degree in engineering, computer science, or a related field
+- Available full time for the Spring 2027 co-op term, on-site at Alewife
+- Proficiency in Python for scripting and data collection
+- Comfortable working in Linux from the command line
+- Working knowledge of networking fundamentals: IP addressing, subnets, ports, and routing
+- Clear written communication for documenting dashboards and findings
+
+**Bonus Points For**
+- Exposure to AWS, particularly EC2, RDS, CloudWatch, or IAM
+- Experience with Grafana, Prometheus, or similar observability tooling
+- Familiarity with Ignition, MQTT or Sparkplug, or other industrial SCADA tooling
+- JavaScript or React, useful for building inside Ignition Perspective
+
+</details>
+
+<a id="co-op-it-ot-security-analyst-2026-11-09"></a>
+
+### Co-Op, IT/OT Security Analyst (2026-11-09)
+
+2026-11-09 → open · software-eng · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4477308009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila runs autonomous science facilities — labs full of instruments, robotics, and controllers that produce the experimental data that is the company's core IP. Securing that environment is a different problem from securing laptops and SaaS, and we are building the program from the ground up. This co-op works on that build, not on the side of it.
+The role sits at the seam between IT, Lab IT, and OT, spanning four workstreams: OT asset visibility and tooling, vulnerability and patch management across IT/OT, SOC integration and threat intelligence, and program build. The work product outlives the term.
+What we are looking for is someone curious enough to trace a problem end to end without being handed the answer, and persistent enough to stay with it when the architecture is not documented anywhere. We will teach the OT domain. We cannot teach that.
+What You'll Be Building
+- Own day-to-day OT asset discovery and reconciliation, closing the gap between device detection and documented ownership
+- Prioritize vulnerabilities across IT/OT environments by real consequence (safety, experiment integrity, IP exposure, throughput) rather than raw CVSS scores
+- Coordinate remediation with automation engineering within established maintenance windows
+- Integrate OT and network telemetry into the SIEM, triage alerts, and supply OT context the SOC team lacks
+- Track threat intelligence relevant to lab automation and biotech; convert findings into detections and written briefings
+- Build program artifacts (asset intake process, connectivity risk reviews, segmentation documentation) that remain operational after the term ends
+- Pursuing a degree in cybersecurity, computer science, information technology, network engineering, or a related field
+- Working knowledge of TCP/IP networking: VLANs, subnetting, routing and switching basics, firewall concepts (the single most important prerequisite — OT security is a networking job before it is a security job)
+- Comfort on the command line (Windows and Linux) and basic scripting in Python or PowerShell for data reconciliation and reporting
+- Strong written communication skills, including the ability to explain technical changes to non-technical audiences and security constraints to operational teams
+- Availability to work onsite at Alewife on a hybrid schedule, including hands-on work with physical hardware
+
+**Bonus Points For**
+- Exposure to vulnerability management concepts: CVE/CVSS, scanning, remediation workflow
+- Familiarity with SIEM or log analysis on any platform (Splunk, Sentinel, Elastic, Chronicle); coursework, CTF, or homelab experience counts
+- Cloud fundamentals, AWS preferred
+- Any exposure to ICS/OT, SCADA, lab instrumentation, or robotics environments
+
+</details>
+
+<a id="lab-it-ot-systems-administrator-2026-11-13"></a>
+
+### Lab IT/OT Systems Administrator (2026-11-13)
+
+2026-11-13 → open · software-eng · Cambridge, MA USA · $94–125K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4505109009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+The Lab IT/OT Systems Administrator is a hands-on technology role responsible for the day-to-day administration, troubleshooting, and continuous improvement of computing infrastructure inside Lila Sciences' laboratory environments. This role owns the layer of technology that sits between corporate IT and operational technology (OT), the workstations, edge compute, lab-area networking, and instrument-adjacent systems that enable autonomous science to run reliably.
+Reporting to the Senior Director, OT Security and IT/OT Convergence, the Lab IT/OT Systems Administrator works in close partnership with the OT network architecture team, corporate IT operations, facilities/building automation, and laboratory operations leadership. The successful candidate is comfortable operating in a complex, fast-moving research environment where standard corporate IT practices do not always apply, where change control matters more than speed, and where the end users are scientists running irreplaceable experiments on highly specialized equipment.
+This role is a key part of Lila's IT/OT convergence program. In addition to delivering day-to-day operational support, the person hired will contribute to the standards, device catalog, and playbooks that scale the function as the company grows, working under the direction of the Senior Director, OT Security and IT/OT Convergence.
+What You'll Be Building
+Lab IT Operations and Support
+- Provide day-to-day administration and troubleshooting for laboratory computing assets, including lab-area workstations, edge compute nodes, lab-supplied PCs, and dedicated lab-network infrastructure (switches, access points, cabling).
+- Respond to and resolve Lab IT incidents and service requests through the enterprise ITSM platform, applying appropriate prioritization for experiments in progress and time-sensitive scientific work.
+- Maintain a strong on-site presence across Lila's laboratory locations; observe how scientists and lab operators use technology in practice and proactively identify issues before they become tickets.
+- Coordinate scheduled maintenance windows for Lab IT systems in alignment with laboratory operations leadership; ensure changes do not disrupt active experiments.
+Instrument-Adjacent and OT Boundary Support
+- Provide IT-side support for laboratory instruments and automated platforms, including networking, identity integration, agent deployment decisions, and image/configuration alignment with company standards.
+- Partner with the OT network architecture team, instrument vendors, and laboratory automation engineers to support new instrument deployments and changes, recognizing that instrument-connected systems require specialized handling distinct from standard corporate endpoints.
+- Troubleshoot authentication, networking, and connectivity issues on vendor-supplied lab equipment, including systems with non-standard configurations, embedded operating systems, or unique vendor account models.
 
 *(truncated: full text in `data/job_postings.jsonl`)*
 

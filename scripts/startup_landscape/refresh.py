@@ -27,6 +27,7 @@ from collections import Counter, defaultdict
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 DATA = os.path.join(ROOT, "docs", "startup-landscape", "data")
 RAW = os.path.join(DATA, "job_postings_raw")
+PREVIOUS = "2026-10-10"  # the snapshot the refresh compares against (--previous)
 
 
 def _ts(url):
@@ -55,13 +56,18 @@ def linkedin_headcount(d, pages):
         run.append(o)
     if run:
         keep += [run[0]] + ([run[-1]] if len(run) > 1 else [])
-    counted = [o for o in keep if o.get("members")]
+    # A band alone is added only for a company with no counted team size at all, and then only the latest.
+    counted = [o for o in keep if o.get("members")] or [h for h in d.get("headcount") or [] if h.get("value") is not None]
+    from datetime import date as _d
+    near = lambda a, b: abs((_d.fromisoformat(a) - _d.fromisoformat(b)).days) <= 7  # noqa: E731
     added = 0
     for o in keep:
         if not o.get("members") and (counted or o is not keep[-1]):
-            continue  # a band alone only where no member count exists, and then only the latest
+            continue
         if (_ts(o["source"]) or o["source"]) in have or (o["date"], o.get("members")) in have_dates:
             continue
+        if any(v == o.get("members") and len(day or "") == 10 and near(day, o["date"]) for day, v in have_dates):
+            continue  # the same reading from a capture a few days apart
         lo, hi = _band(o.get("size"))
         how = ("logged-out LinkedIn page, viewed through headed Chrome on a lab Pi"
                if o.get("how") == "live" else "LinkedIn company page as captured by the Wayback Machine")
@@ -80,15 +86,17 @@ def current_openings(d, rows, li, date):
     snaps = sorted(f for f in os.listdir(RAW) if f.startswith(slug + ".live-"))
     prev = d.get("current_openings") or {}
     new = None
+    getro_only = snaps and {r.get("vendor") for r in json.load(open(os.path.join(RAW, snaps[-1]), encoding="utf-8"))} <= {"getro"}
+    if getro_only and li:
+        snaps = []  # an investor's portfolio board keeps closed roles; LinkedIn's search is the better count here
     if snaps and snaps[-1] == f"{slug}.live-{date}.json":
-        open_rows = [r for r in rows if r["open_now"] and r["function"] != "general-application"]
-        src = prev.get("source") or (open_rows[0]["sources"][0] if open_rows and open_rows[0]["sources"] else None)
+        # Count postings on the board, as the earlier snapshot is counted (not titles merged across postings).
+        titles = _open_titles(slug, date)
+        src = prev.get("source") or next((s for r in rows if r["open_now"] for s in r["sources"]), None)
         if slug == "atinary":
             src = "https://atinary.com/careers/"
-        new = {"date": date, "count": len(open_rows),
-               "by_function": dict(Counter(r["function"] for r in open_rows).most_common()),
-               "titles": [r["title"] for r in open_rows], "source": src,
-               "basis": "company job board (live snapshot)"}
+        new = {"date": date, "count": len(titles), "by_function": _by_function(titles),
+               "titles": titles, "source": src, "basis": "company job board (live snapshot)"}
     elif li:
         cards = li.get("cards") or []
         new = {"date": date, "count": len(cards), "by_function": {}, "titles": [c["title"] for c in cards],
@@ -102,10 +110,30 @@ def current_openings(d, rows, li, date):
         return False
     if prev and prev.get("date") != date:
         new["previous"] = {k: prev.get(k) for k in ("date", "count", "by_function", "source") if prev.get(k) is not None}
+        if _snapshot(slug, PREVIOUS) is not None:  # recount the earlier snapshot the same way, so the two compare
+            titles = _open_titles(slug, PREVIOUS)
+            new["previous"].update({"date": PREVIOUS, "count": len(titles), "by_function": _by_function(titles),
+                                    "note": f"recounted from the {PREVIOUS} live snapshot"})
     elif prev.get("previous"):
         new["previous"] = prev["previous"]
     d["current_openings"] = new
     return True
+
+
+def _open_titles(slug, day):
+    """Titles of the postings open in one live snapshot, general applications left out, in English."""
+    import sys
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from jobs_report import GENERAL, translations
+    en = translations()
+    snap = _snapshot(slug, day) or {}
+    titles = [en.get(r.get("title"), r.get("title")) or "" for r in snap.values()]
+    return [re.sub(r"\s+", " ", t).strip() for t in titles if t and not GENERAL.search(t)]
+
+
+def _by_function(titles):
+    import analyze
+    return dict(Counter(map(analyze.classify, titles)).most_common())
 
 
 def quarter(day):
@@ -133,6 +161,8 @@ def main():
     ap.add_argument("--previous", default="2026-10-10", help="date of the snapshot the profiles compare against")
     ap.add_argument("--profiles-only", action="store_true")
     a = ap.parse_args()
+    global PREVIOUS
+    PREVIOUS = a.previous
     if a.profiles_only:
         return write_profiles(a.date, a.previous)
     pages = json.load(open(os.path.join(DATA, "linkedin_company_pages.json"), encoding="utf-8"))
@@ -163,9 +193,6 @@ def main():
               f"{'quarter recount' if pq else 'no postings'}")
     write_profiles(a.date, a.previous)
 
-
-if __name__ == "__main__":
-    main()
 
 
 # --- profile pages: a generated "Update" block near the top of each companies/<slug>.md ---------------
@@ -265,3 +292,7 @@ def write_profiles(date, prev_date):
             m = re.search(r"\A# .*?\n\n.*?\n\n", md, re.S)
             md = md[:m.end()] + block + "\n" + md[m.end():] if m else block + "\n" + md
         open(md_path, "w", encoding="utf-8").write(md)
+
+
+if __name__ == "__main__":
+    main()

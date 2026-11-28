@@ -2,6 +2,25 @@
 
 Chicago, IL, US (until about 2024 Skokie, IL) · founded 2020 · AI + high-throughput experimentation · active (renamed from Stoicheia in 2022) · <https://mattiq.com>
 
+<!-- refresh:2026-11-28 -->
+## Update, 2026-11-28
+
+What changed between the first snapshot (2026-10-10) and 2026-11-28. The method is in the [survey README](../README.md#update-2026-11-28).
+
+**Team size on LinkedIn.** People listing the company, read from the company page (LinkedIn's 'View all N employees'); this counts alumni who never updated their profile and misses staff without one.
+
+| Date | Members | Band | Source |
+| --- | --- | --- | --- |
+| 2024-01-14 | 18 | 11-50 | [Wayback](https://web.archive.org/web/20240114191103/https://www.linkedin.com/company/mattiq/) |
+| 2024-09-13 | 18 | 11-50 | [Wayback](https://web.archive.org/web/20240913020600/https://www.linkedin.com/company/mattiq/) |
+| 2025-01-30 | 19 | 11-50 | [Wayback](https://web.archive.org/web/20250130134322/https://www.linkedin.com/company/mattiq/) |
+| 2025-01-30 | 19 | 11-50 | [Wayback](https://web.archive.org/web/20250130154241/https://www.linkedin.com/company/mattiq) |
+
+**LinkedIn job search** ([logged out, by name](https://www.linkedin.com/jobs/search?keywords=%22Mattiq%22&location=Worldwide&geoId=92000000), 2026-11-28): no postings.
+
+- The redesigned site sells Mattiq as a source of experimental materials data for AI: "Mattiq generates the ground truth that turns AI prediction into reality". It cites 250M material instances and 100K compositions per Megalibrary chip. It no longer leads with electrocatalysts, and it has no careers page. ([source](https://mattiq.com/))
+<!-- /refresh:2026-11-28 -->
+
 ## Funding timeline
 
 All three rows are SEC Form D records (CIK 1843720). The total is about USD 18.6M. Grants exist (DOE HPC4EI and others) but their amounts were not retrieved.

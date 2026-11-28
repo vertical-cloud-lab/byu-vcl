@@ -39,14 +39,71 @@
    "source": "https://www.sec.gov/Archives/edgar/data/2023133/000202313326000001/primary_doc.xml"
   }
  ],
- "headcount": [],
- "postings": [],
+ "headcount": [
+  {
+   "date": "2025-11-27",
+   "value": 17,
+   "low": 11,
+   "high": 50,
+   "method": "linkedin-band",
+   "note": "LinkedIn 'View all 17 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+   "source": "https://web.archive.org/web/20251127100723/https://www.linkedin.com/company/aionics",
+   "added": "2026-11-28"
+  },
+  {
+   "date": "2026-01-28",
+   "value": 15,
+   "low": 11,
+   "high": 50,
+   "method": "linkedin-band",
+   "note": "LinkedIn 'View all 15 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+   "source": "https://web.archive.org/web/20260128091408/https://www.linkedin.com/company/aionics",
+   "added": "2026-11-28"
+  },
+  {
+   "date": "2026-02-27",
+   "value": 15,
+   "low": 11,
+   "high": 50,
+   "method": "linkedin-band",
+   "note": "LinkedIn 'View all 15 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+   "source": "https://web.archive.org/web/20260227150005/https://www.linkedin.com/company/aionics",
+   "added": "2026-11-28"
+  },
+  {
+   "date": "2026-06-26",
+   "value": 12,
+   "low": 11,
+   "high": 50,
+   "method": "linkedin-band",
+   "note": "LinkedIn 'View all 12 employees'; band 11-50 employees; LinkedIn company page as captured by the Wayback Machine",
+   "source": "https://web.archive.org/web/20260626032834/https://www.linkedin.com/company/aionics",
+   "added": "2026-11-28"
+  }
+ ],
+ "postings": [
+  {
+   "period": "2026Q4",
+   "new_postings": 0,
+   "method": "job_postings.jsonl",
+   "note": "postings first seen 2026-10-01 to 2026-11-28 (live boards and Wayback)",
+   "source": "https://aionics.io/"
+  }
+ ],
  "current_openings": {
-  "date": "2026-10-09",
+  "date": "2026-11-28",
   "count": 0,
   "by_function": {},
   "titles": [],
-  "source": "https://aionics.io/"
+  "source": "https://aionics.io/",
+  "basis": "company job board (live snapshot)",
+  "previous": {
+   "date": "2026-10-10",
+   "count": 0,
+   "by_function": {},
+   "source": "https://aionics.io/",
+   "note": "recounted from the 2026-10-10 live snapshot"
+  }
  },
  "people": [
   {

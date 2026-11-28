@@ -6,7 +6,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Golang Developer (2022-06-15)
 
-2022-06-15 → open · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7109273539403876612/detail)
+2022-06-15 → open · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/305722/position/7514684822738471179/detail)
 
 <details><summary>Description</summary>
 
@@ -17,7 +17,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 **Requirements (职位要求)**
 我们期待这样的你：
-1.本科及以上学历，计算机相关专业，3年及以上相关工作经验，有良好的设计和编码品味，热爱写代码；
+1.本科及以上学历，计算机相关专业，有良好的设计和编码品味，热爱写代码；
 2.熟练掌握Golang语言；
 3.掌握Web后端开发技术: 协议、架构、存储、缓存、安全等；
 4.熟悉使用Mysql/Redis/MQ等常用中间件；
@@ -33,7 +33,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Front-End Engineer (2023-10-25)
 
-2023-10-25 → open · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7293825833089042729/detail)
+2023-10-25 → open · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/305722/position/7514684691695765799/detail)
 
 <details><summary>Description</summary>
 
@@ -44,7 +44,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 **Requirements (职位要求)**
 我们期待这样的你：
-1.大学本科及以上学历，计算机相关专业，5年及以上前端开发经验；
+1.大学本科及以上学历，计算机相关专业；
 2.熟悉JavaScript/TypeScript、HTML5、CSS3，具备扎实的前端基础；
 3.有React/Vue/Angular等类似MV*框架实践经验，具备独立项目开发能力；
 4.熟悉前端工程化与模块化开发工具（webpack/Grunt/gulp)；
@@ -62,7 +62,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### SRE Engineer (2023-11-29)
 
-2023-11-29 → open · software-eng · Shenzhen, Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7306784696561879307/detail)
+2023-11-29 → 2026-10-10 · software-eng · Shenzhen, Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7306784696561879307/detail)
 
 <details><summary>Description</summary>
 
@@ -83,7 +83,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### High-Performance Computing Engineer (2023-12-04)
 
-2023-12-04 → open · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7308616169388443923/detail)
+2023-12-04 → 2026-10-10 · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7308616169388443923/detail)
 
 <details><summary>Description</summary>
 
@@ -108,7 +108,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Large-Model Algorithm Engineer (2023-12-20)
 
-2023-12-20 → open · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7314507888582461737/detail)
+2023-12-20 → 2026-10-10 · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7314507888582461737/detail)
 
 <details><summary>Description</summary>
 
@@ -133,7 +133,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Algorithm Prototype Developer (Front-End) (2023-12-26)
 
-2023-12-26 → open · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7316743385556011275/detail)
+2023-12-26 → 2026-10-10 · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7316743385556011275/detail)
 
 <details><summary>Description</summary>
 
@@ -157,7 +157,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Materials Process Optimization AI4S Front-End R&D Intern (2024-03-12)
 
-2024-03-12 → open · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7345440171859265831/detail)
+2024-03-12 → open · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/305722/position/7514677252785801508/detail)
 
 <details><summary>Description</summary>
 
@@ -180,7 +180,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Large-Model Application Developer (2024-03-20)
 
-2024-03-20 → open · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7348272031710693683/detail)
+2024-03-20 → 2026-10-10 · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7348272031710693683/detail)
 
 <details><summary>Description</summary>
 
@@ -252,7 +252,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Materials-Industry AI4S Front-End R&D Researcher (2024-07-02)
 
-2024-07-02 → open · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7386961093963450650/detail)
+2024-07-02 → 2026-10-10 · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7386961093963450650/detail)
 
 <details><summary>Description</summary>
 
@@ -443,7 +443,7 @@ Back to [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)'s posting
 
 ### Full-Stack / Front-End Engineer, Intelligent Research Instrument Platform (2025-09-05)
 
-2025-09-05 → open · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7546436812014766375/detail)
+2025-09-05 → 2026-10-10 · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7546436812014766375/detail)
 
 <details><summary>Description</summary>
 
@@ -531,7 +531,7 @@ AI/LLM相关：
 
 ### Research Agent Full-Stack Developer (2025-11-12)
 
-2025-11-12 → open · software-eng · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7571751947037100339/detail)
+2025-11-12 → 2026-10-10 · software-eng · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7571751947037100339/detail)
 
 <details><summary>Description</summary>
 
@@ -559,7 +559,7 @@ AI/LLM相关：
 
 ### Golang Backend Engineer (2025-12-10)
 
-2025-12-10 → open · software-eng · Shenzhen · [source](https://dptechnology.jobs.feishu.cn/index/position/7582160447669225771/detail)
+2025-12-10 → 2026-10-10 · software-eng · Shenzhen · [source](https://dptechnology.jobs.feishu.cn/index/position/7582160447669225771/detail)
 
 <details><summary>Description</summary>
 
@@ -689,7 +689,7 @@ FDE（Foundation Developer Engineer）是工业大模型落地最后一公里核
 
 ### Architect / Project Manager (Cloud-Native + AI) (2025-12-18)
 
-2025-12-18 → open · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7585094301622454555/detail)
+2025-12-18 → 2026-10-10 · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7585094301622454555/detail)
 
 <details><summary>Description</summary>
 
@@ -706,7 +706,7 @@ FDE（Foundation Developer Engineer）是工业大模型落地最后一公里核
 
 ### IT Engineer (2025-12-30)
 
-2025-12-30 → open · software-eng · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7589566261208025382/detail)
+2025-12-30 → 2026-10-10 · software-eng · Shanghai · [source](https://dptechnology.jobs.feishu.cn/index/position/7589566261208025382/detail)
 
 <details><summary>Description</summary>
 
@@ -778,7 +778,7 @@ FDE（Foundation Developer Engineer）是工业大模型落地最后一公里核
 
 ### CFD Agent Intern (Engineering Modelling and Agent Collaboration) (2026-01-09)
 
-2026-01-09 → open · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7593288602844498222/detail)
+2026-01-09 → 2026-10-10 · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7593288602844498222/detail)
 
 <details><summary>Description</summary>
 
@@ -831,7 +831,7 @@ FDE（Foundation Developer Engineer）是工业大模型落地最后一公里核
 
 ### Solutions Architect, Life Sciences (2026-01-20)
 
-2026-01-20 → open · software-eng · Shenzhen · [source](https://dptechnology.jobs.feishu.cn/index/position/7597290104395139382/detail)
+2026-01-20 → 2026-10-10 · software-eng · Shenzhen · [source](https://dptechnology.jobs.feishu.cn/index/position/7597290104395139382/detail)
 
 <details><summary>Description</summary>
 
@@ -847,7 +847,7 @@ FDE（Foundation Developer Engineer）是工业大模型落地最后一公里核
 
 ### Solutions Architect (Suzhou) (2026-01-21)
 
-2026-01-21 → open · software-eng · Suzhou · [source](https://dptechnology.jobs.feishu.cn/index/position/7597789718781053194/detail)
+2026-01-21 → 2026-10-10 · software-eng · Suzhou · [source](https://dptechnology.jobs.feishu.cn/index/position/7597789718781053194/detail)
 
 <details><summary>Description</summary>
 
@@ -886,7 +886,7 @@ FDE（Foundation Developer Engineer）是工业大模型落地最后一公里核
 
 ### Data Engineering / Data Intelligence Intern (2026-02-02)
 
-2026-02-02 → open · software-eng · Hangzhou · [source](https://dptechnology.jobs.feishu.cn/index/position/7602092230476548390/detail)
+2026-02-02 → 2026-10-10 · software-eng · Hangzhou · [source](https://dptechnology.jobs.feishu.cn/index/position/7602092230476548390/detail)
 
 <details><summary>Description</summary>
 
@@ -1175,45 +1175,52 @@ ACE 通过 LLM 驱动的 Agent 技术，实现科学仪器（FIB‑SEM 聚焦离
 <details><summary>Description</summary>
 
 **Job description (职位描述)**
-你的机遇：
 1.参与开创性的 AI for Science 项目，负责AI for Science智能数据策展平台的Web前端研发工作，用技术推动科学前沿；
 2.根据用户使用习惯，自主提出产品需求，提供完善的技术实现方案，实现 AI 与尖端科研的融合；
 
 **Requirements (职位要求)**
-我们期待这样的你：
 1.大学本科及以上学历，计算机相关专业；
 2.了解各类AI工具及相关知识，并能熟练使用这些工具合理解决工作中的问题；
 3.具备扎实的前端基础，熟悉React/Vue，能熟练开发；
 4.具备后端基础知识，包括Node.js 、RESTful API、HTTP协议，有Git等版本控制工具使用经验；
 5.学习能力强，工作积极主动，逻辑思维清晰；
-
-加分项
-有相关实习经验优先
-有AI实际落地项目优先
-
 我们提供：
 1.立足 AI 与科学交叉领域，参与塑造未来的机会；
 3.在实战项目中历练，提高核心竞争力。
 
 </details>
 
-<a id="senior-full-stack-engineer-2026-08-12"></a>
+<a id="senior-back-end-engineer-research-instrument-agent-platform-2026-08-12"></a>
 
-### Senior Full-Stack Engineer (2026-08-12)
+### Senior Back-End Engineer (Research-Instrument Agent Platform) (2026-08-12)
 
 2026-08-12 → open · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7672986033273719081/detail)
 
 <details><summary>Description</summary>
 
 **Job description (职位描述)**
-1. 负责 AI 失效分析诊断平台的后端研发；
-2. 负责科学数据平台的后端研发；
-3. 负责科研智能体（Agent）平台的后端研发：工作流引擎、任务调度、沙箱执行环境与 API 服务；
+岗位介绍
+
+我们正在构建面向科学研究的智能体平台，通过 AI Agent 连接科研仪器、实验流程与科学数据，实现仪器智能操控、实验任务自动执行、数据采集分析及科研流程自动化。
+
+希望你具备扎实的后端工程能力，对 AI Agent 技术及科学仪器自动化充满兴趣，共同建设稳定、灵活、可扩展的科研智能体基础设施。
 
 **Requirements (职位要求)**
-2. 有开发者平台或 Agent 平台研发经验者优先；
-3. 工程能力扎实，熟悉 Python/FastAPI 等主流后端技术栈、数据库与分布式系统，具备全栈开发能力者更佳；
-4. 有大规模数据或对象存储系统研发经验者加分。
+任职要求
+
+熟练掌握 Python，熟悉数据库、缓存、消息队列及异步任务处理等后端技术。
+了解 LLM、AI Agent、工具调用及 Agent Harness 的基本原理，熟悉 OpenCode、DeepSeek Harness 等相关项目的设计思路，有 Agent 平台开发经验者优先。
+
+加分项
+
+有 Agent 评测与调优经验者优先，包括 Agent 运行轨迹（Trace）分析、效果评估、工具调用优化及任务成功率提升等。
+熟悉 Docker、Kubernetes、任务调度或沙箱执行环境。
+具备全栈开发能力，熟悉 React、Next.js 等前端框架。
+对 AI for Science、自动化实验室或自主科研系统有兴趣。
+
+技术关键词
+
+Python · AI Agent · Agent Harness · OpenCode · DeepSeek Harness · Agent Evaluation · Distributed Systems · PostgreSQL · Redis · Docker · Kubernetes · Laboratory Automation
 
 </details>
 
@@ -1233,34 +1240,6 @@ ACE 通过 LLM 驱动的 Agent 技术，实现科学仪器（FIB‑SEM 聚焦离
 3.精通 PLC 编程与调试，熟悉至少一种主流 PLC 平台，如西门子、三菱、欧姆龙等，能够独立完成控制程序设计、设备联调和故障排查；
 4.熟悉使用至少一门上位机开发语言，包括但不限于 C#、Python 等；
 加分项
-
-</details>
-
-<a id="cloud-platform-system-administrator-2026-08-17"></a>
-
-### Cloud Platform System Administrator (2026-08-17)
-
-2026-08-17 → open · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7674974930328897843/detail)
-
-<details><summary>Description</summary>
-
-**Job description (职位描述)**
-岗位定位
-
-岗位职责
-1. 多云资源管理：负责主流公有云平台资源日常运维，统筹服务器、容器、存储、GPU、网络等核心资源；落实资源标准化治理，全生命周期管理资源变更、扩缩容与下线，清理闲置低效资源，支撑业务资源规划。
-3. 账号权限安全治理：负责多云账号、密钥及权限体系管理，依据最小权限原则完成权限管控与账号生命周期管理；定期开展权限安全审计，落地SSO、MFA等安全机制，保障云平台访问安全合规。
-4. 大模型平台运维：负责主流大模型服务、API密钥及调用额度管控；维护统一模型网关，配置限流、路由等策略；监控模型调用成本与运行状态，排查各类调用故障，支撑业务模型接入使用。
-5. 云原生与系统运维：负责Linux系统、Docker、K8s集群日常运维与故障排查；保障云网络、存储、容器等基础设施稳定，承接变更、备份、应急恢复工作，完善运维台账与文档。
-6. 监控与运维自动化：搭建云资源、容器及大模型服务监控告警体系；通过脚本、云API及IaC工具实现运维工作自动化，持续优化运维流程，提升运维效率。
-
-**Requirements (职位要求)**
-1. 本科及以上学历，计算机相关专业优先，1年以上云运维、DevOps、SRE相关经验。
-2. 精通Linux系统，具备扎实的系统、网络故障排查能力；掌握Docker、K8s云原生技术，具备云成本优化实战经验。
-3. 熟练掌握至少两款主流公有云，熟悉云产品及权限管控体系；了解主流大模型调用机制，熟悉Token、限流、配额等核心概念。
-4. 会使用AI开发工具，熟悉自动化运维工具优先。
-6.以下为加分项：
-具备大规模多云资源、成本治理及企业级权限、密钥安全治理经验；熟悉GPU、AI推理平台及LiteLLM等模型组件、多模型统一接入；熟练掌握Terraform等自动化工具；有CMP、AI网关等平台建设经验，持有主流云、K8s认证优先。
 
 </details>
 
@@ -1382,12 +1361,10 @@ ACE 通过 LLM 驱动的 Agent 技术，实现科学仪器（FIB‑SEM 聚焦离
 <details><summary>Description</summary>
 
 **Job description (职位描述)**
-你的机遇：
 1.参与开创性的 AI for Science 项目，负责AI for Science科学数据智能生产平台的业务后端研发工作，用技术推动科学前沿；
 2.负责开发高性能java后端系统，实现 AI 与尖端科研的融合；
 
 **Requirements (职位要求)**
-我们期待这样的你：
 1.本科及以上学历，计算机相关专业，3 年及以上后端开发经验，具备良好的代码规范与系统设计思维；
 2.熟练掌握java和python语言， 熟悉SpringBoot、SpringMVC、MyBatis等常见开源框架，并有相关项目经验；有高可用系统的设计经验和能力，具备高并发、海量数据处理的能力；
 3.熟悉主流的Agent开发框架或者范式，包括但不限于：OpenClaw、Skills、RAG、知识库集成；
@@ -1435,15 +1412,49 @@ ACE 通过 LLM 驱动的 Agent 技术，实现科学仪器（FIB‑SEM 聚焦离
 <details><summary>Description</summary>
 
 **Job description (职位描述)**
-2. 维护公司AD域, radius,邮件, DNS、DHCP、NAS等日常系统运维；
-4. 桌面运维支持，熟练维护mac， windows，打印机，门禁，监控系统等办公设备硬件；
+1.负责公司 Mac 桌面运维，包括系统安装、配置、故障处理及终端资产管理；
+2.负责办公网络的日常维护与故障排查（有线 / 无线 / 交换机 / 路由器 / AP）；
+3.负责企业内部应用系统运维支持（邮箱、OA、IM、VPN 等）；
+5.编写基础 IT 运维文档，协助供应商对接与技术支持。
 
 **Requirements (职位要求)**
-1.有3年以上中大型网络项目实施经验，对弱电、网络、机房、环控以及IT相关子系统知识熟悉；
-2.熟悉TCP/IP的基本原理和实际应用，有自动化和监控意识和相关经验；
-4.熟练部署、操作常用监控平台 Zabbix,Nagios,Cacti(三选一)，对SNMP协议熟悉；
-6.具有Linux系统基本命令操作能力；
-8.有CCIE/HCIE等证书的优先,具有shell/python编写能力可加分。
+1.计算机相关专业优先，2年以上 IT 运维或桌面支持经验；
+2.熟悉 macOS，具备 Mac 桌面运维经验；
+3.具备基础网络知识，能够进行常见问题定位与排查；
+4.服务意识强，沟通能力好，责任心强。
+加分项：
+3.了解或参与过 IB（InfiniBand）或 RoCE 网络的部署、配置或运维；
+4.熟悉数据中心网络、GPU 服务器或高性能计算网络者优先。
+
+</details>
+
+<a id="ai-agent-full-stack-r-d-intern-2026-10-21"></a>
+
+### AI Agent Full-Stack R&D Intern (2026-10-21)
+
+2026-10-21 → open · software-eng · Beijing · [source](https://dptechnology.jobs.feishu.cn/index/position/7698946898052712754/detail)
+
+<details><summary>Description</summary>
+
+**Job description (职位描述)**
+寻找热爱大模型智能体与智能化平台研发的实习生，参与 AI Agent 平台的研发迭代。平台负责调度各类工具、任务，支撑多步骤、有依赖的自动化工作流稳定执行。
+核心职责：
+任选一个或多个方向参与研发：
+1.后端开发：参与 Agent 平台后端架构开发，基于 FastAPI 开发高性能接口，支撑大规模任务调度；
+2.前端开发：基于 React 开发 Agent 平台交互界面；
+3.工具容器化：封装、优化各类工具能力与评测集；
+4.多智能体调度：优化多 Agent 协作逻辑，提升长任务、多步骤场景下工具调用稳定性；
+5.前沿探索：探索 LLM 和工作流引擎结合，实现自然语言到复杂自动化任务的转换。
+
+**Requirements (职位要求)**
+1.Python 基础扎实，熟悉 FastAPI/Flask，代码规范，遵循 PEP8；
+2.具备工程化意识，能写出模块化、易维护代码，熟练 Git 协作；
+3.熟悉 Linux，可独立编写 Dockerfile，掌握基础环境配置。
+加分项：
+1.全栈能力：会 React 前端开发；
+2.Agent 开发经验：用过 LangChain、LangGraph、AutoGen 等框架；
+3.任务调度经验：了解 Redis、RabbitMQ、Celery，做过长任务、高并发处理；
+4.开源经历：GitHub 有个人项目或开源 PR 贡献。
 
 </details>
 

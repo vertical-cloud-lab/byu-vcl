@@ -2,7 +2,7 @@
 
 Back to [all companies](README.md) · [company profile](../companies/tetsuwan-scientific.md)
 
-**2 postings recovered**, 2 with the full description; 2 still open on 2026-10-10. First seen 2026-06-03, latest 2026-06-03. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**2 postings recovered**, 2 with the full description; 2 still open on 2026-11-28. First seen 2026-06-03, latest 2026-06-03. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
