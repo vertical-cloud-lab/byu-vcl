@@ -15,7 +15,7 @@ amounts") and checks the colour again.
        out/collisions/floor_clean_people_person.json (the person's clearance to unit 3 and the floor plan's machines)
 
 Models: floor_clean_still.build (the area; unit 3, a MiR250 + UR10e + 2F-85, with the 118EXP's wand and our floor
-squeegee; the 15 ft hose; the vacuum station; the bonding lead and stud), people.Person (MakeHuman's CC0 body, skinned
+squeegee; the 25 ft hose; the powder point (powder_point.py); the bonding lead and stud), people.Person (MakeHuman's CC0 body, skinned
 and dressed). New here, ours: the push broom (a 12 in natural-bristle head on a 1.2 m handle), the lobby dustpan
 (conductive, 300 mm wide, on a 0.8 m handle), the spill (a patch 330 x 250 mm and 12 mm deep), and where they are.
 """

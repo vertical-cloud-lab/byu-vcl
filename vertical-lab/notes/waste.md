@@ -454,6 +454,15 @@ station and the drive aren't animated or audited (`ARM_AUDIT=1`); and upkeep doe
 (about an hour a week at one a day: liners, consolidation, labels, requests). To resume: add a `waste` task to
 `upkeep.TASKS` (weekly, 1 h, a person at the hood) and re-run `python3 upkeep.py && python3 timelapse.py model`.
 
+**Done since (rounds 15-16).** The station is on the lab's fume hood in `setup_lab.build` (round 15), and the set-up
+movie shows it from the aisle (round 16); upkeep books the waste person-time (round 16: 1 h a week). The powder point
+(item 1 above) is on the lab floor too, behind the rePowder's fire point (`powder_point.py`, `VLAB_POWDER_POINT`):
+the two 118EXPs on their post, one grounded pail per family, the *Solid Material* bucket, the filter can with sand,
+the sign. `waste_clip.py` animates the bottle trip (a MiR250 + UR12e brings the capped sieve-wash IPA, sets it in the
+intake tray under the sash, takes an empty back), the cabinets drawn see-through, and the powder point, audited at 0
+arm frames and 0 movers frames in collision (`notes/waste_clip.md`). Still not done: the swap at a tray station (the
+bottle taken out of the sieve cell's nest), and a person consolidating or sealing a liner on screen (captions only).
+
 ## What it costs, and the levers
 
 Risk Management doesn't charge the lab for routine pickups, so cost here means four things: what BYU pays to dispose

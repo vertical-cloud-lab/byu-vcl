@@ -48,8 +48,13 @@ V = consts("vlm.py")
 P = consts("props.py")
 A = consts("animate.py", V=V, P=P)
 I = consts("instruments.py")
-S = consts("services.py", V=V, I=I)
-SL = consts("setup_lab.py", V=V, A=A, P=P)
+CP = consts("coupling.py", V=V)
+S = consts("services.py", V=V, I=I, CP=CP)          # round 16: PLATE_Y is coupling.YC since round 12
+# round 16: setup_lab's TARGET_AT reads warehouse's row faces (W.Y_FACE_S), so warehouse's constants go in too; without
+# them TARGET_AT was skipped and the figure couldn't be drawn (round 15 left it saying UR10e for that reason)
+LN = consts("line.py", V=V, A=A, P=P)
+W = consts("warehouse.py", V=V, A=A, P=P, line=LN)
+SL = consts("setup_lab.py", V=V, A=A, P=P, W=W)
 
 # ------------------------------------------------------------------------------------------------ the geometry
 FACE_F = -V.UNIT_D / 2 - V.SKIN                # -1562: the cladding's front face
@@ -138,7 +143,7 @@ def draw():
     rect(ax, MIR[0], MIR[2], MIR[1], MIR[3], fc="none", ec=MIR_C, lw=1.2, ls=(0, (4, 2)), zorder=7)
     ax.add_patch(Circle((A.AMR_XY[0] + A.ARM_LOCAL[0], A.AMR_XY[1] + A.ARM_LOCAL[1]), 95.0, fc="none", ec=MIR_C,
                         lw=1.0, ls=(0, (4, 2)), zorder=7))
-    ax.annotate("MiR250 + UR10e at its dock while it works;\nit drives off before a tray comes out",
+    ax.annotate("MiR250 + UR12e at its dock while it works;\nit drives off before a tray comes out",
                 xy=(MIR[1], (MIR[2] + MIR[3]) / 2), xytext=(1100, -2900), fontsize=8, color=INK, arrowprops=lead,
                 zorder=8)
     rect(ax, POST[0] - POST_FOOT, POST[1] - POST_FOOT, POST[0] + POST_FOOT, POST[1] + POST_FOOT, fc=INK, ec=INK,

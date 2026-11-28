@@ -1,53 +1,53 @@
 {
  "name": "vlm_cabling",
- "fps": 12,
- "n_frames": 425,
+ "fps": 15,
+ "n_frames": 531,
  "size": [
-  1920,
-  1080
+  1280,
+  720
  ],
  "substeps": [
   {
    "label": "1/6",
-   "caption": "Power, network and gases for the whole lab, everything else drawn faint: two cable trays, one over each row, the north one round the backs of the two 30 ft Shuttles, with a drop to every station ending in a junction box, its sockets, a network port and an AirGradient air monitor. Nothing runs on the floor: the arms ride MiR250s and charge at their chargers.",
+   "caption": "Power, network and gases for the whole lab, and its safety kit; everything else drawn faint: two cable trays, one over each row, the north one round the backs of the two 30 ft Shuttles, with a drop to every station ending in a junction box, its sockets, a network port and an AirGradient air monitor. Nothing runs on the floor: the arms ride MiR250s and charge at their chargers.",
    "start_frame": 0,
-   "end_frame": 83
+   "end_frame": 104
   },
   {
    "label": "2/6",
    "caption": "The north row: the glovebox, the rePowder (400 V three-phase and 230 V on 32 A plugs, from its install call), the sieving cell, and past the Shuttles the Aconity MIDI (400 V three-phase, 32 A, from a dealer's listing) and the packaging station. The argon line runs beside the tray to each gas user.",
-   "start_frame": 84,
-   "end_frame": 148
+   "start_frame": 105,
+   "end_frame": 185
   },
   {
    "label": "3/6",
    "caption": "The south row: the 68FM-100 (208-240 V, three-phase preferred), the MiR chargers (100-240 V), the fume hood with its duct up through the 36 ft roof, the MX-Lab DED (220 V single-phase, 20 A) and the wire EDM, the biggest load here at 13 kVA, 200 V three-phase.",
-   "start_frame": 149,
-   "end_frame": 213
+   "start_frame": 186,
+   "end_frame": 266
   },
   {
    "label": "4/6",
    "caption": "The arms: each UR10e and its control box ride a MiR250 on its 48 V battery, so no cable or rail crosses the floor. Each charges on a MiR Charge 48V (100-240 V in, 48 V at up to 40 A out) in its bay on the south side of the aisle.",
-   "start_frame": 214,
-   "end_frame": 273
+   "start_frame": 267,
+   "end_frame": 341
   },
   {
    "label": "5/6",
    "caption": "Round the back of the Shuttles.",
-   "start_frame": 274,
-   "end_frame": 295
+   "start_frame": 342,
+   "end_frame": 368
   },
   {
    "label": "5/6",
-   "caption": "The Shuttles: each takes 208 V three-phase (#53; a used unit's plate: 8.6 kVA) to a disconnect on its back. Between them an N2 generator, a compressor and a chiller feed the trays' couplings through each Shuttle's right-hand side, where the risers run up to every slot's dock: 208Y/120 V on a 30 A breaker, Ethernet, air, N2 and chilled water.",
-   "start_frame": 296,
-   "end_frame": 364
+   "caption": "The Shuttles: each takes 208 V three-phase (#53; a used unit's plate: 8.6 kVA) to a disconnect on its back. Between them an N2 generator, a compressor and a chiller feed the trays' couplings through each Shuttle's right-hand side, where the risers run up to each powered tray's dock: 208Y/120 V on a 30 A breaker, Ethernet, air, N2 and chilled water.",
+   "start_frame": 369,
+   "end_frame": 455
   },
   {
    "label": "6/6",
    "caption": "All of it: one overhead route per row, drops at the stations, an air monitor at each, nothing on the floor.",
-   "start_frame": 365,
-   "end_frame": 424
+   "start_frame": 456,
+   "end_frame": 530
   }
  ]
 }

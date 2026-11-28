@@ -442,7 +442,7 @@ def render(pl: dict):
     ax.add_patch(Rectangle((ex0 / 1000, ey0 / 1000), (ex1 - ex0) / 1000, (ey1 - ey0) / 1000, fill=False, lw=0,
                            hatch="////", ec="#9a9a9a"))
     labels = {"repowder": "rePowder", "sieve_cell": "sieve", "vlm": "Shuttle 1", "vlm2": "Shuttle 2",
-              "aconity": "MIDI", "glovebox": "glove-\nbox", "vacuum station": "vac", "eos_m400": "EOS M 400-4",
+              "aconity": "MIDI", "glovebox": "glove-\nbox", "eos_m400": "EOS M 400-4", "machining": "machining cell",
               "meltio_cell": "Meltio cell", "ded": "DED", "wire_edm": "wire EDM", "fumehood": "fume hood",
               "instron_floor": "Instron", "packaging": "pack.", "bay charger": "3"}
     for k, lbl in labels.items():
@@ -456,7 +456,8 @@ def render(pl: dict):
         ax.add_patch(Circle((sx / 1000, sy / 1000), HOSE_R / 1000, fill=False, lw=0.6, ec=UNIT3, alpha=0.18,
                             ls=(0, (2, 3))))
         ax.plot([sx / 1000], [sy / 1000], marker="s", ms=6.5, color=INK, zorder=6)
-        ax.text(sx / 1000 + (-0.25 if nm == "atomizer" else 0.25), sy / 1000 + 0.95, f"the {nm}'s\nvacuum station",
+        ax.text(sx / 1000 + (-0.25 if nm == "atomizer" else 0.25), sy / 1000 + (1.6 if nm == "atomizer" else 0.95),
+                f"the {nm}'s\nvacuum station",
                 fontsize=6.5, color=INK, ha="right" if nm == "atomizer" else "left", va="bottom", zorder=12,
                 bbox=dict(boxstyle="round,pad=0.2", fc="white", ec="none", alpha=0.85))
     studs = np.asarray(pl["studs"]) / 1000

@@ -225,6 +225,18 @@ TARGET_AT = {"vlm": (-1330.0, -1742.0), "vlm2": (X2 + 1330.0, -1742.0),
 SHARED_POST = {"repowder": "sieve_cell"}
 SIEVE_BENCH = dict(x=-1982.5, w=1065.0, d=600.0, h=700.0, encl_h=1150.0)    # alloy_print.BENCH, ENCL_H
 INSTALL_AT = 0                                 # the first unit is put together at charger 0
+# round 16 (#303; PR #371's check of 2026-11-26: "Give the machining cell a place on the floor that doesn't take unit 3's
+# charger"): PR #373's cup-and-plug machining cell south of the south row, front to the north, behind the 68SC-2, unit
+# 3's charger and charger 0 (machining.FLOOR; notes/lab_r16.md). Its dock is on a line of its own, the corridor behind
+# the row (DOCK_Y), backed into from the west, where its MiR250 comes in from the aisle down the row's west end; so its
+# post stands beyond the docked unit's back end (BACK_IN), 150 mm off the front's light-curtain posts (TARGET_AT).
+# Floor._stations draws the cell. VLAB_MCELL=0 leaves it out, with its dock and post.
+if os.environ.get("VLAB_MCELL", "1") != "0":
+    import machining as MA
+    FLOOR_PLAN["machining"] = (MA.FLOOR["x"], "S", MA.FLOOR["turn"], MA.FLOOR["dock"][0])
+    DOCK_Y["machining"] = MA.FLOOR["dock"][1]
+    BACK_IN.add("machining")
+    TARGET_AT["machining"] = MA.FLOOR["target"]
 
 CAM_ROOM = [(11000, -22000, 15500), (500, -2700, 0), (0, 0, 1)]
 CAM_TOP = [(2000, -15000, 22500), (300, -2800, 0), (0, 0, 1)]
@@ -754,6 +766,18 @@ class Floor(W.Floor):
             sc.parent["waste"] = "wh_fumehood:body"
             sc.gmat["waste"] = np.eye(4)
             self.groups["fumehood"] = self.groups["fumehood"] + sc.members("waste")
+        # round 16 (PR #371's check: the atomizer cell's powder waste was on no floor): the powder point (powder_point.py:
+        # the two 118EXPs on their station post, a grounded pail per alloy family, the Solid Material bucket, the sand
+        # can for filters, the area sign), behind the rePowder's fire point. World meshes in the rePowder's floor group,
+        # so the set-up movie fades it in with the machine; not under the machine's root, which the movie lowers 80 mm
+        # as it sets it down (the station's drop cord rode 50 mm into the cable tray above: the lead's audit, round
+        # 16); machine_rects gives it its own plan rectangle. VLAB_POWDER_POINT=0 leaves it out.
+        if _on("VLAB_POWDER_POINT") and "repowder" in self.groups and "repowder" in sc.gmat:
+            import powder_point as PP
+            for nm, (mesh, col, op) in PP.parts().items():
+                sc.add(f"powder_point/{nm}", mesh, col, "powder_point", opacity=op, specular=0.3)
+            sc.gmat["powder_point"] = np.eye(4)
+            self.groups["repowder"] = self.groups["repowder"] + sc.members("powder_point")
         # round 15: floor-cleaning unit 3's charger (PR #369, floor_cleaning.BAY: a third MiR Charge 48V in the south
         # row, 1.6 m west of unit 1's, outside every powder zone), drawn as warehouse.Floor._chargers draws the others;
         # unit 3 itself is built in build(). VLAB_UNIT3=0 leaves both out.
@@ -765,6 +789,20 @@ class Floor(W.Floor):
             sc.gmat[g] = T((x3, W.Y_FACE_S + (W.CHARGER["D_plate"] - W.CHARGER["D"]), 0))
             bay = W.tape_rect(x3, W.Y_FACE_S + 20.0 + P.MIR["L"] / 2, P.MIR["W"] + 140, P.MIR["L"] + 140, t=50.0)
             sc.add(f"{g}/bay tape", bay, W.TAPE_W, f"{g}_tape", specular=0.0, ambient=0.5)
+        # round 16: the cup-and-plug machining cell (PR #373) south of the south row (FLOOR_PLAN["machining"], set at
+        # import: notes/lab_r16.md). Its parts at rest, merged by colour (machining_cell.lab_parts, about 64,000
+        # triangles), in group wh_machining:body, so the set-up movie can set it down as it does the other floor
+        # machines; warehouse.Floor._tape gives it its dock tape and post. VLAB_MCELL=0 leaves it out.
+        if _on("VLAB_MCELL") and "machining" in FLOOR_PLAN:
+            import machining as MA
+            import machining_cell as MC
+            g = "wh_machining:body"
+            for nm, (mesh, col, op) in MC.lab_parts().items():
+                sc.add(f"mcell/{nm}", mesh, col, g, opacity=op, specular=0.2)
+            sc.gmat[g] = T((MA.FLOOR["x"], MA.FLOOR["y"], 0.0)) @ R((0, 0, 1), MA.FLOOR["turn"])
+            self.groups["machining"] = sc.members(g)
+            self.where["machining"] = np.array([MA.FLOOR["x"], MA.FLOOR["y"] + MC.FRONT_Y - 300.0, 1842.0])
+            W.NAMES.setdefault("machining", "cup-and-plug machining cell")
 
 
 def _on(flag: str) -> bool:
@@ -796,7 +834,7 @@ def footprints(sc: Scene, F: Floor) -> pv.PolyData:
     """Tape round every floor machine's footprint, from where it will stand."""
     out = []
     for key, (x0, x1, y0, y1) in machine_rects(sc, F).items():
-        if key.startswith("charger"):
+        if key.startswith("charger") or key == "powder_point":     # its tape would run under the fire point's units
             continue
         out.append(W.tape_rect((x0 + x1) / 2, (y0 + y1) / 2, x1 - x0 + 160, y1 - y0 + 160, t=50.0))
     return W._merge(out)
@@ -828,9 +866,15 @@ def machine_rects(sc: Scene, F: Floor) -> dict:
     for key, names in F.groups.items():
         if key in ("tape", "docks", "racking", "chargers", "vlm", "vlm2") or not names:
             continue
-        bb = _bounds_of(sc, [n for n in names if sc.base_alpha.get(n, 1.0) > 0.0])
+        # round 16: the powder point rides in the rePowder's group (Floor._stations) but is measured on its own below
+        bb = _bounds_of(sc, [n for n in names if sc.base_alpha.get(n, 1.0) > 0.0
+                             and sc.group_of.get(n) != "powder_point"])
         if bb is not None:
             out[key] = bb[:4]
+    if sc.members("powder_point"):
+        bb = _bounds_of(sc, sc.members("powder_point"))
+        if bb is not None:
+            out["powder_point"] = bb[:4]
     if "repowder" not in out:
         bb = _bounds_of(sc, sc.members("repowder"))
         if bb is not None:
@@ -1195,7 +1239,7 @@ def build(data, idata, mp4=True, name="setup_lab", title=TITLE, highlight=None):
     units = [W_unit(sc, i) for i in range(len(W.CHARGERS))]
     # round 15: floor-cleaning unit 3 (PR #369, notes/floor_cleaning.md, option C: a third MiR250 + arm of its own,
     # its orange band) parked on its charger (Floor._stations draws it); not one of `units`, which the clips drive.
-    # Its 118EXP vacuums stay on wall power at their station, which the floor plan hasn't taken yet.
+    # Its 118EXP vacuums stay on wall power at their station: since round 16 the powder point (Floor._stations).
     F.unit3 = None
     if "charger2" in sc.gmat:
         import floor_cleaning as FC
@@ -1414,7 +1458,7 @@ def movie(data, idata):
     L.apply_state()
     # ------------------------------------------------------------------ 5. the floor machines
     order = [k for k in ("glovebox", "repowder", "sieve_cell", "aconity", "packaging", "instron_floor", "instron_small",
-                         "fumehood", "ded", "wire_edm", *R8_MERGED["floor"]) if k in F.groups and F.groups[k]]
+                         "fumehood", "ded", "wire_edm", "machining", *R8_MERGED["floor"]) if k in F.groups and F.groups[k]]
     fs = []
     for k in order:
         root = {"repowder": "repowder", "aconity": "aconity", "sieve_cell": "sieve_cell"}.get(k, f"wh_{k}:body")
@@ -1430,11 +1474,56 @@ def movie(data, idata):
     fs_main = [f for k, f in zip(order, fs) if k not in late]
     sc.step(f"5/{n}", "The floor machines, rigged in on pallet jacks and machine skates (the Aconity MIDI is "
             "1450 kg, the 100 kN Instron 799 kg), are set down fronts to the aisle: the glovebox (its antechamber to the aisle), "
-            "the rePowder, the sieving cell, the Aconity MIDI, the packaging station; across the aisle the two "
+            "the rePowder" + (" with its powder-waste point (two vacuums, a pail for each alloy family)"
+                              if sc.members("powder_point") else "") +
+            ", the sieving cell, the Aconity MIDI, the packaging station; across the aisle the two "
             "Instrons, the ducted fume hood" + (" (its base the chemical waste's solvent and acid cabinets)"
-                                                if sc.members("waste") else "") + ", the DED and the wire EDM.", 5.8,
+                                                if sc.members("waste") else "") + ", the DED and the wire EDM" +
+            (", and behind the south row the cups' machining cell" if "machining" in order else "") + ".", 6.4,
             stagger(fs_main, overlap=0.36), hold=1.2, cam_to=CAM_FLOOR,
             labels=W.auto(sc, CAM_FLOOR, W.floor_labels(F, main, have)))
+    # round 16 (PR #371's check, 2026-11-26: the waste station "is probably never on screen": the hood's front faces
+    # the aisle and every camera that showed the hood looked at its back): the hood from the aisle, close
+    if sc.members("waste"):
+        import waste_station as WS
+        Mh = sc.world("wh_fumehood:body")
+
+        def hw(x_, y_, z_):
+            return tuple(float(v) for v in (Mh @ np.r_[x_, y_, z_, 1.0])[:3])
+        cam_hood = [hw(900.0, WS.YF - 3300.0, 2300.0), hw(0.0, WS.YF + 200.0, 850.0), (0, 0, 1)]
+        sc.step(f"5/{n}", "The chemical waste station, from the aisle: the fume hood's base is a vented solvent cabinet "
+                "(yellow doors) and a vented acid cabinet (blue). Capped bottles come in to the intake tray under the "
+                "sash, one class a trip, and a person consolidates them on the day shift (PR #371).", 3.2, None,
+                hold=1.8, cam_to=cam_hood,
+                labels=[("solvent cabinet: the IPA wastes", hw(-330.0, WS.YF + 30.0, 620.0), (0.06, 0.66)),
+                        ("acid cabinet: acid aqueous; Weck's a shelf apart", hw(330.0, WS.YF + 30.0, 380.0),
+                         (0.58, 0.80)),
+                        ("intake tray: closed bottles only", hw(WS.INTAKE["x"], WS.INTAKE["y"], WS.Z0 + 60.0),
+                         (0.62, 0.30))])
+    # round 16: the powder point beside the rePowder (powder_point.py: PR #371's powder waste and #369's two vacuums)
+    if sc.members("powder_point"):
+        import powder_point as PP
+        # from the east and above: from the aisle the fire point's 680R and B570 stand in front of it (stills, round 16)
+        cam_pp = [(-3800.0, -2600.0, 4200.0), (-5250.0, -650.0, 300.0), (0, 0, 1)]
+        sc.step(f"5/{n}", "Beside the rePowder, the powder-waste point: an explosion-proof 118EXP vacuum for each alloy "
+                "family on wall power, a grounded pail for each family's sealed liners (lids set on, not crimped), "
+                "Risk Management's Solid Material bucket and a can of dry sand for filters. People seal and carry "
+                "the liners; powder waste never rides a MiR250.", 3.2, None, hold=2.0, cam_to=cam_pp,
+                labels=[("118EXP vacuums, Al and Cu family", (PP.VAC["Cu"][0], PP.VAC["Cu"][1], 950.0), (0.56, 0.06)),
+                        ("a pail for each family", (PP.PAIL["Cu"][0], PP.PAIL["Cu"][1], 420.0), (0.70, 0.44)),
+                        ("Solid Material bucket", (PP.BUCKET[0], PP.BUCKET[1], 420.0), (0.74, 0.24)),
+                        ("dry sand for filters", (PP.SAND[0], PP.SAND[1], 300.0), (0.04, 0.58))])
+    # round 16: the cups' machining cell behind the south row (machining.FLOOR; notes/lab_r16.md), from the south-west
+    if "machining" in order:
+        import machining as MA
+        cam_mc = [(-10500.0, -15500.0, 7600.0), (-4200.0, -8600.0, 600.0), (0, 0, 1)]
+        sc.step(f"5/{n}", "Behind the south row, the cell that machines the charge cups and plugs (PR #373): a bar-fed "
+                "lathe, an arm on a pedestal, IPA baths, a vacuum dryer, a scale and a gauge. Its MiR250 comes down "
+                "the row's west end and along a corridor behind the row, then backs in to its front.", 3.2, None,
+                hold=2.0, cam_to=cam_mc,
+                labels=[("cup-and-plug machining cell", (MA.FLOOR["x"], MA.FLOOR["y"] + 600.0, 1500.0), (0.42, 0.20)),
+                        ("its MiR250 dock", (MA.FLOOR["dock"][0], MA.FLOOR["dock"][1], 300.0), (0.62, 0.42)),
+                        ("its way in, from the aisle", (-7977.0, -7000.0, 0.0), (0.08, 0.40))])
     if late:
         names_late = {"eos_m400": "an EOS M 400-4 (large-format LPBF)", "meltio_cell": "a Meltio robot cell (DED repair)"}
         fs_late = [f for k, f in zip(order, fs) if k in late]
@@ -1467,23 +1556,27 @@ def movie(data, idata):
     sc.step(f"6/{n}", "The first MiR250 rolls onto its charging plate.", 2.0,
             roll, hold=0.2, labels=[("MiR250, 800 x 580 x 300 mm", (x, y, 300), (0.20, 0.60))])
     cab_names = u0.part_names("cabinet")
-
-    def cabinet(u):
-        sc.gmat[f"{u0.name}_cab"] = T((0, 0, 700 * (1 - u)))
-        for nm in cab_names:
-            sc.alpha[nm] = min(1.0, u * 3)
-    sc.step(f"6/{n}", "Its cabinet goes on top: it carries the arm and holds the UR control box.", 1.6, cabinet, hold=0.2)
     cb_names = u0.part_names("control box")
-    cab_body = [nm for nm in cab_names if "holder" not in nm]
+    # round 16 (PR #371's check, and round 15's audit: "the UR control box slides through a MiR's Class D unit"): the
+    # box went in sideways from the -y side, where the safety PR hung the Class D unit and moved the cabinet's door to
+    # the front end. Now the box is set on the MiR's top first, lowered from above, and the cabinet comes down over it,
+    # so nothing passes through anything; the box is serviced later through the door at the cabinet's front end.
 
+    # (the box settles only the last 40 mm: lowered from higher it passed where the arm will stand on the cabinet's top
+    # plate, 46 mm above the box, and the cabinet fades in round it in place, since lowering it over the box read as
+    # the box inside its shell: the audit, round 16)
     def control_box(u):
-        sc.gmat[f"{u0.name}_cb"] = T((0, -700 * (1 - u), 0))
+        sc.gmat[f"{u0.name}_cb"] = T((0, 0, 40 * (1 - u)))
         for nm in cb_names:
             sc.alpha[nm] = min(1.0, u * 4)
-        for nm in cab_body:
-            sc.alpha[nm] = 1.0 - 0.7 * math.sin(math.pi * u)
-    sc.step(f"6/{n}", "The UR control box (460 x 449 x 254 mm, 12 kg) goes into the cabinet.", 1.8, control_box,
-            hold=0.2, labels=[("UR control box", (x, y, 600), (0.20, 0.42))])
+    sc.step(f"6/{n}", "The UR control box (460 x 449 x 254 mm, 12 kg) is set on the MiR250's top.",
+            1.4, control_box, hold=0.2, labels=[("UR control box", (x, y, 600), (0.20, 0.42))])
+
+    def cabinet(u):
+        for nm in cab_names:
+            sc.alpha[nm] = min(1.0, u * 1.5)
+    sc.step(f"6/{n}", "Its cabinet goes on over the box: it carries the arm, the Class D extinguisher on its aisle "
+            "side and a door at its front end for the control box.", 1.6, cabinet, hold=0.2)
     rb = u0.robot
     arm_names = u0.part_names("arm")
     root0 = sc.gmat[rb.root].copy()

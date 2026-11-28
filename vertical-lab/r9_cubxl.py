@@ -724,6 +724,67 @@ def _draw_corr_overlay_r14(sc, img, s):
                    fill=(20, 20, 24, al) if i < len(lines) - 1 else (150, 40, 30, al))
 
 
+def powder_test_p300() -> Timeline:
+    """Round 16 (PR #371's check, 2026-11-26: "The *Atomized powder dosed for the CubXL* clip still has the P20 making
+    ten 20 µL transfers"): DAL's powder test with the P300 of round 14 (PR #372), its 200 µL of seawater in one transfer.
+    From the head parked at the back left, clear of the arm, and back; the same marks as instruments_lab.powder_test
+    (start, open, first, end), so animate.py's workflow plays it the same way. The tip only ever touches seawater (it
+    dispenses 5 mm above the vial's rim), so it goes back to its rack, as in the spot's step 2."""
+    p, q = CORR, IL.POWDER_TEST
+    TZ = p["travel_z"]
+    tl = Timeline(_corr_start(x=q["park"][0], y=q["park"][1]))
+    h = Head(tl)
+
+    def p3_stow():                       # up to the travel plane, then the lift raises the P300 (as in _corr_spot)
+        if tl.states[-1].get("p3drop", 0.0) > 0.0:
+            if tl.states[-1]["z"] < TZ - 1e-6:
+                h.go(max(0.25, (TZ - tl.states[-1]["z"]) / 110.0), z=TZ)
+            h.go(0.3, p3drop=0.0)
+
+    def p3_over(x, y):
+        s_ = tl.states[-1]
+        if s_.get("p3drop", 0.0) > 0.0 and math.hypot(s_["x"] - (x - P3["off"][0]), s_["y"] - (y - P3["off"][1])) > 0.01:
+            p3_stow()
+        h.travel(x - P3["off"][0], y - P3["off"][1])
+        if tl.states[-1].get("p3drop", 0.0) < P3["lift"]:
+            h.go(0.3, p3drop=P3["lift"])
+
+    def p3_to(x, y, tip_end):
+        p3_over(x, y)
+        h.down(tip_end + P3_HANG + P3["lift"])
+
+    def p3_bare(x, y, nozzle):
+        p3_over(x, y)
+        h.down(nozzle - P3["noz"] + P3["lift"])
+    asw = (p["holder_x"], p["holder_y0"] + 2 * p["holder_dy"])
+    seat = P3["tip_top"] - P3["seat"]
+    h.go(0.3)
+    tl.mark("start")
+    p3_bare(*P3_TIP_HOME["ptip"], seat)
+    h.go(0.25, ptip="head", panel=1)
+    p3_stow()
+    h.capper_to(*asw, p["vial_cap"])
+    h.go(0.2, vcap="asw")
+    h.up(0.25)
+    tl.mark("open")
+    p3_to(*asw, 35.0)
+    h.go(0.6, p3_ul=q["ul"], p3_liq="ASW", asw=p["stock_ml"] - q["ul"] / 1000,
+         xfer=f"ASW: 1 transfer of {q['ul']:.0f} µL (P300)")
+    p3_to(*q["seat"], q["vial_top"] + 5.0)
+    h.go(0.6, p3_ul=0.0, vial=q["ul"])
+    tl.mark("first")
+    p3_stow()
+    h.capper_to(*asw, p["vial_cap"])
+    h.go(0.2, vcap="", xfer="", p3_liq="")
+    h.up(0.25)
+    p3_bare(*P3_TIP_HOME["ptip"], seat + 2.0)
+    h.go(0.25, ptip="rack")
+    p3_stow()
+    h.travel(*q["park"])
+    tl.mark("end")
+    return tl
+
+
 _CORR_TL = _corr_spot()
 IL._CORR_TL = _CORR_TL          # the measurement overlay (instruments_lab._draw_corr_overlay) reads the timeline there
 PLOTS["instruments/cubxl_corrosion"] = _draw_corr_overlay_r14

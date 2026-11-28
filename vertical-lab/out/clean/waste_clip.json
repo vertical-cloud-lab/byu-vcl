@@ -1,0 +1,275 @@
+{
+ "name": "waste_clip",
+ "fps": 15,
+ "n_frames": 1759,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "Liquid waste leaves a station only in the capped bottle it was made in. One class a trip: this unit carries a 1 L bottle of sieve-wash IPA, its fines kept wet, in the spill tray on its deck.",
+   "start_frame": 0,
+   "end_frame": 74
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "It drives to the ducted fume hood's dock. Never the IPA and the Weck's together, never the acid and the sulfide, never anything aqueous with powder waste: the unit's job list knows each bottle's class.",
+   "start_frame": 75,
+   "end_frame": 258
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "It drives to the ducted fume hood's dock. Never the IPA and the Weck's together, never the acid and the sulfide, never anything aqueous with powder waste: the unit's job list knows each bottle's class.",
+   "start_frame": 259,
+   "end_frame": 285
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "At the hood the arm takes the bottle out of the spill tray by its cap.",
+   "start_frame": 286,
+   "end_frame": 316
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "At the hood the arm takes the bottle out of the spill tray by its cap.",
+   "start_frame": 317,
+   "end_frame": 332
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "At the hood the arm takes the bottle out of the spill tray by its cap.",
+   "start_frame": 333,
+   "end_frame": 341
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "At the hood the arm takes the bottle out of the spill tray by its cap.",
+   "start_frame": 342,
+   "end_frame": 356
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "Under the raised sash (18 in), inside the hood's airflow, the arm sets it in the intake tray's empty nest: one nest per class, each in its own spill tray.",
+   "start_frame": 357,
+   "end_frame": 390
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "Under the raised sash (18 in), inside the hood's airflow, the arm sets it in the intake tray's empty nest: one nest per class, each in its own spill tray.",
+   "start_frame": 391,
+   "end_frame": 412
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "Under the raised sash (18 in), inside the hood's airflow, the arm sets it in the intake tray's empty nest: one nest per class, each in its own spill tray.",
+   "start_frame": 413,
+   "end_frame": 428
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "Under the raised sash (18 in), inside the hood's airflow, the arm sets it in the intake tray's empty nest: one nest per class, each in its own spill tray.",
+   "start_frame": 429,
+   "end_frame": 438
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "Under the raised sash (18 in), inside the hood's airflow, the arm sets it in the intake tray's empty nest: one nest per class, each in its own spill tray.",
+   "start_frame": 439,
+   "end_frame": 447
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "Under the raised sash (18 in), inside the hood's airflow, the arm sets it in the intake tray's empty nest: one nest per class, each in its own spill tray.",
+   "start_frame": 448,
+   "end_frame": 469
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "It takes an empty 1 L bottle from the rack beside the tray. The arm never opens, pours or combines waste: a person consolidates, in the hood, on the day shift.",
+   "start_frame": 470,
+   "end_frame": 497
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "It takes an empty 1 L bottle from the rack beside the tray. The arm never opens, pours or combines waste: a person consolidates, in the hood, on the day shift.",
+   "start_frame": 498,
+   "end_frame": 519
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "It takes an empty 1 L bottle from the rack beside the tray. The arm never opens, pours or combines waste: a person consolidates, in the hood, on the day shift.",
+   "start_frame": 520,
+   "end_frame": 528
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "It takes an empty 1 L bottle from the rack beside the tray. The arm never opens, pours or combines waste: a person consolidates, in the hood, on the day shift.",
+   "start_frame": 529,
+   "end_frame": 538
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "It takes an empty 1 L bottle from the rack beside the tray. The arm never opens, pours or combines waste: a person consolidates, in the hood, on the day shift.",
+   "start_frame": 539,
+   "end_frame": 560
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "It takes an empty 1 L bottle from the rack beside the tray. The arm never opens, pours or combines waste: a person consolidates, in the hood, on the day shift.",
+   "start_frame": 561,
+   "end_frame": 591
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "It takes an empty 1 L bottle from the rack beside the tray. The arm never opens, pours or combines waste: a person consolidates, in the hood, on the day shift.",
+   "start_frame": 592,
+   "end_frame": 606
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "It takes an empty 1 L bottle from the rack beside the tray. The arm never opens, pours or combines waste: a person consolidates, in the hood, on the day shift.",
+   "start_frame": 607,
+   "end_frame": 615
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "It takes an empty 1 L bottle from the rack beside the tray. The arm never opens, pours or combines waste: a person consolidates, in the hood, on the day shift.",
+   "start_frame": 616,
+   "end_frame": 630
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "The arm parks. The delivery is logged (bottle, station, volume, time), so the pickup request to BYU Risk Management can be filled from the log.",
+   "start_frame": 631,
+   "end_frame": 681
+  },
+  {
+   "label": "1/4 The bottle trip",
+   "caption": "The arm parks. The delivery is logged (bottle, station, volume, time), so the pickup request to BYU Risk Management can be filled from the log.",
+   "start_frame": 682,
+   "end_frame": 788
+  },
+  {
+   "label": "2/4 The cabinets",
+   "caption": "The hood's base is two vented cabinets. A person moves each day's bottles into them, checks labels and dates, and files the pickup request.",
+   "start_frame": 789,
+   "end_frame": 829
+  },
+  {
+   "label": "2/4 The cabinets",
+   "caption": "Solvent cabinet: the sieve-wash IPA with its Al fines in a grounded can, the rinse IPA, the Form Wash IPA with resin and the used BN cans. Acid cabinet: Acid Aqueous and Weck's a shelf apart, each in its own tray.",
+   "start_frame": 830,
+   "end_frame": 925
+  },
+  {
+   "label": "2/4 The cabinets",
+   "caption": "Solvent cabinet: the sieve-wash IPA with its Al fines in a grounded can, the rinse IPA, the Form Wash IPA with resin and the used BN cans. Acid cabinet: Acid Aqueous and Weck's a shelf apart, each in its own tray.",
+   "start_frame": 926,
+   "end_frame": 945
+  },
+  {
+   "label": "3/4 The powder point",
+   "caption": "Powder waste stays where it is made: the powder point stands in the atomizer's area, behind the rePowder's fire point, with a vacuum, a pail and a lid for each alloy family.",
+   "start_frame": 946,
+   "end_frame": 1026
+  },
+  {
+   "label": "3/4 The powder point",
+   "caption": "Each family has its own 118EXP and its own grounded steel pail: Al and Cu residues never share a bin (aluminium with copper oxide is a thermite pair).",
+   "start_frame": 1027,
+   "end_frame": 1110
+  },
+  {
+   "label": "3/4 The powder point",
+   "caption": "Loose powder and sweepings go in the Solid Material bucket, used filters straight into dry sand. When a pail is full, the pickup is requested from BYU Risk Management.",
+   "start_frame": 1111,
+   "end_frame": 1215
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "A person changes the liners; the arms don't. In from the aisle round the glovebox and along the corridor behind the machines, clear of the fire point, to the Al-family 118EXP.",
+   "start_frame": 1216,
+   "end_frame": 1308
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "Vacuum off and unplugged, after its run-on and 60 s settle (vacuum SOP 4). The two clamps open and the head comes off (set aside: not drawn).",
+   "start_frame": 1309,
+   "end_frame": 1322
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "Vacuum off and unplugged, after its run-on and 60 s settle (vacuum SOP 4). The two clamps open and the head comes off (set aside: not drawn).",
+   "start_frame": 1323,
+   "end_frame": 1348
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "The liner is sealed where it is: its mouth drawn up, twisted into a gooseneck, folded over and taped (vacuum SOP 4.4). Dry: no water, no oil, nothing poured.",
+   "start_frame": 1349,
+   "end_frame": 1363
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "The liner is sealed where it is: its mouth drawn up, twisted into a gooseneck, folded over and taped (vacuum SOP 4.4). Dry: no water, no oil, nothing poured.",
+   "start_frame": 1364,
+   "end_frame": 1401
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "The sealed liner comes out by its neck, over the vacuum's handle, to the Al-family pail beside it on the corridor side.",
+   "start_frame": 1402,
+   "end_frame": 1420
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "The sealed liner comes out by its neck, over the vacuum's handle, to the Al-family pail beside it on the corridor side.",
+   "start_frame": 1421,
+   "end_frame": 1451
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "The sealed liner comes out by its neck, over the vacuum's handle, to the Al-family pail beside it on the corridor side.",
+   "start_frame": 1452,
+   "end_frame": 1473
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "The sealed liner comes out by its neck, over the vacuum's handle, to the Al-family pail beside it on the corridor side.",
+   "start_frame": 1474,
+   "end_frame": 1493
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "The lid goes back on, set on, not crimped: a crimped lid would hold in the trace hydrogen (Waste Management). The pail stays bonded to the ground bar.",
+   "start_frame": 1494,
+   "end_frame": 1523
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "A fresh liner, seated on bare metal, the head back on and clamped, plugged in. Powder waste never rides a MiR: the full pail waits here for BYU Risk Management's pickup.",
+   "start_frame": 1524,
+   "end_frame": 1539
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "A fresh liner, seated on bare metal, the head back on and clamped, plugged in. Powder waste never rides a MiR: the full pail waits here for BYU Risk Management's pickup.",
+   "start_frame": 1540,
+   "end_frame": 1565
+  },
+  {
+   "label": "3/4 The vacuum liners",
+   "caption": "And out the way they came. The liners, the bottles and the labels are booked in upkeep as the waste work: an hour a week at one alloy a day.",
+   "start_frame": 1566,
+   "end_frame": 1622
+  },
+  {
+   "label": "4/4 Where waste waits",
+   "caption": "Two places on the floor: powder at the powder point by the atomizer, liquids under the fume hood across the aisle. Waste stays in the room it was made in, incompatible classes apart.",
+   "start_frame": 1623,
+   "end_frame": 1758
+  }
+ ]
+}

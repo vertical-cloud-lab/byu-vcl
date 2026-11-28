@@ -24,6 +24,14 @@
   "match": "Most of what goes on a tray weighs"
  },
  {
+  "chapter": "setup",
+  "part": "setup_lab",
+  "match": "The chemical waste station, from the aisle",
+  "offset": 0.5,
+  "text": "The fume hood's base holds the chemical waste: a vented cabinet for the solvents and one for the acids, with an intake tray above for the capped bottles the robots bring.",
+  "source": "out/clean/setup_lab.json caption (step 5), notes/waste.md, PR #371; round 16"
+ },
+ {
   "chapter": "services",
   "part": "card",
   "offset": 0.5,
@@ -145,7 +153,16 @@
   "label": "3/6",
   "offset": 0.5,
   "text": "This dose is for the alloy lab's powder reactivity test. The doser works to weight, a quarter auger turn at a time, to twenty-five milligrams; the readings are illustrative.",
-  "source": "out/vlm_workflow.json caption (substeps 0 and 25)"
+  "source": "out/vlm_workflow.json caption (substeps 0 and 25)",
+  "match": "v5's dose-to doses by weight"
+ },
+ {
+  "chapter": "corrosion",
+  "part": "vlm_workflow",
+  "match": "The CubXL's P300 (20-300 µL",
+  "offset": 0.5,
+  "text": "The CubXL's second pipette, the proposed P300, now puts the test's two hundred microlitres of seawater on the powder in one transfer. The small one alone took ten.",
+  "source": "out/clean/vlm_workflow.json caption (step 6), notes/cubxl_pipettes.md, PR #372; round 16"
  },
  {
   "chapter": "alloy1",
@@ -508,10 +525,10 @@
  },
  {
   "chapter": "checks",
-  "part": "collisions/round15_table.png",
+  "part": "collisions/round16_table.png",
   "offset": 0.5,
-  "text": "This video's own check: the clips drawn for it were checked frame by frame as they rendered. The table lists, clip by clip, the frames where something still touches.",
-  "source": "out/collisions/round15_summary.json (longform.py audit, round 15)"
+  "text": "This video's own check: each clip was checked frame by frame as it rendered, this round's and round fifteen's alike. The table lists, clip by clip, the frames where something still touches.",
+  "source": "out/collisions/round16_summary.json (longform.py audit, round 16)"
  },
  {
   "chapter": "upkeep",
@@ -548,8 +565,8 @@
   "chapter": "floor",
   "part": "floor_pass",
   "at": 1.0,
-  "text": "The whole night's pass, seen from above: fifty-three work spots and forty-five ground studs. Bonding and checking at every spot doubles the model's forty-three minutes to about an hour and a half.",
-  "source": "out/floor_pass.json (summary: 53 spots, 45 studs, 88.7 against 42.9 min), PR #369"
+  "text": "The whole night's pass, seen from above: fifty-two work spots and forty ground studs. Bonding and checking at every spot doubles the model's forty-one minutes to nearly an hour and a half.",
+  "source": "out/floor_pass.json (summary: 53 spots, 45 studs, 88.7 against 42.9 min), PR #369; round 16: re-run with the powder point and the machining cell (out/floor_pass.json)"
  },
  {
   "chapter": "floor",
@@ -567,10 +584,43 @@
  },
  {
   "chapter": "floor",
-  "part": "waste_station_still.png",
-  "offset": 0.3,
+  "part": "waste_clip",
+  "match": "Liquid waste leaves a station only in the capped bottle",
+  "offset": 0.5,
+  "text": "Liquid waste leaves a station in the capped bottle it was made in, one class a trip. At the fume hood the arm sets it in the intake tray, under the sash, and takes an empty back. It never opens or pours.",
+  "source": "out/clean/waste_clip.json caption (1/4), notes/waste.md, notes/waste_clip.md; round 16"
+ },
+ {
+  "chapter": "floor",
+  "part": "waste_clip",
+  "match": "The hood's base is two vented cabinets",
+  "offset": 0.5,
+  "text": "A person moves the bottles into the hood's vented cabinets each day shift: solvents on the left, acids on the right, a shelf apart.",
+  "source": "out/clean/waste_clip.json caption (2/4), notes/waste.md; round 16"
+ },
+ {
+  "chapter": "floor",
+  "part": "waste_clip",
+  "match": "Powder waste stays where it is made",
+  "offset": 0.5,
+  "text": "Powder waste stays by the atomizer: a vacuum and a pail for each alloy family, a bucket for sweepings, used filters in dry sand. A person seals and carries the liners; powder never rides a robot.",
+  "source": "out/clean/waste_clip.json caption (3/4), notes/waste.md (How it is kept); round 16"
+ },
+ {
+  "chapter": "floor",
+  "part": "waste_clip",
+  "match": "A person changes the liners; the arms don't",
+  "offset": 0.5,
+  "text": "Changing a vacuum's liner is a person's job: they seal it where it is, lift it out and set it in its family's pail, the lid set on but not crimped.",
+  "source": "out/clean/waste_clip.json caption (3/4 The vacuum liners), notes/waste.md (How it is kept); round 16"
+ },
+ {
+  "chapter": "floor",
+  "part": "waste_clip",
+  "offset": 0.5,
   "text": "Everything hazardous leaves through BYU Risk Management's pickups: about one a month at one alloy a day, one every week or two at ten.",
-  "source": "notes/waste.md (Pickups), PR #371"
+  "source": "notes/waste.md (Pickups), PR #371; round 16: over the waste clip's last shot",
+  "match": "Two places on the floor"
  },
  {
   "chapter": "bottlenecks",

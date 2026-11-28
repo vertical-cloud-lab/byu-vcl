@@ -1822,7 +1822,7 @@
        ]
       },
       {
-       "other": "water tank with a lift basket, our design",
+       "other": "Water tank with a lift basket (our design)",
        "gap_mm": 35.0,
        "need_mm": 10.0,
        "a": [
@@ -1845,9 +1845,9 @@
       -107,
       357,
       3,
-      669
+      675
      ],
-     "height_mm": 666.0,
+     "height_mm": 672.0,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": [],
@@ -1873,7 +1873,7 @@
      "nearest": []
     },
     {
-     "item": "water tank with a lift basket, our design",
+     "item": "Water tank with a lift basket (our design)",
      "kind": "item",
      "box_mm": [
       560,
@@ -2007,7 +2007,7 @@
      "too_close": [],
      "nearest": [
       {
-       "other": "water tank with a lift basket, our design",
+       "other": "Water tank with a lift basket (our design)",
        "gap_mm": 16.0,
        "need_mm": 10.0,
        "a": [
@@ -2097,7 +2097,7 @@
      "LECO PX500 + disc magazine",
      "LECO MX400",
      "six-shelf disc magazine (ours)",
-     "water tank with a lift basket, our design"
+     "Water tank with a lift basket (our design)"
     ],
     "over_one_person": [
      "Nabertherm NAT 15/65 (60 kg)"
@@ -4086,10 +4086,10 @@
     ],
     "backs_in": false,
     "pivot": [
-     -5362,
+     -5487,
      -2230
     ],
-    "approach_mm": 1875,
+    "approach_mm": 2000,
     "target_post": [
      -2350,
      -2012
@@ -4290,6 +4290,25 @@
     ],
     "hits": [],
     "ok": true
+   },
+   "machining": {
+    "dock": [
+     -2935,
+     -8081,
+     180
+    ],
+    "backs_in": true,
+    "pivot": [
+     -5460,
+     -8081
+    ],
+    "approach_mm": 2525,
+    "target_post": [
+     -2285,
+     -8276
+    ],
+    "hits": [],
+    "ok": true
    }
   },
   "machines": {
@@ -4300,7 +4319,7 @@
     1143
    ],
    "repowder": [
-    -4835,
+    -4945,
     -2045,
     -3160,
     -700
@@ -4364,6 +4383,18 @@
     -1435,
     -1577,
     -947
+   ],
+   "machining": [
+    -5055,
+    357,
+    -11492,
+    -8426
+   ],
+   "powder_point": [
+    -6215,
+    -4510,
+    -1220,
+    483
    ],
    "vlm": [
     -1415,

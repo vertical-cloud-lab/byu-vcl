@@ -25,7 +25,9 @@ One cup's path through the recommended cell (notes/machining.md), as a model and
    tray J; its lid goes on once the run's four cups and plugs are in.
 
 Cell frame: x east, y north (towards the aisle), z up, mm; the origin is the arm's pedestal on the floor. On the lab's
-floor plan the cell stands in the south row (``machining.FLOOR``).
+floor plan the cell stands south of the south row, front to the north, its MiR250 in from the aisle down the row's west
+end and along a corridor behind the row (``machining.FLOOR``; round 16, notes/lab_r16.md). ``lab_parts`` is the cell
+as ``setup_lab.build`` draws it there.
 
     python3 runner_guard.py slot --label mcell -- xvfb-run -a python3 machining_cell.py     # render (VIZ3D_FPS=12)
     PREVIEW=1 xvfb-run -a python3 machining_cell.py      # the last frame of each sub-step -> /tmp/preview_*.png
@@ -54,7 +56,7 @@ TITLE = "Vertical cloud lab: a charge cup machined, cleaned, dried and racked"
 # ------------------------------------------------------------------------------------------------ layout (cell frame)
 Z_ARM = 760.0                    # the UR10e's base plate on its pedestal
 BENCH_Z = 860.0                  # bench tops
-FRONT_Y = 950.0                  # the cell's front (the fence), on the south row's face line
+FRONT_Y = 950.0                  # the cell's front (the fence); in the lab, 370 mm off its MiR250's dock line
 X_COLLET = 198.0                 # the collet's face; the bar comes out towards -x
 
 # The Haas ST-10's outside, in its own frame: x along the spindle from the enclosure's headstock end towards the chip
@@ -797,10 +799,12 @@ def chips(n=60, seed=3) -> pv.PolyData:
 
 # ------------------------------------------------------------------------------------------------ in the lab
 CTX_H = {"instron_floor": 2000.0, "instron_small": 1500.0, "fumehood": 2581.0, "charger0": 287.0, "charger1": 287.0,
+         "charger2": 287.0,
          "ded": 2000.0, "wire_edm": 2200.0, "eos_m400": 2700.0, "repowder": 2000.0, "sieve_cell": 1150.0,
          "vlm": 6000.0, "vlm2": 6000.0, "glovebox": 1900.0, "aconity": 2200.0, "packaging": 1200.0}
 CTX_NAME = {"instron_floor": "Instron 68FM-100", "instron_small": "Instron 68SC-2", "fumehood": "fume hood",
-            "charger0": "MiR charger 0", "charger1": "MiR charger 1", "vlm": "Kardex VLM 1", "vlm2": "Kardex VLM 2",
+            "charger0": "MiR charger 0", "charger1": "MiR charger 1", "charger2": "unit 3's charger",
+            "eos_m400": "EOS M 400-4", "vlm": "Kardex VLM 1", "vlm2": "Kardex VLM 2",
             "repowder": "rePowder atomizer", "sieve_cell": "sieving cell", "ded": "DED"}
 
 
@@ -830,6 +834,19 @@ def lab_context(sc) -> list:
                   _box(dx - X - 200, dx - X + 200, dy - Y - 200, dy - Y + 200, 350, 750)])
     sc.add("ctx/mir", mir, (0.30, 0.31, 0.33), "ctx", specular=0.2)
     labels.append(("MiR250 docked at the cell", (dx - X, dy - Y, 750)))
+    # round 16: its way in, drawn on the floor (a MiR250's width): from the aisle down the row's west end, then along
+    # the corridor behind the row to its dock; and its target post beyond the docked unit's back end
+    lx, (cx, cy) = MA.FLOOR["lane_x"], MA.FLOOR["corner"]
+    way = _merge([_box(lx - X - 290, lx - X + 290, cy - Y, a[2] - Y, 0, 3),
+                  _box(lx - X - 290, dx - X + 400, cy - Y - 290, cy - Y + 290, 0, 3)])
+    sc.add("ctx/way", way, (0.18, 0.61, 0.42), "ctx", opacity=0.45, specular=0.0)
+    labels.append(("its MiR250's way in, from the aisle", (lx - X, (cy + a[2]) / 2 - Y, 0)))
+    tx, ty = MA.FLOOR["target"]
+    post = _merge([_box(tx - X - 150, tx - X + 150, ty - Y - 150, ty - Y + 150, 0, 12),
+                   _cyl((tx - X, ty - Y, 12), (tx - X, ty - Y, 840), 25.0, res=20),
+                   _box(tx - X - 60, tx - X + 60, ty - Y - 60, ty - Y + 60, 840, 960)])
+    sc.add("ctx/post", post, (0.45, 0.46, 0.48), "ctx", specular=0.2)
+    labels.append(("target post", (tx - X, ty - Y, 960)))
     return labels
 
 
@@ -837,11 +854,13 @@ def still_lab(sc, path):
     """One frame: the cell in its place on the floor, from over the aisle (MCELL_STILL=lab)."""
     from PIL import Image
     labs = lab_context(sc)
-    sc.cam = [(3600, 4300, 4300), (-700, -900, 600), (0, 0, 1)]
+    sc.cam = [(4800, 6200, 7200), (-1100, -700, 300), (0, 0, 1)]   # round 16: higher, over the row's back
     sc.view_angle = 40.0
-    keep = {"Instron 68SC-2", "MiR charger 0", "Instron 68FM-100", "MiR250 docked at the cell"}
-    sc.caption = ("The cup-and-plug cell on the south row, seen from over the aisle: its front between the Instron "
-                  "68SC-2 and MiR charger 0, where a MiR250 docks; the lathe and its bar feeder behind the row.")
+    keep = {"Instron 68SC-2", "unit 3's charger", "Instron 68FM-100", "MiR250 docked at the cell",
+            "its MiR250's way in, from the aisle"}
+    sc.caption = ("The cup-and-plug cell south of the south row (round 16), from the north-east: its front faces the "
+                  "row's back, where its MiR250 docks after coming down the row's west end and along a corridor "
+                  "behind the row; the lathe and its bar feeder behind the benches.")
     sc.title = "Vertical cloud lab: the charge-cup machining cell in the lab"
     labs = [(t, xyz) for t, xyz in labs if t in keep]
     labs += [("the machining cell: bar-fed lathe, UR10e, IPA baths, vacuum dryer, weigh, gauge, cassette",
@@ -863,6 +882,60 @@ def still_lab(sc, path):
     img = sc.overlay(Image.fromarray(base), SC_size_scale(sc), anchors)
     img.convert("RGB").save(path, optimize=True)
     print("wrote", path)
+
+
+def lab_parts() -> dict:
+    """The cell as it stands in the lab (setup_lab.build, VLAB_MCELL; notes/lab_r16.md), in the cell's frame:
+    {name: (mesh, rgb, opacity)}, every part at rest and merged by colour and opacity to keep the lab's triangle count
+    down. The benches, fence, light curtain, lathe with its bar feeder, chip bins and belt, the baths, dryer, weigh module
+    and gauge (each as the clip draws it), the upender, the basket on its stand, the lids shut, the cassette (chapter 1's
+    charge rack) on its riser with its lid on the rest, and the UR10e parked. Left out: the cell's own floor and front
+    tape (the lab has its floor, and draws the cell's footprint and dock), what moves inside the shut lathe (the turret,
+    collet, bar and catcher) and the cups and plugs, too small to read in a whole-lab view."""
+    import ur_arm
+    by: dict = {}
+
+    def put(m, c, op, M=None):
+        if m is None or not m.n_points:
+            return
+        m = m.copy() if M is None else m.transform(np.asarray(M, float), inplace=False)
+        m.clear_data()                             # two parts carry stale cell normals; the lab's scene makes its own
+        m = m.triangulate()
+        by.setdefault((tuple(round(float(v), 4) for v in c[:3]), round(float(op), 3)), []).append(m)
+    for name, (m, c, op) in {**bench_parts(), **lathe_parts(), **bath_parts(), **dryer_parts(), **weigh_parts(),
+                             **vision_parts(), **weigh_shield()}.items():
+        if name not in ("floor", "floor_tape"):
+            put(m, c, op)
+    for _, (m, c, op) in upender_parts().items():
+        put(m, c, op, upender_pose(0.0))
+    for _, (m, c, op) in basket_parts()[0].items():
+        put(m, c, op, T(BASKET))
+    for k in PANS:
+        m, hinge = pan_lid(k)
+        put(m, (0.66, 0.67, 0.70), 1.0, T(hinge))
+    m, dhinge = dryer_lid()
+    put(m, SS, 1.0, T(dhinge))
+    rk_body, rk_rims, _ = C.rack()
+    put(rk_body, PRINTED, 1.0, T(RACK_AT))
+    put(rk_rims, PRINTED, 1.0, T(RACK_AT))
+    lid_m, _ = rack_lid_mesh()
+    put(lid_m, (0.93, 0.93, 0.95), 1.0, T(LID_REST + (0, 0, 8.0 - C.RACK_H + 12.0)) @ R((0, 0, 1), 90.0))
+    base = T((0, 0, Z_ARM))                        # the arm parked, as the clip's robot.Robot draws it (q0=PARK)
+    fk = ur_arm.fk("ur10e", np.radians(PARK))
+    for link, lst in ur_arm.arm_meshes("ur10e").items():
+        for mesh, col, _ in lst:
+            put(mesh, col, 1.0, base @ fk[link])
+    gfk = ur_arm.gripper_fk(0.0)
+    for part, lst in ur_arm.gripper_meshes().items():
+        for mesh, col, _ in lst:
+            put(mesh, col, 1.0, base @ fk["tool0"] @ gfk[part])
+    out = {}
+    for i, ((c, op), ms) in enumerate(by.items()):
+        m = _merge(ms)
+        if m.n_cells > 20000:                      # the arm's links (UR's own meshes, 180k triangles): at a whole-lab
+            m = m.decimate(0.85)                   # view a sixth of them reads the same
+        out[f"part {i:02d}"] = (m, c, op)
+    return out
 
 
 def SC_size_scale(sc) -> float:

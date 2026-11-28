@@ -1,0 +1,2021 @@
+{
+ "name": "alloy_workflow",
+ "fps": 15,
+ "n_frames": 5785,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/7",
+   "caption": "The alloy route's chapter 5, in the lab as it was set up: the print comes out of the Aconity MIDI and is depowdered, the wire EDM across the aisle cuts the six tensile bars off it (four flat, two vertical), they are heat treated on tray F, then two are pulled in the Instron 68FM-100, at room temperature and at 200 C.",
+   "start_frame": 0,
+   "end_frame": 83
+  },
+  {
+   "label": "2/7",
+   "caption": "The print is done: six ASTM E8 subsize tensile bars, 100 mm long and 6 mm thick, four printed flat and two vertical on a 170 mm plate from the route's own Al-10Si powder (DAL PR #169's build at Utah), and a handling lug for the gripper. They are still buried in powder; the chamber is drawn see-through.",
+   "start_frame": 84,
+   "end_frame": 146
+  },
+  {
+   "label": "2/7",
+   "caption": "The chamber door opens. The MIDI has no automatic depowdering, so the arm takes a suction lance off its post; a pipe along the floor takes the powder to the depowdering box's separator.",
+   "start_frame": 147,
+   "end_frame": 176
+  },
+  {
+   "label": "2/7",
+   "caption": "The chamber door opens. The MIDI has no automatic depowdering, so the arm takes a suction lance off its post; a pipe along the floor takes the powder to the depowdering box's separator.",
+   "start_frame": 177,
+   "end_frame": 201
+  },
+  {
+   "label": "2/7",
+   "caption": "The chamber door opens. The MIDI has no automatic depowdering, so the arm takes a suction lance off its post; a pipe along the floor takes the powder to the depowdering box's separator.",
+   "start_frame": 202,
+   "end_frame": 212
+  },
+  {
+   "label": "2/7",
+   "caption": "The chamber door opens. The MIDI has no automatic depowdering, so the arm takes a suction lance off its post; a pipe along the floor takes the powder to the depowdering box's separator.",
+   "start_frame": 213,
+   "end_frame": 219
+  },
+  {
+   "label": "2/7",
+   "caption": "The chamber door opens. The MIDI has no automatic depowdering, so the arm takes a suction lance off its post; a pipe along the floor takes the powder to the depowdering box's separator.",
+   "start_frame": 220,
+   "end_frame": 228
+  },
+  {
+   "label": "2/7",
+   "caption": "The chamber door opens. The MIDI has no automatic depowdering, so the arm takes a suction lance off its post; a pipe along the floor takes the powder to the depowdering box's separator.",
+   "start_frame": 229,
+   "end_frame": 239
+  },
+  {
+   "label": "2/7",
+   "caption": "The chamber door opens. The MIDI has no automatic depowdering, so the arm takes a suction lance off its post; a pipe along the floor takes the powder to the depowdering box's separator.",
+   "start_frame": 240,
+   "end_frame": 254
+  },
+  {
+   "label": "2/7",
+   "caption": "It vacuums the plate as the platform rises a step at a time, the nozzle sweeping the build cylinder at floor level: what a person does with a brush and an ATEX vacuum. The powder goes to be sieved again.",
+   "start_frame": 255,
+   "end_frame": 282
+  },
+  {
+   "label": "2/7",
+   "caption": "It vacuums the plate as the platform rises a step at a time, the nozzle sweeping the build cylinder at floor level: what a person does with a brush and an ATEX vacuum. The powder goes to be sieved again.",
+   "start_frame": 283,
+   "end_frame": 298
+  },
+  {
+   "label": "2/7",
+   "caption": "It vacuums the plate as the platform rises a step at a time, the nozzle sweeping the build cylinder at floor level: what a person does with a brush and an ATEX vacuum. The powder goes to be sieved again.",
+   "start_frame": 299,
+   "end_frame": 390
+  },
+  {
+   "label": "2/7",
+   "caption": "The lance goes back on its post. It leaves loose grains round the bars and the lug.",
+   "start_frame": 391,
+   "end_frame": 405
+  },
+  {
+   "label": "2/7",
+   "caption": "The lance goes back on its post. It leaves loose grains round the bars and the lug.",
+   "start_frame": 406,
+   "end_frame": 433
+  },
+  {
+   "label": "2/7",
+   "caption": "The lance goes back on its post. It leaves loose grains round the bars and the lug.",
+   "start_frame": 434,
+   "end_frame": 448
+  },
+  {
+   "label": "2/7",
+   "caption": "The lance goes back on its post. It leaves loose grains round the bars and the lug.",
+   "start_frame": 449,
+   "end_frame": 459
+  },
+  {
+   "label": "2/7",
+   "caption": "The lance goes back on its post. It leaves loose grains round the bars and the lug.",
+   "start_frame": 460,
+   "end_frame": 466
+  },
+  {
+   "label": "2/7",
+   "caption": "The lance goes back on its post. It leaves loose grains round the bars and the lug.",
+   "start_frame": 467,
+   "end_frame": 473
+  },
+  {
+   "label": "2/7",
+   "caption": "The lance goes back on its post. It leaves loose grains round the bars and the lug.",
+   "start_frame": 474,
+   "end_frame": 483
+  },
+  {
+   "label": "2/7",
+   "caption": "The platform's clamp lets go (a zero-point clamp: an assumption). The chamber is too low for the gripper pointing down, so it takes the lug pointing 30 deg down and lifts the plate out.",
+   "start_frame": 484,
+   "end_frame": 511
+  },
+  {
+   "label": "2/7",
+   "caption": "The platform's clamp lets go (a zero-point clamp: an assumption). The chamber is too low for the gripper pointing down, so it takes the lug pointing 30 deg down and lifts the plate out.",
+   "start_frame": 512,
+   "end_frame": 530
+  },
+  {
+   "label": "2/7",
+   "caption": "The platform's clamp lets go (a zero-point clamp: an assumption). The chamber is too low for the gripper pointing down, so it takes the lug pointing 30 deg down and lifts the plate out.",
+   "start_frame": 531,
+   "end_frame": 540
+  },
+  {
+   "label": "2/7",
+   "caption": "The platform's clamp lets go (a zero-point clamp: an assumption). The chamber is too low for the gripper pointing down, so it takes the lug pointing 30 deg down and lifts the plate out.",
+   "start_frame": 541,
+   "end_frame": 549
+  },
+  {
+   "label": "2/7",
+   "caption": "The platform's clamp lets go (a zero-point clamp: an assumption). The chamber is too low for the gripper pointing down, so it takes the lug pointing 30 deg down and lifts the plate out.",
+   "start_frame": 550,
+   "end_frame": 562
+  },
+  {
+   "label": "2/7",
+   "caption": "The platform's clamp lets go (a zero-point clamp: an assumption). The chamber is too low for the gripper pointing down, so it takes the lug pointing 30 deg down and lifts the plate out.",
+   "start_frame": 563,
+   "end_frame": 590
+  },
+  {
+   "label": "2/7",
+   "caption": "The platform's clamp lets go (a zero-point clamp: an assumption). The chamber is too low for the gripper pointing down, so it takes the lug pointing 30 deg down and lifts the plate out.",
+   "start_frame": 591,
+   "end_frame": 612
+  },
+  {
+   "label": "2/7",
+   "caption": "Into the depowdering box beside the printer: the door slides up and the arm sets the plate's stud in a zero-point chuck on a turning shaft. The box is our design, after Solukon's SFM-AT200.",
+   "start_frame": 613,
+   "end_frame": 685
+  },
+  {
+   "label": "2/7",
+   "caption": "Into the depowdering box beside the printer: the door slides up and the arm sets the plate's stud in a zero-point chuck on a turning shaft. The box is our design, after Solukon's SFM-AT200.",
+   "start_frame": 686,
+   "end_frame": 710
+  },
+  {
+   "label": "2/7",
+   "caption": "Into the depowdering box beside the printer: the door slides up and the arm sets the plate's stud in a zero-point chuck on a turning shaft. The box is our design, after Solukon's SFM-AT200.",
+   "start_frame": 711,
+   "end_frame": 729
+  },
+  {
+   "label": "2/7",
+   "caption": "Into the depowdering box beside the printer: the door slides up and the arm sets the plate's stud in a zero-point chuck on a turning shaft. The box is our design, after Solukon's SFM-AT200.",
+   "start_frame": 730,
+   "end_frame": 738
+  },
+  {
+   "label": "2/7",
+   "caption": "Into the depowdering box beside the printer: the door slides up and the arm sets the plate's stud in a zero-point chuck on a turning shaft. The box is our design, after Solukon's SFM-AT200.",
+   "start_frame": 739,
+   "end_frame": 745
+  },
+  {
+   "label": "2/7",
+   "caption": "Into the depowdering box beside the printer: the door slides up and the arm sets the plate's stud in a zero-point chuck on a turning shaft. The box is our design, after Solukon's SFM-AT200.",
+   "start_frame": 746,
+   "end_frame": 760
+  },
+  {
+   "label": "2/7",
+   "caption": "Into the depowdering box beside the printer: the door slides up and the arm sets the plate's stud in a zero-point chuck on a turning shaft. The box is our design, after Solukon's SFM-AT200.",
+   "start_frame": 761,
+   "end_frame": 779
+  },
+  {
+   "label": "2/7",
+   "caption": "Clamped, twice over: the chuck pulls the plate's stud down and locks it (a zero-point clamp), and three swing clamps on the rotor rise, turn their arms over the plate's rim and pull it down.",
+   "start_frame": 780,
+   "end_frame": 807
+  },
+  {
+   "label": "2/7",
+   "caption": "The door shuts and the box fills with argon. The shaft turns the plate over and back while a vibrator shakes the grains loose; they fall through the hopper into a closed bottle.",
+   "start_frame": 808,
+   "end_frame": 827
+  },
+  {
+   "label": "2/7",
+   "caption": "The door shuts and the box fills with argon. The shaft turns the plate over and back while a vibrator shakes the grains loose; they fall through the hopper into a closed bottle.",
+   "start_frame": 828,
+   "end_frame": 920
+  },
+  {
+   "label": "2/7",
+   "caption": "Clean. The arm takes the plate out by its lug and sets it in the low pocket on the MiR250's cabinet: the plate drops 12 mm into a bored block (round 7 asked for pockets, not posts).",
+   "start_frame": 921,
+   "end_frame": 939
+  },
+  {
+   "label": "2/7",
+   "caption": "Clean. The arm takes the plate out by its lug and sets it in the low pocket on the MiR250's cabinet: the plate drops 12 mm into a bored block (round 7 asked for pockets, not posts).",
+   "start_frame": 940,
+   "end_frame": 956
+  },
+  {
+   "label": "2/7",
+   "caption": "Clean. The arm takes the plate out by its lug and sets it in the low pocket on the MiR250's cabinet: the plate drops 12 mm into a bored block (round 7 asked for pockets, not posts).",
+   "start_frame": 957,
+   "end_frame": 977
+  },
+  {
+   "label": "2/7",
+   "caption": "Clean. The arm takes the plate out by its lug and sets it in the low pocket on the MiR250's cabinet: the plate drops 12 mm into a bored block (round 7 asked for pockets, not posts).",
+   "start_frame": 978,
+   "end_frame": 988
+  },
+  {
+   "label": "2/7",
+   "caption": "Clean. The arm takes the plate out by its lug and sets it in the low pocket on the MiR250's cabinet: the plate drops 12 mm into a bored block (round 7 asked for pockets, not posts).",
+   "start_frame": 989,
+   "end_frame": 997
+  },
+  {
+   "label": "2/7",
+   "caption": "Clean. The arm takes the plate out by its lug and sets it in the low pocket on the MiR250's cabinet: the plate drops 12 mm into a bored block (round 7 asked for pockets, not posts).",
+   "start_frame": 998,
+   "end_frame": 1004
+  },
+  {
+   "label": "2/7",
+   "caption": "Clean. The arm takes the plate out by its lug and sets it in the low pocket on the MiR250's cabinet: the plate drops 12 mm into a bored block (round 7 asked for pockets, not posts).",
+   "start_frame": 1005,
+   "end_frame": 1013
+  },
+  {
+   "label": "2/7",
+   "caption": "Clean. The arm takes the plate out by its lug and sets it in the low pocket on the MiR250's cabinet: the plate drops 12 mm into a bored block (round 7 asked for pockets, not posts).",
+   "start_frame": 1014,
+   "end_frame": 1029
+  },
+  {
+   "label": "2/7",
+   "caption": "Clean. The arm takes the plate out by its lug and sets it in the low pocket on the MiR250's cabinet: the plate drops 12 mm into a bored block (round 7 asked for pockets, not posts).",
+   "start_frame": 1030,
+   "end_frame": 1063
+  },
+  {
+   "label": "2/7",
+   "caption": "Clean. The arm takes the plate out by its lug and sets it in the low pocket on the MiR250's cabinet: the plate drops 12 mm into a bored block (round 7 asked for pockets, not posts).",
+   "start_frame": 1064,
+   "end_frame": 1079
+  },
+  {
+   "label": "2/7",
+   "caption": "Clean. The arm takes the plate out by its lug and sets it in the low pocket on the MiR250's cabinet: the plate drops 12 mm into a bored block (round 7 asked for pockets, not posts).",
+   "start_frame": 1080,
+   "end_frame": 1088
+  },
+  {
+   "label": "2/7",
+   "caption": "Clean. The arm takes the plate out by its lug and sets it in the low pocket on the MiR250's cabinet: the plate drops 12 mm into a bored block (round 7 asked for pockets, not posts).",
+   "start_frame": 1089,
+   "end_frame": 1101
+  },
+  {
+   "label": "2/7",
+   "caption": "Clean. The arm takes the plate out by its lug and sets it in the low pocket on the MiR250's cabinet: the plate drops 12 mm into a bored block (round 7 asked for pockets, not posts).",
+   "start_frame": 1102,
+   "end_frame": 1123
+  },
+  {
+   "label": "3/7",
+   "caption": "Across the aisle to the FANUC ROBOCUT wire EDM in the south row. The MiR250 turns on the spot, then drives, speeding up and slowing down at its published 0.3 m/s^2, and turns again to dock broadside, its arm towards the machine.",
+   "start_frame": 1124,
+   "end_frame": 1340
+  },
+  {
+   "label": "3/7",
+   "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate, bars to the front.",
+   "start_frame": 1341,
+   "end_frame": 1369
+  },
+  {
+   "label": "3/7",
+   "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate, bars to the front.",
+   "start_frame": 1370,
+   "end_frame": 1394
+  },
+  {
+   "label": "3/7",
+   "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate, bars to the front.",
+   "start_frame": 1395,
+   "end_frame": 1409
+  },
+  {
+   "label": "3/7",
+   "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate, bars to the front.",
+   "start_frame": 1410,
+   "end_frame": 1418
+  },
+  {
+   "label": "3/7",
+   "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate, bars to the front.",
+   "start_frame": 1419,
+   "end_frame": 1433
+  },
+  {
+   "label": "3/7",
+   "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate, bars to the front.",
+   "start_frame": 1434,
+   "end_frame": 1467
+  },
+  {
+   "label": "3/7",
+   "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate, bars to the front.",
+   "start_frame": 1468,
+   "end_frame": 1489
+  },
+  {
+   "label": "3/7",
+   "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate, bars to the front.",
+   "start_frame": 1490,
+   "end_frame": 1500
+  },
+  {
+   "label": "3/7",
+   "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate, bars to the front.",
+   "start_frame": 1501,
+   "end_frame": 1509
+  },
+  {
+   "label": "3/7",
+   "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate, bars to the front.",
+   "start_frame": 1510,
+   "end_frame": 1528
+  },
+  {
+   "label": "3/7",
+   "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate, bars to the front.",
+   "start_frame": 1529,
+   "end_frame": 1550
+  },
+  {
+   "label": "3/7",
+   "caption": "The catch comb rises on its slide under the bars, its pads 0.5 mm under their feet: it waited 113 mm down in the table's window while the plate went on (our design).",
+   "start_frame": 1551,
+   "end_frame": 1571
+  },
+  {
+   "label": "3/7",
+   "caption": "Door up; the tank fills with deionised water, the dielectric. The plate is cut under water.",
+   "start_frame": 1572,
+   "end_frame": 1593
+  },
+  {
+   "label": "3/7",
+   "caption": "Door up; the tank fills with deionised water, the dielectric. The plate is cut under water.",
+   "start_frame": 1594,
+   "end_frame": 1621
+  },
+  {
+   "label": "4/7",
+   "caption": "The cut, the machine see-through: the brass wire (0.25 mm) runs between its guides 0.15 mm off the plate and sparks its way through the base of each bar, the vertical ones first. A comb waits under the flat bars, each settling 0.5 mm into its own slot as it comes free; a trough under each vertical bar, which stands out level from the plate's face, catches it the same way.",
+   "start_frame": 1622,
+   "end_frame": 1656
+  },
+  {
+   "label": "4/7",
+   "caption": "The cut, the machine see-through: the brass wire (0.25 mm) runs between its guides 0.15 mm off the plate and sparks its way through the base of each bar, the vertical ones first. A comb waits under the flat bars, each settling 0.5 mm into its own slot as it comes free; a trough under each vertical bar, which stands out level from the plate's face, catches it the same way.",
+   "start_frame": 1657,
+   "end_frame": 1707
+  },
+  {
+   "label": "4/7",
+   "caption": "The cut, the machine see-through: the brass wire (0.25 mm) runs between its guides 0.15 mm off the plate and sparks its way through the base of each bar, the vertical ones first. A comb waits under the flat bars, each settling 0.5 mm into its own slot as it comes free; a trough under each vertical bar, which stands out level from the plate's face, catches it the same way.",
+   "start_frame": 1708,
+   "end_frame": 1794
+  },
+  {
+   "label": "4/7",
+   "caption": "Six cuts, 3509 mm^2 in all (each flat bar along its length, about 847 mm^2; each vertical one across its 10 x 6 mm foot): at the 300 mm^2/min GF quotes as the most its CUT AM 500 does, at least 12 minutes. The tank drains and the door drops.",
+   "start_frame": 1795,
+   "end_frame": 1820
+  },
+  {
+   "label": "4/7",
+   "caption": "Six cuts, 3509 mm^2 in all (each flat bar along its length, about 847 mm^2; each vertical one across its 10 x 6 mm foot): at the 300 mm^2/min GF quotes as the most its CUT AM 500 does, at least 12 minutes. The tank drains and the door drops.",
+   "start_frame": 1821,
+   "end_frame": 1843
+  },
+  {
+   "label": "5/7",
+   "caption": "A rinse before the furnace: wire-cut parts come out wet with deionised water. The IPA jar beside the EDM is kept capped; the arm lifts the lid off by its knob onto a rest.",
+   "start_frame": 1844,
+   "end_frame": 1868
+  },
+  {
+   "label": "5/7",
+   "caption": "A rinse before the furnace: wire-cut parts come out wet with deionised water. The IPA jar beside the EDM is kept capped; the arm lifts the lid off by its knob onto a rest.",
+   "start_frame": 1869,
+   "end_frame": 1878
+  },
+  {
+   "label": "5/7",
+   "caption": "A rinse before the furnace: wire-cut parts come out wet with deionised water. The IPA jar beside the EDM is kept capped; the arm lifts the lid off by its knob onto a rest.",
+   "start_frame": 1879,
+   "end_frame": 1885
+  },
+  {
+   "label": "5/7",
+   "caption": "A rinse before the furnace: wire-cut parts come out wet with deionised water. The IPA jar beside the EDM is kept capped; the arm lifts the lid off by its knob onto a rest.",
+   "start_frame": 1886,
+   "end_frame": 1894
+  },
+  {
+   "label": "5/7",
+   "caption": "A rinse before the furnace: wire-cut parts come out wet with deionised water. The IPA jar beside the EDM is kept capped; the arm lifts the lid off by its knob onto a rest.",
+   "start_frame": 1895,
+   "end_frame": 1909
+  },
+  {
+   "label": "5/7",
+   "caption": "A rinse before the furnace: wire-cut parts come out wet with deionised water. The IPA jar beside the EDM is kept capped; the arm lifts the lid off by its knob onto a rest.",
+   "start_frame": 1910,
+   "end_frame": 1918
+  },
+  {
+   "label": "5/7",
+   "caption": "A rinse before the furnace: wire-cut parts come out wet with deionised water. The IPA jar beside the EDM is kept capped; the arm lifts the lid off by its knob onto a rest.",
+   "start_frame": 1919,
+   "end_frame": 1925
+  },
+  {
+   "label": "5/7",
+   "caption": "A rinse before the furnace: wire-cut parts come out wet with deionised water. The IPA jar beside the EDM is kept capped; the arm lifts the lid off by its knob onto a rest.",
+   "start_frame": 1926,
+   "end_frame": 1934
+  },
+  {
+   "label": "5/7",
+   "caption": "Before the bars, the arm fits fingers made for the specimen, as automated tensile cells do (ZwickRoell's roboTest C has a finger for each specimen thickness): two caps slip over the 2F-85's fingertips, each ending in a blade 8 mm tall, 74 mm further out (our design).",
+   "start_frame": 1935,
+   "end_frame": 1959
+  },
+  {
+   "label": "5/7",
+   "caption": "Before the bars, the arm fits fingers made for the specimen, as automated tensile cells do (ZwickRoell's roboTest C has a finger for each specimen thickness): two caps slip over the 2F-85's fingertips, each ending in a blade 8 mm tall, 74 mm further out (our design).",
+   "start_frame": 1960,
+   "end_frame": 1972
+  },
+  {
+   "label": "5/7",
+   "caption": "Before the bars, the arm fits fingers made for the specimen, as automated tensile cells do (ZwickRoell's roboTest C has a finger for each specimen thickness): two caps slip over the 2F-85's fingertips, each ending in a blade 8 mm tall, 74 mm further out (our design).",
+   "start_frame": 1973,
+   "end_frame": 1983
+  },
+  {
+   "label": "5/7",
+   "caption": "An ejector pin in the comb lifts the first bar 65 mm, its foot still in its slot, so the gripper takes its upper end clear of the other three and of the plate's rim.",
+   "start_frame": 1984,
+   "end_frame": 1998
+  },
+  {
+   "label": "5/7",
+   "caption": "An ejector pin in the comb lifts the first bar 65 mm, its foot still in its slot, so the gripper takes its upper end clear of the other three and of the plate's rim.",
+   "start_frame": 1999,
+   "end_frame": 2023
+  },
+  {
+   "label": "5/7",
+   "caption": "An ejector pin in the comb lifts the first bar 65 mm, its foot still in its slot, so the gripper takes its upper end clear of the other three and of the plate's rim.",
+   "start_frame": 2024,
+   "end_frame": 2034
+  },
+  {
+   "label": "5/7",
+   "caption": "An ejector pin in the comb lifts the first bar 65 mm, its foot still in its slot, so the gripper takes its upper end clear of the other three and of the plate's rim.",
+   "start_frame": 2035,
+   "end_frame": 2041
+  },
+  {
+   "label": "5/7",
+   "caption": "An ejector pin in the comb lifts the first bar 65 mm, its foot still in its slot, so the gripper takes its upper end clear of the other three and of the plate's rim.",
+   "start_frame": 2042,
+   "end_frame": 2051
+  },
+  {
+   "label": "5/7",
+   "caption": "An ejector pin in the comb lifts the first bar 65 mm, its foot still in its slot, so the gripper takes its upper end clear of the other three and of the plate's rim.",
+   "start_frame": 2052,
+   "end_frame": 2062
+  },
+  {
+   "label": "5/7",
+   "caption": "It dips the bar in the IPA up to its upper end and draws it out slowly through the air knife on the jar's rim, which blows it dry.",
+   "start_frame": 2063,
+   "end_frame": 2084
+  },
+  {
+   "label": "5/7",
+   "caption": "It dips the bar in the IPA up to its upper end and draws it out slowly through the air knife on the jar's rim, which blows it dry.",
+   "start_frame": 2085,
+   "end_frame": 2102
+  },
+  {
+   "label": "5/7",
+   "caption": "It dips the bar in the IPA up to its upper end and draws it out slowly through the air knife on the jar's rim, which blows it dry.",
+   "start_frame": 2103,
+   "end_frame": 2127
+  },
+  {
+   "label": "5/7",
+   "caption": "Into the rack on the MiR's cabinet, standing on end in a slot 25 mm deep: the arm carries every specimen this way, by its upper end, from here to the Instron's grips.",
+   "start_frame": 2128,
+   "end_frame": 2152
+  },
+  {
+   "label": "5/7",
+   "caption": "Into the rack on the MiR's cabinet, standing on end in a slot 25 mm deep: the arm carries every specimen this way, by its upper end, from here to the Instron's grips.",
+   "start_frame": 2153,
+   "end_frame": 2163
+  },
+  {
+   "label": "5/7",
+   "caption": "Into the rack on the MiR's cabinet, standing on end in a slot 25 mm deep: the arm carries every specimen this way, by its upper end, from here to the Instron's grips.",
+   "start_frame": 2164,
+   "end_frame": 2169
+  },
+  {
+   "label": "5/7",
+   "caption": "Into the rack on the MiR's cabinet, standing on end in a slot 25 mm deep: the arm carries every specimen this way, by its upper end, from here to the Instron's grips.",
+   "start_frame": 2170,
+   "end_frame": 2178
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2179,
+   "end_frame": 2183
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2184,
+   "end_frame": 2192
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2193,
+   "end_frame": 2196
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2197,
+   "end_frame": 2199
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2200,
+   "end_frame": 2203
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2204,
+   "end_frame": 2207
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2208,
+   "end_frame": 2215
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2216,
+   "end_frame": 2221
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2222,
+   "end_frame": 2230
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2231,
+   "end_frame": 2239
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2240,
+   "end_frame": 2243
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2244,
+   "end_frame": 2246
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2247,
+   "end_frame": 2249
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2250,
+   "end_frame": 2254
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2255,
+   "end_frame": 2263
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2264,
+   "end_frame": 2267
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2268,
+   "end_frame": 2270
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2271,
+   "end_frame": 2274
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2275,
+   "end_frame": 2278
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2279,
+   "end_frame": 2286
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2287,
+   "end_frame": 2292
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2293,
+   "end_frame": 2301
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2302,
+   "end_frame": 2310
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2311,
+   "end_frame": 2314
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2315,
+   "end_frame": 2317
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2318,
+   "end_frame": 2320
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2321,
+   "end_frame": 2325
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2326,
+   "end_frame": 2334
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2335,
+   "end_frame": 2338
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2339,
+   "end_frame": 2341
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2342,
+   "end_frame": 2345
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2346,
+   "end_frame": 2349
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2350,
+   "end_frame": 2357
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2358,
+   "end_frame": 2363
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2364,
+   "end_frame": 2372
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2373,
+   "end_frame": 2381
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2382,
+   "end_frame": 2385
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2386,
+   "end_frame": 2388
+  },
+  {
+   "label": "5/7",
+   "caption": "The other three the same way (shown faster).",
+   "start_frame": 2389,
+   "end_frame": 2391
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2392,
+   "end_frame": 2416
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2417,
+   "end_frame": 2427
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2428,
+   "end_frame": 2434
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2435,
+   "end_frame": 2439
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2440,
+   "end_frame": 2454
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2455,
+   "end_frame": 2482
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2483,
+   "end_frame": 2500
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2501,
+   "end_frame": 2525
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2526,
+   "end_frame": 2550
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2551,
+   "end_frame": 2561
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2562,
+   "end_frame": 2567
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2568,
+   "end_frame": 2576
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2577,
+   "end_frame": 2587
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2588,
+   "end_frame": 2592
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2593,
+   "end_frame": 2595
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2596,
+   "end_frame": 2598
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2599,
+   "end_frame": 2604
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2605,
+   "end_frame": 2616
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2617,
+   "end_frame": 2623
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2624,
+   "end_frame": 2634
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2635,
+   "end_frame": 2645
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2646,
+   "end_frame": 2650
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2651,
+   "end_frame": 2653
+  },
+  {
+   "label": "5/7",
+   "caption": "The two vertical bars lie level in their troughs, standing out of the plate's face. The gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang under the gripper, it is rinsed the same way and stands in the rack's end slots.",
+   "start_frame": 2654,
+   "end_frame": 2657
+  },
+  {
+   "label": "5/7",
+   "caption": "The specimen fingers go back in their stand on the MiR until the Instron: the tongs and the jar's lid want the 2F-85's own fingertips.",
+   "start_frame": 2658,
+   "end_frame": 2682
+  },
+  {
+   "label": "5/7",
+   "caption": "The specimen fingers go back in their stand on the MiR until the Instron: the tongs and the jar's lid want the 2F-85's own fingertips.",
+   "start_frame": 2683,
+   "end_frame": 2695
+  },
+  {
+   "label": "5/7",
+   "caption": "The specimen fingers go back in their stand on the MiR until the Instron: the tongs and the jar's lid want the 2F-85's own fingertips.",
+   "start_frame": 2696,
+   "end_frame": 2706
+  },
+  {
+   "label": "5/7",
+   "caption": "The lid goes back on the jar, and the EDM's door comes up with the plate still in it, for the bin.",
+   "start_frame": 2707,
+   "end_frame": 2728
+  },
+  {
+   "label": "5/7",
+   "caption": "The lid goes back on the jar, and the EDM's door comes up with the plate still in it, for the bin.",
+   "start_frame": 2729,
+   "end_frame": 2737
+  },
+  {
+   "label": "5/7",
+   "caption": "The lid goes back on the jar, and the EDM's door comes up with the plate still in it, for the bin.",
+   "start_frame": 2738,
+   "end_frame": 2744
+  },
+  {
+   "label": "5/7",
+   "caption": "The lid goes back on the jar, and the EDM's door comes up with the plate still in it, for the bin.",
+   "start_frame": 2745,
+   "end_frame": 2753
+  },
+  {
+   "label": "5/7",
+   "caption": "The lid goes back on the jar, and the EDM's door comes up with the plate still in it, for the bin.",
+   "start_frame": 2754,
+   "end_frame": 2768
+  },
+  {
+   "label": "5/7",
+   "caption": "The lid goes back on the jar, and the EDM's door comes up with the plate still in it, for the bin.",
+   "start_frame": 2769,
+   "end_frame": 2777
+  },
+  {
+   "label": "5/7",
+   "caption": "The lid goes back on the jar, and the EDM's door comes up with the plate still in it, for the bin.",
+   "start_frame": 2778,
+   "end_frame": 2784
+  },
+  {
+   "label": "5/7",
+   "caption": "The lid goes back on the jar, and the EDM's door comes up with the plate still in it, for the bin.",
+   "start_frame": 2785,
+   "end_frame": 2793
+  },
+  {
+   "label": "5/7",
+   "caption": "The lid goes back on the jar, and the EDM's door comes up with the plate still in it, for the bin.",
+   "start_frame": 2794,
+   "end_frame": 2815
+  },
+  {
+   "label": "6/7",
+   "caption": "To Shuttle 1, where tray F holds the furnace. The long drives are shown at 4x; the MiR turns in the gap between the two Shuttles and backs in, 350 mm further out than the dock, to leave room for the tongs.",
+   "start_frame": 2816,
+   "end_frame": 2921
+  },
+  {
+   "label": "6/7",
+   "caption": "To Shuttle 1, where tray F holds the furnace. The long drives are shown at 4x; the MiR turns in the gap between the two Shuttles and backs in, 350 mm further out than the dock, to leave room for the tongs.",
+   "start_frame": 2922,
+   "end_frame": 2996
+  },
+  {
+   "label": "6/7",
+   "caption": "Tray F comes to the opening: the furnace, the quench tank with its lift basket, the PX500 and the mounting press.",
+   "start_frame": 2997,
+   "end_frame": 3009
+  },
+  {
+   "label": "6/7",
+   "caption": "Tray F comes to the opening: the furnace, the quench tank with its lift basket, the PX500 and the mounting press.",
+   "start_frame": 3010,
+   "end_frame": 3029
+  },
+  {
+   "label": "6/7",
+   "caption": "Tray F comes to the opening: the furnace, the quench tank with its lift basket, the PX500 and the mounting press.",
+   "start_frame": 3030,
+   "end_frame": 3042
+  },
+  {
+   "label": "6/7",
+   "caption": "Tray F comes to the opening: the furnace, the quench tank with its lift basket, the PX500 and the mounting press.",
+   "start_frame": 3043,
+   "end_frame": 3048
+  },
+  {
+   "label": "6/7",
+   "caption": "Tray F comes to the opening: the furnace, the quench tank with its lift basket, the PX500 and the mounting press.",
+   "start_frame": 3049,
+   "end_frame": 3066
+  },
+  {
+   "label": "6/7",
+   "caption": "Tray F comes to the opening: the furnace, the quench tank with its lift basket, the PX500 and the mounting press.",
+   "start_frame": 3067,
+   "end_frame": 3072
+  },
+  {
+   "label": "6/7",
+   "caption": "The rack is handled with tongs that ride on the MiR: 300 mm of steel between the gripper and the jaws, so the gripper stays out of the furnace's mouth at 530 C. Squeezing the handle closes the jaws on the rack's fin (our design).",
+   "start_frame": 3076,
+   "end_frame": 3100
+  },
+  {
+   "label": "6/7",
+   "caption": "The rack is handled with tongs that ride on the MiR: 300 mm of steel between the gripper and the jaws, so the gripper stays out of the furnace's mouth at 530 C. Squeezing the handle closes the jaws on the rack's fin (our design).",
+   "start_frame": 3101,
+   "end_frame": 3110
+  },
+  {
+   "label": "6/7",
+   "caption": "The rack is handled with tongs that ride on the MiR: 300 mm of steel between the gripper and the jaws, so the gripper stays out of the furnace's mouth at 530 C. Squeezing the handle closes the jaws on the rack's fin (our design).",
+   "start_frame": 3111,
+   "end_frame": 3117
+  },
+  {
+   "label": "6/7",
+   "caption": "The rack is handled with tongs that ride on the MiR: 300 mm of steel between the gripper and the jaws, so the gripper stays out of the furnace's mouth at 530 C. Squeezing the handle closes the jaws on the rack's fin (our design).",
+   "start_frame": 3118,
+   "end_frame": 3127
+  },
+  {
+   "label": "6/7",
+   "caption": "The jaws take the rack's fin on the MiR. The furnace door opens (an actuator, assumed: the NAT 15/65's door is opened by hand) while the rack waits to its left, out of the door's swing.",
+   "start_frame": 3128,
+   "end_frame": 3155
+  },
+  {
+   "label": "6/7",
+   "caption": "The jaws take the rack's fin on the MiR. The furnace door opens (an actuator, assumed: the NAT 15/65's door is opened by hand) while the rack waits to its left, out of the door's swing.",
+   "start_frame": 3156,
+   "end_frame": 3164
+  },
+  {
+   "label": "6/7",
+   "caption": "The jaws take the rack's fin on the MiR. The furnace door opens (an actuator, assumed: the NAT 15/65's door is opened by hand) while the rack waits to its left, out of the door's swing.",
+   "start_frame": 3165,
+   "end_frame": 3174
+  },
+  {
+   "label": "6/7",
+   "caption": "The jaws take the rack's fin on the MiR. The furnace door opens (an actuator, assumed: the NAT 15/65's door is opened by hand) while the rack waits to its left, out of the door's swing.",
+   "start_frame": 3175,
+   "end_frame": 3184
+  },
+  {
+   "label": "6/7",
+   "caption": "The jaws take the rack's fin on the MiR. The furnace door opens (an actuator, assumed: the NAT 15/65's door is opened by hand) while the rack waits to its left, out of the door's swing.",
+   "start_frame": 3185,
+   "end_frame": 3209
+  },
+  {
+   "label": "6/7",
+   "caption": "The jaws take the rack's fin on the MiR. The furnace door opens (an actuator, assumed: the NAT 15/65's door is opened by hand) while the rack waits to its left, out of the door's swing.",
+   "start_frame": 3210,
+   "end_frame": 3234
+  },
+  {
+   "label": "6/7",
+   "caption": "The rack slides in, its fin 70 mm past the door's insulating plug.",
+   "start_frame": 3235,
+   "end_frame": 3247
+  },
+  {
+   "label": "6/7",
+   "caption": "The rack slides in, its fin 70 mm past the door's insulating plug.",
+   "start_frame": 3248,
+   "end_frame": 3269
+  },
+  {
+   "label": "6/7",
+   "caption": "The rack slides in, its fin 70 mm past the door's insulating plug.",
+   "start_frame": 3270,
+   "end_frame": 3276
+  },
+  {
+   "label": "6/7",
+   "caption": "The rack slides in, its fin 70 mm past the door's insulating plug.",
+   "start_frame": 3277,
+   "end_frame": 3286
+  },
+  {
+   "label": "6/7",
+   "caption": "The rack slides in, its fin 70 mm past the door's insulating plug.",
+   "start_frame": 3287,
+   "end_frame": 3299
+  },
+  {
+   "label": "6/7",
+   "caption": "The rack slides in, its fin 70 mm past the door's insulating plug.",
+   "start_frame": 3300,
+   "end_frame": 3312
+  },
+  {
+   "label": "6/7",
+   "caption": "Door shut. The T6: solution treatment at 530 C (shown here 1 h, an assumption; DAL's schedule is still to be set), then a water quench, then ageing at 160 C.",
+   "start_frame": 3313,
+   "end_frame": 3334
+  },
+  {
+   "label": "6/7",
+   "caption": "Door shut. The T6: solution treatment at 530 C (shown here 1 h, an assumption; DAL's schedule is still to be set), then a water quench, then ageing at 160 C.",
+   "start_frame": 3335,
+   "end_frame": 3398
+  },
+  {
+   "label": "6/7",
+   "caption": "The quench: door open, the tongs draw the rack out to the left, the door shuts, and the rack crosses in front of it to the lift basket over the water.",
+   "start_frame": 3399,
+   "end_frame": 3420
+  },
+  {
+   "label": "6/7",
+   "caption": "The quench: door open, the tongs draw the rack out to the left, the door shuts, and the rack crosses in front of it to the lift basket over the water.",
+   "start_frame": 3421,
+   "end_frame": 3431
+  },
+  {
+   "label": "6/7",
+   "caption": "The quench: door open, the tongs draw the rack out to the left, the door shuts, and the rack crosses in front of it to the lift basket over the water.",
+   "start_frame": 3432,
+   "end_frame": 3440
+  },
+  {
+   "label": "6/7",
+   "caption": "The quench: door open, the tongs draw the rack out to the left, the door shuts, and the rack crosses in front of it to the lift basket over the water.",
+   "start_frame": 3441,
+   "end_frame": 3449
+  },
+  {
+   "label": "6/7",
+   "caption": "The quench: door open, the tongs draw the rack out to the left, the door shuts, and the rack crosses in front of it to the lift basket over the water.",
+   "start_frame": 3450,
+   "end_frame": 3454
+  },
+  {
+   "label": "6/7",
+   "caption": "The quench: door open, the tongs draw the rack out to the left, the door shuts, and the rack crosses in front of it to the lift basket over the water.",
+   "start_frame": 3455,
+   "end_frame": 3469
+  },
+  {
+   "label": "6/7",
+   "caption": "The quench: door open, the tongs draw the rack out to the left, the door shuts, and the rack crosses in front of it to the lift basket over the water.",
+   "start_frame": 3470,
+   "end_frame": 3480
+  },
+  {
+   "label": "6/7",
+   "caption": "The quench: door open, the tongs draw the rack out to the left, the door shuts, and the rack crosses in front of it to the lift basket over the water.",
+   "start_frame": 3481,
+   "end_frame": 3499
+  },
+  {
+   "label": "6/7",
+   "caption": "The quench: door open, the tongs draw the rack out to the left, the door shuts, and the rack crosses in front of it to the lift basket over the water.",
+   "start_frame": 3500,
+   "end_frame": 3521
+  },
+  {
+   "label": "6/7",
+   "caption": "The quench: door open, the tongs draw the rack out to the left, the door shuts, and the rack crosses in front of it to the lift basket over the water.",
+   "start_frame": 3522,
+   "end_frame": 3534
+  },
+  {
+   "label": "6/7",
+   "caption": "The quench: door open, the tongs draw the rack out to the left, the door shuts, and the rack crosses in front of it to the lift basket over the water.",
+   "start_frame": 3535,
+   "end_frame": 3541
+  },
+  {
+   "label": "6/7",
+   "caption": "The quench: door open, the tongs draw the rack out to the left, the door shuts, and the rack crosses in front of it to the lift basket over the water.",
+   "start_frame": 3542,
+   "end_frame": 3550
+  },
+  {
+   "label": "6/7",
+   "caption": "The basket drops the rack into the water about 7 s after the door opened (an aluminium alloy wants its quench within seconds; the figure here is ours, to check), then lifts it out.",
+   "start_frame": 3551,
+   "end_frame": 3574
+  },
+  {
+   "label": "6/7",
+   "caption": "The basket drops the rack into the water about 7 s after the door opened (an aluminium alloy wants its quench within seconds; the figure here is ours, to check), then lifts it out.",
+   "start_frame": 3575,
+   "end_frame": 3592
+  },
+  {
+   "label": "6/7",
+   "caption": "Back into the furnace, now at 160 C, for the ageing: by the left again, as the door opens.",
+   "start_frame": 3593,
+   "end_frame": 3601
+  },
+  {
+   "label": "6/7",
+   "caption": "Back into the furnace, now at 160 C, for the ageing: by the left again, as the door opens.",
+   "start_frame": 3602,
+   "end_frame": 3610
+  },
+  {
+   "label": "6/7",
+   "caption": "Back into the furnace, now at 160 C, for the ageing: by the left again, as the door opens.",
+   "start_frame": 3611,
+   "end_frame": 3623
+  },
+  {
+   "label": "6/7",
+   "caption": "Back into the furnace, now at 160 C, for the ageing: by the left again, as the door opens.",
+   "start_frame": 3624,
+   "end_frame": 3645
+  },
+  {
+   "label": "6/7",
+   "caption": "Back into the furnace, now at 160 C, for the ageing: by the left again, as the door opens.",
+   "start_frame": 3646,
+   "end_frame": 3664
+  },
+  {
+   "label": "6/7",
+   "caption": "Back into the furnace, now at 160 C, for the ageing: by the left again, as the door opens.",
+   "start_frame": 3665,
+   "end_frame": 3677
+  },
+  {
+   "label": "6/7",
+   "caption": "Back into the furnace, now at 160 C, for the ageing: by the left again, as the door opens.",
+   "start_frame": 3678,
+   "end_frame": 3693
+  },
+  {
+   "label": "6/7",
+   "caption": "Back into the furnace, now at 160 C, for the ageing: by the left again, as the door opens.",
+   "start_frame": 3694,
+   "end_frame": 3698
+  },
+  {
+   "label": "6/7",
+   "caption": "Back into the furnace, now at 160 C, for the ageing: by the left again, as the door opens.",
+   "start_frame": 3699,
+   "end_frame": 3707
+  },
+  {
+   "label": "6/7",
+   "caption": "Back into the furnace, now at 160 C, for the ageing: by the left again, as the door opens.",
+   "start_frame": 3708,
+   "end_frame": 3720
+  },
+  {
+   "label": "6/7",
+   "caption": "Back into the furnace, now at 160 C, for the ageing: by the left again, as the door opens.",
+   "start_frame": 3721,
+   "end_frame": 3733
+  },
+  {
+   "label": "6/7",
+   "caption": "Ageing at 160 C, then the furnace cools with its door shut.",
+   "start_frame": 3734,
+   "end_frame": 3752
+  },
+  {
+   "label": "6/7",
+   "caption": "Ageing at 160 C, then the furnace cools with its door shut.",
+   "start_frame": 3753,
+   "end_frame": 3815
+  },
+  {
+   "label": "6/7",
+   "caption": "Ageing at 160 C, then the furnace cools with its door shut.",
+   "start_frame": 3816,
+   "end_frame": 3848
+  },
+  {
+   "label": "6/7",
+   "caption": "Cool: the rack comes out and goes back in its pocket on the MiR, and the tongs on their rest.",
+   "start_frame": 3849,
+   "end_frame": 3870
+  },
+  {
+   "label": "6/7",
+   "caption": "Cool: the rack comes out and goes back in its pocket on the MiR, and the tongs on their rest.",
+   "start_frame": 3871,
+   "end_frame": 3883
+  },
+  {
+   "label": "6/7",
+   "caption": "Cool: the rack comes out and goes back in its pocket on the MiR, and the tongs on their rest.",
+   "start_frame": 3884,
+   "end_frame": 3893
+  },
+  {
+   "label": "6/7",
+   "caption": "Cool: the rack comes out and goes back in its pocket on the MiR, and the tongs on their rest.",
+   "start_frame": 3894,
+   "end_frame": 3903
+  },
+  {
+   "label": "6/7",
+   "caption": "Cool: the rack comes out and goes back in its pocket on the MiR, and the tongs on their rest.",
+   "start_frame": 3904,
+   "end_frame": 3908
+  },
+  {
+   "label": "6/7",
+   "caption": "Cool: the rack comes out and goes back in its pocket on the MiR, and the tongs on their rest.",
+   "start_frame": 3909,
+   "end_frame": 3924
+  },
+  {
+   "label": "6/7",
+   "caption": "Cool: the rack comes out and goes back in its pocket on the MiR, and the tongs on their rest.",
+   "start_frame": 3925,
+   "end_frame": 3937
+  },
+  {
+   "label": "6/7",
+   "caption": "Cool: the rack comes out and goes back in its pocket on the MiR, and the tongs on their rest.",
+   "start_frame": 3938,
+   "end_frame": 3968
+  },
+  {
+   "label": "6/7",
+   "caption": "Cool: the rack comes out and goes back in its pocket on the MiR, and the tongs on their rest.",
+   "start_frame": 3969,
+   "end_frame": 3978
+  },
+  {
+   "label": "6/7",
+   "caption": "Cool: the rack comes out and goes back in its pocket on the MiR, and the tongs on their rest.",
+   "start_frame": 3979,
+   "end_frame": 3988
+  },
+  {
+   "label": "6/7",
+   "caption": "Cool: the rack comes out and goes back in its pocket on the MiR, and the tongs on their rest.",
+   "start_frame": 3989,
+   "end_frame": 3997
+  },
+  {
+   "label": "6/7",
+   "caption": "Cool: the rack comes out and goes back in its pocket on the MiR, and the tongs on their rest.",
+   "start_frame": 3998,
+   "end_frame": 4022
+  },
+  {
+   "label": "6/7",
+   "caption": "Cool: the rack comes out and goes back in its pocket on the MiR, and the tongs on their rest.",
+   "start_frame": 4023,
+   "end_frame": 4032
+  },
+  {
+   "label": "6/7",
+   "caption": "Cool: the rack comes out and goes back in its pocket on the MiR, and the tongs on their rest.",
+   "start_frame": 4033,
+   "end_frame": 4039
+  },
+  {
+   "label": "6/7",
+   "caption": "Cool: the rack comes out and goes back in its pocket on the MiR, and the tongs on their rest.",
+   "start_frame": 4040,
+   "end_frame": 4048
+  },
+  {
+   "label": "6/7",
+   "caption": "Cool: the rack comes out and goes back in its pocket on the MiR, and the tongs on their rest.",
+   "start_frame": 4049,
+   "end_frame": 4067
+  },
+  {
+   "label": "6/7",
+   "caption": "Tray F goes back to its slot.",
+   "start_frame": 4068,
+   "end_frame": 4073
+  },
+  {
+   "label": "6/7",
+   "caption": "Tray F goes back to its slot.",
+   "start_frame": 4074,
+   "end_frame": 4091
+  },
+  {
+   "label": "6/7",
+   "caption": "Tray F goes back to its slot.",
+   "start_frame": 4092,
+   "end_frame": 4099
+  },
+  {
+   "label": "6/7",
+   "caption": "Tray F goes back to its slot.",
+   "start_frame": 4100,
+   "end_frame": 4112
+  },
+  {
+   "label": "6/7",
+   "caption": "Tray F goes back to its slot.",
+   "start_frame": 4113,
+   "end_frame": 4130
+  },
+  {
+   "label": "7/7",
+   "caption": "West along the aisle to the Instron 68FM-100 (shown at 4x). Its 3119-608 chamber stays round the load string for both tests; the room-temperature one runs with it cold.",
+   "start_frame": 4133,
+   "end_frame": 4262
+  },
+  {
+   "label": "7/7",
+   "caption": "The specimen fingers go back on for the two tensile tests: each half has 20 mm free between its broken end and its grip, where the 2F-85's own 27 mm fingertips don't fit.",
+   "start_frame": 4263,
+   "end_frame": 4287
+  },
+  {
+   "label": "7/7",
+   "caption": "The specimen fingers go back on for the two tensile tests: each half has 20 mm free between its broken end and its grip, where the 2F-85's own 27 mm fingertips don't fit.",
+   "start_frame": 4288,
+   "end_frame": 4300
+  },
+  {
+   "label": "7/7",
+   "caption": "The specimen fingers go back on for the two tensile tests: each half has 20 mm free between its broken end and its grip, where the 2F-85's own 27 mm fingertips don't fit.",
+   "start_frame": 4301,
+   "end_frame": 4311
+  },
+  {
+   "label": "7/7",
+   "caption": "As in Instron's AT6 cells: the arm takes a specimen from the rack by its upper end, now with the specimen fingers. The chamber's door opens (an actuator, assumed).",
+   "start_frame": 4312,
+   "end_frame": 4336
+  },
+  {
+   "label": "7/7",
+   "caption": "As in Instron's AT6 cells: the arm takes a specimen from the rack by its upper end, now with the specimen fingers. The chamber's door opens (an actuator, assumed).",
+   "start_frame": 4337,
+   "end_frame": 4346
+  },
+  {
+   "label": "7/7",
+   "caption": "As in Instron's AT6 cells: the arm takes a specimen from the rack by its upper end, now with the specimen fingers. The chamber's door opens (an actuator, assumed).",
+   "start_frame": 4347,
+   "end_frame": 4353
+  },
+  {
+   "label": "7/7",
+   "caption": "As in Instron's AT6 cells: the arm takes a specimen from the rack by its upper end, now with the specimen fingers. The chamber's door opens (an actuator, assumed).",
+   "start_frame": 4354,
+   "end_frame": 4364
+  },
+  {
+   "label": "7/7",
+   "caption": "Straight down between the lower wedge grip's open jaws, which close on its foot: the blades hold it 53 mm over the grip, and the 2F-85 itself stays in front of the grips.",
+   "start_frame": 4365,
+   "end_frame": 4392
+  },
+  {
+   "label": "7/7",
+   "caption": "Straight down between the lower wedge grip's open jaws, which close on its foot: the blades hold it 53 mm over the grip, and the 2F-85 itself stays in front of the grips.",
+   "start_frame": 4393,
+   "end_frame": 4408
+  },
+  {
+   "label": "7/7",
+   "caption": "Straight down between the lower wedge grip's open jaws, which close on its foot: the blades hold it 53 mm over the grip, and the 2F-85 itself stays in front of the grips.",
+   "start_frame": 4409,
+   "end_frame": 4421
+  },
+  {
+   "label": "7/7",
+   "caption": "Straight down between the lower wedge grip's open jaws, which close on its foot: the blades hold it 53 mm over the grip, and the 2F-85 itself stays in front of the grips.",
+   "start_frame": 4422,
+   "end_frame": 4428
+  },
+  {
+   "label": "7/7",
+   "caption": "Straight down between the lower wedge grip's open jaws, which close on its foot: the blades hold it 53 mm over the grip, and the 2F-85 itself stays in front of the grips.",
+   "start_frame": 4429,
+   "end_frame": 4435
+  },
+  {
+   "label": "7/7",
+   "caption": "Straight down between the lower wedge grip's open jaws, which close on its foot: the blades hold it 53 mm over the grip, and the 2F-85 itself stays in front of the grips.",
+   "start_frame": 4436,
+   "end_frame": 4451
+  },
+  {
+   "label": "7/7",
+   "caption": "Straight down between the lower wedge grip's open jaws, which close on its foot: the blades hold it 53 mm over the grip, and the 2F-85 itself stays in front of the grips.",
+   "start_frame": 4452,
+   "end_frame": 4473
+  },
+  {
+   "label": "7/7",
+   "caption": "The door shuts and the crosshead brings the upper grip down until it takes the specimen's upper end; the AVE 2 reads the strain through the door's heated window, so nothing is clipped on by hand.",
+   "start_frame": 4474,
+   "end_frame": 4489
+  },
+  {
+   "label": "7/7",
+   "caption": "Drawn as a cutaway from here: the chamber's front half and its door, with the heated window the AVE 2 reads through, are left out, so the specimen, the wedge grips and the pull rods show. The crosshead brings the upper grip down until it takes the specimen's upper end.",
+   "start_frame": 4490,
+   "end_frame": 4505
+  },
+  {
+   "label": "7/7",
+   "caption": "Drawn as a cutaway from here: the chamber's front half and its door, with the heated window the AVE 2 reads through, are left out, so the specimen, the wedge grips and the pull rods show. The crosshead brings the upper grip down until it takes the specimen's upper end.",
+   "start_frame": 4506,
+   "end_frame": 4537
+  },
+  {
+   "label": "7/7",
+   "caption": "Drawn as a cutaway from here: the chamber's front half and its door, with the heated window the AVE 2 reads through, are left out, so the specimen, the wedge grips and the pull rods show. The crosshead brings the upper grip down until it takes the specimen's upper end.",
+   "start_frame": 4538,
+   "end_frame": 4545
+  },
+  {
+   "label": "7/7",
+   "caption": "The pull: the crosshead rises at a constant rate and the load cell reads the force. The curve is illustrative, not a measurement (AddUp AlSi10Mg data sheet, as built, XY, ASTM E8).",
+   "start_frame": 4546,
+   "end_frame": 4653
+  },
+  {
+   "label": "7/7",
+   "caption": "Broken. The crosshead backs off 60 mm, so that each half can come out of its grip without meeting the other.",
+   "start_frame": 4654,
+   "end_frame": 4689
+  },
+  {
+   "label": "7/7",
+   "caption": "Broken. The crosshead backs off 60 mm, so that each half can come out of its grip without meeting the other.",
+   "start_frame": 4690,
+   "end_frame": 4702
+  },
+  {
+   "label": "7/7",
+   "caption": "Broken. The crosshead backs off 60 mm, so that each half can come out of its grip without meeting the other.",
+   "start_frame": 4703,
+   "end_frame": 4718
+  },
+  {
+   "label": "7/7",
+   "caption": "Each half as its grip lets go: the lower one lifted out of its jaws, the upper one lowered out of its own. The blades take each 10 mm from its broken end, 6 mm clear of the grip; the room-temperature halves lie in a cradle on the MiR, their fracture surfaces touching nothing, for fractography in chapter 7.",
+   "start_frame": 4719,
+   "end_frame": 4740
+  },
+  {
+   "label": "7/7",
+   "caption": "Each half as its grip lets go: the lower one lifted out of its jaws, the upper one lowered out of its own. The blades take each 10 mm from its broken end, 6 mm clear of the grip; the room-temperature halves lie in a cradle on the MiR, their fracture surfaces touching nothing, for fractography in chapter 7.",
+   "start_frame": 4741,
+   "end_frame": 4751
+  },
+  {
+   "label": "7/7",
+   "caption": "Each half as its grip lets go: the lower one lifted out of its jaws, the upper one lowered out of its own. The blades take each 10 mm from its broken end, 6 mm clear of the grip; the room-temperature halves lie in a cradle on the MiR, their fracture surfaces touching nothing, for fractography in chapter 7.",
+   "start_frame": 4752,
+   "end_frame": 4758
+  },
+  {
+   "label": "7/7",
+   "caption": "Each half as its grip lets go: the lower one lifted out of its jaws, the upper one lowered out of its own. The blades take each 10 mm from its broken end, 6 mm clear of the grip; the room-temperature halves lie in a cradle on the MiR, their fracture surfaces touching nothing, for fractography in chapter 7.",
+   "start_frame": 4759,
+   "end_frame": 4763
+  },
+  {
+   "label": "7/7",
+   "caption": "Each half as its grip lets go: the lower one lifted out of its jaws, the upper one lowered out of its own. The blades take each 10 mm from its broken end, 6 mm clear of the grip; the room-temperature halves lie in a cradle on the MiR, their fracture surfaces touching nothing, for fractography in chapter 7.",
+   "start_frame": 4764,
+   "end_frame": 4773
+  },
+  {
+   "label": "7/7",
+   "caption": "Each half as its grip lets go: the lower one lifted out of its jaws, the upper one lowered out of its own. The blades take each 10 mm from its broken end, 6 mm clear of the grip; the room-temperature halves lie in a cradle on the MiR, their fracture surfaces touching nothing, for fractography in chapter 7.",
+   "start_frame": 4774,
+   "end_frame": 4788
+  },
+  {
+   "label": "7/7",
+   "caption": "Each half as its grip lets go: the lower one lifted out of its jaws, the upper one lowered out of its own. The blades take each 10 mm from its broken end, 6 mm clear of the grip; the room-temperature halves lie in a cradle on the MiR, their fracture surfaces touching nothing, for fractography in chapter 7.",
+   "start_frame": 4789,
+   "end_frame": 4816
+  },
+  {
+   "label": "7/7",
+   "caption": "Each half as its grip lets go: the lower one lifted out of its jaws, the upper one lowered out of its own. The blades take each 10 mm from its broken end, 6 mm clear of the grip; the room-temperature halves lie in a cradle on the MiR, their fracture surfaces touching nothing, for fractography in chapter 7.",
+   "start_frame": 4817,
+   "end_frame": 4826
+  },
+  {
+   "label": "7/7",
+   "caption": "Each half as its grip lets go: the lower one lifted out of its jaws, the upper one lowered out of its own. The blades take each 10 mm from its broken end, 6 mm clear of the grip; the room-temperature halves lie in a cradle on the MiR, their fracture surfaces touching nothing, for fractography in chapter 7.",
+   "start_frame": 4827,
+   "end_frame": 4831
+  },
+  {
+   "label": "7/7",
+   "caption": "Each half as its grip lets go: the lower one lifted out of its jaws, the upper one lowered out of its own. The blades take each 10 mm from its broken end, 6 mm clear of the grip; the room-temperature halves lie in a cradle on the MiR, their fracture surfaces touching nothing, for fractography in chapter 7.",
+   "start_frame": 4832,
+   "end_frame": 4840
+  },
+  {
+   "label": "7/7",
+   "caption": "Each half as its grip lets go: the lower one lifted out of its jaws, the upper one lowered out of its own. The blades take each 10 mm from its broken end, 6 mm clear of the grip; the room-temperature halves lie in a cradle on the MiR, their fracture surfaces touching nothing, for fractography in chapter 7.",
+   "start_frame": 4841,
+   "end_frame": 4862
+  },
+  {
+   "label": "7/7",
+   "caption": "Each half as its grip lets go: the lower one lifted out of its jaws, the upper one lowered out of its own. The blades take each 10 mm from its broken end, 6 mm clear of the grip; the room-temperature halves lie in a cradle on the MiR, their fracture surfaces touching nothing, for fractography in chapter 7.",
+   "start_frame": 4863,
+   "end_frame": 4873
+  },
+  {
+   "label": "7/7",
+   "caption": "Each half as its grip lets go: the lower one lifted out of its jaws, the upper one lowered out of its own. The blades take each 10 mm from its broken end, 6 mm clear of the grip; the room-temperature halves lie in a cradle on the MiR, their fracture surfaces touching nothing, for fractography in chapter 7.",
+   "start_frame": 4874,
+   "end_frame": 4880
+  },
+  {
+   "label": "7/7",
+   "caption": "Each half as its grip lets go: the lower one lifted out of its jaws, the upper one lowered out of its own. The blades take each 10 mm from its broken end, 6 mm clear of the grip; the room-temperature halves lie in a cradle on the MiR, their fracture surfaces touching nothing, for fractography in chapter 7.",
+   "start_frame": 4881,
+   "end_frame": 4885
+  },
+  {
+   "label": "7/7",
+   "caption": "Each half as its grip lets go: the lower one lifted out of its jaws, the upper one lowered out of its own. The blades take each 10 mm from its broken end, 6 mm clear of the grip; the room-temperature halves lie in a cradle on the MiR, their fracture surfaces touching nothing, for fractography in chapter 7.",
+   "start_frame": 4886,
+   "end_frame": 4895
+  },
+  {
+   "label": "7/7",
+   "caption": "Each half as its grip lets go: the lower one lifted out of its jaws, the upper one lowered out of its own. The blades take each 10 mm from its broken end, 6 mm clear of the grip; the room-temperature halves lie in a cradle on the MiR, their fracture surfaces touching nothing, for fractography in chapter 7.",
+   "start_frame": 4896,
+   "end_frame": 4910
+  },
+  {
+   "label": "7/7",
+   "caption": "Each half as its grip lets go: the lower one lifted out of its jaws, the upper one lowered out of its own. The blades take each 10 mm from its broken end, 6 mm clear of the grip; the room-temperature halves lie in a cradle on the MiR, their fracture surfaces touching nothing, for fractography in chapter 7.",
+   "start_frame": 4911,
+   "end_frame": 4938
+  },
+  {
+   "label": "7/7",
+   "caption": "Each half as its grip lets go: the lower one lifted out of its jaws, the upper one lowered out of its own. The blades take each 10 mm from its broken end, 6 mm clear of the grip; the room-temperature halves lie in a cradle on the MiR, their fracture surfaces touching nothing, for fractography in chapter 7.",
+   "start_frame": 4939,
+   "end_frame": 4948
+  },
+  {
+   "label": "7/7",
+   "caption": "Each half as its grip lets go: the lower one lifted out of its jaws, the upper one lowered out of its own. The blades take each 10 mm from its broken end, 6 mm clear of the grip; the room-temperature halves lie in a cradle on the MiR, their fracture surfaces touching nothing, for fractography in chapter 7.",
+   "start_frame": 4949,
+   "end_frame": 4953
+  },
+  {
+   "label": "7/7",
+   "caption": "Each half as its grip lets go: the lower one lifted out of its jaws, the upper one lowered out of its own. The blades take each 10 mm from its broken end, 6 mm clear of the grip; the room-temperature halves lie in a cradle on the MiR, their fracture surfaces touching nothing, for fractography in chapter 7.",
+   "start_frame": 4954,
+   "end_frame": 4962
+  },
+  {
+   "label": "7/7",
+   "caption": "Each half as its grip lets go: the lower one lifted out of its jaws, the upper one lowered out of its own. The blades take each 10 mm from its broken end, 6 mm clear of the grip; the room-temperature halves lie in a cradle on the MiR, their fracture surfaces touching nothing, for fractography in chapter 7.",
+   "start_frame": 4963,
+   "end_frame": 4981
+  },
+  {
+   "label": "7/7",
+   "caption": "The door shuts and the crosshead goes back up, so the next specimen goes in under an open grip.",
+   "start_frame": 4982,
+   "end_frame": 4997
+  },
+  {
+   "label": "7/7",
+   "caption": "The door shuts and the crosshead goes back up, so the next specimen goes in under an open grip.",
+   "start_frame": 4998,
+   "end_frame": 5017
+  },
+  {
+   "label": "7/7",
+   "caption": "The second specimen goes in the same way, cold, and the door shuts. The chamber heats the grips and the specimen to 200 C and holds it there so the temperature evens out.",
+   "start_frame": 5018,
+   "end_frame": 5032
+  },
+  {
+   "label": "7/7",
+   "caption": "The second specimen goes in the same way, cold, and the door shuts. The chamber heats the grips and the specimen to 200 C and holds it there so the temperature evens out.",
+   "start_frame": 5033,
+   "end_frame": 5038
+  },
+  {
+   "label": "7/7",
+   "caption": "The second specimen goes in the same way, cold, and the door shuts. The chamber heats the grips and the specimen to 200 C and holds it there so the temperature evens out.",
+   "start_frame": 5039,
+   "end_frame": 5045
+  },
+  {
+   "label": "7/7",
+   "caption": "The second specimen goes in the same way, cold, and the door shuts. The chamber heats the grips and the specimen to 200 C and holds it there so the temperature evens out.",
+   "start_frame": 5046,
+   "end_frame": 5052
+  },
+  {
+   "label": "7/7",
+   "caption": "The second specimen goes in the same way, cold, and the door shuts. The chamber heats the grips and the specimen to 200 C and holds it there so the temperature evens out.",
+   "start_frame": 5053,
+   "end_frame": 5069
+  },
+  {
+   "label": "7/7",
+   "caption": "The second specimen goes in the same way, cold, and the door shuts. The chamber heats the grips and the specimen to 200 C and holds it there so the temperature evens out.",
+   "start_frame": 5070,
+   "end_frame": 5079
+  },
+  {
+   "label": "7/7",
+   "caption": "The second specimen goes in the same way, cold, and the door shuts. The chamber heats the grips and the specimen to 200 C and holds it there so the temperature evens out.",
+   "start_frame": 5080,
+   "end_frame": 5087
+  },
+  {
+   "label": "7/7",
+   "caption": "The second specimen goes in the same way, cold, and the door shuts. The chamber heats the grips and the specimen to 200 C and holds it there so the temperature evens out.",
+   "start_frame": 5088,
+   "end_frame": 5092
+  },
+  {
+   "label": "7/7",
+   "caption": "The second specimen goes in the same way, cold, and the door shuts. The chamber heats the grips and the specimen to 200 C and holds it there so the temperature evens out.",
+   "start_frame": 5093,
+   "end_frame": 5099
+  },
+  {
+   "label": "7/7",
+   "caption": "The second specimen goes in the same way, cold, and the door shuts. The chamber heats the grips and the specimen to 200 C and holds it there so the temperature evens out.",
+   "start_frame": 5100,
+   "end_frame": 5109
+  },
+  {
+   "label": "7/7",
+   "caption": "The second specimen goes in the same way, cold, and the door shuts. The chamber heats the grips and the specimen to 200 C and holds it there so the temperature evens out.",
+   "start_frame": 5110,
+   "end_frame": 5123
+  },
+  {
+   "label": "7/7",
+   "caption": "The second specimen goes in the same way, cold, and the door shuts. The chamber heats the grips and the specimen to 200 C and holds it there so the temperature evens out.",
+   "start_frame": 5124,
+   "end_frame": 5133
+  },
+  {
+   "label": "7/7",
+   "caption": "The second specimen goes in the same way, cold, and the door shuts. The chamber heats the grips and the specimen to 200 C and holds it there so the temperature evens out.",
+   "start_frame": 5134,
+   "end_frame": 5143
+  },
+  {
+   "label": "7/7",
+   "caption": "The second specimen goes in the same way, cold, and the door shuts. The chamber heats the grips and the specimen to 200 C and holds it there so the temperature evens out.",
+   "start_frame": 5144,
+   "end_frame": 5163
+  },
+  {
+   "label": "7/7",
+   "caption": "The second specimen goes in the same way, cold, and the door shuts. The chamber heats the grips and the specimen to 200 C and holds it there so the temperature evens out.",
+   "start_frame": 5164,
+   "end_frame": 5169
+  },
+  {
+   "label": "7/7",
+   "caption": "The second specimen goes in the same way, cold, and the door shuts. The chamber heats the grips and the specimen to 200 C and holds it there so the temperature evens out.",
+   "start_frame": 5170,
+   "end_frame": 5216
+  },
+  {
+   "label": "7/7",
+   "caption": "The second specimen goes in the same way, cold, and the door shuts. The chamber heats the grips and the specimen to 200 C and holds it there so the temperature evens out.",
+   "start_frame": 5217,
+   "end_frame": 5243
+  },
+  {
+   "label": "7/7",
+   "caption": "The pull: the crosshead rises at a constant rate and the load cell reads the force. The curve is illustrative, not a measurement (assumed).",
+   "start_frame": 5244,
+   "end_frame": 5309
+  },
+  {
+   "label": "7/7",
+   "caption": "Broken. The chamber cools before the door opens: the gripper isn't made for hot work.",
+   "start_frame": 5310,
+   "end_frame": 5345
+  },
+  {
+   "label": "7/7",
+   "caption": "Broken. The chamber cools before the door opens: the gripper isn't made for hot work.",
+   "start_frame": 5346,
+   "end_frame": 5358
+  },
+  {
+   "label": "7/7",
+   "caption": "Broken. The chamber cools before the door opens: the gripper isn't made for hot work.",
+   "start_frame": 5359,
+   "end_frame": 5374
+  },
+  {
+   "label": "7/7",
+   "caption": "The hot test's halves go down the scrap chute right of the grips, as the AT6 drops them.",
+   "start_frame": 5375,
+   "end_frame": 5396
+  },
+  {
+   "label": "7/7",
+   "caption": "The hot test's halves go down the scrap chute right of the grips, as the AT6 drops them.",
+   "start_frame": 5397,
+   "end_frame": 5407
+  },
+  {
+   "label": "7/7",
+   "caption": "The hot test's halves go down the scrap chute right of the grips, as the AT6 drops them.",
+   "start_frame": 5408,
+   "end_frame": 5414
+  },
+  {
+   "label": "7/7",
+   "caption": "The hot test's halves go down the scrap chute right of the grips, as the AT6 drops them.",
+   "start_frame": 5415,
+   "end_frame": 5419
+  },
+  {
+   "label": "7/7",
+   "caption": "The hot test's halves go down the scrap chute right of the grips, as the AT6 drops them.",
+   "start_frame": 5420,
+   "end_frame": 5429
+  },
+  {
+   "label": "7/7",
+   "caption": "The hot test's halves go down the scrap chute right of the grips, as the AT6 drops them.",
+   "start_frame": 5430,
+   "end_frame": 5444
+  },
+  {
+   "label": "7/7",
+   "caption": "The hot test's halves go down the scrap chute right of the grips, as the AT6 drops them.",
+   "start_frame": 5445,
+   "end_frame": 5466
+  },
+  {
+   "label": "7/7",
+   "caption": "The hot test's halves go down the scrap chute right of the grips, as the AT6 drops them.",
+   "start_frame": 5467,
+   "end_frame": 5471
+  },
+  {
+   "label": "7/7",
+   "caption": "The hot test's halves go down the scrap chute right of the grips, as the AT6 drops them.",
+   "start_frame": 5472,
+   "end_frame": 5482
+  },
+  {
+   "label": "7/7",
+   "caption": "The hot test's halves go down the scrap chute right of the grips, as the AT6 drops them.",
+   "start_frame": 5483,
+   "end_frame": 5504
+  },
+  {
+   "label": "7/7",
+   "caption": "The hot test's halves go down the scrap chute right of the grips, as the AT6 drops them.",
+   "start_frame": 5505,
+   "end_frame": 5515
+  },
+  {
+   "label": "7/7",
+   "caption": "The hot test's halves go down the scrap chute right of the grips, as the AT6 drops them.",
+   "start_frame": 5516,
+   "end_frame": 5522
+  },
+  {
+   "label": "7/7",
+   "caption": "The hot test's halves go down the scrap chute right of the grips, as the AT6 drops them.",
+   "start_frame": 5523,
+   "end_frame": 5527
+  },
+  {
+   "label": "7/7",
+   "caption": "The hot test's halves go down the scrap chute right of the grips, as the AT6 drops them.",
+   "start_frame": 5528,
+   "end_frame": 5537
+  },
+  {
+   "label": "7/7",
+   "caption": "The hot test's halves go down the scrap chute right of the grips, as the AT6 drops them.",
+   "start_frame": 5538,
+   "end_frame": 5552
+  },
+  {
+   "label": "7/7",
+   "caption": "The hot test's halves go down the scrap chute right of the grips, as the AT6 drops them.",
+   "start_frame": 5553,
+   "end_frame": 5574
+  },
+  {
+   "label": "7/7",
+   "caption": "The hot test's halves go down the scrap chute right of the grips, as the AT6 drops them.",
+   "start_frame": 5575,
+   "end_frame": 5579
+  },
+  {
+   "label": "7/7",
+   "caption": "The hot test's halves go down the scrap chute right of the grips, as the AT6 drops them.",
+   "start_frame": 5580,
+   "end_frame": 5590
+  },
+  {
+   "label": "7/7",
+   "caption": "The hot test's halves go down the scrap chute right of the grips, as the AT6 drops them.",
+   "start_frame": 5591,
+   "end_frame": 5609
+  },
+  {
+   "label": "7/7",
+   "caption": "The door shuts and the crosshead goes back up, so the next specimen goes in under an open grip.",
+   "start_frame": 5610,
+   "end_frame": 5625
+  },
+  {
+   "label": "7/7",
+   "caption": "The door shuts and the crosshead goes back up, so the next specimen goes in under an open grip.",
+   "start_frame": 5626,
+   "end_frame": 5645
+  },
+  {
+   "label": "7/7",
+   "caption": "The specimen fingers go back in their stand on the MiR.",
+   "start_frame": 5646,
+   "end_frame": 5670
+  },
+  {
+   "label": "7/7",
+   "caption": "The specimen fingers go back in their stand on the MiR.",
+   "start_frame": 5671,
+   "end_frame": 5683
+  },
+  {
+   "label": "7/7",
+   "caption": "The specimen fingers go back in their stand on the MiR.",
+   "start_frame": 5684,
+   "end_frame": 5694
+  },
+  {
+   "label": "7/7",
+   "caption": "Done: printed flat and vertical, depowdered, cut, rinsed, heat treated and pulled at two temperatures, every arm move collision-checked. The comb, the troughs, the clamps, the jar's lid, the rack, the tongs, the quench basket and the specimen fingers are our designs.",
+   "start_frame": 5695,
+   "end_frame": 5784
+  }
+ ]
+}

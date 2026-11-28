@@ -114,7 +114,13 @@ The floor is `setup_lab.py fit`'s plan (`out/tray_plan.json`). Two things are ad
   lab's y -2460 to -3260, which on the lab's plan is the aisle (y -2400 to -5400). Here the two 118EXPs (Al family
   west, Cu family east) stand west of the machine and behind the dock line, with the post, the pails, the extinguisher
   and the sign (`floor_cleaning.VAC_STATION`, 1.19 x 1.64 m, as `floor_clean_still.py` draws it). The lab's floor plan
-  should take this or another place for it.
+  should take this or another place for it. **Round 16:** it has, but not there: the safety PR's B570 (-5150, -1400)
+  and Super D pail (-5650, -1475) stand in that rectangle's front half, so `setup_lab.build` stands the two 118EXPs,
+  the post, a pail per family, the *Solid Material* bucket, the sand can and the sign behind the fire point, at
+  `powder_point.py`'s x -5868 to -4505, y -1222 to -60 (`notes/waste_clip.md`). `VAC_STATION` is that rectangle now
+  (`Floor` takes the plan's own `powder_point` one), the atomizer's point of use (`POU`) moved from (-5230, -1640) to
+  (-5380, -714), midway between the new inlets, and `floor_clean_still.py` draws the powder point with a 25 ft hose
+  routed out of it between the Super D pail and the B570's keep-clear area. This file's own figures were not re-run.
 - **A charger for a cleaner of its own:** a third MiR Charge 48V in the south row, 1.6 m west of unit 1's (centre to
   centre), outside every powder zone (`floor_cleaning.BAY`). Charging belongs in an area set aside for it (OSHA
   1910.178(g)(1)), and Kärcher's manuals and Zone 22 conversions keep it out of any hazardous area.
@@ -476,6 +482,14 @@ from where the robot can stand, in a nearest-neighbour order.
 | Floor cleaned | 78.3 of the 80.7 m² a robot serves (97 %). The rest is mostly the 2.3 m² left round a visible spill |
 | Driving | 178 m |
 | Time | **89 min**, against the model's 43 |
+
+**Round 16, re-run on the lab as it stands** (`python3 floor_pass.py`): 52 spots, 40 studs, 75.1 of the 77.4 m² a
+robot serves (97 %), 155 m of driving, **86 min** against the model's 41. Two things moved it, measured apart (the old
+station on the new plan, then the powder point): the plan itself (the machining cell, and the rePowder's rectangle
+110 mm wider west since atom_crucible's MiR250 2 spot left the vacuum pump, so the zones hold 77.4 m², not 80.7):
+52 spots, 42 studs, 87 min; then the station's move to the powder point: 2 fewer studs, the atomizer's zone 0.45 m²
+bigger (the old station's rectangle sat in it), 24 m less driving (178.6 to 154.8), 0.8 min shorter. The table above
+is the earlier render's.
 
 **Where the extra 46 minutes come from** (all ours, assumed):
 - 53 spots × 40 s: 20 s to clip, read and unclip the bond, and 10 s each for the look and the colour check. That is

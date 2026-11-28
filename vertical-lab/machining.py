@@ -411,7 +411,25 @@ def plot_prices(path=OUT / "machining_prices.png"):
     return path
 
 
-FLOOR = dict(x=-2935.0, y=-6238.0 - 950.0, dock=(-2935.0, -5868.0, 180.0))
+# Where the cell stands on the lab's floor plan (setup_lab.FLOOR_PLAN["machining"], warehouse.py's frame): x, y of the
+# cell's origin (the arm's pedestal), its turn about z, and its MiR250 dock (x, y, heading).
+# Round 16 (#303; PR #371's check of 2026-11-26: "Give the machining cell a place on the floor that doesn't take unit 3's
+# charger"; notes/lab_r16.md): south of the south row, front to the north, behind the 68SC-2, unit 3's charger and
+# charger 0, on the x it had before. Its MiR250 has a way in of its own: from the aisle down the row's west end, between
+# the Instron 68FM-100 and the EOS M 400-4's strip, then east along a corridor behind the row, onto its dock line, and
+# backed in from the west, its target post beyond its back end. The numbers, from out/tray_plan.json (round 15) and
+# ISO 3691-4's 0.5 m beside a driverless vehicle's path:
+#   corridor (the dock line): y -8081 = the 68FM-100's back (y -7291) - 500 - 290 (half a MiR250's width)
+#   the cell's front (fence):  y -8451 = the dock line - 290 - 80 (docked 80 mm off the front, as at every dock)
+#   the cell's origin:         y -9401 = the front - 950 (FRONT_Y in the cell's frame)
+#   the lane down the west end: x -7977 = the 68FM-100's west side (x -7187) - 500 - 290
+# Until round 15 the cell's front stood on the row's face line (y -7188 here, dock (-2935, -5868)), in what is now
+# floor-cleaning unit 3's charger bay (floor_cleaning.BAY; notes/lab_r15.md).
+FLOOR = dict(x=-2935.0, y=-9401.0, turn=0.0, dock=(-2935.0, -8081.0, 180.0),
+             lane_x=-7977.0,                       # the MiR's centre line down the west end
+             corner=(-7977.0, -8081.0),            # where it turns from that lane onto the corridor (a pivot spot)
+             target=(-2935.0 + 650.0, -8451.0 + 25.0 + 150.0))   # beyond the docked MiR's back end, 150 mm off the
+#                                                    front's light-curtain posts (25 mm proud of the fence's line)
 
 
 def cell_rects() -> list[tuple[str, tuple, str]]:
@@ -433,46 +451,129 @@ def cell_rects() -> list[tuple[str, tuple, str]]:
     return [(n, (x0 + X, x1 + X, y0 + Y, y1 + Y), c) for n, (x0, x1, y0, y1), c in r]
 
 
+def way_in(fl: dict | None = None) -> dict:
+    """What setup_lab's fit doesn't check of the cell's MiR250 route (it checks the dock, its pivot spot on the dock line
+    and the approach from there): the lane from the aisle down the row's west end to the corner, the turn there, and the
+    corridor from the corner to the dock's pivot spot (the MiR's centre; the turns at either end cover its ends). Each
+    against every plan rectangle, target post foot and docked MiR250 in out/tray_plan.json (the cell's own as one
+    rectangle) -> the least gap of each, mm, along x or y, and its neighbour (negative: they overlap). The lane and the
+    corridor are a MiR250's body (580 mm wide); ISO 3691-4 wants 500 mm more on each side where people walk."""
+    fl = fl or json.loads((OUT / "tray_plan.json").read_text())["floor"]
+    Lm, Wm, r_turn = 800.0, 580.0, 499.0                  # props.MIR; turning on the spot with its Class D unit
+    lx, (cx, cy) = FLOOR["lane_x"], FLOOR["corner"]
+    dock = fl.get("docks", {}).get("machining", {})
+    piv = (dock.get("pivot") or [FLOOR["dock"][0] - 2525.0, FLOOR["dock"][1]])[0]
+    a = fl["aisle_mm"]
+    obst = {k: tuple(r) for k, r in fl["machines"].items()}
+    for k, d in fl.get("docks", {}).items():
+        tx, ty = d["target_post"]
+        obst[f"post {k}"] = (tx - 150, tx + 150, ty - 150, ty + 150)
+        if k != "machining":
+            x, y, _ = d["dock"]
+            obst[f"docked MiR {k}"] = (x - Lm / 2, x + Lm / 2, y - Wm / 2, y + Wm / 2)
+
+    def gap(r, q):                                      # along x or y, whichever is larger (a lower bound)
+        return max(q[0] - r[1], r[0] - q[1], q[2] - r[3], r[2] - q[3])
+
+    def gap_c(c, r, q):
+        dx, dy = max(q[0] - c[0], 0.0, c[0] - q[1]), max(q[2] - c[1], 0.0, c[1] - q[3])
+        return math.hypot(dx, dy) - r
+    legs = {"lane down the west end": ("rect", (lx - Wm / 2, lx + Wm / 2, cy, a[2])),
+            "turn at the corner": ("circle", ((cx, cy), r_turn)),
+            "corridor to the pivot spot": ("rect", (cx, piv, cy - Wm / 2, cy + Wm / 2))}
+    out = {}
+    for leg, (kind, geo) in legs.items():
+        gs = {k: (gap(geo, q) if kind == "rect" else gap_c(*geo, q)) for k, q in obst.items()}
+        near = sorted(gs, key=gs.get)[:3]
+        out[leg] = dict(geometry=[round(v) for v in (geo if kind == "rect" else (*geo[0], geo[1]))],
+                        nearest=[(k, round(gs[k])) for k in near], clear=bool(gs[near[0]] > 0.0))
+    return out
+
+
 def plot_floor(path=OUT / "machining_floor.png"):
+    """The cell where it stands (FLOOR), its parts, its MiR250's way in from the aisle (the lane down the row's west
+    end, the corridor behind the row, the pivot spots, the dock and its target post), on out/tray_plan.json's floor."""
+    import textwrap
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     from matplotlib.patches import Circle, Rectangle
     fl = json.loads((OUT / "tray_plan.json").read_text())["floor"]
-    xl, yl = (-7600.0, 2600.0), (-10000.0, -2300.0)
-    fig, ax = plt.subplots(figsize=(11.0, 7.4), dpi=150, facecolor=SURFACE)
+    xl, yl = (-12300.0, 2700.0), (-12300.0, -2400.0)
+    fig, ax = plt.subplots(figsize=(11.0, 7.9), dpi=150, facecolor=SURFACE)
     ax.set_facecolor(SURFACE)
     a = fl["aisle_mm"]
     ax.add_patch(Rectangle((a[0], a[2]), a[1] - a[0], a[3] - a[2], fc="#fff6cf", ec="#d8b400", lw=0.8))
-    ax.text(-7300, -3900, "aisle", fontsize=9, color="#8a7300")
+    ax.text(-10000, -2700, "aisle", fontsize=9, color="#8a7300", va="top")
     names = {"instron_floor": "Instron 68FM-100", "instron_small": "68SC-2", "fumehood": "fume hood",
-             "charger0": "charger 0", "charger1": "charger 1"}
+             "charger0": "charger 0", "charger1": "charger 1", "charger2": "unit 3's\ncharger",
+             "eos_m400": "EOS M 400-4", "repowder": "rePowder", "glovebox": "glovebox", "ded": "DED",
+             "sieve_cell": "sieving cell", "vlm": "Shuttle 1"}
     for k, (x0, x1, y0, y1) in fl["machines"].items():
+        if k == "machining":                       # the cell itself: drawn part by part below
+            continue
         ax.add_patch(Rectangle((x0, y0), x1 - x0, y1 - y0, fc="#d5d9de", ec="#6b7280", lw=0.7))
-        cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
-        if k in names and xl[0] < cx < xl[1] and yl[0] < cy < yl[1]:
-            ax.text(cx, y0 - 120, names[k], ha="center", va="top", fontsize=7, color=INK2, clip_on=True)
+        vx0, vx1, vy0, vy1 = max(x0, xl[0]), min(x1, xl[1]), max(y0, yl[0]), min(y1, yl[1])   # the part in view
+        if k in names and vx0 < vx1 and vy0 < vy1:
+            inside = vx1 - vx0 > 1200 and vy1 - vy0 > 600
+            ax.text((vx0 + vx1) / 2, (vy0 + vy1) / 2 if inside else y0 - 110, names[k], ha="center",
+                    va="center" if inside else "top", fontsize=7, color=INK2, clip_on=True)
+    Lm, Wm, iso = 800.0, 580.0, 500.0              # props.MIR; ISO 3691-4's 0.5 m each side of the path
+    ins = fl["machines"]["instron_floor"]
+    lx, (cx_, cy_) = FLOOR["lane_x"], FLOOR["corner"]
+    dx, dy, _ = FLOOR["dock"]
+    # the EOS M 400-4's clear strip, what the lane leaves it (r8_scale: 2.4 m or wider, in front of it to the aisle)
+    eos = fl["machines"].get("eos_m400", (-11540, -7360, -11506, -9763))
+    sx1 = lx - Wm / 2 - iso
+    ax.add_patch(Rectangle((eos[0], eos[3]), sx1 - eos[0], a[2] - eos[3], fc="none", ec="#9a8f6a", lw=0.8,
+                           hatch="///", alpha=0.5))
+    ax.text((eos[0] + sx1) / 2, -7700, f"the EOS's clear strip\nto the aisle: {(sx1 - eos[0]) / 1000:.2f} m kept",
+            ha="center", va="center", fontsize=7, color="#6b623f",
+            bbox=dict(boxstyle="round,pad=0.25", fc=SURFACE, ec="none"))
+    # the MiR's way in: the band its body sweeps, and ISO's 0.5 m beside it
+    piv = fl.get("docks", {}).get("machining", {}).get("pivot") or [dx - 2525.0, dy]
+    for (x0, x1, y0, y1), fc, al in (((lx - Wm / 2 - iso, lx + Wm / 2 + iso, cy_, a[2]), "#2e9c6a", 0.08),
+                                     ((lx - Wm / 2, lx + Wm / 2, cy_, a[2]), "#2e9c6a", 0.18),
+                                     ((lx, piv[0], cy_ - Wm / 2, cy_ + Wm / 2), "#2e9c6a", 0.18),
+                                     ((lx, piv[0], cy_ + Wm / 2, cy_ + Wm / 2 + iso), "#2e9c6a", 0.08),
+                                     ((piv[0], dx + Lm / 2, dy - Wm / 2, dy + Wm / 2), "#2e9c6a", 0.10)):
+        ax.add_patch(Rectangle((x0, y0), x1 - x0, y1 - y0, fc=fc, alpha=al, ec="none"))
+    r_turn = 499.0                                 # a MiR250 turning on the spot, its Class D unit on (safety.py)
+    for c in ((cx_, cy_), tuple(piv)):
+        ax.add_patch(Circle(c, r_turn, fc="none", ec="#2e9c6a", lw=0.8, ls=(0, (3, 2))))
+    arw = dict(arrowstyle="->", color="#1f6f4c", lw=1.0)
+    ax.annotate("", xy=(lx, cy_ + 650), xytext=(lx, a[2] - 150), arrowprops=arw)
+    ax.annotate("", xy=(piv[0] - 560, cy_), xytext=(cx_ + 560, cy_), arrowprops=arw)
+    ax.annotate("", xy=(dx + 120, dy), xytext=(piv[0] + 560, dy), arrowprops=dict(arw, ls="--"))
+    ax.text(lx + Wm / 2 + iso + 120, -5900, "its MiR250's way in: down the west end,\n"
+            f"{(ins[0] - lx - Wm / 2):.0f} mm off the 68FM-100", ha="left", va="top", fontsize=7, color="#1f6f4c")
+    ax.text(cx_ + 700, cy_ - r_turn - 120, f"corridor behind the row,\n{(ins[2] - cy_ - Wm / 2):.0f} mm off the "
+            "68FM-100's back", ha="center", va="top", fontsize=7, color="#1f6f4c")
+    ax.text(piv[0] + 560, dy + 330, f"pivot, then\nbacked in {abs(piv[0] - dx):.0f} mm", ha="left", va="bottom",
+            fontsize=7, color="#1f6f4c")
+    # the cell
     key = []
     for i, (n, (x0, x1, y0, y1), c) in enumerate(cell_rects()):
         if n == "fence":
             ax.add_patch(Rectangle((x0, y0), x1 - x0, y1 - y0, fc="none", ec="#d8a400", lw=1.6, ls=(0, (5, 2))))
             continue
         ax.add_patch(Rectangle((x0, y0), x1 - x0, y1 - y0, fc=c, ec="#374151", lw=0.8))
-        ax.text((x0 + x1) / 2, (y0 + y1) / 2, str(i), ha="center", va="center", fontsize=9, color=INK,
+        ax.text((x0 + x1) / 2, (y0 + y1) / 2, str(i), ha="center", va="center", fontsize=8, color=INK,
                 fontweight="bold")
-        key.append(f"{i}  {n}")
+        key += textwrap.wrap(f"{i}  {n}", 66, subsequent_indent="     ")
     X, Y = FLOOR["x"], FLOOR["y"]
     ax.add_patch(Circle((X, Y), 1300, fc="none", ec=COLORS[0], lw=0.9, ls=(0, (3, 3))))
     ax.add_patch(Circle((X, Y), 140, fc=COLORS[0], ec="none"))
-    dx, dy, _ = FLOOR["dock"]
-    ax.add_patch(Rectangle((dx - 445, dy - 290), 890, 580, fc="#2e9c6a", alpha=0.35, ec="#2e9c6a", lw=0.8))
-    ax.text(dx + 520, dy + 120, "MiR250 docked: its arm takes the\ncassette through the front window",
-            ha="left", va="center", fontsize=7, color="#1f6f4c")
-    gap = (fl["machines"]["charger0"][0] - fl["machines"]["instron_small"][1])
+    ax.add_patch(Rectangle((dx - Lm / 2, dy - Wm / 2), Lm, Wm, fc="#2e9c6a", alpha=0.45, ec="#2e9c6a", lw=0.8))
+    tx, ty = FLOOR["target"]
+    ax.add_patch(Rectangle((tx - 150, ty - 150), 300, 300, fc="#222", ec="none"))
+    ax.text(tx + 450, ty + 60, "MiR250 docked: its arm takes the cassette\nthrough the front window; "
+            "its target post\n(black) beyond its back end", ha="left", va="center", fontsize=7, color="#1f6f4c")
     key += ["", "dashed yellow: the cell's fence;  dashed blue: the UR10e's 1.3 m reach",
-            f"the front zone is 2.2 m wide: {gap:.0f} mm between the 68SC-2 and charger 0"]
-    ax.text(0.47, 0.955, "\n".join(key), transform=ax.transAxes, ha="left", va="top", fontsize=7.2, color=INK,
-            bbox=dict(boxstyle="round,pad=0.5", fc="white", ec="#c9c8c2", lw=0.6))
+            "green: the MiR250's way in (its body, and 0.5 m beside it);",
+            "dashed circles: where it turns on the spot (499 mm)"]
+    ax.text(0.985, 0.985, "\n".join(key), transform=ax.transAxes, ha="right", va="top", multialignment="left",
+            fontsize=6.6, color=INK, bbox=dict(boxstyle="round,pad=0.5", fc="white", ec="#c9c8c2", lw=0.6))
     ax.set_aspect("equal")
     ax.set_xlim(*xl)
     ax.set_ylim(*yl)
@@ -481,8 +582,9 @@ def plot_floor(path=OUT / "machining_floor.png"):
     ax.tick_params(labelsize=7.5, colors=INK2)
     for sp in ("top", "right"):
         ax.spines[sp].set_visible(False)
-    ax.set_title("The machining cell on the south row: its front between the 68SC-2 and charger 0, "
-                 "the lathe and bar feeder behind them", loc="left", fontsize=10, color=INK)
+    ax.set_title("The machining cell south of the south row, front to the north behind the 68SC-2 and the chargers;\n"
+                 "its MiR250 comes down the row's west end and along a corridor behind the row (round 16)", loc="left",
+                 fontsize=10, color=INK)
     fig.tight_layout()
     fig.savefig(path, facecolor=SURFACE)
     plt.close(fig)
@@ -498,7 +600,8 @@ def main():
         capacity={str(s): capacity(s) for s in (0.0, 0.5, 1.0)},
         bar=bar_per_pair(),
         costs=costs(),
-        floor=dict(FLOOR, cell=[dict(part=n, rect_mm=[round(v) for v in r]) for n, r, _ in cell_rects()]),
+        floor=dict(FLOOR, cell=[dict(part=n, rect_mm=[round(v) for v in r]) for n, r, _ in cell_rects()],
+                   way_in=way_in()),
         cutting_data=CUT, noncutting_s_est=NONCUT, arm_s_est=ARM, cleaning=CLEAN, sources=SOURCES,
         material_by_grade=material_by_grade(),
         note="Cutting times from the published data in SOURCES at the ST-10's 6,000 rpm; non-cutting times, the arm's "

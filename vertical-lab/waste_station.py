@@ -171,6 +171,11 @@ def cabinet_contents() -> list:
 
 INTAKE = dict(x=150.0, y=YF + 230.0, w=420.0, d=300.0, h=60.0)     # inside the sash, 230 mm behind the hood's front
 MIR_X = 760.0           # the unit stands right of the hood's centre (the still's choice, so the cabinets show)
+# the empties' rack right of the intake tray (x from, x to) and the two 1 L empties on it (x, y), hood frame (round 16)
+EMPTIES_RACK = (INTAKE["x"] + INTAKE["w"] / 2 + 12.0, INTAKE["x"] + INTAKE["w"] / 2 + 128.0)
+EMPTIES = [(INTAKE["x"] + INTAKE["w"] / 2 + 70.0, INTAKE["y"] - 55.0),
+           (INTAKE["x"] + INTAKE["w"] / 2 + 70.0, INTAKE["y"] + 55.0)]
+EMPTIES_Z = Z0 + 30.0                              # the rack's top, where an empty stands
 
 
 def work_surface() -> tuple[list, list]:
@@ -192,11 +197,13 @@ def work_surface() -> tuple[list, list]:
     # one bottle already delivered (rinse acid, left nest), the other nest waiting for the arm's
     for nm, m, c, op in bottle(nests[0][0], nests[0][1], Z0 + 8, 45.0, 190.0, ACID_C, fill=0.55, glass=HDPE):
         out.append((f"delivered {nm}", m, c, op))
-    # the rack of empties beside it, and the etch at the other end (25 mL of Weck's in a beaker, and a rinse)
-    rack = box(x1 + 15, y0 + 40, Z0, x1 + 75, y1 - 40, Z0 + 30)
+    # the rack of empties beside it, and the etch at the other end (25 mL of Weck's in a beaker, and a rinse). Round 16
+    # (waste_clip.py, where the arm swaps a full bottle for one of these): the empties are the same 1 L bottles the
+    # arm brings (until then 250 mL ones, 52 x 120 mm), on a rack 116 mm wide, 34 mm clear of the hood's right post
+    rack = box(EMPTIES_RACK[0], y0 + 40, Z0, EMPTIES_RACK[1], y1 - 40, Z0 + 30)
     out.append(("empties rack", rack, (0.35, 0.37, 0.40), 1.0))
-    for k, ry in enumerate((p["y"] - 50, p["y"] + 50)):
-        for nm, m, c, op in bottle(x1 + 45, ry, Z0 + 30, 26.0, 120.0, (1, 1, 1), fill=0.0, glass=HDPE):
+    for k, (ex, ey) in enumerate(EMPTIES):
+        for nm, m, c, op in bottle(ex, ey, Z0 + 30, 45.0, 190.0, (1, 1, 1), fill=0.0, glass=HDPE):
             out.append((f"empty {k} {nm}", m, c, op))
     for k, (bx, liq) in enumerate(((-380.0, WECK_C), (-280.0, (0.75, 0.88, 1.0)))):
         out.append((f"etch beaker {k}", cyl(32, 70, bx, YF + 260, Z0), GLASS, 0.35))

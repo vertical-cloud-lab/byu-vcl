@@ -1,13 +1,13 @@
 {
  "name": "vertical_lab_longform",
- "seconds": 5335.6,
+ "seconds": 5465.4,
  "fps": 30,
  "size": [
   1280,
   720
  ],
  "card_seconds": 6.0,
- "built": "2026-11-24T01:34:48Z",
+ "built": "2026-11-26T11:20:10Z",
  "parts": [
   {
    "chapter": "intro",
@@ -37,14 +37,14 @@
    "chapter": "setup",
    "kind": "mp4",
    "start_s": 29.8,
-   "seconds": 122.13,
-   "src": "out/r15/setup_lab.mp4",
+   "seconds": 137.73,
+   "src": "out/r16/setup_lab.mp4",
    "label": null
   },
   {
    "chapter": "setup",
    "kind": "still",
-   "start_s": 151.93,
+   "start_s": 167.53,
    "seconds": 14.0,
    "src": "out/tray_plan.png",
    "label": "What goes on which tray"
@@ -52,7 +52,7 @@
   {
    "chapter": "services",
    "kind": "card",
-   "start_s": 165.93,
+   "start_s": 181.53,
    "seconds": 6.0,
    "src": null,
    "label": "Services: UPS, automatic hookups, cabling and cameras"
@@ -60,31 +60,33 @@
   {
    "chapter": "services",
    "kind": "mp4",
-   "start_s": 171.93,
-   "seconds": 39.43,
-   "src": "out/r15/vlm_hookups.mp4",
+   "start_s": 187.53,
+   "seconds": 39.67,
+   "src": "out/r16/vlm_hookups.mp4",
    "label": "Storage to the bay: the hookups and the UPS"
   },
   {
    "chapter": "services",
    "kind": "mp4",
-   "start_s": 211.37,
+   "start_s": 227.2,
    "seconds": 76.5,
    "src": "out/r15/vlm_coupling.mp4",
-   "label": "The coupling, part by part: St\u00e4ubli CombiTac on a floating dock"
+   "label": "The coupling, part by part: St\u00e4ubli CombiTac on a floating dock",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "services",
    "kind": "mp4",
-   "start_s": 287.87,
-   "seconds": 36.83,
-   "src": "out/r15/vlm_services.mp4",
+   "start_s": 303.7,
+   "seconds": 37.0,
+   "src": "out/r16/vlm_services.mp4",
    "label": "The docks in every slot"
   },
   {
    "chapter": "services",
    "kind": "still",
-   "start_s": 324.7,
+   "start_s": 340.7,
    "seconds": 12.0,
    "src": "out/ups_lineup.png",
    "label": "A real UPS for each tray"
@@ -92,40 +94,41 @@
   {
    "chapter": "services",
    "kind": "mp4",
-   "start_s": 336.7,
-   "seconds": 35.43,
-   "src": "out/r15/vlm_cabling.mp4",
+   "start_s": 352.7,
+   "seconds": 35.4,
+   "src": "out/r16/vlm_cabling.mp4",
    "label": "Cabling"
   },
   {
    "chapter": "services",
    "kind": "mp4",
-   "start_s": 372.13,
+   "start_s": 388.1,
    "seconds": 19.8,
    "src": "out/r15/instruments/stream_cam.mp4",
-   "label": "The stream camera unit: height, pan, tilt"
+   "label": "The stream camera unit: height, pan, tilt",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "services",
    "kind": "mp4",
-   "start_s": 391.93,
-   "seconds": 33.1,
-   "src": "out/r15/bay_camera.mp4",
+   "start_s": 407.9,
+   "seconds": 33.27,
+   "src": "out/r16/bay_camera.mp4",
    "label": "The cameras under the bay's roof, and what each sees"
   },
   {
    "chapter": "services",
    "kind": "mp4",
-   "start_s": 425.03,
-   "seconds": 45.8,
-   "src": "out/mp4/base_cameras.mp4",
-   "label": "Three cameras on each MiR250",
-   "earlier_render": true
+   "start_s": 441.17,
+   "seconds": 46.0,
+   "src": "out/r16/base_cameras.mp4",
+   "label": "Three cameras on each MiR250"
   },
   {
    "chapter": "services",
    "kind": "still",
-   "start_s": 470.83,
+   "start_s": 487.17,
    "seconds": 12.0,
    "src": "out/security_cameras_bay.png",
    "label": "Considered: security cameras instead"
@@ -133,7 +136,7 @@
   {
    "chapter": "safety",
    "kind": "card",
-   "start_s": 482.83,
+   "start_s": 499.17,
    "seconds": 6.0,
    "src": null,
    "label": "Safety: Class D extinguishers, showers and oxygen monitors"
@@ -141,15 +144,15 @@
   {
    "chapter": "safety",
    "kind": "mp4",
-   "start_s": 488.83,
+   "start_s": 505.17,
    "seconds": 55.27,
-   "src": "out/r15/safety.mp4",
+   "src": "out/r16/safety.mp4",
    "label": null
   },
   {
    "chapter": "safety",
    "kind": "still",
-   "start_s": 544.1,
+   "start_s": 560.43,
    "seconds": 11.0,
    "src": "out/safety_plan.png",
    "label": "Where the Class D units go"
@@ -157,7 +160,7 @@
   {
    "chapter": "safety",
    "kind": "still",
-   "start_s": 555.1,
+   "start_s": 571.43,
    "seconds": 11.0,
    "src": "out/safety_other_assets.png",
    "label": "Ordinary extinguishers, showers and O2 monitors"
@@ -165,7 +168,7 @@
   {
    "chapter": "corrosion",
    "kind": "card",
-   "start_s": 566.1,
+   "start_s": 582.43,
    "seconds": 6.0,
    "src": null,
    "label": "Tray A: the corrosion station, OT-2 and CubXL, and an ICP-MS station"
@@ -173,23 +176,27 @@
   {
    "chapter": "corrosion",
    "kind": "mp4",
-   "start_s": 572.1,
+   "start_s": 588.43,
    "seconds": 26.5,
    "src": "out/r15/instruments/ot2_corrosion_prep.mp4",
-   "label": "The OT-2: the CubXL's sulfide stock"
+   "label": "The OT-2: the CubXL's sulfide stock",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "corrosion",
    "kind": "mp4",
-   "start_s": 598.6,
+   "start_s": 614.93,
    "seconds": 102.4,
    "src": "out/r15/instruments/cubxl_corrosion.mp4",
-   "label": "The CubXL's corrosion screen"
+   "label": "The CubXL's corrosion screen",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "corrosion",
    "kind": "still",
-   "start_s": 701.0,
+   "start_s": 717.33,
    "seconds": 11.0,
    "src": "out/cubxl_evap.png",
    "label": "The well: evaporation and sulfide loss"
@@ -197,23 +204,25 @@
   {
    "chapter": "corrosion",
    "kind": "mp4",
-   "start_s": 712.0,
+   "start_s": 728.33,
    "seconds": 99.33,
    "src": "out/r15/icpms.mp4",
-   "label": "An ICP-MS station, its acids in a fume hood"
+   "label": "An ICP-MS station, its acids in a fume hood",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "corrosion",
    "kind": "mp4",
-   "start_s": 811.33,
-   "seconds": 109.4,
-   "src": "out/r15/vlm_workflow.mp4",
+   "start_s": 827.67,
+   "seconds": 108.53,
+   "src": "out/r16/vlm_workflow.mp4",
    "label": "Atomized powder dosed for the CubXL"
   },
   {
    "chapter": "alloy1",
    "kind": "card",
-   "start_s": 920.73,
+   "start_s": 936.2,
    "seconds": 6.0,
    "src": null,
    "label": "Alloy route 1/7: the charge cups, machined, dosed, weighed and pressed under vacuum"
@@ -221,15 +230,17 @@
   {
    "chapter": "alloy1",
    "kind": "mp4",
-   "start_s": 926.73,
+   "start_s": 942.2,
    "seconds": 13.5,
    "src": "out/r15/dag/route_dag_ch1.mp4",
-   "label": "The route as a function network (DAL's ONR YIP DAG)"
+   "label": "The route as a function network (DAL's ONR YIP DAG)",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "alloy1",
    "kind": "still",
-   "start_s": 940.23,
+   "start_s": 955.7,
    "seconds": 14.0,
    "src": "out/dal_workflow_table.png",
    "label": "DAL's 17 steps, and where each runs"
@@ -237,31 +248,41 @@
   {
    "chapter": "alloy1",
    "kind": "mp4",
-   "start_s": 954.23,
+   "start_s": 969.7,
    "seconds": 155.6,
    "src": "out/r15/machining_cell.mp4",
-   "label": "Machining the cups and plugs: a lathe, an IPA wash, a vacuum dryer"
+   "label": "Machining the cups and plugs: a lathe, an IPA wash, a vacuum dryer",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "alloy1",
    "kind": "still",
-   "start_s": 1109.83,
+   "start_s": 1125.3,
    "seconds": 10.0,
    "src": "out/machining_sim.png",
    "label": null
   },
   {
    "chapter": "alloy1",
+   "kind": "still",
+   "start_s": 1135.3,
+   "seconds": 11.0,
+   "src": "out/machining_floor.png",
+   "label": "The cell's place on the floor"
+  },
+  {
+   "chapter": "alloy1",
    "kind": "mp4",
-   "start_s": 1119.83,
+   "start_s": 1146.3,
    "seconds": 307.73,
-   "src": "out/r15/alloy_charge.mp4",
+   "src": "out/r16/alloy_charge.mp4",
    "label": "The charge cups"
   },
   {
    "chapter": "alloy1",
    "kind": "still",
-   "start_s": 1427.57,
+   "start_s": 1454.03,
    "seconds": 14.0,
    "src": "out/doser_shield_section.png",
    "label": "A shorter fall: a dose post and a draft shield"
@@ -269,7 +290,7 @@
   {
    "chapter": "alloy1",
    "kind": "ext",
-   "start_s": 1441.57,
+   "start_s": 1468.03,
    "seconds": 8.5,
    "src": "out/mp4/ext/doser_drop_v10.mp4",
    "label": null
@@ -277,7 +298,7 @@
   {
    "chapter": "alloy2",
    "kind": "card",
-   "start_s": 1450.07,
+   "start_s": 1476.53,
    "seconds": 6.0,
    "src": null,
    "label": "Alloy route 2/7: melt and atomize in the rePowder"
@@ -285,23 +306,25 @@
   {
    "chapter": "alloy2",
    "kind": "mp4",
-   "start_s": 1456.07,
+   "start_s": 1482.53,
    "seconds": 6.9,
    "src": "out/r15/dag/route_dag_ch2.mp4",
-   "label": null
+   "label": null,
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "alloy2",
    "kind": "mp4",
-   "start_s": 1462.97,
+   "start_s": 1489.43,
    "seconds": 304.53,
-   "src": "out/r15/alloy_atomize.mp4",
+   "src": "out/r16/alloy_atomize.mp4",
    "label": null
   },
   {
    "chapter": "atomizer",
    "kind": "card",
-   "start_s": 1767.5,
+   "start_s": 1793.97,
    "seconds": 6.0,
    "src": null,
    "label": "Automating the atomizer's turnaround"
@@ -309,71 +332,87 @@
   {
    "chapter": "atomizer",
    "kind": "mp4",
-   "start_s": 1773.5,
+   "start_s": 1799.97,
    "seconds": 105.4,
    "src": "out/r15/atom_cameras.mp4",
-   "label": "The melt and the stream, watched"
+   "label": "The melt and the stream, watched",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "atomizer",
    "kind": "mp4",
-   "start_s": 1878.9,
+   "start_s": 1905.37,
    "seconds": 93.33,
    "src": "out/r15/atom_latch.mp4",
-   "label": "The furnace latch, unclamped and clamped"
+   "label": "The furnace latch, unclamped and clamped",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "atomizer",
    "kind": "mp4",
-   "start_s": 1972.23,
+   "start_s": 1998.7,
    "seconds": 62.33,
    "src": "out/r15/atom_container.mp4",
-   "label": "The powder down and the container off"
+   "label": "The powder down and the container off",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "atomizer",
    "kind": "mp4",
-   "start_s": 2034.57,
+   "start_s": 2061.03,
    "seconds": 149.33,
    "src": "out/r15/atom_vacuum.mp4",
-   "label": "Vacuuming the chamber"
+   "label": "Vacuuming the chamber",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "atomizer",
    "kind": "mp4",
-   "start_s": 2183.9,
+   "start_s": 2210.37,
    "seconds": 151.87,
    "src": "out/r15/atom_plate.mp4",
-   "label": "Swapping the plate"
+   "label": "Swapping the plate",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "atomizer",
    "kind": "mp4",
-   "start_s": 2335.77,
+   "start_s": 2362.23,
    "seconds": 113.07,
    "src": "out/r15/atom_crucible_out.mp4",
-   "label": "Taking the furnace apart"
+   "label": "Taking the furnace apart",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "atomizer",
    "kind": "mp4",
-   "start_s": 2448.83,
+   "start_s": 2475.3,
    "seconds": 154.3,
    "src": "out/r15/atom_bn.mp4",
-   "label": "Cleaning the crucible and recoating it with boron nitride"
+   "label": "Cleaning the crucible and recoating it with boron nitride",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "atomizer",
    "kind": "mp4",
-   "start_s": 2603.13,
+   "start_s": 2629.6,
    "seconds": 147.6,
    "src": "out/r15/atom_crucible_in.mp4",
-   "label": "The rebuild, and the graphite nut from below"
+   "label": "The rebuild, and the graphite nut from below",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "atomizer",
    "kind": "still",
-   "start_s": 2750.73,
+   "start_s": 2777.2,
    "seconds": 12.0,
    "src": "out/atom/turnaround.png",
    "label": "The turnaround, timed"
@@ -381,7 +420,7 @@
   {
    "chapter": "alloy3",
    "kind": "card",
-   "start_s": 2762.73,
+   "start_s": 2789.2,
    "seconds": 6.0,
    "src": null,
    "label": "Alloy route 3/7: sieve and print"
@@ -389,23 +428,27 @@
   {
    "chapter": "alloy3",
    "kind": "mp4",
-   "start_s": 2768.73,
+   "start_s": 2795.2,
    "seconds": 6.9,
    "src": "out/r15/dag/route_dag_ch3.mp4",
-   "label": null
+   "label": null,
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "alloy3",
    "kind": "mp4",
-   "start_s": 2775.63,
+   "start_s": 2802.1,
    "seconds": 267.87,
    "src": "out/r15/alloy_print.mp4",
-   "label": null
+   "label": null,
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "alloy4",
    "kind": "card",
-   "start_s": 3043.5,
+   "start_s": 3069.97,
    "seconds": 6.0,
    "src": null,
    "label": "Alloy route 4/7: the powder, checked"
@@ -413,23 +456,25 @@
   {
    "chapter": "alloy4",
    "kind": "mp4",
-   "start_s": 3049.5,
+   "start_s": 3075.97,
    "seconds": 6.9,
    "src": "out/r15/dag/route_dag_ch4.mp4",
-   "label": null
+   "label": null,
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "alloy4",
    "kind": "mp4",
-   "start_s": 3056.4,
+   "start_s": 3082.87,
    "seconds": 214.0,
-   "src": "out/r15/alloy_powder.mp4",
+   "src": "out/r16/alloy_powder.mp4",
    "label": null
   },
   {
    "chapter": "alloy5",
    "kind": "card",
-   "start_s": 3270.4,
+   "start_s": 3296.87,
    "seconds": 6.0,
    "src": null,
    "label": "Alloy route 5/7: depowder, cut, heat treat, tensile at room and elevated temperature"
@@ -437,23 +482,25 @@
   {
    "chapter": "alloy5",
    "kind": "mp4",
-   "start_s": 3276.4,
+   "start_s": 3302.87,
    "seconds": 6.9,
    "src": "out/r15/dag/route_dag_ch5.mp4",
-   "label": null
+   "label": null,
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "alloy5",
    "kind": "mp4",
-   "start_s": 3283.3,
+   "start_s": 3309.77,
    "seconds": 385.67,
-   "src": "out/r15/alloy_workflow.mp4",
+   "src": "out/r16/alloy_workflow.mp4",
    "label": null
   },
   {
    "chapter": "alloy5",
    "kind": "still",
-   "start_s": 3668.97,
+   "start_s": 3695.43,
    "seconds": 14.0,
    "src": "193778b:vertical-lab/out/edm_orientations.png",
    "label": "Three build orientations through the wire EDM (PR #328)"
@@ -461,7 +508,7 @@
   {
    "chapter": "alloy6",
    "kind": "card",
-   "start_s": 3682.97,
+   "start_s": 3709.43,
    "seconds": 6.0,
    "src": null,
    "label": "Alloy route 6/7: sample prep: section, mount, grind and polish"
@@ -469,23 +516,27 @@
   {
    "chapter": "alloy6",
    "kind": "mp4",
-   "start_s": 3688.97,
+   "start_s": 3715.43,
    "seconds": 6.9,
    "src": "out/r15/dag/route_dag_ch6.mp4",
-   "label": null
+   "label": null,
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "alloy6",
    "kind": "mp4",
-   "start_s": 3695.87,
+   "start_s": 3722.33,
    "seconds": 281.6,
    "src": "out/r15/alloy_prep.mp4",
-   "label": null
+   "label": null,
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "alloy7",
    "kind": "card",
-   "start_s": 3977.47,
+   "start_s": 4003.93,
    "seconds": 6.0,
    "src": null,
    "label": "Alloy route 7/7: characterizing the build"
@@ -493,23 +544,25 @@
   {
    "chapter": "alloy7",
    "kind": "mp4",
-   "start_s": 3983.47,
+   "start_s": 4009.93,
    "seconds": 6.9,
    "src": "out/r15/dag/route_dag_ch7.mp4",
-   "label": null
+   "label": null,
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "alloy7",
    "kind": "mp4",
-   "start_s": 3990.37,
+   "start_s": 4016.83,
    "seconds": 246.67,
-   "src": "out/r15/alloy_characterize.mp4",
+   "src": "out/r16/alloy_characterize.mp4",
    "label": null
   },
   {
    "chapter": "stations",
    "kind": "card",
-   "start_s": 4237.03,
+   "start_s": 4263.5,
    "seconds": 6.0,
    "src": null,
    "label": "The other stations: a tensile tester on its side, gloveboxes, fume hoods, stores, shipping"
@@ -517,7 +570,7 @@
   {
    "chapter": "stations",
    "kind": "still",
-   "start_s": 4243.03,
+   "start_s": 4269.5,
    "seconds": 9.0,
    "src": "out/instruments_gallery.png",
    "label": "Every instrument model"
@@ -525,7 +578,7 @@
   {
    "chapter": "stations",
    "kind": "still",
-   "start_s": 4252.03,
+   "start_s": 4278.5,
    "seconds": 11.0,
    "src": "out/naming/floor_names.png",
    "label": "A name for everything: stones and peaks"
@@ -533,7 +586,7 @@
   {
    "chapter": "stations",
    "kind": "still",
-   "start_s": 4263.03,
+   "start_s": 4289.5,
    "seconds": 11.0,
    "src": "out/colour/bench.png",
    "label": "Colour coding: blue for Al, orange for Cu"
@@ -541,79 +594,97 @@
   {
    "chapter": "stations",
    "kind": "mp4",
-   "start_s": 4274.03,
+   "start_s": 4300.5,
    "seconds": 17.4,
    "src": "out/r15/instruments/tensile_h.mp4",
-   "label": "A tensile tester on its side: zwickiLine Z5.0 TN"
+   "label": "A tensile tester on its side: zwickiLine Z5.0 TN",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "stations",
    "kind": "mp4",
-   "start_s": 4291.43,
+   "start_s": 4317.9,
    "seconds": 31.1,
    "src": "out/r15/instruments/glovebox_tray.mp4",
-   "label": "A glovebox on a tray"
+   "label": "A glovebox on a tray",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "stations",
    "kind": "mp4",
-   "start_s": 4322.53,
+   "start_s": 4349.0,
    "seconds": 9.8,
    "src": "out/r15/instruments/glovebox.mp4",
-   "label": "The floor glovebox"
+   "label": "The floor glovebox",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "stations",
    "kind": "mp4",
-   "start_s": 4332.33,
+   "start_s": 4358.8,
    "seconds": 17.1,
    "src": "out/r15/instruments/fumehood.mp4",
-   "label": "Fume hoods: a ducted XStream, a ductless tray hood"
+   "label": "Fume hoods: a ducted XStream, a ductless tray hood",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "stations",
    "kind": "mp4",
-   "start_s": 4349.43,
+   "start_s": 4375.9,
    "seconds": 14.0,
    "src": "out/r15/instruments/fumehood_tray.mp4",
-   "label": null
+   "label": null,
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "stations",
    "kind": "mp4",
-   "start_s": 4363.43,
+   "start_s": 4389.9,
    "seconds": 30.8,
    "src": "out/r15/instruments/storage.mp4",
-   "label": "The sample store: cups, plugs, vials"
+   "label": "The sample store: cups, plugs, vials",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "stations",
    "kind": "mp4",
-   "start_s": 4394.23,
+   "start_s": 4420.7,
    "seconds": 21.9,
    "src": "out/r15/instruments/powder_store_feed.mp4",
-   "label": "The powder-jar store: feedstock and atomized lots"
+   "label": "The powder-jar store: feedstock and atomized lots",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "stations",
    "kind": "mp4",
-   "start_s": 4416.13,
+   "start_s": 4442.6,
    "seconds": 21.7,
    "src": "out/r15/instruments/powder_store_lots.mp4",
-   "label": null
+   "label": null,
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "stations",
    "kind": "mp4",
-   "start_s": 4437.83,
+   "start_s": 4464.3,
    "seconds": 29.1,
    "src": "out/r15/instruments/packaging.mp4",
-   "label": "Packaging"
+   "label": "Packaging",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "fab",
    "kind": "card",
-   "start_s": 4466.93,
+   "start_s": 4493.4,
    "seconds": 6.0,
    "src": null,
    "label": "Fabrication: metal printers, DED, resin and PCB assembly"
@@ -621,23 +692,25 @@
   {
    "chapter": "fab",
    "kind": "mp4",
-   "start_s": 4472.93,
-   "seconds": 183.97,
-   "src": "out/r15/fabrication_tour.mp4",
+   "start_s": 4499.4,
+   "seconds": 181.0,
+   "src": "out/r16/fabrication_tour.mp4",
    "label": "Metal, resin and PCB tools"
   },
   {
    "chapter": "fab",
    "kind": "mp4",
-   "start_s": 4656.9,
+   "start_s": 4680.4,
    "seconds": 24.4,
    "src": "out/r15/instruments/ded.mp4",
-   "label": "InssTek MX-Lab DED"
+   "label": "InssTek MX-Lab DED",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "scale",
    "kind": "card",
-   "start_s": 4681.3,
+   "start_s": 4704.8,
    "seconds": 6.0,
    "src": null,
    "label": "Scaling up: large-format printing and ship-part repair"
@@ -645,16 +718,15 @@
   {
    "chapter": "scale",
    "kind": "mp4",
-   "start_s": 4687.3,
-   "seconds": 115.17,
-   "src": "out/mp4/scaleup.mp4",
-   "label": null,
-   "earlier_render": true
+   "start_s": 4710.8,
+   "seconds": 114.93,
+   "src": "out/r16/scaleup.mp4",
+   "label": null
   },
   {
    "chapter": "limits",
    "kind": "card",
-   "start_s": 4802.47,
+   "start_s": 4825.73,
    "seconds": 6.0,
    "src": null,
    "label": "What doesn't fit, and getting a tray out"
@@ -662,15 +734,17 @@
   {
    "chapter": "limits",
    "kind": "mp4",
-   "start_s": 4808.47,
+   "start_s": 4831.73,
    "seconds": 17.7,
    "src": "out/r15/instruments/hip.mp4",
-   "label": "A HIP against a tray"
+   "label": "A HIP against a tray",
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "limits",
    "kind": "still",
-   "start_s": 4826.17,
+   "start_s": 4849.43,
    "seconds": 14.0,
    "src": "out/tall_opening_bays.png",
    "label": "Taller bays: Kardex and Modula"
@@ -678,7 +752,7 @@
   {
    "chapter": "limits",
    "kind": "still",
-   "start_s": 4840.17,
+   "start_s": 4863.43,
    "seconds": 10.0,
    "src": "out/maintenance_access.png",
    "label": "Getting a tray out for maintenance"
@@ -686,7 +760,7 @@
   {
    "chapter": "checks",
    "kind": "card",
-   "start_s": 4850.17,
+   "start_s": 4873.43,
    "seconds": 6.0,
    "src": null,
    "label": "How the models were checked"
@@ -694,7 +768,7 @@
   {
    "chapter": "checks",
    "kind": "still",
-   "start_s": 4856.17,
+   "start_s": 4879.43,
    "seconds": 16.0,
    "src": "out/register/before_after.jpg",
    "label": "Fitted to footage of the real machines"
@@ -702,7 +776,7 @@
   {
    "chapter": "checks",
    "kind": "still",
-   "start_s": 4872.17,
+   "start_s": 4895.43,
    "seconds": 11.0,
    "src": "out/interference_sheet.png",
    "label": "MuJoCo interference check"
@@ -710,7 +784,7 @@
   {
    "chapter": "checks",
    "kind": "still",
-   "start_s": 4883.17,
+   "start_s": 4906.43,
    "seconds": 12.0,
    "src": "out/collisions/round11_sheet.png",
    "label": "The stricter check, round 11"
@@ -718,15 +792,15 @@
   {
    "chapter": "checks",
    "kind": "still",
-   "start_s": 4895.17,
+   "start_s": 4918.43,
    "seconds": 18.0,
-   "src": "out/collisions/round15_table.png",
+   "src": "out/collisions/round16_table.png",
    "label": "This video, checked frame by frame"
   },
   {
    "chapter": "upkeep",
    "kind": "card",
-   "start_s": 4913.17,
+   "start_s": 4936.43,
    "seconds": 6.0,
    "src": null,
    "label": "Maintenance over the long term, inside the workflow"
@@ -734,15 +808,17 @@
   {
    "chapter": "upkeep",
    "kind": "mp4",
-   "start_s": 4919.17,
+   "start_s": 4942.43,
    "seconds": 126.2,
    "src": "out/r15/upkeep_clip.mp4",
-   "label": null
+   "label": null,
+   "earlier_render": true,
+   "round15_recovered": true
   },
   {
    "chapter": "upkeep",
    "kind": "still",
-   "start_s": 5045.37,
+   "start_s": 5068.63,
    "seconds": 14.0,
    "src": "out/upkeep_year.png",
    "label": "A year of maintenance, booked"
@@ -750,7 +826,7 @@
   {
    "chapter": "floor",
    "kind": "card",
-   "start_s": 5059.37,
+   "start_s": 5082.63,
    "seconds": 6.0,
    "src": null,
    "label": "Keeping the floor clean, and the waste"
@@ -758,41 +834,39 @@
   {
    "chapter": "floor",
    "kind": "mp4",
-   "start_s": 5065.37,
-   "seconds": 33.3,
-   "src": "out/mp4/floor_clean_people.mp4",
-   "label": "Unit 3, and a person for a visible spill",
-   "earlier_render": true
+   "start_s": 5088.63,
+   "seconds": 33.33,
+   "src": "out/r16/floor_clean_people.mp4",
+   "label": "Unit 3, and a person for a visible spill"
   },
   {
    "chapter": "floor",
    "kind": "mp4",
-   "start_s": 5098.67,
-   "seconds": 90.4,
-   "src": "out/mp4/floor_pass.mp4",
-   "label": "A night's pass across the whole floor, from above",
-   "earlier_render": true
+   "start_s": 5121.97,
+   "seconds": 88.67,
+   "src": "out/r16/floor_pass.mp4",
+   "label": "A night's pass across the whole floor, from above"
   },
   {
    "chapter": "floor",
    "kind": "still",
-   "start_s": 5189.07,
+   "start_s": 5210.63,
    "seconds": 14.0,
    "src": "out/waste_streams.png",
    "label": "The waste, stream by stream"
   },
   {
    "chapter": "floor",
-   "kind": "still",
-   "start_s": 5203.07,
-   "seconds": 9.0,
-   "src": "out/waste_station_still.png",
-   "label": null
+   "kind": "mp4",
+   "start_s": 5224.63,
+   "seconds": 117.27,
+   "src": "out/r16/waste_clip.mp4",
+   "label": "The waste, handled: a bottle's trip, the cabinets, the powder point"
   },
   {
    "chapter": "bottlenecks",
    "kind": "card",
-   "start_s": 5212.07,
+   "start_s": 5341.9,
    "seconds": 6.0,
    "src": null,
    "label": "From one alloy a day to ten: the bottlenecks"
@@ -800,7 +874,7 @@
   {
    "chapter": "bottlenecks",
    "kind": "still",
-   "start_s": 5218.07,
+   "start_s": 5347.9,
    "seconds": 16.0,
    "src": "cc31ddc:vertical-lab/out/bottleneck_ladder.png",
    "label": null
@@ -808,7 +882,7 @@
   {
    "chapter": "finale",
    "kind": "card",
-   "start_s": 5234.07,
+   "start_s": 5363.9,
    "seconds": 6.0,
    "src": null,
    "label": "The whole lab at speed: an hour, a day, a week, a month"
@@ -816,15 +890,15 @@
   {
    "chapter": "finale",
    "kind": "mp4",
-   "start_s": 5240.07,
+   "start_s": 5369.9,
    "seconds": 87.53,
-   "src": "out/r15/timelapse.mp4",
+   "src": "out/r16/timelapse.mp4",
    "label": null
   },
   {
    "chapter": "outro",
    "kind": "outro",
-   "start_s": 5327.6,
+   "start_s": 5457.43,
    "seconds": 8.0,
    "src": null,
    "label": null
@@ -842,335 +916,345 @@
    "title": "The lab set up from scratch"
   },
   {
-   "start_s": 151.9,
-   "stamp": "2:31",
+   "start_s": 167.5,
+   "stamp": "2:47",
    "title": "What goes on which tray"
   },
   {
-   "start_s": 165.9,
-   "stamp": "2:45",
+   "start_s": 181.5,
+   "stamp": "3:01",
    "title": "Services: UPS, automatic hookups, cabling and cameras"
   },
   {
-   "start_s": 211.4,
-   "stamp": "3:31",
+   "start_s": 227.2,
+   "stamp": "3:47",
    "title": "The coupling, part by part: St\u00e4ubli CombiTac on a floating dock"
   },
   {
-   "start_s": 287.9,
-   "stamp": "4:47",
+   "start_s": 303.7,
+   "stamp": "5:03",
    "title": "The docks in every slot"
   },
   {
-   "start_s": 324.7,
-   "stamp": "5:24",
+   "start_s": 340.7,
+   "stamp": "5:40",
    "title": "A real UPS for each tray"
   },
   {
-   "start_s": 336.7,
-   "stamp": "5:36",
+   "start_s": 352.7,
+   "stamp": "5:52",
    "title": "Cabling"
   },
   {
-   "start_s": 372.1,
-   "stamp": "6:12",
+   "start_s": 388.1,
+   "stamp": "6:28",
    "title": "The stream camera unit: height, pan, tilt"
   },
   {
-   "start_s": 391.9,
-   "stamp": "6:31",
+   "start_s": 407.9,
+   "stamp": "6:47",
    "title": "The cameras under the bay's roof, and what each sees"
   },
   {
-   "start_s": 425.0,
-   "stamp": "7:05",
+   "start_s": 441.2,
+   "stamp": "7:21",
    "title": "Three cameras on each MiR250"
   },
   {
-   "start_s": 470.8,
-   "stamp": "7:50",
+   "start_s": 487.2,
+   "stamp": "8:07",
    "title": "Considered: security cameras instead"
   },
   {
-   "start_s": 482.8,
-   "stamp": "8:02",
+   "start_s": 499.2,
+   "stamp": "8:19",
    "title": "Safety: Class D extinguishers, showers and oxygen monitors"
   },
   {
-   "start_s": 544.1,
-   "stamp": "9:04",
+   "start_s": 560.4,
+   "stamp": "9:20",
    "title": "Where the Class D units go"
   },
   {
-   "start_s": 555.1,
-   "stamp": "9:15",
+   "start_s": 571.4,
+   "stamp": "9:31",
    "title": "Ordinary extinguishers, showers and O2 monitors"
   },
   {
-   "start_s": 566.1,
-   "stamp": "9:26",
+   "start_s": 582.4,
+   "stamp": "9:42",
    "title": "Tray A: the corrosion station, OT-2 and CubXL, and an ICP-MS station"
   },
   {
-   "start_s": 598.6,
-   "stamp": "9:58",
+   "start_s": 614.9,
+   "stamp": "10:14",
    "title": "The CubXL's corrosion screen"
   },
   {
-   "start_s": 701.0,
-   "stamp": "11:41",
+   "start_s": 717.3,
+   "stamp": "11:57",
    "title": "The well: evaporation and sulfide loss"
   },
   {
-   "start_s": 712.0,
-   "stamp": "11:52",
+   "start_s": 728.3,
+   "stamp": "12:08",
    "title": "An ICP-MS station, its acids in a fume hood"
   },
   {
-   "start_s": 811.3,
-   "stamp": "13:31",
+   "start_s": 827.7,
+   "stamp": "13:47",
    "title": "Atomized powder dosed for the CubXL"
   },
   {
-   "start_s": 920.7,
-   "stamp": "15:20",
+   "start_s": 936.2,
+   "stamp": "15:36",
    "title": "Alloy route 1/7: the charge cups, machined, dosed, weighed and pressed under vacuum"
   },
   {
-   "start_s": 940.2,
-   "stamp": "15:40",
+   "start_s": 955.7,
+   "stamp": "15:55",
    "title": "DAL's 17 steps, and where each runs"
   },
   {
-   "start_s": 954.2,
-   "stamp": "15:54",
+   "start_s": 969.7,
+   "stamp": "16:09",
    "title": "Machining the cups and plugs: a lathe, an IPA wash, a vacuum dryer"
   },
   {
-   "start_s": 1119.8,
-   "stamp": "18:39",
+   "start_s": 1135.3,
+   "stamp": "18:55",
+   "title": "The cell's place on the floor"
+  },
+  {
+   "start_s": 1146.3,
+   "stamp": "19:06",
    "title": "The charge cups"
   },
   {
-   "start_s": 1427.6,
-   "stamp": "23:47",
+   "start_s": 1454.0,
+   "stamp": "24:14",
    "title": "A shorter fall: a dose post and a draft shield"
   },
   {
-   "start_s": 1450.1,
-   "stamp": "24:10",
+   "start_s": 1476.5,
+   "stamp": "24:36",
    "title": "Alloy route 2/7: melt and atomize in the rePowder"
   },
   {
-   "start_s": 1767.5,
-   "stamp": "29:27",
+   "start_s": 1794.0,
+   "stamp": "29:54",
    "title": "Automating the atomizer's turnaround"
   },
   {
-   "start_s": 1878.9,
-   "stamp": "31:18",
+   "start_s": 1905.4,
+   "stamp": "31:45",
    "title": "The furnace latch, unclamped and clamped"
   },
   {
-   "start_s": 1972.2,
-   "stamp": "32:52",
+   "start_s": 1998.7,
+   "stamp": "33:18",
    "title": "The powder down and the container off"
   },
   {
-   "start_s": 2034.6,
-   "stamp": "33:54",
+   "start_s": 2061.0,
+   "stamp": "34:21",
    "title": "Vacuuming the chamber"
   },
   {
-   "start_s": 2183.9,
-   "stamp": "36:23",
+   "start_s": 2210.4,
+   "stamp": "36:50",
    "title": "Swapping the plate"
   },
   {
-   "start_s": 2335.8,
-   "stamp": "38:55",
+   "start_s": 2362.2,
+   "stamp": "39:22",
    "title": "Taking the furnace apart"
   },
   {
-   "start_s": 2448.8,
-   "stamp": "40:48",
+   "start_s": 2475.3,
+   "stamp": "41:15",
    "title": "Cleaning the crucible and recoating it with boron nitride"
   },
   {
-   "start_s": 2603.1,
-   "stamp": "43:23",
+   "start_s": 2629.6,
+   "stamp": "43:49",
    "title": "The rebuild, and the graphite nut from below"
   },
   {
-   "start_s": 2750.7,
-   "stamp": "45:50",
+   "start_s": 2777.2,
+   "stamp": "46:17",
    "title": "The turnaround, timed"
   },
   {
-   "start_s": 2762.7,
-   "stamp": "46:02",
+   "start_s": 2789.2,
+   "stamp": "46:29",
    "title": "Alloy route 3/7: sieve and print"
   },
   {
-   "start_s": 3043.5,
-   "stamp": "50:43",
+   "start_s": 3070.0,
+   "stamp": "51:10",
    "title": "Alloy route 4/7: the powder, checked"
   },
   {
-   "start_s": 3270.4,
-   "stamp": "54:30",
+   "start_s": 3296.9,
+   "stamp": "54:56",
    "title": "Alloy route 5/7: depowder, cut, heat treat, tensile at room and elevated temperature"
   },
   {
-   "start_s": 3669.0,
-   "stamp": "1:01:09",
+   "start_s": 3695.4,
+   "stamp": "1:01:35",
    "title": "Three build orientations through the wire EDM (PR #328)"
   },
   {
-   "start_s": 3683.0,
-   "stamp": "1:01:23",
+   "start_s": 3709.4,
+   "stamp": "1:01:49",
    "title": "Alloy route 6/7: sample prep: section, mount, grind and polish"
   },
   {
-   "start_s": 3977.5,
-   "stamp": "1:06:17",
+   "start_s": 4003.9,
+   "stamp": "1:06:43",
    "title": "Alloy route 7/7: characterizing the build"
   },
   {
-   "start_s": 4237.0,
-   "stamp": "1:10:37",
+   "start_s": 4263.5,
+   "stamp": "1:11:03",
    "title": "The other stations: a tensile tester on its side, gloveboxes, fume hoods, stores, shipping"
   },
   {
-   "start_s": 4252.0,
-   "stamp": "1:10:52",
+   "start_s": 4278.5,
+   "stamp": "1:11:18",
    "title": "A name for everything: stones and peaks"
   },
   {
-   "start_s": 4263.0,
-   "stamp": "1:11:03",
+   "start_s": 4289.5,
+   "stamp": "1:11:29",
    "title": "Colour coding: blue for Al, orange for Cu"
   },
   {
-   "start_s": 4274.0,
-   "stamp": "1:11:14",
+   "start_s": 4300.5,
+   "stamp": "1:11:40",
    "title": "A tensile tester on its side: zwickiLine Z5.0 TN"
   },
   {
-   "start_s": 4291.4,
-   "stamp": "1:11:31",
+   "start_s": 4317.9,
+   "stamp": "1:11:57",
    "title": "A glovebox on a tray"
   },
   {
-   "start_s": 4322.5,
-   "stamp": "1:12:02",
+   "start_s": 4349.0,
+   "stamp": "1:12:29",
    "title": "The floor glovebox"
   },
   {
-   "start_s": 4363.4,
-   "stamp": "1:12:43",
+   "start_s": 4389.9,
+   "stamp": "1:13:09",
    "title": "The sample store: cups, plugs, vials"
   },
   {
-   "start_s": 4394.2,
-   "stamp": "1:13:14",
+   "start_s": 4420.7,
+   "stamp": "1:13:40",
    "title": "The powder-jar store: feedstock and atomized lots"
   },
   {
-   "start_s": 4437.8,
-   "stamp": "1:13:57",
+   "start_s": 4464.3,
+   "stamp": "1:14:24",
    "title": "Packaging"
   },
   {
-   "start_s": 4466.9,
-   "stamp": "1:14:26",
+   "start_s": 4493.4,
+   "stamp": "1:14:53",
    "title": "Fabrication: metal printers, DED, resin and PCB assembly"
   },
   {
-   "start_s": 4656.9,
-   "stamp": "1:17:36",
+   "start_s": 4680.4,
+   "stamp": "1:18:00",
    "title": "InssTek MX-Lab DED"
   },
   {
-   "start_s": 4681.3,
-   "stamp": "1:18:01",
+   "start_s": 4704.8,
+   "stamp": "1:18:24",
    "title": "Scaling up: large-format printing and ship-part repair"
   },
   {
-   "start_s": 4802.5,
-   "stamp": "1:20:02",
+   "start_s": 4825.7,
+   "stamp": "1:20:25",
    "title": "What doesn't fit, and getting a tray out"
   },
   {
-   "start_s": 4826.2,
-   "stamp": "1:20:26",
+   "start_s": 4849.4,
+   "stamp": "1:20:49",
    "title": "Taller bays: Kardex and Modula"
   },
   {
-   "start_s": 4840.2,
-   "stamp": "1:20:40",
+   "start_s": 4863.4,
+   "stamp": "1:21:03",
    "title": "How the models were checked"
   },
   {
-   "start_s": 4856.2,
-   "stamp": "1:20:56",
+   "start_s": 4879.4,
+   "stamp": "1:21:19",
    "title": "Fitted to footage of the real machines"
   },
   {
-   "start_s": 4872.2,
-   "stamp": "1:21:12",
+   "start_s": 4895.4,
+   "stamp": "1:21:35",
    "title": "MuJoCo interference check"
   },
   {
-   "start_s": 4883.2,
-   "stamp": "1:21:23",
+   "start_s": 4906.4,
+   "stamp": "1:21:46",
    "title": "The stricter check, round 11"
   },
   {
-   "start_s": 4895.2,
-   "stamp": "1:21:35",
+   "start_s": 4918.4,
+   "stamp": "1:21:58",
    "title": "This video, checked frame by frame"
   },
   {
-   "start_s": 4913.2,
-   "stamp": "1:21:53",
+   "start_s": 4936.4,
+   "stamp": "1:22:16",
    "title": "Maintenance over the long term, inside the workflow"
   },
   {
-   "start_s": 5045.4,
-   "stamp": "1:24:05",
+   "start_s": 5068.6,
+   "stamp": "1:24:28",
    "title": "A year of maintenance, booked"
   },
   {
-   "start_s": 5059.4,
-   "stamp": "1:24:19",
+   "start_s": 5082.6,
+   "stamp": "1:24:42",
    "title": "Keeping the floor clean, and the waste"
   },
   {
-   "start_s": 5098.7,
-   "stamp": "1:24:58",
+   "start_s": 5122.0,
+   "stamp": "1:25:22",
    "title": "A night's pass across the whole floor, from above"
   },
   {
-   "start_s": 5189.1,
-   "stamp": "1:26:29",
+   "start_s": 5210.6,
+   "stamp": "1:26:50",
    "title": "The waste, stream by stream"
   },
   {
-   "start_s": 5212.1,
-   "stamp": "1:26:52",
+   "start_s": 5224.6,
+   "stamp": "1:27:04",
+   "title": "The waste, handled: a bottle's trip, the cabinets, the powder point"
+  },
+  {
+   "start_s": 5341.9,
+   "stamp": "1:29:01",
    "title": "From one alloy a day to ten: the bottlenecks"
   },
   {
-   "start_s": 5234.1,
-   "stamp": "1:27:14",
+   "start_s": 5363.9,
+   "stamp": "1:29:23",
    "title": "The whole lab at speed: an hour, a day, a week, a month"
   }
  ],
  "narration": {
   "voice": "Kokoro v1.0 af_heart, speed 0.96",
-  "lines": 75,
-  "spoken_s": 813.5,
+  "lines": 81,
+  "spoken_s": 880.7,
   "srt": "out/longform_narration.srt"
  }
 }
