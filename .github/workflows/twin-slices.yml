@@ -52,6 +52,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
+  # The image's /usr/bin/python (ubuntu-latest is Ubuntu 26.04), which the reference runs used; each job checks it
   PYTHON_VERSION: "3.14.4"
   # Round 6's pin (twin/repro.py): the AVX2 kernels of `avx2`, plus numpy's own kernels capped at AVX2, MKL's
   # CPU-independent branch (MKL_CBWR=COMPATIBLE) and OpenBLAS's blocking fixed. `bench6 ids` refuses any other pin,
@@ -75,9 +76,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ inputs.branch }}
-      - uses: actions/setup-python@v5
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Python 3.14.4, the image's own (as in the reference runs; setup-python has no 3.14.4 for Ubuntu 26.04)
+        run: python -c 'import os, sys; v = "%d.%d.%d" % sys.version_info[:3]; print(sys.executable, v); sys.exit(v != os.environ["PYTHON_VERSION"])'
       - name: The jobs with runs left
         id: plan
         working-directory: vertical-lab
@@ -119,17 +119,14 @@ jobs:
           path: vertical-lab/out/twin6/checkpoints
           run-id: ${{ inputs.resume_run_id }}
           github-token: ${{ github.token }}
-      - uses: actions/setup-python@v5
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          cache: pip
-          cache-dependency-path: vertical-lab/out/twin6/requirements.txt
+      - name: Python 3.14.4, the image's own (as in the reference runs; setup-python has no 3.14.4 for Ubuntu 26.04)
+        run: python -c 'import os, sys; v = "%d.%d.%d" % sys.version_info[:3]; print(sys.executable, v); sys.exit(v != os.environ["PYTHON_VERSION"])'
       - name: The pinned environment
         working-directory: vertical-lab
         run: |
           python ci/twin_slices.py check-tree "$PLAN"
-          pip install --index-url https://download.pytorch.org/whl/cpu torch==2.15.0
-          pip install -r out/twin6/requirements.txt
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu torch==2.15.0
+          python -m pip install -r out/twin6/requirements.txt
           nproc
           grep -m1 "model name" /proc/cpuinfo
       - name: Rerun the committed GP rows (stop on any difference)
@@ -193,9 +190,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ inputs.branch }}
-      - uses: actions/setup-python@v5
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Python 3.14.4, the image's own (as in the reference runs; setup-python has no 3.14.4 for Ubuntu 26.04)
+        run: python -c 'import os, sys; v = "%d.%d.%d" % sys.version_info[:3]; print(sys.executable, v); sys.exit(v != os.environ["PYTHON_VERSION"])'
       - uses: actions/download-artifact@v4
         continue-on-error: true
         with:
