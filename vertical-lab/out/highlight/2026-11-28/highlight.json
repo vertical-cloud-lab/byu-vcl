@@ -1,0 +1,393 @@
+{
+ "name": "vertical_lab_highlight_2026-11-28",
+ "edition": "2026-11-28",
+ "seconds": 217.5,
+ "size": [
+  1280,
+  720
+ ],
+ "fps": 30,
+ "built": "2026-11-28T08:38:53Z",
+ "sources": {
+  "r16": {
+   "video": "https://www.youtube.com/watch?v=YWbplBXPC84",
+   "itag": "232",
+   "size": [
+    1280,
+    720
+   ],
+   "title": "The vertical cloud lab, start to finish (3-D, round 16)",
+   "length": "1:31:05",
+   "pr": 318
+  },
+  "twin": {
+   "video": "https://www.youtube.com/watch?v=Ty6njW-GF74",
+   "itag": "270",
+   "size": [
+    1920,
+    1080
+   ],
+   "title": "Two simulated years of alloy discovery, from the day the money arrives: round 5 (preview)",
+   "length": "19:54",
+   "pr": 428
+  }
+ },
+ "first_edition": "out/highlight/highlight.json (round 15, https://www.youtube.com/watch?v=lnpVq8JvnJM)",
+ "mp4_sha256": "adc0ad65a4352803b1acbf62ac2d4df2c921c17ba610d59620c9cdc052b9a303",
+ "mp4_bytes": 23900204,
+ "parts": [
+  {
+   "part": "title card",
+   "start_s": 0.0,
+   "seconds": 5.0
+  },
+  {
+   "part": "charge",
+   "section": "The alloy route",
+   "chapter": "1/7 The charge",
+   "start_s": 4.5,
+   "seconds": 11.0,
+   "caption": "powder-doser's chain carousel v5 · A&D HR-202i balance · Specac Atlas Autotouch 15T vacuum press",
+   "arm": "arm: UR12e on a MiR250",
+   "what": "A 5N Al cup from the rack to the doser's shuttle; module 6 docks, tilts and doses Si onto the balance.",
+   "still": "stills/01_charge.png",
+   "src": "r16",
+   "src_s": [
+    1167.0,
+    1178.0
+   ],
+   "src_link": "https://youtu.be/YWbplBXPC84?t=1167",
+   "still_src_s": 1167.27
+  },
+  {
+   "part": "atomize",
+   "section": "The alloy route",
+   "chapter": "2/7 Melt and atomize",
+   "start_s": 15.0,
+   "seconds": 12.6,
+   "caption": "AMAZEMET rePowder ultrasonic atomizer, cut open for the pour",
+   "arm": "arms: two UR12e on MiR250s",
+   "what": "Both arms on the plate's landing stage; the melt pours onto the vibrating plate and atomizes.",
+   "still": "stills/02_atomize.png",
+   "src": "r16",
+   "src_s": [
+    1713.0,
+    1725.6
+   ],
+   "src_link": "https://youtu.be/YWbplBXPC84?t=1713",
+   "still_src_s": 1723.96
+  },
+  {
+   "part": "sieve",
+   "section": "The alloy route",
+   "chapter": "3/7 Sieve and print",
+   "start_s": 27.1,
+   "seconds": 12.0,
+   "caption": "Retsch AS 200 sieve shaker, in a downdraft enclosure",
+   "arm": "arm: UR12e on a MiR250",
+   "what": "The stack sieves under its clamped lid, drawn see-through; each fraction tinted under a legend.",
+   "still": "stills/03_sieve.png",
+   "src": "r16",
+   "src_s": [
+    2861.0,
+    2873.0
+   ],
+   "src_link": "https://youtu.be/YWbplBXPC84?t=2861",
+   "still_src_s": 2872.07
+  },
+  {
+   "part": "powder",
+   "section": "The alloy route",
+   "chapter": "4/7 The powder, checked",
+   "start_s": 38.6,
+   "seconds": 13.5,
+   "caption": "Rigaku MiniFlex benchtop powder XRD, its housing drawn see-through",
+   "arm": "arm: UR12e on a MiR250",
+   "what": "The holder in, the door shut; the scan; the pattern (computed, not measured).",
+   "still": "stills/04_powder.png",
+   "src": "r16",
+   "src_s": [
+    3147.0,
+    3160.5
+   ],
+   "src_link": "https://youtu.be/YWbplBXPC84?t=3147",
+   "still_src_s": 3160.07
+  },
+  {
+   "part": "tensile",
+   "section": "The alloy route",
+   "chapter": "5/7 Depowder, cut, heat treat, test",
+   "start_s": 51.6,
+   "seconds": 12.5,
+   "caption": "Instron 68FM-100 · 3119-608 environmental chamber · AVE 2 video extensometer",
+   "arm": "arm: UR12e on a MiR250",
+   "what": "A bar in the grips, the chamber cut away, the pull (curve illustrative), broken.",
+   "still": "stills/05_tensile.png",
+   "src": "r16",
+   "src_s": [
+    3607.5,
+    3620.0
+   ],
+   "src_link": "https://youtu.be/YWbplBXPC84?t=3607",
+   "still_src_s": 3618.97
+  },
+  {
+   "part": "prep",
+   "section": "The alloy route",
+   "chapter": "6/7 Sample prep",
+   "start_s": 63.6,
+   "seconds": 12.2,
+   "caption": "LECO PX500 grinder-polisher and its magazine of pre-loaded discs",
+   "arm": "arm: UR12e on a MiR250",
+   "what": "The arm puts the 320-grit disc on the magnetic platen; the pistons press the mounts down.",
+   "still": "stills/06_prep.png",
+   "src": "r16",
+   "src_s": [
+    3894.0,
+    3906.2
+   ],
+   "src_link": "https://youtu.be/YWbplBXPC84?t=3894",
+   "still_src_s": 3895.86
+  },
+  {
+   "part": "characterize",
+   "section": "The alloy route",
+   "chapter": "7/7 Characterizing the build",
+   "start_s": 75.3,
+   "seconds": 12.0,
+   "caption": "Hitachi TM4000PlusII tabletop SEM · Oxford Instruments AZtecOne EDS",
+   "arm": "arm: UR12e on a MiR250",
+   "what": "The conductive mount into the SEM's grounded holder cup; pump-down; a BSE image (illustrative).",
+   "still": "stills/07_characterize.png",
+   "src": "r16",
+   "src_s": [
+    4039.0,
+    4051.0
+   ],
+   "src_link": "https://youtu.be/YWbplBXPC84?t=4039",
+   "still_src_s": 4050.06
+  },
+  {
+   "part": "real",
+   "section": "In the real lab",
+   "chapter": "The lab's own atomizer (DAL)",
+   "start_s": 86.8,
+   "seconds": 11.0,
+   "caption": "AMAZEMET rePowder, 27 Oct 2026: 630 bronze molten, then atomizing on the plate (youtu.be/2brsz-90seg) · with 28 Oct's run, 1,015 g sieved under 250 µm from 1,938 g charged (DAL PR 286)",
+   "arm": "real footage and photo",
+   "what": "The lab's own run k7m2q9: the melt through the furnace port, the jet atomizing through the view port, and its sieved powder.",
+   "still": "stills/08_real.png",
+   "src": "committed excerpts",
+   "clips": [
+    [
+     "out/footage/nab_melt3.mp4",
+     1.0,
+     4.5
+    ],
+    [
+     "out/footage/nab_pour1.mp4",
+     0.0,
+     7.5
+    ]
+   ],
+   "photo": "out/footage/nab_k7m2q9_sieved_three_jars.jpg",
+   "source": "https://youtu.be/2brsz-90seg",
+   "source_s": [
+    [
+     329.0,
+     332.5
+    ],
+    [
+     497.0,
+     504.5
+    ]
+   ],
+   "src_link": "https://youtu.be/2brsz-90seg?t=497"
+  },
+  {
+   "part": "plate",
+   "section": "New in the lab",
+   "chapter": "Automating the atomizer (#353)",
+   "start_s": 97.3,
+   "seconds": 11.3,
+   "caption": "The arm swaps rePowder's ultrasonic plate: the old one off its M8 stud to its labelled slot, a W-coated plate on",
+   "arm": "arm: UR12e on a MiR250",
+   "what": "One of eight atomizer turnaround clips: the old plate slid off its stud, the new one slid on.",
+   "still": "stills/09_plate.png",
+   "src": "r16",
+   "src_s": [
+    2264.4,
+    2275.7
+   ],
+   "src_link": "https://youtu.be/YWbplBXPC84?t=2264",
+   "still_src_s": 2265.4
+  },
+  {
+   "part": "coupling",
+   "section": "New in the lab",
+   "chapter": "Services on every tray",
+   "start_s": 108.1,
+   "seconds": 11.0,
+   "caption": "Stäubli CombiTac dock: power, Ethernet, air, N2 and chilled water mate in a set order; each powered tray has a UPS",
+   "arm": "",
+   "what": "The dock's head comes in; the last 15 mm of the electrical frame at Staubli's mating speed.",
+   "still": "stills/10_coupling.png",
+   "src": "r16",
+   "src_s": [
+    254.0,
+    265.0
+   ],
+   "src_link": "https://youtu.be/YWbplBXPC84?t=254",
+   "still_src_s": 262.0
+  },
+  {
+   "part": "safety",
+   "section": "New in the lab",
+   "chapter": "Safety assets (#379)",
+   "start_s": 118.6,
+   "seconds": 11.0,
+   "caption": "Amerex B570 Class D extinguishers, 30 lb of Super D: on every MiR250 in an 811 bracket, and at each powder station",
+   "arm": "",
+   "what": "The B570 strapped into its 811 bracket on the MiR250's cabinet, ready for anyone near the robot.",
+   "still": "stills/11_safety.png",
+   "src": "r16",
+   "src_s": [
+    539.8,
+    550.8
+   ],
+   "src_link": "https://youtu.be/YWbplBXPC84?t=539",
+   "still_src_s": 545.0
+  },
+  {
+   "part": "floor",
+   "section": "New in the lab",
+   "chapter": "Cleaning the floor (#369)",
+   "start_s": 129.1,
+   "seconds": 11.0,
+   "caption": "Unit 3 squeegees the floor on a Nilfisk CFM 118EXP explosion-proof vacuum's hose, then its camera checks the colour",
+   "arm": "unit 3: UR12e on a MiR250",
+   "what": "Two lanes of the squeegee along the atomizer's front, then the colour check (NFPA 484).",
+   "still": "stills/12_floor.png",
+   "src": "r16",
+   "src_s": [
+    5089.2,
+    5100.2
+   ],
+   "src_link": "https://youtu.be/YWbplBXPC84?t=5089",
+   "still_src_s": 5094.0
+  },
+  {
+   "part": "waste",
+   "section": "New in round 16",
+   "chapter": "Waste (#371)",
+   "start_s": 139.6,
+   "seconds": 12.0,
+   "caption": "A person changes the 118EXP's liner: sealed in place, lifted out to the Al-family pail. Powder waste never rides a MiR250",
+   "arm": "a person, not an arm",
+   "what": "Vacuum unplugged, head off, the liner sealed in place and carried to its family's pail.",
+   "still": "stills/13_waste.png",
+   "src": "r16",
+   "src_s": [
+    5310.0,
+    5322.0
+   ],
+   "src_link": "https://youtu.be/YWbplBXPC84?t=5310",
+   "still_src_s": 5320.0
+  },
+  {
+   "part": "scaleup",
+   "section": "New in the lab",
+   "chapter": "Scaling up",
+   "start_s": 151.1,
+   "seconds": 11.0,
+   "caption": "EOS M 400-4: four lasers on one 400 x 400 mm build, two Sentinel-1 antenna brackets after RUAG's case study (shape ours)",
+   "arm": "",
+   "what": "The EOS's four lasers on the case study's two brackets, drawn see-through.",
+   "still": "stills/14_scaleup.png",
+   "src": "r16",
+   "src_s": [
+    4736.0,
+    4747.0
+   ],
+   "src_link": "https://youtu.be/YWbplBXPC84?t=4736",
+   "still_src_s": 4744.0
+  },
+  {
+   "part": "replay",
+   "section": "The digital twin, round 5",
+   "chapter": "Two simulated years",
+   "start_s": 161.6,
+   "seconds": 11.5,
+   "caption": "From day 161 the run's own bookings move the 3-D lab: trays to the openings, units to the docks (seed 1 of 16)",
+   "arm": "simulated",
+   "what": "Days 161-176 on seed 1 of 16: the Shuttles and units integrated; the replay drives the model.",
+   "still": "stills/15_replay.png",
+   "src": "twin",
+   "src_s": [
+    556.0,
+    567.5
+   ],
+   "src_link": "https://youtu.be/Ty6njW-GF74?t=556",
+   "still_src_s": 562.0
+  },
+  {
+   "part": "compare",
+   "section": "The digital twin, round 5",
+   "chapter": "The two labs, like for like",
+   "start_s": 172.6,
+   "seconds": 11.0,
+   "caption": "Copper: 1.5-2.1x sooner in the automated lab with the funnel, 2x or more with BOFN or pKGFN. Aluminium's first: a tie",
+   "arm": "simulated, 16 runs an arm",
+   "what": "Days to each target over 16 seeds an arm, the same policy and stock rule in both labs.",
+   "still": "stills/16_compare.png",
+   "src": "twin",
+   "src_s": [
+    858.3,
+    869.3
+   ],
+   "src_link": "https://youtu.be/Ty6njW-GF74?t=858",
+   "still_src_s": 866.0
+  },
+  {
+   "part": "floorspace",
+   "section": "The digital twin, round 5",
+   "chapter": "Floor space (#406)",
+   "start_s": 183.1,
+   "seconds": 11.0,
+   "caption": "The same 45 tray positions: 3,029 sq ft in the vertical lab against 6,192 laid out flat for robots, 51 % less floor",
+   "arm": "design layouts",
+   "what": "Three layouts side by side, then the Shuttles' 45 trays as bench positions.",
+   "still": "stills/17_floorspace.png",
+   "src": "twin",
+   "src_s": [
+    1100.0,
+    1111.0
+   ],
+   "src_link": "https://youtu.be/Ty6njW-GF74?t=1100",
+   "still_src_s": 1106.0
+  },
+  {
+   "part": "lab",
+   "section": "",
+   "chapter": "The whole lab at speed: a model year, week by week, then month by month",
+   "start_s": 193.6,
+   "seconds": 17.4,
+   "caption": "Two 30 ft Kardex Shuttle XP 500s, the floor machines, two UR12e arms on MiR250s and unit 3, the floor cleaner",
+   "arm": "",
+   "what": "The counters run to the first year's totals, then the long-form's own 'first year' card.",
+   "still": "stills/18_lab.png",
+   "src": "r16",
+   "src_s": [
+    5436.0,
+    5453.4
+   ],
+   "src_link": "https://youtu.be/YWbplBXPC84?t=5436",
+   "still_src_s": 5442.43
+  },
+  {
+   "part": "end card",
+   "start_s": 210.5,
+   "seconds": 7.0
+  }
+ ]
+}

@@ -1,4 +1,118 @@
-# A 2-3 minute highlight of round 15's long-form
+# Highlights of the vertical lab
+
+Two editions. The current one, asked for on PR #390 (2026-11-28,
+https://github.com/vertical-cloud-lab/byu-vcl/pull/390): "can we get this updated with the most recent vertical lab
+progress across all of this repo (see all issue and PR comments via gh API) and DAL (if applicable)? Re-uploaded to
+YouTube. Public with notify subscribers." The first edition, round 15's alloy route in eight shots, is further down;
+its script is [`highlight.py` at d349073](https://github.com/vertical-cloud-lab/byu-vcl/blob/d349073/vertical-lab/highlight.py)
+and its outputs stay where they were, in [`out/highlight/`](../out/highlight/).
+
+## The 2026-11-28 edition: the alloy route, the real atomizer, what's new, the twin
+
+- The cut: [`out/highlight/2026-11-28/vertical_lab_highlight_2026-11-28.mp4`](../out/highlight/2026-11-28/vertical_lab_highlight_2026-11-28.mp4),
+  3:37, 1280 × 720 at 30 fps, silent, 18 shots, a YouTube chapter for each. Its record (every part's times and source,
+  the MP4's sha256, the upload) is [`highlight.json`](../out/highlight/2026-11-28/highlight.json).
+- The stills: [`out/highlight/2026-11-28/stills/`](../out/highlight/2026-11-28/stills/), one 1280 × 720 PNG per shot,
+  each the cut's own frame with its band; [`highlight_sheet.png`](../out/highlight/2026-11-28/highlight_sheet.png)
+  puts them side by side.
+- The script: [`highlight.py`](../highlight.py) (`fetch`, `sheets`, `bandscan`, `build`, `upload`).
+
+### What "the most recent progress" was, and where it came from
+
+All 271 issue and PR comments in this repo since 2026-11-18 were pulled through the API (every person's comment, each thread's
+latest report and every video link in them), and DAL's since the same day.
+What had happened since the first edition's round 15:
+
+| Progress | Where | In the cut |
+|---|---|---|
+| Round 16's long-form, 1:31:05, 69 chapters: the alloy route's chapters 1, 2, 4, 5 and 7 re-rendered, and a person changing a vacuum liner (#371's check) | PR #318, [YWbplBXPC84](https://www.youtube.com/watch?v=YWbplBXPC84) (unlisted) | shots 1-7, 13, 18 |
+| The PRs merged into #318 on 2026-11-20 and 11-23 and drawn in rounds 15-16: atomizer automation (#353), tray services and UPSs, Class D extinguishers (#379), floor cleaning (#369), the scale-up machines | PRs #353, #369, #379, #318 | shots 9-12, 14 |
+| The atomizer's real runs: 10 logged from 2 Oct to 13 Nov, 5 aluminium and 5 630 bronze; Oct 27 and 28 sieved together, 1,015 g under 250 µm from 1,938 g charged | [DAL PR 286](https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/286) | shot 8 |
+| The digital twin, round 5 (488 runs, finished) and its two-year cut, with the floor-space comparison of PR #406 | PRs #405, #428, [Ty6njW-GF74](https://www.youtube.com/watch?v=Ty6njW-GF74) (unlisted preview) | shots 15-17 |
+| Twin round 6 | PR #427, running on Actions | the end card only |
+| Is the vertical lab worth it? | PR #410 (open) | the description only |
+
+Left out: everything outside the vertical lab (the CubXL stir module, the deck keys, the toy drive, open science),
+and twin rounds 3-4, which round 5 supersedes.
+
+### The shots
+
+| # | In the cut | Source | Caption |
+|---|---|---|---|
+| 1 | 0:00 | [round 16, 19:27](https://youtu.be/YWbplBXPC84?t=1167) | powder-doser's chain carousel v5 · A&D HR-202i balance · Specac Atlas Autotouch 15T vacuum press |
+| 2 | 0:15 | [28:33](https://youtu.be/YWbplBXPC84?t=1713) | AMAZEMET rePowder ultrasonic atomizer, cut open for the pour |
+| 3 | 0:27 | [47:41](https://youtu.be/YWbplBXPC84?t=2861) | Retsch AS 200 sieve shaker, in a downdraft enclosure |
+| 4 | 0:39 | [52:27](https://youtu.be/YWbplBXPC84?t=3147) | Rigaku MiniFlex benchtop powder XRD, its housing drawn see-through |
+| 5 | 0:52 | [1:00:08](https://youtu.be/YWbplBXPC84?t=3607) | Instron 68FM-100 · 3119-608 environmental chamber · AVE 2 video extensometer |
+| 6 | 1:04 | [1:04:54](https://youtu.be/YWbplBXPC84?t=3894) | LECO PX500 grinder-polisher and its magazine of pre-loaded discs |
+| 7 | 1:15 | [1:07:19](https://youtu.be/YWbplBXPC84?t=4039) | Hitachi TM4000PlusII tabletop SEM · Oxford Instruments AZtecOne EDS |
+| 8 | 1:27 | [2brsz-90seg, 5:29 and 8:17](https://youtu.be/2brsz-90seg?t=497), real | The lab's own rePowder, 27 Oct 2026: 630 bronze molten, then atomizing; the sieved powder (DAL PR 286) |
+| 9 | 1:37 | [37:44](https://youtu.be/YWbplBXPC84?t=2264) | The arm swaps the ultrasonic plate: the old one off its M8 stud, a W-coated plate on (#353) |
+| 10 | 1:48 | [4:14](https://youtu.be/YWbplBXPC84?t=254) | Stäubli CombiTac dock: power, Ethernet, air, N2 and chilled water mate in a set order; each powered tray has a UPS |
+| 11 | 1:59 | [9:00](https://youtu.be/YWbplBXPC84?t=539) | Amerex B570 Class D extinguishers, 30 lb of Super D: on every MiR250 in an 811 bracket, and at each powder station |
+| 12 | 2:09 | [1:24:49](https://youtu.be/YWbplBXPC84?t=5089) | Unit 3 squeegees the floor on a Nilfisk CFM 118EXP explosion-proof vacuum's hose, then its camera checks the colour |
+| 13 | 2:20 | [1:28:30](https://youtu.be/YWbplBXPC84?t=5310) | A person changes the 118EXP's liner: sealed in place, lifted out to the Al-family pail (round 16) |
+| 14 | 2:31 | [1:18:56](https://youtu.be/YWbplBXPC84?t=4736) | EOS M 400-4: four lasers on one 400 x 400 mm build, two Sentinel-1 antenna brackets after RUAG's case study |
+| 15 | 2:42 | [twin, 9:16](https://youtu.be/Ty6njW-GF74?t=556) | From day 161 the run's own bookings move the 3-D lab (seed 1 of 16) |
+| 16 | 2:53 | [twin, 14:18](https://youtu.be/Ty6njW-GF74?t=858) | Copper 1.5-2.1x sooner in the automated lab with the funnel, 2x or more with BOFN or pKGFN; aluminium's first target a tie |
+| 17 | 3:03 | [twin, 18:20](https://youtu.be/Ty6njW-GF74?t=1100) | The same 45 tray positions: 3,029 sq ft in the vertical lab against 6,192 laid out flat for robots |
+| 18 | 3:14 | [1:30:36](https://youtu.be/YWbplBXPC84?t=5436) | The whole lab at speed, ending on the long-form's own "first year" card |
+
+Shots 1-7 are the first edition's moments, found in round 16 through the two videos' `out/longform.json` (every clip
+kept its length, so a moment's offset in its clip carries over), then trimmed to 11-13.5 s each so the update stays
+near three and a half minutes. In and out points were checked against 1 fps contact sheets and ffmpeg's scene
+detection: no shot starts or ends inside a cut or a dissolve.
+
+### What it says, and what it doesn't
+
+- **The real atomizer is real; nothing else is.** Shot 8 uses the excerpts of run k7m2q9 that round 16's chapter 2
+  already cuts in (`out/footage/`, from [2brsz-90seg](https://youtu.be/2brsz-90seg)), and DAL's photo of its sieved
+  powder. The figure is DAL's weighed one: the Oct 27 and 28 runs were sieved together, <63 µm 187.973 g and 64-250 µm
+  827.063 g from 1,938.307 g charged ([DAL PR 286](https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/286),
+  `atomizer-runs/2026-10-27-nab-k7m2q9/provenance.md`). The video's own YouTube title says Cu70/Ni30; DAL's run table,
+  the jars and the long-form say 630 bronze (C63000), and the cut follows DAL.
+- **Not claimed:** that the lab's own powder has been printed, that the route has run end to end, that the atomizer is
+  running now (no runs since the Nov 13 collection cup failure, DAL #269), or that the twin is calibrated on the lab's
+  record. The description says the twin's atomizer rates are design targets against a record of 10 runs in 43 days.
+- **The twin's numbers are round 5's own**, as its two-year cut shows them: like for like, 16 runs an arm, with the
+  ties shown as ties. DAL PR 293's audit of the round-2 video (stocked against unstocked, different optimizers) is why
+  the cut quotes like-for-like figures only.
+- **The floor-space shot is a design layout,** and PR #410's answer to "is the vertical lab worth it?" (at the twin's
+  load the robots are 1-2 % busy, so transport doesn't bind; floor is the gain) is in the description, so the 51 %
+  isn't read as the whole case.
+- **Two sources are unlisted on the channel:** round 16's long-form and the twin's two-year preview. The description
+  links both, which makes them reachable from a public video.
+
+### How the shots were made
+
+- **Cut from YouTube,** as the first edition was, since no render outlives its runner: round 16's 720p HLS stream
+  (itag 232) and the twin's 1080p one (itag 270), scaled to 720p once when its window is cut. Fetched through the CubXL
+  Pi's network over an SSH SOCKS tunnel, capped at 1.2 MB/s, nothing installed or written on the Pi: 46 MB of segments
+  in all. The 1080p stream's segments answer with a redirect, so `fetch` follows them (`curl -L`).
+- **The twin's frames are fitted, not covered:** scaled whole to 1142 × 642 above the band, on their own background,
+  since their panels run to the frame's edges. Round 16's shots keep the long-form's picture and cover only its caption
+  band, as before (`bandscan` measured its height in each).
+- **The real lab's shot is composed:** the upright excerpts (406 × 720) at the left, the photo at the right, each under
+  a red badge, the band below.
+- **Cards:** a title card naming the four parts and an end card with the two full videos, the code and DAL, both in the
+  long-form's card style. No sound, as before.
+
+### Rebuilding it
+
+```bash
+cd vertical-lab
+ssh -D 127.0.0.1:1080 -N -f "$CUBXL_PI_USERNAME@$CUBXL_PI_HOSTNAME"   # or any lab Pi this run can reach
+pip install "yt-dlp[default]"                                         # node is the JS runtime here
+python3 highlight.py fetch --rate 1200K        # into $HIGHLIGHT_CACHE (default /tmp/vertical_lab_highlight)
+python3 highlight.py sheets                    # 1 fps contact sheets of each window, to move in and out points
+python3 highlight.py bandscan                  # round 16's shots: each band_top should cover the long-form's band
+python3 highlight.py build                     # out/highlight/2026-11-28/
+python3 highlight.py upload --privacy public --notify     # refuses a file already uploaded
+```
+
+A shot's times are its `t0`/`t1` in `SHOTS`, in seconds of its source; `still` picks its still.
+
+## The first edition: round 15's alloy route (2026-11-25)
 
 Asked for on PR #318 (2026-11-25, https://github.com/vertical-cloud-lab/byu-vcl/pull/318#issuecomment-7175729752):
 "Cut a 2 to 3 minute highlight of round 15's long-form: one shot from each chapter of the alloy route (charge, atomize,
@@ -14,7 +128,7 @@ as PNGs on the branch."
   [`highlight_sheet.png`](../out/highlight/highlight_sheet.png) puts them side by side.
 - The script: [`highlight.py`](../highlight.py) (`fetch`, `build`, `upload`, and `bandscan` to check the captions).
 
-## Where it comes from
+### Where it comes from
 
 Round 15's chapter renders went with its runner (`out/r15/` is git-ignored, and only chapter 2's 720p render was
 committed), so the shots are cut from the long-form as YouTube serves it:
@@ -33,7 +147,7 @@ the full resolution here too.
   first segment and trimmed on those timestamps. Each shot's in and out points were then set from 1 fps contact sheets
   and ffmpeg's scene-cut detection, so that no shot starts or ends inside a dissolve or a cut to real footage.
 
-## The shots
+### The shots
 
 | # | In the cut | Long-form | Caption: the instruments named | What happens |
 |---|---|---|---|---|
@@ -50,7 +164,7 @@ The arm in shots 1 and 3-7 is a UR12e on a MiR250, named at the right of each ca
 called "machining and tensile": the wire EDM's cut comes earlier in the same chapter (about 56:35 in the long-form).
 Shot 3 shows the sieving; the Aconity MIDI is loaded and prints at 50:00-50:43.
 
-## What the cut changes, and what it keeps
+### What the cut changes, and what it keeps
 
 - **The picture is the long-form's**, with its title bar, status panel and step counter, at the speed it was played
   there. Shot 8 is the long-form's own time-lapse, so the speed it states on screen still holds.
@@ -65,7 +179,9 @@ Shot 3 shows the sieving; the Aconity MIDI is loaded and prints at 50:00-50:43.
 - **The stills** are the cut's own frames with their caption band, taken from the near-lossless window rather than
   from the final MP4, so they are compressed once (by YouTube), not twice.
 
-## Rebuilding it
+### Rebuilding it
+
+With `highlight.py` as it was at d349073 (the file now builds the 2026-11-28 edition):
 
 ```bash
 cd vertical-lab
