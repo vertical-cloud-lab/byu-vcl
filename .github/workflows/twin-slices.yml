@@ -1,0 +1,225 @@
+# Round 6 of the digital twin: a plan's compute slices on plain GitHub-hosted runners. No Claude, no secrets beyond
+# GITHUB_TOKEN. Everything it runs is simulated.
+#
+# To install: move this file to .github/workflows/twin-slices.yml (the Claude app can't write there).
+#
+# A plan (out/twin6/slices/<plan>.json, made by `python -m twin.bench6 plan ...`) lists jobs, each a list of run
+# ids. Each dispatch is one wave: every job that still has runs without a row gets one runner, which
+#   1. checks out the branch and checks that its vertical-lab/twin is the engine the plan was made for,
+#   2. installs the pinned packages (Python 3.14.4, torch 2.15.0 CPU, out/twin6/requirements.txt),
+#   3. restores its checkpoints from the previous wave's artifacts, if `resume_run_id` is given,
+#   4. reruns the committed GP rows (python -m twin.gpcheck6: the kernel probe, the short BOFN and pKGFN runs and the
+#      late runs from the committed day-300 checkpoints), and stops on any difference, before it makes a row,
+#   5. runs the pinned slice command, `python -m twin.bench6 ids <its run ids> --slice <plan>-<job> --workers 4
+#      --hours 5.2`: a run still going at 5.2 hours stops at its next simulated day and is saved,
+#   6. uploads its rows, event logs, GP check and manifest (`rows-<plan>-<job>`) and its checkpoints
+#      (`ckpt-<plan>-<job>`).
+# A last job downloads every job's rows, merges them into out/twin6/runs/<experiment>.slice-<plan>-<job>.jsonl (one
+# row per run id), adds the event logs, the checks and the manifests, commits them to the branch in one push, and
+# lists the runs still waiting on a checkpoint (out/twin6/slices/<plan>/status.md and the run's summary).
+#
+# Dispatch the next wave with the same branch and plan and `resume_run_id` set to this run's id; repeat until the
+# status lists nothing. The procedure, the plan and what was tested: vertical-lab/out/twin6/slices/README.md.
+
+name: twin round 6 slices
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch to run and to commit the rows to (its vertical-lab/twin must be the plan's engine)"
+        required: true
+        default: claude/twin-round6
+      plan:
+        description: "Plan file, relative to vertical-lab/"
+        required: true
+        default: out/twin6/slices/tier1.json
+      resume_run_id:
+        description: "The previous wave's workflow run id, to restore its checkpoints from (empty for the first wave)"
+        required: false
+        default: ""
+      max_parallel:
+        description: "Most jobs at once (empty: all of them)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: twin-slices-${{ inputs.branch }}
+  cancel-in-progress: false
+
+env:
+  PYTHON_VERSION: "3.14.4"
+  # Round 6's pin (twin/repro.py): the AVX2 kernels of `avx2`, plus numpy's own kernels capped at AVX2, MKL's
+  # CPU-independent branch (MKL_CBWR=COMPATIBLE) and OpenBLAS's blocking fixed. `bench6 ids` refuses any other pin,
+  # and under `avx2` alone round 5's rows differed between an EPYC 7763 and a 9V45, both GitHub runner CPUs.
+  TWIN_PIN: portable
+  PYTHONHASHSEED: "0"
+  PIP_TIMEOUT: "600"
+  PIP_RETRIES: "2"
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      jobs: ${{ steps.plan.outputs.jobs }}
+      name: ${{ steps.plan.outputs.name }}
+    env:
+      PLAN: ${{ inputs.plan }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: The jobs with runs left
+        id: plan
+        working-directory: vertical-lab
+        run: |
+          python ci/twin_slices.py check-tree "$PLAN"
+          name=$(python -c 'import json, sys, pathlib; p = pathlib.Path(sys.argv[1]); print(json.loads(p.read_text()).get("name") or p.stem)' "$PLAN")
+          jobs=$(python ci/twin_slices.py jobs "$PLAN")
+          echo "name=$name" >> "$GITHUB_OUTPUT"
+          echo "jobs=$jobs" >> "$GITHUB_OUTPUT"
+          echo "Plan \`$name\`: jobs with runs left: $jobs" >> "$GITHUB_STEP_SUMMARY"
+
+  slice:
+    needs: plan
+    if: needs.plan.outputs.jobs != '[]'
+    runs-on: ubuntu-latest
+    # 6 h is a hosted job's limit: set-up and the GP check (about 10-20 min), 5.2 h of runs, each run's last simulated
+    # day and its save, the uploads
+    timeout-minutes: 355
+    strategy:
+      fail-fast: false
+      max-parallel: ${{ inputs.max_parallel != '' && fromJSON(inputs.max_parallel) || 256 }}
+      matrix:
+        job: ${{ fromJSON(needs.plan.outputs.jobs) }}
+    env:
+      PLAN: ${{ inputs.plan }}
+      NAME: ${{ needs.plan.outputs.name }}
+      JOB: ${{ matrix.job }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch }}
+      # first, so that a job that fails later still uploads them again for the next wave (or a re-run of this job)
+      - name: Restore this job's checkpoints from the previous wave
+        if: inputs.resume_run_id != ''
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: ckpt-${{ needs.plan.outputs.name }}-${{ matrix.job }}
+          path: vertical-lab/out/twin6/checkpoints
+          run-id: ${{ inputs.resume_run_id }}
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: vertical-lab/out/twin6/requirements.txt
+      - name: The pinned environment
+        working-directory: vertical-lab
+        run: |
+          python ci/twin_slices.py check-tree "$PLAN"
+          pip install --index-url https://download.pytorch.org/whl/cpu torch==2.15.0
+          pip install -r out/twin6/requirements.txt
+          nproc
+          grep -m1 "model name" /proc/cpuinfo
+      - name: Rerun the committed GP rows (stop on any difference)
+        working-directory: vertical-lab
+        run: |
+          ls -la out/twin6/checkpoints 2>/dev/null || echo "no checkpoints to carry on"
+          mkdir -p "out/twin6/slices/$NAME/job-$JOB"
+          python ci/twin_slices.py done-ids > "$RUNNER_TEMP/done_before.txt"
+          TWIN_WORKERS=4 python -m twin.gpcheck6 --out "out/twin6/slices/$NAME/job-$JOB/gpcheck.json"
+      - name: The slice (python -m twin.bench6 ids ... --hours 5.2)
+        id: slice
+        timeout-minutes: 325
+        working-directory: vertical-lab
+        run: |
+          python ci/twin_slices.py ids "$PLAN" "$JOB" > "$RUNNER_TEMP/ids.txt"
+          set +e
+          python -m twin.bench6 ids "$RUNNER_TEMP/ids.txt" --slice "$NAME-$JOB" --workers 4 --hours 5.2 2>&1 \
+            | tee "out/twin6/slices/$NAME/job-$JOB/ids.log"
+          echo "exit=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+      - name: What became of each run
+        if: always()
+        working-directory: vertical-lab
+        run: |
+          python ci/twin_slices.py manifest "$PLAN" "$JOB" "out/twin6/slices/$NAME/job-$JOB/ids.log" \
+            "$RUNNER_TEMP/stage" "$RUNNER_TEMP/done_before.txt"
+      - name: Upload rows, event logs, the GP check and the manifest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rows-${{ needs.plan.outputs.name }}-${{ matrix.job }}
+          path: ${{ runner.temp }}/stage/
+          if-no-files-found: warn
+          retention-days: 90
+          overwrite: true
+      - name: Upload checkpoints
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ckpt-${{ needs.plan.outputs.name }}-${{ matrix.job }}
+          path: vertical-lab/out/twin6/checkpoints/
+          if-no-files-found: ignore
+          retention-days: 90
+          compression-level: 0
+          overwrite: true
+      - name: Fail if a run raised
+        if: steps.slice.outputs.exit != '' && steps.slice.outputs.exit != '0'
+        run: |
+          echo "bench6 ids exited ${{ steps.slice.outputs.exit }}: a run raised (runs/*.slice-$NAME-$JOB.errors.jsonl)"
+          exit 1
+
+  fold:
+    needs: [plan, slice]
+    if: always() && needs.plan.result == 'success' && needs.plan.outputs.jobs != '[]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PLAN: ${{ inputs.plan }}
+      NAME: ${{ needs.plan.outputs.name }}
+      BRANCH: ${{ inputs.branch }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          pattern: rows-${{ needs.plan.outputs.name }}-*
+          path: ${{ runner.temp }}/rows
+      - name: Fold the rows in, commit them in one push, list the runs waiting on a checkpoint
+        working-directory: vertical-lab
+        run: |
+          python ci/twin_slices.py fold "$RUNNER_TEMP/rows" "$PLAN" "$GITHUB_RUN_ID" | tee -a "$GITHUB_STEP_SUMMARY"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          shopt -s nullglob
+          git add -f out/twin6/runs/*.slice-"$NAME"-*.jsonl out/twin6/slices/"$NAME"
+          [ -d out/twin6/events ] && git add -f out/twin6/events
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+            exit 0
+          fi
+          git commit -q -m "twin round 6 slices ($NAME): rows of workflow run $GITHUB_RUN_ID" \
+            -m "Made by ci/twin-slices.yml, run $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID. Everything is simulated."
+          for i in 1 2 3 4 5; do
+            if git push origin "HEAD:$BRANCH"; then exit 0; fi
+            sleep $((i * 10))
+            git pull --rebase origin "$BRANCH"
+          done
+          echo "could not push to $BRANCH"
+          exit 1
