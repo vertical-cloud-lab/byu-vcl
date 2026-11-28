@@ -20,6 +20,10 @@ This check is how a machine shows that it computes what the reference machine co
   torch's math functions (MKL's vector math and ATen's kernels), torch's BLAS and LAPACK (MKL) at the sizes a GP fit
   uses, and whole GP fits (BoTorch's ``SingleTaskGP``: the marginal likelihood, its gradient, the fitted
   hyperparameters, the posterior). A group that differs names the library that still follows the CPU.
+* **Late runs** (``LATE``): the committed checkpoints of the grid's main BOFN and pKGFN arm at day 300 carried on
+  for two days, hashed by event log, GP state and what the network computed (every listed candidate's utility draws,
+  value and chance of powder): the network's valuation on full-sized nodes, in 64-point calls, which the short runs
+  never reach. Skipped if the checkpoints aren't there.
 * **Short BOFN and pKGFN runs** on the round's engine (``twin.bench6`` when it imports, else ``twin.bench5``),
   each in a fresh interpreter: the row (apart from timing and provenance), the event log, and **the GP state**: every
   node's fitted hyperparameters and scaling and the policy's last posterior means, as exact floats. The GP state is
@@ -55,6 +59,17 @@ RUNS = (
 # The simulated candidates at 4 x round 5's (a pool of 512), whatever the grid's main scale: more than the 384 the
 # network values in one decision, so BOFN's and pKGFN's cut of the pool (twin/opt/net6.py) runs in the check too.
 SCALE = 4
+# The late runs (round 6, PR 427): the short runs above end before the network values a candidate (in 200-220 days
+# none of them has every node a valuation needs), so they never reach the work that dominates a grid run of the
+# automated lab: the atomize search and the network's draws over hundreds of candidates, on nodes of up to 300 points,
+# in 64-point GP calls (twin/opt/gp.py ``Node.chunk``). Each late run carries a committed checkpoint of seed 0 of the
+# grid's main arm (``r6_vertical_parallel_<policy>_reorder``, 64x: 89 days after the cell was integrated on day 211)
+# on for ``LATE_DAYS`` simulated days and hashes what the network computed: every candidate's utility draws, value,
+# chance of powder and posterior mean in its last lists, with the GP state and the event log. (name, checkpoint, day)
+LATE_DIR = HERE.parent / "out" / "twin6" / "checks" / "late"
+LATE = (("automated_bofn3_late", "r6_vertical_parallel_bofn3_reorder_s0_d300.ckpt.xz", 300),
+        ("automated_pkgfn3_late", "r6_vertical_parallel_pkgfn3_reorder_s0_d300.ckpt.xz", 300))
+LATE_DAYS = 2
 NOT_IN_ROW = ("seconds", "timing", "gp", "env", "code", "events_file")       # timing and provenance, as round 5's comparisons
 STEERING = ("MKL_", "OPENBLAS_", "NPY_", "ATEN_", "ONEDNN_", "DNNL_", "OMP_", "KMP_", "GOMP_", "BLIS_", "NUMEXPR_",
             "VECLIB_", "TORCH_", "GLIBC_TUNABLES", "LD_PRELOAD")
@@ -276,6 +291,86 @@ def run(name: str, ckpt=None, stop_day=None) -> dict:
                 torch_rng_used=row.get("torch_rng_used"), seconds=round(time.time() - t0, 1))
 
 
+def _hx(x):
+    return None if x is None else float(x).hex()
+
+
+def net_state(tw) -> dict:
+    """What the network policies computed last: each candidate in their lists of new designs (``_new``) and of parts
+    (``_down``), with its utility draws (sha256 of the exact floats), value, score, chance of powder and mean."""
+    st = {}
+    for k, c in tw.campaigns.items():
+        pol = c.policy
+        out = {}
+        for lst in ("_new", "_down"):
+            items = []
+            for cand in getattr(pol, lst, None) or []:
+                u = cand.get("u")
+                items.append(dict(did=cand.get("did"), what=cand.get("what"), mu=_hx(cand.get("mu")),
+                                  value=_hx(cand.get("value")), score=_hx(cand.get("score")),
+                                  p_ok=_hx(cand.get("p_ok")), den=_hx(cand.get("den")),
+                                  u=None if u is None else hashlib.sha256(
+                                      __import__("numpy").ascontiguousarray(u, dtype="<f8").tobytes()).hexdigest()))
+            out[lst] = items
+        out["counts"] = dict(getattr(pol, "counts", {}) or {})
+        st[k] = out
+    return st
+
+
+def late_run(name: str) -> dict:
+    """One late run in this (pinned, fresh) interpreter: the committed checkpoint carried on ``LATE_DAYS`` days."""
+    import shutil
+    import tempfile
+
+    import numpy as np
+
+    from twin import ckpt6
+    from twin.opt import gp as GP
+    _, fname, day = next(r for r in LATE if r[0] == name)
+    B, engine = _bench()
+    from twin import bench2 as B2
+    src = LATE_DIR / fname
+    st = ckpt6.load(src)
+    rid, days = st["run_id"], st["days"]
+    os.environ["TWIN6_DAYS"] = str(days)
+    cfg = next(c for c in B.EXPERIMENTS["arms"] if B.run_id(c) == rid)
+    del st
+    n = dict(calls=0, over=0)
+    orig = GP.Node._predict
+
+    def _counted(self, X, _orig=orig):
+        n["calls"] += 1
+        return _orig(self, X)
+
+    pred = GP.Node.predict
+
+    def _pred(self, X, _p=pred):
+        X = np.asarray(X, float)
+        if X.ndim >= 2 and X.shape[-2] > (getattr(self, "chunk", None) or 1 << 30):
+            n["over"] += 1
+        return _p(self, X)
+
+    GP.Node._predict, GP.Node.predict = _counted, _pred
+    t0 = time.time()
+    with tempfile.TemporaryDirectory(prefix="gpcheck6-late-") as tmp:
+        ck = Path(tmp) / fname
+        shutil.copyfile(src, ck)
+        out, info = B.simulate(cfg, ckpt=ck, stop_day=day + LATE_DAYS)
+        if out is not None:
+            raise RuntimeError("the late run ended before its window did")
+        tw = ckpt6.load(ck)["tw"]
+    log = B.event_log(tw, cfg)
+    log["meta"]["run_id"] = name
+    log = json.loads(json.dumps(B2._jsonable(log)))
+    gps, nets = gp_state(tw), net_state(tw)
+    n_new = {k: len(v["_new"]) for k, v in nets.items()}
+    return dict(run_id=rid, from_day=day, to_day=info["day"], engine=engine, log=_sha(log), gp=_sha(gps),
+                net=_sha(nets), n_bookings=len(log["events"]), n_results=len(log["results"]), new_listed=n_new,
+                gp_nodes_fitted={k: sum(1 for v in d.values() if isinstance(v, dict) and v["n_fit"] > 0)
+                                 for k, d in gps.items()},
+                predict_calls=n["calls"], calls_over_chunk=n["over"], seconds=round(time.time() - t0, 1))
+
+
 # ------------------------------------------------------------------------------------------------- the driver
 def _env() -> dict:
     env = {k: v for k, v in os.environ.items() if not k.startswith(STEERING)}
@@ -298,9 +393,13 @@ def _child(what: str, name: str = "") -> dict:
 def measure(runs=True) -> dict:
     """The probe and (unless ``runs`` is False) the short runs, each in its own pinned interpreter."""
     t0 = time.time()
-    jobs = [("probe", "")] + ([("run", r[0]) for r in RUNS] if runs else [])
+    late = [r[0] for r in LATE if (LATE_DIR / r[1]).exists()] if runs else []
+    jobs = [("probe", "")] + [("late", n) for n in late] + ([("run", r[0]) for r in RUNS] if runs else [])
     with ThreadPoolExecutor(max(1, int(os.environ.get("TWIN_WORKERS", "1")))) as ex:
         res = list(ex.map(lambda j: _child(*j), jobs))
+    res_late = dict(zip(late, res[1:1 + len(late)]))
+    res = res[:1] + res[1 + len(late):]
+    jobs = jobs[:1] + jobs[1 + len(late):]
     pr = res[0]
     out = dict(what="twin/gpcheck6.py: the kernel probe and short BOFN and pKGFN runs under TWIN_PIN=portable; "
                     "sha256 of each probe group, and of each run's row, event log and GP state",
@@ -319,6 +418,12 @@ def measure(runs=True) -> dict:
                 out["runs"][name] = r
         engines = {r["engine"] for r in out["runs"].values()}
         out["engine"] = engines.pop() if len(engines) == 1 else None
+        out["late"] = {}
+        for name, r in res_late.items():
+            if "error" in r:
+                out["errors"][name] = r["error"]
+            else:
+                out["late"][name] = r
     out["seconds"] = round(time.time() - t0, 1)
     return out
 
@@ -335,11 +440,18 @@ def compare(got: dict, ref: dict) -> dict:
             g = got["runs"].get(name)
             out["runs"][name] = None if g is None else {k: g[k] == r[k] for k in ("row", "log", "gp")}
         out["engine_same"] = got.get("engine") == ref.get("engine")
+        if ref.get("late"):
+            out["late"] = {}
+            for name, r in ref["late"].items():
+                g = (got.get("late") or {}).get(name)
+                out["late"][name] = None if g is None else {k: g[k] == r[k] for k in ("log", "gp", "net")}
     ge, re_ = got.get("env") or {}, ref.get("env") or {}
     out["versions_differ"] = {k: [ge.get(k), re_.get(k)] for k in VERSION_KEYS if ge.get(k) != re_.get(k)}
     ok = bool(out["probe"]) and all(out["probe"].values())
     if "runs" in out:
         ok = ok and out["engine_same"] and all(v is not None and all(v.values()) for v in out["runs"].values())
+    if out.get("late"):
+        ok = ok and all(v is not None and all(v.values()) for v in out["late"].values())
     out["match"] = bool(ok) and not got.get("errors")
     return out
 
@@ -353,13 +465,17 @@ def _line(got: dict, cmp_: dict | None) -> dict:
         line["wrap"] = got["wrap"]                          # the CPU the libraries saw is the emulator's, not ``cpu``
     if cmp_ is not None:
         line.update(probe=cmp_["probe"], runs=cmp_.get("runs"))
+        if cmp_.get("late") is not None:
+            line["late"] = cmp_["late"]
         if cmp_["versions_differ"]:
             line["versions_differ"] = cmp_["versions_differ"]
         if cmp_.get("engine_same") is False:
             line["engine_same"] = False
     line["hashes"] = dict(probe={g: h[:16] for g, h in (got.get("probe") or {}).items()},
                           runs={n: {k: r[k][:16] for k in ("row", "log", "gp")}
-                                for n, r in (got.get("runs") or {}).items()})
+                                for n, r in (got.get("runs") or {}).items()},
+                          late={n: {k: r[k][:16] for k in ("log", "gp", "net")}
+                                for n, r in (got.get("late") or {}).items()})
     if got.get("errors"):
         line["errors"] = {k: v[-300:] for k, v in got["errors"].items()}
     return line
@@ -420,6 +536,8 @@ def main(argv) -> int:
                 code = None
             print(json.dumps(dict(probe=pr, env=fp, problems=R.problems6(fp), code=code,
                                   seconds=round(time.time() - t0, 1))))
+        elif argv[1] == "late":
+            print(json.dumps(late_run(argv[2])))
         elif argv[1] == "split":                            # _child split NAME CKPT [STOP_DAY]
             print(json.dumps(run(argv[2], ckpt=argv[3], stop_day=float(argv[4]) if len(argv) > 4 else None)))
         else:
@@ -446,6 +564,9 @@ def main(argv) -> int:
         vac = [n for n, r in got["runs"].items() if min(r["gp_nodes_fitted"].values()) < 1]
         if vac:
             raise SystemExit(f"not written: a campaign fitted no GP node in {vac}; lengthen the run (RUNS)")
+        idle = [n for n, r in (got.get("late") or {}).items() if not r["calls_over_chunk"]]
+        if idle:
+            raise SystemExit(f"not written: {idle} made no GP call over a chunk; they would not check the batching")
         REF.parent.mkdir(parents=True, exist_ok=True)
         REF.write_text(json.dumps(got, indent=1) + "\n")
         print(json.dumps(_line(got, None)))

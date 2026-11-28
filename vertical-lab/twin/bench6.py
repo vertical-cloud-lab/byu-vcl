@@ -8,6 +8,9 @@ slice needs to run part of it.
                                                     # job given its id carries it on to the row an unbroken run gives
     python -m twin.bench6 slices N|0 [GROUP ...]    # split the runs left into N lists of about equal run time (0:
                                                     # as many as keep each under SLICE_CORE_H core-hours)
+    python -m twin.bench6 plan GROUP ... --name NAME [--jobs N] [--speed LABEL=F ...]   # a workflow's plan: the
+                                                    # runs packed into jobs by LPT, with its waves and wall-clock
+                                                    # (out/twin6/slices/NAME.json; vertical-lab/ci/twin-slices.yml)
     python -m twin.bench6 run [experiment ...]      # run whole experiments here (not meant for one job: see status)
     python -m twin.bench6 smoke [DAYS|full] [GROUP|EXPERIMENT ...]   # seed 0 of each group, timed, rows not kept
     python -m twin.bench6 fold                      # append the slices' rows to their experiments, then pack
@@ -710,6 +713,136 @@ def slices(n: int, groups=None):
               f"{max(sec / 4, longest) / 3600:.1f} h on 4 cores (its longest run {longest / 3600:.1f} h)")
 
 
+# ------------------------------------------------------------------------------------------------- a plan of jobs
+PLAN_HOURS = 5.2                       # a job's time for runs (``ids --hours``): six hours less set-up, the GP check,
+                                       # the upload and a margin
+PLAN_OVERHEAD_H = 0.25                 # a job's set-up, GP check and upload (out/twin6/slices/README.md)
+PLAN_CONCURRENCY = 20                  # jobs GitHub runs at once for a free organization's public repository
+
+
+def job_waves(durs, workers=4, hours=PLAN_HOURS):
+    """How ``ids --hours`` gets through one job's runs in successive jobs ("waves"). ``durs``: the runs' hours. As
+    ``ids`` does: in each wave ``workers`` runs at a time, those carried over from a checkpoint first, then the
+    longest first; a run still going at ``hours`` stops (at its next simulated day) and carries on first in the next
+    wave; a run not started by then waits for the next. Returns each wave's busy hours (its last worker's end)."""
+    queue = [[d, d, False] for d in durs]           # [hours left, hours in all, carried over]
+    walls = []
+    while queue:
+        queue.sort(key=lambda q: (not q[2], -q[1]))
+        free = [0.0] * workers
+        nxt, end = [], 0.0
+        for q in queue:
+            w = min(range(workers), key=lambda i: free[i])
+            s = free[w]
+            if s >= hours:
+                nxt.append(q)
+                continue
+            if s + q[0] <= hours:
+                free[w] = s + q[0]
+            else:
+                q[0] -= hours - s
+                q[2] = True
+                free[w] = hours
+                nxt.append(q)
+            end = max(end, free[w])
+        walls.append(end)
+        queue = nxt
+        if len(walls) > 100:
+            raise RuntimeError("a run that never ends")
+    return walls
+
+
+def _lpt(est, n):
+    """Longest processing time first: each run (the longest first) to the job with the least estimated work so far."""
+    bins = [[0.0, k, []] for k in range(1, n + 1)]
+    for sec, name, c in est:
+        b = min(bins, key=lambda b: (b[0], b[1]))
+        b[0] += sec
+        b[2].append((sec, name, c))
+    return bins
+
+
+def _plan_eval(bins, speed, workers, hours, overhead, concurrency):
+    """Waves and wall-clock for jobs ``bins`` on a runner ``speed`` times as slow as the one the seconds are for."""
+    walls = [job_waves([s * speed / 3600.0 for s, _, _ in b[2]], workers, hours) for b in bins]
+    n_w = max(len(w) for w in walls)
+    per_wave = []
+    for i in range(n_w):
+        lens = sorted((w[i] + overhead for w in walls if len(w) > i), reverse=True)
+        slots = [0.0] * min(concurrency, len(lens))
+        for x in lens:                              # the jobs of a wave on ``concurrency`` runners, longest first
+            j = min(range(len(slots)), key=lambda k: slots[k])
+            slots[j] += x
+        per_wave.append(dict(jobs=len(lens), wall_h=round(max(slots), 2), runner_h=round(sum(lens), 1)))
+    return dict(waves=n_w, wall_h=round(sum(w["wall_h"] for w in per_wave), 2), per_wave=per_wave,
+                runner_h=round(sum(w["runner_h"] for w in per_wave), 1),
+                job_waves=[len(w) for w in walls])
+
+
+def plan(groups, name, jobs=None, speeds=None, hours=PLAN_HOURS, workers=4, overhead=PLAN_OVERHEAD_H,
+         concurrency=PLAN_CONCURRENCY, out=None, note=None):
+    """A plan of jobs for a workflow (vertical-lab/ci/twin-slices.yml): the runs left in ``groups`` (experiments or
+    tiers) packed into jobs by LPT on their estimated seconds (``timings``), each job a list of run ids that one
+    runner works through with ``ids --hours``, wave after wave, a run longer than a wave carried over by checkpoint.
+    ``speeds``: {label: how many times slower than the runner the seconds were measured on}; the number of jobs, unless
+    given, is the fewest that need no more waves, at every speed, than the longest run does on its own (and no more
+    than ``concurrency``, so that a wave's jobs all run at once). Written to ``out/twin6/slices/<name>.json``."""
+    tm = timings()
+    todo = order(_left())
+    want = set(groups)
+    todo = [t for t in todo if t[0] in want or f"tier{TIERS.get(t[0], 9)}" in want]
+    if not todo:
+        raise SystemExit(f"no runs left in {sorted(want)}")
+    missing = [run_id(c) for _, c in todo if est_seconds(c, tm) is None]
+    if missing:
+        raise SystemExit(f"no time estimate for {missing[:5]}")
+    est = sorted([(est_seconds(c, tm), n, c) for n, c in todo], key=lambda x: (-x[0], run_id(x[2])))
+    speeds = speeds or {"reference": 1.0}
+    total = sum(e[0] for e in est)
+    floor = {sp: len(job_waves([est[0][0] * f / 3600.0], workers, hours)) for sp, f in speeds.items()}
+    cand = {}
+    lo = max(1, math.ceil(total * min(speeds.values()) / 3600.0 / (workers * hours * max(floor.values()))))
+    for n in range(lo, max(lo, concurrency) + 1):
+        bins = _lpt(est, n)
+        ev = {sp: _plan_eval(bins, f, workers, hours, overhead, concurrency) for sp, f in speeds.items()}
+        cand[n] = (bins, ev)
+    if jobs is None:
+        ok = [n for n, (_, ev) in cand.items() if all(ev[sp]["waves"] == floor[sp] for sp in speeds)]
+        jobs = min(ok) if ok else min(cand, key=lambda n: (max(cand[n][1][sp]["waves"] for sp in speeds), n))
+    if jobs not in cand:
+        bins = _lpt(est, jobs)
+        cand[jobs] = (bins, {sp: _plan_eval(bins, f, workers, hours, overhead, concurrency) for sp, f in speeds.items()})
+    bins, ev = cand[jobs]
+    code = _code()
+    rec = dict(
+        name=name,
+        what=(f"round 6's compute plan '{name}': the runs of {', '.join(sorted(want))} packed into {jobs} jobs by LPT "
+              f"on their estimated CPU seconds (twin/bench6.py plan); each job is one runner working through its "
+              f"run ids with `ids --hours {hours:g}`, a wave at a time, a run still going at {hours:g} h carried on "
+              f"by the same job of the next wave from its checkpoint. Everything is simulated."),
+        made_by=f"python -m twin.bench6 plan {' '.join(groups)} --name {name}" + (f" --jobs {jobs}" if jobs else ""),
+        twin_tree=code.get("twin_tree"), commit=code.get("commit"), twin_dirty=code.get("twin_dirty"),
+        hours=hours, workers=workers, overhead_h=overhead, concurrency=concurrency, speeds=speeds,
+        n_runs=len(est), cpu_hours=round(total / 3600.0, 1),
+        expected={sp: dict(waves=e["waves"], wall_h=e["wall_h"], runner_h=e["runner_h"], per_wave=e["per_wave"],
+                           least_waves=floor[sp]) for sp, e in ev.items()},
+        alternatives={str(n): {sp: dict(waves=e["waves"], wall_h=e["wall_h"], runner_h=e["runner_h"])
+                               for sp, e in v[1].items()} for n, v in sorted(cand.items())},
+        jobs=[dict(job=b[1], est_cpu_h=round(b[0] / 3600.0, 2), n_runs=len(b[2]),
+                   waves={sp: ev[sp]["job_waves"][i] for sp in speeds},
+                   runs=[run_id(c) for _, _, c in b[2]]) for i, b in enumerate(bins)],
+        runs={run_id(c): dict(experiment=n, est_cpu_s=round(s), how=tm[group_key(c)]["how"]) for s, n, c in est})
+    if note:
+        rec["note"] = note
+    p = Path(out) if out else SLICES / f"{name}.json"
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(rec, indent=1) + "\n")
+    print(f"{p}: {len(est)} runs, {total / 3600:.0f} CPU-hours, {jobs} jobs; " +
+          "; ".join(f"{sp} ({f:g}x): {ev[sp]['waves']} waves, {ev[sp]['wall_h']:.1f} h wall, "
+                    f"{ev[sp]['runner_h']:.0f} runner-hours" for sp, f in speeds.items()))
+    return rec
+
+
 def smoke(days=None, groups=None, workers=3, seed=0):
     """Seed 0 of each group (or of the groups or experiments named), run for ``days`` simulated days (None: the two
     full years), timed, the rows not kept (outputs under /tmp). Writes ``checks/smoke.json``: each group's
@@ -876,6 +1009,23 @@ def main(argv):
         return 1 if run_ids(ids, workers, k, hours) else 0
     if argv[0] == "slices":
         slices(int(argv[1]), argv[2:])
+        return 0
+    if argv[0] == "plan":                  # plan GROUP ... --name NAME [--jobs N] [--speed LABEL=F ...] [--note TEXT]
+        args, opt = [], {"speed": []}
+        it = iter(argv[1:])
+        for a in it:
+            if a.startswith("--"):
+                v = next(it)
+                if a == "--speed":
+                    opt["speed"].append(v)
+                else:
+                    opt[a[2:]] = v
+            else:
+                args.append(a)
+        sp = {kv.split("=")[0]: float(kv.split("=")[1]) for kv in opt["speed"]} or None
+        plan(args, opt.get("name", "plan"), int(opt["jobs"]) if "jobs" in opt else None, sp,
+             hours=float(opt.get("hours", PLAN_HOURS)), concurrency=int(opt.get("concurrency", PLAN_CONCURRENCY)),
+             note=opt.get("note"))
         return 0
     if argv[0] == "smoke":
         days = None if len(argv) < 2 or argv[1] in ("full", "730") else int(argv[1])
