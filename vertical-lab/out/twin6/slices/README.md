@@ -45,15 +45,27 @@ EPYC 7763 in every part (`../checks/gpcheck_7763_vs_ref_701dea1.json`).
 
 ## The plan
 
-`python -m twin.bench6 plan tier1 --name tier1 --speed 9V45=1 --speed 7763=F` packs the runs left in tier 1 into jobs
+`python -m twin.bench6 plan tier1 --name tier1 --speed 9V45=1 --speed 7763=2.1` packs the runs left in tier 1 into jobs
 by LPT (longest processing time first: each run, the longest first, to the job with the least estimated work so far)
 on their estimated CPU seconds (`status`'s, `../left.md`), then simulates each job as `ids --hours 5.2` works through
 it: four runs at a time, those carried over from a checkpoint first and then the longest first, a run still going at
-5.2 hours carried on by the next wave, a run not started by then waiting for it. It takes the fewest jobs that need no
-more waves, at each runner speed, than the longest run needs on its own, and no more than 20 (a free organization's
-concurrent jobs, so a wave runs at once). `--jobs N` sets the number instead.
+5.2 hours carried on by the next wave, a run not started by then waiting for it. It takes the number of jobs (up to
+20, a free organization's concurrent jobs, so that a wave runs at once) with the fewest waves at both speeds, then the
+least wall-clock, then the fewest jobs. `--jobs N` sets the number instead.
 
 The seconds are CPU seconds on the EPYC 9V45 that timed round 6. GitHub's 4-vCPU runners are not all the same CPU:
-this job ran on an EPYC 7763, about F times slower per run for the same code (`../checks/batch.md`). A wave's jobs
+this job ran on an EPYC 7763, about 2.1 times slower per run for the same code (`../checks/batch.md`). A wave's jobs
 can land on either, and a run carried over to the next wave may change CPU, which the check allows (every CPU that
 passes it computes the same rows). The plan gives the waves and wall-clock for both.
+
+**`tier1.json`**: 192 runs, 484 CPU-hours on a 9V45, in 16 jobs of 12 runs (2 of the automated lab's pKGFN at 8.9 h,
+2 of its BOFN at 4.6 h, and 8 cheap runs: 30.3 CPU-hours a job).
+
+| | On 9V45s | On 7763s (2.1x) |
+|---|---|---|
+| Waves | 2 | 4 |
+| Wall-clock (each wave's jobs at once, 0.25 h of set-up and check a job) | 9.3 h | 19.6 h |
+| Runner-hours | 150 | 313 |
+
+Plus the time between a wave's end and the next dispatch. Expect something between the two columns. The plan's
+`alternatives` give the same for 1-20 jobs: 13 jobs need the same waves and 0.7-1.4 h more; more than 16 gain nothing.

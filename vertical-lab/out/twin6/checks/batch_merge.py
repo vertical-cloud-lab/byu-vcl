@@ -10,8 +10,10 @@ and this runner's speed against the one round 6 was timed on.
   runs, made on the engine before the batching (``timing6.md``; ``smoke.json`` records them as ``extrapolated``).
   Their seconds before the cell (day 200 of the timing run's curve, where the GP calls are few and small) are kept and
   the rest is multiplied by 0.92 (the faster trial settings of 74254fe, on which the A/B ran) and by the policy's ``r``
-  at the latest day measured: ``new = pre + (old - pre) x 0.92 x r``, for the low and high ends alike. The conventional lab's BOFN and pKGFN keep their measured two-year seconds (small nodes and a
-  small share of GP work: the saving there is smaller and wasn't measured), so they are, if anything, high.
+  at the latest day measured (the saving shrinks as a run goes on, and most of a run's cost comes after day 400):
+  ``new = pre + (old - pre) x 0.92 x r``, for the low and high ends alike. The conventional lab's BOFN and pKGFN keep
+  their measured two-year seconds (small nodes and a small share of GP work: the saving there is smaller and wasn't
+  measured), so they are, if anything, high.
 * **This runner's speed** (``speed``): the same code on this runner and on the EPYC 9V45 that timed round 6, every vCPU
   busy on both: the unbatched timing runs (``timing6b_progress.jsonl``, the engine before the batching) and the
   heuristic and funnel (``timing6b_calib.jsonl``, no GP at all) against the same runs' curves in
@@ -43,24 +45,31 @@ def _lines(p):
 
 
 def ratios():
-    """{policy: [(from_day, days, cpu with, cpu without, r)]}, from the A/B lines (pairs by label and day)."""
-    by = {}
+    """{policy: [pairs]}, from the A/B lines: each ``ab`` writes its two arms one after the other, so a pair is the next
+    line with the same label, day and length and the other ``chunk``; a pair measured twice is kept twice. Each pair
+    records the load average at its arms' ends (how many processes shared the four vCPUs)."""
+    pend, out = {}, {}
     for r in _lines(AB):
-        by.setdefault((r["label"], r["from_day"], r["days"]), {})[str(r["chunk"])] = r
-    out = {}
-    for (label, d, n), v in sorted(by.items(), key=lambda kv: kv[0][1]):
-        if "64" in v and "None" in v:
-            pol = "pkgfn3" if "pkgfn3" in label else "bofn3"
-            a, b = v["64"]["cpu_seconds"], v["None"]["cpu_seconds"]
-            out.setdefault(pol, []).append(dict(from_day=d, days=n, cpu_batched=a, cpu_unbatched=b,
-                                                ratio=round(a / b, 4)))
+        key = (r["label"], r["from_day"], r["days"])
+        d = pend.setdefault(key, {})
+        d[str(r["chunk"])] = r
+        if "64" in d and "None" in d:
+            pol = "pkgfn3" if "pkgfn3" in r["label"] else "bofn3"
+            a, b = d["64"]["cpu_seconds"], d["None"]["cpu_seconds"]
+            out.setdefault(pol, []).append(dict(from_day=r["from_day"], days=r["days"], cpu_batched=a, cpu_unbatched=b,
+                                                ratio=round(a / b, 4),
+                                                load=[d["64"].get("load1"), d["None"].get("load1")]))
+            del pend[key]
+    for v in out.values():
+        v.sort(key=lambda x: x["from_day"])                 # stable: a repeat stays after the first
     return out
 
 
 def curves(p):
     c = {}
     for x in _lines(p):
-        c.setdefault(x["label"], {})[x["day"]] = x["cpu"]
+        if "day" in x and "cpu" in x:                       # progress lines (not a run's closing summary)
+            c.setdefault(x["label"], {})[x["day"]] = x["cpu"]
     return c
 
 
@@ -90,16 +99,19 @@ def main():
          "`timing6b_calib.jsonl` and round 6's timing runs (`timing6_progress.jsonl`). Everything is simulated.", "",
          "**The saving on identical work** (the same saved state carried on with 64-point GP calls and without, side "
          "by side on this runner):", "",
-         "| Policy | From day | Days | CPU s, 64-point calls | CPU s, one call | Ratio |", "|---|---|---|---|---|---|"]
+         "| Policy | From day | Days | CPU s, 64-point calls | CPU s, one call | Ratio | Load at the arms' ends |",
+         "|---|---|---|---|---|---|---|"]
     for pol, xs in sorted(rs.items()):
         for x in xs:
             L.append(f"| {pol} | {x['from_day']} | {x['days']} | {x['cpu_batched']:,.0f} | {x['cpu_unbatched']:,.0f} | "
-                     f"{x['ratio']:.3f} |")
-    use = {pol: xs[-1]["ratio"] for pol, xs in rs.items() if xs}
+                     f"{x['ratio']:.3f} | {' / '.join(str(v) for v in x['load'])} |")
+    last = {pol: max(x["from_day"] for x in xs) for pol, xs in rs.items() if xs}
+    use = {pol: max(x["ratio"] for x in xs if x["from_day"] == last[pol]) for pol, xs in rs.items() if xs}
     L += ["", "**The grid's seconds** (`smoke.json`, two-year CPU seconds on the 9V45, which `status` and `plan` "
               "read): `new = pre + (old - pre) x 0.92 x r`: `old` the extrapolation of round 6's timing run on the "
               "engine it used (568ab5f), `pre` its CPU seconds at day 200, 0.92 the faster trial settings (74254fe, "
-              "notes section 10), `r` the batching's ratio for the policy at the latest day measured.", "",
+              "notes section 10), `r` the batching's ratio for the policy at the latest day measured (the larger, if measured twice): "
+              "the saving shrinks as a run goes on, and most of a run's cost comes after day 400.", "",
           "| Group | r | The timing runs' engine (568ab5f), low-high | Batched, low-high |", "|---|---|---|---|"]
     for g, (pol, label) in GROUPS.items():
         f = (rec["groups"].get(g) or {}).get("full")

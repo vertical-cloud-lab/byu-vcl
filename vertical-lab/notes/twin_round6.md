@@ -611,3 +611,160 @@ they were. What would cut the cost further changes results, and is Sterling's to
 calls (15-20 % of a run, last-bit differences), fewer candidates valued per decision, fewer draws through the network
 or a smaller cap on a node's data (more, and the policies change), or 12 seeds instead of 16 for the automated lab's
 network arms (a quarter of their cost).
+
+
+## 11. Tier 1 on Actions: batched GP predictions, the plan and the workflow (PR 427, 2026-11-28)
+
+Sterling, on PR 427 (2026-11-28 01:55 UTC): "Round 6, next step: run the main arms (tier 1) on a plain Actions
+workflow, with batched GP predictions. … Predict in 64-point calls, as your note proposed (15-20 % faster). It changes
+last digits, and I accept that. Make it round 6's default." This job made the change, remade the checks, re-timed
+the runs that cost the most, planned tier 1 and wrote the workflow. **It made no row of the grid.**
+
+**The change** (`twin/opt/gp.py` `Node.predict`, `twin/opt/net6.py` `PREDICT_CHUNK`). Every GP node of round 6's BOFN
+and pKGFN predicts at most 64 points per posterior call, along the points axis of its input (the atomize search's
+1,024 points, 16 candidates x 64 settings; the network's draws over up to 384 candidates, in 24 sample batches).
+gpytorch builds the joint predictive covariance of every point in a call and the policies use its diagonal, so a call
+over M points did M x M work on top of its M solves. Rounds 2-5's nodes have no `chunk` and compute what they did. On a
+300-point node (this runner, one thread): 1,024 points 174 -> 70 ms, 24 x 384 points 807 -> 427 ms, and means and
+standard deviations move by up to 8e-14 (`test_round6_policies_predict_in_64_point_calls`).
+
+**What it saves, on identical work** ([`out/twin6/checks/batch.md`](../out/twin6/checks/batch.md), made by
+`checks/batch_merge.py` from `timing6b_ab.jsonl`). The same saved state of the main arm (seed 0, 64x) carried on for the
+same ten simulated days with 64-point calls and without, side by side on this runner:
+
+| Policy | From day | 64-point calls, CPU s | One call, CPU s | Saving | Processes sharing the 4 vCPUs |
+|---|---|---|---|---|---|
+| BOFN | 300 | 153 | 203 | 24 % | 4-6 |
+| BOFN | 300 | 158 | 231 | 32 % | 10-14 |
+| BOFN | 350 | 226 | 294 | 23 % | 10-12 |
+| BOFN | 400 | 348 | 405 | 14 % | 2-3 |
+| pKGFN | 300 | 171 | 249 | 31 % | 3-5 |
+| pKGFN | 300 | 181 | 303 | 40 % | 9-14 |
+| pKGFN | 350 | 276 | 365 | 24 % | 8-11 |
+| pKGFN | 400 | 360 | 418 | 14 % | 5-6 |
+
+Two things move it. **The day**: under a slice's load (four processes on four vCPUs) the saving is 24-31 % at day 300
+and 14 % at day 400; as a run goes on, the large calls are a smaller share of a decision's work (the parts in
+progress, the fits and the simulation itself all grow). **The load**: on a runner with more processes than vCPUs the
+saving looks larger (32-40 % at day 300), because the dense covariance work suffers most from sharing a core. Most
+of a two-year run's cost comes after day 400, so the grid is priced with day 400's ratio, 0.86 for both policies:
+the note's 15-20 % is about right for a whole run, and twice that early on. If the saving fell to nothing after day
+400, a two-year run would cost up to about 13-14 % more than priced.
+
+**The GP check couldn't see it, and now can.** Remade on the batched engine, the reference's hashes for the three short
+runs came out byte for byte the old reference's. None of those 200-220-day runs gets as far as a network valuation
+(every node that a valuation needs ready), so they never made a GP call over 64 points that mattered: the batching,
+and the network's work that is most of a grid run's, were outside the check. `gpcheck6` now also runs **two late
+runs**: the committed checkpoints of the main BOFN and pKGFN arm at day 300 (`out/twin6/checks/late/`, 13.3 and 8.5 MB,
+made by the timing runs below, 89 days after the cell) carried on for two simulated days, hashed by event log, GP
+state and what the network computed (every listed candidate's utility draws, value and chance of powder). In those
+two days they make 2,852 and 5,377 posterior calls, 208 and 242 of them over 64 points, with all ten nodes of each
+campaign fitted. `write` refuses a late run that makes none.
+* **The reference** ([`gpcheck.json`](../out/twin6/checks/gpcheck.json)): made on this runner, an AMD EPYC 7763, at
+  `3136810`. The old one is kept as `gpcheck_ref_568ab5f_9v45.json`.
+* **The checkpoint-resume check** ([`gpcheck_resume.json`](../out/twin6/checks/gpcheck_resume.json)): all five runs
+  match in every part: the three short runs stopped half way, and the late runs stopped at day 301, each saved in
+  one fresh interpreter and carried on in another.
+* **The check on the final engine** (`twin/` tree `e3d828c`, commit `e173728`, the tree the plan and the slice
+  procedure pin; [`gpcheck_check_e173728.json`](../out/twin6/checks/gpcheck_check_e173728.json)): exit 0, every
+  probe group, the three short runs and both late runs.
+* **This runner against the 9V45 reference, before the change** ([`gpcheck_7763_vs_ref_701dea1.json`](../out/twin6/checks/gpcheck_7763_vs_ref_701dea1.json)):
+  every probe group and all three runs' row, log and GP state match. Round 5's `avx2` rows differed between exactly
+  these two CPUs; under `portable` they agree, the first test of the pin on a real EPYC 7763 (section 9 listed it as
+  not done).
+
+**The pin is `portable`, not `avx2`.** Sterling's request named `TWIN_PIN=avx2`. Round 6's pin is `portable`:
+`avx2`'s kernels plus the three fixes section 5 found. `bench6 ids` refuses any other pin, and under `avx2` alone round
+5's rows differed between an EPYC 7763 and a 9V45, both CPUs that GitHub's 4-vCPU runners have. The workflow sets
+`TWIN_PIN: portable`.
+
+**The re-timing** (`checks/timing6b.py`, `timing6b_progress.jsonl`). Seed 0 of `r6_vertical_parallel_bofn3_reorder` and
+`..._pkgfn3_reorder` (two years, 64x) on the batched engine, with the same two runs on the engine before it beside
+them, so that all four vCPUs were busy as in a slice, saved every 50 days from day 200 on.
+
+CPU seconds so far, every vCPU of this runner busy (four to twelve processes on its four):
+
+| Run (seed 0, 64x) | day 100 | day 200 | day 250 | day 300 | day 350 | day 400 | Last day | CPU s a day, last 50 days |
+|---|---|---|---|---|---|---|---|---|
+| BOFN, batched (this runner, EPYC 7763) | 296 | 628 | 947 | 1,622 | 2,682 | 4,229 | 400 | 30.9 |
+| BOFN, before the batching (this runner) | 365 | 838 | 1,212 | 2,085 | 3,604 |  | 350 | 30.4 |
+| BOFN, round 6's timing run (EPYC 9V45, 568ab5f) | 170 | 421 | 650 | 1,195 | 2,078 | 3,295 | 500 | 43.0 |
+| pKGFN, batched (this runner) | 279 | 594 | 894 | 1,448 | 2,486 | 4,102 | 400 | 32.3 |
+| pKGFN, before the batching (this runner) | 365 | 828 | 1,162 | 1,956 | 3,491 |  | 350 | 30.7 |
+| pKGFN, round 6's timing run (EPYC 9V45, 568ab5f) | 170 | 414 | 613 | 1,085 | 1,997 | 3,315 | 480 | 60.7 |
+
+The batched runs stopped at day 400 and the others at day 350, so that the job could finish
+(`timing6b_stopped.json`). Two things make whole runs a poor measure of the saving, and the A/B above the right one.
+The pairs part company once a decision turns on a last bit. And a process that shares a core does less work per CPU
+second: the batched runs ran their first 200 days with fewer neighbours than the unbatched ones, and identical work
+cost them 628 CPU s against 838. The batched runs' own curves, extrapolated from day 400 the way round 6's were from
+day 480-510 (`timing6.extrapolate`: low at the last 50 days' rate, high with it still rising), give 14,400-27,100 CPU s
+(BOFN) and 14,800-26,800 (pKGFN) for two years on this runner, about 7,000-13,100 on a 9V45. That is at or below what
+the grid is priced at (below): the cost a day was still climbing steeply at day 400 (on the old engine, 11 CPU s a
+day at day 300 and 43-61 at day 480-510 on the 9V45), and an extrapolation from earlier on that climb runs low. So the
+grid keeps round 6's day-480-510 extrapolations as its basis, times the measured savings.
+
+**GitHub's runners differ by about 2x.** The same code costs this EPYC 7763 about twice the CPU seconds per simulated
+day that it cost the EPYC 9V45 round 6 was timed on, every vCPU busy on both (`batch.md`): 2.0-2.3 for the unbatched
+runs before the cell, falling to 1.75 by day 300-350, where the 9V45 ran the slower engine (568ab5f, without the
+faster trial settings); 2.09 over 200 days for the heuristic and funnel, which use no GP and are the same code in
+both engines. The grid's seconds stay the 9V45's, and the plan gives waves for both CPUs, the 7763 at 2.1x.
+
+**The seconds per group** ([`left.md`](../out/twin6/left.md), `python -m twin.bench6 status`). The automated lab's BOFN
+and pKGFN are priced from round 6's timing runs, as before, times 0.92 (the faster trial settings, section 10) and
+times the batching's measured ratio after day 200 (`batch_merge.py`, into `smoke.json`); the groups priced from them
+follow. The conventional lab's BOFN and pKGFN keep their measured two-year seconds (their nodes are small and the
+saving there wasn't measured), so they are, if anything, high.
+
+| Group (tier 1) | CPU s a run on a 9V45, before (701dea1) | Batched | How |
+|---|---|---|---|
+| automated lab, BOFN, stocked and lean | 19,068 | **16,494** (4.6 h) | round 6's timing run, extrapolated from day 500, x 0.92 x 0.860 after day 200 |
+| automated lab, pKGFN, stocked and lean | 36,920 | **31,864** (8.9 h) | from day 480, x 0.92 x 0.861 after day 200 |
+| conventional lab, BOFN / pKGFN | 1,755 / 1,882 | 1,755 / 1,882 | measured two-year runs, left as they were |
+| automated / conventional lab, heuristic and funnel | 1,299 / 1,187 | 1,299 / 1,187 | measured, no GP |
+
+The low ends (the latest rate held) are 13,727 and 17,934 CPU s. **Tier 1: 484 CPU-hours** (595 before, 552 with the
+0.92). **The whole grid: 2,864-4,051 core-hours, 716-1,013 runner-hours on 9V45s** (3,251-4,630 and 813-1,157
+before), about twice that on 7763s ([`grid_hours.md`](../out/twin6/checks/grid_hours.md)).
+
+**Tier 1's plan** ([`out/twin6/slices/tier1.json`](../out/twin6/slices/tier1.json), `python -m twin.bench6 plan`). The 12
+`arms` groups x 16 seeds (192 runs) packed into jobs by LPT on those seconds, each job simulated as `ids --hours 5.2`
+works through it, wave after wave, a run longer than a wave carried over by checkpoint
+([`slices/README.md`](../out/twin6/slices/README.md)):
+
+| | On 9V45s | On 7763s (2.1x) |
+|---|---|---|
+| Jobs (each 12 runs: 2 of the automated lab's pKGFN, 2 of its BOFN, 8 cheap; 30.3 CPU-hours on a 9V45) | 16 | 16 |
+| Waves | **2** | **4** |
+| Wall-clock (each wave's jobs at once, 0.25 h of set-up and check a job) | **9.3 h** | **19.6 h** |
+| Runner-hours | 150 | 313 |
+
+Plus the time between one wave's end and the next dispatch. A wave's jobs can land on either CPU, and a run carried
+over may change CPU between waves, which the GP check allows: expect between the two columns. The longest run sets the
+waves: pKGFN at 8.9 h on a 9V45 needs two, at 18.6 h on a 7763 four. With 13 jobs instead of 16 the waves are the same
+and the wall-clock 0.7-1.4 h longer (`alternatives` in the plan); more than 16 gains nothing. `max_parallel` caps how
+many run at once, to leave runners for the organization's other workflows.
+
+**The workflow** ([`ci/twin-slices.yml`](../ci/twin-slices.yml), for Sterling to move to `.github/workflows/`; helper
+[`ci/twin_slices.py`](../ci/twin_slices.py)). `workflow_dispatch` with the branch, the plan and optionally the previous
+wave's run id; a matrix over the plan's jobs that still have runs without a row. Each job checks that `twin/` is the
+plan's engine, installs the pinned packages, restores its checkpoints from the previous wave's artifacts, reruns the
+committed GP rows (`gpcheck6`: the probe, the three short runs and the two late runs, side by side; any difference
+stops the job before it makes a row), runs `bench6 ids <its runs> --slice tier1-<k> --workers 4 --hours 5.2`, and
+uploads its rows, event logs, check and manifest, and its checkpoints. A last job merges every job's rows into
+`runs/arms.slice-tier1-<k>.jsonl` (one row per run id), commits them with the event logs, checks and manifests in one
+push, and lists the runs still waiting on a checkpoint. `GITHUB_TOKEN` only (`contents: write`, `actions: read`), no
+Claude. actionlint passes.
+
+**Tested here** (`ci/test_twin_slices.sh`, [`slices/workflow_test/`](../out/twin6/slices/workflow_test/)): a plan of two
+jobs, each one short run (40 days; the automated lab's BOFN and the conventional lab's heuristic and funnel, seed 5),
+through the workflow's own commands. Wave 1 stopped both runs by `--hours` at day 2 and saved them; wave 2 restored
+the checkpoints and carried them on to their rows; **both rows and event logs are the ones unbroken runs give**, with
+both jobs' shares in `timing.segments`. The fold on those artifacts plus fabricated ones (a job whose run waits on a
+checkpoint, a job that left no manifest, a row that comes twice) kept each row once, listed the waiting run with its
+day and the job with no manifest, and changed nothing when run a second time. The rows record `twin/` as changed
+during the test, correctly: the plan's selection rule was committed while it ran, and the simulation's code was not
+touched (the unbroken runs, made afterwards on the final tree, give the same rows). The round-6 test suite passes (24
+tests, two of them new: the batched predictions, and a plan's wave arithmetic; and `test_market6`), and actionlint
+passes the workflow. Not tested here: the Actions-specific parts (artifact upload and download across runs, the
+matrix, the push), which only a run of the workflow can show.

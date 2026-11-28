@@ -1411,7 +1411,7 @@
    },
    "full": {
     "seconds": null,
-    "cpu_seconds": 20726,
+    "cpu_seconds": 16494,
     "days": 730,
     "scale": 64,
     "source": "checks/timing6_progress.jsonl",
@@ -1423,7 +1423,21 @@
      "low": 17230,
      "high": 20726
     },
-    "how": "extrapolated from day 500 of a two-year run (seed 0): the cautious end, 17,230-20,726 s"
+    "how": "extrapolated from day 500 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.860 (64-point GP calls, measured) after day 200 (checks/batch.md): 13,727-16,494 s",
+    "unbatched": {
+     "low": 17230,
+     "high": 20726,
+     "cpu_seconds": 20726,
+     "how": "extrapolated from day 500 of a two-year run (seed 0): the cautious end, 17,230-20,726 s"
+    },
+    "batched": {
+     "ratio": 0.8604,
+     "trials": 0.92,
+     "pre_cell_cpu": 421.2,
+     "low": 13727,
+     "high": 16494,
+     "source": "checks/timing6b_ab.jsonl"
+    }
    }
   },
   "r6_vertical_parallel_bofn3_reorder_atom-3h": {
@@ -1625,7 +1639,7 @@
    },
    "full": {
     "seconds": null,
-    "cpu_seconds": 18195,
+    "cpu_seconds": 14432,
     "days": 730,
     "scale": 16,
     "source": "checks/timing6_progress.jsonl",
@@ -1637,7 +1651,21 @@
      "low": 17370,
      "high": 18195
     },
-    "how": "extrapolated from day 510 of a two-year run (seed 0): the cautious end, 17,370-18,195 s"
+    "how": "extrapolated from day 510 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.860 (64-point GP calls, measured) after day 200 (checks/batch.md): 13,779-14,432 s",
+    "unbatched": {
+     "low": 17370,
+     "high": 18195,
+     "cpu_seconds": 18195,
+     "how": "extrapolated from day 510 of a two-year run (seed 0): the cautious end, 17,370-18,195 s"
+    },
+    "batched": {
+     "ratio": 0.8604,
+     "trials": 0.92,
+     "pre_cell_cpu": 141.3,
+     "low": 13779,
+     "high": 14432,
+     "source": "checks/timing6b_ab.jsonl"
+    }
    }
   },
   "r6_vertical_parallel_bofn3_reorder_hpc256": {
@@ -2595,7 +2623,7 @@
    },
    "full": {
     "seconds": null,
-    "cpu_seconds": 40131,
+    "cpu_seconds": 31864,
     "days": 730,
     "scale": 64,
     "source": "checks/timing6_progress.jsonl",
@@ -2607,7 +2635,21 @@
      "low": 22539,
      "high": 40131
     },
-    "how": "extrapolated from day 480 of a two-year run (seed 0): the cautious end, 22,539-40,131 s"
+    "how": "extrapolated from day 480 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.861 (64-point GP calls, measured) after day 200 (checks/batch.md): 17,934-31,864 s",
+    "unbatched": {
+     "low": 22539,
+     "high": 40131,
+     "cpu_seconds": 40131,
+     "how": "extrapolated from day 480 of a two-year run (seed 0): the cautious end, 22,539-40,131 s"
+    },
+    "batched": {
+     "ratio": 0.8607,
+     "trials": 0.92,
+     "pre_cell_cpu": 414.2,
+     "low": 17934,
+     "high": 31864,
+     "source": "checks/timing6b_ab.jsonl"
+    }
    }
   },
   "r6_vertical_parallel_pkgfn3_reorder_atom-3h": {
@@ -2809,7 +2851,7 @@
    },
    "full": {
     "seconds": null,
-    "cpu_seconds": 25391,
+    "cpu_seconds": 20135,
     "days": 730,
     "scale": 16,
     "source": "checks/timing6_progress.jsonl",
@@ -2821,7 +2863,21 @@
      "low": 19126,
      "high": 25391
     },
-    "how": "extrapolated from day 500 of a two-year run (seed 0): the cautious end, 19,126-25,391 s"
+    "how": "extrapolated from day 500 of a two-year run (seed 0) on the timing runs' engine, x 0.92 (the faster trial settings) x 0.861 (64-point GP calls, measured) after day 200 (checks/batch.md): 15,174-20,135 s",
+    "unbatched": {
+     "low": 19126,
+     "high": 25391,
+     "cpu_seconds": 25391,
+     "how": "extrapolated from day 500 of a two-year run (seed 0): the cautious end, 19,126-25,391 s"
+    },
+    "batched": {
+     "ratio": 0.8607,
+     "trials": 0.92,
+     "pre_cell_cpu": 142.1,
+     "low": 15174,
+     "high": 20135,
+     "source": "checks/timing6b_ab.jsonl"
+    }
    }
   },
   "r6_vertical_parallel_pkgfn3_reorder_hpc256": {
