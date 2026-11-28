@@ -389,5 +389,17 @@
    "start_s": 210.5,
    "seconds": 7.0
   }
+ ],
+ "youtube": [
+  {
+   "id": "b3kamYpyCpo",
+   "url": "https://www.youtube.com/watch?v=b3kamYpyCpo",
+   "sha256": "adc0ad65a4352803b1acbf62ac2d4df2c921c17ba610d59620c9cdc052b9a303",
+   "privacy": "public",
+   "title": "The vertical cloud lab, November 2026: the alloy route, what's new, and the digital twin (3-D)",
+   "notified_subscribers": true,
+   "description_commit": "3710709",
+   "uploaded": "2026-11-28T08:40:52Z"
+  }
  ]
 }

@@ -114,7 +114,8 @@ SHOTS = [
          source_s=[[329.0, 332.5], [497.0, 504.5]],   # the same seconds in 2brsz-90seg (out/footage/manifest.json)
          photo="out/footage/nab_k7m2q9_sieved_three_jars.jpg",
          badges=("REAL FOOTAGE · 27 OCT 2026", "REAL PHOTO · 29 OCT 2026 · SIEVED: <63, 64-250, >250 µm"),
-         caption="AMAZEMET rePowder, 27 Oct 2026: 630 bronze molten, then atomizing on the plate (youtu.be/2brsz-90seg) "
+         caption="AMAZEMET rePowder, 27 Oct 2026: 630 bronze molten, then atomizing on the plate "
+                 "(youtu.be/2brsz-90seg) "
                  "· with 28 Oct's run, 1,015 g sieved under 250 µm from 1,938 g charged (DAL PR 286)",
          what="The lab's own run k7m2q9: the melt through the furnace port, the jet atomizing through the view port, "
               "and its sieved powder."),
@@ -293,7 +294,7 @@ def window(s: dict) -> tuple[Path, float]:
 
 # ===================================================================================================== choosing
 def sheets(only: set | None = None, fps: float = 1.0, cols: int = 10):
-    """A contact sheet of each shot's whole window (1 fps), every frame stamped with its source time; in and out marked."""
+    """A contact sheet of each shot's whole window (1 fps), every frame stamped with its source time, outside red."""
     import numpy as np
     out = CACHE / "sheets"
     out.mkdir(exist_ok=True)
@@ -452,9 +453,9 @@ def part_real(s: dict, tmp: Path) -> Path:
 def cards() -> tuple[Image.Image, Image.Image]:
     title = L.card_image("The vertical cloud lab, as of 28 November 2026",
                          "The alloy route, what's new, and the digital twin",
-                         ["Seven shots of the alloy route from round 16's long-form, one of the lab's own atomizer, six "
-                          "of what the lab model gained since round 15, three from the digital twin's round 5, then the "
-                          "whole lab at speed.",
+                         ["Seven shots of the alloy route from round 16's long-form, one of the lab's own atomizer, "
+                          "six of what the lab model gained since round 15, three from the digital twin's round 5, "
+                          "then the whole lab at speed.",
                           "Apart from the real atomizer, a 3-D animation of a design study and a simulated benchmark, "
                           "not footage of a working lab."])
     end = L.card_image("The full videos", "Where every shot comes from",
