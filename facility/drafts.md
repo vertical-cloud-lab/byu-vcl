@@ -279,3 +279,79 @@ Is there anything in Utah County or the south valley that fits most of this, on 
 
 Thanks,
 Gage
+
+---
+
+## 12. To a broker (or Gage's Newmark contact): a small high-bay unit, 3,000-10,000 ft², near Provo
+
+**Subject:** A 3,000-10,000 ft² unit with a high ceiling, Provo to Lindon
+
+Hi [name],
+
+We're also looking at a smaller first step than the 20,000 ft² I mentioned: **3,000-10,000 ft²**, as close to BYU
+as we can get (Provo, Orem, Springville, Spanish Fork, Lindon, Vineyard). Height matters more than floor area to us,
+because our instruments are stored in automated vertical lift modules, and a taller unit holds more of them on the same
+floor. The lab is shown in [warehouse video link], and the small-building version in [link to
+facility/out/small_footprint.png].
+
+In rough order, we'd look for:
+
+1. **Clear height:** as much as possible. 24 ft works, 32-36 ft is better, and anything taller (a crane bay or a
+   hangar) is worth a look.
+2. **Power:** about 400 A at 480 V three-phase for the space, or 800 A at 208 V.
+3. **A grade-level door** at least 12 ft tall, and ideally a dock.
+4. **An end unit or a freestanding building,** with an exterior wall for a powder room and room outside for a small
+   gas tank (a 7 × 7 ft pad).
+5. **Zoning** that permits research and development or laboratories.
+6. **A landlord open to** hazardous materials under a plan (aluminium alloy powders, argon), and to cutting the slab
+   for one machine footing.
+
+Is there anything on or off market that fits most of this?
+
+Thanks,
+[name]
+
+---
+
+## 13. To the University of Utah (Real Estate Administration or Research Park): space for a joint or BYU-led lab
+
+**Subject:** Planning question: 3,000-10,000 ft² of high-ceiling lab space in or near Research Park
+
+Hello [name],
+
+I'm [name, role] with the Vertical Cloud Lab at BYU. We're at an early, exploratory stage of asking where an automated
+materials lab like the one in these animations could go: [warehouse video link]. Nothing is funded or committed, so
+please treat this as a planning question, not a request for a proposal.
+
+We'd need about 3,000-10,000 ft², with as much clear height as possible (our instruments live in automated vertical
+lift modules, 4-10 m tall), three-phase power, a grade-level door and an exterior wall for a small powder room. It
+would hold aluminium alloy powders and use argon.
+
+1. Does Research Park, or other University property, have space like this now or planned, and how is it held (a
+   sublease from a ground-lease holder, or space the University leases directly)?
+2. Can a non-University organisation lease it, or would it need a University partner or sponsor?
+3. Are there University facilities (a high bay, a crane lab, a shared research building) where a lab like this could
+   be hosted as a collaboration?
+
+[signature]
+
+---
+
+## 14. To an airport manager (Provo or Spanish Fork-Springville): a hangar for a non-aviation lab
+
+**Subject:** Planning question: would a hangar be available for a research lab?
+
+Hello [name],
+
+I'm [name, role] with the Vertical Cloud Lab at BYU. We're at an early, exploratory stage of asking where an automated
+materials lab could go, and a hangar's clear height and door suit it unusually well: [warehouse video link]. This is a
+planning question, not an application.
+
+1. Does the airport have, or expect, hangars of about 3,000-10,000 ft² available to lease, and with what door and
+   clear heights?
+2. Would the airport consider a non-aeronautical use of a hangar, or of land off the airfield, given the FAA's policy
+   on non-aeronautical use of hangars? If so, what would that take (FAA approval, fair-market rent, a term limit)?
+3. Is there land on the airport's commercial frontage, outside the airfield fence, where a building like this would
+   be allowed?
+
+[signature]

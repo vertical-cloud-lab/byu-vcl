@@ -34,6 +34,10 @@ the same site numbers as the maps.
   The doc has a ten-point checklist for a 20,000 ft², 36 ft building. Drafts 10 and 11.
 - **Sterling: continue in PR #344.** Both branches were fast-forwarded into it on 2026-11-13, so this PR now holds
   everything above.
+- **Sterling (2026-11-28): smaller, 3,000-10,000 ft², closer to Provo and close to or part of the U of U, keeping the
+  high ceiling.** Answered in [`small-high-bay.md`](small-high-bay.md), with its own figure and maps. Small spaces top
+  out at 28 ft; the best fits are Hobble Creek Business Park in Springville and Skyline Commerce Center Bldg 1 in Salt
+  Lake City. Drafts 12-14.
 
 ## Height is a variable, not a cut-off
 

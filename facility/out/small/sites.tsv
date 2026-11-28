@@ -1,0 +1,29 @@
+id	label	lat	lon	group	how	dx	dy
+BYU	BYU	40.2498073	-111.6499458	anchor	earlier sites.tsv		
+P1	Hobble Creek Business Park, 28 ft	40.183507	-111.642240	provo	Census geocode	10	0
+P2	Provo Airpark Industrial, 28 ft (snippet)	40.234038	-111.719542	provo	Census geocode	-10	8
+P3	Ironworks condos, 26 ft	40.195834	-111.622010	provo	Nominatim, street only	10	0
+P4	Orem sublease, 26 ft	40.314423	-111.730014	provo	Census geocode	10	0
+P5	Canyon Creek Bldg 3, 24 ft	40.134409	-111.636450	provo	Nominatim, street only	10	0
+P6	601 E 1860 S, 21-24 ft (snippet)	40.208700	-111.648640	provo	Census geocode	10	-4
+P7	R&H Provo Building, 5 t crane	40.222078	-111.647314	provo	Census geocode	10	4
+P8	East Bay Industrial, cranes	40.225234	-111.656834	provo	Census geocode	-10	2
+P9	McCoard Airport Ind. Park, 21 ft	40.233763	-111.713849	provo	Census geocode	-10	-8
+P10	1664 N 400 E, Vineyard, 28 ft	40.327400	-111.744207	provo	Nominatim, street only	10	0
+10	BlendTec (earlier)	40.2746377	-111.7353964	earlier	earlier sites.tsv	10	0
+11	225 E 900 S, now 5,021-8,275 ft² suites, 15 ft	40.2221410	-111.6541560	earlier	earlier sites.tsv	-10	-10
+12	Center Street Industrial (earlier)	40.168	-111.6426	earlier	earlier sites.tsv	10	0
+13	Global Logistics HQ (earlier)	40.1401989	-111.6657813	earlier	earlier sites.tsv	-10	0
+UU	U of U Warnock Engineering	40.7678	-111.8455	anchor	agent's coordinate for the building		
+U1	Skyline Commerce Center Bldg 1, 9,563 ft², 28 ft	40.735928	-111.905481	uofu	Census geocode	10	5
+U2	Skyline Commerce Center 2, 32 ft, from 22,032	40.733563	-111.907607	uofu	Census geocode	10	-11
+U3	450 E 2200 S, 28 ft (no hazmat)	40.722912	-111.878225	uofu	Census geocode	10	0
+U4	864-866 S 500 W, 12-29 ft (snippet)	40.750536	-111.905456	uofu	Census geocode	-10	0
+U5	175 W 1300 S, 12-26 ft, from 19,240	40.741554	-111.895380	uofu	Census geocode	10	4
+U6	577 S Chipeta Way, Research Park lab sublease	40.756316	-111.825220	uofu	Census geocode	-10	-12
+U7	2080 S Industrial Rd Bldg B, 32 ft	40.726450	-111.944808	uofu	Census geocode	-10	-4
+U8	Redwood Depot Bldg E, 32 ft	40.730700	-111.939038	uofu	Census, to 1810 S Redwood Rd	10	-3
+U9	Intermountain Space Center, 28-30 ft	40.737712	-111.955179	uofu	Census geocode	10	11
+U10	724 S Redwood Rd, 25 ft, for sale (snippet)	40.753552	-111.939083	uofu	Census geocode	10	0
+N1	Utah Nanofab (H gas room)	40.769597	-111.841798	uofu	Census geocode	10	6
+N2	Titanium AM center, Browning Bldg	40.765611	-111.848402	uofu	Nominatim, street only	-10	-6

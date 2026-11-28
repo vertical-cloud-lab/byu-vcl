@@ -15,6 +15,9 @@ Listings change quickly, so check a site's status before relying on it.
 **Specific sites, Lehi first, with maps from Salt Lake City to Provo and aerial, street and interior photos:** [`sites.md`](sites.md). It
 also summarizes the #343 thread so far, and treats height as a variable rather than a cut-off.
 
+**Smaller buildings with a high ceiling (3,000-10,000 ft²), closer to Provo and near or part of the University of
+Utah:** [`small-high-bay.md`](small-high-bay.md) (2026-11-28). It starts from the totals in [`needs.md`](needs.md).
+
 Point people at the visualizations:
 [the warehouse version](https://www.youtube.com/watch?v=3IrSB9-meN8) (MiR250 + UR10e units on an open warehouse
 floor), [the lab set up from scratch in an empty bay](https://www.youtube.com/watch?v=oMvGIGQOKA4), and
@@ -42,9 +45,20 @@ code; the support rooms are one illustrative way to use the rest of the floor.
   - **What decides between sites:** how many amps the landlord gives our suite, a grade-level door about 12 ft tall for
     the EOS and the Meltio cell, a slab we may cut, an outside wall for a powder room, a gas pad and zoning. Power in
     the building and height don't decide it.
+- **Smaller, with a high ceiling ([`small-high-bay.md`](small-high-bay.md), 2026-11-28):**
+  - **What fits:** 3,000 ft² holds round 11's floor; 6,000 ft² adds the EOS, the Meltio cell and a powder room;
+    10,000 ft² adds the 50 ft array if there is a high bay. In a small building height is the only way to add trays:
+    two Shuttles hold 14 at 3.95 m, 40 at 28 ft clear and 58 at 36 ft.
+  - **Small spaces top out at 28 ft** near Provo and near the U, and are often wired for only 200-400 A at 208 V.
+  - **Best fits:** Hobble Creek Business Park, Springville (28 ft, 2,000 A at 480 V in the building, 4.6 mi from
+    BYU), and Skyline Commerce Center Bldg 1 in Salt Lake City (9,563 ft², 28 ft, 3.8 mi from the U of U).
+  - **Hangars are out** (FAA policy), but Provo's Airport Industrial zone allows 55 ft buildings off the airfield.
+  - **The U** already runs metal powder, laser powder-bed printing and an H-occupancy gas room: a precedent and a
+    possible partner. Research Park has no high bay and caps height at 45 ft (snippet).
 - **Height decides only whether the trays could go into the tall array.**
   - **The 50 ft array** needs about **51-53 ft clear** (depending on the sprinklers), but nothing available near BYU
-    is over **36 ft**.
+    is over **36 ft**, except two large buildings listing 36-40 ft found on 2026-11-28 (Payson Central Tech, and
+    Spanish Fork Skypark in a snippet; [`small-high-bay.md`](small-high-bay.md#taller-but-bigger-than-10000-ft)).
   - **Three ways round it:** an 11 ft (3.4 m) pit in a 40 ft clear building, a high bay in a purpose-built building, or
     more, shorter units (13 units at 10.5 m under 36 ft, or 15 at 9.2 m under 32 ft) for the same 352 trays.
   - **Area is easy:** the #318 floor fits in about 3,500 ft² and the array in under 1,000 ft². 20,000 ft² is enough
@@ -257,8 +271,9 @@ Read on 2026-11-12 from public listings. **Nobody was contacted.**
   snippets.
 - **Listings change weekly:** "available" means listed on that date.
 
-**No available building near BYU is taller than 36 ft clear.** So the 50 ft array needs a pit, a purpose-built high
-bay, or the shorter units in the [table above](#height). The last column applies that table.
+**No available building near BYU is taller than 36 ft clear,** apart from two large ones at 36-40 ft found later
+([`small-high-bay.md`](small-high-bay.md#taller-but-bigger-than-10000-ft)). So the 50 ft array needs a pit, a
+purpose-built high bay, or the shorter units in the [table above](#height). The last column applies that table.
 
 ### Lease (the short-term path), Lehi first
 
@@ -505,6 +520,12 @@ checked against a flyer; Crexi hides the rest behind a sign-in, which wasn't use
 | Sewer districts (TSSD, Orem, Provo, Springville, Spanish Fork, JBID) | whether a lab's wastewater needs a survey or permit | linked in [`utilities.md`](utilities.md#6-who-to-ask) | 8 |
 | A fire-protection engineer or code consultant (Resolut, Jensen Hughes, Trinity Consultants) | a code review of one building, and the dust hazard analysis | in [`zoning-and-safety.md`](zoning-and-safety.md#5-who-to-ask-and-whats-not-done) | 10 |
 | Gage's contact at Newmark Mountain West | buildings that fit the [checklist](zoning-and-safety.md#4-what-else-to-look-for-in-a-building) | through Gage | 11 |
+| Newmark Mountain West: Ben Richardson, Kolby Long, Lucas M. Burbank | **Hobble Creek Business Park, Springville** (28 ft, bays of 6,720-8,400 ft²) | names on [CommercialCafe](https://www.commercialcafe.com/commercial-property/us/ut/springville/hi-electric-building-1-4/) | 1, 12 |
+| CBRE Salt Lake City industrial: Tom Dischmann, Jeff Richards, Chris Liddell, Matt McAfee, Heather Lingmann | **Skyline Commerce Center Bldg 1, Ste 600** (9,563 ft², 28 ft, near the U of U), Skyline 2, Intermountain Space Center | names on [CBRE](https://www.cbre.com/properties/properties-for-lease/industrial/details/US-SMPL-213010/skyline-commerce-center-building-1-1580-south-500-west-salt-lake-city-ut-84115) | 1 |
+| Core Utah Real Estate: Aaron Cook, Kevin Ford | the Orem sublease, 1153 N 1430 W (10,573 ft², 26 ft) | names on [CommercialCafe](https://www.commercialcafe.com/commercial-property/us/ut/orem/orem-industrial-warehouse-sublease/) | 1 |
+| Colliers: Eric Larsen | R&H Provo Building (crane bay, M-2, 1.9 mi from BYU); McCoard Airport Industrial Park | names on [CommercialCafe](https://www.commercialcafe.com/commercial-property/us/ut/provo/r-h-provo-building-for-sale-or-lease/) | 1 |
+| **University of Utah Real Estate Administration** | Research Park space; hosting or partnering on a lab | 303 Chipeta Way Ste 300, +1 801 587 8750; leasing +1 801 587 8734 ([REA](https://realestate.utah.edu/real-property-transaction/)) | 13 |
+| Provo Municipal Airport; Spanish Fork-Springville Airport (manager: Christian Davis) | hangars (not for a lab, under FAA policy) and Provo's Airport Industrial land | Spanish Fork: +1 801 804 4593 ([city](https://www.spanishfork.gov/business-development/airport/rates-and-fees/)); Provo: through the city | 14 |
 | Texas Instruments LFAB, Lehi | a tour of a site that already runs process gases and hazardous materials | in progress: Gage asked BYU's recruiting office ([#319](https://github.com/vertical-cloud-lab/byu-vcl/issues/319)) | none |
 
 ## Open questions and next steps
@@ -522,7 +543,10 @@ checked against a flyer; Crexi hides the rest behind a sign-in, which wasn't use
    the later, purpose-built building, which is where a high bay fits naturally.
 6. **Before signing for a building,** get a written use determination from the city (draft 3) and a code review from
    a fire-protection engineer (draft 10). [`zoning-and-safety.md`](zoning-and-safety.md) lists what else to check.
-7. **Fill the gaps:** costs of H rooms and high-bay premiums, Provo's tariff, the codes for American Fork and other
+7. **For a smaller first step** ([`small-high-bay.md`](small-high-bay.md#4-if-we-were-to-ask-about-three)), ask
+   about Hobble Creek (Springville) and Skyline Commerce Center Bldg 1 (Salt Lake City), and the bay height of R&H
+   Provo (drafts 1 and 12). Ask the U about partnering (draft 13).
+8. **Fill the gaps:** costs of H rooms and high-bay premiums, Provo's tariff, the codes for American Fork and other
    cities (HTTP 403 here), and the LoopNet listings that refuse both the runner and the Pi.
 
 Add sites, contacts and numbers on [#343](https://github.com/vertical-cloud-lab/byu-vcl/issues/343).
